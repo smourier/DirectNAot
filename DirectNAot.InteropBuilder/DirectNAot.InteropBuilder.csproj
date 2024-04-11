@@ -3,10 +3,15 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Win32InteropBuilder\Win32InteropBuilder.csproj" />
+	  <Compile Include="..\Win32MetadataReader\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Win32InteropBuilder\Win32InteropBuilder.csproj" />
 	</ItemGroup>
 
 </Project>
