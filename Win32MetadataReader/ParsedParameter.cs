@@ -6,7 +6,7 @@ namespace Win32MetadataReader
 {
     public class ParsedParameter(ParsedMethod? parent, string name, ParameterAttributes attributes, int sequenceNumber)
     {
-        private readonly List<ParsedCustomAttribute> _customAttributes = new();
+        private readonly List<ParsedCustomAttribute> _customAttributes = [];
 
         public ParsedMethod? Parent { get; } = parent; // can be null
         public string Name { get; } = name;

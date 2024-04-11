@@ -11,7 +11,7 @@
                     return string.Empty;
 
                 if (Name.Length > token.Length && Name.EndsWith(token))
-                    return Name.Substring(0, Name.Length - token.Length);
+                    return Name[..^token.Length];
 
                 return Name;
             }

@@ -4,7 +4,7 @@ namespace Win32MetadataReader
 {
     public class ParsedInterface(FullName fullName, FullName baseFullName) : ParsedType(fullName)
     {
-        private readonly List<ParsedMethod> _methods = new();
+        private readonly List<ParsedMethod> _methods = [];
 
         public FullName BaseFullName { get; } = baseFullName;
         public ParsedInterface? BaseInterface { get; set; }

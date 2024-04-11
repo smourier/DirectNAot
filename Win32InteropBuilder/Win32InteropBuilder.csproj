@@ -5,4 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Win32MetadataReader\Win32MetadataReader.csproj" />
+  </ItemGroup>
+
 </Project>

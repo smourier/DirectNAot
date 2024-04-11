@@ -5,7 +5,7 @@ namespace Win32MetadataReader
 {
     public class ParsedMethod
     {
-        private readonly List<ParsedParameter> _parameters = new();
+        private readonly List<ParsedParameter> _parameters = [];
 
         public ParsedMethod(ParsedInterface parent, string name)
         {
