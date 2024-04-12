@@ -4,13 +4,12 @@ namespace Win32InteropBuilder
 {
     public class BuilderContext
     {
-        public BuilderContext(string winMdPath)
+        public BuilderContext(BuilderConfiguration configuration)
         {
-            ArgumentNullException.ThrowIfNull(winMdPath);
-            WinMdPath = winMdPath;
+            ArgumentNullException.ThrowIfNull(configuration);
+            Configuration = configuration;
         }
 
-        public string WinMdPath { get; }
-
+        public BuilderConfiguration Configuration { get; }
     }
 }

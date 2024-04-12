@@ -24,7 +24,11 @@ namespace InteropBuilder.Cli
             try
             {
                 using var stream = File.OpenRead(configurationPath);
-                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream);
+                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream, new JsonSerializerOptions
+                {
+                    ReadCommentHandling = JsonCommentHandling.Skip,
+                    AllowTrailingCommas = true,
+                });
                 EnumBasedException<Win32InteropBuilderExceptionCode>.ThrowIfNull(Win32InteropBuilderExceptionCode.InvalidConfiguration, configuration);
             }
             catch (Exception ex)
@@ -38,14 +42,15 @@ namespace InteropBuilder.Cli
             }
 
             configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
+            configuration.WinMdPath ??= Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
             Console.WriteLine("Builder type name: " + configuration.BuilderTypeName);
+            Console.WriteLine("WinMdPath: " + configuration.WinMdPath);
 
             var type = Type.GetType(configuration.BuilderTypeName, true);
             Console.WriteLine($"Running {type!.FullName} builder...");
 
             var builder = (Builder)Activator.CreateInstance(type)!;
-            var winmd = Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
-            var context = builder.CreateBuilderContext(winmd);
+            var context = builder.CreateBuilderContext(configuration);
             builder.Build(context);
         }
 

@@ -4,5 +4,6 @@
     {
         Unspecified,
         InvalidConfiguration,
+        AmbiguousMatch,
     }
 }

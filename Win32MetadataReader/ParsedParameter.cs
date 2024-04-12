@@ -19,30 +19,13 @@ namespace Win32MetadataReader
         public bool IsIn => Attributes.HasFlag(ParameterAttributes.In);
         public bool IsOptional => Attributes.HasFlag(ParameterAttributes.Optional);
 
-        public string GenerateCppMethodSignature()
-        {
-            if (IsConst && Type?.GetCppWithIndirectionsName(this) == "GUID*")
-                return "const IID &";
-
-            var cas = IsConst ? "const" : string.Empty;
-            var typeName = Type?.GetCppWithIndirectionsName(this) ?? "???";
-            var list = new List<string>
-            {
-                cas,
-                typeName,
-                Name
-            };
-            return string.Join(" ", list.Where(i => !string.IsNullOrWhiteSpace(i)));
-        }
 
         public override string ToString()
         {
             var cas = string.Join(string.Empty, CustomAttributes.Select(a => "[" + a.ShortName + "]"));
-            var typeName = Type?.GetCppWithIndirectionsName(this) ?? "???";
             var list = new List<string>
             {
                 cas,
-                typeName,
                 Name
             };
             return string.Join(" ", list.Where(i => !string.IsNullOrWhiteSpace(i)));

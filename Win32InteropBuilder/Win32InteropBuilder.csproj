@@ -10,8 +10,4 @@
 	  <Compile Include="..\Win32MetadataReader\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Win32MetadataReader\Win32MetadataReader.csproj" />
-	</ItemGroup>
-
 </Project>

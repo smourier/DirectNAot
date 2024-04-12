@@ -1,4 +1,9 @@
 ﻿{
   "zBuilderTypeFilePath": "E:\\smo\\GitHub\\DirectNAot\\DirectNAot.InteropBuilder\\bin\\Debug\\net8.0\\DirectNAot.InteropBuilder.dll",
-  "zBuilderTypeName": "DirectNAot.InteropBuilder.Builder, DirectNAot.InteropBuilder"
+  "zBuilderTypeName": "DirectNAot.InteropBuilder.Builder, DirectNAot.InteropBuilder",
+  "Inputs": [
+    "CreateDXGIFactory",
+    "IDXGIFactory",
+    //"!IDXGIFactoryMedia"
+  ]
 }
