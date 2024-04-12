@@ -2,7 +2,7 @@
   "profiles": {
     "InteropBuilder.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "/builder:E:\\smo\\GitHub\\DirectNAot\\DirectNAot.InteropBuilder\\bin\\Debug\\net8.0\\DirectNAot.InteropBuilder.dll"
+      "commandLineArgs": "DirectN.json"
     }
   }
 }

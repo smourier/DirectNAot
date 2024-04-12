@@ -7,7 +7,7 @@ using Win32MetadataReader;
 
 namespace Win32InteropBuilder
 {
-    public abstract class Builder
+    public class Builder
     {
         public virtual BuilderContext CreateBuilderContext(string winMdPath) => new(winMdPath);
         public virtual void Build(BuilderContext context)

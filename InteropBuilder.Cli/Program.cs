@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using Win32InteropBuilder;
+using Win32InteropBuilder.Utilities;
 
 namespace InteropBuilder.Cli
 {
@@ -12,21 +13,35 @@ namespace InteropBuilder.Cli
         {
             Console.WriteLine("InteropBuilder - Copyright (C) 2017-" + DateTime.Now.Year + " Simon Mourier. All rights reserved.");
             Console.WriteLine();
-            var builderPath = CommandLine.Current.GetNullifiedArgument("builder");
-            if (CommandLine.Current.HelpRequested || builderPath == null)
+            var configurationPath = CommandLine.Current.GetNullifiedArgument(0);
+            if (CommandLine.Current.HelpRequested || configurationPath == null)
             {
                 Help();
                 return;
             }
 
-            var asm = Assembly.LoadFrom(builderPath);
-            var type = asm.GetTypes().FirstOrDefault(t => typeof(Builder).IsAssignableFrom(t));
-            if (type == null)
+            BuilderConfiguration? configuration;
+            try
             {
-                Console.WriteLine($"Cannot find any builder type in assembly {asm.FullName}.");
-                return;
+                using var stream = File.OpenRead(configurationPath);
+                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream);
+                EnumBasedException<Win32InteropBuilderExceptionCode>.ThrowIfNull(Win32InteropBuilderExceptionCode.InvalidConfiguration, configuration);
             }
-            Console.WriteLine($"Running {type.FullName} builder...");
+            catch (Exception ex)
+            {
+                throw new EnumBasedException<Win32InteropBuilderExceptionCode>(Win32InteropBuilderExceptionCode.InvalidConfiguration, ex);
+            }
+
+            if (configuration.BuilderTypeFilePath != null)
+            {
+                Assembly.LoadFrom(configuration.BuilderTypeFilePath);
+            }
+
+            configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
+            Console.WriteLine("Builder type name: " + configuration.BuilderTypeName);
+
+            var type = Type.GetType(configuration.BuilderTypeName, true);
+            Console.WriteLine($"Running {type!.FullName} builder...");
 
             var builder = (Builder)Activator.CreateInstance(type)!;
             var winmd = Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
@@ -36,7 +51,7 @@ namespace InteropBuilder.Cli
 
         static void Help()
         {
-            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " <input builder assembly path> <output file path>");
+            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " <config.json>");
             Console.WriteLine();
             Console.WriteLine("Description:");
             Console.WriteLine("    This tool is used to generate .cs files from an interop builder assembly.");

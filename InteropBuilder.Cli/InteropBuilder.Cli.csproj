@@ -19,6 +19,12 @@
 	  <ProjectReference Include="..\Win32InteropBuilder\Win32InteropBuilder.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="DirectN.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 	<Target Name="CreateWin32MetadataFile" BeforeTargets="CoreCompile">
 		<PropertyGroup>
 			<Win32MetadataCSharp>
