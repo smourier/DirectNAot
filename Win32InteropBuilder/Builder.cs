@@ -11,6 +11,12 @@ namespace Win32InteropBuilder
     public class Builder
     {
         public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration) => new(configuration);
+
+        protected virtual AddWellKnownTypes(IDictionary<FullName, (BuilderType, TypeDefinition)> dictionary)
+        {
+            //            dictionary.Add(new FullName(typeof(uint)), ;
+        }
+
         public virtual void Build(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -66,11 +72,16 @@ namespace Win32InteropBuilder
                 Console.WriteLine();
             }
 
-            void addDependencies(BuilderType type, TypeDefinition typeDef)
+            void addDependencies(BuilderType type, TypeDefinition? typeDef)
             {
+                if (!typeDef.HasValue)
+                {
+                    typeDef = all[type.FullName].Item2;
+                }
+
                 if (!final.Contains(type))
                 {
-                    foreach (var handle in typeDef.GetMethods())
+                    foreach (var handle in typeDef.Value.GetMethods())
                     {
                         var methodDef = reader.GetMethodDefinition(handle);
                         var method = new BuilderMethod(reader.GetString(methodDef.Name));
@@ -78,17 +89,37 @@ namespace Win32InteropBuilder
                         foreach (var phandle in methodDef.GetParameters())
                         {
                             var parameterDef = reader.GetParameter(phandle);
-                            var parameter = new BuilderParameter(reader.GetString(parameterDef.Name));
+                            var parameter = new BuilderParameter(reader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
+                            // 'this'
+                            if (string.IsNullOrEmpty(parameter.Name) && parameter.SequenceNumber == 0)
+                                continue;
+
                             method.Parameters.Add(parameter);
                         }
+                        method.SortParameters();
 
                         var dec = methodDef.DecodeSignature(SignatureTypeProvider.Instance, null);
+                        method.ReturnType = dec.ReturnType;
+
+                        if (method.ReturnType != null)
+                        {
+                            addDependencies(method.ReturnType, null);
+                        }
+
+                        for (var i = 0; i < dec.ParameterTypes.Length; i++)
+                        {
+                            method.Parameters[i].Type = dec.ParameterTypes[i];
+                            if (method.Parameters[i].Type != null)
+                            {
+                                addDependencies(method.Parameters[i].Type!, null);
+                            }
+                        }
                     }
 
                     final.Add(type);
                 }
 
-                foreach (var iface in typeDef.GetInterfaceImplementations())
+                foreach (var iface in typeDef.Value.GetInterfaceImplementations())
                 {
                     //var rf = reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(iface).Interface);
                     var typeRef = new BuilderTypeReference(reader.GetFullName(iface));
