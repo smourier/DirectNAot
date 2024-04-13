@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
@@ -34,9 +35,11 @@ namespace Win32InteropBuilder
         }
 
         protected virtual BuilderType CreateBuilderType(BuilderContext context, FullName fullName) => new(fullName);
-        protected virtual BuilderTypeReference CreateBuilderTypeReference(BuilderContext context, FullName fullName) => new(fullName);
+        protected virtual InterfaceType CreateInterfaceType(BuilderContext context, FullName fullName) => new(fullName);
+        protected virtual StructureType CreateStructureType(BuilderContext context, FullName fullName) => new(fullName);
         protected virtual BuilderMethod CreateBuilderMethod(BuilderContext context, string name) => new(name);
         protected virtual BuilderParameter CreateBuilderParameter(BuilderContext context, string name, int sequenceNumber) => new(name, sequenceNumber);
+        protected virtual BuilderField CreateBuilderField(BuilderContext context, string name, BuilderType type) => new(name, type);
 
         protected virtual void GatherTypes(BuilderContext context)
         {
@@ -49,7 +52,23 @@ namespace Win32InteropBuilder
 
             foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
-                var type = CreateBuilderType(context, context.MetadataReader.GetFullName(typeDef));
+                BuilderType type;
+                if (typeDef.Attributes.HasFlag(TypeAttributes.Interface))
+                {
+                    type = CreateInterfaceType(context, context.MetadataReader.GetFullName(typeDef));
+                }
+                else
+                {
+                    var isStructure = context.MetadataReader.IsStructure(typeDef);
+                    if (isStructure)
+                    {
+                        type = CreateStructureType(context, context.MetadataReader.GetFullName(typeDef));
+                    }
+                    else
+                    {
+                        type = CreateBuilderType(context, context.MetadataReader.GetFullName(typeDef));
+                    }
+                }
                 if (type.FullName.Namespace.Length == 0)
                     continue;
 
@@ -96,7 +115,10 @@ namespace Win32InteropBuilder
                 return;
             }
 
-            if (!context.TypesToBuild.Contains(type))
+            if (context.TypesToBuild.Contains(type))
+                return;
+
+            if (type is InterfaceType ifaceType)
             {
                 foreach (var handle in typeDef.GetMethods())
                 {
@@ -132,16 +154,32 @@ namespace Win32InteropBuilder
                     }
                 }
 
-                context.TypesToBuild.Add(type);
+                var interfaces = typeDef.GetInterfaceImplementations();
+                foreach (var iface in interfaces)
+                {
+                    var fn = context.MetadataReader.GetFullName(iface);
+                    if (fn == FullName.IUnknown)
+                    {
+                        ifaceType.IsIUnknownDerived = true;
+                        continue;
+                    }
+
+                    var typeRefType = context.AllTypes[fn];
+                    AddDependencies(context, typeRefType);
+                    type.Interfaces.Add(typeRefType);
+                }
+            }
+            else if (type is StructureType)
+            {
+                foreach (var handle in typeDef.GetFields())
+                {
+                    var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
+                    var field = CreateBuilderField(context, context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(SignatureTypeProvider.Instance, null));
+                    type.Fields.Add(field);
+                }
             }
 
-            foreach (var iface in typeDef.GetInterfaceImplementations())
-            {
-                //var rf = reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(iface).Interface);
-                var typeRef = CreateBuilderTypeReference(context, context.MetadataReader.GetFullName(iface));
-                var typeRefType = context.AllTypes[typeRef.FullName];
-                AddDependencies(context, typeRefType);
-            }
+            context.TypesToBuild.Add(type);
         }
 
         protected virtual void RemoveNonGeneratedTypes(BuilderContext context)
@@ -202,13 +240,7 @@ namespace Win32InteropBuilder
                 IOUtilities.FileEnsureDirectory(typePath);
                 using var file = new StreamWriter(typePath, false);
                 using var iw = new IndentedTextWriter(file);
-                type.GeneratedCode(iw);
-
-                //foreach (var method in type.Methods)
-                //{
-                //    Console.WriteLine($" {method.Name}({string.Join(", ", method.Parameters)})");
-                //}
-                //Console.WriteLine();
+                type.GenerateCode(iw);
             }
         }
     }

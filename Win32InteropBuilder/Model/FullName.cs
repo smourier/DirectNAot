@@ -56,6 +56,15 @@ namespace Win32InteropBuilder.Model
         public string Namespace { get; }
         public string Name { get; }
 
+        public virtual string GetRelativeTo(FullName fullName)
+        {
+            ArgumentNullException.ThrowIfNull(fullName);
+            if (Namespace == fullName.Namespace)
+                return Name;
+
+            return ToString();
+        }
+
         public override string ToString() => $"{Namespace}.{Name}";
         public bool Equals(FullName? other) => other != null && other.Namespace == Namespace && other.Name == Name;
         public override bool Equals(object? obj) => Equals(obj as FullName);

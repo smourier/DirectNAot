@@ -21,6 +21,8 @@ namespace Win32InteropBuilder.Model
         private static readonly Lazy<IDictionary<FullName, BuilderType>> _wellKnownTypes = new(LoadWellKnownTypes);
 
         private readonly List<BuilderMethod> _methods = [];
+        private readonly List<BuilderField> _fields = [];
+        private readonly List<BuilderType> _interfaces = [];
 
         public BuilderType(FullName fullName)
         {
@@ -34,9 +36,13 @@ namespace Win32InteropBuilder.Model
         }
 
         public FullName FullName { get; }
+        //public BuilderType? BaseType { get; set; }
+        public virtual bool IsStructure { get; set; }
         public virtual int Indirections { get; set; }
         public virtual ArrayShape? ArrayShape { get; set; }
         public virtual IList<BuilderMethod> Methods => _methods;
+        public virtual IList<BuilderField> Fields => _fields;
+        public virtual IList<BuilderType> Interfaces => _interfaces;
         public virtual string? Documentation { get; set; }
         public virtual string FileName => FullName.Name;
         public virtual string? GeneratedName { get; set; }
@@ -55,41 +61,17 @@ namespace Win32InteropBuilder.Model
             }
         }
 
-        public virtual void GeneratedCode(IndentedTextWriter writer)
+        public virtual void GenerateCode(IndentedTextWriter writer)
         {
             ArgumentNullException.ThrowIfNull(writer);
             writer.WriteLine($"namespace {FullName.Namespace};");
             writer.WriteLine();
-            writer.Write($"public partial interface {FullName.Name}");
-            writer.WriteLine();
-            writer.WithParens(() =>
-            {
-                for (var i = 0; i < Methods.Count; i++)
-                {
-                    var method = Methods[i];
-                    writer.WriteLine("[PreserveSig]");
-                    writer.Write(method.ReturnType?.FullName.Name ?? "void");
-                    writer.Write(' ');
-                    writer.Write(method);
+            GenerateTypeCode(writer);
+        }
 
-                    writer.Write('(');
-                    for (var j = 0; j < method.Parameters.Count; j++)
-                    {
-                        var parameter = method.Parameters[j];
-                        parameter.GeneratedCode(writer);
-                        if (j != method.Parameters.Count - 1)
-                        {
-                            writer.Write(", ");
-                        }
-                    }
-                    writer.WriteLine(");");
-
-                    if (i != Methods.Count - 1)
-                    {
-                        writer.WriteLine();
-                    }
-                }
-            });
+        protected virtual void GenerateTypeCode(IndentedTextWriter writer)
+        {
+            ArgumentNullException.ThrowIfNull(writer);
         }
 
         public override int GetHashCode() => FullName.GetHashCode();

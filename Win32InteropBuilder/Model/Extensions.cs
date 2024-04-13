@@ -111,6 +111,15 @@ namespace Win32InteropBuilder.Model
             return sig.FullName == FullName.SystemIntPtr;
         }
 
+        public static bool IsStructure(this MetadataReader reader, TypeDefinition type)
+        {
+            if (!type.Attributes.HasFlag(TypeAttributes.Public | TypeAttributes.SequentialLayout))
+                return false;
+
+            var bfn = reader.GetFullName(type.BaseType);
+            return bfn == FullName.SystemValueType;
+        }
+
         public static void WithParens(this IndentedTextWriter writer, Action action)
         {
             ArgumentNullException.ThrowIfNull(writer);
