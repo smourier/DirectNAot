@@ -26,7 +26,7 @@ namespace Win32InteropBuilder.Model
 
             if (Interfaces.Count > 0)
             {
-                context.Writer.Write($": {string.Join(", ", Interfaces.Select(i => i.FullName.GetRelativeTo(FullName)))}");
+                context.Writer.Write($" : {string.Join(", ", Interfaces.Select(i => i.FullName.GetRelativeTo(FullName)))}");
             }
 
             context.Writer.WriteLine();
@@ -38,7 +38,12 @@ namespace Win32InteropBuilder.Model
                     context.Writer.WriteLine("[PreserveSig]");
                     if (method.ReturnType != null)
                     {
-                        context.Writer.Write(method.ReturnType.GetGeneratedName(context.Namespace));
+                        var mapped = context.MapType(method.ReturnType);
+                        if (mapped.UnmanagedType.HasValue)
+                        {
+                            context.Writer.WriteLine($"[return: MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
+                        }
+                        context.Writer.Write(mapped.GetGeneratedName(context));
                     }
                     else
                     {

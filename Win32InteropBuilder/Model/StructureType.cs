@@ -29,8 +29,13 @@ namespace Win32InteropBuilder.Model
                 for (var i = 0; i < Fields.Count; i++)
                 {
                     var field = Fields[i];
+                    if (field.Type.UnmanagedType.HasValue)
+                    {
+                        context.Writer.WriteLine($"[MarshalAs(UnmanagedType.{field.Type.UnmanagedType.Value})]");
+                    }
+
                     context.Writer.Write("public ");
-                    context.Writer.Write(field.Type.GetGeneratedName(context.Namespace));
+                    context.Writer.Write(field.Type.GetGeneratedName(context));
                     context.Writer.Write(' ');
                     context.Writer.Write(field);
                     context.Writer.WriteLine(';');

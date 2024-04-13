@@ -44,7 +44,7 @@ namespace Win32InteropBuilder.Model
                         context.Writer.Write(" = ");
                         context.Writer.Write(i32);
                     }
-                    context.Writer.WriteLine(';');
+                    context.Writer.WriteLine(',');
                 }
             });
         }

@@ -14,6 +14,8 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(configuration);
             Configuration = configuration;
             SignatureTypeProvider = new SignatureTypeProvider(this);
+            ImplicitNamespaces.Add("System");
+            ImplicitNamespaces.Add(BuilderType.GeneratedInteropNamespace);
         }
 
         public BuilderConfiguration Configuration { get; }
@@ -24,6 +26,8 @@ namespace Win32InteropBuilder
         public virtual ISet<BuilderType> TypesToBuild { get; } = new HashSet<BuilderType>();
         public virtual IDictionary<FullName, BuilderType> AllTypes { get; } = new Dictionary<FullName, BuilderType>();
         public virtual IDictionary<FullName, TypeDefinition> TypeDefinitions { get; } = new Dictionary<FullName, TypeDefinition>();
+        public virtual IDictionary<FullName, BuilderType> MappedTypes { get; } = new Dictionary<FullName, BuilderType>();
+        public virtual ISet<string> ImplicitNamespaces { get; } = new HashSet<string>();
 
         public virtual BuilderType CreateBuilderType(FullName fullName) => new(fullName);
         public virtual InterfaceType CreateInterfaceType(FullName fullName) => new(fullName);
@@ -51,6 +55,14 @@ namespace Win32InteropBuilder
                 return CreateEnumType(MetadataReader.GetFullName(typeDef));
 
             return CreateBuilderType(MetadataReader.GetFullName(typeDef));
+        }
+
+        internal BuilderType MapType(BuilderType type)
+        {
+            if (MappedTypes.TryGetValue(type.FullName, out var mapped))
+                return mapped;
+
+            return type;
         }
     }
 }

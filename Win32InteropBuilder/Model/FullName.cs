@@ -11,6 +11,7 @@ namespace Win32InteropBuilder.Model
         public static FullName IUnknown { get; } = new("Windows.Win32.System.Com.IUnknown");
         public static FullName IDispatch { get; } = new("Windows.Win32.System.Com.IDispatch");
         public static FullName HRESULT { get; } = new("Windows.Win32.Foundation.HRESULT");
+        public static FullName BOOL { get; } = new("Windows.Win32.Foundation.BOOL");
         public static FullName NativeTypedefAttribute { get; } = new("Windows.Win32.Foundation.Metadata.NativeTypedefAttribute");
         public static FullName DocumentationAttribute { get; } = new("Windows.Win32.Foundation.Metadata.DocumentationAttribute");
         public static FullName SupportedOSPlatformAttribute { get; } = new("Windows.Win32.Foundation.Metadata.SupportedOSPlatformAttribute");

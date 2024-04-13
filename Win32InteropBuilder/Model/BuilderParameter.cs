@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Win32InteropBuilder.Model
 {
@@ -15,6 +16,7 @@ namespace Win32InteropBuilder.Model
         public int SequenceNumber { get; }
         public virtual BuilderType? Type { get; set; }
         public virtual string? Documentation { get; set; }
+        public virtual UnmanagedType? UnmanagedType { get; set; }
 
         public virtual void GeneratedCode(BuilderContext context)
         {
@@ -23,7 +25,17 @@ namespace Win32InteropBuilder.Model
             if (Type == null)
                 throw new InvalidOperationException();
 
-            context.Writer.Write(Type.GetGeneratedName(context.Namespace));
+            var mapped = context.MapType(Type);
+            if (UnmanagedType.HasValue)
+            {
+                context.Writer.Write($"[MarshalAs(UnmanagedType.{UnmanagedType.Value})]");
+            }
+            else if (mapped.UnmanagedType.HasValue)
+            {
+                context.Writer.Write($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
+            }
+
+            context.Writer.Write(mapped.GetGeneratedName(context));
             context.Writer.Write(' ');
             context.Writer.Write(Name);
         }

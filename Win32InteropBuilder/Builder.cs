@@ -198,10 +198,16 @@ namespace Win32InteropBuilder
         protected virtual void AddWellKnownTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
-            foreach (var kv in BuilderType.WellKnownTypes)
+            foreach (var kv in WellKnownTypes.All)
             {
                 context.AllTypes[kv.Key] = kv.Value;
             }
+        }
+
+        protected virtual void AddMappedTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            context.MappedTypes[FullName.BOOL] = WellKnownTypes.SystemBoolean;
         }
 
         protected virtual void GenerateTypes(BuilderContext context)
@@ -211,33 +217,57 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(context.Configuration);
             ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
 
-            IOUtilities.DirectoryDelete(context.Configuration.OutputDirectoryPath, true);
+            if (context.Configuration.DeleteOutputDirectory)
+            {
+                IOUtilities.DirectoryDelete(context.Configuration.OutputDirectoryPath, true);
+            }
+
+            HashSet<string> existingFiles;
+            if (IOUtilities.PathIsDirectory(context.Configuration.OutputDirectoryPath))
+            {
+                existingFiles = Directory.EnumerateFileSystemEntries(context.Configuration.OutputDirectoryPath, "*.cs").ToHashSet(StringComparer.OrdinalIgnoreCase);
+            }
+            else
+            {
+                existingFiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            }
+
+            AddMappedTypes(context);
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
-                if (context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
+                var finalType = type;
+                if (context.TypeDefinitions.TryGetValue(finalType.FullName, out var typeDef))
                 {
                     var atts = typeDef.GetCustomAttributes();
-                    context.MetadataReader.SetDocumentation(atts, type);
-                    context.MetadataReader.SetSupportedOSPlatform(atts, type);
+                    context.MetadataReader.SetDocumentation(atts, finalType);
+                    context.MetadataReader.SetSupportedOSPlatform(atts, finalType);
                 }
 
-                Console.WriteLine(type);
+                Console.WriteLine(finalType);
+                if (context.MappedTypes.TryGetValue(type.FullName, out var mappedType))
+                {
+                    Console.WriteLine(finalType + " => " + mappedType);
+                    finalType = mappedType;
+                }
+
+                if (!finalType.IsGenerated)
+                    continue;
 
                 var ns = string.Empty;
                 var unified = context.Configuration.UnifyNamespaces.Nullify();
                 if (unified == null)
                 {
-                    ns = type.FullName.Namespace.Replace('.', Path.DirectorySeparatorChar);
+                    ns = finalType.FullName.Namespace.Replace('.', Path.DirectorySeparatorChar);
                 }
 
-                var fileName = type.FileName + ".cs";
+                var fileName = finalType.FileName + ".cs";
                 var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
                 IOUtilities.FileEnsureDirectory(typePath);
                 using var file = new StreamWriter(typePath, false);
                 context.Writer = new IndentedTextWriter(file);
                 try
                 {
-                    type.GenerateCode(context);
+                    finalType.GenerateCode(context);
                 }
                 finally
                 {
