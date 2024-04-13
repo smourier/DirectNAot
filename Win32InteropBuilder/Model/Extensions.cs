@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 
 namespace Win32InteropBuilder.Model
@@ -42,12 +44,33 @@ namespace Win32InteropBuilder.Model
             }
         }
 
+        public static MemberReference GetMemberReference(this MetadataReader reader, CustomAttribute attribute) => reader.GetMemberReference((MemberReferenceHandle)attribute.Constructor);
+        public static TypeReference GetTypeReference(this MetadataReader reader, CustomAttribute attribute) => reader.GetTypeReference((TypeReferenceHandle)reader.GetMemberReference(attribute).Parent);
+        public static FullName GetFullName(this MetadataReader reader, CustomAttribute attribute) => reader.GetFullName(reader.GetTypeReference(attribute));
         public static IEnumerable<CustomAttribute> GetCustomAttributes(this MetadataReader reader, CustomAttributeHandleCollection handles)
         {
             foreach (var handle in handles)
             {
                 yield return reader.GetCustomAttribute(handle);
             }
+        }
+
+        public static bool IsNativeTypedef(this MetadataReader reader, TypeDefinition type) => type.GetCustomAttributes().Any(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.NativeTypedefAttribute);
+        public static bool IsHandle(this MetadataReader reader, TypeDefinition type)
+        {
+            if (!reader.IsNativeTypedef(type))
+                return false;
+
+            var fields = type.GetFields();
+            if (fields.Count != 1)
+                return false;
+
+            var field = reader.GetFieldDefinition(fields.First());
+            if (!field.Attributes.HasFlag(FieldAttributes.Public) || field.Attributes.HasFlag(FieldAttributes.Static))
+                return false;
+
+            var sig = field.DecodeSignature(SignatureTypeProvider.Instance, null);
+            return sig.FullName == FullName.SystemIntPtr;
         }
     }
 }

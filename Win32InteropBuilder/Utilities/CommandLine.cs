@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Win32InteropBuilder
+namespace Win32InteropBuilder.Utilities
 {
     public class CommandLine
     {

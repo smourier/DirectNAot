@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 
@@ -23,6 +24,13 @@ namespace Win32InteropBuilder.Model
         public int Indirections { get; set; }
         public ArrayShape? ArrayShape { get; set; }
         public IList<BuilderMethod> Methods => _methods;
+
+        public virtual string FileName => FullName.Name;
+
+        public virtual void GeneratedCode(IndentedTextWriter writer)
+        {
+            ArgumentNullException.ThrowIfNull(writer);
+        }
 
         public override int GetHashCode() => FullName.GetHashCode();
         public override bool Equals(object? obj) => Equals(obj as BuilderType);

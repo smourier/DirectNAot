@@ -10,10 +10,10 @@ namespace Win32InteropBuilder.Model
         public static FullName IUnknown { get; } = new("Windows.Win32.System.Com.IUnknown");
         public static FullName IDispatch { get; } = new("Windows.Win32.System.Com.IDispatch");
         public static FullName HRESULT { get; } = new("Windows.Win32.Foundation.HRESULT");
-        public static FullName ConstAttribute { get; } = new("Windows.Win32.Foundation.Interop.ConstAttribute");
-        public static FullName NativeTypedefAttribute { get; } = new("Windows.Win32.Foundation.Interop.NativeTypedefAttribute");
-        public static FullName UnmanagedFunctionPointerAttribute { get; } = new("System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute");
+        public static FullName NativeTypedefAttribute { get; } = new("Windows.Win32.Foundation.Metadata.NativeTypedefAttribute");
         public static FullName GuidAttribute { get; } = new("Windows.Win32.Foundation.Metadata.GuidAttribute");
+        //public static FullName ConstAttribute { get; } = new("Windows.Win32.Foundation.Interop.ConstAttribute");
+        //public static FullName UnmanagedFunctionPointerAttribute { get; } = new("System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute");
 
         public FullName(string @namespace, string name)
         {

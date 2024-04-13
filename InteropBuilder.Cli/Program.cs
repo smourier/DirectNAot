@@ -24,11 +24,7 @@ namespace InteropBuilder.Cli
             try
             {
                 using var stream = File.OpenRead(configurationPath);
-                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream, new JsonSerializerOptions
-                {
-                    ReadCommentHandling = JsonCommentHandling.Skip,
-                    AllowTrailingCommas = true,
-                });
+                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream, Builder.JsonSerializerOptions);
                 EnumBasedException<Win32InteropBuilderExceptionCode>.ThrowIfNull(Win32InteropBuilderExceptionCode.InvalidConfiguration, configuration);
             }
             catch (Exception ex)

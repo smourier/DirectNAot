@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Win32InteropBuilder
+namespace Win32InteropBuilder.Utilities
 {
     public static class Conversions
     {
