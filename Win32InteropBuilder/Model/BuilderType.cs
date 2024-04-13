@@ -28,5 +28,12 @@ namespace Win32InteropBuilder.Model
         public override bool Equals(object? obj) => Equals(obj as BuilderType);
         public bool Equals(BuilderType? other) => other != null && other.FullName == FullName;
         public override string ToString() => FullName.ToString();
+
+        public static BuilderType Int32 { get; } = new(typeof(int));
+        public static BuilderType Int64 { get; } = new(typeof(long));
+        public static BuilderType UInt32 { get; } = new(typeof(uint));
+        public static BuilderType UInt64 { get; } = new(typeof(ulong));
+        public static BuilderType Guid { get; } = new(typeof(Guid));
+        public static BuilderType Void { get; } = new(typeof(void));
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection.Metadata;
 
 namespace Win32InteropBuilder.Model
@@ -38,6 +39,14 @@ namespace Win32InteropBuilder.Model
 
                 default:
                     throw new NotSupportedException();
+            }
+        }
+
+        public static IEnumerable<CustomAttribute> GetCustomAttributes(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            foreach (var handle in handles)
+            {
+                yield return reader.GetCustomAttribute(handle);
             }
         }
     }

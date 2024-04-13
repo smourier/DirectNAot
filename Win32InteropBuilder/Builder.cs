@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using Win32InteropBuilder.Model;
@@ -11,12 +12,6 @@ namespace Win32InteropBuilder
     public class Builder
     {
         public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration) => new(configuration);
-
-        protected virtual AddWellKnownTypes(IDictionary<FullName, (BuilderType, TypeDefinition)> dictionary)
-        {
-            //            dictionary.Add(new FullName(typeof(uint)), ;
-        }
-
         public virtual void Build(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -25,17 +20,28 @@ namespace Win32InteropBuilder
 
             using var stream = File.OpenRead(context.Configuration.WinMdPath);
             using var pe = new PEReader(stream);
-            var reader = pe.GetMetadataReader();
-            var matches = new Dictionary<BuilderType, TypeDefinition>();
+            context.MetadataReader = pe.GetMetadataReader();
+            GatherTypes(context);
+            GenerateTypes(context);
+        }
+
+        protected virtual void GatherTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+
+            AddWellKnownTypes(context);
+            var matches = new HashSet<BuilderType>();
             var reverses = new HashSet<BuilderType>();
-            var all = new Dictionary<FullName, (BuilderType, TypeDefinition)>();
-            foreach (var typeDef in reader.TypeDefinitions.Select(reader.GetTypeDefinition))
+
+            foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
-                var type = new BuilderType(reader.GetFullName(typeDef));
+                var type = new BuilderType(context.MetadataReader.GetFullName(typeDef));
                 if (type.FullName.Namespace.Length == 0)
                     continue;
 
-                all[type.FullName] = (type, typeDef);
+                context.AllTypes[type.FullName] = type;
+                context.TypeDefinitions[type.FullName] = typeDef;
 
                 foreach (var match in context.Configuration.Inputs.Where(x => x.Matches(type)))
                 {
@@ -45,7 +51,7 @@ namespace Win32InteropBuilder
                     }
                     else
                     {
-                        matches.Add(type, typeDef);
+                        matches.Add(type);
                     }
                 }
             }
@@ -56,76 +62,100 @@ namespace Win32InteropBuilder
                 matches.Remove(match);
             }
 
-            var final = new HashSet<BuilderType>();
-            foreach (var kv in matches)
+            foreach (var match in matches)
             {
-                addDependencies(kv.Key, kv.Value);
+                AddDependencies(context, match);
             }
 
-            foreach (var bt in final)
+            // we never build this one
+            context.TypesToBuild.Remove(new BuilderType(FullName.IUnknown));
+        }
+
+        protected virtual void AddDependencies(BuilderContext context, BuilderType type)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+            ArgumentNullException.ThrowIfNull(type);
+
+            _ = context.AllTypes[type.FullName];
+            if (!context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
             {
-                Console.WriteLine(bt);
-                foreach (var method in bt.Methods)
+                //Console.WriteLine(type.FullName);
+                return;
+            }
+
+            if (!context.TypesToBuild.Contains(type))
+            {
+                foreach (var handle in typeDef.GetMethods())
+                {
+                    var methodDef = context.MetadataReader.GetMethodDefinition(handle);
+                    var method = new BuilderMethod(context.MetadataReader.GetString(methodDef.Name));
+                    type.Methods.Add(method);
+                    foreach (var phandle in methodDef.GetParameters())
+                    {
+                        var parameterDef = context.MetadataReader.GetParameter(phandle);
+                        var parameter = new BuilderParameter(context.MetadataReader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
+                        // remove 'this'
+                        if (string.IsNullOrEmpty(parameter.Name) && parameter.SequenceNumber == 0)
+                            continue;
+
+                        method.Parameters.Add(parameter);
+                    }
+                    method.SortParameters();
+
+                    var dec = methodDef.DecodeSignature(SignatureTypeProvider.Instance, null);
+                    method.ReturnType = dec.ReturnType;
+                    if (method.ReturnType != null)
+                    {
+                        AddDependencies(context, method.ReturnType);
+                    }
+
+                    for (var i = 0; i < dec.ParameterTypes.Length; i++)
+                    {
+                        method.Parameters[i].Type = dec.ParameterTypes[i];
+                        if (method.Parameters[i].Type != null)
+                        {
+                            AddDependencies(context, method.Parameters[i].Type!);
+                        }
+                    }
+                }
+
+                context.TypesToBuild.Add(type);
+            }
+
+            foreach (var iface in typeDef.GetInterfaceImplementations())
+            {
+                //var rf = reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(iface).Interface);
+                var typeRef = new BuilderTypeReference(context.MetadataReader.GetFullName(iface));
+                var typeRefType = context.AllTypes[typeRef.FullName];
+                AddDependencies(context, typeRefType);
+            }
+        }
+
+        protected virtual void AddWellKnownTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            foreach (var prop in typeof(BuilderType).GetProperties(BindingFlags.Static | BindingFlags.Public).Where(p => p.PropertyType == typeof(BuilderType)))
+            {
+                add((BuilderType)prop.GetValue(null)!);
+            }
+            void add(BuilderType type) => context.AllTypes[type.FullName] = type;
+        }
+
+        protected virtual void GenerateTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Configuration);
+            ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
+
+            foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
+            {
+                Console.WriteLine(type);
+                foreach (var method in type.Methods)
                 {
                     Console.WriteLine($" {method.Name}({string.Join(", ", method.Parameters)})");
                 }
                 Console.WriteLine();
-            }
-
-            void addDependencies(BuilderType type, TypeDefinition? typeDef)
-            {
-                if (!typeDef.HasValue)
-                {
-                    typeDef = all[type.FullName].Item2;
-                }
-
-                if (!final.Contains(type))
-                {
-                    foreach (var handle in typeDef.Value.GetMethods())
-                    {
-                        var methodDef = reader.GetMethodDefinition(handle);
-                        var method = new BuilderMethod(reader.GetString(methodDef.Name));
-                        type.Methods.Add(method);
-                        foreach (var phandle in methodDef.GetParameters())
-                        {
-                            var parameterDef = reader.GetParameter(phandle);
-                            var parameter = new BuilderParameter(reader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
-                            // 'this'
-                            if (string.IsNullOrEmpty(parameter.Name) && parameter.SequenceNumber == 0)
-                                continue;
-
-                            method.Parameters.Add(parameter);
-                        }
-                        method.SortParameters();
-
-                        var dec = methodDef.DecodeSignature(SignatureTypeProvider.Instance, null);
-                        method.ReturnType = dec.ReturnType;
-
-                        if (method.ReturnType != null)
-                        {
-                            addDependencies(method.ReturnType, null);
-                        }
-
-                        for (var i = 0; i < dec.ParameterTypes.Length; i++)
-                        {
-                            method.Parameters[i].Type = dec.ParameterTypes[i];
-                            if (method.Parameters[i].Type != null)
-                            {
-                                addDependencies(method.Parameters[i].Type!, null);
-                            }
-                        }
-                    }
-
-                    final.Add(type);
-                }
-
-                foreach (var iface in typeDef.Value.GetInterfaceImplementations())
-                {
-                    //var rf = reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(iface).Interface);
-                    var typeRef = new BuilderTypeReference(reader.GetFullName(iface));
-                    var typeRefType = all[typeRef.FullName];
-                    addDependencies(typeRefType.Item1, typeRefType.Item2);
-                }
             }
         }
     }

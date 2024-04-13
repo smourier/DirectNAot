@@ -44,7 +44,10 @@ namespace InteropBuilder.Cli
             configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
             configuration.WinMdPath ??= Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
             Console.WriteLine("Builder type name: " + configuration.BuilderTypeName);
-            Console.WriteLine("WinMdPath: " + configuration.WinMdPath);
+            Console.WriteLine("WinMd path: " + configuration.WinMdPath);
+
+            configuration.OutputDirectoryPath ??= Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? Path.GetFileNameWithoutExtension(configurationPath));
+            Console.WriteLine("Output path: " + configuration.OutputDirectoryPath);
 
             var type = Type.GetType(configuration.BuilderTypeName, true);
             Console.WriteLine($"Running {type!.FullName} builder...");
@@ -56,7 +59,7 @@ namespace InteropBuilder.Cli
 
         static void Help()
         {
-            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " <config.json>");
+            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " <config.json> [outputpath]");
             Console.WriteLine();
             Console.WriteLine("Description:");
             Console.WriteLine("    This tool is used to generate .cs files from an interop builder assembly.");
