@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -55,6 +56,43 @@ namespace Win32InteropBuilder.Model
             }
         }
 
+        public static void SetDocumentation(this MetadataReader reader, CustomAttributeHandleCollection handles, IDocumentable documentable)
+        {
+            ArgumentNullException.ThrowIfNull(documentable);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.DocumentationAttribute);
+            if (handle.IsNil)
+                return;
+
+            var value = GetValue(reader.GetCustomAttribute(handle));
+            if (value.FixedArguments.Length > 0 && value.FixedArguments[0].Value is string s && !string.IsNullOrWhiteSpace(s))
+            {
+                documentable.Documentation = s;
+            }
+        }
+
+        public static CustomAttributeValue<object?> GetValue(CustomAttribute attribute) => attribute.DecodeValue(CustomAttributeTypeProvider.Instance);
+        public static Guid? GetInteropGuid(CustomAttribute attribute)
+        {
+            var value = GetValue(attribute);
+            if (value.FixedArguments.Length != 11)
+                return null;
+
+#pragma warning disable CS8605 // Unboxing a possibly null value.
+            return new Guid(
+                (uint)value.FixedArguments[0].Value,
+                (ushort)value.FixedArguments[1].Value,
+                (ushort)value.FixedArguments[2].Value,
+                (byte)value.FixedArguments[3].Value,
+                (byte)value.FixedArguments[4].Value,
+                (byte)value.FixedArguments[5].Value,
+                (byte)value.FixedArguments[6].Value,
+                (byte)value.FixedArguments[7].Value,
+                (byte)value.FixedArguments[8].Value,
+                (byte)value.FixedArguments[9].Value,
+                (byte)value.FixedArguments[10].Value);
+#pragma warning restore CS8605 // Unboxing a possibly null value.
+        }
+
         public static bool IsNativeTypedef(this MetadataReader reader, TypeDefinition type) => type.GetCustomAttributes().Any(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.NativeTypedefAttribute);
         public static bool IsHandle(this MetadataReader reader, TypeDefinition type)
         {
@@ -71,6 +109,17 @@ namespace Win32InteropBuilder.Model
 
             var sig = field.DecodeSignature(SignatureTypeProvider.Instance, null);
             return sig.FullName == FullName.SystemIntPtr;
+        }
+
+        public static void WithParens(this IndentedTextWriter writer, Action action)
+        {
+            ArgumentNullException.ThrowIfNull(writer);
+            ArgumentNullException.ThrowIfNull(action);
+            writer.WriteLine('{');
+            writer.Indent++;
+            action();
+            writer.Indent--;
+            writer.WriteLine('}');
         }
     }
 }

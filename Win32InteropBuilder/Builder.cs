@@ -3,7 +3,6 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
@@ -171,25 +170,35 @@ namespace Win32InteropBuilder
         protected virtual void AddWellKnownTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
-            foreach (var prop in typeof(BuilderType).GetProperties(BindingFlags.Static | BindingFlags.Public).Where(p => p.PropertyType == typeof(BuilderType)))
+            foreach (var kv in BuilderType.WellKnownTypes)
             {
-                add((BuilderType)prop.GetValue(null)!);
+                context.AllTypes[kv.Key] = kv.Value;
             }
-            void add(BuilderType type) => context.AllTypes[type.FullName] = type;
         }
 
         protected virtual void GenerateTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
             ArgumentNullException.ThrowIfNull(context.Configuration);
             ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
 
             IOUtilities.DirectoryDelete(context.Configuration.OutputDirectoryPath, true);
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
+                var typeDef = context.TypeDefinitions[type.FullName];
+                context.MetadataReader.SetDocumentation(typeDef.GetCustomAttributes(), type);
                 Console.WriteLine(type);
+
+                var ns = string.Empty;
+                var unified = context.Configuration.UnifyNamespaces.Nullify();
+                if (unified == null)
+                {
+                    ns = type.FullName.Namespace.Replace('.', Path.DirectorySeparatorChar);
+                }
+
                 var fileName = type.FileName + ".cs";
-                var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, fileName);
+                var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
                 IOUtilities.FileEnsureDirectory(typePath);
                 using var file = new StreamWriter(typePath, false);
                 using var iw = new IndentedTextWriter(file);

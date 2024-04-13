@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Win32InteropBuilder.Model
 {
-    public class BuilderMethod
+    public class BuilderMethod : IDocumentable
     {
         private readonly List<BuilderParameter> _parameters = [];
 
@@ -14,8 +14,9 @@ namespace Win32InteropBuilder.Model
         }
 
         public string Name { get; }
-        public BuilderType? ReturnType { get; set; }
-        public IList<BuilderParameter> Parameters => _parameters;
+        public virtual BuilderType? ReturnType { get; set; }
+        public virtual IList<BuilderParameter> Parameters => _parameters;
+        public virtual string? Documentation { get; set; }
 
         internal void SortParameters() => _parameters.Sort();
 

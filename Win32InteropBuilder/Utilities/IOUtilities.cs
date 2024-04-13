@@ -95,6 +95,8 @@ namespace Win32InteropBuilder.Utilities
         public static void DirectoryDelete(string path, bool recursive, bool throwOnError = true)
         {
             ArgumentNullException.ThrowIfNull(path);
+            if (!PathIsDirectory(path))
+                return;
 
             if (throwOnError)
             {
