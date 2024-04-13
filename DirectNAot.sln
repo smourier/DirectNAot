@@ -5,13 +5,11 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectNAot", "DirectNAot\DirectNAot.csproj", "{ECA3940B-8DAD-4026-BC2C-82E8F73E6A9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32MetadataReader", "Win32MetadataReader\Win32MetadataReader.csproj", "{F8F8F835-F364-41C2-AFC1-79C087CC3EB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32InteropBuilder", "Win32InteropBuilder\Win32InteropBuilder.csproj", "{5396B7BB-3CCC-4553-AAE4-D4817E5EF4CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32InteropBuilder", "Win32InteropBuilder\Win32InteropBuilder.csproj", "{5396B7BB-3CCC-4553-AAE4-D4817E5EF4CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectNAot.InteropBuilder", "DirectNAot.InteropBuilder\DirectNAot.InteropBuilder.csproj", "{222F5518-5881-4DC8-80BF-6F29AE8A9B36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectNAot.InteropBuilder", "DirectNAot.InteropBuilder\DirectNAot.InteropBuilder.csproj", "{222F5518-5881-4DC8-80BF-6F29AE8A9B36}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteropBuilder.Cli", "InteropBuilder.Cli\InteropBuilder.Cli.csproj", "{10D3BE5D-3BB6-4A7B-BB95-1CD80E1F98A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteropBuilder.Cli", "InteropBuilder.Cli\InteropBuilder.Cli.csproj", "{10D3BE5D-3BB6-4A7B-BB95-1CD80E1F98A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{ECA3940B-8DAD-4026-BC2C-82E8F73E6A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECA3940B-8DAD-4026-BC2C-82E8F73E6A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECA3940B-8DAD-4026-BC2C-82E8F73E6A9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8F8F835-F364-41C2-AFC1-79C087CC3EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8F8F835-F364-41C2-AFC1-79C087CC3EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8F8F835-F364-41C2-AFC1-79C087CC3EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8F8F835-F364-41C2-AFC1-79C087CC3EB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5396B7BB-3CCC-4553-AAE4-D4817E5EF4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5396B7BB-3CCC-4553-AAE4-D4817E5EF4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5396B7BB-3CCC-4553-AAE4-D4817E5EF4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
