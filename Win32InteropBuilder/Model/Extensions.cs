@@ -9,19 +9,41 @@ namespace Win32InteropBuilder.Model
 {
     public static class Extensions
     {
-        public static FullName GetFullName(this MetadataReader reader, InterfaceImplementationHandle implementation) => reader.GetFullName(reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(implementation).Interface));
-        public static FullName GetFullName(this MetadataReader reader, InterfaceImplementation implementation) => reader.GetFullName(reader.GetTypeReference((TypeReferenceHandle)implementation.Interface));
-        public static FullName GetFullName(this MetadataReader reader, TypeReferenceHandle type) => reader.GetFullName(reader.GetTypeReference(type));
+        public static FullName GetFullName(this MetadataReader reader, InterfaceImplementationHandle implementation)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetFullName(reader.GetTypeReference((TypeReferenceHandle)reader.GetInterfaceImplementation(implementation).Interface));
+        }
+
+        public static FullName GetFullName(this MetadataReader reader, InterfaceImplementation implementation)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetFullName(reader.GetTypeReference((TypeReferenceHandle)implementation.Interface));
+        }
+
+        public static FullName GetFullName(this MetadataReader reader, TypeReferenceHandle type)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetFullName(reader.GetTypeReference(type));
+        }
+
         public static FullName GetFullName(this MetadataReader reader, TypeReference type)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             var ns = reader.GetString(type.Namespace);
             var name = reader.GetString(type.Name);
             return new(ns, name);
         }
 
-        public static FullName GetFullName(this MetadataReader reader, TypeDefinitionHandle type) => reader.GetFullName(reader.GetTypeDefinition(type));
+        public static FullName GetFullName(this MetadataReader reader, TypeDefinitionHandle type)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetFullName(reader.GetTypeDefinition(type));
+        }
+
         public static FullName GetFullName(this MetadataReader reader, TypeDefinition type)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             var ns = reader.GetString(type.Namespace);
             var name = reader.GetString(type.Name);
             return new(ns, name);
@@ -29,6 +51,7 @@ namespace Win32InteropBuilder.Model
 
         public static FullName? GetFullName(this MetadataReader reader, EntityHandle handle)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             if (handle.IsNil)
                 return null;
 
@@ -45,11 +68,27 @@ namespace Win32InteropBuilder.Model
             }
         }
 
-        public static MemberReference GetMemberReference(this MetadataReader reader, CustomAttribute attribute) => reader.GetMemberReference((MemberReferenceHandle)attribute.Constructor);
-        public static TypeReference GetTypeReference(this MetadataReader reader, CustomAttribute attribute) => reader.GetTypeReference((TypeReferenceHandle)reader.GetMemberReference(attribute).Parent);
-        public static FullName GetFullName(this MetadataReader reader, CustomAttribute attribute) => reader.GetFullName(reader.GetTypeReference(attribute));
+        public static MemberReference GetMemberReference(this MetadataReader reader, CustomAttribute attribute)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetMemberReference((MemberReferenceHandle)attribute.Constructor);
+        }
+
+        public static TypeReference GetTypeReference(this MetadataReader reader, CustomAttribute attribute)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetTypeReference((TypeReferenceHandle)reader.GetMemberReference(attribute).Parent);
+        }
+
+        public static FullName GetFullName(this MetadataReader reader, CustomAttribute attribute)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            return reader.GetFullName(reader.GetTypeReference(attribute));
+        }
+
         public static IEnumerable<CustomAttribute> GetCustomAttributes(this MetadataReader reader, CustomAttributeHandleCollection handles)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             foreach (var handle in handles)
             {
                 yield return reader.GetCustomAttribute(handle);
@@ -58,6 +97,7 @@ namespace Win32InteropBuilder.Model
 
         public static void SetDocumentation(this MetadataReader reader, CustomAttributeHandleCollection handles, IDocumentable documentable)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             ArgumentNullException.ThrowIfNull(documentable);
             var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.DocumentationAttribute);
             if (handle.IsNil)
@@ -70,7 +110,43 @@ namespace Win32InteropBuilder.Model
             }
         }
 
+        public static void SetSupportedOSPlatform(this MetadataReader reader, CustomAttributeHandleCollection handles, ISupportable supportable)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(supportable);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.SupportedOSPlatformAttribute);
+            if (handle.IsNil)
+                return;
+
+            var value = GetValue(reader.GetCustomAttribute(handle));
+            if (value.FixedArguments.Length > 0 && value.FixedArguments[0].Value is string s && !string.IsNullOrWhiteSpace(s))
+            {
+                supportable.SupportedOSPlatform = s;
+            }
+        }
+
         public static CustomAttributeValue<object?> GetValue(CustomAttribute attribute) => attribute.DecodeValue(CustomAttributeTypeProvider.Instance);
+
+        public static byte[]? GetConstantBytes(this MetadataReader reader, ConstantHandle handle)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            if (handle.IsNil)
+                return null;
+
+            var constant = reader.GetConstant(handle);
+            return reader.GetBlobBytes(constant.Value);
+        }
+
+        public static Guid? GetInteropGuid(this MetadataReader reader, TypeDefinition type)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var guid = type.GetCustomAttributes().Where(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.GuidAttribute).FirstOrDefault();
+            if (guid.IsNil)
+                return null;
+
+            return GetInteropGuid(reader.GetCustomAttribute(guid));
+        }
+
         public static Guid? GetInteropGuid(CustomAttribute attribute)
         {
             var value = GetValue(attribute);
@@ -94,8 +170,10 @@ namespace Win32InteropBuilder.Model
         }
 
         public static bool IsNativeTypedef(this MetadataReader reader, TypeDefinition type) => type.GetCustomAttributes().Any(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.NativeTypedefAttribute);
-        public static bool IsHandle(this MetadataReader reader, TypeDefinition type)
+        public static bool IsHandle(this MetadataReader reader, TypeDefinition type, SignatureTypeProvider signatureTypeProvider)
         {
+            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(signatureTypeProvider);
             if (!reader.IsNativeTypedef(type))
                 return false;
 
@@ -107,17 +185,25 @@ namespace Win32InteropBuilder.Model
             if (!field.Attributes.HasFlag(FieldAttributes.Public) || field.Attributes.HasFlag(FieldAttributes.Static))
                 return false;
 
-            var sig = field.DecodeSignature(SignatureTypeProvider.Instance, null);
+            var sig = field.DecodeSignature(signatureTypeProvider, null);
             return sig.FullName == FullName.SystemIntPtr;
         }
 
         public static bool IsStructure(this MetadataReader reader, TypeDefinition type)
         {
+            ArgumentNullException.ThrowIfNull(reader);
             if (!type.Attributes.HasFlag(TypeAttributes.Public | TypeAttributes.SequentialLayout))
                 return false;
 
             var bfn = reader.GetFullName(type.BaseType);
             return bfn == FullName.SystemValueType;
+        }
+
+        public static bool IsEnum(this MetadataReader reader, TypeDefinition type)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var bfn = reader.GetFullName(type.BaseType);
+            return bfn == FullName.SystemEnum;
         }
 
         public static void WithParens(this IndentedTextWriter writer, Action action)

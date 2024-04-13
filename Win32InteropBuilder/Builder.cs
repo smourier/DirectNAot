@@ -21,6 +21,7 @@ namespace Win32InteropBuilder
         };
 
         public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration) => new(configuration);
+
         public virtual void Build(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -34,13 +35,6 @@ namespace Win32InteropBuilder
             GenerateTypes(context);
         }
 
-        protected virtual BuilderType CreateBuilderType(BuilderContext context, FullName fullName) => new(fullName);
-        protected virtual InterfaceType CreateInterfaceType(BuilderContext context, FullName fullName) => new(fullName);
-        protected virtual StructureType CreateStructureType(BuilderContext context, FullName fullName) => new(fullName);
-        protected virtual BuilderMethod CreateBuilderMethod(BuilderContext context, string name) => new(name);
-        protected virtual BuilderParameter CreateBuilderParameter(BuilderContext context, string name, int sequenceNumber) => new(name, sequenceNumber);
-        protected virtual BuilderField CreateBuilderField(BuilderContext context, string name, BuilderType type) => new(name, type);
-
         protected virtual void GatherTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -52,28 +46,13 @@ namespace Win32InteropBuilder
 
             foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
-                BuilderType type;
-                if (typeDef.Attributes.HasFlag(TypeAttributes.Interface))
-                {
-                    type = CreateInterfaceType(context, context.MetadataReader.GetFullName(typeDef));
-                }
-                else
-                {
-                    var isStructure = context.MetadataReader.IsStructure(typeDef);
-                    if (isStructure)
-                    {
-                        type = CreateStructureType(context, context.MetadataReader.GetFullName(typeDef));
-                    }
-                    else
-                    {
-                        type = CreateBuilderType(context, context.MetadataReader.GetFullName(typeDef));
-                    }
-                }
+                var type = context.CreateBuilderType(typeDef);
                 if (type.FullName.Namespace.Length == 0)
                     continue;
 
                 context.AllTypes[type.FullName] = type;
                 context.TypeDefinitions[type.FullName] = typeDef;
+                type.Guid = context.MetadataReader.GetInteropGuid(typeDef);
 
                 foreach (var match in context.Configuration.Inputs.Where(x => x.Matches(type)))
                 {
@@ -123,12 +102,12 @@ namespace Win32InteropBuilder
                 foreach (var handle in typeDef.GetMethods())
                 {
                     var methodDef = context.MetadataReader.GetMethodDefinition(handle);
-                    var method = CreateBuilderMethod(context, context.MetadataReader.GetString(methodDef.Name));
+                    var method = context.CreateBuilderMethod(context.MetadataReader.GetString(methodDef.Name));
                     type.Methods.Add(method);
                     foreach (var phandle in methodDef.GetParameters())
                     {
                         var parameterDef = context.MetadataReader.GetParameter(phandle);
-                        var parameter = CreateBuilderParameter(context, context.MetadataReader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
+                        var parameter = context.CreateBuilderParameter(context.MetadataReader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
                         // remove 'this'
                         if (string.IsNullOrEmpty(parameter.Name) && parameter.SequenceNumber == 0)
                             continue;
@@ -137,20 +116,23 @@ namespace Win32InteropBuilder
                     }
                     method.SortParameters();
 
-                    var dec = methodDef.DecodeSignature(SignatureTypeProvider.Instance, null);
+                    var dec = methodDef.DecodeSignature(context.SignatureTypeProvider, null);
                     method.ReturnType = dec.ReturnType;
                     if (method.ReturnType != null)
                     {
                         AddDependencies(context, method.ReturnType);
                     }
 
-                    for (var i = 0; i < dec.ParameterTypes.Length; i++)
+                    if (method.Parameters.Count != dec.ParameterTypes.Length)
+                        throw new InvalidOperationException();
+
+                    for (var i = 0; i < method.Parameters.Count; i++)
                     {
                         method.Parameters[i].Type = dec.ParameterTypes[i];
-                        if (method.Parameters[i].Type != null)
-                        {
-                            AddDependencies(context, method.Parameters[i].Type!);
-                        }
+                        if (method.Parameters[i].Type == null)
+                            throw new InvalidOperationException();
+
+                        AddDependencies(context, method.Parameters[i].Type!);
                     }
                 }
 
@@ -174,8 +156,22 @@ namespace Win32InteropBuilder
                 foreach (var handle in typeDef.GetFields())
                 {
                     var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
-                    var field = CreateBuilderField(context, context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(SignatureTypeProvider.Instance, null));
+                    var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
                     type.Fields.Add(field);
+                    AddDependencies(context, field.Type);
+                }
+            }
+            else if (type is EnumType)
+            {
+                foreach (var handle in typeDef.GetFields())
+                {
+                    var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
+                    if (fieldDef.Attributes.HasFlag(FieldAttributes.RTSpecialName))
+                        continue;
+
+                    var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
+                    type.Fields.Add(field);
+                    field.DefaultValue = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
                 }
             }
 
@@ -198,7 +194,7 @@ namespace Win32InteropBuilder
             foreach (var type in context.TypesToBuild.ToArray())
             {
                 var def = context.TypeDefinitions[type.FullName];
-                if (context.MetadataReader.IsHandle(def))
+                if (context.MetadataReader.IsHandle(def, context.SignatureTypeProvider))
                 {
                     context.TypesToBuild.Remove(type);
                 }
@@ -225,7 +221,9 @@ namespace Win32InteropBuilder
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
                 var typeDef = context.TypeDefinitions[type.FullName];
-                context.MetadataReader.SetDocumentation(typeDef.GetCustomAttributes(), type);
+                var atts = typeDef.GetCustomAttributes();
+                context.MetadataReader.SetDocumentation(atts, type);
+                context.MetadataReader.SetSupportedOSPlatform(atts, type);
                 Console.WriteLine(type);
 
                 var ns = string.Empty;
@@ -239,8 +237,10 @@ namespace Win32InteropBuilder
                 var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
                 IOUtilities.FileEnsureDirectory(typePath);
                 using var file = new StreamWriter(typePath, false);
-                using var iw = new IndentedTextWriter(file);
-                type.GenerateCode(iw);
+                context.Writer = new IndentedTextWriter(file);
+                type.GenerateCode(context);
+                context.Writer.Dispose();
+                context.Writer = null;
             }
         }
     }

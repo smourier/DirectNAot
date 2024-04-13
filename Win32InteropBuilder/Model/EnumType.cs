@@ -2,12 +2,14 @@
 
 namespace Win32InteropBuilder.Model
 {
-    public class StructureType : BuilderType
+    public class EnumType : BuilderType
     {
-        public StructureType(FullName fullName)
+        public EnumType(FullName fullName)
             : base(fullName)
         {
         }
+
+        public virtual bool IsFlags { get; set; }
 
         protected override void GenerateTypeCode(BuilderContext context)
         {
@@ -18,10 +20,12 @@ namespace Win32InteropBuilder.Model
                 context.Writer.WriteLine($"[SupportedOSPlatform(\"{SupportedOSPlatform}\")]");
             }
 
-            context.Writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
-            context.Writer.Write($"public partial struct {FullName.Name}");
-            //if (BaseType != null)
-            //    throw new NotSupportedException();
+            if (IsFlags)
+            {
+                context.Writer.WriteLine("[Flags]");
+            }
+
+            context.Writer.Write($"public enum {FullName.Name}");
 
             context.Writer.WriteLine();
             context.Writer.WithParens(() =>
@@ -29,10 +33,17 @@ namespace Win32InteropBuilder.Model
                 for (var i = 0; i < Fields.Count; i++)
                 {
                     var field = Fields[i];
-                    context.Writer.Write("public ");
-                    context.Writer.Write(field.Type.GetGeneratedName(context.Namespace));
-                    context.Writer.Write(' ');
                     context.Writer.Write(field);
+
+                    if (field.DefaultValue != null)
+                    {
+                        if (field.DefaultValue.Length != 4)
+                            throw new NotSupportedException();
+
+                        var i32 = BitConverter.ToInt32(field.DefaultValue, 0);
+                        context.Writer.Write(" = ");
+                        context.Writer.Write(i32);
+                    }
                     context.Writer.WriteLine(';');
                 }
             });

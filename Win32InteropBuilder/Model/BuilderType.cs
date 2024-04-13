@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +7,25 @@ using System.Reflection.Metadata;
 
 namespace Win32InteropBuilder.Model
 {
-    public class BuilderType : IEquatable<BuilderType>, IDocumentable
+    public class BuilderType : IEquatable<BuilderType>, IDocumentable, ISupportable
     {
-        public static BuilderType Int32 { get; } = new(typeof(int)) { GeneratedName = "int" };
-        public static BuilderType Int64 { get; } = new(typeof(long)) { GeneratedName = "long" };
-        public static BuilderType UInt32 { get; } = new(typeof(uint)) { GeneratedName = "uint" };
-        public static BuilderType UInt64 { get; } = new(typeof(ulong)) { GeneratedName = "ulong" };
-        public static BuilderType Guid { get; } = new(typeof(Guid));
-        public static BuilderType Void { get; } = new(typeof(void)) { GeneratedName = "void" };
+        public static BuilderType Systemboolean { get; } = new(typeof(bool)) { GeneratedName = "bool" };
+        public static BuilderType SystemByte { get; } = new(typeof(byte)) { GeneratedName = "byte" };
+        public static BuilderType SystemChar { get; } = new(typeof(char)) { GeneratedName = "char" };
+        public static BuilderType SystemDouble { get; } = new(typeof(double)) { GeneratedName = "double" };
+        public static BuilderType SystemGuid { get; } = new(typeof(Guid));
+        public static BuilderType SystemInt16 { get; } = new(typeof(short)) { GeneratedName = "short" };
+        public static BuilderType SystemInt32 { get; } = new(typeof(int)) { GeneratedName = "int" };
+        public static BuilderType SystemInt64 { get; } = new(typeof(long)) { GeneratedName = "long" };
+        public static BuilderType SystemIntPtr { get; } = new(typeof(nint)) { GeneratedName = "nint" };
+        public static BuilderType SystemSByte { get; } = new(typeof(sbyte)) { GeneratedName = "sbyte" };
+        public static BuilderType SystemSingle { get; } = new(typeof(float)) { GeneratedName = "float" };
+        public static BuilderType SystemString { get; } = new(typeof(string)) { GeneratedName = "string" };
+        public static BuilderType SystemUInt16 { get; } = new(typeof(ushort)) { GeneratedName = "ushort" };
+        public static BuilderType SystemUInt32 { get; } = new(typeof(uint)) { GeneratedName = "uint" };
+        public static BuilderType SystemUInt64 { get; } = new(typeof(ulong)) { GeneratedName = "ulong" };
+        public static BuilderType SystemUIntPtr { get; } = new(typeof(nuint)) { GeneratedName = "nuint" };
+        public static BuilderType SystemVoid { get; } = new(typeof(void)) { GeneratedName = "void" };
 
         // *warning* this must come *after* definitions of static BuilderType above
         private static readonly Lazy<IDictionary<FullName, BuilderType>> _wellKnownTypes = new(LoadWellKnownTypes);
@@ -44,34 +54,63 @@ namespace Win32InteropBuilder.Model
         public virtual IList<BuilderField> Fields => _fields;
         public virtual IList<BuilderType> Interfaces => _interfaces;
         public virtual string? Documentation { get; set; }
+        public virtual string? SupportedOSPlatform { get; set; }
+        public virtual Guid? Guid { get; set; }
         public virtual string FileName => FullName.Name;
         public virtual string? GeneratedName { get; set; }
 
-        public string FinalGeneratedName
+        public virtual string GetGeneratedName(string? currentNamespace)
         {
-            get
+            if (GeneratedName != null)
+                return GeneratedName;
+
+            if (WellKnownTypes.TryGetValue(FullName, out var type))
             {
-                if (GeneratedName != null)
-                    return GeneratedName;
+                if (type.GeneratedName != null)
+                    return type.GeneratedName;
 
-                if (WellKnownTypes.TryGetValue(FullName, out var builderType))
-                    return builderType.GeneratedName ?? builderType.FullName.Name;
+                if (type.FullName.Namespace == currentNamespace)
+                    return type.FullName.Name;
 
-                return FullName.Name;
+                return type.FullName.ToString();
             }
+
+            if (FullName.Namespace == currentNamespace)
+                return FullName.Name;
+
+            return ToString();
         }
 
-        public virtual void GenerateCode(IndentedTextWriter writer)
+        public virtual void GenerateCode(BuilderContext context)
         {
-            ArgumentNullException.ThrowIfNull(writer);
-            writer.WriteLine($"namespace {FullName.Namespace};");
-            writer.WriteLine();
-            GenerateTypeCode(writer);
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Writer);
+            context.Writer.WriteLine($"namespace {FullName.Namespace};");
+            context.Writer.WriteLine();
+            context.Namespace = FullName.Namespace;
+
+            if (Documentation != null)
+            {
+                context.Writer.WriteLine("// " + Documentation);
+            }
+            GenerateTypeCode(context);
+            context.Namespace = null;
         }
 
-        protected virtual void GenerateTypeCode(IndentedTextWriter writer)
+        protected virtual void GenerateTypeCode(BuilderContext context)
         {
-            ArgumentNullException.ThrowIfNull(writer);
+            throw new NotSupportedException();
+        }
+
+        public virtual BuilderType Clone(BuilderContext context)
+        {
+            if (this is InterfaceType)
+                return context.CreateInterfaceType(FullName);
+
+            if (this is StructureType)
+                return context.CreateStructureType(FullName);
+
+            return context.CreateBuilderType(FullName);
         }
 
         public override int GetHashCode() => FullName.GetHashCode();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 
 namespace Win32InteropBuilder.Model
 {
@@ -17,15 +16,16 @@ namespace Win32InteropBuilder.Model
         public virtual BuilderType? Type { get; set; }
         public virtual string? Documentation { get; set; }
 
-        public virtual void GeneratedCode(IndentedTextWriter writer)
+        public virtual void GeneratedCode(BuilderContext context)
         {
-            ArgumentNullException.ThrowIfNull(writer);
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Writer);
             if (Type == null)
                 throw new InvalidOperationException();
 
-            writer.Write(Type.FinalGeneratedName);
-            writer.Write(' ');
-            writer.Write(Name);
+            context.Writer.Write(Type.GetGeneratedName(context.Namespace));
+            context.Writer.Write(' ');
+            context.Writer.Write(Name);
         }
 
         int IComparable.CompareTo(object? obj) => CompareTo(obj as BuilderParameter);

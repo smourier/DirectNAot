@@ -13,7 +13,8 @@ namespace Win32InteropBuilder.Model
         }
 
         public string Name { get; }
-        public BuilderType? Type { get; }
+        public BuilderType Type { get; }
+        public byte[]? DefaultValue { get; set; }
         public virtual string? Documentation { get; set; }
 
         public override string ToString() => Name;

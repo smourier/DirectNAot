@@ -4,7 +4,8 @@
   "UnifyNamespaces": "DirectN",
   "Inputs": [
     "CreateDXGIFactory",
-    "IDXGIFactory"
+    "IDXGIFactory",
+    "DXGI_COLOR_SPACE_TYPE"
     //"!IDXGIFactoryMedia"
   ]
 }

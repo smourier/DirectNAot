@@ -6,17 +6,47 @@ namespace Win32InteropBuilder.Model
 {
     public class SignatureTypeProvider : ISignatureTypeProvider<BuilderType, object?>
     {
-        public static SignatureTypeProvider Instance { get; } = new();
-
-        private SignatureTypeProvider()
+        public SignatureTypeProvider(BuilderContext context)
         {
+            ArgumentNullException.ThrowIfNull(context);
+            Context = context;
         }
 
-        public BuilderType GetArrayType(BuilderType elementType, ArrayShape shape) => new(elementType.FullName) { ArrayShape = shape };
-        public BuilderType GetPointerType(BuilderType elementType) => new(elementType.FullName) { Indirections = elementType.Indirections + 1 };
-        public BuilderType GetTypeFromDefinition(MetadataReader reader, TypeDefinitionHandle handle, byte rawTypeKind) => new(reader.GetFullName(reader.GetTypeDefinition(handle)));
-        public BuilderType GetTypeFromReference(MetadataReader reader, TypeReferenceHandle handle, byte rawTypeKind) => new(reader.GetFullName(reader.GetTypeReference(handle)));
-        public BuilderType GetPrimitiveType(PrimitiveTypeCode typeCode)
+        public BuilderContext Context { get; }
+
+        public virtual BuilderType GetArrayType(BuilderType elementType, ArrayShape shape)
+        {
+            ArgumentNullException.ThrowIfNull(elementType);
+            var type = elementType.Clone(Context);
+            type.ArrayShape = shape;
+            return type;
+        }
+
+        public virtual BuilderType GetPointerType(BuilderType elementType)
+        {
+            ArgumentNullException.ThrowIfNull(elementType);
+            var type = elementType.Clone(Context);
+            type.Indirections = elementType.Indirections + 1;
+            return type;
+        }
+
+        public virtual BuilderType GetTypeFromDefinition(MetadataReader reader, TypeDefinitionHandle handle, byte rawTypeKind)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var typeDef = reader.GetTypeDefinition(handle);
+            var fn = reader.GetFullName(typeDef);
+            return Context.AllTypes[fn];
+        }
+
+        public virtual BuilderType GetTypeFromReference(MetadataReader reader, TypeReferenceHandle handle, byte rawTypeKind)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var typeRef = reader.GetTypeReference(handle);
+            var fn = reader.GetFullName(typeRef);
+            return Context.AllTypes[fn];
+        }
+
+        public virtual BuilderType GetPrimitiveType(PrimitiveTypeCode typeCode)
         {
             switch (typeCode)
             {
@@ -72,14 +102,14 @@ namespace Win32InteropBuilder.Model
             throw new NotSupportedException();
         }
 
-        public BuilderType GetTypeFromSpecification(MetadataReader reader, object? genericContext, TypeSpecificationHandle handle, byte rawTypeKind) => throw new NotImplementedException();
-        public BuilderType GetSZArrayType(BuilderType elementType) => throw new NotImplementedException();
-        public BuilderType GetByReferenceType(BuilderType elementType) => throw new NotImplementedException();
-        public BuilderType GetFunctionPointerType(MethodSignature<BuilderType> signature) => throw new NotImplementedException();
-        public BuilderType GetGenericInstantiation(BuilderType genericType, ImmutableArray<BuilderType> typeArguments) => throw new NotImplementedException();
-        public BuilderType GetGenericMethodParameter(object? genericContext, int index) => throw new NotImplementedException();
-        public BuilderType GetGenericTypeParameter(object? genericContext, int index) => throw new NotImplementedException();
-        public BuilderType GetModifiedType(BuilderType modifier, BuilderType unmodifiedType, bool isRequired) => throw new NotImplementedException();
-        public BuilderType GetPinnedType(BuilderType elementType) => throw new NotImplementedException();
+        public virtual BuilderType GetTypeFromSpecification(MetadataReader reader, object? genericContext, TypeSpecificationHandle handle, byte rawTypeKind) => throw new NotImplementedException();
+        public virtual BuilderType GetSZArrayType(BuilderType elementType) => throw new NotImplementedException();
+        public virtual BuilderType GetByReferenceType(BuilderType elementType) => throw new NotImplementedException();
+        public virtual BuilderType GetFunctionPointerType(MethodSignature<BuilderType> signature) => throw new NotImplementedException();
+        public virtual BuilderType GetGenericInstantiation(BuilderType genericType, ImmutableArray<BuilderType> typeArguments) => throw new NotImplementedException();
+        public virtual BuilderType GetGenericMethodParameter(object? genericContext, int index) => throw new NotImplementedException();
+        public virtual BuilderType GetGenericTypeParameter(object? genericContext, int index) => throw new NotImplementedException();
+        public virtual BuilderType GetModifiedType(BuilderType modifier, BuilderType unmodifiedType, bool isRequired) => throw new NotImplementedException();
+        public virtual BuilderType GetPinnedType(BuilderType elementType) => throw new NotImplementedException();
     }
 }
