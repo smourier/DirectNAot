@@ -17,6 +17,13 @@ namespace Win32InteropBuilder.Model
         public virtual BuilderType GetArrayType(BuilderType elementType, ArrayShape shape)
         {
             ArgumentNullException.ThrowIfNull(elementType);
+            if (shape.Rank == 1 && shape.Sizes.Length == 1)
+            {
+                var arrayType = Context.CreateInlineArrayType(elementType, shape.Sizes[0]);
+                Context.TypesToBuild.Add(arrayType);
+                return arrayType;
+            }
+
             var type = elementType.Clone(Context);
             type.ArrayShape = shape;
             return type;

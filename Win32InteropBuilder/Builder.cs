@@ -67,7 +67,6 @@ namespace Win32InteropBuilder
                 }
             }
 
-            // remove excluded matches
             foreach (var match in reverses.ToArray())
             {
                 matches.Remove(match);
@@ -86,13 +85,8 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(context);
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
             ArgumentNullException.ThrowIfNull(type);
-
-            _ = context.AllTypes[type.FullName];
             if (!context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
-            {
-                //Console.WriteLine(type.FullName);
                 return;
-            }
 
             if (context.TypesToBuild.Contains(type))
                 return;
@@ -193,8 +187,8 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
             foreach (var type in context.TypesToBuild.ToArray())
             {
-                var def = context.TypeDefinitions[type.FullName];
-                if (context.MetadataReader.IsHandle(def, context.SignatureTypeProvider))
+                if (context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef) &&
+                    context.MetadataReader.IsHandle(typeDef, context.SignatureTypeProvider))
                 {
                     context.TypesToBuild.Remove(type);
                 }
@@ -220,10 +214,13 @@ namespace Win32InteropBuilder
             IOUtilities.DirectoryDelete(context.Configuration.OutputDirectoryPath, true);
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
-                var typeDef = context.TypeDefinitions[type.FullName];
-                var atts = typeDef.GetCustomAttributes();
-                context.MetadataReader.SetDocumentation(atts, type);
-                context.MetadataReader.SetSupportedOSPlatform(atts, type);
+                if (context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
+                {
+                    var atts = typeDef.GetCustomAttributes();
+                    context.MetadataReader.SetDocumentation(atts, type);
+                    context.MetadataReader.SetSupportedOSPlatform(atts, type);
+                }
+
                 Console.WriteLine(type);
 
                 var ns = string.Empty;
@@ -238,9 +235,15 @@ namespace Win32InteropBuilder
                 IOUtilities.FileEnsureDirectory(typePath);
                 using var file = new StreamWriter(typePath, false);
                 context.Writer = new IndentedTextWriter(file);
-                type.GenerateCode(context);
-                context.Writer.Dispose();
-                context.Writer = null;
+                try
+                {
+                    type.GenerateCode(context);
+                }
+                finally
+                {
+                    context.Writer.Dispose();
+                    context.Writer = null;
+                }
             }
         }
     }
