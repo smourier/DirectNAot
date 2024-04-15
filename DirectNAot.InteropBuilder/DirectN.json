@@ -3,11 +3,17 @@
   "BuilderTypeName": "DirectNAot.InteropBuilder.Builder, DirectNAot.InteropBuilder",
   "OutputEncoding": "UTF-8",
   "Generation": {
-    "UnifiedNamespace": "DirectN"
+    "Unified": {
+      "Namespace": "DirectN"
+    }
   },
-  "Inputs": [
-    "CreateDXGIFactory",
-    "IDXGIFactory"
+  "TypeInputs": [
+    "IDXGIFactory*",
+    "Windows.Win32.Graphics.Direct2D.Apis",
+    "Windows.Win32.Graphics.Dxgi.Apis"
     //"!IDXGIFactoryMedia"
+  ],
+  "MemberInputs": [
+    "CreateDXGIFactory"
   ]
 }

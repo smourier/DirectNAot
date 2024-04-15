@@ -48,14 +48,12 @@ namespace Win32InteropBuilder
             foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
                 var type = context.CreateBuilderType(typeDef);
-                if (type.FullName.Namespace.Length == 0)
-                    continue;
 
                 context.AllTypes[type.FullName] = type;
                 context.TypeDefinitions[type.FullName] = typeDef;
-                type.Guid = context.MetadataReader.GetInteropGuid(typeDef);
+                type.Guid = context.MetadataReader.GetInteropGuid(typeDef.GetCustomAttributes());
 
-                foreach (var match in context.Configuration.Inputs.Where(x => x.Matches(type)))
+                foreach (var match in context.Configuration.TypeInputs.Where(x => x.Matches(type)))
                 {
                     if (match.IsReverse)
                     {
@@ -146,26 +144,21 @@ namespace Win32InteropBuilder
                 IOUtilities.DirectoryDelete(context.Configuration.OutputDirectoryPath, true);
             }
 
-            HashSet<string> existingFiles;
             if (context.Configuration.RemoveNonGeneratedFiles && IOUtilities.PathIsDirectory(context.Configuration.OutputDirectoryPath))
             {
-                existingFiles = Directory.EnumerateFileSystemEntries(context.Configuration.OutputDirectoryPath, "*.cs", SearchOption.AllDirectories).ToHashSet(StringComparer.OrdinalIgnoreCase);
-            }
-            else
-            {
-                existingFiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                context.ExistingFiles.AddRange(Directory.EnumerateFileSystemEntries(context.Configuration.OutputDirectoryPath, "*.cs", SearchOption.AllDirectories));
             }
 
             AddMappedTypes(context);
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
                 var finalType = type;
-                if (context.TypeDefinitions.TryGetValue(finalType.FullName, out var typeDef))
-                {
-                    var atts = typeDef.GetCustomAttributes();
-                    context.MetadataReader.SetDocumentation(atts, finalType);
-                    context.MetadataReader.SetSupportedOSPlatform(atts, finalType);
-                }
+                //if (context.TypeDefinitions.TryGetValue(finalType.FullName, out var typeDef))
+                //{
+                //    var atts = typeDef.GetCustomAttributes();
+                //    context.MetadataReader.SetDocumentation(atts, finalType);
+                //    context.MetadataReader.SetSupportedOSPlatform(atts, finalType);
+                //}
 
                 Console.WriteLine(finalType);
                 if (context.MappedTypes.TryGetValue(type.FullName, out var mappedType))
@@ -177,45 +170,94 @@ namespace Win32InteropBuilder
                 if (!finalType.IsGenerated)
                     continue;
 
-                using var writer = new StringWriter();
-                context.Writer = new IndentedTextWriter(writer);
-                try
-                {
-                    finalType.GenerateCode(context);
-                }
-                finally
-                {
-                    context.Writer.Dispose();
-                    context.Writer = null;
-                }
-
-                var ns = context.MapGeneratedFullName(finalType.FullName).Namespace.Replace('.', Path.DirectorySeparatorChar);
-                var text = writer.ToString();
-                var fileName = finalType.FileName + ".cs";
-                var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
-                if (IOUtilities.PathIsFile(typePath))
-                {
-                    var existingText = EncodingDetector.ReadAllText(typePath, context.Configuration.EncodingDetectorMode, out _);
-                    if (text == existingText)
-                    {
-                        existingFiles.Remove(typePath);
-                        continue;
-                    }
-                }
-
-                IOUtilities.FileEnsureDirectory(typePath);
-                File.WriteAllText(typePath, text, context.Configuration.FinalOutputEncoding);
-                existingFiles.Remove(typePath);
+                finalType.Generate(context);
             }
 
             if (context.Configuration.RemoveNonGeneratedFiles)
             {
-                foreach (var filePath in existingFiles)
+                foreach (var filePath in context.ExistingFiles)
                 {
                     IOUtilities.FileDelete(filePath);
                 }
                 IOUtilities.DirectoryDeleteEmptySubDirectories(context.Configuration.OutputDirectoryPath);
             }
+
+            var un = context.Configuration.GetGeneration();
+            if (un != null)
+            {
+                if (un.ConstantsFileName != null)
+                {
+                    GenerateFile(context, un.ConstantsFileName, () =>
+                    {
+                        var fields = context.ConstantsTypes.SelectMany(t => t.Fields).ToHashSet();
+                    });
+                }
+
+                if (un.FunctionsFileName != null)
+                {
+                    GenerateFile(context, un.FunctionsFileName, () =>
+                    {
+                        var functions = context.FunctionsTypes.SelectMany(t => t.Fields).ToHashSet();
+                    });
+                }
+            }
+        }
+
+        protected virtual void GenerateFile(BuilderContext context, string fileName, Action generate)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Configuration);
+            ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
+            ArgumentNullException.ThrowIfNull(fileName);
+            ArgumentNullException.ThrowIfNull(generate);
+
+            var un = context.Configuration.GetGeneration();
+            if (un == null)
+                return;
+
+            using var writer = new StringWriter();
+            context.Writer = new IndentedTextWriter(writer);
+            try
+            {
+                generate();
+            }
+            finally
+            {
+                context.Writer.Dispose();
+                context.Writer = null;
+            }
+
+            var ns = un.Namespace!.Replace('.', Path.DirectorySeparatorChar);
+            var text = writer.ToString();
+            fileName += ".cs";
+            var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
+            if (IOUtilities.PathIsFile(typePath))
+            {
+                var existingText = EncodingDetector.ReadAllText(typePath, context.Configuration.EncodingDetectorMode, out _);
+                if (text == existingText)
+                {
+                    context.ExistingFiles.Remove(typePath);
+                    return;
+                }
+            }
+
+            IOUtilities.FileEnsureDirectory(typePath);
+            File.WriteAllText(typePath, text, context.Configuration.FinalOutputEncoding);
+            context.ExistingFiles.Remove(typePath);
+        }
+
+        protected virtual void GenerateFunctionsTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            if (context.FunctionsTypes.Count == 0)
+                return;
+        }
+
+        protected virtual void GenerateConstantsTypes(BuilderContext context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            if (context.ConstantsTypes.Count == 0)
+                return;
         }
     }
 }

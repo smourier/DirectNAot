@@ -58,52 +58,55 @@ namespace Win32InteropBuilder.Model
             switch (typeCode)
             {
                 case PrimitiveTypeCode.UInt32:
-                    return new BuilderType(typeof(uint));
+                    return WellKnownTypes.SystemUInt32;
 
                 case PrimitiveTypeCode.Void:
-                    return new BuilderType(typeof(void));
+                    return WellKnownTypes.SystemVoid;
 
                 case PrimitiveTypeCode.Boolean:
-                    return new BuilderType(typeof(bool));
+                    return WellKnownTypes.SystemBoolean;
 
                 case PrimitiveTypeCode.Char:
-                    return new BuilderType(typeof(char));
+                    return WellKnownTypes.SystemChar;
 
                 case PrimitiveTypeCode.SByte:
-                    return new BuilderType(typeof(sbyte));
+                    return WellKnownTypes.SystemSByte;
 
                 case PrimitiveTypeCode.Byte:
-                    return new BuilderType(typeof(byte));
+                    return WellKnownTypes.SystemByte;
 
                 case PrimitiveTypeCode.Int16:
-                    return new BuilderType(typeof(short));
+                    return WellKnownTypes.SystemInt16;
 
                 case PrimitiveTypeCode.UInt16:
-                    return new BuilderType(typeof(ushort));
+                    return WellKnownTypes.SystemUInt16;
 
                 case PrimitiveTypeCode.Int32:
-                    return new BuilderType(typeof(int));
+                    return WellKnownTypes.SystemInt32;
 
                 case PrimitiveTypeCode.Int64:
-                    return new BuilderType(typeof(long));
+                    return WellKnownTypes.SystemInt64;
 
                 case PrimitiveTypeCode.UInt64:
-                    return new BuilderType(typeof(ulong));
+                    return WellKnownTypes.SystemUInt64;
 
                 case PrimitiveTypeCode.Single:
-                    return new BuilderType(typeof(float));
+                    return WellKnownTypes.SystemSingle;
 
                 case PrimitiveTypeCode.Double:
-                    return new BuilderType(typeof(double));
+                    return WellKnownTypes.SystemDouble;
 
                 case PrimitiveTypeCode.String:
-                    return new BuilderType(typeof(string));
+                    return WellKnownTypes.SystemString;
 
                 case PrimitiveTypeCode.IntPtr:
-                    return new BuilderType(typeof(nint));
+                    return WellKnownTypes.SystemIntPtr;
 
                 case PrimitiveTypeCode.UIntPtr:
-                    return new BuilderType(typeof(nuint));
+                    return WellKnownTypes.SystemUIntPtr;
+
+                case PrimitiveTypeCode.Object:
+                    return WellKnownTypes.SystemObject;
             }
 
             throw new NotSupportedException();

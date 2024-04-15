@@ -1,10 +1,31 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Win32InteropBuilder.Model
 {
     public class FullName : IEquatable<FullName>, IComparable<FullName>, IComparable
     {
+        // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/classes#154-constants
+        private static readonly ConcurrentBag<FullName> _constableTypes =
+        [
+            WellKnownTypes.SystemSByte.FullName,
+            WellKnownTypes.SystemByte.FullName,
+            WellKnownTypes.SystemInt16.FullName,
+            WellKnownTypes.SystemUInt16.FullName,
+            WellKnownTypes.SystemInt32.FullName,
+            WellKnownTypes.SystemUInt32.FullName,
+            WellKnownTypes.SystemInt64.FullName,
+            WellKnownTypes.SystemUInt64.FullName,
+            WellKnownTypes.SystemChar.FullName,
+            WellKnownTypes.SystemSingle.FullName,
+            WellKnownTypes.SystemDouble.FullName,
+            WellKnownTypes.SystemDecimal.FullName,
+            WellKnownTypes.SystemBoolean.FullName,
+            WellKnownTypes.SystemString.FullName,
+        ];
+
         public static FullName SystemIntPtr { get; } = new(typeof(nint));
         public static FullName SystemValueType { get; } = new(typeof(ValueType));
         public static FullName SystemEnum { get; } = new(typeof(Enum));
@@ -17,9 +38,10 @@ namespace Win32InteropBuilder.Model
         public static FullName ComOutPtrAttribute { get; } = new("Windows.Win32.Foundation.Metadata.ComOutPtrAttribute");
         public static FullName SupportedOSPlatformAttribute { get; } = new("Windows.Win32.Foundation.Metadata.SupportedOSPlatformAttribute");
         public static FullName GuidAttribute { get; } = new("Windows.Win32.Foundation.Metadata.GuidAttribute");
+        public static FullName AnsiAttribute { get; } = new("Windows.Win32.Foundation.Metadata.AnsiAttribute");
+        public static FullName UnicodeAttribute { get; } = new("Windows.Win32.Foundation.Metadata.UnicodeAttribute");
         public static FullName OutAttribute { get; } = new(typeof(OutAttribute));
-        //public static FullName ConstAttribute { get; } = new("Windows.Win32.Foundation.Interop.ConstAttribute");
-        //public static FullName UnmanagedFunctionPointerAttribute { get; } = new("System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute");
+        public static FullName DllImportAttribute { get; } = new(typeof(DllImportAttribute));
 
         public FullName(string @namespace, string name)
         {
@@ -76,6 +98,8 @@ namespace Win32InteropBuilder.Model
         public override int GetHashCode() => Namespace.GetHashCode() ^ Name.GetHashCode();
         int IComparable.CompareTo(object? obj) => CompareTo(obj as FullName);
         public int CompareTo(FullName? other) { ArgumentNullException.ThrowIfNull(other); return ToString().CompareTo(other.ToString()); }
+
+        public static bool IsConstableType(FullName fullName) => _constableTypes.Contains(fullName);
 
         public static bool operator !=(FullName? obj1, FullName? obj2) => !(obj1 == obj2);
         public static bool operator ==(FullName? obj1, FullName? obj2)

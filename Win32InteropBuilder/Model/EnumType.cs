@@ -6,7 +6,8 @@ namespace Win32InteropBuilder.Model
 {
     public class EnumType(FullName fullName) : BuilderType(fullName)
     {
-        public virtual bool IsFlags { get; protected set; }
+        public virtual bool IsFlags { get; set; }
+        public virtual BuilderType? UnderlyingType { get; set; }
 
         protected override void CopyTo(BuilderType copy)
         {
@@ -14,25 +15,29 @@ namespace Win32InteropBuilder.Model
             if (copy is EnumType typed)
             {
                 typed.IsFlags = IsFlags;
+                typed.UnderlyingType = UnderlyingType;
             }
         }
 
-        public override void ResolveType(BuilderContext context, TypeDefinition typeDef)
+        public override bool IsConstableType() => true;
+
+        public override void ResolveFields(BuilderContext context, TypeDefinition typeDef)
         {
             ArgumentNullException.ThrowIfNull(context);
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
-            ArgumentNullException.ThrowIfNull(typeDef);
-            base.ResolveType(context, typeDef);
 
             foreach (var handle in typeDef.GetFields())
             {
                 var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
-                if (fieldDef.Attributes.HasFlag(FieldAttributes.RTSpecialName))
-                    continue;
-
                 var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
+                if (fieldDef.Attributes.HasFlag(FieldAttributes.RTSpecialName))
+                {
+                    UnderlyingType = field.Type;
+                    continue;
+                }
+
                 Fields.Add(field);
-                field.DefaultValue = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
+                field.DefaultValueAsBytes = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
             }
         }
 
@@ -51,6 +56,14 @@ namespace Win32InteropBuilder.Model
             }
 
             context.Writer.Write($"public enum {FullName.Name}");
+            if (UnderlyingType != null)
+            {
+                var typeName = UnderlyingType.GetGeneratedName(context);
+                if (typeName != "int")
+                {
+                    context.Writer.Write($" : {typeName}");
+                }
+            }
 
             context.Writer.WriteLine();
             context.Writer.WithParens(() =>
@@ -60,14 +73,10 @@ namespace Win32InteropBuilder.Model
                     var field = Fields[i];
                     context.Writer.Write(field);
 
-                    if (field.DefaultValue != null)
+                    if (field.DefaultValueAsBytes != null)
                     {
-                        if (field.DefaultValue.Length != 4)
-                            throw new NotSupportedException();
-
-                        var i32 = BitConverter.ToInt32(field.DefaultValue, 0);
                         context.Writer.Write(" = ");
-                        context.Writer.Write(i32);
+                        context.Writer.Write(field.Type.GetValueAsString(context, field.DefaultValue));
                     }
                     context.Writer.WriteLine(',');
                 }

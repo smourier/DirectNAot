@@ -12,8 +12,18 @@ namespace Win32InteropBuilder.Model
             Size = size;
         }
 
-        public BuilderType ElementType { get; }
-        public int Size { get; }
+        public BuilderType ElementType { get; protected set; }
+        public int Size { get; protected set; }
+
+        protected override void CopyTo(BuilderType copy)
+        {
+            base.CopyTo(copy);
+            if (copy is InlineArrayType typed)
+            {
+                typed.ElementType = ElementType;
+                typed.Size = Size;
+            }
+        }
 
         protected override void GenerateTypeCode(BuilderContext context)
         {

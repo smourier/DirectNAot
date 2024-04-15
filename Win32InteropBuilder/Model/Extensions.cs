@@ -86,6 +86,7 @@ namespace Win32InteropBuilder.Model
             return reader.GetFullName(reader.GetTypeReference(attribute));
         }
 
+        public static IReadOnlyList<FullName> GetCustomAttributesFullNames(this MetadataReader reader, CustomAttributeHandleCollection handles) => GetCustomAttributes(reader, handles).Select(reader.GetFullName).ToArray();
         public static IEnumerable<CustomAttribute> GetCustomAttributes(this MetadataReader reader, CustomAttributeHandleCollection handles)
         {
             ArgumentNullException.ThrowIfNull(reader);
@@ -137,14 +138,14 @@ namespace Win32InteropBuilder.Model
             return reader.GetBlobBytes(constant.Value);
         }
 
-        public static Guid? GetInteropGuid(this MetadataReader reader, TypeDefinition type)
+        public static Guid? GetInteropGuid(this MetadataReader reader, CustomAttributeHandleCollection handles)
         {
             ArgumentNullException.ThrowIfNull(reader);
-            var guid = type.GetCustomAttributes().Where(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.GuidAttribute).FirstOrDefault();
-            if (guid.IsNil)
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.GuidAttribute);
+            if (handle.IsNil)
                 return null;
 
-            return GetInteropGuid(reader.GetCustomAttribute(guid));
+            return GetInteropGuid(reader.GetCustomAttribute(handle));
         }
 
         public static Guid? GetInteropGuid(CustomAttribute attribute)
@@ -217,6 +218,20 @@ namespace Win32InteropBuilder.Model
         {
             ArgumentNullException.ThrowIfNull(reader);
             var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.ComOutPtrAttribute);
+            return !handle.IsNil;
+        }
+
+        public static bool IsAnsi(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.AnsiAttribute);
+            return !handle.IsNil;
+        }
+
+        public static bool IsUnicode(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.UnicodeAttribute);
             return !handle.IsNil;
         }
 

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Metadata;
 using Win32InteropBuilder.Model;
-using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder
 {
@@ -24,11 +23,14 @@ namespace Win32InteropBuilder
         public virtual MetadataReader? MetadataReader { get; set; }
         public virtual IndentedTextWriter? Writer { get; set; }
         public virtual string? Namespace { get; set; }
-        public virtual ISet<BuilderType> TypesToBuild { get; } = new HashSet<BuilderType>();
+        public virtual HashSet<BuilderType> TypesToBuild { get; } = [];
         public virtual IDictionary<FullName, BuilderType> AllTypes { get; } = new Dictionary<FullName, BuilderType>();
         public virtual IDictionary<FullName, TypeDefinition> TypeDefinitions { get; } = new Dictionary<FullName, TypeDefinition>();
         public virtual IDictionary<FullName, BuilderType> MappedTypes { get; } = new Dictionary<FullName, BuilderType>();
         public virtual ISet<string> ImplicitNamespaces { get; } = new HashSet<string>();
+        public virtual ISet<string> ExistingFiles { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        public virtual ISet<BuilderType> FunctionsTypes { get; } = new HashSet<BuilderType>();
+        public virtual ISet<BuilderType> ConstantsTypes { get; } = new HashSet<BuilderType>();
 
         public virtual BuilderType CreateBuilderType(FullName fullName) => new(fullName);
         public virtual InterfaceType CreateInterfaceType(FullName fullName) => new(fullName);
@@ -88,9 +90,9 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(Configuration);
             ArgumentNullException.ThrowIfNull(Configuration.Generation);
 
-            var unified = Configuration.Generation.UnifiedNamespace.Nullify();
-            if (unified != null)
-                return new FullName(unified, FullName.HRESULT.Name);
+            var un = Configuration.GetGeneration();
+            if (un != null)
+                return new FullName(un.Namespace!, FullName.HRESULT.Name);
 
             return fullName;
         }
