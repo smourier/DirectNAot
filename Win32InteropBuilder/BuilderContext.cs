@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Metadata;
 using Win32InteropBuilder.Model;
+using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder
 {
@@ -57,12 +58,41 @@ namespace Win32InteropBuilder
             return CreateBuilderType(MetadataReader.GetFullName(typeDef));
         }
 
-        internal BuilderType MapType(BuilderType type)
+        public virtual void AddDependencies(BuilderType type)
         {
+            ArgumentNullException.ThrowIfNull(type);
+            if (MetadataReader == null)
+                throw new InvalidOperationException();
+
+            if (!TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
+                return;
+
+            if (TypesToBuild.Contains(type))
+                return;
+
+            type.ResolveType(this, typeDef);
+        }
+
+        public virtual BuilderType MapType(BuilderType type)
+        {
+            ArgumentNullException.ThrowIfNull(type);
             if (MappedTypes.TryGetValue(type.FullName, out var mapped))
                 return mapped;
 
             return type;
+        }
+
+        public virtual FullName MapGeneratedFullName(FullName fullName)
+        {
+            ArgumentNullException.ThrowIfNull(fullName);
+            ArgumentNullException.ThrowIfNull(Configuration);
+            ArgumentNullException.ThrowIfNull(Configuration.Generation);
+
+            var unified = Configuration.Generation.UnifiedNamespace.Nullify();
+            if (unified != null)
+                return new FullName(unified, FullName.HRESULT.Name);
+
+            return fullName;
         }
     }
 }

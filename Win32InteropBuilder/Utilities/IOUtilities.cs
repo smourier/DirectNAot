@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Win32InteropBuilder.Utilities
@@ -114,6 +115,29 @@ namespace Win32InteropBuilder.Utilities
             }
         }
 
+        public static void DirectoryDeleteEmptySubDirectories(string path, bool throwOnError = true)
+        {
+            ArgumentNullException.ThrowIfNull(path);
+            if (!PathIsDirectory(path))
+                return;
+
+            do
+            {
+                var hasDeletedAny = false;
+                foreach (var directory in Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories))
+                {
+                    if (DirectoryIsEmpty(directory) == true)
+                    {
+                        DirectoryDelete(directory, throwOnError);
+                        hasDeletedAny = true;
+                    }
+                }
+                if (!hasDeletedAny)
+                    break;
+            }
+            while (true);
+        }
+
         public static bool FileDelete(string path, bool unprotect = true, bool throwOnError = true)
         {
             ArgumentNullException.ThrowIfNull(path);
@@ -176,6 +200,14 @@ namespace Win32InteropBuilder.Utilities
                 return false;
 
             return atts.Value.HasFlag(FileAttributes.Directory);
+        }
+
+        public static bool? DirectoryIsEmpty(string path)
+        {
+            if (!PathIsDirectory(path))
+                return null;
+
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
         public static bool FileEnsureDirectory(string path, bool throwOnError = true)

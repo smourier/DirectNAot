@@ -25,7 +25,7 @@ namespace Win32InteropBuilder.Model
         public static BuilderType SystemUInt32 { get; } = new(typeof(uint)) { GeneratedName = "uint", IsGenerated = false };
         public static BuilderType SystemUInt64 { get; } = new(typeof(ulong)) { GeneratedName = "ulong", IsGenerated = false };
         public static BuilderType SystemUIntPtr { get; } = new(typeof(nuint)) { GeneratedName = "nuint", IsGenerated = false };
-        public static BuilderType SystemVoid { get; } = new(typeof(void)) { GeneratedName = "void", IsGenerated = false };
+        public static BuilderType SystemVoid { get; } = new(typeof(void)) { GeneratedName = "nint", IsGenerated = false };
 
         // *warning* this must come *after* definitions of static BuilderType above
         public static IDictionary<FullName, BuilderType> All => _all.Value;

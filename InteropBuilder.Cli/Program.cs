@@ -39,7 +39,6 @@ namespace InteropBuilder.Cli
 
             configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
             configuration.WinMdPath ??= Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
-
             configuration.OutputDirectoryPath ??= Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? Path.GetFileNameWithoutExtension(configurationPath));
 
             var type = Type.GetType(configuration.BuilderTypeName, true)!;
@@ -48,6 +47,7 @@ namespace InteropBuilder.Cli
             Console.WriteLine($"Builder type name: {builder.GetType().FullName}");
             Console.WriteLine($"WinMd path: {configuration.WinMdPath}");
             Console.WriteLine($"Output path: {configuration.OutputDirectoryPath}");
+            Console.WriteLine($"Output encoding: {configuration.FinalOutputEncoding}");
             Console.WriteLine($"Running {type!.FullName} builder...");
             Console.WriteLine();
 

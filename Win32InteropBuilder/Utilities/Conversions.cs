@@ -27,6 +27,20 @@ namespace Win32InteropBuilder.Utilities
             return string.Join(separator, EnumerateAllExceptionsMessages(exception).Distinct(StringComparer.OrdinalIgnoreCase));
         }
 
+        public static int AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
+        {
+            if (collection == null || items == null)
+                return 0;
+
+            var count = 0;
+            foreach (var item in items)
+            {
+                collection.Add(item);
+                count++;
+            }
+            return count;
+        }
+
         public static IEnumerable<Exception> EnumerateAllExceptions(this Exception? exception)
         {
             if (exception == null)

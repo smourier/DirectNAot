@@ -3,9 +3,9 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using Win32InteropBuilder.Model;
 using Win32InteropBuilder.Utilities;
@@ -18,6 +18,7 @@ namespace Win32InteropBuilder
         {
             ReadCommentHandling = JsonCommentHandling.Skip,
             AllowTrailingCommas = true,
+            Converters = { new EncodingConverter() }
         };
 
         public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration) => new(configuration);
@@ -72,113 +73,26 @@ namespace Win32InteropBuilder
                 matches.Remove(match);
             }
 
-            foreach (var match in matches)
+            foreach (var type in matches)
             {
-                AddDependencies(context, match);
+                context.AddDependencies(type);
             }
 
             RemoveNonGeneratedTypes(context);
         }
 
-        protected virtual void AddDependencies(BuilderContext context, BuilderType type)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.MetadataReader);
-            ArgumentNullException.ThrowIfNull(type);
-            if (!context.TypeDefinitions.TryGetValue(type.FullName, out var typeDef))
-                return;
-
-            if (context.TypesToBuild.Contains(type))
-                return;
-
-            if (type is InterfaceType ifaceType)
-            {
-                foreach (var handle in typeDef.GetMethods())
-                {
-                    var methodDef = context.MetadataReader.GetMethodDefinition(handle);
-                    var method = context.CreateBuilderMethod(context.MetadataReader.GetString(methodDef.Name));
-                    type.Methods.Add(method);
-                    foreach (var phandle in methodDef.GetParameters())
-                    {
-                        var parameterDef = context.MetadataReader.GetParameter(phandle);
-                        var parameter = context.CreateBuilderParameter(context.MetadataReader.GetString(parameterDef.Name), parameterDef.SequenceNumber);
-                        // remove 'this'
-                        if (string.IsNullOrEmpty(parameter.Name) && parameter.SequenceNumber == 0)
-                            continue;
-
-                        method.Parameters.Add(parameter);
-                    }
-                    method.SortParameters();
-
-                    var dec = methodDef.DecodeSignature(context.SignatureTypeProvider, null);
-                    method.ReturnType = dec.ReturnType;
-                    if (method.ReturnType != null)
-                    {
-                        AddDependencies(context, method.ReturnType);
-                    }
-
-                    if (method.Parameters.Count != dec.ParameterTypes.Length)
-                        throw new InvalidOperationException();
-
-                    for (var i = 0; i < method.Parameters.Count; i++)
-                    {
-                        method.Parameters[i].Type = dec.ParameterTypes[i];
-                        if (method.Parameters[i].Type == null)
-                            throw new InvalidOperationException();
-
-                        AddDependencies(context, method.Parameters[i].Type!);
-                    }
-                }
-
-                var interfaces = typeDef.GetInterfaceImplementations();
-                foreach (var iface in interfaces)
-                {
-                    var fn = context.MetadataReader.GetFullName(iface);
-                    if (fn == FullName.IUnknown)
-                    {
-                        ifaceType.IsIUnknownDerived = true;
-                        continue;
-                    }
-
-                    var typeRefType = context.AllTypes[fn];
-                    AddDependencies(context, typeRefType);
-                    type.Interfaces.Add(typeRefType);
-                }
-            }
-            else if (type is StructureType)
-            {
-                foreach (var handle in typeDef.GetFields())
-                {
-                    var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
-                    var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
-                    type.Fields.Add(field);
-                    AddDependencies(context, field.Type);
-                }
-            }
-            else if (type is EnumType)
-            {
-                foreach (var handle in typeDef.GetFields())
-                {
-                    var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
-                    if (fieldDef.Attributes.HasFlag(FieldAttributes.RTSpecialName))
-                        continue;
-
-                    var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
-                    type.Fields.Add(field);
-                    field.DefaultValue = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
-                }
-            }
-
-            context.TypesToBuild.Add(type);
-        }
-
         protected virtual void RemoveNonGeneratedTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Configuration);
+            ArgumentNullException.ThrowIfNull(context.Configuration.Generation);
 
             context.TypesToBuild.Remove(new BuilderType(FullName.IUnknown));
-            context.TypesToBuild.Remove(new BuilderType(FullName.HRESULT));
-            RemoveHandleTypes(context);
+
+            if (context.Configuration.Generation.HandleToIntPtr)
+            {
+                RemoveHandleTypes(context);
+            }
         }
 
         protected virtual void RemoveHandleTypes(BuilderContext context)
@@ -208,6 +122,15 @@ namespace Win32InteropBuilder
         {
             ArgumentNullException.ThrowIfNull(context);
             context.MappedTypes[FullName.BOOL] = WellKnownTypes.SystemBoolean;
+            context.MappedTypes[FullName.IUnknown] = WellKnownTypes.SystemIntPtr;
+
+            if (context.Configuration.Generation.HRESULTIsError)
+            {
+                var hr = context.AllTypes[FullName.HRESULT];
+                var hresult = hr.Clone(context);
+                hresult.UnmanagedType = UnmanagedType.Error;
+                context.MappedTypes[FullName.HRESULT] = hresult;
+            }
         }
 
         protected virtual void GenerateTypes(BuilderContext context)
@@ -215,6 +138,7 @@ namespace Win32InteropBuilder
             ArgumentNullException.ThrowIfNull(context);
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
             ArgumentNullException.ThrowIfNull(context.Configuration);
+            ArgumentNullException.ThrowIfNull(context.Configuration.Generation);
             ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
 
             if (context.Configuration.DeleteOutputDirectory)
@@ -223,9 +147,9 @@ namespace Win32InteropBuilder
             }
 
             HashSet<string> existingFiles;
-            if (IOUtilities.PathIsDirectory(context.Configuration.OutputDirectoryPath))
+            if (context.Configuration.RemoveNonGeneratedFiles && IOUtilities.PathIsDirectory(context.Configuration.OutputDirectoryPath))
             {
-                existingFiles = Directory.EnumerateFileSystemEntries(context.Configuration.OutputDirectoryPath, "*.cs").ToHashSet(StringComparer.OrdinalIgnoreCase);
+                existingFiles = Directory.EnumerateFileSystemEntries(context.Configuration.OutputDirectoryPath, "*.cs", SearchOption.AllDirectories).ToHashSet(StringComparer.OrdinalIgnoreCase);
             }
             else
             {
@@ -253,18 +177,8 @@ namespace Win32InteropBuilder
                 if (!finalType.IsGenerated)
                     continue;
 
-                var ns = string.Empty;
-                var unified = context.Configuration.UnifyNamespaces.Nullify();
-                if (unified == null)
-                {
-                    ns = finalType.FullName.Namespace.Replace('.', Path.DirectorySeparatorChar);
-                }
-
-                var fileName = finalType.FileName + ".cs";
-                var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
-                IOUtilities.FileEnsureDirectory(typePath);
-                using var file = new StreamWriter(typePath, false);
-                context.Writer = new IndentedTextWriter(file);
+                using var writer = new StringWriter();
+                context.Writer = new IndentedTextWriter(writer);
                 try
                 {
                     finalType.GenerateCode(context);
@@ -274,6 +188,33 @@ namespace Win32InteropBuilder
                     context.Writer.Dispose();
                     context.Writer = null;
                 }
+
+                var ns = context.MapGeneratedFullName(finalType.FullName).Namespace.Replace('.', Path.DirectorySeparatorChar);
+                var text = writer.ToString();
+                var fileName = finalType.FileName + ".cs";
+                var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
+                if (IOUtilities.PathIsFile(typePath))
+                {
+                    var existingText = EncodingDetector.ReadAllText(typePath, context.Configuration.EncodingDetectorMode, out _);
+                    if (text == existingText)
+                    {
+                        existingFiles.Remove(typePath);
+                        continue;
+                    }
+                }
+
+                IOUtilities.FileEnsureDirectory(typePath);
+                File.WriteAllText(typePath, text, context.Configuration.FinalOutputEncoding);
+                existingFiles.Remove(typePath);
+            }
+
+            if (context.Configuration.RemoveNonGeneratedFiles)
+            {
+                foreach (var filePath in existingFiles)
+                {
+                    IOUtilities.FileDelete(filePath);
+                }
+                IOUtilities.DirectoryDeleteEmptySubDirectories(context.Configuration.OutputDirectoryPath);
             }
         }
     }

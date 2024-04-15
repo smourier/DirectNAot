@@ -5,7 +5,7 @@ namespace Win32InteropBuilder.Model
     public class InlineArrayType : StructureType
     {
         public InlineArrayType(BuilderType elementType, int size)
-            : base(new FullName(GeneratedInteropNamespace + "." + elementType?.FullName.Name + "Array" + size))
+            : base(new FullName(GeneratedInteropNamespace + ".InlineArray" + elementType?.FullName.Name + size))
         {
             ArgumentNullException.ThrowIfNull(elementType);
             ElementType = elementType;

@@ -18,7 +18,7 @@ namespace DirectNAot.InteropBuilder
         protected override void AddMappedTypes(BuilderContext context)
         {
             base.AddMappedTypes(context);
-            MapToDirectNdNamespace(context, FullName.HRESULT);
+            //MapToDirectNdNamespace(context, FullName.HRESULT);
         }
 
         protected virtual void MapToDirectNdNamespace(BuilderContext context, FullName fullName)

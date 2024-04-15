@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Win32InteropBuilder.Model
@@ -14,7 +15,9 @@ namespace Win32InteropBuilder.Model
 
         public string Name { get; }
         public int SequenceNumber { get; }
+        public virtual ParameterAttributes Attributes { get; set; }
         public virtual BuilderType? Type { get; set; }
+        public virtual bool IsComOutPtr { get; set; }
         public virtual string? Documentation { get; set; }
         public virtual UnmanagedType? UnmanagedType { get; set; }
 
@@ -33,6 +36,12 @@ namespace Win32InteropBuilder.Model
             else if (mapped.UnmanagedType.HasValue)
             {
                 context.Writer.Write($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
+            }
+
+
+            if (Attributes.HasFlag(ParameterAttributes.Out))
+            {
+                context.Writer.Write("out ");
             }
 
             context.Writer.Write(mapped.GetGeneratedName(context));

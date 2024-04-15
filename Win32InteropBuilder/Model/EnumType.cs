@@ -1,15 +1,40 @@
 ﻿using System;
+using System.Reflection;
+using System.Reflection.Metadata;
 
 namespace Win32InteropBuilder.Model
 {
-    public class EnumType : BuilderType
+    public class EnumType(FullName fullName) : BuilderType(fullName)
     {
-        public EnumType(FullName fullName)
-            : base(fullName)
+        public virtual bool IsFlags { get; protected set; }
+
+        protected override void CopyTo(BuilderType copy)
         {
+            base.CopyTo(copy);
+            if (copy is EnumType typed)
+            {
+                typed.IsFlags = IsFlags;
+            }
         }
 
-        public virtual bool IsFlags { get; set; }
+        public override void ResolveType(BuilderContext context, TypeDefinition typeDef)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+            ArgumentNullException.ThrowIfNull(typeDef);
+            base.ResolveType(context, typeDef);
+
+            foreach (var handle in typeDef.GetFields())
+            {
+                var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
+                if (fieldDef.Attributes.HasFlag(FieldAttributes.RTSpecialName))
+                    continue;
+
+                var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
+                Fields.Add(field);
+                field.DefaultValue = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
+            }
+        }
 
         protected override void GenerateTypeCode(BuilderContext context)
         {

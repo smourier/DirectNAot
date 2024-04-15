@@ -1,21 +1,23 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Win32InteropBuilder.Model
 {
     public class FullName : IEquatable<FullName>, IComparable<FullName>, IComparable
     {
-        public static FullName Invalid { get; } = new FullName("???", "???");
-        public static FullName SystemIntPtr { get; } = new FullName(typeof(nint));
-        public static FullName SystemValueType { get; } = new FullName(typeof(ValueType));
-        public static FullName SystemEnum { get; } = new FullName(typeof(Enum));
+        public static FullName SystemIntPtr { get; } = new(typeof(nint));
+        public static FullName SystemValueType { get; } = new(typeof(ValueType));
+        public static FullName SystemEnum { get; } = new(typeof(Enum));
         public static FullName IUnknown { get; } = new("Windows.Win32.System.Com.IUnknown");
         public static FullName IDispatch { get; } = new("Windows.Win32.System.Com.IDispatch");
         public static FullName HRESULT { get; } = new("Windows.Win32.Foundation.HRESULT");
         public static FullName BOOL { get; } = new("Windows.Win32.Foundation.BOOL");
         public static FullName NativeTypedefAttribute { get; } = new("Windows.Win32.Foundation.Metadata.NativeTypedefAttribute");
         public static FullName DocumentationAttribute { get; } = new("Windows.Win32.Foundation.Metadata.DocumentationAttribute");
+        public static FullName ComOutPtrAttribute { get; } = new("Windows.Win32.Foundation.Metadata.ComOutPtrAttribute");
         public static FullName SupportedOSPlatformAttribute { get; } = new("Windows.Win32.Foundation.Metadata.SupportedOSPlatformAttribute");
         public static FullName GuidAttribute { get; } = new("Windows.Win32.Foundation.Metadata.GuidAttribute");
+        public static FullName OutAttribute { get; } = new(typeof(OutAttribute));
         //public static FullName ConstAttribute { get; } = new("Windows.Win32.Foundation.Interop.ConstAttribute");
         //public static FullName UnmanagedFunctionPointerAttribute { get; } = new("System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute");
 

@@ -206,6 +206,20 @@ namespace Win32InteropBuilder.Model
             return bfn == FullName.SystemEnum;
         }
 
+        public static bool IsOut(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.OutAttribute);
+            return !handle.IsNil;
+        }
+
+        public static bool IsComOutPtr(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.ComOutPtrAttribute);
+            return !handle.IsNil;
+        }
+
         public static void WithParens(this IndentedTextWriter writer, Action action)
         {
             ArgumentNullException.ThrowIfNull(writer);

@@ -14,7 +14,7 @@ namespace Win32InteropBuilder
             if (input.StartsWith('!'))
             {
                 IsReverse = true;
-                input = input.Substring(1);
+                input = input[1..];
             }
             Input = input;
         }
