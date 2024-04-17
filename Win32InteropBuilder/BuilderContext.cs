@@ -9,10 +9,12 @@ namespace Win32InteropBuilder
 {
     public class BuilderContext
     {
-        public BuilderContext(BuilderConfiguration configuration)
+        public BuilderContext(BuilderConfiguration configuration, ILanguage language)
         {
             ArgumentNullException.ThrowIfNull(configuration);
+            ArgumentNullException.ThrowIfNull(language);
             Configuration = configuration;
+            Language = language;
             SignatureTypeProvider = new SignatureTypeProvider(this);
             CustomAttributeTypeProvider = new CustomAttributeTypeProvider(this);
             ImplicitNamespaces.Add("System");
@@ -20,11 +22,10 @@ namespace Win32InteropBuilder
         }
 
         public BuilderConfiguration Configuration { get; }
+        public ILanguage Language { get; }
         public virtual SignatureTypeProvider SignatureTypeProvider { get; }
         public virtual CustomAttributeTypeProvider CustomAttributeTypeProvider { get; }
         public virtual MetadataReader? MetadataReader { get; set; }
-        public virtual IndentedTextWriter? Writer { get; set; }
-        public virtual string? Namespace { get; set; }
         public virtual HashSet<BuilderType> TypesToBuild { get; } = [];
         public virtual IDictionary<FullName, BuilderType> AllTypes { get; } = new Dictionary<FullName, BuilderType>();
         public virtual IDictionary<FullName, TypeDefinition> TypeDefinitions { get; } = new Dictionary<FullName, TypeDefinition>();
@@ -33,6 +34,11 @@ namespace Win32InteropBuilder
         public virtual ISet<string> ExistingFiles { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         public virtual ISet<BuilderType> FunctionsTypes { get; } = new HashSet<BuilderType>();
         public virtual ISet<BuilderType> ConstantsTypes { get; } = new HashSet<BuilderType>();
+
+        // changing properties
+        public virtual IndentedTextWriter? CurrentWriter { get; set; }
+        public virtual string? CurrentNamespace { get; set; }
+        public virtual Stack<BuilderType> CurrentTypes { get; } = [];
 
         public virtual BuilderType CreateBuilderType(FullName fullName) => new(fullName);
         public virtual InterfaceType CreateInterfaceType(FullName fullName) => new(fullName);
@@ -43,7 +49,7 @@ namespace Win32InteropBuilder
         public virtual BuilderField CreateBuilderField(string name, BuilderType type) => new(name, type);
         public virtual BuilderType CreateInlineArrayType(BuilderType elementType, int size) => new InlineArrayType(elementType, size);
 
-        protected virtual FullName GetFullName(TypeDefinition typeDef)
+        public virtual FullName GetFullName(TypeDefinition typeDef)
         {
             if (MetadataReader == null)
                 throw new InvalidOperationException();
@@ -57,30 +63,46 @@ namespace Win32InteropBuilder
                     // nested classes
                     var declaringTypeDef = MetadataReader.GetTypeDefinition(declaringTypeHandle);
                     var declaringTypeFn = GetFullName(declaringTypeDef);
-                    var nestedFn = new FullName(declaringTypeFn.Namespace, declaringTypeFn.Name + "+" + fn.Name);
+                    var nestedFn = new FullName(declaringTypeFn.Namespace, declaringTypeFn.Name + FullName.NestedTypesSeparator + fn.Name);
                     return nestedFn;
                 }
             }
             return fn;
         }
 
-        public virtual BuilderType CreateBuilderType(TypeDefinition typeDef)
+        public virtual BuilderType? CreateBuilderType(TypeDefinition typeDef)
+        {
+            if (Configuration == null)
+                throw new InvalidOperationException();
+
+            // skip non corresponding architectures
+            var arch = this.GetSupportedArchitecture(typeDef.GetCustomAttributes());
+            if (arch != null && (arch & Configuration.Architecture) != Configuration.Architecture)
+                return null;
+
+            var type = CreateBuilderTypeCore(typeDef);
+            return type;
+
+        }
+
+        protected virtual BuilderType CreateBuilderTypeCore(TypeDefinition typeDef)
         {
             if (MetadataReader == null)
                 throw new InvalidOperationException();
 
+            var fn = GetFullName(typeDef);
             if (typeDef.Attributes.HasFlag(TypeAttributes.Interface))
-                return CreateInterfaceType(GetFullName(typeDef));
+                return CreateInterfaceType(fn);
 
             var isStructure = MetadataReader.IsStructure(typeDef);
             if (isStructure)
-                return CreateStructureType(GetFullName(typeDef));
+                return CreateStructureType(fn);
 
             var isEnum = MetadataReader.IsEnum(typeDef);
             if (isEnum)
-                return CreateEnumType(GetFullName(typeDef));
+                return CreateEnumType(fn);
 
-            return CreateBuilderType(GetFullName(typeDef));
+            return CreateBuilderType(fn);
         }
 
         public virtual void AddDependencies(BuilderType type)

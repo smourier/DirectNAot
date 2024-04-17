@@ -6,6 +6,7 @@ public partial struct DXGI_OUTPUT_DESC
 {
     public InlineArrayChar32 DeviceName;
     public RECT DesktopCoordinates;
+    
     [MarshalAs(UnmanagedType.U4)]
     public bool AttachedToDesktop;
     public DXGI_MODE_ROTATION Rotation;

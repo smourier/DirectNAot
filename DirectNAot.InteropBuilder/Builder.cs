@@ -8,9 +8,9 @@ namespace DirectNAot.InteropBuilder
     {
         public const string Namespace = "DirectN";
 
-        public override BuilderContext CreateBuilderContext(BuilderConfiguration configuration)
+        public override BuilderContext CreateBuilderContext(BuilderConfiguration configuration, ILanguage language)
         {
-            var context = base.CreateBuilderContext(configuration);
+            var context = base.CreateBuilderContext(configuration, language);
             context.ImplicitNamespaces.Add(Namespace);
             return context;
         }

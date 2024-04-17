@@ -16,6 +16,7 @@ namespace Win32InteropBuilder.Model
         public string Name { get; }
         public BuilderType Type { get; }
         public virtual FieldAttributes Attributes { get; set; }
+        public virtual int? Offset { get; set; }
         public virtual byte[]? DefaultValueAsBytes { get; set; }
         public virtual string? Documentation { get; set; }
         public object? DefaultValue => Type.GetValue(DefaultValueAsBytes);

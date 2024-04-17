@@ -219,7 +219,7 @@ namespace Win32InteropBuilder.Model
         public static bool IsStructure(this MetadataReader reader, TypeDefinition type)
         {
             ArgumentNullException.ThrowIfNull(reader);
-            if (!type.Attributes.HasFlag(TypeAttributes.Public | TypeAttributes.SequentialLayout))
+            if (!type.Attributes.HasFlag(TypeAttributes.Public) && !type.Attributes.HasFlag(TypeAttributes.NestedPublic))
                 return false;
 
             var bfn = reader.GetFullName(type.BaseType);

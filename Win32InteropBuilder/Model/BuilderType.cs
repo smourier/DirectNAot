@@ -1,7 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -35,7 +34,6 @@ namespace Win32InteropBuilder.Model
         public virtual BuilderType? DeclaringType { get; set; }
         public virtual TypeAttributes TypeAttributes { get; set; }
         public virtual bool IsGenerated { get; set; } = true;
-        public virtual bool IsStructure { get; set; }
         public virtual int Indirections { get; set; }
         public virtual ArrayShape? ArrayShape { get; set; }
         public virtual IList<BuilderMethod> Methods => _methods;
@@ -57,29 +55,39 @@ namespace Win32InteropBuilder.Model
             ArgumentNullException.ThrowIfNull(context);
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
 
-            context.TypesToBuild.Add(this);
+            Guid = context.GetInteropGuid(typeDef.GetCustomAttributes());
             TypeAttributes = typeDef.Attributes;
+            context.TypesToBuild.Add(this);
 
-            var baseTypeHandle = typeDef.BaseType;
-            if (!baseTypeHandle.IsNil)
+            context.CurrentTypes.Push(this);
+            try
             {
-                if (baseTypeHandle.Kind == HandleKind.TypeReference)
+                var baseTypeHandle = typeDef.BaseType;
+                if (!baseTypeHandle.IsNil)
                 {
-                    var baseTypeDef = context.MetadataReader.GetTypeReference((TypeReferenceHandle)baseTypeHandle);
-                    var fn = context.MetadataReader.GetFullName(baseTypeDef);
-                    BaseType = context.AllTypes[fn];
+                    if (baseTypeHandle.Kind == HandleKind.TypeReference)
+                    {
+                        var baseTypeDef = context.MetadataReader.GetTypeReference((TypeReferenceHandle)baseTypeHandle);
+                        var fn = context.MetadataReader.GetFullName(baseTypeDef);
+                        BaseType = context.AllTypes[fn];
+                    }
+                    else
+                        throw new NotSupportedException();
                 }
-                else
-                    throw new NotSupportedException();
+
+                context.SetDocumentation(typeDef.GetCustomAttributes(), this);
+                context.SetSupportedOSPlatform(typeDef.GetCustomAttributes(), this);
+
+                ResolveNestedTypes(context, typeDef);
+                ResolveMethods(context, typeDef);
+                ResolveInterfaces(context, typeDef);
+                ResolveFields(context, typeDef);
             }
-
-            context.SetDocumentation(typeDef.GetCustomAttributes(), this);
-            context.SetSupportedOSPlatform(typeDef.GetCustomAttributes(), this);
-
-            ResolveNestedTypes(context, typeDef);
-            ResolveMethods(context, typeDef);
-            ResolveInterfaces(context, typeDef);
-            ResolveFields(context, typeDef);
+            finally
+            {
+                if (context.CurrentTypes.Pop() != this)
+                    throw new InvalidOperationException();
+            }
         }
 
         public virtual void ResolveNestedTypes(BuilderContext context, TypeDefinition typeDef)
@@ -91,12 +99,20 @@ namespace Win32InteropBuilder.Model
             {
                 var nestedDef = context.MetadataReader.GetTypeDefinition(handle);
                 var nestedType = context.CreateBuilderType(nestedDef);
+                if (nestedType == null)
+                    continue;
+
+                nestedType.IsGenerated = false;
+                context.CurrentTypes.Push(nestedType);
                 if (!context.TypesToBuild.TryGetValue(nestedType, out var existing))
                 {
                     existing = nestedType;
                     context.AddDependencies(existing);
                 }
+
                 NestedTypes.Add(existing);
+                if (context.CurrentTypes.Pop() != nestedType)
+                    throw new InvalidOperationException();
             }
         }
 
@@ -193,9 +209,16 @@ namespace Win32InteropBuilder.Model
             foreach (var handle in typeDef.GetFields())
             {
                 var fieldDef = context.MetadataReader.GetFieldDefinition(handle);
-                var field = context.CreateBuilderField(context.MetadataReader.GetString(fieldDef.Name), fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
+                var name = context.MetadataReader.GetString(fieldDef.Name);
+                var field = context.CreateBuilderField(name, fieldDef.DecodeSignature(context.SignatureTypeProvider, null));
                 field.Attributes = fieldDef.Attributes;
                 field.DefaultValueAsBytes = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
+
+                var offset = fieldDef.GetOffset();
+                if (offset >= 0)
+                {
+                    field.Offset = offset;
+                }
 
                 // bit of a hack for guids
                 if (field.DefaultValueAsBytes == null && field.Type.FullName == WellKnownTypes.SystemGuid.FullName)
@@ -230,7 +253,7 @@ namespace Win32InteropBuilder.Model
                 if (context.ImplicitNamespaces.Contains(type.FullName.Namespace))
                     return FullName.Name;
 
-                if (type.FullName.Namespace == context.Namespace)
+                if (type.FullName.Namespace == context.CurrentNamespace)
                     return type.FullName.Name;
 
                 if (un != null)
@@ -239,10 +262,14 @@ namespace Win32InteropBuilder.Model
                 return type.FullName.ToString();
             }
 
+            var nested = FullName.NestedName;
+            if (nested != null)
+                return nested;
+
             if (context.ImplicitNamespaces.Contains(FullName.Namespace))
                 return FullName.Name;
 
-            if (FullName.Namespace == context.Namespace)
+            if (FullName.Namespace == context.CurrentNamespace)
                 return FullName.Name;
 
             if (un != null)
@@ -298,20 +325,20 @@ namespace Win32InteropBuilder.Model
             }
 
             using var writer = new StringWriter();
-            context.Writer = new IndentedTextWriter(writer);
+            context.CurrentWriter = new IndentedTextWriter(writer);
             try
             {
                 GenerateCode(context);
             }
             finally
             {
-                context.Writer.Dispose();
-                context.Writer = null;
+                context.CurrentWriter.Dispose();
+                context.CurrentWriter = null;
             }
 
             var ns = context.MapGeneratedFullName(FullName).Namespace.Replace('.', Path.DirectorySeparatorChar);
             var text = writer.ToString();
-            var fileName = FileName + ".cs";
+            var fileName = FileName + context.Language.FileExtension;
             var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
             if (IOUtilities.PathIsFile(typePath))
             {
@@ -331,163 +358,8 @@ namespace Win32InteropBuilder.Model
         public virtual void GenerateCode(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Writer);
-            ArgumentNullException.ThrowIfNull(context.Configuration);
-            ArgumentNullException.ThrowIfNull(context.Configuration.Generation);
-
-            string ns;
-            if (GetType() == typeof(BuilderType))
-            {
-                // it's not structure, interface or enum
-                // so it's not unified functions or constants
-                // so, don't map namespace
-                ns = FullName.Namespace;
-            }
-            else
-            {
-                ns = context.MapGeneratedFullName(FullName).Namespace;
-            }
-
-            context.Writer.WriteLine($"namespace {ns};");
-            context.Writer.WriteLine();
-            context.Namespace = ns;
-
-            if (Documentation != null)
-            {
-                context.Writer.WriteLine("// " + Documentation);
-            }
-            GenerateTypeCode(context);
-            context.Namespace = null;
-        }
-
-        protected virtual void GenerateTypeCode(BuilderContext context)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Writer);
-            if (Methods.Count == 0 && Fields.Count == 0)
-                return;
-
-            var un = context.Configuration.GetGeneration();
-
-            context.Writer.Write($"public partial class {FullName.Name}");
-            context.Writer.WriteLine();
-            context.Writer.WithParens(() =>
-            {
-                if (un == null || un.ConstantsFileName == null)
-                {
-                    for (var i = 0; i < Fields.Count; i++)
-                    {
-                        var field = Fields[i];
-                        if (field.Documentation != null)
-                        {
-                            context.Writer.WriteLine("// " + field.Documentation);
-                        }
-
-                        var mapped = context.MapType(field.Type);
-                        if (mapped.UnmanagedType.HasValue)
-                        {
-                            context.Writer.WriteLine($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
-                        }
-
-                        var constText = field.Attributes.HasFlag(FieldAttributes.Literal) && field.Type.IsConstableType() ? "const" : "static readonly";
-                        context.Writer.WriteLine($"public {constText} {mapped.GetGeneratedName(context)} {field} = {field.Type.GetValueAsString(context, field.DefaultValue)};");
-
-                        if (i != Fields.Count - 1 || Methods.Count > 0)
-                        {
-                            context.Writer.WriteLine();
-                        }
-                    }
-                }
-
-                if (un == null || un.FunctionsFileName == null)
-                {
-                    for (var i = 0; i < Methods.Count; i++)
-                    {
-                        var method = Methods[i];
-
-                        if (method.Documentation != null)
-                        {
-                            context.Writer.WriteLine("// " + method.Documentation);
-                        }
-
-                        if (method.ImportModuleName != null)
-                        {
-                            var module = method.ImportModuleName;
-                            const string dll = ".dll";
-                            if (module.EndsWith(dll, StringComparison.InvariantCultureIgnoreCase))
-                            {
-                                module = module[..^dll.Length];
-                            }
-
-                            context.Writer.Write($"[LibraryImport(\"{module}\"");
-                            if (method.IsUnicode)
-                            {
-                                context.Writer.Write(", StringMarshalling = StringMarshalling.Utf16");
-                            }
-                            context.Writer.WriteLine(")]");
-                        }
-
-                        if (method.SupportedOSPlatform != null)
-                        {
-                            context.Writer.WriteLine($"[SupportedOSPlatform(\"{method.SupportedOSPlatform}\")]");
-                        }
-
-                        context.Writer.WriteLine("[PreserveSig]");
-                        string typeName;
-                        if (method.ReturnType != null)
-                        {
-                            var mapped = context.MapType(method.ReturnType);
-
-                            // don't map here? should be done already? causes trouble with HRESULT
-                            //if (mapped.UnmanagedType.HasValue)
-                            //{
-                            //    context.Writer.WriteLine($"[return: MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
-                            //}
-
-                            typeName = mapped.GetGeneratedName(context);
-                        }
-                        else
-                        {
-                            typeName = "void";
-                        }
-
-                        context.Writer.Write($"public static partial {typeName} {method}(");
-                        for (var j = 0; j < method.Parameters.Count; j++)
-                        {
-                            var parameter = method.Parameters[j];
-                            parameter.GeneratedCode(context);
-                            if (j != method.Parameters.Count - 1)
-                            {
-                                context.Writer.Write(", ");
-                            }
-                        }
-                        context.Writer.WriteLine(");");
-
-                        if (i != Methods.Count - 1)
-                        {
-                            context.Writer.WriteLine();
-                        }
-                    }
-                }
-            });
-        }
-
-        public virtual string GetValueAsString(BuilderContext context, object? value)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            if (value == null)
-                return "null";
-
-            if (value is Guid guid)
-                return $"new(\"{guid}\")";
-
-            if (value is bool b)
-                return b ? "true" : "false";
-
-            if (value is string s)
-                return $"@\"{s.Replace("\"", "\"\"")}\"";
-
-            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
+            ArgumentNullException.ThrowIfNull(context.Language);
+            context.Language.GenerateCode(context, this);
         }
 
         public virtual BuilderType CloneType(BuilderContext context)
@@ -526,7 +398,6 @@ namespace Win32InteropBuilder.Model
             copy.DeclaringType = DeclaringType;
             copy.TypeAttributes = TypeAttributes;
             copy.IsGenerated = IsGenerated;
-            copy.IsStructure = IsStructure;
             copy.Indirections = Indirections;
             copy.ArrayShape = ArrayShape;
             copy.Methods.AddRange(Methods);

@@ -21,7 +21,7 @@ namespace Win32InteropBuilder
             Converters = { new EncodingConverter() }
         };
 
-        public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration) => new(configuration);
+        public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration, ILanguage language) => new(configuration, language);
 
         public virtual void Build(BuilderContext context)
         {
@@ -52,26 +52,32 @@ namespace Win32InteropBuilder
 
             foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
-                // skip non corresponding architectures
-                var arch = context.GetSupportedArchitecture(typeDef.GetCustomAttributes());
-                if (arch != null && (arch & context.Configuration.Architecture) != context.Configuration.Architecture)
+                var type = context.CreateBuilderType(typeDef);
+                if (type == null)
                     continue;
 
-                var type = context.CreateBuilderType(typeDef);
-                context.AllTypes[type.FullName] = type;
-                context.TypeDefinitions[type.FullName] = typeDef;
-                type.Guid = context.GetInteropGuid(typeDef.GetCustomAttributes());
-
-                foreach (var match in context.Configuration.TypeInputs.Where(x => x.Matches(type)))
+                context.CurrentTypes.Push(type);
+                try
                 {
-                    if (match.IsReverse)
+                    context.AllTypes[type.FullName] = type;
+                    context.TypeDefinitions[type.FullName] = typeDef;
+
+                    foreach (var match in context.Configuration.TypeInputs.Where(x => x.Matches(type)))
                     {
-                        reverses.Add(type);
+                        if (match.IsReverse)
+                        {
+                            reverses.Add(type);
+                        }
+                        else
+                        {
+                            matches.Add(type);
+                        }
                     }
-                    else
-                    {
-                        matches.Add(type);
-                    }
+                }
+                finally
+                {
+                    if (context.CurrentTypes.Pop() != type)
+                        throw new InvalidOperationException();
                 }
             }
 
@@ -225,15 +231,15 @@ namespace Win32InteropBuilder
                 return;
 
             using var writer = new StringWriter();
-            context.Writer = new IndentedTextWriter(writer);
+            context.CurrentWriter = new IndentedTextWriter(writer);
             try
             {
                 generate();
             }
             finally
             {
-                context.Writer.Dispose();
-                context.Writer = null;
+                context.CurrentWriter.Dispose();
+                context.CurrentWriter = null;
             }
 
             var ns = un.Namespace!.Replace('.', Path.DirectorySeparatorChar);

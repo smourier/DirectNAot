@@ -6,5 +6,6 @@
         InvalidConfiguration,
         AmbiguousMatch,
         UnsupportedArchitecture,
+        CantResolveType,
     }
 }

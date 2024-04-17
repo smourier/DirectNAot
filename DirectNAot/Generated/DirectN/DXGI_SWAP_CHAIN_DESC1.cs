@@ -7,6 +7,7 @@ public partial struct DXGI_SWAP_CHAIN_DESC1
     public uint Width;
     public uint Height;
     public DXGI_FORMAT Format;
+    
     [MarshalAs(UnmanagedType.U4)]
     public bool Stereo;
     public DXGI_SAMPLE_DESC SampleDesc;

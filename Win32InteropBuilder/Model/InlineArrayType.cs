@@ -24,17 +24,5 @@ namespace Win32InteropBuilder.Model
                 typed.Size = Size;
             }
         }
-
-        protected override void GenerateTypeCode(BuilderContext context)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Writer);
-            context.Writer.WriteLine($"[InlineArray({Size})]");
-            context.Writer.WriteLine($"public partial struct {FullName.Name}");
-            context.Writer.WithParens(() =>
-            {
-                context.Writer.WriteLine($"public {ElementType.GetGeneratedName(context)} Data;");
-            });
-        }
     }
 }

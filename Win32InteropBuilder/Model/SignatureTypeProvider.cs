@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Reflection.Metadata;
+using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder.Model
 {
@@ -41,7 +43,7 @@ namespace Win32InteropBuilder.Model
         {
             ArgumentNullException.ThrowIfNull(reader);
             var typeDef = reader.GetTypeDefinition(handle);
-            var fn = reader.GetFullName(typeDef);
+            var fn = Context.GetFullName(typeDef);
             return Context.AllTypes[fn];
         }
 
@@ -50,7 +52,18 @@ namespace Win32InteropBuilder.Model
             ArgumentNullException.ThrowIfNull(reader);
             var typeRef = reader.GetTypeReference(handle);
             var fn = reader.GetFullName(typeRef);
-            return Context.AllTypes[fn];
+            if (Context.AllTypes.TryGetValue(fn, out var type))
+                return type;
+
+            // check anonymous embedded types
+            if (fn.Namespace == string.Empty && Context.CurrentTypes.Count > 0)
+            {
+                var currentType = Context.CurrentTypes.Peek();
+                var nestedType = currentType.NestedTypes.FirstOrDefault(t => t.FullName.NestedName == fn.Name);
+                if (nestedType != null)
+                    return nestedType;
+            }
+            throw new EnumBasedException<Win32InteropBuilderExceptionCode>(Win32InteropBuilderExceptionCode.CantResolveType, $"Full name: {fn}");
         }
 
         public virtual BuilderType GetPrimitiveType(PrimitiveTypeCode typeCode)

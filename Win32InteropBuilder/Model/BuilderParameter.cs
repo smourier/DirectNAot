@@ -24,29 +24,29 @@ namespace Win32InteropBuilder.Model
         public virtual void GeneratedCode(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Writer);
+            ArgumentNullException.ThrowIfNull(context.CurrentWriter);
             if (Type == null)
                 throw new InvalidOperationException();
 
             var mapped = context.MapType(Type);
             if (UnmanagedType.HasValue)
             {
-                context.Writer.Write($"[MarshalAs(UnmanagedType.{UnmanagedType.Value})]");
+                context.CurrentWriter.Write($"[MarshalAs(UnmanagedType.{UnmanagedType.Value})]");
             }
             else if (mapped.UnmanagedType.HasValue)
             {
-                context.Writer.Write($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
+                context.CurrentWriter.Write($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
             }
 
 
             if (Attributes.HasFlag(ParameterAttributes.Out))
             {
-                context.Writer.Write("out ");
+                context.CurrentWriter.Write("out ");
             }
 
-            context.Writer.Write(mapped.GetGeneratedName(context));
-            context.Writer.Write(' ');
-            context.Writer.Write(Name);
+            context.CurrentWriter.Write(mapped.GetGeneratedName(context));
+            context.CurrentWriter.Write(' ');
+            context.CurrentWriter.Write(Name);
         }
 
         int IComparable.CompareTo(object? obj) => CompareTo(obj as BuilderParameter);

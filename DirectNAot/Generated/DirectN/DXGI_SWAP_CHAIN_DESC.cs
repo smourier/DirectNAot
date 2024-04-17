@@ -9,6 +9,7 @@ public partial struct DXGI_SWAP_CHAIN_DESC
     public DXGI_USAGE BufferUsage;
     public uint BufferCount;
     public HWND OutputWindow;
+    
     [MarshalAs(UnmanagedType.U4)]
     public bool Windowed;
     public DXGI_SWAP_EFFECT SwapEffect;

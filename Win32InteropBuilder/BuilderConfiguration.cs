@@ -21,6 +21,8 @@ namespace Win32InteropBuilder
         public virtual Encoding FinalOutputEncoding => OutputEncoding ?? Encoding.UTF8;
         public virtual BuilderGeneration Generation { get; set; } = new();
         public virtual Architecture Architecture { get; set; } = GetCurrentArchitecture();
+        public virtual string? LanguageTypeFilePath { get; set; }
+        public virtual string? LanguageTypeName { get; set; }
 
         private static Architecture GetCurrentArchitecture()
         {

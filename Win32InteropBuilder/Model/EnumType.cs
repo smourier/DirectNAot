@@ -40,47 +40,5 @@ namespace Win32InteropBuilder.Model
                 field.DefaultValueAsBytes = context.MetadataReader.GetConstantBytes(fieldDef.GetDefaultValue());
             }
         }
-
-        protected override void GenerateTypeCode(BuilderContext context)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Writer);
-            if (SupportedOSPlatform != null)
-            {
-                context.Writer.WriteLine($"[SupportedOSPlatform(\"{SupportedOSPlatform}\")]");
-            }
-
-            if (IsFlags)
-            {
-                context.Writer.WriteLine("[Flags]");
-            }
-
-            context.Writer.Write($"public enum {FullName.Name}");
-            if (UnderlyingType != null)
-            {
-                var typeName = UnderlyingType.GetGeneratedName(context);
-                if (typeName != "int")
-                {
-                    context.Writer.Write($" : {typeName}");
-                }
-            }
-
-            context.Writer.WriteLine();
-            context.Writer.WithParens(() =>
-            {
-                for (var i = 0; i < Fields.Count; i++)
-                {
-                    var field = Fields[i];
-                    context.Writer.Write(field);
-
-                    if (field.DefaultValueAsBytes != null)
-                    {
-                        context.Writer.Write(" = ");
-                        context.Writer.Write(field.Type.GetValueAsString(context, field.DefaultValue));
-                    }
-                    context.Writer.WriteLine(',');
-                }
-            });
-        }
     }
 }

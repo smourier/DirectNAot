@@ -7,6 +7,8 @@ namespace Win32InteropBuilder.Model
 {
     public class FullName : IEquatable<FullName>, IComparable<FullName>, IComparable
     {
+        public const char NestedTypesSeparator = '+';
+
         // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/classes#154-constants
         private static readonly ConcurrentBag<FullName> _constableTypes =
         [
@@ -42,7 +44,6 @@ namespace Win32InteropBuilder.Model
         public static FullName AnsiAttribute { get; } = new("Windows.Win32.Foundation.Metadata.AnsiAttribute");
         public static FullName UnicodeAttribute { get; } = new("Windows.Win32.Foundation.Metadata.UnicodeAttribute");
         public static FullName OutAttribute { get; } = new(typeof(OutAttribute));
-        public static FullName DllImportAttribute { get; } = new(typeof(DllImportAttribute));
 
         public FullName(string @namespace, string name)
         {
@@ -83,6 +84,17 @@ namespace Win32InteropBuilder.Model
 
         public string Namespace { get; }
         public string Name { get; }
+        public string? NestedName
+        {
+            get
+            {
+                var pos = Name.LastIndexOf(NestedTypesSeparator);
+                if (pos < 0)
+                    return null;
+
+                return Name[(pos + 1)..];
+            }
+        }
 
         public virtual string GetRelativeTo(FullName fullName)
         {

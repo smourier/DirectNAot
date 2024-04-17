@@ -37,7 +37,7 @@ namespace Win32InteropBuilder.Model
         {
             ArgumentNullException.ThrowIfNull(reader);
             var typeDef = reader.GetTypeDefinition(handle);
-            var fn = reader.GetFullName(typeDef);
+            var fn = Context.GetFullName(typeDef);
             return Context.AllTypes[fn];
         }
 

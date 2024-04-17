@@ -3,6 +3,8 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json;
 using Win32InteropBuilder;
+using Win32InteropBuilder.Languages;
+using Win32InteropBuilder.Model;
 using Win32InteropBuilder.Utilities;
 
 namespace InteropBuilder.Cli
@@ -37,22 +39,32 @@ namespace InteropBuilder.Cli
                 Assembly.LoadFrom(configuration.BuilderTypeFilePath);
             }
 
+            if (configuration.LanguageTypeFilePath != null)
+            {
+                Assembly.LoadFrom(configuration.LanguageTypeFilePath);
+            }
+
+            configuration.LanguageTypeName ??= typeof(CSharpLanguage).AssemblyQualifiedName!;
             configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
             configuration.WinMdPath ??= Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
             configuration.OutputDirectoryPath ??= Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? Path.GetFileNameWithoutExtension(configurationPath));
 
-            var type = Type.GetType(configuration.BuilderTypeName, true)!;
+            var builderType = Type.GetType(configuration.BuilderTypeName, true)!;
+            var builder = (Builder)Activator.CreateInstance(builderType)!;
 
-            var builder = (Builder)Activator.CreateInstance(type)!;
+            var languageType = Type.GetType(configuration.LanguageTypeName, true)!;
+            var language = (ILanguage)Activator.CreateInstance(languageType)!;
+
             Console.WriteLine($"Builder type name: {builder.GetType().FullName}");
             Console.WriteLine($"WinMd path: {configuration.WinMdPath}");
             Console.WriteLine($"Architecture: {configuration.Architecture}");
+            Console.WriteLine($"Language: {language.Name}");
             Console.WriteLine($"Output path: {configuration.OutputDirectoryPath}");
             Console.WriteLine($"Output encoding: {configuration.FinalOutputEncoding}");
-            Console.WriteLine($"Running {type!.FullName} builder...");
+            Console.WriteLine($"Running {builderType!.FullName} builder...");
             Console.WriteLine();
 
-            var context = builder.CreateBuilderContext(configuration);
+            var context = builder.CreateBuilderContext(configuration, language);
             builder.Build(context);
         }
 
