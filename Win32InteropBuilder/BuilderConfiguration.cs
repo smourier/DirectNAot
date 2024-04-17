@@ -20,9 +20,8 @@ namespace Win32InteropBuilder
         public virtual IList<BuilderMemberInput> MemberInputs { get; set; } = [];
         public virtual Encoding FinalOutputEncoding => OutputEncoding ?? Encoding.UTF8;
         public virtual BuilderGeneration Generation { get; set; } = new();
+        public virtual LanguageConfiguration Language { get; set; } = new();
         public virtual Architecture Architecture { get; set; } = GetCurrentArchitecture();
-        public virtual string? LanguageTypeFilePath { get; set; }
-        public virtual string? LanguageTypeName { get; set; }
 
         private static Architecture GetCurrentArchitecture()
         {
@@ -55,6 +54,12 @@ namespace Win32InteropBuilder
                 public virtual string? FunctionsFileName { get; set; } = "Functions";
                 public virtual string? ConstantsFileName { get; set; } = "Constants";
             }
+        }
+
+        public class LanguageConfiguration
+        {
+            public virtual string? TypeFilePath { get; set; }
+            public virtual string? TypeName { get; set; }
         }
 
         internal BuilderGeneration.UnifiedGeneration? GetGeneration()

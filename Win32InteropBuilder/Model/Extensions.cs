@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
 using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder.Model
@@ -146,6 +147,23 @@ namespace Win32InteropBuilder.Model
             return null;
         }
 
+        public static CallingConvention? GetCallingConvention(this BuilderContext context, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+            var handle = handles.FirstOrDefault(h => context.MetadataReader.GetFullName(context.MetadataReader.GetCustomAttribute(h)) == FullName.UnmanagedFunctionPointerAttribute);
+            if (handle.IsNil)
+                return null;
+
+            var value = GetValue(context, context.MetadataReader.GetCustomAttribute(handle));
+            if (value.FixedArguments.Length == 1 &&
+                value.FixedArguments[0].Value != null &&
+                Conversions.TryChangeType<CallingConvention>(value.FixedArguments[0].Value, out var cc))
+                return cc;
+
+            return null;
+        }
+
         public static CustomAttributeValue<object?> GetValue(this BuilderContext context, CustomAttribute attribute)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -226,6 +244,13 @@ namespace Win32InteropBuilder.Model
             return bfn == FullName.SystemValueType;
         }
 
+        public static bool IsDelegate(this MetadataReader reader, TypeDefinition type)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var bfn = reader.GetFullName(type.BaseType);
+            return bfn == FullName.MulticastDelegate;
+        }
+
         public static bool IsEnum(this MetadataReader reader, TypeDefinition type)
         {
             ArgumentNullException.ThrowIfNull(reader);
@@ -233,17 +258,31 @@ namespace Win32InteropBuilder.Model
             return bfn == FullName.SystemEnum;
         }
 
-        public static bool IsOut(this MetadataReader reader, CustomAttributeHandleCollection handles)
-        {
-            ArgumentNullException.ThrowIfNull(reader);
-            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.OutAttribute);
-            return !handle.IsNil;
-        }
+        //public static bool IsOut(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        //{
+        //    ArgumentNullException.ThrowIfNull(reader);
+        //    var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.OutAttribute);
+        //    return !handle.IsNil;
+        //}
+
+        //public static bool IsIn(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        //{
+        //    ArgumentNullException.ThrowIfNull(reader);
+        //    var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.InAttribute);
+        //    return !handle.IsNil;
+        //}
 
         public static bool IsComOutPtr(this MetadataReader reader, CustomAttributeHandleCollection handles)
         {
             ArgumentNullException.ThrowIfNull(reader);
             var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.ComOutPtrAttribute);
+            return !handle.IsNil;
+        }
+
+        public static bool IsConst(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(reader);
+            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.ConstAttribute);
             return !handle.IsNil;
         }
 

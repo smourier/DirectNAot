@@ -3,10 +3,12 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using Win32InteropBuilder.Languages;
 using Win32InteropBuilder.Model;
 using Win32InteropBuilder.Utilities;
 
@@ -20,6 +22,69 @@ namespace Win32InteropBuilder
             AllowTrailingCommas = true,
             Converters = { new EncodingConverter() }
         };
+
+        public static void Run(string configurationPath, string winMdPath)
+        {
+            ArgumentNullException.ThrowIfNull(configurationPath);
+            ArgumentNullException.ThrowIfNull(winMdPath);
+
+            BuilderConfiguration? configuration;
+            try
+            {
+                using var stream = File.OpenRead(configurationPath);
+                configuration = JsonSerializer.Deserialize<BuilderConfiguration>(stream, JsonSerializerOptions);
+                EnumBasedException<Win32InteropBuilderExceptionCode>.ThrowIfNull(Win32InteropBuilderExceptionCode.InvalidConfiguration, configuration);
+            }
+            catch (Exception ex)
+            {
+                throw new EnumBasedException<Win32InteropBuilderExceptionCode>(Win32InteropBuilderExceptionCode.InvalidConfiguration, ex);
+            }
+
+            if (configuration.BuilderTypeFilePath != null)
+            {
+                Assembly.LoadFrom(configuration.BuilderTypeFilePath);
+            }
+
+            if (configuration.Language?.TypeFilePath != null)
+            {
+                Assembly.LoadFrom(configuration.Language.TypeFilePath);
+            }
+
+            configuration.Language ??= new BuilderConfiguration.LanguageConfiguration();
+            configuration.Language.TypeName ??= typeof(CSharpLanguage).AssemblyQualifiedName!;
+            configuration.BuilderTypeName ??= typeof(Builder).AssemblyQualifiedName!;
+            configuration.WinMdPath ??= Path.Combine(winMdPath, "Windows.Win32.winmd");
+            configuration.OutputDirectoryPath ??= Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? Path.GetFileNameWithoutExtension(configurationPath));
+
+            var builderType = Type.GetType(configuration.BuilderTypeName, true)!;
+            var builder = (Builder)Activator.CreateInstance(builderType)!;
+
+            var languageType = Type.GetType(configuration.Language.TypeName, true)!;
+            var language = (ILanguage)Activator.CreateInstance(languageType)!;
+
+            // reread file to configure per language
+            using var stream2 = File.OpenRead(configurationPath);
+            var configurationDic = JsonSerializer.Deserialize<Dictionary<string, object>>(stream2, JsonSerializerOptions);
+            if (configurationDic?.TryGetValue(nameof(configuration.Language), out var languageConfig) == true &&
+                languageConfig is JsonElement element &&
+                element.ValueKind == JsonValueKind.Object &&
+                element.TryGetProperty(language.Name, out var perLangConfig))
+            {
+                language.Configure(perLangConfig);
+            }
+
+            var context = builder.CreateBuilderContext(configuration, language);
+            context.Logger = new ConsoleLogger();
+            context.LogInfo($"Builder type name: {builder.GetType().FullName}");
+            context.LogInfo($"WinMd path: {configuration.WinMdPath}");
+            context.LogInfo($"Architecture: {configuration.Architecture}");
+            context.LogInfo($"Language: {language.Name}");
+            context.LogInfo($"Output path: {configuration.OutputDirectoryPath}");
+            context.LogInfo($"Output encoding: {configuration.FinalOutputEncoding.WebName}");
+            context.LogInfo($"Running {builderType!.FullName} builder...");
+            context.LogInfo();
+            builder.Build(context);
+        }
 
         public virtual BuilderContext CreateBuilderContext(BuilderConfiguration configuration, ILanguage language) => new(configuration, language);
 
@@ -168,17 +233,10 @@ namespace Win32InteropBuilder
             foreach (var type in context.TypesToBuild.OrderBy(t => t.FullName))
             {
                 var finalType = type;
-                //if (context.TypeDefinitions.TryGetValue(finalType.FullName, out var typeDef))
-                //{
-                //    var atts = typeDef.GetCustomAttributes();
-                //    context.MetadataReader.SetDocumentation(atts, finalType);
-                //    context.MetadataReader.SetSupportedOSPlatform(atts, finalType);
-                //}
-
-                Console.WriteLine(finalType);
+                context.LogVerbose(finalType);
                 if (context.MappedTypes.TryGetValue(type.FullName, out var mappedType))
                 {
-                    Console.WriteLine(finalType + " => " + mappedType);
+                    context.LogVerbose(finalType + " => " + mappedType);
                     finalType = mappedType;
                 }
 

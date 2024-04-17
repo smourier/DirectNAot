@@ -10,11 +10,11 @@ public partial interface IDXGIOutput : IDXGIObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDisplayModeList(DXGI_FORMAT EnumFormat, uint Flags, out uint pNumModes, out DXGI_MODE_DESC pDesc);
+    HRESULT GetDisplayModeList(DXGI_FORMAT EnumFormat, uint Flags, ref uint pNumModes, out DXGI_MODE_DESC pDesc);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindClosestMatchingMode(DXGI_MODE_DESC pModeToMatch, out DXGI_MODE_DESC pClosestMatch, nint pConcernedDevice);
+    HRESULT FindClosestMatchingMode(in DXGI_MODE_DESC pModeToMatch, out DXGI_MODE_DESC pClosestMatch, nint pConcernedDevice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -25,7 +25,7 @@ public partial interface IDXGIOutput : IDXGIObject
     HRESULT TakeOwnership(nint pDevice, [MarshalAs(UnmanagedType.U4)]bool Exclusive);
     
     [PreserveSig]
-    nint ReleaseOwnership();
+    void ReleaseOwnership();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -33,7 +33,7 @@ public partial interface IDXGIOutput : IDXGIObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGammaControl(DXGI_GAMMA_CONTROL pArray);
+    HRESULT SetGammaControl(in DXGI_GAMMA_CONTROL pArray);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

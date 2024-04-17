@@ -6,5 +6,5 @@ public partial interface IDXGIDeviceSubObject : IDXGIObject
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevice(Guid riid, out nint ppDevice);
+    HRESULT GetDevice(in Guid riid, out nint ppDevice);
 }

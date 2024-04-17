@@ -11,11 +11,11 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, DXGI_SWAP_CHAIN_DESC1 pDesc, DXGI_SWAP_CHAIN_FULLSCREEN_DESC pFullscreenDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, in DXGI_SWAP_CHAIN_DESC1 pDesc, in DXGI_SWAP_CHAIN_FULLSCREEN_DESC pFullscreenDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForCoreWindow(nint pDevice, nint pWindow, DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForCoreWindow(nint pDevice, nint pWindow, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     HRESULT RegisterStereoStatusEvent(HANDLE hEvent, out uint pdwCookie);
     
     [PreserveSig]
-    nint UnregisterStereoStatus(uint dwCookie);
+    void UnregisterStereoStatus(uint dwCookie);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -41,9 +41,9 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     HRESULT RegisterOcclusionStatusEvent(HANDLE hEvent, out uint pdwCookie);
     
     [PreserveSig]
-    nint UnregisterOcclusionStatus(uint dwCookie);
+    void UnregisterOcclusionStatus(uint dwCookie);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForComposition(nint pDevice, DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForComposition(nint pDevice, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
 }

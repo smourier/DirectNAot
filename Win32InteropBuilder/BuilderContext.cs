@@ -1,9 +1,12 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using Win32InteropBuilder.Model;
+using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder
 {
@@ -23,6 +26,7 @@ namespace Win32InteropBuilder
 
         public BuilderConfiguration Configuration { get; }
         public ILanguage Language { get; }
+        public virtual ILogger? Logger { get; set; }
         public virtual SignatureTypeProvider SignatureTypeProvider { get; }
         public virtual CustomAttributeTypeProvider CustomAttributeTypeProvider { get; }
         public virtual MetadataReader? MetadataReader { get; set; }
@@ -44,6 +48,7 @@ namespace Win32InteropBuilder
         public virtual InterfaceType CreateInterfaceType(FullName fullName) => new(fullName);
         public virtual StructureType CreateStructureType(FullName fullName) => new(fullName);
         public virtual EnumType CreateEnumType(FullName fullName) => new(fullName);
+        public virtual DelegateType CreateDelegateType(FullName fullName) => new(fullName);
         public virtual BuilderMethod CreateBuilderMethod(string name) => new(name);
         public virtual BuilderParameter CreateBuilderParameter(string name, int sequenceNumber) => new(name, sequenceNumber);
         public virtual BuilderField CreateBuilderField(string name, BuilderType type) => new(name, type);
@@ -82,7 +87,6 @@ namespace Win32InteropBuilder
 
             var type = CreateBuilderTypeCore(typeDef);
             return type;
-
         }
 
         protected virtual BuilderType CreateBuilderTypeCore(TypeDefinition typeDef)
@@ -101,6 +105,10 @@ namespace Win32InteropBuilder
             var isEnum = MetadataReader.IsEnum(typeDef);
             if (isEnum)
                 return CreateEnumType(fn);
+
+            var isDelegate = MetadataReader.IsDelegate(typeDef);
+            if (isDelegate)
+                return CreateDelegateType(fn);
 
             return CreateBuilderType(fn);
         }
@@ -141,5 +149,11 @@ namespace Win32InteropBuilder
 
             return fullName;
         }
+
+        public void LogInfo(object? message = null, [CallerMemberName] string? methodName = null) => Log(TraceLevel.Info, message, methodName);
+        public void LogWarning(object? message = null, [CallerMemberName] string? methodName = null) => Log(TraceLevel.Warning, message, methodName);
+        public void LogError(object? message = null, [CallerMemberName] string? methodName = null) => Log(TraceLevel.Error, message, methodName);
+        public void LogVerbose(object? message = null, [CallerMemberName] string? methodName = null) => Log(TraceLevel.Verbose, message, methodName);
+        public virtual void Log(TraceLevel level, object? message = null, [CallerMemberName] string? methodName = null) => Logger?.Log(level, message, methodName);
     }
 }

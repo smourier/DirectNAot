@@ -11,11 +11,11 @@ public partial interface IDXGIDecodeSwapChain
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSourceRect(RECT pRect);
+    HRESULT SetSourceRect(in RECT pRect);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTargetRect(RECT pRect);
+    HRESULT SetTargetRect(in RECT pRect);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

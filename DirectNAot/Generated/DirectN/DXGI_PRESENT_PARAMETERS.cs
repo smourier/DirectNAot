@@ -5,7 +5,7 @@
 public partial struct DXGI_PRESENT_PARAMETERS
 {
     public uint DirtyRectsCount;
-    public RECT pDirtyRects;
-    public RECT pScrollRect;
-    public POINT pScrollOffset;
+    public nint pDirtyRects;
+    public nint pScrollRect;
+    public nint pScrollOffset;
 }

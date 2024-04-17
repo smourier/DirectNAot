@@ -27,11 +27,14 @@ namespace Win32InteropBuilder.Model
         public BuilderType(Type type)
             : this(new FullName(type))
         {
+            ArgumentNullException.ThrowIfNull(type);
+            ClrType = type;
         }
 
         public FullName FullName { get; }
         public BuilderType? BaseType { get; set; }
         public virtual BuilderType? DeclaringType { get; set; }
+        public virtual Type? ClrType { get; set; }
         public virtual TypeAttributes TypeAttributes { get; set; }
         public virtual bool IsGenerated { get; set; } = true;
         public virtual int Indirections { get; set; }
@@ -44,7 +47,6 @@ namespace Win32InteropBuilder.Model
         public virtual string? SupportedOSPlatform { get; set; }
         public virtual Guid? Guid { get; set; }
         public virtual string FileName => FullName.Name;
-        public virtual string? GeneratedName { get; set; }
         public virtual UnmanagedType? UnmanagedType { get; set; }
         public virtual PrimitiveTypeCode PrimitiveTypeCode { get; set; } = PrimitiveTypeCode.Object;
 
@@ -155,6 +157,8 @@ namespace Win32InteropBuilder.Model
 
                     parameter.Attributes = parameterDef.Attributes;
                     parameter.IsComOutPtr = context.MetadataReader.IsComOutPtr(parameterDef.GetCustomAttributes());
+                    parameter.IsConst = context.MetadataReader.IsConst(parameterDef.GetCustomAttributes());
+
                     method.Parameters.Add(parameter);
                 }
                 method.SortParameters();
@@ -241,15 +245,9 @@ namespace Win32InteropBuilder.Model
             if (context.MappedTypes.TryGetValue(FullName, out var mappedType) && mappedType != this)
                 return mappedType.GetGeneratedName(context);
 
-            if (GeneratedName != null)
-                return GeneratedName;
-
             var un = context.Configuration.GetGeneration();
             if (WellKnownTypes.All.TryGetValue(FullName, out var type))
             {
-                if (type.GeneratedName != null)
-                    return type.GeneratedName;
-
                 if (context.ImplicitNamespaces.Contains(type.FullName.Namespace))
                     return FullName.Name;
 
@@ -371,6 +369,9 @@ namespace Win32InteropBuilder.Model
             if (this is InlineArrayType at)
                 return context.CreateInlineArrayType(at.ElementType, at.Size);
 
+            if (this is DelegateType)
+                return context.CreateDelegateType(FullName);
+
             if (this is StructureType)
                 return context.CreateStructureType(FullName);
 
@@ -407,7 +408,6 @@ namespace Win32InteropBuilder.Model
             copy.Documentation = Documentation;
             copy.SupportedOSPlatform = SupportedOSPlatform;
             copy.Guid = Guid;
-            copy.GeneratedName = GeneratedName;
             copy.UnmanagedType = UnmanagedType;
         }
 

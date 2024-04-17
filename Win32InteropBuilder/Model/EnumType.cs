@@ -4,8 +4,18 @@ using System.Reflection.Metadata;
 
 namespace Win32InteropBuilder.Model
 {
-    public class EnumType(FullName fullName) : BuilderType(fullName)
+    public class EnumType : BuilderType
     {
+        public EnumType(FullName fullName)
+            : base(fullName)
+        {
+        }
+
+        public EnumType(Type type)
+            : base(type)
+        {
+        }
+
         public virtual bool IsFlags { get; set; }
         public virtual BuilderType? UnderlyingType { get; set; }
 

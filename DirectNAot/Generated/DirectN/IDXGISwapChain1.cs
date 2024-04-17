@@ -19,11 +19,11 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCoreWindow(Guid refiid, out nint ppUnk);
+    HRESULT GetCoreWindow(in Guid refiid, out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Present1(uint SyncInterval, uint PresentFlags, DXGI_PRESENT_PARAMETERS pPresentParameters);
+    HRESULT Present1(uint SyncInterval, uint PresentFlags, in DXGI_PRESENT_PARAMETERS pPresentParameters);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
@@ -35,7 +35,7 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBackgroundColor(DXGI_RGBA pColor);
+    HRESULT SetBackgroundColor(in DXGI_RGBA pColor);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

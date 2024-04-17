@@ -5,5 +5,5 @@
 public partial struct DXGI_MAPPED_RECT
 {
     public int Pitch;
-    public byte pBits;
+    public nint pBits;
 }

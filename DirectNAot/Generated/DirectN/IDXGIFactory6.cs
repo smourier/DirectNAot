@@ -7,5 +7,5 @@ public partial interface IDXGIFactory6 : IDXGIFactory5
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAdapterByGpuPreference(uint Adapter, DXGI_GPU_PREFERENCE GpuPreference, Guid riid, out nint ppvAdapter);
+    HRESULT EnumAdapterByGpuPreference(uint Adapter, DXGI_GPU_PREFERENCE GpuPreference, in Guid riid, out nint ppvAdapter);
 }

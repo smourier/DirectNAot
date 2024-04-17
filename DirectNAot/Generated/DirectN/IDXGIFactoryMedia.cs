@@ -7,9 +7,9 @@ public partial interface IDXGIFactoryMedia
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForCompositionSurfaceHandle(nint pDevice, HANDLE hSurface, DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForCompositionSurfaceHandle(nint pDevice, HANDLE hSurface, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDecodeSwapChainForCompositionSurfaceHandle(nint pDevice, HANDLE hSurface, DXGI_DECODE_SWAP_CHAIN_DESC pDesc, IDXGIResource pYuvDecodeBuffers, IDXGIOutput pRestrictToOutput, out IDXGIDecodeSwapChain ppSwapChain);
+    HRESULT CreateDecodeSwapChainForCompositionSurfaceHandle(nint pDevice, HANDLE hSurface, in DXGI_DECODE_SWAP_CHAIN_DESC pDesc, IDXGIResource pYuvDecodeBuffers, IDXGIOutput pRestrictToOutput, out IDXGIDecodeSwapChain ppSwapChain);
 }

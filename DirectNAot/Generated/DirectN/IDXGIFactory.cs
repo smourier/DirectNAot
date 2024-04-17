@@ -18,7 +18,7 @@ public partial interface IDXGIFactory : IDXGIObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChain(nint pDevice, DXGI_SWAP_CHAIN_DESC pDesc, out IDXGISwapChain ppSwapChain);
+    HRESULT CreateSwapChain(nint pDevice, in DXGI_SWAP_CHAIN_DESC pDesc, out IDXGISwapChain ppSwapChain);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

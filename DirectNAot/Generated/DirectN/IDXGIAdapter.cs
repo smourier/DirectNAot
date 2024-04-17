@@ -14,5 +14,5 @@ public partial interface IDXGIAdapter : IDXGIObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckInterfaceSupport(Guid InterfaceName, out long pUMDVersion);
+    HRESULT CheckInterfaceSupport(in Guid InterfaceName, out long pUMDVersion);
 }

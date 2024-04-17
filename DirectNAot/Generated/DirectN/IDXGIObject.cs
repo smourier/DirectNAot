@@ -6,17 +6,17 @@ public partial interface IDXGIObject
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateData(Guid Name, uint DataSize, nint pData);
+    HRESULT SetPrivateData(in Guid Name, uint DataSize, in nint pData);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateDataInterface(Guid Name, nint pUnknown);
+    HRESULT SetPrivateDataInterface(in Guid Name, nint pUnknown);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrivateData(Guid Name, out uint pDataSize, out nint pData);
+    HRESULT GetPrivateData(in Guid Name, ref uint pDataSize, out nint pData);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParent(Guid riid, out nint ppParent);
+    HRESULT GetParent(in Guid riid, out nint ppParent);
 }

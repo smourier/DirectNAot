@@ -38,12 +38,16 @@ namespace Win32InteropBuilder.Model
         public static FullName NativeTypedefAttribute { get; } = new("Windows.Win32.Foundation.Metadata.NativeTypedefAttribute");
         public static FullName DocumentationAttribute { get; } = new("Windows.Win32.Foundation.Metadata.DocumentationAttribute");
         public static FullName ComOutPtrAttribute { get; } = new("Windows.Win32.Foundation.Metadata.ComOutPtrAttribute");
+        public static FullName ConstAttribute { get; } = new("Windows.Win32.Foundation.Metadata.ConstAttribute");
         public static FullName SupportedOSPlatformAttribute { get; } = new("Windows.Win32.Foundation.Metadata.SupportedOSPlatformAttribute");
         public static FullName SupportedArchitectureAttribute { get; } = new("Windows.Win32.Foundation.Metadata.SupportedArchitectureAttribute");
         public static FullName GuidAttribute { get; } = new("Windows.Win32.Foundation.Metadata.GuidAttribute");
         public static FullName AnsiAttribute { get; } = new("Windows.Win32.Foundation.Metadata.AnsiAttribute");
         public static FullName UnicodeAttribute { get; } = new("Windows.Win32.Foundation.Metadata.UnicodeAttribute");
-        public static FullName OutAttribute { get; } = new(typeof(OutAttribute));
+        //public static FullName OutAttribute { get; } = new(typeof(OutAttribute));
+        //public static FullName InAttribute { get; } = new(typeof(InAttribute));
+        public static FullName UnmanagedFunctionPointerAttribute { get; } = new(typeof(UnmanagedFunctionPointerAttribute));
+        public static FullName MulticastDelegate { get; } = new(typeof(MulticastDelegate));
 
         public FullName(string @namespace, string name)
         {

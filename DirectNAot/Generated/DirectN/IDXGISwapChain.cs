@@ -10,7 +10,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(uint Buffer, Guid riid, out nint ppSurface);
+    HRESULT GetBuffer(uint Buffer, in Guid riid, out nint ppSurface);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ResizeTarget(DXGI_MODE_DESC pNewTargetParameters);
+    HRESULT ResizeTarget(in DXGI_MODE_DESC pNewTargetParameters);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

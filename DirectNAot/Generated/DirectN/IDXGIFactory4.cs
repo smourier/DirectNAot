@@ -6,9 +6,9 @@ public partial interface IDXGIFactory4 : IDXGIFactory3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAdapterByLuid(LUID AdapterLuid, Guid riid, out nint ppvAdapter);
+    HRESULT EnumAdapterByLuid(LUID AdapterLuid, in Guid riid, out nint ppvAdapter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumWarpAdapter(Guid riid, out nint ppvAdapter);
+    HRESULT EnumWarpAdapter(in Guid riid, out nint ppvAdapter);
 }

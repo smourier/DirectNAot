@@ -6,5 +6,5 @@ public partial interface IDXGIFactory5 : IDXGIFactory4
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckFeatureSupport(DXGI_FEATURE Feature, out nint pFeatureSupportData, uint FeatureSupportDataSize);
+    HRESULT CheckFeatureSupport(DXGI_FEATURE Feature, ref nint pFeatureSupportData, uint FeatureSupportDataSize);
 }
