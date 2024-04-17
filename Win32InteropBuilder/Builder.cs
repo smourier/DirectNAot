@@ -29,6 +29,10 @@ namespace Win32InteropBuilder
             if (context.Configuration.WinMdPath == null)
                 throw new ArgumentException(null, nameof(context));
 
+            var arch = context.Configuration.Architecture;
+            if (arch != Model.Architecture.X86 & arch != Model.Architecture.X64 && arch != Model.Architecture.Arm64)
+                throw new EnumBasedException<Win32InteropBuilderExceptionCode>(Win32InteropBuilderExceptionCode.UnsupportedArchitecture, $"Architecture: {arch}");
+
             using var stream = File.OpenRead(context.Configuration.WinMdPath);
             using var pe = new PEReader(stream);
             context.MetadataReader = pe.GetMetadataReader();
@@ -39,6 +43,7 @@ namespace Win32InteropBuilder
         protected virtual void GatherTypes(BuilderContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.Configuration);
             ArgumentNullException.ThrowIfNull(context.MetadataReader);
 
             AddWellKnownTypes(context);
@@ -47,11 +52,15 @@ namespace Win32InteropBuilder
 
             foreach (var typeDef in context.MetadataReader.TypeDefinitions.Select(context.MetadataReader.GetTypeDefinition))
             {
-                var type = context.CreateBuilderType(typeDef);
+                // skip non corresponding architectures
+                var arch = context.GetSupportedArchitecture(typeDef.GetCustomAttributes());
+                if (arch != null && (arch & context.Configuration.Architecture) != context.Configuration.Architecture)
+                    continue;
 
+                var type = context.CreateBuilderType(typeDef);
                 context.AllTypes[type.FullName] = type;
                 context.TypeDefinitions[type.FullName] = typeDef;
-                type.Guid = context.MetadataReader.GetInteropGuid(typeDef.GetCustomAttributes());
+                type.Guid = context.GetInteropGuid(typeDef.GetCustomAttributes());
 
                 foreach (var match in context.Configuration.TypeInputs.Where(x => x.Matches(type)))
                 {

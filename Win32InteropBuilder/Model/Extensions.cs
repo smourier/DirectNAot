@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata;
+using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder.Model
 {
@@ -96,37 +97,60 @@ namespace Win32InteropBuilder.Model
             }
         }
 
-        public static void SetDocumentation(this MetadataReader reader, CustomAttributeHandleCollection handles, IDocumentable documentable)
+        public static void SetDocumentation(this BuilderContext context, CustomAttributeHandleCollection handles, IDocumentable documentable)
         {
-            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
             ArgumentNullException.ThrowIfNull(documentable);
-            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.DocumentationAttribute);
+            var handle = handles.FirstOrDefault(h => context.MetadataReader.GetFullName(context.MetadataReader.GetCustomAttribute(h)) == FullName.DocumentationAttribute);
             if (handle.IsNil)
                 return;
 
-            var value = GetValue(reader.GetCustomAttribute(handle));
+            var value = GetValue(context, context.MetadataReader.GetCustomAttribute(handle));
             if (value.FixedArguments.Length > 0 && value.FixedArguments[0].Value is string s && !string.IsNullOrWhiteSpace(s))
             {
                 documentable.Documentation = s;
             }
         }
 
-        public static void SetSupportedOSPlatform(this MetadataReader reader, CustomAttributeHandleCollection handles, ISupportable supportable)
+        public static void SetSupportedOSPlatform(this BuilderContext context, CustomAttributeHandleCollection handles, ISupportable supportable)
         {
-            ArgumentNullException.ThrowIfNull(reader);
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
             ArgumentNullException.ThrowIfNull(supportable);
-            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.SupportedOSPlatformAttribute);
+            var handle = handles.FirstOrDefault(h => context.MetadataReader.GetFullName(context.MetadataReader.GetCustomAttribute(h)) == FullName.SupportedOSPlatformAttribute);
             if (handle.IsNil)
                 return;
 
-            var value = GetValue(reader.GetCustomAttribute(handle));
+            var value = GetValue(context, context.MetadataReader.GetCustomAttribute(handle));
             if (value.FixedArguments.Length > 0 && value.FixedArguments[0].Value is string s && !string.IsNullOrWhiteSpace(s))
             {
                 supportable.SupportedOSPlatform = s;
             }
         }
 
-        public static CustomAttributeValue<object?> GetValue(CustomAttribute attribute) => attribute.DecodeValue(CustomAttributeTypeProvider.Instance);
+        public static Architecture? GetSupportedArchitecture(this BuilderContext context, CustomAttributeHandleCollection handles)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+            var handle = handles.FirstOrDefault(h => context.MetadataReader.GetFullName(context.MetadataReader.GetCustomAttribute(h)) == FullName.SupportedArchitectureAttribute);
+            if (handle.IsNil)
+                return null;
+
+            var value = GetValue(context, context.MetadataReader.GetCustomAttribute(handle));
+            if (value.FixedArguments.Length == 1 &&
+                value.FixedArguments[0].Value != null &&
+                Conversions.TryChangeType<Architecture>(value.FixedArguments[0].Value, out var arch))
+                return arch;
+
+            return null;
+        }
+
+        public static CustomAttributeValue<object?> GetValue(this BuilderContext context, CustomAttribute attribute)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+            return attribute.DecodeValue(context.CustomAttributeTypeProvider);
+        }
 
         public static byte[]? GetConstantBytes(this MetadataReader reader, ConstantHandle handle)
         {
@@ -138,19 +162,21 @@ namespace Win32InteropBuilder.Model
             return reader.GetBlobBytes(constant.Value);
         }
 
-        public static Guid? GetInteropGuid(this MetadataReader reader, CustomAttributeHandleCollection handles)
+        public static Guid? GetInteropGuid(this BuilderContext context, CustomAttributeHandleCollection handles)
         {
-            ArgumentNullException.ThrowIfNull(reader);
-            var handle = handles.FirstOrDefault(h => reader.GetFullName(reader.GetCustomAttribute(h)) == FullName.GuidAttribute);
+            ArgumentNullException.ThrowIfNull(context);
+            ArgumentNullException.ThrowIfNull(context.MetadataReader);
+            var handle = handles.FirstOrDefault(h => context.MetadataReader.GetFullName(context.MetadataReader.GetCustomAttribute(h)) == FullName.GuidAttribute);
             if (handle.IsNil)
                 return null;
 
-            return GetInteropGuid(reader.GetCustomAttribute(handle));
+            return GetInteropGuid(context, context.MetadataReader.GetCustomAttribute(handle));
         }
 
-        public static Guid? GetInteropGuid(CustomAttribute attribute)
+        public static Guid? GetInteropGuid(this BuilderContext context, CustomAttribute attribute)
         {
-            var value = GetValue(attribute);
+            ArgumentNullException.ThrowIfNull(context);
+            var value = GetValue(context, attribute);
             if (value.FixedArguments.Length != 11)
                 return null;
 

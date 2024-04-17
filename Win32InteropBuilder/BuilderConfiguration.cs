@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using Win32InteropBuilder.Model;
 using Win32InteropBuilder.Utilities;
 
 namespace Win32InteropBuilder
@@ -18,6 +20,25 @@ namespace Win32InteropBuilder
         public virtual IList<BuilderMemberInput> MemberInputs { get; set; } = [];
         public virtual Encoding FinalOutputEncoding => OutputEncoding ?? Encoding.UTF8;
         public virtual BuilderGeneration Generation { get; set; } = new();
+        public virtual Architecture Architecture { get; set; } = GetCurrentArchitecture();
+
+        private static Architecture GetCurrentArchitecture()
+        {
+            switch (System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture)
+            {
+                case System.Runtime.InteropServices.Architecture.X64:
+                    return Architecture.X64;
+
+                case System.Runtime.InteropServices.Architecture.Arm64:
+                    return Architecture.Arm64;
+
+                case System.Runtime.InteropServices.Architecture.X86:
+                    return Architecture.X86;
+
+                default:
+                    throw new NotSupportedException();
+            }
+        }
 
         public class BuilderGeneration
         {

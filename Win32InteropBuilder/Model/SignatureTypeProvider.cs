@@ -112,14 +112,14 @@ namespace Win32InteropBuilder.Model
             throw new NotSupportedException();
         }
 
-        public virtual BuilderType GetTypeFromSpecification(MetadataReader reader, object? genericContext, TypeSpecificationHandle handle, byte rawTypeKind) => throw new NotImplementedException();
-        public virtual BuilderType GetSZArrayType(BuilderType elementType) => throw new NotImplementedException();
-        public virtual BuilderType GetByReferenceType(BuilderType elementType) => throw new NotImplementedException();
-        public virtual BuilderType GetFunctionPointerType(MethodSignature<BuilderType> signature) => throw new NotImplementedException();
-        public virtual BuilderType GetGenericInstantiation(BuilderType genericType, ImmutableArray<BuilderType> typeArguments) => throw new NotImplementedException();
-        public virtual BuilderType GetGenericMethodParameter(object? genericContext, int index) => throw new NotImplementedException();
-        public virtual BuilderType GetGenericTypeParameter(object? genericContext, int index) => throw new NotImplementedException();
-        public virtual BuilderType GetModifiedType(BuilderType modifier, BuilderType unmodifiedType, bool isRequired) => throw new NotImplementedException();
-        public virtual BuilderType GetPinnedType(BuilderType elementType) => throw new NotImplementedException();
+        public virtual BuilderType GetTypeFromSpecification(MetadataReader reader, object? genericContext, TypeSpecificationHandle handle, byte rawTypeKind) => throw new NotSupportedException();
+        public virtual BuilderType GetSZArrayType(BuilderType elementType) => throw new NotSupportedException();
+        public virtual BuilderType GetByReferenceType(BuilderType elementType) => throw new NotSupportedException();
+        public virtual BuilderType GetFunctionPointerType(MethodSignature<BuilderType> signature) => throw new NotSupportedException();
+        public virtual BuilderType GetGenericInstantiation(BuilderType genericType, ImmutableArray<BuilderType> typeArguments) => throw new NotSupportedException();
+        public virtual BuilderType GetGenericMethodParameter(object? genericContext, int index) => throw new NotSupportedException();
+        public virtual BuilderType GetGenericTypeParameter(object? genericContext, int index) => throw new NotSupportedException();
+        public virtual BuilderType GetModifiedType(BuilderType modifier, BuilderType unmodifiedType, bool isRequired) => throw new NotSupportedException();
+        public virtual BuilderType GetPinnedType(BuilderType elementType) => throw new NotSupportedException();
     }
 }

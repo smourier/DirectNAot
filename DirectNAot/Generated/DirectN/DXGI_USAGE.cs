@@ -1,7 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3ddxgi/dxgi-usage
-public enum DXGI_USAGE
+public enum DXGI_USAGE : uint
 {
     DXGI_USAGE_SHADER_INPUT = 16,
     DXGI_USAGE_RENDER_TARGET_OUTPUT = 32,

@@ -46,6 +46,7 @@ namespace InteropBuilder.Cli
             var builder = (Builder)Activator.CreateInstance(type)!;
             Console.WriteLine($"Builder type name: {builder.GetType().FullName}");
             Console.WriteLine($"WinMd path: {configuration.WinMdPath}");
+            Console.WriteLine($"Architecture: {configuration.Architecture}");
             Console.WriteLine($"Output path: {configuration.OutputDirectoryPath}");
             Console.WriteLine($"Output encoding: {configuration.FinalOutputEncoding}");
             Console.WriteLine($"Running {type!.FullName} builder...");

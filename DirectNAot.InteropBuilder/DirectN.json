@@ -9,7 +9,7 @@
   },
   "TypeInputs": [
     "IDXGIFactory*",
-    "Windows.Win32.Graphics.Direct2D.Apis",
+    //"Windows.Win32.Graphics.Direct2D.Apis",
     "Windows.Win32.Graphics.Dxgi.Apis"
     //"!IDXGIFactoryMedia"
   ],

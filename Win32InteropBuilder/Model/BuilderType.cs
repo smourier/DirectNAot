@@ -48,6 +48,7 @@ namespace Win32InteropBuilder.Model
         public virtual string FileName => FullName.Name;
         public virtual string? GeneratedName { get; set; }
         public virtual UnmanagedType? UnmanagedType { get; set; }
+        public virtual PrimitiveTypeCode PrimitiveTypeCode { get; set; } = PrimitiveTypeCode.Object;
 
         public virtual bool IsConstableType() => FullName.IsConstableType(FullName);
 
@@ -58,19 +59,6 @@ namespace Win32InteropBuilder.Model
 
             context.TypesToBuild.Add(this);
             TypeAttributes = typeDef.Attributes;
-
-            var declaringTypeHandle = typeDef.GetDeclaringType();
-            if (!declaringTypeHandle.IsNil)
-            {
-                var declaringTypeDef = context.MetadataReader.GetTypeDefinition(declaringTypeHandle);
-                var declaringType = context.CreateBuilderType(declaringTypeDef);
-                if (!context.TypesToBuild.TryGetValue(declaringType, out var existing))
-                {
-                    existing = declaringType;
-                    context.AddDependencies(existing);
-                }
-                DeclaringType = existing;
-            }
 
             var baseTypeHandle = typeDef.BaseType;
             if (!baseTypeHandle.IsNil)
@@ -85,8 +73,8 @@ namespace Win32InteropBuilder.Model
                     throw new NotSupportedException();
             }
 
-            context.MetadataReader.SetDocumentation(typeDef.GetCustomAttributes(), this);
-            context.MetadataReader.SetSupportedOSPlatform(typeDef.GetCustomAttributes(), this);
+            context.SetDocumentation(typeDef.GetCustomAttributes(), this);
+            context.SetSupportedOSPlatform(typeDef.GetCustomAttributes(), this);
 
             ResolveNestedTypes(context, typeDef);
             ResolveMethods(context, typeDef);
@@ -137,8 +125,8 @@ namespace Win32InteropBuilder.Model
                     method.ImportModuleName = context.MetadataReader.GetString(module.Name);
                 }
 
-                context.MetadataReader.SetSupportedOSPlatform(methodDef.GetCustomAttributes(), method);
-                context.MetadataReader.SetDocumentation(methodDef.GetCustomAttributes(), method);
+                context.SetSupportedOSPlatform(methodDef.GetCustomAttributes(), method);
+                context.SetDocumentation(methodDef.GetCustomAttributes(), method);
 
                 Methods.Add(method);
                 foreach (var phandle in methodDef.GetParameters())
@@ -212,7 +200,7 @@ namespace Win32InteropBuilder.Model
                 // bit of a hack for guids
                 if (field.DefaultValueAsBytes == null && field.Type.FullName == WellKnownTypes.SystemGuid.FullName)
                 {
-                    var guid = context.MetadataReader.GetInteropGuid(fieldDef.GetCustomAttributes());
+                    var guid = context.GetInteropGuid(fieldDef.GetCustomAttributes());
                     if (guid.HasValue)
                     {
                         field.DefaultValueAsBytes = guid.Value.ToByteArray();
@@ -265,8 +253,16 @@ namespace Win32InteropBuilder.Model
 
         protected virtual void SortCollections()
         {
-            _methods.Sort();
-            _fields.Sort();
+            if (this is not InterfaceType)
+            {
+                _methods.Sort();
+            }
+
+            if (this is not StructureType && this is not EnumType)
+            {
+                _fields.Sort();
+            }
+
             _interfaces.Sort();
             _nestedTypes.Sort();
         }

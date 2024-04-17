@@ -5,5 +5,6 @@
         Unspecified,
         InvalidConfiguration,
         AmbiguousMatch,
+        UnsupportedArchitecture,
     }
 }
