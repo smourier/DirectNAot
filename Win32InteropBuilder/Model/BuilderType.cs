@@ -106,15 +106,22 @@ namespace Win32InteropBuilder.Model
 
                 nestedType.IsGenerated = false;
                 context.CurrentTypes.Push(nestedType);
-                if (!context.TypesToBuild.TryGetValue(nestedType, out var existing))
+                try
                 {
-                    existing = nestedType;
-                    context.AddDependencies(existing);
-                }
+                    if (!context.TypesToBuild.TryGetValue(nestedType, out var existing))
+                    {
+                        existing = nestedType;
+                        context.AddDependencies(existing);
+                    }
 
-                NestedTypes.Add(existing);
-                if (context.CurrentTypes.Pop() != nestedType)
-                    throw new InvalidOperationException();
+                    NestedTypes.Add(existing);
+
+                }
+                finally
+                {
+                    if (context.CurrentTypes.Pop() != nestedType)
+                        throw new InvalidOperationException();
+                }
             }
         }
 
@@ -300,25 +307,33 @@ namespace Win32InteropBuilder.Model
 
             SortCollections();
 
-            // base type handling (only for functions and constants)
             if (GetType() == typeof(BuilderType))
             {
+                // base type handling only (including constants & functions)
                 var un = context.Configuration.GetGeneration();
                 if (un != null)
                 {
-                    if (un.ConstantsFileName != null)
+                    var ico = isConstants();
+                    var ifu = isFunctions();
+                    if (!ico && !ifu)
                     {
-                        context.ConstantsTypes.Add(this);
+                        if (un.ConstantsFileName != null)
+                        {
+                            context.ConstantsTypes.Add(this);
+                        }
+
+                        if (un.FunctionsFileName != null)
+                        {
+                            context.FunctionsTypes.Add(this);
+                        }
+
+                        // nothing to do here?
+                        if (un.ConstantsFileName != null && un.FunctionsFileName != null)
+                            return;
                     }
 
-                    if (un.FunctionsFileName != null)
-                    {
-                        context.FunctionsTypes.Add(this);
-                    }
-
-                    // nothing to do here?
-                    if (un.ConstantsFileName != null && un.FunctionsFileName != null)
-                        return;
+                    bool isConstants() => FullName.Namespace == un.Namespace && FullName.Name == un.ConstantsFileName;
+                    bool isFunctions() => FullName.Namespace == un.Namespace && FullName.Name == un.FunctionsFileName;
                 }
             }
 

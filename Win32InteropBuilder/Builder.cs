@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -258,79 +257,31 @@ namespace Win32InteropBuilder
             var un = context.Configuration.GetGeneration();
             if (un != null)
             {
+                // build pseudo-types
                 if (un.ConstantsFileName != null)
                 {
-                    GenerateFile(context, un.ConstantsFileName, () =>
+                    var fields = context.ConstantsTypes.SelectMany(t => t.Fields).ToHashSet();
+                    var constantsType = context.CreateBuilderType(new FullName(un.Namespace!, un.ConstantsFileName));
+                    constantsType.Fields.AddRange(fields);
+
+                    if (constantsType.IsGenerated)
                     {
-                        var fields = context.ConstantsTypes.SelectMany(t => t.Fields).ToHashSet();
-                    });
+                        constantsType.Generate(context);
+                    }
                 }
 
                 if (un.FunctionsFileName != null)
                 {
-                    GenerateFile(context, un.FunctionsFileName, () =>
+                    var functions = context.FunctionsTypes.SelectMany(t => t.Methods).ToHashSet();
+                    var functionsType = context.CreateBuilderType(new FullName(un.Namespace!, un.FunctionsFileName));
+                    functionsType.Methods.AddRange(functions);
+
+                    if (functionsType.IsGenerated)
                     {
-                        var functions = context.FunctionsTypes.SelectMany(t => t.Fields).ToHashSet();
-                    });
+                        functionsType.Generate(context);
+                    }
                 }
             }
-        }
-
-        protected virtual void GenerateFile(BuilderContext context, string fileName, Action generate)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Configuration);
-            ArgumentNullException.ThrowIfNull(context.Configuration.OutputDirectoryPath);
-            ArgumentNullException.ThrowIfNull(fileName);
-            ArgumentNullException.ThrowIfNull(generate);
-
-            var un = context.Configuration.GetGeneration();
-            if (un == null)
-                return;
-
-            using var writer = new StringWriter();
-            context.CurrentWriter = new IndentedTextWriter(writer);
-            try
-            {
-                generate();
-            }
-            finally
-            {
-                context.CurrentWriter.Dispose();
-                context.CurrentWriter = null;
-            }
-
-            var ns = un.Namespace!.Replace('.', Path.DirectorySeparatorChar);
-            var text = writer.ToString();
-            fileName += ".cs";
-            var typePath = Path.Combine(context.Configuration.OutputDirectoryPath, ns, fileName);
-            if (IOUtilities.PathIsFile(typePath))
-            {
-                var existingText = EncodingDetector.ReadAllText(typePath, context.Configuration.EncodingDetectorMode, out _);
-                if (text == existingText)
-                {
-                    context.ExistingFiles.Remove(typePath);
-                    return;
-                }
-            }
-
-            IOUtilities.FileEnsureDirectory(typePath);
-            File.WriteAllText(typePath, text, context.Configuration.FinalOutputEncoding);
-            context.ExistingFiles.Remove(typePath);
-        }
-
-        protected virtual void GenerateFunctionsTypes(BuilderContext context)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            if (context.FunctionsTypes.Count == 0)
-                return;
-        }
-
-        protected virtual void GenerateConstantsTypes(BuilderContext context)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            if (context.ConstantsTypes.Count == 0)
-                return;
         }
     }
 }

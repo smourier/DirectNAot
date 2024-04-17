@@ -52,7 +52,7 @@ namespace Win32InteropBuilder.Languages
             if (name == null)
                 return null;
 
-            if (name.IndexOf('.') >= 0)
+            if (name.Contains('.'))
             {
                 var split = name.Split('.');
                 return string.Join('.', split.Select(s => GetIdentifier(s)));
@@ -151,42 +151,36 @@ namespace Win32InteropBuilder.Languages
             context.CurrentWriter.WriteLine();
             context.CurrentWriter.WithParens(() =>
             {
-                if (un == null || un.ConstantsFileName == null)
+                for (var i = 0; i < type.Fields.Count; i++)
                 {
-                    for (var i = 0; i < type.Fields.Count; i++)
+                    var field = type.Fields[i];
+                    if (field.Documentation != null)
                     {
-                        var field = type.Fields[i];
-                        if (field.Documentation != null)
-                        {
-                            context.CurrentWriter.WriteLine("// " + field.Documentation);
-                        }
+                        context.CurrentWriter.WriteLine("// " + field.Documentation);
+                    }
 
-                        var mapped = context.MapType(field.Type);
-                        if (mapped.UnmanagedType.HasValue)
-                        {
-                            context.CurrentWriter.WriteLine($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
-                        }
+                    var mapped = context.MapType(field.Type);
+                    if (mapped.UnmanagedType.HasValue)
+                    {
+                        context.CurrentWriter.WriteLine($"[MarshalAs(UnmanagedType.{mapped.UnmanagedType.Value})]");
+                    }
 
-                        var constText = field.Attributes.HasFlag(FieldAttributes.Literal) && field.Type.IsConstableType() ? "const" : "static readonly";
-                        context.CurrentWriter.WriteLine($"public {constText} {GetTypeReferenceName(mapped.GetGeneratedName(context))} {GetIdentifier(field.Name)} = {GetValueAsString(field.Type, field.DefaultValue)};");
+                    var constText = field.Attributes.HasFlag(FieldAttributes.Literal) && field.Type.IsConstableType() ? "const" : "static readonly";
+                    context.CurrentWriter.WriteLine($"public {constText} {GetTypeReferenceName(mapped.GetGeneratedName(context))} {GetIdentifier(field.Name)} = {GetValueAsString(field.Type, field.DefaultValue)};");
 
-                        if (i != type.Fields.Count - 1 || type.Methods.Count > 0)
-                        {
-                            context.CurrentWriter.WriteLine();
-                        }
+                    if (i != type.Fields.Count - 1 || type.Methods.Count > 0)
+                    {
+                        context.CurrentWriter.WriteLine();
                     }
                 }
 
-                if (un == null || un.FunctionsFileName == null)
+                for (var i = 0; i < type.Methods.Count; i++)
                 {
-                    for (var i = 0; i < type.Methods.Count; i++)
+                    var method = type.Methods[i];
+                    GenerateCode(context, method);
+                    if (i != type.Methods.Count - 1)
                     {
-                        var method = type.Methods[i];
-                        GenerateCode(context, method);
-                        if (i != type.Methods.Count - 1)
-                        {
-                            context.CurrentWriter.WriteLine();
-                        }
+                        context.CurrentWriter.WriteLine();
                     }
                 }
             });
