@@ -12,8 +12,9 @@ namespace Win32InteropBuilder.Model
             Size = size;
         }
 
-        public BuilderType ElementType { get; protected set; }
-        public int Size { get; protected set; }
+        public virtual BuilderType ElementType { get; protected set; }
+        public virtual int Size { get; protected set; }
+        public virtual string? ElementName { get; set; }
 
         protected override void CopyTo(BuilderType copy)
         {

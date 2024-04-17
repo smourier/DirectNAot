@@ -340,7 +340,15 @@ namespace Win32InteropBuilder.Languages
             context.CurrentWriter.WriteLine($"public partial struct {GetIdentifier(type.FullName.Name)}");
             context.CurrentWriter.WithParens(() =>
             {
-                context.CurrentWriter.WriteLine($"public {GetTypeReferenceName(type.ElementType.GetGeneratedName(context))} Data;");
+                var elementName = type.ElementName ?? "Data";
+                var typeName = GetTypeReferenceName(type.ElementType.GetGeneratedName(context));
+                context.CurrentWriter.WriteLine($"public {typeName} {elementName};");
+
+                if (typeName == "char")
+                {
+                    context.CurrentWriter.WriteLine();
+                    context.CurrentWriter.WriteLine($"public override readonly string ToString() => ((ReadOnlySpan<char>)this).ToString();");
+                }
             });
         }
 
