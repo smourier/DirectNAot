@@ -8,7 +8,7 @@ public partial interface IStream : ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-seek
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Seek(long dlibMove, STREAM_SEEK dwOrigin, nint /* ulong */ plibNewPosition);
+    public HRESULT Seek(long dlibMove, STREAM_SEEK dwOrigin, nint/* nint */ plibNewPosition);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-setsize
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IStream : ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-copyto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyTo(IStream pstm, ulong cb, nint /* ulong */ pcbRead, nint /* ulong */ pcbWritten);
+    public HRESULT CopyTo(IStream pstm, ulong cb, nint/* nint */ pcbRead, nint/* nint */ pcbWritten);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-commit
     [PreserveSig]

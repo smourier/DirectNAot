@@ -13,9 +13,8 @@
     }
   },
   "TypeInputs": [
-    "Windows.Win32.Graphics.Direct2D*",
-    "Windows.Win32.Graphics.Dxgi*"
-    //"!IDXGIFactoryMedia"
+    "Windows.Win32.Graphics*",
+    "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   "MemberInputs": [
     //"!CreateDXGIFactory"

@@ -77,7 +77,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-isattributespecified
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsAttributeSpecified(PWSTR name, nint /* bool */ inherited);
+    public bool IsAttributeSpecified(PWSTR name, nint/* nint */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributecount
     [PreserveSig]
@@ -86,12 +86,12 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSpecifiedAttributeName(uint index, out PWSTR name, uint nameCount, nint /* bool */ inherited);
+    public HRESULT GetSpecifiedAttributeName(uint index, out PWSTR name, uint nameCount, nint/* nint */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributenamelength
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSpecifiedAttributeNameLength(uint index, out uint nameLength, nint /* bool */ inherited);
+    public HRESULT GetSpecifiedAttributeNameLength(uint index, out uint nameLength, nint/* nint */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-removeattribute
     [PreserveSig]

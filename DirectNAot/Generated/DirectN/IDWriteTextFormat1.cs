@@ -1,0 +1,45 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/DirectWrite/idwritetextformat1
+[SupportedOSPlatform("windows8.1")]
+[GeneratedComInterface, Guid("5f174b49-0d8b-4cfb-8bca-f1cce9d06c67")]
+public partial interface IDWriteTextFormat1 : IDWriteTextFormat
+{
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setverticalglyphorientation
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT SetVerticalGlyphOrientation(DWRITE_VERTICAL_GLYPH_ORIENTATION glyphOrientation);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-getverticalglyphorientation
+    [PreserveSig]
+    public DWRITE_VERTICAL_GLYPH_ORIENTATION GetVerticalGlyphOrientation();
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setlastlinewrapping
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT SetLastLineWrapping([MarshalAs(UnmanagedType.U4)] bool isLastLineWrappingEnabled);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-getlastlinewrapping
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public bool GetLastLineWrapping();
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setopticalalignment
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT SetOpticalAlignment(DWRITE_OPTICAL_ALIGNMENT opticalAlignment);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-getopticalalignment
+    [PreserveSig]
+    public DWRITE_OPTICAL_ALIGNMENT GetOpticalAlignment();
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setfontfallback
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT SetFontFallback(IDWriteFontFallback fontFallback);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-getfontfallback
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetFontFallback(out IDWriteFontFallback fontFallback);
+}

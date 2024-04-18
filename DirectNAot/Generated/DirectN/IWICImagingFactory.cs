@@ -8,7 +8,7 @@ public partial interface IWICImagingFactory
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimagingfactory-createdecoderfromfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDecoderFromFilename(PWSTR wzFilename, nint /* Guid */ pguidVendor, GENERIC_ACCESS_RIGHTS dwDesiredAccess, WICDecodeOptions metadataOptions, out IWICBitmapDecoder ppIDecoder);
+    public HRESULT CreateDecoderFromFilename(PWSTR wzFilename, nint/* nint */ pguidVendor, GENERIC_ACCESS_RIGHTS dwDesiredAccess, WICDecodeOptions metadataOptions, out IWICBitmapDecoder ppIDecoder);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimagingfactory-createdecoderfromstream
     [PreserveSig]

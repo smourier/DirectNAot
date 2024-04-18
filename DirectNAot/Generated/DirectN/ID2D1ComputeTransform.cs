@@ -13,5 +13,5 @@ public partial interface ID2D1ComputeTransform : ID2D1Transform
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1computetransform-calculatethreadgroups
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CalculateThreadgroups(in RECT outputRect, out uint dimensionX, out uint dimensionY, out uint dimensionZ);
+    public HRESULT CalculateThreadgroups(FoundationRECT outputRect, out uint dimensionX, out uint dimensionY, out uint dimensionZ);
 }

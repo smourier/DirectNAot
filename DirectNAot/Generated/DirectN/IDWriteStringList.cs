@@ -1,0 +1,30 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/nn-dwrite_3-idwritestringlist
+[GeneratedComInterface, Guid("cfee3140-1157-47ca-8b85-31bfcf3f2d0e")]
+public partial interface IDWriteStringList
+{
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getcount
+    [PreserveSig]
+    public uint GetCount();
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getlocalenamelength
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetLocaleNameLength(uint listIndex, out uint length);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getlocalename
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetLocaleName(uint listIndex, out PWSTR localeName, uint size);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getstringlength
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetStringLength(uint listIndex, out uint length);
+    
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getstring
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetString(uint listIndex, out PWSTR stringBuffer, uint stringBufferSize);
+}

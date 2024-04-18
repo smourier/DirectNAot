@@ -1,0 +1,11 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_primitive_topology_type
+public enum D3D12_PRIMITIVE_TOPOLOGY_TYPE
+{
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_UNDEFINED = 0,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT = 1,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE = 2,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE = 3,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_PATCH = 4,
+}

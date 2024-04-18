@@ -13,12 +13,12 @@ public partial interface IDXGIDecodeSwapChain
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-setsourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSourceRect(in RECT pRect);
+    public HRESULT SetSourceRect(FoundationRECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-settargetrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTargetRect(in RECT pRect);
+    public HRESULT SetTargetRect(FoundationRECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-setdestsize
     [PreserveSig]
@@ -28,12 +28,12 @@ public partial interface IDXGIDecodeSwapChain
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-getsourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSourceRect(out RECT pRect);
+    public HRESULT GetSourceRect(out FoundationRECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-gettargetrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTargetRect(out RECT pRect);
+    public HRESULT GetTargetRect(out FoundationRECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgidecodeswapchain-getdestsize
     [PreserveSig]

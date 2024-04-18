@@ -8,10 +8,10 @@ public partial interface ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-isequentialstream-read
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Read(nint pv, uint cb, nint /* uint */ pcbRead);
+    public HRESULT Read(nint pv, uint cb, nint/* nint */ pcbRead);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-isequentialstream-write
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Write(nint pv, uint cb, nint /* uint */ pcbWritten);
+    public HRESULT Write(nint pv, uint cb, nint/* nint */ pcbWritten);
 }

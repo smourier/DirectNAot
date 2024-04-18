@@ -4,8 +4,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_OUTPUT_DESC
 {
-    public InlineArrayChar32 DeviceName;
-    public RECT DesktopCoordinates;
+    public InlineArraySystemChar32 DeviceName;
+    public FoundationRECT DesktopCoordinates;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool AttachedToDesktop;

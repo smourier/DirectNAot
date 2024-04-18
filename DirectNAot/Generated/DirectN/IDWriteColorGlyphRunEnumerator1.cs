@@ -1,0 +1,11 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/nn-dwrite_3-idwritecolorglyphrunenumerator1
+[GeneratedComInterface, Guid("7c5f86da-c7a1-4f05-b8e1-55a179fe5a35")]
+public partial interface IDWriteColorGlyphRunEnumerator1 : IDWriteColorGlyphRunEnumerator
+{
+    // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritecolorglyphrunenumerator1-getcurrentrun
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetCurrentRun(out DWRITE_COLOR_GLYPH_RUN1 colorGlyphRun);
+}

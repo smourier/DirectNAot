@@ -52,12 +52,12 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getdocumentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDocumentation(int memid, nint /* BSTR */ pBstrName, nint /* BSTR */ pBstrDocString, out uint pdwHelpContext, nint /* BSTR */ pBstrHelpFile);
+    public HRESULT GetDocumentation(int memid, nint/* nint */ pBstrName, nint/* nint */ pBstrDocString, out uint pdwHelpContext, nint/* nint */ pBstrHelpFile);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getdllentry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDllEntry(int memid, INVOKEKIND invKind, nint /* BSTR */ pBstrDllName, nint /* BSTR */ pBstrName, out ushort pwOrdinal);
+    public HRESULT GetDllEntry(int memid, INVOKEKIND invKind, nint/* nint */ pBstrDllName, nint/* nint */ pBstrName, out ushort pwOrdinal);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getreftypeinfo
     [PreserveSig]

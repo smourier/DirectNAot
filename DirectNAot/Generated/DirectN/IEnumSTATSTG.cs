@@ -8,7 +8,7 @@ public partial interface IEnumSTATSTG
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Next(uint celt, out STATSTG rgelt, nint /* uint */ pceltFetched);
+    public HRESULT Next(uint celt, out STATSTG rgelt, nint/* nint */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-skip
     [PreserveSig]

@@ -12,7 +12,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getfiles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFiles(ref uint numberOfFiles, nint /* IDWriteFontFile */ fontFiles);
+    public HRESULT GetFiles(ref uint numberOfFiles, nint/* nint */ fontFiles);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getindex
     [PreserveSig]
@@ -57,7 +57,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getglyphrunoutline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGlyphRunOutline(float emSize, in ushort glyphIndices, nint /* float */ glyphAdvances, nint /* DWRITE_GLYPH_OFFSET */ glyphOffsets, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
+    public HRESULT GetGlyphRunOutline(float emSize, in ushort glyphIndices, nint/* nint */ glyphAdvances, nint/* nint */ glyphOffsets, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getrecommendedrenderingmode
     [PreserveSig]
@@ -67,10 +67,10 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontface-getgdicompatiblemetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGdiCompatibleMetrics(float emSize, float pixelsPerDip, nint /* DWRITE_MATRIX */ transform, out DWRITE_FONT_METRICS fontFaceMetrics);
+    public HRESULT GetGdiCompatibleMetrics(float emSize, float pixelsPerDip, nint/* nint */ transform, out DWRITE_FONT_METRICS fontFaceMetrics);
     
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontface-getgdicompatibleglyphmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint /* DWRITE_MATRIX */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, in ushort glyphIndices, uint glyphCount, out DWRITE_GLYPH_METRICS glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    public HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint/* nint */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, in ushort glyphIndices, uint glyphCount, out DWRITE_GLYPH_METRICS glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
 }

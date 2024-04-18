@@ -17,7 +17,7 @@ public partial interface IDXGIOutputDuplication : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframedirtyrects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFrameDirtyRects(uint DirtyRectsBufferSize, out RECT pDirtyRectsBuffer, out uint pDirtyRectsBufferSizeRequired);
+    public HRESULT GetFrameDirtyRects(uint DirtyRectsBufferSize, out FoundationRECT pDirtyRectsBuffer, out uint pDirtyRectsBufferSizeRequired);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframemoverects
     [PreserveSig]

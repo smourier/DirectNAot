@@ -1,0 +1,12 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d11/ne-d3d11-d3d11_texturecube_face
+public enum D3D11_TEXTURECUBE_FACE
+{
+    D3D11_TEXTURECUBE_FACE_POSITIVE_X = 0,
+    D3D11_TEXTURECUBE_FACE_NEGATIVE_X = 1,
+    D3D11_TEXTURECUBE_FACE_POSITIVE_Y = 2,
+    D3D11_TEXTURECUBE_FACE_NEGATIVE_Y = 3,
+    D3D11_TEXTURECUBE_FACE_POSITIVE_Z = 4,
+    D3D11_TEXTURECUBE_FACE_NEGATIVE_Z = 5,
+}

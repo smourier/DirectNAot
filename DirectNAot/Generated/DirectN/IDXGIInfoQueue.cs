@@ -17,7 +17,7 @@ public partial interface IDXGIInfoQueue
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getmessage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMessage(Guid Producer, ulong MessageIndex, nint /* DXGI_INFO_QUEUE_MESSAGE */ pMessage, ref nuint pMessageByteLength);
+    public HRESULT GetMessage(Guid Producer, ulong MessageIndex, nint/* nint */ pMessage, ref nuint pMessageByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getnumstoredmessagesallowedbyretrievalfilters
     [PreserveSig]
@@ -51,7 +51,7 @@ public partial interface IDXGIInfoQueue
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getstoragefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetStorageFilter(Guid Producer, nint /* DXGI_INFO_QUEUE_FILTER */ pFilter, ref nuint pFilterByteLength);
+    public HRESULT GetStorageFilter(Guid Producer, nint/* nint */ pFilter, ref nuint pFilterByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-clearstoragefilter
     [PreserveSig]
@@ -93,7 +93,7 @@ public partial interface IDXGIInfoQueue
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getretrievalfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetRetrievalFilter(Guid Producer, nint /* DXGI_INFO_QUEUE_FILTER */ pFilter, ref nuint pFilterByteLength);
+    public HRESULT GetRetrievalFilter(Guid Producer, nint/* nint */ pFilter, ref nuint pFilterByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-clearretrievalfilter
     [PreserveSig]

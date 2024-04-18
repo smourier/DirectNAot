@@ -47,12 +47,12 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createstrokestyle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES strokeStyleProperties, nint /* float */ dashes, uint dashesCount, out ID2D1StrokeStyle strokeStyle);
+    public HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES strokeStyleProperties, nint/* nint */ dashes, uint dashesCount, out ID2D1StrokeStyle strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createdrawingstateblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDrawingStateBlock(nint /* D2D1_DRAWING_STATE_DESCRIPTION */ drawingStateDescription, IDWriteRenderingParams textRenderingParams, out ID2D1DrawingStateBlock drawingStateBlock);
+    public HRESULT CreateDrawingStateBlock(nint/* nint */ drawingStateDescription, IDWriteRenderingParams textRenderingParams, out ID2D1DrawingStateBlock drawingStateBlock);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createwicbitmaprendertarget
     [PreserveSig]

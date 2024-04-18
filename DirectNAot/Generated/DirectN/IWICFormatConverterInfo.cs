@@ -1,0 +1,17 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nn-wincodec-iwicformatconverterinfo
+[SupportedOSPlatform("windows5.1.2600")]
+[GeneratedComInterface, Guid("9f34fb65-13f4-4f15-bc57-3726b5e53d9f")]
+public partial interface IWICFormatConverterInfo : IWICComponentInfo
+{
+    // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverterinfo-getpixelformats
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT GetPixelFormats(uint cFormats, ref Guid pPixelFormatGUIDs, out uint pcActual);
+    
+    // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverterinfo-createinstance
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    public HRESULT CreateInstance(out IWICFormatConverter ppIConverter);
+}

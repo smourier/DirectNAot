@@ -1,0 +1,14 @@
+﻿namespace DirectN;
+
+public enum ETO_OPTIONS : uint
+{
+    ETO_OPAQUE = 2,
+    ETO_CLIPPED = 4,
+    ETO_GLYPH_INDEX = 16,
+    ETO_RTLREADING = 128,
+    ETO_NUMERICSLOCAL = 1024,
+    ETO_NUMERICSLATIN = 2048,
+    ETO_IGNORELANGUAGE = 4096,
+    ETO_PDY = 8192,
+    ETO_REVERSE_INDEX_MAP = 65536,
+}

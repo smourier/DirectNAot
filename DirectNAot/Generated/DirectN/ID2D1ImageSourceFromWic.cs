@@ -7,12 +7,12 @@ public partial interface ID2D1ImageSourceFromWic : ID2D1ImageSource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1imagesourcefromwic-ensurecached(constd2d1_rect_u_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnsureCached(nint /* D2D_RECT_U */ rectangleToFill);
+    public HRESULT EnsureCached(nint/* nint */ rectangleToFill);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1imagesourcefromwic-trimcache(constd2d1_rect_u)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT TrimCache(nint /* D2D_RECT_U */ rectangleToPreserve);
+    public HRESULT TrimCache(nint/* nint */ rectangleToPreserve);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1imagesourcefromwic-getsource
     [PreserveSig]

@@ -13,7 +13,7 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, in DXGI_SWAP_CHAIN_DESC1 pDesc, nint /* DXGI_SWAP_CHAIN_FULLSCREEN_DESC */ pFullscreenDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    public HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, in DXGI_SWAP_CHAIN_DESC1 pDesc, nint/* nint */ pFullscreenDesc, IDXGIOutput pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforcorewindow
     [PreserveSig]

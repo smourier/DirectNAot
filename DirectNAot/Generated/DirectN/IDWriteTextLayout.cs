@@ -86,82 +86,82 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontCollection(uint currentPosition, out IDWriteFontCollection fontCollection, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontCollection(uint currentPosition, out IDWriteFontCollection fontCollection, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontfamilynamelength
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFamilyNameLength(uint currentPosition, out uint nameLength, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontFamilyNameLength(uint currentPosition, out uint nameLength, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFamilyName(uint currentPosition, out PWSTR fontFamilyName, uint nameSize, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontFamilyName(uint currentPosition, out PWSTR fontFamilyName, uint nameSize, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontweight
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontWeight(uint currentPosition, out DWRITE_FONT_WEIGHT fontWeight, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontWeight(uint currentPosition, out DWRITE_FONT_WEIGHT fontWeight, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontstyle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontStyle(uint currentPosition, out DWRITE_FONT_STYLE fontStyle, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontStyle(uint currentPosition, out DWRITE_FONT_STYLE fontStyle, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontstretch
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontStretch(uint currentPosition, out DWRITE_FONT_STRETCH fontStretch, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontStretch(uint currentPosition, out DWRITE_FONT_STRETCH fontStretch, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontSize(uint currentPosition, out float fontSize, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetFontSize(uint currentPosition, out float fontSize, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getunderline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetUnderline(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasUnderline, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetUnderline(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasUnderline, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getstrikethrough
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetStrikethrough(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasStrikethrough, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetStrikethrough(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasStrikethrough, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getdrawingeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDrawingEffect(uint currentPosition, out nint drawingEffect, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetDrawingEffect(uint currentPosition, out nint drawingEffect, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getinlineobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetInlineObject(uint currentPosition, out IDWriteInlineObject inlineObject, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetInlineObject(uint currentPosition, out IDWriteInlineObject inlineObject, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-gettypography
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypography(uint currentPosition, out IDWriteTypography typography, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetTypography(uint currentPosition, out IDWriteTypography typography, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getlocalenamelength
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLocaleNameLength(uint currentPosition, out uint nameLength, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetLocaleNameLength(uint currentPosition, out uint nameLength, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLocaleName(uint currentPosition, out PWSTR localeName, uint nameSize, nint /* DWRITE_TEXT_RANGE */ textRange);
+    public HRESULT GetLocaleName(uint currentPosition, out PWSTR localeName, uint nameSize, nint/* nint */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-draw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Draw(nint /* void */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY);
+    public HRESULT Draw(nint/* nint */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getlinemetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLineMetrics(nint /* DWRITE_LINE_METRICS */ lineMetrics, uint maxLineCount, out uint actualLineCount);
+    public HRESULT GetLineMetrics(nint/* nint */ lineMetrics, uint maxLineCount, out uint actualLineCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getmetrics
     [PreserveSig]
@@ -176,7 +176,7 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getclustermetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetClusterMetrics(nint /* DWRITE_CLUSTER_METRICS */ clusterMetrics, uint maxClusterCount, out uint actualClusterCount);
+    public HRESULT GetClusterMetrics(nint/* nint */ clusterMetrics, uint maxClusterCount, out uint actualClusterCount);
     
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritetextlayout-determineminwidth
     [PreserveSig]
@@ -196,5 +196,5 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-hittesttextrange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT HitTestTextRange(uint textPosition, uint textLength, float originX, float originY, nint /* DWRITE_HIT_TEST_METRICS */ hitTestMetrics, uint maxHitTestMetricsCount, out uint actualHitTestMetricsCount);
+    public HRESULT HitTestTextRange(uint textPosition, uint textLength, float originX, float originY, nint/* nint */ hitTestMetrics, uint maxHitTestMetricsCount, out uint actualHitTestMetricsCount);
 }

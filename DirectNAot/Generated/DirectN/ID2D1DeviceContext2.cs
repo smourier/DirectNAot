@@ -13,7 +13,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createinkstyle(constd2d1_ink_style_properties_id2d1inkstyle)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInkStyle(nint /* D2D1_INK_STYLE_PROPERTIES */ inkStyleProperties, out ID2D1InkStyle inkStyle);
+    public HRESULT CreateInkStyle(nint/* nint */ inkStyleProperties, out ID2D1InkStyle inkStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-creategradientmesh
     [PreserveSig]
@@ -50,7 +50,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawgdimetafile(id2d1gdimetafile_constd2d1_rect_f__constd2d1_rect_f_)
     [PreserveSig]
-    public void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint /* D2D_RECT_F */ destinationRectangle, nint /* D2D_RECT_F */ sourceRectangle);
+    public void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createtransformedimagesource
     [PreserveSig]

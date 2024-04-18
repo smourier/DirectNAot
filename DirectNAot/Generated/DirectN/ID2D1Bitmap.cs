@@ -24,15 +24,15 @@ public partial interface ID2D1Bitmap : ID2D1Image
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmap-copyfrombitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyFromBitmap(nint /* D2D_POINT_2U */ destPoint, ID2D1Bitmap bitmap, nint /* D2D_RECT_U */ srcRect);
+    public HRESULT CopyFromBitmap(nint/* nint */ destPoint, ID2D1Bitmap bitmap, nint/* nint */ srcRect);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmap-copyfromrendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyFromRenderTarget(nint /* D2D_POINT_2U */ destPoint, ID2D1RenderTarget renderTarget, nint /* D2D_RECT_U */ srcRect);
+    public HRESULT CopyFromRenderTarget(nint/* nint */ destPoint, ID2D1RenderTarget renderTarget, nint/* nint */ srcRect);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmap-copyfrommemory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyFromMemory(nint /* D2D_RECT_U */ dstRect, nint srcData, uint pitch);
+    public HRESULT CopyFromMemory(nint/* nint */ dstRect, nint srcData, uint pitch);
 }

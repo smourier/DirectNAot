@@ -37,12 +37,12 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createoffsettransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateOffsetTransform(POINT offset, out ID2D1OffsetTransform transform);
+    public HRESULT CreateOffsetTransform(in FoundationPOINT offset, out ID2D1OffsetTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createboundsadjustmenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBoundsAdjustmentTransform(in RECT outputRectangle, out ID2D1BoundsAdjustmentTransform transform);
+    public HRESULT CreateBoundsAdjustmentTransform(FoundationRECT outputRectangle, out ID2D1BoundsAdjustmentTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-loadpixelshader
     [PreserveSig]
@@ -67,7 +67,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createresourcetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateResourceTexture(nint /* Guid */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* byte array */ data, nint /* uint */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
+    public HRESULT CreateResourceTexture(nint/* nint */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* byte array */ data, nint/* nint */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findresourcetexture
     [PreserveSig]
@@ -77,7 +77,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createvertexbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint /* Guid */ resourceId, nint /* D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
+    public HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint/* nint */ resourceId, nint/* nint */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findvertexbuffer
     [PreserveSig]

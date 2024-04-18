@@ -13,7 +13,7 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-openstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OpenStream(PWSTR pwcsName, nint /* void */ reserved1, STGM grfMode, uint reserved2, out IStream ppstm);
+    public HRESULT OpenStream(PWSTR pwcsName, nint/* nint */ reserved1, STGM grfMode, uint reserved2, out IStream ppstm);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-createstorage
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-copyto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyTo(uint ciidExclude, nint /* Guid */ rgiidExclude, nint /* ushort */ snbExclude, IStorage pstgDest);
+    public HRESULT CopyTo(uint ciidExclude, nint/* nint */ rgiidExclude, nint/* nint */ snbExclude, IStorage pstgDest);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-moveelementto
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-enumelements
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumElements(uint reserved1, nint /* void */ reserved2, uint reserved3, out IEnumSTATSTG ppenum);
+    public HRESULT EnumElements(uint reserved1, nint/* nint */ reserved2, uint reserved3, out IEnumSTATSTG ppenum);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-destroyelement
     [PreserveSig]

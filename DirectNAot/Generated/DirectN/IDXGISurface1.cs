@@ -13,5 +13,5 @@ public partial interface IDXGISurface1 : IDXGISurface
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgisurface1-releasedc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseDC(nint /* RECT */ pDirtyRect);
+    public HRESULT ReleaseDC(nint/* nint */ pDirtyRect);
 }

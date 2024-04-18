@@ -8,27 +8,27 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBitmap(D2D_SIZE_U size, nint /* void */ srcData, uint pitch, in D2D1_BITMAP_PROPERTIES bitmapProperties, out ID2D1Bitmap bitmap);
+    public HRESULT CreateBitmap(D2D_SIZE_U size, nint/* nint */ srcData, uint pitch, in D2D1_BITMAP_PROPERTIES bitmapProperties, out ID2D1Bitmap bitmap);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createbitmapfromwicbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBitmapFromWicBitmap(IWICBitmapSource wicBitmapSource, nint /* D2D1_BITMAP_PROPERTIES */ bitmapProperties, out ID2D1Bitmap bitmap);
+    public HRESULT CreateBitmapFromWicBitmap(IWICBitmapSource wicBitmapSource, nint/* nint */ bitmapProperties, out ID2D1Bitmap bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-createsharedbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSharedBitmap(in Guid riid, nint data, nint /* D2D1_BITMAP_PROPERTIES */ bitmapProperties, out ID2D1Bitmap bitmap);
+    public HRESULT CreateSharedBitmap(in Guid riid, nint data, nint/* nint */ bitmapProperties, out ID2D1Bitmap bitmap);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createbitmapbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint /* D2D1_BITMAP_BRUSH_PROPERTIES */ bitmapBrushProperties, nint /* D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush bitmapBrush);
+    public HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint/* nint */ bitmapBrushProperties, nint/* nint */ brushProperties, out ID2D1BitmapBrush bitmapBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createsolidcolorbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSolidColorBrush(in D2D1_COLOR_F color, nint /* D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1SolidColorBrush solidColorBrush);
+    public HRESULT CreateSolidColorBrush(in D2D1_COLOR_F color, nint/* nint */ brushProperties, out ID2D1SolidColorBrush solidColorBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-creategradientstopcollection
     [PreserveSig]
@@ -38,22 +38,22 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createlineargradientbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateLinearGradientBrush(in D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES linearGradientBrushProperties, nint /* D2D1_BRUSH_PROPERTIES */ brushProperties, ID2D1GradientStopCollection gradientStopCollection, out ID2D1LinearGradientBrush linearGradientBrush);
+    public HRESULT CreateLinearGradientBrush(in D2D1_LINEAR_GRADIENT_BRUSH_PROPERTIES linearGradientBrushProperties, nint/* nint */ brushProperties, ID2D1GradientStopCollection gradientStopCollection, out ID2D1LinearGradientBrush linearGradientBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createradialgradientbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateRadialGradientBrush(in D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES radialGradientBrushProperties, nint /* D2D1_BRUSH_PROPERTIES */ brushProperties, ID2D1GradientStopCollection gradientStopCollection, out ID2D1RadialGradientBrush radialGradientBrush);
+    public HRESULT CreateRadialGradientBrush(in D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES radialGradientBrushProperties, nint/* nint */ brushProperties, ID2D1GradientStopCollection gradientStopCollection, out ID2D1RadialGradientBrush radialGradientBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createcompatiblerendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateCompatibleRenderTarget(nint /* D2D_SIZE_F */ desiredSize, nint /* D2D_SIZE_U */ desiredPixelSize, nint /* D2D1_PIXEL_FORMAT */ desiredFormat, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS options, out ID2D1BitmapRenderTarget bitmapRenderTarget);
+    public HRESULT CreateCompatibleRenderTarget(nint/* nint */ desiredSize, nint/* nint */ desiredPixelSize, nint/* nint */ desiredFormat, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS options, out ID2D1BitmapRenderTarget bitmapRenderTarget);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createlayer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateLayer(nint /* D2D_SIZE_F */ size, out ID2D1Layer layer);
+    public HRESULT CreateLayer(nint/* nint */ size, out ID2D1Layer layer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-createmesh
     [PreserveSig]
@@ -102,11 +102,11 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-fillopacitymask
     [PreserveSig]
-    public void FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, D2D1_OPACITY_MASK_CONTENT content, nint /* D2D_RECT_F */ destinationRectangle, nint /* D2D_RECT_F */ sourceRectangle);
+    public void FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, D2D1_OPACITY_MASK_CONTENT content, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawbitmap
     [PreserveSig]
-    public void DrawBitmap(ID2D1Bitmap bitmap, nint /* D2D_RECT_F */ destinationRectangle, float opacity, D2D1_BITMAP_INTERPOLATION_MODE interpolationMode, nint /* D2D_RECT_F */ sourceRectangle);
+    public void DrawBitmap(ID2D1Bitmap bitmap, nint/* nint */ destinationRectangle, float opacity, D2D1_BITMAP_INTERPOLATION_MODE interpolationMode, nint/* nint */ sourceRectangle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawtext
     [PreserveSig]
@@ -158,7 +158,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-gettags
     [PreserveSig]
-    public void GetTags(nint /* ulong */ tag1, nint /* ulong */ tag2);
+    public void GetTags(nint/* nint */ tag1, nint/* nint */ tag2);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-pushlayer(constd2d1_layer_parameters_id2d1layer)
     [PreserveSig]
@@ -171,7 +171,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-flush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Flush(nint /* ulong */ tag1, nint /* ulong */ tag2);
+    public HRESULT Flush(nint/* nint */ tag1, nint/* nint */ tag2);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-savedrawingstate
     [PreserveSig]
@@ -191,7 +191,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-clear
     [PreserveSig]
-    public void Clear(nint /* D2D1_COLOR_F */ clearColor);
+    public void Clear(nint/* nint */ clearColor);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-begindraw
     [PreserveSig]
@@ -200,7 +200,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-enddraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EndDraw(nint /* ulong */ tag1, nint /* ulong */ tag2);
+    public HRESULT EndDraw(nint/* nint */ tag1, nint/* nint */ tag2);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-getpixelformat
     [PreserveSig]
