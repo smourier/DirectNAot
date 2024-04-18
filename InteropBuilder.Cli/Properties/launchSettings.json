@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "InteropBuilder.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "E:\\smo\\GitHub\\DirectNAot\\DirectNAot.InteropBuilder\\DirectN.json E:\\smo\\GitHub\\DirectNAot\\DirectNAot\\Generated"
-    }
-  }
-}
