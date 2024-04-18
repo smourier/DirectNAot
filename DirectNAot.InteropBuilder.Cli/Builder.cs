@@ -16,19 +16,6 @@ namespace DirectNAot.InteropBuilder.Cli
             return context;
         }
 
-        protected override void AddMappedTypes(BuilderContext context)
-        {
-            base.AddMappedTypes(context);
-            //MapToDirectNdNamespace(context, FullName.HRESULT);
-        }
-
-        protected virtual void MapToDirectNdNamespace(BuilderContext context, FullName fullName)
-        {
-            ArgumentNullException.ThrowIfNull(context);
-            ArgumentNullException.ThrowIfNull(context.Configuration);
-            context.MappedTypes[fullName] = new BuilderType(new FullName(Namespace, fullName.Name));
-        }
-
         private sealed class DirectNBuilderContext(BuilderConfiguration configuration, ILanguage language) : BuilderContext(configuration, language)
         {
             public override string GetConstantValue(BuilderType type, Constant constant)
@@ -40,15 +27,15 @@ namespace DirectNAot.InteropBuilder.Cli
 
                 if (type.FullName == DEVPROPKEY)
                 {
-                    var parsed = ParsePropertyKey(constant.ValueAsText);
-                    return $"new(new Guid(\"{parsed.fmtid}\"), {parsed.pid})";
+                    var (fmtid, pid) = ParsePropertyKey(constant.ValueAsText);
+                    return $"new(new Guid(\"{fmtid}\"), {pid})";
                 }
 
                 return base.GetConstantValue(type, constant);
             }
-
         }
 
+        // this type is used a lot and defines lots of constants
         public static FullName DEVPROPKEY { get; } = new("Windows.Win32.Devices.Properties.DEVPROPKEY");
 
         private static (Guid fmtid, uint pid) ParsePropertyKey(string pk)
@@ -70,7 +57,7 @@ namespace DirectNAot.InteropBuilder.Cli
                 byte.Parse(split[8]),
                 byte.Parse(split[9]),
                 byte.Parse(split[10]));
-            return (guid, uint.Parse(split[^1]));
+            return (guid, uint.Parse(split[11]));
         }
 
     }
