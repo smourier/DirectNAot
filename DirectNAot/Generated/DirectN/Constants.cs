@@ -6652,6 +6652,8 @@ public static partial class Constants
     
     public const uint DEVICEDATA = 19;
     
+    public static readonly DEVPROPKEY DEVPKEY_Device_SupportsMute = new(new Guid("88ad39db-0d0c-4a38-8435-4043826b5c91"), 18);
+    
     public const uint DF_BKSP_OK = 64;
     
     public const uint DF_NO_BOLD = 8;

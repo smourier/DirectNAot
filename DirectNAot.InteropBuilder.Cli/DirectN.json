@@ -14,9 +14,12 @@
   },
   "TypeInputs": [
     "Windows.Win32.Graphics*",
+    //"Windows.Win32.Media*",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   "MemberInputs": [
-    //"!CreateDXGIFactory"
+    "DEVPKEY_Device_SupportsMute",
+    "!RT_RCDATA",
+    "!RT_STRING"
   ]
 }
