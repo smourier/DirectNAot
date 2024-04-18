@@ -2,7 +2,7 @@
 using Win32InteropBuilder;
 using Win32InteropBuilder.Model;
 
-namespace DirectNAot.InteropBuilder
+namespace DirectNAot.InteropBuilder.Cli
 {
     public class Builder : Win32InteropBuilder.Builder
     {

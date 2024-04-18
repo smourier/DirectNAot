@@ -1,6 +1,6 @@
 ﻿{
-  "BuilderTypeFilePath": "E:\\smo\\GitHub\\DirectNAot\\DirectNAot.InteropBuilder\\bin\\Debug\\net8.0\\DirectNAot.InteropBuilder.dll",
-  "BuilderTypeName": "DirectNAot.InteropBuilder.Builder, DirectNAot.InteropBuilder",
+  "BuilderTypeFilePath": "DirectNAot.InteropBuilder.Cli.dll",
+  "BuilderTypeName": "DirectNAot.InteropBuilder.Cli.Builder, DirectNAot.InteropBuilder.Cli",
   "OutputEncoding": "UTF-8",
   "Generation": {
     "Unified": {
