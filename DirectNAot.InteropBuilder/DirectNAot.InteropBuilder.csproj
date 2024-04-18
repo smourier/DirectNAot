@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Win32InteropBuilder\Win32InteropBuilder\Win32InteropBuilder.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Update="DirectN.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
