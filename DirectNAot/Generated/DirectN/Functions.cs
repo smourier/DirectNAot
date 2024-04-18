@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial class Functions
+public static partial class Functions
 {
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-createdxgifactory
     [LibraryImport("dxgi")]

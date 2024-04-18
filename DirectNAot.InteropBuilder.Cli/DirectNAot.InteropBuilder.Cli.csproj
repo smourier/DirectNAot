@@ -30,6 +30,7 @@ namespace $(ProjectName)
     public static class Win32Metadata
     {
         public const string WinMdPath = @"$(PkgMicrosoft_Windows_SDK_Win32Metadata)"%3B
+        public const string SolutionDir = @"$(SolutionDir)"%3B
     }
 }]]>
 			</Win32MetadataCSharp>

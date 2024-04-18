@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using Win32InteropBuilder.Utilities;
 
@@ -17,19 +18,22 @@ namespace DirectNAot.InteropBuilder.Cli
                 return;
             }
 
-            Builder.Run(configurationPath, Win32Metadata.WinMdPath);
+            var winMdPath = Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
+            var defaultOutputPath = Path.GetFullPath(Path.Combine(Win32Metadata.SolutionDir, "DirectNAot", "Generated"));
+            var outputDirectoryPath = Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? defaultOutputPath);
+            Win32InteropBuilder.Builder.Run(configurationPath, winMdPath, outputDirectoryPath);
         }
 
         static void Help()
         {
-            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " <config.json> [outputpath]");
+            Console.WriteLine(Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + " [DirectN.json] <outputDirectoryPath>");
             Console.WriteLine();
             Console.WriteLine("Description:");
             Console.WriteLine("    This tool is used to generate DirectN AOT-friendly interop .cs files from Microsoft.Windows.SDK.Win32Metadata.");
             Console.WriteLine();
             Console.WriteLine("Examples:");
             Console.WriteLine();
-            Console.WriteLine("    " + Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + @" c:\mypath\myproject\myprojectInteropBuilder.dll");
+            Console.WriteLine("    " + Assembly.GetEntryAssembly()!.GetName().Name!.ToUpperInvariant() + @" c:\myPath\DirectN.json");
             Console.WriteLine();
         }
     }

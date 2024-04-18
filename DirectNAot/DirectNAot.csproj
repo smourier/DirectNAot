@@ -28,7 +28,6 @@
 	<ItemGroup>
 	  <Folder Include="Generated\" />
 	  <Folder Include="Manual\" />
-	  <Folder Include="Partials\" />
 	</ItemGroup>
 
 </Project>

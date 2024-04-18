@@ -14,5 +14,6 @@ namespace DirectNAot.InteropBuilder.Cli
     public static class Win32Metadata
     {
         public const string WinMdPath = @"E:\packages\nuget\microsoft.windows.sdk.win32metadata\59.0.13-preview";
+        public const string SolutionDir = @"E:\smo\GitHub\DirectNAot\";
     }
 }

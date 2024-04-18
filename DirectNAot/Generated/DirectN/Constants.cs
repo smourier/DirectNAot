@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial class Constants
+public static partial class Constants
 {
     public const uint DXGI_CREATE_FACTORY_DEBUG = 1;
     
