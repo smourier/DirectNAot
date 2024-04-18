@@ -153,8 +153,6 @@ public static partial class Constants
     
     public const uint DXGI_PRESENT_STEREO_PREFER_RIGHT = 16;
     
-    public const uint DXGI_PRESENT_STEREO_TEMPORARY_MONO = 32;
-    
     public const uint DXGI_PRESENT_TEST = 1;
     
     public const uint DXGI_PRESENT_USE_DURATION = 256;
