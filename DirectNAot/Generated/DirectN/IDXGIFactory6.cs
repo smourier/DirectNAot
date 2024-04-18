@@ -5,7 +5,8 @@
 [GeneratedComInterface, Guid("c1b6694f-ff09-44a9-b03c-77900a0a1d17")]
 public partial interface IDXGIFactory6 : IDXGIFactory5
 {
+    // https://learn.microsoft.com/windows/win32/api/dxgi1_6/nf-dxgi1_6-idxgifactory6-enumadapterbygpupreference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAdapterByGpuPreference(uint Adapter, DXGI_GPU_PREFERENCE GpuPreference, in Guid riid, out nint ppvAdapter);
+    public HRESULT EnumAdapterByGpuPreference(uint Adapter, DXGI_GPU_PREFERENCE GpuPreference, in Guid riid, out nint ppvAdapter);
 }

@@ -5,6 +5,7 @@
 [GeneratedComInterface, Guid("25483823-cd46-4c7d-86ca-47aa95b837bd")]
 public partial interface IDXGIFactory3 : IDXGIFactory2
 {
+    // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgifactory3-getcreationflags
     [PreserveSig]
-    uint GetCreationFlags();
+    public uint GetCreationFlags();
 }

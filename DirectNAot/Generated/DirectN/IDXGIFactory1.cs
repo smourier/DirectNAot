@@ -5,11 +5,13 @@
 [GeneratedComInterface, Guid("770aae78-f26f-4dba-a829-253c83d1b387")]
 public partial interface IDXGIFactory1 : IDXGIFactory
 {
+    // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory1-enumadapters1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAdapters1(uint Adapter, out IDXGIAdapter1 ppAdapter);
+    public HRESULT EnumAdapters1(uint Adapter, out IDXGIAdapter1 ppAdapter);
     
+    // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory1-iscurrent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    bool IsCurrent();
+    public bool IsCurrent();
 }

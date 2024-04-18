@@ -13,12 +13,11 @@
     }
   },
   "TypeInputs": [
-    "IDXGIFactory*",
-    //"Windows.Win32.Graphics.Direct2D.Apis",
-    "Windows.Win32.Graphics.Dxgi.Apis"
+    "Windows.Win32.Graphics.Direct2D*",
+    "Windows.Win32.Graphics.Dxgi*"
     //"!IDXGIFactoryMedia"
   ],
   "MemberInputs": [
-    "CreateDXGIFactory"
+    //"!CreateDXGIFactory"
   ]
 }
