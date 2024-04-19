@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum OUTPUT_STATE
 {
     Disabled = 0,

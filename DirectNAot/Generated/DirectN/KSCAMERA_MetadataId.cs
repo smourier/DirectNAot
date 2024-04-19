@@ -12,5 +12,5 @@ public enum KSCAMERA_MetadataId
     MetadataId_DigitalWindow = 7,
     MetadataId_BackgroundSegmentationMask = 8,
     MetadataId_Standard_End = 8,
-    MetadataId_Custom_Start = -2147483648,
+    MetadataId_Custom_Start = int.MinValue,
 }

@@ -10,5 +10,5 @@ public enum MFVideoTransferMatrix
     MFVideoTransferMatrix_BT2020_10 = 4,
     MFVideoTransferMatrix_BT2020_12 = 5,
     MFVideoTransferMatrix_Last = 6,
-    MFVideoTransferMatrix_ForceDWORD = 2147483647,
+    MFVideoTransferMatrix_ForceDWORD = int.MaxValue,
 }

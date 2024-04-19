@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum MIDI_WAVE_OPEN_TYPE : uint
 {
     CALLBACK_TYPEMASK = 458752,

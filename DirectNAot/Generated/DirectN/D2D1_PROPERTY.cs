@@ -3,7 +3,7 @@
 // https://learn.microsoft.com/windows/win32/api/d2d1_1/ne-d2d1_1-d2d1_property
 public enum D2D1_PROPERTY
 {
-    D2D1_PROPERTY_CLSID = -2147483648,
+    D2D1_PROPERTY_CLSID = int.MinValue,
     D2D1_PROPERTY_DISPLAYNAME = -2147483647,
     D2D1_PROPERTY_AUTHOR = -2147483646,
     D2D1_PROPERTY_CATEGORY = -2147483645,

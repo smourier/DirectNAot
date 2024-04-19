@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/ne-d2d1effectauthor-d2d1_change_type
+[Flags]
 public enum D2D1_CHANGE_TYPE
 {
     D2D1_CHANGE_TYPE_NONE = 0,

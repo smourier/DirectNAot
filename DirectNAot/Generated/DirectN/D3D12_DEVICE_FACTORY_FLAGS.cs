@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum D3D12_DEVICE_FACTORY_FLAGS
 {
     D3D12_DEVICE_FACTORY_FLAG_NONE = 0,

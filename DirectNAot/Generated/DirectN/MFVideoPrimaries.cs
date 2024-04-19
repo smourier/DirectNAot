@@ -17,5 +17,5 @@ public enum MFVideoPrimaries
     MFVideoPrimaries_DCI_P3 = 11,
     MFVideoPrimaries_ACES = 12,
     MFVideoPrimaries_Last = 13,
-    MFVideoPrimaries_ForceDWORD = 2147483647,
+    MFVideoPrimaries_ForceDWORD = int.MaxValue,
 }

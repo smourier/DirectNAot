@@ -9,5 +9,5 @@ public enum MFVideoLighting
     MFVideoLighting_dim = 3,
     MFVideoLighting_dark = 4,
     MFVideoLighting_Last = 5,
-    MFVideoLighting_ForceDWORD = 2147483647,
+    MFVideoLighting_ForceDWORD = int.MaxValue,
 }

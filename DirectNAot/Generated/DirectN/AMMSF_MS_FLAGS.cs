@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum AMMSF_MS_FLAGS
 {
     AMMSF_ADDDEFAULTRENDERER = 1,

@@ -13,6 +13,6 @@ public enum COPP_ConnectorType
     COPP_ConnectorType_LVDS = 6,
     COPP_ConnectorType_TMDS = 7,
     COPP_ConnectorType_D_JPN = 8,
-    COPP_ConnectorType_Internal = -2147483648,
-    COPP_ConnectorType_ForceDWORD = 2147483647,
+    COPP_ConnectorType_Internal = int.MinValue,
+    COPP_ConnectorType_ForceDWORD = int.MaxValue,
 }

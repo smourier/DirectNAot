@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum FONT_CLIP_PRECISION : byte
 {
     CLIP_DEFAULT_PRECIS = 0,

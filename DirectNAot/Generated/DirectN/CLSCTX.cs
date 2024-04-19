@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wtypesbase/ne-wtypesbase-clsctx
+[Flags]
 public enum CLSCTX : uint
 {
     CLSCTX_INPROC_SERVER = 1,

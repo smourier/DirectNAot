@@ -11,5 +11,5 @@ public enum StringFormatFlags
     StringFormatFlagsNoWrap = 4096,
     StringFormatFlagsLineLimit = 8192,
     StringFormatFlagsNoClip = 16384,
-    StringFormatFlagsBypassGDI = -2147483648,
+    StringFormatFlagsBypassGDI = int.MinValue,
 }

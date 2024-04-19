@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/directmanipulation/ne-directmanipulation-directmanipulation_hittest_type
+[Flags]
 public enum DIRECTMANIPULATION_HITTEST_TYPE
 {
     DIRECTMANIPULATION_HITTEST_TYPE_ASYNCHRONOUS = 0,

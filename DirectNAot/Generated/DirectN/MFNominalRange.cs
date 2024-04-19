@@ -11,5 +11,5 @@ public enum MFNominalRange
     MFNominalRange_48_208 = 3,
     MFNominalRange_64_127 = 4,
     MFNominalRange_Last = 5,
-    MFNominalRange_ForceDWORD = 2147483647,
+    MFNominalRange_ForceDWORD = int.MaxValue,
 }

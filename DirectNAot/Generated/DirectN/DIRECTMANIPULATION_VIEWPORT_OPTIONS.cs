@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/directmanipulation/ne-directmanipulation-directmanipulation_viewport_options
+[Flags]
 public enum DIRECTMANIPULATION_VIEWPORT_OPTIONS
 {
     DIRECTMANIPULATION_VIEWPORT_OPTIONS_DEFAULT = 0,

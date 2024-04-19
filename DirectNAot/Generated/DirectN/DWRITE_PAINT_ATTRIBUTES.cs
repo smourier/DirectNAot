@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum DWRITE_PAINT_ATTRIBUTES
 {
     DWRITE_PAINT_ATTRIBUTES_NONE = 0,

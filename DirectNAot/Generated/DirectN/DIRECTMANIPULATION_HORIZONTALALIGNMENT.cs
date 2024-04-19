@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/directmanipulation/ne-directmanipulation-directmanipulation_horizontalalignment
+[Flags]
 public enum DIRECTMANIPULATION_HORIZONTALALIGNMENT
 {
     DIRECTMANIPULATION_HORIZONTALALIGNMENT_NONE = 0,

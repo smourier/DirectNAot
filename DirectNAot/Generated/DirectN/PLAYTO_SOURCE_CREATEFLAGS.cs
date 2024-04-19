@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfsharingengine/ne-mfsharingengine-playto_source_createflags
+[Flags]
 public enum PLAYTO_SOURCE_CREATEFLAGS
 {
     PLAYTO_SOURCE_NONE = 0,

@@ -52,7 +52,7 @@ public enum VARENUM : ushort
     VT_ARRAY = 8192,
     VT_BYREF = 16384,
     VT_RESERVED = 32768,
-    VT_ILLEGAL = 65535,
+    VT_ILLEGAL = ushort.MaxValue,
     VT_ILLEGALMASKED = 4095,
     VT_TYPEMASK = 4095,
 }

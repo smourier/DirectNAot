@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum MMSSF_GET_INFORMATION_FLAGS
 {
     MMSSF_HASCLOCK = 1,

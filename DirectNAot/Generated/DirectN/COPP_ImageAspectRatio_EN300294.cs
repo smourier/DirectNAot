@@ -11,5 +11,5 @@ public enum COPP_ImageAspectRatio_EN300294
     COPP_AspectRatio_EN300294_BoxGT16by9Center = 5,
     COPP_AspectRatio_EN300294_FullFormat4by3ProtectedCenter = 6,
     COPP_AspectRatio_EN300294_FullFormat16by9Anamorphic = 7,
-    COPP_AspectRatio_ForceDWORD = 2147483647,
+    COPP_AspectRatio_ForceDWORD = int.MaxValue,
 }

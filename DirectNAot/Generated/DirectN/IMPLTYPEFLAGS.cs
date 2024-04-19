@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum IMPLTYPEFLAGS
 {
     IMPLTYPEFLAG_FDEFAULT = 1,

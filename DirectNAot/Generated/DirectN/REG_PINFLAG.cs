@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum REG_PINFLAG
 {
     REG_PINFLAG_B_ZERO = 1,

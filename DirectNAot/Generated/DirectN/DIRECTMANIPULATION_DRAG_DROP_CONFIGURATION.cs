@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/directmanipulation/ne-directmanipulation-directmanipulation_drag_drop_configuration
+[Flags]
 public enum DIRECTMANIPULATION_DRAG_DROP_CONFIGURATION
 {
     DIRECTMANIPULATION_DRAG_DROP_CONFIGURATION_VERTICAL = 1,

@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum IDLFLAGS : ushort
 {
     IDLFLAG_NONE = 0,

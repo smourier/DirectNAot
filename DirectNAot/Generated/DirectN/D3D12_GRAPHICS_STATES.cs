@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_graphics_states
+[Flags]
 public enum D3D12_GRAPHICS_STATES
 {
     D3D12_GRAPHICS_STATE_NONE = 0,

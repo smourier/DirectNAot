@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_format_support2
+[Flags]
 public enum D3D12_FORMAT_SUPPORT2
 {
     D3D12_FORMAT_SUPPORT2_NONE = 0,

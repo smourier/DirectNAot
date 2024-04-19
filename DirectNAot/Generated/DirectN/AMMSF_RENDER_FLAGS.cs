@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum AMMSF_RENDER_FLAGS
 {
     AMMSF_RENDERTYPEMASK = 3,

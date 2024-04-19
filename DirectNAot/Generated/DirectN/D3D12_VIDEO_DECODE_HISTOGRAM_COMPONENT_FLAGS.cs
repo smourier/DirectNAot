@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12video/ne-d3d12video-d3d12_video_decode_histogram_component_flags
+[Flags]
 public enum D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_FLAGS
 {
     D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_FLAG_NONE = 0,

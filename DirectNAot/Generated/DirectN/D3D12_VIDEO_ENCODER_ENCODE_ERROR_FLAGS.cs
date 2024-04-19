@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12video/ne-d3d12video-d3d12_video_encoder_encode_error_flags
+[Flags]
 public enum D3D12_VIDEO_ENCODER_ENCODE_ERROR_FLAGS
 {
     D3D12_VIDEO_ENCODER_ENCODE_ERROR_FLAG_NO_ERROR = 0,

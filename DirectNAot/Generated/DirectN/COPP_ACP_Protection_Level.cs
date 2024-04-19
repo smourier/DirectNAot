@@ -9,5 +9,5 @@ public enum COPP_ACP_Protection_Level
     COPP_ACP_Level2 = 2,
     COPP_ACP_Level3 = 3,
     COPP_ACP_LevelMax = 3,
-    COPP_ACP_ForceDWORD = 2147483647,
+    COPP_ACP_ForceDWORD = int.MaxValue,
 }

@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum ADVISE_TYPE
 {
     ADVISE_NONE = 0,

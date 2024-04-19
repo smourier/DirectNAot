@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum D3D12_DEVICE_FLAGS
 {
     D3D12_DEVICE_FLAG_NONE = 0,

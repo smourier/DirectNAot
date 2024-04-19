@@ -6,5 +6,5 @@ public enum WICComponentSigning
     WICComponentSigned = 1,
     WICComponentUnsigned = 2,
     WICComponentSafe = 4,
-    WICComponentDisabled = -2147483648,
+    WICComponentDisabled = int.MinValue,
 }

@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/Stg/stgm-constants
+[Flags]
 public enum STGM : uint
 {
     STGM_DIRECT = 0,

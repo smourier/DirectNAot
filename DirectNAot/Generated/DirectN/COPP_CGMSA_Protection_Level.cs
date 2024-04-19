@@ -11,5 +11,5 @@ public enum COPP_CGMSA_Protection_Level
     COPP_CGMSA_CopyNever = 4,
     COPP_CGMSA_RedistributionControlRequired = 8,
     COPP_CGMSA_LevelMax = 12,
-    COPP_CGMSA_ForceDWORD = 2147483647,
+    COPP_CGMSA_ForceDWORD = int.MaxValue,
 }

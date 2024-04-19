@@ -22,5 +22,5 @@ public enum MFVideoTransferFunction
     MFVideoTransFunc_HLG = 16,
     MFVideoTransFunc_10_rel = 17,
     MFVideoTransFunc_Last = 18,
-    MFVideoTransFunc_ForceDWORD = 2147483647,
+    MFVideoTransFunc_ForceDWORD = int.MaxValue,
 }

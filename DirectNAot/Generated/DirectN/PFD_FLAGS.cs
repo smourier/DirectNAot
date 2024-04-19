@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum PFD_FLAGS : uint
 {
     PFD_DOUBLEBUFFER = 1,

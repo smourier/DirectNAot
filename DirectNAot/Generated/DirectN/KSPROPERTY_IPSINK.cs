@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum KSPROPERTY_IPSINK
 {
     KSPROPERTY_IPSINK_MULTICASTLIST = 0,

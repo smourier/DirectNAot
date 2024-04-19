@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum DISPATCH_FLAGS : ushort
 {
     DISPATCH_METHOD = 1,

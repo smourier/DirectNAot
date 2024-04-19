@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/directmanipulation/ne-directmanipulation-directmanipulation_motion_types
+[Flags]
 public enum DIRECTMANIPULATION_MOTION_TYPES
 {
     DIRECTMANIPULATION_MOTION_NONE = 0,

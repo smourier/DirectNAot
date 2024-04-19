@@ -34,7 +34,7 @@ public static partial class Constants
     
     public const int ACM_DRIVERADDF_TYPEMASK = 7;
     
-    public const int ACM_DRIVERENUMF_DISABLED = -2147483648;
+    public const int ACM_DRIVERENUMF_DISABLED = int.MinValue;
     
     public const int ACM_DRIVERENUMF_NOLOCAL = 1073741824;
     
@@ -244,7 +244,7 @@ public static partial class Constants
     
     public const int ACMDRIVERDETAILS_SUPPORTF_CONVERTER = 2;
     
-    public const int ACMDRIVERDETAILS_SUPPORTF_DISABLED = -2147483648;
+    public const int ACMDRIVERDETAILS_SUPPORTF_DISABLED = int.MinValue;
     
     public const int ACMDRIVERDETAILS_SUPPORTF_FILTER = 4;
     
@@ -580,7 +580,7 @@ public static partial class Constants
     
     public const uint AMVA_QUERYRENDERSTATUSF_READ = 1;
     
-    public const uint AMVA_TYPEINDEX_OUTPUTFRAME = 4294967295;
+    public const uint AMVA_TYPEINDEX_OUTPUTFRAME = uint.MaxValue;
     
     public const uint AnalogVideo_NTSC_Mask = 7;
     
@@ -1918,11 +1918,11 @@ public static partial class Constants
     
     public const int COPP_ProtectionType_Reserved = 2147483640;
     
-    public const int COPP_ProtectionType_Unknown = -2147483648;
+    public const int COPP_ProtectionType_Unknown = int.MinValue;
     
     public const uint CRYSTAL_NET_SFM_CODEC = 1;
     
-    public const uint D2D1_APPEND_ALIGNED_ELEMENT = 4294967295;
+    public const uint D2D1_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
     public const float D2D1_DEFAULT_FLATTENING_TOLERANCE = 0.25f;
     
@@ -2134,7 +2134,7 @@ public static partial class Constants
     
     public static readonly Guid D3D_TEXTURE_LAYOUT_ROW_MAJOR = new("b5dc234f-72bb-4bec-9705-8cf258df6b6c");
     
-    public const uint D3D10_1_DEFAULT_SAMPLE_MASK = 4294967295;
+    public const uint D3D10_1_DEFAULT_SAMPLE_MASK = uint.MaxValue;
     
     public const double D3D10_1_FLOAT16_FUSED_TOLERANCE_IN_ULP = 0.6d;
     
@@ -2178,7 +2178,7 @@ public static partial class Constants
     
     public const uint D3D10_16BIT_INDEX_STRIP_CUT_VALUE = 65535;
     
-    public const uint D3D10_32BIT_INDEX_STRIP_CUT_VALUE = 4294967295;
+    public const uint D3D10_32BIT_INDEX_STRIP_CUT_VALUE = uint.MaxValue;
     
     public const uint D3D10_8BIT_INDEX_STRIP_CUT_VALUE = 255;
     
@@ -2186,7 +2186,7 @@ public static partial class Constants
     
     public const uint D3D10_ANISOTROPIC_FILTERING_BIT = 64;
     
-    public const uint D3D10_APPEND_ALIGNED_ELEMENT = 4294967295;
+    public const uint D3D10_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
     public const string D3D10_APPNAME_STRING = @"Name";
     
@@ -2302,7 +2302,7 @@ public static partial class Constants
     
     public const uint D3D10_DEFAULT_RENDER_TARGET_ARRAY_INDEX = 0;
     
-    public const uint D3D10_DEFAULT_SAMPLE_MASK = 4294967295;
+    public const uint D3D10_DEFAULT_SAMPLE_MASK = uint.MaxValue;
     
     public const uint D3D10_DEFAULT_SCISSOR_ENDX = 0;
     
@@ -2366,7 +2366,7 @@ public static partial class Constants
     
     public const double D3D10_FLOAT16_FUSED_TOLERANCE_IN_ULP = 0.6d;
     
-    public const float D3D10_FLOAT32_MAX = 3.4028235E+38f;
+    public const float D3D10_FLOAT32_MAX = float.MaxValue;
     
     public const float D3D10_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = 0.6f;
     
@@ -2434,9 +2434,9 @@ public static partial class Constants
     
     public const string D3D10_INFOQUEUE_STORAGE_FILTER_OVERRIDE = @"InfoQueueStorageFilterOverride";
     
-    public const uint D3D10_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = 4294967295;
+    public const uint D3D10_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = uint.MaxValue;
     
-    public const uint D3D10_INTEGER_DIVIDE_BY_ZERO_REMAINDER = 4294967295;
+    public const uint D3D10_INTEGER_DIVIDE_BY_ZERO_REMAINDER = uint.MaxValue;
     
     public const float D3D10_LINEAR_GAMMA = 1f;
     
@@ -2490,11 +2490,11 @@ public static partial class Constants
     
     public const uint D3D10_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 15;
     
-    public const uint D3D10_PS_FRONTFACING_DEFAULT_VALUE = 4294967295;
+    public const uint D3D10_PS_FRONTFACING_DEFAULT_VALUE = uint.MaxValue;
     
     public const uint D3D10_PS_FRONTFACING_FALSE_VALUE = 0;
     
-    public const uint D3D10_PS_FRONTFACING_TRUE_VALUE = 4294967295;
+    public const uint D3D10_PS_FRONTFACING_TRUE_VALUE = uint.MaxValue;
     
     public const uint D3D10_PS_INPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
     
@@ -2640,7 +2640,7 @@ public static partial class Constants
     
     public const uint D3D10_SO_BUFFER_SLOT_COUNT = 4;
     
-    public const uint D3D10_SO_DDI_REGISTER_INDEX_DENOTING_GAP = 4294967295;
+    public const uint D3D10_SO_DDI_REGISTER_INDEX_DENOTING_GAP = uint.MaxValue;
     
     public const uint D3D10_SO_MULTIPLE_BUFFER_ELEMENTS_PER_BUFFER = 1;
     
@@ -2724,7 +2724,7 @@ public static partial class Constants
     
     public const uint D3D11_2_TILED_RESOURCE_TILE_SIZE_IN_BYTES = 65536;
     
-    public const uint D3D11_32BIT_INDEX_STRIP_CUT_VALUE = 4294967295;
+    public const uint D3D11_32BIT_INDEX_STRIP_CUT_VALUE = uint.MaxValue;
     
     public const uint D3D11_4_VIDEO_DECODER_HISTOGRAM_OFFSET_ALIGNMENT = 256;
     
@@ -2734,7 +2734,7 @@ public static partial class Constants
     
     public const uint D3D11_ANISOTROPIC_FILTERING_BIT = 64;
     
-    public const uint D3D11_APPEND_ALIGNED_ELEMENT = 4294967295;
+    public const uint D3D11_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
     public const string D3D11_APPNAME_STRING = @"Name";
     
@@ -3098,7 +3098,7 @@ public static partial class Constants
     
     public const uint D3D11_DEFAULT_RENDER_TARGET_ARRAY_INDEX = 0;
     
-    public const uint D3D11_DEFAULT_SAMPLE_MASK = 4294967295;
+    public const uint D3D11_DEFAULT_SAMPLE_MASK = uint.MaxValue;
     
     public const uint D3D11_DEFAULT_SCISSOR_ENDX = 0;
     
@@ -3200,7 +3200,7 @@ public static partial class Constants
     
     public const double D3D11_FLOAT16_FUSED_TOLERANCE_IN_ULP = 0.6d;
     
-    public const float D3D11_FLOAT32_MAX = 3.4028235E+38f;
+    public const float D3D11_FLOAT32_MAX = float.MaxValue;
     
     public const float D3D11_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = 0.6f;
     
@@ -3272,7 +3272,7 @@ public static partial class Constants
     
     public const uint D3D11_HS_CONTROL_POINT_REGISTER_READS_PER_INST = 2;
     
-    public const uint D3D11_HS_FORK_PHASE_INSTANCE_COUNT_UPPER_BOUND = 4294967295;
+    public const uint D3D11_HS_FORK_PHASE_INSTANCE_COUNT_UPPER_BOUND = uint.MaxValue;
     
     public const uint D3D11_HS_INPUT_FORK_INSTANCE_ID_REGISTER_COMPONENT_BIT_COUNT = 32;
     
@@ -3304,7 +3304,7 @@ public static partial class Constants
     
     public const uint D3D11_HS_INPUT_PRIMITIVE_ID_REGISTER_READS_PER_INST = 2;
     
-    public const uint D3D11_HS_JOIN_PHASE_INSTANCE_COUNT_UPPER_BOUND = 4294967295;
+    public const uint D3D11_HS_JOIN_PHASE_INSTANCE_COUNT_UPPER_BOUND = uint.MaxValue;
     
     public const float D3D11_HS_MAXTESSFACTOR_LOWER_BOUND = 1f;
     
@@ -3362,13 +3362,13 @@ public static partial class Constants
     
     public const string D3D11_INFOQUEUE_STORAGE_FILTER_OVERRIDE = @"InfoQueueStorageFilterOverride";
     
-    public const uint D3D11_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = 4294967295;
+    public const uint D3D11_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = uint.MaxValue;
     
-    public const uint D3D11_INTEGER_DIVIDE_BY_ZERO_REMAINDER = 4294967295;
+    public const uint D3D11_INTEGER_DIVIDE_BY_ZERO_REMAINDER = uint.MaxValue;
     
-    public const uint D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL = 4294967295;
+    public const uint D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL = uint.MaxValue;
     
-    public const uint D3D11_KEEP_UNORDERED_ACCESS_VIEWS = 4294967295;
+    public const uint D3D11_KEEP_UNORDERED_ACCESS_VIEWS = uint.MaxValue;
     
     public static readonly Guid D3D11_KEY_EXCHANGE_HW_PROTECTION = new("b1170d8a-628d-4da3-ad3b-82ddb08b4970");
     
@@ -3426,7 +3426,7 @@ public static partial class Constants
     
     public const uint D3D11_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT = 0;
     
-    public const uint D3D11_PACKED_TILE = 4294967295;
+    public const uint D3D11_PACKED_TILE = uint.MaxValue;
     
     public const uint D3D11_PIXEL_ADDRESS_RANGE_BIT_COUNT = 15;
     
@@ -3440,11 +3440,11 @@ public static partial class Constants
     
     public const uint D3D11_PS_CS_UAV_REGISTER_READS_PER_INST = 1;
     
-    public const uint D3D11_PS_FRONTFACING_DEFAULT_VALUE = 4294967295;
+    public const uint D3D11_PS_FRONTFACING_DEFAULT_VALUE = uint.MaxValue;
     
     public const uint D3D11_PS_FRONTFACING_FALSE_VALUE = 0;
     
-    public const uint D3D11_PS_FRONTFACING_TRUE_VALUE = 4294967295;
+    public const uint D3D11_PS_FRONTFACING_TRUE_VALUE = uint.MaxValue;
     
     public const uint D3D11_PS_INPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
     
@@ -3566,9 +3566,9 @@ public static partial class Constants
     
     public const uint D3D11_SO_BUFFER_SLOT_COUNT = 4;
     
-    public const uint D3D11_SO_DDI_REGISTER_INDEX_DENOTING_GAP = 4294967295;
+    public const uint D3D11_SO_DDI_REGISTER_INDEX_DENOTING_GAP = uint.MaxValue;
     
-    public const uint D3D11_SO_NO_RASTERIZED_STREAM = 4294967295;
+    public const uint D3D11_SO_NO_RASTERIZED_STREAM = uint.MaxValue;
     
     public const uint D3D11_SO_OUTPUT_COMPONENT_COUNT = 128;
     
@@ -3692,13 +3692,13 @@ public static partial class Constants
     
     public const uint D3D12_16BIT_INDEX_STRIP_CUT_VALUE = 65535;
     
-    public const uint D3D12_32BIT_INDEX_STRIP_CUT_VALUE = 4294967295;
+    public const uint D3D12_32BIT_INDEX_STRIP_CUT_VALUE = uint.MaxValue;
     
     public const uint D3D12_8BIT_INDEX_STRIP_CUT_VALUE = 255;
     
     public const uint D3D12_ANISOTROPIC_FILTERING_BIT = 64;
     
-    public const uint D3D12_APPEND_ALIGNED_ELEMENT = 4294967295;
+    public const uint D3D12_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
     public const uint D3D12_ARRAY_AXIS_ADDRESS_RANGE_BIT_COUNT = 9;
     
@@ -3920,7 +3920,7 @@ public static partial class Constants
     
     public const uint D3D12_DEFAULT_RESOURCE_PLACEMENT_ALIGNMENT = 65536;
     
-    public const uint D3D12_DEFAULT_SAMPLE_MASK = 4294967295;
+    public const uint D3D12_DEFAULT_SAMPLE_MASK = uint.MaxValue;
     
     public const uint D3D12_DEFAULT_SCISSOR_ENDX = 0;
     
@@ -3954,7 +3954,7 @@ public static partial class Constants
     
     public const uint D3D12_DEFAULT_VIEWPORT_WIDTH = 0;
     
-    public const uint D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND = 4294967295;
+    public const uint D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND = uint.MaxValue;
     
     public const uint D3D12_DRIVER_RESERVED_REGISTER_SPACE_VALUES_END = 4294967287;
     
@@ -4028,7 +4028,7 @@ public static partial class Constants
     
     public const double D3D12_FLOAT16_FUSED_TOLERANCE_IN_ULP = 0.6d;
     
-    public const float D3D12_FLOAT32_MAX = 3.4028235E+38f;
+    public const float D3D12_FLOAT32_MAX = float.MaxValue;
     
     public const float D3D12_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP = 0.6f;
     
@@ -4096,7 +4096,7 @@ public static partial class Constants
     
     public const uint D3D12_HS_CONTROL_POINT_REGISTER_READS_PER_INST = 2;
     
-    public const uint D3D12_HS_FORK_PHASE_INSTANCE_COUNT_UPPER_BOUND = 4294967295;
+    public const uint D3D12_HS_FORK_PHASE_INSTANCE_COUNT_UPPER_BOUND = uint.MaxValue;
     
     public const uint D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_COMPONENT_BIT_COUNT = 32;
     
@@ -4128,7 +4128,7 @@ public static partial class Constants
     
     public const uint D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_READS_PER_INST = 2;
     
-    public const uint D3D12_HS_JOIN_PHASE_INSTANCE_COUNT_UPPER_BOUND = 4294967295;
+    public const uint D3D12_HS_JOIN_PHASE_INSTANCE_COUNT_UPPER_BOUND = uint.MaxValue;
     
     public const float D3D12_HS_MAXTESSFACTOR_LOWER_BOUND = 1f;
     
@@ -4184,13 +4184,13 @@ public static partial class Constants
     
     public const uint D3D12_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
     
-    public const uint D3D12_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = 4294967295;
+    public const uint D3D12_INTEGER_DIVIDE_BY_ZERO_QUOTIENT = uint.MaxValue;
     
-    public const uint D3D12_INTEGER_DIVIDE_BY_ZERO_REMAINDER = 4294967295;
+    public const uint D3D12_INTEGER_DIVIDE_BY_ZERO_REMAINDER = uint.MaxValue;
     
-    public const uint D3D12_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL = 4294967295;
+    public const uint D3D12_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL = uint.MaxValue;
     
-    public const uint D3D12_KEEP_UNORDERED_ACCESS_VIEWS = 4294967295;
+    public const uint D3D12_KEEP_UNORDERED_ACCESS_VIEWS = uint.MaxValue;
     
     public const float D3D12_LINEAR_GAMMA = 1f;
     
@@ -4246,11 +4246,11 @@ public static partial class Constants
     
     public const uint D3D12_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT = 0;
     
-    public const uint D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_END = 4294967295;
+    public const uint D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_END = uint.MaxValue;
     
     public const uint D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_START = 4294967288;
     
-    public const uint D3D12_PACKED_TILE = 4294967295;
+    public const uint D3D12_PACKED_TILE = uint.MaxValue;
     
     public const uint D3D12_PIXEL_ADDRESS_RANGE_BIT_COUNT = 15;
     
@@ -4268,11 +4268,11 @@ public static partial class Constants
     
     public const uint D3D12_PS_CS_UAV_REGISTER_READS_PER_INST = 1;
     
-    public const uint D3D12_PS_FRONTFACING_DEFAULT_VALUE = 4294967295;
+    public const uint D3D12_PS_FRONTFACING_DEFAULT_VALUE = uint.MaxValue;
     
     public const uint D3D12_PS_FRONTFACING_FALSE_VALUE = 0;
     
-    public const uint D3D12_PS_FRONTFACING_TRUE_VALUE = 4294967295;
+    public const uint D3D12_PS_FRONTFACING_TRUE_VALUE = uint.MaxValue;
     
     public const uint D3D12_PS_INPUT_REGISTER_COMPONENT_BIT_COUNT = 32;
     
@@ -4388,7 +4388,7 @@ public static partial class Constants
     
     public const uint D3D12_RESINFO_INSTRUCTION_MISSING_COMPONENT_RETVAL = 0;
     
-    public const uint D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES = 4294967295;
+    public const uint D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES = uint.MaxValue;
     
     public const uint D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT = 2;
     
@@ -4434,9 +4434,9 @@ public static partial class Constants
     
     public const uint D3D12_SO_BUFFER_SLOT_COUNT = 4;
     
-    public const uint D3D12_SO_DDI_REGISTER_INDEX_DENOTING_GAP = 4294967295;
+    public const uint D3D12_SO_DDI_REGISTER_INDEX_DENOTING_GAP = uint.MaxValue;
     
-    public const uint D3D12_SO_NO_RASTERIZED_STREAM = 4294967295;
+    public const uint D3D12_SO_NO_RASTERIZED_STREAM = uint.MaxValue;
     
     public const uint D3D12_SO_OUTPUT_COMPONENT_COUNT = 128;
     
@@ -4484,7 +4484,7 @@ public static partial class Constants
     
     public const uint D3D12_SUBTEXEL_FRACTIONAL_BIT_COUNT = 8;
     
-    public const uint D3D12_SYSTEM_RESERVED_REGISTER_SPACE_VALUES_END = 4294967295;
+    public const uint D3D12_SYSTEM_RESERVED_REGISTER_SPACE_VALUES_END = uint.MaxValue;
     
     public const uint D3D12_SYSTEM_RESERVED_REGISTER_SPACE_VALUES_START = 4294967280;
     
@@ -4586,7 +4586,7 @@ public static partial class Constants
     
     public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_VP9_10BIT_PROFILE2 = new("a4c749ef-6ecf-48aa-8448-50a7a1165ff7");
     
-    public const uint D3D12_VIDEO_DECODE_STATUS_MACROBLOCKS_AFFECTED_UNKNOWN = 4294967295;
+    public const uint D3D12_VIDEO_DECODE_STATUS_MACROBLOCKS_AFFECTED_UNKNOWN = uint.MaxValue;
     
     public const uint D3D12_VIDEO_ENCODER_AV1_INVALID_DPB_RESOURCE_INDEX = 255;
     
@@ -4696,7 +4696,7 @@ public static partial class Constants
     
     public const int D3DCAPS2_CANMANAGERESOURCE = 268435456;
     
-    public const int D3DCAPS2_CANSHARERESOURCE = -2147483648;
+    public const int D3DCAPS2_CANSHARERESOURCE = int.MinValue;
     
     public const int D3DCAPS2_DYNAMICTEXTURES = 536870912;
     
@@ -5478,7 +5478,7 @@ public static partial class Constants
     
     public const int D3DPRESENT_INTERVAL_FOUR = 8;
     
-    public const int D3DPRESENT_INTERVAL_IMMEDIATE = -2147483648;
+    public const int D3DPRESENT_INTERVAL_IMMEDIATE = int.MinValue;
     
     public const int D3DPRESENT_INTERVAL_ONE = 1;
     
@@ -6016,7 +6016,7 @@ public static partial class Constants
     
     public const int D3DVBCAPS_DONOTCLIP = 1;
     
-    public const int D3DVBCAPS_OPTIMIZED = -2147483648;
+    public const int D3DVBCAPS_OPTIMIZED = int.MinValue;
     
     public const int D3DVBCAPS_SYSTEMMEMORY = 2048;
     
@@ -6236,7 +6236,7 @@ public static partial class Constants
     
     public const int DDBD_8 = 2048;
     
-    public const int DDBLT_AFLAGS = -2147483648;
+    public const int DDBLT_AFLAGS = int.MinValue;
     
     public const int DDBLT_ALPHADEST = 1;
     
@@ -6356,7 +6356,7 @@ public static partial class Constants
     
     public const int DDCAPS_BLTSTRETCH = 512;
     
-    public const int DDCAPS_CANBLTSYSMEM = -2147483648;
+    public const int DDCAPS_CANBLTSYSMEM = int.MinValue;
     
     public const int DDCAPS_CANCLIP = 536870912;
     
@@ -6414,7 +6414,7 @@ public static partial class Constants
     
     public const int DDCAPS2_CANRENDERWINDOWED = 524288;
     
-    public const int DDCAPS2_CANSHARERESOURCE = -2147483648;
+    public const int DDCAPS2_CANSHARERESOURCE = int.MinValue;
     
     public const int DDCAPS2_CERTIFIED = 1;
     
@@ -6714,7 +6714,7 @@ public static partial class Constants
     
     public const int DDHAL_CB32_GETSCANLINE = 128;
     
-    public const int DDHAL_CB32_MAPMEMORY = -2147483648;
+    public const int DDHAL_CB32_MAPMEMORY = int.MinValue;
     
     public const int DDHAL_CB32_SETCOLORKEY = 4;
     
@@ -7310,7 +7310,7 @@ public static partial class Constants
     
     public const int DDRAWISURF_DCIBUSY = 536870912;
     
-    public const int DDRAWISURF_DCILOCK = -2147483648;
+    public const int DDRAWISURF_DCILOCK = int.MinValue;
     
     public const int DDRAWISURF_DRIVERMANAGED = 1073741824;
     
@@ -7398,7 +7398,7 @@ public static partial class Constants
     
     public const int DDRAWISURFGBL_READONLYLOCKHELD = 65536;
     
-    public const int DDRAWISURFGBL_RESERVED0 = -2147483648;
+    public const int DDRAWISURFGBL_RESERVED0 = int.MinValue;
     
     public const int DDRAWISURFGBL_SOFTWAREAUTOFLIP = 8;
     
@@ -7456,7 +7456,7 @@ public static partial class Constants
     
     public const int DDSCAPS_OFFSCREENPLAIN = 64;
     
-    public const int DDSCAPS_OPTIMIZED = -2147483648;
+    public const int DDSCAPS_OPTIMIZED = int.MinValue;
     
     public const int DDSCAPS_OVERLAY = 128;
     
@@ -7490,7 +7490,7 @@ public static partial class Constants
     
     public const int DDSCAPS_ZBUFFER = 131072;
     
-    public const int DDSCAPS2_ADDITIONALPRIMARY = -2147483648;
+    public const int DDSCAPS2_ADDITIONALPRIMARY = int.MinValue;
     
     public const int DDSCAPS2_COMMANDBUFFER = 64;
     
@@ -7684,7 +7684,7 @@ public static partial class Constants
     
     public const uint DDTRANSFER_SYSTEMMEMORY = 1;
     
-    public const uint DDUNSUPPORTEDMODE = 4294967295;
+    public const uint DDUNSUPPORTEDMODE = uint.MaxValue;
     
     public const uint DDVERSIONINFO = 13;
     
@@ -9176,7 +9176,7 @@ public static partial class Constants
     
     public const uint DRVM_IOCTL = 256;
     
-    public const int DRVM_IOCTL_CMD_SYSTEM = -2147483648;
+    public const int DRVM_IOCTL_CMD_SYSTEM = int.MinValue;
     
     public const int DRVM_IOCTL_CMD_USER = 0;
     
@@ -9328,7 +9328,7 @@ public static partial class Constants
     
     public const uint DSBPLAY_TERMINATEBY_TIME = 8;
     
-    public const uint DSBPN_OFFSETSTOP = 4294967295;
+    public const uint DSBPN_OFFSETSTOP = uint.MaxValue;
     
     public const uint DSBSIZE_FX_MIN = 150;
     
@@ -9376,7 +9376,7 @@ public static partial class Constants
     
     public const uint DSBUSID_LOW_FREQUENCY = 3;
     
-    public const uint DSBUSID_NULL = 4294967295;
+    public const uint DSBUSID_NULL = uint.MaxValue;
     
     public const uint DSBUSID_REVERB_SEND = 64;
     
@@ -10134,7 +10134,7 @@ public static partial class Constants
     
     public const uint DWM_TNP_VISIBLE = 8;
     
-    public const uint DWMWA_COLOR_DEFAULT = 4294967295;
+    public const uint DWMWA_COLOR_DEFAULT = uint.MaxValue;
     
     public const uint DWMWA_COLOR_NONE = 4294967294;
     
@@ -10316,7 +10316,7 @@ public static partial class Constants
     
     public const uint DXGI_SHARED_RESOURCE_WRITE = 1;
     
-    public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = 4294967295;
+    public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = uint.MaxValue;
     
     public const uint DXVA_ALPHA_BLEND_COMBINATION_BUFFER = 13;
     
@@ -12436,7 +12436,7 @@ public static partial class Constants
     
     public const uint GL_CLEAR = 5376;
     
-    public const uint GL_CLIENT_ALL_ATTRIB_BITS = 4294967295;
+    public const uint GL_CLIENT_ALL_ATTRIB_BITS = uint.MaxValue;
     
     public const uint GL_CLIENT_ATTRIB_STACK_DEPTH = 2993;
     
@@ -14180,7 +14180,7 @@ public static partial class Constants
     
     public const uint ICCOMPRESSFRAMES_PADDING = 1;
     
-    public const int ICDECOMPRESS_HURRYUP = -2147483648;
+    public const int ICDECOMPRESS_HURRYUP = int.MinValue;
     
     public const int ICDECOMPRESS_NOTKEYFRAME = 134217728;
     
@@ -14200,7 +14200,7 @@ public static partial class Constants
     
     public const int ICDRAW_HDC = 4;
     
-    public const int ICDRAW_HURRYUP = -2147483648;
+    public const int ICDRAW_HURRYUP = int.MinValue;
     
     public const int ICDRAW_MEMORYDC = 32;
     
@@ -14856,7 +14856,7 @@ public static partial class Constants
     
     public const int JOY_BUTTON31 = 1073741824;
     
-    public const int JOY_BUTTON32 = -2147483648;
+    public const int JOY_BUTTON32 = int.MinValue;
     
     public const uint JOY_BUTTON3CHG = 1024;
     
@@ -15414,7 +15414,7 @@ public static partial class Constants
     
     public const ulong KSCAMERA_EXTENDEDPROP_FACEDETECTION_VIDEO = 2;
     
-    public const uint KSCAMERA_EXTENDEDPROP_FILTERSCOPE = 4294967295;
+    public const uint KSCAMERA_EXTENDEDPROP_FILTERSCOPE = uint.MaxValue;
     
     public const ulong KSCAMERA_EXTENDEDPROP_FLAG_CANCELOPERATION = 9223372036854775808;
     
@@ -15882,7 +15882,7 @@ public static partial class Constants
     
     public const uint KSPIN_FLAG_USE_STANDARD_TRANSPORT = 262144;
     
-    public const uint KSPRIORITY_EXCLUSIVE = 4294967295;
+    public const uint KSPRIORITY_EXCLUSIVE = uint.MaxValue;
     
     public const uint KSPRIORITY_HIGH = 2147483648;
     
@@ -15938,7 +15938,7 @@ public static partial class Constants
     
     public const int KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_CONVERGEMODE = 1073741824;
     
-    public const int KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_ASYNC = -2147483648;
+    public const int KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_ASYNC = int.MinValue;
     
     public const int KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_FLAGS_AUTO = 1;
     
@@ -18252,7 +18252,7 @@ public static partial class Constants
     
     public const int MEVT_F_CALLBACK = 1073741824;
     
-    public const int MEVT_F_LONG = -2147483648;
+    public const int MEVT_F_LONG = int.MinValue;
     
     public const int MEVT_F_SHORT = 0;
     
@@ -19554,13 +19554,13 @@ public static partial class Constants
     
     public const uint MFASF_PAYLOADEXTENSION_VARIABLE_SIZE = 65535;
     
-    public const ulong MFASFINDEXER_APPROX_SEEK_TIME_UNKNOWN = 18446744073709551615;
+    public const ulong MFASFINDEXER_APPROX_SEEK_TIME_UNKNOWN = ulong.MaxValue;
     
-    public const uint MFASFINDEXER_NO_FIXED_INTERVAL = 4294967295;
+    public const uint MFASFINDEXER_NO_FIXED_INTERVAL = uint.MaxValue;
     
     public const uint MFASFINDEXER_PER_ENTRY_BYTES_DYNAMIC = 65535;
     
-    public const ulong MFASFINDEXER_READ_FOR_REVERSEPLAYBACK_OUTOFDATASEGMENT = 18446744073709551615;
+    public const ulong MFASFINDEXER_READ_FOR_REVERSEPLAYBACK_OUTOFDATASEGMENT = ulong.MaxValue;
     
     public static readonly Guid MFASFINDEXER_TYPE_TIMECODE = new("49815231-6bad-44fd-810a-3f60984ec7fd");
     
@@ -19592,7 +19592,7 @@ public static partial class Constants
     
     public const uint MFASYNC_BLOCKING_CALLBACK = 4;
     
-    public const uint MFASYNC_CALLBACK_QUEUE_ALL = 4294967295;
+    public const uint MFASYNC_CALLBACK_QUEUE_ALL = uint.MaxValue;
     
     public const uint MFASYNC_CALLBACK_QUEUE_IO = 3;
     
@@ -20134,7 +20134,7 @@ public static partial class Constants
     
     public static readonly Guid MFSampleExtension_VideoEncodeQP = new("b2efe478-f979-4c66-b95e-ee2b82c82f36");
     
-    public const uint MFSEQUENCER_INVALID_ELEMENT_ID = 4294967295;
+    public const uint MFSEQUENCER_INVALID_ELEMENT_ID = uint.MaxValue;
     
     public const uint MFSESSIONCAP_DOES_NOT_USE_NETWORK = 64;
     
@@ -20266,7 +20266,7 @@ public static partial class Constants
     
     public static readonly Guid MFT_REMUX_MARK_I_PICTURE_AS_CLEAN_POINT = new("364e8f85-3f2e-436c-b2a2-4440a012a9e8");
     
-    public const uint MFT_STREAMS_UNLIMITED = 4294967295;
+    public const uint MFT_STREAMS_UNLIMITED = uint.MaxValue;
     
     public static readonly Guid MFT_SUPPORT_3DVIDEO = new("093f81b1-4f2e-4631-8168-7934032a01d3");
     
@@ -20500,7 +20500,7 @@ public static partial class Constants
     
     public const int MIDIPROP_GET = 1073741824;
     
-    public const int MIDIPROP_SET = -2147483648;
+    public const int MIDIPROP_SET = int.MinValue;
     
     public const int MIDIPROP_TEMPO = 2;
     
@@ -20572,7 +20572,7 @@ public static partial class Constants
     
     public const int MIXER_OBJECTF_AUX = 1342177280;
     
-    public const int MIXER_OBJECTF_HANDLE = -2147483648;
+    public const int MIXER_OBJECTF_HANDLE = int.MinValue;
     
     public const int MIXER_OBJECTF_MIDIIN = 1073741824;
     
@@ -20592,7 +20592,7 @@ public static partial class Constants
     
     public const uint MIXER_SHORT_NAME_CHARS = 16;
     
-    public const int MIXERCONTROL_CONTROLF_DISABLED = -2147483648;
+    public const int MIXERCONTROL_CONTROLF_DISABLED = int.MinValue;
     
     public const int MIXERCONTROL_CONTROLF_MULTIPLE = 2;
     
@@ -20726,7 +20726,7 @@ public static partial class Constants
     
     public const int MIXERLINE_LINEF_DISCONNECTED = 32768;
     
-    public const int MIXERLINE_LINEF_SOURCE = -2147483648;
+    public const int MIXERLINE_LINEF_SOURCE = int.MinValue;
     
     public const uint MIXERLINE_TARGETTYPE_AUX = 5;
     
@@ -24222,7 +24222,7 @@ public static partial class Constants
     
     public const uint NANOSECONDS = 10000000;
     
-    public const int OBJECT_ISROOT = -2147483648;
+    public const int OBJECT_ISROOT = int.MinValue;
     
     public const uint OCUR_PAIRING_PROTOCOL_VERSION = 2;
     
@@ -26302,7 +26302,7 @@ public static partial class Constants
     
     public const uint WAVE_INVALIDFORMAT = 0;
     
-    public const uint WAVE_MAPPER = 4294967295;
+    public const uint WAVE_MAPPER = uint.MaxValue;
     
     public const uint WAVE_MAPPER_S = 1153;
     
@@ -27478,7 +27478,7 @@ public static partial class Constants
     
     public const uint XAUDIO2_1024_QUANTUM = 32768;
     
-    public const uint XAUDIO2_ANY_PROCESSOR = 4294967295;
+    public const uint XAUDIO2_ANY_PROCESSOR = uint.MaxValue;
     
     public const uint XAUDIO2_COMMIT_ALL = 0;
     

@@ -3,7 +3,7 @@
 // https://learn.microsoft.com/windows/win32/api/dxva9typ/ne-dxva9typ-copp_tvprotectionstandard
 public enum COPP_TVProtectionStandard
 {
-    COPP_ProtectionStandard_Unknown = -2147483648,
+    COPP_ProtectionStandard_Unknown = int.MinValue,
     COPP_ProtectionStandard_None = 0,
     COPP_ProtectionStandard_IEC61880_525i = 1,
     COPP_ProtectionStandard_IEC61880_2_525i = 2,

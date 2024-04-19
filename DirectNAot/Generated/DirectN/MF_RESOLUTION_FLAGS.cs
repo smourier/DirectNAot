@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum MF_RESOLUTION_FLAGS
 {
     MF_RESOLUTION_MEDIASOURCE = 1,

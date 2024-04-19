@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum GENERIC_ACCESS_RIGHTS : uint
 {
     GENERIC_READ = 2147483648,

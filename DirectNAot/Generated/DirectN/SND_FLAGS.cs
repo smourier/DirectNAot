@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum SND_FLAGS : uint
 {
     SND_APPLICATION = 128,

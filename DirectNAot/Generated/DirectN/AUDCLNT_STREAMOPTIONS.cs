@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioclient/ne-audioclient-audclnt_streamoptions
+[Flags]
 public enum AUDCLNT_STREAMOPTIONS
 {
     AUDCLNT_STREAMOPTIONS_NONE = 0,

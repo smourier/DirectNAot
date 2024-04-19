@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum D3D12_VIDEO_ENCODER_AV1_FRAME_TYPE_FLAGS
 {
     D3D12_VIDEO_ENCODER_AV1_FRAME_TYPE_FLAG_NONE = 0,

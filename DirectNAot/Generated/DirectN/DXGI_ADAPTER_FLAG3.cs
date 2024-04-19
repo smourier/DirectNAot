@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_6/ne-dxgi1_6-dxgi_adapter_flag3
+[Flags]
 public enum DXGI_ADAPTER_FLAG3
 {
     DXGI_ADAPTER_FLAG3_NONE = 0,

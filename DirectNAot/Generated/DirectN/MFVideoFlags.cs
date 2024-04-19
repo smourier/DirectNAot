@@ -22,5 +22,5 @@ public enum MFVideoFlags
     MFVideoFlag_BottomUpLinearRep = 524288,
     MFVideoFlags_DXVASurface = 1048576,
     MFVideoFlags_RenderTargetSurface = 4194304,
-    MFVideoFlags_ForceQWORD = 2147483647,
+    MFVideoFlags_ForceQWORD = int.MaxValue,
 }

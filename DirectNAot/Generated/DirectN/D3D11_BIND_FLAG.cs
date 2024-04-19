@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11/ne-d3d11-d3d11_bind_flag
+[Flags]
 public enum D3D11_BIND_FLAG
 {
     D3D11_BIND_VERTEX_BUFFER = 1,

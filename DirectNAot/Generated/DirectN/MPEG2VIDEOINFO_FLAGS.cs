@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum MPEG2VIDEOINFO_FLAGS : uint
 {
     AMMPEG2_DoPanScan = 1,

@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum OPEN_FILENAME_FLAGS : uint
 {
     OFN_READONLY = 1,

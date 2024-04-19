@@ -7,5 +7,5 @@ public enum COPP_HDCP_Protection_Level
     COPP_HDCP_LevelMin = 0,
     COPP_HDCP_Level1 = 1,
     COPP_HDCP_LevelMax = 1,
-    COPP_HDCP_ForceDWORD = 2147483647,
+    COPP_HDCP_ForceDWORD = int.MaxValue,
 }

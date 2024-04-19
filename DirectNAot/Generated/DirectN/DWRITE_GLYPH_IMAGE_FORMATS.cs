@@ -1,6 +1,7 @@
 ﻿namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcommon/ne-dcommon-dwrite_glyph_image_formats
+[Flags]
 public enum DWRITE_GLYPH_IMAGE_FORMATS
 {
     DWRITE_GLYPH_IMAGE_FORMATS_NONE = 0,

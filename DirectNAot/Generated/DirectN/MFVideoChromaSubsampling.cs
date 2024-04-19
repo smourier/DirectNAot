@@ -13,5 +13,5 @@ public enum MFVideoChromaSubsampling
     MFVideoChromaSubsampling_DV_PAL = 6,
     MFVideoChromaSubsampling_Cosited = 7,
     MFVideoChromaSubsampling_Last = 8,
-    MFVideoChromaSubsampling_ForceDWORD = 2147483647,
+    MFVideoChromaSubsampling_ForceDWORD = int.MaxValue,
 }

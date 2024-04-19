@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum PARAMFLAGS : ushort
 {
     PARAMFLAG_NONE = 0,

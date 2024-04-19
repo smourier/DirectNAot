@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum ADVANCED_FEATURE_FLAGS : ushort
 {
     FADF_AUTO = 1,

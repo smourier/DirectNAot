@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum MFT_ENUM_FLAG
 {
     MFT_ENUM_FLAG_SYNCMFT = 1,

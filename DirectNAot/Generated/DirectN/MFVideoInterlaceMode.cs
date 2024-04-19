@@ -11,5 +11,5 @@ public enum MFVideoInterlaceMode
     MFVideoInterlace_FieldSingleLower = 6,
     MFVideoInterlace_MixedInterlaceOrProgressive = 7,
     MFVideoInterlace_Last = 8,
-    MFVideoInterlace_ForceDWORD = 2147483647,
+    MFVideoInterlace_ForceDWORD = int.MaxValue,
 }
