@@ -5,18 +5,18 @@ public partial interface IDxcResult : IDxcOperationResult
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool HasOutput(DXC_OUT_KIND dxcOutKind);
+    bool HasOutput(DXC_OUT_KIND dxcOutKind);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOutput(DXC_OUT_KIND dxcOutKind, in Guid iid, nint/* nint */ ppvObject, out IDxcBlobUtf16 ppOutputName);
+    HRESULT GetOutput(DXC_OUT_KIND dxcOutKind, in Guid iid, nint/* nint */ ppvObject, out IDxcBlobUtf16 ppOutputName);
     
     [PreserveSig]
-    public uint GetNumOutputs();
+    uint GetNumOutputs();
     
     [PreserveSig]
-    public DXC_OUT_KIND GetOutputByIndex(uint Index);
+    DXC_OUT_KIND GetOutputByIndex(uint Index);
     
     [PreserveSig]
-    public DXC_OUT_KIND PrimaryOutput();
+    DXC_OUT_KIND PrimaryOutput();
 }

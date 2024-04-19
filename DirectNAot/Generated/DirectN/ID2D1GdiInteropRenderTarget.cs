@@ -8,10 +8,10 @@ public partial interface ID2D1GdiInteropRenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1gdiinteroprendertarget-getdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDC(D2D1_DC_INITIALIZE_MODE mode, out HDC hdc);
+    HRESULT GetDC(D2D1_DC_INITIALIZE_MODE mode, out HDC hdc);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1gdiinteroprendertarget-releasedc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseDC(nint/* nint */ update);
+    HRESULT ReleaseDC(nint/* nint */ update);
 }

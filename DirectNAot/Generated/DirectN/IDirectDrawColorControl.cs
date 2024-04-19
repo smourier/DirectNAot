@@ -7,10 +7,10 @@ public partial interface IDirectDrawColorControl
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawcolorcontrol-getcolorcontrols
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetColorControls(ref DDCOLORCONTROL param0);
+    HRESULT GetColorControls(ref DDCOLORCONTROL param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawcolorcontrol-setcolorcontrols
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetColorControls(ref DDCOLORCONTROL param0);
+    HRESULT SetColorControls(ref DDCOLORCONTROL param0);
 }

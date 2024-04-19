@@ -8,5 +8,5 @@ public partial interface IWICProgressCallback
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicprogresscallback-notify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Notify(uint uFrameNum, WICProgressOperation operation, double dblProgress);
+    HRESULT Notify(uint uFrameNum, WICProgressOperation operation, double dblProgress);
 }

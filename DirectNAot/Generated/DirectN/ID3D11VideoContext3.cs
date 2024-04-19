@@ -7,9 +7,9 @@ public partial interface ID3D11VideoContext3 : ID3D11VideoContext2
     // https://learn.microsoft.com/windows/win32/api/d3d11_4/nf-d3d11_4-id3d11videocontext3-decoderbeginframe1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DecoderBeginFrame1(ID3D11VideoDecoder pDecoder, ID3D11VideoDecoderOutputView pView, uint ContentKeySize, nint/* nint */ pContentKey, uint NumComponentHistograms, nint/* nint */ pHistogramOffsets, nint/* nint */ ppHistogramBuffers);
+    HRESULT DecoderBeginFrame1(ID3D11VideoDecoder pDecoder, ID3D11VideoDecoderOutputView pView, uint ContentKeySize, nint/* nint */ pContentKey, uint NumComponentHistograms, nint/* nint */ pHistogramOffsets, nint/* nint */ ppHistogramBuffers);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SubmitDecoderBuffers2(ID3D11VideoDecoder pDecoder, uint NumBuffers, in D3D11_VIDEO_DECODER_BUFFER_DESC2 pBufferDesc);
+    HRESULT SubmitDecoderBuffers2(ID3D11VideoDecoder pDecoder, uint NumBuffers, in D3D11_VIDEO_DECODER_BUFFER_DESC2 pBufferDesc);
 }

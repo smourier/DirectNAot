@@ -7,10 +7,10 @@ public partial interface ID3D11DeviceContext4 : ID3D11DeviceContext3
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11devicecontext4-signal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Signal(ID3D11Fence pFence, ulong Value);
+    HRESULT Signal(ID3D11Fence pFence, ulong Value);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11devicecontext4-wait
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Wait(ID3D11Fence pFence, ulong Value);
+    HRESULT Wait(ID3D11Fence pFence, ulong Value);
 }

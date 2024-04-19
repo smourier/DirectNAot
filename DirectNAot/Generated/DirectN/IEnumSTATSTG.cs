@@ -8,20 +8,20 @@ public partial interface IEnumSTATSTG
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Next(uint celt, out STATSTG rgelt, nint/* nint */ pceltFetched);
+    HRESULT Next(uint celt, out STATSTG rgelt, nint/* nint */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-skip
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Skip(uint celt);
+    HRESULT Skip(uint celt);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-reset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Reset();
+    HRESULT Reset();
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Clone(out IEnumSTATSTG ppenum);
+    HRESULT Clone(out IEnumSTATSTG ppenum);
 }

@@ -7,5 +7,5 @@ public partial interface IDWriteRenderingParams2 : IDWriteRenderingParams1
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwriterenderingparams2-getgridfitmode
     [PreserveSig]
-    public DWRITE_GRID_FIT_MODE GetGridFitMode();
+    DWRITE_GRID_FIT_MODE GetGridFitMode();
 }

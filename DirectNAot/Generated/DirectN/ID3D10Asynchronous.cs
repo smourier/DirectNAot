@@ -6,18 +6,18 @@ public partial interface ID3D10Asynchronous : ID3D10DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-begin
     [PreserveSig]
-    public void Begin();
+    void Begin();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-end
     [PreserveSig]
-    public void End();
+    void End();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-getdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetData(nint/* nint */ pData, uint DataSize, uint GetDataFlags);
+    HRESULT GetData(nint/* nint */ pData, uint DataSize, uint GetDataFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-getdatasize
     [PreserveSig]
-    public uint GetDataSize();
+    uint GetDataSize();
 }

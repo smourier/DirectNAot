@@ -7,10 +7,10 @@ public partial interface ID3D12VirtualizationGuestDevice
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12virtualizationguestdevice-sharewithhost
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ShareWithHost(ID3D12DeviceChild pObject, out HANDLE pHandle);
+    HRESULT ShareWithHost(ID3D12DeviceChild pObject, out HANDLE pHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12virtualizationguestdevice-createfencefd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateFenceFd(ID3D12Fence pFence, ulong FenceValue, out int pFenceFd);
+    HRESULT CreateFenceFd(ID3D12Fence pFence, ulong FenceValue, out int pFenceFd);
 }

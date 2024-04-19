@@ -7,5 +7,5 @@ public partial interface ID2D1TransformNode
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformnode-getinputcount
     [PreserveSig]
-    public uint GetInputCount();
+    uint GetInputCount();
 }

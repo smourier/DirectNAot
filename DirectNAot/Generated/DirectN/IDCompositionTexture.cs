@@ -5,17 +5,17 @@ public partial interface IDCompositionTexture
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSourceRect(in D2D_RECT_U sourceRect);
+    HRESULT SetSourceRect(in D2D_RECT_U sourceRect);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetColorSpace(DXGI_COLOR_SPACE_TYPE colorSpace);
+    HRESULT SetColorSpace(DXGI_COLOR_SPACE_TYPE colorSpace);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAlphaMode(DXGI_ALPHA_MODE alphaMode);
+    HRESULT SetAlphaMode(DXGI_ALPHA_MODE alphaMode);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetAvailableFence(out ulong fenceValue, in Guid iid, out nint availableFence);
+    HRESULT GetAvailableFence(out ulong fenceValue, in Guid iid, out nint availableFence);
 }

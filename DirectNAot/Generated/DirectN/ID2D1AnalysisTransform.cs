@@ -8,5 +8,5 @@ public partial interface ID2D1AnalysisTransform
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1analysistransform-processanalysisresults
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ProcessAnalysisResults(nint /* byte array */ analysisData, uint analysisDataCount);
+    HRESULT ProcessAnalysisResults(nint /* byte array */ analysisData, uint analysisDataCount);
 }

@@ -5,9 +5,9 @@ public partial interface ID3D12DebugCommandList2 : ID3D12DebugCommandList
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetDebugParameter(D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE Type, nint pData, uint DataSize);
+    HRESULT SetDebugParameter(D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE Type, nint pData, uint DataSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDebugParameter(D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE Type, nint pData, uint DataSize);
+    HRESULT GetDebugParameter(D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE Type, nint pData, uint DataSize);
 }

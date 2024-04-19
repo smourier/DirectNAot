@@ -6,19 +6,19 @@ public partial interface ID3D10Multithread
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-enter
     [PreserveSig]
-    public void Enter();
+    void Enter();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-leave
     [PreserveSig]
-    public void Leave();
+    void Leave();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-setmultithreadprotected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool SetMultithreadProtected([MarshalAs(UnmanagedType.U4)] bool bMTProtect);
+    bool SetMultithreadProtected([MarshalAs(UnmanagedType.U4)] bool bMTProtect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-getmultithreadprotected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool GetMultithreadProtected();
+    bool GetMultithreadProtected();
 }

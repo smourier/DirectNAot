@@ -8,10 +8,10 @@ public partial interface IWICFormatConverterInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverterinfo-getpixelformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPixelFormats(uint cFormats, ref Guid pPixelFormatGUIDs, out uint pcActual);
+    HRESULT GetPixelFormats(uint cFormats, ref Guid pPixelFormatGUIDs, out uint pcActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverterinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInstance(out IWICFormatConverter ppIConverter);
+    HRESULT CreateInstance(out IWICFormatConverter ppIConverter);
 }

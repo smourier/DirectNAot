@@ -8,15 +8,15 @@ public partial interface ID2D1Transform : ID2D1TransformNode
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transform-mapoutputrecttoinputrects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MapOutputRectToInputRects(FoundationRECT outputRect, out FoundationRECT inputRects, uint inputRectsCount);
+    HRESULT MapOutputRectToInputRects(FoundationRECT outputRect, out FoundationRECT inputRects, uint inputRectsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transform-mapinputrectstooutputrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MapInputRectsToOutputRect(FoundationRECT inputRects, FoundationRECT inputOpaqueSubRects, uint inputRectCount, out FoundationRECT outputRect, out FoundationRECT outputOpaqueSubRect);
+    HRESULT MapInputRectsToOutputRect(FoundationRECT inputRects, FoundationRECT inputOpaqueSubRects, uint inputRectCount, out FoundationRECT outputRect, out FoundationRECT outputOpaqueSubRect);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transform-mapinvalidrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MapInvalidRect(uint inputIndex, FoundationRECT invalidInputRect, out FoundationRECT invalidOutputRect);
+    HRESULT MapInvalidRect(uint inputIndex, FoundationRECT invalidInputRect, out FoundationRECT invalidOutputRect);
 }

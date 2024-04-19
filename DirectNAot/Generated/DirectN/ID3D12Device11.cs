@@ -4,5 +4,5 @@
 public partial interface ID3D12Device11 : ID3D12Device10
 {
     [PreserveSig]
-    public void CreateSampler2(in D3D12_SAMPLER_DESC2 pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
+    void CreateSampler2(in D3D12_SAMPLER_DESC2 pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
 }

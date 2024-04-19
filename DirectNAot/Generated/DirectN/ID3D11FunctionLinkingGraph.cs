@@ -7,40 +7,40 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-createmoduleinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint/* nint */ ppErrorBuffer);
+    HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint/* nint */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setinputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetInputSignature(in D3D11_PARAMETER_DESC pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
+    HRESULT SetInputSignature(in D3D11_PARAMETER_DESC pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setoutputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOutputSignature(in D3D11_PARAMETER_DESC pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
+    HRESULT SetOutputSignature(in D3D11_PARAMETER_DESC pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-callfunction
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CallFunction(PSTR pModuleInstanceNamespace, ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, out ID3D11LinkingNode ppCallNode);
+    HRESULT CallFunction(PSTR pModuleInstanceNamespace, ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, out ID3D11LinkingNode ppCallNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-passvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT PassValue(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, ID3D11LinkingNode pDstNode, int DstParameterIndex);
+    HRESULT PassValue(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, ID3D11LinkingNode pDstNode, int DstParameterIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-passvaluewithswizzle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT PassValueWithSwizzle(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, PSTR pSrcSwizzle, ID3D11LinkingNode pDstNode, int DstParameterIndex, PSTR pDstSwizzle);
+    HRESULT PassValueWithSwizzle(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, PSTR pSrcSwizzle, ID3D11LinkingNode pDstNode, int DstParameterIndex, PSTR pDstSwizzle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-getlasterror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLastError(nint/* nint */ ppErrorBuffer);
+    HRESULT GetLastError(nint/* nint */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-generatehlsl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GenerateHlsl(uint uFlags, out ID3DBlob ppBuffer);
+    HRESULT GenerateHlsl(uint uFlags, out ID3DBlob ppBuffer);
 }

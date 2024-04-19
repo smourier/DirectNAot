@@ -8,5 +8,5 @@ public partial interface IDirectManipulationUpdateHandler
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationupdatehandler-update
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Update();
+    HRESULT Update();
 }

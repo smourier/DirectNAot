@@ -6,14 +6,14 @@ public partial interface IDWriteFontSet3 : IDWriteFontSet2
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset3-getfontsourcetype
     [PreserveSig]
-    public DWRITE_FONT_SOURCE_TYPE GetFontSourceType(uint fontIndex);
+    DWRITE_FONT_SOURCE_TYPE GetFontSourceType(uint fontIndex);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset3-getfontsourcenamelength
     [PreserveSig]
-    public uint GetFontSourceNameLength(uint listIndex);
+    uint GetFontSourceNameLength(uint listIndex);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset3-getfontsourcename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontSourceName(uint listIndex, out PWSTR stringBuffer, uint stringBufferSize);
+    HRESULT GetFontSourceName(uint listIndex, out PWSTR stringBuffer, uint stringBufferSize);
 }

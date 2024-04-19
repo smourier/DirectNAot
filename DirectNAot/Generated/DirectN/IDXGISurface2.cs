@@ -8,5 +8,5 @@ public partial interface IDXGISurface2 : IDXGISurface1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgisurface2-getresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetResource(in Guid riid, out nint ppParentResource, out uint pSubresourceIndex);
+    HRESULT GetResource(in Guid riid, out nint ppParentResource, out uint pSubresourceIndex);
 }

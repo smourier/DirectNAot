@@ -6,5 +6,5 @@ public partial interface ID3D12LifetimeOwner
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12lifetimeowner-lifetimestateupdated
     [PreserveSig]
-    public void LifetimeStateUpdated(D3D12_LIFETIME_STATE NewState);
+    void LifetimeStateUpdated(D3D12_LIFETIME_STATE NewState);
 }

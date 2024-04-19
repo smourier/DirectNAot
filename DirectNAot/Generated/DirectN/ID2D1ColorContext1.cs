@@ -6,14 +6,14 @@ public partial interface ID2D1ColorContext1 : ID2D1ColorContext
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1colorcontext1-getcolorcontexttype
     [PreserveSig]
-    public D2D1_COLOR_CONTEXT_TYPE GetColorContextType();
+    D2D1_COLOR_CONTEXT_TYPE GetColorContextType();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1colorcontext1-getdxgicolorspace
     [PreserveSig]
-    public DXGI_COLOR_SPACE_TYPE GetDXGIColorSpace();
+    DXGI_COLOR_SPACE_TYPE GetDXGIColorSpace();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1colorcontext1-getsimplecolorprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSimpleColorProfile(out D2D1_SIMPLE_COLOR_PROFILE simpleProfile);
+    HRESULT GetSimpleColorProfile(out D2D1_SIMPLE_COLOR_PROFILE simpleProfile);
 }

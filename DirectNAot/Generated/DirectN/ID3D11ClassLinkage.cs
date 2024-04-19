@@ -8,10 +8,10 @@ public partial interface ID3D11ClassLinkage : ID3D11DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classlinkage-getclassinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetClassInstance(PSTR pClassInstanceName, uint InstanceIndex, out ID3D11ClassInstance ppInstance);
+    HRESULT GetClassInstance(PSTR pClassInstanceName, uint InstanceIndex, out ID3D11ClassInstance ppInstance);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classlinkage-createclassinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateClassInstance(PSTR pClassTypeName, uint ConstantBufferOffset, uint ConstantVectorOffset, uint TextureOffset, uint SamplerOffset, out ID3D11ClassInstance ppInstance);
+    HRESULT CreateClassInstance(PSTR pClassTypeName, uint ConstantBufferOffset, uint ConstantVectorOffset, uint TextureOffset, uint SamplerOffset, out ID3D11ClassInstance ppInstance);
 }

@@ -5,17 +5,17 @@ public partial interface IDDVideoPortContainer
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateVideoPort(uint param0, ref DDVIDEOPORTDESC param1, out IDirectDrawVideoPort param2, nint param3);
+    HRESULT CreateVideoPort(uint param0, ref DDVIDEOPORTDESC param1, out IDirectDrawVideoPort param2, nint param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumVideoPorts(uint param0, ref DDVIDEOPORTCAPS param1, nint param2, LPDDENUMVIDEOCALLBACK param3);
+    HRESULT EnumVideoPorts(uint param0, ref DDVIDEOPORTCAPS param1, nint param2, LPDDENUMVIDEOCALLBACK param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetVideoPortConnectInfo(uint param0, ref uint pcInfo, nint/* nint */ param2);
+    HRESULT GetVideoPortConnectInfo(uint param0, ref uint pcInfo, nint/* nint */ param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT QueryVideoPortStatus(uint param0, ref DDVIDEOPORTSTATUS param1);
+    HRESULT QueryVideoPortStatus(uint param0, ref DDVIDEOPORTSTATUS param1);
 }

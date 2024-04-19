@@ -8,10 +8,10 @@ public partial interface ID3D11SwitchToRef
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11switchtoref-setuseref
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool SetUseRef([MarshalAs(UnmanagedType.U4)] bool UseRef);
+    bool SetUseRef([MarshalAs(UnmanagedType.U4)] bool UseRef);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11switchtoref-getuseref
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool GetUseRef();
+    bool GetUseRef();
 }

@@ -8,5 +8,5 @@ public partial interface IDXGIDebug
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug-reportliveobjects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReportLiveObjects(Guid apiid, DXGI_DEBUG_RLO_FLAGS flags);
+    HRESULT ReportLiveObjects(Guid apiid, DXGI_DEBUG_RLO_FLAGS flags);
 }

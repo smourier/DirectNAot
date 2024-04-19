@@ -6,5 +6,5 @@ public partial interface ID3D10ShaderResourceView : ID3D10View
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10shaderresourceview-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_SHADER_RESOURCE_VIEW_DESC pDesc);
+    void GetDesc(out D3D10_SHADER_RESOURCE_VIEW_DESC pDesc);
 }

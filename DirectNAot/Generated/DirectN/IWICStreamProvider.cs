@@ -8,20 +8,20 @@ public partial interface IWICStreamProvider
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicstreamprovider-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetStream(out IStream ppIStream);
+    HRESULT GetStream(out IStream ppIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicstreamprovider-getpersistoptions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPersistOptions(out uint pdwPersistOptions);
+    HRESULT GetPersistOptions(out uint pdwPersistOptions);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicstreamprovider-getpreferredvendorguid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPreferredVendorGUID(out Guid pguidPreferredVendor);
+    HRESULT GetPreferredVendorGUID(out Guid pguidPreferredVendor);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicstreamprovider-refreshstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RefreshStream();
+    HRESULT RefreshStream();
 }

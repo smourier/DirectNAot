@@ -6,21 +6,21 @@ public partial interface IIndependentFlipFramePresentStatistics : IPresentStatis
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-iindependentflipframepresentstatistics-getoutputadapterluid
     [PreserveSig]
-    public LUID GetOutputAdapterLUID();
+    LUID GetOutputAdapterLUID();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-iindependentflipframepresentstatistics-getoutputvidpnsourceid
     [PreserveSig]
-    public uint GetOutputVidPnSourceId();
+    uint GetOutputVidPnSourceId();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-iindependentflipframepresentstatistics-getcontenttag
     [PreserveSig]
-    public nuint GetContentTag();
+    nuint GetContentTag();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-iindependentflipframepresentstatistics-getdisplayedtime
     [PreserveSig]
-    public SystemInterruptTime GetDisplayedTime();
+    SystemInterruptTime GetDisplayedTime();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-iindependentflipframepresentstatistics-getpresentduration
     [PreserveSig]
-    public SystemInterruptTime GetPresentDuration();
+    SystemInterruptTime GetPresentDuration();
 }

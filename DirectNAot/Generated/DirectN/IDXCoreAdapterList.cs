@@ -7,29 +7,29 @@ public partial interface IDXCoreAdapterList
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getadapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetAdapter(uint index, in Guid riid, out nint ppvAdapter);
+    HRESULT GetAdapter(uint index, in Guid riid, out nint ppvAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getadaptercount
     [PreserveSig]
-    public uint GetAdapterCount();
+    uint GetAdapterCount();
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-isstale
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsStale();
+    bool IsStale();
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getfactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFactory(in Guid riid, out nint ppvFactory);
+    HRESULT GetFactory(in Guid riid, out nint ppvFactory);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-sort
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Sort(uint numPreferences, in DXCoreAdapterPreference preferences);
+    HRESULT Sort(uint numPreferences, in DXCoreAdapterPreference preferences);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-isadapterpreferencesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsAdapterPreferenceSupported(DXCoreAdapterPreference preference);
+    bool IsAdapterPreferenceSupported(DXCoreAdapterPreference preference);
 }

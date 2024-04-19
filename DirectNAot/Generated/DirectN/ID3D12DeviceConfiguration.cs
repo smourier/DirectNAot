@@ -4,17 +4,17 @@
 public partial interface ID3D12DeviceConfiguration
 {
     [PreserveSig]
-    public D3D12_DEVICE_CONFIGURATION_DESC GetDesc();
+    D3D12_DEVICE_CONFIGURATION_DESC GetDesc();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetEnabledExperimentalFeatures(out Guid pGuids, uint NumGuids);
+    HRESULT GetEnabledExperimentalFeatures(out Guid pGuids, uint NumGuids);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pDesc, out ID3DBlob ppResult, nint/* nint */ ppError);
+    HRESULT SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pDesc, out ID3DBlob ppResult, nint/* nint */ ppError);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateVersionedRootSignatureDeserializer(nint pBlob, nuint Size, in Guid riid, out nint ppvDeserializer);
+    HRESULT CreateVersionedRootSignatureDeserializer(nint pBlob, nuint Size, in Guid riid, out nint ppvDeserializer);
 }

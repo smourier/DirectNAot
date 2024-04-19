@@ -7,23 +7,23 @@ public partial interface ID2D1SpriteBatch : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1spritebatch-addsprites
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddSprites(uint spriteCount, in D2D_RECT_F destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms, uint destinationRectanglesStride, uint sourceRectanglesStride, uint colorsStride, uint transformsStride);
+    HRESULT AddSprites(uint spriteCount, in D2D_RECT_F destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms, uint destinationRectanglesStride, uint sourceRectanglesStride, uint colorsStride, uint transformsStride);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1spritebatch-setsprites
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSprites(uint startIndex, uint spriteCount, nint/* nint */ destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms, uint destinationRectanglesStride, uint sourceRectanglesStride, uint colorsStride, uint transformsStride);
+    HRESULT SetSprites(uint startIndex, uint spriteCount, nint/* nint */ destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms, uint destinationRectanglesStride, uint sourceRectanglesStride, uint colorsStride, uint transformsStride);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1spritebatch-getsprites
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSprites(uint startIndex, uint spriteCount, nint/* nint */ destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms);
+    HRESULT GetSprites(uint startIndex, uint spriteCount, nint/* nint */ destinationRectangles, nint/* nint */ sourceRectangles, nint/* nint */ colors, nint/* nint */ transforms);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1spritebatch-getspritecount
     [PreserveSig]
-    public uint GetSpriteCount();
+    uint GetSpriteCount();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1spritebatch-clear
     [PreserveSig]
-    public void Clear();
+    void Clear();
 }

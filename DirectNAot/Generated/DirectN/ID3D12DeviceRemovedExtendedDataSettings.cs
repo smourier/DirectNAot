@@ -6,13 +6,13 @@ public partial interface ID3D12DeviceRemovedExtendedDataSettings
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12deviceremovedextendeddatasettings-setautobreadcrumbsenablement
     [PreserveSig]
-    public void SetAutoBreadcrumbsEnablement(D3D12_DRED_ENABLEMENT Enablement);
+    void SetAutoBreadcrumbsEnablement(D3D12_DRED_ENABLEMENT Enablement);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12deviceremovedextendeddatasettings-setpagefaultenablement
     [PreserveSig]
-    public void SetPageFaultEnablement(D3D12_DRED_ENABLEMENT Enablement);
+    void SetPageFaultEnablement(D3D12_DRED_ENABLEMENT Enablement);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12deviceremovedextendeddatasettings-setwatsondumpenablement
     [PreserveSig]
-    public void SetWatsonDumpEnablement(D3D12_DRED_ENABLEMENT Enablement);
+    void SetWatsonDumpEnablement(D3D12_DRED_ENABLEMENT Enablement);
 }

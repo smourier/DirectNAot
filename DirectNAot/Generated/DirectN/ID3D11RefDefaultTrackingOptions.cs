@@ -8,5 +8,5 @@ public partial interface ID3D11RefDefaultTrackingOptions
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11refdefaulttrackingoptions-settrackingoptions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTrackingOptions(uint ResourceTypeFlags, uint Options);
+    HRESULT SetTrackingOptions(uint ResourceTypeFlags, uint Options);
 }

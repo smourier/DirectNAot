@@ -8,5 +8,5 @@ public partial interface IDXGIOutput3 : IDXGIOutput2
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgioutput3-checkoverlaysupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckOverlaySupport(DXGI_FORMAT EnumFormat, nint pConcernedDevice, out uint pFlags);
+    HRESULT CheckOverlaySupport(DXGI_FORMAT EnumFormat, nint pConcernedDevice, out uint pFlags);
 }

@@ -7,20 +7,20 @@ public partial interface ID3D10EffectDepthStencilViewVariable : ID3D10EffectVari
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-setdepthstencil
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetDepthStencil(ID3D10DepthStencilView pResource);
+    HRESULT SetDepthStencil(ID3D10DepthStencilView pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-getdepthstencil
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDepthStencil(out ID3D10DepthStencilView ppResource);
+    HRESULT GetDepthStencil(out ID3D10DepthStencilView ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-setdepthstencilarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetDepthStencilArray(in ID3D10DepthStencilView ppResources, uint Offset, uint Count);
+    HRESULT SetDepthStencilArray(in ID3D10DepthStencilView ppResources, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-getdepthstencilarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDepthStencilArray(out ID3D10DepthStencilView ppResources, uint Offset, uint Count);
+    HRESULT GetDepthStencilArray(out ID3D10DepthStencilView ppResources, uint Offset, uint Count);
 }

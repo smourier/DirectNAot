@@ -8,5 +8,5 @@ public partial interface IDirectManipulationDragDropEventHandler
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationdragdropeventhandler-ondragdropstatuschange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OnDragDropStatusChange(IDirectManipulationViewport2 viewport, DIRECTMANIPULATION_DRAG_DROP_STATUS current, DIRECTMANIPULATION_DRAG_DROP_STATUS previous);
+    HRESULT OnDragDropStatusChange(IDirectManipulationViewport2 viewport, DIRECTMANIPULATION_DRAG_DROP_STATUS current, DIRECTMANIPULATION_DRAG_DROP_STATUS previous);
 }

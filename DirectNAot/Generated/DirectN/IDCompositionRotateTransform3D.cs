@@ -8,70 +8,70 @@ public partial interface IDCompositionRotateTransform3D : IDCompositionTransform
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setangle(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngle(IDCompositionAnimation animation);
+    HRESULT SetAngle(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setangle(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngle(float angle);
+    HRESULT SetAngle(float angle);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisx(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisX(IDCompositionAnimation animation);
+    HRESULT SetAxisX(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisx(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisX(float axisX);
+    HRESULT SetAxisX(float axisX);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisy(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisY(IDCompositionAnimation animation);
+    HRESULT SetAxisY(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisy(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisY(float axisY);
+    HRESULT SetAxisY(float axisY);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisz(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisZ(IDCompositionAnimation animation);
+    HRESULT SetAxisZ(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setaxisz(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAxisZ(float axisZ);
+    HRESULT SetAxisZ(float axisZ);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcenterx(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterX(IDCompositionAnimation animation);
+    HRESULT SetCenterX(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcenterx(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterX(float centerX);
+    HRESULT SetCenterX(float centerX);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcentery(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterY(IDCompositionAnimation animation);
+    HRESULT SetCenterY(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcentery(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterY(float centerY);
+    HRESULT SetCenterY(float centerY);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcenterz(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterZ(IDCompositionAnimation animation);
+    HRESULT SetCenterZ(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrotatetransform3d-setcenterz(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterZ(float centerZ);
+    HRESULT SetCenterZ(float centerZ);
 }

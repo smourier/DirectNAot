@@ -8,5 +8,5 @@ public partial interface IDXGIOutput5 : IDXGIOutput4
     // https://learn.microsoft.com/windows/win32/api/dxgi1_5/nf-dxgi1_5-idxgioutput5-duplicateoutput1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DuplicateOutput1(nint pDevice, uint Flags, uint SupportedFormatsCount, in DXGI_FORMAT pSupportedFormats, out IDXGIOutputDuplication ppOutputDuplication);
+    HRESULT DuplicateOutput1(nint pDevice, uint Flags, uint SupportedFormatsCount, in DXGI_FORMAT pSupportedFormats, out IDXGIOutputDuplication ppOutputDuplication);
 }

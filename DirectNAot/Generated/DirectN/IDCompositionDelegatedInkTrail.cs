@@ -5,17 +5,17 @@ public partial interface IDCompositionDelegatedInkTrail
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddTrailPoints(in DCompositionInkTrailPoint inkPoints, uint inkPointsCount, out uint generationId);
+    HRESULT AddTrailPoints(in DCompositionInkTrailPoint inkPoints, uint inkPointsCount, out uint generationId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddTrailPointsWithPrediction(in DCompositionInkTrailPoint inkPoints, uint inkPointsCount, in DCompositionInkTrailPoint predictedInkPoints, uint predictedInkPointsCount, out uint generationId);
+    HRESULT AddTrailPointsWithPrediction(in DCompositionInkTrailPoint inkPoints, uint inkPointsCount, in DCompositionInkTrailPoint predictedInkPoints, uint predictedInkPointsCount, out uint generationId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveTrailPoints(uint generationId);
+    HRESULT RemoveTrailPoints(uint generationId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT StartNewTrail(in D2D1_COLOR_F color);
+    HRESULT StartNewTrail(in D2D1_COLOR_F color);
 }

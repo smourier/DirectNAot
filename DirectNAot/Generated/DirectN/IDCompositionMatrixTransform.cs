@@ -8,15 +8,15 @@ public partial interface IDCompositionMatrixTransform : IDCompositionTransform
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionmatrixtransform-setmatrix
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMatrix(in D2D_MATRIX_3X2_F matrix);
+    HRESULT SetMatrix(in D2D_MATRIX_3X2_F matrix);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionmatrixtransform-setmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMatrixElement(int row, int column, IDCompositionAnimation animation);
+    HRESULT SetMatrixElement(int row, int column, IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionmatrixtransform-setmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMatrixElement(int row, int column, float value);
+    HRESULT SetMatrixElement(int row, int column, float value);
 }

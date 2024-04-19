@@ -7,10 +7,10 @@ public partial interface IDWriteBitmapRenderTarget1 : IDWriteBitmapRenderTarget
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritebitmaprendertarget1-gettextantialiasmode
     [PreserveSig]
-    public DWRITE_TEXT_ANTIALIAS_MODE GetTextAntialiasMode();
+    DWRITE_TEXT_ANTIALIAS_MODE GetTextAntialiasMode();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritebitmaprendertarget1-settextantialiasmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTextAntialiasMode(DWRITE_TEXT_ANTIALIAS_MODE antialiasMode);
+    HRESULT SetTextAntialiasMode(DWRITE_TEXT_ANTIALIAS_MODE antialiasMode);
 }

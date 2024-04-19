@@ -8,15 +8,15 @@ public partial interface IWICBitmapDecoderInfo : IWICBitmapCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-getpatterns
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPatterns(uint cbSizePatterns, nint/* nint */ pPatterns, nint/* nint */ pcPatterns, out uint pcbPatternsActual);
+    HRESULT GetPatterns(uint cbSizePatterns, nint/* nint */ pPatterns, nint/* nint */ pcPatterns, out uint pcbPatternsActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-matchespattern
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MatchesPattern(IStream pIStream, [MarshalAs(UnmanagedType.U4)] out bool pfMatches);
+    HRESULT MatchesPattern(IStream pIStream, [MarshalAs(UnmanagedType.U4)] out bool pfMatches);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInstance(out IWICBitmapDecoder ppIBitmapDecoder);
+    HRESULT CreateInstance(out IWICBitmapDecoder ppIBitmapDecoder);
 }

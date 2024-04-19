@@ -7,10 +7,10 @@ public partial interface IDirectDrawSurfaceKernel
     // https://learn.microsoft.com/windows/win32/api/ddkernel/nf-ddkernel-idirectdrawsurfacekernel-getkernelhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetKernelHandle(ref nuint param0);
+    HRESULT GetKernelHandle(ref nuint param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddkernel/nf-ddkernel-idirectdrawsurfacekernel-releasekernelhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseKernelHandle();
+    HRESULT ReleaseKernelHandle();
 }

@@ -6,5 +6,5 @@ public partial interface ID3D12Debug6 : ID3D12Debug5
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug6-setforcelegacybarriervalidation
     [PreserveSig]
-    public void SetForceLegacyBarrierValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetForceLegacyBarrierValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
 }

@@ -8,5 +8,5 @@ public partial interface IDCompositionTarget
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontarget-setroot
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetRoot(IDCompositionVisual visual);
+    HRESULT SetRoot(IDCompositionVisual visual);
 }

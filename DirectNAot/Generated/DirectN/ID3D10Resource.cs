@@ -6,13 +6,13 @@ public partial interface ID3D10Resource : ID3D10DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10resource-gettype
     [PreserveSig]
-    public void GetType(out D3D10_RESOURCE_DIMENSION rType);
+    void GetType(out D3D10_RESOURCE_DIMENSION rType);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10resource-setevictionpriority
     [PreserveSig]
-    public void SetEvictionPriority(uint EvictionPriority);
+    void SetEvictionPriority(uint EvictionPriority);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10resource-getevictionpriority
     [PreserveSig]
-    public uint GetEvictionPriority();
+    uint GetEvictionPriority();
 }

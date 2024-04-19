@@ -8,40 +8,40 @@ public partial interface IDCompositionSkewTransform : IDCompositionTransform
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setanglex(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngleX(IDCompositionAnimation animation);
+    HRESULT SetAngleX(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setanglex(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngleX(float angleX);
+    HRESULT SetAngleX(float angleX);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setangley(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngleY(IDCompositionAnimation animation);
+    HRESULT SetAngleY(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setangley(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngleY(float angleY);
+    HRESULT SetAngleY(float angleY);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setcenterx(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterX(IDCompositionAnimation animation);
+    HRESULT SetCenterX(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setcenterx(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterX(float centerX);
+    HRESULT SetCenterX(float centerX);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setcentery(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterY(IDCompositionAnimation animation);
+    HRESULT SetCenterY(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionskewtransform-setcentery(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCenterY(float centerY);
+    HRESULT SetCenterY(float centerY);
 }

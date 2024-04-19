@@ -5,5 +5,5 @@ public partial interface IDxcVersionInfo2 : IDxcVersionInfo
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCommitInfo(out uint pCommitCount, out sbyte pCommitHash);
+    HRESULT GetCommitInfo(out uint pCommitCount, out sbyte pCommitHash);
 }

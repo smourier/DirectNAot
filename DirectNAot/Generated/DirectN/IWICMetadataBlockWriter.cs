@@ -8,25 +8,25 @@ public partial interface IWICMetadataBlockWriter : IWICMetadataBlockReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-initializefromblockreader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromBlockReader(IWICMetadataBlockReader pIMDBlockReader);
+    HRESULT InitializeFromBlockReader(IWICMetadataBlockReader pIMDBlockReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-getwriterbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetWriterByIndex(uint nIndex, out IWICMetadataWriter ppIMetadataWriter);
+    HRESULT GetWriterByIndex(uint nIndex, out IWICMetadataWriter ppIMetadataWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-addwriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddWriter(IWICMetadataWriter pIMetadataWriter);
+    HRESULT AddWriter(IWICMetadataWriter pIMetadataWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-setwriterbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetWriterByIndex(uint nIndex, IWICMetadataWriter pIMetadataWriter);
+    HRESULT SetWriterByIndex(uint nIndex, IWICMetadataWriter pIMetadataWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-removewriterbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveWriterByIndex(uint nIndex);
+    HRESULT RemoveWriterByIndex(uint nIndex);
 }

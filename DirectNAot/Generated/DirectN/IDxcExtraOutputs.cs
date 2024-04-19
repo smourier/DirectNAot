@@ -4,9 +4,9 @@
 public partial interface IDxcExtraOutputs
 {
     [PreserveSig]
-    public uint GetOutputCount();
+    uint GetOutputCount();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOutput(uint uIndex, in Guid iid, nint/* nint */ ppvObject, nint/* nint */ ppOutputType, nint/* nint */ ppOutputName);
+    HRESULT GetOutput(uint uIndex, in Guid iid, nint/* nint */ ppvObject, nint/* nint */ ppOutputType, nint/* nint */ ppOutputName);
 }

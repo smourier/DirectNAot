@@ -8,10 +8,10 @@ public partial interface IDCompositionVirtualSurface : IDCompositionSurface
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvirtualsurface-resize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Resize(uint width, uint height);
+    HRESULT Resize(uint width, uint height);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvirtualsurface-trim
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Trim(nint/* nint */ rectangles, uint count);
+    HRESULT Trim(nint/* nint */ rectangles, uint count);
 }

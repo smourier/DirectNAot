@@ -4,17 +4,17 @@
 public partial interface ID3D12SwapChainAssistant
 {
     [PreserveSig]
-    public LUID GetLUID();
+    LUID GetLUID();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSwapChainObject(in Guid riid, out nint ppv);
+    HRESULT GetSwapChainObject(in Guid riid, out nint ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCurrentResourceAndCommandQueue(in Guid riidResource, out nint ppvResource, in Guid riidQueue, out nint ppvQueue);
+    HRESULT GetCurrentResourceAndCommandQueue(in Guid riidResource, out nint ppvResource, in Guid riidQueue, out nint ppvQueue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InsertImplicitSync();
+    HRESULT InsertImplicitSync();
 }

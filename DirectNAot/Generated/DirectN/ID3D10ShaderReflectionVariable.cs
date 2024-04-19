@@ -7,9 +7,9 @@ public partial interface ID3D10ShaderReflectionVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectionvariable-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(out D3D10_SHADER_VARIABLE_DESC pDesc);
+    HRESULT GetDesc(out D3D10_SHADER_VARIABLE_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectionvariable-gettype
     [PreserveSig]
-    public ID3D10ShaderReflectionType GetType();
+    ID3D10ShaderReflectionType GetType();
 }

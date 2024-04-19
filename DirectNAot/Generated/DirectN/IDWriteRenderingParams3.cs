@@ -7,5 +7,5 @@ public partial interface IDWriteRenderingParams3 : IDWriteRenderingParams2
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriterenderingparams3-getrenderingmode1
     [PreserveSig]
-    public DWRITE_RENDERING_MODE1 GetRenderingMode1();
+    DWRITE_RENDERING_MODE1 GetRenderingMode1();
 }

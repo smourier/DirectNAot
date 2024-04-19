@@ -7,15 +7,15 @@ public partial interface ID3D12Device10 : ID3D12Device9
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device10-createcommittedresource3
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateCommittedResource3(in D3D12_HEAP_PROPERTIES pHeapProperties, D3D12_HEAP_FLAGS HeapFlags, in D3D12_RESOURCE_DESC1 pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, ID3D12ProtectedResourceSession pProtectedSession, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riidResource, nint/* nint */ ppvResource);
+    HRESULT CreateCommittedResource3(in D3D12_HEAP_PROPERTIES pHeapProperties, D3D12_HEAP_FLAGS HeapFlags, in D3D12_RESOURCE_DESC1 pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, ID3D12ProtectedResourceSession pProtectedSession, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riidResource, nint/* nint */ ppvResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device10-createplacedresource2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePlacedResource2(ID3D12Heap pHeap, ulong HeapOffset, in D3D12_RESOURCE_DESC1 pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riid, nint/* nint */ ppvResource);
+    HRESULT CreatePlacedResource2(ID3D12Heap pHeap, ulong HeapOffset, in D3D12_RESOURCE_DESC1 pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riid, nint/* nint */ ppvResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device10-createreservedresource2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateReservedResource2(in D3D12_RESOURCE_DESC pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, ID3D12ProtectedResourceSession pProtectedSession, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riid, nint/* nint */ ppvResource);
+    HRESULT CreateReservedResource2(in D3D12_RESOURCE_DESC pDesc, D3D12_BARRIER_LAYOUT InitialLayout, nint/* nint */ pOptimizedClearValue, ID3D12ProtectedResourceSession pProtectedSession, uint NumCastableFormats, nint/* nint */ pCastableFormats, in Guid riid, nint/* nint */ ppvResource);
 }

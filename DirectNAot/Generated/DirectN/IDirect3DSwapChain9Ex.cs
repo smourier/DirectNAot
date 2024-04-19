@@ -7,14 +7,14 @@ public partial interface IDirect3DSwapChain9Ex : IDirect3DSwapChain9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9ex-getlastpresentcount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLastPresentCount(ref uint pLastPresentCount);
+    HRESULT GetLastPresentCount(ref uint pLastPresentCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPresentStats(ref D3DPRESENTSTATS pPresentationStatistics);
+    HRESULT GetPresentStats(ref D3DPRESENTSTATS pPresentationStatistics);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9ex-getdisplaymodeex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDisplayModeEx(ref D3DDISPLAYMODEEX pMode, ref D3DDISPLAYROTATION pRotation);
+    HRESULT GetDisplayModeEx(ref D3DDISPLAYMODEEX pMode, ref D3DDISPLAYROTATION pRotation);
 }

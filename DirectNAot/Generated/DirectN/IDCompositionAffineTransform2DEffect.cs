@@ -7,35 +7,35 @@ public partial interface IDCompositionAffineTransform2DEffect : IDCompositionFil
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setinterpolationmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetInterpolationMode(D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE interpolationMode);
+    HRESULT SetInterpolationMode(D2D1_2DAFFINETRANSFORM_INTERPOLATION_MODE interpolationMode);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setbordermode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetBorderMode(D2D1_BORDER_MODE borderMode);
+    HRESULT SetBorderMode(D2D1_BORDER_MODE borderMode);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-settransformmatrix
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransformMatrix(in D2D_MATRIX_3X2_F transformMatrix);
+    HRESULT SetTransformMatrix(in D2D_MATRIX_3X2_F transformMatrix);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-settransformmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransformMatrixElement(int row, int column, IDCompositionAnimation animation);
+    HRESULT SetTransformMatrixElement(int row, int column, IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-settransformmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransformMatrixElement(int row, int column, float value);
+    HRESULT SetTransformMatrixElement(int row, int column, float value);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setsharpness(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSharpness(IDCompositionAnimation animation);
+    HRESULT SetSharpness(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setsharpness(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSharpness(float sharpness);
+    HRESULT SetSharpness(float sharpness);
 }

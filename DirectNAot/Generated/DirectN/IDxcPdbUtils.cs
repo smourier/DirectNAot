@@ -5,97 +5,97 @@ public partial interface IDxcPdbUtils
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Load(IDxcBlob pPdbOrDxil);
+    HRESULT Load(IDxcBlob pPdbOrDxil);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSourceCount(out uint pCount);
+    HRESULT GetSourceCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSource(uint uIndex, out IDxcBlobEncoding ppResult);
+    HRESULT GetSource(uint uIndex, out IDxcBlobEncoding ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSourceName(uint uIndex, out BSTR pResult);
+    HRESULT GetSourceName(uint uIndex, out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFlagCount(out uint pCount);
+    HRESULT GetFlagCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFlag(uint uIndex, out BSTR pResult);
+    HRESULT GetFlag(uint uIndex, out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetArgCount(out uint pCount);
+    HRESULT GetArgCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetArg(uint uIndex, out BSTR pResult);
+    HRESULT GetArg(uint uIndex, out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetArgPairCount(out uint pCount);
+    HRESULT GetArgPairCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetArgPair(uint uIndex, out BSTR pName, out BSTR pValue);
+    HRESULT GetArgPair(uint uIndex, out BSTR pName, out BSTR pValue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDefineCount(out uint pCount);
+    HRESULT GetDefineCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDefine(uint uIndex, out BSTR pResult);
+    HRESULT GetDefine(uint uIndex, out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTargetProfile(out BSTR pResult);
+    HRESULT GetTargetProfile(out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetEntryPoint(out BSTR pResult);
+    HRESULT GetEntryPoint(out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMainFileName(out BSTR pResult);
+    HRESULT GetMainFileName(out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetHash(out IDxcBlob ppResult);
+    HRESULT GetHash(out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetName(out BSTR pResult);
+    HRESULT GetName(out BSTR pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsFullPDB();
+    bool IsFullPDB();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFullPDB(out IDxcBlob ppFullPDB);
+    HRESULT GetFullPDB(out IDxcBlob ppFullPDB);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetVersionInfo(out IDxcVersionInfo ppVersionInfo);
+    HRESULT GetVersionInfo(out IDxcVersionInfo ppVersionInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCompiler(IDxcCompiler3 pCompiler);
+    HRESULT SetCompiler(IDxcCompiler3 pCompiler);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CompileForFullPDB(out IDxcResult ppResult);
+    HRESULT CompileForFullPDB(out IDxcResult ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OverrideArgs(in DxcArgPair pArgPairs, uint uNumArgPairs);
+    HRESULT OverrideArgs(in DxcArgPair pArgPairs, uint uNumArgPairs);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OverrideRootSignature(PWSTR pRootSignature);
+    HRESULT OverrideRootSignature(PWSTR pRootSignature);
 }

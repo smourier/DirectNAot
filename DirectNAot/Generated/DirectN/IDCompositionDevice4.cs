@@ -5,9 +5,9 @@ public partial interface IDCompositionDevice4 : IDCompositionDevice3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckCompositionTextureSupport(nint renderingDevice, [MarshalAs(UnmanagedType.U4)] out bool supportsCompositionTextures);
+    HRESULT CheckCompositionTextureSupport(nint renderingDevice, [MarshalAs(UnmanagedType.U4)] out bool supportsCompositionTextures);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateCompositionTexture(nint d3dTexture, out IDCompositionTexture compositionTexture);
+    HRESULT CreateCompositionTexture(nint d3dTexture, out IDCompositionTexture compositionTexture);
 }

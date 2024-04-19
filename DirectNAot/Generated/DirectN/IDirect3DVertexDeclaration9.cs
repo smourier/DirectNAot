@@ -7,10 +7,10 @@ public partial interface IDirect3DVertexDeclaration9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvertexdeclaration9-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
+    HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvertexdeclaration9-getdeclaration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDeclaration(ref D3DVERTEXELEMENT9 pElement, ref uint pNumElements);
+    HRESULT GetDeclaration(ref D3DVERTEXELEMENT9 pElement, ref uint pNumElements);
 }

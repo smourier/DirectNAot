@@ -8,10 +8,10 @@ public partial interface IDWriteTextFormat2 : IDWriteTextFormat1
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritetextformat2-setlinespacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetLineSpacing(in DWRITE_LINE_SPACING lineSpacingOptions);
+    HRESULT SetLineSpacing(in DWRITE_LINE_SPACING lineSpacingOptions);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritetextformat2-getlinespacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLineSpacing(out DWRITE_LINE_SPACING lineSpacingOptions);
+    HRESULT GetLineSpacing(out DWRITE_LINE_SPACING lineSpacingOptions);
 }

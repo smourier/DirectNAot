@@ -7,10 +7,10 @@ public partial interface IDirectDrawGammaControl
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawgammacontrol-getgammaramp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGammaRamp(uint param0, ref DDGAMMARAMP param1);
+    HRESULT GetGammaRamp(uint param0, ref DDGAMMARAMP param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawgammacontrol-setgammaramp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetGammaRamp(uint param0, ref DDGAMMARAMP param1);
+    HRESULT SetGammaRamp(uint param0, ref DDGAMMARAMP param1);
 }

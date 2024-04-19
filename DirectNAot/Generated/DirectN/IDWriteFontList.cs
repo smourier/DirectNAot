@@ -8,14 +8,14 @@ public partial interface IDWriteFontList
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontlist-getfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontCollection(out IDWriteFontCollection fontCollection);
+    HRESULT GetFontCollection(out IDWriteFontCollection fontCollection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontlist-getfontcount
     [PreserveSig]
-    public uint GetFontCount();
+    uint GetFontCount();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontlist-getfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFont(uint index, out IDWriteFont font);
+    HRESULT GetFont(uint index, out IDWriteFont font);
 }

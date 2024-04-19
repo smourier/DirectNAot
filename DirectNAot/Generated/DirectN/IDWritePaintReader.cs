@@ -5,37 +5,37 @@ public partial interface IDWritePaintReader
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCurrentGlyph(uint glyphIndex, out DWRITE_PAINT_ELEMENT paintElement, uint structSize, out D2D_RECT_F clipBox, nint/* nint */ glyphAttributes);
+    HRESULT SetCurrentGlyph(uint glyphIndex, out DWRITE_PAINT_ELEMENT paintElement, uint structSize, out D2D_RECT_F clipBox, nint/* nint */ glyphAttributes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTextColor(in DWRITE_COLOR_F textColor);
+    HRESULT SetTextColor(in DWRITE_COLOR_F textColor);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetColorPaletteIndex(uint colorPaletteIndex);
+    HRESULT SetColorPaletteIndex(uint colorPaletteIndex);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCustomColorPalette(in DWRITE_COLOR_F paletteEntries, uint paletteEntryCount);
+    HRESULT SetCustomColorPalette(in DWRITE_COLOR_F paletteEntries, uint paletteEntryCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MoveToFirstChild(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
+    HRESULT MoveToFirstChild(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MoveToNextSibling(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
+    HRESULT MoveToNextSibling(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MoveToParent();
+    HRESULT MoveToParent();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, out D2D1_GRADIENT_STOP gradientStops);
+    HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, out D2D1_GRADIENT_STOP gradientStops);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, out DWRITE_PAINT_COLOR gradientStopColors);
+    HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, out DWRITE_PAINT_COLOR gradientStopColors);
 }

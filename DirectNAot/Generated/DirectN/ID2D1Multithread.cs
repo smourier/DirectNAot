@@ -8,13 +8,13 @@ public partial interface ID2D1Multithread
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1multithread-getmultithreadprotected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool GetMultithreadProtected();
+    bool GetMultithreadProtected();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1multithread-enter
     [PreserveSig]
-    public void Enter();
+    void Enter();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1multithread-leave
     [PreserveSig]
-    public void Leave();
+    void Leave();
 }

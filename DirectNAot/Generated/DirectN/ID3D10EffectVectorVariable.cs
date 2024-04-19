@@ -7,60 +7,60 @@ public partial interface ID3D10EffectVectorVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setboolvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
+    HRESULT SetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setintvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetIntVector(ref int pData);
+    HRESULT SetIntVector(ref int pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setfloatvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetFloatVector(ref float pData);
+    HRESULT SetFloatVector(ref float pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getboolvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
+    HRESULT GetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getintvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetIntVector(ref int pData);
+    HRESULT GetIntVector(ref int pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getfloatvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFloatVector(ref float pData);
+    HRESULT GetFloatVector(ref float pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setboolvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
+    HRESULT SetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setintvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetIntVectorArray(ref int pData, uint Offset, uint Count);
+    HRESULT SetIntVectorArray(ref int pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setfloatvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetFloatVectorArray(ref float pData, uint Offset, uint Count);
+    HRESULT SetFloatVectorArray(ref float pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getboolvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
+    HRESULT GetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getintvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetIntVectorArray(ref int pData, uint Offset, uint Count);
+    HRESULT GetIntVectorArray(ref int pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getfloatvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFloatVectorArray(ref float pData, uint Offset, uint Count);
+    HRESULT GetFloatVectorArray(ref float pData, uint Offset, uint Count);
 }

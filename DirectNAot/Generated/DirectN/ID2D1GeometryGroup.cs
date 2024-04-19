@@ -7,13 +7,13 @@ public partial interface ID2D1GeometryGroup : ID2D1Geometry
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1geometrygroup-getfillmode
     [PreserveSig]
-    public D2D1_FILL_MODE GetFillMode();
+    D2D1_FILL_MODE GetFillMode();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1geometrygroup-getsourcegeometrycount
     [PreserveSig]
-    public uint GetSourceGeometryCount();
+    uint GetSourceGeometryCount();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1geometrygroup-getsourcegeometries
     [PreserveSig]
-    public void GetSourceGeometries(out ID2D1Geometry geometries, uint geometriesCount);
+    void GetSourceGeometries(out ID2D1Geometry geometries, uint geometriesCount);
 }

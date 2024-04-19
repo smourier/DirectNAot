@@ -8,15 +8,15 @@ public partial interface ID2D1EffectImpl
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Initialize(ID2D1EffectContext effectContext, ID2D1TransformGraph transformGraph);
+    HRESULT Initialize(ID2D1EffectContext effectContext, ID2D1TransformGraph transformGraph);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-prepareforrender
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT PrepareForRender(D2D1_CHANGE_TYPE changeType);
+    HRESULT PrepareForRender(D2D1_CHANGE_TYPE changeType);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-setgraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetGraph(ID2D1TransformGraph transformGraph);
+    HRESULT SetGraph(ID2D1TransformGraph transformGraph);
 }

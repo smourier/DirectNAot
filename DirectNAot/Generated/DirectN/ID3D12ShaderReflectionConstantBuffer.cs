@@ -7,13 +7,13 @@ public partial interface ID3D12ShaderReflectionConstantBuffer
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectionconstantbuffer-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(ref D3D12_SHADER_BUFFER_DESC pDesc);
+    HRESULT GetDesc(ref D3D12_SHADER_BUFFER_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectionconstantbuffer-getvariablebyindex
     [PreserveSig]
-    public ID3D12ShaderReflectionVariable GetVariableByIndex(uint Index);
+    ID3D12ShaderReflectionVariable GetVariableByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectionconstantbuffer-getvariablebyname
     [PreserveSig]
-    public ID3D12ShaderReflectionVariable GetVariableByName(PSTR Name);
+    ID3D12ShaderReflectionVariable GetVariableByName(PSTR Name);
 }

@@ -6,13 +6,13 @@ public partial interface ICompositionFramePresentStatistics : IPresentStatistics
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-icompositionframepresentstatistics-getcontenttag
     [PreserveSig]
-    public nuint GetContentTag();
+    nuint GetContentTag();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-icompositionframepresentstatistics-getcompositionframeid
     [PreserveSig]
-    public ulong GetCompositionFrameId();
+    ulong GetCompositionFrameId();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-icompositionframepresentstatistics-getdisplayinstancearray
     [PreserveSig]
-    public void GetDisplayInstanceArray(out uint displayInstanceArrayCount, out CompositionFrameDisplayInstance displayInstanceArray);
+    void GetDisplayInstanceArray(out uint displayInstanceArrayCount, out CompositionFrameDisplayInstance displayInstanceArray);
 }

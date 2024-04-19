@@ -5,21 +5,21 @@ public partial interface IDxcOptimizerPass
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOptionName(out PWSTR ppResult);
+    HRESULT GetOptionName(out PWSTR ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDescription(out PWSTR ppResult);
+    HRESULT GetDescription(out PWSTR ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOptionArgCount(out uint pCount);
+    HRESULT GetOptionArgCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOptionArgName(uint argIndex, out PWSTR ppResult);
+    HRESULT GetOptionArgName(uint argIndex, out PWSTR ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOptionArgDescription(uint argIndex, out PWSTR ppResult);
+    HRESULT GetOptionArgDescription(uint argIndex, out PWSTR ppResult);
 }

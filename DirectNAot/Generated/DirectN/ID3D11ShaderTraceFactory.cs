@@ -8,5 +8,5 @@ public partial interface ID3D11ShaderTraceFactory
     // https://learn.microsoft.com/windows/win32/api/d3d11shadertracing/nf-d3d11shadertracing-id3d11shadertracefactory-createshadertrace
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateShaderTrace(nint pShader, in D3D11_SHADER_TRACE_DESC pTraceDesc, out ID3D11ShaderTrace ppShaderTrace);
+    HRESULT CreateShaderTrace(nint pShader, in D3D11_SHADER_TRACE_DESC pTraceDesc, out ID3D11ShaderTrace ppShaderTrace);
 }

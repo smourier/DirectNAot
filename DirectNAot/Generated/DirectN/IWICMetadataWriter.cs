@@ -8,20 +8,20 @@ public partial interface IWICMetadataWriter : IWICMetadataReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriter-setvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, in PROPVARIANT pvarValue);
+    HRESULT SetValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, in PROPVARIANT pvarValue);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriter-setvaluebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetValueByIndex(uint nIndex, in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, in PROPVARIANT pvarValue);
+    HRESULT SetValueByIndex(uint nIndex, in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, in PROPVARIANT pvarValue);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriter-removevalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId);
+    HRESULT RemoveValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriter-removevaluebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveValueByIndex(uint nIndex);
+    HRESULT RemoveValueByIndex(uint nIndex);
 }

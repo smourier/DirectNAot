@@ -8,30 +8,30 @@ public partial interface IWICColorContext
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-initializefromfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromFilename(PWSTR wzFilename);
+    HRESULT InitializeFromFilename(PWSTR wzFilename);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-initializefrommemory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromMemory(nint /* byte array */ pbBuffer, uint cbBufferSize);
+    HRESULT InitializeFromMemory(nint /* byte array */ pbBuffer, uint cbBufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-initializefromexifcolorspace
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromExifColorSpace(uint value);
+    HRESULT InitializeFromExifColorSpace(uint value);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-gettype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetType(out WICColorContextType pType);
+    HRESULT GetType(out WICColorContextType pType);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-getprofilebytes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetProfileBytes(uint cbBuffer, nint /* byte array */ pbBuffer, out uint pcbActual);
+    HRESULT GetProfileBytes(uint cbBuffer, nint /* byte array */ pbBuffer, out uint pcbActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccolorcontext-getexifcolorspace
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetExifColorSpace(out uint pValue);
+    HRESULT GetExifColorSpace(out uint pValue);
 }

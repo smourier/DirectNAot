@@ -7,17 +7,17 @@ public partial interface ID3D10ShaderReflectionType
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectiontype-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(ref D3D10_SHADER_TYPE_DESC pDesc);
+    HRESULT GetDesc(ref D3D10_SHADER_TYPE_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectiontype-getmembertypebyindex
     [PreserveSig]
-    public ID3D10ShaderReflectionType GetMemberTypeByIndex(uint Index);
+    ID3D10ShaderReflectionType GetMemberTypeByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectiontype-getmembertypebyname
     [PreserveSig]
-    public ID3D10ShaderReflectionType GetMemberTypeByName(PSTR Name);
+    ID3D10ShaderReflectionType GetMemberTypeByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectiontype-getmembertypename
     [PreserveSig]
-    public PSTR GetMemberTypeName(uint Index);
+    PSTR GetMemberTypeName(uint Index);
 }

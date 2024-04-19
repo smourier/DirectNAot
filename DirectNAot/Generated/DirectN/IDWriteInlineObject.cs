@@ -8,20 +8,20 @@ public partial interface IDWriteInlineObject
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteinlineobject-draw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Draw(nint/* nint */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
+    HRESULT Draw(nint/* nint */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteinlineobject-getmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMetrics(out DWRITE_INLINE_OBJECT_METRICS metrics);
+    HRESULT GetMetrics(out DWRITE_INLINE_OBJECT_METRICS metrics);
     
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwriteinlineobject-getoverhangmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOverhangMetrics(out DWRITE_OVERHANG_METRICS overhangs);
+    HRESULT GetOverhangMetrics(out DWRITE_OVERHANG_METRICS overhangs);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteinlineobject-getbreakconditions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBreakConditions(out DWRITE_BREAK_CONDITION breakConditionBefore, out DWRITE_BREAK_CONDITION breakConditionAfter);
+    HRESULT GetBreakConditions(out DWRITE_BREAK_CONDITION breakConditionBefore, out DWRITE_BREAK_CONDITION breakConditionAfter);
 }

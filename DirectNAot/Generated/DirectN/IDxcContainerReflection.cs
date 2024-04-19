@@ -5,25 +5,25 @@ public partial interface IDxcContainerReflection
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Load(IDxcBlob pContainer);
+    HRESULT Load(IDxcBlob pContainer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPartCount(out uint pResult);
+    HRESULT GetPartCount(out uint pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPartKind(uint idx, out uint pResult);
+    HRESULT GetPartKind(uint idx, out uint pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPartContent(uint idx, out IDxcBlob ppResult);
+    HRESULT GetPartContent(uint idx, out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT FindFirstPartKind(uint kind, out uint pResult);
+    HRESULT FindFirstPartKind(uint kind, out uint pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPartReflection(uint idx, in Guid iid, out nint ppvObject);
+    HRESULT GetPartReflection(uint idx, in Guid iid, out nint ppvObject);
 }

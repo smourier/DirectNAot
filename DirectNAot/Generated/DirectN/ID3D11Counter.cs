@@ -7,5 +7,5 @@ public partial interface ID3D11Counter : ID3D11Asynchronous
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11counter-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_COUNTER_DESC pDesc);
+    void GetDesc(out D3D11_COUNTER_DESC pDesc);
 }

@@ -8,5 +8,5 @@ public partial interface IWICBitmapCodecProgressNotification
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecprogressnotification-registerprogressnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RegisterProgressNotification(PFNProgressNotification pfnProgressNotification, nint/* nint */ pvData, uint dwProgressFlags);
+    HRESULT RegisterProgressNotification(PFNProgressNotification pfnProgressNotification, nint/* nint */ pvData, uint dwProgressFlags);
 }

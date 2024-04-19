@@ -5,5 +5,5 @@ public partial interface IDxcAssembler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AssembleToContainer(IDxcBlob pShader, out IDxcOperationResult ppResult);
+    HRESULT AssembleToContainer(IDxcBlob pShader, out IDxcOperationResult ppResult);
 }

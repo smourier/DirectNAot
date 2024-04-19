@@ -6,5 +6,5 @@ public partial interface ID3D10RenderTargetView : ID3D10View
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10rendertargetview-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_RENDER_TARGET_VIEW_DESC pDesc);
+    void GetDesc(out D3D10_RENDER_TARGET_VIEW_DESC pDesc);
 }

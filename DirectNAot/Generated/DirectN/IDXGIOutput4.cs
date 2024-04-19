@@ -8,5 +8,5 @@ public partial interface IDXGIOutput4 : IDXGIOutput3
     // https://learn.microsoft.com/windows/win32/api/dxgi1_4/nf-dxgi1_4-idxgioutput4-checkoverlaycolorspacesupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckOverlayColorSpaceSupport(DXGI_FORMAT Format, DXGI_COLOR_SPACE_TYPE ColorSpace, nint pConcernedDevice, out uint pFlags);
+    HRESULT CheckOverlayColorSpaceSupport(DXGI_FORMAT Format, DXGI_COLOR_SPACE_TYPE ColorSpace, nint pConcernedDevice, out uint pFlags);
 }

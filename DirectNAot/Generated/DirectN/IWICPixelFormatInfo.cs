@@ -8,25 +8,25 @@ public partial interface IWICPixelFormatInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getformatguid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFormatGUID(out Guid pFormat);
+    HRESULT GetFormatGUID(out Guid pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getcolorcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetColorContext(out IWICColorContext ppIColorContext);
+    HRESULT GetColorContext(out IWICColorContext ppIColorContext);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getbitsperpixel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBitsPerPixel(out uint puiBitsPerPixel);
+    HRESULT GetBitsPerPixel(out uint puiBitsPerPixel);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getchannelcount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetChannelCount(out uint puiChannelCount);
+    HRESULT GetChannelCount(out uint puiChannelCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getchannelmask
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetChannelMask(uint uiChannelIndex, uint cbMaskBuffer, nint /* byte array */ pbMaskBuffer, out uint pcbActual);
+    HRESULT GetChannelMask(uint uiChannelIndex, uint cbMaskBuffer, nint /* byte array */ pbMaskBuffer, out uint pcbActual);
 }

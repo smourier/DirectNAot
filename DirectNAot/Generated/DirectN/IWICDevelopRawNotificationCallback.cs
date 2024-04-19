@@ -8,5 +8,5 @@ public partial interface IWICDevelopRawNotificationCallback
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdeveloprawnotificationcallback-notify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Notify(uint NotificationMask);
+    HRESULT Notify(uint NotificationMask);
 }

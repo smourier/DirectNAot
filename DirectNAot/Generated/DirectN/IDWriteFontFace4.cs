@@ -7,18 +7,18 @@ public partial interface IDWriteFontFace4 : IDWriteFontFace3
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface4-getglyphimageformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGlyphImageFormats(ushort glyphId, uint pixelsPerEmFirst, uint pixelsPerEmLast, out DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormats);
+    HRESULT GetGlyphImageFormats(ushort glyphId, uint pixelsPerEmFirst, uint pixelsPerEmLast, out DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface4-getglyphimageformats
     [PreserveSig]
-    public DWRITE_GLYPH_IMAGE_FORMATS GetGlyphImageFormats();
+    DWRITE_GLYPH_IMAGE_FORMATS GetGlyphImageFormats();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface4-getglyphimagedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGlyphImageData(ushort glyphId, uint pixelsPerEm, DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, out DWRITE_GLYPH_IMAGE_DATA glyphData, out nint glyphDataContext);
+    HRESULT GetGlyphImageData(ushort glyphId, uint pixelsPerEm, DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, out DWRITE_GLYPH_IMAGE_DATA glyphData, out nint glyphDataContext);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface4-releaseglyphimagedata
     [PreserveSig]
-    public void ReleaseGlyphImageData(nint glyphDataContext);
+    void ReleaseGlyphImageData(nint glyphDataContext);
 }

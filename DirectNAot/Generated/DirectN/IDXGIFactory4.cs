@@ -7,10 +7,10 @@ public partial interface IDXGIFactory4 : IDXGIFactory3
     // https://learn.microsoft.com/windows/win32/api/dxgi1_4/nf-dxgi1_4-idxgifactory4-enumadapterbyluid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumAdapterByLuid(LUID AdapterLuid, in Guid riid, out nint ppvAdapter);
+    HRESULT EnumAdapterByLuid(LUID AdapterLuid, in Guid riid, out nint ppvAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_4/nf-dxgi1_4-idxgifactory4-enumwarpadapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumWarpAdapter(in Guid riid, out nint ppvAdapter);
+    HRESULT EnumWarpAdapter(in Guid riid, out nint ppvAdapter);
 }

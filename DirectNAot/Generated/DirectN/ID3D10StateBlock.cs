@@ -7,20 +7,20 @@ public partial interface ID3D10StateBlock
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10stateblock-capture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Capture();
+    HRESULT Capture();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10stateblock-apply
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Apply();
+    HRESULT Apply();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10stateblock-releasealldeviceobjects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseAllDeviceObjects();
+    HRESULT ReleaseAllDeviceObjects();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10stateblock-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDevice(out ID3D10Device ppDevice);
+    HRESULT GetDevice(out ID3D10Device ppDevice);
 }

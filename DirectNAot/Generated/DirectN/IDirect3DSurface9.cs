@@ -7,30 +7,30 @@ public partial interface IDirect3DSurface9 : IDirect3DResource9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-getcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetContainer(in Guid riid, out nint ppContainer);
+    HRESULT GetContainer(in Guid riid, out nint ppContainer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(ref D3DSURFACE_DESC pDesc);
+    HRESULT GetDesc(ref D3DSURFACE_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-lockrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LockRect(ref D3DLOCKED_RECT pLockedRect, FoundationRECT pRect, uint Flags);
+    HRESULT LockRect(ref D3DLOCKED_RECT pLockedRect, FoundationRECT pRect, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-unlockrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnlockRect();
+    HRESULT UnlockRect();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-getdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDC(ref HDC phdc);
+    HRESULT GetDC(ref HDC phdc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-releasedc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseDC(HDC hdc);
+    HRESULT ReleaseDC(HDC hdc);
 }

@@ -4,8 +4,8 @@
 public partial interface ID3DBlob
 {
     [PreserveSig]
-    public void GetBufferPointer();
+    void GetBufferPointer();
     
     [PreserveSig]
-    public nuint GetBufferSize();
+    nuint GetBufferSize();
 }

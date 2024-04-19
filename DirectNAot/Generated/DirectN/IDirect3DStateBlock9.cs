@@ -7,15 +7,15 @@ public partial interface IDirect3DStateBlock9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dstateblock9-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
+    HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dstateblock9-capture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Capture();
+    HRESULT Capture();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dstateblock9-apply
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Apply();
+    HRESULT Apply();
 }

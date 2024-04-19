@@ -8,15 +8,15 @@ public partial interface IDCompositionEffectGroup : IDCompositionEffect
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioneffectgroup-setopacity(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOpacity(IDCompositionAnimation animation);
+    HRESULT SetOpacity(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioneffectgroup-setopacity(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOpacity(float opacity);
+    HRESULT SetOpacity(float opacity);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioneffectgroup-settransform3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransform3D(IDCompositionTransform3D transform3D);
+    HRESULT SetTransform3D(IDCompositionTransform3D transform3D);
 }

@@ -8,5 +8,5 @@ public partial interface ID2D1DrawTransform : ID2D1Transform
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1drawtransform-setdrawinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetDrawInfo(ID2D1DrawInfo drawInfo);
+    HRESULT SetDrawInfo(ID2D1DrawInfo drawInfo);
 }

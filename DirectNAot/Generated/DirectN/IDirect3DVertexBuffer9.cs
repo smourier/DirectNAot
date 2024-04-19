@@ -7,15 +7,15 @@ public partial interface IDirect3DVertexBuffer9 : IDirect3DResource9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvertexbuffer9-lock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Lock(uint OffsetToLock, uint SizeToLock, out nint ppbData, uint Flags);
+    HRESULT Lock(uint OffsetToLock, uint SizeToLock, out nint ppbData, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvertexbuffer9-unlock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Unlock();
+    HRESULT Unlock();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvertexbuffer9-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(ref D3DVERTEXBUFFER_DESC pDesc);
+    HRESULT GetDesc(ref D3DVERTEXBUFFER_DESC pDesc);
 }

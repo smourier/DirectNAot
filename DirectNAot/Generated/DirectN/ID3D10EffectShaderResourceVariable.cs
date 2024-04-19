@@ -7,20 +7,20 @@ public partial interface ID3D10EffectShaderResourceVariable : ID3D10EffectVariab
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-setresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetResource(ID3D10ShaderResourceView pResource);
+    HRESULT SetResource(ID3D10ShaderResourceView pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-getresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetResource(out ID3D10ShaderResourceView ppResource);
+    HRESULT GetResource(out ID3D10ShaderResourceView ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-setresourcearray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetResourceArray(in ID3D10ShaderResourceView ppResources, uint Offset, uint Count);
+    HRESULT SetResourceArray(in ID3D10ShaderResourceView ppResources, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-getresourcearray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetResourceArray(out ID3D10ShaderResourceView ppResources, uint Offset, uint Count);
+    HRESULT GetResourceArray(out ID3D10ShaderResourceView ppResources, uint Offset, uint Count);
 }

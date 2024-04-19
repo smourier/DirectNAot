@@ -4,20 +4,20 @@
 public partial interface IDxcCompilerArgs
 {
     [PreserveSig]
-    public PWSTR GetArguments();
+    PWSTR GetArguments();
     
     [PreserveSig]
-    public uint GetCount();
-    
-    [PreserveSig]
-    [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddArguments(nint/* nint */ pArguments, uint argCount);
+    uint GetCount();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddArgumentsUTF8(nint/* nint */ pArguments, uint argCount);
+    HRESULT AddArguments(nint/* nint */ pArguments, uint argCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddDefines(in DxcDefine pDefines, uint defineCount);
+    HRESULT AddArgumentsUTF8(nint/* nint */ pArguments, uint argCount);
+    
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT AddDefines(in DxcDefine pDefines, uint defineCount);
 }

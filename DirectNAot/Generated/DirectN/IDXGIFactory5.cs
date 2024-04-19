@@ -7,5 +7,5 @@ public partial interface IDXGIFactory5 : IDXGIFactory4
     // https://learn.microsoft.com/windows/win32/api/dxgi1_5/nf-dxgi1_5-idxgifactory5-checkfeaturesupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckFeatureSupport(DXGI_FEATURE Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
+    HRESULT CheckFeatureSupport(DXGI_FEATURE Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
 }

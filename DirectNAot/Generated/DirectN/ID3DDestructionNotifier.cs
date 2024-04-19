@@ -8,10 +8,10 @@ public partial interface ID3DDestructionNotifier
     // https://learn.microsoft.com/windows/win32/api/d3dcommon/nf-d3dcommon-id3ddestructionotifier-registerdestructioncallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RegisterDestructionCallback(PFN_DESTRUCTION_CALLBACK callbackFn, nint pData, out uint pCallbackID);
+    HRESULT RegisterDestructionCallback(PFN_DESTRUCTION_CALLBACK callbackFn, nint pData, out uint pCallbackID);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcommon/nf-d3dcommon-id3ddestructionotifier-unregisterdestructioncallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnregisterDestructionCallback(uint callbackID);
+    HRESULT UnregisterDestructionCallback(uint callbackID);
 }

@@ -6,64 +6,64 @@ public partial interface IPresentationManager
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddBufferFromResource(nint resource, out IPresentationBuffer presentationBuffer);
+    HRESULT AddBufferFromResource(nint resource, out IPresentationBuffer presentationBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-createpresentationsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePresentationSurface(HANDLE compositionSurfaceHandle, out IPresentationSurface presentationSurface);
+    HRESULT CreatePresentationSurface(HANDLE compositionSurfaceHandle, out IPresentationSurface presentationSurface);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getnextpresentid
     [PreserveSig]
-    public ulong GetNextPresentId();
+    ulong GetNextPresentId();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-settargettime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTargetTime(SystemInterruptTime targetTime);
+    HRESULT SetTargetTime(SystemInterruptTime targetTime);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-setpreferredpresentduration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPreferredPresentDuration(SystemInterruptTime preferredDuration, SystemInterruptTime deviationTolerance);
+    HRESULT SetPreferredPresentDuration(SystemInterruptTime preferredDuration, SystemInterruptTime deviationTolerance);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-forcevsyncinterrupt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ForceVSyncInterrupt(byte forceVsyncInterrupt);
+    HRESULT ForceVSyncInterrupt(byte forceVsyncInterrupt);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-present
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Present();
+    HRESULT Present();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getpresentretiringfence
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPresentRetiringFence(in Guid riid, out nint fence);
+    HRESULT GetPresentRetiringFence(in Guid riid, out nint fence);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-cancelpresentsfrom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CancelPresentsFrom(ulong presentIdToCancelFrom);
+    HRESULT CancelPresentsFrom(ulong presentIdToCancelFrom);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getlostevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLostEvent(out HANDLE lostEventHandle);
+    HRESULT GetLostEvent(out HANDLE lostEventHandle);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getpresentstatisticsavailableevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPresentStatisticsAvailableEvent(out HANDLE presentStatisticsAvailableEventHandle);
+    HRESULT GetPresentStatisticsAvailableEvent(out HANDLE presentStatisticsAvailableEventHandle);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-enablepresentstatisticskind
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnablePresentStatisticsKind(PresentStatisticsKind presentStatisticsKind, byte enabled);
+    HRESULT EnablePresentStatisticsKind(PresentStatisticsKind presentStatisticsKind, byte enabled);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getnextpresentstatistics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetNextPresentStatistics(out IPresentStatistics nextPresentStatistics);
+    HRESULT GetNextPresentStatistics(out IPresentStatistics nextPresentStatistics);
 }

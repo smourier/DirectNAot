@@ -8,30 +8,30 @@ public partial interface IWICMetadataReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getmetadataformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMetadataFormat(out Guid pguidMetadataFormat);
+    HRESULT GetMetadataFormat(out Guid pguidMetadataFormat);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getmetadatahandlerinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMetadataHandlerInfo(out IWICMetadataHandlerInfo ppIHandler);
+    HRESULT GetMetadataHandlerInfo(out IWICMetadataHandlerInfo ppIHandler);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getcount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCount(out uint pcCount);
+    HRESULT GetCount(out uint pcCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getvaluebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetValueByIndex(uint nIndex, ref PROPVARIANT pvarSchema, ref PROPVARIANT pvarId, ref PROPVARIANT pvarValue);
+    HRESULT GetValueByIndex(uint nIndex, ref PROPVARIANT pvarSchema, ref PROPVARIANT pvarId, ref PROPVARIANT pvarValue);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, ref PROPVARIANT pvarValue);
+    HRESULT GetValue(in PROPVARIANT pvarSchema, in PROPVARIANT pvarId, ref PROPVARIANT pvarValue);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetEnumerator(out IWICEnumMetadataItem ppIEnumMetadata);
+    HRESULT GetEnumerator(out IWICEnumMetadataItem ppIEnumMetadata);
 }

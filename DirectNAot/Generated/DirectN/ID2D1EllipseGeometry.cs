@@ -7,5 +7,5 @@ public partial interface ID2D1EllipseGeometry : ID2D1Geometry
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1ellipsegeometry-getellipse
     [PreserveSig]
-    public void GetEllipse(out D2D1_ELLIPSE ellipse);
+    void GetEllipse(out D2D1_ELLIPSE ellipse);
 }

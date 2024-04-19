@@ -8,195 +8,195 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBuffer(in D3D11_BUFFER_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppBuffer);
+    HRESULT CreateBuffer(in D3D11_BUFFER_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createtexture1d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateTexture1D(in D3D11_TEXTURE1D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture1D);
+    HRESULT CreateTexture1D(in D3D11_TEXTURE1D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture1D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createtexture2d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateTexture2D(in D3D11_TEXTURE2D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture2D);
+    HRESULT CreateTexture2D(in D3D11_TEXTURE2D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture2D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createtexture3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateTexture3D(in D3D11_TEXTURE3D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture3D);
+    HRESULT CreateTexture3D(in D3D11_TEXTURE3D_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppTexture3D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createshaderresourceview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateShaderResourceView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppSRView);
+    HRESULT CreateShaderResourceView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppSRView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createunorderedaccessview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateUnorderedAccessView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppUAView);
+    HRESULT CreateUnorderedAccessView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppUAView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createrendertargetview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateRenderTargetView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppRTView);
+    HRESULT CreateRenderTargetView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppRTView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createdepthstencilview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDepthStencilView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppDepthStencilView);
+    HRESULT CreateDepthStencilView(ID3D11Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createinputlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInputLayout(in D3D11_INPUT_ELEMENT_DESC pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint/* nint */ ppInputLayout);
+    HRESULT CreateInputLayout(in D3D11_INPUT_ELEMENT_DESC pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint/* nint */ ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppVertexShader);
+    HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-creategeometryshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppGeometryShader);
+    HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-creategeometryshaderwithstreamoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ pSODeclaration, uint NumEntries, nint/* nint */ pBufferStrides, uint NumStrides, uint RasterizedStream, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppGeometryShader);
+    HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ pSODeclaration, uint NumEntries, nint/* nint */ pBufferStrides, uint NumStrides, uint RasterizedStream, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppPixelShader);
+    HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createhullshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateHullShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppHullShader);
+    HRESULT CreateHullShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppHullShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createdomainshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDomainShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppDomainShader);
+    HRESULT CreateDomainShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppDomainShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createcomputeshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateComputeShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppComputeShader);
+    HRESULT CreateComputeShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint/* nint */ ppComputeShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createclasslinkage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateClassLinkage(out ID3D11ClassLinkage ppLinkage);
+    HRESULT CreateClassLinkage(out ID3D11ClassLinkage ppLinkage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createblendstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBlendState(in D3D11_BLEND_DESC pBlendStateDesc, nint/* nint */ ppBlendState);
+    HRESULT CreateBlendState(in D3D11_BLEND_DESC pBlendStateDesc, nint/* nint */ ppBlendState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createdepthstencilstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDepthStencilState(in D3D11_DEPTH_STENCIL_DESC pDepthStencilDesc, nint/* nint */ ppDepthStencilState);
+    HRESULT CreateDepthStencilState(in D3D11_DEPTH_STENCIL_DESC pDepthStencilDesc, nint/* nint */ ppDepthStencilState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createrasterizerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateRasterizerState(in D3D11_RASTERIZER_DESC pRasterizerDesc, nint/* nint */ ppRasterizerState);
+    HRESULT CreateRasterizerState(in D3D11_RASTERIZER_DESC pRasterizerDesc, nint/* nint */ ppRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createsamplerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSamplerState(in D3D11_SAMPLER_DESC pSamplerDesc, nint/* nint */ ppSamplerState);
+    HRESULT CreateSamplerState(in D3D11_SAMPLER_DESC pSamplerDesc, nint/* nint */ ppSamplerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateQuery(in D3D11_QUERY_DESC pQueryDesc, nint/* nint */ ppQuery);
+    HRESULT CreateQuery(in D3D11_QUERY_DESC pQueryDesc, nint/* nint */ ppQuery);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createpredicate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePredicate(in D3D11_QUERY_DESC pPredicateDesc, nint/* nint */ ppPredicate);
+    HRESULT CreatePredicate(in D3D11_QUERY_DESC pPredicateDesc, nint/* nint */ ppPredicate);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateCounter(in D3D11_COUNTER_DESC pCounterDesc, nint/* nint */ ppCounter);
+    HRESULT CreateCounter(in D3D11_COUNTER_DESC pCounterDesc, nint/* nint */ ppCounter);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createdeferredcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDeferredContext(uint ContextFlags, nint/* nint */ ppDeferredContext);
+    HRESULT CreateDeferredContext(uint ContextFlags, nint/* nint */ ppDeferredContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-opensharedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint/* nint */ ppResource);
+    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint/* nint */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkformatsupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckFormatSupport(DXGI_FORMAT Format, out uint pFormatSupport);
+    HRESULT CheckFormatSupport(DXGI_FORMAT Format, out uint pFormatSupport);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkmultisamplequalitylevels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckMultisampleQualityLevels(DXGI_FORMAT Format, uint SampleCount, out uint pNumQualityLevels);
+    HRESULT CheckMultisampleQualityLevels(DXGI_FORMAT Format, uint SampleCount, out uint pNumQualityLevels);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkcounterinfo
     [PreserveSig]
-    public void CheckCounterInfo(out D3D11_COUNTER_INFO pCounterInfo);
+    void CheckCounterInfo(out D3D11_COUNTER_INFO pCounterInfo);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint/* nint */ pNameLength, out PSTR szUnits, nint/* nint */ pUnitsLength, out PSTR szDescription, nint/* nint */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint/* nint */ pNameLength, out PSTR szUnits, nint/* nint */ pUnitsLength, out PSTR szDescription, nint/* nint */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkfeaturesupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckFeatureSupport(D3D11_FEATURE Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
+    HRESULT CheckFeatureSupport(D3D11_FEATURE Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint/* nint */ pData);
+    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint/* nint */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPrivateData(in Guid guid, uint DataSize, nint/* nint */ pData);
+    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint/* nint */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-setprivatedatainterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPrivateDataInterface(in Guid guid, nint pData);
+    HRESULT SetPrivateDataInterface(in Guid guid, nint pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getfeaturelevel
     [PreserveSig]
-    public D3D_FEATURE_LEVEL GetFeatureLevel();
+    D3D_FEATURE_LEVEL GetFeatureLevel();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getcreationflags
     [PreserveSig]
-    public uint GetCreationFlags();
+    uint GetCreationFlags();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getdeviceremovedreason
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDeviceRemovedReason();
+    HRESULT GetDeviceRemovedReason();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getimmediatecontext
     [PreserveSig]
-    public void GetImmediateContext(out ID3D11DeviceContext ppImmediateContext);
+    void GetImmediateContext(out ID3D11DeviceContext ppImmediateContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-setexceptionmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetExceptionMode(uint RaiseFlags);
+    HRESULT SetExceptionMode(uint RaiseFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getexceptionmode
     [PreserveSig]
-    public uint GetExceptionMode();
+    uint GetExceptionMode();
 }

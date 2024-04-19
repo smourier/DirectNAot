@@ -8,20 +8,20 @@ public partial interface IWICEnumMetadataItem
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Next(uint celt, ref PROPVARIANT rgeltSchema, ref PROPVARIANT rgeltId, ref PROPVARIANT rgeltValue, out uint pceltFetched);
+    HRESULT Next(uint celt, ref PROPVARIANT rgeltSchema, ref PROPVARIANT rgeltId, ref PROPVARIANT rgeltValue, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-skip
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Skip(uint celt);
+    HRESULT Skip(uint celt);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-reset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Reset();
+    HRESULT Reset();
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Clone(out IWICEnumMetadataItem ppIEnumMetadataItem);
+    HRESULT Clone(out IWICEnumMetadataItem ppIEnumMetadataItem);
 }

@@ -7,10 +7,10 @@ public partial interface IDXGIKeyedMutex : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgikeyedmutex-acquiresync
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AcquireSync(ulong Key, uint dwMilliseconds);
+    HRESULT AcquireSync(ulong Key, uint dwMilliseconds);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgikeyedmutex-releasesync
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseSync(ulong Key);
+    HRESULT ReleaseSync(ulong Key);
 }

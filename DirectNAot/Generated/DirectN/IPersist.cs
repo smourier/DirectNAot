@@ -8,5 +8,5 @@ public partial interface IPersist
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersist-getclassid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetClassID(out Guid pClassID);
+    HRESULT GetClassID(out Guid pClassID);
 }

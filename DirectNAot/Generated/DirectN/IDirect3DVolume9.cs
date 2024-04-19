@@ -7,40 +7,40 @@ public partial interface IDirect3DVolume9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
+    HRESULT GetDevice(out IDirect3DDevice9 ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPrivateData(in Guid refguid, nint pData, uint SizeOfData, uint Flags);
+    HRESULT SetPrivateData(in Guid refguid, nint pData, uint SizeOfData, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPrivateData(in Guid refguid, nint pData, ref uint pSizeOfData);
+    HRESULT GetPrivateData(in Guid refguid, nint pData, ref uint pSizeOfData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-freeprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT FreePrivateData(in Guid refguid);
+    HRESULT FreePrivateData(in Guid refguid);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetContainer(in Guid riid, out nint ppContainer);
+    HRESULT GetContainer(in Guid riid, out nint ppContainer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(ref D3DVOLUME_DESC pDesc);
+    HRESULT GetDesc(ref D3DVOLUME_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-lockbox
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LockBox(ref D3DLOCKED_BOX pLockedVolume, in D3DBOX pBox, uint Flags);
+    HRESULT LockBox(ref D3DLOCKED_BOX pLockedVolume, in D3DBOX pBox, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-unlockbox
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnlockBox();
+    HRESULT UnlockBox();
 }

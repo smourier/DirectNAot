@@ -7,5 +7,5 @@ public partial interface ID3D11RasterizerState2 : ID3D11RasterizerState1
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11rasterizerstate2-getdesc2
     [PreserveSig]
-    public void GetDesc2(out D3D11_RASTERIZER_DESC2 pDesc);
+    void GetDesc2(out D3D11_RASTERIZER_DESC2 pDesc);
 }

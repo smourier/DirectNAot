@@ -8,10 +8,10 @@ public partial interface ID2D1GdiMetafile : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gdimetafile-stream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Stream(ID2D1GdiMetafileSink sink);
+    HRESULT Stream(ID2D1GdiMetafileSink sink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gdimetafile-getbounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBounds(out D2D_RECT_F bounds);
+    HRESULT GetBounds(out D2D_RECT_F bounds);
 }

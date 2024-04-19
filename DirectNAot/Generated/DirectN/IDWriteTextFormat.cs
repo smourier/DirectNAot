@@ -8,113 +8,113 @@ public partial interface IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-settextalignment
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTextAlignment(DWRITE_TEXT_ALIGNMENT textAlignment);
+    HRESULT SetTextAlignment(DWRITE_TEXT_ALIGNMENT textAlignment);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setparagraphalignment
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT paragraphAlignment);
+    HRESULT SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT paragraphAlignment);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setwordwrapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetWordWrapping(DWRITE_WORD_WRAPPING wordWrapping);
+    HRESULT SetWordWrapping(DWRITE_WORD_WRAPPING wordWrapping);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setreadingdirection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetReadingDirection(DWRITE_READING_DIRECTION readingDirection);
+    HRESULT SetReadingDirection(DWRITE_READING_DIRECTION readingDirection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setflowdirection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetFlowDirection(DWRITE_FLOW_DIRECTION flowDirection);
+    HRESULT SetFlowDirection(DWRITE_FLOW_DIRECTION flowDirection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setincrementaltabstop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetIncrementalTabStop(float incrementalTabStop);
+    HRESULT SetIncrementalTabStop(float incrementalTabStop);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-settrimming
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTrimming(in DWRITE_TRIMMING trimmingOptions, IDWriteInlineObject trimmingSign);
+    HRESULT SetTrimming(in DWRITE_TRIMMING trimmingOptions, IDWriteInlineObject trimmingSign);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setlinespacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetLineSpacing(DWRITE_LINE_SPACING_METHOD lineSpacingMethod, float lineSpacing, float baseline);
+    HRESULT SetLineSpacing(DWRITE_LINE_SPACING_METHOD lineSpacingMethod, float lineSpacing, float baseline);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-gettextalignment
     [PreserveSig]
-    public DWRITE_TEXT_ALIGNMENT GetTextAlignment();
+    DWRITE_TEXT_ALIGNMENT GetTextAlignment();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getparagraphalignment
     [PreserveSig]
-    public DWRITE_PARAGRAPH_ALIGNMENT GetParagraphAlignment();
+    DWRITE_PARAGRAPH_ALIGNMENT GetParagraphAlignment();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getwordwrapping
     [PreserveSig]
-    public DWRITE_WORD_WRAPPING GetWordWrapping();
+    DWRITE_WORD_WRAPPING GetWordWrapping();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getreadingdirection
     [PreserveSig]
-    public DWRITE_READING_DIRECTION GetReadingDirection();
+    DWRITE_READING_DIRECTION GetReadingDirection();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getflowdirection
     [PreserveSig]
-    public DWRITE_FLOW_DIRECTION GetFlowDirection();
+    DWRITE_FLOW_DIRECTION GetFlowDirection();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getincrementaltabstop
     [PreserveSig]
-    public float GetIncrementalTabStop();
+    float GetIncrementalTabStop();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-gettrimming
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTrimming(out DWRITE_TRIMMING trimmingOptions, out IDWriteInlineObject trimmingSign);
+    HRESULT GetTrimming(out DWRITE_TRIMMING trimmingOptions, out IDWriteInlineObject trimmingSign);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getlinespacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLineSpacing(out DWRITE_LINE_SPACING_METHOD lineSpacingMethod, out float lineSpacing, out float baseline);
+    HRESULT GetLineSpacing(out DWRITE_LINE_SPACING_METHOD lineSpacingMethod, out float lineSpacing, out float baseline);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontCollection(out IDWriteFontCollection fontCollection);
+    HRESULT GetFontCollection(out IDWriteFontCollection fontCollection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontfamilynamelength
     [PreserveSig]
-    public uint GetFontFamilyNameLength();
+    uint GetFontFamilyNameLength();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFamilyName(out PWSTR fontFamilyName, uint nameSize);
+    HRESULT GetFontFamilyName(out PWSTR fontFamilyName, uint nameSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontweight
     [PreserveSig]
-    public DWRITE_FONT_WEIGHT GetFontWeight();
+    DWRITE_FONT_WEIGHT GetFontWeight();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontstyle
     [PreserveSig]
-    public DWRITE_FONT_STYLE GetFontStyle();
+    DWRITE_FONT_STYLE GetFontStyle();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontstretch
     [PreserveSig]
-    public DWRITE_FONT_STRETCH GetFontStretch();
+    DWRITE_FONT_STRETCH GetFontStretch();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontsize
     [PreserveSig]
-    public float GetFontSize();
+    float GetFontSize();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getlocalenamelength
     [PreserveSig]
-    public uint GetLocaleNameLength();
+    uint GetLocaleNameLength();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLocaleName(out PWSTR localeName, uint nameSize);
+    HRESULT GetLocaleName(out PWSTR localeName, uint nameSize);
 }

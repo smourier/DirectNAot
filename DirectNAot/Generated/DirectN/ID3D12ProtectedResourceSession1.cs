@@ -6,5 +6,5 @@ public partial interface ID3D12ProtectedResourceSession1 : ID3D12ProtectedResour
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12protectedresourcesession1-getdesc1
     [PreserveSig]
-    public D3D12_PROTECTED_RESOURCE_SESSION_DESC1 GetDesc1();
+    D3D12_PROTECTED_RESOURCE_SESSION_DESC1 GetDesc1();
 }

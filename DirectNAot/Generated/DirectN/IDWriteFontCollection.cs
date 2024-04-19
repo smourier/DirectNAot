@@ -7,20 +7,20 @@ public partial interface IDWriteFontCollection
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfamilycount
     [PreserveSig]
-    public uint GetFontFamilyCount();
+    uint GetFontFamilyCount();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfamily
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFamily(uint index, out IDWriteFontFamily fontFamily);
+    HRESULT GetFontFamily(uint index, out IDWriteFontFamily fontFamily);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-findfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT FindFamilyName(PWSTR familyName, out uint index, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT FindFamilyName(PWSTR familyName, out uint index, [MarshalAs(UnmanagedType.U4)] out bool exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfromfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFromFontFace(IDWriteFontFace fontFace, out IDWriteFont font);
+    HRESULT GetFontFromFontFace(IDWriteFontFace fontFace, out IDWriteFont font);
 }

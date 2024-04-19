@@ -5,5 +5,5 @@ public partial interface ID3D12Heap1 : ID3D12Heap
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetProtectedResourceSession(in Guid riid, nint/* nint */ ppProtectedSession);
+    HRESULT GetProtectedResourceSession(in Guid riid, nint/* nint */ ppProtectedSession);
 }

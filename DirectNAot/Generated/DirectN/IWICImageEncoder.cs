@@ -8,15 +8,15 @@ public partial interface IWICImageEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimageencoder-writeframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT WriteFrame(ID2D1Image pImage, IWICBitmapFrameEncode pFrameEncode, in WICImageParameters pImageParameters);
+    HRESULT WriteFrame(ID2D1Image pImage, IWICBitmapFrameEncode pFrameEncode, in WICImageParameters pImageParameters);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimageencoder-writeframethumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT WriteFrameThumbnail(ID2D1Image pImage, IWICBitmapFrameEncode pFrameEncode, in WICImageParameters pImageParameters);
+    HRESULT WriteFrameThumbnail(ID2D1Image pImage, IWICBitmapFrameEncode pFrameEncode, in WICImageParameters pImageParameters);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimageencoder-writethumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT WriteThumbnail(ID2D1Image pImage, IWICBitmapEncoder pEncoder, in WICImageParameters pImageParameters);
+    HRESULT WriteThumbnail(ID2D1Image pImage, IWICBitmapEncoder pEncoder, in WICImageParameters pImageParameters);
 }

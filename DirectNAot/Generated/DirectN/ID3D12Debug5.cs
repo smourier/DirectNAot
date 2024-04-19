@@ -6,5 +6,5 @@ public partial interface ID3D12Debug5 : ID3D12Debug4
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug5-setenableautoname
     [PreserveSig]
-    public void SetEnableAutoName([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableAutoName([MarshalAs(UnmanagedType.U4)] bool Enable);
 }

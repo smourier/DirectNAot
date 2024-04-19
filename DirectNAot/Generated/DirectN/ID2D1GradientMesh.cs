@@ -7,10 +7,10 @@ public partial interface ID2D1GradientMesh : ID2D1Resource
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1gradientmesh-getpatchcount
     [PreserveSig]
-    public uint GetPatchCount();
+    uint GetPatchCount();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1gradientmesh-getpatches
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPatches(uint startIndex, out D2D1_GRADIENT_MESH_PATCH patches, uint patchesCount);
+    HRESULT GetPatches(uint startIndex, out D2D1_GRADIENT_MESH_PATCH patches, uint patchesCount);
 }

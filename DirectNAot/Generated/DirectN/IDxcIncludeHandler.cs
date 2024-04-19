@@ -5,5 +5,5 @@ public partial interface IDxcIncludeHandler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LoadSource(PWSTR pFilename, out IDxcBlob ppIncludeSource);
+    HRESULT LoadSource(PWSTR pFilename, out IDxcBlob ppIncludeSource);
 }

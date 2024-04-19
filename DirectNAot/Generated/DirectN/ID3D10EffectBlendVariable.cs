@@ -7,10 +7,10 @@ public partial interface ID3D10EffectBlendVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectblendvariable-getblendstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBlendState(uint Index, out ID3D10BlendState ppBlendState);
+    HRESULT GetBlendState(uint Index, out ID3D10BlendState ppBlendState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectblendvariable-getbackingstore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBackingStore(uint Index, ref D3D10_BLEND_DESC pBlendDesc);
+    HRESULT GetBackingStore(uint Index, ref D3D10_BLEND_DESC pBlendDesc);
 }

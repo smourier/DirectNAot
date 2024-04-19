@@ -8,10 +8,10 @@ public partial interface IDXGIDevice1 : IDXGIDevice
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice1-setmaximumframelatency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMaximumFrameLatency(uint MaxLatency);
+    HRESULT SetMaximumFrameLatency(uint MaxLatency);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice1-getmaximumframelatency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMaximumFrameLatency(out uint pMaxLatency);
+    HRESULT GetMaximumFrameLatency(out uint pMaxLatency);
 }

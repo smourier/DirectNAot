@@ -7,44 +7,44 @@ public partial interface ID2D1TransformGraph
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-getinputcount
     [PreserveSig]
-    public uint GetInputCount();
+    uint GetInputCount();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-setsingletransformnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSingleTransformNode(ID2D1TransformNode node);
+    HRESULT SetSingleTransformNode(ID2D1TransformNode node);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-addnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddNode(ID2D1TransformNode node);
+    HRESULT AddNode(ID2D1TransformNode node);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-removenode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveNode(ID2D1TransformNode node);
+    HRESULT RemoveNode(ID2D1TransformNode node);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-setoutputnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOutputNode(ID2D1TransformNode node);
+    HRESULT SetOutputNode(ID2D1TransformNode node);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-connectnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ConnectNode(ID2D1TransformNode fromNode, ID2D1TransformNode toNode, uint toNodeInputIndex);
+    HRESULT ConnectNode(ID2D1TransformNode fromNode, ID2D1TransformNode toNode, uint toNodeInputIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-connecttoeffectinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ConnectToEffectInput(uint toEffectInputIndex, ID2D1TransformNode node, uint toNodeInputIndex);
+    HRESULT ConnectToEffectInput(uint toEffectInputIndex, ID2D1TransformNode node, uint toNodeInputIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-clear
     [PreserveSig]
-    public void Clear();
+    void Clear();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transformgraph-setpassthroughgraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPassthroughGraph(uint effectInputIndex);
+    HRESULT SetPassthroughGraph(uint effectInputIndex);
 }

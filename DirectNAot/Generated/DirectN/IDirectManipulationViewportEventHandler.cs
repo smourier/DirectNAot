@@ -8,15 +8,15 @@ public partial interface IDirectManipulationViewportEventHandler
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewporteventhandler-onviewportstatuschanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OnViewportStatusChanged(IDirectManipulationViewport viewport, DIRECTMANIPULATION_STATUS current, DIRECTMANIPULATION_STATUS previous);
+    HRESULT OnViewportStatusChanged(IDirectManipulationViewport viewport, DIRECTMANIPULATION_STATUS current, DIRECTMANIPULATION_STATUS previous);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewporteventhandler-onviewportupdated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OnViewportUpdated(IDirectManipulationViewport viewport);
+    HRESULT OnViewportUpdated(IDirectManipulationViewport viewport);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewporteventhandler-oncontentupdated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OnContentUpdated(IDirectManipulationViewport viewport, IDirectManipulationContent content);
+    HRESULT OnContentUpdated(IDirectManipulationViewport viewport, IDirectManipulationContent content);
 }

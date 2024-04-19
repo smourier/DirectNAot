@@ -7,9 +7,9 @@ public partial interface ID2D1SolidColorBrush : ID2D1Brush
 {
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1solidcolorbrush-setcolor
     [PreserveSig]
-    public void SetColor(in D2D1_COLOR_F color);
+    void SetColor(in D2D1_COLOR_F color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1solidcolorbrush-getcolor
     [PreserveSig]
-    public D2D1_COLOR_F GetColor();
+    D2D1_COLOR_F GetColor();
 }

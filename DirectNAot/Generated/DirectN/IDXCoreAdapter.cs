@@ -7,50 +7,50 @@ public partial interface IDXCoreAdapter
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-isvalid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsValid();
+    bool IsValid();
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-isattributesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsAttributeSupported(in Guid attributeGUID);
+    bool IsAttributeSupported(in Guid attributeGUID);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-ispropertysupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsPropertySupported(DXCoreAdapterProperty property);
+    bool IsPropertySupported(DXCoreAdapterProperty property);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-getproperty
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetProperty(DXCoreAdapterProperty property, nuint bufferSize, nint propertyData);
+    HRESULT GetProperty(DXCoreAdapterProperty property, nuint bufferSize, nint propertyData);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-getpropertysize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPropertySize(DXCoreAdapterProperty property, out nuint bufferSize);
+    HRESULT GetPropertySize(DXCoreAdapterProperty property, out nuint bufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-isquerystatesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsQueryStateSupported(DXCoreAdapterState property);
+    bool IsQueryStateSupported(DXCoreAdapterState property);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-querystate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT QueryState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint/* nint */ inputStateDetails, nuint outputBufferSize, nint outputBuffer);
+    HRESULT QueryState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint/* nint */ inputStateDetails, nuint outputBufferSize, nint outputBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-issetstatesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsSetStateSupported(DXCoreAdapterState property);
+    bool IsSetStateSupported(DXCoreAdapterState property);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-setstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint/* nint */ inputStateDetails, nuint inputDataSize, nint inputData);
+    HRESULT SetState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint/* nint */ inputStateDetails, nuint inputDataSize, nint inputData);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-getfactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFactory(in Guid riid, out nint ppvFactory);
+    HRESULT GetFactory(in Guid riid, out nint ppvFactory);
 }

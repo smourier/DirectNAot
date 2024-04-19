@@ -8,5 +8,5 @@ public partial interface ID2D1ResourceTexture
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1resourcetexture-update
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Update(nint/* nint */ minimumExtents, nint/* nint */ maximimumExtents, nint/* nint */ strides, uint dimensions, nint /* byte array */ data, uint dataCount);
+    HRESULT Update(nint/* nint */ minimumExtents, nint/* nint */ maximimumExtents, nint/* nint */ strides, uint dimensions, nint /* byte array */ data, uint dataCount);
 }

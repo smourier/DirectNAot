@@ -6,10 +6,10 @@ public partial interface ID3D12Tools
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12tools-enableshaderinstrumentation
     [PreserveSig]
-    public void EnableShaderInstrumentation([MarshalAs(UnmanagedType.U4)] bool bEnable);
+    void EnableShaderInstrumentation([MarshalAs(UnmanagedType.U4)] bool bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12tools-shaderinstrumentationenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool ShaderInstrumentationEnabled();
+    bool ShaderInstrumentationEnabled();
 }

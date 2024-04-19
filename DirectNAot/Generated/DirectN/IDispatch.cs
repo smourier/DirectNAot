@@ -7,20 +7,20 @@ public partial interface IDispatch
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-gettypeinfocount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeInfoCount(out uint pctinfo);
+    HRESULT GetTypeInfoCount(out uint pctinfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-gettypeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeInfo(uint iTInfo, uint lcid, out ITypeInfo ppTInfo);
+    HRESULT GetTypeInfo(uint iTInfo, uint lcid, out ITypeInfo ppTInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetIDsOfNames(in Guid riid, in PWSTR rgszNames, uint cNames, uint lcid, out int rgDispId);
+    HRESULT GetIDsOfNames(in Guid riid, in PWSTR rgszNames, uint cNames, uint lcid, out int rgDispId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint/* nint */ pVarResult, nint/* nint */ pExcepInfo, nint/* nint */ puArgErr);
+    HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint/* nint */ pVarResult, nint/* nint */ pExcepInfo, nint/* nint */ puArgErr);
 }

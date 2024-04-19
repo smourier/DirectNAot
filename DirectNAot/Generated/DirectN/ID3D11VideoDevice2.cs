@@ -7,9 +7,9 @@ public partial interface ID3D11VideoDevice2 : ID3D11VideoDevice1
     // https://learn.microsoft.com/windows/win32/api/d3d11_4/nf-d3d11_4-id3d11videodevice2-checkfeaturesupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckFeatureSupport(D3D11_FEATURE_VIDEO Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
+    HRESULT CheckFeatureSupport(D3D11_FEATURE_VIDEO Feature, nint pFeatureSupportData, uint FeatureSupportDataSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT NegotiateCryptoSessionKeyExchangeMT(ID3D11CryptoSession pCryptoSession, D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS flags, uint DataSize, nint pData);
+    HRESULT NegotiateCryptoSessionKeyExchangeMT(ID3D11CryptoSession pCryptoSession, D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS flags, uint DataSize, nint pData);
 }

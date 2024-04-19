@@ -5,5 +5,5 @@ public partial interface IDWriteBitmapRenderTarget2 : IDWriteBitmapRenderTarget1
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBitmapData(out DWRITE_BITMAP_DATA_BGRA32 bitmapData);
+    HRESULT GetBitmapData(out DWRITE_BITMAP_DATA_BGRA32 bitmapData);
 }

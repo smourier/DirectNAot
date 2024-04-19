@@ -6,5 +6,5 @@ public partial interface IPresentationContent
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationcontent-settag
     [PreserveSig]
-    public void SetTag(nuint tag);
+    void SetTag(nuint tag);
 }

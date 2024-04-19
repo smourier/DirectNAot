@@ -6,9 +6,9 @@ public partial interface IPresentStatusPresentStatistics : IPresentStatistics
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentstatuspresentstatistics-getcompositionframeid
     [PreserveSig]
-    public ulong GetCompositionFrameId();
+    ulong GetCompositionFrameId();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentstatuspresentstatistics-getpresentstatus
     [PreserveSig]
-    public PresentStatus GetPresentStatus();
+    PresentStatus GetPresentStatus();
 }

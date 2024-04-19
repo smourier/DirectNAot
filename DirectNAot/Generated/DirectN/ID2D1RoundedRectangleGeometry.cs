@@ -7,5 +7,5 @@ public partial interface ID2D1RoundedRectangleGeometry : ID2D1Geometry
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1roundedrectanglegeometry-getroundedrect
     [PreserveSig]
-    public void GetRoundedRect(out D2D1_ROUNDED_RECT roundedRect);
+    void GetRoundedRect(out D2D1_ROUNDED_RECT roundedRect);
 }

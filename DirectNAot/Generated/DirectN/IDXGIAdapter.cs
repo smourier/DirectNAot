@@ -7,15 +7,15 @@ public partial interface IDXGIAdapter : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiadapter-enumoutputs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumOutputs(uint Output, out IDXGIOutput ppOutput);
+    HRESULT EnumOutputs(uint Output, out IDXGIOutput ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiadapter-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(out DXGI_ADAPTER_DESC pDesc);
+    HRESULT GetDesc(out DXGI_ADAPTER_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiadapter-checkinterfacesupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckInterfaceSupport(in Guid InterfaceName, out long pUMDVersion);
+    HRESULT CheckInterfaceSupport(in Guid InterfaceName, out long pUMDVersion);
 }

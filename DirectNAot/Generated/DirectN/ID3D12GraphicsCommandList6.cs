@@ -4,5 +4,5 @@
 public partial interface ID3D12GraphicsCommandList6 : ID3D12GraphicsCommandList5
 {
     [PreserveSig]
-    public void DispatchMesh(uint ThreadGroupCountX, uint ThreadGroupCountY, uint ThreadGroupCountZ);
+    void DispatchMesh(uint ThreadGroupCountX, uint ThreadGroupCountY, uint ThreadGroupCountZ);
 }

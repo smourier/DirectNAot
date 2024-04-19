@@ -6,5 +6,5 @@ public partial interface ID3D10BlendState1 : ID3D10BlendState
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-id3d10blendstate1-getdesc1
     [PreserveSig]
-    public void GetDesc1(out D3D10_BLEND_DESC1 pDesc);
+    void GetDesc1(out D3D10_BLEND_DESC1 pDesc);
 }

@@ -5,5 +5,5 @@ public partial interface GdiplusAbort
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Abort();
+    HRESULT Abort();
 }

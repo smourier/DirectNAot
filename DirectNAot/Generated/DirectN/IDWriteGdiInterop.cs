@@ -8,25 +8,25 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createfontfromlogfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateFontFromLOGFONT(in LOGFONTW logFont, out IDWriteFont font);
+    HRESULT CreateFontFromLOGFONT(in LOGFONTW logFont, out IDWriteFont font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfonttologfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ConvertFontToLOGFONT(IDWriteFont font, out LOGFONTW logFont, [MarshalAs(UnmanagedType.U4)] out bool isSystemFont);
+    HRESULT ConvertFontToLOGFONT(IDWriteFont font, out LOGFONTW logFont, [MarshalAs(UnmanagedType.U4)] out bool isSystemFont);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfontfacetologfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ConvertFontFaceToLOGFONT(IDWriteFontFace font, out LOGFONTW logFont);
+    HRESULT ConvertFontFaceToLOGFONT(IDWriteFontFace font, out LOGFONTW logFont);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createfontfacefromhdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateFontFaceFromHdc(HDC hdc, out IDWriteFontFace fontFace);
+    HRESULT CreateFontFaceFromHdc(HDC hdc, out IDWriteFontFace fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createbitmaprendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateBitmapRenderTarget(HDC hdc, uint width, uint height, out IDWriteBitmapRenderTarget renderTarget);
+    HRESULT CreateBitmapRenderTarget(HDC hdc, uint width, uint height, out IDWriteBitmapRenderTarget renderTarget);
 }

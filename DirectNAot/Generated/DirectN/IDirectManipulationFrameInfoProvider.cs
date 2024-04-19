@@ -8,5 +8,5 @@ public partial interface IDirectManipulationFrameInfoProvider
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationframeinfoprovider-getnextframeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetNextFrameInfo(out ulong time, out ulong processTime, out ulong compositionTime);
+    HRESULT GetNextFrameInfo(out ulong time, out ulong processTime, out ulong compositionTime);
 }

@@ -5,13 +5,13 @@ public partial interface IDxcOperationResult
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetStatus([MarshalAs(UnmanagedType.Error)] out HRESULT pStatus);
+    HRESULT GetStatus(out HRESULT pStatus);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetResult(out IDxcBlob ppResult);
+    HRESULT GetResult(out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetErrorBuffer(out IDxcBlobEncoding ppErrors);
+    HRESULT GetErrorBuffer(out IDxcBlobEncoding ppErrors);
 }

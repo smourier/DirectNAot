@@ -6,26 +6,26 @@ public partial interface IDirect3DBaseTexture9 : IDirect3DResource9
 {
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-setlod
     [PreserveSig]
-    public uint SetLOD(uint LODNew);
+    uint SetLOD(uint LODNew);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-getlod
     [PreserveSig]
-    public uint GetLOD();
+    uint GetLOD();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-getlevelcount
     [PreserveSig]
-    public uint GetLevelCount();
+    uint GetLevelCount();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-setautogenfiltertype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAutoGenFilterType(D3DTEXTUREFILTERTYPE FilterType);
+    HRESULT SetAutoGenFilterType(D3DTEXTUREFILTERTYPE FilterType);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-getautogenfiltertype
     [PreserveSig]
-    public D3DTEXTUREFILTERTYPE GetAutoGenFilterType();
+    D3DTEXTUREFILTERTYPE GetAutoGenFilterType();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dbasetexture9-generatemipsublevels
     [PreserveSig]
-    public void GenerateMipSubLevels();
+    void GenerateMipSubLevels();
 }

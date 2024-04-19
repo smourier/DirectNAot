@@ -5,17 +5,17 @@ public partial interface IDxcContainerBuilder
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Load(IDxcBlob pDxilContainerHeader);
+    HRESULT Load(IDxcBlob pDxilContainerHeader);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddPart(uint fourCC, IDxcBlob pSource);
+    HRESULT AddPart(uint fourCC, IDxcBlob pSource);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemovePart(uint fourCC);
+    HRESULT RemovePart(uint fourCC);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SerializeContainer(out IDxcOperationResult ppResult);
+    HRESULT SerializeContainer(out IDxcOperationResult ppResult);
 }

@@ -8,10 +8,10 @@ public partial interface ID3D11TracingDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11tracingdevice-setshadertrackingoptionsbytype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetShaderTrackingOptionsByType(uint ResourceTypeFlags, uint Options);
+    HRESULT SetShaderTrackingOptionsByType(uint ResourceTypeFlags, uint Options);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11tracingdevice-setshadertrackingoptions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetShaderTrackingOptions(nint pShader, uint Options);
+    HRESULT SetShaderTrackingOptions(nint pShader, uint Options);
 }

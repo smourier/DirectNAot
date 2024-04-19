@@ -8,20 +8,20 @@ public partial interface IWICStream : IStream
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicstream-initializefromistream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromIStream(IStream pIStream);
+    HRESULT InitializeFromIStream(IStream pIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicstream-initializefromfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromFilename(PWSTR wzFileName, uint dwDesiredAccess);
+    HRESULT InitializeFromFilename(PWSTR wzFileName, uint dwDesiredAccess);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicstream-initializefrommemory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromMemory(nint /* byte array */ pbBuffer, uint cbBufferSize);
+    HRESULT InitializeFromMemory(nint /* byte array */ pbBuffer, uint cbBufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicstream-initializefromistreamregion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT InitializeFromIStreamRegion(IStream pIStream, ulong ulOffset, ulong ulMaxSize);
+    HRESULT InitializeFromIStreamRegion(IStream pIStream, ulong ulOffset, ulong ulMaxSize);
 }

@@ -8,22 +8,22 @@ public partial interface ID2D1Device : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1device-createdevicecontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, out ID2D1DeviceContext deviceContext);
+    HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, out ID2D1DeviceContext deviceContext);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1device-createprintcontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePrintControl(IWICImagingFactory wicFactory, IPrintDocumentPackageTarget documentTarget, nint/* nint */ printControlProperties, out ID2D1PrintControl printControl);
+    HRESULT CreatePrintControl(IWICImagingFactory wicFactory, IPrintDocumentPackageTarget documentTarget, nint/* nint */ printControlProperties, out ID2D1PrintControl printControl);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1device-setmaximumtexturememory
     [PreserveSig]
-    public void SetMaximumTextureMemory(ulong maximumInBytes);
+    void SetMaximumTextureMemory(ulong maximumInBytes);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1device-getmaximumtexturememory
     [PreserveSig]
-    public ulong GetMaximumTextureMemory();
+    ulong GetMaximumTextureMemory();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1device-clearresources
     [PreserveSig]
-    public void ClearResources(uint millisecondsSinceUse);
+    void ClearResources(uint millisecondsSinceUse);
 }

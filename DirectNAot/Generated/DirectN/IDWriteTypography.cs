@@ -8,14 +8,14 @@ public partial interface IDWriteTypography
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetypography-addfontfeature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddFontFeature(DWRITE_FONT_FEATURE fontFeature);
+    HRESULT AddFontFeature(DWRITE_FONT_FEATURE fontFeature);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetypography-getfontfeaturecount
     [PreserveSig]
-    public uint GetFontFeatureCount();
+    uint GetFontFeatureCount();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetypography-getfontfeature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFeature(uint fontFeatureIndex, out DWRITE_FONT_FEATURE fontFeature);
+    HRESULT GetFontFeature(uint fontFeatureIndex, out DWRITE_FONT_FEATURE fontFeature);
 }

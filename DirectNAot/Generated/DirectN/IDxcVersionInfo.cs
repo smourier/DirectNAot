@@ -5,9 +5,9 @@ public partial interface IDxcVersionInfo
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetVersion(out uint pMajor, out uint pMinor);
+    HRESULT GetVersion(out uint pMajor, out uint pMinor);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFlags(out uint pFlags);
+    HRESULT GetFlags(out uint pFlags);
 }

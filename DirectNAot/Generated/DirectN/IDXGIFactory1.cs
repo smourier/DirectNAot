@@ -8,10 +8,10 @@ public partial interface IDXGIFactory1 : IDXGIFactory
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory1-enumadapters1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnumAdapters1(uint Adapter, out IDXGIAdapter1 ppAdapter);
+    HRESULT EnumAdapters1(uint Adapter, out IDXGIAdapter1 ppAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory1-iscurrent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsCurrent();
+    bool IsCurrent();
 }

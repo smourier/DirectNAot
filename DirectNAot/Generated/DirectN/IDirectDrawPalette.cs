@@ -7,20 +7,20 @@ public partial interface IDirectDrawPalette
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-getcaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCaps(ref uint param0);
+    HRESULT GetCaps(ref uint param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-getentries
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetEntries(uint param0, uint param1, uint param2, ref PALETTEENTRY param3);
+    HRESULT GetEntries(uint param0, uint param1, uint param2, ref PALETTEENTRY param3);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Initialize(IDirectDraw param0, uint param1, ref PALETTEENTRY param2);
+    HRESULT Initialize(IDirectDraw param0, uint param1, ref PALETTEENTRY param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-setentries
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetEntries(uint param0, uint param1, uint param2, ref PALETTEENTRY param3);
+    HRESULT SetEntries(uint param0, uint param1, uint param2, ref PALETTEENTRY param3);
 }

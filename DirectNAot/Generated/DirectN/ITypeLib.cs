@@ -6,49 +6,49 @@ public partial interface ITypeLib
 {
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypeinfocount
     [PreserveSig]
-    public uint GetTypeInfoCount();
+    uint GetTypeInfoCount();
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeInfo(uint index, out ITypeInfo ppTInfo);
+    HRESULT GetTypeInfo(uint index, out ITypeInfo ppTInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypeinfotype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeInfoType(uint index, out TYPEKIND pTKind);
+    HRESULT GetTypeInfoType(uint index, out TYPEKIND pTKind);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypeinfoofguid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeInfoOfGuid(in Guid guid, out ITypeInfo ppTinfo);
+    HRESULT GetTypeInfoOfGuid(in Guid guid, out ITypeInfo ppTinfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-getlibattr
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLibAttr(out TLIBATTR ppTLibAttr);
+    HRESULT GetLibAttr(out TLIBATTR ppTLibAttr);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypecomp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTypeComp(out ITypeComp ppTComp);
+    HRESULT GetTypeComp(out ITypeComp ppTComp);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-getdocumentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDocumentation(int index, nint/* nint */ pBstrName, nint/* nint */ pBstrDocString, out uint pdwHelpContext, nint/* nint */ pBstrHelpFile);
+    HRESULT GetDocumentation(int index, nint/* nint */ pBstrName, nint/* nint */ pBstrDocString, out uint pdwHelpContext, nint/* nint */ pBstrHelpFile);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-isname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT IsName(ref PWSTR szNameBuf, uint lHashVal, [MarshalAs(UnmanagedType.U4)] out bool pfName);
+    HRESULT IsName(ref PWSTR szNameBuf, uint lHashVal, [MarshalAs(UnmanagedType.U4)] out bool pfName);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-findname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT FindName(ref PWSTR szNameBuf, uint lHashVal, out ITypeInfo ppTInfo, out int rgMemId, ref ushort pcFound);
+    HRESULT FindName(ref PWSTR szNameBuf, uint lHashVal, out ITypeInfo ppTInfo, out int rgMemId, ref ushort pcFound);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-releasetlibattr
     [PreserveSig]
-    public void ReleaseTLibAttr(in TLIBATTR pTLibAttr);
+    void ReleaseTLibAttr(in TLIBATTR pTLibAttr);
 }

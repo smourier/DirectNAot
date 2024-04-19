@@ -7,5 +7,5 @@ public partial interface IDCompositionBlendEffect : IDCompositionFilterEffect
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionblendeffect-setmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMode(D2D1_BLEND_MODE mode);
+    HRESULT SetMode(D2D1_BLEND_MODE mode);
 }

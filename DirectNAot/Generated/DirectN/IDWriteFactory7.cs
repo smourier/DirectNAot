@@ -7,10 +7,10 @@ public partial interface IDWriteFactory7 : IDWriteFactory6
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory7-getsystemfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSystemFontSet([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, out IDWriteFontSet2 fontSet);
+    HRESULT GetSystemFontSet([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, out IDWriteFontSet2 fontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory7-getsystemfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSystemFontCollection([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, out IDWriteFontCollection3 fontCollection);
+    HRESULT GetSystemFontCollection([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, out IDWriteFontCollection3 fontCollection);
 }

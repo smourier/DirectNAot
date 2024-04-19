@@ -7,5 +7,5 @@ public partial interface ID2D1StrokeStyle1 : ID2D1StrokeStyle
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1strokestyle1-getstroketransformtype
     [PreserveSig]
-    public D2D1_STROKE_TRANSFORM_TYPE GetStrokeTransformType();
+    D2D1_STROKE_TRANSFORM_TYPE GetStrokeTransformType();
 }

@@ -5,5 +5,5 @@ public partial interface ID3D12Device13 : ID3D12Device12
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OpenExistingHeapFromAddress1(nint pAddress, nuint size, in Guid riid, out nint ppvHeap);
+    HRESULT OpenExistingHeapFromAddress1(nint pAddress, nuint size, in Guid riid, out nint ppvHeap);
 }

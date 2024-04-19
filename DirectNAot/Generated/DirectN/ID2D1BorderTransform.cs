@@ -7,17 +7,17 @@ public partial interface ID2D1BorderTransform : ID2D1ConcreteTransform
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1bordertransform-setextendmodex
     [PreserveSig]
-    public void SetExtendModeX(D2D1_EXTEND_MODE extendMode);
+    void SetExtendModeX(D2D1_EXTEND_MODE extendMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1bordertransform-setextendmodey
     [PreserveSig]
-    public void SetExtendModeY(D2D1_EXTEND_MODE extendMode);
+    void SetExtendModeY(D2D1_EXTEND_MODE extendMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1bordertransform-getextendmodex
     [PreserveSig]
-    public D2D1_EXTEND_MODE GetExtendModeX();
+    D2D1_EXTEND_MODE GetExtendModeX();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1bordertransform-getextendmodey
     [PreserveSig]
-    public D2D1_EXTEND_MODE GetExtendModeY();
+    D2D1_EXTEND_MODE GetExtendModeY();
 }

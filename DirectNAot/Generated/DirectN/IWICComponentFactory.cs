@@ -8,35 +8,35 @@ public partial interface IWICComponentFactory : IWICImagingFactory
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createmetadatareader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateMetadataReader(in Guid guidMetadataFormat, in Guid pguidVendor, uint dwOptions, IStream pIStream, out IWICMetadataReader ppIReader);
+    HRESULT CreateMetadataReader(in Guid guidMetadataFormat, in Guid pguidVendor, uint dwOptions, IStream pIStream, out IWICMetadataReader ppIReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createmetadatareaderfromcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateMetadataReaderFromContainer(in Guid guidContainerFormat, in Guid pguidVendor, uint dwOptions, IStream pIStream, out IWICMetadataReader ppIReader);
+    HRESULT CreateMetadataReaderFromContainer(in Guid guidContainerFormat, in Guid pguidVendor, uint dwOptions, IStream pIStream, out IWICMetadataReader ppIReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createmetadatawriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateMetadataWriter(in Guid guidMetadataFormat, in Guid pguidVendor, uint dwMetadataOptions, out IWICMetadataWriter ppIWriter);
+    HRESULT CreateMetadataWriter(in Guid guidMetadataFormat, in Guid pguidVendor, uint dwMetadataOptions, out IWICMetadataWriter ppIWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createmetadatawriterfromreader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateMetadataWriterFromReader(IWICMetadataReader pIReader, in Guid pguidVendor, out IWICMetadataWriter ppIWriter);
+    HRESULT CreateMetadataWriterFromReader(IWICMetadataReader pIReader, in Guid pguidVendor, out IWICMetadataWriter ppIWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createqueryreaderfromblockreader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateQueryReaderFromBlockReader(IWICMetadataBlockReader pIBlockReader, out IWICMetadataQueryReader ppIQueryReader);
+    HRESULT CreateQueryReaderFromBlockReader(IWICMetadataBlockReader pIBlockReader, out IWICMetadataQueryReader ppIQueryReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createquerywriterfromblockwriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateQueryWriterFromBlockWriter(IWICMetadataBlockWriter pIBlockWriter, out IWICMetadataQueryWriter ppIQueryWriter);
+    HRESULT CreateQueryWriterFromBlockWriter(IWICMetadataBlockWriter pIBlockWriter, out IWICMetadataQueryWriter ppIQueryWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createencoderpropertybag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateEncoderPropertyBag(in PROPBAG2 ppropOptions, uint cCount, out IPropertyBag2 ppIPropertyBag);
+    HRESULT CreateEncoderPropertyBag(in PROPBAG2 ppropOptions, uint cCount, out IPropertyBag2 ppIPropertyBag);
 }

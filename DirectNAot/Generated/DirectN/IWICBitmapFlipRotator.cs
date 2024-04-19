@@ -8,5 +8,5 @@ public partial interface IWICBitmapFlipRotator : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapfliprotator-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Initialize(IWICBitmapSource pISource, WICBitmapTransformOptions options);
+    HRESULT Initialize(IWICBitmapSource pISource, WICBitmapTransformOptions options);
 }

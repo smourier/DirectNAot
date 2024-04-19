@@ -6,9 +6,9 @@ public partial interface IPresentStatistics
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentstatistics-getpresentid
     [PreserveSig]
-    public ulong GetPresentId();
+    ulong GetPresentId();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentstatistics-getkind
     [PreserveSig]
-    public PresentStatisticsKind GetKind();
+    PresentStatisticsKind GetKind();
 }

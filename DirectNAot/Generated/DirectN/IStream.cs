@@ -8,45 +8,45 @@ public partial interface IStream : ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-seek
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Seek(long dlibMove, STREAM_SEEK dwOrigin, nint/* nint */ plibNewPosition);
+    HRESULT Seek(long dlibMove, STREAM_SEEK dwOrigin, nint/* nint */ plibNewPosition);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-setsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSize(ulong libNewSize);
+    HRESULT SetSize(ulong libNewSize);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-copyto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyTo(IStream pstm, ulong cb, nint/* nint */ pcbRead, nint/* nint */ pcbWritten);
+    HRESULT CopyTo(IStream pstm, ulong cb, nint/* nint */ pcbRead, nint/* nint */ pcbWritten);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-commit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Commit(uint grfCommitFlags);
+    HRESULT Commit(uint grfCommitFlags);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-revert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Revert();
+    HRESULT Revert();
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-lockregion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LockRegion(ulong libOffset, ulong cb, uint dwLockType);
+    HRESULT LockRegion(ulong libOffset, ulong cb, uint dwLockType);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-unlockregion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnlockRegion(ulong libOffset, ulong cb, uint dwLockType);
+    HRESULT UnlockRegion(ulong libOffset, ulong cb, uint dwLockType);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-stat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Stat(out STATSTG pstatstg, uint grfStatFlag);
+    HRESULT Stat(out STATSTG pstatstg, uint grfStatFlag);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Clone(out IStream ppstm);
+    HRESULT Clone(out IStream ppstm);
 }

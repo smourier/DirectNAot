@@ -8,15 +8,15 @@ public partial interface IWICProgressiveLevelControl
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicprogressivelevelcontrol-getlevelcount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLevelCount(out uint pcLevels);
+    HRESULT GetLevelCount(out uint pcLevels);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicprogressivelevelcontrol-getcurrentlevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCurrentLevel(out uint pnLevel);
+    HRESULT GetCurrentLevel(out uint pnLevel);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicprogressivelevelcontrol-setcurrentlevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCurrentLevel(uint nLevel);
+    HRESULT SetCurrentLevel(uint nLevel);
 }

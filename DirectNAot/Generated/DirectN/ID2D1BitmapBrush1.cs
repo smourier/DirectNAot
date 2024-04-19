@@ -7,9 +7,9 @@ public partial interface ID2D1BitmapBrush1 : ID2D1BitmapBrush
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmapbrush1-setinterpolationmode1
     [PreserveSig]
-    public void SetInterpolationMode1(D2D1_INTERPOLATION_MODE interpolationMode);
+    void SetInterpolationMode1(D2D1_INTERPOLATION_MODE interpolationMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmapbrush1-getinterpolationmode1
     [PreserveSig]
-    public D2D1_INTERPOLATION_MODE GetInterpolationMode1();
+    D2D1_INTERPOLATION_MODE GetInterpolationMode1();
 }

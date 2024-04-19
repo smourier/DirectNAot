@@ -7,9 +7,9 @@ public partial interface ID2D1OffsetTransform : ID2D1TransformNode
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1offsettransform-setoffset
     [PreserveSig]
-    public void SetOffset(in FoundationPOINT offset);
+    void SetOffset(in FoundationPOINT offset);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1offsettransform-getoffset
     [PreserveSig]
-    public FoundationPOINT GetOffset();
+    FoundationPOINT GetOffset();
 }

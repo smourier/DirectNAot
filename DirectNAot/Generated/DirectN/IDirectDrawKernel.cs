@@ -7,15 +7,15 @@ public partial interface IDirectDrawKernel
     // https://learn.microsoft.com/windows/win32/api/ddkernel/nf-ddkernel-idirectdrawkernel-getcaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCaps(ref DDKERNELCAPS param0);
+    HRESULT GetCaps(ref DDKERNELCAPS param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddkernel/nf-ddkernel-idirectdrawkernel-getkernelhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetKernelHandle(ref nuint param0);
+    HRESULT GetKernelHandle(ref nuint param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddkernel/nf-ddkernel-idirectdrawkernel-releasekernelhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseKernelHandle();
+    HRESULT ReleaseKernelHandle();
 }

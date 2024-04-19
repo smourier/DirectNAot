@@ -4,8 +4,8 @@
 public partial interface IDXGraphicsAnalysis
 {
     [PreserveSig]
-    public void BeginCapture();
+    void BeginCapture();
     
     [PreserveSig]
-    public void EndCapture();
+    void EndCapture();
 }

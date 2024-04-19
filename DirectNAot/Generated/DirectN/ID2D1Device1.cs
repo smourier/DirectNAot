@@ -7,13 +7,13 @@ public partial interface ID2D1Device1 : ID2D1Device
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_2/nf-d2d1_2-id2d1device1-getrenderingpriority
     [PreserveSig]
-    public D2D1_RENDERING_PRIORITY GetRenderingPriority();
+    D2D1_RENDERING_PRIORITY GetRenderingPriority();
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_2/nf-d2d1_2-id2d1device1-setrenderingpriority
     [PreserveSig]
-    public void SetRenderingPriority(D2D1_RENDERING_PRIORITY renderingPriority);
+    void SetRenderingPriority(D2D1_RENDERING_PRIORITY renderingPriority);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, out ID2D1DeviceContext1 deviceContext1);
+    HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, out ID2D1DeviceContext1 deviceContext1);
 }

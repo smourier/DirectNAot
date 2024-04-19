@@ -6,10 +6,10 @@ public partial interface IDWriteAsyncResult
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteasyncresult-getwaithandle
     [PreserveSig]
-    public HANDLE GetWaitHandle();
+    HANDLE GetWaitHandle();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteasyncresult-getresult
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetResult();
+    HRESULT GetResult();
 }

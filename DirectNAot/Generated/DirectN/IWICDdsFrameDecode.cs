@@ -8,15 +8,15 @@ public partial interface IWICDdsFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsframedecode-getsizeinblocks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSizeInBlocks(out uint pWidthInBlocks, out uint pHeightInBlocks);
+    HRESULT GetSizeInBlocks(out uint pWidthInBlocks, out uint pHeightInBlocks);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsframedecode-getformatinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFormatInfo(out WICDdsFormatInfo pFormatInfo);
+    HRESULT GetFormatInfo(out WICDdsFormatInfo pFormatInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsframedecode-copyblocks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CopyBlocks(in WICRect prcBoundsInBlocks, uint cbStride, uint cbBufferSize, nint /* byte array */ pbBuffer);
+    HRESULT CopyBlocks(in WICRect prcBoundsInBlocks, uint cbStride, uint cbBufferSize, nint /* byte array */ pbBuffer);
 }

@@ -7,50 +7,50 @@ public partial interface IDCompositionArithmeticCompositeEffect : IDCompositionF
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficients
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficients(in D2D_VECTOR_4F coefficients);
+    HRESULT SetCoefficients(in D2D_VECTOR_4F coefficients);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setclampoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clampoutput);
+    HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clampoutput);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient1(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient1(IDCompositionAnimation animation);
+    HRESULT SetCoefficient1(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient1(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient1(float Coeffcient1);
+    HRESULT SetCoefficient1(float Coeffcient1);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient2(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient2(IDCompositionAnimation animation);
+    HRESULT SetCoefficient2(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient2(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient2(float Coefficient2);
+    HRESULT SetCoefficient2(float Coefficient2);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient3(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient3(IDCompositionAnimation animation);
+    HRESULT SetCoefficient3(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient3(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient3(float Coefficient3);
+    HRESULT SetCoefficient3(float Coefficient3);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient4(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient4(IDCompositionAnimation animation);
+    HRESULT SetCoefficient4(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient4(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetCoefficient4(float Coefficient4);
+    HRESULT SetCoefficient4(float Coefficient4);
 }

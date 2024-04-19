@@ -4,8 +4,8 @@
 public partial interface IDxcBlobUtf16 : IDxcBlobEncoding
 {
     [PreserveSig]
-    public PWSTR GetStringPointer();
+    PWSTR GetStringPointer();
     
     [PreserveSig]
-    public nuint GetStringLength();
+    nuint GetStringLength();
 }

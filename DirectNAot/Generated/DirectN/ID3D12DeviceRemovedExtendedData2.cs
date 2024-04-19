@@ -5,8 +5,8 @@ public partial interface ID3D12DeviceRemovedExtendedData2 : ID3D12DeviceRemovedE
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPageFaultAllocationOutput2(out D3D12_DRED_PAGE_FAULT_OUTPUT2 pOutput);
+    HRESULT GetPageFaultAllocationOutput2(out D3D12_DRED_PAGE_FAULT_OUTPUT2 pOutput);
     
     [PreserveSig]
-    public D3D12_DRED_DEVICE_STATE GetDeviceState();
+    D3D12_DRED_DEVICE_STATE GetDeviceState();
 }

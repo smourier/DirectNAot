@@ -6,15 +6,15 @@ public partial interface ID3D12Fence : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12fence-getcompletedvalue
     [PreserveSig]
-    public ulong GetCompletedValue();
+    ulong GetCompletedValue();
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12fence-seteventoncompletion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetEventOnCompletion(ulong Value, HANDLE hEvent);
+    HRESULT SetEventOnCompletion(ulong Value, HANDLE hEvent);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12fence-signal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Signal(ulong Value);
+    HRESULT Signal(ulong Value);
 }

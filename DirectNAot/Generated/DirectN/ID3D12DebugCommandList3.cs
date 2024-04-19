@@ -4,8 +4,8 @@
 public partial interface ID3D12DebugCommandList3 : ID3D12DebugCommandList2
 {
     [PreserveSig]
-    public void AssertResourceAccess(ID3D12Resource pResource, uint Subresource, D3D12_BARRIER_ACCESS Access);
+    void AssertResourceAccess(ID3D12Resource pResource, uint Subresource, D3D12_BARRIER_ACCESS Access);
     
     [PreserveSig]
-    public void AssertTextureLayout(ID3D12Resource pResource, uint Subresource, D3D12_BARRIER_LAYOUT Layout);
+    void AssertTextureLayout(ID3D12Resource pResource, uint Subresource, D3D12_BARRIER_LAYOUT Layout);
 }

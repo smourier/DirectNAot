@@ -8,10 +8,10 @@ public partial interface ID2D1CommandList : ID2D1Image
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandlist-stream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Stream(ID2D1CommandSink sink);
+    HRESULT Stream(ID2D1CommandSink sink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandlist-close
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Close();
+    HRESULT Close();
 }

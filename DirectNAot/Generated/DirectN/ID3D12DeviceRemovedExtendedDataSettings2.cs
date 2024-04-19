@@ -4,5 +4,5 @@
 public partial interface ID3D12DeviceRemovedExtendedDataSettings2 : ID3D12DeviceRemovedExtendedDataSettings1
 {
     [PreserveSig]
-    public void UseMarkersOnlyAutoBreadcrumbs([MarshalAs(UnmanagedType.U4)] bool MarkersOnly);
+    void UseMarkersOnlyAutoBreadcrumbs([MarshalAs(UnmanagedType.U4)] bool MarkersOnly);
 }

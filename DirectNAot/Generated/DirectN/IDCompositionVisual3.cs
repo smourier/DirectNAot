@@ -8,40 +8,40 @@ public partial interface IDCompositionVisual3 : IDCompositionVisualDebug
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setdepthmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetDepthMode(DCOMPOSITION_DEPTH_MODE mode);
+    HRESULT SetDepthMode(DCOMPOSITION_DEPTH_MODE mode);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setoffsetz(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOffsetZ(IDCompositionAnimation animation);
+    HRESULT SetOffsetZ(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setoffsetz(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOffsetZ(float offsetZ);
+    HRESULT SetOffsetZ(float offsetZ);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setopacity(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOpacity(IDCompositionAnimation animation);
+    HRESULT SetOpacity(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setopacity(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetOpacity(float opacity);
+    HRESULT SetOpacity(float opacity);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-settransform(constd2d_matrix_4x4_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransform(IDCompositionTransform3D transform);
+    HRESULT SetTransform(IDCompositionTransform3D transform);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-settransform(constd2d_matrix_4x4_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTransform(in D2D_MATRIX_4X4_F matrix);
+    HRESULT SetTransform(in D2D_MATRIX_4X4_F matrix);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setvisible
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetVisible([MarshalAs(UnmanagedType.U4)] bool visible);
+    HRESULT SetVisible([MarshalAs(UnmanagedType.U4)] bool visible);
 }

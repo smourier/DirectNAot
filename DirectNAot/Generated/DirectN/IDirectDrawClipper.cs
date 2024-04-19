@@ -7,30 +7,30 @@ public partial interface IDirectDrawClipper
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-getcliplist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetClipList(ref FoundationRECT param0, ref RGNDATA param1, ref uint param2);
+    HRESULT GetClipList(ref FoundationRECT param0, ref RGNDATA param1, ref uint param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-gethwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetHWnd(ref HWND param0);
+    HRESULT GetHWnd(ref HWND param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Initialize(IDirectDraw param0, uint param1);
+    HRESULT Initialize(IDirectDraw param0, uint param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-iscliplistchanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT IsClipListChanged([MarshalAs(UnmanagedType.U4)] ref bool param0);
+    HRESULT IsClipListChanged([MarshalAs(UnmanagedType.U4)] ref bool param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-setcliplist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetClipList(ref RGNDATA param0, uint param1);
+    HRESULT SetClipList(ref RGNDATA param0, uint param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-sethwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetHWnd(uint param0, HWND param1);
+    HRESULT SetHWnd(uint param0, HWND param1);
 }

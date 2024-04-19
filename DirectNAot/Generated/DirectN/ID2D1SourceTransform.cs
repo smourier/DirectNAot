@@ -8,10 +8,10 @@ public partial interface ID2D1SourceTransform : ID2D1Transform
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1sourcetransform-setrenderinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetRenderInfo(ID2D1RenderInfo renderInfo);
+    HRESULT SetRenderInfo(ID2D1RenderInfo renderInfo);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1sourcetransform-draw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Draw(ID2D1Bitmap1 target, FoundationRECT drawRect, D2D_POINT_2U targetOrigin);
+    HRESULT Draw(ID2D1Bitmap1 target, FoundationRECT drawRect, D2D_POINT_2U targetOrigin);
 }

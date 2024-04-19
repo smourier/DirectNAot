@@ -7,10 +7,10 @@ public partial interface ID2D1TessellationSink
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1tessellationsink-addtriangles
     [PreserveSig]
-    public void AddTriangles(in D2D1_TRIANGLE triangles, uint trianglesCount);
+    void AddTriangles(in D2D1_TRIANGLE triangles, uint trianglesCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1tessellationsink-close
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Close();
+    HRESULT Close();
 }

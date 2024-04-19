@@ -7,10 +7,10 @@ public partial interface IPresentationBuffer
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationbuffer-getavailableevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetAvailableEvent(out HANDLE availableEventHandle);
+    HRESULT GetAvailableEvent(out HANDLE availableEventHandle);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationbuffer-isavailable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT IsAvailable(nint /* byte array */ isAvailable);
+    HRESULT IsAvailable(nint /* byte array */ isAvailable);
 }

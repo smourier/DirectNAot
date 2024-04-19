@@ -7,20 +7,20 @@ public partial interface IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiobject-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPrivateData(in Guid Name, uint DataSize, nint pData);
+    HRESULT SetPrivateData(in Guid Name, uint DataSize, nint pData);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiobject-setprivatedatainterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPrivateDataInterface(in Guid Name, nint pUnknown);
+    HRESULT SetPrivateDataInterface(in Guid Name, nint pUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiobject-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPrivateData(in Guid Name, ref uint pDataSize, nint pData);
+    HRESULT GetPrivateData(in Guid Name, ref uint pDataSize, nint pData);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiobject-getparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetParent(in Guid riid, out nint ppParent);
+    HRESULT GetParent(in Guid riid, out nint ppParent);
 }

@@ -7,5 +7,5 @@ public partial interface ID3D11Query : ID3D11Asynchronous
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11query-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_QUERY_DESC pDesc);
+    void GetDesc(out D3D11_QUERY_DESC pDesc);
 }

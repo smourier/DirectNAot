@@ -8,20 +8,20 @@ public partial interface IDCompositionVisualDebug : IDCompositionVisual2
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-enableheatmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnableHeatMap(in D2D1_COLOR_F color);
+    HRESULT EnableHeatMap(in D2D1_COLOR_F color);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-disableheatmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DisableHeatMap();
+    HRESULT DisableHeatMap();
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-enableredrawregions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnableRedrawRegions();
+    HRESULT EnableRedrawRegions();
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-disableredrawregions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DisableRedrawRegions();
+    HRESULT DisableRedrawRegions();
 }

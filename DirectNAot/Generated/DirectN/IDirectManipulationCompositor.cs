@@ -8,20 +8,20 @@ public partial interface IDirectManipulationCompositor
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-addcontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddContent(IDirectManipulationContent content, nint device, nint parentVisual, nint childVisual);
+    HRESULT AddContent(IDirectManipulationContent content, nint device, nint parentVisual, nint childVisual);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-removecontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveContent(IDirectManipulationContent content);
+    HRESULT RemoveContent(IDirectManipulationContent content);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-setupdatemanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetUpdateManager(IDirectManipulationUpdateManager updateManager);
+    HRESULT SetUpdateManager(IDirectManipulationUpdateManager updateManager);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-flush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Flush();
+    HRESULT Flush();
 }

@@ -7,13 +7,13 @@ public partial interface ID3D10Buffer : ID3D10Resource
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10buffer-map
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Map(D3D10_MAP MapType, uint MapFlags, out nint ppData);
+    HRESULT Map(D3D10_MAP MapType, uint MapFlags, out nint ppData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10buffer-unmap
     [PreserveSig]
-    public void Unmap();
+    void Unmap();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10buffer-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_BUFFER_DESC pDesc);
+    void GetDesc(out D3D10_BUFFER_DESC pDesc);
 }

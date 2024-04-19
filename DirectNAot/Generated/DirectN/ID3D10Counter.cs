@@ -6,5 +6,5 @@ public partial interface ID3D10Counter : ID3D10Asynchronous
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10counter-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_COUNTER_DESC pDesc);
+    void GetDesc(out D3D10_COUNTER_DESC pDesc);
 }

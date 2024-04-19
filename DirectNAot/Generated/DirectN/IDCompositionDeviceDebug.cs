@@ -7,10 +7,10 @@ public partial interface IDCompositionDeviceDebug
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevicedebug-enabledebugcounters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnableDebugCounters();
+    HRESULT EnableDebugCounters();
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevicedebug-disabledebugcounters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DisableDebugCounters();
+    HRESULT DisableDebugCounters();
 }

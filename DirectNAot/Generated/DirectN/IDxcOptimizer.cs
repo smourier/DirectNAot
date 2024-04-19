@@ -5,13 +5,13 @@ public partial interface IDxcOptimizer
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetAvailablePassCount(out uint pCount);
+    HRESULT GetAvailablePassCount(out uint pCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetAvailablePass(uint index, out IDxcOptimizerPass ppResult);
+    HRESULT GetAvailablePass(uint index, out IDxcOptimizerPass ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RunOptimizer(IDxcBlob pBlob, in PWSTR ppOptions, uint optionCount, out IDxcBlob pOutputModule, nint/* nint */ ppOutputText);
+    HRESULT RunOptimizer(IDxcBlob pBlob, in PWSTR ppOptions, uint optionCount, out IDxcBlob pOutputModule, nint/* nint */ ppOutputText);
 }

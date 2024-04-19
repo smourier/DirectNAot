@@ -8,5 +8,5 @@ public partial interface ID2D1GdiMetafileSink
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gdimetafilesink-processrecord
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ProcessRecord(uint recordType, nint/* nint */ recordData, uint recordDataSize);
+    HRESULT ProcessRecord(uint recordType, nint/* nint */ recordData, uint recordDataSize);
 }

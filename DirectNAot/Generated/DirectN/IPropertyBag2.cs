@@ -5,21 +5,21 @@ public partial interface IPropertyBag2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Read(uint cProperties, in PROPBAG2 pPropBag, IErrorLog pErrLog, out VARIANT pvarValue, [MarshalAs(UnmanagedType.Error)] ref HRESULT phrError);
+    HRESULT Read(uint cProperties, in PROPBAG2 pPropBag, IErrorLog pErrLog, out VARIANT pvarValue, ref HRESULT phrError);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Write(uint cProperties, in PROPBAG2 pPropBag, in VARIANT pvarValue);
+    HRESULT Write(uint cProperties, in PROPBAG2 pPropBag, in VARIANT pvarValue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CountProperties(out uint pcProperties);
+    HRESULT CountProperties(out uint pcProperties);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPropertyInfo(uint iProperty, uint cProperties, out PROPBAG2 pPropBag, out uint pcProperties);
+    HRESULT GetPropertyInfo(uint iProperty, uint cProperties, out PROPBAG2 pPropBag, out uint pcProperties);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LoadObject(PWSTR pstrName, uint dwHint, nint pUnkObject, IErrorLog pErrLog);
+    HRESULT LoadObject(PWSTR pstrName, uint dwHint, nint pUnkObject, IErrorLog pErrLog);
 }

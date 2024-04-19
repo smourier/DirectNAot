@@ -8,10 +8,10 @@ public partial interface IWICDdsDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsdecoder-getparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetParameters(out WICDdsParameters pParameters);
+    HRESULT GetParameters(out WICDdsParameters pParameters);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsdecoder-getframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFrame(uint arrayIndex, uint mipLevel, uint sliceIndex, out IWICBitmapFrameDecode ppIBitmapFrame);
+    HRESULT GetFrame(uint arrayIndex, uint mipLevel, uint sliceIndex, out IWICBitmapFrameDecode ppIBitmapFrame);
 }

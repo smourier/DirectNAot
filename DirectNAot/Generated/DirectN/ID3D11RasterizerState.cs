@@ -7,5 +7,5 @@ public partial interface ID3D11RasterizerState : ID3D11DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11rasterizerstate-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_RASTERIZER_DESC pDesc);
+    void GetDesc(out D3D11_RASTERIZER_DESC pDesc);
 }

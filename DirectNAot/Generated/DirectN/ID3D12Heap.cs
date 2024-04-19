@@ -6,5 +6,5 @@ public partial interface ID3D12Heap : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/direct3d12/id3d12heap-getdesc
     [PreserveSig]
-    public D3D12_HEAP_DESC GetDesc();
+    D3D12_HEAP_DESC GetDesc();
 }

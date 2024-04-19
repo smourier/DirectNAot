@@ -8,52 +8,52 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createink(constd2d1_ink_point__id2d1ink)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInk(in D2D1_INK_POINT startPoint, out ID2D1Ink ink);
+    HRESULT CreateInk(in D2D1_INK_POINT startPoint, out ID2D1Ink ink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createinkstyle(constd2d1_ink_style_properties_id2d1inkstyle)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateInkStyle(nint/* nint */ inkStyleProperties, out ID2D1InkStyle inkStyle);
+    HRESULT CreateInkStyle(nint/* nint */ inkStyleProperties, out ID2D1InkStyle inkStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-creategradientmesh
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateGradientMesh(in D2D1_GRADIENT_MESH_PATCH patches, uint patchesCount, out ID2D1GradientMesh gradientMesh);
+    HRESULT CreateGradientMesh(in D2D1_GRADIENT_MESH_PATCH patches, uint patchesCount, out ID2D1GradientMesh gradientMesh);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createimagesourcefromwic(iwicbitmapsource_d2d1_image_source_loading_options_id2d1imagesourcefromwic)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateImageSourceFromWic(IWICBitmapSource wicBitmapSource, D2D1_IMAGE_SOURCE_LOADING_OPTIONS loadingOptions, D2D1_ALPHA_MODE alphaMode, out ID2D1ImageSourceFromWic imageSource);
+    HRESULT CreateImageSourceFromWic(IWICBitmapSource wicBitmapSource, D2D1_IMAGE_SOURCE_LOADING_OPTIONS loadingOptions, D2D1_ALPHA_MODE alphaMode, out ID2D1ImageSourceFromWic imageSource);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createlookuptable3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, in uint extents, nint /* byte array */ data, uint dataCount, in uint strides, out ID2D1LookupTable3D lookupTable);
+    HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, in uint extents, nint /* byte array */ data, uint dataCount, in uint strides, out ID2D1LookupTable3D lookupTable);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createimagesourcefromdxgi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateImageSourceFromDxgi(in IDXGISurface surfaces, uint surfaceCount, DXGI_COLOR_SPACE_TYPE colorSpace, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options, out ID2D1ImageSource imageSource);
+    HRESULT CreateImageSourceFromDxgi(in IDXGISurface surfaces, uint surfaceCount, DXGI_COLOR_SPACE_TYPE colorSpace, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options, out ID2D1ImageSource imageSource);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-getgradientmeshworldbounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGradientMeshWorldBounds(ID2D1GradientMesh gradientMesh, out D2D_RECT_F pBounds);
+    HRESULT GetGradientMeshWorldBounds(ID2D1GradientMesh gradientMesh, out D2D_RECT_F pBounds);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawink
     [PreserveSig]
-    public void DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle inkStyle);
+    void DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle inkStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawgradientmesh
     [PreserveSig]
-    public void DrawGradientMesh(ID2D1GradientMesh gradientMesh);
+    void DrawGradientMesh(ID2D1GradientMesh gradientMesh);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawgdimetafile(id2d1gdimetafile_constd2d1_rect_f__constd2d1_rect_f_)
     [PreserveSig]
-    public void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
+    void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createtransformedimagesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateTransformedImageSource(ID2D1ImageSource imageSource, in D2D1_TRANSFORMED_IMAGE_SOURCE_PROPERTIES properties, out ID2D1TransformedImageSource transformedImageSource);
+    HRESULT CreateTransformedImageSource(ID2D1ImageSource imageSource, in D2D1_TRANSFORMED_IMAGE_SOURCE_PROPERTIES properties, out ID2D1TransformedImageSource transformedImageSource);
 }

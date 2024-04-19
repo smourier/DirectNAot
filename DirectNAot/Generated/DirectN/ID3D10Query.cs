@@ -6,5 +6,5 @@ public partial interface ID3D10Query : ID3D10Asynchronous
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10query-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_QUERY_DESC pDesc);
+    void GetDesc(out D3D10_QUERY_DESC pDesc);
 }

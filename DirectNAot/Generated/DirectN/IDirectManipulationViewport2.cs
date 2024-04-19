@@ -8,15 +8,15 @@ public partial interface IDirectManipulationViewport2 : IDirectManipulationViewp
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport2-addbehavior
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddBehavior(nint behavior, out uint cookie);
+    HRESULT AddBehavior(nint behavior, out uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport2-removebehavior
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveBehavior(uint cookie);
+    HRESULT RemoveBehavior(uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport2-removeallbehaviors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveAllBehaviors();
+    HRESULT RemoveAllBehaviors();
 }

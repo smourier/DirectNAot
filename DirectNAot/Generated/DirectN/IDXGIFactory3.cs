@@ -7,5 +7,5 @@ public partial interface IDXGIFactory3 : IDXGIFactory2
 {
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgifactory3-getcreationflags
     [PreserveSig]
-    public uint GetCreationFlags();
+    uint GetCreationFlags();
 }

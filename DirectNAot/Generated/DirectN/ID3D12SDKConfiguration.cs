@@ -7,5 +7,5 @@ public partial interface ID3D12SDKConfiguration
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12sdkconfiguration-setsdkversion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSDKVersion(uint SDKVersion, PSTR SDKPath);
+    HRESULT SetSDKVersion(uint SDKVersion, PSTR SDKPath);
 }

@@ -8,29 +8,29 @@ public partial interface IDWriteFontDownloadQueue
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-addlistener
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddListener(IDWriteFontDownloadListener listener, out uint token);
+    HRESULT AddListener(IDWriteFontDownloadListener listener, out uint token);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-removelistener
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveListener(uint token);
+    HRESULT RemoveListener(uint token);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-isempty
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsEmpty();
+    bool IsEmpty();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-begindownload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT BeginDownload(nint context);
+    HRESULT BeginDownload(nint context);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-canceldownload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CancelDownload();
+    HRESULT CancelDownload();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-getgenerationcount
     [PreserveSig]
-    public ulong GetGenerationCount();
+    ulong GetGenerationCount();
 }

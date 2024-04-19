@@ -7,5 +7,5 @@ public partial interface ID3D11FunctionParameterReflection
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionparameterreflection-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(out D3D11_PARAMETER_DESC pDesc);
+    HRESULT GetDesc(out D3D11_PARAMETER_DESC pDesc);
 }

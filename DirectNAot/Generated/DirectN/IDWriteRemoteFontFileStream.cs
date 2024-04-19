@@ -7,19 +7,19 @@ public partial interface IDWriteRemoteFontFileStream : IDWriteFontFileStream
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-getlocalfilesize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLocalFileSize(out ulong localFileSize);
+    HRESULT GetLocalFileSize(out ulong localFileSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-getfilefragmentlocality
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFileFragmentLocality(ulong fileOffset, ulong fragmentSize, [MarshalAs(UnmanagedType.U4)] out bool isLocal, ref ulong partialSize);
+    HRESULT GetFileFragmentLocality(ulong fileOffset, ulong fragmentSize, [MarshalAs(UnmanagedType.U4)] out bool isLocal, ref ulong partialSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-getlocality
     [PreserveSig]
-    public DWRITE_LOCALITY GetLocality();
+    DWRITE_LOCALITY GetLocality();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-begindownload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT BeginDownload(in Guid downloadOperationID, in DWRITE_FILE_FRAGMENT fileFragments, uint fragmentCount, out IDWriteAsyncResult asyncResult);
+    HRESULT BeginDownload(in Guid downloadOperationID, in DWRITE_FILE_FRAGMENT fileFragments, uint fragmentCount, out IDWriteAsyncResult asyncResult);
 }

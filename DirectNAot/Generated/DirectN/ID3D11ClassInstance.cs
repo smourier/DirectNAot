@@ -7,17 +7,17 @@ public partial interface ID3D11ClassInstance : ID3D11DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-getclasslinkage
     [PreserveSig]
-    public void GetClassLinkage(out ID3D11ClassLinkage ppLinkage);
+    void GetClassLinkage(out ID3D11ClassLinkage ppLinkage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_CLASS_INSTANCE_DESC pDesc);
+    void GetDesc(out D3D11_CLASS_INSTANCE_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-getinstancename
     [PreserveSig]
-    public void GetInstanceName(out PSTR pInstanceName, ref nuint pBufferLength);
+    void GetInstanceName(out PSTR pInstanceName, ref nuint pBufferLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-gettypename
     [PreserveSig]
-    public void GetTypeName(out PSTR pTypeName, ref nuint pBufferLength);
+    void GetTypeName(out PSTR pTypeName, ref nuint pBufferLength);
 }

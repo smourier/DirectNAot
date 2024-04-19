@@ -6,13 +6,13 @@ public partial interface ID3D12DescriptorHeap : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12descriptorheap-getdesc
     [PreserveSig]
-    public D3D12_DESCRIPTOR_HEAP_DESC GetDesc();
+    D3D12_DESCRIPTOR_HEAP_DESC GetDesc();
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12descriptorheap-getcpudescriptorhandleforheapstart
     [PreserveSig]
-    public D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandleForHeapStart();
+    D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandleForHeapStart();
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12descriptorheap-getgpudescriptorhandleforheapstart
     [PreserveSig]
-    public D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandleForHeapStart();
+    D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandleForHeapStart();
 }

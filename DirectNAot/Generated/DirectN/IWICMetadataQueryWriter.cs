@@ -8,10 +8,10 @@ public partial interface IWICMetadataQueryWriter : IWICMetadataQueryReader
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicmetadataquerywriter-setmetadatabyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMetadataByName(PWSTR wzName, in PROPVARIANT pvarValue);
+    HRESULT SetMetadataByName(PWSTR wzName, in PROPVARIANT pvarValue);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicmetadataquerywriter-removemetadatabyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RemoveMetadataByName(PWSTR wzName);
+    HRESULT RemoveMetadataByName(PWSTR wzName);
 }

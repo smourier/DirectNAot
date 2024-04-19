@@ -8,10 +8,10 @@ public partial interface ID2D1VertexBuffer
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1vertexbuffer-map
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Map(out nint /* byte array */ data, uint bufferSize);
+    HRESULT Map(out nint /* byte array */ data, uint bufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1vertexbuffer-unmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Unmap();
+    HRESULT Unmap();
 }

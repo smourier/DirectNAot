@@ -7,5 +7,5 @@ public partial interface ID2D1RectangleGeometry : ID2D1Geometry
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rectanglegeometry-getrect
     [PreserveSig]
-    public void GetRect(out D2D_RECT_F rect);
+    void GetRect(out D2D_RECT_F rect);
 }

@@ -6,5 +6,5 @@ public partial interface IDWriteFontSet2 : IDWriteFontSet1
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset2-getexpirationevent
     [PreserveSig]
-    public HANDLE GetExpirationEvent();
+    HANDLE GetExpirationEvent();
 }

@@ -7,15 +7,15 @@ public partial interface IDWritePixelSnapping
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT IsPixelSnappingDisabled(nint/* nint */ clientDrawingContext, [MarshalAs(UnmanagedType.U4)] out bool isDisabled);
+    HRESULT IsPixelSnappingDisabled(nint/* nint */ clientDrawingContext, [MarshalAs(UnmanagedType.U4)] out bool isDisabled);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritepixelsnapping-getcurrenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCurrentTransform(nint/* nint */ clientDrawingContext, out DWRITE_MATRIX transform);
+    HRESULT GetCurrentTransform(nint/* nint */ clientDrawingContext, out DWRITE_MATRIX transform);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritepixelsnapping-getpixelsperdip
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPixelsPerDip(nint/* nint */ clientDrawingContext, out float pixelsPerDip);
+    HRESULT GetPixelsPerDip(nint/* nint */ clientDrawingContext, out float pixelsPerDip);
 }

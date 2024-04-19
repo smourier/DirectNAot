@@ -7,15 +7,15 @@ public partial interface IDWriteRemoteFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-createremotestreamfromkey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateRemoteStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out IDWriteRemoteFontFileStream fontFileStream);
+    HRESULT CreateRemoteStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out IDWriteRemoteFontFileStream fontFileStream);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-getlocalityfromkey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLocalityFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out DWRITE_LOCALITY locality);
+    HRESULT GetLocalityFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out DWRITE_LOCALITY locality);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-createfontfilereferencefromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateFontFileReferenceFromUrl(IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, out IDWriteFontFile fontFile);
+    HRESULT CreateFontFileReferenceFromUrl(IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, out IDWriteFontFile fontFile);
 }

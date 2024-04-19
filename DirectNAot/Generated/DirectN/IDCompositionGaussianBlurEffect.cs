@@ -7,15 +7,15 @@ public partial interface IDCompositionGaussianBlurEffect : IDCompositionFilterEf
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiongaussianblureffect-setstandarddeviation(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetStandardDeviation(IDCompositionAnimation animation);
+    HRESULT SetStandardDeviation(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiongaussianblureffect-setstandarddeviation(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetStandardDeviation(float amount);
+    HRESULT SetStandardDeviation(float amount);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiongaussianblureffect-setbordermode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetBorderMode(D2D1_BORDER_MODE mode);
+    HRESULT SetBorderMode(D2D1_BORDER_MODE mode);
 }

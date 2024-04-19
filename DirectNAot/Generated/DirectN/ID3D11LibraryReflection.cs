@@ -7,9 +7,9 @@ public partial interface ID3D11LibraryReflection
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11libraryreflection-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(out D3D11_LIBRARY_DESC pDesc);
+    HRESULT GetDesc(out D3D11_LIBRARY_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11libraryreflection-getfunctionbyindex
     [PreserveSig]
-    public ID3D11FunctionReflection GetFunctionByIndex(int FunctionIndex);
+    ID3D11FunctionReflection GetFunctionByIndex(int FunctionIndex);
 }

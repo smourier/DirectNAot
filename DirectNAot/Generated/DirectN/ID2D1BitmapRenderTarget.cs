@@ -8,5 +8,5 @@ public partial interface ID2D1BitmapRenderTarget : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmaprendertarget-getbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBitmap(out ID2D1Bitmap bitmap);
+    HRESULT GetBitmap(out ID2D1Bitmap bitmap);
 }

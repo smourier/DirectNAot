@@ -8,10 +8,10 @@ public partial interface IDWriteFontFileEnumerator
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfileenumerator-movenext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT MoveNext([MarshalAs(UnmanagedType.U4)] out bool hasCurrentFile);
+    HRESULT MoveNext([MarshalAs(UnmanagedType.U4)] out bool hasCurrentFile);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfileenumerator-getcurrentfontfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCurrentFontFile(out IDWriteFontFile fontFile);
+    HRESULT GetCurrentFontFile(out IDWriteFontFile fontFile);
 }

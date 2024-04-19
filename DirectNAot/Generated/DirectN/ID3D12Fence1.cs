@@ -6,5 +6,5 @@ public partial interface ID3D12Fence1 : ID3D12Fence
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12fence1-getcreationflags
     [PreserveSig]
-    public D3D12_FENCE_FLAGS GetCreationFlags();
+    D3D12_FENCE_FLAGS GetCreationFlags();
 }

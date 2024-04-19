@@ -5,13 +5,13 @@ public partial interface IImageBytes
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CountBytes(ref uint pcb);
+    HRESULT CountBytes(ref uint pcb);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT LockBytes(uint cb, uint ulOffset, out nint ppvBytes);
+    HRESULT LockBytes(uint cb, uint ulOffset, out nint ppvBytes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnlockBytes(nint pvBytes, uint cb, uint ulOffset);
+    HRESULT UnlockBytes(nint pvBytes, uint cb, uint ulOffset);
 }

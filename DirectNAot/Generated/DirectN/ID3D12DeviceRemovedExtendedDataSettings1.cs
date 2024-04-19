@@ -4,5 +4,5 @@
 public partial interface ID3D12DeviceRemovedExtendedDataSettings1 : ID3D12DeviceRemovedExtendedDataSettings
 {
     [PreserveSig]
-    public void SetBreadcrumbContextEnablement(D3D12_DRED_ENABLEMENT Enablement);
+    void SetBreadcrumbContextEnablement(D3D12_DRED_ENABLEMENT Enablement);
 }

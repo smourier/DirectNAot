@@ -8,10 +8,10 @@ public partial interface IDXGIResource1 : IDXGIResource
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiresource1-createsubresourcesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSubresourceSurface(uint index, out IDXGISurface2 ppSurface);
+    HRESULT CreateSubresourceSurface(uint index, out IDXGISurface2 ppSurface);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiresource1-createsharedhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateSharedHandle(nint/* nint */ pAttributes, uint dwAccess, PWSTR lpName, out HANDLE pHandle);
+    HRESULT CreateSharedHandle(nint/* nint */ pAttributes, uint dwAccess, PWSTR lpName, out HANDLE pHandle);
 }

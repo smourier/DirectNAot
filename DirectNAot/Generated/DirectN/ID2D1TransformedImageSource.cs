@@ -6,9 +6,9 @@ public partial interface ID2D1TransformedImageSource : ID2D1Image
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1transformedimagesource-getsource
     [PreserveSig]
-    public void GetSource(out ID2D1ImageSource imageSource);
+    void GetSource(out ID2D1ImageSource imageSource);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1transformedimagesource-getproperties
     [PreserveSig]
-    public void GetProperties(out D2D1_TRANSFORMED_IMAGE_SOURCE_PROPERTIES properties);
+    void GetProperties(out D2D1_TRANSFORMED_IMAGE_SOURCE_PROPERTIES properties);
 }

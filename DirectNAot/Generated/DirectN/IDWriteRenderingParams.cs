@@ -7,21 +7,21 @@ public partial interface IDWriteRenderingParams
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriterenderingparams-getgamma
     [PreserveSig]
-    public float GetGamma();
+    float GetGamma();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriterenderingparams-getenhancedcontrast
     [PreserveSig]
-    public float GetEnhancedContrast();
+    float GetEnhancedContrast();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriterenderingparams-getcleartypelevel
     [PreserveSig]
-    public float GetClearTypeLevel();
+    float GetClearTypeLevel();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriterenderingparams-getpixelgeometry
     [PreserveSig]
-    public DWRITE_PIXEL_GEOMETRY GetPixelGeometry();
+    DWRITE_PIXEL_GEOMETRY GetPixelGeometry();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriterenderingparams-getrenderingmode
     [PreserveSig]
-    public DWRITE_RENDERING_MODE GetRenderingMode();
+    DWRITE_RENDERING_MODE GetRenderingMode();
 }

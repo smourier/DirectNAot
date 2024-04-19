@@ -7,10 +7,10 @@ public partial interface IDCompositionHueRotationEffect : IDCompositionFilterEff
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionhuerotationeffect-setangle(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngle(IDCompositionAnimation animation);
+    HRESULT SetAngle(IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionhuerotationeffect-setangle(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetAngle(float amountDegrees);
+    HRESULT SetAngle(float amountDegrees);
 }

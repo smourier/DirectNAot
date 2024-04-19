@@ -6,9 +6,9 @@ public partial interface ID2D1BoundsAdjustmentTransform : ID2D1TransformNode
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1boundsadjustmenttransform-setoutputbounds
     [PreserveSig]
-    public void SetOutputBounds(FoundationRECT outputBounds);
+    void SetOutputBounds(FoundationRECT outputBounds);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1boundsadjustmenttransform-getoutputbounds
     [PreserveSig]
-    public void GetOutputBounds(out FoundationRECT outputBounds);
+    void GetOutputBounds(out FoundationRECT outputBounds);
 }

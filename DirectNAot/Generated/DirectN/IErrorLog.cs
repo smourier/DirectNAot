@@ -7,5 +7,5 @@ public partial interface IErrorLog
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ierrorlog-adderror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AddError(PWSTR pszPropName, in EXCEPINFO pExcepInfo);
+    HRESULT AddError(PWSTR pszPropName, in EXCEPINFO pExcepInfo);
 }

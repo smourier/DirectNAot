@@ -7,5 +7,5 @@ public partial interface IDWriteRenderingParams1 : IDWriteRenderingParams
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwriterenderingparams1-getgrayscaleenhancedcontrast
     [PreserveSig]
-    public float GetGrayscaleEnhancedContrast();
+    float GetGrayscaleEnhancedContrast();
 }

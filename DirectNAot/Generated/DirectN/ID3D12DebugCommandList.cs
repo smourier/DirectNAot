@@ -7,14 +7,14 @@ public partial interface ID3D12DebugCommandList
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debugcommandlist-assertresourcestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool AssertResourceState(ID3D12Resource pResource, uint Subresource, uint State);
+    bool AssertResourceState(ID3D12Resource pResource, uint Subresource, uint State);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debugcommandlist-setfeaturemask
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetFeatureMask(D3D12_DEBUG_FEATURE Mask);
+    HRESULT SetFeatureMask(D3D12_DEBUG_FEATURE Mask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debugcommandlist-getfeaturemask
     [PreserveSig]
-    public D3D12_DEBUG_FEATURE GetFeatureMask();
+    D3D12_DEBUG_FEATURE GetFeatureMask();
 }

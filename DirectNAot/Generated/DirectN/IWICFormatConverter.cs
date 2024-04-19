@@ -8,10 +8,10 @@ public partial interface IWICFormatConverter : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverter-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Initialize(IWICBitmapSource pISource, in Guid dstFormat, WICBitmapDitherType dither, IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
+    HRESULT Initialize(IWICBitmapSource pISource, in Guid dstFormat, WICBitmapDitherType dither, IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverter-canconvert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CanConvert(in Guid srcPixelFormat, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
+    HRESULT CanConvert(in Guid srcPixelFormat, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
 }

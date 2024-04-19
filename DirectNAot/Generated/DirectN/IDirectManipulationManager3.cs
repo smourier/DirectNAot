@@ -8,5 +8,5 @@ public partial interface IDirectManipulationManager3 : IDirectManipulationManage
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager3-getservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetService(in Guid clsid, in Guid riid, out nint @object);
+    HRESULT GetService(in Guid clsid, in Guid riid, out nint @object);
 }

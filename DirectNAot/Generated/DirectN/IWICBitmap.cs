@@ -8,15 +8,15 @@ public partial interface IWICBitmap : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmap-lock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Lock(in WICRect prcLock, uint flags, out IWICBitmapLock ppILock);
+    HRESULT Lock(in WICRect prcLock, uint flags, out IWICBitmapLock ppILock);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmap-setpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetPalette(IWICPalette pIPalette);
+    HRESULT SetPalette(IWICPalette pIPalette);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmap-setresolution
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetResolution(double dpiX, double dpiY);
+    HRESULT SetResolution(double dpiX, double dpiY);
 }

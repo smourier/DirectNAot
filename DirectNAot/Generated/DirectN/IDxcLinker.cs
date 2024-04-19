@@ -5,9 +5,9 @@ public partial interface IDxcLinker
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RegisterLibrary(PWSTR pLibName, IDxcBlob pLib);
+    HRESULT RegisterLibrary(PWSTR pLibName, IDxcBlob pLib);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Link(PWSTR pEntryName, PWSTR pTargetProfile, in PWSTR pLibNames, uint libCount, nint/* nint */ pArguments, uint argCount, out IDxcOperationResult ppResult);
+    HRESULT Link(PWSTR pEntryName, PWSTR pTargetProfile, in PWSTR pLibNames, uint libCount, nint/* nint */ pArguments, uint argCount, out IDxcOperationResult ppResult);
 }

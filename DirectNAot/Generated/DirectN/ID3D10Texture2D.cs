@@ -7,13 +7,13 @@ public partial interface ID3D10Texture2D : ID3D10Resource
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10texture2d-map
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Map(uint Subresource, D3D10_MAP MapType, uint MapFlags, out D3D10_MAPPED_TEXTURE2D pMappedTex2D);
+    HRESULT Map(uint Subresource, D3D10_MAP MapType, uint MapFlags, out D3D10_MAPPED_TEXTURE2D pMappedTex2D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10texture2d-unmap
     [PreserveSig]
-    public void Unmap(uint Subresource);
+    void Unmap(uint Subresource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10texture2d-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D10_TEXTURE2D_DESC pDesc);
+    void GetDesc(out D3D10_TEXTURE2D_DESC pDesc);
 }

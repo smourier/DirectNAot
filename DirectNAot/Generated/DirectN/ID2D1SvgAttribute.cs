@@ -6,10 +6,10 @@ public partial interface ID2D1SvgAttribute : ID2D1Resource
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgattribute-getelement
     [PreserveSig]
-    public void GetElement(out ID2D1SvgElement element);
+    void GetElement(out ID2D1SvgElement element);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgattribute-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Clone(out ID2D1SvgAttribute attribute);
+    HRESULT Clone(out ID2D1SvgAttribute attribute);
 }

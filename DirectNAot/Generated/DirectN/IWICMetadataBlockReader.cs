@@ -8,20 +8,20 @@ public partial interface IWICMetadataBlockReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getcontainerformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetContainerFormat(out Guid pguidContainerFormat);
+    HRESULT GetContainerFormat(out Guid pguidContainerFormat);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getcount
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCount(out uint pcCount);
+    HRESULT GetCount(out uint pcCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getreaderbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetReaderByIndex(uint nIndex, out IWICMetadataReader ppIMetadataReader);
+    HRESULT GetReaderByIndex(uint nIndex, out IWICMetadataReader ppIMetadataReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetEnumerator(out IEnumUnknown ppIEnumMetadata);
+    HRESULT GetEnumerator(out IEnumUnknown ppIEnumMetadata);
 }

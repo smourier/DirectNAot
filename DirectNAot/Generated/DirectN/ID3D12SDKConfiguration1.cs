@@ -5,8 +5,8 @@ public partial interface ID3D12SDKConfiguration1 : ID3D12SDKConfiguration
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDeviceFactory(uint SDKVersion, PSTR SDKPath, in Guid riid, out nint ppvFactory);
+    HRESULT CreateDeviceFactory(uint SDKVersion, PSTR SDKPath, in Guid riid, out nint ppvFactory);
     
     [PreserveSig]
-    public void FreeUnusedSDKs();
+    void FreeUnusedSDKs();
 }

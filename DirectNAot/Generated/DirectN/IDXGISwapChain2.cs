@@ -8,34 +8,34 @@ public partial interface IDXGISwapChain2 : IDXGISwapChain1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-setsourcesize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetSourceSize(uint Width, uint Height);
+    HRESULT SetSourceSize(uint Width, uint Height);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-getsourcesize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSourceSize(out uint pWidth, out uint pHeight);
+    HRESULT GetSourceSize(out uint pWidth, out uint pHeight);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-setmaximumframelatency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMaximumFrameLatency(uint MaxLatency);
+    HRESULT SetMaximumFrameLatency(uint MaxLatency);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-getmaximumframelatency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMaximumFrameLatency(out uint pMaxLatency);
+    HRESULT GetMaximumFrameLatency(out uint pMaxLatency);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-getframelatencywaitableobject
     [PreserveSig]
-    public HANDLE GetFrameLatencyWaitableObject();
+    HANDLE GetFrameLatencyWaitableObject();
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-setmatrixtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetMatrixTransform(in DXGI_MATRIX_3X2_F pMatrix);
+    HRESULT SetMatrixTransform(in DXGI_MATRIX_3X2_F pMatrix);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgiswapchain2-getmatrixtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMatrixTransform(out DXGI_MATRIX_3X2_F pMatrix);
+    HRESULT GetMatrixTransform(out DXGI_MATRIX_3X2_F pMatrix);
 }

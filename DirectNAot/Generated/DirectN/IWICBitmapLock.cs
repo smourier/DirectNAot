@@ -8,20 +8,20 @@ public partial interface IWICBitmapLock
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmaplock-getsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetSize(out uint puiWidth, out uint puiHeight);
+    HRESULT GetSize(out uint puiWidth, out uint puiHeight);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmaplock-getstride
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetStride(out uint pcbStride);
+    HRESULT GetStride(out uint pcbStride);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmaplock-getdatapointer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDataPointer(out uint pcbBufferSize, out nint /* byte array */ ppbData);
+    HRESULT GetDataPointer(out uint pcbBufferSize, out nint /* byte array */ ppbData);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmaplock-getpixelformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPixelFormat(out Guid pPixelFormat);
+    HRESULT GetPixelFormat(out Guid pPixelFormat);
 }

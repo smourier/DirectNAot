@@ -6,5 +6,5 @@ public partial interface ID3D10View : ID3D10DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10view-getresource
     [PreserveSig]
-    public void GetResource(out ID3D10Resource ppResource);
+    void GetResource(out ID3D10Resource ppResource);
 }

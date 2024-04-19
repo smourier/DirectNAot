@@ -8,5 +8,5 @@ public partial interface IDXGIAdapter2 : IDXGIAdapter1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiadapter2-getdesc2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc2(out DXGI_ADAPTER_DESC2 pDesc);
+    HRESULT GetDesc2(out DXGI_ADAPTER_DESC2 pDesc);
 }

@@ -6,14 +6,14 @@ public partial interface IPresentationFactory
 {
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationfactory-ispresentationsupported
     [PreserveSig]
-    public byte IsPresentationSupported();
+    byte IsPresentationSupported();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationfactory-ispresentationsupportedwithindependentflip
     [PreserveSig]
-    public byte IsPresentationSupportedWithIndependentFlip();
+    byte IsPresentationSupportedWithIndependentFlip();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationfactory-createpresentationmanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreatePresentationManager(out IPresentationManager ppPresentationManager);
+    HRESULT CreatePresentationManager(out IPresentationManager ppPresentationManager);
 }

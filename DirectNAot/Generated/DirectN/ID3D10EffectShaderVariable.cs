@@ -7,30 +7,30 @@ public partial interface ID3D10EffectShaderVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getshaderdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetShaderDesc(uint ShaderIndex, out D3D10_EFFECT_SHADER_DESC pDesc);
+    HRESULT GetShaderDesc(uint ShaderIndex, out D3D10_EFFECT_SHADER_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetVertexShader(uint ShaderIndex, out ID3D10VertexShader ppVS);
+    HRESULT GetVertexShader(uint ShaderIndex, out ID3D10VertexShader ppVS);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getgeometryshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetGeometryShader(uint ShaderIndex, out ID3D10GeometryShader ppGS);
+    HRESULT GetGeometryShader(uint ShaderIndex, out ID3D10GeometryShader ppGS);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPixelShader(uint ShaderIndex, out ID3D10PixelShader ppPS);
+    HRESULT GetPixelShader(uint ShaderIndex, out ID3D10PixelShader ppPS);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getinputsignatureelementdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetInputSignatureElementDesc(uint ShaderIndex, uint Element, out D3D10_SIGNATURE_PARAMETER_DESC pDesc);
+    HRESULT GetInputSignatureElementDesc(uint ShaderIndex, uint Element, out D3D10_SIGNATURE_PARAMETER_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshadervariable-getoutputsignatureelementdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOutputSignatureElementDesc(uint ShaderIndex, uint Element, out D3D10_SIGNATURE_PARAMETER_DESC pDesc);
+    HRESULT GetOutputSignatureElementDesc(uint ShaderIndex, uint Element, out D3D10_SIGNATURE_PARAMETER_DESC pDesc);
 }

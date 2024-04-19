@@ -8,23 +8,23 @@ public partial interface IDWriteFont3 : IDWriteFont2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-createfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateFontFace(out IDWriteFontFace3 fontFace);
+    HRESULT CreateFontFace(out IDWriteFontFace3 fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-equals
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool Equals(IDWriteFont font);
+    bool Equals(IDWriteFont font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-getfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFaceReference(out IDWriteFontFaceReference fontFaceReference);
+    HRESULT GetFontFaceReference(out IDWriteFontFaceReference fontFaceReference);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool HasCharacter(uint unicodeValue);
+    bool HasCharacter(uint unicodeValue);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-getlocality
     [PreserveSig]
-    public DWRITE_LOCALITY GetLocality();
+    DWRITE_LOCALITY GetLocality();
 }

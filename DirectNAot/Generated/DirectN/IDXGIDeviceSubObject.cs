@@ -7,5 +7,5 @@ public partial interface IDXGIDeviceSubObject : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevicesubobject-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDevice(in Guid riid, out nint ppDevice);
+    HRESULT GetDevice(in Guid riid, out nint ppDevice);
 }

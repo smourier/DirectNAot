@@ -8,5 +8,5 @@ public partial interface IDCompositionFilterEffect : IDCompositionEffect
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionfiltereffect-setinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetInput(uint index, nint input, uint flags);
+    HRESULT SetInput(uint index, nint input, uint flags);
 }

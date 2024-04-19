@@ -4,5 +4,5 @@
 public partial interface ID3D12Resource2 : ID3D12Resource1
 {
     [PreserveSig]
-    public D3D12_RESOURCE_DESC1 GetDesc1();
+    D3D12_RESOURCE_DESC1 GetDesc1();
 }

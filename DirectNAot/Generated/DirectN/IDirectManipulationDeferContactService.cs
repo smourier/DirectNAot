@@ -8,15 +8,15 @@ public partial interface IDirectManipulationDeferContactService
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationdefercontactservice-defercontact
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT DeferContact(uint pointerId, uint timeout);
+    HRESULT DeferContact(uint pointerId, uint timeout);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationdefercontactservice-cancelcontact
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CancelContact(uint pointerId);
+    HRESULT CancelContact(uint pointerId);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationdefercontactservice-canceldeferral
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CancelDeferral(uint pointerId);
+    HRESULT CancelDeferral(uint pointerId);
 }

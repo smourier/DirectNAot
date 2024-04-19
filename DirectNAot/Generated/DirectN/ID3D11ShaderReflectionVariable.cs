@@ -7,17 +7,17 @@ public partial interface ID3D11ShaderReflectionVariable
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionvariable-getdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc(out D3D11_SHADER_VARIABLE_DESC pDesc);
+    HRESULT GetDesc(out D3D11_SHADER_VARIABLE_DESC pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionvariable-gettype
     [PreserveSig]
-    public ID3D11ShaderReflectionType GetType();
+    ID3D11ShaderReflectionType GetType();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionvariable-getbuffer
     [PreserveSig]
-    public ID3D11ShaderReflectionConstantBuffer GetBuffer();
+    ID3D11ShaderReflectionConstantBuffer GetBuffer();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionvariable-getinterfaceslot
     [PreserveSig]
-    public uint GetInterfaceSlot(uint uArrayIndex);
+    uint GetInterfaceSlot(uint uArrayIndex);
 }

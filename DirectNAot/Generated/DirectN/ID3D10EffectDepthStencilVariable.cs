@@ -7,10 +7,10 @@ public partial interface ID3D10EffectDepthStencilVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilvariable-getdepthstencilstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDepthStencilState(uint Index, out ID3D10DepthStencilState ppDepthStencilState);
+    HRESULT GetDepthStencilState(uint Index, out ID3D10DepthStencilState ppDepthStencilState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilvariable-getbackingstore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetBackingStore(uint Index, out D3D10_DEPTH_STENCIL_DESC pDepthStencilDesc);
+    HRESULT GetBackingStore(uint Index, out D3D10_DEPTH_STENCIL_DESC pDepthStencilDesc);
 }

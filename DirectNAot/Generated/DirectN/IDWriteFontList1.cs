@@ -7,15 +7,15 @@ public partial interface IDWriteFontList1 : IDWriteFontList
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontlist1-getfontlocality
     [PreserveSig]
-    public DWRITE_LOCALITY GetFontLocality(uint listIndex);
+    DWRITE_LOCALITY GetFontLocality(uint listIndex);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontlist1-getfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFont(uint listIndex, out IDWriteFont3 font);
+    HRESULT GetFont(uint listIndex, out IDWriteFont3 font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontlist1-getfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontFaceReference(uint listIndex, out IDWriteFontFaceReference fontFaceReference);
+    HRESULT GetFontFaceReference(uint listIndex, out IDWriteFontFaceReference fontFaceReference);
 }

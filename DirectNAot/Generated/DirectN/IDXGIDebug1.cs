@@ -7,14 +7,14 @@ public partial interface IDXGIDebug1 : IDXGIDebug
 {
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug1-enableleaktrackingforthread
     [PreserveSig]
-    public void EnableLeakTrackingForThread();
+    void EnableLeakTrackingForThread();
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug1-disableleaktrackingforthread
     [PreserveSig]
-    public void DisableLeakTrackingForThread();
+    void DisableLeakTrackingForThread();
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug1-isleaktrackingenabledforthread
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsLeakTrackingEnabledForThread();
+    bool IsLeakTrackingEnabledForThread();
 }

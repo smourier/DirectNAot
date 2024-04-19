@@ -5,5 +5,5 @@ public partial interface ID2D1Factory8 : ID2D1Factory7
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDevice(IDXGIDevice dxgiDevice, out ID2D1Device7 d2dDevice6);
+    HRESULT CreateDevice(IDXGIDevice dxgiDevice, out ID2D1Device7 d2dDevice6);
 }

@@ -8,15 +8,15 @@ public partial interface IDXGIDevice2 : IDXGIDevice1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidevice2-offerresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT OfferResources(uint NumResources, in IDXGIResource ppResources, DXGI_OFFER_RESOURCE_PRIORITY Priority);
+    HRESULT OfferResources(uint NumResources, in IDXGIResource ppResources, DXGI_OFFER_RESOURCE_PRIORITY Priority);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidevice2-reclaimresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReclaimResources(uint NumResources, in IDXGIResource ppResources, nint/* nint */ pDiscarded);
+    HRESULT ReclaimResources(uint NumResources, in IDXGIResource ppResources, nint/* nint */ pDiscarded);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidevice2-enqueuesetevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT EnqueueSetEvent(HANDLE hEvent);
+    HRESULT EnqueueSetEvent(HANDLE hEvent);
 }

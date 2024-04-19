@@ -7,5 +7,5 @@ public partial interface ID3D11VideoProcessorOutputView : ID3D11View
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videoprocessoroutputview-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc);
+    void GetDesc(out D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc);
 }

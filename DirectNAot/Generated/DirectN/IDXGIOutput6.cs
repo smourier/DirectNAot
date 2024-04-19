@@ -8,10 +8,10 @@ public partial interface IDXGIOutput6 : IDXGIOutput5
     // https://learn.microsoft.com/windows/win32/api/dxgi1_6/nf-dxgi1_6-idxgioutput6-getdesc1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetDesc1(out DXGI_OUTPUT_DESC1 pDesc);
+    HRESULT GetDesc1(out DXGI_OUTPUT_DESC1 pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_6/nf-dxgi1_6-idxgioutput6-checkhardwarecompositionsupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CheckHardwareCompositionSupport(out uint pFlags);
+    HRESULT CheckHardwareCompositionSupport(out uint pFlags);
 }

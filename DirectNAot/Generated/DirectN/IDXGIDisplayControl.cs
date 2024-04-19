@@ -8,9 +8,9 @@ public partial interface IDXGIDisplayControl
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidisplaycontrol-isstereoenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public bool IsStereoEnabled();
+    bool IsStereoEnabled();
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidisplaycontrol-setstereoenabled
     [PreserveSig]
-    public void SetStereoEnabled([MarshalAs(UnmanagedType.U4)] bool enabled);
+    void SetStereoEnabled([MarshalAs(UnmanagedType.U4)] bool enabled);
 }

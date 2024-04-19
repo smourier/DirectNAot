@@ -7,5 +7,5 @@ public partial interface IDWriteFontDownloadListener
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadlistener-downloadcompleted
     [PreserveSig]
-    public void DownloadCompleted(IDWriteFontDownloadQueue downloadQueue, nint context, [MarshalAs(UnmanagedType.Error)] HRESULT downloadResult);
+    void DownloadCompleted(IDWriteFontDownloadQueue downloadQueue, nint context, [MarshalAs(UnmanagedType.Error)] HRESULT downloadResult);
 }

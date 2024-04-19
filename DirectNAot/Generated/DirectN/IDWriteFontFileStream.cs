@@ -8,19 +8,19 @@ public partial interface IDWriteFontFileStream
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfilestream-readfilefragment
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReadFileFragment(out nint fragmentStart, ulong fileOffset, ulong fragmentSize, out nint fragmentContext);
+    HRESULT ReadFileFragment(out nint fragmentStart, ulong fileOffset, ulong fragmentSize, out nint fragmentContext);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfilestream-releasefilefragment
     [PreserveSig]
-    public void ReleaseFileFragment(nint fragmentContext);
+    void ReleaseFileFragment(nint fragmentContext);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfilestream-getfilesize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFileSize(out ulong fileSize);
+    HRESULT GetFileSize(out ulong fileSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfilestream-getlastwritetime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetLastWriteTime(out ulong lastWriteTime);
+    HRESULT GetLastWriteTime(out ulong lastWriteTime);
 }

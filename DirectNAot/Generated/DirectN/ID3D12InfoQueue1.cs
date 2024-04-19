@@ -5,9 +5,9 @@ public partial interface ID3D12InfoQueue1 : ID3D12InfoQueue
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT RegisterMessageCallback(D3D12MessageFunc CallbackFunc, D3D12_MESSAGE_CALLBACK_FLAGS CallbackFilterFlags, nint pContext, ref uint pCallbackCookie);
+    HRESULT RegisterMessageCallback(D3D12MessageFunc CallbackFunc, D3D12_MESSAGE_CALLBACK_FLAGS CallbackFilterFlags, nint pContext, ref uint pCallbackCookie);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT UnregisterMessageCallback(uint CallbackCookie);
+    HRESULT UnregisterMessageCallback(uint CallbackCookie);
 }

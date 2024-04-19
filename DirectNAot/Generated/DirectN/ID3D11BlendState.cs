@@ -7,5 +7,5 @@ public partial interface ID3D11BlendState : ID3D11DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11blendstate-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_BLEND_DESC pDesc);
+    void GetDesc(out D3D11_BLEND_DESC pDesc);
 }

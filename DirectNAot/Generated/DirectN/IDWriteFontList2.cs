@@ -7,5 +7,5 @@ public partial interface IDWriteFontList2 : IDWriteFontList1
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontlist2-getfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetFontSet(out IDWriteFontSet1 fontSet);
+    HRESULT GetFontSet(out IDWriteFontSet1 fontSet);
 }

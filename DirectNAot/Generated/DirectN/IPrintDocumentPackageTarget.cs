@@ -8,15 +8,15 @@ public partial interface IPrintDocumentPackageTarget
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-getpackagetargettypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPackageTargetTypes(out uint targetCount, out Guid targetTypes);
+    HRESULT GetPackageTargetTypes(out uint targetCount, out Guid targetTypes);
     
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-getpackagetarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetPackageTarget(in Guid guidTargetType, in Guid riid, out nint ppvTarget);
+    HRESULT GetPackageTarget(in Guid guidTargetType, in Guid riid, out nint ppvTarget);
     
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-cancel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Cancel();
+    HRESULT Cancel();
 }

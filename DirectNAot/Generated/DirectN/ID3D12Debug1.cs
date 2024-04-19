@@ -6,13 +6,13 @@ public partial interface ID3D12Debug1
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug1-enabledebuglayer
     [PreserveSig]
-    public void EnableDebugLayer();
+    void EnableDebugLayer();
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug1-setenablegpubasedvalidation
     [PreserveSig]
-    public void SetEnableGPUBasedValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableGPUBasedValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug1-setenablesynchronizedcommandqueuevalidation
     [PreserveSig]
-    public void SetEnableSynchronizedCommandQueueValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableSynchronizedCommandQueueValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
 }

@@ -5,5 +5,5 @@ public partial interface IDxcVersionInfo3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetCustomVersionString(out sbyte pVersionString);
+    HRESULT GetCustomVersionString(out sbyte pVersionString);
 }

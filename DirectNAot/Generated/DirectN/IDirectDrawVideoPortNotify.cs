@@ -5,9 +5,9 @@ public partial interface IDirectDrawVideoPortNotify
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT AcquireNotification(ref HANDLE param0, ref DDVIDEOPORTNOTIFY param1);
+    HRESULT AcquireNotification(ref HANDLE param0, ref DDVIDEOPORTNOTIFY param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT ReleaseNotification(HANDLE param0);
+    HRESULT ReleaseNotification(HANDLE param0);
 }

@@ -8,10 +8,10 @@ public partial interface IWICFastMetadataEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicfastmetadataencoder-commit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Commit();
+    HRESULT Commit();
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicfastmetadataencoder-getmetadataquerywriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetMetadataQueryWriter(out IWICMetadataQueryWriter ppIMetadataQueryWriter);
+    HRESULT GetMetadataQueryWriter(out IWICMetadataQueryWriter ppIMetadataQueryWriter);
 }

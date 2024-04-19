@@ -8,40 +8,40 @@ public partial interface IDirectManipulationContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getcontentrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetContentRect(out FoundationRECT contentSize);
+    HRESULT GetContentRect(out FoundationRECT contentSize);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-setcontentrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetContentRect(FoundationRECT contentSize);
+    HRESULT SetContentRect(FoundationRECT contentSize);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getviewport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetViewport(in Guid riid, out nint @object);
+    HRESULT GetViewport(in Guid riid, out nint @object);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-gettag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetTag(in Guid riid, nint/* nint */ @object, nint/* nint */ id);
+    HRESULT GetTag(in Guid riid, nint/* nint */ @object, nint/* nint */ id);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-settag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SetTag(nint @object, uint id);
+    HRESULT SetTag(nint @object, uint id);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getoutputtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetOutputTransform(out float matrix, uint pointCount);
+    HRESULT GetOutputTransform(out float matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getcontenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT GetContentTransform(out float matrix, uint pointCount);
+    HRESULT GetContentTransform(out float matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-synccontenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT SyncContentTransform(in float matrix, uint pointCount);
+    HRESULT SyncContentTransform(in float matrix, uint pointCount);
 }

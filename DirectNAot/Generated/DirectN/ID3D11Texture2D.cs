@@ -7,5 +7,5 @@ public partial interface ID3D11Texture2D : ID3D11Resource
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11texture2d-getdesc
     [PreserveSig]
-    public void GetDesc(out D3D11_TEXTURE2D_DESC pDesc);
+    void GetDesc(out D3D11_TEXTURE2D_DESC pDesc);
 }

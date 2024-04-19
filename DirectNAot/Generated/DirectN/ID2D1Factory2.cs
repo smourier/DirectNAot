@@ -8,5 +8,5 @@ public partial interface ID2D1Factory2 : ID2D1Factory1
     // https://learn.microsoft.com/windows/win32/api/d2d1_2/nf-d2d1_2-id2d1factory2-createdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT CreateDevice(IDXGIDevice dxgiDevice, out ID2D1Device1 d2dDevice1);
+    HRESULT CreateDevice(IDXGIDevice dxgiDevice, out ID2D1Device1 d2dDevice1);
 }

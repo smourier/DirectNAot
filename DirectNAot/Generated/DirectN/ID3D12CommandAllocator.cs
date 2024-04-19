@@ -7,5 +7,5 @@ public partial interface ID3D12CommandAllocator : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandallocator-reset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    public HRESULT Reset();
+    HRESULT Reset();
 }
