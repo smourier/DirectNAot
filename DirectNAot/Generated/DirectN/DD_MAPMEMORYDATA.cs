@@ -10,7 +10,5 @@ public partial struct DD_MAPMEMORYDATA
     public bool bMap;
     public HANDLE hProcess;
     public nuint fpProcess;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

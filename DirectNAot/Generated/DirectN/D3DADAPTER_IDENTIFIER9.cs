@@ -4,8 +4,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DADAPTER_IDENTIFIER9
 {
-    public InlineArrayCHAR512 Driver;
-    public InlineArrayCHAR512 Description;
+    public InlineArrayFoundationCHAR512 Driver;
+    public InlineArrayFoundationCHAR512 Description;
     public InlineArrayFoundationCHAR32 DeviceName;
     public long DriverVersion;
     public uint VendorId;

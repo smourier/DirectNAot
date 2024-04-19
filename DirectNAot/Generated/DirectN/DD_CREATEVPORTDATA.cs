@@ -7,8 +7,6 @@ public partial struct DD_CREATEVPORTDATA
     public nint lpDD;
     public nint lpDDVideoPortDesc;
     public nint lpVideoPort;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint CreateVideoPort;
 }

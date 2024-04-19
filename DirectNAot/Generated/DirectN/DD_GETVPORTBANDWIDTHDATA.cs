@@ -11,8 +11,6 @@ public partial struct DD_GETVPORTBANDWIDTHDATA
     public uint dwHeight;
     public uint dwFlags;
     public nint lpBandwidth;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint GetVideoPortBandwidth;
 }

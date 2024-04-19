@@ -6,8 +6,6 @@ public partial struct DD_DESTROYVPORTDATA
 {
     public nint lpDD;
     public nint lpVideoPort;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint DestroyVideoPort;
 }

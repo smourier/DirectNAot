@@ -6,8 +6,6 @@ public partial struct DD_DRVSETCOLORKEYDATA
     public nint lpDDSurface;
     public uint dwFlags;
     public DDCOLORKEY ckNew;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint SetColorKey;
 }

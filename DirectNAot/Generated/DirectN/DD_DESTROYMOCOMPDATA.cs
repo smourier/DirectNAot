@@ -6,7 +6,5 @@ public partial struct DD_DESTROYMOCOMPDATA
 {
     public nint lpDD;
     public nint lpMoComp;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

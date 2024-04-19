@@ -11,8 +11,6 @@ public partial struct DDHAL_UPDATEVPORTDATA
     public uint dwFlags;
     public uint dwNumAutoflip;
     public uint dwNumVBIAutoflip;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint UpdateVideoPort;
 }

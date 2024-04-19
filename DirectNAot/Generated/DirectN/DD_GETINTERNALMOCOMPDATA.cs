@@ -10,7 +10,5 @@ public partial struct DD_GETINTERNALMOCOMPDATA
     public uint dwHeight;
     public DDPIXELFORMAT ddPixelFormat;
     public uint dwScratchMemAlloc;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

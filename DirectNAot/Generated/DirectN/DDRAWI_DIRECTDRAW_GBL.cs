@@ -35,7 +35,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public uint dwAliasedLockCnt;
     public nuint dwReserved3;
     public nuint hDD;
-    public InlineArrayCHAR12 cObsolete;
+    public InlineArrayFoundationCHAR12 cObsolete;
     public uint dwReserved1;
     public uint dwReserved2;
     public DBLNODE dbnOverlayRoot;

@@ -6,7 +6,5 @@ public partial struct DDHAL_DESTROYDDLOCALDATA
 {
     public uint dwFlags;
     public nint pDDLcl;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

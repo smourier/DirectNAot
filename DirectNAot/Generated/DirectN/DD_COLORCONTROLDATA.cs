@@ -8,8 +8,6 @@ public partial struct DD_COLORCONTROLDATA
     public nint lpDDSurface;
     public nint lpColorData;
     public uint dwFlags;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint ColorControl;
 }

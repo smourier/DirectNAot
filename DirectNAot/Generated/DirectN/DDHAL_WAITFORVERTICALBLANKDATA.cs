@@ -8,8 +8,6 @@ public partial struct DDHAL_WAITFORVERTICALBLANKDATA
     public uint dwFlags;
     public uint bIsInVB;
     public nuint hEvent;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint WaitForVerticalBlank;
 }

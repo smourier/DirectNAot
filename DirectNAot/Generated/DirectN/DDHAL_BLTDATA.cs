@@ -11,8 +11,6 @@ public partial struct DDHAL_BLTDATA
     public uint dwFlags;
     public uint dwROPFlags;
     public DDBLTFX bltFX;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint Blt;
     

@@ -11,7 +11,5 @@ public partial struct DD_BEGINMOCOMPFRAMEDATA
     public nint lpInputData;
     public uint dwOutputDataSize;
     public nint lpOutputData;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

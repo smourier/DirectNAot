@@ -7,8 +7,6 @@ public partial struct DDHAL_FLIPVPORTDATA
     public nint lpVideoPort;
     public nint lpSurfCurr;
     public nint lpSurfTarg;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint FlipVideoPort;
 }

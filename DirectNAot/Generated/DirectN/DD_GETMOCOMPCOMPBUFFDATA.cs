@@ -11,7 +11,5 @@ public partial struct DD_GETMOCOMPCOMPBUFFDATA
     public DDPIXELFORMAT ddPixelFormat;
     public uint dwNumTypesCompBuffs;
     public nint lpCompBuffInfo;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

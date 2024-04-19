@@ -10,8 +10,6 @@ public partial struct DDHAL_BEGINMOCOMPFRAMEDATA
     public nint lpInputData;
     public uint dwOutputDataSize;
     public nint lpOutputData;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint BeginMoCompFrame;
 }

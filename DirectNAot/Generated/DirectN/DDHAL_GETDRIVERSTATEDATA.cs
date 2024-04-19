@@ -14,7 +14,5 @@ public partial struct DDHAL_GETDRIVERSTATEDATA
     public _Anonymous_e__Union Anonymous;
     public nint lpdwStates;
     public uint dwLength;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

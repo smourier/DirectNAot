@@ -11,8 +11,6 @@ public partial struct DD_UPDATEOVERLAYDATA
     public RECTL rSrc;
     public uint dwFlags;
     public DDOVERLAYFX overlayFX;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint UpdateOverlay;
 }

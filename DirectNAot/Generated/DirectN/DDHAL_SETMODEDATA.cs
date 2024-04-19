@@ -5,8 +5,6 @@ public partial struct DDHAL_SETMODEDATA
 {
     public nint lpDD;
     public uint dwModeIndex;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint SetMode;
     

@@ -8,7 +8,5 @@ public partial struct DD_ENDMOCOMPFRAMEDATA
     public nint lpMoComp;
     public nint lpInputData;
     public uint dwInputDataSize;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

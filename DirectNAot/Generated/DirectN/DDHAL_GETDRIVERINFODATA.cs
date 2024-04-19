@@ -9,8 +9,6 @@ public partial struct DDHAL_GETDRIVERINFODATA
     public uint dwExpectedSize;
     public nint lpvData;
     public uint dwActualSize;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nuint dwContext;
 }

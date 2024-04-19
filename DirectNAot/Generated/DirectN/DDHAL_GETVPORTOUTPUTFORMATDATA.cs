@@ -9,8 +9,6 @@ public partial struct DDHAL_GETVPORTOUTPUTFORMATDATA
     public nint lpddpfInputFormat;
     public nint lpddpfOutputFormats;
     public uint dwNumFormats;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint GetVideoPortOutputFormats;
 }

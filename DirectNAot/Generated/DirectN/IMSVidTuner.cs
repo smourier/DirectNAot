@@ -1,0 +1,27 @@
+﻿namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidtuner
+[SupportedOSPlatform("windows5.1.2600")]
+[GeneratedComInterface, Guid("1c15d47d-911d-11d2-b632-00c04f79498e")]
+public partial interface IMSVidTuner : IMSVidVideoInputDevice
+{
+    // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-get_tune
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT get_Tune(out ITuneRequest ppTR);
+    
+    // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-put_tune
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT put_Tune(ITuneRequest pTR);
+    
+    // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-get_tuningspace
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT get_TuningSpace(out ITuningSpace plTS);
+    
+    // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-put_tuningspace
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT put_TuningSpace(ITuningSpace plTS);
+}

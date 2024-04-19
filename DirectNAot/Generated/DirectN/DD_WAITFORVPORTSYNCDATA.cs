@@ -9,8 +9,6 @@ public partial struct DD_WAITFORVPORTSYNCDATA
     public uint dwFlags;
     public uint dwLine;
     public uint dwTimeOut;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint UpdateVideoPort;
 }

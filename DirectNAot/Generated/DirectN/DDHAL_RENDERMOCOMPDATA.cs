@@ -12,8 +12,6 @@ public partial struct DDHAL_RENDERMOCOMPDATA
     public uint dwInputDataSize;
     public nint lpOutputData;
     public uint dwOutputDataSize;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint RenderMoComp;
 }

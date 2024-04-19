@@ -9,8 +9,6 @@ public partial struct DD_GETVPORTFIELDDATA
     
     [MarshalAs(UnmanagedType.U4)]
     public bool bField;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint GetVideoPortField;
 }

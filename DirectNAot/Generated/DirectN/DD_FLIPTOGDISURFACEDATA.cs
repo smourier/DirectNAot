@@ -7,8 +7,6 @@ public partial struct DD_FLIPTOGDISURFACEDATA
     public nint lpDD;
     public uint dwToGDI;
     public uint dwReserved;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint FlipToGDISurface;
 }

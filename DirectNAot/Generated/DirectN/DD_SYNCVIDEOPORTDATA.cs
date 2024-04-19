@@ -12,7 +12,5 @@ public partial struct DD_SYNCVIDEOPORTDATA
     public uint dwDriverReserved1;
     public uint dwDriverReserved2;
     public uint dwDriverReserved3;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

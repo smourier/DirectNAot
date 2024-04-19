@@ -8,7 +8,5 @@ public partial struct D3DAUTHENTICATEDCHANNEL_CONFIGURE_OUTPUT
     public Guid ConfigureType;
     public HANDLE hChannel;
     public uint SequenceNumber;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ReturnCode;
 }

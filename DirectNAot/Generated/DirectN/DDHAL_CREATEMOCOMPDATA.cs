@@ -11,8 +11,6 @@ public partial struct DDHAL_CREATEMOCOMPDATA
     public DDPIXELFORMAT ddUncompPixelFormat;
     public nint lpData;
     public uint dwDataSize;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint CreateMoComp;
 }

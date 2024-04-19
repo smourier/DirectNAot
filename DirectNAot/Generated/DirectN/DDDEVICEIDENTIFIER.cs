@@ -3,8 +3,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDDEVICEIDENTIFIER
 {
-    public InlineArrayCHAR512 szDriver;
-    public InlineArrayCHAR512 szDescription;
+    public InlineArrayFoundationCHAR512 szDriver;
+    public InlineArrayFoundationCHAR512 szDescription;
     public long liDriverVersion;
     public uint dwVendorId;
     public uint dwDeviceId;

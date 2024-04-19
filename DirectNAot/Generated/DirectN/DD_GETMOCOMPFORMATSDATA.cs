@@ -8,7 +8,5 @@ public partial struct DD_GETMOCOMPFORMATSDATA
     public nint lpGuid;
     public uint dwNumFormats;
     public nint lpFormats;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

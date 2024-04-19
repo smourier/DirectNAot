@@ -7,7 +7,5 @@ public partial struct DD_GETMOCOMPGUIDSDATA
     public nint lpDD;
     public uint dwNumGuids;
     public nint lpGuids;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

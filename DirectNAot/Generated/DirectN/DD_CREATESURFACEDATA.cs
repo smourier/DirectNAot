@@ -8,8 +8,6 @@ public partial struct DD_CREATESURFACEDATA
     public nint lpDDSurfaceDesc;
     public nint lplpSList;
     public uint dwSCnt;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint CreateSurface;
 }

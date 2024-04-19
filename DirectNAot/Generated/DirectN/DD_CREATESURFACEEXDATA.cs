@@ -7,7 +7,5 @@ public partial struct DD_CREATESURFACEEXDATA
     public uint dwFlags;
     public nint lpDDLcl;
     public nint lpDDSLcl;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

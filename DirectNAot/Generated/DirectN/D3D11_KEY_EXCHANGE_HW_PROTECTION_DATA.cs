@@ -7,7 +7,5 @@ public partial struct D3D11_KEY_EXCHANGE_HW_PROTECTION_DATA
     public uint HWProtectionFunctionID;
     public nint pInputData;
     public nint pOutputData;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT Status;
 }

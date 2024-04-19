@@ -12,7 +12,5 @@ public partial struct DD_CREATEMOCOMPDATA
     public DDPIXELFORMAT ddUncompPixelFormat;
     public nint lpData;
     public uint dwDataSize;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

@@ -14,7 +14,5 @@ public partial struct DD_SYNCSURFACEDATA
     public uint dwDriverReserved2;
     public uint dwDriverReserved3;
     public uint dwDriverReserved4;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
 }

@@ -9,8 +9,6 @@ public partial struct DD_SETOVERLAYPOSITIONDATA
     public nint lpDDDestSurface;
     public int lXPos;
     public int lYPos;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint SetOverlayPosition;
 }

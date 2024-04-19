@@ -26,13 +26,10 @@
     "Windows.Win32.Graphics*",
     "!Windows.Win32.Graphics.Gdi*",
     "!Windows.Win32.Graphics.Printing*",
-    //"Windows.Win32.Media*",
+    "Windows.Win32.Media*",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
   "MemberInputs": [
-    "DEVPKEY_Device_SupportsMute",
-    "RT_RCDATA",
-    "!RT_STRING"
   ]
 }

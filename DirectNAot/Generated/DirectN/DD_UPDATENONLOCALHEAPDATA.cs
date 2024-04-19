@@ -9,8 +9,6 @@ public partial struct DD_UPDATENONLOCALHEAPDATA
     public nuint fpGARTLin;
     public nuint fpGARTDev;
     public nuint ulPolicyMaxBytes;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint UpdateNonLocalHeap;
 }

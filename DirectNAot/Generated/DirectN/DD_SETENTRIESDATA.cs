@@ -9,8 +9,6 @@ public partial struct DD_SETENTRIESDATA
     public uint dwBase;
     public uint dwNumEntries;
     public nint lpEntries;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint SetEntries;
 }

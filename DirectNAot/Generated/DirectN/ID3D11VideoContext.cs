@@ -52,7 +52,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputconstriction
     [PreserveSig]
-    void VideoProcessorSetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, in FoundationSIZE Size);
+    void VideoProcessorSetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, FoundationSIZE Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputstereomode
     [PreserveSig]

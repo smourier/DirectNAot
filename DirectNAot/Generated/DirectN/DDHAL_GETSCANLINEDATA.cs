@@ -5,8 +5,6 @@ public partial struct DDHAL_GETSCANLINEDATA
 {
     public nint lpDD;
     public uint dwScanLine;
-    
-    [MarshalAs(UnmanagedType.Error)]
     public HRESULT ddRVal;
     public nint GetScanLine;
 }
