@@ -7779,6 +7779,62 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool IsValidDevmodeW(nint/* nint */ pDevmode, nuint DevmodeSize);
     
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial uint KsCreateAllocator(HANDLE ConnectionHandle, in KSALLOCATOR_FRAMING AllocatorFraming, out HANDLE AllocatorHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial HRESULT KsCreateAllocator2(HANDLE ConnectionHandle, in KSALLOCATOR_FRAMING AllocatorFraming, out HANDLE AllocatorHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial uint KsCreateClock(HANDLE ConnectionHandle, in KSCLOCK_CREATE ClockCreate, out HANDLE ClockHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial HRESULT KsCreateClock2(HANDLE ConnectionHandle, in KSCLOCK_CREATE ClockCreate, out HANDLE ClockHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial uint KsCreatePin(HANDLE FilterHandle, in KSPIN_CONNECT Connect, uint DesiredAccess, out HANDLE ConnectionHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial HRESULT KsCreatePin2(HANDLE FilterHandle, in KSPIN_CONNECT Connect, uint DesiredAccess, out HANDLE ConnectionHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial uint KsCreateTopologyNode(HANDLE ParentHandle, in KSNODE_CREATE NodeCreate, uint DesiredAccess, out HANDLE NodeHandle);
+    
+    [LibraryImport("ksuser")]
+    [PreserveSig]
+    public static partial HRESULT KsCreateTopologyNode2(HANDLE ParentHandle, in KSNODE_CREATE NodeCreate, uint DesiredAccess, out HANDLE NodeHandle);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsGetMediaType(int Position, out AM_MEDIA_TYPE AmMediaType, HANDLE FilterHandle, uint PinFactoryId);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsGetMediaTypeCount(HANDLE FilterHandle, uint PinFactoryId, out uint MediaTypeCount);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsGetMultiplePinFactoryItems(HANDLE FilterHandle, uint PinFactoryId, uint PropertyId, out nint Items);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsOpenDefaultDevice(in Guid Category, uint Access, out HANDLE DeviceHandle);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsResolveRequiredAttributes(in KSDATAFORMAT DataRange, nint/* nint */ Attributes);
+    
+    [LibraryImport("ksproxy.ax")]
+    [PreserveSig]
+    public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint/* nint */ InBuffer, uint InLength, nint/* nint */ OutBuffer, uint OutLength, nint/* nint */ BytesReturned);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-linedda
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]

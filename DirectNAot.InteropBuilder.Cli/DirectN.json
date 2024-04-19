@@ -1,25 +1,38 @@
 ﻿{
+  // customized generation for DirectN
   "BuilderTypeFilePath": "DirectNAot.InteropBuilder.Cli.dll",
   "BuilderTypeName": "DirectNAot.InteropBuilder.Cli.Builder, DirectNAot.InteropBuilder.Cli",
   "OutputEncoding": "UTF-8",
   "Generation": {
+    // unified namespace configuration
     "Unified": {
       "Namespace": "DirectN"
     }
   },
+  // per-language configuration
   "Language": {
     "CSharp": {
-      "GenerateTypeKeywords": true
+      "GenerateTypeKeywords": true,
+
+      // types that are supported by DirectN project for constant generation (+ standard ones)
+      "SupportedConstantTypes": [
+        "DEVPROPKEY",
+        "PWSTR"
+      ]
     }
   },
+  // types that we want to include or exclude
   "TypeInputs": [
     "Windows.Win32.Graphics*",
+    "!Windows.Win32.Graphics.Gdi*",
+    "!Windows.Win32.Graphics.Printing*",
     //"Windows.Win32.Media*",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
+  // members (method, fields) we want to include or exclude
   "MemberInputs": [
     "DEVPKEY_Device_SupportsMute",
-    "!RT_RCDATA",
+    "RT_RCDATA",
     "!RT_STRING"
   ]
 }

@@ -7604,18 +7604,6 @@ public static partial class Constants
     
     public const uint DWRITE_ALPHA_MAX = 255;
     
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DWRITE_E_DOWNLOADCANCELLED = -2003283954;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DWRITE_E_DOWNLOADFAILED = -2003283953;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DWRITE_E_REMOTEFONT = -2003283955;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DWRITE_E_TOOMANYDOWNLOADS = -2003283952;
-    
     public const uint DWRITE_ERR_BASE = 20480;
     
     public const uint DWRITE_NO_PALETTE_INDEX = 65535;
@@ -7735,105 +7723,6 @@ public static partial class Constants
     public const uint DXGI_ENUM_MODES_SCALING = 2;
     
     public const uint DXGI_ENUM_MODES_STEREO = 4;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_ACCESS_DENIED = -2005270485;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_ACCESS_LOST = -2005270490;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_ALREADY_EXISTS = -2005270474;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_CACHE_CORRUPT = -2005270477;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_CACHE_FULL = -2005270476;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_CACHE_HASH_COLLISION = -2005270475;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_CANNOT_PROTECT_CONTENT = -2005270486;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_DEVICE_HUNG = -2005270522;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_DEVICE_REMOVED = -2005270523;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_DEVICE_RESET = -2005270521;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_DRIVER_INTERNAL_ERROR = -2005270496;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_DYNAMIC_CODE_POLICY_VIOLATION = -2005270479;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_FRAME_STATISTICS_DISJOINT = -2005270517;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE = -2005270516;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_HW_PROTECTION_OUTOFMEMORY = -2005270480;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_INVALID_CALL = -2005270527;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_MODE_CHANGE_IN_PROGRESS = -2005270491;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_MORE_DATA = -2005270525;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_MPO_UNPINNED = -2005270428;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NAME_ALREADY_EXISTS = -2005270484;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NON_COMPOSITED_UI = -2005270478;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NONEXCLUSIVE = -2005270495;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NOT_CURRENT = -2005270482;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NOT_CURRENTLY_AVAILABLE = -2005270494;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_NOT_FOUND = -2005270526;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED = -2005270493;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_REMOTE_OUTOFMEMORY = -2005270492;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_RESTRICT_TO_OUTPUT_STALE = -2005270487;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_SDK_COMPONENT_MISSING = -2005270483;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_SESSION_DISCONNECTED = -2005270488;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_UNSUPPORTED = -2005270524;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_WAIT_TIMEOUT = -2005270489;
-    
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT DXGI_ERROR_WAS_STILL_DRAWING = -2005270518;
     
     public const uint DXGI_FORMAT_DEFINED = 1;
     
@@ -12937,10 +12826,9 @@ public static partial class Constants
     
     public const uint ROUTER_UNKNOWN = 0;
     
-    public const uint S_CONFLICT_RESOLVED = 262146;
+    public static readonly PWSTR RT_RCDATA = '\u000a';
     
-    [MarshalAs(UnmanagedType.Error)]
-    public static readonly HRESULT S_DEVCAP_OUTPUT_FULL_REPLACEMENT = 318465;
+    public const uint S_CONFLICT_RESOLVED = 262146;
     
     public const uint S_NO_CONFLICT = 262145;
     
