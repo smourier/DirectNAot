@@ -5,5 +5,5 @@
 public partial struct RGNDATA
 {
     public RGNDATAHEADER rdh;
-    public InlineArrayFoundationCHAR1 Buffer; // variable-length array placeholder
+    public InlineArrayCHAR1 Buffer; // variable-length array placeholder
 }

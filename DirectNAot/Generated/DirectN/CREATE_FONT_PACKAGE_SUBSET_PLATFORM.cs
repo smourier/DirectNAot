@@ -1,7 +1,0 @@
-﻿namespace DirectN;
-
-public enum CREATE_FONT_PACKAGE_SUBSET_PLATFORM : short
-{
-    TTFCFP_UNICODE_PLATFORMID = 0,
-    TTFCFP_ISO_PLATFORMID = 2,
-}

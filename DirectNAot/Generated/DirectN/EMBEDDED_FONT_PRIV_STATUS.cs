@@ -1,9 +1,0 @@
-﻿namespace DirectN;
-
-public enum EMBEDDED_FONT_PRIV_STATUS : uint
-{
-    EMBED_PREVIEWPRINT = 1,
-    EMBED_EDITABLE = 2,
-    EMBED_INSTALLABLE = 3,
-    EMBED_NOEMBEDDING = 4,
-}

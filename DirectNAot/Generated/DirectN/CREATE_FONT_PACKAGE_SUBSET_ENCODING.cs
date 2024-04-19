@@ -1,8 +1,0 @@
-﻿namespace DirectN;
-
-public enum CREATE_FONT_PACKAGE_SUBSET_ENCODING : short
-{
-    TTFCFP_STD_MAC_CHAR_SET = 0,
-    TTFCFP_SYMBOL_CHAR_SET = 0,
-    TTFCFP_UNICODE_CHAR_SET = 1,
-}
