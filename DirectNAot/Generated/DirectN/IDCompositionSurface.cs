@@ -8,7 +8,7 @@ public partial interface IDCompositionSurface
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionsurface-begindraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDraw(nint/* nint */ updateRect, in Guid iid, out nint updateObject, out FoundationPOINT updateOffset);
+    HRESULT BeginDraw(nint/* nint */ updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT updateOffset);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionsurface-enddraw
     [PreserveSig]

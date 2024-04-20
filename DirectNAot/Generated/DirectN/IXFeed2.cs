@@ -5,7 +5,7 @@ public partial interface IXFeed2 : IXFeed
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItemByEffectiveId(uint uiEffectiveId, in Guid riid, out nint ppv);
+    HRESULT GetItemByEffectiveId(uint uiEffectiveId, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -13,7 +13,7 @@ public partial interface IPrintDocumentPackageTarget
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-getpackagetarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPackageTarget(in Guid guidTargetType, in Guid riid, out nint ppvTarget);
+    HRESULT GetPackageTarget(in Guid guidTargetType, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvTarget);
     
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-cancel
     [PreserveSig]

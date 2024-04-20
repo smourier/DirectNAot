@@ -7,5 +7,5 @@ public partial interface ID3D12Device2 : ID3D12Device1
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device2-createpipelinestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePipelineState(in D3D12_PIPELINE_STATE_STREAM_DESC pDesc, in Guid riid, out nint ppPipelineState);
+    HRESULT CreatePipelineState(in D3D12_PIPELINE_STATE_STREAM_DESC pDesc, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppPipelineState);
 }

@@ -7,7 +7,7 @@ public partial interface ID3D12Device1 : ID3D12Device
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device1-createpipelinelibrary
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePipelineLibrary(nint pLibraryBlob, nuint BlobLength, in Guid riid, out nint ppPipelineLibrary);
+    HRESULT CreatePipelineLibrary(nint pLibraryBlob, nuint BlobLength, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppPipelineLibrary);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device1-seteventonmultiplefencecompletion
     [PreserveSig]

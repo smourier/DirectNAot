@@ -683,19 +683,19 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-createdxgifactory
     [LibraryImport("dxgi")]
     [PreserveSig]
-    public static partial HRESULT CreateDXGIFactory(in Guid riid, out nint ppFactory);
+    public static partial HRESULT CreateDXGIFactory(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFactory);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-createdxgifactory1
     [LibraryImport("dxgi")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT CreateDXGIFactory1(in Guid riid, out nint ppFactory);
+    public static partial HRESULT CreateDXGIFactory1(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFactory);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-createdxgifactory2
     [LibraryImport("dxgi")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
-    public static partial HRESULT CreateDXGIFactory2(uint Flags, in Guid riid, out nint ppFactory);
+    public static partial HRESULT CreateDXGIFactory2(uint Flags, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFactory);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-createeditablestream
     [LibraryImport("AVIFIL32")]
@@ -773,7 +773,7 @@ public static partial class Functions
     [LibraryImport("d2d1")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, in Guid riid, nint/* nint */ pFactoryOptions, out nint ppIFactory);
+    public static partial HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, in Guid riid, nint/* nint */ pFactoryOptions, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppIFactory);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-d2d1getgradientmeshinteriorpointsfromcoonspatch
     [LibraryImport("d2d1")]
@@ -986,7 +986,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12createdevice
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12CreateDevice(nint pAdapter, D3D_FEATURE_LEVEL MinimumFeatureLevel, in Guid riid, nint/* nint */ ppDevice);
+    public static partial HRESULT D3D12CreateDevice(nint pAdapter, D3D_FEATURE_LEVEL MinimumFeatureLevel, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12createrootsignaturedeserializer
     [LibraryImport("d3d12")]
@@ -1006,12 +1006,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12getdebuginterface
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12GetDebugInterface(in Guid riid, nint/* nint */ ppvDebug);
+    public static partial HRESULT D3D12GetDebugInterface(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvDebug);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12getinterface
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12GetInterface(in Guid rclsid, in Guid riid, nint/* nint */ ppvDebug);
+    public static partial HRESULT D3D12GetInterface(in Guid rclsid, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvDebug);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12serializerootsignature
     [LibraryImport("d3d12")]
@@ -1254,18 +1254,18 @@ public static partial class Functions
     [LibraryImport("dcomp")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT DCompositionCreateDevice(IDXGIDevice dxgiDevice, in Guid iid, out nint dcompositionDevice);
+    public static partial HRESULT DCompositionCreateDevice(IDXGIDevice dxgiDevice, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ dcompositionDevice);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositioncreatedevice2
     [LibraryImport("dcomp")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
-    public static partial HRESULT DCompositionCreateDevice2(nint renderingDevice, in Guid iid, out nint dcompositionDevice);
+    public static partial HRESULT DCompositionCreateDevice2(nint renderingDevice, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ dcompositionDevice);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositioncreatedevice3
     [LibraryImport("dcomp")]
     [PreserveSig]
-    public static partial HRESULT DCompositionCreateDevice3(nint renderingDevice, in Guid iid, out nint dcompositionDevice);
+    public static partial HRESULT DCompositionCreateDevice3(nint renderingDevice, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ dcompositionDevice);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositioncreatesurfacehandle
     [LibraryImport("dcomp")]
@@ -1716,20 +1716,20 @@ public static partial class Functions
     [LibraryImport("DWrite")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT DWriteCreateFactory(DWRITE_FACTORY_TYPE factoryType, in Guid iid, out nint factory);
+    public static partial HRESULT DWriteCreateFactory(DWRITE_FACTORY_TYPE factoryType, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ factory);
     
     [LibraryImport("dxcompiler")]
     [PreserveSig]
-    public static partial HRESULT DxcCreateInstance(in Guid rclsid, in Guid riid, out nint ppv);
+    public static partial HRESULT DxcCreateInstance(in Guid rclsid, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [LibraryImport("dxcompiler")]
     [PreserveSig]
-    public static partial HRESULT DxcCreateInstance2(IMalloc pMalloc, in Guid rclsid, in Guid riid, out nint ppv);
+    public static partial HRESULT DxcCreateInstance2(IMalloc pMalloc, in Guid rclsid, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/dxcore/dxcore/nf-dxcore-dxcorecreateadapterfactory
     [LibraryImport("DXCORE")]
     [PreserveSig]
-    public static partial HRESULT DXCoreCreateAdapterFactory(in Guid riid, out nint ppvFactory);
+    public static partial HRESULT DXCoreCreateAdapterFactory(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvFactory);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_6/nf-dxgi1_6-dxgideclareadapterremovalsupport
     [LibraryImport("dxgi")]
@@ -1746,7 +1746,7 @@ public static partial class Functions
     [LibraryImport("dxgi")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
-    public static partial HRESULT DXGIGetDebugInterface1(uint Flags, in Guid riid, out nint pDebug);
+    public static partial HRESULT DXGIGetDebugInterface1(uint Flags, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ pDebug);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-dxva2createdirect3ddevicemanager9
     [LibraryImport("dxva2")]

@@ -8,12 +8,12 @@ public partial interface IMoniker : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-bindtoobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BindToObject(IBindCtx pbc, IMoniker pmkToLeft, in Guid riidResult, out nint ppvResult);
+    HRESULT BindToObject(IBindCtx pbc, IMoniker pmkToLeft, in Guid riidResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvResult);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-bindtostorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BindToStorage(IBindCtx pbc, IMoniker pmkToLeft, in Guid riid, out nint ppvObj);
+    HRESULT BindToStorage(IBindCtx pbc, IMoniker pmkToLeft, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObj);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-reduce
     [PreserveSig]

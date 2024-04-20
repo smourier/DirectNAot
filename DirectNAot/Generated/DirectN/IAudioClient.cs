@@ -63,5 +63,5 @@ public partial interface IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-getservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetService(in Guid riid, out nint ppv);
+    HRESULT GetService(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
 }

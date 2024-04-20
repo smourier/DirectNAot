@@ -5,7 +5,7 @@ public partial interface IXFeedsManager
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RootFolder(in Guid riid, out nint ppv);
+    HRESULT RootFolder(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -17,11 +17,11 @@ public partial interface IXFeedsManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeed(PWSTR pszPath, in Guid riid, out nint ppv);
+    HRESULT GetFeed(PWSTR pszPath, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeedByUrl(PWSTR pszUrl, in Guid riid, out nint ppv);
+    HRESULT GetFeedByUrl(PWSTR pszUrl, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -29,7 +29,7 @@ public partial interface IXFeedsManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFolder(PWSTR pszPath, in Guid riid, out nint ppv);
+    HRESULT GetFolder(PWSTR pszPath, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

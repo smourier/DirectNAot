@@ -133,7 +133,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-opensharedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint/* nint */ ppResource);
+    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkformatsupport
     [PreserveSig]

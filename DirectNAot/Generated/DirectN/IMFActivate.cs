@@ -8,7 +8,7 @@ public partial interface IMFActivate : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfactivate-activateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateObject(in Guid riid, out nint ppv);
+    HRESULT ActivateObject(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfactivate-shutdownobject
     [PreserveSig]

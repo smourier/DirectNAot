@@ -7,12 +7,12 @@ public partial interface ID3D12Device3 : ID3D12Device2
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device3-openexistingheapfromaddress
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenExistingHeapFromAddress(nint pAddress, in Guid riid, out nint ppvHeap);
+    HRESULT OpenExistingHeapFromAddress(nint pAddress, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvHeap);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device3-openexistingheapfromfilemapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenExistingHeapFromFileMapping(HANDLE hFileMapping, in Guid riid, out nint ppvHeap);
+    HRESULT OpenExistingHeapFromFileMapping(HANDLE hFileMapping, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvHeap);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device3-enqueuemakeresident
     [PreserveSig]

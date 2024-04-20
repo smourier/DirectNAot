@@ -13,11 +13,11 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFeed(PWSTR pszName, PWSTR pszUrl, in Guid riid, out nint ppv);
+    HRESULT CreateFeed(PWSTR pszName, PWSTR pszUrl, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSubfolder(PWSTR pszName, in Guid riid, out nint ppv);
+    HRESULT CreateSubfolder(PWSTR pszName, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -29,11 +29,11 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeed(PWSTR pszName, in Guid riid, out nint ppv);
+    HRESULT GetFeed(PWSTR pszName, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubfolder(PWSTR pszName, in Guid riid, out nint ppv);
+    HRESULT GetSubfolder(PWSTR pszName, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -57,7 +57,7 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Parent(in Guid riid, out nint ppv);
+    HRESULT Parent(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -65,7 +65,7 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, in Guid riid, out nint ppv);
+    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

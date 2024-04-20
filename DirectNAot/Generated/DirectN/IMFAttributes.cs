@@ -78,7 +78,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getunknown
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnknown(in Guid guidKey, in Guid riid, out nint ppv);
+    HRESULT GetUnknown(in Guid guidKey, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-setitem
     [PreserveSig]

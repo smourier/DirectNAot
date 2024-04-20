@@ -7,7 +7,7 @@ public partial interface IDXCoreAdapterList
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getadapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAdapter(uint index, in Guid riid, out nint ppvAdapter);
+    HRESULT GetAdapter(uint index, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getadaptercount
     [PreserveSig]
@@ -21,7 +21,7 @@ public partial interface IDXCoreAdapterList
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-getfactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFactory(in Guid riid, out nint ppvFactory);
+    HRESULT GetFactory(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvFactory);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-sort
     [PreserveSig]

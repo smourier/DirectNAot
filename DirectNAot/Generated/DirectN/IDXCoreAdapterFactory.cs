@@ -7,12 +7,12 @@ public partial interface IDXCoreAdapterFactory
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterfactory-createadapterlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAdapterList(uint numAttributes, in Guid filterAttributes, in Guid riid, out nint ppvAdapterList);
+    HRESULT CreateAdapterList(uint numAttributes, in Guid filterAttributes, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvAdapterList);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterfactory-getadapterbyluid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAdapterByLuid(in LUID adapterLUID, in Guid riid, out nint ppvAdapter);
+    HRESULT GetAdapterByLuid(in LUID adapterLUID, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterfactory-isnotificationtypesupported
     [PreserveSig]

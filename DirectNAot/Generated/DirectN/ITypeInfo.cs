@@ -72,7 +72,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(nint pUnkOuter, in Guid riid, out nint ppvObj);
+    HRESULT CreateInstance(nint pUnkOuter, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObj);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getmops
     [PreserveSig]

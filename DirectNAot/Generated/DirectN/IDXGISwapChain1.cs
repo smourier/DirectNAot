@@ -23,7 +23,7 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-getcorewindow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCoreWindow(in Guid refiid, out nint ppUnk);
+    HRESULT GetCoreWindow(in Guid refiid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-present1
     [PreserveSig]

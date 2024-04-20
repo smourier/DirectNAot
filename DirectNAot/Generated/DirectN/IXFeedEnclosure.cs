@@ -37,7 +37,7 @@ public partial interface IXFeedEnclosure
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Parent(in Guid riid, out nint ppv);
+    HRESULT Parent(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

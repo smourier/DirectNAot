@@ -12,12 +12,12 @@ public partial interface ID3D12PipelineLibrary : ID3D12DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinelibrary-loadgraphicspipeline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadGraphicsPipeline(PWSTR pName, in D3D12_GRAPHICS_PIPELINE_STATE_DESC pDesc, in Guid riid, out nint ppPipelineState);
+    HRESULT LoadGraphicsPipeline(PWSTR pName, in D3D12_GRAPHICS_PIPELINE_STATE_DESC pDesc, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppPipelineState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinelibrary-loadcomputepipeline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadComputePipeline(PWSTR pName, in D3D12_COMPUTE_PIPELINE_STATE_DESC pDesc, in Guid riid, out nint ppPipelineState);
+    HRESULT LoadComputePipeline(PWSTR pName, in D3D12_COMPUTE_PIPELINE_STATE_DESC pDesc, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppPipelineState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinelibrary-getserializedsize
     [PreserveSig]

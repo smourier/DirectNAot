@@ -37,7 +37,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Parent(in Guid riid, out nint ppv);
+    HRESULT Parent(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -89,7 +89,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItem(uint uiId, in Guid riid, out nint ppv);
+    HRESULT GetItem(uint uiId, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -169,7 +169,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, in Guid riid, out nint ppv);
+    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

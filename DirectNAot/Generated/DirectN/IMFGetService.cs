@@ -8,5 +8,5 @@ public partial interface IMFGetService
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfgetservice-getservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetService(in Guid guidService, in Guid riid, out nint ppvObject);
+    HRESULT GetService(in Guid guidService, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject);
 }

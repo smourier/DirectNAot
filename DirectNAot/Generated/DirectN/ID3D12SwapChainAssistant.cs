@@ -8,11 +8,11 @@ public partial interface ID3D12SwapChainAssistant
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSwapChainObject(in Guid riid, out nint ppv);
+    HRESULT GetSwapChainObject(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentResourceAndCommandQueue(in Guid riidResource, out nint ppvResource, in Guid riidQueue, out nint ppvQueue);
+    HRESULT GetCurrentResourceAndCommandQueue(in Guid riidResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvResource, in Guid riidQueue, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvQueue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

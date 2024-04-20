@@ -7,7 +7,7 @@ public partial interface ID3D12Device9 : ID3D12Device8
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device9-createshadercachesession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateShaderCacheSession(in D3D12_SHADER_CACHE_SESSION_DESC pDesc, in Guid riid, nint/* nint */ ppvSession);
+    HRESULT CreateShaderCacheSession(in D3D12_SHADER_CACHE_SESSION_DESC pDesc, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvSession);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device9-shadercachecontrol
     [PreserveSig]
@@ -17,5 +17,5 @@ public partial interface ID3D12Device9 : ID3D12Device8
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device9-createcommandqueue1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCommandQueue1(in D3D12_COMMAND_QUEUE_DESC pDesc, in Guid CreatorID, in Guid riid, out nint ppCommandQueue);
+    HRESULT CreateCommandQueue1(in D3D12_COMMAND_QUEUE_DESC pDesc, in Guid CreatorID, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppCommandQueue);
 }

@@ -130,7 +130,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgelement-getattributevalue-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributeValue(PWSTR name, in Guid riid, out nint value);
+    HRESULT GetAttributeValue(PWSTR name, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ value);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgelement-getattributevalue-overload
     [PreserveSig]

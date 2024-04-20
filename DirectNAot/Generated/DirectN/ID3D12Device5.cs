@@ -8,7 +8,7 @@ public partial interface ID3D12Device5 : ID3D12Device4
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createlifetimetracker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateLifetimeTracker(ID3D12LifetimeOwner pOwner, in Guid riid, out nint ppvTracker);
+    HRESULT CreateLifetimeTracker(ID3D12LifetimeOwner pOwner, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvTracker);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-removedevice
     [PreserveSig]
@@ -27,12 +27,12 @@ public partial interface ID3D12Device5 : ID3D12Device4
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createmetacommand
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMetaCommand(in Guid CommandId, uint NodeMask, nint/* nint */ pCreationParametersData, nuint CreationParametersDataSizeInBytes, in Guid riid, out nint ppMetaCommand);
+    HRESULT CreateMetaCommand(in Guid CommandId, uint NodeMask, nint/* nint */ pCreationParametersData, nuint CreationParametersDataSizeInBytes, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppMetaCommand);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createstateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStateObject(in D3D12_STATE_OBJECT_DESC pDesc, in Guid riid, out nint ppStateObject);
+    HRESULT CreateStateObject(in D3D12_STATE_OBJECT_DESC pDesc, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppStateObject);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-getraytracingaccelerationstructureprebuildinfo
     [PreserveSig]

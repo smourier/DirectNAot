@@ -8,5 +8,5 @@ public partial interface IDirectManipulationManager2 : IDirectManipulationManage
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager2-createbehavior
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBehavior(in Guid clsid, in Guid riid, out nint @object);
+    HRESULT CreateBehavior(in Guid clsid, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ @object);
 }

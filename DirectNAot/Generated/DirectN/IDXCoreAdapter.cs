@@ -52,5 +52,5 @@ public partial interface IDXCoreAdapter
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-getfactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFactory(in Guid riid, out nint ppvFactory);
+    HRESULT GetFactory(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvFactory);
 }

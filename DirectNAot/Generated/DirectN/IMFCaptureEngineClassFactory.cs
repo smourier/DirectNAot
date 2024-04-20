@@ -8,5 +8,5 @@ public partial interface IMFCaptureEngineClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengineclassfactory-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(in Guid clsid, in Guid riid, out nint ppvObject);
+    HRESULT CreateInstance(in Guid clsid, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject);
 }

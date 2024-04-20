@@ -16,5 +16,5 @@ public partial interface ID3D12DeviceConfiguration
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVersionedRootSignatureDeserializer(nint pBlob, nuint Size, in Guid riid, out nint ppvDeserializer);
+    HRESULT CreateVersionedRootSignatureDeserializer(nint pBlob, nuint Size, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvDeserializer);
 }

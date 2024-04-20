@@ -32,10 +32,10 @@ public partial interface ID3D11Device1 : ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11device1-opensharedresource1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResource1(HANDLE hResource, in Guid returnedInterface, out nint ppResource);
+    HRESULT OpenSharedResource1(HANDLE hResource, in Guid returnedInterface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11device1-opensharedresourcebyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResourceByName(PWSTR lpName, uint dwDesiredAccess, in Guid returnedInterface, out nint ppResource);
+    HRESULT OpenSharedResourceByName(PWSTR lpName, uint dwDesiredAccess, in Guid returnedInterface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResource);
 }

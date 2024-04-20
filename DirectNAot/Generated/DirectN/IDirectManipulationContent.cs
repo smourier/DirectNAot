@@ -18,12 +18,12 @@ public partial interface IDirectManipulationContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getviewport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetViewport(in Guid riid, out nint @object);
+    HRESULT GetViewport(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ @object);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-gettag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTag(in Guid riid, nint/* nint */ @object, nint/* nint */ id);
+    HRESULT GetTag(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ @object, nint/* nint */ id);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-settag
     [PreserveSig]

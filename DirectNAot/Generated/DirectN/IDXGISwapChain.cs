@@ -12,7 +12,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-getbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(uint Buffer, in Guid riid, out nint ppSurface);
+    HRESULT GetBuffer(uint Buffer, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppSurface);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-setfullscreenstate
     [PreserveSig]

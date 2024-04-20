@@ -8,7 +8,7 @@ public partial interface IClassFactory
     // https://learn.microsoft.com/windows/win32/api/unknwn/nf-unknwn-iclassfactory-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(nint pUnkOuter, in Guid riid, out nint ppvObject);
+    HRESULT CreateInstance(nint pUnkOuter, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/unknwn/nf-unknwn-iclassfactory-lockserver
     [PreserveSig]

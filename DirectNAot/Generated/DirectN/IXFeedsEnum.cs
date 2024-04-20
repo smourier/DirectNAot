@@ -9,5 +9,5 @@ public partial interface IXFeedsEnum
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(uint uiIndex, in Guid riid, out nint ppv);
+    HRESULT Item(uint uiIndex, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
 }

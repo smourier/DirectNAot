@@ -22,5 +22,5 @@ public partial interface IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiobject-getparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParent(in Guid riid, out nint ppParent);
+    HRESULT GetParent(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppParent);
 }
