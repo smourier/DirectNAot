@@ -8,7 +8,7 @@ public partial interface IEnumPins
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumpins-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cPins, out IPin ppPins, nint/* nint */ pcFetched);
+    HRESULT Next(uint cPins, out IPin ppPins, nint /* optional uint */ pcFetched);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumpins-skip
     [PreserveSig]

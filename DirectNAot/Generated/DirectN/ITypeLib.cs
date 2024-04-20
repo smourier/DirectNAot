@@ -36,7 +36,7 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-getdocumentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentation(int index, nint/* nint */ pBstrName, nint/* nint */ pBstrDocString, out uint pdwHelpContext, nint/* nint */ pBstrHelpFile);
+    HRESULT GetDocumentation(int index, nint /* optional BSTR */ pBstrName, nint /* optional BSTR */ pBstrDocString, out uint pdwHelpContext, nint /* optional BSTR */ pBstrHelpFile);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-isname
     [PreserveSig]

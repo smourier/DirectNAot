@@ -52,5 +52,5 @@ public partial interface IUserInputString
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iuserinputstring-getimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetImage(uint nSize, nint/* nint */ phBitmap, nint/* nint */ phIcon);
+    HRESULT GetImage(uint nSize, nint /* optional HBITMAP */ phBitmap, nint /* optional HICON */ phIcon);
 }

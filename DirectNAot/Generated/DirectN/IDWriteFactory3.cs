@@ -8,7 +8,7 @@ public partial interface IDWriteFactory3 : IDWriteFactory2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-createglyphrunanalysis
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGlyphRunAnalysis(in DWRITE_GLYPH_RUN glyphRun, nint/* nint */ transform, DWRITE_RENDERING_MODE1 renderingMode, DWRITE_MEASURING_MODE measuringMode, DWRITE_GRID_FIT_MODE gridFitMode, DWRITE_TEXT_ANTIALIAS_MODE antialiasMode, float baselineOriginX, float baselineOriginY, out IDWriteGlyphRunAnalysis glyphRunAnalysis);
+    HRESULT CreateGlyphRunAnalysis(in DWRITE_GLYPH_RUN glyphRun, nint /* optional DWRITE_MATRIX */ transform, DWRITE_RENDERING_MODE1 renderingMode, DWRITE_MEASURING_MODE measuringMode, DWRITE_GRID_FIT_MODE gridFitMode, DWRITE_TEXT_ANTIALIAS_MODE antialiasMode, float baselineOriginX, float baselineOriginY, out IDWriteGlyphRunAnalysis glyphRunAnalysis);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-createcustomrenderingparams
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface IDWriteFactory3 : IDWriteFactory2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-createfontfacereference(wcharconst_filetimeconst_uint32_dwrite_font_simulations_idwritefontfacereference)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFaceReference(PWSTR filePath, nint/* nint */ lastWriteTime, uint faceIndex, DWRITE_FONT_SIMULATIONS fontSimulations, out IDWriteFontFaceReference fontFaceReference);
+    HRESULT CreateFontFaceReference(PWSTR filePath, nint /* optional FILETIME */ lastWriteTime, uint faceIndex, DWRITE_FONT_SIMULATIONS fontSimulations, out IDWriteFontFaceReference fontFaceReference);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-getsystemfontset
     [PreserveSig]

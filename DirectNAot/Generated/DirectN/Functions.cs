@@ -258,7 +258,7 @@ public static partial class Functions
     [LibraryImport("MMDevAPI")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT ActivateAudioInterfaceAsync(PWSTR deviceInterfacePath, in Guid riid, nint/* nint */ activationParams, IActivateAudioInterfaceCompletionHandler completionHandler, out IActivateAudioInterfaceAsyncOperation activationOperation);
+    public static partial HRESULT ActivateAudioInterfaceAsync(PWSTR deviceInterfacePath, in Guid riid, nint /* optional PROPVARIANT */ activationParams, IActivateAudioInterfaceCompletionHandler completionHandler, out IActivateAudioInterfaceAsyncOperation activationOperation);
     
     // https://learn.microsoft.com/windows/win32/api/errors/nf-errors-amgeterrortexta
     [LibraryImport("QUARTZ")]
@@ -382,13 +382,13 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIFileOpenA(out IAVIFile ppfile, PSTR szFile, uint uMode, nint/* nint */ lpHandler);
+    public static partial HRESULT AVIFileOpenA(out IAVIFile ppfile, PSTR szFile, uint uMode, nint /* optional Guid */ lpHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileopenw
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIFileOpenW(out IAVIFile ppfile, PWSTR szFile, uint uMode, nint/* nint */ lpHandler);
+    public static partial HRESULT AVIFileOpenW(out IAVIFile ppfile, PWSTR szFile, uint uMode, nint /* optional Guid */ lpHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilereaddata
     [LibraryImport("AVIFIL32")]
@@ -418,7 +418,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIMakeCompressedStream(out IAVIStream ppsCompressed, IAVIStream ppsSource, in AVICOMPRESSOPTIONS lpOptions, nint/* nint */ pclsidHandler);
+    public static partial HRESULT AVIMakeCompressedStream(out IAVIStream ppsCompressed, IAVIStream ppsSource, in AVICOMPRESSOPTIONS lpOptions, nint /* optional Guid */ pclsidHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avimakefilefromstreams
     [LibraryImport("AVIFIL32")]
@@ -442,7 +442,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVISaveA(PSTR szFile, nint/* nint */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, IAVIStream pfile, in AVICOMPRESSOPTIONS lpOptions);
+    public static partial HRESULT AVISaveA(PSTR szFile, nint /* optional Guid */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, IAVIStream pfile, in AVICOMPRESSOPTIONS lpOptions);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisaveoptions
     [LibraryImport("AVIFIL32")]
@@ -460,19 +460,19 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVISaveVA(PSTR szFile, nint/* nint */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, in IAVIStream ppavi, in AVICOMPRESSOPTIONS plpOptions);
+    public static partial HRESULT AVISaveVA(PSTR szFile, nint /* optional Guid */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, in IAVIStream ppavi, in AVICOMPRESSOPTIONS plpOptions);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisavevw
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVISaveVW(PWSTR szFile, nint/* nint */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, in IAVIStream ppavi, in AVICOMPRESSOPTIONS plpOptions);
+    public static partial HRESULT AVISaveVW(PWSTR szFile, nint /* optional Guid */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, in IAVIStream ppavi, in AVICOMPRESSOPTIONS plpOptions);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisavew
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVISaveW(PWSTR szFile, nint/* nint */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, IAVIStream pfile, in AVICOMPRESSOPTIONS lpOptions);
+    public static partial HRESULT AVISaveW(PWSTR szFile, nint /* optional Guid */ pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, IAVIStream pfile, in AVICOMPRESSOPTIONS lpOptions);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamaddref
     [LibraryImport("AVIFIL32")]
@@ -490,7 +490,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamCreate(out IAVIStream ppavi, int lParam1, int lParam2, nint/* nint */ pclsidHandler);
+    public static partial HRESULT AVIStreamCreate(out IAVIStream ppavi, int lParam1, int lParam2, nint /* optional Guid */ pclsidHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamendstreaming
     [LibraryImport("AVIFIL32")]
@@ -520,7 +520,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial IGetFrame AVIStreamGetFrameOpen(IAVIStream pavi, nint/* nint */ lpbiWanted);
+    public static partial IGetFrame AVIStreamGetFrameOpen(IAVIStream pavi, nint /* optional BITMAPINFOHEADER */ lpbiWanted);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreaminfoa
     [LibraryImport("AVIFIL32")]
@@ -544,31 +544,31 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamOpenFromFileA(out IAVIStream ppavi, PSTR szFile, uint fccType, int lParam, uint mode, nint/* nint */ pclsidHandler);
+    public static partial HRESULT AVIStreamOpenFromFileA(out IAVIStream ppavi, PSTR szFile, uint fccType, int lParam, uint mode, nint /* optional Guid */ pclsidHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamopenfromfilew
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamOpenFromFileW(out IAVIStream ppavi, PWSTR szFile, uint fccType, int lParam, uint mode, nint/* nint */ pclsidHandler);
+    public static partial HRESULT AVIStreamOpenFromFileW(out IAVIStream ppavi, PWSTR szFile, uint fccType, int lParam, uint mode, nint /* optional Guid */ pclsidHandler);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamread
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamRead(IAVIStream pavi, int lStart, int lSamples, nint/* nint */ lpBuffer, int cbBuffer, nint/* nint */ plBytes, nint/* nint */ plSamples);
+    public static partial HRESULT AVIStreamRead(IAVIStream pavi, int lStart, int lSamples, nint /* optional void */ lpBuffer, int cbBuffer, nint /* optional int */ plBytes, nint /* optional int */ plSamples);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamreaddata
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamReadData(IAVIStream pavi, uint fcc, nint/* nint */ lp, ref int lpcb);
+    public static partial HRESULT AVIStreamReadData(IAVIStream pavi, uint fcc, nint /* optional void */ lp, ref int lpcb);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamreadformat
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamReadFormat(IAVIStream pavi, int lPos, nint/* nint */ lpFormat, ref int lpcbFormat);
+    public static partial HRESULT AVIStreamReadFormat(IAVIStream pavi, int lPos, nint /* optional void */ lpFormat, ref int lpcbFormat);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamrelease
     [LibraryImport("AVIFIL32")]
@@ -604,7 +604,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamWrite(IAVIStream pavi, int lStart, int lSamples, nint lpBuffer, int cbBuffer, uint dwFlags, nint/* nint */ plSampWritten, nint/* nint */ plBytesWritten);
+    public static partial HRESULT AVIStreamWrite(IAVIStream pavi, int lStart, int lSamples, nint lpBuffer, int cbBuffer, uint dwFlags, nint /* optional int */ plSampWritten, nint /* optional int */ plBytesWritten);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamwritedata
     [LibraryImport("AVIFIL32")]
@@ -654,7 +654,7 @@ public static partial class Functions
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT CoRegisterMessageFilter(IMessageFilter lpMessageFilter, nint/* nint */ lplpMessageFilter);
+    public static partial HRESULT CoRegisterMessageFilter(IMessageFilter lpMessageFilter, nint /* optional IMessageFilter */ lplpMessageFilter);
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
@@ -706,7 +706,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/xapofx/nf-xapofx-createfx
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
-    public static partial HRESULT CreateFX(in Guid clsid, out nint pEffect, nint/* nint */ pInitDat, uint InitDataByteSize);
+    public static partial HRESULT CreateFX(in Guid clsid, out nint pEffect, nint /* optional void */ pInitDat, uint InitDataByteSize);
     
     // https://learn.microsoft.com/windows/win32/api/hrtfapoapi/nf-hrtfapoapi-createhrtfapo
     [LibraryImport("HrtfApo")]
@@ -761,19 +761,19 @@ public static partial class Functions
     [LibraryImport("d2d1")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT D2D1CreateDevice(IDXGIDevice dxgiDevice, nint/* nint */ creationProperties, out ID2D1Device d2dDevice);
+    public static partial HRESULT D2D1CreateDevice(IDXGIDevice dxgiDevice, nint /* optional D2D1_CREATION_PROPERTIES */ creationProperties, out ID2D1Device d2dDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-d2d1createdevicecontext
     [LibraryImport("d2d1")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT D2D1CreateDeviceContext(IDXGISurface dxgiSurface, nint/* nint */ creationProperties, out ID2D1DeviceContext d2dDeviceContext);
+    public static partial HRESULT D2D1CreateDeviceContext(IDXGISurface dxgiSurface, nint /* optional D2D1_CREATION_PROPERTIES */ creationProperties, out ID2D1DeviceContext d2dDeviceContext);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-d2d1createfactory
     [LibraryImport("d2d1")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, in Guid riid, nint/* nint */ pFactoryOptions, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppIFactory);
+    public static partial HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, in Guid riid, nint /* optional D2D1_FACTORY_OPTIONS */ pFactoryOptions, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppIFactory);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-d2d1getgradientmeshinteriorpointsfromcoonspatch
     [LibraryImport("d2d1")]
@@ -825,12 +825,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10compileeffectfrommemory
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10CompileEffectFromMemory(nint pData, nuint DataLength, PSTR pSrcFileName, nint/* nint */ pDefines, ID3DInclude pInclude, uint HLSLFlags, uint FXFlags, out ID3DBlob ppCompiledEffect, nint/* nint */ ppErrors);
+    public static partial HRESULT D3D10CompileEffectFromMemory(nint pData, nuint DataLength, PSTR pSrcFileName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, uint HLSLFlags, uint FXFlags, out ID3DBlob ppCompiledEffect, nint /* optional ID3DBlob */ ppErrors);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10compileshader
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10CompileShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint/* nint */ pDefines, ID3DInclude pInclude, PSTR pFunctionName, PSTR pProfile, uint Flags, out ID3DBlob ppShader, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3D10CompileShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, PSTR pFunctionName, PSTR pProfile, uint Flags, out ID3DBlob ppShader, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createblob
     [LibraryImport("d3d10")]
@@ -840,22 +840,22 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createdevice
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10CreateDevice(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, uint SDKVersion, nint/* nint */ ppDevice);
+    public static partial HRESULT D3D10CreateDevice(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, uint SDKVersion, nint /* optional ID3D10Device */ ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-d3d10createdevice1
     [LibraryImport("d3d10_1")]
     [PreserveSig]
-    public static partial HRESULT D3D10CreateDevice1(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, D3D10_FEATURE_LEVEL1 HardwareLevel, uint SDKVersion, nint/* nint */ ppDevice);
+    public static partial HRESULT D3D10CreateDevice1(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, D3D10_FEATURE_LEVEL1 HardwareLevel, uint SDKVersion, nint /* optional ID3D10Device1 */ ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createdeviceandswapchain
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10CreateDeviceAndSwapChain(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, uint SDKVersion, nint/* nint */ pSwapChainDesc, nint/* nint */ ppSwapChain, nint/* nint */ ppDevice);
+    public static partial HRESULT D3D10CreateDeviceAndSwapChain(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, uint SDKVersion, nint /* optional DXGI_SWAP_CHAIN_DESC */ pSwapChainDesc, nint /* optional IDXGISwapChain */ ppSwapChain, nint /* optional ID3D10Device */ ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-d3d10createdeviceandswapchain1
     [LibraryImport("d3d10_1")]
     [PreserveSig]
-    public static partial HRESULT D3D10CreateDeviceAndSwapChain1(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, D3D10_FEATURE_LEVEL1 HardwareLevel, uint SDKVersion, nint/* nint */ pSwapChainDesc, nint/* nint */ ppSwapChain, nint/* nint */ ppDevice);
+    public static partial HRESULT D3D10CreateDeviceAndSwapChain1(IDXGIAdapter pAdapter, D3D10_DRIVER_TYPE DriverType, HMODULE Software, uint Flags, D3D10_FEATURE_LEVEL1 HardwareLevel, uint SDKVersion, nint /* optional DXGI_SWAP_CHAIN_DESC */ pSwapChainDesc, nint /* optional IDXGISwapChain */ ppSwapChain, nint /* optional ID3D10Device1 */ ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10createeffectfrommemory
     [LibraryImport("d3d10")]
@@ -920,7 +920,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10preprocessshader
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10PreprocessShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint/* nint */ pDefines, ID3DInclude pInclude, out ID3DBlob ppShaderText, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3D10PreprocessShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, out ID3DBlob ppShaderText, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10reflectshader
     [LibraryImport("d3d10")]
@@ -971,17 +971,17 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-d3d11createdevice
     [LibraryImport("d3d11")]
     [PreserveSig]
-    public static partial HRESULT D3D11CreateDevice(IDXGIAdapter pAdapter, D3D_DRIVER_TYPE DriverType, HMODULE Software, D3D11_CREATE_DEVICE_FLAG Flags, nint/* nint */ pFeatureLevels, uint FeatureLevels, uint SDKVersion, nint/* nint */ ppDevice, nint/* nint */ pFeatureLevel, nint/* nint */ ppImmediateContext);
+    public static partial HRESULT D3D11CreateDevice(IDXGIAdapter pAdapter, D3D_DRIVER_TYPE DriverType, HMODULE Software, D3D11_CREATE_DEVICE_FLAG Flags, nint /* optional D3D_FEATURE_LEVEL */ pFeatureLevels, uint FeatureLevels, uint SDKVersion, nint /* optional ID3D11Device */ ppDevice, nint /* optional D3D_FEATURE_LEVEL */ pFeatureLevel, nint /* optional ID3D11DeviceContext */ ppImmediateContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain
     [LibraryImport("d3d11")]
     [PreserveSig]
-    public static partial HRESULT D3D11CreateDeviceAndSwapChain(IDXGIAdapter pAdapter, D3D_DRIVER_TYPE DriverType, HMODULE Software, D3D11_CREATE_DEVICE_FLAG Flags, nint/* nint */ pFeatureLevels, uint FeatureLevels, uint SDKVersion, nint/* nint */ pSwapChainDesc, nint/* nint */ ppSwapChain, nint/* nint */ ppDevice, nint/* nint */ pFeatureLevel, nint/* nint */ ppImmediateContext);
+    public static partial HRESULT D3D11CreateDeviceAndSwapChain(IDXGIAdapter pAdapter, D3D_DRIVER_TYPE DriverType, HMODULE Software, D3D11_CREATE_DEVICE_FLAG Flags, nint /* optional D3D_FEATURE_LEVEL */ pFeatureLevels, uint FeatureLevels, uint SDKVersion, nint /* optional DXGI_SWAP_CHAIN_DESC */ pSwapChainDesc, nint /* optional IDXGISwapChain */ ppSwapChain, nint /* optional ID3D11Device */ ppDevice, nint /* optional D3D_FEATURE_LEVEL */ pFeatureLevel, nint /* optional ID3D11DeviceContext */ ppImmediateContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11on12/nf-d3d11on12-d3d11on12createdevice
     [LibraryImport("d3d11")]
     [PreserveSig]
-    public static partial HRESULT D3D11On12CreateDevice(nint pDevice, uint Flags, nint/* nint */ pFeatureLevels, uint FeatureLevels, nint/* nint */ ppCommandQueues, uint NumQueues, uint NodeMask, nint/* nint */ ppDevice, nint/* nint */ ppImmediateContext, nint/* nint */ pChosenFeatureLevel);
+    public static partial HRESULT D3D11On12CreateDevice(nint pDevice, uint Flags, nint /* optional D3D_FEATURE_LEVEL */ pFeatureLevels, uint FeatureLevels, nint /* optional nint */ ppCommandQueues, uint NumQueues, uint NodeMask, nint /* optional ID3D11Device */ ppDevice, nint /* optional ID3D11DeviceContext */ ppImmediateContext, nint /* optional D3D_FEATURE_LEVEL */ pChosenFeatureLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12createdevice
     [LibraryImport("d3d12")]
@@ -1001,7 +1001,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12enableexperimentalfeatures
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12EnableExperimentalFeatures(uint NumFeatures, in Guid pIIDs, nint/* nint */ pConfigurationStructs, nint/* nint */ pConfigurationStructSizes);
+    public static partial HRESULT D3D12EnableExperimentalFeatures(uint NumFeatures, in Guid pIIDs, nint /* optional void */ pConfigurationStructs, nint /* optional uint */ pConfigurationStructSizes);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12getdebuginterface
     [LibraryImport("d3d12")]
@@ -1016,27 +1016,27 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12serializerootsignature
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12SerializeRootSignature(in D3D12_ROOT_SIGNATURE_DESC pRootSignature, D3D_ROOT_SIGNATURE_VERSION Version, out ID3DBlob ppBlob, nint/* nint */ ppErrorBlob);
+    public static partial HRESULT D3D12SerializeRootSignature(in D3D12_ROOT_SIGNATURE_DESC pRootSignature, D3D_ROOT_SIGNATURE_VERSION Version, out ID3DBlob ppBlob, nint /* optional ID3DBlob */ ppErrorBlob);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12serializeversionedrootsignature
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pRootSignature, out ID3DBlob ppBlob, nint/* nint */ ppErrorBlob);
+    public static partial HRESULT D3D12SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pRootSignature, out ID3DBlob ppBlob, nint /* optional ID3DBlob */ ppErrorBlob);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DCompile(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint/* nint */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3DCompile(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile2
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DCompile2(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint/* nint */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, uint SecondaryDataFlags, nint/* nint */ pSecondaryData, nuint SecondaryDataSize, out ID3DBlob ppCode, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3DCompile2(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, uint SecondaryDataFlags, nint /* optional void */ pSecondaryData, nuint SecondaryDataSize, out ID3DBlob ppCode, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompilefromfile
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DCompileFromFile(PWSTR pFileName, nint/* nint */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3DCompileFromFile(PWSTR pFileName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompressshaders
     [LibraryImport("D3DCOMPILER_47")]
@@ -1061,7 +1061,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddecompressshaders
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DDecompressShaders(nint pSrcData, nuint SrcDataSize, uint uNumShaders, uint uStartIndex, nint/* nint */ pIndices, uint uFlags, out ID3DBlob ppShaders, nint/* nint */ pTotalShaders);
+    public static partial HRESULT D3DDecompressShaders(nint pSrcData, nuint SrcDataSize, uint uNumShaders, uint uStartIndex, nint /* optional uint */ pIndices, uint uFlags, out ID3DBlob ppShaders, nint /* optional uint */ pTotalShaders);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble
     [LibraryImport("D3DCOMPILER_47")]
@@ -1082,7 +1082,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassembleregion
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DDisassembleRegion(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR szComments, nuint StartByteOffset, nuint NumInsts, nint/* nint */ pFinishByteOffset, out ID3DBlob ppDisassembly);
+    public static partial HRESULT D3DDisassembleRegion(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR szComments, nuint StartByteOffset, nuint NumInsts, nint /* optional nuint */ pFinishByteOffset, out ID3DBlob ppDisassembly);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetblobpart
     [LibraryImport("D3DCOMPILER_47")]
@@ -1112,7 +1112,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgettraceinstructionoffsets
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DGetTraceInstructionOffsets(nint pSrcData, nuint SrcDataSize, uint Flags, nuint StartInstIndex, nuint NumInsts, nint/* nint */ pOffsets, nint/* nint */ pTotalInsts);
+    public static partial HRESULT D3DGetTraceInstructionOffsets(nint pSrcData, nuint SrcDataSize, uint Flags, nuint StartInstIndex, nuint NumInsts, nint /* optional nuint */ pOffsets, nint /* optional nuint */ pTotalInsts);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dloadmodule
     [LibraryImport("D3DCOMPILER_47")]
@@ -1158,7 +1158,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dpreprocess
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DPreprocess(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint/* nint */ pDefines, ID3DInclude pInclude, out ID3DBlob ppCodeText, nint/* nint */ ppErrorMsgs);
+    public static partial HRESULT D3DPreprocess(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO */ pDefines, ID3DInclude pInclude, out ID3DBlob ppCodeText, nint /* optional ID3DBlob */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreadfiletoblob
     [LibraryImport("D3DCOMPILER_47")]
@@ -1271,7 +1271,7 @@ public static partial class Functions
     [LibraryImport("dcomp")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT DCompositionCreateSurfaceHandle(uint desiredAccess, nint/* nint */ securityAttributes, out HANDLE surfaceHandle);
+    public static partial HRESULT DCompositionCreateSurfaceHandle(uint desiredAccess, nint /* optional SECURITY_ATTRIBUTES */ securityAttributes, out HANDLE surfaceHandle);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositiongetframeid
     [LibraryImport("dcomp")]
@@ -1281,7 +1281,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositiongetstatistics
     [LibraryImport("dcomp")]
     [PreserveSig]
-    public static partial HRESULT DCompositionGetStatistics(ulong frameId, out COMPOSITION_FRAME_STATS frameStats, uint targetIdCount, nint/* nint */ targetIds, nint/* nint */ actualTargetIdCount);
+    public static partial HRESULT DCompositionGetStatistics(ulong frameId, out COMPOSITION_FRAME_STATS frameStats, uint targetIdCount, nint /* optional COMPOSITION_TARGET_ID */ targetIds, nint /* optional uint */ actualTargetIdCount);
     
     [LibraryImport("dcomp")]
     [PreserveSig]
@@ -1290,7 +1290,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-dcompositionwaitforcompositorclock
     [LibraryImport("dcomp")]
     [PreserveSig]
-    public static partial uint DCompositionWaitForCompositorClock(uint count, nint/* nint */ handles, uint timeoutInMs);
+    public static partial uint DCompositionWaitForCompositorClock(uint count, nint /* optional HANDLE */ handles, uint timeoutInMs);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-defdriverproc
     [LibraryImport("WINMM")]
@@ -1302,7 +1302,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int DescribePixelFormat(HDC hdc, int iPixelFormat, uint nBytes, nint/* nint */ ppfd);
+    public static partial int DescribePixelFormat(HDC hdc, int iPixelFormat, uint nBytes, nint /* optional PIXELFORMATDESCRIPTOR */ ppfd);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-direct3dcreate9
     [LibraryImport("d3d9")]
@@ -1359,40 +1359,40 @@ public static partial class Functions
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCaptureCreate(nint/* nint */ pcGuidDevice, out IDirectSoundCapture ppDSC, nint pUnkOuter);
+    public static partial HRESULT DirectSoundCaptureCreate(nint /* optional Guid */ pcGuidDevice, out IDirectSoundCapture ppDSC, nint pUnkOuter);
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCaptureCreate8(nint/* nint */ pcGuidDevice, out IDirectSoundCapture ppDSC8, nint pUnkOuter);
+    public static partial HRESULT DirectSoundCaptureCreate8(nint /* optional Guid */ pcGuidDevice, out IDirectSoundCapture ppDSC8, nint pUnkOuter);
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCaptureEnumerateA(LPDSENUMCALLBACKA pDSEnumCallback, nint/* nint */ pContext);
+    public static partial HRESULT DirectSoundCaptureEnumerateA(LPDSENUMCALLBACKA pDSEnumCallback, nint /* optional void */ pContext);
     
     [LibraryImport("DSOUND", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCaptureEnumerateW(LPDSENUMCALLBACKW pDSEnumCallback, nint/* nint */ pContext);
+    public static partial HRESULT DirectSoundCaptureEnumerateW(LPDSENUMCALLBACKW pDSEnumCallback, nint /* optional void */ pContext);
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCreate(nint/* nint */ pcGuidDevice, out IDirectSound ppDS, nint pUnkOuter);
+    public static partial HRESULT DirectSoundCreate(nint /* optional Guid */ pcGuidDevice, out IDirectSound ppDS, nint pUnkOuter);
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundCreate8(nint/* nint */ pcGuidDevice, out IDirectSound8 ppDS8, nint pUnkOuter);
+    public static partial HRESULT DirectSoundCreate8(nint /* optional Guid */ pcGuidDevice, out IDirectSound8 ppDS8, nint pUnkOuter);
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundEnumerateA(LPDSENUMCALLBACKA pDSEnumCallback, nint/* nint */ pContext);
+    public static partial HRESULT DirectSoundEnumerateA(LPDSENUMCALLBACKA pDSEnumCallback, nint /* optional void */ pContext);
     
     [LibraryImport("DSOUND", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial HRESULT DirectSoundEnumerateW(LPDSENUMCALLBACKW pDSEnumCallback, nint/* nint */ pContext);
+    public static partial HRESULT DirectSoundEnumerateW(LPDSENUMCALLBACKW pDSEnumCallback, nint /* optional void */ pContext);
     
     // https://learn.microsoft.com/windows/win32/DevNotes/directsoundfullduplexcreate
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT DirectSoundFullDuplexCreate(nint/* nint */ pcGuidCaptureDevice, nint/* nint */ pcGuidRenderDevice, in DSCBUFFERDESC pcDSCBufferDesc, in DSBUFFERDESC pcDSBufferDesc, HWND hWnd, uint dwLevel, out IDirectSoundFullDuplex ppDSFD, out IDirectSoundCaptureBuffer8 ppDSCBuffer8, out IDirectSoundBuffer8 ppDSBuffer8, nint pUnkOuter);
+    public static partial HRESULT DirectSoundFullDuplexCreate(nint /* optional Guid */ pcGuidCaptureDevice, nint /* optional Guid */ pcGuidRenderDevice, in DSCBUFFERDESC pcDSCBufferDesc, in DSBUFFERDESC pcDSBufferDesc, HWND hWnd, uint dwLevel, out IDirectSoundFullDuplex ppDSFD, out IDirectSoundCaptureBuffer8 ppDSCBuffer8, out IDirectSoundBuffer8 ppDSBuffer8, nint pUnkOuter);
     
     // https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmoenum
     [LibraryImport("msdmo")]
@@ -1445,7 +1445,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool DrawDibDraw(nint hdd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, nint/* nint */ lpbi, nint/* nint */ lpBits, int xSrc, int ySrc, int dxSrc, int dySrc, uint wFlags);
+    public static partial bool DrawDibDraw(nint hdd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, nint /* optional BITMAPINFOHEADER */ lpbi, nint /* optional void */ lpBits, int xSrc, int ySrc, int dxSrc, int dySrc, uint wFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibend
     [LibraryImport("MSVFW32")]
@@ -1662,7 +1662,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT DwmSetIconicLivePreviewBitmap(HWND hwnd, HBITMAP hbmp, nint/* nint */ pptClient, uint dwSITFlags);
+    public static partial HRESULT DwmSetIconicLivePreviewBitmap(HWND hwnd, HBITMAP hbmp, nint /* optional FoundationPOINT */ pptClient, uint dwSITFlags);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmseticonicthumbnail
     [LibraryImport("dwmapi")]
@@ -3332,7 +3332,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetRegionData(ref GpRegion region, nint /* byte array */ buffer, uint bufferSize, nint/* nint */ sizeFilled);
+    public static partial Status GdipGetRegionData(ref GpRegion region, nint /* byte array */ buffer, uint bufferSize, nint /* optional uint */ sizeFilled);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4334,7 +4334,7 @@ public static partial class Functions
     
     [LibraryImport("DSOUND")]
     [PreserveSig]
-    public static partial HRESULT GetDeviceID(nint/* nint */ pGuidSrc, out Guid pGuidDest);
+    public static partial HRESULT GetDeviceID(nint /* optional Guid */ pGuidSrc, out Guid pGuidDest);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-getdrivermodulehandle
     [LibraryImport("WINMM")]
@@ -4346,7 +4346,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint GetEnhMetaFilePixelFormat(HENHMETAFILE hemf, uint cbBuffer, nint/* nint */ ppfd);
+    public static partial uint GetEnhMetaFilePixelFormat(HENHMETAFILE hemf, uint cbBuffer, nint /* optional PIXELFORMATDESCRIPTOR */ ppfd);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getopenfilenamepreviewa
     [LibraryImport("MSVFW32")]
@@ -6327,14 +6327,14 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint ICCompress(HIC hic, uint dwFlags, in BITMAPINFOHEADER lpbiOutput, nint lpData, in BITMAPINFOHEADER lpbiInput, nint lpBits, nint/* nint */ lpckid, nint/* nint */ lpdwFlags, int lFrameNum, uint dwFrameSize, uint dwQuality, nint/* nint */ lpbiPrev, nint/* nint */ lpPrev);
+    public static partial uint ICCompress(HIC hic, uint dwFlags, in BITMAPINFOHEADER lpbiOutput, nint lpData, in BITMAPINFOHEADER lpbiInput, nint lpBits, nint /* optional uint */ lpckid, nint /* optional uint */ lpdwFlags, int lFrameNum, uint dwFrameSize, uint dwQuality, nint /* optional BITMAPINFOHEADER */ lpbiPrev, nint /* optional void */ lpPrev);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompressorchoose
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool ICCompressorChoose(HWND hwnd, uint uiFlags, nint/* nint */ pvIn, nint/* nint */ lpData, ref COMPVARS pc, PSTR lpszTitle);
+    public static partial bool ICCompressorChoose(HWND hwnd, uint uiFlags, nint /* optional void */ pvIn, nint /* optional void */ lpData, ref COMPVARS pc, PSTR lpszTitle);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompressorfree
     [LibraryImport("MSVFW32")]
@@ -6352,7 +6352,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint ICDraw(HIC hic, uint dwFlags, nint lpFormat, nint/* nint */ lpData, uint cbData, int lTime);
+    public static partial uint ICDraw(HIC hic, uint dwFlags, nint lpFormat, nint /* optional void */ lpData, uint cbData, int lTime);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icdrawbegin
     [LibraryImport("MSVFW32")]
@@ -6376,13 +6376,13 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HANDLE ICImageCompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint/* nint */ lpbiOut, int lQuality, nint/* nint */ plSize);
+    public static partial HANDLE ICImageCompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO */ lpbiOut, int lQuality, nint /* optional int */ plSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagedecompress
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HANDLE ICImageDecompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint/* nint */ lpbiOut);
+    public static partial HANDLE ICImageDecompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO */ lpbiOut);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icinfo
     [LibraryImport("MSVFW32")]
@@ -6402,7 +6402,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HIC ICLocate(uint fccType, uint fccHandler, in BITMAPINFOHEADER lpbiIn, nint/* nint */ lpbiOut, ushort wFlags);
+    public static partial HIC ICLocate(uint fccType, uint fccHandler, in BITMAPINFOHEADER lpbiIn, nint /* optional BITMAPINFOHEADER */ lpbiOut, ushort wFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icopen
     [LibraryImport("MSVFW32")]
@@ -6433,7 +6433,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void ICSeqCompressFrame(in COMPVARS pc, uint uiFlags, nint lpBits, [MarshalAs(UnmanagedType.U4)] out bool pfKey, nint/* nint */ plSize);
+    public static partial void ICSeqCompressFrame(in COMPVARS pc, uint uiFlags, nint lpBits, [MarshalAs(UnmanagedType.U4)] out bool pfKey, nint /* optional int */ plSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframeend
     [LibraryImport("MSVFW32")]
@@ -6551,11 +6551,11 @@ public static partial class Functions
     
     [LibraryImport("ksproxy.ax")]
     [PreserveSig]
-    public static partial HRESULT KsResolveRequiredAttributes(in KSDATAFORMAT DataRange, nint/* nint */ Attributes);
+    public static partial HRESULT KsResolveRequiredAttributes(in KSDATAFORMAT DataRange, nint /* optional KSMULTIPLE_ITEM */ Attributes);
     
     [LibraryImport("ksproxy.ax")]
     [PreserveSig]
-    public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint/* nint */ InBuffer, uint InLength, nint/* nint */ OutBuffer, uint OutLength, nint/* nint */ BytesReturned);
+    public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint /* optional void */ InBuffer, uint InLength, nint /* optional void */ OutBuffer, uint OutLength, nint /* optional uint */ BytesReturned);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -6662,7 +6662,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFAddPeriodicCallback(MFPERIODICCALLBACK Callback, nint pContext, nint/* nint */ pdwKey);
+    public static partial HRESULT MFAddPeriodicCallback(MFPERIODICCALLBACK Callback, nint pContext, nint /* optional uint */ pdwKey);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfallocateserialworkqueue
     [LibraryImport("MFPlat")]
@@ -6716,7 +6716,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCalculateBitmapImageSize(in BITMAPINFOHEADER pBMIH, uint cbBufSize, out uint pcbImageSize, nint/* nint */ pbKnown);
+    public static partial HRESULT MFCalculateBitmapImageSize(in BITMAPINFOHEADER pBMIH, uint cbBufSize, out uint pcbImageSize, nint /* optional bool */ pbKnown);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcalculateimagesize
     [LibraryImport("MFPlat")]
@@ -7052,7 +7052,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreateMediaEvent(uint met, in Guid guidExtendedType, HRESULT hrStatus, nint/* nint */ pvValue, out IMFMediaEvent ppEvent);
+    public static partial HRESULT MFCreateMediaEvent(uint met, in Guid guidExtendedType, HRESULT hrStatus, nint /* optional PROPVARIANT */ pvValue, out IMFMediaEvent ppEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediaextensionactivate
     [LibraryImport("MFPlat")]
@@ -7112,7 +7112,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreateMFVideoFormatFromMFMediaType(IMFMediaType pMFType, out MFVIDEOFORMAT ppMFVF, nint/* nint */ pcbSize);
+    public static partial HRESULT MFCreateMFVideoFormatFromMFMediaType(IMFMediaType pMFType, out MFVIDEOFORMAT ppMFVF, nint /* optional uint */ pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemp3mediasink
     [LibraryImport("MF")]
@@ -7160,7 +7160,7 @@ public static partial class Functions
     [LibraryImport("MF")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreatePMPMediaSession(uint dwCreationFlags, IMFAttributes pConfiguration, out IMFMediaSession ppMediaSession, nint/* nint */ ppEnablerActivate);
+    public static partial HRESULT MFCreatePMPMediaSession(uint dwCreationFlags, IMFAttributes pConfiguration, out IMFMediaSession ppMediaSession, nint /* optional IMFActivate */ ppEnablerActivate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepmpserver
     [LibraryImport("MF")]
@@ -7178,7 +7178,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreatePresentationDescriptor(uint cStreamDescriptors, nint/* nint */ apStreamDescriptors, out IMFPresentationDescriptor ppPresentationDescriptor);
+    public static partial HRESULT MFCreatePresentationDescriptor(uint cStreamDescriptors, nint /* optional IMFStreamDescriptor */ apStreamDescriptors, out IMFPresentationDescriptor ppPresentationDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreatepresentationdescriptorfromasfprofile
     [LibraryImport("MF")]
@@ -7476,13 +7476,13 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-mfcreatevirtualcamera
     [LibraryImport("MFSENSORGROUP")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVirtualCamera(MFVirtualCameraType type, MFVirtualCameraLifetime lifetime, MFVirtualCameraAccess access, PWSTR friendlyName, PWSTR sourceId, nint/* nint */ categories, uint categoryCount, out IMFVirtualCamera virtualCamera);
+    public static partial HRESULT MFCreateVirtualCamera(MFVirtualCameraType type, MFVirtualCameraLifetime lifetime, MFVirtualCameraAccess access, PWSTR friendlyName, PWSTR sourceId, nint /* optional Guid */ categories, uint categoryCount, out IMFVirtualCamera virtualCamera);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatewaveformatexfrommfmediatype
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreateWaveFormatExFromMFMediaType(IMFMediaType pMFType, out WAVEFORMATEX ppWF, nint/* nint */ pcbSize, uint Flags);
+    public static partial HRESULT MFCreateWaveFormatExFromMFMediaType(IMFMediaType pMFType, out WAVEFORMATEX ppWF, nint /* optional uint */ pcbSize, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatewavemediasink
     [LibraryImport("mfsrcsnk")]
@@ -7704,25 +7704,25 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFInitMediaTypeFromMPEG1VideoInfo(IMFMediaType pMFType, in MPEG1VIDEOINFO pMP1VI, uint cbBufSize, nint/* nint */ pSubtype);
+    public static partial HRESULT MFInitMediaTypeFromMPEG1VideoInfo(IMFMediaType pMFType, in MPEG1VIDEOINFO pMP1VI, uint cbBufSize, nint /* optional Guid */ pSubtype);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefrommpeg2videoinfo
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFInitMediaTypeFromMPEG2VideoInfo(IMFMediaType pMFType, in MPEG2VIDEOINFO pMP2VI, uint cbBufSize, nint/* nint */ pSubtype);
+    public static partial HRESULT MFInitMediaTypeFromMPEG2VideoInfo(IMFMediaType pMFType, in MPEG2VIDEOINFO pMP2VI, uint cbBufSize, nint /* optional Guid */ pSubtype);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromvideoinfoheader
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFInitMediaTypeFromVideoInfoHeader(IMFMediaType pMFType, in VIDEOINFOHEADER pVIH, uint cbBufSize, nint/* nint */ pSubtype);
+    public static partial HRESULT MFInitMediaTypeFromVideoInfoHeader(IMFMediaType pMFType, in VIDEOINFOHEADER pVIH, uint cbBufSize, nint /* optional Guid */ pSubtype);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromvideoinfoheader2
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFInitMediaTypeFromVideoInfoHeader2(IMFMediaType pMFType, in VIDEOINFOHEADER2 pVIH2, uint cbBufSize, nint/* nint */ pSubtype);
+    public static partial HRESULT MFInitMediaTypeFromVideoInfoHeader2(IMFMediaType pMFType, in VIDEOINFOHEADER2 pVIH2, uint cbBufSize, nint /* optional Guid */ pSubtype);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromwaveformatex
     [LibraryImport("MFPlat")]
@@ -7782,7 +7782,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFLockDXGIDeviceManager(nint/* nint */ pResetToken, out IMFDXGIDeviceManager ppManager);
+    public static partial HRESULT MFLockDXGIDeviceManager(nint /* optional uint */ pResetToken, out IMFDXGIDeviceManager ppManager);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mflockplatform
     [LibraryImport("MFPlat")]
@@ -7818,13 +7818,13 @@ public static partial class Functions
     [LibraryImport("MFPlay")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFPCreateMediaPlayer(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fStartPlayback, MFP_CREATION_OPTIONS creationOptions, IMFPMediaPlayerCallback pCallback, HWND hWnd, nint/* nint */ ppMediaPlayer);
+    public static partial HRESULT MFPCreateMediaPlayer(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fStartPlayback, MFP_CREATION_OPTIONS creationOptions, IMFPMediaPlayerCallback pCallback, HWND hWnd, nint /* optional IMFPMediaPlayer */ ppMediaPlayer);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputwaitingworkitem
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFPutWaitingWorkItem(HANDLE hEvent, int Priority, IMFAsyncResult pResult, nint/* nint */ pKey);
+    public static partial HRESULT MFPutWaitingWorkItem(HANDLE hEvent, int Priority, IMFAsyncResult pResult, nint /* optional ulong */ pKey);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputworkitem
     [LibraryImport("MFPlat")]
@@ -7884,13 +7884,13 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFScheduleWorkItem(IMFAsyncCallback pCallback, nint pState, long Timeout, nint/* nint */ pKey);
+    public static partial HRESULT MFScheduleWorkItem(IMFAsyncCallback pCallback, nint pState, long Timeout, nint /* optional ulong */ pKey);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfscheduleworkitemex
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFScheduleWorkItemEx(IMFAsyncResult pResult, long Timeout, nint/* nint */ pKey);
+    public static partial HRESULT MFScheduleWorkItemEx(IMFAsyncResult pResult, long Timeout, nint /* optional ulong */ pKey);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-mfserializeattributestostream
     [LibraryImport("MFPlat")]
@@ -7932,25 +7932,25 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFTEnum(Guid guidCategory, uint Flags, nint/* nint */ pInputType, nint/* nint */ pOutputType, IMFAttributes pAttributes, out Guid ppclsidMFT, out uint pcMFTs);
+    public static partial HRESULT MFTEnum(Guid guidCategory, uint Flags, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputType, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputType, IMFAttributes pAttributes, out Guid ppclsidMFT, out uint pcMFTs);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftenum2
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows10.0.10240")]
     [PreserveSig]
-    public static partial HRESULT MFTEnum2(Guid guidCategory, uint Flags, nint/* nint */ pInputType, nint/* nint */ pOutputType, IMFAttributes pAttributes, out IMFActivate pppMFTActivate, out uint pnumMFTActivate);
+    public static partial HRESULT MFTEnum2(Guid guidCategory, uint Flags, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputType, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputType, IMFAttributes pAttributes, out IMFActivate pppMFTActivate, out uint pnumMFTActivate);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftenumex
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFTEnumEx(Guid guidCategory, uint Flags, nint/* nint */ pInputType, nint/* nint */ pOutputType, out IMFActivate pppMFTActivate, out uint pnumMFTActivate);
+    public static partial HRESULT MFTEnumEx(Guid guidCategory, uint Flags, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputType, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputType, out IMFActivate pppMFTActivate, out uint pnumMFTActivate);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftgetinfo
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFTGetInfo(Guid clsidMFT, nint/* nint */ pszName, nint/* nint */ ppInputTypes, nint/* nint */ pcInputTypes, nint/* nint */ ppOutputTypes, nint/* nint */ pcOutputTypes, nint/* nint */ ppAttributes);
+    public static partial HRESULT MFTGetInfo(Guid clsidMFT, nint /* optional PWSTR */ pszName, nint /* optional MFT_REGISTER_TYPE_INFO */ ppInputTypes, nint /* optional uint */ pcInputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ ppOutputTypes, nint /* optional uint */ pcOutputTypes, nint /* optional IMFAttributes */ ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mftranscodegetaudiooutputavailabletypes
     [LibraryImport("MF")]
@@ -7962,19 +7962,19 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFTRegister(Guid clsidMFT, Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint/* nint */ pInputTypes, uint cOutputTypes, nint/* nint */ pOutputTypes, IMFAttributes pAttributes);
+    public static partial HRESULT MFTRegister(Guid clsidMFT, Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputTypes, uint cOutputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputTypes, IMFAttributes pAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftregisterlocal
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFTRegisterLocal(IClassFactory pClassFactory, in Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint/* nint */ pInputTypes, uint cOutputTypes, nint/* nint */ pOutputTypes);
+    public static partial HRESULT MFTRegisterLocal(IClassFactory pClassFactory, in Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputTypes, uint cOutputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputTypes);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftregisterlocalbyclsid
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFTRegisterLocalByCLSID(in Guid clisdMFT, in Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint/* nint */ pInputTypes, uint cOutputTypes, nint/* nint */ pOutputTypes);
+    public static partial HRESULT MFTRegisterLocalByCLSID(in Guid clisdMFT, in Guid guidCategory, PWSTR pszName, uint Flags, uint cInputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pInputTypes, uint cOutputTypes, nint /* optional MFT_REGISTER_TYPE_INFO */ pOutputTypes);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftunregister
     [LibraryImport("MFPlat")]
@@ -8040,13 +8040,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiConnect(HMIDI hmi, HMIDIOUT hmo, nint/* nint */ pReserved);
+    public static partial uint midiConnect(HMIDI hmi, HMIDIOUT hmo, nint /* optional void */ pReserved);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mididisconnect
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiDisconnect(HMIDI hmi, HMIDIOUT hmo, nint/* nint */ pReserved);
+    public static partial uint midiDisconnect(HMIDI hmi, HMIDIOUT hmo, nint /* optional void */ pReserved);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinaddbuffer
     [LibraryImport("WINMM")]
@@ -8370,7 +8370,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerOpen(nint/* nint */ phmx, uint uMxId, nuint dwCallback, nuint dwInstance, uint fdwOpen);
+    public static partial uint mixerOpen(nint /* optional HMIXER */ phmx, uint uMxId, nuint dwCallback, nuint dwInstance, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixersetcontroldetails
     [LibraryImport("WINMM")]
@@ -8391,7 +8391,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mmioAdvance(HMMIO hmmio, nint/* nint */ pmmioinfo, uint fuAdvance);
+    public static partial uint mmioAdvance(HMMIO hmmio, nint /* optional MMIOINFO */ pmmioinfo, uint fuAdvance);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioascend
     [LibraryImport("WINMM")]
@@ -8415,7 +8415,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mmioDescend(HMMIO hmmio, ref MMCKINFO pmmcki, nint/* nint */ pmmckiParent, uint fuDescend);
+    public static partial uint mmioDescend(HMMIO hmmio, ref MMCKINFO pmmcki, nint /* optional MMCKINFO */ pmmckiParent, uint fuDescend);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioflush
     [LibraryImport("WINMM")]
@@ -8445,13 +8445,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HMMIO mmioOpenA(ref PSTR pszFileName, nint/* nint */ pmmioinfo, uint fdwOpen);
+    public static partial HMMIO mmioOpenA(ref PSTR pszFileName, nint /* optional MMIOINFO */ pmmioinfo, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopenw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HMMIO mmioOpenW(ref PWSTR pszFileName, nint/* nint */ pmmioinfo, uint fdwOpen);
+    public static partial HMMIO mmioOpenW(ref PWSTR pszFileName, nint /* optional MMIOINFO */ pmmioinfo, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioread
     [LibraryImport("WINMM")]
@@ -8463,13 +8463,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mmioRenameA(PSTR pszFileName, PSTR pszNewFileName, nint/* nint */ pmmioinfo, uint fdwRename);
+    public static partial uint mmioRenameA(PSTR pszFileName, PSTR pszNewFileName, nint /* optional MMIOINFO */ pmmioinfo, uint fdwRename);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiorenamew
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mmioRenameW(PWSTR pszFileName, PWSTR pszNewFileName, nint/* nint */ pmmioinfo, uint fdwRename);
+    public static partial uint mmioRenameW(PWSTR pszFileName, PWSTR pszNewFileName, nint /* optional MMIOINFO */ pmmioinfo, uint fdwRename);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioseek
     [LibraryImport("WINMM")]
@@ -8744,7 +8744,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveInOpen(nint/* nint */ phwi, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint waveInOpen(nint /* optional HWAVEIN */ phwi, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinprepareheader
     [LibraryImport("WINMM")]
@@ -8850,7 +8850,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveOutOpen(nint/* nint */ phwo, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint waveOutOpen(nint /* optional HWAVEOUT */ phwo, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutpause
     [LibraryImport("WINMM")]
@@ -9071,7 +9071,7 @@ public static partial class Functions
     [LibraryImport("WindowsCodecs")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT WICMatchMetadataContent(in Guid guidContainerFormat, nint/* nint */ pguidVendor, IStream pIStream, out Guid pguidMetadataFormat);
+    public static partial HRESULT WICMatchMetadataContent(in Guid guidContainerFormat, nint /* optional Guid */ pguidVendor, IStream pIStream, out Guid pguidMetadataFormat);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-wicserializemetadatacontent
     [LibraryImport("WindowsCodecs")]

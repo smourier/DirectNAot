@@ -22,7 +22,7 @@ public partial interface IDXCoreAdapterFactory
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterfactory-registereventnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterEventNotification(nint dxCoreObject, DXCoreNotificationType notificationType, PFN_DXCORE_NOTIFICATION_CALLBACK callbackFunction, nint/* nint */ callbackContext, out uint eventCookie);
+    HRESULT RegisterEventNotification(nint dxCoreObject, DXCoreNotificationType notificationType, PFN_DXCORE_NOTIFICATION_CALLBACK callbackFunction, nint /* optional void */ callbackContext, out uint eventCookie);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterfactory-unregistereventnotification
     [PreserveSig]

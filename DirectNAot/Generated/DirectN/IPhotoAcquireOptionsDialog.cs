@@ -22,7 +22,7 @@ public partial interface IPhotoAcquireOptionsDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireoptionsdialog-domodal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoModal(HWND hWndParent, nint/* nint */ ppnReturnCode);
+    HRESULT DoModal(HWND hWndParent, nint /* optional nint */ ppnReturnCode);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireoptionsdialog-savedata
     [PreserveSig]

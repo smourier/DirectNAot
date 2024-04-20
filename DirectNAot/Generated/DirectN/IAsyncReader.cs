@@ -18,7 +18,7 @@ public partial interface IAsyncReader
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-waitfornext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WaitForNext(uint dwTimeout, nint/* nint */ ppSample, out nuint pdwUser);
+    HRESULT WaitForNext(uint dwTimeout, nint /* optional IMediaSample */ ppSample, out nuint pdwUser);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-syncreadaligned
     [PreserveSig]

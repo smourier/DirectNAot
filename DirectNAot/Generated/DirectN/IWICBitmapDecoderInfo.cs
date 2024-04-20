@@ -8,7 +8,7 @@ public partial interface IWICBitmapDecoderInfo : IWICBitmapCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-getpatterns
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPatterns(uint cbSizePatterns, nint/* nint */ pPatterns, nint/* nint */ pcPatterns, out uint pcbPatternsActual);
+    HRESULT GetPatterns(uint cbSizePatterns, nint /* optional WICBitmapPattern */ pPatterns, nint /* optional uint */ pcPatterns, out uint pcbPatternsActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-matchespattern
     [PreserveSig]

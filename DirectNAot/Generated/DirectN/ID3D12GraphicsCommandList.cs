@@ -36,7 +36,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copytextureregion
     [PreserveSig]
-    void CopyTextureRegion(in D3D12_TEXTURE_COPY_LOCATION pDst, uint DstX, uint DstY, uint DstZ, in D3D12_TEXTURE_COPY_LOCATION pSrc, nint/* nint */ pSrcBox);
+    void CopyTextureRegion(in D3D12_TEXTURE_COPY_LOCATION pDst, uint DstX, uint DstY, uint DstZ, in D3D12_TEXTURE_COPY_LOCATION pSrc, nint /* optional D3D12_BOX */ pSrcBox);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copyresource
     [PreserveSig]
@@ -64,7 +64,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-omsetblendfactor
     [PreserveSig]
-    void OMSetBlendFactor(nint/* nint */ BlendFactor);
+    void OMSetBlendFactor(nint /* optional float */ BlendFactor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-omsetstencilref
     [PreserveSig]
@@ -144,19 +144,19 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-iasetindexbuffer
     [PreserveSig]
-    void IASetIndexBuffer(nint/* nint */ pView);
+    void IASetIndexBuffer(nint /* optional D3D12_INDEX_BUFFER_VIEW */ pView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-iasetvertexbuffers
     [PreserveSig]
-    void IASetVertexBuffers(uint StartSlot, uint NumViews, nint/* nint */ pViews);
+    void IASetVertexBuffers(uint StartSlot, uint NumViews, nint /* optional D3D12_VERTEX_BUFFER_VIEW */ pViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-sosettargets
     [PreserveSig]
-    void SOSetTargets(uint StartSlot, uint NumViews, nint/* nint */ pViews);
+    void SOSetTargets(uint StartSlot, uint NumViews, nint /* optional D3D12_STREAM_OUTPUT_BUFFER_VIEW */ pViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumRenderTargetDescriptors, nint/* nint */ pRenderTargetDescriptors, [MarshalAs(UnmanagedType.U4)] bool RTsSingleHandleToDescriptorRange, nint/* nint */ pDepthStencilDescriptor);
+    void OMSetRenderTargets(uint NumRenderTargetDescriptors, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE */ pRenderTargetDescriptors, [MarshalAs(UnmanagedType.U4)] bool RTsSingleHandleToDescriptorRange, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE */ pDepthStencilDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-cleardepthstencilview
     [PreserveSig]
@@ -164,7 +164,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, in float ColorRGBA, uint NumRects, nint/* nint */ pRects);
+    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, in float ColorRGBA, uint NumRects, nint /* optional FoundationRECT */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewuint
     [PreserveSig]
@@ -176,7 +176,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-discardresource
     [PreserveSig]
-    void DiscardResource(ID3D12Resource pResource, nint/* nint */ pRegion);
+    void DiscardResource(ID3D12Resource pResource, nint /* optional D3D12_DISCARD_REGION */ pRegion);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-beginquery
     [PreserveSig]
@@ -196,11 +196,11 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setmarker
     [PreserveSig]
-    void SetMarker(uint Metadata, nint/* nint */ pData, uint Size);
+    void SetMarker(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-beginevent
     [PreserveSig]
-    void BeginEvent(uint Metadata, nint/* nint */ pData, uint Size);
+    void BeginEvent(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-endevent
     [PreserveSig]

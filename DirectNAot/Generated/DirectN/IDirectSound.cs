@@ -33,5 +33,5 @@ public partial interface IDirectSound
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(nint/* nint */ pcGuidDevice);
+    HRESULT Initialize(nint /* optional Guid */ pcGuidDevice);
 }

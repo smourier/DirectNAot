@@ -7,32 +7,32 @@ public partial interface IIsdbSiParser2 : IDvbSiParser2
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getsdt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSDT(byte tableId, nint/* nint */ pwTransportStreamId, out IISDB_SDT ppSDT);
+    HRESULT GetSDT(byte tableId, nint /* optional ushort */ pwTransportStreamId, out IISDB_SDT ppSDT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getbit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBIT(byte tableId, nint/* nint */ pwOriginalNetworkId, out IISDB_BIT ppBIT);
+    HRESULT GetBIT(byte tableId, nint /* optional ushort */ pwOriginalNetworkId, out IISDB_BIT ppBIT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getnbit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNBIT(byte tableId, nint/* nint */ pwOriginalNetworkId, out IISDB_NBIT ppNBIT);
+    HRESULT GetNBIT(byte tableId, nint /* optional ushort */ pwOriginalNetworkId, out IISDB_NBIT ppNBIT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getldt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLDT(byte tableId, nint/* nint */ pwOriginalServiceId, out IISDB_LDT ppLDT);
+    HRESULT GetLDT(byte tableId, nint /* optional ushort */ pwOriginalServiceId, out IISDB_LDT ppLDT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getsdtt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSDTT(byte tableId, nint/* nint */ pwTableIdExt, out IISDB_SDTT ppSDTT);
+    HRESULT GetSDTT(byte tableId, nint /* optional ushort */ pwTableIdExt, out IISDB_SDTT ppSDTT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getcdt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCDT(byte tableId, byte bSectionNumber, nint/* nint */ pwDownloadDataId, out IISDB_CDT ppCDT);
+    HRESULT GetCDT(byte tableId, byte bSectionNumber, nint /* optional ushort */ pwDownloadDataId, out IISDB_CDT ppCDT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbsiparser2-getemm
     [PreserveSig]

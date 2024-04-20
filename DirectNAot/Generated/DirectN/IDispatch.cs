@@ -22,5 +22,5 @@ public partial interface IDispatch
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint/* nint */ pVarResult, nint/* nint */ pExcepInfo, nint/* nint */ puArgErr);
+    HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint /* optional VARIANT */ pVarResult, nint /* optional EXCEPINFO */ pExcepInfo, nint /* optional uint */ puArgErr);
 }

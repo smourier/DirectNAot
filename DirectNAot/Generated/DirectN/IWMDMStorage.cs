@@ -7,7 +7,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-setattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAttributes(uint dwAttributes, nint/* nint */ pFormat);
+    HRESULT SetAttributes(uint dwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getstorageglobals
     [PreserveSig]
@@ -17,7 +17,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributes(out uint pdwAttributes, nint/* nint */ pFormat);
+    HRESULT GetAttributes(out uint pdwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getname
     [PreserveSig]

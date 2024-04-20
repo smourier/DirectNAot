@@ -7,7 +7,7 @@ public partial interface IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-setattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAttributes(uint dwAttributes, nint/* nint */ pFormat);
+    HRESULT SetAttributes(uint dwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-getstorageglobals
     [PreserveSig]
@@ -17,7 +17,7 @@ public partial interface IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-getattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributes(out uint pdwAttributes, nint/* nint */ pFormat);
+    HRESULT GetAttributes(out uint pdwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-getname
     [PreserveSig]
@@ -42,7 +42,7 @@ public partial interface IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-createstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorage(uint dwAttributes, nint/* nint */ pFormat, PWSTR pwszName, out IMDSPStorage ppNewStorage);
+    HRESULT CreateStorage(uint dwAttributes, nint /* optional WAVEFORMATEX */ pFormat, PWSTR pwszName, out IMDSPStorage ppNewStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-enumstorage
     [PreserveSig]

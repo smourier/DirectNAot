@@ -20,11 +20,11 @@ public partial interface IMFTimedTextCueList
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddTextCue(double start, double duration, PWSTR text, nint/* nint */ cue);
+    HRESULT AddTextCue(double start, double duration, PWSTR text, nint /* optional IMFTimedTextCue */ cue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDataCue(double start, double duration, nint /* byte array */ data, uint dataSize, nint/* nint */ cue);
+    HRESULT AddDataCue(double start, double duration, nint /* byte array */ data, uint dataSize, nint /* optional IMFTimedTextCue */ cue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -7,7 +7,7 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-createmoduleinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint/* nint */ ppErrorBuffer);
+    HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint /* optional ID3DBlob */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setinputsignature
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-getlasterror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLastError(nint/* nint */ ppErrorBuffer);
+    HRESULT GetLastError(nint /* optional ID3DBlob */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-generatehlsl
     [PreserveSig]

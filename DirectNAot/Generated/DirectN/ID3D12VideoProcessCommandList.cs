@@ -24,7 +24,7 @@ public partial interface ID3D12VideoProcessCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-discardresource
     [PreserveSig]
-    void DiscardResource(ID3D12Resource pResource, nint/* nint */ pRegion);
+    void DiscardResource(ID3D12Resource pResource, nint /* optional D3D12_DISCARD_REGION */ pRegion);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-beginquery
     [PreserveSig]
@@ -44,11 +44,11 @@ public partial interface ID3D12VideoProcessCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-setmarker
     [PreserveSig]
-    void SetMarker(uint Metadata, nint/* nint */ pData, uint Size);
+    void SetMarker(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-beginevent
     [PreserveSig]
-    void BeginEvent(uint Metadata, nint/* nint */ pData, uint Size);
+    void BeginEvent(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-endevent
     [PreserveSig]
@@ -60,5 +60,5 @@ public partial interface ID3D12VideoProcessCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-writebufferimmediate
     [PreserveSig]
-    void WriteBufferImmediate(uint Count, in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER pParams, nint/* nint */ pModes);
+    void WriteBufferImmediate(uint Count, in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE */ pModes);
 }

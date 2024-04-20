@@ -28,7 +28,7 @@ public partial interface IMemAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imemallocator-getbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(out IMediaSample ppBuffer, nint/* nint */ pStartTime, nint/* nint */ pEndTime, uint dwFlags);
+    HRESULT GetBuffer(out IMediaSample ppBuffer, nint /* optional long */ pStartTime, nint /* optional long */ pEndTime, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imemallocator-releasebuffer
     [PreserveSig]

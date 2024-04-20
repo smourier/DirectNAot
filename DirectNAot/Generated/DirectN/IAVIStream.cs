@@ -22,7 +22,7 @@ public partial interface IAVIStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-readformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReadFormat(int lPos, nint/* nint */ lpFormat, ref int lpcbFormat);
+    HRESULT ReadFormat(int lPos, nint /* optional void */ lpFormat, ref int lpcbFormat);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-setformat
     [PreserveSig]
@@ -32,12 +32,12 @@ public partial interface IAVIStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-read
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(int lStart, int lSamples, nint/* nint */ lpBuffer, int cbBuffer, nint/* nint */ plBytes, nint/* nint */ plSamples);
+    HRESULT Read(int lStart, int lSamples, nint /* optional void */ lpBuffer, int cbBuffer, nint /* optional int */ plBytes, nint /* optional int */ plSamples);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-write
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Write(int lStart, int lSamples, nint lpBuffer, int cbBuffer, uint dwFlags, nint/* nint */ plSampWritten, nint/* nint */ plBytesWritten);
+    HRESULT Write(int lStart, int lSamples, nint lpBuffer, int cbBuffer, uint dwFlags, nint /* optional int */ plSampWritten, nint /* optional int */ plBytesWritten);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-delete
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface IAVIStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-readdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReadData(uint fcc, nint/* nint */ lp, ref int lpcb);
+    HRESULT ReadData(uint fcc, nint /* optional void */ lp, ref int lpcb);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-writedata
     [PreserveSig]

@@ -5,7 +5,7 @@ public partial interface IDirectSoundBuffer8 : IDirectSoundBuffer
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFX(uint dwEffectsCount, nint/* nint */ pDSFXDesc, nint/* nint */ pdwResultCodes);
+    HRESULT SetFX(uint dwEffectsCount, nint /* optional DSEFFECTDESC */ pDSFXDesc, nint /* optional uint */ pdwResultCodes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

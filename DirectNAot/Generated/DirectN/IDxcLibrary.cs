@@ -13,7 +13,7 @@ public partial interface IDxcLibrary
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobFromFile(PWSTR pFileName, nint/* nint */ codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobFromFile(PWSTR pFileName, nint /* optional DXC_CP */ codePage, out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

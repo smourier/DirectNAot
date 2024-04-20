@@ -97,5 +97,5 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-getuserinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUserInput(in Guid riidType, nint pUnknown, out PROPVARIANT pPropVarResult, nint/* nint */ pPropVarDefault);
+    HRESULT GetUserInput(in Guid riidType, nint pUnknown, out PROPVARIANT pPropVarResult, nint /* optional PROPVARIANT */ pPropVarDefault);
 }

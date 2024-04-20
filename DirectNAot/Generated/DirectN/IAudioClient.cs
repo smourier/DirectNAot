@@ -8,7 +8,7 @@ public partial interface IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(AUDCLNT_SHAREMODE ShareMode, uint StreamFlags, long hnsBufferDuration, long hnsPeriodicity, in WAVEFORMATEX pFormat, nint/* nint */ AudioSessionGuid);
+    HRESULT Initialize(AUDCLNT_SHAREMODE ShareMode, uint StreamFlags, long hnsBufferDuration, long hnsPeriodicity, in WAVEFORMATEX pFormat, nint /* optional Guid */ AudioSessionGuid);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-getbuffersize
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-isformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsFormatSupported(AUDCLNT_SHAREMODE ShareMode, in WAVEFORMATEX pFormat, nint/* nint */ ppClosestMatch);
+    HRESULT IsFormatSupported(AUDCLNT_SHAREMODE ShareMode, in WAVEFORMATEX pFormat, nint /* optional WAVEFORMATEX */ ppClosestMatch);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-getmixformat
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-getdeviceperiod
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevicePeriod(nint/* nint */ phnsDefaultDevicePeriod, nint/* nint */ phnsMinimumDevicePeriod);
+    HRESULT GetDevicePeriod(nint /* optional long */ phnsDefaultDevicePeriod, nint /* optional long */ phnsMinimumDevicePeriod);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient-start
     [PreserveSig]

@@ -67,7 +67,7 @@ public partial interface IDVB_SDT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecorddescriptorbytag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordDescriptorByTag(uint dwRecordIndex, byte bTag, nint/* nint */ pdwCookie, out IGenericDescriptor ppDescriptor);
+    HRESULT GetRecordDescriptorByTag(uint dwRecordIndex, byte bTag, nint /* optional uint */ pdwCookie, out IGenericDescriptor ppDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-registerfornexttable
     [PreserveSig]

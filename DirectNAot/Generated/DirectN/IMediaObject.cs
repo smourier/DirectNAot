@@ -22,22 +22,22 @@ public partial interface IMediaObject
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getinputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputType(uint dwInputStreamIndex, uint dwTypeIndex, nint/* nint */ pmt);
+    HRESULT GetInputType(uint dwInputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getoutputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputType(uint dwOutputStreamIndex, uint dwTypeIndex, nint/* nint */ pmt);
+    HRESULT GetOutputType(uint dwOutputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-setinputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputType(uint dwInputStreamIndex, nint/* nint */ pmt, uint dwFlags);
+    HRESULT SetInputType(uint dwInputStreamIndex, nint /* optional DMO_MEDIA_TYPE */ pmt, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-setoutputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputType(uint dwOutputStreamIndex, nint/* nint */ pmt, uint dwFlags);
+    HRESULT SetOutputType(uint dwOutputStreamIndex, nint /* optional DMO_MEDIA_TYPE */ pmt, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getinputcurrenttype
     [PreserveSig]

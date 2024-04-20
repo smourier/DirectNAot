@@ -8,7 +8,7 @@ public partial interface IMFMediaBuffer
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediabuffer-lock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Lock(out nint /* byte array */ ppbBuffer, nint/* nint */ pcbMaxLength, nint/* nint */ pcbCurrentLength);
+    HRESULT Lock(out nint /* byte array */ ppbBuffer, nint /* optional uint */ pcbMaxLength, nint /* optional uint */ pcbCurrentLength);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediabuffer-unlock
     [PreserveSig]

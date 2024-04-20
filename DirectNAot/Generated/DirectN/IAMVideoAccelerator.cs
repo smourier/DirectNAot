@@ -8,12 +8,12 @@ public partial interface IAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getvideoacceleratorguids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoAcceleratorGUIDs(ref uint pdwNumGuidsSupported, nint/* nint */ pGuidsSupported);
+    HRESULT GetVideoAcceleratorGUIDs(ref uint pdwNumGuidsSupported, nint /* optional Guid */ pGuidsSupported);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getuncompformatssupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUncompFormatsSupported(in Guid pGuid, ref uint pdwNumFormatsSupported, nint/* nint */ pFormatsSupported);
+    HRESULT GetUncompFormatsSupported(in Guid pGuid, ref uint pdwNumFormatsSupported, nint /* optional DDPIXELFORMAT */ pFormatsSupported);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getinternalmeminfo
     [PreserveSig]
@@ -23,12 +23,12 @@ public partial interface IAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getcompbufferinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCompBufferInfo(in Guid pGuid, in AMVAUncompDataInfo pamvaUncompDataInfo, ref uint pdwNumTypesCompBuffers, nint/* nint */ pamvaCompBufferInfo);
+    HRESULT GetCompBufferInfo(in Guid pGuid, in AMVAUncompDataInfo pamvaUncompDataInfo, ref uint pdwNumTypesCompBuffers, nint /* optional AMVACompBufferInfo */ pamvaCompBufferInfo);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getinternalcompbufferinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInternalCompBufferInfo(ref uint pdwNumTypesCompBuffers, nint/* nint */ pamvaCompBufferInfo);
+    HRESULT GetInternalCompBufferInfo(ref uint pdwNumTypesCompBuffers, nint /* optional AMVACompBufferInfo */ pamvaCompBufferInfo);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-beginframe
     [PreserveSig]

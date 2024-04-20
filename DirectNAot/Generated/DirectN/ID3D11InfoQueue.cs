@@ -17,7 +17,7 @@ public partial interface ID3D11InfoQueue
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getmessage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMessage(ulong MessageIndex, nint/* nint */ pMessage, ref nuint pMessageByteLength);
+    HRESULT GetMessage(ulong MessageIndex, nint /* optional D3D11_MESSAGE */ pMessage, ref nuint pMessageByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getnummessagesallowedbystoragefilter
     [PreserveSig]
@@ -51,7 +51,7 @@ public partial interface ID3D11InfoQueue
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getstoragefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorageFilter(nint/* nint */ pFilter, ref nuint pFilterByteLength);
+    HRESULT GetStorageFilter(nint /* optional D3D11_INFO_QUEUE_FILTER */ pFilter, ref nuint pFilterByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-clearstoragefilter
     [PreserveSig]
@@ -88,7 +88,7 @@ public partial interface ID3D11InfoQueue
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getretrievalfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRetrievalFilter(nint/* nint */ pFilter, ref nuint pFilterByteLength);
+    HRESULT GetRetrievalFilter(nint /* optional D3D11_INFO_QUEUE_FILTER */ pFilter, ref nuint pFilterByteLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-clearretrievalfilter
     [PreserveSig]

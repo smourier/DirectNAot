@@ -7,7 +7,7 @@ public partial interface IMDSPStorage4 : IMDSPStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-setreferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReferences(uint dwRefs, nint/* nint */ ppISPStorage);
+    HRESULT SetReferences(uint dwRefs, nint /* optional IMDSPStorage */ ppISPStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-getreferences
     [PreserveSig]

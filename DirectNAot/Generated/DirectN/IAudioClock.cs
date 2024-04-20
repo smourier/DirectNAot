@@ -13,7 +13,7 @@ public partial interface IAudioClock
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclock-getposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPosition(out ulong pu64Position, nint/* nint */ pu64QPCPosition);
+    HRESULT GetPosition(out ulong pu64Position, nint /* optional ulong */ pu64QPCPosition);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclock-getcharacteristics
     [PreserveSig]

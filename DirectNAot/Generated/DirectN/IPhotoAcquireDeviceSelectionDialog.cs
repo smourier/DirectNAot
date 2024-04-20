@@ -17,5 +17,5 @@ public partial interface IPhotoAcquireDeviceSelectionDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiredeviceselectiondialog-domodal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoModal(HWND hWndParent, uint dwDeviceFlags, nint/* nint */ pbstrDeviceId, nint/* nint */ pnDeviceType);
+    HRESULT DoModal(HWND hWndParent, uint dwDeviceFlags, nint /* optional BSTR */ pbstrDeviceId, nint /* optional DEVICE_SELECTION_DEVICE_TYPE */ pnDeviceType);
 }

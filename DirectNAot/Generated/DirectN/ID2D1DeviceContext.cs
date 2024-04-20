@@ -8,12 +8,12 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createbitmap(d2d1_size_u_constvoid_uint32_constd2d1_bitmap_properties1_id2d1bitmap1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmap(D2D_SIZE_U size, nint/* nint */ sourceData, uint pitch, in D2D1_BITMAP_PROPERTIES1 bitmapProperties, out ID2D1Bitmap1 bitmap);
+    HRESULT CreateBitmap(D2D_SIZE_U size, nint /* optional void */ sourceData, uint pitch, in D2D1_BITMAP_PROPERTIES1 bitmapProperties, out ID2D1Bitmap1 bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createbitmapfromwicbitmap(iwicbitmapsource_id2d1bitmap1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapFromWicBitmap(IWICBitmapSource wicBitmapSource, nint/* nint */ bitmapProperties, out ID2D1Bitmap1 bitmap);
+    HRESULT CreateBitmapFromWicBitmap(IWICBitmapSource wicBitmapSource, nint /* optional D2D1_BITMAP_PROPERTIES1 */ bitmapProperties, out ID2D1Bitmap1 bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createcolorcontext
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createbitmapfromdxgisurface(idxgisurface_constd2d1_bitmap_properties1_id2d1bitmap1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapFromDxgiSurface(IDXGISurface surface, nint/* nint */ bitmapProperties, out ID2D1Bitmap1 bitmap);
+    HRESULT CreateBitmapFromDxgiSurface(IDXGISurface surface, nint /* optional D2D1_BITMAP_PROPERTIES1 */ bitmapProperties, out ID2D1Bitmap1 bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createeffect
     [PreserveSig]
@@ -48,12 +48,12 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createimagebrush(id2d1image_constd2d1_image_brush_properties__id2d1imagebrush)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageBrush(ID2D1Image image, in D2D1_IMAGE_BRUSH_PROPERTIES imageBrushProperties, nint/* nint */ brushProperties, out ID2D1ImageBrush imageBrush);
+    HRESULT CreateImageBrush(ID2D1Image image, in D2D1_IMAGE_BRUSH_PROPERTIES imageBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1ImageBrush imageBrush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createbitmapbrush(id2d1bitmap_constd2d1_bitmap_brush_properties1__constd2d1_brush_properties__id2d1bitmapbrush1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint/* nint */ bitmapBrushProperties, nint/* nint */ brushProperties, out ID2D1BitmapBrush1 bitmapBrush);
+    HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint /* optional D2D1_BITMAP_BRUSH_PROPERTIES1 */ bitmapBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush1 bitmapBrush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createcommandlist
     [PreserveSig]
@@ -123,19 +123,19 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-drawglyphrun
     [PreserveSig]
-    void DrawGlyphRun(D2D_POINT_2F baselineOrigin, in DWRITE_GLYPH_RUN glyphRun, nint/* nint */ glyphRunDescription, ID2D1Brush foregroundBrush, DWRITE_MEASURING_MODE measuringMode);
+    void DrawGlyphRun(D2D_POINT_2F baselineOrigin, in DWRITE_GLYPH_RUN glyphRun, nint /* optional DWRITE_GLYPH_RUN_DESCRIPTION */ glyphRunDescription, ID2D1Brush foregroundBrush, DWRITE_MEASURING_MODE measuringMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-drawimage(id2d1image_constd2d1_point_2f_constd2d1_rect_f_d2d1_interpolation_mode_d2d1_composite_mode)
     [PreserveSig]
-    void DrawImage(ID2D1Image image, nint/* nint */ targetOffset, nint/* nint */ imageRectangle, D2D1_INTERPOLATION_MODE interpolationMode, D2D1_COMPOSITE_MODE compositeMode);
+    void DrawImage(ID2D1Image image, nint /* optional D2D_POINT_2F */ targetOffset, nint /* optional D2D_RECT_F */ imageRectangle, D2D1_INTERPOLATION_MODE interpolationMode, D2D1_COMPOSITE_MODE compositeMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-drawgdimetafile(id2d1gdimetafile_constd2d1_point_2f)
     [PreserveSig]
-    void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint/* nint */ targetOffset);
+    void DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint /* optional D2D_POINT_2F */ targetOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-drawbitmap(id2d1bitmap_constd2d1_rect_f_float_d2d1_interpolation_mode_constd2d1_rect_f_constd2d1_matrix_4x4_f)
     [PreserveSig]
-    void DrawBitmap(ID2D1Bitmap bitmap, nint/* nint */ destinationRectangle, float opacity, D2D1_INTERPOLATION_MODE interpolationMode, nint/* nint */ sourceRectangle, nint/* nint */ perspectiveTransform);
+    void DrawBitmap(ID2D1Bitmap bitmap, nint /* optional D2D_RECT_F */ destinationRectangle, float opacity, D2D1_INTERPOLATION_MODE interpolationMode, nint /* optional D2D_RECT_F */ sourceRectangle, nint /* optional D2D_MATRIX_4X4_F */ perspectiveTransform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-pushlayer(constd2d1_layer_parameters1__id2d1layer)
     [PreserveSig]
@@ -159,9 +159,9 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-geteffectrequiredinputrectangles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint/* nint */ renderImageRectangle, in D2D1_EFFECT_INPUT_DESCRIPTION inputDescriptions, out D2D_RECT_F requiredInputRects, uint inputCount);
+    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint /* optional D2D_RECT_F */ renderImageRectangle, in D2D1_EFFECT_INPUT_DESCRIPTION inputDescriptions, out D2D_RECT_F requiredInputRects, uint inputCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-fillopacitymask(id2d1bitmap_id2d1brush_constd2d1_rect_f__constd2d1_rect_f)
     [PreserveSig]
-    void FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
+    void FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, nint /* optional D2D_RECT_F */ destinationRectangle, nint /* optional D2D_RECT_F */ sourceRectangle);
 }

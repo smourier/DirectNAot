@@ -8,7 +8,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItem(in Guid guidKey, nint/* nint */ pValue);
+    HRESULT GetItem(in Guid guidKey, nint /* optional PROPVARIANT */ pValue);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getitemtype
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetString(in Guid guidKey, out PWSTR pwszValue, uint cchBufSize, nint/* nint */ pcchLength);
+    HRESULT GetString(in Guid guidKey, out PWSTR pwszValue, uint cchBufSize, nint /* optional uint */ pcchLength);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getallocatedstring
     [PreserveSig]
@@ -68,7 +68,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getblob
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBlob(in Guid guidKey, nint /* byte array */ pBuf, uint cbBufSize, nint/* nint */ pcbBlobSize);
+    HRESULT GetBlob(in Guid guidKey, nint /* byte array */ pBuf, uint cbBufSize, nint /* optional uint */ pcbBlobSize);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getallocatedblob
     [PreserveSig]
@@ -148,7 +148,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getitembyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItemByIndex(uint unIndex, out Guid pguidKey, nint/* nint */ pValue);
+    HRESULT GetItemByIndex(uint unIndex, out Guid pguidKey, nint /* optional PROPVARIANT */ pValue);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-copyallitems
     [PreserveSig]

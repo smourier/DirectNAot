@@ -18,5 +18,5 @@ public partial interface IAudioClient3 : IAudioClient2
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient3-initializesharedaudiostream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeSharedAudioStream(uint StreamFlags, uint PeriodInFrames, in WAVEFORMATEX pFormat, nint/* nint */ AudioSessionGuid);
+    HRESULT InitializeSharedAudioStream(uint StreamFlags, uint PeriodInFrames, in WAVEFORMATEX pFormat, nint /* optional Guid */ AudioSessionGuid);
 }

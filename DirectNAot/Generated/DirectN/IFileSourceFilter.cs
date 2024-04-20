@@ -8,10 +8,10 @@ public partial interface IFileSourceFilter
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifilesourcefilter-load
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(PWSTR pszFileName, nint/* nint */ pmt);
+    HRESULT Load(PWSTR pszFileName, nint /* optional AM_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifilesourcefilter-getcurfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurFile(out PWSTR ppszFileName, nint/* nint */ pmt);
+    HRESULT GetCurFile(out PWSTR ppszFileName, nint /* optional AM_MEDIA_TYPE */ pmt);
 }

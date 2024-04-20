@@ -67,7 +67,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createresourcetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateResourceTexture(nint/* nint */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* byte array */ data, nint/* nint */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
+    HRESULT CreateResourceTexture(nint /* optional Guid */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* byte array */ data, nint /* optional uint */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findresourcetexture
     [PreserveSig]
@@ -77,7 +77,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createvertexbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint/* nint */ resourceId, nint/* nint */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
+    HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint /* optional Guid */ resourceId, nint /* optional D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findvertexbuffer
     [PreserveSig]

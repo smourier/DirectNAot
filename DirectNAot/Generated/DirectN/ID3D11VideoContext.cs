@@ -18,7 +18,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-decoderbeginframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DecoderBeginFrame(ID3D11VideoDecoder pDecoder, ID3D11VideoDecoderOutputView pView, uint ContentKeySize, nint/* nint */ pContentKey);
+    HRESULT DecoderBeginFrame(ID3D11VideoDecoder pDecoder, ID3D11VideoDecoderOutputView pView, uint ContentKeySize, nint /* optional void */ pContentKey);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-decoderendframe
     [PreserveSig]
@@ -36,7 +36,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputtargetrect
     [PreserveSig]
-    void VideoProcessorSetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, nint/* nint */ pRect);
+    void VideoProcessorSetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional FoundationRECT */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputbackgroundcolor
     [PreserveSig]
@@ -100,15 +100,15 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamoutputrate
     [PreserveSig]
-    void VideoProcessorSetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_OUTPUT_RATE OutputRate, [MarshalAs(UnmanagedType.U4)] bool RepeatFrame, nint/* nint */ pCustomRate);
+    void VideoProcessorSetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_OUTPUT_RATE OutputRate, [MarshalAs(UnmanagedType.U4)] bool RepeatFrame, nint /* optional DXGI_RATIONAL */ pCustomRate);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamsourcerect
     [PreserveSig]
-    void VideoProcessorSetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint/* nint */ pRect);
+    void VideoProcessorSetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional FoundationRECT */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamdestrect
     [PreserveSig]
-    void VideoProcessorSetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint/* nint */ pRect);
+    void VideoProcessorSetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional FoundationRECT */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamalpha
     [PreserveSig]
@@ -116,11 +116,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreampalette
     [PreserveSig]
-    void VideoProcessorSetStreamPalette(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, uint Count, nint/* nint */ pEntries);
+    void VideoProcessorSetStreamPalette(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, uint Count, nint /* optional uint */ pEntries);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreampixelaspectratio
     [PreserveSig]
-    void VideoProcessorSetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint/* nint */ pSourceAspectRatio, nint/* nint */ pDestinationAspectRatio);
+    void VideoProcessorSetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional DXGI_RATIONAL */ pSourceAspectRatio, nint /* optional DXGI_RATIONAL */ pDestinationAspectRatio);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamlumakey
     [PreserveSig]
@@ -206,11 +206,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-encryptionblt
     [PreserveSig]
-    void EncryptionBlt(ID3D11CryptoSession pCryptoSession, ID3D11Texture2D pSrcSurface, ID3D11Texture2D pDstSurface, uint IVSize, nint/* nint */ pIV);
+    void EncryptionBlt(ID3D11CryptoSession pCryptoSession, ID3D11Texture2D pSrcSurface, ID3D11Texture2D pDstSurface, uint IVSize, nint /* optional void */ pIV);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-decryptionblt
     [PreserveSig]
-    void DecryptionBlt(ID3D11CryptoSession pCryptoSession, ID3D11Texture2D pSrcSurface, ID3D11Texture2D pDstSurface, nint/* nint */ pEncryptedBlockInfo, uint ContentKeySize, nint/* nint */ pContentKey, uint IVSize, nint/* nint */ pIV);
+    void DecryptionBlt(ID3D11CryptoSession pCryptoSession, ID3D11Texture2D pSrcSurface, ID3D11Texture2D pDstSurface, nint /* optional D3D11_ENCRYPTED_BLOCK_INFO */ pEncryptedBlockInfo, uint ContentKeySize, nint /* optional void */ pContentKey, uint IVSize, nint /* optional void */ pIV);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-startsessionkeyrefresh
     [PreserveSig]

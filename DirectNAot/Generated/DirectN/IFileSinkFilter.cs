@@ -8,7 +8,7 @@ public partial interface IFileSinkFilter
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifilesinkfilter-setfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFileName(PWSTR pszFileName, nint/* nint */ pmt);
+    HRESULT SetFileName(PWSTR pszFileName, nint /* optional AM_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifilesinkfilter-getcurfile
     [PreserveSig]

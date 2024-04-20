@@ -38,7 +38,7 @@ public partial interface ISpatialAudioClient
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioclient-isspatialaudiostreamavailable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSpatialAudioStreamAvailable(in Guid streamUuid, nint/* nint */ auxiliaryInfo);
+    HRESULT IsSpatialAudioStreamAvailable(in Guid streamUuid, nint /* optional PROPVARIANT */ auxiliaryInfo);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioclient-activatespatialaudiostream
     [PreserveSig]

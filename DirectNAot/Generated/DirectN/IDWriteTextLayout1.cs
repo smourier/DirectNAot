@@ -13,7 +13,7 @@ public partial interface IDWriteTextLayout1 : IDWriteTextLayout
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextlayout1-getpairkerning
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPairKerning(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool isPairKerningEnabled, nint/* nint */ textRange);
+    HRESULT GetPairKerning(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool isPairKerningEnabled, nint /* optional DWRITE_TEXT_RANGE */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextlayout1-setcharacterspacing
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IDWriteTextLayout1 : IDWriteTextLayout
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextlayout1-getcharacterspacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCharacterSpacing(uint currentPosition, out float leadingSpacing, out float trailingSpacing, out float minimumAdvanceWidth, nint/* nint */ textRange);
+    HRESULT GetCharacterSpacing(uint currentPosition, out float leadingSpacing, out float trailingSpacing, out float minimumAdvanceWidth, nint /* optional DWRITE_TEXT_RANGE */ textRange);
 }

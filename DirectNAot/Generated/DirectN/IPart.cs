@@ -58,7 +58,7 @@ public partial interface IPart
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-activate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate(uint dwClsContext, in Guid refiid, nint/* nint */ ppvObject);
+    HRESULT Activate(uint dwClsContext, in Guid refiid, nint /* optional void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-registercontrolchangecallback
     [PreserveSig]

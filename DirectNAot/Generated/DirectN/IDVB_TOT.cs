@@ -27,5 +27,5 @@ public partial interface IDVB_TOT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_tot-gettabledescriptorbytag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTableDescriptorByTag(byte bTag, nint/* nint */ pdwCookie, out IGenericDescriptor ppDescriptor);
+    HRESULT GetTableDescriptorByTag(byte bTag, nint /* optional uint */ pdwCookie, out IGenericDescriptor ppDescriptor);
 }

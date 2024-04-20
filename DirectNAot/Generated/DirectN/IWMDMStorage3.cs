@@ -22,5 +22,5 @@ public partial interface IWMDMStorage3 : IWMDMStorage2
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage3-setenumpreference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnumPreference(ref WMDM_STORAGE_ENUM_MODE pMode, uint nViews, nint/* nint */ pViews);
+    HRESULT SetEnumPreference(ref WMDM_STORAGE_ENUM_MODE pMode, uint nViews, nint /* optional WMDMMetadataView */ pViews);
 }

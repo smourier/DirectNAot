@@ -7,7 +7,7 @@ public partial interface IDWriteFontSet1 : IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getmatchingfonts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMatchingFonts(nint/* nint */ fontProperty, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, out IDWriteFontSet1 matchingFonts);
+    HRESULT GetMatchingFonts(nint /* optional DWRITE_FONT_PROPERTY */ fontProperty, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, out IDWriteFontSet1 matchingFonts);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfirstfontresources
     [PreserveSig]
@@ -27,7 +27,7 @@ public partial interface IDWriteFontSet1 : IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfonts(uint32const_uint32_idwritefontset1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFonts(nint/* nint */ properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, out IDWriteFontSet1 filteredFontSet);
+    HRESULT GetFilteredFonts(nint /* optional DWRITE_FONT_PROPERTY */ properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, out IDWriteFontSet1 filteredFontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfontindices
     [PreserveSig]

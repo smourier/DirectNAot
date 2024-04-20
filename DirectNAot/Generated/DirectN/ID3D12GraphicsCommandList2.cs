@@ -6,5 +6,5 @@ public partial interface ID3D12GraphicsCommandList2 : ID3D12GraphicsCommandList1
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist2-writebufferimmediate
     [PreserveSig]
-    void WriteBufferImmediate(uint Count, in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER pParams, nint/* nint */ pModes);
+    void WriteBufferImmediate(uint Count, in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE */ pModes);
 }

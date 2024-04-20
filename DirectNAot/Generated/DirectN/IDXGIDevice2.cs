@@ -13,7 +13,7 @@ public partial interface IDXGIDevice2 : IDXGIDevice1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidevice2-reclaimresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReclaimResources(uint NumResources, in IDXGIResource ppResources, nint/* nint */ pDiscarded);
+    HRESULT ReclaimResources(uint NumResources, in IDXGIResource ppResources, nint /* optional bool */ pDiscarded);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgidevice2-enqueuesetevent
     [PreserveSig]

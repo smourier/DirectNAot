@@ -8,12 +8,12 @@ public partial interface ID3D11VideoDevice1 : ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videodevice1-getcryptosessionprivatedatasize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCryptoSessionPrivateDataSize(in Guid pCryptoType, nint/* nint */ pDecoderProfile, in Guid pKeyExchangeType, out uint pPrivateInputSize, out uint pPrivateOutputSize);
+    HRESULT GetCryptoSessionPrivateDataSize(in Guid pCryptoType, nint /* optional Guid */ pDecoderProfile, in Guid pKeyExchangeType, out uint pPrivateInputSize, out uint pPrivateOutputSize);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videodevice1-getvideodecodercaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoDecoderCaps(in Guid pDecoderProfile, uint SampleWidth, uint SampleHeight, in DXGI_RATIONAL pFrameRate, uint BitRate, nint/* nint */ pCryptoType, out uint pDecoderCaps);
+    HRESULT GetVideoDecoderCaps(in Guid pDecoderProfile, uint SampleWidth, uint SampleHeight, in DXGI_RATIONAL pFrameRate, uint BitRate, nint /* optional Guid */ pCryptoType, out uint pDecoderCaps);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videodevice1-checkvideodecoderdownsampling
     [PreserveSig]

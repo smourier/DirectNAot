@@ -16,17 +16,17 @@ public partial interface IXAudio2
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-createsourcevoice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSourceVoice(out IXAudio2SourceVoice ppSourceVoice, in WAVEFORMATEX pSourceFormat, uint Flags, float MaxFrequencyRatio, IXAudio2VoiceCallback pCallback, nint/* nint */ pSendList, nint/* nint */ pEffectChain);
+    HRESULT CreateSourceVoice(out IXAudio2SourceVoice ppSourceVoice, in WAVEFORMATEX pSourceFormat, uint Flags, float MaxFrequencyRatio, IXAudio2VoiceCallback pCallback, nint /* optional XAUDIO2_VOICE_SENDS */ pSendList, nint /* optional XAUDIO2_EFFECT_CHAIN */ pEffectChain);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-createsubmixvoice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSubmixVoice(out IXAudio2SubmixVoice ppSubmixVoice, uint InputChannels, uint InputSampleRate, uint Flags, uint ProcessingStage, nint/* nint */ pSendList, nint/* nint */ pEffectChain);
+    HRESULT CreateSubmixVoice(out IXAudio2SubmixVoice ppSubmixVoice, uint InputChannels, uint InputSampleRate, uint Flags, uint ProcessingStage, nint /* optional XAUDIO2_VOICE_SENDS */ pSendList, nint /* optional XAUDIO2_EFFECT_CHAIN */ pEffectChain);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-createmasteringvoice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMasteringVoice(out IXAudio2MasteringVoice ppMasteringVoice, uint InputChannels, uint InputSampleRate, uint Flags, PWSTR szDeviceId, nint/* nint */ pEffectChain, AUDIO_STREAM_CATEGORY StreamCategory);
+    HRESULT CreateMasteringVoice(out IXAudio2MasteringVoice ppMasteringVoice, uint InputChannels, uint InputSampleRate, uint Flags, PWSTR szDeviceId, nint /* optional XAUDIO2_EFFECT_CHAIN */ pEffectChain, AUDIO_STREAM_CATEGORY StreamCategory);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-startengine
     [PreserveSig]
@@ -48,5 +48,5 @@ public partial interface IXAudio2
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-setdebugconfiguration
     [PreserveSig]
-    void SetDebugConfiguration(nint/* nint */ pDebugConfiguration, nint/* nint */ pReserved);
+    void SetDebugConfiguration(nint /* optional XAUDIO2_DEBUG_CONFIGURATION */ pDebugConfiguration, nint /* optional void */ pReserved);
 }

@@ -28,7 +28,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createfontfilereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFileReference(PWSTR filePath, nint/* nint */ lastWriteTime, out IDWriteFontFile fontFile);
+    HRESULT CreateFontFileReference(PWSTR filePath, nint /* optional FILETIME */ lastWriteTime, out IDWriteFontFile fontFile);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createcustomfontfilereference
     [PreserveSig]
@@ -88,7 +88,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-creategdicompatibletextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGdiCompatibleTextLayout(PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint/* nint */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, out IDWriteTextLayout textLayout);
+    HRESULT CreateGdiCompatibleTextLayout(PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createellipsistrimmingsign
     [PreserveSig]
@@ -108,5 +108,5 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createglyphrunanalysis
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGlyphRunAnalysis(in DWRITE_GLYPH_RUN glyphRun, float pixelsPerDip, nint/* nint */ transform, DWRITE_RENDERING_MODE renderingMode, DWRITE_MEASURING_MODE measuringMode, float baselineOriginX, float baselineOriginY, out IDWriteGlyphRunAnalysis glyphRunAnalysis);
+    HRESULT CreateGlyphRunAnalysis(in DWRITE_GLYPH_RUN glyphRun, float pixelsPerDip, nint /* optional DWRITE_MATRIX */ transform, DWRITE_RENDERING_MODE renderingMode, DWRITE_MEASURING_MODE measuringMode, float baselineOriginX, float baselineOriginY, out IDWriteGlyphRunAnalysis glyphRunAnalysis);
 }

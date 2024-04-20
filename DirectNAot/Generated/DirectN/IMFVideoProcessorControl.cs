@@ -8,17 +8,17 @@ public partial interface IMFVideoProcessorControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol-setbordercolor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBorderColor(nint/* nint */ pBorderColor);
+    HRESULT SetBorderColor(nint /* optional MFARGB */ pBorderColor);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol-setsourcerectangle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSourceRectangle(nint/* nint */ pSrcRect);
+    HRESULT SetSourceRectangle(nint /* optional FoundationRECT */ pSrcRect);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol-setdestinationrectangle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDestinationRectangle(nint/* nint */ pDstRect);
+    HRESULT SetDestinationRectangle(nint /* optional FoundationRECT */ pDstRect);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol-setmirror
     [PreserveSig]
@@ -33,5 +33,5 @@ public partial interface IMFVideoProcessorControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol-setconstrictionsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetConstrictionSize(nint/* nint */ pConstrictionSize);
+    HRESULT SetConstrictionSize(nint /* optional FoundationSIZE */ pConstrictionSize);
 }

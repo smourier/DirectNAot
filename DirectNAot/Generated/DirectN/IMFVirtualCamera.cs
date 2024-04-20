@@ -42,7 +42,7 @@ public partial interface IMFVirtualCamera : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-sendcameraproperty
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SendCameraProperty(in Guid propertySet, uint propertyId, uint propertyFlags, nint/* nint */ propertyPayload, uint propertyPayloadLength, nint/* nint */ data, uint dataLength, out uint dataWritten);
+    HRESULT SendCameraProperty(in Guid propertySet, uint propertyId, uint propertyFlags, nint /* optional void */ propertyPayload, uint propertyPayloadLength, nint /* optional void */ data, uint dataLength, out uint dataWritten);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-createsyncevent
     [PreserveSig]

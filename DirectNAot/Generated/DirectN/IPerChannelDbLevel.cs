@@ -23,15 +23,15 @@ public partial interface IPerChannelDbLevel
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iperchanneldblevel-setlevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLevel(uint nChannel, float fLevelDB, nint/* nint */ pguidEventContext);
+    HRESULT SetLevel(uint nChannel, float fLevelDB, nint /* optional Guid */ pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iperchanneldblevel-setleveluniform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLevelUniform(float fLevelDB, nint/* nint */ pguidEventContext);
+    HRESULT SetLevelUniform(float fLevelDB, nint /* optional Guid */ pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iperchanneldblevel-setlevelallchannels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLevelAllChannels(in float aLevelsDB, uint cChannels, nint/* nint */ pguidEventContext);
+    HRESULT SetLevelAllChannels(in float aLevelsDB, uint cChannels, nint /* optional Guid */ pguidEventContext);
 }

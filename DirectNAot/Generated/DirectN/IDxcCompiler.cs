@@ -5,11 +5,11 @@ public partial interface IDxcCompiler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Compile(IDxcBlob pSource, PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint/* nint */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult);
+    HRESULT Compile(IDxcBlob pSource, PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Preprocess(IDxcBlob pSource, PWSTR pSourceName, nint/* nint */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult);
+    HRESULT Preprocess(IDxcBlob pSource, PWSTR pSourceName, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

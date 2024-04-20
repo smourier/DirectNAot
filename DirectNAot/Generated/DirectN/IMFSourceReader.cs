@@ -28,7 +28,7 @@ public partial interface IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-setcurrentmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCurrentMediaType(uint dwStreamIndex, nint/* nint */ pdwReserved, IMFMediaType pMediaType);
+    HRESULT SetCurrentMediaType(uint dwStreamIndex, nint /* optional uint */ pdwReserved, IMFMediaType pMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-setcurrentposition
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-readsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReadSample(uint dwStreamIndex, uint dwControlFlags, nint/* nint */ pdwActualStreamIndex, nint/* nint */ pdwStreamFlags, nint/* nint */ pllTimestamp, nint/* nint */ ppSample);
+    HRESULT ReadSample(uint dwStreamIndex, uint dwControlFlags, nint /* optional uint */ pdwActualStreamIndex, nint /* optional uint */ pdwStreamFlags, nint /* optional long */ pllTimestamp, nint /* optional IMFSample */ ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-flush
     [PreserveSig]

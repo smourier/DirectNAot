@@ -5,5 +5,5 @@ public partial interface IDxcCompiler2 : IDxcCompiler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompileWithDebug(IDxcBlob pSource, PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint/* nint */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult, nint/* nint */ ppDebugBlobName, nint/* nint */ ppDebugBlob);
+    HRESULT CompileWithDebug(IDxcBlob pSource, PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, IDxcIncludeHandler pIncludeHandler, out IDxcOperationResult ppResult, nint /* optional PWSTR */ ppDebugBlobName, nint /* optional IDxcBlob */ ppDebugBlob);
 }

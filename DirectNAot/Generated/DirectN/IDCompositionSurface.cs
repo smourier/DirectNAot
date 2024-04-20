@@ -8,7 +8,7 @@ public partial interface IDCompositionSurface
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionsurface-begindraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDraw(nint/* nint */ updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT updateOffset);
+    HRESULT BeginDraw(nint /* optional FoundationRECT */ updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT updateOffset);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionsurface-enddraw
     [PreserveSig]
@@ -28,5 +28,5 @@ public partial interface IDCompositionSurface
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionsurface-scroll
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Scroll(nint/* nint */ scrollRect, nint/* nint */ clipRect, int offsetX, int offsetY);
+    HRESULT Scroll(nint /* optional FoundationRECT */ scrollRect, nint /* optional FoundationRECT */ clipRect, int offsetX, int offsetY);
 }

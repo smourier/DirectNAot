@@ -11,19 +11,19 @@ public partial interface IMalloc
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-realloc
     [PreserveSig]
-    void Realloc(nint/* nint */ pv, nuint cb);
+    void Realloc(nint /* optional void */ pv, nuint cb);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-free
     [PreserveSig]
-    void Free(nint/* nint */ pv);
+    void Free(nint /* optional void */ pv);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-getsize
     [PreserveSig]
-    nuint GetSize(nint/* nint */ pv);
+    nuint GetSize(nint /* optional void */ pv);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-didalloc
     [PreserveSig]
-    int DidAlloc(nint/* nint */ pv);
+    int DidAlloc(nint /* optional void */ pv);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-heapminimize
     [PreserveSig]

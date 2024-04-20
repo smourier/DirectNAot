@@ -8,7 +8,7 @@ public partial interface IMFMediaTypeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-ismediatypesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsMediaTypeSupported(IMFMediaType pMediaType, nint/* nint */ ppMediaType);
+    HRESULT IsMediaTypeSupported(IMFMediaType pMediaType, nint /* optional IMFMediaType */ ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getmediatypecount
     [PreserveSig]

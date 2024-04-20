@@ -88,5 +88,5 @@ public partial interface IPhotoProgressDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-getuserinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUserInput(in Guid riidType, nint pUnknown, out PROPVARIANT pPropVarResult, nint/* nint */ pPropVarDefault);
+    HRESULT GetUserInput(in Guid riidType, nint pUnknown, out PROPVARIANT pPropVarResult, nint /* optional PROPVARIANT */ pPropVarDefault);
 }

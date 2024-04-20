@@ -11,11 +11,11 @@ public partial interface IDxcCompilerArgs
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddArguments(nint/* nint */ pArguments, uint argCount);
+    HRESULT AddArguments(nint /* optional PWSTR */ pArguments, uint argCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddArgumentsUTF8(nint/* nint */ pArguments, uint argCount);
+    HRESULT AddArgumentsUTF8(nint /* optional PSTR */ pArguments, uint argCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

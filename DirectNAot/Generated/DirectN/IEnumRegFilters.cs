@@ -7,7 +7,7 @@ public partial interface IEnumRegFilters
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumregfilters-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cFilters, out REGFILTER apRegFilter, nint/* nint */ pcFetched);
+    HRESULT Next(uint cFilters, out REGFILTER apRegFilter, nint /* optional uint */ pcFetched);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumregfilters-skip
     [PreserveSig]

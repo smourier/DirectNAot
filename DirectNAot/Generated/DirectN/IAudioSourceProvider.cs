@@ -5,5 +5,5 @@ public partial interface IAudioSourceProvider
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProvideInput(uint dwSampleCount, ref uint pdwChannelCount, nint/* nint */ pInterleavedAudioData);
+    HRESULT ProvideInput(uint dwSampleCount, ref uint pdwChannelCount, nint /* optional float */ pInterleavedAudioData);
 }

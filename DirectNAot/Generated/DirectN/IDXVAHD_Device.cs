@@ -8,7 +8,7 @@ public partial interface IDXVAHD_Device
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-createvideosurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, uint Usage, DXVAHD_SURFACE_TYPE Type, uint NumSurfaces, out IDirect3DSurface9 ppSurfaces, nint/* nint */ pSharedHandle);
+    HRESULT CreateVideoSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, uint Usage, DXVAHD_SURFACE_TYPE Type, uint NumSurfaces, out IDirect3DSurface9 ppSurfaces, nint /* optional HANDLE */ pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessordevicecaps
     [PreserveSig]

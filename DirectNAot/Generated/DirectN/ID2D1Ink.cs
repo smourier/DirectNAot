@@ -44,10 +44,10 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-streamasgeometry(id2d1inkstyle_constd2d1_matrix_3x2_f__float_id2d1simplifiedgeometrysink)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StreamAsGeometry(ID2D1InkStyle inkStyle, nint/* nint */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT StreamAsGeometry(ID2D1InkStyle inkStyle, nint /* optional D2D_MATRIX_3X2_F */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-getbounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBounds(ID2D1InkStyle inkStyle, nint/* nint */ worldTransform, out D2D_RECT_F bounds);
+    HRESULT GetBounds(ID2D1InkStyle inkStyle, nint /* optional D2D_MATRIX_3X2_F */ worldTransform, out D2D_RECT_F bounds);
 }

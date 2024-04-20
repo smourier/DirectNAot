@@ -18,7 +18,7 @@ public partial interface IDirectXVideoDecoderService : IDirectXVideoAcceleration
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-getdecoderconfigurations
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecoderConfigurations(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, nint/* nint */ pReserved, out uint pCount, out DXVA2_ConfigPictureDecode ppConfigs);
+    HRESULT GetDecoderConfigurations(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, nint /* optional void */ pReserved, out uint pCount, out DXVA2_ConfigPictureDecode ppConfigs);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-createvideodecoder
     [PreserveSig]

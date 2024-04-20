@@ -8,7 +8,7 @@ public partial interface ID3D11DeviceContext2 : ID3D11DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d3d11_2/nf-d3d11_2-id3d11devicecontext2-updatetilemappings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateTileMappings(ID3D11Resource pTiledResource, uint NumTiledResourceRegions, nint/* nint */ pTiledResourceRegionStartCoordinates, nint/* nint */ pTiledResourceRegionSizes, ID3D11Buffer pTilePool, uint NumRanges, nint/* nint */ pRangeFlags, nint/* nint */ pTilePoolStartOffsets, nint/* nint */ pRangeTileCounts, uint Flags);
+    HRESULT UpdateTileMappings(ID3D11Resource pTiledResource, uint NumTiledResourceRegions, nint /* optional D3D11_TILED_RESOURCE_COORDINATE */ pTiledResourceRegionStartCoordinates, nint /* optional D3D11_TILE_REGION_SIZE */ pTiledResourceRegionSizes, ID3D11Buffer pTilePool, uint NumRanges, nint /* optional uint */ pRangeFlags, nint /* optional uint */ pTilePoolStartOffsets, nint /* optional uint */ pRangeTileCounts, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_2/nf-d3d11_2-id3d11devicecontext2-copytilemappings
     [PreserveSig]

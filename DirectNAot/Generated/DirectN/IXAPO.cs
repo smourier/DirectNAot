@@ -12,17 +12,17 @@ public partial interface IXAPO
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-isinputformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsInputFormatSupported(in WAVEFORMATEX pOutputFormat, in WAVEFORMATEX pRequestedInputFormat, nint/* nint */ ppSupportedInputFormat);
+    HRESULT IsInputFormatSupported(in WAVEFORMATEX pOutputFormat, in WAVEFORMATEX pRequestedInputFormat, nint /* optional WAVEFORMATEX */ ppSupportedInputFormat);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-isoutputformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsOutputFormatSupported(in WAVEFORMATEX pInputFormat, in WAVEFORMATEX pRequestedOutputFormat, nint/* nint */ ppSupportedOutputFormat);
+    HRESULT IsOutputFormatSupported(in WAVEFORMATEX pInputFormat, in WAVEFORMATEX pRequestedOutputFormat, nint /* optional WAVEFORMATEX */ ppSupportedOutputFormat);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(nint/* nint */ pData, uint DataByteSize);
+    HRESULT Initialize(nint /* optional void */ pData, uint DataByteSize);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-reset
     [PreserveSig]
@@ -31,7 +31,7 @@ public partial interface IXAPO
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-lockforprocess
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockForProcess(uint InputLockedParameterCount, nint/* nint */ pInputLockedParameters, uint OutputLockedParameterCount, nint/* nint */ pOutputLockedParameters);
+    HRESULT LockForProcess(uint InputLockedParameterCount, nint /* optional XAPO_LOCKFORPROCESS_PARAMETERS */ pInputLockedParameters, uint OutputLockedParameterCount, nint /* optional XAPO_LOCKFORPROCESS_PARAMETERS */ pOutputLockedParameters);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-unlockforprocess
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IXAPO
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-process
     [PreserveSig]
-    void Process(uint InputProcessParameterCount, nint/* nint */ pInputProcessParameters, uint OutputProcessParameterCount, nint/* nint */ pOutputProcessParameters, [MarshalAs(UnmanagedType.U4)] bool IsEnabled);
+    void Process(uint InputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS */ pInputProcessParameters, uint OutputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS */ pOutputProcessParameters, [MarshalAs(UnmanagedType.U4)] bool IsEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-calcinputframes
     [PreserveSig]

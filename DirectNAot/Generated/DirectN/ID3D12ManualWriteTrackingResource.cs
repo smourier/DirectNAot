@@ -4,5 +4,5 @@
 public partial interface ID3D12ManualWriteTrackingResource
 {
     [PreserveSig]
-    void TrackWrite(uint Subresource, nint/* nint */ pWrittenRange);
+    void TrackWrite(uint Subresource, nint /* optional D3D12_RANGE */ pWrittenRange);
 }

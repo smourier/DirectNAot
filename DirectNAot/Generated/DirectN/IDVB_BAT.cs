@@ -32,7 +32,7 @@ public partial interface IDVB_BAT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_bat-gettabledescriptorbytag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTableDescriptorByTag(byte bTag, nint/* nint */ pdwCookie, out IGenericDescriptor ppDescriptor);
+    HRESULT GetTableDescriptorByTag(byte bTag, nint /* optional uint */ pdwCookie, out IGenericDescriptor ppDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_bat-getcountofrecords
     [PreserveSig]
@@ -62,7 +62,7 @@ public partial interface IDVB_BAT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_bat-getrecorddescriptorbytag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordDescriptorByTag(uint dwRecordIndex, byte bTag, nint/* nint */ pdwCookie, out IGenericDescriptor ppDescriptor);
+    HRESULT GetRecordDescriptorByTag(uint dwRecordIndex, byte bTag, nint /* optional uint */ pdwCookie, out IGenericDescriptor ppDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_bat-registerfornexttable
     [PreserveSig]

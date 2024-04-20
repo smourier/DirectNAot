@@ -33,22 +33,22 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getstartstopposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStartStopPosition(nint/* nint */ pguidStartPositionType, nint/* nint */ pvStartValue, nint/* nint */ pguidStopPositionType, nint/* nint */ pvStopValue);
+    HRESULT GetStartStopPosition(nint /* optional Guid */ pguidStartPositionType, nint /* optional PROPVARIANT */ pvStartValue, nint /* optional Guid */ pguidStopPositionType, nint /* optional PROPVARIANT */ pvStopValue);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-setstartstopposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStartStopPosition(nint/* nint */ pguidStartPositionType, nint/* nint */ pvStartValue, nint/* nint */ pguidStopPositionType, nint/* nint */ pvStopValue);
+    HRESULT SetStartStopPosition(nint /* optional Guid */ pguidStartPositionType, nint /* optional PROPVARIANT */ pvStartValue, nint /* optional Guid */ pguidStopPositionType, nint /* optional PROPVARIANT */ pvStopValue);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-hasvideo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasVideo(nint/* nint */ pfHasVideo, nint/* nint */ pfSelected);
+    HRESULT HasVideo(nint /* optional bool */ pfHasVideo, nint /* optional bool */ pfSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-hasaudio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasAudio(nint/* nint */ pfHasAudio, nint/* nint */ pfSelected);
+    HRESULT HasAudio(nint /* optional bool */ pfHasAudio, nint /* optional bool */ pfSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-isprotected
     [PreserveSig]

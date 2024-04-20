@@ -8,5 +8,5 @@ public partial interface IDxcExtraOutputs
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutput(uint uIndex, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject, nint/* nint */ ppOutputType, nint/* nint */ ppOutputName);
+    HRESULT GetOutput(uint uIndex, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject, nint /* optional IDxcBlobUtf16 */ ppOutputType, nint /* optional IDxcBlobUtf16 */ ppOutputName);
 }

@@ -8,5 +8,5 @@ public partial interface IAudioClock2
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclock2-getdeviceposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevicePosition(out ulong DevicePosition, nint/* nint */ QPCPosition);
+    HRESULT GetDevicePosition(out ulong DevicePosition, nint /* optional ulong */ QPCPosition);
 }

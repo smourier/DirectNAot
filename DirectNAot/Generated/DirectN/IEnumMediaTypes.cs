@@ -8,7 +8,7 @@ public partial interface IEnumMediaTypes
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienummediatypes-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cMediaTypes, out AM_MEDIA_TYPE ppMediaTypes, nint/* nint */ pcFetched);
+    HRESULT Next(uint cMediaTypes, out AM_MEDIA_TYPE ppMediaTypes, nint /* optional uint */ pcFetched);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienummediatypes-skip
     [PreserveSig]

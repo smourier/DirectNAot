@@ -13,7 +13,7 @@ public partial interface IDirectManipulationPrimaryContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationprimarycontent-setsnappoints
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSnapPoints(DIRECTMANIPULATION_MOTION_TYPES motion, nint/* nint */ points, uint pointCount);
+    HRESULT SetSnapPoints(DIRECTMANIPULATION_MOTION_TYPES motion, nint /* optional float */ points, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationprimarycontent-setsnaptype
     [PreserveSig]

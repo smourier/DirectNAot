@@ -17,17 +17,17 @@ public partial interface ID3D12Device5 : ID3D12Device4
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-enumeratemetacommands
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumerateMetaCommands(ref uint pNumMetaCommands, nint/* nint */ pDescs);
+    HRESULT EnumerateMetaCommands(ref uint pNumMetaCommands, nint /* optional D3D12_META_COMMAND_DESC */ pDescs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-enumeratemetacommandparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumerateMetaCommandParameters(in Guid CommandId, D3D12_META_COMMAND_PARAMETER_STAGE Stage, nint/* nint */ pTotalStructureSizeInBytes, ref uint pParameterCount, nint/* nint */ pParameterDescs);
+    HRESULT EnumerateMetaCommandParameters(in Guid CommandId, D3D12_META_COMMAND_PARAMETER_STAGE Stage, nint /* optional uint */ pTotalStructureSizeInBytes, ref uint pParameterCount, nint /* optional D3D12_META_COMMAND_PARAMETER_DESC */ pParameterDescs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createmetacommand
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMetaCommand(in Guid CommandId, uint NodeMask, nint/* nint */ pCreationParametersData, nuint CreationParametersDataSizeInBytes, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppMetaCommand);
+    HRESULT CreateMetaCommand(in Guid CommandId, uint NodeMask, nint /* optional void */ pCreationParametersData, nuint CreationParametersDataSizeInBytes, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppMetaCommand);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createstateobject
     [PreserveSig]

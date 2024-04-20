@@ -6,7 +6,7 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-updatetilemappings
     [PreserveSig]
-    void UpdateTileMappings(ID3D12Resource pResource, uint NumResourceRegions, nint/* nint */ pResourceRegionStartCoordinates, nint/* nint */ pResourceRegionSizes, ID3D12Heap pHeap, uint NumRanges, nint/* nint */ pRangeFlags, nint/* nint */ pHeapRangeStartOffsets, nint/* nint */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
+    void UpdateTileMappings(ID3D12Resource pResource, uint NumResourceRegions, nint /* optional D3D12_TILED_RESOURCE_COORDINATE */ pResourceRegionStartCoordinates, nint /* optional D3D12_TILE_REGION_SIZE */ pResourceRegionSizes, ID3D12Heap pHeap, uint NumRanges, nint /* optional D3D12_TILE_RANGE_FLAGS */ pRangeFlags, nint /* optional uint */ pHeapRangeStartOffsets, nint /* optional uint */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-copytilemappings
     [PreserveSig]
@@ -18,11 +18,11 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-setmarker
     [PreserveSig]
-    void SetMarker(uint Metadata, nint/* nint */ pData, uint Size);
+    void SetMarker(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-beginevent
     [PreserveSig]
-    void BeginEvent(uint Metadata, nint/* nint */ pData, uint Size);
+    void BeginEvent(uint Metadata, nint /* optional void */ pData, uint Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-endevent
     [PreserveSig]

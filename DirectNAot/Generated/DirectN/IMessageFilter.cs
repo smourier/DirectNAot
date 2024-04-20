@@ -7,7 +7,7 @@ public partial interface IMessageFilter
 {
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imessagefilter-handleincomingcall
     [PreserveSig]
-    uint HandleInComingCall(uint dwCallType, HTASK htaskCaller, uint dwTickCount, nint/* nint */ lpInterfaceInfo);
+    uint HandleInComingCall(uint dwCallType, HTASK htaskCaller, uint dwTickCount, nint /* optional INTERFACEINFO */ lpInterfaceInfo);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imessagefilter-retryrejectedcall
     [PreserveSig]

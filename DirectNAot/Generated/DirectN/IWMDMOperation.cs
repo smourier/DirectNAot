@@ -27,12 +27,12 @@ public partial interface IWMDMOperation
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmoperation-getobjectattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObjectAttributes(out uint pdwAttributes, nint/* nint */ pFormat);
+    HRESULT GetObjectAttributes(out uint pdwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmoperation-setobjectattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetObjectAttributes(uint dwAttributes, nint/* nint */ pFormat);
+    HRESULT SetObjectAttributes(uint dwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmoperation-getobjecttotalsize
     [PreserveSig]

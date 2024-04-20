@@ -16,7 +16,7 @@ public partial interface IMFCameraControlDefaults
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaults-lockcontroldata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockControlData(out nint control, out uint controlSize, nint/* nint */ data, nint/* nint */ dataSize);
+    HRESULT LockControlData(out nint control, out uint controlSize, nint /* optional void */ data, nint /* optional uint */ dataSize);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaults-unlockcontroldata
     [PreserveSig]

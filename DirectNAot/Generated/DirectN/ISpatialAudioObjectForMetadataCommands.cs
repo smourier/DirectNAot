@@ -8,5 +8,5 @@ public partial interface ISpatialAudioObjectForMetadataCommands : ISpatialAudioO
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudioobjectformetadatacommands-writenextmetadatacommand
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteNextMetadataCommand(byte commandID, nint/* nint */ valueBuffer, uint valueBufferLength);
+    HRESULT WriteNextMetadataCommand(byte commandID, nint /* optional void */ valueBuffer, uint valueBufferLength);
 }

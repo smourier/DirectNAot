@@ -8,20 +8,20 @@ public partial interface IDWriteTextRenderer : IDWritePixelSnapping
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextrenderer-drawglyphrun
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGlyphRun(nint/* nint */ clientDrawingContext, float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, in DWRITE_GLYPH_RUN_DESCRIPTION glyphRunDescription, nint clientDrawingEffect);
+    HRESULT DrawGlyphRun(nint /* optional void */ clientDrawingContext, float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, in DWRITE_GLYPH_RUN_DESCRIPTION glyphRunDescription, nint clientDrawingEffect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextrenderer-drawunderline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawUnderline(nint/* nint */ clientDrawingContext, float baselineOriginX, float baselineOriginY, in DWRITE_UNDERLINE underline, nint clientDrawingEffect);
+    HRESULT DrawUnderline(nint /* optional void */ clientDrawingContext, float baselineOriginX, float baselineOriginY, in DWRITE_UNDERLINE underline, nint clientDrawingEffect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextrenderer-drawstrikethrough
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawStrikethrough(nint/* nint */ clientDrawingContext, float baselineOriginX, float baselineOriginY, in DWRITE_STRIKETHROUGH strikethrough, nint clientDrawingEffect);
+    HRESULT DrawStrikethrough(nint /* optional void */ clientDrawingContext, float baselineOriginX, float baselineOriginY, in DWRITE_STRIKETHROUGH strikethrough, nint clientDrawingEffect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextrenderer-drawinlineobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawInlineObject(nint/* nint */ clientDrawingContext, float originX, float originY, IDWriteInlineObject inlineObject, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
+    HRESULT DrawInlineObject(nint /* optional void */ clientDrawingContext, float originX, float originY, IDWriteInlineObject inlineObject, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
 }

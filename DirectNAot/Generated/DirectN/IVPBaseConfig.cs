@@ -8,7 +8,7 @@ public partial interface IVPBaseConfig
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-getconnectinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnectInfo(ref uint pdwNumConnectInfo, nint/* nint */ pddVPConnectInfo);
+    HRESULT GetConnectInfo(ref uint pdwNumConnectInfo, nint /* optional DDVIDEOPORTCONNECT */ pddVPConnectInfo);
     
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-setconnectinfo
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IVPBaseConfig
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-getvideoformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoFormats(ref uint pdwNumFormats, nint/* nint */ pddPixelFormats);
+    HRESULT GetVideoFormats(ref uint pdwNumFormats, nint /* optional DDPIXELFORMAT */ pddPixelFormats);
     
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-setvideoformat
     [PreserveSig]

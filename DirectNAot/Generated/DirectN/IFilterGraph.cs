@@ -28,7 +28,7 @@ public partial interface IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-connectdirect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectDirect(IPin ppinOut, IPin ppinIn, nint/* nint */ pmt);
+    HRESULT ConnectDirect(IPin ppinOut, IPin ppinIn, nint /* optional AM_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-reconnect
     [PreserveSig]

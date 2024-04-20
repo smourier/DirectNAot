@@ -23,5 +23,5 @@ public partial interface IDWriteTextLayout3 : IDWriteTextLayout2
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritetextlayout3-getlinemetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IDWriteTextLayout3_GetLineMetrics(nint/* nint */ lineMetrics, uint maxLineCount, out uint actualLineCount); // renamed, see https://github.com/dotnet/runtime/issues/101240
+    HRESULT IDWriteTextLayout3_GetLineMetrics(nint /* optional DWRITE_LINE_METRICS1 */ lineMetrics, uint maxLineCount, out uint actualLineCount); // renamed, see https://github.com/dotnet/runtime/issues/101240
 }

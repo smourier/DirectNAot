@@ -8,7 +8,7 @@ public partial interface IWICMetadataWriterInfo : IWICMetadataHandlerInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriterinfo-getheader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHeader(in Guid guidContainerFormat, uint cbSize, nint/* nint */ pHeader, nint/* nint */ pcbActual);
+    HRESULT GetHeader(in Guid guidContainerFormat, uint cbSize, nint /* optional WICMetadataHeader */ pHeader, nint /* optional uint */ pcbActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriterinfo-createinstance
     [PreserveSig]

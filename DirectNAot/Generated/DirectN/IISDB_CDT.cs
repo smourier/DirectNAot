@@ -48,7 +48,7 @@ public partial interface IISDB_CDT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdb_cdt-gettabledescriptorbytag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTableDescriptorByTag(byte bTag, nint/* nint */ pdwCookie, out IGenericDescriptor ppDescriptor);
+    HRESULT GetTableDescriptorByTag(byte bTag, nint /* optional uint */ pdwCookie, out IGenericDescriptor ppDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdb_cdt-getsizeofdatamodule
     [PreserveSig]

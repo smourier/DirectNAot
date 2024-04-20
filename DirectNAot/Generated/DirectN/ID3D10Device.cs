@@ -6,11 +6,11 @@ public partial interface ID3D10Device
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetconstantbuffers
     [PreserveSig]
-    void VSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void VSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetshaderresources
     [PreserveSig]
-    void PSSetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void PSSetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetshader
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetsamplers
     [PreserveSig]
-    void PSSetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void PSSetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetshader
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetconstantbuffers
     [PreserveSig]
-    void PSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void PSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetinputlayout
     [PreserveSig]
@@ -42,7 +42,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetvertexbuffers
     [PreserveSig]
-    void IASetVertexBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppVertexBuffers, nint/* nint */ pStrides, nint/* nint */ pOffsets);
+    void IASetVertexBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppVertexBuffers, nint /* optional uint */ pStrides, nint /* optional uint */ pOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetindexbuffer
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetconstantbuffers
     [PreserveSig]
-    void GSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void GSSetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshader
     [PreserveSig]
@@ -70,11 +70,11 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetshaderresources
     [PreserveSig]
-    void VSSetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void VSSetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetsamplers
     [PreserveSig]
-    void VSSetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void VSSetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setpredication
     [PreserveSig]
@@ -82,15 +82,15 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshaderresources
     [PreserveSig]
-    void GSSetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void GSSetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetsamplers
     [PreserveSig]
-    void GSSetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void GSSetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumViews, nint/* nint */ ppRenderTargetViews, ID3D10DepthStencilView pDepthStencilView);
+    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView */ ppRenderTargetViews, ID3D10DepthStencilView pDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetblendstate
     [PreserveSig]
@@ -102,7 +102,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-sosettargets
     [PreserveSig]
-    void SOSetTargets(uint NumBuffers, nint/* nint */ ppSOTargets, nint/* nint */ pOffsets);
+    void SOSetTargets(uint NumBuffers, nint /* optional ID3D10Buffer */ ppSOTargets, nint /* optional uint */ pOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-drawauto
     [PreserveSig]
@@ -114,15 +114,15 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetviewports
     [PreserveSig]
-    void RSSetViewports(uint NumViewports, nint/* nint */ pViewports);
+    void RSSetViewports(uint NumViewports, nint /* optional D3D10_VIEWPORT */ pViewports);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetscissorrects
     [PreserveSig]
-    void RSSetScissorRects(uint NumRects, nint/* nint */ pRects);
+    void RSSetScissorRects(uint NumRects, nint /* optional FoundationRECT */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-copysubresourceregion
     [PreserveSig]
-    void CopySubresourceRegion(ID3D10Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, ID3D10Resource pSrcResource, uint SrcSubresource, nint/* nint */ pSrcBox);
+    void CopySubresourceRegion(ID3D10Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, ID3D10Resource pSrcResource, uint SrcSubresource, nint /* optional D3D10_BOX */ pSrcBox);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-copyresource
     [PreserveSig]
@@ -130,7 +130,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-updatesubresource
     [PreserveSig]
-    void UpdateSubresource(ID3D10Resource pDstResource, uint DstSubresource, nint/* nint */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
+    void UpdateSubresource(ID3D10Resource pDstResource, uint DstSubresource, nint /* optional D3D10_BOX */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-clearrendertargetview
     [PreserveSig]
@@ -150,11 +150,11 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetconstantbuffers
     [PreserveSig]
-    void VSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void VSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetshaderresources
     [PreserveSig]
-    void PSGetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void PSGetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetshader
     [PreserveSig]
@@ -162,7 +162,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetsamplers
     [PreserveSig]
-    void PSGetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void PSGetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetshader
     [PreserveSig]
@@ -170,7 +170,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetconstantbuffers
     [PreserveSig]
-    void PSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void PSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetinputlayout
     [PreserveSig]
@@ -178,15 +178,15 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetvertexbuffers
     [PreserveSig]
-    void IAGetVertexBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppVertexBuffers, nint/* nint */ pStrides, nint/* nint */ pOffsets);
+    void IAGetVertexBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppVertexBuffers, nint /* optional uint */ pStrides, nint /* optional uint */ pOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetindexbuffer
     [PreserveSig]
-    void IAGetIndexBuffer(nint/* nint */ pIndexBuffer, nint/* nint */ Format, nint/* nint */ Offset);
+    void IAGetIndexBuffer(nint /* optional ID3D10Buffer */ pIndexBuffer, nint /* optional DXGI_FORMAT */ Format, nint /* optional uint */ Offset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetconstantbuffers
     [PreserveSig]
-    void GSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint/* nint */ ppConstantBuffers);
+    void GSGetConstantBuffers(uint StartSlot, uint NumBuffers, nint /* optional ID3D10Buffer */ ppConstantBuffers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetshader
     [PreserveSig]
@@ -198,39 +198,39 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetshaderresources
     [PreserveSig]
-    void VSGetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void VSGetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetsamplers
     [PreserveSig]
-    void VSGetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void VSGetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getpredication
     [PreserveSig]
-    void GetPredication(nint/* nint */ ppPredicate, nint/* nint */ pPredicateValue);
+    void GetPredication(nint /* optional ID3D10Predicate */ ppPredicate, nint /* optional bool */ pPredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetshaderresources
     [PreserveSig]
-    void GSGetShaderResources(uint StartSlot, uint NumViews, nint/* nint */ ppShaderResourceViews);
+    void GSGetShaderResources(uint StartSlot, uint NumViews, nint /* optional ID3D10ShaderResourceView */ ppShaderResourceViews);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetsamplers
     [PreserveSig]
-    void GSGetSamplers(uint StartSlot, uint NumSamplers, nint/* nint */ ppSamplers);
+    void GSGetSamplers(uint StartSlot, uint NumSamplers, nint /* optional ID3D10SamplerState */ ppSamplers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omgetrendertargets
     [PreserveSig]
-    void OMGetRenderTargets(uint NumViews, nint/* nint */ ppRenderTargetViews, nint/* nint */ ppDepthStencilView);
+    void OMGetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView */ ppRenderTargetViews, nint /* optional ID3D10DepthStencilView */ ppDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omgetblendstate
     [PreserveSig]
-    void OMGetBlendState(nint/* nint */ ppBlendState, nint/* nint */ BlendFactor, nint/* nint */ pSampleMask);
+    void OMGetBlendState(nint /* optional ID3D10BlendState */ ppBlendState, nint /* optional float */ BlendFactor, nint /* optional uint */ pSampleMask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omgetdepthstencilstate
     [PreserveSig]
-    void OMGetDepthStencilState(nint/* nint */ ppDepthStencilState, nint/* nint */ pStencilRef);
+    void OMGetDepthStencilState(nint /* optional ID3D10DepthStencilState */ ppDepthStencilState, nint /* optional uint */ pStencilRef);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-sogettargets
     [PreserveSig]
-    void SOGetTargets(uint NumBuffers, nint/* nint */ ppSOTargets, nint/* nint */ pOffsets);
+    void SOGetTargets(uint NumBuffers, nint /* optional ID3D10Buffer */ ppSOTargets, nint /* optional uint */ pOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetstate
     [PreserveSig]
@@ -238,11 +238,11 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetviewports
     [PreserveSig]
-    void RSGetViewports(ref uint NumViewports, nint/* nint */ pViewports);
+    void RSGetViewports(ref uint NumViewports, nint /* optional D3D10_VIEWPORT */ pViewports);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetscissorrects
     [PreserveSig]
-    void RSGetScissorRects(ref uint NumRects, nint/* nint */ pRects);
+    void RSGetScissorRects(ref uint NumRects, nint /* optional FoundationRECT */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getdeviceremovedreason
     [PreserveSig]
@@ -261,12 +261,12 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint/* nint */ pData);
+    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint /* optional void */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint/* nint */ pData);
+    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setprivatedatainterface
     [PreserveSig]
@@ -284,97 +284,97 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBuffer(in D3D10_BUFFER_DESC pDesc, nint/* nint */ pInitialData, nint/* nint */ ppBuffer);
+    HRESULT CreateBuffer(in D3D10_BUFFER_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA */ pInitialData, nint /* optional ID3D10Buffer */ ppBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture1d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture1D(in D3D10_TEXTURE1D_DESC pDesc, nint/* nint */ pInitialData, out ID3D10Texture1D ppTexture1D);
+    HRESULT CreateTexture1D(in D3D10_TEXTURE1D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA */ pInitialData, out ID3D10Texture1D ppTexture1D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture2d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture2D(in D3D10_TEXTURE2D_DESC pDesc, nint/* nint */ pInitialData, out ID3D10Texture2D ppTexture2D);
+    HRESULT CreateTexture2D(in D3D10_TEXTURE2D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA */ pInitialData, out ID3D10Texture2D ppTexture2D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture3D(in D3D10_TEXTURE3D_DESC pDesc, nint/* nint */ pInitialData, out ID3D10Texture3D ppTexture3D);
+    HRESULT CreateTexture3D(in D3D10_TEXTURE3D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA */ pInitialData, out ID3D10Texture3D ppTexture3D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createshaderresourceview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateShaderResourceView(ID3D10Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppSRView);
+    HRESULT CreateShaderResourceView(ID3D10Resource pResource, nint /* optional D3D10_SHADER_RESOURCE_VIEW_DESC */ pDesc, nint /* optional ID3D10ShaderResourceView */ ppSRView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createrendertargetview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTargetView(ID3D10Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppRTView);
+    HRESULT CreateRenderTargetView(ID3D10Resource pResource, nint /* optional D3D10_RENDER_TARGET_VIEW_DESC */ pDesc, nint /* optional ID3D10RenderTargetView */ ppRTView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createdepthstencilview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilView(ID3D10Resource pResource, nint/* nint */ pDesc, nint/* nint */ ppDepthStencilView);
+    HRESULT CreateDepthStencilView(ID3D10Resource pResource, nint /* optional D3D10_DEPTH_STENCIL_VIEW_DESC */ pDesc, nint /* optional ID3D10DepthStencilView */ ppDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createinputlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInputLayout(in D3D10_INPUT_ELEMENT_DESC pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint/* nint */ ppInputLayout);
+    HRESULT CreateInputLayout(in D3D10_INPUT_ELEMENT_DESC pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint /* optional ID3D10InputLayout */ ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ ppVertexShader);
+    HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, nint /* optional ID3D10VertexShader */ ppVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-creategeometryshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ ppGeometryShader);
+    HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, nint /* optional ID3D10GeometryShader */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-creategeometryshaderwithstreamoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ pSODeclaration, uint NumEntries, uint OutputStreamStride, nint/* nint */ ppGeometryShader);
+    HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint /* optional D3D10_SO_DECLARATION_ENTRY */ pSODeclaration, uint NumEntries, uint OutputStreamStride, nint /* optional ID3D10GeometryShader */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, nint/* nint */ ppPixelShader);
+    HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, nint /* optional ID3D10PixelShader */ ppPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createblendstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlendState(in D3D10_BLEND_DESC pBlendStateDesc, nint/* nint */ ppBlendState);
+    HRESULT CreateBlendState(in D3D10_BLEND_DESC pBlendStateDesc, nint /* optional ID3D10BlendState */ ppBlendState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createdepthstencilstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilState(in D3D10_DEPTH_STENCIL_DESC pDepthStencilDesc, nint/* nint */ ppDepthStencilState);
+    HRESULT CreateDepthStencilState(in D3D10_DEPTH_STENCIL_DESC pDepthStencilDesc, nint /* optional ID3D10DepthStencilState */ ppDepthStencilState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createrasterizerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRasterizerState(in D3D10_RASTERIZER_DESC pRasterizerDesc, nint/* nint */ ppRasterizerState);
+    HRESULT CreateRasterizerState(in D3D10_RASTERIZER_DESC pRasterizerDesc, nint /* optional ID3D10RasterizerState */ ppRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createsamplerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSamplerState(in D3D10_SAMPLER_DESC pSamplerDesc, nint/* nint */ ppSamplerState);
+    HRESULT CreateSamplerState(in D3D10_SAMPLER_DESC pSamplerDesc, nint /* optional ID3D10SamplerState */ ppSamplerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateQuery(in D3D10_QUERY_DESC pQueryDesc, nint/* nint */ ppQuery);
+    HRESULT CreateQuery(in D3D10_QUERY_DESC pQueryDesc, nint /* optional ID3D10Query */ ppQuery);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createpredicate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePredicate(in D3D10_QUERY_DESC pPredicateDesc, nint/* nint */ ppPredicate);
+    HRESULT CreatePredicate(in D3D10_QUERY_DESC pPredicateDesc, nint /* optional ID3D10Predicate */ ppPredicate);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCounter(in D3D10_COUNTER_DESC pCounterDesc, nint/* nint */ ppCounter);
+    HRESULT CreateCounter(in D3D10_COUNTER_DESC pCounterDesc, nint /* optional ID3D10Counter */ ppCounter);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-checkformatsupport
     [PreserveSig]
@@ -393,7 +393,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint/* nint */ pNameLength, out PSTR szUnits, nint/* nint */ pUnitsLength, out PSTR szDescription, nint/* nint */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint /* optional uint */ pNameLength, out PSTR szUnits, nint /* optional uint */ pUnitsLength, out PSTR szDescription, nint /* optional uint */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getcreationflags
     [PreserveSig]
@@ -402,7 +402,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-opensharedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint/* nint */ ppResource);
+    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint /* optional void */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-settextfiltersize
     [PreserveSig]
@@ -410,5 +410,5 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gettextfiltersize
     [PreserveSig]
-    void GetTextFilterSize(nint/* nint */ pWidth, nint/* nint */ pHeight);
+    void GetTextFilterSize(nint /* optional uint */ pWidth, nint /* optional uint */ pHeight);
 }

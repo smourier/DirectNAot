@@ -8,7 +8,7 @@ public partial interface IMMDevice
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-activate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate(in Guid iid, CLSCTX dwClsCtx, nint/* nint */ pActivationParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppInterface);
+    HRESULT Activate(in Guid iid, CLSCTX dwClsCtx, nint /* optional PROPVARIANT */ pActivationParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppInterface);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-openpropertystore
     [PreserveSig]

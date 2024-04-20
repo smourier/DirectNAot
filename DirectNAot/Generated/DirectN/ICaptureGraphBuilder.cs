@@ -22,17 +22,17 @@ public partial interface ICaptureGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-findinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindInterface(nint/* nint */ pCategory, IBaseFilter pf, in Guid riid, out nint ppint);
+    HRESULT FindInterface(nint /* optional Guid */ pCategory, IBaseFilter pf, in Guid riid, out nint ppint);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-renderstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderStream(nint/* nint */ pCategory, nint pSource, IBaseFilter pfCompressor, IBaseFilter pfRenderer);
+    HRESULT RenderStream(nint /* optional Guid */ pCategory, nint pSource, IBaseFilter pfCompressor, IBaseFilter pfRenderer);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-controlstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ControlStream(nint/* nint */ pCategory, IBaseFilter pFilter, in long pstart, in long pstop, ushort wStartCookie, ushort wStopCookie);
+    HRESULT ControlStream(nint /* optional Guid */ pCategory, IBaseFilter pFilter, in long pstart, in long pstop, ushort wStartCookie, ushort wStopCookie);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-alloccapfile
     [PreserveSig]

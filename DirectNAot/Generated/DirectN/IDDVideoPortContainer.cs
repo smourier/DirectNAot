@@ -13,7 +13,7 @@ public partial interface IDDVideoPortContainer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoPortConnectInfo(uint param0, ref uint pcInfo, nint/* nint */ param2);
+    HRESULT GetVideoPortConnectInfo(uint param0, ref uint pcInfo, nint /* optional DDVIDEOPORTCONNECT */ param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

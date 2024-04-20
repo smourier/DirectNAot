@@ -19,7 +19,7 @@ public partial interface IKsPin
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsGetCurrentCommunication(nint/* nint */ Communication, nint/* nint */ Interface, nint/* nint */ Medium);
+    HRESULT KsGetCurrentCommunication(nint /* optional KSPIN_COMMUNICATION */ Communication, nint /* optional KSIDENTIFIER */ Interface, nint /* optional KSIDENTIFIER */ Medium);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

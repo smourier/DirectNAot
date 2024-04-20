@@ -7,7 +7,7 @@ public partial interface IWMDMStorage4 : IWMDMStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-setreferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReferences(uint dwRefs, nint/* nint */ ppIWMDMStorage);
+    HRESULT SetReferences(uint dwRefs, nint /* optional IWMDMStorage */ ppIWMDMStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getreferences
     [PreserveSig]

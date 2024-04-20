@@ -11,12 +11,12 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputvoices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputVoices(nint/* nint */ pSendList);
+    HRESULT SetOutputVoices(nint /* optional XAUDIO2_VOICE_SENDS */ pSendList);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-seteffectchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffectChain(nint/* nint */ pEffectChain);
+    HRESULT SetEffectChain(nint /* optional XAUDIO2_EFFECT_CHAIN */ pEffectChain);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-enableeffect
     [PreserveSig]

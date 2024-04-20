@@ -13,10 +13,10 @@ public partial interface IFilterGraph2 : IGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph2-reconnectex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReconnectEx(IPin ppin, nint/* nint */ pmt);
+    HRESULT ReconnectEx(IPin ppin, nint /* optional AM_MEDIA_TYPE */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph2-renderex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderEx(IPin pPinOut, uint dwFlags, nint/* nint */ pvContext);
+    HRESULT RenderEx(IPin pPinOut, uint dwFlags, nint /* optional uint */ pvContext);
 }

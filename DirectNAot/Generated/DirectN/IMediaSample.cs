@@ -22,7 +22,7 @@ public partial interface IMediaSample
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-settime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTime(nint/* nint */ pTimeStart, nint/* nint */ pTimeEnd);
+    HRESULT SetTime(nint /* optional long */ pTimeStart, nint /* optional long */ pTimeEnd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-issyncpoint
     [PreserveSig]
@@ -81,5 +81,5 @@ public partial interface IMediaSample
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-setmediatime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMediaTime(nint/* nint */ pTimeStart, nint/* nint */ pTimeEnd);
+    HRESULT SetMediaTime(nint /* optional long */ pTimeStart, nint /* optional long */ pTimeEnd);
 }

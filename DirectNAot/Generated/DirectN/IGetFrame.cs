@@ -22,5 +22,5 @@ public partial interface IGetFrame
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-igetframe-setformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFormat(in BITMAPINFOHEADER lpbi, nint/* nint */ lpBits, int x, int y, int dx, int dy);
+    HRESULT SetFormat(in BITMAPINFOHEADER lpbi, nint /* optional void */ lpBits, int x, int y, int dx, int dy);
 }

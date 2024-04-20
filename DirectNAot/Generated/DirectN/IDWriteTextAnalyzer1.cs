@@ -33,7 +33,7 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-gettextcomplexity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextComplexity(PWSTR textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint/* nint */ glyphIndices);
+    HRESULT GetTextComplexity(PWSTR textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort */ glyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustificationopportunities
     [PreserveSig]
@@ -43,10 +43,10 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-justifyglyphadvances
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JustifyGlyphAdvances(float lineWidth, uint glyphCount, in DWRITE_JUSTIFICATION_OPPORTUNITY justificationOpportunities, in float glyphAdvances, in DWRITE_GLYPH_OFFSET glyphOffsets, out float justifiedGlyphAdvances, nint/* nint */ justifiedGlyphOffsets);
+    HRESULT JustifyGlyphAdvances(float lineWidth, uint glyphCount, in DWRITE_JUSTIFICATION_OPPORTUNITY justificationOpportunities, in float glyphAdvances, in DWRITE_GLYPH_OFFSET glyphOffsets, out float justifiedGlyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET */ justifiedGlyphOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustifiedglyphs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetJustifiedGlyphs(IDWriteFontFace fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, uint maxGlyphCount, nint/* nint */ clusterMap, in ushort glyphIndices, in float glyphAdvances, in float justifiedGlyphAdvances, in DWRITE_GLYPH_OFFSET justifiedGlyphOffsets, in DWRITE_SHAPING_GLYPH_PROPERTIES glyphProperties, ref uint actualGlyphCount, nint/* nint */ modifiedClusterMap, out ushort modifiedGlyphIndices, out float modifiedGlyphAdvances, out DWRITE_GLYPH_OFFSET modifiedGlyphOffsets);
+    HRESULT GetJustifiedGlyphs(IDWriteFontFace fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, uint maxGlyphCount, nint /* optional ushort */ clusterMap, in ushort glyphIndices, in float glyphAdvances, in float justifiedGlyphAdvances, in DWRITE_GLYPH_OFFSET justifiedGlyphOffsets, in DWRITE_SHAPING_GLYPH_PROPERTIES glyphProperties, ref uint actualGlyphCount, nint /* optional ushort */ modifiedClusterMap, out ushort modifiedGlyphIndices, out float modifiedGlyphAdvances, out DWRITE_GLYPH_OFFSET modifiedGlyphOffsets);
 }

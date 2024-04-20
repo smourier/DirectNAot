@@ -53,12 +53,12 @@ public partial interface ID2D1CommandSink
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-clear
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clear(nint/* nint */ color);
+    HRESULT Clear(nint /* optional D2D1_COLOR_F */ color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawglyphrun
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGlyphRun(D2D_POINT_2F baselineOrigin, in DWRITE_GLYPH_RUN glyphRun, nint/* nint */ glyphRunDescription, ID2D1Brush foregroundBrush, DWRITE_MEASURING_MODE measuringMode);
+    HRESULT DrawGlyphRun(D2D_POINT_2F baselineOrigin, in DWRITE_GLYPH_RUN glyphRun, nint /* optional DWRITE_GLYPH_RUN_DESCRIPTION */ glyphRunDescription, ID2D1Brush foregroundBrush, DWRITE_MEASURING_MODE measuringMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawline
     [PreserveSig]
@@ -78,17 +78,17 @@ public partial interface ID2D1CommandSink
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawBitmap(ID2D1Bitmap bitmap, nint/* nint */ destinationRectangle, float opacity, D2D1_INTERPOLATION_MODE interpolationMode, nint/* nint */ sourceRectangle, nint/* nint */ perspectiveTransform);
+    HRESULT DrawBitmap(ID2D1Bitmap bitmap, nint /* optional D2D_RECT_F */ destinationRectangle, float opacity, D2D1_INTERPOLATION_MODE interpolationMode, nint /* optional D2D_RECT_F */ sourceRectangle, nint /* optional D2D_MATRIX_4X4_F */ perspectiveTransform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawImage(ID2D1Image image, nint/* nint */ targetOffset, nint/* nint */ imageRectangle, D2D1_INTERPOLATION_MODE interpolationMode, D2D1_COMPOSITE_MODE compositeMode);
+    HRESULT DrawImage(ID2D1Image image, nint /* optional D2D_POINT_2F */ targetOffset, nint /* optional D2D_RECT_F */ imageRectangle, D2D1_INTERPOLATION_MODE interpolationMode, D2D1_COMPOSITE_MODE compositeMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawgdimetafile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint/* nint */ targetOffset);
+    HRESULT DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint /* optional D2D_POINT_2F */ targetOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-fillmesh
     [PreserveSig]
@@ -98,7 +98,7 @@ public partial interface ID2D1CommandSink
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-fillopacitymask
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, nint/* nint */ destinationRectangle, nint/* nint */ sourceRectangle);
+    HRESULT FillOpacityMask(ID2D1Bitmap opacityMask, ID2D1Brush brush, nint /* optional D2D_RECT_F */ destinationRectangle, nint /* optional D2D_RECT_F */ sourceRectangle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-fillgeometry
     [PreserveSig]
