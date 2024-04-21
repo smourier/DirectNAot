@@ -23,7 +23,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-compare
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Compare(IMFAttributes pTheirs, MF_ATTRIBUTES_MATCH_TYPE MatchType, [MarshalAs(UnmanagedType.U4)] out bool pbResult);
+    HRESULT Compare(IMFAttributes? pTheirs, MF_ATTRIBUTES_MATCH_TYPE MatchType, [MarshalAs(UnmanagedType.U4)] out bool pbResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getuint32
     [PreserveSig]

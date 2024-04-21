@@ -7,5 +7,5 @@ public partial interface IMDSPDirectTransfer
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdirecttransfer-transfertodevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferToDevice(PWSTR pwszSourceFilePath, IWMDMOperation pSourceOperation, uint fuFlags, PWSTR pwszDestinationName, IWMDMMetaData pSourceMetaData, IWMDMProgress pTransferProgress, out IMDSPStorage ppNewObject);
+    HRESULT TransferToDevice(PWSTR? pwszSourceFilePath, IWMDMOperation? pSourceOperation, uint fuFlags, PWSTR? pwszDestinationName, IWMDMMetaData? pSourceMetaData, IWMDMProgress? pTransferProgress, out IMDSPStorage ppNewObject);
 }

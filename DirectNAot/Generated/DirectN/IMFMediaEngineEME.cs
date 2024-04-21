@@ -13,5 +13,5 @@ public partial interface IMFMediaEngineEME
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineeme-setmediakeys
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMediaKeys(IMFMediaKeys keys);
+    HRESULT SetMediaKeys(IMFMediaKeys? keys);
 }

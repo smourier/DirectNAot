@@ -48,12 +48,12 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createimagebrush(id2d1image_constd2d1_image_brush_properties__id2d1imagebrush)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageBrush(ID2D1Image image, in D2D1_IMAGE_BRUSH_PROPERTIES imageBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1ImageBrush imageBrush);
+    HRESULT CreateImageBrush(ID2D1Image? image, in D2D1_IMAGE_BRUSH_PROPERTIES imageBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1ImageBrush imageBrush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createbitmapbrush(id2d1bitmap_constd2d1_bitmap_brush_properties1__constd2d1_brush_properties__id2d1bitmapbrush1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint /* optional D2D1_BITMAP_BRUSH_PROPERTIES1 */ bitmapBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush1 bitmapBrush);
+    HRESULT CreateBitmapBrush(ID2D1Bitmap? bitmap, nint /* optional D2D1_BITMAP_BRUSH_PROPERTIES1 */ bitmapBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush1 bitmapBrush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createcommandlist
     [PreserveSig]
@@ -91,7 +91,7 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-settarget
     [PreserveSig]
-    void SetTarget(ID2D1Image image);
+    void SetTarget(ID2D1Image? image);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-gettarget
     [PreserveSig]
@@ -139,7 +139,7 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-pushlayer(constd2d1_layer_parameters1__id2d1layer)
     [PreserveSig]
-    void PushLayer(in D2D1_LAYER_PARAMETERS1 layerParameters, ID2D1Layer layer);
+    void PushLayer(in D2D1_LAYER_PARAMETERS1 layerParameters, ID2D1Layer? layer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-invalidateeffectinputrectangle
     [PreserveSig]

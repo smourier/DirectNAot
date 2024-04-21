@@ -8,5 +8,5 @@ public partial interface IMFVideoCaptureSampleAllocator : IMFVideoSampleAllocato
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideocapturesampleallocator-initializecapturesampleallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeCaptureSampleAllocator(uint cbSampleSize, uint cbCaptureMetadataSize, uint cbAlignment, uint cMinimumSamples, IMFAttributes pAttributes, IMFMediaType pMediaType);
+    HRESULT InitializeCaptureSampleAllocator(uint cbSampleSize, uint cbCaptureMetadataSize, uint cbAlignment, uint cMinimumSamples, IMFAttributes? pAttributes, IMFMediaType pMediaType);
 }

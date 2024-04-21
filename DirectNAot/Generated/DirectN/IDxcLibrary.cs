@@ -5,7 +5,7 @@ public partial interface IDxcLibrary
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMalloc(IMalloc pMalloc);
+    HRESULT SetMalloc(IMalloc? pMalloc);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

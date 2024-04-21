@@ -45,7 +45,7 @@ public partial interface IPinInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectWithType(nint pPin, IDispatch pMediaType);
+    HRESULT ConnectWithType(nint pPin, IDispatch? pMediaType);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

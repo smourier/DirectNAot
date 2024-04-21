@@ -7,5 +7,5 @@ public partial interface ISCPSecureExchange2 : ISCPSecureExchange
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecureexchange2-transfercontainerdata2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferContainerData2(nint /* byte array */ pData, uint dwSize, IWMDMProgress3 pProgressCallback, out uint pfuReadyFlags, nint /* byte array */ abMac);
+    HRESULT TransferContainerData2(nint /* byte array */ pData, uint dwSize, IWMDMProgress3? pProgressCallback, out uint pfuReadyFlags, nint /* byte array */ abMac);
 }

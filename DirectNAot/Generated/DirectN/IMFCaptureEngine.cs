@@ -8,7 +8,7 @@ public partial interface IMFCaptureEngine
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IMFCaptureEngineOnEventCallback pEventCallback, IMFAttributes pAttributes, nint pAudioSource, nint pVideoSource);
+    HRESULT Initialize(IMFCaptureEngineOnEventCallback pEventCallback, IMFAttributes? pAttributes, nint pAudioSource, nint pVideoSource);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-startpreview
     [PreserveSig]

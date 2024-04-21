@@ -52,7 +52,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-insertchildbefore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertChildBefore(ID2D1SvgElement newChild, ID2D1SvgElement referenceChild);
+    HRESULT InsertChildBefore(ID2D1SvgElement newChild, ID2D1SvgElement? referenceChild);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-appendchild
     [PreserveSig]

@@ -69,11 +69,11 @@ public partial interface ISpeechRecoGrammar : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWordSequenceData(BSTR Text, int TextLength, ISpeechTextSelectionInformation Info);
+    HRESULT SetWordSequenceData(BSTR Text, int TextLength, ISpeechTextSelectionInformation? Info);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTextSelection(ISpeechTextSelectionInformation Info);
+    HRESULT SetTextSelection(ISpeechTextSelectionInformation? Info);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

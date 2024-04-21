@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_CPU_DESCRIPTOR_HANDLE
 {
+    public static readonly D3D12_CPU_DESCRIPTOR_HANDLE Null = new();
+    
     public nuint ptr;
 }

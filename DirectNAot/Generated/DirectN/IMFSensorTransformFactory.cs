@@ -12,7 +12,7 @@ public partial interface IMFSensorTransformFactory
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-initializefactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeFactory(uint dwMaxTransformCount, IMFCollection pSensorDevices, IMFAttributes pAttributes);
+    HRESULT InitializeFactory(uint dwMaxTransformCount, IMFCollection pSensorDevices, IMFAttributes? pAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-gettransformcount
     [PreserveSig]
@@ -27,5 +27,5 @@ public partial interface IMFSensorTransformFactory
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-createtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransform(in Guid guidSensorTransformID, IMFAttributes pAttributes, out IMFDeviceTransform ppDeviceMFT);
+    HRESULT CreateTransform(in Guid guidSensorTransformID, IMFAttributes? pAttributes, out IMFDeviceTransform ppDeviceMFT);
 }

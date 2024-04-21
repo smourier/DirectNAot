@@ -14,7 +14,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetshader
     [PreserveSig]
-    void PSSetShader(ID3D10PixelShader pPixelShader);
+    void PSSetShader(ID3D10PixelShader? pPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetsamplers
     [PreserveSig]
@@ -22,7 +22,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetshader
     [PreserveSig]
-    void VSSetShader(ID3D10VertexShader pVertexShader);
+    void VSSetShader(ID3D10VertexShader? pVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-drawindexed
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetinputlayout
     [PreserveSig]
-    void IASetInputLayout(ID3D10InputLayout pInputLayout);
+    void IASetInputLayout(ID3D10InputLayout? pInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetvertexbuffers
     [PreserveSig]
@@ -46,7 +46,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetindexbuffer
     [PreserveSig]
-    void IASetIndexBuffer(ID3D10Buffer pIndexBuffer, DXGI_FORMAT Format, uint Offset);
+    void IASetIndexBuffer(ID3D10Buffer? pIndexBuffer, DXGI_FORMAT Format, uint Offset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-drawindexedinstanced
     [PreserveSig]
@@ -62,7 +62,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshader
     [PreserveSig]
-    void GSSetShader(ID3D10GeometryShader pShader);
+    void GSSetShader(ID3D10GeometryShader? pShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetprimitivetopology
     [PreserveSig]
@@ -78,7 +78,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setpredication
     [PreserveSig]
-    void SetPredication(ID3D10Predicate pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
+    void SetPredication(ID3D10Predicate? pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshaderresources
     [PreserveSig]
@@ -90,15 +90,15 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView */ ppRenderTargetViews, ID3D10DepthStencilView pDepthStencilView);
+    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView */ ppRenderTargetViews, ID3D10DepthStencilView? pDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetblendstate
     [PreserveSig]
-    void OMSetBlendState(ID3D10BlendState pBlendState, in float BlendFactor, uint SampleMask);
+    void OMSetBlendState(ID3D10BlendState? pBlendState, in float BlendFactor, uint SampleMask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetdepthstencilstate
     [PreserveSig]
-    void OMSetDepthStencilState(ID3D10DepthStencilState pDepthStencilState, uint StencilRef);
+    void OMSetDepthStencilState(ID3D10DepthStencilState? pDepthStencilState, uint StencilRef);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-sosettargets
     [PreserveSig]
@@ -110,7 +110,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetstate
     [PreserveSig]
-    void RSSetState(ID3D10RasterizerState pRasterizerState);
+    void RSSetState(ID3D10RasterizerState? pRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetviewports
     [PreserveSig]
@@ -393,7 +393,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint /* optional uint */ pNameLength, out PSTR szUnits, nint /* optional uint */ pUnitsLength, out PSTR szDescription, nint /* optional uint */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR? szName, nint /* optional uint */ pNameLength, out PSTR? szUnits, nint /* optional uint */ pUnitsLength, out PSTR? szDescription, nint /* optional uint */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getcreationflags
     [PreserveSig]

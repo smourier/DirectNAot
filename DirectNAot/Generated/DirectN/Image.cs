@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct Image
 {
+    public static readonly Image Null = new();
+    
     public nint Value;
 }

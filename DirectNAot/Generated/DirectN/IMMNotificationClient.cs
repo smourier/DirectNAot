@@ -23,7 +23,7 @@ public partial interface IMMNotificationClient
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immnotificationclient-ondefaultdevicechanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDefaultDeviceChanged(EDataFlow flow, ERole role, PWSTR pwstrDefaultDeviceId);
+    HRESULT OnDefaultDeviceChanged(EDataFlow flow, ERole role, PWSTR? pwstrDefaultDeviceId);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immnotificationclient-onpropertyvaluechanged
     [PreserveSig]

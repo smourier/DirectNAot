@@ -12,11 +12,11 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-reset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reset(ID3D12CommandAllocator pAllocator, ID3D12PipelineState pInitialState);
+    HRESULT Reset(ID3D12CommandAllocator pAllocator, ID3D12PipelineState? pInitialState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearstate
     [PreserveSig]
-    void ClearState(ID3D12PipelineState pPipelineState);
+    void ClearState(ID3D12PipelineState? pPipelineState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-drawinstanced
     [PreserveSig]
@@ -88,11 +88,11 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootsignature
     [PreserveSig]
-    void SetComputeRootSignature(ID3D12RootSignature pRootSignature);
+    void SetComputeRootSignature(ID3D12RootSignature? pRootSignature);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setgraphicsrootsignature
     [PreserveSig]
-    void SetGraphicsRootSignature(ID3D12RootSignature pRootSignature);
+    void SetGraphicsRootSignature(ID3D12RootSignature? pRootSignature);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootdescriptortable
     [PreserveSig]
@@ -192,7 +192,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setpredication
     [PreserveSig]
-    void SetPredication(ID3D12Resource pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
+    void SetPredication(ID3D12Resource? pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setmarker
     [PreserveSig]
@@ -208,5 +208,5 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-executeindirect
     [PreserveSig]
-    void ExecuteIndirect(ID3D12CommandSignature pCommandSignature, uint MaxCommandCount, ID3D12Resource pArgumentBuffer, ulong ArgumentBufferOffset, ID3D12Resource pCountBuffer, ulong CountBufferOffset);
+    void ExecuteIndirect(ID3D12CommandSignature pCommandSignature, uint MaxCommandCount, ID3D12Resource pArgumentBuffer, ulong ArgumentBufferOffset, ID3D12Resource? pCountBuffer, ulong CountBufferOffset);
 }

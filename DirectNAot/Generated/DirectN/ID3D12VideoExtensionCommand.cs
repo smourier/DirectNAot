@@ -12,5 +12,5 @@ public partial interface ID3D12VideoExtensionCommand : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoextensioncommand-getprotectedresourcesession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProtectedResourceSession(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppProtectedSession);
+    HRESULT GetProtectedResourceSession(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ ppProtectedSession);
 }

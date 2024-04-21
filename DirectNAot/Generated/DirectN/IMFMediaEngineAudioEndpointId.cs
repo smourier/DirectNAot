@@ -5,7 +5,7 @@ public partial interface IMFMediaEngineAudioEndpointId
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAudioEndpointId(PWSTR pszEndpointId);
+    HRESULT SetAudioEndpointId(PWSTR? pszEndpointId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

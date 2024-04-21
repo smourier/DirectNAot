@@ -8,7 +8,7 @@ public partial interface IMFSourceReaderCallback
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereadercallback-onreadsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnReadSample(HRESULT hrStatus, uint dwStreamIndex, uint dwStreamFlags, long llTimestamp, IMFSample pSample);
+    HRESULT OnReadSample(HRESULT hrStatus, uint dwStreamIndex, uint dwStreamFlags, long llTimestamp, IMFSample? pSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereadercallback-onflush
     [PreserveSig]

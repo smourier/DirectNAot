@@ -7,7 +7,7 @@ public partial interface ID2D1Effect : ID2D1Properties
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1effect-setinput
     [PreserveSig]
-    void SetInput(uint index, ID2D1Image input, [MarshalAs(UnmanagedType.U4)] bool invalidate);
+    void SetInput(uint index, ID2D1Image? input, [MarshalAs(UnmanagedType.U4)] bool invalidate);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1effect-setinputcount
     [PreserveSig]

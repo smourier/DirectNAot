@@ -12,5 +12,5 @@ public partial interface ID3DX11SegmentedScan
     // https://learn.microsoft.com/windows/win32/api/d3dcsx/nf-d3dcsx-id3dx11segmentedscan-segscan
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SegScan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, ID3D11UnorderedAccessView pSrc, ID3D11UnorderedAccessView pSrcElementFlags, ID3D11UnorderedAccessView pDst);
+    HRESULT SegScan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, ID3D11UnorderedAccessView? pSrc, ID3D11UnorderedAccessView pSrcElementFlags, ID3D11UnorderedAccessView pDst);
 }

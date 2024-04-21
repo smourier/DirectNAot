@@ -8,7 +8,7 @@ public partial interface IMFSourceReaderEx : IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereaderex-setnativemediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNativeMediaType(uint dwStreamIndex, IMFMediaType pMediaType, out uint pdwStreamFlags);
+    HRESULT SetNativeMediaType(uint dwStreamIndex, IMFMediaType? pMediaType, out uint pdwStreamFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereaderex-addtransformforstream
     [PreserveSig]

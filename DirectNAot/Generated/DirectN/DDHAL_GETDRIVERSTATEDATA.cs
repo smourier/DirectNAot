@@ -6,6 +6,8 @@ public partial struct DDHAL_GETDRIVERSTATEDATA
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
+        public static readonly _Anonymous_e__Union Null = new();
+        
         [FieldOffset(0)]
         public nuint dwhContext;
     }

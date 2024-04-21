@@ -17,7 +17,7 @@ public partial interface IDWriteFactory5 : IDWriteFactory4
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory5-createhttpfontfileloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateHttpFontFileLoader(PWSTR referrerUrl, PWSTR extraHeaders, out IDWriteRemoteFontFileLoader newLoader);
+    HRESULT CreateHttpFontFileLoader(PWSTR? referrerUrl, PWSTR? extraHeaders, out IDWriteRemoteFontFileLoader newLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory5-analyzecontainertype
     [PreserveSig]

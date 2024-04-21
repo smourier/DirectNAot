@@ -17,12 +17,12 @@ public partial interface IMDSPStorage4 : IMDSPStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-createstoragewithmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorageWithMetadata(uint dwAttributes, PWSTR pwszName, IWMDMMetaData pMetadata, ulong qwFileSize, out IMDSPStorage ppNewStorage);
+    HRESULT CreateStorageWithMetadata(uint dwAttributes, PWSTR pwszName, IWMDMMetaData? pMetadata, ulong qwFileSize, out IMDSPStorage ppNewStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-getspecifiedmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedMetadata(uint cProperties, in PWSTR ppwszPropNames, IWMDMMetaData pMetadata);
+    HRESULT GetSpecifiedMetadata(uint cProperties, in PWSTR ppwszPropNames, IWMDMMetaData? pMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-findstorage
     [PreserveSig]

@@ -22,7 +22,7 @@ public partial interface IMDSPObject
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspobject-delete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Delete(uint fuMode, IWMDMProgress pProgress);
+    HRESULT Delete(uint fuMode, IWMDMProgress? pProgress);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspobject-seek
     [PreserveSig]
@@ -32,12 +32,12 @@ public partial interface IMDSPObject
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspobject-rename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Rename(PWSTR pwszNewName, IWMDMProgress pProgress);
+    HRESULT Rename(PWSTR pwszNewName, IWMDMProgress? pProgress);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspobject-move
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Move(uint fuMode, IWMDMProgress pProgress, IMDSPStorage pTarget);
+    HRESULT Move(uint fuMode, IWMDMProgress? pProgress, IMDSPStorage? pTarget);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspobject-close
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface IMFMediaEngineSrcElementsEx : IMFMediaEngineSrcElements
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesrcelementsex-addelementex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddElementEx(BSTR pURL, BSTR pType, BSTR pMedia, BSTR keySystem);
+    HRESULT AddElementEx(BSTR? pURL, BSTR? pType, BSTR? pMedia, BSTR? keySystem);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesrcelementsex-getkeysystem
     [PreserveSig]

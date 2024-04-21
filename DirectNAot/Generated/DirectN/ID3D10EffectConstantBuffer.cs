@@ -7,7 +7,7 @@ public partial interface ID3D10EffectConstantBuffer : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-setconstantbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetConstantBuffer(ID3D10Buffer pConstantBuffer);
+    HRESULT SetConstantBuffer(ID3D10Buffer? pConstantBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-getconstantbuffer
     [PreserveSig]
@@ -17,7 +17,7 @@ public partial interface ID3D10EffectConstantBuffer : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-settexturebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTextureBuffer(ID3D10ShaderResourceView pTextureBuffer);
+    HRESULT SetTextureBuffer(ID3D10ShaderResourceView? pTextureBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-gettexturebuffer
     [PreserveSig]

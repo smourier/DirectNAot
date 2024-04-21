@@ -6,7 +6,7 @@ public partial interface ID3D12VideoProcessCommandList2 : ID3D12VideoProcessComm
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist2-setprotectedresourcesession
     [PreserveSig]
-    void SetProtectedResourceSession(ID3D12ProtectedResourceSession pProtectedResourceSession);
+    void SetProtectedResourceSession(ID3D12ProtectedResourceSession? pProtectedResourceSession);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist2-initializeextensioncommand
     [PreserveSig]

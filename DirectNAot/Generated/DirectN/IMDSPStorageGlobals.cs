@@ -37,7 +37,7 @@ public partial interface IMDSPStorageGlobals
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorageglobals-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(uint fuMode, IWMDMProgress pProgress);
+    HRESULT Initialize(uint fuMode, IWMDMProgress? pProgress);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorageglobals-getdevice
     [PreserveSig]

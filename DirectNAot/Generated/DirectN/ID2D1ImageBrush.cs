@@ -7,7 +7,7 @@ public partial interface ID2D1ImageBrush : ID2D1Brush
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1imagebrush-setimage
     [PreserveSig]
-    void SetImage(ID2D1Image image);
+    void SetImage(ID2D1Image? image);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1imagebrush-setextendmodex
     [PreserveSig]

@@ -8,5 +8,5 @@ public partial interface IMFMediaEngineClassFactory2
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactory2-createmediakeys2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaKeys2(BSTR keySystem, BSTR defaultCdmStorePath, BSTR inprivateCdmStorePath, out IMFMediaKeys ppKeys);
+    HRESULT CreateMediaKeys2(BSTR keySystem, BSTR defaultCdmStorePath, BSTR? inprivateCdmStorePath, out IMFMediaKeys ppKeys);
 }

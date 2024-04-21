@@ -13,7 +13,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_Voice(ISpeechObjectToken Voice);
+    HRESULT putref_Voice(ISpeechObjectToken? Voice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -21,7 +21,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_AudioOutput(ISpeechObjectToken AudioOutput);
+    HRESULT putref_AudioOutput(ISpeechObjectToken? AudioOutput);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -29,7 +29,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_AudioOutputStream(ISpeechBaseStream AudioOutputStream);
+    HRESULT putref_AudioOutputStream(ISpeechBaseStream? AudioOutputStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -93,7 +93,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SpeakStream(ISpeechBaseStream Stream, SpeechVoiceSpeakFlags Flags, out int StreamNumber);
+    HRESULT SpeakStream(ISpeechBaseStream? Stream, SpeechVoiceSpeakFlags Flags, out int StreamNumber);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

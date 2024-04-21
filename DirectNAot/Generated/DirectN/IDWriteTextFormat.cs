@@ -38,7 +38,7 @@ public partial interface IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-settrimming
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTrimming(in DWRITE_TRIMMING trimmingOptions, IDWriteInlineObject trimmingSign);
+    HRESULT SetTrimming(in DWRITE_TRIMMING trimmingOptions, IDWriteInlineObject? trimmingSign);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-setlinespacing
     [PreserveSig]

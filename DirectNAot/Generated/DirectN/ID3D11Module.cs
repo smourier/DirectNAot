@@ -7,5 +7,5 @@ public partial interface ID3D11Module
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11module-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(PSTR pNamespace, out ID3D11ModuleInstance ppModuleInstance);
+    HRESULT CreateInstance(PSTR? pNamespace, out ID3D11ModuleInstance ppModuleInstance);
 }

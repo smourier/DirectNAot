@@ -8,7 +8,7 @@ public partial interface IMFMediaKeys
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeys-createsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSession(BSTR mimeType, nint /* byte array */ initData, uint cb, nint /* byte array */ customData, uint cbCustomData, IMFMediaKeySessionNotify notify, out IMFMediaKeySession ppSession);
+    HRESULT CreateSession(BSTR? mimeType, nint /* byte array */ initData, uint? cb, nint /* byte array */ customData, uint cbCustomData, IMFMediaKeySessionNotify notify, out IMFMediaKeySession ppSession);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeys-get_keysystem
     [PreserveSig]

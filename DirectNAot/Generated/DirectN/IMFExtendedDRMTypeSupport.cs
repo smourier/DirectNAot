@@ -7,5 +7,5 @@ public partial interface IMFExtendedDRMTypeSupport
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfextendeddrmtypesupport-istypesupportedex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsTypeSupportedEx(BSTR type, BSTR keySystem, out MF_MEDIA_ENGINE_CANPLAY pAnswer);
+    HRESULT IsTypeSupportedEx(BSTR? type, BSTR keySystem, out MF_MEDIA_ENGINE_CANPLAY pAnswer);
 }

@@ -15,7 +15,7 @@ public partial interface ID2D1DrawingStateBlock : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1drawingstateblock-settextrenderingparams
     [PreserveSig]
-    void SetTextRenderingParams(IDWriteRenderingParams textRenderingParams);
+    void SetTextRenderingParams(IDWriteRenderingParams? textRenderingParams);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1drawingstateblock-gettextrenderingparams
     [PreserveSig]

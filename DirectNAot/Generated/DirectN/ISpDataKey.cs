@@ -13,11 +13,11 @@ public partial interface ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStringValue(PWSTR pszValueName, PWSTR pszValue);
+    HRESULT SetStringValue(PWSTR? pszValueName, PWSTR pszValue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStringValue(PWSTR pszValueName, out PWSTR ppszValue);
+    HRESULT GetStringValue(PWSTR? pszValueName, out PWSTR ppszValue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

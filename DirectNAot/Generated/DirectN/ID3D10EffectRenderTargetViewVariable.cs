@@ -7,7 +7,7 @@ public partial interface ID3D10EffectRenderTargetViewVariable : ID3D10EffectVari
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-setrendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRenderTarget(ID3D10RenderTargetView pResource);
+    HRESULT SetRenderTarget(ID3D10RenderTargetView? pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-getrendertarget
     [PreserveSig]

@@ -5,7 +5,7 @@ public partial interface ISpNotifySource
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNotifySink(ISpNotifySink pNotifySink);
+    HRESULT SetNotifySink(ISpNotifySink? pNotifySink);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

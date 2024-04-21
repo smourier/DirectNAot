@@ -38,7 +38,7 @@ public partial interface IKsPin
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsReceiveAllocator(IMemAllocator MemAllocator);
+    HRESULT KsReceiveAllocator(IMemAllocator? MemAllocator);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

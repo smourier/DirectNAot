@@ -4,7 +4,7 @@
 public partial interface IMFMediaKeySessionNotify2 : IMFMediaKeySessionNotify
 {
     [PreserveSig]
-    void KeyMessage2(MF_MEDIAKEYSESSION_MESSAGETYPE eMessageType, BSTR destinationURL, nint /* byte array */ pbMessage, uint cbMessage);
+    void KeyMessage2(MF_MEDIAKEYSESSION_MESSAGETYPE eMessageType, BSTR? destinationURL, nint /* byte array */ pbMessage, uint cbMessage);
     
     [PreserveSig]
     void KeyStatusChange();

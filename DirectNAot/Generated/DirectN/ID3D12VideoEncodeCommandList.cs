@@ -41,7 +41,7 @@ public partial interface ID3D12VideoEncodeCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-setpredication
     [PreserveSig]
-    void SetPredication(ID3D12Resource pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
+    void SetPredication(ID3D12Resource? pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-setmarker
     [PreserveSig]
@@ -69,5 +69,5 @@ public partial interface ID3D12VideoEncodeCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-setprotectedresourcesession
     [PreserveSig]
-    void SetProtectedResourceSession(ID3D12ProtectedResourceSession pProtectedResourceSession);
+    void SetProtectedResourceSession(ID3D12ProtectedResourceSession? pProtectedResourceSession);
 }

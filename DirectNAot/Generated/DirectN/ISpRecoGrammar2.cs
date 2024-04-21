@@ -9,11 +9,11 @@ public partial interface ISpRecoGrammar2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadCmdFromFile2(PWSTR pszFileName, SPLOADOPTIONS Options, PWSTR pszSharingUri, PWSTR pszBaseUri);
+    HRESULT LoadCmdFromFile2(PWSTR pszFileName, SPLOADOPTIONS Options, PWSTR? pszSharingUri, PWSTR? pszBaseUri);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadCmdFromMemory2(in SPBINARYGRAMMAR pGrammar, SPLOADOPTIONS Options, PWSTR pszSharingUri, PWSTR pszBaseUri);
+    HRESULT LoadCmdFromMemory2(in SPBINARYGRAMMAR pGrammar, SPLOADOPTIONS Options, PWSTR? pszSharingUri, PWSTR? pszBaseUri);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

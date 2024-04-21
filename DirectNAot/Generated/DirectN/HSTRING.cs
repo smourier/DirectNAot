@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct HSTRING
 {
+    public static readonly HSTRING Null = new();
+    
     public nint Value;
 }

@@ -18,5 +18,5 @@ public partial interface IDCompositionEffectGroup : IDCompositionEffect
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioneffectgroup-settransform3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransform3D(IDCompositionTransform3D transform3D);
+    HRESULT SetTransform3D(IDCompositionTransform3D? transform3D);
 }

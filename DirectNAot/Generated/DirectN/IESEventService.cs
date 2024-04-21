@@ -8,5 +8,5 @@ public partial interface IESEventService
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventservice-fireesevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FireESEvent(IESEvent pESEvent);
+    HRESULT FireESEvent(IESEvent? pESEvent);
 }

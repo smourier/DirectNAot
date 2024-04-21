@@ -23,7 +23,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createbitmapbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapBrush(ID2D1Bitmap bitmap, nint /* optional D2D1_BITMAP_BRUSH_PROPERTIES */ bitmapBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush bitmapBrush);
+    HRESULT CreateBitmapBrush(ID2D1Bitmap? bitmap, nint /* optional D2D1_BITMAP_BRUSH_PROPERTIES */ bitmapBrushProperties, nint /* optional D2D1_BRUSH_PROPERTIES */ brushProperties, out ID2D1BitmapBrush bitmapBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createsolidcolorbrush
     [PreserveSig]
@@ -62,11 +62,11 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-drawline
     [PreserveSig]
-    void DrawLine(D2D_POINT_2F point0, D2D_POINT_2F point1, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle strokeStyle);
+    void DrawLine(D2D_POINT_2F point0, D2D_POINT_2F point1, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle? strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawrectangle
     [PreserveSig]
-    void DrawRectangle(in D2D_RECT_F rect, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle strokeStyle);
+    void DrawRectangle(in D2D_RECT_F rect, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle? strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-fillrectangle
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawroundedrectangle
     [PreserveSig]
-    void DrawRoundedRectangle(in D2D1_ROUNDED_RECT roundedRect, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle strokeStyle);
+    void DrawRoundedRectangle(in D2D1_ROUNDED_RECT roundedRect, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle? strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-fillroundedrectangle
     [PreserveSig]
@@ -82,7 +82,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawellipse
     [PreserveSig]
-    void DrawEllipse(in D2D1_ELLIPSE ellipse, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle strokeStyle);
+    void DrawEllipse(in D2D1_ELLIPSE ellipse, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle? strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-fillellipse
     [PreserveSig]
@@ -90,11 +90,11 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-drawgeometry
     [PreserveSig]
-    void DrawGeometry(ID2D1Geometry geometry, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle strokeStyle);
+    void DrawGeometry(ID2D1Geometry geometry, ID2D1Brush brush, float strokeWidth, ID2D1StrokeStyle? strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-fillgeometry
     [PreserveSig]
-    void FillGeometry(ID2D1Geometry geometry, ID2D1Brush brush, ID2D1Brush opacityBrush);
+    void FillGeometry(ID2D1Geometry geometry, ID2D1Brush brush, ID2D1Brush? opacityBrush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-fillmesh
     [PreserveSig]
@@ -146,7 +146,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-settextrenderingparams
     [PreserveSig]
-    void SetTextRenderingParams(IDWriteRenderingParams textRenderingParams);
+    void SetTextRenderingParams(IDWriteRenderingParams? textRenderingParams);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-gettextrenderingparams
     [PreserveSig]
@@ -162,7 +162,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-pushlayer(constd2d1_layer_parameters_id2d1layer)
     [PreserveSig]
-    void PushLayer(in D2D1_LAYER_PARAMETERS layerParameters, ID2D1Layer layer);
+    void PushLayer(in D2D1_LAYER_PARAMETERS layerParameters, ID2D1Layer? layer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-poplayer
     [PreserveSig]

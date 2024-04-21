@@ -8,7 +8,7 @@ public partial interface ID2D1CommandSink2 : ID2D1CommandSink1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1commandsink2-drawink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle inkStyle);
+    HRESULT DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle? inkStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1commandsink2-drawgradientmesh
     [PreserveSig]

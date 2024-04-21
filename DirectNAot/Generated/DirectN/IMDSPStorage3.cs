@@ -7,10 +7,10 @@ public partial interface IMDSPStorage3 : IMDSPStorage2
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage3-getmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadata(IWMDMMetaData pMetadata);
+    HRESULT GetMetadata(IWMDMMetaData? pMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage3-setmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMetadata(IWMDMMetaData pMetadata);
+    HRESULT SetMetadata(IWMDMMetaData? pMetadata);
 }

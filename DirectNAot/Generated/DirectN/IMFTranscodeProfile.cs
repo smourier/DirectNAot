@@ -8,7 +8,7 @@ public partial interface IMFTranscodeProfile
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-setaudioattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAudioAttributes(IMFAttributes pAttrs);
+    HRESULT SetAudioAttributes(IMFAttributes? pAttrs);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-getaudioattributes
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IMFTranscodeProfile
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-setvideoattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVideoAttributes(IMFAttributes pAttrs);
+    HRESULT SetVideoAttributes(IMFAttributes? pAttrs);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-getvideoattributes
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IMFTranscodeProfile
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-setcontainerattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetContainerAttributes(IMFAttributes pAttrs);
+    HRESULT SetContainerAttributes(IMFAttributes? pAttrs);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodeprofile-getcontainerattributes
     [PreserveSig]

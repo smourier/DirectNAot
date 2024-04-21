@@ -10,5 +10,5 @@ public partial interface ID3D12GraphicsCommandList5 : ID3D12GraphicsCommandList4
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist5-rssetshadingrateimage
     [PreserveSig]
-    void RSSetShadingRateImage(ID3D12Resource shadingRateImage);
+    void RSSetShadingRateImage(ID3D12Resource? shadingRateImage);
 }

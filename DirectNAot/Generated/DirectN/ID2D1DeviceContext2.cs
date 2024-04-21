@@ -42,7 +42,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawink
     [PreserveSig]
-    void DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle inkStyle);
+    void DrawInk(ID2D1Ink ink, ID2D1Brush brush, ID2D1InkStyle? inkStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-drawgradientmesh
     [PreserveSig]

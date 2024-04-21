@@ -9,5 +9,5 @@ public partial interface ISpTokenUI
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DisplayUI(HWND hwndParent, PWSTR pszTitle, PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, ISpObjectToken pToken, nint punkObject);
+    HRESULT DisplayUI(HWND hwndParent, PWSTR? pszTitle, PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, ISpObjectToken pToken, nint punkObject);
 }

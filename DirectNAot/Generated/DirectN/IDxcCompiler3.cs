@@ -5,7 +5,7 @@ public partial interface IDxcCompiler3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Compile(in DxcBuffer pSource, nint /* optional PWSTR */ pArguments, uint argCount, IDxcIncludeHandler pIncludeHandler, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResult);
+    HRESULT Compile(in DxcBuffer pSource, nint /* optional PWSTR */ pArguments, uint argCount, IDxcIncludeHandler? pIncludeHandler, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

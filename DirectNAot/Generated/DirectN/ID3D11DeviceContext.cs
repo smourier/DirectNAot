@@ -15,7 +15,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-pssetshader
     [PreserveSig]
-    void PSSetShader(ID3D11PixelShader pPixelShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void PSSetShader(ID3D11PixelShader? pPixelShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-pssetsamplers
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-vssetshader
     [PreserveSig]
-    void VSSetShader(ID3D11VertexShader pVertexShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void VSSetShader(ID3D11VertexShader? pVertexShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-drawindexed
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iasetinputlayout
     [PreserveSig]
-    void IASetInputLayout(ID3D11InputLayout pInputLayout);
+    void IASetInputLayout(ID3D11InputLayout? pInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iasetvertexbuffers
     [PreserveSig]
@@ -56,7 +56,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iasetindexbuffer
     [PreserveSig]
-    void IASetIndexBuffer(ID3D11Buffer pIndexBuffer, DXGI_FORMAT Format, uint Offset);
+    void IASetIndexBuffer(ID3D11Buffer? pIndexBuffer, DXGI_FORMAT Format, uint Offset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-drawindexedinstanced
     [PreserveSig]
@@ -72,7 +72,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-gssetshader
     [PreserveSig]
-    void GSSetShader(ID3D11GeometryShader pShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void GSSetShader(ID3D11GeometryShader? pShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iasetprimitivetopology
     [PreserveSig]
@@ -101,7 +101,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-setpredication
     [PreserveSig]
-    void SetPredication(ID3D11Predicate pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
+    void SetPredication(ID3D11Predicate? pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-gssetshaderresources
     [PreserveSig]
@@ -113,19 +113,19 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D11RenderTargetView */ ppRenderTargetViews, ID3D11DepthStencilView pDepthStencilView);
+    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D11RenderTargetView */ ppRenderTargetViews, ID3D11DepthStencilView? pDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-omsetrendertargetsandunorderedaccessviews
     [PreserveSig]
-    void OMSetRenderTargetsAndUnorderedAccessViews(uint NumRTVs, nint /* optional ID3D11RenderTargetView */ ppRenderTargetViews, ID3D11DepthStencilView pDepthStencilView, uint UAVStartSlot, uint NumUAVs, nint /* optional ID3D11UnorderedAccessView */ ppUnorderedAccessViews, nint /* optional uint */ pUAVInitialCounts);
+    void OMSetRenderTargetsAndUnorderedAccessViews(uint NumRTVs, nint /* optional ID3D11RenderTargetView */ ppRenderTargetViews, ID3D11DepthStencilView? pDepthStencilView, uint UAVStartSlot, uint NumUAVs, nint /* optional ID3D11UnorderedAccessView */ ppUnorderedAccessViews, nint /* optional uint */ pUAVInitialCounts);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-omsetblendstate
     [PreserveSig]
-    void OMSetBlendState(ID3D11BlendState pBlendState, nint /* optional float */ BlendFactor, uint SampleMask);
+    void OMSetBlendState(ID3D11BlendState? pBlendState, nint /* optional float */ BlendFactor, uint SampleMask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-omsetdepthstencilstate
     [PreserveSig]
-    void OMSetDepthStencilState(ID3D11DepthStencilState pDepthStencilState, uint StencilRef);
+    void OMSetDepthStencilState(ID3D11DepthStencilState? pDepthStencilState, uint StencilRef);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-sosettargets
     [PreserveSig]
@@ -153,7 +153,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rssetstate
     [PreserveSig]
-    void RSSetState(ID3D11RasterizerState pRasterizerState);
+    void RSSetState(ID3D11RasterizerState? pRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rssetviewports
     [PreserveSig]
@@ -221,7 +221,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hssetshader
     [PreserveSig]
-    void HSSetShader(ID3D11HullShader pHullShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void HSSetShader(ID3D11HullShader? pHullShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hssetsamplers
     [PreserveSig]
@@ -237,7 +237,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-dssetshader
     [PreserveSig]
-    void DSSetShader(ID3D11DomainShader pDomainShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void DSSetShader(ID3D11DomainShader? pDomainShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-dssetsamplers
     [PreserveSig]
@@ -257,7 +257,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-cssetshader
     [PreserveSig]
-    void CSSetShader(ID3D11ComputeShader pComputeShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
+    void CSSetShader(ID3D11ComputeShader? pComputeShader, nint /* optional ID3D11ClassInstance */ ppClassInstances, uint NumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-cssetsamplers
     [PreserveSig]

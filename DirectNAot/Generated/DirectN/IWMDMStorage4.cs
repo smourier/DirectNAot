@@ -17,7 +17,7 @@ public partial interface IWMDMStorage4 : IWMDMStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getrightswithprogress
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRightsWithProgress(IWMDMProgress3 pIProgressCallback, out WMDMRIGHTS ppRights, out uint pnRightsCount);
+    HRESULT GetRightsWithProgress(IWMDMProgress3? pIProgressCallback, out WMDMRIGHTS ppRights, out uint pnRightsCount);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getspecifiedmetadata
     [PreserveSig]

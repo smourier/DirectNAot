@@ -7,7 +7,7 @@ public partial interface IATSC_EIT
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_eit-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(ISectionList pSectionList, IMpeg2Data pMPEGData);
+    HRESULT Initialize(ISectionList? pSectionList, IMpeg2Data? pMPEGData);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_eit-getversionnumber
     [PreserveSig]

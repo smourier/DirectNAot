@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DD_CLIPPER_GLOBAL
 {
+    public static readonly DD_CLIPPER_GLOBAL Null = new();
+    
     public nuint dwReserved1;
 }

@@ -7,25 +7,25 @@ public partial interface IWMDMStorageControl
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol-insert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Insert(uint fuMode, PWSTR pwszFile, IWMDMOperation pOperation, IWMDMProgress pProgress, out IWMDMStorage ppNewObject);
+    HRESULT Insert(uint fuMode, PWSTR? pwszFile, IWMDMOperation? pOperation, IWMDMProgress? pProgress, out IWMDMStorage ppNewObject);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol-delete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Delete(uint fuMode, IWMDMProgress pProgress);
+    HRESULT Delete(uint fuMode, IWMDMProgress? pProgress);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol-rename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Rename(uint fuMode, PWSTR pwszNewName, IWMDMProgress pProgress);
+    HRESULT Rename(uint fuMode, PWSTR pwszNewName, IWMDMProgress? pProgress);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol-read
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(uint fuMode, PWSTR pwszFile, IWMDMProgress pProgress, IWMDMOperation pOperation);
+    HRESULT Read(uint fuMode, PWSTR? pwszFile, IWMDMProgress? pProgress, IWMDMOperation? pOperation);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol-move
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Move(uint fuMode, IWMDMStorage pTargetObject, IWMDMProgress pProgress);
+    HRESULT Move(uint fuMode, IWMDMStorage? pTargetObject, IWMDMProgress? pProgress);
 }

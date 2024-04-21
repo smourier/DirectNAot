@@ -1,4 +1,6 @@
-﻿namespace DirectNAot.Extensions.Com
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace DirectNAot.Extensions.Com
 {
     public abstract class UnknownObject : IUnknownObject
     {
@@ -7,6 +9,7 @@
 
         public UnknownObject(object? comObject, bool releaseOnDispose = true)
         {
+            ArgumentNullException.ThrowIfNull(comObject);
             if (comObject is not ComObject co)
                 throw new ArgumentException(null, nameof(comObject));
 
@@ -15,7 +18,8 @@
         }
 
         public abstract Type InterfaceType { get; }
-        public ComObject? Object
+        [AllowNull]
+        public ComObject Object
         {
             get
             {
@@ -58,7 +62,8 @@
 
     public class UnknownObject<T>(object? comObject, bool releaseOnDispose = true) : UnknownObject((T?)comObject, releaseOnDispose), IUnknownObject<T>
     {
-        public new T? Object => (T?)(object?)base.Object;
+        [AllowNull]
+        public new T Object => (T)(object?)base.Object!;
         public override Type InterfaceType => typeof(T);
     }
 }

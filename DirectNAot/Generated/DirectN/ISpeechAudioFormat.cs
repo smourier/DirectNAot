@@ -25,5 +25,5 @@ public partial interface ISpeechAudioFormat : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWaveFormatEx(ISpeechWaveFormatEx SpeechWaveFormatEx);
+    HRESULT SetWaveFormatEx(ISpeechWaveFormatEx? SpeechWaveFormatEx);
 }

@@ -8,7 +8,7 @@ public partial interface IMFSinkWriterEncoderConfig
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsinkwriterencoderconfig-settargetmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTargetMediaType(uint dwStreamIndex, IMFMediaType pTargetMediaType, IMFAttributes pEncodingParameters);
+    HRESULT SetTargetMediaType(uint dwStreamIndex, IMFMediaType pTargetMediaType, IMFAttributes? pEncodingParameters);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsinkwriterencoderconfig-placeencodingparameters
     [PreserveSig]

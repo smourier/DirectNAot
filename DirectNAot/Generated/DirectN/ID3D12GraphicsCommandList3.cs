@@ -6,5 +6,5 @@ public partial interface ID3D12GraphicsCommandList3 : ID3D12GraphicsCommandList2
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist3-setprotectedresourcesession
     [PreserveSig]
-    void SetProtectedResourceSession(ID3D12ProtectedResourceSession pProtectedResourceSession);
+    void SetProtectedResourceSession(ID3D12ProtectedResourceSession? pProtectedResourceSession);
 }

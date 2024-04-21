@@ -33,7 +33,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRuleState(PWSTR pszName, nint pReserved, SPRULESTATE NewState);
+    HRESULT SetRuleState(PWSTR? pszName, nint pReserved, SPRULESTATE NewState);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -41,7 +41,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadDictation(PWSTR pszTopicName, SPLOADOPTIONS Options);
+    HRESULT LoadDictation(PWSTR? pszTopicName, SPLOADOPTIONS Options);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -53,7 +53,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWordSequenceData(PWSTR pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
+    HRESULT SetWordSequenceData(PWSTR? pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

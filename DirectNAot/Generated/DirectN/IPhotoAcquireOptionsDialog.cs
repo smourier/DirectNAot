@@ -7,7 +7,7 @@ public partial interface IPhotoAcquireOptionsDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireoptionsdialog-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(PWSTR pszRegistryRoot);
+    HRESULT Initialize(PWSTR? pszRegistryRoot);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireoptionsdialog-create
     [PreserveSig]

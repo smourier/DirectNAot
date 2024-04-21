@@ -17,12 +17,12 @@ public partial interface IMFVirtualCamera : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-addregistryentry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddRegistryEntry(PWSTR EntryName, PWSTR SubkeyPath, uint dwRegType, nint /* byte array */ pbData, uint cbData);
+    HRESULT AddRegistryEntry(PWSTR EntryName, PWSTR? SubkeyPath, uint dwRegType, nint /* byte array */ pbData, uint cbData);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-start
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Start(IMFAsyncCallback pCallback);
+    HRESULT Start(IMFAsyncCallback? pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-stop
     [PreserveSig]

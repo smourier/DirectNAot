@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DD_CLIPPER_LOCAL
 {
+    public static readonly DD_CLIPPER_LOCAL Null = new();
+    
     public nuint dwReserved1;
 }

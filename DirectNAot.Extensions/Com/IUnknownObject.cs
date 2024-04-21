@@ -1,13 +1,17 @@
-﻿namespace DirectNAot.Extensions.Com
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace DirectNAot.Extensions.Com
 {
     public interface IUnknownObject : IDisposable
     {
-        ComObject? Object { get; }
+        [AllowNull]
+        ComObject Object { get; }
         Type InterfaceType { get; }
     }
 
     public interface IUnknownObject<out T> : IUnknownObject
     {
-        new T? Object { get; }
+        [AllowNull]
+        new T Object { get; }
     }
 }

@@ -18,5 +18,5 @@ public partial interface IMFMediaEngineSupportsSourceTransfer
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesupportssourcetransfer-attachmediasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AttachMediaSource(IMFByteStream pByteStream, IMFMediaSource pMediaSource, IMFMediaSourceExtension pMSE);
+    HRESULT AttachMediaSource(IMFByteStream? pByteStream, IMFMediaSource pMediaSource, IMFMediaSourceExtension? pMSE);
 }

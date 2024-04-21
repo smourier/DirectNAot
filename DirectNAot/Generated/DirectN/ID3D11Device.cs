@@ -53,37 +53,37 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11VertexShader */ ppVertexShader);
+    HRESULT CreateVertexShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11VertexShader */ ppVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-creategeometryshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11GeometryShader */ ppGeometryShader);
+    HRESULT CreateGeometryShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11GeometryShader */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-creategeometryshaderwithstreamoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint /* optional D3D11_SO_DECLARATION_ENTRY */ pSODeclaration, uint NumEntries, nint /* optional uint */ pBufferStrides, uint NumStrides, uint RasterizedStream, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11GeometryShader */ ppGeometryShader);
+    HRESULT CreateGeometryShaderWithStreamOutput(nint pShaderBytecode, nuint BytecodeLength, nint /* optional D3D11_SO_DECLARATION_ENTRY */ pSODeclaration, uint NumEntries, nint /* optional uint */ pBufferStrides, uint NumStrides, uint RasterizedStream, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11GeometryShader */ ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11PixelShader */ ppPixelShader);
+    HRESULT CreatePixelShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11PixelShader */ ppPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createhullshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateHullShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11HullShader */ ppHullShader);
+    HRESULT CreateHullShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11HullShader */ ppHullShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createdomainshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDomainShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11DomainShader */ ppDomainShader);
+    HRESULT CreateDomainShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11DomainShader */ ppDomainShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createcomputeshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateComputeShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage pClassLinkage, nint /* optional ID3D11ComputeShader */ ppComputeShader);
+    HRESULT CreateComputeShader(nint pShaderBytecode, nuint BytecodeLength, ID3D11ClassLinkage? pClassLinkage, nint /* optional ID3D11ComputeShader */ ppComputeShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createclasslinkage
     [PreserveSig]
@@ -133,7 +133,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-opensharedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppResource);
+    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkformatsupport
     [PreserveSig]
@@ -152,7 +152,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR szName, nint /* optional uint */ pNameLength, out PSTR szUnits, nint /* optional uint */ pUnitsLength, out PSTR szDescription, nint /* optional uint */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, out PSTR? szName, nint /* optional uint */ pNameLength, out PSTR? szUnits, nint /* optional uint */ pUnitsLength, out PSTR? szDescription, nint /* optional uint */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkfeaturesupport
     [PreserveSig]

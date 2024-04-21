@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDGETTRANSFERSTATUSOUTINFO
 {
+    public static readonly DDGETTRANSFERSTATUSOUTINFO Null = new();
+    
     public nuint dwTransferID;
 }

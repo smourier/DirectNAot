@@ -5,7 +5,7 @@ public partial interface IMFMediaKeySystemAccess
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaKeys(IPropertyStore pCdmCustomConfig, out IMFMediaKeys2 ppKeys);
+    HRESULT CreateMediaKeys(IPropertyStore? pCdmCustomConfig, out IMFMediaKeys2 ppKeys);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

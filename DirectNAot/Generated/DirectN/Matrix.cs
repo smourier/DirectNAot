@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct Matrix
 {
+    public static readonly Matrix Null = new();
+    
     public nint Value;
 }

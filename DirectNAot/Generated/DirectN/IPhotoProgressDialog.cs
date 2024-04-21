@@ -56,7 +56,7 @@ public partial interface IPhotoProgressDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-setimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetImage(PROGRESS_DIALOG_IMAGE_TYPE nImageType, HICON hIcon, HBITMAP hBitmap);
+    HRESULT SetImage(PROGRESS_DIALOG_IMAGE_TYPE nImageType, HICON? hIcon, HBITMAP? hBitmap);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-setpercentcomplete
     [PreserveSig]
@@ -70,7 +70,7 @@ public partial interface IPhotoProgressDialog
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetActionLinkCallback(IPhotoProgressActionCB pPhotoProgressActionCB);
+    HRESULT SetActionLinkCallback(IPhotoProgressActionCB? pPhotoProgressActionCB);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

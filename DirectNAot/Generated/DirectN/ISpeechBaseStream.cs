@@ -9,7 +9,7 @@ public partial interface ISpeechBaseStream : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_Format(ISpeechAudioFormat AudioFormat);
+    HRESULT putref_Format(ISpeechAudioFormat? AudioFormat);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

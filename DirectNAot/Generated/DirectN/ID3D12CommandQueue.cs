@@ -6,7 +6,7 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-updatetilemappings
     [PreserveSig]
-    void UpdateTileMappings(ID3D12Resource pResource, uint NumResourceRegions, nint /* optional D3D12_TILED_RESOURCE_COORDINATE */ pResourceRegionStartCoordinates, nint /* optional D3D12_TILE_REGION_SIZE */ pResourceRegionSizes, ID3D12Heap pHeap, uint NumRanges, nint /* optional D3D12_TILE_RANGE_FLAGS */ pRangeFlags, nint /* optional uint */ pHeapRangeStartOffsets, nint /* optional uint */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
+    void UpdateTileMappings(ID3D12Resource pResource, uint NumResourceRegions, nint /* optional D3D12_TILED_RESOURCE_COORDINATE */ pResourceRegionStartCoordinates, nint /* optional D3D12_TILE_REGION_SIZE */ pResourceRegionSizes, ID3D12Heap? pHeap, uint NumRanges, nint /* optional D3D12_TILE_RANGE_FLAGS */ pRangeFlags, nint /* optional uint */ pHeapRangeStartOffsets, nint /* optional uint */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-copytilemappings
     [PreserveSig]

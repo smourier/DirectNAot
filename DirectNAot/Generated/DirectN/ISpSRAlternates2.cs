@@ -5,5 +5,5 @@ public partial interface ISpSRAlternates2 : ISpSRAlternates
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CommitText(in SPPHRASEALTREQUEST pAltRequest, PWSTR pcszNewText, SPCOMMITFLAGS commitFlags);
+    HRESULT CommitText(in SPPHRASEALTREQUEST pAltRequest, PWSTR? pcszNewText, SPCOMMITFLAGS commitFlags);
 }

@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDLOCKOUTINFO
 {
+    public static readonly DDLOCKOUTINFO Null = new();
+    
     public nuint dwSurfacePtr;
 }

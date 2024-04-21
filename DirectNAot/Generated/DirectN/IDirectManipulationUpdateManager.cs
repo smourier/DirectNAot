@@ -18,5 +18,5 @@ public partial interface IDirectManipulationUpdateManager
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationupdatemanager-update
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Update(IDirectManipulationFrameInfoProvider frameInfo);
+    HRESULT Update(IDirectManipulationFrameInfoProvider? frameInfo);
 }

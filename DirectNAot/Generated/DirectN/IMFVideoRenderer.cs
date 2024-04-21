@@ -8,5 +8,5 @@ public partial interface IMFVideoRenderer
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideorenderer-initializerenderer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeRenderer(IMFTransform pVideoMixer, IMFVideoPresenter pVideoPresenter);
+    HRESULT InitializeRenderer(IMFTransform? pVideoMixer, IMFVideoPresenter? pVideoPresenter);
 }

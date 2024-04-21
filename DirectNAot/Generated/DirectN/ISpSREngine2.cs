@@ -13,7 +13,7 @@ public partial interface ISpSREngine2 : ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGrammarPrefix(nint pvEngineGrammar, PWSTR pszPrefix, [MarshalAs(UnmanagedType.U4)] bool fIsPrefixRequired);
+    HRESULT SetGrammarPrefix(nint pvEngineGrammar, PWSTR? pszPrefix, [MarshalAs(UnmanagedType.U4)] bool fIsPrefixRequired);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

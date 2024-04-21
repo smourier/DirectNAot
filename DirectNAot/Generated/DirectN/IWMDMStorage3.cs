@@ -12,7 +12,7 @@ public partial interface IWMDMStorage3 : IWMDMStorage2
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage3-setmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMetadata(IWMDMMetaData pMetadata);
+    HRESULT SetMetadata(IWMDMMetaData? pMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage3-createemptymetadataobject
     [PreserveSig]

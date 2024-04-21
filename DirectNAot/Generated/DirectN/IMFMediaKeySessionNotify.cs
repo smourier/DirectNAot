@@ -7,7 +7,7 @@ public partial interface IMFMediaKeySessionNotify
 {
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeysessionnotify-keymessage
     [PreserveSig]
-    void KeyMessage(BSTR destinationURL, nint /* byte array */ message, uint cb);
+    void KeyMessage(BSTR? destinationURL, nint /* byte array */ message, uint cb);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeysessionnotify-keyadded
     [PreserveSig]

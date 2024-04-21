@@ -49,7 +49,7 @@ public partial interface IDxcUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BuildArguments(PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, out IDxcCompilerArgs ppArgs);
+    HRESULT BuildArguments(PWSTR? pSourceName, PWSTR? pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, out IDxcCompilerArgs ppArgs);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

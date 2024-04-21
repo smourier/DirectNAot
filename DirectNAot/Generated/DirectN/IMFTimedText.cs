@@ -8,7 +8,7 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-registernotifications
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterNotifications(IMFTimedTextNotify notify);
+    HRESULT RegisterNotifications(IMFTimedTextNotify? notify);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-selecttrack
     [PreserveSig]
@@ -18,16 +18,16 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-adddatasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDataSource(IMFByteStream byteStream, PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, [MarshalAs(UnmanagedType.U4)] bool isDefault, out uint trackId);
+    HRESULT AddDataSource(IMFByteStream byteStream, PWSTR? label, PWSTR? language, MF_TIMED_TEXT_TRACK_KIND kind, [MarshalAs(UnmanagedType.U4)] bool isDefault, out uint trackId);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-adddatasourcefromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDataSourceFromUrl(PWSTR url, PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, [MarshalAs(UnmanagedType.U4)] bool isDefault, out uint trackId);
+    HRESULT AddDataSourceFromUrl(PWSTR url, PWSTR? label, PWSTR? language, MF_TIMED_TEXT_TRACK_KIND kind, [MarshalAs(UnmanagedType.U4)] bool isDefault, out uint trackId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddTrack(PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, out IMFTimedTextTrack track);
+    HRESULT AddTrack(PWSTR? label, PWSTR? language, MF_TIMED_TEXT_TRACK_KIND kind, out IMFTimedTextTrack track);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-removetrack
     [PreserveSig]

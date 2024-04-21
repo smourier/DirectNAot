@@ -4,5 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct Bitmap
 {
+    public static readonly Bitmap Null = new();
+    
     public nint Value;
 }

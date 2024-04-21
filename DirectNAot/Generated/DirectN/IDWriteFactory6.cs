@@ -37,5 +37,5 @@ public partial interface IDWriteFactory6 : IDWriteFactory5
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createtextformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTextFormat(PWSTR fontFamilyName, IDWriteFontCollection fontCollection, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, float fontSize, PWSTR localeName, out IDWriteTextFormat3 textFormat);
+    HRESULT CreateTextFormat(PWSTR fontFamilyName, IDWriteFontCollection? fontCollection, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, float fontSize, PWSTR localeName, out IDWriteTextFormat3 textFormat);
 }

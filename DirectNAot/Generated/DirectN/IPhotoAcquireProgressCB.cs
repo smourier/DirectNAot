@@ -12,12 +12,12 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-startenumeration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartEnumeration(IPhotoAcquireSource pPhotoAcquireSource);
+    HRESULT StartEnumeration(IPhotoAcquireSource? pPhotoAcquireSource);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-founditem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FoundItem(IPhotoAcquireItem pPhotoAcquireItem);
+    HRESULT FoundItem(IPhotoAcquireItem? pPhotoAcquireItem);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-endenumeration
     [PreserveSig]
@@ -27,12 +27,12 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-starttransfer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartTransfer(IPhotoAcquireSource pPhotoAcquireSource);
+    HRESULT StartTransfer(IPhotoAcquireSource? pPhotoAcquireSource);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-startitemtransfer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartItemTransfer(uint nItemIndex, IPhotoAcquireItem pPhotoAcquireItem);
+    HRESULT StartItemTransfer(uint nItemIndex, IPhotoAcquireItem? pPhotoAcquireItem);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-directorycreated
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-enditemtransfer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndItemTransfer(uint nItemIndex, IPhotoAcquireItem pPhotoAcquireItem, HRESULT hr);
+    HRESULT EndItemTransfer(uint nItemIndex, IPhotoAcquireItem? pPhotoAcquireItem, HRESULT hr);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-endtransfer
     [PreserveSig]
@@ -57,12 +57,12 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-startdelete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartDelete(IPhotoAcquireSource pPhotoAcquireSource);
+    HRESULT StartDelete(IPhotoAcquireSource? pPhotoAcquireSource);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-startitemdelete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartItemDelete(uint nItemIndex, IPhotoAcquireItem pPhotoAcquireItem);
+    HRESULT StartItemDelete(uint nItemIndex, IPhotoAcquireItem? pPhotoAcquireItem);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-updatedeletepercent
     [PreserveSig]
@@ -72,7 +72,7 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-enditemdelete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndItemDelete(uint nItemIndex, IPhotoAcquireItem pPhotoAcquireItem, HRESULT hr);
+    HRESULT EndItemDelete(uint nItemIndex, IPhotoAcquireItem? pPhotoAcquireItem, HRESULT hr);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-enddelete
     [PreserveSig]

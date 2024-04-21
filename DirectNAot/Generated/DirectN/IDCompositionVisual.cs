@@ -28,7 +28,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransform(constd2d_matrix_3x2_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransform(IDCompositionTransform transform);
+    HRESULT SetTransform(IDCompositionTransform? transform);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransform(constd2d_matrix_3x2_f_)
     [PreserveSig]
@@ -38,12 +38,12 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransformparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransformParent(IDCompositionVisual visual);
+    HRESULT SetTransformParent(IDCompositionVisual? visual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-seteffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffect(IDCompositionEffect effect);
+    HRESULT SetEffect(IDCompositionEffect? effect);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setbitmapinterpolationmode
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setclip(constd2d_rect_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClip(IDCompositionClip clip);
+    HRESULT SetClip(IDCompositionClip? clip);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setclip(constd2d_rect_f_)
     [PreserveSig]
@@ -73,7 +73,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-addvisual
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddVisual(IDCompositionVisual visual, [MarshalAs(UnmanagedType.U4)] bool insertAbove, IDCompositionVisual referenceVisual);
+    HRESULT AddVisual(IDCompositionVisual visual, [MarshalAs(UnmanagedType.U4)] bool insertAbove, IDCompositionVisual? referenceVisual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-removevisual
     [PreserveSig]

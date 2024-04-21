@@ -61,7 +61,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DisplayUI(HWND hwndParent, PWSTR pszTitle, PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData);
+    HRESULT DisplayUI(HWND hwndParent, PWSTR? pszTitle, PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

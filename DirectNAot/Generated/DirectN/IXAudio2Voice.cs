@@ -54,11 +54,11 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputfilterparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputFilterParameters(IXAudio2Voice pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet);
+    HRESULT SetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputfilterparameters
     [PreserveSig]
-    void GetOutputFilterParameters(IXAudio2Voice pDestinationVoice, out XAUDIO2_FILTER_PARAMETERS pParameters);
+    void GetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, out XAUDIO2_FILTER_PARAMETERS pParameters);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setvolume
     [PreserveSig]
@@ -81,11 +81,11 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputmatrix
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputMatrix(IXAudio2Voice pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet);
+    HRESULT SetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputmatrix
     [PreserveSig]
-    void GetOutputMatrix(IXAudio2Voice pDestinationVoice, uint SourceChannels, uint DestinationChannels, out float pLevelMatrix);
+    void GetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, out float pLevelMatrix);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-destroyvoice
     [PreserveSig]

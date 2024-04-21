@@ -33,7 +33,7 @@ public partial interface IDCompositionVisual3 : IDCompositionVisualDebug
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-settransform(constd2d_matrix_4x4_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransform(IDCompositionTransform3D transform);
+    HRESULT SetTransform(IDCompositionTransform3D? transform);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-settransform(constd2d_matrix_4x4_f_)
     [PreserveSig]

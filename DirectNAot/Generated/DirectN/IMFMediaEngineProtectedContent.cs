@@ -28,7 +28,7 @@ public partial interface IMFMediaEngineProtectedContent
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineprotectedcontent-setcontentprotectionmanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetContentProtectionManager(IMFContentProtectionManager pCPM);
+    HRESULT SetContentProtectionManager(IMFContentProtectionManager? pCPM);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineprotectedcontent-setapplicationcertificate
     [PreserveSig]

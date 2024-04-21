@@ -23,7 +23,7 @@ public partial interface IBaseFilter : IMediaFilter
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ibasefilter-joinfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JoinFilterGraph(IFilterGraph pGraph, PWSTR pName);
+    HRESULT JoinFilterGraph(IFilterGraph? pGraph, PWSTR? pName);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ibasefilter-queryvendorinfo
     [PreserveSig]

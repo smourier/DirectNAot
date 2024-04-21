@@ -40,7 +40,7 @@ public partial interface IMSVidGraphSegmentContainer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Decompose(IMSVidGraphSegment pSegment);
+    HRESULT Decompose(IMSVidGraphSegment? pSegment);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
