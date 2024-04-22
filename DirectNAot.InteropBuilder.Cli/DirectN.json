@@ -23,10 +23,22 @@
   },
   // types that we want to include or exclude
   "TypeInputs": [
+    "Windows.Win32.Devices.Display",
     "Windows.Win32.Graphics*",
     "!Windows.Win32.Graphics.Gdi*",
     "!Windows.Win32.Graphics.Printing*",
+    "Windows.Win32.Storage.Xps*",
     "Windows.Win32.Media*",
+    "Windows.Win32.System.WinRT.Composition",
+    "Windows.Win32.System.WinRT.Direct3D11",
+    "Windows.Win32.System.WinRT.Display",
+    "Windows.Win32.System.WinRT.Graphics*",
+    "Windows.Win32.System.WinRT.Holographic*",
+    "Windows.Win32.System.WinRT.Pdf",
+    "Windows.Win32.System.WinRT.Xaml",
+    "Windows.Win32.UI.ColorSystem",
+    "Windows.Win32.UI.HiDpi",
+    "Windows.Win32.UI.Input.Ink",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude

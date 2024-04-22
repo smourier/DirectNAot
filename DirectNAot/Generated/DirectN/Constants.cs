@@ -620,6 +620,10 @@ public static partial class Constants
     
     public const uint ATSC_VCT_TERR_TID = 200;
     
+    public const uint ATTRIB_MATTE = 2;
+    
+    public const uint ATTRIB_TRANSPARENCY = 1;
+    
     public const uint AUDCLNT_SESSIONFLAGS_DISPLAY_HIDE = 536870912;
     
     public const uint AUDCLNT_SESSIONFLAGS_DISPLAY_HIDEWHENEXPIRED = 1073741824;
@@ -806,11 +810,79 @@ public static partial class Constants
     
     public const int BDA_PLP_ID_NOT_SET = -1;
     
+    public const uint BEST_MODE = 3;
+    
     public const uint BI_1632 = 842217009;
+    
+    public const uint BITMAP_ARRAY_BYTE = 3;
+    
+    public const uint BITMAP_BITS_BYTE_ALIGN = 8;
+    
+    public const uint BITMAP_BITS_PIXEL = 1;
+    
+    public const uint BITMAP_BITS_WORD_ALIGN = 16;
+    
+    public const uint BITMAP_PLANES = 1;
     
     public const uint BLUE_SHIFT = 0;
     
     public static readonly Guid BlurEffectGuid = new("633c80a4-1843-482b-9ef2-be2834c5fdd4");
+    
+    public const int BMF_16BPP = 4;
+    
+    public const int BMF_1BPP = 1;
+    
+    public const int BMF_24BPP = 5;
+    
+    public const int BMF_32BPP = 6;
+    
+    public const int BMF_4BPP = 2;
+    
+    public const int BMF_4RLE = 7;
+    
+    public const int BMF_8BPP = 3;
+    
+    public const int BMF_8RLE = 8;
+    
+    public const uint BMF_ACC_NOTIFY = 32768;
+    
+    public const uint BMF_DONTCACHE = 4;
+    
+    public const int BMF_JPEG = 9;
+    
+    public const uint BMF_KMSECTION = 16;
+    
+    public const uint BMF_NOTSYSMEM = 32;
+    
+    public const uint BMF_NOZEROINIT = 2;
+    
+    public const int BMF_PNG = 10;
+    
+    public const uint BMF_RESERVED = 15872;
+    
+    public const uint BMF_RMT_ENTER = 16384;
+    
+    public const uint BMF_TEMP_ALPHA = 256;
+    
+    public const uint BMF_TOPDOWN = 1;
+    
+    public const uint BMF_UMPDMEM = 128;
+    
+    public const uint BMF_USERMEM = 8;
+    
+    public const uint BMF_WINDOW_BLT = 64;
+    
+    public const uint BR_CMYKCOLOR = 4;
+    
+    public const uint BR_DEVICE_ICM = 1;
+    
+    public const uint BR_HOST_ICM = 2;
+    
+    public const uint BR_ORIGCOLOR = 8;
+    
+    public const uint BRIGHTNESS_MAX_LEVEL_COUNT = 103;
+    
+    public const uint BRIGHTNESS_MAX_NIT_RANGE_COUNT = 16;
     
     public static readonly Guid BrightnessContrastEffectGuid = new("d3a1dbe1-8ec4-4c17-9f4c-ea97ad1c343d");
     
@@ -830,6 +902,8 @@ public static partial class Constants
     
     public static readonly Guid CAPTION_FORMAT_ECHOSTAR = new("ebb1a262-1158-4b99-ae80-92ac776952c4");
     
+    public static readonly Guid CATID_WcsPlugin = new("a0b402e0-8240-405f-8a16-8a5b4df2f0dd");
+    
     public static readonly Guid CATID_WICBitmapDecoders = new("7ed96837-96f0-4812-b211-f13c24117ed3");
     
     public static readonly Guid CATID_WICBitmapEncoders = new("ac757296-3522-4e11-9862-c17be5a1767e");
@@ -845,6 +919,30 @@ public static partial class Constants
     public const uint CC_MAX_HW_DECODE_LINES = 12;
     
     public const uint CCHDEVICENAME = 32;
+    
+    public const int CD_ANY = 4;
+    
+    public const int CD_LEFTDOWN = 1;
+    
+    public const int CD_LEFTUP = 3;
+    
+    public const int CD_LEFTWARDS = 1;
+    
+    public const int CD_RIGHTDOWN = 0;
+    
+    public const int CD_RIGHTUP = 2;
+    
+    public const int CD_UPWARDS = 2;
+    
+    public const uint CDBEX_CROSSADAPTER = 8;
+    
+    public const uint CDBEX_DXINTEROP = 2;
+    
+    public const uint CDBEX_NTSHAREDSURFACEHANDLE = 4;
+    
+    public const uint CDBEX_REDIRECTION = 1;
+    
+    public const uint CDBEX_REUSE = 16;
     
     public const uint CDEF_BYPASS_CLASS_MANAGER = 2;
     
@@ -863,6 +961,12 @@ public static partial class Constants
     public const uint CDEF_MERIT_ABOVE_DO_NOT_USE = 8;
     
     public const string CFSTR_VFW_FILTERLIST = @"Video for Windows 4 Filters";
+    
+    public const uint CHAR_TYPE_LEADING = 2;
+    
+    public const uint CHAR_TYPE_SBCS = 0;
+    
+    public const uint CHAR_TYPE_TRAILING = 3;
     
     public const uint CHARS_IN_GUID = 39;
     
@@ -1414,6 +1518,8 @@ public static partial class Constants
     
     public static readonly Guid CLSID_SmartTee = new("cc58e280-8aa1-11d1-b3f1-00aa003761c5");
     
+    public static readonly Guid CLSID_SoftwareBitmapNativeFactory = new("84e65691-8602-4a84-be46-708be9cd4b74");
+    
     public static readonly Guid CLSID_StreamBufferComposeRecording = new("d682c4ba-a90a-42fe-b9e1-03109849c423");
     
     public static readonly Guid CLSID_StreamBufferConfig = new("fa8a68b2-c864-4ba2-ad53-d3876a87494b");
@@ -1748,6 +1854,56 @@ public static partial class Constants
     
     public static readonly Guid CLSID_XMLGraphBuilder = new("1bb05961-5fbf-11d2-a521-44df07c10000");
     
+    public const uint CMM_DESCRIPTION = 5;
+    
+    public const uint CMM_DLL_VERSION = 3;
+    
+    public const uint CMM_DRIVER_VERSION = 2;
+    
+    public const uint CMM_FROM_PROFILE = 0;
+    
+    public const uint CMM_IDENT = 1;
+    
+    public const uint CMM_LOGOICON = 6;
+    
+    public const uint CMM_VERSION = 4;
+    
+    public const uint CMM_WIN_VERSION = 0;
+    
+    public const uint CMS_BACKWARD = 1;
+    
+    public const uint CMS_DISABLEICM = 1;
+    
+    public const uint CMS_DISABLEINTENT = 1024;
+    
+    public const uint CMS_DISABLERENDERINTENT = 2048;
+    
+    public const uint CMS_ENABLEPROOFING = 2;
+    
+    public const uint CMS_FORWARD = 0;
+    
+    public const int CMS_MONITOROVERFLOW = int.MinValue;
+    
+    public const int CMS_PRINTEROVERFLOW = 1073741824;
+    
+    public const uint CMS_SETMONITORPROFILE = 16;
+    
+    public const uint CMS_SETPRINTERPROFILE = 32;
+    
+    public const uint CMS_SETPROOFINTENT = 8;
+    
+    public const uint CMS_SETRENDERINTENT = 4;
+    
+    public const uint CMS_SETTARGETPROFILE = 64;
+    
+    public const int CMS_TARGETOVERFLOW = 536870912;
+    
+    public const uint CMS_USEAPPLYCALLBACK = 256;
+    
+    public const uint CMS_USEDESCRIPTION = 512;
+    
+    public const uint CMS_USEHOOK = 128;
+    
     public static readonly Guid CODECAPI_ALLSETTINGS = new("6a577e92-83e1-4113-adc2-4fcec32f83a1");
     
     public static readonly Guid CODECAPI_AUDIO_ENCODER = new("b9d19a3e-f897-429c-bc46-8138b7272b2d");
@@ -1765,6 +1921,8 @@ public static partial class Constants
     public static readonly Guid CODECAPI_VIDEO_ENCODER = new("7112e8e1-3d03-47ef-8e60-03f1cf537301");
     
     public static readonly Guid CodecIImageBytes = new("025d1823-6c7d-447b-bbdb-a3cbc3dfa2fc");
+    
+    public const uint COLOR_MATCH_VERSION = 512;
     
     public static readonly Guid ColorBalanceEffectGuid = new("537e597d-251e-48da-9664-29ca496b70f8");
     
@@ -1921,6 +2079,24 @@ public static partial class Constants
     public const int COPP_ProtectionType_Unknown = int.MinValue;
     
     public const uint CRYSTAL_NET_SFM_CODEC = 1;
+    
+    public const uint CSA_A = 1;
+    
+    public const uint CSA_ABC = 2;
+    
+    public const uint CSA_CMYK = 7;
+    
+    public const uint CSA_DEF = 3;
+    
+    public const uint CSA_DEFG = 4;
+    
+    public const uint CSA_GRAY = 5;
+    
+    public const uint CSA_Lab = 8;
+    
+    public const uint CSA_RGB = 6;
+    
+    public const int CT_RECTANGLES = 0;
     
     public const uint D2D1_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
@@ -6194,6 +6370,12 @@ public static partial class Constants
     
     public const uint DAUD_STANDARD_VOICE_PRIORITY = 2147483648;
     
+    public const uint DC_COMPLEX = 3;
+    
+    public const uint DC_RECT = 1;
+    
+    public const uint DC_TRIVIAL = 0;
+    
     public const uint DCB_EVENT = 5;
     
     public const uint DCB_FUNCTION = 3;
@@ -6211,6 +6393,14 @@ public static partial class Constants
     public const uint DCICOMMAND = 3075;
     
     public const uint DCOMPOSITION_MAX_WAITFORCOMPOSITORCLOCK_OBJECTS = 32;
+    
+    public const uint DCR_DRIVER = 1;
+    
+    public const uint DCR_HALFTONE = 2;
+    
+    public const uint DCR_SOLID = 0;
+    
+    public const string DD_FULLSCREEN_VIDEO_DEVICE_NAME = @"\Device\FSVideo";
     
     public const uint DD_HAL_VERSION = 256;
     
@@ -6885,6 +7075,18 @@ public static partial class Constants
     public const int DDHALINFO_ISPRIMARYDISPLAY = 1;
     
     public const int DDHALINFO_MODEXILLEGAL = 2;
+    
+    public const uint DDI_DRIVER_VERSION_NT4 = 131072;
+    
+    public const uint DDI_DRIVER_VERSION_NT5 = 196608;
+    
+    public const uint DDI_DRIVER_VERSION_NT5_01 = 196864;
+    
+    public const uint DDI_DRIVER_VERSION_NT5_01_SP1 = 196865;
+    
+    public const uint DDI_DRIVER_VERSION_SP3 = 131075;
+    
+    public const uint DDI_ERROR = uint.MaxValue;
     
     public const int DDIRQ_BUSMASTER = 2;
     
@@ -7898,6 +8100,10 @@ public static partial class Constants
     
     public const uint DELETED_OK = 0;
     
+    public const uint DEVHTADJF_ADDITIVE_DEVICE = 2;
+    
+    public const uint DEVHTADJF_COLOR_DEVICE = 1;
+    
     public const uint DEVICE_STATEMASK_ALL = 15;
     
     public static readonly Guid DEVINTERFACE_AUDIO_CAPTURE = new("2eef81be-33fa-4800-9670-1cd474972c3f");
@@ -7907,6 +8113,10 @@ public static partial class Constants
     public static readonly Guid DEVINTERFACE_MIDI_INPUT = new("504be32c-ccf6-4d2c-b73f-6f8b3747e22b");
     
     public static readonly Guid DEVINTERFACE_MIDI_OUTPUT = new("6dc23320-ab33-4ce4-80d4-bbb3ebbf2814");
+    
+    public static readonly DEVPROPKEY DEVPKEY_Device_ActivityId = new(new Guid("c50a3f10-aa5c-4247-b830-d6a6f8eaa310"), 4);
+    
+    public static readonly DEVPROPKEY DEVPKEY_Device_AdapterLuid = new(new Guid("c50a3f10-aa5c-4247-b830-d6a6f8eaa310"), 3);
     
     public static readonly DEVPROPKEY DEVPKEY_Device_DLNACAP = new(new Guid("88ad39db-0d0c-4a38-8435-4043826b5c91"), 16);
     
@@ -7932,6 +8142,8 @@ public static partial class Constants
     
     public static readonly DEVPROPKEY DEVPKEY_Device_SupportsVideo = new(new Guid("88ad39db-0d0c-4a38-8435-4043826b5c91"), 9);
     
+    public static readonly DEVPROPKEY DEVPKEY_Device_TerminalLuid = new(new Guid("c50a3f10-aa5c-4247-b830-d6a6f8eaa310"), 2);
+    
     public static readonly DEVPROPKEY DEVPKEY_Device_UDN = new(new Guid("88ad39db-0d0c-4a38-8435-4043826b5c91"), 6);
     
     public static readonly DEVPROPKEY DEVPKEY_DeviceInterface_IsVirtualCamera = new(new Guid("6edc630d-c2e3-43b7-b2d1-20525a1af120"), 3);
@@ -7939,6 +8151,8 @@ public static partial class Constants
     public static readonly DEVPROPKEY DEVPKEY_DeviceInterface_IsWindowsCameraEffectAvailable = new(new Guid("6edc630d-c2e3-43b7-b2d1-20525a1af120"), 4);
     
     public static readonly DEVPROPKEY DEVPKEY_DeviceInterface_VirtualCameraAssociatedCameras = new(new Guid("6edc630d-c2e3-43b7-b2d1-20525a1af120"), 5);
+    
+    public static readonly DEVPROPKEY DEVPKEY_IndirectDisplay = new(new Guid("c50a3f10-aa5c-4247-b830-d6a6f8eaa310"), 1);
     
     public static readonly DEVPROPKEY DEVPKEY_KsAudio_Controller_DeviceInterface_Path = new(new Guid("13e004d6-b066-43bd-913b-a415cd13da87"), 3);
     
@@ -8902,6 +9116,10 @@ public static partial class Constants
     
     public const uint DISPID_WMPSTRINGCOLLECTION2_ISIDENTICAL = 1451;
     
+    public const uint DISPLAYPOLICY_AC = 1;
+    
+    public const uint DISPLAYPOLICY_DC = 2;
+    
     public const uint DLG_ACMFILTERCHOOSE_ID = 71;
     
     public const uint DLG_ACMFORMATCHOOSE_ID = 70;
@@ -8959,6 +9177,10 @@ public static partial class Constants
     public static readonly Guid DLSID_SupportsDLS2 = new("f14599e5-4689-11d2-afa6-00aa0024d8b6");
     
     public static readonly Guid DLSID_XGInHardware = new("178f2f26-c364-11d1-a760-0000f875ac12");
+    
+    public const uint DM_DEFAULT = 1;
+    
+    public const uint DM_MONOCHROME = 2;
     
     public static readonly Guid DMOCATEGORY_ACOUSTIC_ECHO_CANCEL = new("bf963d80-c559-11d0-8a2b-00a0c9255ac1");
     
@@ -9086,7 +9308,31 @@ public static partial class Constants
     
     public const int DMUS_VOLUME_MIN = -20000;
     
+    public const uint DN_ACCELERATION_LEVEL = 1;
+    
+    public const uint DN_ASSOCIATE_WINDOW = 5;
+    
+    public const uint DN_COMPOSITION_CHANGED = 6;
+    
+    public const uint DN_DEVICE_ORIGIN = 2;
+    
+    public const uint DN_DRAWING_BEGIN = 4;
+    
+    public const uint DN_DRAWING_BEGIN_APIBITMAP = 7;
+    
+    public const uint DN_SLEEP_MODE = 3;
+    
+    public const uint DN_SURFOBJ_DESTRUCTION = 8;
+    
     public const uint DO_NOT_VIRTUALIZE_STORAGES_AS_DEVICES = 1;
+    
+    public const int DONT_USE_EMBEDDED_WCS_PROFILES = 1;
+    
+    public const uint DRD_ERROR = 1;
+    
+    public const uint DRD_SUCCESS = 0;
+    
+    public const uint DRH_APIBITMAP = 1;
     
     public const string DRIVERS_SECTION = @"DRIVERS32";
     
@@ -9197,6 +9443,8 @@ public static partial class Constants
     public const uint DRVM_REMOVE_THRU = 258;
     
     public const uint DRVM_USER = 16384;
+    
+    public const uint DRVQUERY_USERMODE = 1;
     
     public const uint DS_CERTIFIED = 0;
     
@@ -9850,7 +10098,51 @@ public static partial class Constants
     
     public const int DSFXR_UNKNOWN = 5;
     
+    public const uint DSI_CHECKSUM_ERROR_CORRECTED = 256;
+    
+    public const uint DSI_CHECKSUM_ERROR_NOT_CORRECTED = 512;
+    
+    public const uint DSI_CONTENTION_DETECTED = 128;
+    
+    public const uint DSI_DSI_DATA_TYPE_NOT_RECOGNIZED = 2048;
+    
+    public const uint DSI_DSI_PROTOCOL_VIOLATION = 32768;
+    
+    public const uint DSI_DSI_VC_ID_INVALID = 4096;
+    
+    public const uint DSI_EOT_SYNC_ERROR = 4;
+    
+    public const uint DSI_ESCAPE_MODE_ENTRY_COMMAND_ERROR = 8;
+    
+    public const uint DSI_FALSE_CONTROL_ERROR = 64;
+    
+    public const uint DSI_INVALID_PACKET_INDEX = 255;
+    
+    public const uint DSI_INVALID_TRANSMISSION_LENGTH = 8192;
+    
+    public const uint DSI_LONG_PACKET_PAYLOAD_CHECKSUM_ERROR = 1024;
+    
+    public const uint DSI_LOW_POWER_TRANSMIT_SYNC_ERROR = 16;
+    
+    public const uint DSI_PACKET_EMBEDDED_PAYLOAD_SIZE = 8;
+    
+    public const uint DSI_PERIPHERAL_TIMEOUT_ERROR = 32;
+    
+    public const uint DSI_SOT_ERROR = 1;
+    
+    public const uint DSI_SOT_SYNC_ERROR = 2;
+    
     public static readonly Guid DSPROPSETID_DirectSoundDevice = new("84624f82-25ec-11d1-a4d8-00c04fc28aca");
+    
+    public const uint DSS_FLUSH_EVENT = 2;
+    
+    public const uint DSS_RESERVED = 4;
+    
+    public const uint DSS_RESERVED1 = 8;
+    
+    public const uint DSS_RESERVED2 = 16;
+    
+    public const uint DSS_TIMER_EVENT = 1;
     
     public const uint DSSCL_EXCLUSIVE = 3;
     
@@ -10317,6 +10609,12 @@ public static partial class Constants
     public const uint DXGI_SHARED_RESOURCE_WRITE = 1;
     
     public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = uint.MaxValue;
+    
+    public const uint DXGK_WIN32K_PARAM_FLAG_DISABLEVIEW = 4;
+    
+    public const uint DXGK_WIN32K_PARAM_FLAG_MODESWITCH = 2;
+    
+    public const uint DXGK_WIN32K_PARAM_FLAG_UPDATEREGISTRY = 1;
     
     public const uint DXVA_ALPHA_BLEND_COMBINATION_BUFFER = 13;
     
@@ -10854,6 +11152,8 @@ public static partial class Constants
     
     public static readonly Guid DXVAp_NoEncrypt = new("1b81bed0-a0c7-11d3-b984-00c04f2e73c5");
     
+    public const uint E_SURFACE_CONTENTS_LOST = 2150301728;
+    
     public const uint EC_ACTIVATE = 19;
     
     public const uint EC_BANDWIDTHCHANGE = 72;
@@ -11064,6 +11364,12 @@ public static partial class Constants
     
     public const uint EC_WMT_INDEX_EVENT = 593;
     
+    public const uint ECS_REDRAW = 2;
+    
+    public const uint ECS_TEARDOWN = 1;
+    
+    public const uint ED_ABORTDOC = 1;
+    
     public const uint EFFECT_CANGOFULLSCREEN = 1;
     
     public const uint EFFECT_HASPROPERTYPAGE = 2;
@@ -11073,6 +11379,12 @@ public static partial class Constants
     public const uint EFFECT_WINDOWEDONLY = 8;
     
     public const uint EFFECT2_FULLSCREENEXCLUSIVE = 16;
+    
+    public const uint EHN_ERROR = 1;
+    
+    public const uint EHN_RESTORED = 0;
+    
+    public const uint ENABLE_GAMUT_CHECKING = 65536;
     
     public static readonly Guid ENCAPIPARAM_BITRATE = new("49cc4c43-ca83-4ad4-a9af-f3696af666df");
     
@@ -11108,6 +11420,12 @@ public static partial class Constants
     
     public static readonly Guid EncoderVersion = new("24d18c76-814a-41a4-bf53-1c219cccf797");
     
+    public const int ENDCAP_BUTT = 2;
+    
+    public const int ENDCAP_ROUND = 0;
+    
+    public const int ENDCAP_SQUARE = 1;
+    
     public const uint ENDPOINT_FORMAT_RESET_MIX_ONLY = 1;
     
     public const uint ENDPOINT_HARDWARE_SUPPORT_METER = 4;
@@ -11119,6 +11437,50 @@ public static partial class Constants
     public const uint ENDPOINT_SYSFX_DISABLED = 1;
     
     public const uint ENDPOINT_SYSFX_ENABLED = 0;
+    
+    public const uint ENG_FNT_CACHE_READ_FAULT = 1;
+    
+    public const uint ENG_FNT_CACHE_WRITE_FAULT = 2;
+    
+    public const uint ENUM_TYPE_VERSION = 768;
+    
+    public const uint ET_ATTRIBUTES = 8192;
+    
+    public const uint ET_CLASS = 32;
+    
+    public const uint ET_CMMTYPE = 16;
+    
+    public const uint ET_CONNECTIONSPACE = 128;
+    
+    public const uint ET_CREATOR = 32768;
+    
+    public const uint ET_DATACOLORSPACE = 64;
+    
+    public const uint ET_DEVICECLASS = 65536;
+    
+    public const uint ET_DEVICENAME = 1;
+    
+    public const uint ET_DITHERMODE = 4;
+    
+    public const uint ET_EXTENDEDDISPLAYCOLOR = 262144;
+    
+    public const uint ET_MANUFACTURER = 2048;
+    
+    public const uint ET_MEDIATYPE = 2;
+    
+    public const uint ET_MODEL = 4096;
+    
+    public const uint ET_PLATFORM = 512;
+    
+    public const uint ET_PROFILEFLAGS = 1024;
+    
+    public const uint ET_RENDERINGINTENT = 16384;
+    
+    public const uint ET_RESOLUTION = 8;
+    
+    public const uint ET_SIGNATURE = 256;
+    
+    public const uint ET_STANDARDDISPLAYCOLOR = 131072;
     
     public static readonly Guid EVENT_WMDM_CONTENT_TRANSFER = new("339c9bf4-bcfe-4ed8-94df-eaf8c26ab61b");
     
@@ -11210,6 +11572,32 @@ public static partial class Constants
     
     public const uint FACILITY_XAUDIO2 = 2198;
     
+    public const uint FAST_TRANSLATE = 262144;
+    
+    public const uint FC_COMPLEX = 3;
+    
+    public const uint FC_RECT = 1;
+    
+    public const uint FC_RECT4 = 2;
+    
+    public const uint FD_ERROR = uint.MaxValue;
+    
+    public const int FD_NEGATIVE_FONT = 1;
+    
+    public const uint FDM_TYPE_BM_SIDE_CONST = 1;
+    
+    public const uint FDM_TYPE_CHAR_INC_EQUAL_BM_BASE = 4;
+    
+    public const uint FDM_TYPE_CONST_BEARINGS = 16;
+    
+    public const uint FDM_TYPE_MAXEXT_EQUAL_BM_SIDE = 2;
+    
+    public const uint FDM_TYPE_ZERO_BEARINGS = 8;
+    
+    public const uint FF_IGNORED_SIGNATURE = 2;
+    
+    public const uint FF_SIGNATURE_VERIFIED = 1;
+    
     public const uint FILTERCHOOSE_CUSTOM_VERIFY = 2;
     
     public const uint FILTERCHOOSE_FILTER_VERIFY = 1;
@@ -11246,7 +11634,153 @@ public static partial class Constants
     
     public const int FIND_TYPE = 240;
     
+    public const uint FL_NON_SESSION = 4;
+    
+    public const uint FL_NONPAGED_MEMORY = 2;
+    
+    public const uint FL_ZERO_MEMORY = 1;
+    
+    public const uint FLAG_DEPENDENTONDATA = 2;
+    
+    public const uint FLAG_EMBEDDEDPROFILE = 1;
+    
+    public const uint FLAG_ENABLE_CHROMATIC_ADAPTATION = 33554432;
+    
     public const float FlatnessDefault = 0.25f;
+    
+    public const uint FM_EDITABLE_EMBED = 8;
+    
+    public const uint FM_INFO_16BPP = 256;
+    
+    public const uint FM_INFO_1BPP = 32;
+    
+    public const uint FM_INFO_24BPP = 512;
+    
+    public const uint FM_INFO_32BPP = 1024;
+    
+    public const uint FM_INFO_4BPP = 64;
+    
+    public const uint FM_INFO_8BPP = 128;
+    
+    public const uint FM_INFO_90DEGREE_ROTATIONS = 2097152;
+    
+    public const uint FM_INFO_ANISOTROPIC_SCALING_ONLY = 33554432;
+    
+    public const uint FM_INFO_ARB_XFORMS = 16;
+    
+    public const uint FM_INFO_CONSTANT_WIDTH = 4096;
+    
+    public const uint FM_INFO_DBCS_FIXED_PITCH = 268435456;
+    
+    public const uint FM_INFO_DO_NOT_ENUMERATE = 8388608;
+    
+    public const uint FM_INFO_DSIG = 262144;
+    
+    public const uint FM_INFO_FAMILY_EQUIV = 134217728;
+    
+    public const uint FM_INFO_IGNORE_TC_RA_ABLE = 1073741824;
+    
+    public const uint FM_INFO_INTEGER_WIDTH = 2048;
+    
+    public const uint FM_INFO_INTEGRAL_SCALING = 1048576;
+    
+    public const uint FM_INFO_ISOTROPIC_SCALING_ONLY = 16777216;
+    
+    public const uint FM_INFO_NONNEGATIVE_AC = 536870912;
+    
+    public const uint FM_INFO_NOT_CONTIGUOUS = 8192;
+    
+    public const uint FM_INFO_OPTICALLY_FIXED_PITCH = 4194304;
+    
+    public const uint FM_INFO_RETURNS_BITMAPS = 131072;
+    
+    public const uint FM_INFO_RETURNS_OUTLINES = 32768;
+    
+    public const uint FM_INFO_RETURNS_STROKES = 65536;
+    
+    public const uint FM_INFO_RIGHT_HANDED = 524288;
+    
+    public const uint FM_INFO_TECH_BITMAP = 2;
+    
+    public const uint FM_INFO_TECH_CFF = 67108864;
+    
+    public const uint FM_INFO_TECH_MM = 16384;
+    
+    public const uint FM_INFO_TECH_OUTLINE_NOT_TRUETYPE = 8;
+    
+    public const uint FM_INFO_TECH_STROKE = 4;
+    
+    public const uint FM_INFO_TECH_TRUETYPE = 1;
+    
+    public const uint FM_INFO_TECH_TYPE1 = 2147483648;
+    
+    public const uint FM_NO_EMBEDDING = 2;
+    
+    public const uint FM_PANOSE_CULTURE_LATIN = 0;
+    
+    public const uint FM_READONLY_EMBED = 4;
+    
+    public const uint FM_SEL_BOLD = 32;
+    
+    public const uint FM_SEL_ITALIC = 1;
+    
+    public const uint FM_SEL_NEGATIVE = 4;
+    
+    public const uint FM_SEL_OUTLINED = 8;
+    
+    public const uint FM_SEL_REGULAR = 64;
+    
+    public const uint FM_SEL_STRIKEOUT = 16;
+    
+    public const uint FM_SEL_UNDERSCORE = 2;
+    
+    public const uint FM_TYPE_LICENSED = 2;
+    
+    public const uint FM_VERSION_NUMBER = 0;
+    
+    public const uint FO_ATTR_MODE_ROTATE = 1;
+    
+    public const uint FO_CFF = 1048576;
+    
+    public const uint FO_CLEARTYPE_X = 268435456;
+    
+    public const uint FO_CLEARTYPE_Y = 536870912;
+    
+    public const uint FO_CLEARTYPENATURAL_X = 1073741824;
+    
+    public const uint FO_DBCS_FONT = 16777216;
+    
+    public const int FO_DEVICE_FONT = 1;
+    
+    public const uint FO_EM_HEIGHT = 32768;
+    
+    public const int FO_GLYPHBITS = 1;
+    
+    public const uint FO_GRAY16 = 65536;
+    
+    public const int FO_HGLYPHS = 0;
+    
+    public const uint FO_MULTIPLEMASTER = 4194304;
+    
+    public const uint FO_NO_CHOICE = 524288;
+    
+    public const uint FO_NOCLEARTYPE = 33554432;
+    
+    public const uint FO_NOGRAY16 = 131072;
+    
+    public const uint FO_NOHINTS = 262144;
+    
+    public const int FO_OUTLINE_CAPABLE = 2;
+    
+    public const int FO_PATHOBJ = 2;
+    
+    public const uint FO_POSTSCRIPT = 2097152;
+    
+    public const uint FO_SIM_BOLD = 8192;
+    
+    public const uint FO_SIM_ITALIC = 16384;
+    
+    public const uint FO_VERT_FACE = 8388608;
     
     public static readonly Guid FORMAT_525WSS = new("c7ecf04d-4582-4869-9abb-bfb523b62edf");
     
@@ -11305,6 +11839,10 @@ public static partial class Constants
     public static readonly Guid FORMATTYPE_CPFilters_Processed = new("6739b36f-1d5f-4ac2-8192-28bb0e73d16a");
     
     public static readonly Guid FORMATTYPE_ETDTFilter_Tagged = new("c4c4c4d1-0049-4e2b-98fb-9537f6ce516d");
+    
+    public const int FP_ALTERNATEMODE = 1;
+    
+    public const int FP_WINDINGMODE = 2;
     
     public static readonly Guid FrameDimensionPage = new("7462dc86-6180-4c7e-8e3f-ee7333a7a483");
     
@@ -12304,11 +12842,111 @@ public static partial class Constants
     
     public const string g_wszWPDPassthroughPropertyValues = @"WPD/PassthroughPropertyValues";
     
+    public const uint GCAPS_ALTERNATEFILL = 4;
+    
+    public const uint GCAPS_ARBRUSHOPAQUE = 32768;
+    
+    public const uint GCAPS_ARBRUSHTEXT = 268435456;
+    
+    public const uint GCAPS_ASYNCCHANGE = 2048;
+    
+    public const uint GCAPS_ASYNCMOVE = 4096;
+    
+    public const uint GCAPS_BEZIERS = 1;
+    
+    public const uint GCAPS_CMYKCOLOR = 67108864;
+    
+    public const uint GCAPS_COLOR_DITHER = 32;
+    
+    public const uint GCAPS_DIRECTDRAW = 16384;
+    
+    public const uint GCAPS_DITHERONREALIZE = 2097152;
+    
+    public const uint GCAPS_DONTJOURNAL = 8192;
+    
+    public const uint GCAPS_FONT_RASTERIZER = 1073741824;
+    
+    public const uint GCAPS_FORCEDITHER = 8388608;
+    
+    public const uint GCAPS_GEOMETRICWIDE = 2;
+    
+    public const uint GCAPS_GRAY16 = 16777216;
+    
+    public const uint GCAPS_HALFTONE = 16;
+    
+    public const uint GCAPS_HIGHRESTEXT = 262144;
+    
+    public const uint GCAPS_HORIZSTRIKE = 64;
+    
+    public const uint GCAPS_ICM = 33554432;
+    
+    public const uint GCAPS_LAYERED = 134217728;
+    
+    public const uint GCAPS_MONO_DITHER = 1024;
+    
+    public const uint GCAPS_NO64BITMEMACCESS = 4194304;
+    
+    public const uint GCAPS_NUP = 2147483648;
+    
+    public const uint GCAPS_OPAQUERECT = 256;
+    
+    public const uint GCAPS_PALMANAGED = 524288;
+    
+    public const uint GCAPS_PANNING = 65536;
+    
+    public const uint GCAPS_SCREENPRECISION = 536870912;
+    
+    public const uint GCAPS_VECTORFONT = 512;
+    
+    public const uint GCAPS_VERTSTRIKE = 128;
+    
+    public const uint GCAPS_WINDINGFILL = 8;
+    
+    public const uint GCAPS2_ACC_DRIVER = 32768;
+    
+    public const uint GCAPS2_ALPHACURSOR = 32;
+    
+    public const uint GCAPS2_BITMAPEXREUSE = 65536;
+    
+    public const uint GCAPS2_CHANGEGAMMARAMP = 16;
+    
+    public const uint GCAPS2_CLEARTYPE = 16384;
+    
+    public const uint GCAPS2_EXCLUDELAYERED = 2048;
+    
+    public const uint GCAPS2_ICD_MULTIMON = 256;
+    
+    public const uint GCAPS2_INCLUDEAPIBITMAPS = 4096;
+    
+    public const uint GCAPS2_JPEGSRC = 1;
+    
+    public const uint GCAPS2_MOUSETRAILS = 512;
+    
+    public const uint GCAPS2_PNGSRC = 8;
+    
+    public const uint GCAPS2_REMOTEDRIVER = 1024;
+    
+    public const uint GCAPS2_RESERVED1 = 1024;
+    
+    public const uint GCAPS2_SHOWHIDDENPOINTER = 8192;
+    
+    public const uint GCAPS2_SYNCFLUSH = 64;
+    
+    public const uint GCAPS2_SYNCTIMER = 128;
+    
+    public const uint GCAPS2_xxxx = 2;
+    
+    public const uint GDI_DRIVER_VERSION = 16384;
+    
     public const uint GDIP_EMFPLUS_RECORD_BASE = 16384;
     
     public const uint GDIP_EMFPLUSFLAGS_DISPLAY = 1;
     
     public const uint GDIP_WMF_RECORD_BASE = 65536;
+    
+    public const uint GETCONNECTEDIDS_SOURCE = 1;
+    
+    public const uint GETCONNECTEDIDS_TARGET = 0;
     
     public const uint GL_2_BYTES = 5127;
     
@@ -13718,6 +14356,12 @@ public static partial class Constants
     
     public const uint GREEN_SHIFT = 8;
     
+    public const uint GS_16BIT_HANDLES = 4;
+    
+    public const uint GS_8BIT_HANDLES = 2;
+    
+    public const uint GS_UNICODE_HANDLES = 1;
+    
     public static readonly Guid GUID_All_Objects = new("aa114de5-c262-4169-a1c8-23d698cc73b5");
     
     public static readonly Guid GUID_ColorControlCallbacks = new("efd60cc2-49e7-11d0-889d-00aa00bbb76a");
@@ -13766,11 +14410,19 @@ public static partial class Constants
     
     public static readonly Guid GUID_DeviceType = new("d722fb4d-7a68-437a-b20c-5804ee2494a6");
     
+    public static readonly Guid GUID_DEVINTERFACE_DISPLAY_ADAPTER = new("5b45201d-f2f2-4f3b-85bb-30ff1f953599");
+    
     public static readonly Guid GUID_DEVINTERFACE_DMP = new("25b4e268-2a05-496e-803b-266837fbda4b");
     
     public static readonly Guid GUID_DEVINTERFACE_DMR = new("d0875fb4-2196-4c7a-a63d-e416addd60a1");
     
     public static readonly Guid GUID_DEVINTERFACE_DMS = new("c96037ae-a558-4470-b432-115a31b85553");
+    
+    public static readonly Guid GUID_DEVINTERFACE_MONITOR = new("e6f07b5f-ee97-4a90-b076-33f57bf4eaa7");
+    
+    public static readonly Guid GUID_DEVINTERFACE_VIDEO_OUTPUT_ARRIVAL = new("1ad9e4f0-f88d-4360-bab9-4c2d55e564cd");
+    
+    public static readonly Guid GUID_DISPLAY_DEVICE_ARRIVAL = new("1ca05180-a699-450a-9a0c-de4fbe3ddd89");
     
     public static readonly Guid GUID_DMUS_PROP_DLS1 = new("178f2f27-c364-11d1-a760-0000f875ac12");
     
@@ -13939,6 +14591,8 @@ public static partial class Constants
     public static readonly Guid GUID_Miscellaneous2Callbacks = new("406b2f00-3e5a-11d1-b640-00aa00a1f96a");
     
     public static readonly Guid GUID_MiscellaneousCallbacks = new("efd60cc0-49e7-11d0-889d-00aa00bbb76a");
+    
+    public static readonly Guid GUID_MONITOR_OVERRIDE_PSEUDO_SPECIALIZED = new("f196c02f-f86f-4f9a-aa15-e9cebdfe3b96");
     
     public static readonly Guid GUID_MotionCompCallbacks = new("b1122b40-5da5-11d1-8fcf-00c04fc29b4e");
     
@@ -14160,9 +14814,73 @@ public static partial class Constants
     
     public static readonly Guid GUID_ZPixelFormats = new("93869880-36cf-11d1-9b1b-00aa00bbb8ae");
     
+    public const int GX_GENERAL = 3;
+    
+    public const int GX_IDENTITY = 0;
+    
+    public const int GX_OFFSET = 1;
+    
+    public const int GX_SCALE = 2;
+    
     public const int HEAPALIASINFO_MAPPEDDUMMY = 2;
     
     public const int HEAPALIASINFO_MAPPEDREAL = 1;
+    
+    public const uint HOOK_ALPHABLEND = 65536;
+    
+    public const uint HOOK_BITBLT = 1;
+    
+    public const uint HOOK_COPYBITS = 1024;
+    
+    public const uint HOOK_FILLPATH = 64;
+    
+    public const uint HOOK_FLAGS = 243199;
+    
+    public const uint HOOK_GRADIENTFILL = 131072;
+    
+    public const uint HOOK_LINETO = 256;
+    
+    public const uint HOOK_MOVEPANNING = 2048;
+    
+    public const uint HOOK_PAINT = 16;
+    
+    public const uint HOOK_PLGBLT = 4;
+    
+    public const uint HOOK_STRETCHBLT = 2;
+    
+    public const uint HOOK_STRETCHBLTROP = 8192;
+    
+    public const uint HOOK_STROKEANDFILLPATH = 128;
+    
+    public const uint HOOK_STROKEPATH = 32;
+    
+    public const uint HOOK_SYNCHRONIZE = 4096;
+    
+    public const uint HOOK_SYNCHRONIZEACCESS = 16384;
+    
+    public const uint HOOK_TEXTOUT = 8;
+    
+    public const uint HOOK_TRANSPARENTBLT = 32768;
+    
+    public const uint HOST_DSI_BAD_TRANSMISSION_MODE = 4096;
+    
+    public const uint HOST_DSI_DEVICE_NOT_READY = 1;
+    
+    public const uint HOST_DSI_DEVICE_RESET = 4;
+    
+    public const uint HOST_DSI_DRIVER_REJECTED_PACKET = 1024;
+    
+    public const uint HOST_DSI_INTERFACE_RESET = 2;
+    
+    public const uint HOST_DSI_INVALID_TRANSMISSION = 256;
+    
+    public const uint HOST_DSI_OS_REJECTED_PACKET = 512;
+    
+    public const uint HOST_DSI_TRANSMISSION_CANCELLED = 16;
+    
+    public const uint HOST_DSI_TRANSMISSION_DROPPED = 32;
+    
+    public const uint HOST_DSI_TRANSMISSION_TIMEOUT = 64;
     
     public const float HRTF_DEFAULT_UNITY_GAIN_DISTANCE = 1f;
     
@@ -14171,6 +14889,110 @@ public static partial class Constants
     public const float HRTF_MIN_GAIN_LIMIT = -96f;
     
     public const float HRTF_MIN_UNITY_GAIN_DISTANCE = 0.05f;
+    
+    public const uint HS_DDI_MAX = 6;
+    
+    public const uint HT_FLAG_8BPP_CMY332_MASK = 4278190080;
+    
+    public const uint HT_FLAG_ADDITIVE_PRIMS = 4;
+    
+    public const uint HT_FLAG_DO_DEVCLR_XFORM = 128;
+    
+    public const uint HT_FLAG_HAS_BLACK_DYE = 2;
+    
+    public const uint HT_FLAG_INK_ABSORPTION_IDX0 = 0;
+    
+    public const uint HT_FLAG_INK_ABSORPTION_IDX1 = 32;
+    
+    public const uint HT_FLAG_INK_ABSORPTION_IDX2 = 64;
+    
+    public const uint HT_FLAG_INK_ABSORPTION_IDX3 = 96;
+    
+    public const uint HT_FLAG_INK_ABSORPTION_INDICES = 96;
+    
+    public const uint HT_FLAG_INK_HIGH_ABSORPTION = 16;
+    
+    public const uint HT_FLAG_INVERT_8BPP_BITMASK_IDX = 1024;
+    
+    public const uint HT_FLAG_LOW_INK_ABSORPTION = 32;
+    
+    public const uint HT_FLAG_LOWER_INK_ABSORPTION = 64;
+    
+    public const uint HT_FLAG_LOWEST_INK_ABSORPTION = 96;
+    
+    public const uint HT_FLAG_NORMAL_INK_ABSORPTION = 0;
+    
+    public const uint HT_FLAG_OUTPUT_CMY = 256;
+    
+    public const uint HT_FLAG_PRINT_DRAFT_MODE = 512;
+    
+    public const uint HT_FLAG_SQUARE_DEVICE_PEL = 1;
+    
+    public const uint HT_FLAG_USE_8BPP_BITMASK = 8;
+    
+    public const uint HT_FORMAT_16BPP = 5;
+    
+    public const uint HT_FORMAT_1BPP = 0;
+    
+    public const uint HT_FORMAT_24BPP = 6;
+    
+    public const uint HT_FORMAT_32BPP = 7;
+    
+    public const uint HT_FORMAT_4BPP = 2;
+    
+    public const uint HT_FORMAT_4BPP_IRGB = 3;
+    
+    public const uint HT_FORMAT_8BPP = 4;
+    
+    public const uint HT_PATSIZE_10x10 = 8;
+    
+    public const uint HT_PATSIZE_10x10_M = 9;
+    
+    public const uint HT_PATSIZE_12x12 = 10;
+    
+    public const uint HT_PATSIZE_12x12_M = 11;
+    
+    public const uint HT_PATSIZE_14x14 = 12;
+    
+    public const uint HT_PATSIZE_14x14_M = 13;
+    
+    public const uint HT_PATSIZE_16x16 = 14;
+    
+    public const uint HT_PATSIZE_16x16_M = 15;
+    
+    public const uint HT_PATSIZE_2x2 = 0;
+    
+    public const uint HT_PATSIZE_2x2_M = 1;
+    
+    public const uint HT_PATSIZE_4x4 = 2;
+    
+    public const uint HT_PATSIZE_4x4_M = 3;
+    
+    public const uint HT_PATSIZE_6x6 = 4;
+    
+    public const uint HT_PATSIZE_6x6_M = 5;
+    
+    public const uint HT_PATSIZE_8x8 = 6;
+    
+    public const uint HT_PATSIZE_8x8_M = 7;
+    
+    public const uint HT_PATSIZE_DEFAULT = 17;
+    
+    public const uint HT_PATSIZE_MAX_INDEX = 18;
+    
+    public const uint HT_PATSIZE_SUPERCELL = 16;
+    
+    public const uint HT_PATSIZE_SUPERCELL_M = 17;
+    
+    public const uint HT_PATSIZE_USER = 18;
+    
+    public const uint HT_USERPAT_CX_MAX = 256;
+    
+    public const uint HT_USERPAT_CX_MIN = 4;
+    
+    public const uint HT_USERPAT_CY_MAX = 256;
+    
+    public const uint HT_USERPAT_CY_MIN = 4;
     
     public static readonly Guid HueSaturationLightnessEffectGuid = new("8b2dd6c3-eb07-4d87-a5f0-7108e26a9c5f");
     
@@ -14432,6 +15254,12 @@ public static partial class Constants
     
     public const uint ICVERSION = 260;
     
+    public static readonly Guid ID_DOCUMENTPACKAGETARGET_MSXPS = new("9cae40a8-ded1-41c9-a9fd-d735ef33aeda");
+    
+    public static readonly Guid ID_DOCUMENTPACKAGETARGET_OPENXPS = new("0056bb72-8c9c-4612-bd0f-93012a87099d");
+    
+    public static readonly Guid ID_DOCUMENTPACKAGETARGET_OPENXPS_WITH_3D = new("63dbd720-8b14-4577-b074-7bb11b596d28");
+    
     public const uint IDD_ACMFILTERCHOOSE_BTN_DELNAME = 104;
     
     public const uint IDD_ACMFILTERCHOOSE_BTN_HELP = 9;
@@ -14576,6 +15404,10 @@ public static partial class Constants
     
     public const uint iGREEN = 1;
     
+    public const uint IGRF_RGB_256BYTES = 0;
+    
+    public const uint IGRF_RGB_256WORDS = 1;
+    
     public static readonly Guid ImageFormatBMP = new("b96b3cab-0728-11d3-9d7b-0000f81ef32e");
     
     public static readonly Guid ImageFormatEMF = new("b96b3cac-0728-11d3-9d7b-0000f81ef32e");
@@ -14606,6 +15438,234 @@ public static partial class Constants
     
     public const uint iMAXBITS = 8;
     
+    public const uint INDEX_DONT_CARE = 0;
+    
+    public const int INDEX_DrvAccumulateD3DDirtyRect = 98;
+    
+    public const int INDEX_DrvAlphaBlend = 71;
+    
+    public const int INDEX_DrvAssertMode = 5;
+    
+    public const int INDEX_DrvAssociateSharedSurface = 96;
+    
+    public const int INDEX_DrvBitBlt = 18;
+    
+    public const int INDEX_DrvCompletePDEV = 1;
+    
+    public const int INDEX_DrvCopyBits = 19;
+    
+    public const int INDEX_DrvCreateDeviceBitmap = 10;
+    
+    public const int INDEX_DrvCreateDeviceBitmapEx = 94;
+    
+    public const int INDEX_DrvDeleteDeviceBitmap = 11;
+    
+    public const int INDEX_DrvDeleteDeviceBitmapEx = 95;
+    
+    public const int INDEX_DrvDeriveSurface = 85;
+    
+    public const int INDEX_DrvDescribePixelFormat = 55;
+    
+    public const int INDEX_DrvDestroyFont = 43;
+    
+    public const int INDEX_DrvDisableDirectDraw = 61;
+    
+    public const int INDEX_DrvDisableDriver = 8;
+    
+    public const int INDEX_DrvDisablePDEV = 2;
+    
+    public const int INDEX_DrvDisableSurface = 4;
+    
+    public const int INDEX_DrvDitherColor = 13;
+    
+    public const int INDEX_DrvDrawEscape = 25;
+    
+    public const int INDEX_DrvEnableDirectDraw = 60;
+    
+    public const int INDEX_DrvEnablePDEV = 0;
+    
+    public const int INDEX_DrvEnableSurface = 3;
+    
+    public const int INDEX_DrvEndDoc = 34;
+    
+    public const int INDEX_DrvEndDxInterop = 100;
+    
+    public const int INDEX_DrvEscape = 24;
+    
+    public const int INDEX_DrvFillPath = 15;
+    
+    public const int INDEX_DrvFontManagement = 47;
+    
+    public const int INDEX_DrvFree = 42;
+    
+    public const int INDEX_DrvGetDirectDrawInfo = 59;
+    
+    public const int INDEX_DrvGetGlyphMode = 37;
+    
+    public const int INDEX_DrvGetModes = 41;
+    
+    public const int INDEX_DrvGetSynthesizedFontFiles = 73;
+    
+    public const int INDEX_DrvGetTrueTypeFile = 50;
+    
+    public const int INDEX_DrvGradientFill = 68;
+    
+    public const int INDEX_DrvIcmCheckBitmapBits = 66;
+    
+    public const int INDEX_DrvIcmCreateColorTransform = 64;
+    
+    public const int INDEX_DrvIcmDeleteColorTransform = 65;
+    
+    public const int INDEX_DrvIcmSetDeviceGammaRamp = 67;
+    
+    public const int INDEX_DrvLineTo = 31;
+    
+    public const int INDEX_DrvLoadFontFile = 45;
+    
+    public const int INDEX_DrvLockDisplayArea = 101;
+    
+    public const int INDEX_DrvMovePanning = 52;
+    
+    public const int INDEX_DrvMovePointer = 30;
+    
+    public const int INDEX_DrvNextBand = 58;
+    
+    public const int INDEX_DrvNotify = 87;
+    
+    public const int INDEX_DrvOffset = 6;
+    
+    public const int INDEX_DrvPaint = 17;
+    
+    public const int INDEX_DrvPlgBlt = 70;
+    
+    public const int INDEX_DrvQueryAdvanceWidths = 53;
+    
+    public const int INDEX_DrvQueryDeviceSupport = 76;
+    
+    public const int INDEX_DrvQueryFont = 26;
+    
+    public const int INDEX_DrvQueryFontCaps = 44;
+    
+    public const int INDEX_DrvQueryFontData = 28;
+    
+    public const int INDEX_DrvQueryFontFile = 51;
+    
+    public const int INDEX_DrvQueryFontTree = 27;
+    
+    public const int INDEX_DrvQueryGlyphAttrs = 86;
+    
+    public const int INDEX_DrvQueryPerBandInfo = 75;
+    
+    public const int INDEX_DrvQuerySpoolType = 62;
+    
+    public const int INDEX_DrvQueryTrueTypeOutline = 49;
+    
+    public const int INDEX_DrvQueryTrueTypeTable = 48;
+    
+    public const int INDEX_DrvRealizeBrush = 12;
+    
+    public const int INDEX_DrvRenderHint = 93;
+    
+    public const int INDEX_DrvReserved1 = 77;
+    
+    public const int INDEX_DrvReserved10 = 91;
+    
+    public const int INDEX_DrvReserved11 = 92;
+    
+    public const int INDEX_DrvReserved2 = 78;
+    
+    public const int INDEX_DrvReserved3 = 79;
+    
+    public const int INDEX_DrvReserved4 = 80;
+    
+    public const int INDEX_DrvReserved5 = 81;
+    
+    public const int INDEX_DrvReserved6 = 82;
+    
+    public const int INDEX_DrvReserved7 = 83;
+    
+    public const int INDEX_DrvReserved8 = 84;
+    
+    public const int INDEX_DrvReserved9 = 90;
+    
+    public const int INDEX_DrvResetDevice = 89;
+    
+    public const int INDEX_DrvResetPDEV = 7;
+    
+    public const int INDEX_DrvSaveScreenBits = 40;
+    
+    public const int INDEX_DrvSendPage = 32;
+    
+    public const int INDEX_DrvSetPalette = 22;
+    
+    public const int INDEX_DrvSetPixelFormat = 54;
+    
+    public const int INDEX_DrvSetPointerShape = 29;
+    
+    public const int INDEX_DrvStartBanding = 57;
+    
+    public const int INDEX_DrvStartDoc = 35;
+    
+    public const int INDEX_DrvStartDxInterop = 99;
+    
+    public const int INDEX_DrvStartPage = 33;
+    
+    public const int INDEX_DrvStretchBlt = 20;
+    
+    public const int INDEX_DrvStretchBltROP = 69;
+    
+    public const int INDEX_DrvStrokeAndFillPath = 16;
+    
+    public const int INDEX_DrvStrokePath = 14;
+    
+    public const int INDEX_DrvSurfaceComplete = 103;
+    
+    public const int INDEX_DrvSwapBuffers = 56;
+    
+    public const int INDEX_DrvSynchronize = 38;
+    
+    public const int INDEX_DrvSynchronizeRedirectionBitmaps = 97;
+    
+    public const int INDEX_DrvSynchronizeSurface = 88;
+    
+    public const int INDEX_DrvSynthesizeFont = 72;
+    
+    public const int INDEX_DrvTextOut = 23;
+    
+    public const int INDEX_DrvTransparentBlt = 74;
+    
+    public const int INDEX_DrvUnloadFontFile = 46;
+    
+    public const int INDEX_DrvUnlockDisplayArea = 102;
+    
+    public const int INDEX_LAST = 89;
+    
+    public const uint INDIRECT_DISPLAY_INFO_FLAGS_CREATED_IDDCX_ADAPTER = 1;
+    
+    public const uint INTENT_ABSOLUTE_COLORIMETRIC = 3;
+    
+    public const uint INTENT_PERCEPTUAL = 0;
+    
+    public const uint INTENT_RELATIVE_COLORIMETRIC = 1;
+    
+    public const uint INTENT_SATURATION = 2;
+    
+    public const uint IOCTL_COLORSPACE_TRANSFORM_QUERY_TARGET_CAPS = 2297856;
+    
+    public const uint IOCTL_COLORSPACE_TRANSFORM_SET = 2297860;
+    
+    public const uint IOCTL_FSVIDEO_COPY_FRAME_BUFFER = 3409920;
+    
+    public const uint IOCTL_FSVIDEO_REVERSE_MOUSE_POINTER = 3409928;
+    
+    public const uint IOCTL_FSVIDEO_SET_CURRENT_MODE = 3409932;
+    
+    public const uint IOCTL_FSVIDEO_SET_CURSOR_POSITION = 3409940;
+    
+    public const uint IOCTL_FSVIDEO_SET_SCREEN_INFORMATION = 3409936;
+    
+    public const uint IOCTL_FSVIDEO_WRITE_TO_FRAME_BUFFER = 3409924;
+    
     public const uint IOCTL_KS_DISABLE_EVENT = 3080203;
     
     public const uint IOCTL_KS_ENABLE_EVENT = 3080199;
@@ -14622,7 +15682,139 @@ public static partial class Constants
     
     public const uint IOCTL_KS_WRITE_STREAM = 3112979;
     
+    public const uint IOCTL_MIPI_DSI_QUERY_CAPS = 2298880;
+    
+    public const uint IOCTL_MIPI_DSI_RESET = 2298888;
+    
+    public const uint IOCTL_MIPI_DSI_TRANSMISSION = 2298884;
+    
     public const uint IOCTL_MTP_CUSTOM_COMMAND = 827348045;
+    
+    public const uint IOCTL_PANEL_GET_BACKLIGHT_REDUCTION = 2296856;
+    
+    public const uint IOCTL_PANEL_GET_BRIGHTNESS = 2296840;
+    
+    public const uint IOCTL_PANEL_GET_MANUFACTURING_MODE = 2296860;
+    
+    public const uint IOCTL_PANEL_QUERY_BRIGHTNESS_CAPS = 2296832;
+    
+    public const uint IOCTL_PANEL_QUERY_BRIGHTNESS_RANGES = 2296836;
+    
+    public const uint IOCTL_PANEL_SET_BACKLIGHT_OPTIMIZATION = 2296852;
+    
+    public const uint IOCTL_PANEL_SET_BRIGHTNESS = 2296844;
+    
+    public const uint IOCTL_PANEL_SET_BRIGHTNESS_STATE = 2296848;
+    
+    public const uint IOCTL_SET_ACTIVE_COLOR_PROFILE_NAME = 2297864;
+    
+    public const uint IOCTL_VIDEO_DISABLE_CURSOR = 2294820;
+    
+    public const uint IOCTL_VIDEO_DISABLE_POINTER = 2294844;
+    
+    public const uint IOCTL_VIDEO_DISABLE_VDM = 2293764;
+    
+    public const uint IOCTL_VIDEO_ENABLE_CURSOR = 2294816;
+    
+    public const uint IOCTL_VIDEO_ENABLE_POINTER = 2294840;
+    
+    public const uint IOCTL_VIDEO_ENABLE_VDM = 2293760;
+    
+    public const uint IOCTL_VIDEO_ENUM_MONITOR_PDO = 2293784;
+    
+    public const uint IOCTL_VIDEO_FREE_PUBLIC_ACCESS_RANGES = 2294884;
+    
+    public const uint IOCTL_VIDEO_GET_BANK_SELECT_CODE = 2294868;
+    
+    public const uint IOCTL_VIDEO_GET_CHILD_STATE = 2294912;
+    
+    public const uint IOCTL_VIDEO_GET_OUTPUT_DEVICE_POWER_STATE = 2293776;
+    
+    public const uint IOCTL_VIDEO_GET_POWER_MANAGEMENT = 2294896;
+    
+    public const uint IOCTL_VIDEO_HANDLE_VIDEOPARAMETERS = 2293792;
+    
+    public const uint IOCTL_VIDEO_INIT_WIN32K_CALLBACKS = 2293788;
+    
+    public const uint IOCTL_VIDEO_IS_VGA_DEVICE = 2293796;
+    
+    public const uint IOCTL_VIDEO_LOAD_AND_SET_FONT = 2294804;
+    
+    public const uint IOCTL_VIDEO_MAP_VIDEO_MEMORY = 2294872;
+    
+    public const uint IOCTL_VIDEO_MONITOR_DEVICE = 2293780;
+    
+    public const uint IOCTL_VIDEO_PREPARE_FOR_EARECOVERY = 2293804;
+    
+    public const uint IOCTL_VIDEO_QUERY_AVAIL_MODES = 2294784;
+    
+    public const uint IOCTL_VIDEO_QUERY_COLOR_CAPABILITIES = 2294888;
+    
+    public const uint IOCTL_VIDEO_QUERY_CURRENT_MODE = 2294792;
+    
+    public const uint IOCTL_VIDEO_QUERY_CURSOR_ATTR = 2294828;
+    
+    public const uint IOCTL_VIDEO_QUERY_CURSOR_POSITION = 2294836;
+    
+    public const uint IOCTL_VIDEO_QUERY_DISPLAY_BRIGHTNESS = 2294936;
+    
+    public const uint IOCTL_VIDEO_QUERY_NUM_AVAIL_MODES = 2294788;
+    
+    public const uint IOCTL_VIDEO_QUERY_POINTER_ATTR = 2294852;
+    
+    public const uint IOCTL_VIDEO_QUERY_POINTER_CAPABILITIES = 2294864;
+    
+    public const uint IOCTL_VIDEO_QUERY_POINTER_POSITION = 2294860;
+    
+    public const uint IOCTL_VIDEO_QUERY_PUBLIC_ACCESS_RANGES = 2294880;
+    
+    public const uint IOCTL_VIDEO_QUERY_SUPPORTED_BRIGHTNESS = 2294932;
+    
+    public const uint IOCTL_VIDEO_REGISTER_VDM = 2293768;
+    
+    public const uint IOCTL_VIDEO_RESET_DEVICE = 2294800;
+    
+    public const uint IOCTL_VIDEO_RESTORE_HARDWARE_STATE = 2294276;
+    
+    public const uint IOCTL_VIDEO_SAVE_HARDWARE_STATE = 2294272;
+    
+    public const uint IOCTL_VIDEO_SET_BANK_POSITION = 2294928;
+    
+    public const uint IOCTL_VIDEO_SET_CHILD_STATE_CONFIGURATION = 2294920;
+    
+    public const uint IOCTL_VIDEO_SET_COLOR_LUT_DATA = 2294908;
+    
+    public const uint IOCTL_VIDEO_SET_COLOR_REGISTERS = 2294812;
+    
+    public const uint IOCTL_VIDEO_SET_CURRENT_MODE = 2294796;
+    
+    public const uint IOCTL_VIDEO_SET_CURSOR_ATTR = 2294824;
+    
+    public const uint IOCTL_VIDEO_SET_CURSOR_POSITION = 2294832;
+    
+    public const uint IOCTL_VIDEO_SET_DISPLAY_BRIGHTNESS = 2294940;
+    
+    public const uint IOCTL_VIDEO_SET_OUTPUT_DEVICE_POWER_STATE = 2293772;
+    
+    public const uint IOCTL_VIDEO_SET_PALETTE_REGISTERS = 2294808;
+    
+    public const uint IOCTL_VIDEO_SET_POINTER_ATTR = 2294848;
+    
+    public const uint IOCTL_VIDEO_SET_POINTER_POSITION = 2294856;
+    
+    public const uint IOCTL_VIDEO_SET_POWER_MANAGEMENT = 2294892;
+    
+    public const uint IOCTL_VIDEO_SHARE_VIDEO_MEMORY = 2294900;
+    
+    public const uint IOCTL_VIDEO_SWITCH_DUALVIEW = 2294924;
+    
+    public const uint IOCTL_VIDEO_UNMAP_VIDEO_MEMORY = 2294876;
+    
+    public const uint IOCTL_VIDEO_UNSHARE_VIDEO_MEMORY = 2294904;
+    
+    public const uint IOCTL_VIDEO_USE_DEVICE_IN_SESSION = 2293800;
+    
+    public const uint IOCTL_VIDEO_VALIDATE_CHILD_STATE_CONFIGURATION = 2294916;
     
     public const uint IOCTL_WMP_DEVICE_CAN_SYNC = 844123479;
     
@@ -14801,6 +15993,12 @@ public static partial class Constants
     public const uint JIFMK_SOS = 65498;
     
     public const uint JIFMK_TEM = 65281;
+    
+    public const int JOIN_BEVEL = 1;
+    
+    public const int JOIN_MITER = 2;
+    
+    public const int JOIN_ROUND = 0;
     
     public const uint JOY_BUTTON1 = 1;
     
@@ -16100,6 +17298,14 @@ public static partial class Constants
     
     public const uint KSWAVE_COMPATCAPS_OUTPUT = 1;
     
+    public const uint LA_ALTERNATE = 2;
+    
+    public const uint LA_GEOMETRIC = 1;
+    
+    public const uint LA_STARTGAP = 4;
+    
+    public const uint LA_STYLED = 8;
+    
     public static readonly Guid LevelsEffectGuid = new("99c354ec-2a31-4f3a-8c34-17a803b33a25");
     
     public static readonly Guid LIBID_QuartzNetTypeLib = new("56a868b1-0ad4-11ce-b03a-0020af0ba770");
@@ -16128,6 +17334,8 @@ public static partial class Constants
     
     public const uint MAX_AUTOFLIP_BUFFERS = 10;
     
+    public const uint MAX_COLOR_CHANNELS = 8;
+    
     public const uint MAX_COUNTRY_CODE_STRING = 3;
     
     public const uint MAX_D3D9ON12_QUEUES = 2;
@@ -16148,6 +17356,8 @@ public static partial class Constants
     
     public const uint MAX_NABTS_VBI_LINES_PER_FIELD = 11;
     
+    public const uint MAX_PACKET_COUNT = 128;
+    
     public const uint MAX_PALETTE_SIZE = 256;
     
     public const uint MAX_PIN_NAME = 128;
@@ -16162,6 +17372,8 @@ public static partial class Constants
     
     public const uint MAX_WST_VBI_LINES_PER_FIELD = 17;
     
+    public const uint MAXCHARSETS = 16;
+    
     public const uint MAXD3DDECLLENGTH = 64;
     
     public const uint MAXD3DDECLUSAGEINDEX = 15;
@@ -16169,6 +17381,50 @@ public static partial class Constants
     public const uint MAXERRORLENGTH = 256;
     
     public const uint MAXPNAMELEN = 32;
+    
+    public const uint MC_CAPS_BRIGHTNESS = 2;
+    
+    public const uint MC_CAPS_COLOR_TEMPERATURE = 8;
+    
+    public const uint MC_CAPS_CONTRAST = 4;
+    
+    public const uint MC_CAPS_DEGAUSS = 64;
+    
+    public const uint MC_CAPS_DISPLAY_AREA_POSITION = 128;
+    
+    public const uint MC_CAPS_DISPLAY_AREA_SIZE = 256;
+    
+    public const uint MC_CAPS_MONITOR_TECHNOLOGY_TYPE = 1;
+    
+    public const uint MC_CAPS_NONE = 0;
+    
+    public const uint MC_CAPS_RED_GREEN_BLUE_DRIVE = 32;
+    
+    public const uint MC_CAPS_RED_GREEN_BLUE_GAIN = 16;
+    
+    public const uint MC_CAPS_RESTORE_FACTORY_COLOR_DEFAULTS = 2048;
+    
+    public const uint MC_CAPS_RESTORE_FACTORY_DEFAULTS = 1024;
+    
+    public const uint MC_RESTORE_FACTORY_DEFAULTS_ENABLES_MONITOR_SETTINGS = 4096;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_10000K = 64;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_11500K = 128;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_4000K = 1;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_5000K = 2;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_6500K = 4;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_7500K = 8;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_8200K = 16;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_9300K = 32;
+    
+    public const uint MC_SUPPORTED_COLOR_TEMPERATURE_NONE = 0;
     
     public const int MCI_ANIM_GETDEVCAPS_CAN_REVERSE = 16385;
     
@@ -24166,6 +25422,14 @@ public static partial class Constants
     
     public static readonly Guid MR_VIDEO_RENDER_SERVICE = new("1092a86c-ab1a-459a-a336-831fbc4d11ff");
     
+    public const uint MS_CDDDEVICEBITMAP = 4;
+    
+    public const uint MS_NOTSYSTEMMEMORY = 1;
+    
+    public const uint MS_REUSEDDEVICEBITMAP = 8;
+    
+    public const uint MS_SHAREDACCESS = 2;
+    
     public const uint MSAUDIO1_BITS_PER_SAMPLE = 16;
     
     public const uint MSAUDIO1_MAX_CHANNELS = 2;
@@ -24222,9 +25486,17 @@ public static partial class Constants
     
     public const uint NANOSECONDS = 10000000;
     
+    public const uint NORMAL_MODE = 2;
+    
     public const int OBJECT_ISROOT = int.MinValue;
     
+    public const uint OC_BANK_CLIP = 1;
+    
     public const uint OCUR_PAIRING_PROTOCOL_VERSION = 2;
+    
+    public const uint OPENGL_CMD = 4352;
+    
+    public const uint OPENGL_GETINFO = 4353;
     
     public static readonly Guid OPM_GET_ACP_AND_CGMSA_SIGNALING = new("6629a591-3b79-4cf3-924a-11e8e7811671");
     
@@ -24259,6 +25531,16 @@ public static partial class Constants
     public static readonly Guid OPM_SET_PROTECTION_LEVEL = new("9bb9327c-4eb5-4727-9f00-b42b0919c0da");
     
     public static readonly Guid OPM_SET_PROTECTION_LEVEL_ACCORDING_TO_CSS_DVD = new("39ce333e-4cc0-44ae-bfcc-da50b5f82e72");
+    
+    public const uint PAL_BGR = 8;
+    
+    public const uint PAL_BITFIELDS = 2;
+    
+    public const uint PAL_CMYK = 16;
+    
+    public const uint PAL_INDEXED = 1;
+    
+    public const uint PAL_RGB = 4;
     
     public const uint PAPS_CLEANUP = 2;
     
@@ -24306,9 +25588,19 @@ public static partial class Constants
     
     public const uint PBDA_PAIRING_PROTOCOL_VERSION = 3;
     
+    public const uint PD_BEGINSUBPATH = 1;
+    
+    public const uint PD_BEZIERS = 16;
+    
     public const uint PD_CAN_DRAW_DIB = 1;
     
     public const uint PD_CAN_STRETCHDIB = 2;
+    
+    public const uint PD_CLOSEFIGURE = 8;
+    
+    public const uint PD_ENDSUBPATH = 2;
+    
+    public const uint PD_RESETSTYLE = 4;
     
     public const uint PD_STRETCHDIB_1_1_OK = 4;
     
@@ -24345,6 +25637,8 @@ public static partial class Constants
     public const uint PHOTOACQ_NO_GALLERY_LAUNCH = 1;
     
     public const uint PHOTOACQ_RUN_DEFAULT = 0;
+    
+    public const uint PHYSICAL_MONITOR_DESCRIPTION_SIZE = 128;
     
     public static readonly Guid PIN_CATEGORY_ANALOGVIDEOIN = new("fb6c4283-0353-11d1-905f-0000c0cc16ba");
     
@@ -24416,6 +25710,8 @@ public static partial class Constants
     
     public static readonly Guid PKEY_FX_EffectPack_Schema_V1 = new("7abf23d9-727e-4d0b-86a3-dd501d260001");
     
+    public const uint PLANAR_HC = 1;
+    
     public const string PLUGIN_ALL_MEDIASENDTO = @"MediaSendTo";
     
     public const string PLUGIN_ALL_PLAYLISTSENDTO = @"PlaylistSendTo";
@@ -24476,9 +25772,49 @@ public static partial class Constants
     
     public const uint PLUGIN_TYPE_SETTINGSAREA = 4;
     
+    public const uint PO_ALL_INTEGERS = 4;
+    
+    public const uint PO_BEZIERS = 1;
+    
+    public const uint PO_ELLIPSE = 2;
+    
+    public const uint PO_ENUM_AS_INTEGERS = 8;
+    
+    public const uint PO_WIDENED = 16;
+    
     public const int POOL_CUE_NULL = -1;
     
+    public const uint PPC_BGR_ORDER_HORIZONTAL_STRIPES = 5;
+    
+    public const uint PPC_BGR_ORDER_VERTICAL_STRIPES = 3;
+    
+    public const uint PPC_DEFAULT = 0;
+    
+    public const uint PPC_RGB_ORDER_HORIZONTAL_STRIPES = 4;
+    
+    public const uint PPC_RGB_ORDER_VERTICAL_STRIPES = 2;
+    
+    public const uint PPC_UNDEFINED = 1;
+    
+    public const uint PPG_DEFAULT = 0;
+    
+    public const uint PPG_SRGB = 1;
+    
     public const ulong PRESENTATION_CURRENT_POSITION = 9223372036854775807;
+    
+    public const uint PRESERVEBLACK = 1048576;
+    
+    public const uint PRIMARY_ORDER_ABC = 0;
+    
+    public const uint PRIMARY_ORDER_ACB = 1;
+    
+    public const uint PRIMARY_ORDER_BAC = 2;
+    
+    public const uint PRIMARY_ORDER_BCA = 3;
+    
+    public const uint PRIMARY_ORDER_CAB = 5;
+    
+    public const uint PRIMARY_ORDER_CBA = 4;
     
     public const uint Processor1 = 1;
     
@@ -24544,7 +25880,17 @@ public static partial class Constants
     
     public const uint Processor9 = 256;
     
+    public const uint PROFILE_FILENAME = 1;
+    
+    public const uint PROFILE_MEMBUFFER = 2;
+    
+    public const uint PROFILE_READ = 1;
+    
+    public const uint PROFILE_READWRITE = 2;
+    
     public const int PROGRESS_INDETERMINATE = -1;
+    
+    public const uint PROOF_MODE = 1;
     
     public const uint PropertyTagArtist = 315;
     
@@ -25032,6 +26378,62 @@ public static partial class Constants
     
     public const uint PropertyTagYResolution = 283;
     
+    public const uint QAW_GETEASYWIDTHS = 1;
+    
+    public const uint QAW_GETWIDTHS = 0;
+    
+    public const uint QC_1BIT = 2;
+    
+    public const uint QC_4BIT = 4;
+    
+    public const uint QC_OUTLINES = 1;
+    
+    public const uint QDS_CHECKJPEGFORMAT = 0;
+    
+    public const uint QDS_CHECKPNGFORMAT = 1;
+    
+    public const int QFD_GLYPHANDBITMAP = 1;
+    
+    public const int QFD_GLYPHANDOUTLINE = 2;
+    
+    public const int QFD_MAXEXTENTS = 3;
+    
+    public const int QFD_TT_GLYPHANDBITMAP = 4;
+    
+    public const int QFD_TT_GRAY1_BITMAP = 5;
+    
+    public const int QFD_TT_GRAY2_BITMAP = 6;
+    
+    public const int QFD_TT_GRAY4_BITMAP = 8;
+    
+    public const int QFD_TT_GRAY8_BITMAP = 9;
+    
+    public const int QFD_TT_MONO_BITMAP = 5;
+    
+    public const int QFF_DESCRIPTION = 1;
+    
+    public const int QFF_NUMFACES = 2;
+    
+    public const int QFT_GLYPHSET = 3;
+    
+    public const int QFT_KERNPAIRS = 2;
+    
+    public const int QFT_LIGATURES = 1;
+    
+    public const uint QSA_3DNOW = 16384;
+    
+    public const uint QSA_MMX = 256;
+    
+    public const uint QSA_SSE = 8192;
+    
+    public const uint QSA_SSE1 = 8192;
+    
+    public const uint QSA_SSE2 = 65536;
+    
+    public const uint QSA_SSE3 = 524288;
+    
+    public const int RB_DITHERCOLOR = int.MinValue;
+    
     public const uint RED_SHIFT = 16;
     
     public static readonly Guid RedEyeCorrectionEffectGuid = new("74d29d05-69a4-4266-9549-3cc52836b632");
@@ -25047,6 +26449,8 @@ public static partial class Constants
     public const string REGSTR_PATH_SOFTWARESYNTHS = @"Software\Microsoft\DirectMusic\SoftwareSynths";
     
     public const uint REQUIRED_PARENTAL_CONTROL_TIME_RANGE = 2;
+    
+    public const uint RESERVED = 2147483648;
     
     public const uint ROCKWELL_WA1_MIXER = 103;
     
@@ -25081,6 +26485,8 @@ public static partial class Constants
     public static readonly PWSTR RT_RCDATA = '\u000a';
     
     public static readonly PWSTR RT_STRING = '\u0006';
+    
+    public const uint S_INIT = 2;
     
     public const uint SA_BUFFER_SIZE = 1024;
     
@@ -25162,6 +26568,16 @@ public static partial class Constants
     
     public const uint SEEK_SET = 0;
     
+    public const uint SEQUENTIAL_TRANSFORM = 2155872256;
+    
+    public const uint SETCONFIGURATION_STATUS_ADDITIONAL = 1;
+    
+    public const uint SETCONFIGURATION_STATUS_APPLIED = 0;
+    
+    public const uint SETCONFIGURATION_STATUS_OVERRIDDEN = 2;
+    
+    public const uint SGI_EXTRASPACE = 0;
+    
     public const uint SHA_HASH_LEN = 20;
     
     public static readonly Guid SharpenEffectGuid = new("63cbf3ee-c526-402c-8f71-62c540bf5142");
@@ -25179,6 +26595,32 @@ public static partial class Constants
     public const uint SND_ALIAS_START = 0;
     
     public const int SND_RING = 1048576;
+    
+    public const uint SO_BREAK_EXTRA = 4096;
+    
+    public const uint SO_CHAR_INC_EQUAL_BM_BASE = 32;
+    
+    public const uint SO_CHARACTER_EXTRA = 2048;
+    
+    public const uint SO_DO_NOT_SUBSTITUTE_DEVICE_FONT = 128;
+    
+    public const uint SO_DXDY = 1024;
+    
+    public const uint SO_ESC_NOT_ORIENT = 512;
+    
+    public const uint SO_FLAG_DEFAULT_PLACEMENT = 1;
+    
+    public const uint SO_GLYPHINDEX_TEXTOUT = 256;
+    
+    public const uint SO_HORIZONTAL = 2;
+    
+    public const uint SO_MAXEXT_EQUAL_BM_SIDE = 64;
+    
+    public const uint SO_REVERSED = 8;
+    
+    public const uint SO_VERTICAL = 4;
+    
+    public const uint SO_ZERO_BEARINGS = 16;
     
     public const uint SP_EMULATE_RESULT = 1073741824;
     
@@ -25336,6 +26778,36 @@ public static partial class Constants
     
     public const uint SPRP_NORMAL = 0;
     
+    public const uint SPS_ACCEPT_EXCLUDE = 3;
+    
+    public const uint SPS_ACCEPT_NOEXCLUDE = 2;
+    
+    public const uint SPS_ACCEPT_SYNCHRONOUS = 4;
+    
+    public const int SPS_ALPHA = 16;
+    
+    public const int SPS_ANIMATESTART = 4;
+    
+    public const int SPS_ANIMATEUPDATE = 8;
+    
+    public const int SPS_ASYNCCHANGE = 2;
+    
+    public const int SPS_CHANGE = 1;
+    
+    public const uint SPS_DECLINE = 1;
+    
+    public const uint SPS_ERROR = 0;
+    
+    public const int SPS_FLAGSMASK = 255;
+    
+    public const int SPS_FREQMASK = 1044480;
+    
+    public const int SPS_LENGTHMASK = 3840;
+    
+    public const int SPS_RESERVED = 32;
+    
+    public const int SPS_RESERVED1 = 64;
+    
     public const string SPTOKENKEY_ATTRIBUTES = @"Attributes";
     
     public const string SPTOKENKEY_AUDIO_LATENCY_TRUNCATE = @"LatencyTruncateThreshold";
@@ -25359,6 +26831,12 @@ public static partial class Constants
     public const string SPWILDCARD = @"...";
     
     public const string SR_LOCALIZED_DESCRIPTION = @"Description";
+    
+    public const uint SS_FREE = 2;
+    
+    public const uint SS_RESTORE = 1;
+    
+    public const uint SS_SAVE = 0;
     
     public const uint STDINDEXSIZE = 16384;
     
@@ -25385,6 +26863,10 @@ public static partial class Constants
     public const int STREAMBUFFER_EC_WRITE_FAILURE = 810;
     
     public const int STREAMBUFFER_EC_WRITE_FAILURE_CLEAR = 811;
+    
+    public const int STYPE_BITMAP = 0;
+    
+    public const int STYPE_DEVBITMAP = 3;
     
     public const uint SUBSCRIPTION_CAP_ALLOWCDBURN = 2;
     
@@ -25437,6 +26919,10 @@ public static partial class Constants
     public const uint TASKERR_NOTASKSUPPORT = 1;
     
     public const uint TASKERR_OUTOFMEMORY = 2;
+    
+    public const uint TC_PATHOBJ = 2;
+    
+    public const uint TC_RECTANGLES = 0;
     
     public const uint TDD_BEGINMINPERIOD = 2064;
     
@@ -25506,6 +26992,14 @@ public static partial class Constants
     
     public const uint TOC_MAX_DESCRIPTION_SIZE = 65535;
     
+    public const uint TTO_METRICS_ONLY = 1;
+    
+    public const uint TTO_QUBICS = 2;
+    
+    public const uint TTO_UNHINTED = 4;
+    
+    public const uint USE_RELATIVE_COLORIMETRIC = 131072;
+    
     public static readonly Guid UUID_UdriTagTables = new("e1b98d74-9778-4878-b664-eb2020364d88");
     
     public static readonly Guid UUID_WMDRMTagTables = new("5dcd1101-9263-45bb-a4d5-c415ab8c589c");
@@ -25560,6 +27054,10 @@ public static partial class Constants
     
     public const uint VIDCF_TEMPORAL = 4;
     
+    public const uint VIDEO_COLOR_LUT_DATA_FORMAT_PRIVATEFORMAT = 2147483648;
+    
+    public const uint VIDEO_COLOR_LUT_DATA_FORMAT_RGB256WORDS = 1;
+    
     public const uint VIDEO_CONFIGURE_CURRENT = 16;
     
     public const uint VIDEO_CONFIGURE_GET = 8192;
@@ -25576,7 +27074,19 @@ public static partial class Constants
     
     public const uint VIDEO_CONFIGURE_SET = 4096;
     
+    public const uint VIDEO_DEVICE_COLOR = 1;
+    
+    public const string VIDEO_DEVICE_NAME = @"DISPLAY%d";
+    
     public const uint VIDEO_DLG_QUERY = 16;
+    
+    public const uint VIDEO_DUALVIEW_PRIMARY = 2147483648;
+    
+    public const uint VIDEO_DUALVIEW_REMOVABLE = 1;
+    
+    public const uint VIDEO_DUALVIEW_SECONDARY = 1073741824;
+    
+    public const uint VIDEO_DUALVIEW_WDDM_VGA = 536870912;
     
     public const uint VIDEO_EXTERNALIN = 1;
     
@@ -25584,7 +27094,69 @@ public static partial class Constants
     
     public const uint VIDEO_IN = 4;
     
+    public const uint VIDEO_MAX_REASON = 9;
+    
+    public const uint VIDEO_MODE_ANIMATE_START = 8;
+    
+    public const uint VIDEO_MODE_ANIMATE_UPDATE = 16;
+    
+    public const uint VIDEO_MODE_ASYNC_POINTER = 1;
+    
+    public const uint VIDEO_MODE_BANKED = 128;
+    
+    public const uint VIDEO_MODE_COLOR = 1;
+    
+    public const uint VIDEO_MODE_COLOR_POINTER = 4;
+    
+    public const uint VIDEO_MODE_GRAPHICS = 2;
+    
+    public const uint VIDEO_MODE_INTERLACED = 16;
+    
+    public const uint VIDEO_MODE_LINEAR = 256;
+    
+    public const uint VIDEO_MODE_MANAGED_PALETTE = 8;
+    
+    public const uint VIDEO_MODE_MAP_MEM_LINEAR = 1073741824;
+    
+    public const uint VIDEO_MODE_MONO_POINTER = 2;
+    
+    public const uint VIDEO_MODE_NO_64_BIT_ACCESS = 64;
+    
+    public const uint VIDEO_MODE_NO_OFF_SCREEN = 32;
+    
+    public const uint VIDEO_MODE_NO_ZERO_MEMORY = 2147483648;
+    
+    public const uint VIDEO_MODE_PALETTE_DRIVEN = 4;
+    
+    public const uint VIDEO_OPTIONAL_GAMMET_TABLE = 2;
+    
     public const uint VIDEO_OUT = 8;
+    
+    public const uint VIDEO_REASON_ALLOCATION = 6;
+    
+    public const uint VIDEO_REASON_CONFIGURATION = 9;
+    
+    public const uint VIDEO_REASON_FAILED_ROTATION = 5;
+    
+    public const uint VIDEO_REASON_LOCK = 5;
+    
+    public const uint VIDEO_REASON_NONE = 0;
+    
+    public const uint VIDEO_REASON_POLICY1 = 1;
+    
+    public const uint VIDEO_REASON_POLICY2 = 2;
+    
+    public const uint VIDEO_REASON_POLICY3 = 3;
+    
+    public const uint VIDEO_REASON_POLICY4 = 4;
+    
+    public const uint VIDEO_REASON_SCRATCH = 8;
+    
+    public const uint VIDEO_STATE_NON_STANDARD_VGA = 1;
+    
+    public const uint VIDEO_STATE_PACKED_CHAIN4_MODE = 4;
+    
+    public const uint VIDEO_STATE_UNEMULATED_VGA_STATE = 2;
     
     public static readonly Guid VIDEO_ZOOM_RECT = new("7aaa1638-1b7f-4c93-bd89-5b9c9fb6fcf0");
     
@@ -26346,6 +27918,12 @@ public static partial class Constants
     
     public const uint WAVERR_UNPREPARED = 34;
     
+    public const uint WCS_ALWAYS = 2097152;
+    
+    public const int WCS_DEFAULT = 0;
+    
+    public const int WCS_ICCONLY = 65536;
+    
     public const uint WHDR_BEGINLOOP = 4;
     
     public const uint WHDR_DONE = 1;
@@ -26455,6 +28033,12 @@ public static partial class Constants
     public const uint WINCODEC_SDK_VERSION1 = 566;
     
     public const uint WINCODEC_SDK_VERSION2 = 567;
+    
+    public const uint WINDDI_MAX_BROADCAST_CONTEXT = 64;
+    
+    public const uint WINDDI_MAXSETPALETTECOLORINDEX = 255;
+    
+    public const uint WINDDI_MAXSETPALETTECOLORS = 256;
     
     public static readonly Guid WKPDID_CommentStringW = new("d0149dc0-90e8-4ec8-8144-e900ad266bb2");
     
@@ -27376,6 +28960,48 @@ public static partial class Constants
     
     public const uint WMT_VIDEOIMAGE_TRANSITION_WHEEL = 31;
     
+    public const uint WNDOBJ_SETUP = 4354;
+    
+    public const uint WO_DRAW_NOTIFY = 64;
+    
+    public const uint WO_RGN_CLIENT = 2;
+    
+    public const uint WO_RGN_CLIENT_DELTA = 1;
+    
+    public const uint WO_RGN_DESKTOP_COORD = 256;
+    
+    public const uint WO_RGN_SPRITE = 512;
+    
+    public const uint WO_RGN_SURFACE = 8;
+    
+    public const uint WO_RGN_SURFACE_DELTA = 4;
+    
+    public const uint WO_RGN_UPDATE_ALL = 16;
+    
+    public const uint WO_RGN_WINDOW = 32;
+    
+    public const uint WO_SPRITE_NOTIFY = 128;
+    
+    public const uint WOC_CHANGED = 16;
+    
+    public const uint WOC_DELETE = 32;
+    
+    public const uint WOC_DRAWN = 64;
+    
+    public const uint WOC_RGN_CLIENT = 2;
+    
+    public const uint WOC_RGN_CLIENT_DELTA = 1;
+    
+    public const uint WOC_RGN_SPRITE = 512;
+    
+    public const uint WOC_RGN_SURFACE = 8;
+    
+    public const uint WOC_RGN_SURFACE_DELTA = 4;
+    
+    public const uint WOC_SPRITE_NO_OVERLAP = 256;
+    
+    public const uint WOC_SPRITE_OVERLAP = 128;
+    
     public const uint WODM_BREAKLOOP = 20;
     
     public const uint WODM_BUSY = 21;
@@ -27427,6 +29053,8 @@ public static partial class Constants
     public const int WST_TVTUNER_CHANGE_BEGIN_TUNE = 4096;
     
     public const int WST_TVTUNER_CHANGE_END_TUNE = 8192;
+    
+    public const string WVIDEO_DEVICE_NAME = @"DISPLAY%d";
     
     public const float X3DAUDIO_2PI = 6.2831855f;
     
@@ -27713,4 +29341,35 @@ public static partial class Constants
     public const float XAUDIO2FX_REVERB_MIN_ROOM_SIZE = 0f;
     
     public const float XAUDIO2FX_REVERB_MIN_WET_DRY_MIX = 0f;
+    
+    public const int XF_INV_FXTOL = 3;
+    
+    public const int XF_INV_LTOL = 1;
+    
+    public const int XF_LTOFX = 2;
+    
+    public const int XF_LTOL = 0;
+    
+    public const uint XO_DESTBITFIELDS = 5;
+    
+    public const uint XO_DESTDCPALETTE = 3;
+    
+    public const uint XO_DESTPALETTE = 2;
+    
+    public const uint XO_DEVICE_ICM = 16;
+    
+    public const uint XO_FROM_CMYK = 8;
+    
+    public const uint XO_HOST_ICM = 32;
+    
+    public const uint XO_SRCBITFIELDS = 4;
+    
+    public const uint XO_SRCPALETTE = 1;
+    
+    public const uint XO_TABLE = 2;
+    
+    public const uint XO_TO_MONO = 4;
+    
+    public const uint XO_TRIVIAL = 1;
+    
 }
