@@ -18,7 +18,7 @@ public partial interface IMFCapturePreviewSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-updatevideo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateVideo(nint /* optional MFVideoNormalizedRect */ pSrc, nint /* optional FoundationRECT */ pDst, nint /* optional COLORREF */ pBorderClr);
+    HRESULT UpdateVideo(nint /* optional MFVideoNormalizedRect* */ pSrc, nint /* optional FoundationRECT* */ pDst, nint /* optional COLORREF* */ pBorderClr);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-setsamplecallback
     [PreserveSig]

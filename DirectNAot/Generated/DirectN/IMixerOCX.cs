@@ -23,7 +23,7 @@ public partial interface IMixerOCX
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-getstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStatus(out uint pdwStatus);
+    HRESULT GetStatus(out nint pdwStatus);
     
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-ondraw
     [PreserveSig]

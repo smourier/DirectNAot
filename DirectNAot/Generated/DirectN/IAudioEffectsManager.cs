@@ -17,7 +17,7 @@ public partial interface IAudioEffectsManager
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioeffectsmanager-getaudioeffects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudioEffects(out AUDIO_EFFECT effects, ref uint numEffects);
+    HRESULT GetAudioEffects(out nint effects, ref uint numEffects);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioeffectsmanager-setaudioeffectstate
     [PreserveSig]

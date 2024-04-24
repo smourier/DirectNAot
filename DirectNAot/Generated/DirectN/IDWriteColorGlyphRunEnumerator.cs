@@ -13,5 +13,5 @@ public partial interface IDWriteColorGlyphRunEnumerator
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritecolorglyphrunenumerator-getcurrentrun
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentRun(out DWRITE_COLOR_GLYPH_RUN colorGlyphRun);
+    HRESULT GetCurrentRun(out nint colorGlyphRun);
 }

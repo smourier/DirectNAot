@@ -17,7 +17,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-getmaximumsupportedfeaturelevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMaximumSupportedFeatureLevel(in D3D_FEATURE_LEVEL featureLevels, uint featureLevelsCount, out D3D_FEATURE_LEVEL maximumSupportedFeatureLevel);
+    HRESULT GetMaximumSupportedFeatureLevel([MarshalUsing(CountElementName = nameof(featureLevelsCount))] in D3D_FEATURE_LEVEL[] featureLevels, uint featureLevelsCount, out D3D_FEATURE_LEVEL maximumSupportedFeatureLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createtransformnodefromeffect
     [PreserveSig]
@@ -67,7 +67,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createresourcetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateResourceTexture(nint /* optional Guid */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* byte array */ data, nint /* optional uint */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
+    HRESULT CreateResourceTexture(nint /* optional Guid* */ resourceId, in D2D1_RESOURCE_TEXTURE_PROPERTIES resourceTextureProperties, nint /* optional byte* */ data, nint /* optional uint* */ strides, uint dataSize, out ID2D1ResourceTexture resourceTexture);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findresourcetexture
     [PreserveSig]
@@ -77,7 +77,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createvertexbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint /* optional Guid */ resourceId, nint /* optional D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
+    HRESULT CreateVertexBuffer(in D2D1_VERTEX_BUFFER_PROPERTIES vertexBufferProperties, nint /* optional Guid* */ resourceId, nint /* optional D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES* */ customVertexBufferProperties, out ID2D1VertexBuffer buffer);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-findvertexbuffer
     [PreserveSig]
@@ -87,7 +87,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createcolorcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateColorContext(D2D1_COLOR_SPACE space, nint /* byte array */ profile, uint profileSize, out ID2D1ColorContext colorContext);
+    HRESULT CreateColorContext(D2D1_COLOR_SPACE space, nint /* optional byte* */ profile, uint profileSize, out ID2D1ColorContext colorContext);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createcolorcontextfromfilename
     [PreserveSig]

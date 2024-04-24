@@ -38,5 +38,5 @@ public partial interface IIsdbEmergencyInformationDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbemergencyinformationdescriptor-getareacode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAreaCode(byte bRecordIndex, out ushort ppwVal, nint /* byte array */ pbNumAreaCodes);
+    HRESULT GetAreaCode(byte bRecordIndex, out nint ppwVal, nint /* byte array */ pbNumAreaCodes);
 }

@@ -13,10 +13,10 @@ public partial interface IDWriteTextAnalyzer2 : IDWriteTextAnalyzer1
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextanalyzer2-gettypographicfeatures
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypographicFeatures(IDWriteFontFace fontFace, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR? localeName, uint maxTagCount, out uint actualTagCount, out DWRITE_FONT_FEATURE_TAG tags);
+    HRESULT GetTypographicFeatures(IDWriteFontFace fontFace, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR? localeName, uint maxTagCount, out uint actualTagCount, [MarshalUsing(CountElementName = nameof(maxTagCount))] out DWRITE_FONT_FEATURE_TAG[] tags);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextanalyzer2-checktypographicfeature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckTypographicFeature(IDWriteFontFace fontFace, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR? localeName, DWRITE_FONT_FEATURE_TAG featureTag, uint glyphCount, in ushort glyphIndices, nint /* byte array */ featureApplies);
+    HRESULT CheckTypographicFeature(IDWriteFontFace fontFace, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR? localeName, DWRITE_FONT_FEATURE_TAG featureTag, uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, nint /* byte array */ featureApplies);
 }

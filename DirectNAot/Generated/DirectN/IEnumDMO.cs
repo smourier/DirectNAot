@@ -7,7 +7,7 @@ public partial interface IEnumDMO
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-ienumdmo-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cItemsToFetch, out Guid pCLSID, out PWSTR Names, out uint pcItemsFetched);
+    HRESULT Next(uint cItemsToFetch, [MarshalUsing(CountElementName = nameof(cItemsToFetch))] out Guid[] pCLSID, [MarshalUsing(CountElementName = nameof(cItemsToFetch))] out PWSTR[] Names, out uint pcItemsFetched);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-ienumdmo-skip
     [PreserveSig]

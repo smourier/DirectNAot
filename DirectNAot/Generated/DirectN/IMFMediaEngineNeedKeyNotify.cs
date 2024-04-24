@@ -7,5 +7,5 @@ public partial interface IMFMediaEngineNeedKeyNotify
 {
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineneedkeynotify-needkey
     [PreserveSig]
-    void NeedKey(nint /* byte array */ initData, uint cb);
+    void NeedKey(nint /* optional byte* */ initData, uint cb);
 }

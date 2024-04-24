@@ -1,4 +1,4 @@
 ﻿namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-public delegate void MFPERIODICCALLBACK(nint /*  nint */ pContext);
+public delegate void MFPERIODICCALLBACK(nint /* nint */ pContext);

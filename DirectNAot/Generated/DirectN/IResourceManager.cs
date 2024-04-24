@@ -13,7 +13,7 @@ public partial interface IResourceManager
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-registergroup
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterGroup(PWSTR pName, int cResource, in int palTokens, out int plToken);
+    HRESULT RegisterGroup(PWSTR pName, int cResource, [MarshalUsing(CountElementName = nameof(cResource))] in int[] palTokens, out int plToken);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-requestresource
     [PreserveSig]

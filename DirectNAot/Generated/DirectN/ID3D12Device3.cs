@@ -17,5 +17,5 @@ public partial interface ID3D12Device3 : ID3D12Device2
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device3-enqueuemakeresident
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnqueueMakeResident(D3D12_RESIDENCY_FLAGS Flags, uint NumObjects, in ID3D12Pageable ppObjects, ID3D12Fence pFenceToSignal, ulong FenceValueToSignal);
+    HRESULT EnqueueMakeResident(D3D12_RESIDENCY_FLAGS Flags, uint NumObjects, [MarshalUsing(CountElementName = nameof(NumObjects))] in ID3D12Pageable[] ppObjects, ID3D12Fence pFenceToSignal, ulong FenceValueToSignal);
 }

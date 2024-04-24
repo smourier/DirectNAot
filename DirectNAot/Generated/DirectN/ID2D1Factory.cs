@@ -32,7 +32,7 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1factory-creategeometrygroup
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGeometryGroup(D2D1_FILL_MODE fillMode, in ID2D1Geometry geometries, uint geometriesCount, out ID2D1GeometryGroup geometryGroup);
+    HRESULT CreateGeometryGroup(D2D1_FILL_MODE fillMode, [MarshalUsing(CountElementName = nameof(geometriesCount))] in ID2D1Geometry[] geometries, uint geometriesCount, out ID2D1GeometryGroup geometryGroup);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createtransformedgeometry
     [PreserveSig]
@@ -47,12 +47,12 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createstrokestyle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES strokeStyleProperties, nint /* optional float */ dashes, uint dashesCount, out ID2D1StrokeStyle strokeStyle);
+    HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES strokeStyleProperties, nint /* optional float* */ dashes, uint dashesCount, out ID2D1StrokeStyle strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createdrawingstateblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION */ drawingStateDescription, IDWriteRenderingParams? textRenderingParams, out ID2D1DrawingStateBlock drawingStateBlock);
+    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION* */ drawingStateDescription, IDWriteRenderingParams? textRenderingParams, out ID2D1DrawingStateBlock drawingStateBlock);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createwicbitmaprendertarget
     [PreserveSig]

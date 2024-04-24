@@ -7,5 +7,5 @@ public partial interface IAudioSystemEffects2 : IAudioSystemEffects
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudiosystemeffects2-geteffectslist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectsList(out Guid ppEffectsIds, out uint pcEffects, HANDLE Event);
+    HRESULT GetEffectsList(out nint ppEffectsIds, out uint pcEffects, HANDLE Event);
 }

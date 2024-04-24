@@ -9,5 +9,5 @@ public partial interface IDxcLinker
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Link(PWSTR? pEntryName, PWSTR pTargetProfile, in PWSTR pLibNames, uint libCount, nint /* optional PWSTR */ pArguments, uint argCount, out IDxcOperationResult ppResult);
+    HRESULT Link(PWSTR? pEntryName, PWSTR pTargetProfile, [MarshalUsing(CountElementName = nameof(libCount))] in PWSTR[] pLibNames, uint libCount, nint /* optional PWSTR* */ pArguments, uint argCount, out IDxcOperationResult ppResult);
 }

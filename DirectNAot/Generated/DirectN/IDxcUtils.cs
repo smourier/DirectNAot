@@ -21,7 +21,7 @@ public partial interface IDxcUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadFile(PWSTR pFileName, nint /* optional DXC_CP */ pCodePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT LoadFile(PWSTR pFileName, nint /* optional DXC_CP* */ pCodePage, out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -49,7 +49,7 @@ public partial interface IDxcUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BuildArguments(PWSTR? pSourceName, PWSTR? pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR */ pArguments, uint argCount, in DxcDefine pDefines, uint defineCount, out IDxcCompilerArgs ppArgs);
+    HRESULT BuildArguments(PWSTR? pSourceName, PWSTR? pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR* */ pArguments, uint argCount, [MarshalUsing(CountElementName = nameof(defineCount))] in DxcDefine[] pDefines, uint defineCount, out IDxcCompilerArgs ppArgs);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

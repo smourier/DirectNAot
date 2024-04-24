@@ -9,7 +9,7 @@ public partial interface IDxcResult : IDxcOperationResult
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutput(DXC_OUT_KIND dxcOutKind, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ ppvObject, out IDxcBlobUtf16 ppOutputName);
+    HRESULT GetOutput(DXC_OUT_KIND dxcOutKind, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvObject, out IDxcBlobUtf16 ppOutputName);
     
     [PreserveSig]
     uint GetNumOutputs();

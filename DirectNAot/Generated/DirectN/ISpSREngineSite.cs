@@ -57,7 +57,7 @@ public partial interface ISpSREngineSite
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransitionProperty(SPTRANSITIONID ID, out SPTRANSITIONPROPERTY ppCoMemProperty);
+    HRESULT GetTransitionProperty(SPTRANSITIONID ID, out nint ppCoMemProperty);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

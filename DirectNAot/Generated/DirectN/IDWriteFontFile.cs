@@ -18,5 +18,5 @@ public partial interface IDWriteFontFile
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfile-analyze
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Analyze([MarshalAs(UnmanagedType.U4)] out bool isSupportedFontType, out DWRITE_FONT_FILE_TYPE fontFileType, nint /* optional DWRITE_FONT_FACE_TYPE */ fontFaceType, out uint numberOfFaces);
+    HRESULT Analyze([MarshalAs(UnmanagedType.U4)] out bool isSupportedFontType, out DWRITE_FONT_FILE_TYPE fontFileType, nint /* optional DWRITE_FONT_FACE_TYPE* */ fontFaceType, out uint numberOfFaces);
 }

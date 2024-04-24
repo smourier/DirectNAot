@@ -12,7 +12,7 @@ public partial interface ID2D1Properties
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1properties-getpropertyname(uint32_pwstr_uint32)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropertyName(uint index, out PWSTR name, uint nameCount);
+    HRESULT GetPropertyName(uint index, [MarshalUsing(CountElementName = nameof(nameCount))] out PWSTR[] name, uint nameCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1properties-getpropertynamelength(u)
     [PreserveSig]

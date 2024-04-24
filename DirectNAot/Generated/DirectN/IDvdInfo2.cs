@@ -48,12 +48,12 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getallsprms
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllSPRMs(out ushort pRegisterArray);
+    HRESULT GetAllSPRMs(out nint pRegisterArray);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getallgprms
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllGPRMs(out ushort pRegisterArray);
+    HRESULT GetAllGPRMs(out nint pRegisterArray);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getaudiolanguage
     [PreserveSig]
@@ -138,7 +138,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getdvddirectory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDVDDirectory(out PWSTR pszwPath, uint ulMaxSize, out uint pulActualSize);
+    HRESULT GetDVDDirectory([MarshalUsing(CountElementName = nameof(ulMaxSize))] out PWSTR[] pszwPath, uint ulMaxSize, out uint pulActualSize);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-isaudiostreamenabled
     [PreserveSig]

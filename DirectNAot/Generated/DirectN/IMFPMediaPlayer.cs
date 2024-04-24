@@ -63,12 +63,12 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-createmediaitemfromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaItemFromURL(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem */ ppMediaItem);
+    HRESULT CreateMediaItemFromURL(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-createmediaitemfromobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaItemFromObject(nint pIUnknownObj, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem */ ppMediaItem);
+    HRESULT CreateMediaItemFromObject(nint pIUnknownObj, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-setmediaitem
     [PreserveSig]
@@ -118,12 +118,12 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getnativevideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNativeVideoSize(nint /* optional FoundationSIZE */ pszVideo, nint /* optional FoundationSIZE */ pszARVideo);
+    HRESULT GetNativeVideoSize(nint /* optional FoundationSIZE* */ pszVideo, nint /* optional FoundationSIZE* */ pszARVideo);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getidealvideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIdealVideoSize(nint /* optional FoundationSIZE */ pszMin, nint /* optional FoundationSIZE */ pszMax);
+    HRESULT GetIdealVideoSize(nint /* optional FoundationSIZE* */ pszMin, nint /* optional FoundationSIZE* */ pszMax);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-setvideosourcerect
     [PreserveSig]

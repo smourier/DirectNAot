@@ -9,5 +9,5 @@ public partial interface ISpTTSEngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputFormat(in Guid pTargetFmtId, in WAVEFORMATEX pTargetWaveFormatEx, out Guid pOutputFormatId, out WAVEFORMATEX ppCoMemOutputWaveFormatEx);
+    HRESULT GetOutputFormat(in Guid pTargetFmtId, in WAVEFORMATEX pTargetWaveFormatEx, out Guid pOutputFormatId, out nint ppCoMemOutputWaveFormatEx);
 }

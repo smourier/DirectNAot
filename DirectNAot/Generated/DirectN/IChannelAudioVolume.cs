@@ -23,10 +23,10 @@ public partial interface IChannelAudioVolume
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-ichannelaudiovolume-setallvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllVolumes(uint dwCount, in float pfVolumes, in Guid EventContext);
+    HRESULT SetAllVolumes(uint dwCount, [MarshalUsing(CountElementName = nameof(dwCount))] in float[] pfVolumes, in Guid EventContext);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-ichannelaudiovolume-getallvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllVolumes(uint dwCount, out float pfVolumes);
+    HRESULT GetAllVolumes(uint dwCount, [MarshalUsing(CountElementName = nameof(dwCount))] out float[] pfVolumes);
 }

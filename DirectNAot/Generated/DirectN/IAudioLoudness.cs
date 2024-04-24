@@ -13,5 +13,5 @@ public partial interface IAudioLoudness
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudioloudness-setenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnabled([MarshalAs(UnmanagedType.U4)] bool bEnable, nint /* optional Guid */ pguidEventContext);
+    HRESULT SetEnabled([MarshalAs(UnmanagedType.U4)] bool bEnable, nint /* optional Guid* */ pguidEventContext);
 }

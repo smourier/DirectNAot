@@ -7,27 +7,27 @@ public partial interface IBDA_Topology
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-getnodetypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNodeTypes(ref uint pulcNodeTypes, uint ulcNodeTypesMax, ref uint rgulNodeTypes);
+    HRESULT GetNodeTypes(ref uint pulcNodeTypes, uint ulcNodeTypesMax, [MarshalUsing(CountElementName = nameof(ulcNodeTypesMax))] ref uint[] rgulNodeTypes);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-getnodedescriptors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNodeDescriptors(ref uint ulcNodeDescriptors, uint ulcNodeDescriptorsMax, ref BDANODE_DESCRIPTOR rgNodeDescriptors);
+    HRESULT GetNodeDescriptors(ref uint ulcNodeDescriptors, uint ulcNodeDescriptorsMax, [MarshalUsing(CountElementName = nameof(ulcNodeDescriptorsMax))] ref BDANODE_DESCRIPTOR[] rgNodeDescriptors);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-getnodeinterfaces
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNodeInterfaces(uint ulNodeType, ref uint pulcInterfaces, uint ulcInterfacesMax, ref Guid rgguidInterfaces);
+    HRESULT GetNodeInterfaces(uint ulNodeType, ref uint pulcInterfaces, uint ulcInterfacesMax, [MarshalUsing(CountElementName = nameof(ulcInterfacesMax))] ref Guid[] rgguidInterfaces);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-getpintypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPinTypes(ref uint pulcPinTypes, uint ulcPinTypesMax, ref uint rgulPinTypes);
+    HRESULT GetPinTypes(ref uint pulcPinTypes, uint ulcPinTypesMax, [MarshalUsing(CountElementName = nameof(ulcPinTypesMax))] ref uint[] rgulPinTypes);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-gettemplateconnections
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTemplateConnections(ref uint pulcConnections, uint ulcConnectionsMax, ref BDA_TEMPLATE_CONNECTION rgConnections);
+    HRESULT GetTemplateConnections(ref uint pulcConnections, uint ulcConnectionsMax, [MarshalUsing(CountElementName = nameof(ulcConnectionsMax))] ref BDA_TEMPLATE_CONNECTION[] rgConnections);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_topology-createpin
     [PreserveSig]

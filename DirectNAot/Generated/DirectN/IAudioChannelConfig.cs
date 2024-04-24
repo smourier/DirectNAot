@@ -8,7 +8,7 @@ public partial interface IAudioChannelConfig
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudiochannelconfig-setchannelconfig
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetChannelConfig(uint dwConfig, nint /* optional Guid */ pguidEventContext);
+    HRESULT SetChannelConfig(uint dwConfig, nint /* optional Guid* */ pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudiochannelconfig-getchannelconfig
     [PreserveSig]

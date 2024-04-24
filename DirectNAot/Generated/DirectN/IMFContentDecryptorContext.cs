@@ -8,5 +8,5 @@ public partial interface IMFContentDecryptorContext
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentdecryptorcontext-initializehardwarekey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeHardwareKey(uint InputPrivateDataByteCount, nint /* optional void */ InputPrivateData, out ulong OutputPrivateData);
+    HRESULT InitializeHardwareKey(uint InputPrivateDataByteCount, nint /* optional void* */ InputPrivateData, out ulong OutputPrivateData);
 }

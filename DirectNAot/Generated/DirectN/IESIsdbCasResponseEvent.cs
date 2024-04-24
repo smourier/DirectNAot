@@ -23,5 +23,5 @@ public partial interface IESIsdbCasResponseEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesisdbcasresponseevent-getresponsedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetResponseData(out SAFEARRAY pbData);
+    HRESULT GetResponseData(out nint pbData);
 }

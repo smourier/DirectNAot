@@ -8,5 +8,5 @@ public partial interface IControlChangeNotify
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-icontrolchangenotify-onnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnNotify(uint dwSenderProcessId, nint /* optional Guid */ pguidEventContext);
+    HRESULT OnNotify(uint dwSenderProcessId, nint /* optional Guid* */ pguidEventContext);
 }

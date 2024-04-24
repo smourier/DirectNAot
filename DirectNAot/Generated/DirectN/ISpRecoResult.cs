@@ -9,7 +9,7 @@ public partial interface ISpRecoResult : ISpPhrase
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAlternates(uint ulStartElement, uint cElements, uint ulRequestCount, out ISpPhraseAlt ppPhrases, ref uint pcPhrasesReturned);
+    HRESULT GetAlternates(uint ulStartElement, uint cElements, uint ulRequestCount, [MarshalUsing(CountElementName = nameof(ulRequestCount))] out ISpPhraseAlt[] ppPhrases, ref uint pcPhrasesReturned);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -7,5 +7,5 @@ public partial interface IMDSPRevoked
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdsprevoked-getrevocationurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRevocationURL(ref PWSTR ppwszRevocationURL, ref uint pdwBufferLen);
+    HRESULT GetRevocationURL([MarshalUsing(CountElementName = nameof(pdwBufferLen))] ref PWSTR[] ppwszRevocationURL, ref uint pdwBufferLen);
 }

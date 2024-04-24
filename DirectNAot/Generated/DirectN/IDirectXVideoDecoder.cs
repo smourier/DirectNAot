@@ -13,7 +13,7 @@ public partial interface IDirectXVideoDecoder
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getcreationparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCreationParameters(nint /* optional Guid */ pDeviceGuid, nint /* optional DXVA2_VideoDesc */ pVideoDesc, nint /* optional DXVA2_ConfigPictureDecode */ pConfig, out IDirect3DSurface9 pDecoderRenderTargets, nint /* optional uint */ pNumSurfaces);
+    HRESULT GetCreationParameters(nint /* optional Guid* */ pDeviceGuid, nint /* optional DXVA2_VideoDesc* */ pVideoDesc, nint /* optional DXVA2_ConfigPictureDecode* */ pConfig, [MarshalUsing(CountElementName = nameof(pNumSurfaces))] out IDirect3DSurface9[] pDecoderRenderTargets, nint /* optional uint* */ pNumSurfaces);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getbuffer
     [PreserveSig]
@@ -28,12 +28,12 @@ public partial interface IDirectXVideoDecoder
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-beginframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginFrame(IDirect3DSurface9 pRenderTarget, nint /* optional void */ pvPVPData);
+    HRESULT BeginFrame(IDirect3DSurface9 pRenderTarget, nint /* optional void* */ pvPVPData);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-endframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndFrame(nint /* optional HANDLE */ pHandleComplete);
+    HRESULT EndFrame(nint /* optional HANDLE* */ pHandleComplete);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-execute
     [PreserveSig]

@@ -22,5 +22,5 @@ public partial interface ISCPSecureQuery
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecurequery-getrights
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRights(nint /* byte array */ pData, uint dwSize, nint /* byte array */ pbSPSessionKey, uint dwSessionKeyLen, IMDSPStorageGlobals? pStgGlobals, out WMDMRIGHTS ppRights, out uint pnRightsCount, nint /* byte array */ abMac);
+    HRESULT GetRights(nint /* byte array */ pData, uint dwSize, nint /* byte array */ pbSPSessionKey, uint dwSessionKeyLen, IMDSPStorageGlobals? pStgGlobals, out nint ppRights, out uint pnRightsCount, nint /* byte array */ abMac);
 }

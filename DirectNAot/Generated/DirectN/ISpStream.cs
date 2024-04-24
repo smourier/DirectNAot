@@ -13,7 +13,7 @@ public partial interface ISpStream : ISpStreamFormat
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BindToFile(PWSTR pszFileName, SPFILEMODE eMode, nint /* optional Guid */ pFormatId, nint /* optional WAVEFORMATEX */ pWaveFormatEx, ulong ullEventInterest);
+    HRESULT BindToFile(PWSTR pszFileName, SPFILEMODE eMode, nint /* optional Guid* */ pFormatId, nint /* optional WAVEFORMATEX* */ pWaveFormatEx, ulong ullEventInterest);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

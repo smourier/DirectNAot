@@ -7,5 +7,5 @@ public partial interface IWMDMStorageControl2 : IWMDMStorageControl
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstoragecontrol2-insert2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Insert2(uint fuMode, PWSTR? pwszFileSource, PWSTR? pwszFileDest, IWMDMOperation? pOperation, IWMDMProgress? pProgress, nint pUnknown, nint /* optional IWMDMStorage */ ppNewObject);
+    HRESULT Insert2(uint fuMode, PWSTR? pwszFileSource, PWSTR? pwszFileDest, IWMDMOperation? pOperation, IWMDMProgress? pProgress, nint pUnknown, nint /* optional IWMDMStorage* */ ppNewObject);
 }

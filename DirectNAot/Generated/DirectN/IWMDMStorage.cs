@@ -7,7 +7,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-setattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAttributes(uint dwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
+    HRESULT SetAttributes(uint dwAttributes, nint /* optional WAVEFORMATEX* */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getstorageglobals
     [PreserveSig]
@@ -17,12 +17,12 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributes(out uint pdwAttributes, nint /* optional WAVEFORMATEX */ pFormat);
+    HRESULT GetAttributes(out uint pdwAttributes, nint /* optional WAVEFORMATEX* */ pFormat);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetName(out PWSTR pwszName, uint nMaxChars);
+    HRESULT GetName([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR[] pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getdate
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getrights
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRights(out WMDMRIGHTS ppRights, out uint pnRightsCount, nint /* byte array */ abMac);
+    HRESULT GetRights(out nint ppRights, out uint pnRightsCount, nint /* byte array */ abMac);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-enumstorage
     [PreserveSig]

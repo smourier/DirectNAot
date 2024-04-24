@@ -13,10 +13,10 @@ public partial interface IAudioClient3 : IAudioClient2
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient3-getcurrentsharedmodeengineperiod
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentSharedModeEnginePeriod(out WAVEFORMATEX ppFormat, out uint pCurrentPeriodInFrames);
+    HRESULT GetCurrentSharedModeEnginePeriod(out nint ppFormat, out uint pCurrentPeriodInFrames);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient3-initializesharedaudiostream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeSharedAudioStream(uint StreamFlags, uint PeriodInFrames, in WAVEFORMATEX pFormat, nint /* optional Guid */ AudioSessionGuid);
+    HRESULT InitializeSharedAudioStream(uint StreamFlags, uint PeriodInFrames, in WAVEFORMATEX pFormat, nint /* optional Guid* */ AudioSessionGuid);
 }

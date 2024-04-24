@@ -8,7 +8,7 @@ public partial interface IAudioCaptureClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudiocaptureclient-getbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(out nint /* byte array */ ppData, out uint pNumFramesToRead, out uint pdwFlags, nint /* optional ulong */ pu64DevicePosition, nint /* optional ulong */ pu64QPCPosition);
+    HRESULT GetBuffer(out nint /* byte array */ ppData, out uint pNumFramesToRead, out uint pdwFlags, nint /* optional ulong* */ pu64DevicePosition, nint /* optional ulong* */ pu64QPCPosition);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudiocaptureclient-releasebuffer
     [PreserveSig]

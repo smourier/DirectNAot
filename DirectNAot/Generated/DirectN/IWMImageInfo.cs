@@ -12,5 +12,5 @@ public partial interface IWMImageInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmimageinfo-getimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetImage(uint wIndex, ref ushort pcchMIMEType, out PWSTR pwszMIMEType, ref ushort pcchDescription, out PWSTR pwszDescription, out ushort pImageType, ref uint pcbImageData, nint /* byte array */ pbImageData);
+    HRESULT GetImage(uint wIndex, ref ushort pcchMIMEType, [MarshalUsing(CountElementName = nameof(pcchMIMEType))] out PWSTR[] pwszMIMEType, ref ushort pcchDescription, [MarshalUsing(CountElementName = nameof(pcchDescription))] out PWSTR[] pwszDescription, out ushort pImageType, ref uint pcbImageData, nint /* byte array */ pbImageData);
 }

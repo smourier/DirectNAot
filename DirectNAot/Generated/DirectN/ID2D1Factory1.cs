@@ -13,7 +13,7 @@ public partial interface ID2D1Factory1 : ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-createstrokestyle(constd2d1_stroke_style_properties1_constfloat_uint32_id2d1strokestyle1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES1 strokeStyleProperties, nint /* optional float */ dashes, uint dashesCount, out ID2D1StrokeStyle1 strokeStyle);
+    HRESULT CreateStrokeStyle(in D2D1_STROKE_STYLE_PROPERTIES1 strokeStyleProperties, nint /* optional float* */ dashes, uint dashesCount, out ID2D1StrokeStyle1 strokeStyle);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-createpathgeometry
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface ID2D1Factory1 : ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-createdrawingstateblock(constd2d1_drawing_state_description1_idwriterenderingparams_id2d1drawingstateblock1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION1 */ drawingStateDescription, IDWriteRenderingParams? textRenderingParams, out ID2D1DrawingStateBlock1 drawingStateBlock);
+    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION1* */ drawingStateDescription, IDWriteRenderingParams? textRenderingParams, out ID2D1DrawingStateBlock1 drawingStateBlock);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-creategdimetafile
     [PreserveSig]
@@ -33,12 +33,12 @@ public partial interface ID2D1Factory1 : ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-registereffectfromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterEffectFromStream(in Guid classId, IStream propertyXml, nint /* optional D2D1_PROPERTY_BINDING */ bindings, uint bindingsCount, PD2D1_EFFECT_FACTORY effectFactory);
+    HRESULT RegisterEffectFromStream(in Guid classId, IStream propertyXml, nint /* optional D2D1_PROPERTY_BINDING* */ bindings, uint bindingsCount, PD2D1_EFFECT_FACTORY effectFactory);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-registereffectfromstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterEffectFromString(in Guid classId, PWSTR propertyXml, nint /* optional D2D1_PROPERTY_BINDING */ bindings, uint bindingsCount, PD2D1_EFFECT_FACTORY effectFactory);
+    HRESULT RegisterEffectFromString(in Guid classId, PWSTR propertyXml, nint /* optional D2D1_PROPERTY_BINDING* */ bindings, uint bindingsCount, PD2D1_EFFECT_FACTORY effectFactory);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-unregistereffect
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface ID2D1Factory1 : ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-getregisteredeffects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRegisteredEffects(nint /* optional Guid */ effects, uint effectsCount, nint /* optional uint */ effectsReturned, nint /* optional uint */ effectsRegistered);
+    HRESULT GetRegisteredEffects(nint /* optional Guid* */ effects, uint effectsCount, nint /* optional uint* */ effectsReturned, nint /* optional uint* */ effectsRegistered);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1factory1-geteffectproperties
     [PreserveSig]

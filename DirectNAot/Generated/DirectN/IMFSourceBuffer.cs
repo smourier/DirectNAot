@@ -50,7 +50,7 @@ public partial interface IMFSourceBuffer
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-appendbytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AppendByteStream(IMFByteStream pStream, nint /* optional ulong */ pMaxLen);
+    HRESULT AppendByteStream(IMFByteStream pStream, nint /* optional ulong* */ pMaxLen);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-abort
     [PreserveSig]

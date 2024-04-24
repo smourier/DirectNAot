@@ -29,7 +29,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Remove(nint /* optional Guid */ pclsidCaller);
+    HRESULT Remove(nint /* optional Guid* */ pclsidCaller);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

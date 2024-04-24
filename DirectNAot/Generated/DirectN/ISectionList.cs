@@ -27,7 +27,7 @@ public partial interface ISectionList
     // https://learn.microsoft.com/windows/win32/api/mpeg2data/nf-mpeg2data-isectionlist-getsectiondata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSectionData(ushort sectionNumber, out uint pdwRawPacketLength, out SECTION ppSection);
+    HRESULT GetSectionData(ushort sectionNumber, out uint pdwRawPacketLength, out nint ppSection);
     
     // https://learn.microsoft.com/windows/win32/api/mpeg2data/nf-mpeg2data-isectionlist-getprogramidentifier
     [PreserveSig]

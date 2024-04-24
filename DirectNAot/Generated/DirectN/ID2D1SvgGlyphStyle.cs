@@ -16,7 +16,7 @@ public partial interface ID2D1SvgGlyphStyle : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1svgglyphstyle-setstroke
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStroke(ID2D1Brush? brush, float strokeWidth, nint /* optional float */ dashes, uint dashesCount, float dashOffset);
+    HRESULT SetStroke(ID2D1Brush? brush, float strokeWidth, nint /* optional float* */ dashes, uint dashesCount, float dashOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1svgglyphstyle-getstrokedashescount
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface ID2D1SvgGlyphStyle : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1svgglyphstyle-getstroke
     [PreserveSig]
-    void GetStroke(nint /* optional ID2D1Brush */ brush, nint /* optional float */ strokeWidth, nint /* optional float */ dashes, uint dashesCount, nint /* optional float */ dashOffset);
+    void GetStroke(nint /* optional ID2D1Brush* */ brush, nint /* optional float* */ strokeWidth, nint /* optional float* */ dashes, uint dashesCount, nint /* optional float* */ dashOffset);
 }

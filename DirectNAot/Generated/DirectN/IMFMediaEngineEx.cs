@@ -18,7 +18,7 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-updatevideostream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateVideoStream(nint /* optional MFVideoNormalizedRect */ pSrc, nint /* optional FoundationRECT */ pDst, nint /* optional MFARGB */ pBorderClr);
+    HRESULT UpdateVideoStream(nint /* optional MFVideoNormalizedRect* */ pSrc, nint /* optional FoundationRECT* */ pDst, nint /* optional MFARGB* */ pBorderClr);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getbalance
     [PreserveSig]

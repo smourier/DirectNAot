@@ -12,5 +12,5 @@ public partial interface IAudioFormatEnumerator
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-iaudioformatenumerator-getformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(uint index, out WAVEFORMATEX format);
+    HRESULT GetFormat(uint index, out nint format);
 }

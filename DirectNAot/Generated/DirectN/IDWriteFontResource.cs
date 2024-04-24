@@ -20,12 +20,12 @@ public partial interface IDWriteFontResource
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getdefaultfontaxisvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDefaultFontAxisValues(out DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount);
+    HRESULT GetDefaultFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] out DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getfontaxisranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisRanges(out DWRITE_FONT_AXIS_RANGE fontAxisRanges, uint fontAxisRangeCount);
+    HRESULT GetFontAxisRanges([MarshalUsing(CountElementName = nameof(fontAxisRangeCount))] out DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint fontAxisRangeCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getfontaxisattributes
     [PreserveSig]
@@ -53,10 +53,10 @@ public partial interface IDWriteFontResource
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-createfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFace(DWRITE_FONT_SIMULATIONS fontSimulations, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, out IDWriteFontFace5 fontFace);
+    HRESULT CreateFontFace(DWRITE_FONT_SIMULATIONS fontSimulations, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFace5 fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-createfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFaceReference(DWRITE_FONT_SIMULATIONS fontSimulations, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, out IDWriteFontFaceReference1 fontFaceReference);
+    HRESULT CreateFontFaceReference(DWRITE_FONT_SIMULATIONS fontSimulations, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFaceReference1 fontFaceReference);
 }

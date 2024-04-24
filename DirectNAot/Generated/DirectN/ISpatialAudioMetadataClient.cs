@@ -8,7 +8,7 @@ public partial interface ISpatialAudioMetadataClient
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadataclient-activatespatialaudiometadataitems
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateSpatialAudioMetadataItems(ushort maxItemCount, ushort frameCount, nint /* optional ISpatialAudioMetadataItemsBuffer */ metadataItemsBuffer, out ISpatialAudioMetadataItems metadataItems);
+    HRESULT ActivateSpatialAudioMetadataItems(ushort maxItemCount, ushort frameCount, nint /* optional ISpatialAudioMetadataItemsBuffer* */ metadataItemsBuffer, out ISpatialAudioMetadataItems metadataItems);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadataclient-getspatialaudiometadataitemsbufferlength
     [PreserveSig]

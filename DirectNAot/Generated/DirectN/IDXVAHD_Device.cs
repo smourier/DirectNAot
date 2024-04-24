@@ -8,7 +8,7 @@ public partial interface IDXVAHD_Device
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-createvideosurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, uint Usage, DXVAHD_SURFACE_TYPE Type, uint NumSurfaces, out IDirect3DSurface9 ppSurfaces, nint /* optional HANDLE */ pSharedHandle);
+    HRESULT CreateVideoSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, uint Usage, DXVAHD_SURFACE_TYPE Type, uint NumSurfaces, [MarshalUsing(CountElementName = nameof(NumSurfaces))] out IDirect3DSurface9[] ppSurfaces, nint /* optional HANDLE* */ pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessordevicecaps
     [PreserveSig]
@@ -18,22 +18,22 @@ public partial interface IDXVAHD_Device
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessoroutputformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorOutputFormats(uint Count, out D3DFORMAT pFormats);
+    HRESULT GetVideoProcessorOutputFormats(uint Count, [MarshalUsing(CountElementName = nameof(Count))] out D3DFORMAT[] pFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessorinputformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorInputFormats(uint Count, out D3DFORMAT pFormats);
+    HRESULT GetVideoProcessorInputFormats(uint Count, [MarshalUsing(CountElementName = nameof(Count))] out D3DFORMAT[] pFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessorcaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorCaps(uint Count, out DXVAHD_VPCAPS pCaps);
+    HRESULT GetVideoProcessorCaps(uint Count, [MarshalUsing(CountElementName = nameof(Count))] out DXVAHD_VPCAPS[] pCaps);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessorcustomrates
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorCustomRates(in Guid pVPGuid, uint Count, out DXVAHD_CUSTOM_RATE_DATA pRates);
+    HRESULT GetVideoProcessorCustomRates(in Guid pVPGuid, uint Count, [MarshalUsing(CountElementName = nameof(Count))] out DXVAHD_CUSTOM_RATE_DATA[] pRates);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-getvideoprocessorfilterrange
     [PreserveSig]

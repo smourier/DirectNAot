@@ -9,11 +9,11 @@ public partial interface ISpLexicon
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddPronunciation(PWSTR pszWord, ushort LangID, SPPARTOFSPEECH ePartOfSpeech, nint /* optional ushort */ pszPronunciation);
+    HRESULT AddPronunciation(PWSTR pszWord, ushort LangID, SPPARTOFSPEECH ePartOfSpeech, nint /* optional ushort* */ pszPronunciation);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemovePronunciation(PWSTR pszWord, ushort LangID, SPPARTOFSPEECH ePartOfSpeech, nint /* optional ushort */ pszPronunciation);
+    HRESULT RemovePronunciation(PWSTR pszWord, ushort LangID, SPPARTOFSPEECH ePartOfSpeech, nint /* optional ushort* */ pszPronunciation);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -25,5 +25,5 @@ public partial interface ISpLexicon
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWords(uint dwFlags, ref uint pdwGeneration, nint /* optional uint */ pdwCookie, ref SPWORDLIST pWordList);
+    HRESULT GetWords(uint dwFlags, ref uint pdwGeneration, nint /* optional uint* */ pdwCookie, ref SPWORDLIST pWordList);
 }

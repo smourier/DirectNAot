@@ -18,7 +18,7 @@ public partial interface IMFPluginControl
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfplugincontrol-setpreferredclsid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPreferredClsid(uint pluginType, PWSTR selector, nint /* optional Guid */ clsid);
+    HRESULT SetPreferredClsid(uint pluginType, PWSTR selector, nint /* optional Guid* */ clsid);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfplugincontrol-isdisabled
     [PreserveSig]

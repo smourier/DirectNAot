@@ -57,12 +57,12 @@ public partial interface IDWriteFontFaceReference
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-enqueuecharacterdownloadrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnqueueCharacterDownloadRequest(PWSTR characters, uint characterCount);
+    HRESULT EnqueueCharacterDownloadRequest([MarshalUsing(CountElementName = nameof(characterCount))] PWSTR[] characters, uint characterCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-enqueueglyphdownloadrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnqueueGlyphDownloadRequest(in ushort glyphIndices, uint glyphCount);
+    HRESULT EnqueueGlyphDownloadRequest([MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, uint glyphCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-enqueuefilefragmentdownloadrequest
     [PreserveSig]

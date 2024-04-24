@@ -13,7 +13,7 @@ public partial interface IMFContentEnabler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentenabler-getenableurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableURL(out PWSTR ppwszURL, out uint pcchURL, ref MF_URL_TRUST_STATUS pTrustStatus);
+    HRESULT GetEnableURL([MarshalUsing(CountElementName = nameof(pcchURL))] out PWSTR[] ppwszURL, out uint pcchURL, ref MF_URL_TRUST_STATUS pTrustStatus);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentenabler-getenabledata
     [PreserveSig]

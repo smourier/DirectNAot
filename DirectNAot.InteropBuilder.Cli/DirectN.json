@@ -39,6 +39,7 @@
     "Windows.Win32.UI.ColorSystem",
     "Windows.Win32.UI.HiDpi",
     "Windows.Win32.UI.Input.Ink",
+    "IPrintPreviewDxgiPackageTarget",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude

@@ -11,13 +11,13 @@ public partial interface IDxcCompilerArgs
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddArguments(nint /* optional PWSTR */ pArguments, uint argCount);
+    HRESULT AddArguments(nint /* optional PWSTR* */ pArguments, uint argCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddArgumentsUTF8(nint /* optional PSTR */ pArguments, uint argCount);
+    HRESULT AddArgumentsUTF8(nint /* optional PSTR* */ pArguments, uint argCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDefines(in DxcDefine pDefines, uint defineCount);
+    HRESULT AddDefines([MarshalUsing(CountElementName = nameof(defineCount))] in DxcDefine[] pDefines, uint defineCount);
 }

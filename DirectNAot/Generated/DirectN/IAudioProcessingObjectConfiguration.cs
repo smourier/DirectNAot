@@ -7,7 +7,7 @@ public partial interface IAudioProcessingObjectConfiguration
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobjectconfiguration-lockforprocess
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockForProcess(uint u32NumInputConnections, in APO_CONNECTION_DESCRIPTOR ppInputConnections, uint u32NumOutputConnections, in APO_CONNECTION_DESCRIPTOR ppOutputConnections);
+    HRESULT LockForProcess(uint u32NumInputConnections, [MarshalUsing(CountElementName = nameof(u32NumInputConnections))] in APO_CONNECTION_DESCRIPTOR[] ppInputConnections, uint u32NumOutputConnections, [MarshalUsing(CountElementName = nameof(u32NumOutputConnections))] in APO_CONNECTION_DESCRIPTOR[] ppOutputConnections);
     
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobjectconfiguration-unlockforprocess
     [PreserveSig]

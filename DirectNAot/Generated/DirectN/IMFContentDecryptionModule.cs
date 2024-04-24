@@ -38,5 +38,5 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-getprotectionsystemids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProtectionSystemIds(out Guid systemIds, out uint count);
+    HRESULT GetProtectionSystemIds([MarshalUsing(CountElementName = nameof(count))] out Guid[] systemIds, out uint count);
 }

@@ -18,7 +18,7 @@ public partial interface ISpatialAudioMetadataWriter
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatawriter-writenextitemcommand
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteNextItemCommand(byte commandID, nint /* optional void */ valueBuffer, uint valueBufferLength);
+    HRESULT WriteNextItemCommand(byte commandID, nint /* optional void* */ valueBuffer, uint valueBufferLength);
     
     // https://learn.microsoft.com/windows/win32/CoreAudio/ispatialaudiometadatawriter-close
     [PreserveSig]

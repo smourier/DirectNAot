@@ -12,10 +12,10 @@ public partial interface ID3D12Device1 : ID3D12Device
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device1-seteventonmultiplefencecompletion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEventOnMultipleFenceCompletion(in ID3D12Fence ppFences, in ulong pFenceValues, uint NumFences, D3D12_MULTIPLE_FENCE_WAIT_FLAGS Flags, HANDLE hEvent);
+    HRESULT SetEventOnMultipleFenceCompletion([MarshalUsing(CountElementName = nameof(NumFences))] in ID3D12Fence[] ppFences, [MarshalUsing(CountElementName = nameof(NumFences))] in ulong[] pFenceValues, uint NumFences, D3D12_MULTIPLE_FENCE_WAIT_FLAGS Flags, HANDLE hEvent);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device1-setresidencypriority
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetResidencyPriority(uint NumObjects, in ID3D12Pageable ppObjects, in D3D12_RESIDENCY_PRIORITY pPriorities);
+    HRESULT SetResidencyPriority(uint NumObjects, [MarshalUsing(CountElementName = nameof(NumObjects))] in ID3D12Pageable[] ppObjects, [MarshalUsing(CountElementName = nameof(NumObjects))] in D3D12_RESIDENCY_PRIORITY[] pPriorities);
 }

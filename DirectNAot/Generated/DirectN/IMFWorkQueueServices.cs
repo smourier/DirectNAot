@@ -28,7 +28,7 @@ public partial interface IMFWorkQueueServices
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-gettopologyworkqueuemmcssclass
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTopologyWorkQueueMMCSSClass(uint dwTopologyWorkQueueId, out PWSTR pwszClass, ref uint pcchClass);
+    HRESULT GetTopologyWorkQueueMMCSSClass(uint dwTopologyWorkQueueId, [MarshalUsing(CountElementName = nameof(pcchClass))] out PWSTR[] pwszClass, ref uint pcchClass);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-gettopologyworkqueuemmcsstaskid
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IMFWorkQueueServices
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-getplaftormworkqueuemmcssclass
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPlaftormWorkQueueMMCSSClass(uint dwPlatformWorkQueueId, out PWSTR pwszClass, ref uint pcchClass);
+    HRESULT GetPlaftormWorkQueueMMCSSClass(uint dwPlatformWorkQueueId, [MarshalUsing(CountElementName = nameof(pcchClass))] out PWSTR[] pwszClass, ref uint pcchClass);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-getplatformworkqueuemmcsstaskid
     [PreserveSig]

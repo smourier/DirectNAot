@@ -8,7 +8,7 @@ public partial interface IAudioMute
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudiomute-setmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool bMuted, nint /* optional Guid */ pguidEventContext);
+    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool bMuted, nint /* optional Guid* */ pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudiomute-getmute
     [PreserveSig]

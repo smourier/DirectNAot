@@ -8,7 +8,7 @@ public partial interface IDWriteInlineObject
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteinlineobject-draw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Draw(nint /* optional void */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
+    HRESULT Draw(nint /* optional void* */ clientDrawingContext, IDWriteTextRenderer renderer, float originX, float originY, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteinlineobject-getmetrics
     [PreserveSig]

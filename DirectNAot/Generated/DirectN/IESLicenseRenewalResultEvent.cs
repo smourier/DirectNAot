@@ -53,7 +53,7 @@ public partial interface IESLicenseRenewalResultEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieslicenserenewalresultevent-getentitlementtoken
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEntitlementToken(out SAFEARRAY pbData);
+    HRESULT GetEntitlementToken(out nint pbData);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieslicenserenewalresultevent-getexpirydate
     [PreserveSig]

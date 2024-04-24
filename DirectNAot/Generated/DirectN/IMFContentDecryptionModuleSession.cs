@@ -18,7 +18,7 @@ public partial interface IMFContentDecryptionModuleSession
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulesession-getkeystatuses
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetKeyStatuses(out MFMediaKeyStatus keyStatuses, out uint numKeyStatuses);
+    HRESULT GetKeyStatuses([MarshalUsing(CountElementName = nameof(numKeyStatuses))] out MFMediaKeyStatus[] keyStatuses, out uint numKeyStatuses);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulesession-load
     [PreserveSig]

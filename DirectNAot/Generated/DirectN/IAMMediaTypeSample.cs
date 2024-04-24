@@ -60,7 +60,7 @@ public partial interface IAMMediaTypeSample : IStreamSample
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediatypesample-getmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaType(out AM_MEDIA_TYPE ppMediaType);
+    HRESULT GetMediaType(out nint ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediatypesample-setmediatype
     [PreserveSig]

@@ -7,7 +7,7 @@ public partial interface ICompositionDrawingSurfaceInterop
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiondrawingsurfaceinterop-begindraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDraw(nint /* optional FoundationRECT */ updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT updateOffset);
+    HRESULT BeginDraw(nint /* optional FoundationRECT* */ updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT updateOffset);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiondrawingsurfaceinterop-enddraw
     [PreserveSig]
@@ -22,7 +22,7 @@ public partial interface ICompositionDrawingSurfaceInterop
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiondrawingsurfaceinterop-scroll
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Scroll(nint /* optional FoundationRECT */ scrollRect, nint /* optional FoundationRECT */ clipRect, int offsetX, int offsetY);
+    HRESULT Scroll(nint /* optional FoundationRECT* */ scrollRect, nint /* optional FoundationRECT* */ clipRect, int offsetX, int offsetY);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiondrawingsurfaceinterop-resumedraw
     [PreserveSig]

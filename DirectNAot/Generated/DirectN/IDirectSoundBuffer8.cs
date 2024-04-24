@@ -5,11 +5,11 @@ public partial interface IDirectSoundBuffer8 : IDirectSoundBuffer
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFX(uint dwEffectsCount, nint /* optional DSEFFECTDESC */ pDSFXDesc, nint /* optional uint */ pdwResultCodes);
+    HRESULT SetFX(uint dwEffectsCount, nint /* optional DSEFFECTDESC* */ pDSFXDesc, nint /* optional uint* */ pdwResultCodes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AcquireResources(uint dwFlags, uint dwEffectsCount, out uint pdwResultCodes);
+    HRESULT AcquireResources(uint dwFlags, uint dwEffectsCount, [MarshalUsing(CountElementName = nameof(dwEffectsCount))] out uint[] pdwResultCodes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

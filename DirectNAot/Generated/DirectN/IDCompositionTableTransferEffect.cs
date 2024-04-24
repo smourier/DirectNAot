@@ -7,22 +7,22 @@ public partial interface IDCompositionTableTransferEffect : IDCompositionFilterE
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setredtable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedTable(in float tableValues, uint count);
+    HRESULT SetRedTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setgreentable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGreenTable(in float tableValues, uint count);
+    HRESULT SetGreenTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setbluetable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBlueTable(in float tableValues, uint count);
+    HRESULT SetBlueTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setalphatable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAlphaTable(in float tableValues, uint count);
+    HRESULT SetAlphaTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setreddisable
     [PreserveSig]

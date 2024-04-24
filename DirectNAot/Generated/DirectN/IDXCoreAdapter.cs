@@ -37,7 +37,7 @@ public partial interface IDXCoreAdapter
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-querystate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint /* optional void */ inputStateDetails, nuint outputBufferSize, nint outputBuffer);
+    HRESULT QueryState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint /* optional void* */ inputStateDetails, nuint outputBufferSize, nint outputBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-issetstatesupported
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface IDXCoreAdapter
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-setstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint /* optional void */ inputStateDetails, nuint inputDataSize, nint inputData);
+    HRESULT SetState(DXCoreAdapterState state, nuint inputStateDetailsSize, nint /* optional void* */ inputStateDetails, nuint inputDataSize, nint inputData);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapter-getfactory
     [PreserveSig]

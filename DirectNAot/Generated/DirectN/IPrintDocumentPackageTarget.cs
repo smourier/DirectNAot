@@ -8,7 +8,7 @@ public partial interface IPrintDocumentPackageTarget
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-getpackagetargettypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPackageTargetTypes(out uint targetCount, out Guid targetTypes);
+    HRESULT GetPackageTargetTypes(out uint targetCount, [MarshalUsing(CountElementName = nameof(targetCount))] out Guid[] targetTypes);
     
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetarget-getpackagetarget
     [PreserveSig]

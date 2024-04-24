@@ -16,7 +16,7 @@ public partial interface IDWriteStringList
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocaleName(uint listIndex, out PWSTR localeName, uint size);
+    HRESULT GetLocaleName(uint listIndex, [MarshalUsing(CountElementName = nameof(size))] out PWSTR[] localeName, uint size);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getstringlength
     [PreserveSig]
@@ -26,5 +26,5 @@ public partial interface IDWriteStringList
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritestringlist-getstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetString(uint listIndex, out PWSTR stringBuffer, uint stringBufferSize);
+    HRESULT GetString(uint listIndex, [MarshalUsing(CountElementName = nameof(stringBufferSize))] out PWSTR[] stringBuffer, uint stringBufferSize);
 }

@@ -23,7 +23,7 @@ public partial interface ICodecAPI
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-getparametervalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParameterValues(in Guid Api, out VARIANT Values, out uint ValuesCount);
+    HRESULT GetParameterValues(in Guid Api, out nint Values, out uint ValuesCount);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-getdefaultvalue
     [PreserveSig]
@@ -58,12 +58,12 @@ public partial interface ICodecAPI
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-setvaluewithnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetValueWithNotify(in Guid Api, in VARIANT Value, out Guid ChangedParam, out uint ChangedParamCount);
+    HRESULT SetValueWithNotify(in Guid Api, in VARIANT Value, out nint ChangedParam, out uint ChangedParamCount);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-setalldefaultswithnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllDefaultsWithNotify(out Guid ChangedParam, out uint ChangedParamCount);
+    HRESULT SetAllDefaultsWithNotify(out nint ChangedParam, out uint ChangedParamCount);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-getallsettings
     [PreserveSig]
@@ -78,5 +78,5 @@ public partial interface ICodecAPI
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-setallsettingswithnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllSettingsWithNotify(IStream __MIDL__ICodecAPI0002, out Guid ChangedParam, out uint ChangedParamCount);
+    HRESULT SetAllSettingsWithNotify(IStream __MIDL__ICodecAPI0002, out nint ChangedParam, out uint ChangedParamCount);
 }

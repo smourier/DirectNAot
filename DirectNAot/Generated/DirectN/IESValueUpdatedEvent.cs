@@ -8,5 +8,5 @@ public partial interface IESValueUpdatedEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesvalueupdatedevent-getvaluenames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetValueNames(out SAFEARRAY pbstrNames);
+    HRESULT GetValueNames(out nint pbstrNames);
 }

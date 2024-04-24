@@ -5,7 +5,7 @@ public partial interface IKsPinPipe
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsGetPinFramingCache(out KSALLOCATOR_FRAMING_EX FramingEx, out FRAMING_PROP FramingProp, FRAMING_CACHE_OPS Option);
+    HRESULT KsGetPinFramingCache(out nint FramingEx, out FRAMING_PROP FramingProp, FRAMING_CACHE_OPS Option);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

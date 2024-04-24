@@ -11,12 +11,12 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputvoices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputVoices(nint /* optional XAUDIO2_VOICE_SENDS */ pSendList);
+    HRESULT SetOutputVoices(nint /* optional XAUDIO2_VOICE_SENDS* */ pSendList);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-seteffectchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffectChain(nint /* optional XAUDIO2_EFFECT_CHAIN */ pEffectChain);
+    HRESULT SetEffectChain(nint /* optional XAUDIO2_EFFECT_CHAIN* */ pEffectChain);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-enableeffect
     [PreserveSig]
@@ -72,11 +72,11 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setchannelvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetChannelVolumes(uint Channels, in float pVolumes, uint OperationSet);
+    HRESULT SetChannelVolumes(uint Channels, [MarshalUsing(CountElementName = nameof(Channels))] in float[] pVolumes, uint OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getchannelvolumes
     [PreserveSig]
-    void GetChannelVolumes(uint Channels, out float pVolumes);
+    void GetChannelVolumes(uint Channels, [MarshalUsing(CountElementName = nameof(Channels))] out float[] pVolumes);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputmatrix
     [PreserveSig]

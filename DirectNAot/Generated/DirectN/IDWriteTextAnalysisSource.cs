@@ -8,12 +8,12 @@ public partial interface IDWriteTextAnalysisSource
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-gettextatposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextAtPosition(uint textPosition, out ushort textString, out uint textLength);
+    HRESULT GetTextAtPosition(uint textPosition, out nint textString, out uint textLength);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-gettextbeforeposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextBeforePosition(uint textPosition, out ushort textString, out uint textLength);
+    HRESULT GetTextBeforePosition(uint textPosition, out nint textString, out uint textLength);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-getparagraphreadingdirection
     [PreserveSig]
@@ -22,7 +22,7 @@ public partial interface IDWriteTextAnalysisSource
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocaleName(uint textPosition, out uint textLength, out ushort localeName);
+    HRESULT GetLocaleName(uint textPosition, out uint textLength, out nint localeName);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-getnumbersubstitution
     [PreserveSig]

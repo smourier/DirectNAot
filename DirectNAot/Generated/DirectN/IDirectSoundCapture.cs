@@ -13,5 +13,5 @@ public partial interface IDirectSoundCapture
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(nint /* optional Guid */ pcGuidDevice);
+    HRESULT Initialize(nint /* optional Guid* */ pcGuidDevice);
 }

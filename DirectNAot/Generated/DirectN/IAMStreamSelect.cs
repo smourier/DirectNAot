@@ -13,7 +13,7 @@ public partial interface IAMStreamSelect
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamselect-info
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Info(int lIndex, nint /* optional AM_MEDIA_TYPE */ ppmt, nint /* optional uint */ pdwFlags, nint /* optional uint */ plcid, nint /* optional uint */ pdwGroup, nint /* optional PWSTR */ ppszName, nint /* optional nint */ ppObject, nint /* optional nint */ ppUnk);
+    HRESULT Info(int lIndex, nint /* optional AM_MEDIA_TYPE** */ ppmt, nint /* optional uint* */ pdwFlags, nint /* optional uint* */ plcid, nint /* optional uint* */ pdwGroup, nint /* optional PWSTR* */ ppszName, nint /* optional nint* */ ppObject, nint /* optional nint* */ ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamselect-enable
     [PreserveSig]

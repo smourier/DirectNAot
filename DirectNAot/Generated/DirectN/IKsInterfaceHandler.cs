@@ -9,7 +9,7 @@ public partial interface IKsInterfaceHandler
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsProcessMediaSamples(IKsDataTypeHandler KsDataTypeHandler, in IMediaSample SampleList, ref int SampleCount, KSIOOPERATION IoOperation, out KSSTREAM_SEGMENT StreamSegment);
+    HRESULT KsProcessMediaSamples(IKsDataTypeHandler KsDataTypeHandler, [MarshalUsing(CountElementName = nameof(SampleCount))] in IMediaSample[] SampleList, ref int SampleCount, KSIOOPERATION IoOperation, out nint StreamSegment);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

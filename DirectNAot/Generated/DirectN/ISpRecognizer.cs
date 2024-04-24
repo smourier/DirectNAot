@@ -53,7 +53,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(SPSTREAMFORMATTYPE WaveFormatType, ref Guid pFormatId, out WAVEFORMATEX ppCoMemWFEX);
+    HRESULT GetFormat(SPSTREAMFORMATTYPE WaveFormatType, ref Guid pFormatId, out nint ppCoMemWFEX);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

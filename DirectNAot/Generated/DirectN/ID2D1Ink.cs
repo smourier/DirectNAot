@@ -15,7 +15,7 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-addsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSegments(in D2D1_INK_BEZIER_SEGMENT segments, uint segmentsCount);
+    HRESULT AddSegments([MarshalUsing(CountElementName = nameof(segmentsCount))] in D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-removesegmentsatend
     [PreserveSig]
@@ -25,7 +25,7 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-setsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSegments(uint startSegment, in D2D1_INK_BEZIER_SEGMENT segments, uint segmentsCount);
+    HRESULT SetSegments(uint startSegment, [MarshalUsing(CountElementName = nameof(segmentsCount))] in D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-setsegmentatend(constd2d1_ink_bezier_segment)
     [PreserveSig]
@@ -39,15 +39,15 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-getsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSegments(uint startSegment, out D2D1_INK_BEZIER_SEGMENT segments, uint segmentsCount);
+    HRESULT GetSegments(uint startSegment, [MarshalUsing(CountElementName = nameof(segmentsCount))] out D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-streamasgeometry(id2d1inkstyle_constd2d1_matrix_3x2_f__float_id2d1simplifiedgeometrysink)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StreamAsGeometry(ID2D1InkStyle? inkStyle, nint /* optional D2D_MATRIX_3X2_F */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT StreamAsGeometry(ID2D1InkStyle? inkStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-getbounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBounds(ID2D1InkStyle? inkStyle, nint /* optional D2D_MATRIX_3X2_F */ worldTransform, out D2D_RECT_F bounds);
+    HRESULT GetBounds(ID2D1InkStyle? inkStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, out D2D_RECT_F bounds);
 }

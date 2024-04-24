@@ -22,7 +22,7 @@ public partial interface IEncoderAPI
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iencoderapi-getparametervalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParameterValues(in Guid Api, out VARIANT Values, out uint ValuesCount);
+    HRESULT GetParameterValues(in Guid Api, out nint Values, out uint ValuesCount);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iencoderapi-getdefaultvalue
     [PreserveSig]

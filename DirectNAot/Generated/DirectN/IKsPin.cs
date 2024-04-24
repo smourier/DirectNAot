@@ -7,11 +7,11 @@ public partial interface IKsPin
     // https://learn.microsoft.com/windows/win32/DirectShow/ikspin-ksquerymediums
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsQueryMediums(out KSMULTIPLE_ITEM MediumList);
+    HRESULT KsQueryMediums(out nint MediumList);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsQueryInterfaces(out KSMULTIPLE_ITEM InterfaceList);
+    HRESULT KsQueryInterfaces(out nint InterfaceList);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -19,7 +19,7 @@ public partial interface IKsPin
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsGetCurrentCommunication(nint /* optional KSPIN_COMMUNICATION */ Communication, nint /* optional KSIDENTIFIER */ Interface, nint /* optional KSIDENTIFIER */ Medium);
+    HRESULT KsGetCurrentCommunication(nint /* optional KSPIN_COMMUNICATION* */ Communication, nint /* optional KSIDENTIFIER* */ Interface, nint /* optional KSIDENTIFIER* */ Medium);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

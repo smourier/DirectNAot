@@ -13,7 +13,7 @@ public partial interface IMPEG2StreamIdMap
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-impeg2streamidmap-unmapstreamid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnmapStreamId(uint culStreamId, in uint pulStreamId);
+    HRESULT UnmapStreamId(uint culStreamId, [MarshalUsing(CountElementName = nameof(culStreamId))] in uint[] pulStreamId);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-impeg2streamidmap-enumstreamidmap
     [PreserveSig]

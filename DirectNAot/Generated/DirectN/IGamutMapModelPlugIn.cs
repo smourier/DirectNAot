@@ -12,5 +12,5 @@ public partial interface IGamutMapModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-igamutmapmodelplugin-sourcetodestinationappearancecolors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SourceToDestinationAppearanceColors(uint cColors, in JChColorF pInputColors, out JChColorF pOutputColors);
+    HRESULT SourceToDestinationAppearanceColors(uint cColors, [MarshalUsing(CountElementName = nameof(cColors))] in JChColorF[] pInputColors, [MarshalUsing(CountElementName = nameof(cColors))] out JChColorF[] pOutputColors);
 }

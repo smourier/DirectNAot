@@ -7,7 +7,7 @@ public partial interface IWMDMEnumStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmenumstorage-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out IWMDMStorage ppStorage, out uint pceltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out IWMDMStorage[] ppStorage, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmenumstorage-skip
     [PreserveSig]

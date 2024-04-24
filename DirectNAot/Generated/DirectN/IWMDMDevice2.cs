@@ -12,7 +12,7 @@ public partial interface IWMDMDevice2 : IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getformatsupport2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormatSupport2(uint dwFlags, out WAVEFORMATEX ppAudioFormatEx, out uint pnAudioFormatCount, out VIDEOINFOHEADER ppVideoFormatEx, out uint pnVideoFormatCount, out WMFILECAPABILITIES ppFileType, out uint pnFileTypeCount);
+    HRESULT GetFormatSupport2(uint dwFlags, out nint ppAudioFormatEx, out uint pnAudioFormatCount, out nint ppVideoFormatEx, out uint pnVideoFormatCount, out nint ppFileType, out uint pnFileTypeCount);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getspecifypropertypages
     [PreserveSig]
@@ -22,5 +22,5 @@ public partial interface IWMDMDevice2 : IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getcanonicalname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCanonicalName(out PWSTR pwszPnPName, uint nMaxChars);
+    HRESULT GetCanonicalName([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR[] pwszPnPName, uint nMaxChars);
 }

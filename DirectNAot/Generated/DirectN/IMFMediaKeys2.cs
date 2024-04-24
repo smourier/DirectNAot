@@ -9,7 +9,7 @@ public partial interface IMFMediaKeys2 : IMFMediaKeys
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetServerCertificate(nint /* byte array */ pbServerCertificate, uint cb);
+    HRESULT SetServerCertificate(nint /* optional byte* */ pbServerCertificate, uint cb);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

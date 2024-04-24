@@ -22,5 +22,5 @@ public partial interface ID3D12VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videodevice-createvideoprocessor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessor(uint NodeMask, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_DESC pOutputStreamDesc, uint NumInputStreamDescs, in D3D12_VIDEO_PROCESS_INPUT_STREAM_DESC pInputStreamDescs, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppVideoProcessor);
+    HRESULT CreateVideoProcessor(uint NodeMask, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_DESC pOutputStreamDesc, uint NumInputStreamDescs, [MarshalUsing(CountElementName = nameof(NumInputStreamDescs))] in D3D12_VIDEO_PROCESS_INPUT_STREAM_DESC[] pInputStreamDescs, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppVideoProcessor);
 }

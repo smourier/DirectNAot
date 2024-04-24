@@ -11,7 +11,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettagname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTagName(out PWSTR name, uint nameCount);
+    HRESULT GetTagName([MarshalUsing(CountElementName = nameof(nameCount))] out PWSTR[] name, uint nameCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettagnamelength
     [PreserveSig]
@@ -77,7 +77,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-isattributespecified
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    bool IsAttributeSpecified(PWSTR name, nint /* optional bool */ inherited);
+    bool IsAttributeSpecified(PWSTR name, nint /* optional bool* */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributecount
     [PreserveSig]
@@ -86,12 +86,12 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedAttributeName(uint index, out PWSTR name, uint nameCount, nint /* optional bool */ inherited);
+    HRESULT GetSpecifiedAttributeName(uint index, [MarshalUsing(CountElementName = nameof(nameCount))] out PWSTR[] name, uint nameCount, nint /* optional bool* */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getspecifiedattributenamelength
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedAttributeNameLength(uint index, out uint nameLength, nint /* optional bool */ inherited);
+    HRESULT GetSpecifiedAttributeNameLength(uint index, out uint nameLength, nint /* optional bool* */ inherited);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-removeattribute
     [PreserveSig]
@@ -101,12 +101,12 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-settextvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTextValue(PWSTR name, uint nameCount);
+    HRESULT SetTextValue([MarshalUsing(CountElementName = nameof(nameCount))] PWSTR[] name, uint nameCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettextvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextValue(out PWSTR name, uint nameCount);
+    HRESULT GetTextValue([MarshalUsing(CountElementName = nameof(nameCount))] out PWSTR[] name, uint nameCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettextvaluelength
     [PreserveSig]
@@ -140,7 +140,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgelement-getattributevalue-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributeValue(PWSTR name, D2D1_SVG_ATTRIBUTE_STRING_TYPE type, out PWSTR value, uint valueCount);
+    HRESULT GetAttributeValue(PWSTR name, D2D1_SVG_ATTRIBUTE_STRING_TYPE type, [MarshalUsing(CountElementName = nameof(valueCount))] out PWSTR[] value, uint valueCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getattributevaluelength
     [PreserveSig]

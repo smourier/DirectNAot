@@ -12,12 +12,12 @@ public partial interface IPhotoAcquireSource
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getdeviceicons
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceIcons(uint nSize, nint /* optional HICON */ phLargeIcon, nint /* optional HICON */ phSmallIcon);
+    HRESULT GetDeviceIcons(uint nSize, nint /* optional HICON* */ phLargeIcon, nint /* optional HICON* */ phSmallIcon);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-initializeitemlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeItemList([MarshalAs(UnmanagedType.U4)] bool fForceEnumeration, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB, nint /* optional uint */ pnItemCount);
+    HRESULT InitializeItemList([MarshalAs(UnmanagedType.U4)] bool fForceEnumeration, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB, nint /* optional uint* */ pnItemCount);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getitemcount
     [PreserveSig]

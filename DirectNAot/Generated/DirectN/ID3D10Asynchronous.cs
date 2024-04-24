@@ -15,7 +15,7 @@ public partial interface ID3D10Asynchronous : ID3D10DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-getdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetData(nint /* optional void */ pData, uint DataSize, uint GetDataFlags);
+    HRESULT GetData(nint /* optional void* */ pData, uint DataSize, uint GetDataFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10asynchronous-getdatasize
     [PreserveSig]

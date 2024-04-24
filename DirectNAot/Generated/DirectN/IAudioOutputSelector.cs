@@ -13,5 +13,5 @@ public partial interface IAudioOutputSelector
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudiooutputselector-setselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSelection(uint nIdSelect, nint /* optional Guid */ pguidEventContext);
+    HRESULT SetSelection(uint nIdSelect, nint /* optional Guid* */ pguidEventContext);
 }

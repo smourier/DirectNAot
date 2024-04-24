@@ -6,5 +6,5 @@ public partial interface ID3D12GraphicsCommandList7 : ID3D12GraphicsCommandList6
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist7-barrier
     [PreserveSig]
-    void Barrier(uint NumBarrierGroups, in D3D12_BARRIER_GROUP pBarrierGroups);
+    void Barrier(uint NumBarrierGroups, [MarshalUsing(CountElementName = nameof(NumBarrierGroups))] in D3D12_BARRIER_GROUP[] pBarrierGroups);
 }

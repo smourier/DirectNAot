@@ -22,7 +22,7 @@ public partial interface IDvbSiParser
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-getpmt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPMT(ushort pid, nint /* optional ushort */ pwProgramNumber, out IPMT ppPMT);
+    HRESULT GetPMT(ushort pid, nint /* optional ushort* */ pwProgramNumber, out IPMT ppPMT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-gettsdt
     [PreserveSig]
@@ -32,22 +32,22 @@ public partial interface IDvbSiParser
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-getnit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNIT(byte tableId, nint /* optional ushort */ pwNetworkId, out IDVB_NIT ppNIT);
+    HRESULT GetNIT(byte tableId, nint /* optional ushort* */ pwNetworkId, out IDVB_NIT ppNIT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-getsdt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSDT(byte tableId, nint /* optional ushort */ pwTransportStreamId, out IDVB_SDT ppSDT);
+    HRESULT GetSDT(byte tableId, nint /* optional ushort* */ pwTransportStreamId, out IDVB_SDT ppSDT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-geteit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEIT(byte tableId, nint /* optional ushort */ pwServiceId, out IDVB_EIT ppEIT);
+    HRESULT GetEIT(byte tableId, nint /* optional ushort* */ pwServiceId, out IDVB_EIT ppEIT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-getbat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBAT(nint /* optional ushort */ pwBouquetId, out IDVB_BAT ppBAT);
+    HRESULT GetBAT(nint /* optional ushort* */ pwBouquetId, out IDVB_BAT ppBAT);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbsiparser-getrst
     [PreserveSig]

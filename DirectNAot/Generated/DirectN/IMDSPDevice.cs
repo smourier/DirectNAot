@@ -7,12 +7,12 @@ public partial interface IMDSPDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetName(out PWSTR pwszName, uint nMaxChars);
+    HRESULT GetName([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR[] pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getmanufacturer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetManufacturer(out PWSTR pwszName, uint nMaxChars);
+    HRESULT GetManufacturer([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR[] pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getversion
     [PreserveSig]
@@ -52,7 +52,7 @@ public partial interface IMDSPDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getformatsupport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormatSupport(out WAVEFORMATEX pFormatEx, out uint pnFormatCount, out PWSTR pppwszMimeType, out uint pnMimeTypeCount);
+    HRESULT GetFormatSupport(out nint pFormatEx, out uint pnFormatCount, out nint pppwszMimeType, out uint pnMimeTypeCount);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-sendopaquecommand
     [PreserveSig]

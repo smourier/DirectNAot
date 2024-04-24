@@ -16,7 +16,7 @@ public partial interface IDWriteFont1 : IDWriteFont
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefont1-getunicoderanges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnicodeRanges(uint maxRangeCount, nint /* optional DWRITE_UNICODE_RANGE */ unicodeRanges, out uint actualRangeCount);
+    HRESULT GetUnicodeRanges(uint maxRangeCount, nint /* optional DWRITE_UNICODE_RANGE* */ unicodeRanges, out uint actualRangeCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefont1-ismonospacedfont
     [PreserveSig]

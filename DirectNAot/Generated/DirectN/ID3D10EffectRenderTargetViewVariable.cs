@@ -17,10 +17,10 @@ public partial interface ID3D10EffectRenderTargetViewVariable : ID3D10EffectVari
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-setrendertargetarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRenderTargetArray(in ID3D10RenderTargetView ppResources, uint Offset, uint Count);
+    HRESULT SetRenderTargetArray([MarshalUsing(CountElementName = nameof(Count))] in ID3D10RenderTargetView[] ppResources, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-getrendertargetarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRenderTargetArray(out ID3D10RenderTargetView ppResources, uint Offset, uint Count);
+    HRESULT GetRenderTargetArray([MarshalUsing(CountElementName = nameof(Count))] out ID3D10RenderTargetView[] ppResources, uint Offset, uint Count);
 }

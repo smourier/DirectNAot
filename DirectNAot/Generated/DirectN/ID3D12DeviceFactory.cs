@@ -24,9 +24,9 @@ public partial interface ID3D12DeviceFactory
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableExperimentalFeatures(uint NumFeatures, in Guid pIIDs, nint /* optional void */ pConfigurationStructs, nint /* optional uint */ pConfigurationStructSizes);
+    HRESULT EnableExperimentalFeatures(uint NumFeatures, [MarshalUsing(CountElementName = nameof(NumFeatures))] in Guid[] pIIDs, nint /* optional void* */ pConfigurationStructs, nint /* optional uint* */ pConfigurationStructSizes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDevice(nint adapter, D3D_FEATURE_LEVEL FeatureLevel, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ ppvDevice);
+    HRESULT CreateDevice(nint adapter, D3D_FEATURE_LEVEL FeatureLevel, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppvDevice);
 }

@@ -4,7 +4,7 @@
 public partial interface IMFMediaEngineEMENotify
 {
     [PreserveSig]
-    void Encrypted(nint /* byte array */ pbInitData, uint cb, BSTR bstrInitDataType);
+    void Encrypted(nint /* optional byte* */ pbInitData, uint cb, BSTR bstrInitDataType);
     
     [PreserveSig]
     void WaitingForKey();

@@ -23,7 +23,7 @@ public partial interface IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesevent-getdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetData(out SAFEARRAY pbData);
+    HRESULT GetData(out nint pbData);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesevent-getstringdata
     [PreserveSig]

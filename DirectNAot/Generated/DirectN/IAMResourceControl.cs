@@ -8,5 +8,5 @@ public partial interface IAMResourceControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamresourcecontrol-reserve
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reserve(uint dwFlags, nint /* optional void */ pvReserved);
+    HRESULT Reserve(uint dwFlags, nint /* optional void* */ pvReserved);
 }

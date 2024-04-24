@@ -6,14 +6,14 @@ public partial interface IDWriteTextLayout4 : IDWriteTextLayout3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFontAxisValues(in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, DWRITE_TEXT_RANGE textRange);
+    HRESULT SetFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, DWRITE_TEXT_RANGE textRange);
     
     [PreserveSig]
     uint GetFontAxisValueCount(uint currentPosition);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisValues(uint currentPosition, out DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, nint /* optional DWRITE_TEXT_RANGE */ textRange);
+    HRESULT GetFontAxisValues(uint currentPosition, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] out DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     [PreserveSig]
     DWRITE_AUTOMATIC_FONT_AXES GetAutomaticFontAxes();

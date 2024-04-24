@@ -7,17 +7,17 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-createmoduleinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint /* optional ID3DBlob */ ppErrorBuffer);
+    HRESULT CreateModuleInstance(out ID3D11ModuleInstance ppModuleInstance, nint /* optional ID3DBlob* */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setinputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputSignature(in D3D11_PARAMETER_DESC pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
+    HRESULT SetInputSignature([MarshalUsing(CountElementName = nameof(cInputParameters))] in D3D11_PARAMETER_DESC[] pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setoutputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputSignature(in D3D11_PARAMETER_DESC pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
+    HRESULT SetOutputSignature([MarshalUsing(CountElementName = nameof(cOutputParameters))] in D3D11_PARAMETER_DESC[] pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-callfunction
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-getlasterror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLastError(nint /* optional ID3DBlob */ ppErrorBuffer);
+    HRESULT GetLastError(nint /* optional ID3DBlob* */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-generatehlsl
     [PreserveSig]

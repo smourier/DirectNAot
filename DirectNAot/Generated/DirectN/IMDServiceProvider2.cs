@@ -7,5 +7,5 @@ public partial interface IMDServiceProvider2 : IMDServiceProvider
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdserviceprovider2-createdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDevice(PWSTR pwszDevicePath, out uint pdwCount, out IMDSPDevice pppDeviceArray);
+    HRESULT CreateDevice(PWSTR pwszDevicePath, out uint pdwCount, out nint pppDeviceArray);
 }

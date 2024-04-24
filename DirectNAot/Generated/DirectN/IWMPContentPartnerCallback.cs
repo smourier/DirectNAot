@@ -37,7 +37,7 @@ public partial interface IWMPContentPartnerCallback
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-addlistcontents
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddListContents(uint dwListCookie, uint cItems, in uint prgItems);
+    HRESULT AddListContents(uint dwListCookie, uint cItems, [MarshalUsing(CountElementName = nameof(cItems))] in uint[] prgItems);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-listcontentscomplete
     [PreserveSig]
@@ -52,7 +52,7 @@ public partial interface IWMPContentPartnerCallback
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-getcontentidsinlibrary
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContentIDsInLibrary(out uint pcContentIDs, out uint pprgIDs);
+    HRESULT GetContentIDsInLibrary(out uint pcContentIDs, out nint pprgIDs);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-refreshlicensecomplete
     [PreserveSig]

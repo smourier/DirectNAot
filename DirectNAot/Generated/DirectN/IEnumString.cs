@@ -8,7 +8,7 @@ public partial interface IEnumString
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumstring-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out PWSTR rgelt, nint /* optional uint */ pceltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out PWSTR[] rgelt, nint /* optional uint* */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumstring-skip
     [PreserveSig]

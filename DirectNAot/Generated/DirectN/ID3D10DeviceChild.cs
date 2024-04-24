@@ -11,12 +11,12 @@ public partial interface ID3D10DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10devicechild-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint /* optional void */ pData);
+    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint /* optional void* */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10devicechild-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void */ pData);
+    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void* */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10devicechild-setprivatedatainterface
     [PreserveSig]

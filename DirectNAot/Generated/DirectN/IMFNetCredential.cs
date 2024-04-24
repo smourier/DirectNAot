@@ -18,12 +18,12 @@ public partial interface IMFNetCredential
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-getuser
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUser(nint /* byte array */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
+    HRESULT GetUser(nint /* optional byte* */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-getpassword
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPassword(nint /* byte array */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
+    HRESULT GetPassword(nint /* optional byte* */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-loggedonuser
     [PreserveSig]

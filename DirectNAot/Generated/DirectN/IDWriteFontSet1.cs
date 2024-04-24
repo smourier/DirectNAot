@@ -7,7 +7,7 @@ public partial interface IDWriteFontSet1 : IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getmatchingfonts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMatchingFonts(nint /* optional DWRITE_FONT_PROPERTY */ fontProperty, in DWRITE_FONT_AXIS_VALUE fontAxisValues, uint fontAxisValueCount, out IDWriteFontSet1 matchingFonts);
+    HRESULT GetMatchingFonts(nint /* optional DWRITE_FONT_PROPERTY* */ fontProperty, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontSet1 matchingFonts);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfirstfontresources
     [PreserveSig]
@@ -17,37 +17,37 @@ public partial interface IDWriteFontSet1 : IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfonts(uint32const_uint32_idwritefontset1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFonts(in uint indices, uint indexCount, out IDWriteFontSet1 filteredFontSet);
+    HRESULT GetFilteredFonts([MarshalUsing(CountElementName = nameof(indexCount))] in uint[] indices, uint indexCount, out IDWriteFontSet1 filteredFontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfonts(uint32const_uint32_idwritefontset1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFonts(in DWRITE_FONT_AXIS_RANGE fontAxisRanges, uint fontAxisRangeCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyRange, out IDWriteFontSet1 filteredFontSet);
+    HRESULT GetFilteredFonts([MarshalUsing(CountElementName = nameof(fontAxisRangeCount))] in DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint fontAxisRangeCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyRange, out IDWriteFontSet1 filteredFontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfonts(uint32const_uint32_idwritefontset1)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFonts(nint /* optional DWRITE_FONT_PROPERTY */ properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, out IDWriteFontSet1 filteredFontSet);
+    HRESULT GetFilteredFonts(nint /* optional DWRITE_FONT_PROPERTY* */ properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, out IDWriteFontSet1 filteredFontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfontindices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFontIndices(in DWRITE_FONT_AXIS_RANGE fontAxisRanges, uint fontAxisRangeCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyRange, out uint indices, uint maxIndexCount, out uint actualIndexCount);
+    HRESULT GetFilteredFontIndices([MarshalUsing(CountElementName = nameof(fontAxisRangeCount))] in DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint fontAxisRangeCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyRange, [MarshalUsing(CountElementName = nameof(maxIndexCount))] out uint[] indices, uint maxIndexCount, out uint actualIndexCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfilteredfontindices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilteredFontIndices(in DWRITE_FONT_PROPERTY properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, out uint indices, uint maxIndexCount, out uint actualIndexCount);
+    HRESULT GetFilteredFontIndices([MarshalUsing(CountElementName = nameof(propertyCount))] in DWRITE_FONT_PROPERTY[] properties, uint propertyCount, [MarshalAs(UnmanagedType.U4)] bool selectAnyProperty, [MarshalUsing(CountElementName = nameof(maxIndexCount))] out uint[] indices, uint maxIndexCount, out uint actualIndexCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfontaxisranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisRanges(uint listIndex, out DWRITE_FONT_AXIS_RANGE fontAxisRanges, uint maxFontAxisRangeCount, out uint actualFontAxisRangeCount);
+    HRESULT GetFontAxisRanges(uint listIndex, [MarshalUsing(CountElementName = nameof(maxFontAxisRangeCount))] out DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint maxFontAxisRangeCount, out uint actualFontAxisRangeCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfontaxisranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisRanges(out DWRITE_FONT_AXIS_RANGE fontAxisRanges, uint maxFontAxisRangeCount, out uint actualFontAxisRangeCount);
+    HRESULT GetFontAxisRanges([MarshalUsing(CountElementName = nameof(maxFontAxisRangeCount))] out DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint maxFontAxisRangeCount, out uint actualFontAxisRangeCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset1-getfontfacereference
     [PreserveSig]

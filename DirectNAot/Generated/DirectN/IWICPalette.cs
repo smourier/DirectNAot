@@ -13,7 +13,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializecustom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeCustom(in uint pColors, uint cCount);
+    HRESULT InitializeCustom([MarshalUsing(CountElementName = nameof(cCount))] in uint[] pColors, uint cCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializefrombitmap
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-getcolors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColors(uint cCount, out uint pColors, out uint pcActualColors);
+    HRESULT GetColors(uint cCount, [MarshalUsing(CountElementName = nameof(cCount))] out uint[] pColors, out uint pcActualColors);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-isblackwhite
     [PreserveSig]

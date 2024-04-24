@@ -13,17 +13,17 @@ public partial interface IDirectXVideoProcessorService : IDirectXVideoAccelerati
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessorservice-getvideoprocessordeviceguids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorDeviceGuids(in DXVA2_VideoDesc pVideoDesc, out uint pCount, out Guid pGuids);
+    HRESULT GetVideoProcessorDeviceGuids(in DXVA2_VideoDesc pVideoDesc, out uint pCount, out nint pGuids);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessorservice-getvideoprocessorrendertargets
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorRenderTargets(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, out uint pCount, out D3DFORMAT pFormats);
+    HRESULT GetVideoProcessorRenderTargets(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, out uint pCount, out nint pFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessorservice-getvideoprocessorsubstreamformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorSubStreamFormats(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, D3DFORMAT RenderTargetFormat, out uint pCount, out D3DFORMAT pFormats);
+    HRESULT GetVideoProcessorSubStreamFormats(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, D3DFORMAT RenderTargetFormat, out uint pCount, out nint pFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessorservice-getvideoprocessorcaps
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface IMFByteStreamHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamhandler-begincreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObject(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObject(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamhandler-endcreateobject
     [PreserveSig]

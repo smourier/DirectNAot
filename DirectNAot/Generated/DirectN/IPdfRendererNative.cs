@@ -7,10 +7,10 @@ public partial interface IPdfRendererNative
     // https://learn.microsoft.com/windows/win32/api/windows.data.pdf.interop/nf-windows-data-pdf-interop-ipdfrenderernative-renderpagetosurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderPageToSurface(nint pdfPage, IDXGISurface pSurface, in FoundationPOINT offset, nint /* optional PDF_RENDER_PARAMS */ pRenderParams);
+    HRESULT RenderPageToSurface(nint pdfPage, IDXGISurface pSurface, in FoundationPOINT offset, nint /* optional PDF_RENDER_PARAMS* */ pRenderParams);
     
     // https://learn.microsoft.com/windows/win32/api/windows.data.pdf.interop/nf-windows-data-pdf-interop-ipdfrenderernative-renderpagetodevicecontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderPageToDeviceContext(nint pdfPage, ID2D1DeviceContext pD2DDeviceContext, nint /* optional PDF_RENDER_PARAMS */ pRenderParams);
+    HRESULT RenderPageToDeviceContext(nint pdfPage, ID2D1DeviceContext pD2DDeviceContext, nint /* optional PDF_RENDER_PARAMS* */ pRenderParams);
 }

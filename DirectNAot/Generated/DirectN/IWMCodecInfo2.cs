@@ -7,10 +7,10 @@ public partial interface IWMCodecInfo2 : IWMCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmcodecinfo2-getcodecname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecName(in Guid guidType, uint dwCodecIndex, out PWSTR wszName, ref uint pcchName);
+    HRESULT GetCodecName(in Guid guidType, uint dwCodecIndex, [MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR[] wszName, ref uint pcchName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmcodecinfo2-getcodecformatdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecFormatDesc(in Guid guidType, uint dwCodecIndex, uint dwFormatIndex, out IWMStreamConfig ppIStreamConfig, out PWSTR wszDesc, ref uint pcchDesc);
+    HRESULT GetCodecFormatDesc(in Guid guidType, uint dwCodecIndex, uint dwFormatIndex, out IWMStreamConfig ppIStreamConfig, [MarshalUsing(CountElementName = nameof(pcchDesc))] out PWSTR[] wszDesc, ref uint pcchDesc);
 }

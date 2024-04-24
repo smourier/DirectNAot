@@ -13,32 +13,32 @@ public partial interface IWICBitmapCodecInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getpixelformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPixelFormats(uint cFormats, ref Guid pguidPixelFormats, out uint pcActual);
+    HRESULT GetPixelFormats(uint cFormats, [MarshalUsing(CountElementName = nameof(cFormats))] ref Guid[] pguidPixelFormats, out uint pcActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getcolormanagementversion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColorManagementVersion(uint cchColorManagementVersion, ref PWSTR wzColorManagementVersion, out uint pcchActual);
+    HRESULT GetColorManagementVersion(uint cchColorManagementVersion, [MarshalUsing(CountElementName = nameof(cchColorManagementVersion))] ref PWSTR[] wzColorManagementVersion, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getdevicemanufacturer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceManufacturer(uint cchDeviceManufacturer, ref PWSTR wzDeviceManufacturer, out uint pcchActual);
+    HRESULT GetDeviceManufacturer(uint cchDeviceManufacturer, [MarshalUsing(CountElementName = nameof(cchDeviceManufacturer))] ref PWSTR[] wzDeviceManufacturer, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getdevicemodels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceModels(uint cchDeviceModels, ref PWSTR wzDeviceModels, out uint pcchActual);
+    HRESULT GetDeviceModels(uint cchDeviceModels, [MarshalUsing(CountElementName = nameof(cchDeviceModels))] ref PWSTR[] wzDeviceModels, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getmimetypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMimeTypes(uint cchMimeTypes, ref PWSTR wzMimeTypes, out uint pcchActual);
+    HRESULT GetMimeTypes(uint cchMimeTypes, [MarshalUsing(CountElementName = nameof(cchMimeTypes))] ref PWSTR[] wzMimeTypes, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getfileextensions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFileExtensions(uint cchFileExtensions, ref PWSTR wzFileExtensions, out uint pcchActual);
+    HRESULT GetFileExtensions(uint cchFileExtensions, [MarshalUsing(CountElementName = nameof(cchFileExtensions))] ref PWSTR[] wzFileExtensions, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-doessupportanimation
     [PreserveSig]

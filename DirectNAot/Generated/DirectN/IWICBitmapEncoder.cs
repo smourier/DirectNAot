@@ -22,7 +22,7 @@ public partial interface IWICBitmapEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-setcolorcontexts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetColorContexts(uint cCount, in IWICColorContext ppIColorContext);
+    HRESULT SetColorContexts(uint cCount, [MarshalUsing(CountElementName = nameof(cCount))] in IWICColorContext[] ppIColorContext);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-setpalette
     [PreserveSig]

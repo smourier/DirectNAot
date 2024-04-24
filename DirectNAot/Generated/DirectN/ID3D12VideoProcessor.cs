@@ -15,7 +15,7 @@ public partial interface ID3D12VideoProcessor : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocessor-getinputstreamdescs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputStreamDescs(uint NumInputStreamDescs, out D3D12_VIDEO_PROCESS_INPUT_STREAM_DESC pInputStreamDescs);
+    HRESULT GetInputStreamDescs(uint NumInputStreamDescs, [MarshalUsing(CountElementName = nameof(NumInputStreamDescs))] out D3D12_VIDEO_PROCESS_INPUT_STREAM_DESC[] pInputStreamDescs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocessor-getoutputstreamdesc
     [PreserveSig]

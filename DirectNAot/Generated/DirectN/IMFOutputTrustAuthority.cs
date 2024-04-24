@@ -13,5 +13,5 @@ public partial interface IMFOutputTrustAuthority
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfoutputtrustauthority-setpolicy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPolicy(nint /* optional IMFOutputPolicy */ ppPolicy, uint nPolicy, out nint /* byte array */ ppbTicket, nint /* optional uint */ pcbTicket);
+    HRESULT SetPolicy(nint /* optional IMFOutputPolicy* */ ppPolicy, uint nPolicy, nint /* optional byte** */ ppbTicket, nint /* optional uint* */ pcbTicket);
 }

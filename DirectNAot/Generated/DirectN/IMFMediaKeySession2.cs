@@ -5,7 +5,7 @@ public partial interface IMFMediaKeySession2 : IMFMediaKeySession
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_KeyStatuses(out MFMediaKeyStatus pKeyStatusesArray, out uint puSize);
+    HRESULT get_KeyStatuses(out nint pKeyStatusesArray, out uint puSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

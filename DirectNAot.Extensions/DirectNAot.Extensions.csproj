@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -9,6 +9,10 @@
 		<IsAotCompatible>true</IsAotCompatible>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\DirectNAot\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\DirectNAot\DirectNAot.csproj" />

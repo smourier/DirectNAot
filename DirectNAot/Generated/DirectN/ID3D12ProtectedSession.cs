@@ -7,7 +7,7 @@ public partial interface ID3D12ProtectedSession : ID3D12DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12protectedsession-getstatusfence
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStatusFence(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ ppFence);
+    HRESULT GetStatusFence(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFence);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12protectedsession-getsessionstatus
     [PreserveSig]

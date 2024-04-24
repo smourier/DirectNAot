@@ -7,7 +7,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-gettypeattr
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypeAttr(out TYPEATTR ppTypeAttr);
+    HRESULT GetTypeAttr(out nint ppTypeAttr);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-gettypecomp
     [PreserveSig]
@@ -17,17 +17,17 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getfuncdesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFuncDesc(uint index, out FUNCDESC ppFuncDesc);
+    HRESULT GetFuncDesc(uint index, out nint ppFuncDesc);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getvardesc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVarDesc(uint index, out VARDESC ppVarDesc);
+    HRESULT GetVarDesc(uint index, out nint ppVarDesc);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNames(int memid, out BSTR rgBstrNames, uint cMaxNames, out uint pcNames);
+    HRESULT GetNames(int memid, [MarshalUsing(CountElementName = nameof(cMaxNames))] out BSTR[] rgBstrNames, uint cMaxNames, out uint pcNames);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getreftypeofimpltype
     [PreserveSig]
@@ -42,7 +42,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIDsOfNames(in PWSTR rgszNames, uint cNames, out int pMemId);
+    HRESULT GetIDsOfNames([MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, [MarshalUsing(CountElementName = nameof(cNames))] out int[] pMemId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-invoke
     [PreserveSig]
@@ -52,12 +52,12 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getdocumentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentation(int memid, nint /* optional BSTR */ pBstrName, nint /* optional BSTR */ pBstrDocString, out uint pdwHelpContext, nint /* optional BSTR */ pBstrHelpFile);
+    HRESULT GetDocumentation(int memid, nint /* optional BSTR* */ pBstrName, nint /* optional BSTR* */ pBstrDocString, out uint pdwHelpContext, nint /* optional BSTR* */ pBstrHelpFile);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getdllentry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDllEntry(int memid, INVOKEKIND invKind, nint /* optional BSTR */ pBstrDllName, nint /* optional BSTR */ pBstrName, out ushort pwOrdinal);
+    HRESULT GetDllEntry(int memid, INVOKEKIND invKind, nint /* optional BSTR* */ pBstrDllName, nint /* optional BSTR* */ pBstrName, out ushort pwOrdinal);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getreftypeinfo
     [PreserveSig]

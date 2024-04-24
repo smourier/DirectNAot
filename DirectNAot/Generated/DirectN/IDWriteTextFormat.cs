@@ -91,7 +91,7 @@ public partial interface IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFamilyName(out PWSTR fontFamilyName, uint nameSize);
+    HRESULT GetFontFamilyName([MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR[] fontFamilyName, uint nameSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getfontweight
     [PreserveSig]
@@ -116,5 +116,5 @@ public partial interface IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextformat-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocaleName(out PWSTR localeName, uint nameSize);
+    HRESULT GetLocaleName([MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR[] localeName, uint nameSize);
 }

@@ -8,5 +8,5 @@ public partial interface IWMDRMReader3 : IWMDRMReader2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader3-getinclusionlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInclusionList(out Guid ppGuids, out uint pcGuids);
+    HRESULT GetInclusionList(out nint ppGuids, out uint pcGuids);
 }

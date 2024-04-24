@@ -78,7 +78,7 @@ public partial interface IDCompositionDevice
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createtransformgroup
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransformGroup(in IDCompositionTransform transforms, uint elements, out IDCompositionTransform transformGroup);
+    HRESULT CreateTransformGroup([MarshalUsing(CountElementName = nameof(elements))] in IDCompositionTransform[] transforms, uint elements, out IDCompositionTransform transformGroup);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createtranslatetransform3d
     [PreserveSig]
@@ -103,7 +103,7 @@ public partial interface IDCompositionDevice
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createtransform3dgroup
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransform3DGroup(in IDCompositionTransform3D transforms3D, uint elements, out IDCompositionTransform3D transform3DGroup);
+    HRESULT CreateTransform3DGroup([MarshalUsing(CountElementName = nameof(elements))] in IDCompositionTransform3D[] transforms3D, uint elements, out IDCompositionTransform3D transform3DGroup);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createeffectgroup
     [PreserveSig]

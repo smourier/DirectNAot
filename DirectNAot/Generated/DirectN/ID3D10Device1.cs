@@ -7,12 +7,12 @@ public partial interface ID3D10Device1 : ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-id3d10device1-createshaderresourceview1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateShaderResourceView1(ID3D10Resource pResource, nint /* optional D3D10_SHADER_RESOURCE_VIEW_DESC1 */ pDesc, nint /* optional ID3D10ShaderResourceView1 */ ppSRView);
+    HRESULT CreateShaderResourceView1(ID3D10Resource pResource, nint /* optional D3D10_SHADER_RESOURCE_VIEW_DESC1* */ pDesc, nint /* optional ID3D10ShaderResourceView1* */ ppSRView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-id3d10device1-createblendstate1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlendState1(in D3D10_BLEND_DESC1 pBlendStateDesc, nint /* optional ID3D10BlendState1 */ ppBlendState);
+    HRESULT CreateBlendState1(in D3D10_BLEND_DESC1 pBlendStateDesc, nint /* optional ID3D10BlendState1* */ ppBlendState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-id3d10device1-getfeaturelevel
     [PreserveSig]

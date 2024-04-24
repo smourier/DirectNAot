@@ -18,7 +18,7 @@ public partial interface IMFSourceResolver
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-begincreateobjectfromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObjectFromURL(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObjectFromURL(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-endcreateobjectfromurl
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IMFSourceResolver
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-begincreateobjectfrombytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObjectFromByteStream(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObjectFromByteStream(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-endcreateobjectfrombytestream
     [PreserveSig]

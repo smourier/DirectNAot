@@ -18,7 +18,7 @@ public partial interface IOpcCertificateEnumerator
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopccertificateenumerator-getcurrent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrent(out CERT_CONTEXT certificate);
+    HRESULT GetCurrent(out nint certificate);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopccertificateenumerator-clone
     [PreserveSig]

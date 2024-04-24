@@ -17,7 +17,7 @@ public partial interface IXAudio2SourceVoice : IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2sourcevoice-submitsourcebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SubmitSourceBuffer(in XAUDIO2_BUFFER pBuffer, nint /* optional XAUDIO2_BUFFER_WMA */ pBufferWMA);
+    HRESULT SubmitSourceBuffer(in XAUDIO2_BUFFER pBuffer, nint /* optional XAUDIO2_BUFFER_WMA* */ pBufferWMA);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2sourcevoice-flushsourcebuffers
     [PreserveSig]

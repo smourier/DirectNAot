@@ -18,7 +18,7 @@ public partial interface IAMPluginControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamplugincontrol-setpreferredclsid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPreferredClsid(in Guid subType, nint /* optional Guid */ clsid);
+    HRESULT SetPreferredClsid(in Guid subType, nint /* optional Guid* */ clsid);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamplugincontrol-isdisabled
     [PreserveSig]

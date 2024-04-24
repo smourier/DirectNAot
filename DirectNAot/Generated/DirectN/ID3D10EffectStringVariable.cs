@@ -12,5 +12,5 @@ public partial interface ID3D10EffectStringVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectstringvariable-getstringarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStringArray(out PSTR ppStrings, uint Offset, uint Count);
+    HRESULT GetStringArray([MarshalUsing(CountElementName = nameof(Count))] out PSTR[] ppStrings, uint Offset, uint Count);
 }

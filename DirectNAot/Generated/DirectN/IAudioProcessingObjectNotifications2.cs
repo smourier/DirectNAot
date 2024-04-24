@@ -7,5 +7,5 @@ public partial interface IAudioProcessingObjectNotifications2 : IAudioProcessing
     // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/nf-audioengineextensionapo-iaudioprocessingobjectnotifications2-getaponotificationregistrationinfo2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetApoNotificationRegistrationInfo2(APO_NOTIFICATION_TYPE maxApoNotificationTypeSupported, out APO_NOTIFICATION_DESCRIPTOR apoNotifications, out uint count);
+    HRESULT GetApoNotificationRegistrationInfo2(APO_NOTIFICATION_TYPE maxApoNotificationTypeSupported, [MarshalUsing(CountElementName = nameof(count))] out APO_NOTIFICATION_DESCRIPTOR[] apoNotifications, out uint count);
 }

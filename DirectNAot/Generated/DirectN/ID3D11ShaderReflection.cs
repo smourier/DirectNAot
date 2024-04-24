@@ -83,7 +83,7 @@ public partial interface ID3D11ShaderReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getthreadgroupsize
     [PreserveSig]
-    uint GetThreadGroupSize(nint /* optional uint */ pSizeX, nint /* optional uint */ pSizeY, nint /* optional uint */ pSizeZ);
+    uint GetThreadGroupSize(nint /* optional uint* */ pSizeX, nint /* optional uint* */ pSizeY, nint /* optional uint* */ pSizeZ);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getrequiresflags
     [PreserveSig]

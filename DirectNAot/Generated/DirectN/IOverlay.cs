@@ -8,12 +8,12 @@ public partial interface IOverlay
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPalette(ref uint pdwColors, out PALETTEENTRY ppPalette);
+    HRESULT GetPalette(ref uint pdwColors, out nint ppPalette);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-setpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPalette(uint dwColors, in PALETTEENTRY pPalette);
+    HRESULT SetPalette(uint dwColors, [MarshalUsing(CountElementName = nameof(dwColors))] in PALETTEENTRY[] pPalette);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getdefaultcolorkey
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IOverlay
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getcliplist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipList(out FoundationRECT pSourceRect, out FoundationRECT pDestinationRect, out RGNDATA ppRgnData);
+    HRESULT GetClipList(out FoundationRECT pSourceRect, out FoundationRECT pDestinationRect, out nint ppRgnData);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getvideoposition
     [PreserveSig]

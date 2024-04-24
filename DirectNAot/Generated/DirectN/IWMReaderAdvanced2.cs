@@ -37,7 +37,7 @@ public partial interface IWMReaderAdvanced2 : IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-getprotocolname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProtocolName(out PWSTR pwszProtocol, ref uint pcchProtocol);
+    HRESULT GetProtocolName([MarshalUsing(CountElementName = nameof(pcchProtocol))] out PWSTR[] pwszProtocol, ref uint pcchProtocol);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-startatmarker
     [PreserveSig]

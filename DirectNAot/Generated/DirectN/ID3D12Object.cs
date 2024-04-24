@@ -7,12 +7,12 @@ public partial interface ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12object-getprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint /* optional void */ pData);
+    HRESULT GetPrivateData(in Guid guid, ref uint pDataSize, nint /* optional void* */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12object-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void */ pData);
+    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void* */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12object-setprivatedatainterface
     [PreserveSig]

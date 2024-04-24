@@ -7,7 +7,7 @@ public partial interface IWMStreamList
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamlist-getstreams
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreams(out ushort pwStreamNumArray, ref ushort pcStreams);
+    HRESULT GetStreams([MarshalUsing(CountElementName = nameof(pcStreams))] out ushort[] pwStreamNumArray, ref ushort pcStreams);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamlist-addstream
     [PreserveSig]

@@ -5,7 +5,7 @@ public partial interface IDWritePaintReader
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCurrentGlyph(uint glyphIndex, out DWRITE_PAINT_ELEMENT paintElement, uint structSize, out D2D_RECT_F clipBox, nint /* optional DWRITE_PAINT_ATTRIBUTES */ glyphAttributes);
+    HRESULT SetCurrentGlyph(uint glyphIndex, out DWRITE_PAINT_ELEMENT paintElement, uint structSize, out D2D_RECT_F clipBox, nint /* optional DWRITE_PAINT_ATTRIBUTES* */ glyphAttributes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -17,7 +17,7 @@ public partial interface IDWritePaintReader
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCustomColorPalette(in DWRITE_COLOR_F paletteEntries, uint paletteEntryCount);
+    HRESULT SetCustomColorPalette([MarshalUsing(CountElementName = nameof(paletteEntryCount))] in DWRITE_COLOR_F[] paletteEntries, uint paletteEntryCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -33,9 +33,9 @@ public partial interface IDWritePaintReader
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, out D2D1_GRADIENT_STOP gradientStops);
+    HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, [MarshalUsing(CountElementName = nameof(gradientStopCount))] out D2D1_GRADIENT_STOP[] gradientStops);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, out DWRITE_PAINT_COLOR gradientStopColors);
+    HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, [MarshalUsing(CountElementName = nameof(gradientStopCount))] out DWRITE_PAINT_COLOR[] gradientStopColors);
 }

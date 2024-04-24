@@ -7,22 +7,22 @@ public partial interface IWMDMStorage4 : IWMDMStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-setreferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReferences(uint dwRefs, nint /* optional IWMDMStorage */ ppIWMDMStorage);
+    HRESULT SetReferences(uint dwRefs, nint /* optional IWMDMStorage* */ ppIWMDMStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getreferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReferences(out uint pdwRefs, out IWMDMStorage pppIWMDMStorage);
+    HRESULT GetReferences(out uint pdwRefs, out nint pppIWMDMStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getrightswithprogress
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRightsWithProgress(IWMDMProgress3? pIProgressCallback, out WMDMRIGHTS ppRights, out uint pnRightsCount);
+    HRESULT GetRightsWithProgress(IWMDMProgress3? pIProgressCallback, out nint ppRights, out uint pnRightsCount);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getspecifiedmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedMetadata(uint cProperties, in PWSTR ppwszPropNames, out IWMDMMetaData ppMetadata);
+    HRESULT GetSpecifiedMetadata(uint cProperties, [MarshalUsing(CountElementName = nameof(cProperties))] in PWSTR[] ppwszPropNames, out IWMDMMetaData ppMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-findstorage
     [PreserveSig]

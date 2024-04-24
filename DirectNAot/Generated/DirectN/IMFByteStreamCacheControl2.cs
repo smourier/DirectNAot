@@ -8,7 +8,7 @@ public partial interface IMFByteStreamCacheControl2 : IMFByteStreamCacheControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamcachecontrol2-getbyteranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetByteRanges(out uint pcRanges, out MF_BYTE_STREAM_CACHE_RANGE ppRanges);
+    HRESULT GetByteRanges(out uint pcRanges, [MarshalUsing(CountElementName = nameof(pcRanges))] out MF_BYTE_STREAM_CACHE_RANGE[] ppRanges);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamcachecontrol2-setcachelimit
     [PreserveSig]

@@ -17,7 +17,7 @@ public partial interface IMediaParamInfo
     // https://learn.microsoft.com/windows/win32/api/medparam/nf-medparam-imediaparaminfo-getparamtext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParamText(uint dwParamIndex, out ushort ppwchText);
+    HRESULT GetParamText(uint dwParamIndex, out nint ppwchText);
     
     // https://learn.microsoft.com/windows/win32/api/medparam/nf-medparam-imediaparaminfo-getnumtimeformats
     [PreserveSig]

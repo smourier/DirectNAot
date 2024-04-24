@@ -47,12 +47,12 @@ public partial interface IDvdInfo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getallsprms
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllSPRMs(out ushort pRegisterArray);
+    HRESULT GetAllSPRMs(out nint pRegisterArray);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getallgprms
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllGPRMs(out ushort pRegisterArray);
+    HRESULT GetAllGPRMs(out nint pRegisterArray);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getaudiolanguage
     [PreserveSig]
@@ -117,5 +117,5 @@ public partial interface IDvdInfo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getroot
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRoot(out PSTR pRoot, uint ulBufSize, out uint pulActualSize);
+    HRESULT GetRoot([MarshalUsing(CountElementName = nameof(ulBufSize))] out PSTR[] pRoot, uint ulBufSize, out uint pulActualSize);
 }

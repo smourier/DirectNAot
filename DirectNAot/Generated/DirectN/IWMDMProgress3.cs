@@ -7,15 +7,15 @@ public partial interface IWMDMProgress3 : IWMDMProgress2
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmprogress3-begin3
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Begin3(Guid EventId, uint dwEstimatedTicks, nint /* optional OPAQUECOMMAND */ pContext);
+    HRESULT Begin3(Guid EventId, uint dwEstimatedTicks, nint /* optional OPAQUECOMMAND* */ pContext);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmprogress3-progress3
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Progress3(Guid EventId, uint dwTranspiredTicks, nint /* optional OPAQUECOMMAND */ pContext);
+    HRESULT Progress3(Guid EventId, uint dwTranspiredTicks, nint /* optional OPAQUECOMMAND* */ pContext);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmprogress3-end3
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT End3(Guid EventId, HRESULT hrCompletionCode, nint /* optional OPAQUECOMMAND */ pContext);
+    HRESULT End3(Guid EventId, HRESULT hrCompletionCode, nint /* optional OPAQUECOMMAND* */ pContext);
 }

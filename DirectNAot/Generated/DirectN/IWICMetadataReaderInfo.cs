@@ -8,7 +8,7 @@ public partial interface IWICMetadataReaderInfo : IWICMetadataHandlerInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareaderinfo-getpatterns
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPatterns(in Guid guidContainerFormat, uint cbSize, nint /* optional WICMetadataPattern */ pPattern, nint /* optional uint */ pcCount, nint /* optional uint */ pcbActual);
+    HRESULT GetPatterns(in Guid guidContainerFormat, uint cbSize, nint /* optional WICMetadataPattern* */ pPattern, nint /* optional uint* */ pcCount, nint /* optional uint* */ pcbActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareaderinfo-matchespattern
     [PreserveSig]

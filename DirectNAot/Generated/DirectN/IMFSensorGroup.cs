@@ -8,7 +8,7 @@ public partial interface IMFSensorGroup
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-getsymboliclink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSymbolicLink(out PWSTR SymbolicLink, int cchSymbolicLink, out int pcchWritten);
+    HRESULT GetSymbolicLink([MarshalUsing(CountElementName = nameof(cchSymbolicLink))] out PWSTR[] SymbolicLink, int cchSymbolicLink, out int pcchWritten);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-getflags
     [PreserveSig]

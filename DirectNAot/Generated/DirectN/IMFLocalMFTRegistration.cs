@@ -8,5 +8,5 @@ public partial interface IMFLocalMFTRegistration
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imflocalmftregistration-registermfts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterMFTs(in MFT_REGISTRATION_INFO pMFTs, uint cMFTs);
+    HRESULT RegisterMFTs([MarshalUsing(CountElementName = nameof(cMFTs))] in MFT_REGISTRATION_INFO[] pMFTs, uint cMFTs);
 }

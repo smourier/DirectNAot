@@ -17,10 +17,10 @@ public partial interface IDispatch
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIDsOfNames(in Guid riid, in PWSTR rgszNames, uint cNames, uint lcid, out int rgDispId);
+    HRESULT GetIDsOfNames(in Guid riid, [MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, uint lcid, [MarshalUsing(CountElementName = nameof(cNames))] out int[] rgDispId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint /* optional VARIANT */ pVarResult, nint /* optional EXCEPINFO */ pExcepInfo, nint /* optional uint */ puArgErr);
+    HRESULT Invoke(int dispIdMember, in Guid riid, uint lcid, DISPATCH_FLAGS wFlags, in DISPPARAMS pDispParams, nint /* optional VARIANT* */ pVarResult, nint /* optional EXCEPINFO* */ pExcepInfo, nint /* optional uint* */ puArgErr);
 }

@@ -11,7 +11,7 @@ public partial interface ID2D1GradientStopCollection : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1gradientstopcollection-getgradientstops
     [PreserveSig]
-    void GetGradientStops(out D2D1_GRADIENT_STOP gradientStops, uint gradientStopsCount);
+    void GetGradientStops([MarshalUsing(CountElementName = nameof(gradientStopsCount))] out D2D1_GRADIENT_STOP[] gradientStops, uint gradientStopsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1gradientstopcollection-getcolorinterpolationgamma
     [PreserveSig]

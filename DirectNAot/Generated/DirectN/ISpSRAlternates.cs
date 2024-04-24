@@ -5,7 +5,7 @@ public partial interface ISpSRAlternates
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAlternates(in SPPHRASEALTREQUEST pAltRequest, out SPPHRASEALT ppAlts, out uint pcAlts);
+    HRESULT GetAlternates(in SPPHRASEALTREQUEST pAltRequest, out nint ppAlts, out uint pcAlts);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -13,12 +13,12 @@ public partial interface IWMDRMReader2 : IWMDRMReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader2-getplayoutputlevels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPlayOutputLevels(out DRM_PLAY_OPL pPlayOPL, ref uint pcbLength, out uint pdwMinAppComplianceLevel);
+    HRESULT GetPlayOutputLevels([MarshalUsing(CountElementName = nameof(pcbLength))] out DRM_PLAY_OPL[] pPlayOPL, ref uint pcbLength, out uint pdwMinAppComplianceLevel);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader2-getcopyoutputlevels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCopyOutputLevels(out DRM_COPY_OPL pCopyOPL, ref uint pcbLength, out uint pdwMinAppComplianceLevel);
+    HRESULT GetCopyOutputLevels([MarshalUsing(CountElementName = nameof(pcbLength))] out DRM_COPY_OPL[] pCopyOPL, ref uint pcbLength, out uint pdwMinAppComplianceLevel);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader2-trynextlicense
     [PreserveSig]

@@ -13,5 +13,5 @@ public partial interface IKsFormatSupport
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iksformatsupport-getdevicepreferredformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevicePreferredFormat(out KSDATAFORMAT ppKsFormat);
+    HRESULT GetDevicePreferredFormat(out nint ppKsFormat);
 }

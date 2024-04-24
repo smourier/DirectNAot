@@ -23,7 +23,7 @@ public partial interface IAudioSessionEvents
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionevents-onchannelvolumechanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnChannelVolumeChanged(uint ChannelCount, in float NewChannelVolumeArray, uint ChangedChannel, in Guid EventContext);
+    HRESULT OnChannelVolumeChanged(uint ChannelCount, [MarshalUsing(CountElementName = nameof(ChannelCount))] in float[] NewChannelVolumeArray, uint ChangedChannel, in Guid EventContext);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionevents-ongroupingparamchanged
     [PreserveSig]

@@ -13,7 +13,7 @@ public partial interface IAMStreamConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamconfig-getformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(out AM_MEDIA_TYPE ppmt);
+    HRESULT GetFormat(out nint ppmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamconfig-getnumberofcapabilities
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IAMStreamConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamconfig-getstreamcaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamCaps(int iIndex, out AM_MEDIA_TYPE ppmt, nint /* byte array */ pSCC);
+    HRESULT GetStreamCaps(int iIndex, out nint ppmt, nint /* byte array */ pSCC);
 }

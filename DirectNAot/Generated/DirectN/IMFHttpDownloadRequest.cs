@@ -13,7 +13,7 @@ public partial interface IMFHttpDownloadRequest
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-beginsendrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginSendRequest(nint /* byte array */ pbPayload, uint cbPayload, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginSendRequest(nint /* optional byte* */ pbPayload, uint cbPayload, IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-endsendrequest
     [PreserveSig]

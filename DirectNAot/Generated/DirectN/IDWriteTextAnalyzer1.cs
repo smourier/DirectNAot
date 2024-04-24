@@ -8,7 +8,7 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-applycharacterspacing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ApplyCharacterSpacing(float leadingSpacing, float trailingSpacing, float minimumAdvanceWidth, uint textLength, uint glyphCount, in ushort clusterMap, in float glyphAdvances, in DWRITE_GLYPH_OFFSET glyphOffsets, in DWRITE_SHAPING_GLYPH_PROPERTIES glyphProperties, out float modifiedGlyphAdvances, out DWRITE_GLYPH_OFFSET modifiedGlyphOffsets);
+    HRESULT ApplyCharacterSpacing(float leadingSpacing, float trailingSpacing, float minimumAdvanceWidth, uint textLength, uint glyphCount, [MarshalUsing(CountElementName = nameof(textLength))] in ushort[] clusterMap, [MarshalUsing(CountElementName = nameof(glyphCount))] in float[] glyphAdvances, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_GLYPH_OFFSET[] glyphOffsets, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_SHAPING_GLYPH_PROPERTIES[] glyphProperties, [MarshalUsing(CountElementName = nameof(glyphCount))] out float[] modifiedGlyphAdvances, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_GLYPH_OFFSET[] modifiedGlyphOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getbaseline
     [PreserveSig]
@@ -33,20 +33,20 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-gettextcomplexity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextComplexity(PWSTR textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort */ glyphIndices);
+    HRESULT GetTextComplexity([MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort* */ glyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustificationopportunities
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetJustificationOpportunities(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, PWSTR textString, in ushort clusterMap, in DWRITE_SHAPING_GLYPH_PROPERTIES glyphProperties, out DWRITE_JUSTIFICATION_OPPORTUNITY justificationOpportunities);
+    HRESULT GetJustificationOpportunities(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, [MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, [MarshalUsing(CountElementName = nameof(textLength))] in ushort[] clusterMap, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_SHAPING_GLYPH_PROPERTIES[] glyphProperties, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_JUSTIFICATION_OPPORTUNITY[] justificationOpportunities);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-justifyglyphadvances
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JustifyGlyphAdvances(float lineWidth, uint glyphCount, in DWRITE_JUSTIFICATION_OPPORTUNITY justificationOpportunities, in float glyphAdvances, in DWRITE_GLYPH_OFFSET glyphOffsets, out float justifiedGlyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET */ justifiedGlyphOffsets);
+    HRESULT JustifyGlyphAdvances(float lineWidth, uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_JUSTIFICATION_OPPORTUNITY[] justificationOpportunities, [MarshalUsing(CountElementName = nameof(glyphCount))] in float[] glyphAdvances, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_GLYPH_OFFSET[] glyphOffsets, [MarshalUsing(CountElementName = nameof(glyphCount))] out float[] justifiedGlyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET* */ justifiedGlyphOffsets);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustifiedglyphs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetJustifiedGlyphs(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, uint maxGlyphCount, nint /* optional ushort */ clusterMap, in ushort glyphIndices, in float glyphAdvances, in float justifiedGlyphAdvances, in DWRITE_GLYPH_OFFSET justifiedGlyphOffsets, in DWRITE_SHAPING_GLYPH_PROPERTIES glyphProperties, ref uint actualGlyphCount, nint /* optional ushort */ modifiedClusterMap, out ushort modifiedGlyphIndices, out float modifiedGlyphAdvances, out DWRITE_GLYPH_OFFSET modifiedGlyphOffsets);
+    HRESULT GetJustifiedGlyphs(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, uint maxGlyphCount, nint /* optional ushort* */ clusterMap, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, [MarshalUsing(CountElementName = nameof(glyphCount))] in float[] glyphAdvances, [MarshalUsing(CountElementName = nameof(glyphCount))] in float[] justifiedGlyphAdvances, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_GLYPH_OFFSET[] justifiedGlyphOffsets, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_SHAPING_GLYPH_PROPERTIES[] glyphProperties, ref uint actualGlyphCount, nint /* optional ushort* */ modifiedClusterMap, [MarshalUsing(CountElementName = nameof(maxGlyphCount))] out ushort[] modifiedGlyphIndices, [MarshalUsing(CountElementName = nameof(maxGlyphCount))] out float[] modifiedGlyphAdvances, [MarshalUsing(CountElementName = nameof(maxGlyphCount))] out DWRITE_GLYPH_OFFSET[] modifiedGlyphOffsets);
 }

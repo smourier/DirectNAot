@@ -14,5 +14,5 @@ public partial interface ICompositionFramePresentStatistics : IPresentStatistics
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-icompositionframepresentstatistics-getdisplayinstancearray
     [PreserveSig]
-    void GetDisplayInstanceArray(out uint displayInstanceArrayCount, out CompositionFrameDisplayInstance displayInstanceArray);
+    void GetDisplayInstanceArray(out uint displayInstanceArrayCount, out nint displayInstanceArray);
 }

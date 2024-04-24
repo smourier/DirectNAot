@@ -62,7 +62,7 @@ public partial interface IRecordInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-getfieldnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFieldNames(ref uint pcNames, out BSTR rgBstrNames);
+    HRESULT GetFieldNames(ref uint pcNames, [MarshalUsing(CountElementName = nameof(pcNames))] out BSTR[] rgBstrNames);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-ismatchingtype
     [PreserveSig]

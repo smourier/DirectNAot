@@ -33,5 +33,5 @@ public partial interface IAMVideoControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getframeratelist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrameRateList(IPin pPin, int iIndex, FoundationSIZE Dimensions, out int ListSize, out long FrameRates);
+    HRESULT GetFrameRateList(IPin pPin, int iIndex, FoundationSIZE Dimensions, out int ListSize, out nint FrameRates);
 }

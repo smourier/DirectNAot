@@ -184,12 +184,12 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getnativevideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNativeVideoSize(nint /* optional uint */ cx, nint /* optional uint */ cy);
+    HRESULT GetNativeVideoSize(nint /* optional uint* */ cx, nint /* optional uint* */ cy);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getvideoaspectratio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoAspectRatio(nint /* optional uint */ cx, nint /* optional uint */ cy);
+    HRESULT GetVideoAspectRatio(nint /* optional uint* */ cx, nint /* optional uint* */ cy);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-shutdown
     [PreserveSig]
@@ -199,7 +199,7 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-transfervideoframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect */ pSrc, FoundationRECT pDst, nint /* optional MFARGB */ pBorderClr);
+    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect* */ pSrc, FoundationRECT pDst, nint /* optional MFARGB* */ pBorderClr);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-onvideostreamtick
     [PreserveSig]

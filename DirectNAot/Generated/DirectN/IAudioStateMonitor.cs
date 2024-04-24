@@ -5,7 +5,7 @@ public partial interface IAudioStateMonitor
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterCallback(PAudioStateMonitorCallback callback, nint /* optional void */ context, out long registration);
+    HRESULT RegisterCallback(PAudioStateMonitorCallback callback, nint /* optional void* */ context, out long registration);
     
     [PreserveSig]
     void UnregisterCallback(long registration);

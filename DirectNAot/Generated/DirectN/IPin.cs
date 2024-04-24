@@ -8,7 +8,7 @@ public partial interface IPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Connect(IPin pReceivePin, nint /* optional AM_MEDIA_TYPE */ pmt);
+    HRESULT Connect(IPin pReceivePin, nint /* optional AM_MEDIA_TYPE* */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-receiveconnection
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-queryinternalconnections
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryInternalConnections(nint /* optional IPin */ apPin, ref uint nPin);
+    HRESULT QueryInternalConnections(nint /* optional IPin* */ apPin, ref uint nPin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-endofstream
     [PreserveSig]

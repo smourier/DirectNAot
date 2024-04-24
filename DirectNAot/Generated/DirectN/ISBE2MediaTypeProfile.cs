@@ -13,7 +13,7 @@ public partial interface ISBE2MediaTypeProfile
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2mediatypeprofile-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStream(uint Index, out AM_MEDIA_TYPE ppMediaType);
+    HRESULT GetStream(uint Index, out nint ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2mediatypeprofile-addstream
     [PreserveSig]

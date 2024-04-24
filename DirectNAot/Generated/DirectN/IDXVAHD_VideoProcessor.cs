@@ -28,5 +28,5 @@ public partial interface IDXVAHD_VideoProcessor
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_videoprocessor-videoprocessblthd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT VideoProcessBltHD(IDirect3DSurface9 pOutputSurface, uint OutputFrame, uint StreamCount, in DXVAHD_STREAM_DATA pStreams);
+    HRESULT VideoProcessBltHD(IDirect3DSurface9 pOutputSurface, uint OutputFrame, uint StreamCount, [MarshalUsing(CountElementName = nameof(StreamCount))] in DXVAHD_STREAM_DATA[] pStreams);
 }

@@ -30,7 +30,7 @@ public partial interface ID2D1SvgPaint : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-getid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetId(out PWSTR id, uint idCount);
+    HRESULT GetId([MarshalUsing(CountElementName = nameof(idCount))] out PWSTR[] id, uint idCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-getidlength
     [PreserveSig]

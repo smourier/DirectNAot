@@ -15,5 +15,5 @@ public partial interface IDWriteFontSet3 : IDWriteFontSet2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset3-getfontsourcename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontSourceName(uint listIndex, out PWSTR stringBuffer, uint stringBufferSize);
+    HRESULT GetFontSourceName(uint listIndex, [MarshalUsing(CountElementName = nameof(stringBufferSize))] out PWSTR[] stringBuffer, uint stringBufferSize);
 }

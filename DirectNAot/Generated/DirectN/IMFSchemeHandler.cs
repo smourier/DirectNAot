@@ -8,7 +8,7 @@ public partial interface IMFSchemeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfschemehandler-begincreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObject(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObject(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfschemehandler-endcreateobject
     [PreserveSig]

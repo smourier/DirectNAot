@@ -5,11 +5,11 @@ public partial interface ISpeechResourceLoader : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadResource(BSTR bstrResourceUri, VARIANT_BOOL fAlwaysReload, out nint pStream, nint /* optional BSTR */ pbstrMIMEType, ref VARIANT_BOOL pfModified, nint /* optional BSTR */ pbstrRedirectUrl);
+    HRESULT LoadResource(BSTR bstrResourceUri, VARIANT_BOOL fAlwaysReload, out nint pStream, nint /* optional BSTR* */ pbstrMIMEType, ref VARIANT_BOOL pfModified, nint /* optional BSTR* */ pbstrRedirectUrl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocalCopy(BSTR bstrResourceUri, ref BSTR pbstrLocalPath, nint /* optional BSTR */ pbstrMIMEType, nint /* optional BSTR */ pbstrRedirectUrl);
+    HRESULT GetLocalCopy(BSTR bstrResourceUri, ref BSTR pbstrLocalPath, nint /* optional BSTR* */ pbstrMIMEType, nint /* optional BSTR* */ pbstrRedirectUrl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

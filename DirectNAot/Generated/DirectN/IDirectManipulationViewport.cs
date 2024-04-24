@@ -38,7 +38,7 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-gettag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTag(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object? /* void */ @object, nint /* optional uint */ id);
+    HRESULT GetTag(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ @object, nint /* optional uint* */ id);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-settag
     [PreserveSig]
@@ -63,12 +63,12 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-setviewporttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetViewportTransform(in float matrix, uint pointCount);
+    HRESULT SetViewportTransform([MarshalUsing(CountElementName = nameof(pointCount))] in float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-syncdisplaytransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SyncDisplayTransform(in float matrix, uint pointCount);
+    HRESULT SyncDisplayTransform([MarshalUsing(CountElementName = nameof(pointCount))] in float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-getprimarycontent
     [PreserveSig]

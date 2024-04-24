@@ -7,7 +7,7 @@ public partial interface IWMStreamPrioritization
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamprioritization-getpriorityrecords
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPriorityRecords(out WM_STREAM_PRIORITY_RECORD pRecordArray, ref ushort pcRecords);
+    HRESULT GetPriorityRecords([MarshalUsing(CountElementName = nameof(pcRecords))] out WM_STREAM_PRIORITY_RECORD[] pRecordArray, ref ushort pcRecords);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamprioritization-setpriorityrecords
     [PreserveSig]

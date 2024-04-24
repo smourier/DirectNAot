@@ -7,7 +7,7 @@ public partial interface IWMDMMetaData
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmmetadata-additem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddItem(WMDM_TAG_DATATYPE Type, PWSTR pwszTagName, nint /* byte array */ pValue, uint iLength);
+    HRESULT AddItem(WMDM_TAG_DATATYPE Type, PWSTR pwszTagName, nint /* optional byte* */ pValue, uint iLength);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmmetadata-querybyname
     [PreserveSig]
@@ -17,7 +17,7 @@ public partial interface IWMDMMetaData
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmmetadata-querybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryByIndex(uint iIndex, out ushort ppwszName, out WMDM_TAG_DATATYPE pType, out nint /* byte array */ ppValue, out uint pcbLength);
+    HRESULT QueryByIndex(uint iIndex, out nint ppwszName, out WMDM_TAG_DATATYPE pType, out nint /* byte array */ ppValue, out uint pcbLength);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmmetadata-getitemcount
     [PreserveSig]

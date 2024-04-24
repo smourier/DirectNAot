@@ -8,10 +8,10 @@ public partial interface IWICPlanarBitmapFrameEncode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarbitmapframeencode-writepixels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WritePixels(uint lineCount, in WICBitmapPlane pPlanes, uint cPlanes);
+    HRESULT WritePixels(uint lineCount, [MarshalUsing(CountElementName = nameof(cPlanes))] in WICBitmapPlane[] pPlanes, uint cPlanes);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarbitmapframeencode-writesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteSource(in IWICBitmapSource ppPlanes, uint cPlanes, in WICRect prcSource);
+    HRESULT WriteSource([MarshalUsing(CountElementName = nameof(cPlanes))] in IWICBitmapSource[] ppPlanes, uint cPlanes, in WICRect prcSource);
 }

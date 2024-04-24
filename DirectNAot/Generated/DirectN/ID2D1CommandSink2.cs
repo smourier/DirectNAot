@@ -18,5 +18,5 @@ public partial interface ID2D1CommandSink2 : ID2D1CommandSink1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1commandsink2-drawgdimetafile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint /* optional D2D_RECT_F */ destinationRectangle, nint /* optional D2D_RECT_F */ sourceRectangle);
+    HRESULT DrawGdiMetafile(ID2D1GdiMetafile gdiMetafile, nint /* optional D2D_RECT_F* */ destinationRectangle, nint /* optional D2D_RECT_F* */ sourceRectangle);
 }

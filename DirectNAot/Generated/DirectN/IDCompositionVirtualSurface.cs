@@ -13,5 +13,5 @@ public partial interface IDCompositionVirtualSurface : IDCompositionSurface
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvirtualsurface-trim
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Trim(nint /* optional FoundationRECT */ rectangles, uint count);
+    HRESULT Trim(nint /* optional FoundationRECT* */ rectangles, uint count);
 }

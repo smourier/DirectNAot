@@ -7,12 +7,12 @@ public partial interface IFrequencyMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-get_frequencymapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_FrequencyMapping(out uint ulCount, out uint ppulList);
+    HRESULT get_FrequencyMapping(out uint ulCount, out nint ppulList);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-put_frequencymapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_FrequencyMapping(uint ulCount, in uint pList);
+    HRESULT put_FrequencyMapping(uint ulCount, [MarshalUsing(CountElementName = nameof(ulCount))] in uint[] pList);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-get_countrycode
     [PreserveSig]
@@ -27,10 +27,10 @@ public partial interface IFrequencyMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-get_defaultfrequencymapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DefaultFrequencyMapping(uint ulCountryCode, out uint pulCount, out uint ppulList);
+    HRESULT get_DefaultFrequencyMapping(uint ulCountryCode, out uint pulCount, out nint ppulList);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-get_countrycodelist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_CountryCodeList(out uint pulCount, out uint ppulList);
+    HRESULT get_CountryCodeList(out uint pulCount, out nint ppulList);
 }

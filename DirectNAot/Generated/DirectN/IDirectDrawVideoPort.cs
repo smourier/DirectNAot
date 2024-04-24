@@ -17,11 +17,11 @@ public partial interface IDirectDrawVideoPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputFormats(ref uint lpNumFormats, nint /* optional DDPIXELFORMAT */ param1, uint param2);
+    HRESULT GetInputFormats(ref uint lpNumFormats, nint /* optional DDPIXELFORMAT* */ param1, uint param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputFormats(ref DDPIXELFORMAT param0, ref uint lpNumFormats, nint /* optional DDPIXELFORMAT */ param2, uint param3);
+    HRESULT GetOutputFormats(ref DDPIXELFORMAT param0, ref uint lpNumFormats, nint /* optional DDPIXELFORMAT* */ param2, uint param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

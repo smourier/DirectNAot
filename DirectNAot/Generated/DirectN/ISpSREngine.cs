@@ -9,7 +9,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputAudioFormat(in Guid pguidSourceFormatId, in WAVEFORMATEX pSourceWaveFormatEx, out Guid pguidDesiredFormatId, out WAVEFORMATEX ppCoMemDesiredWaveFormatEx);
+    HRESULT GetInputAudioFormat(in Guid pguidSourceFormatId, in WAVEFORMATEX pSourceWaveFormatEx, out Guid pguidDesiredFormatId, out nint ppCoMemDesiredWaveFormatEx);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -57,7 +57,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWordSequenceData(nint pvEngineGrammar, PWSTR pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
+    HRESULT SetWordSequenceData(nint pvEngineGrammar, [MarshalUsing(CountElementName = nameof(cchText))] PWSTR[] pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -81,7 +81,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAdaptationData(nint pvEngineContext, PWSTR pAdaptationData, uint cch);
+    HRESULT SetAdaptationData(nint pvEngineContext, [MarshalUsing(CountElementName = nameof(cch))] PWSTR[] pAdaptationData, uint cch);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

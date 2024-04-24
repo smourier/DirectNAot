@@ -22,22 +22,22 @@ public partial interface IMediaObject
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getinputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputType(uint dwInputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE */ pmt);
+    HRESULT GetInputType(uint dwInputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE* */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getoutputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputType(uint dwOutputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE */ pmt);
+    HRESULT GetOutputType(uint dwOutputStreamIndex, uint dwTypeIndex, nint /* optional DMO_MEDIA_TYPE* */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-setinputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputType(uint dwInputStreamIndex, nint /* optional DMO_MEDIA_TYPE */ pmt, uint dwFlags);
+    HRESULT SetInputType(uint dwInputStreamIndex, nint /* optional DMO_MEDIA_TYPE* */ pmt, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-setoutputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputType(uint dwOutputStreamIndex, nint /* optional DMO_MEDIA_TYPE */ pmt, uint dwFlags);
+    HRESULT SetOutputType(uint dwOutputStreamIndex, nint /* optional DMO_MEDIA_TYPE* */ pmt, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-getinputcurrenttype
     [PreserveSig]
@@ -102,7 +102,7 @@ public partial interface IMediaObject
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-processoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, out DMO_OUTPUT_DATA_BUFFER pOutputBuffers, out uint pdwStatus);
+    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, [MarshalUsing(CountElementName = nameof(cOutputBufferCount))] out DMO_OUTPUT_DATA_BUFFER[] pOutputBuffers, out uint pdwStatus);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-lock
     [PreserveSig]

@@ -23,22 +23,22 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createcryptosession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCryptoSession(in Guid pCryptoType, nint /* optional Guid */ pDecoderProfile, in Guid pKeyExchangeType, out ID3D11CryptoSession ppCryptoSession);
+    HRESULT CreateCryptoSession(in Guid pCryptoType, nint /* optional Guid* */ pDecoderProfile, in Guid pKeyExchangeType, out ID3D11CryptoSession ppCryptoSession);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideodecoderoutputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoDecoderOutputView(ID3D11Resource pResource, in D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoDecoderOutputView */ ppVDOVView);
+    HRESULT CreateVideoDecoderOutputView(ID3D11Resource pResource, in D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoDecoderOutputView* */ ppVDOVView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessorinputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessorInputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorInputView */ ppVPIView);
+    HRESULT CreateVideoProcessorInputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorInputView* */ ppVPIView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessoroutputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessorOutputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorOutputView */ ppVPOView);
+    HRESULT CreateVideoProcessorOutputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorOutputView* */ ppVPOView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessorenumerator
     [PreserveSig]
@@ -72,17 +72,17 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-getcontentprotectioncaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContentProtectionCaps(nint /* optional Guid */ pCryptoType, nint /* optional Guid */ pDecoderProfile, out D3D11_VIDEO_CONTENT_PROTECTION_CAPS pCaps);
+    HRESULT GetContentProtectionCaps(nint /* optional Guid* */ pCryptoType, nint /* optional Guid* */ pDecoderProfile, out D3D11_VIDEO_CONTENT_PROTECTION_CAPS pCaps);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-checkcryptokeyexchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCryptoKeyExchange(in Guid pCryptoType, nint /* optional Guid */ pDecoderProfile, uint Index, out Guid pKeyExchangeType);
+    HRESULT CheckCryptoKeyExchange(in Guid pCryptoType, nint /* optional Guid* */ pDecoderProfile, uint Index, out Guid pKeyExchangeType);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-setprivatedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void */ pData);
+    HRESULT SetPrivateData(in Guid guid, uint DataSize, nint /* optional void* */ pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-setprivatedatainterface
     [PreserveSig]

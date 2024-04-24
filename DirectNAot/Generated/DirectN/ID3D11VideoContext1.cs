@@ -8,7 +8,7 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-submitdecoderbuffers1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SubmitDecoderBuffers1(ID3D11VideoDecoder pDecoder, uint NumBuffers, in D3D11_VIDEO_DECODER_BUFFER_DESC1 pBufferDesc);
+    HRESULT SubmitDecoderBuffers1(ID3D11VideoDecoder pDecoder, uint NumBuffers, [MarshalUsing(CountElementName = nameof(NumBuffers))] in D3D11_VIDEO_DECODER_BUFFER_DESC1[] pBufferDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-getdatafornewhardwarekey
     [PreserveSig]
@@ -65,5 +65,5 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetbehaviorhints
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT VideoProcessorGetBehaviorHints(ID3D11VideoProcessor pVideoProcessor, uint OutputWidth, uint OutputHeight, DXGI_FORMAT OutputFormat, uint StreamCount, in D3D11_VIDEO_PROCESSOR_STREAM_BEHAVIOR_HINT pStreams, out uint pBehaviorHints);
+    HRESULT VideoProcessorGetBehaviorHints(ID3D11VideoProcessor pVideoProcessor, uint OutputWidth, uint OutputHeight, DXGI_FORMAT OutputFormat, uint StreamCount, [MarshalUsing(CountElementName = nameof(StreamCount))] in D3D11_VIDEO_PROCESSOR_STREAM_BEHAVIOR_HINT[] pStreams, out uint pBehaviorHints);
 }

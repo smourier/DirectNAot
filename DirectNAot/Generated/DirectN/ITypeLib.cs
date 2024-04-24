@@ -26,7 +26,7 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-getlibattr
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLibAttr(out TLIBATTR ppTLibAttr);
+    HRESULT GetLibAttr(out nint ppTLibAttr);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-gettypecomp
     [PreserveSig]
@@ -36,7 +36,7 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-getdocumentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentation(int index, nint /* optional BSTR */ pBstrName, nint /* optional BSTR */ pBstrDocString, out uint pdwHelpContext, nint /* optional BSTR */ pBstrHelpFile);
+    HRESULT GetDocumentation(int index, nint /* optional BSTR* */ pBstrName, nint /* optional BSTR* */ pBstrDocString, out uint pdwHelpContext, nint /* optional BSTR* */ pBstrHelpFile);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-isname
     [PreserveSig]
@@ -46,7 +46,7 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-findname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindName(ref PWSTR szNameBuf, uint lHashVal, out ITypeInfo ppTInfo, out int rgMemId, ref ushort pcFound);
+    HRESULT FindName(ref PWSTR szNameBuf, uint lHashVal, [MarshalUsing(CountElementName = nameof(pcFound))] out ITypeInfo[] ppTInfo, [MarshalUsing(CountElementName = nameof(pcFound))] out int[] rgMemId, ref ushort pcFound);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-releasetlibattr
     [PreserveSig]

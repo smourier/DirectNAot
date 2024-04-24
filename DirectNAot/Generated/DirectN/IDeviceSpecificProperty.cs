@@ -18,7 +18,7 @@ public partial interface IDeviceSpecificProperty
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicespecificproperty-setvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetValue(nint pvValue, uint cbValue, nint /* optional Guid */ pguidEventContext);
+    HRESULT SetValue(nint pvValue, uint cbValue, nint /* optional Guid* */ pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicespecificproperty-get4brange
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface ID3D11ShaderTrace
     // https://learn.microsoft.com/windows/win32/api/d3d11shadertracing/nf-d3d11shadertracing-id3d11shadertrace-traceready
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TraceReady(nint /* optional ulong */ pTestCount);
+    HRESULT TraceReady(nint /* optional ulong* */ pTestCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shadertracing/nf-d3d11shadertracing-id3d11shadertrace-resettrace
     [PreserveSig]

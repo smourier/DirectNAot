@@ -5,7 +5,7 @@ public partial interface IEnumSpObjectTokens
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out ISpObjectToken pelt, nint /* optional uint */ pceltFetched);
+    HRESULT Next(uint celt, out ISpObjectToken pelt, nint /* optional uint* */ pceltFetched);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

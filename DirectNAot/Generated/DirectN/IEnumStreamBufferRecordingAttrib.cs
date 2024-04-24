@@ -8,7 +8,7 @@ public partial interface IEnumStreamBufferRecordingAttrib
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-ienumstreambufferrecordingattrib-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cRequest, ref STREAMBUFFER_ATTRIBUTE pStreamBufferAttribute, out uint pcReceived);
+    HRESULT Next(uint cRequest, [MarshalUsing(CountElementName = nameof(cRequest))] ref STREAMBUFFER_ATTRIBUTE[] pStreamBufferAttribute, out uint pcReceived);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-ienumstreambufferrecordingattrib-skip
     [PreserveSig]

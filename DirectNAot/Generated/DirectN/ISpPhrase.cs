@@ -5,15 +5,15 @@ public partial interface ISpPhrase
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPhrase(out SPPHRASE ppCoMemPhrase);
+    HRESULT GetPhrase(out nint ppCoMemPhrase);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSerializedPhrase(out SPSERIALIZEDPHRASE ppCoMemPhrase);
+    HRESULT GetSerializedPhrase(out nint ppCoMemPhrase);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetText(uint ulStart, uint ulCount, [MarshalAs(UnmanagedType.U4)] bool fUseTextReplacements, out PWSTR ppszCoMemText, nint /* byte array */ pbDisplayAttributes);
+    HRESULT GetText(uint ulStart, uint ulCount, [MarshalAs(UnmanagedType.U4)] bool fUseTextReplacements, out PWSTR ppszCoMemText, nint /* optional byte* */ pbDisplayAttributes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

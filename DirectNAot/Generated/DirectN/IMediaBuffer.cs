@@ -17,5 +17,5 @@ public partial interface IMediaBuffer
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediabuffer-getbufferandlength
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBufferAndLength(out nint /* byte array */ ppBuffer, nint /* optional uint */ pcbLength);
+    HRESULT GetBufferAndLength(nint /* optional byte** */ ppBuffer, nint /* optional uint* */ pcbLength);
 }

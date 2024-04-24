@@ -12,5 +12,5 @@ public partial interface IComponentAuthenticate
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-icomponentauthenticate-sacgetprotocols
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SACGetProtocols(out uint ppdwProtocols, out uint pdwProtocolCount);
+    HRESULT SACGetProtocols(out nint ppdwProtocols, out uint pdwProtocolCount);
 }

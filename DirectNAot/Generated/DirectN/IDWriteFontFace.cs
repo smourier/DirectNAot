@@ -12,7 +12,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getfiles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFiles(ref uint numberOfFiles, nint /* optional IDWriteFontFile */ fontFiles);
+    HRESULT GetFiles(ref uint numberOfFiles, nint /* optional IDWriteFontFile* */ fontFiles);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getindex
     [PreserveSig]
@@ -38,12 +38,12 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getdesignglyphmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesignGlyphMetrics(in ushort glyphIndices, uint glyphCount, out DWRITE_GLYPH_METRICS glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT GetDesignGlyphMetrics([MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_GLYPH_METRICS[] glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getglyphindices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGlyphIndices(in uint codePoints, uint codePointCount, out ushort glyphIndices);
+    HRESULT GetGlyphIndices([MarshalUsing(CountElementName = nameof(codePointCount))] in uint[] codePoints, uint codePointCount, [MarshalUsing(CountElementName = nameof(codePointCount))] out ushort[] glyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-trygetfonttable
     [PreserveSig]
@@ -57,7 +57,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getglyphrunoutline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGlyphRunOutline(float emSize, in ushort glyphIndices, nint /* optional float */ glyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET */ glyphOffsets, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT GetGlyphRunOutline(float emSize, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, nint /* optional float* */ glyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET* */ glyphOffsets, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getrecommendedrenderingmode
     [PreserveSig]
@@ -67,10 +67,10 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontface-getgdicompatiblemetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGdiCompatibleMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX */ transform, out DWRITE_FONT_METRICS fontFaceMetrics);
+    HRESULT GetGdiCompatibleMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, out DWRITE_FONT_METRICS fontFaceMetrics);
     
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontface-getgdicompatibleglyphmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, in ushort glyphIndices, uint glyphCount, out DWRITE_GLYPH_METRICS glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_GLYPH_METRICS[] glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
 }

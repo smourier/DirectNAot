@@ -72,12 +72,12 @@ public partial interface IPMT
     // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nf-mpeg2psiparser-ipmt-queryservicegatewayinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryServiceGatewayInfo(out DSMCC_ELEMENT ppDSMCCList, out uint puiCount);
+    HRESULT QueryServiceGatewayInfo(out nint ppDSMCCList, out uint puiCount);
     
     // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nf-mpeg2psiparser-ipmt-querympeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryMPEInfo(out MPE_ELEMENT ppMPEList, out uint puiCount);
+    HRESULT QueryMPEInfo(out nint ppMPEList, out uint puiCount);
     
     // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nf-mpeg2psiparser-ipmt-registerfornexttable
     [PreserveSig]

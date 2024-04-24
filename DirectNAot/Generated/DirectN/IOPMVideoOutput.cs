@@ -28,5 +28,5 @@ public partial interface IOPMVideoOutput
     // https://learn.microsoft.com/windows/win32/api/opmapi/nf-opmapi-iopmvideooutput-configure
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Configure(in OPM_CONFIGURE_PARAMETERS pParameters, uint ulAdditionalParametersSize, nint /* byte array */ pbAdditionalParameters);
+    HRESULT Configure(in OPM_CONFIGURE_PARAMETERS pParameters, uint ulAdditionalParametersSize, nint /* optional byte* */ pbAdditionalParameters);
 }

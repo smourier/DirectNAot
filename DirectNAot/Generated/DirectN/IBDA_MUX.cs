@@ -8,7 +8,7 @@ public partial interface IBDA_MUX
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_mux-setpidlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPidList(uint ulPidListCount, in BDA_MUX_PIDLISTITEM pbPidListBuffer);
+    HRESULT SetPidList(uint ulPidListCount, [MarshalUsing(CountElementName = nameof(ulPidListCount))] in BDA_MUX_PIDLISTITEM[] pbPidListBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_mux-getpidlist
     [PreserveSig]

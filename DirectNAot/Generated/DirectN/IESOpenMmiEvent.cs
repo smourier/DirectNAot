@@ -18,7 +18,7 @@ public partial interface IESOpenMmiEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesopenmmievent-getdialogdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDialogData(out SAFEARRAY pbData);
+    HRESULT GetDialogData(out nint pbData);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesopenmmievent-getdialogstringdata
     [PreserveSig]

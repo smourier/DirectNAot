@@ -138,7 +138,7 @@ public partial interface IWICDevelopRaw : IWICBitmapFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-gettonecurve
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetToneCurve(uint cbToneCurveBufferSize, nint /* optional WICRawToneCurve */ pToneCurve, nint /* optional uint */ pcbActualToneCurveBufferSize);
+    HRESULT GetToneCurve(uint cbToneCurveBufferSize, nint /* optional WICRawToneCurve* */ pToneCurve, nint /* optional uint* */ pcbActualToneCurveBufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-setrotation
     [PreserveSig]

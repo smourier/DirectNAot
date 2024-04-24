@@ -13,17 +13,17 @@ public partial interface IWICMetadataHandlerInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-getcontainerformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainerFormats(uint cContainerFormats, ref Guid pguidContainerFormats, out uint pcchActual);
+    HRESULT GetContainerFormats(uint cContainerFormats, [MarshalUsing(CountElementName = nameof(cContainerFormats))] ref Guid[] pguidContainerFormats, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-getdevicemanufacturer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceManufacturer(uint cchDeviceManufacturer, ref PWSTR wzDeviceManufacturer, out uint pcchActual);
+    HRESULT GetDeviceManufacturer(uint cchDeviceManufacturer, [MarshalUsing(CountElementName = nameof(cchDeviceManufacturer))] ref PWSTR[] wzDeviceManufacturer, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-getdevicemodels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceModels(uint cchDeviceModels, ref PWSTR wzDeviceModels, out uint pcchActual);
+    HRESULT GetDeviceModels(uint cchDeviceModels, [MarshalUsing(CountElementName = nameof(cchDeviceModels))] ref PWSTR[] wzDeviceModels, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-doesrequirefullstream
     [PreserveSig]

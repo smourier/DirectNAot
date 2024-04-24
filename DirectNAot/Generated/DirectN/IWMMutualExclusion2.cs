@@ -7,7 +7,7 @@ public partial interface IWMMutualExclusion2 : IWMMutualExclusion
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-getname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetName(out PWSTR pwszName, ref ushort pcchName);
+    HRESULT GetName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR[] pwszName, ref ushort pcchName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-setname
     [PreserveSig]
@@ -32,7 +32,7 @@ public partial interface IWMMutualExclusion2 : IWMMutualExclusion
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-getrecordname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordName(ushort wRecordNumber, out PWSTR pwszRecordName, ref ushort pcchRecordName);
+    HRESULT GetRecordName(ushort wRecordNumber, [MarshalUsing(CountElementName = nameof(pcchRecordName))] out PWSTR[] pwszRecordName, ref ushort pcchRecordName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-setrecordname
     [PreserveSig]
@@ -42,7 +42,7 @@ public partial interface IWMMutualExclusion2 : IWMMutualExclusion
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-getstreamsforrecord
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamsForRecord(ushort wRecordNumber, out ushort pwStreamNumArray, ref ushort pcStreams);
+    HRESULT GetStreamsForRecord(ushort wRecordNumber, [MarshalUsing(CountElementName = nameof(pcStreams))] out ushort[] pwStreamNumArray, ref ushort pcStreams);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmmutualexclusion2-addstreamforrecord
     [PreserveSig]

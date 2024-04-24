@@ -8,7 +8,7 @@ public partial interface IMFVideoProcessor
     // https://learn.microsoft.com/windows/win32/api/evr9/nf-evr9-imfvideoprocessor-getavailablevideoprocessormodes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAvailableVideoProcessorModes(ref uint lpdwNumProcessingModes, out Guid ppVideoProcessingModes);
+    HRESULT GetAvailableVideoProcessorModes(ref uint lpdwNumProcessingModes, out nint ppVideoProcessingModes);
     
     // https://learn.microsoft.com/windows/win32/api/evr9/nf-evr9-imfvideoprocessor-getvideoprocessorcaps
     [PreserveSig]

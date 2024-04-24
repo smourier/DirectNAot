@@ -8,20 +8,20 @@ public partial interface IDirectXVideoDecoderService : IDirectXVideoAcceleration
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-getdecoderdeviceguids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecoderDeviceGuids(out uint pCount, out Guid pGuids);
+    HRESULT GetDecoderDeviceGuids(out uint pCount, out nint pGuids);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-getdecoderrendertargets
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecoderRenderTargets(in Guid Guid, out uint pCount, out D3DFORMAT pFormats);
+    HRESULT GetDecoderRenderTargets(in Guid Guid, out uint pCount, out nint pFormats);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-getdecoderconfigurations
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecoderConfigurations(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, nint /* optional void */ pReserved, out uint pCount, out DXVA2_ConfigPictureDecode ppConfigs);
+    HRESULT GetDecoderConfigurations(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, nint /* optional void* */ pReserved, out uint pCount, out nint ppConfigs);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoderservice-createvideodecoder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoDecoder(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, in DXVA2_ConfigPictureDecode pConfig, in IDirect3DSurface9 ppDecoderRenderTargets, uint NumRenderTargets, out IDirectXVideoDecoder ppDecode);
+    HRESULT CreateVideoDecoder(in Guid Guid, in DXVA2_VideoDesc pVideoDesc, in DXVA2_ConfigPictureDecode pConfig, [MarshalUsing(CountElementName = nameof(NumRenderTargets))] in IDirect3DSurface9[] ppDecoderRenderTargets, uint NumRenderTargets, out IDirectXVideoDecoder ppDecode);
 }

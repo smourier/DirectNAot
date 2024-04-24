@@ -8,7 +8,7 @@ public partial interface IInspectable
     // https://learn.microsoft.com/windows/win32/api/inspectable/nf-inspectable-iinspectable-getiids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIids(out uint iidCount, out Guid iids);
+    HRESULT GetIids(out uint iidCount, out nint iids);
     
     // https://learn.microsoft.com/windows/win32/api/inspectable/nf-inspectable-iinspectable-getruntimeclassname
     [PreserveSig]

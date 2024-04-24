@@ -7,5 +7,5 @@ public partial interface IWMCredentialCallback
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmcredentialcallback-acquirecredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AcquireCredentials(PWSTR pwszRealm, PWSTR pwszSite, out PWSTR pwszUser, uint cchUser, out PWSTR pwszPassword, uint cchPassword, HRESULT hrStatus, out uint pdwFlags);
+    HRESULT AcquireCredentials(PWSTR pwszRealm, PWSTR pwszSite, [MarshalUsing(CountElementName = nameof(cchUser))] out PWSTR[] pwszUser, uint cchUser, [MarshalUsing(CountElementName = nameof(cchPassword))] out PWSTR[] pwszPassword, uint cchPassword, HRESULT hrStatus, out uint pdwFlags);
 }

@@ -40,20 +40,20 @@ public partial interface ID2D1SvgDocument : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgdocument-createpaint-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePaint(D2D1_SVG_PAINT_TYPE paintType, nint /* optional D2D1_COLOR_F */ color, PWSTR? id, out ID2D1SvgPaint paint);
+    HRESULT CreatePaint(D2D1_SVG_PAINT_TYPE paintType, nint /* optional D2D1_COLOR_F* */ color, PWSTR? id, out ID2D1SvgPaint paint);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-createstrokedasharray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStrokeDashArray(nint /* optional D2D1_SVG_LENGTH */ dashes, uint dashesCount, out ID2D1SvgStrokeDashArray strokeDashArray);
+    HRESULT CreateStrokeDashArray(nint /* optional D2D1_SVG_LENGTH* */ dashes, uint dashesCount, out ID2D1SvgStrokeDashArray strokeDashArray);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-createpointcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePointCollection(nint /* optional D2D_POINT_2F */ points, uint pointsCount, out ID2D1SvgPointCollection pointCollection);
+    HRESULT CreatePointCollection(nint /* optional D2D_POINT_2F* */ points, uint pointsCount, out ID2D1SvgPointCollection pointCollection);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-createpathdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePathData(nint /* optional float */ segmentData, uint segmentDataCount, nint /* optional D2D1_SVG_PATH_COMMAND */ commands, uint commandsCount, out ID2D1SvgPathData pathData);
+    HRESULT CreatePathData(nint /* optional float* */ segmentData, uint segmentDataCount, nint /* optional D2D1_SVG_PATH_COMMAND* */ commands, uint commandsCount, out ID2D1SvgPathData pathData);
 }

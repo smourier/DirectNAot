@@ -38,5 +38,5 @@ public partial interface IWICComponentFactory : IWICImagingFactory
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwiccomponentfactory-createencoderpropertybag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateEncoderPropertyBag(in PROPBAG2 ppropOptions, uint cCount, out IPropertyBag2 ppIPropertyBag);
+    HRESULT CreateEncoderPropertyBag([MarshalUsing(CountElementName = nameof(cCount))] in PROPBAG2[] ppropOptions, uint cCount, out IPropertyBag2 ppIPropertyBag);
 }

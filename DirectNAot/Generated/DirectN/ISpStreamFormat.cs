@@ -5,5 +5,5 @@ public partial interface ISpStreamFormat : IStream
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(in Guid pguidFormatId, out WAVEFORMATEX ppCoMemWaveFormatEx);
+    HRESULT GetFormat(in Guid pguidFormatId, out nint ppCoMemWaveFormatEx);
 }

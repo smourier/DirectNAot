@@ -12,5 +12,5 @@ public partial interface IWMHeaderInfo2 : IWMHeaderInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo2-getcodecinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecInfo(uint wIndex, ref ushort pcchName, out PWSTR pwszName, ref ushort pcchDescription, out PWSTR pwszDescription, out WMT_CODEC_INFO_TYPE pCodecType, ref ushort pcbCodecInfo, nint /* byte array */ pbCodecInfo);
+    HRESULT GetCodecInfo(uint wIndex, ref ushort pcchName, [MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR[] pwszName, ref ushort pcchDescription, [MarshalUsing(CountElementName = nameof(pcchDescription))] out PWSTR[] pwszDescription, out WMT_CODEC_INFO_TYPE pCodecType, ref ushort pcbCodecInfo, nint /* byte array */ pbCodecInfo);
 }

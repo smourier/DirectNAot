@@ -17,12 +17,12 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getudpportranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUDPPortRanges(out WM_PORT_NUMBER_RANGE pRangeArray, ref uint pcRanges);
+    HRESULT GetUDPPortRanges([MarshalUsing(CountElementName = nameof(pcRanges))] out WM_PORT_NUMBER_RANGE[] pRangeArray, ref uint pcRanges);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setudpportranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUDPPortRanges(in WM_PORT_NUMBER_RANGE pRangeArray, uint cRanges);
+    HRESULT SetUDPPortRanges([MarshalUsing(CountElementName = nameof(cRanges))] in WM_PORT_NUMBER_RANGE[] pRangeArray, uint cRanges);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getproxysettings
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getproxyhostname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProxyHostName(PWSTR pwszProtocol, out PWSTR pwszHostName, ref uint pcchHostName);
+    HRESULT GetProxyHostName(PWSTR pwszProtocol, [MarshalUsing(CountElementName = nameof(pcchHostName))] out PWSTR[] pwszHostName, ref uint pcchHostName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setproxyhostname
     [PreserveSig]
@@ -57,7 +57,7 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getproxyexceptionlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProxyExceptionList(PWSTR pwszProtocol, out PWSTR pwszExceptionList, ref uint pcchExceptionList);
+    HRESULT GetProxyExceptionList(PWSTR pwszProtocol, [MarshalUsing(CountElementName = nameof(pcchExceptionList))] out PWSTR[] pwszExceptionList, ref uint pcchExceptionList);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setproxyexceptionlist
     [PreserveSig]
@@ -147,7 +147,7 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getsupportedprotocolname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSupportedProtocolName(uint dwProtocolNum, out PWSTR pwszProtocolName, ref uint pcchProtocolName);
+    HRESULT GetSupportedProtocolName(uint dwProtocolNum, [MarshalUsing(CountElementName = nameof(pcchProtocolName))] out PWSTR[] pwszProtocolName, ref uint pcchProtocolName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-addloggingurl
     [PreserveSig]
@@ -157,7 +157,7 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getloggingurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLoggingUrl(uint dwIndex, out PWSTR pwszUrl, ref uint pcchUrl);
+    HRESULT GetLoggingUrl(uint dwIndex, [MarshalUsing(CountElementName = nameof(pcchUrl))] out PWSTR[] pwszUrl, ref uint pcchUrl);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getloggingurlcount
     [PreserveSig]

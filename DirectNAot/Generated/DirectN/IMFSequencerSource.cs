@@ -18,7 +18,7 @@ public partial interface IMFSequencerSource
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-getpresentationcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPresentationContext(IMFPresentationDescriptor pPD, nint /* optional uint */ pId, nint /* optional IMFTopology */ ppTopology);
+    HRESULT GetPresentationContext(IMFPresentationDescriptor pPD, nint /* optional uint* */ pId, nint /* optional IMFTopology* */ ppTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-updatetopology
     [PreserveSig]

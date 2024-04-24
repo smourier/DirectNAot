@@ -17,7 +17,7 @@ public partial interface IAudioProcessingObject
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobject-getregistrationproperties
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRegistrationProperties(out APO_REG_PROPERTIES ppRegProps);
+    HRESULT GetRegistrationProperties(out nint ppRegProps);
     
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobject-initialize
     [PreserveSig]
