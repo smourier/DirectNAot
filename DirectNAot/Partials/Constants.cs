@@ -25,6 +25,9 @@
         public static readonly Guid IID_Unknown = new(IID_UnknownString);
         public const string IID_UnknownString = "00000000-0000-0000-C000-000000000046";
 
+        // DocumentTarget.h
+        public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");
+
         // missing from original DirectN
         public const string CLSID_D2D12DAffineTransformString = "6aa97485-6354-4cfc-908c-e4a74f62c96c";
         public const string CLSID_D2D13DPerspectiveTransformString = "c2844d0b-3d86-46e7-85ba-526c9240f3fb";

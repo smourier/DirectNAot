@@ -876,6 +876,12 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool CMTranslateRGBsExt(nint hcmTransform, nint lpSrcBits, BMFORMAT bmInput, uint dwWidth, uint dwHeight, uint dwInputStride, nint lpDestBits, BMFORMAT bmOutput, uint dwOutputStride, LPBMCALLBACKFN lpfnCallback, LPARAM ulCallbackData);
     
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoCreateInstance(in Guid rclsid, nint pUnkOuter, CLSCTX dwClsContext, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-colorcorrectpalette
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
