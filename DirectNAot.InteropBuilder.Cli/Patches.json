@@ -1,0 +1,48 @@
+﻿{
+  "Types": [
+    {
+      "TypeName": "IXpsOMGeometryFigure",
+      "Methods": [
+        {
+          "Name": "SetSegments",
+          "Parameters": [
+            {
+              "Name": "segmentTypes",
+              "Def": {
+                "IsIn": true,
+                "IsOut": true,
+                "IsNullDirection": true,
+                "TypeName": "XPS_SEGMENT_TYPE[]",
+                "MarshalUsing": {
+                  "CountElementName": "segmentCount"
+                }
+              }
+            },
+            {
+              "Name": "segmentData",
+              "Def": {
+                "IsIn": true,
+                "IsOut": true,
+                "IsNullDirection": true,
+                "TypeName": "float[]",
+                "MarshalUsing": {
+                  "CountElementName": "segmentDataCount"
+                }
+              }
+            },
+            {
+              "Name": "segmentStrokes",
+              "Def": {
+                "TypeName": "bool[]",
+                "MarshalAs": {
+                  "UnmanagedType": "LPArray",
+                  "ArraySubType": "U4"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

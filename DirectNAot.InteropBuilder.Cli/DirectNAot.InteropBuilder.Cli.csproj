@@ -44,6 +44,9 @@ namespace $(ProjectName)
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="Patches.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="DirectN.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
