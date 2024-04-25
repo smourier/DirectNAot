@@ -26482,9 +26482,9 @@ public static partial class Constants
     
     public const uint RSA_KEY_LEN = 64;
     
-    public static readonly PWSTR RT_RCDATA = '\u000a';
+    public static readonly PWSTR RT_RCDATA = new('\u000a');
     
-    public static readonly PWSTR RT_STRING = '\u0006';
+    public static readonly PWSTR RT_STRING = new('\u0006');
     
     public const uint S_INIT = 2;
     

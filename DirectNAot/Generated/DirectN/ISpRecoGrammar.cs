@@ -53,7 +53,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWordSequenceData([MarshalUsing(CountElementName = nameof(cchText))] PWSTR[] pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
+    HRESULT SetWordSequenceData([In][Out][MarshalUsing(CountElementName = nameof(cchText))] PWSTR[] pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

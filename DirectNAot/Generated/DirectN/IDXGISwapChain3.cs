@@ -22,5 +22,5 @@ public partial interface IDXGISwapChain3 : IDXGISwapChain2
     // https://learn.microsoft.com/windows/win32/api/dxgi1_4/nf-dxgi1_4-idxgiswapchain3-resizebuffers1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ResizeBuffers1(uint BufferCount, uint Width, uint Height, DXGI_FORMAT Format, uint SwapChainFlags, [MarshalUsing(CountElementName = nameof(BufferCount))] in uint[] pCreationNodeMask, [MarshalUsing(CountElementName = nameof(BufferCount))] nint[] ppPresentQueue);
+    HRESULT ResizeBuffers1(uint BufferCount, uint Width, uint Height, DXGI_FORMAT Format, uint SwapChainFlags, [MarshalUsing(CountElementName = nameof(BufferCount))] in uint[] pCreationNodeMask, [In][Out][MarshalUsing(CountElementName = nameof(BufferCount))] nint[] ppPresentQueue);
 }

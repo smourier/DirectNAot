@@ -33,12 +33,12 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-gettextcomplexity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextComplexity([MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort* */ glyphIndices);
+    HRESULT GetTextComplexity([In][Out][MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort* */ glyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustificationopportunities
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetJustificationOpportunities(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, [MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, [MarshalUsing(CountElementName = nameof(textLength))] in ushort[] clusterMap, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_SHAPING_GLYPH_PROPERTIES[] glyphProperties, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_JUSTIFICATION_OPPORTUNITY[] justificationOpportunities);
+    HRESULT GetJustificationOpportunities(IDWriteFontFace? fontFace, float fontEmSize, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, uint textLength, uint glyphCount, [In][Out][MarshalUsing(CountElementName = nameof(textLength))] PWSTR[] textString, [MarshalUsing(CountElementName = nameof(textLength))] in ushort[] clusterMap, [MarshalUsing(CountElementName = nameof(glyphCount))] in DWRITE_SHAPING_GLYPH_PROPERTIES[] glyphProperties, [MarshalUsing(CountElementName = nameof(glyphCount))] out DWRITE_JUSTIFICATION_OPPORTUNITY[] justificationOpportunities);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-justifyglyphadvances
     [PreserveSig]

@@ -790,12 +790,12 @@ public static partial class Functions
     [LibraryImport("ICM32")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CMCreateDeviceLinkProfile([MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntents, uint nIntents, uint dwFlags, out nint /* byte array */ lpProfileData);
+    public static partial bool CMCreateDeviceLinkProfile([In][Out][MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntents, uint nIntents, uint dwFlags, out nint /* byte array */ lpProfileData);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatemultiprofiletransform
     [LibraryImport("ICM32")]
     [PreserveSig]
-    public static partial nint CMCreateMultiProfileTransform([MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntents, uint nIntents, uint dwFlags);
+    public static partial nint CMCreateMultiProfileTransform([In][Out][MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntents, uint nIntents, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreateprofile
     [LibraryImport("ICM32")]
@@ -994,7 +994,7 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CreateDeviceLinkProfile([MarshalUsing(CountElementName = nameof(nProfiles))] nint[] hProfile, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntent, uint nIntents, uint dwFlags, out nint /* byte array */ pProfileData, uint indexPreferredCMM);
+    public static partial bool CreateDeviceLinkProfile([In][Out][MarshalUsing(CountElementName = nameof(nProfiles))] nint[] hProfile, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntent, uint nIntents, uint dwFlags, out nint /* byte array */ pProfileData, uint indexPreferredCMM);
     
     // https://learn.microsoft.com/windows/win32/api/windows.graphics.directx.direct3d11.interop/nf-windows-graphics-directx-direct3d11-interop-createdirect3d11devicefromdxgidevice
     [LibraryImport("d3d11")]
@@ -1042,7 +1042,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createmultiprofiletransform
     [LibraryImport("mscms")]
     [PreserveSig]
-    public static partial nint CreateMultiProfileTransform([MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntent, uint nIntents, uint dwFlags, uint indexPreferredCMM);
+    public static partial nint CreateMultiProfileTransform([In][Out][MarshalUsing(CountElementName = nameof(nProfiles))] nint[] pahProfiles, uint nProfiles, [MarshalUsing(CountElementName = nameof(nIntents))] in uint[] padwIntent, uint nIntents, uint dwFlags, uint indexPreferredCMM);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-createnamedpropertystore
     [LibraryImport("MF")]

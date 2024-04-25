@@ -101,7 +101,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-settextvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTextValue([MarshalUsing(CountElementName = nameof(nameCount))] PWSTR[] name, uint nameCount);
+    HRESULT SetTextValue([In][Out][MarshalUsing(CountElementName = nameof(nameCount))] PWSTR[] name, uint nameCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettextvalue
     [PreserveSig]

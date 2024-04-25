@@ -22,7 +22,7 @@ public partial interface IWMDMOperation
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmoperation-setobjectname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetObjectName([MarshalUsing(CountElementName = nameof(nMaxChars))] PWSTR[] pwszName, uint nMaxChars);
+    HRESULT SetObjectName([In][Out][MarshalUsing(CountElementName = nameof(nMaxChars))] PWSTR[] pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmoperation-getobjectattributes
     [PreserveSig]

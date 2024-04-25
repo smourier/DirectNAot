@@ -9,7 +9,7 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
 
     public PWSTR(string value)
     {
-        Value = value == null ? 0 : Marshal.StringToHGlobalUni(value);
+        Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
     }
 
     public static void Dispose(ref PWSTR pwstr)
@@ -22,7 +22,4 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
     }
 
     public override readonly string ToString() => Marshal.PtrToStringUni(Value)!;
-
-    public static implicit operator PWSTR(char value) => new(value.ToString());
-    public static implicit operator PWSTR(string value) => new(value);
 }

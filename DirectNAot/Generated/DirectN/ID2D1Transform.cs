@@ -13,7 +13,7 @@ public partial interface ID2D1Transform : ID2D1TransformNode
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transform-mapinputrectstooutputrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MapInputRectsToOutputRect([MarshalUsing(CountElementName = nameof(inputRectCount))] FoundationRECT[] inputRects, [MarshalUsing(CountElementName = nameof(inputRectCount))] FoundationRECT[] inputOpaqueSubRects, uint inputRectCount, out FoundationRECT outputRect, out FoundationRECT outputOpaqueSubRect);
+    HRESULT MapInputRectsToOutputRect([In][Out][MarshalUsing(CountElementName = nameof(inputRectCount))] FoundationRECT[] inputRects, [In][Out][MarshalUsing(CountElementName = nameof(inputRectCount))] FoundationRECT[] inputOpaqueSubRects, uint inputRectCount, out FoundationRECT outputRect, out FoundationRECT outputOpaqueSubRect);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1transform-mapinvalidrect
     [PreserveSig]
