@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/DirectNAot.InteropBuilder.Cli/Win32Metadata.cs
