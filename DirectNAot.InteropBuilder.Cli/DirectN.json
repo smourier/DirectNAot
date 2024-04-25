@@ -40,6 +40,8 @@
     "Windows.Win32.UI.HiDpi",
     "Windows.Win32.UI.Input.Ink",
     "IPrintPreviewDxgiPackageTarget",
+    "IConnectionPointContainer",
+    "IDispatch",
     "STGC",
     "STGTY",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
