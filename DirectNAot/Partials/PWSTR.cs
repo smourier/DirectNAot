@@ -7,6 +7,11 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
         Value = value;
     }
 
+    unsafe public PWSTR(char* value)
+    {
+        Value = (nint)value;
+    }
+
     public PWSTR(string value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);

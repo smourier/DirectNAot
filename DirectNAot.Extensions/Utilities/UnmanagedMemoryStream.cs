@@ -8,6 +8,12 @@ namespace DirectNAot.Extensions.Utilities
         private IStream? _stream;
         private long _position;
 
+        private UnmanagedMemoryStream(IStream stream, long position)
+        {
+            _stream = stream;
+            _position = position;
+        }
+
         public UnmanagedMemoryStream()
         {
             _stream = SHCreateMemStream(0, 0);
@@ -31,6 +37,9 @@ namespace DirectNAot.Extensions.Utilities
             Position = 0;
         }
 
+        public bool CommitOnDispose { get; set; } = true;
+        public bool DeepClone { get; set; } = true;
+
         public UnmanagedMemoryStream(byte[] bytes)
         {
             ArgumentNullException.ThrowIfNull(bytes);
@@ -48,6 +57,9 @@ namespace DirectNAot.Extensions.Utilities
         public UnmanagedMemoryStream(nint bytes, uint length)
         {
             ArgumentNullException.ThrowIfNull(bytes);
+            if (bytes == 0 && length > 0)
+                throw new ArgumentOutOfRangeException(nameof(length));
+
             _stream = SHCreateMemStream(bytes, length);
             CheckStream();
             Position = 0;
@@ -133,7 +145,14 @@ namespace DirectNAot.Extensions.Utilities
         protected override void Dispose(bool disposing)
         {
             var stream = Interlocked.Exchange(ref _stream, null);
-            stream?.FinalRelease();
+            if (stream != null)
+            {
+                if (CommitOnDispose)
+                {
+                    stream.Commit(0);
+                }
+                stream.FinalRelease();
+            }
             base.Dispose(disposing);
         }
 
@@ -159,7 +178,7 @@ namespace DirectNAot.Extensions.Utilities
                 return hr;
 
             _position = *(long*)plibNewPosition;
-            return Constants.S_OK;
+            return hr;
         }
 
         HRESULT ISequentialStream.Read(nint pv, uint cb, nint pcbRead) => Read(pv, cb, pcbRead, out _);
@@ -180,7 +199,7 @@ namespace DirectNAot.Extensions.Utilities
 
             read = *(int*)pcbRead;
             _position += read;
-            return Constants.S_OK;
+            return hr;
         }
 
         HRESULT ISequentialStream.Write(nint pv, uint cb, nint pcbWritten) => Write(pv, cb, pcbWritten);
@@ -198,7 +217,25 @@ namespace DirectNAot.Extensions.Utilities
 
             written = *(int*)pcbWritten;
             _position += written;
-            return Constants.S_OK;
+            return hr;
+        }
+
+        HRESULT IStream.Clone(out IStream ppstm)
+        {
+            if (DeepClone)
+            {
+                var hr = NativeStream.Clone(out var clonedStream);
+                if (hr.IsError)
+                {
+                    ppstm = null!;
+                    return hr;
+                }
+
+                ppstm = new UnmanagedMemoryStream(clonedStream, _position);
+                return hr;
+            }
+
+            return NativeStream.Clone(out ppstm);
         }
 
         HRESULT IStream.SetSize(ulong libNewSize) => NativeStream.SetSize(libNewSize);
@@ -208,6 +245,5 @@ namespace DirectNAot.Extensions.Utilities
         HRESULT IStream.LockRegion(ulong libOffset, ulong cb, uint dwLockType) => NativeStream.LockRegion(libOffset, cb, dwLockType);
         HRESULT IStream.UnlockRegion(ulong libOffset, ulong cb, uint dwLockType) => NativeStream.UnlockRegion(libOffset, cb, dwLockType);
         HRESULT IStream.Stat(out STATSTG pstatstg, uint grfStatFlag) => NativeStream.Stat(out pstatstg, grfStatFlag);
-        HRESULT IStream.Clone(out IStream ppstm) => NativeStream.Clone(out ppstm);
     }
 }
