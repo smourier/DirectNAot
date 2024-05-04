@@ -19,9 +19,7 @@ namespace DirectNAot.InteropBuilder.Cli
             }
 
             var winMdPath = Path.Combine(Win32Metadata.WinMdPath, "Windows.Win32.winmd");
-            var defaultOutputPath = Path.GetFullPath(Path.Combine(Win32Metadata.SolutionDir, "DirectNAot", "Generated"));
-            var outputDirectoryPath = Path.GetFullPath(CommandLine.Current.GetNullifiedArgument(1) ?? defaultOutputPath);
-            Win32InteropBuilder.Builder.Run(configurationPath, winMdPath, outputDirectoryPath);
+            Win32InteropBuilder.Builder.Run(configurationPath, winMdPath);
         }
 
         static void Help()

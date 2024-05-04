@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32InteropBuilder", "..\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectNAot.InteropBuilder.Cli", "DirectNAot.InteropBuilder.Cli\DirectNAot.InteropBuilder.Cli.csproj", "{447E647C-B4BE-4D47-9B8C-8FB81311C356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectNAot.Extensions", "DirectNAot.Extensions\DirectNAot.Extensions.csproj", "{51A748B1-B9D3-4F14-891D-EA70CAEF6094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectNAot.Extensions", "DirectNAot.Extensions\DirectNAot.Extensions.csproj", "{51A748B1-B9D3-4F14-891D-EA70CAEF6094}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
