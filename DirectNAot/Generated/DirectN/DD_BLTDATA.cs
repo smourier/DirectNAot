@@ -20,7 +20,7 @@ public partial struct DD_BLTDATA
     public RECTL rOrigDest;
     public RECTL rOrigSrc;
     public uint dwRectCnt;
-    public FoundationRECT prDestRects;
+    public nint prDestRects;
     public uint dwAFlags;
     public DDARGB ddargbScaleFactors;
 }

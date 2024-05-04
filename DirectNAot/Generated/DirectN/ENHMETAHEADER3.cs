@@ -16,6 +16,6 @@ public partial struct ENHMETAHEADER3
     public uint nDescription;
     public uint offDescription;
     public uint nPalEntries;
-    public FoundationSIZE szlDevice;
-    public FoundationSIZE szlMillimeters;
+    public SIZE szlDevice;
+    public SIZE szlMillimeters;
 }

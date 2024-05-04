@@ -52,7 +52,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public nint lpDDVideoPortCaps;
     public nint dvpList;
     public nuint lpD3DHALCallbacks2;
-    public FoundationRECT rectDevice;
+    public RECT rectDevice;
     public uint cMonitors;
     public nint gpbmiSrc;
     public nint gpbmiDest;
@@ -65,7 +65,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public nint lpddNLVBothCaps;
     public nuint lpD3DExtendedCaps;
     public uint dwDOSBoxEvent;
-    public FoundationRECT rectDesktop;
+    public RECT rectDesktop;
     public InlineArrayFoundationCHAR32 cDriverName;
     public nuint lpD3DHALCallbacks3;
     public uint dwNumZPixelFormats;

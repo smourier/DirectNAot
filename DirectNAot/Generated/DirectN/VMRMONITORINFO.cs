@@ -5,7 +5,7 @@
 public partial struct VMRMONITORINFO
 {
     public VMRGUID guid;
-    public FoundationRECT rcMonitor;
+    public RECT rcMonitor;
     public HMONITOR hMon;
     public uint dwFlags;
     public InlineArraySystemChar32 szDevice;

@@ -8,8 +8,8 @@ public partial struct MediaFoundationDXVA2_VideoSample
     public long End;
     public DXVA2_ExtendedFormat SampleFormat;
     public nint SrcSurface;
-    public FoundationRECT SrcRect;
-    public FoundationRECT DstRect;
+    public RECT SrcRect;
+    public RECT DstRect;
     public InlineArrayDXVA2_AYUVSample816 Pal;
     public DXVA2_Fixed32 PlanarAlpha;
     public uint SampleData;

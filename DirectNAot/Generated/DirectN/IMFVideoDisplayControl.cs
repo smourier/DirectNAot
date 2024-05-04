@@ -8,22 +8,22 @@ public partial interface IMFVideoDisplayControl
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-getnativevideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNativeVideoSize(ref FoundationSIZE pszVideo, ref FoundationSIZE pszARVideo);
+    HRESULT GetNativeVideoSize(ref SIZE pszVideo, ref SIZE pszARVideo);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-getidealvideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIdealVideoSize(ref FoundationSIZE pszMin, ref FoundationSIZE pszMax);
+    HRESULT GetIdealVideoSize(ref SIZE pszMin, ref SIZE pszMax);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-setvideoposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVideoPosition(in MFVideoNormalizedRect pnrcSource, FoundationRECT prcDest);
+    HRESULT SetVideoPosition(in MFVideoNormalizedRect pnrcSource, in RECT prcDest);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-getvideoposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoPosition(out MFVideoNormalizedRect pnrcSource, out FoundationRECT prcDest);
+    HRESULT GetVideoPosition(out MFVideoNormalizedRect pnrcSource, out RECT prcDest);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-setaspectratiomode
     [PreserveSig]

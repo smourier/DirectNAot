@@ -199,7 +199,7 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-transfervideoframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect* */ pSrc, FoundationRECT pDst, nint /* optional MFARGB* */ pBorderClr);
+    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect* */ pSrc, in RECT pDst, nint /* optional MFARGB* */ pBorderClr);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-onvideostreamtick
     [PreserveSig]

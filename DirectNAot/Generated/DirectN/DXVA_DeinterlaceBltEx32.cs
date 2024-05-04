@@ -5,7 +5,7 @@ public partial struct DXVA_DeinterlaceBltEx32
 {
     public uint Size;
     public DXVA_AYUVsample2 BackgroundColor;
-    public FoundationRECT rcTarget;
+    public RECT rcTarget;
     public long rtTarget;
     public uint NumSourceSurfaces;
     public float Alpha;

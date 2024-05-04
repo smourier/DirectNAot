@@ -6,5 +6,5 @@ public partial interface ICompositionDrawingSurfaceInterop2 : ICompositionDrawin
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiondrawingsurfaceinterop2-copysurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopySurface(nint destinationResource, int destinationOffsetX, int destinationOffsetY, nint /* optional FoundationRECT* */ sourceRectangle);
+    HRESULT CopySurface(nint destinationResource, int destinationOffsetX, int destinationOffsetY, nint /* optional RECT* */ sourceRectangle);
 }

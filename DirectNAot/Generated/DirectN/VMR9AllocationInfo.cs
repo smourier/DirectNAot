@@ -10,6 +10,6 @@ public partial struct VMR9AllocationInfo
     public D3DFORMAT Format;
     public D3DPOOL Pool;
     public uint MinBuffers;
-    public FoundationSIZE szAspectRatio;
-    public FoundationSIZE szNativeSize;
+    public SIZE szAspectRatio;
+    public SIZE szNativeSize;
 }

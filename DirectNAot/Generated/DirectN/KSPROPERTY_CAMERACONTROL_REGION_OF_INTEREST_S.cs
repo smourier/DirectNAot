@@ -13,7 +13,7 @@ public partial struct KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_S
         public uint Configuration;
     }
     
-    public FoundationRECT FocusRect;
+    public RECT FocusRect;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool AutoFocusLock;

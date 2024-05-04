@@ -33,7 +33,7 @@ namespace DirectNAot.InteropBuilder.Cli
 
         // types used to define constants
         public static FullName DEVPROPKEY { get; } = new("Windows.Win32.Devices.Properties.DEVPROPKEY");
-        public static FullName PWSTR { get; } = new("Windows.Win32.Foundation.PWSTR");
+        public static FullName PWSTR { get; } = new(FullName.FoundationNamespace + ".PWSTR");
 
         public static (Guid fmtid, uint pid) ParsePropertyKey(string pk)
         {

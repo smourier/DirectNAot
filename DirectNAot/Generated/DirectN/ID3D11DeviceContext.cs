@@ -161,7 +161,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rssetscissorrects
     [PreserveSig]
-    void RSSetScissorRects(uint NumRects, nint /* optional FoundationRECT* */ pRects);
+    void RSSetScissorRects(uint NumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-copysubresourceregion
     [PreserveSig]
@@ -365,7 +365,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rsgetscissorrects
     [PreserveSig]
-    void RSGetScissorRects(ref uint pNumRects, nint /* optional FoundationRECT* */ pRects);
+    void RSGetScissorRects(ref uint pNumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hsgetshaderresources
     [PreserveSig]

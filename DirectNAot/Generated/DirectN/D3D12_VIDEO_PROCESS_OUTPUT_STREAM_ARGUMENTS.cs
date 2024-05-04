@@ -5,5 +5,5 @@
 public partial struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS
 {
     public InlineArrayD3D12_VIDEO_PROCESS_OUTPUT_STREAM2 OutputStream;
-    public FoundationRECT TargetRectangle;
+    public RECT TargetRectangle;
 }

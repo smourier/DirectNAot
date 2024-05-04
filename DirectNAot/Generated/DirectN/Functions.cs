@@ -271,7 +271,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.14393")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool AdjustWindowRectExForDpi(ref FoundationRECT lpRect, WINDOW_STYLE dwStyle, [MarshalAs(UnmanagedType.U4)] bool bMenu, WINDOW_EX_STYLE dwExStyle, uint dpi);
+    public static partial bool AdjustWindowRectExForDpi(ref RECT lpRect, WINDOW_STYLE dwStyle, [MarshalAs(UnmanagedType.U4)] bool bMenu, WINDOW_EX_STYLE dwExStyle, uint dpi);
     
     // https://learn.microsoft.com/windows/win32/api/errors/nf-errors-amgeterrortexta
     [LibraryImport("QUARTZ")]
@@ -2050,7 +2050,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT DwmQueryThumbnailSourceSize(nint hThumbnail, out FoundationSIZE pSize);
+    public static partial HRESULT DwmQueryThumbnailSourceSize(nint hThumbnail, out SIZE pSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmregisterthumbnail
     [LibraryImport("dwmapi")]
@@ -2062,7 +2062,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT DwmRenderGesture(GESTURE_TYPE gt, uint cContacts, [MarshalUsing(CountElementName = nameof(cContacts))] in uint[] pdwPointerID, [MarshalUsing(CountElementName = nameof(cContacts))] in FoundationPOINT[] pPoints);
+    public static partial HRESULT DwmRenderGesture(GESTURE_TYPE gt, uint cContacts, [MarshalUsing(CountElementName = nameof(cContacts))] in uint[] pdwPointerID, [MarshalUsing(CountElementName = nameof(cContacts))] in POINT[] pPoints);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmsetdxframeduration
     [LibraryImport("dwmapi")]
@@ -2074,7 +2074,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT DwmSetIconicLivePreviewBitmap(HWND hwnd, HBITMAP hbmp, nint /* optional FoundationPOINT* */ pptClient, uint dwSITFlags);
+    public static partial HRESULT DwmSetIconicLivePreviewBitmap(HWND hwnd, HBITMAP hbmp, nint /* optional POINT* */ pptClient, uint dwSITFlags);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmseticonicthumbnail
     [LibraryImport("dwmapi")]
@@ -2104,7 +2104,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT DwmTetherContact(uint dwPointerID, [MarshalAs(UnmanagedType.U4)] bool fEnable, in FoundationPOINT ptTether);
+    public static partial HRESULT DwmTetherContact(uint dwPointerID, [MarshalAs(UnmanagedType.U4)] bool fEnable, POINT ptTether);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmtransitionownedwindow
     [LibraryImport("dwmapi")]
@@ -2296,7 +2296,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HBITMAP EngCreateBitmap(FoundationSIZE sizl, int lWidth, uint iFormat, uint fl, nint pvBits);
+    public static partial HBITMAP EngCreateBitmap(SIZE sizl, int lWidth, uint iFormat, uint fl, nint pvBits);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreateclip
     [LibraryImport("GDI32")]
@@ -2308,13 +2308,13 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HBITMAP EngCreateDeviceBitmap(DHSURF dhsurf, FoundationSIZE sizl, uint iFormatCompat);
+    public static partial HBITMAP EngCreateDeviceBitmap(DHSURF dhsurf, SIZE sizl, uint iFormatCompat);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatedevicesurface
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HSURF EngCreateDeviceSurface(DHSURF dhsurf, FoundationSIZE sizl, uint iFormatCompat);
+    public static partial HSURF EngCreateDeviceSurface(DHSURF dhsurf, SIZE sizl, uint iFormatCompat);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatepalette
     [LibraryImport("GDI32")]
@@ -2646,7 +2646,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathBeziersI(ref GpPath path, in GdiPlusPoint points, int count);
+    public static partial Status GdipAddPathBeziersI(ref GpPath path, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2658,11 +2658,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathClosedCurve2I(ref GpPath path, in GdiPlusPoint points, int count, float tension);
+    public static partial Status GdipAddPathClosedCurve2I(ref GpPath path, POINT points, int count, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathClosedCurveI(ref GpPath path, in GdiPlusPoint points, int count);
+    public static partial Status GdipAddPathClosedCurveI(ref GpPath path, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2674,7 +2674,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathCurve2I(ref GpPath path, in GdiPlusPoint points, int count, float tension);
+    public static partial Status GdipAddPathCurve2I(ref GpPath path, POINT points, int count, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2682,11 +2682,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathCurve3I(ref GpPath path, in GdiPlusPoint points, int count, int offset, int numberOfSegments, float tension);
+    public static partial Status GdipAddPathCurve3I(ref GpPath path, POINT points, int count, int offset, int numberOfSegments, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathCurveI(ref GpPath path, in GdiPlusPoint points, int count);
+    public static partial Status GdipAddPathCurveI(ref GpPath path, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2706,7 +2706,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathLine2I(ref GpPath path, in GdiPlusPoint points, int count);
+    public static partial Status GdipAddPathLine2I(ref GpPath path, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2730,7 +2730,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathPolygonI(ref GpPath path, in GdiPlusPoint points, int count);
+    public static partial Status GdipAddPathPolygonI(ref GpPath path, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2746,7 +2746,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathRectanglesI(ref GpPath path, in GdiPlusRect rects, int count);
+    public static partial Status GdipAddPathRectanglesI(ref GpPath path, RECT rects, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2754,7 +2754,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipAddPathStringI(ref GpPath path, PWSTR @string, int length, in GpFontFamily family, int style, float emSize, in GdiPlusRect layoutRect, in GpStringFormat format);
+    public static partial Status GdipAddPathStringI(ref GpPath path, PWSTR @string, int length, in GpFontFamily family, int style, float emSize, RECT layoutRect, in GpStringFormat format);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2770,11 +2770,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipBeginContainerI(ref GpGraphics graphics, in GdiPlusRect dstrect, in GdiPlusRect srcrect, Unit unit, ref uint state);
+    public static partial Status GdipBeginContainerI(ref GpGraphics graphics, RECT dstrect, RECT srcrect, Unit unit, ref uint state);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipBitmapApplyEffect(ref GpBitmap bitmap, ref CGpEffect effect, ref FoundationRECT roi, [MarshalAs(UnmanagedType.U4)] bool useAuxData, out nint auxData, ref int auxDataSize);
+    public static partial Status GdipBitmapApplyEffect(ref GpBitmap bitmap, ref CGpEffect effect, ref RECT roi, [MarshalAs(UnmanagedType.U4)] bool useAuxData, out nint auxData, ref int auxDataSize);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2782,7 +2782,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipBitmapCreateApplyEffect(ref GpBitmap inputBitmaps, int numInputs, ref CGpEffect effect, ref FoundationRECT roi, ref FoundationRECT outputRect, ref GpBitmap outputBitmap, [MarshalAs(UnmanagedType.U4)] bool useAuxData, out nint auxData, ref int auxDataSize);
+    public static partial Status GdipBitmapCreateApplyEffect(ref GpBitmap inputBitmaps, int numInputs, ref CGpEffect effect, ref RECT roi, ref RECT outputRect, ref GpBitmap outputBitmap, [MarshalAs(UnmanagedType.U4)] bool useAuxData, out nint auxData, ref int auxDataSize);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2798,7 +2798,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipBitmapLockBits(ref GpBitmap bitmap, in GdiPlusRect rect, uint flags, int format, ref BitmapData lockedBitmapData);
+    public static partial Status GdipBitmapLockBits(ref GpBitmap bitmap, RECT rect, uint flags, int format, ref BitmapData lockedBitmapData);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -2886,7 +2886,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCombineRegionRectI(ref GpRegion region, in GdiPlusRect rect, CombineMode combineMode);
+    public static partial Status GdipCombineRegionRectI(ref GpRegion region, RECT rect, CombineMode combineMode);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3034,7 +3034,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreateLineBrushFromRectI(in GdiPlusRect rect, uint color1, uint color2, LinearGradientMode mode, WrapMode wrapMode, ref GpLineGradient lineGradient);
+    public static partial Status GdipCreateLineBrushFromRectI(RECT rect, uint color1, uint color2, LinearGradientMode mode, WrapMode wrapMode, ref GpLineGradient lineGradient);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3042,11 +3042,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreateLineBrushFromRectWithAngleI(in GdiPlusRect rect, uint color1, uint color2, float angle, [MarshalAs(UnmanagedType.U4)] bool isAngleScalable, WrapMode wrapMode, ref GpLineGradient lineGradient);
+    public static partial Status GdipCreateLineBrushFromRectWithAngleI(RECT rect, uint color1, uint color2, float angle, [MarshalAs(UnmanagedType.U4)] bool isAngleScalable, WrapMode wrapMode, ref GpLineGradient lineGradient);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreateLineBrushI(in GdiPlusPoint point1, in GdiPlusPoint point2, uint color1, uint color2, WrapMode wrapMode, ref GpLineGradient lineGradient);
+    public static partial Status GdipCreateLineBrushI(POINT point1, POINT point2, uint color1, uint color2, WrapMode wrapMode, ref GpLineGradient lineGradient);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3062,7 +3062,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreateMatrix3I(in GdiPlusRect rect, in GdiPlusPoint dstplg, ref Matrix matrix);
+    public static partial Status GdipCreateMatrix3I(RECT rect, POINT dstplg, ref Matrix matrix);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3094,7 +3094,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreatePath2I(in GdiPlusPoint param0, nint /* byte array */ param1, int param2, FillMode param3, ref GpPath path);
+    public static partial Status GdipCreatePath2I(POINT param0, nint /* byte array */ param1, int param2, FillMode param3, ref GpPath path);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3106,7 +3106,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreatePathGradientI(in GdiPlusPoint points, int count, WrapMode wrapMode, ref GpPathGradient polyGradient);
+    public static partial Status GdipCreatePathGradientI(POINT points, int count, WrapMode wrapMode, ref GpPathGradient polyGradient);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3138,7 +3138,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipCreateRegionRectI(in GdiPlusRect rect, ref GpRegion region);
+    public static partial Status GdipCreateRegionRectI(RECT rect, ref GpRegion region);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3262,7 +3262,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawBeziersI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count);
+    public static partial Status GdipDrawBeziersI(ref GpGraphics graphics, ref GpPen pen, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3278,11 +3278,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawClosedCurve2I(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count, float tension);
+    public static partial Status GdipDrawClosedCurve2I(ref GpGraphics graphics, ref GpPen pen, POINT points, int count, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawClosedCurveI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count);
+    public static partial Status GdipDrawClosedCurveI(ref GpGraphics graphics, ref GpPen pen, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3294,7 +3294,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawCurve2I(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count, float tension);
+    public static partial Status GdipDrawCurve2I(ref GpGraphics graphics, ref GpPen pen, POINT points, int count, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3302,11 +3302,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawCurve3I(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count, int offset, int numberOfSegments, float tension);
+    public static partial Status GdipDrawCurve3I(ref GpGraphics graphics, ref GpPen pen, POINT points, int count, int offset, int numberOfSegments, float tension);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawCurveI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count);
+    public static partial Status GdipDrawCurveI(ref GpGraphics graphics, ref GpPen pen, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3346,7 +3346,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawImagePointsI(ref GpGraphics graphics, ref GpImage image, in GdiPlusPoint dstpoints, int count);
+    public static partial Status GdipDrawImagePointsI(ref GpGraphics graphics, ref GpImage image, POINT dstpoints, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3354,7 +3354,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawImagePointsRectI(ref GpGraphics graphics, ref GpImage image, in GdiPlusPoint points, int count, int srcx, int srcy, int srcwidth, int srcheight, Unit srcUnit, in GpImageAttributes imageAttributes, nint callback, nint callbackData);
+    public static partial Status GdipDrawImagePointsRectI(ref GpGraphics graphics, ref GpImage image, POINT points, int count, int srcx, int srcy, int srcwidth, int srcheight, Unit srcUnit, in GpImageAttributes imageAttributes, nint callback, nint callbackData);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3386,7 +3386,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawLinesI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count);
+    public static partial Status GdipDrawLinesI(ref GpGraphics graphics, ref GpPen pen, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3406,7 +3406,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawPolygonI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusPoint points, int count);
+    public static partial Status GdipDrawPolygonI(ref GpGraphics graphics, ref GpPen pen, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3422,7 +3422,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipDrawRectanglesI(ref GpGraphics graphics, ref GpPen pen, in GdiPlusRect rects, int count);
+    public static partial Status GdipDrawRectanglesI(ref GpGraphics graphics, ref GpPen pen, RECT rects, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3442,7 +3442,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileDestPointI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusPoint destPoint, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileDestPointI(ref GpGraphics graphics, in GpMetafile metafile, POINT destPoint, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3450,7 +3450,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileDestPointsI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusPoint destPoints, int count, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileDestPointsI(ref GpGraphics graphics, in GpMetafile metafile, POINT destPoints, int count, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3458,7 +3458,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileDestRectI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusRect destRect, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileDestRectI(ref GpGraphics graphics, in GpMetafile metafile, RECT destRect, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3466,7 +3466,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileSrcRectDestPointI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusPoint destPoint, in GdiPlusRect srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileSrcRectDestPointI(ref GpGraphics graphics, in GpMetafile metafile, POINT destPoint, RECT srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3474,7 +3474,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileSrcRectDestPointsI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusPoint destPoints, int count, in GdiPlusRect srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileSrcRectDestPointsI(ref GpGraphics graphics, in GpMetafile metafile, POINT destPoints, int count, RECT srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3482,7 +3482,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipEnumerateMetafileSrcRectDestRectI(ref GpGraphics graphics, in GpMetafile metafile, in GdiPlusRect destRect, in GdiPlusRect srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
+    public static partial Status GdipEnumerateMetafileSrcRectDestRectI(ref GpGraphics graphics, in GpMetafile metafile, RECT destRect, RECT srcRect, Unit srcUnit, nint callback, nint callbackData, in GpImageAttributes imageAttributes);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3494,11 +3494,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipFillClosedCurve2I(ref GpGraphics graphics, ref GpBrush brush, in GdiPlusPoint points, int count, float tension, FillMode fillMode);
+    public static partial Status GdipFillClosedCurve2I(ref GpGraphics graphics, ref GpBrush brush, POINT points, int count, float tension, FillMode fillMode);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipFillClosedCurveI(ref GpGraphics graphics, ref GpBrush brush, in GdiPlusPoint points, int count);
+    public static partial Status GdipFillClosedCurveI(ref GpGraphics graphics, ref GpBrush brush, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3530,11 +3530,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipFillPolygon2I(ref GpGraphics graphics, ref GpBrush brush, in GdiPlusPoint points, int count);
+    public static partial Status GdipFillPolygon2I(ref GpGraphics graphics, ref GpBrush brush, POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipFillPolygonI(ref GpGraphics graphics, ref GpBrush brush, in GdiPlusPoint points, int count, FillMode fillMode);
+    public static partial Status GdipFillPolygonI(ref GpGraphics graphics, ref GpBrush brush, POINT points, int count, FillMode fillMode);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3550,7 +3550,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipFillRectanglesI(ref GpGraphics graphics, ref GpBrush brush, in GdiPlusRect rects, int count);
+    public static partial Status GdipFillRectanglesI(ref GpGraphics graphics, ref GpBrush brush, RECT rects, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3618,7 +3618,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetClipBoundsI(ref GpGraphics graphics, ref GdiPlusRect rect);
+    public static partial Status GdipGetClipBoundsI(ref GpGraphics graphics, ref RECT rect);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3862,7 +3862,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetLineRectI(ref GpLineGradient brush, ref GdiPlusRect rect);
+    public static partial Status GdipGetLineRectI(ref GpLineGradient brush, ref RECT rect);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3950,7 +3950,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetPathGradientCenterPointI(ref GpPathGradient brush, ref GdiPlusPoint points);
+    public static partial Status GdipGetPathGradientCenterPointI(ref GpPathGradient brush, ref POINT points);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -3982,7 +3982,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetPathGradientRectI(ref GpPathGradient brush, ref GdiPlusRect rect);
+    public static partial Status GdipGetPathGradientRectI(ref GpPathGradient brush, ref RECT rect);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4010,7 +4010,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetPathPointsI(ref GpPath param0, ref GdiPlusPoint points, int count);
+    public static partial Status GdipGetPathPointsI(ref GpPath param0, ref POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4022,7 +4022,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetPathWorldBoundsI(ref GpPath path, ref GdiPlusRect bounds, in Matrix matrix, in GpPen pen);
+    public static partial Status GdipGetPathWorldBoundsI(ref GpPath path, ref RECT bounds, in Matrix matrix, in GpPen pen);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4138,7 +4138,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetRegionBoundsI(ref GpRegion region, ref GpGraphics graphics, ref GdiPlusRect rect);
+    public static partial Status GdipGetRegionBoundsI(ref GpRegion region, ref GpGraphics graphics, ref RECT rect);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4162,7 +4162,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetRegionScansI(ref GpRegion region, ref GdiPlusRect rects, ref int count, ref Matrix matrix);
+    public static partial Status GdipGetRegionScansI(ref GpRegion region, ref RECT rects, ref int count, ref Matrix matrix);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4238,7 +4238,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipGetVisibleClipBoundsI(ref GpGraphics graphics, ref GdiPlusRect rect);
+    public static partial Status GdipGetVisibleClipBoundsI(ref GpGraphics graphics, ref RECT rect);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4520,11 +4520,11 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipRecordMetafileFileNameI(PWSTR fileName, HDC referenceHdc, EmfType type, in GdiPlusRect frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
+    public static partial Status GdipRecordMetafileFileNameI(PWSTR fileName, HDC referenceHdc, EmfType type, RECT frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipRecordMetafileI(HDC referenceHdc, EmfType type, in GdiPlusRect frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
+    public static partial Status GdipRecordMetafileI(HDC referenceHdc, EmfType type, RECT frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4532,7 +4532,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipRecordMetafileStreamI(IStream stream, HDC referenceHdc, EmfType type, in GdiPlusRect frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
+    public static partial Status GdipRecordMetafileStreamI(IStream stream, HDC referenceHdc, EmfType type, RECT frameRect, MetafileFrameUnit frameUnit, PWSTR description, ref GpMetafile metafile);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -4852,7 +4852,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipSetPathGradientCenterPointI(ref GpPathGradient brush, in GdiPlusPoint points);
+    public static partial Status GdipSetPathGradientCenterPointI(ref GpPathGradient brush, POINT points);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -5064,7 +5064,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipTransformMatrixPointsI(ref Matrix matrix, ref GdiPlusPoint pts, int count);
+    public static partial Status GdipTransformMatrixPointsI(ref Matrix matrix, ref POINT pts, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -5076,7 +5076,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipTransformPointsI(ref GpGraphics graphics, CoordinateSpace destSpace, CoordinateSpace srcSpace, ref GdiPlusPoint points, int count);
+    public static partial Status GdipTransformPointsI(ref GpGraphics graphics, CoordinateSpace destSpace, CoordinateSpace srcSpace, ref POINT points, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -5128,7 +5128,7 @@ public static partial class Functions
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
-    public static partial Status GdipVectorTransformMatrixPointsI(ref Matrix matrix, ref GdiPlusPoint pts, int count);
+    public static partial Status GdipVectorTransformMatrixPointsI(ref Matrix matrix, ref POINT pts, int count);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -7743,7 +7743,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool LogicalToPhysicalPointForPerMonitorDPI(HWND? hWnd, ref FoundationPOINT lpPoint);
+    public static partial bool LogicalToPhysicalPointForPerMonitorDPI(HWND? hWnd, ref POINT lpPoint);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -9846,7 +9846,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PhysicalToLogicalPointForPerMonitorDPI(HWND? hWnd, ref FoundationPOINT lpPoint);
+    public static partial bool PhysicalToLogicalPointForPerMonitorDPI(HWND? hWnd, ref POINT lpPoint);
     
     [LibraryImport("WINMM")]
     [PreserveSig]

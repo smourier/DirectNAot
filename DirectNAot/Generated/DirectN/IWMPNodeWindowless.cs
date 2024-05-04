@@ -5,5 +5,5 @@ public partial interface IWMPNodeWindowless : IWMPWindowMessageSink
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDraw(nint hdc, FoundationRECT prcDraw);
+    HRESULT OnDraw(nint hdc, in RECT prcDraw);
 }

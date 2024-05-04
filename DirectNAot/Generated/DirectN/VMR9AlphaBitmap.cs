@@ -7,7 +7,7 @@ public partial struct VMR9AlphaBitmap
     public uint dwFlags;
     public HDC hdc;
     public nint pDDS;
-    public FoundationRECT rSrc;
+    public RECT rSrc;
     public VMR9NormalizedRect rDest;
     public float fAlpha;
     public COLORREF clrSrcKey;

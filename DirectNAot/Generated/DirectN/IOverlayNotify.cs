@@ -13,7 +13,7 @@ public partial interface IOverlayNotify
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlaynotify-onclipchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnClipChange(FoundationRECT pSourceRect, FoundationRECT pDestinationRect, in RGNDATA pRgnData);
+    HRESULT OnClipChange(in RECT pSourceRect, in RECT pDestinationRect, in RGNDATA pRgnData);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlaynotify-oncolorkeychange
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IOverlayNotify
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlaynotify-onpositionchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnPositionChange(FoundationRECT pSourceRect, FoundationRECT pDestinationRect);
+    HRESULT OnPositionChange(in RECT pSourceRect, in RECT pDestinationRect);
 }

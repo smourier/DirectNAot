@@ -5,5 +5,5 @@ public partial interface IWMPNodeWindowlessHost
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InvalidateRect(FoundationRECT prc, [MarshalAs(UnmanagedType.U4)] bool fErase);
+    HRESULT InvalidateRect(in RECT prc, [MarshalAs(UnmanagedType.U4)] bool fErase);
 }

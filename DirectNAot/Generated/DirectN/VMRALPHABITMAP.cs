@@ -7,7 +7,7 @@ public partial struct VMRALPHABITMAP
     public uint dwFlags;
     public HDC hdc;
     public nint pDDS;
-    public FoundationRECT rSrc;
+    public RECT rSrc;
     public NORMALIZEDRECT rDest;
     public float fAlpha;
     public COLORREF clrSrcKey;

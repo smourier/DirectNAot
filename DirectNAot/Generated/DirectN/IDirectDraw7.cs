@@ -132,7 +132,7 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-startmodetest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartModeTest(ref FoundationSIZE param0, uint param1, uint param2);
+    HRESULT StartModeTest(ref SIZE param0, uint param1, uint param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-evaluatemode
     [PreserveSig]

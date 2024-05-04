@@ -7,7 +7,7 @@ public partial struct MCI_DGV_DELETE_PARMS
     public nuint dwCallback;
     public uint dwFrom;
     public uint dwTo;
-    public FoundationRECT rc;
+    public RECT rc;
     public uint dwAudioStream;
     public uint dwVideoStream;
 }

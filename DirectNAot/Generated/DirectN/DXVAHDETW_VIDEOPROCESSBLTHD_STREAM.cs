@@ -5,8 +5,8 @@ public partial struct DXVAHDETW_VIDEOPROCESSBLTHD_STREAM
 {
     public ulong pObject;
     public ulong pInputSurface;
-    public FoundationRECT SourceRect;
-    public FoundationRECT DestinationRect;
+    public RECT SourceRect;
+    public RECT DestinationRect;
     public D3DFORMAT InputFormat;
     public DXVAHD_FRAME_FORMAT FrameFormat;
     public uint ColorSpace;

@@ -38,12 +38,12 @@ public partial interface IOverlay
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getcliplist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipList(out FoundationRECT pSourceRect, out FoundationRECT pDestinationRect, out nint ppRgnData);
+    HRESULT GetClipList(out RECT pSourceRect, out RECT pDestinationRect, out nint ppRgnData);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getvideoposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoPosition(out FoundationRECT pSourceRect, out FoundationRECT pDestinationRect);
+    HRESULT GetVideoPosition(out RECT pSourceRect, out RECT pDestinationRect);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-advise
     [PreserveSig]

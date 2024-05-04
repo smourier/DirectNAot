@@ -74,7 +74,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-present
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Present(FoundationRECT pSourceRect, FoundationRECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion);
+    HRESULT Present(in RECT pSourceRect, in RECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getbackbuffer
     [PreserveSig]
@@ -137,7 +137,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-updatesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateSurface(IDirect3DSurface9 pSourceSurface, FoundationRECT pSourceRect, IDirect3DSurface9 pDestinationSurface, in FoundationPOINT pDestPoint);
+    HRESULT UpdateSurface(IDirect3DSurface9 pSourceSurface, in RECT pSourceRect, IDirect3DSurface9 pDestinationSurface, in POINT pDestPoint);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-updatetexture
     [PreserveSig]
@@ -157,12 +157,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-stretchrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StretchRect(IDirect3DSurface9 pSourceSurface, FoundationRECT pSourceRect, IDirect3DSurface9 pDestSurface, FoundationRECT pDestRect, D3DTEXTUREFILTERTYPE Filter);
+    HRESULT StretchRect(IDirect3DSurface9 pSourceSurface, in RECT pSourceRect, IDirect3DSurface9 pDestSurface, in RECT pDestRect, D3DTEXTUREFILTERTYPE Filter);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-colorfill
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ColorFill(IDirect3DSurface9 pSurface, FoundationRECT pRect, uint color);
+    HRESULT ColorFill(IDirect3DSurface9 pSurface, in RECT pRect, uint color);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createoffscreenplainsurface
     [PreserveSig]
@@ -362,12 +362,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setscissorrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetScissorRect(FoundationRECT pRect);
+    HRESULT SetScissorRect(in RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getscissorrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetScissorRect(ref FoundationRECT pRect);
+    HRESULT GetScissorRect(ref RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setsoftwarevertexprocessing
     [PreserveSig]

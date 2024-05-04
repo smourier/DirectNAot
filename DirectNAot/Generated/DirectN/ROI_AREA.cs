@@ -4,6 +4,6 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct ROI_AREA
 {
-    public FoundationRECT rect;
+    public RECT rect;
     public int QPDelta;
 }

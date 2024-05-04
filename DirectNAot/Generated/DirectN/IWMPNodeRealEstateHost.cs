@@ -5,7 +5,7 @@ public partial interface IWMPNodeRealEstateHost
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDesiredSizeChange(ref FoundationSIZE pSize);
+    HRESULT OnDesiredSizeChange(ref SIZE pSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

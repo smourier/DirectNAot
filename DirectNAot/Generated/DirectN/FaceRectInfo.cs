@@ -4,6 +4,6 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct FaceRectInfo
 {
-    public FoundationRECT Region;
+    public RECT Region;
     public int confidenceLevel;
 }

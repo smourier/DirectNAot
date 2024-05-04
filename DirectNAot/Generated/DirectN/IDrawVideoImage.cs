@@ -17,5 +17,5 @@ public partial interface IDrawVideoImage
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idrawvideoimage-drawvideoimagedraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawVideoImageDraw(HDC hdc, FoundationRECT lprcSrc, FoundationRECT lprcDst);
+    HRESULT DrawVideoImageDraw(HDC hdc, in RECT lprcSrc, in RECT lprcDst);
 }

@@ -10,10 +10,10 @@ public partial struct POINTER_INFO
     public POINTER_FLAGS pointerFlags;
     public HANDLE sourceDevice;
     public HWND hwndTarget;
-    public nint ptPixelLocation;
-    public nint ptHimetricLocation;
-    public nint ptPixelLocationRaw;
-    public nint ptHimetricLocationRaw;
+    public POINT ptPixelLocation;
+    public POINT ptHimetricLocation;
+    public POINT ptPixelLocationRaw;
+    public POINT ptHimetricLocationRaw;
     public uint dwTime;
     public uint historyCount;
     public int InputData;

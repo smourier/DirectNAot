@@ -4,8 +4,8 @@
 public partial struct DXVA_ProcAmpControlBlt
 {
     public uint Size;
-    public FoundationRECT DstRect;
-    public FoundationRECT SrcRect;
+    public RECT DstRect;
+    public RECT SrcRect;
     public float Alpha;
     public float Brightness;
     public float Contrast;

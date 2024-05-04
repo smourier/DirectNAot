@@ -4,8 +4,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DRAWPATRECT
 {
-    public nint ptPosition;
-    public nint ptSize;
+    public POINT ptPosition;
+    public POINT ptSize;
     public ushort wStyle;
     public ushort wPattern;
 }

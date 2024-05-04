@@ -7,7 +7,7 @@ public partial interface IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-render
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Render(ref TimedLevel pLevels, HDC hdc, ref FoundationRECT prc);
+    HRESULT Render(ref TimedLevel pLevels, HDC hdc, ref RECT prc);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-mediainfo
     [PreserveSig]

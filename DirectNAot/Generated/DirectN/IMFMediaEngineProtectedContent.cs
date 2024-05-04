@@ -23,7 +23,7 @@ public partial interface IMFMediaEngineProtectedContent
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineprotectedcontent-transfervideoframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect* */ pSrc, FoundationRECT pDst, nint /* optional MFARGB* */ pBorderClr, out uint pFrameProtectionFlags);
+    HRESULT TransferVideoFrame(nint pDstSurf, nint /* optional MFVideoNormalizedRect* */ pSrc, in RECT pDst, nint /* optional MFARGB* */ pBorderClr, out uint pFrameProtectionFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineprotectedcontent-setcontentprotectionmanager
     [PreserveSig]

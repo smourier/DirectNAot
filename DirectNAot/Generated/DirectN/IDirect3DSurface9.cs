@@ -17,7 +17,7 @@ public partial interface IDirect3DSurface9 : IDirect3DResource9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-lockrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockRect(ref D3DLOCKED_RECT pLockedRect, FoundationRECT pRect, uint Flags);
+    HRESULT LockRect(ref D3DLOCKED_RECT pLockedRect, in RECT pRect, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-unlockrect
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial struct MFVideoAlphaBitmapParams
 {
     public uint dwFlags;
     public COLORREF clrSrcKey;
-    public FoundationRECT rcSrc;
+    public RECT rcSrc;
     public MFVideoNormalizedRect nrcDest;
     public float fAlpha;
     public uint dwFilterMode;

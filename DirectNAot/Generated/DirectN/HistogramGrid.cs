@@ -6,5 +6,5 @@ public partial struct HistogramGrid
 {
     public uint Width;
     public uint Height;
-    public FoundationRECT Region;
+    public RECT Region;
 }

@@ -8,5 +8,5 @@ public partial struct D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAME
     public uint DstSubresource;
     public uint DstX;
     public uint DstY;
-    public FoundationRECT SrcRect;
+    public RECT SrcRect;
 }

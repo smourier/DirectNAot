@@ -12,12 +12,12 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-addoverlaydirtyrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddOverlayDirtyRect(ref FoundationRECT param0);
+    HRESULT AddOverlayDirtyRect(ref RECT param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-blt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Blt(ref FoundationRECT param0, IDirectDrawSurface7 param1, ref FoundationRECT param2, uint param3, ref DDBLTFX param4);
+    HRESULT Blt(ref RECT param0, IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDBLTFX param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-bltbatch
     [PreserveSig]
@@ -27,7 +27,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-bltfast
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BltFast(uint param0, uint param1, IDirectDrawSurface7 param2, ref FoundationRECT param3, uint param4);
+    HRESULT BltFast(uint param0, uint param1, IDirectDrawSurface7 param2, ref RECT param3, uint param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-deleteattachedsurface
     [PreserveSig]
@@ -117,7 +117,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-lock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Lock(ref FoundationRECT param0, ref DDSURFACEDESC2 param1, uint param2, HANDLE param3);
+    HRESULT Lock(ref RECT param0, ref DDSURFACEDESC2 param1, uint param2, HANDLE param3);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-releasedc
     [PreserveSig]
@@ -152,12 +152,12 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-unlock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Unlock(ref FoundationRECT param0);
+    HRESULT Unlock(ref RECT param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-updateoverlay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateOverlay(ref FoundationRECT param0, IDirectDrawSurface7 param1, ref FoundationRECT param2, uint param3, ref DDOVERLAYFX param4);
+    HRESULT UpdateOverlay(ref RECT param0, IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDOVERLAYFX param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-updateoverlaydisplay
     [PreserveSig]

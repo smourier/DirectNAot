@@ -3,8 +3,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct KS_VIDEOINFOHEADER
 {
-    public FoundationRECT rcSource;
-    public FoundationRECT rcTarget;
+    public RECT rcSource;
+    public RECT rcTarget;
     public uint dwBitRate;
     public uint dwBitErrorRate;
     public long AvgTimePerFrame;

@@ -12,7 +12,7 @@ public partial interface ISurfaceImageSourceNativeWithD2D
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-isurfaceimagesourcenativewithd2d-begindraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDraw(FoundationRECT updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out FoundationPOINT offset);
+    HRESULT BeginDraw(in RECT updateRect, in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ updateObject, out POINT offset);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-isurfaceimagesourcenativewithd2d-enddraw
     [PreserveSig]

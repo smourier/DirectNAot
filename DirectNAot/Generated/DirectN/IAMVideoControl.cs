@@ -28,10 +28,10 @@ public partial interface IAMVideoControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getmaxavailableframerate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMaxAvailableFrameRate(IPin pPin, int iIndex, FoundationSIZE Dimensions, out long MaxAvailableFrameRate);
+    HRESULT GetMaxAvailableFrameRate(IPin pPin, int iIndex, SIZE Dimensions, out long MaxAvailableFrameRate);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getframeratelist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrameRateList(IPin pPin, int iIndex, FoundationSIZE Dimensions, out int ListSize, out nint FrameRates);
+    HRESULT GetFrameRateList(IPin pPin, int iIndex, SIZE Dimensions, out int ListSize, out nint FrameRates);
 }

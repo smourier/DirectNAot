@@ -163,7 +163,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getbuttonatposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetButtonAtPosition(in FoundationPOINT point, out uint pulButtonIndex);
+    HRESULT GetButtonAtPosition(POINT point, out uint pulButtonIndex);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getcmdfromevent
     [PreserveSig]
@@ -193,7 +193,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getbuttonrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetButtonRect(uint ulButton, out FoundationRECT pRect);
+    HRESULT GetButtonRect(uint ulButton, out RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-issubpicturestreamenabled
     [PreserveSig]

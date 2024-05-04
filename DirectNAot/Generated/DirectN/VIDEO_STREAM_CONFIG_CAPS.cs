@@ -6,15 +6,15 @@ public partial struct VIDEO_STREAM_CONFIG_CAPS
 {
     public Guid guid;
     public uint VideoStandard;
-    public FoundationSIZE InputSize;
-    public FoundationSIZE MinCroppingSize;
-    public FoundationSIZE MaxCroppingSize;
+    public SIZE InputSize;
+    public SIZE MinCroppingSize;
+    public SIZE MaxCroppingSize;
     public int CropGranularityX;
     public int CropGranularityY;
     public int CropAlignX;
     public int CropAlignY;
-    public FoundationSIZE MinOutputSize;
-    public FoundationSIZE MaxOutputSize;
+    public SIZE MinOutputSize;
+    public SIZE MaxOutputSize;
     public int OutputGranularityX;
     public int OutputGranularityY;
     public int StretchTapsX;

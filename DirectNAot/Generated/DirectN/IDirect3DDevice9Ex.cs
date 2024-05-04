@@ -17,7 +17,7 @@ public partial interface IDirect3DDevice9Ex : IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-presentex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PresentEx(FoundationRECT pSourceRect, FoundationRECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion, uint dwFlags);
+    HRESULT PresentEx(in RECT pSourceRect, in RECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-getgputhreadpriority
     [PreserveSig]

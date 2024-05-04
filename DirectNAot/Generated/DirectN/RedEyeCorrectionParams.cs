@@ -4,5 +4,5 @@
 public partial struct RedEyeCorrectionParams
 {
     public uint numberOfAreas;
-    public FoundationRECT areas;
+    public nint areas;
 }

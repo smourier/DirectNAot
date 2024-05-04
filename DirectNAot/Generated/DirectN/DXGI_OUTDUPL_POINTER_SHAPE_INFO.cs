@@ -8,5 +8,5 @@ public partial struct DXGI_OUTDUPL_POINTER_SHAPE_INFO
     public uint Width;
     public uint Height;
     public uint Pitch;
-    public nint HotSpot;
+    public POINT HotSpot;
 }

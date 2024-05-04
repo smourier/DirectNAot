@@ -16,8 +16,8 @@ public partial struct KS_VIDEOINFO
         public KS_TRUECOLORINFO TrueColorInfo;
     }
     
-    public FoundationRECT rcSource;
-    public FoundationRECT rcTarget;
+    public RECT rcSource;
+    public RECT rcTarget;
     public uint dwBitRate;
     public uint dwBitErrorRate;
     public long AvgTimePerFrame;

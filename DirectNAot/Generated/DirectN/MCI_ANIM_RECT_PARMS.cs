@@ -4,5 +4,5 @@
 public partial struct MCI_ANIM_RECT_PARMS
 {
     public nuint dwCallback;
-    public FoundationRECT rc;
+    public RECT rc;
 }

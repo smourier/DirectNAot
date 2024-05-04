@@ -4,7 +4,7 @@
 public partial struct ACCESSRECTLIST
 {
     public nint lpLink;
-    public FoundationRECT rDest;
+    public RECT rDest;
     public nint lpOwner;
     public nint lpSurfaceData;
     public uint dwFlags;

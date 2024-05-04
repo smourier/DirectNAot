@@ -8,7 +8,7 @@ public partial interface IDWriteBitmapRenderTarget
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritebitmaprendertarget-drawglyphrun
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGlyphRun(float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, IDWriteRenderingParams renderingParams, COLORREF textColor, nint /* optional FoundationRECT* */ blackBoxRect);
+    HRESULT DrawGlyphRun(float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, IDWriteRenderingParams renderingParams, COLORREF textColor, nint /* optional RECT* */ blackBoxRect);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritebitmaprendertarget-getmemorydc
     [PreserveSig]
@@ -36,7 +36,7 @@ public partial interface IDWriteBitmapRenderTarget
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritebitmaprendertarget-getsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSize(out FoundationSIZE size);
+    HRESULT GetSize(out SIZE size);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritebitmaprendertarget-resize
     [PreserveSig]

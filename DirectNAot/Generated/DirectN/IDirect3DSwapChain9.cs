@@ -7,7 +7,7 @@ public partial interface IDirect3DSwapChain9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9-present
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Present(FoundationRECT pSourceRect, FoundationRECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion, uint dwFlags);
+    HRESULT Present(in RECT pSourceRect, in RECT pDestRect, HWND hDestWindowOverride, in RGNDATA pDirtyRegion, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9-getfrontbufferdata
     [PreserveSig]

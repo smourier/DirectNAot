@@ -28,7 +28,7 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setdrawparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDrawParameters(FoundationRECT prcSource, FoundationRECT prcTarget);
+    HRESULT SetDrawParameters(in RECT prcSource, in RECT prcTarget);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-getnativevideoprops
     [PreserveSig]

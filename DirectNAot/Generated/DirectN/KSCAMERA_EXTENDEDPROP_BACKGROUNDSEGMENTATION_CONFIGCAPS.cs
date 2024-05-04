@@ -10,8 +10,8 @@ public partial struct KSCAMERA_EXTENDEDPROP_BACKGROUNDSEGMENTATION_CONFIGCAPS
         public int Denominator;
     }
     
-    public FoundationSIZE Resolution;
+    public SIZE Resolution;
     public _MaxFrameRate_e__Struct MaxFrameRate;
-    public FoundationSIZE MaskResolution;
+    public SIZE MaskResolution;
     public Guid SubType;
 }

@@ -7,7 +7,7 @@ public partial interface IDirectDrawClipper
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-getcliplist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipList(ref FoundationRECT param0, ref RGNDATA param1, ref uint param2);
+    HRESULT GetClipList(ref RECT param0, ref RGNDATA param1, ref uint param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-gethwnd
     [PreserveSig]

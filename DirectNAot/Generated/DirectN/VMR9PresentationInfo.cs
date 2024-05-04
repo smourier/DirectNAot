@@ -8,9 +8,9 @@ public partial struct VMR9PresentationInfo
     public nint lpSurf;
     public long rtStart;
     public long rtEnd;
-    public FoundationSIZE szAspectRatio;
-    public FoundationRECT rcSrc;
-    public FoundationRECT rcDst;
+    public SIZE szAspectRatio;
+    public RECT rcSrc;
+    public RECT rcDst;
     public uint dwReserved1;
     public uint dwReserved2;
 }

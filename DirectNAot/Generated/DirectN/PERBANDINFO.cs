@@ -6,7 +6,7 @@ public partial struct PERBANDINFO
 {
     [MarshalAs(UnmanagedType.U4)]
     public bool bRepeatThisBand;
-    public FoundationSIZE szlBand;
+    public SIZE szlBand;
     public uint ulHorzRes;
     public uint ulVertRes;
 }

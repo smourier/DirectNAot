@@ -23,12 +23,12 @@ public partial interface IVMRWindowlessControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrwindowlesscontrol-setvideoposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVideoPosition(FoundationRECT lpSRCRect, FoundationRECT lpDSTRect);
+    HRESULT SetVideoPosition(in RECT lpSRCRect, in RECT lpDSTRect);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrwindowlesscontrol-getvideoposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoPosition(out FoundationRECT lpSRCRect, out FoundationRECT lpDSTRect);
+    HRESULT GetVideoPosition(out RECT lpSRCRect, out RECT lpDSTRect);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrwindowlesscontrol-getaspectratiomode
     [PreserveSig]

@@ -33,5 +33,5 @@ public partial struct DD_SURFACE_LOCAL
     public nint lpSurfMore;
     public nint lpAttachList;
     public nint lpAttachListFrom;
-    public FoundationRECT rcOverlaySrc;
+    public RECT rcOverlaySrc;
 }

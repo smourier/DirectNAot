@@ -27,7 +27,7 @@ public partial struct GDIINFO
     public int yStyleStep;
     public int denStyleStep;
     public POINTL ptlPhysOffset;
-    public FoundationSIZE szlPhysSize;
+    public SIZE szlPhysSize;
     public uint ulNumPalReg;
     public COLORINFO ciDevice;
     public uint ulDevicePelsDPI;

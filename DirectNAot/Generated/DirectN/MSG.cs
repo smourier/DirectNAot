@@ -9,5 +9,5 @@ public partial struct MSG
     public WPARAM wParam;
     public LPARAM lParam;
     public uint time;
-    public nint pt;
+    public POINT pt;
 }

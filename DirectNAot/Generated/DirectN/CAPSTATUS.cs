@@ -15,7 +15,7 @@ public partial struct CAPSTATUS
     
     [MarshalAs(UnmanagedType.U4)]
     public bool fScale;
-    public nint ptScroll;
+    public POINT ptScroll;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool fUsingDefaultPalette;

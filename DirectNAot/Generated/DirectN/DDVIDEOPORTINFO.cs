@@ -8,7 +8,7 @@ public partial struct DDVIDEOPORTINFO
     public uint dwOriginX;
     public uint dwOriginY;
     public uint dwVPFlags;
-    public FoundationRECT rCrop;
+    public RECT rCrop;
     public uint dwPrescaleWidth;
     public uint dwPrescaleHeight;
     public nint lpddpfInputFormat;

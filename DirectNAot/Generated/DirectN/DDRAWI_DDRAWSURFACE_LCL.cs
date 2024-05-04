@@ -44,8 +44,8 @@ public partial struct DDRAWI_DDRAWSURFACE_LCL
     public DDCOLORKEY ddckCKDestOverlay;
     public nint lpSurfaceOverlaying;
     public DBLNODE dbnOverlayNode;
-    public FoundationRECT rcOverlaySrc;
-    public FoundationRECT rcOverlayDest;
+    public RECT rcOverlaySrc;
+    public RECT rcOverlayDest;
     public uint dwClrXparent;
     public uint dwAlpha;
     public int lOverlayX;

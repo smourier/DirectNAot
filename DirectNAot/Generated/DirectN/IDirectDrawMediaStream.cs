@@ -27,7 +27,7 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-createsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSample(IDirectDrawSurface pSurface, FoundationRECT pRect, uint dwFlags, out IDirectDrawStreamSample ppSample);
+    HRESULT CreateSample(IDirectDrawSurface pSurface, in RECT pRect, uint dwFlags, out IDirectDrawStreamSample ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-gettimeperframe
     [PreserveSig]

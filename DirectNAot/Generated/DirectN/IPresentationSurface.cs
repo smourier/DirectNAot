@@ -22,7 +22,7 @@ public partial interface IPresentationSurface : IPresentationContent
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationsurface-setsourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSourceRect(FoundationRECT sourceRect);
+    HRESULT SetSourceRect(in RECT sourceRect);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationsurface-settransform
     [PreserveSig]

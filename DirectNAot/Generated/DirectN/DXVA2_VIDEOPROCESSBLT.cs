@@ -4,8 +4,8 @@
 public partial struct DXVA2_VIDEOPROCESSBLT
 {
     public long TargetFrame;
-    public FoundationRECT TargetRect;
-    public FoundationSIZE ConstrictionSize;
+    public RECT TargetRect;
+    public SIZE ConstrictionSize;
     public uint StreamingFlags;
     public DXVA2_AYUVSample16 BackgroundColor;
     public DXVA2_ExtendedFormat DestFormat;

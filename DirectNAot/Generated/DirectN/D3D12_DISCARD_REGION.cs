@@ -5,7 +5,7 @@
 public partial struct D3D12_DISCARD_REGION
 {
     public uint NumRects;
-    public FoundationRECT pRects;
+    public nint pRects;
     public uint FirstSubresource;
     public uint NumSubresources;
 }

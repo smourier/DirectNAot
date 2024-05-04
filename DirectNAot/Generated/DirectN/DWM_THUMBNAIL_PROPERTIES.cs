@@ -5,8 +5,8 @@
 public partial struct DWM_THUMBNAIL_PROPERTIES
 {
     public uint dwFlags;
-    public FoundationRECT rcDestination;
-    public FoundationRECT rcSource;
+    public RECT rcDestination;
+    public RECT rcSource;
     public byte opacity;
     
     [MarshalAs(UnmanagedType.U4)]

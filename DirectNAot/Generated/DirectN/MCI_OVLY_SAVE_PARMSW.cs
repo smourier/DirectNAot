@@ -5,5 +5,5 @@ public partial struct MCI_OVLY_SAVE_PARMSW
 {
     public nuint dwCallback;
     public PWSTR lpfilename;
-    public FoundationRECT rc;
+    public RECT rc;
 }

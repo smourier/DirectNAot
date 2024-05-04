@@ -4,8 +4,8 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct WMVIDEOINFOHEADER2
 {
-    public FoundationRECT rcSource;
-    public FoundationRECT rcTarget;
+    public RECT rcSource;
+    public RECT rcTarget;
     public uint dwBitRate;
     public uint dwBitErrorRate;
     public long AvgTimePerFrame;

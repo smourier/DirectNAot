@@ -4,6 +4,6 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_OUTDUPL_MOVE_RECT
 {
-    public nint SourcePoint;
-    public FoundationRECT DestinationRect;
+    public POINT SourcePoint;
+    public RECT DestinationRect;
 }

@@ -7,5 +7,5 @@ public partial struct KS_AMVPDIMINFO
     public uint dwFieldHeight;
     public uint dwVBIWidth;
     public uint dwVBIHeight;
-    public FoundationRECT rcValidRegion;
+    public RECT rcValidRegion;
 }

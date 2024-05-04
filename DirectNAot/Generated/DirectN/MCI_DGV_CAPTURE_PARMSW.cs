@@ -6,5 +6,5 @@ public partial struct MCI_DGV_CAPTURE_PARMSW
 {
     public nuint dwCallback;
     public PWSTR lpstrFileName;
-    public FoundationRECT rc;
+    public RECT rc;
 }

@@ -8,7 +8,7 @@ public partial interface IMixerOCXNotify
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocxnotify-oninvalidaterect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnInvalidateRect(FoundationRECT lpcRect);
+    HRESULT OnInvalidateRect(in RECT lpcRect);
     
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocxnotify-onstatuschange
     [PreserveSig]

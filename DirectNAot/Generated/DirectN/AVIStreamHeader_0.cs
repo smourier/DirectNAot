@@ -17,5 +17,5 @@ public partial struct AVIStreamHeader
     public uint dwSuggestedBufferSize;
     public uint dwQuality;
     public uint dwSampleSize;
-    public FoundationRECT rcFrame;
+    public RECT rcFrame;
 }

@@ -22,7 +22,7 @@ public partial interface ID3D12GraphicsCommandList1 : ID3D12GraphicsCommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist1-resolvesubresourceregion
     [PreserveSig]
-    void ResolveSubresourceRegion(ID3D12Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, ID3D12Resource pSrcResource, uint SrcSubresource, nint /* optional FoundationRECT* */ pSrcRect, DXGI_FORMAT Format, D3D12_RESOLVE_MODE ResolveMode);
+    void ResolveSubresourceRegion(ID3D12Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, ID3D12Resource pSrcResource, uint SrcSubresource, nint /* optional RECT* */ pSrcRect, DXGI_FORMAT Format, D3D12_RESOLVE_MODE ResolveMode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist1-setviewinstancemask
     [PreserveSig]

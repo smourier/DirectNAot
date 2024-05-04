@@ -10,7 +10,7 @@ public partial struct FONTOBJ
     public uint flFontType;
     public nuint iTTUniq;
     public nuint iFile;
-    public FoundationSIZE sizLogResPpi;
+    public SIZE sizLogResPpi;
     public uint ulStyleSize;
     public nint pvConsumer;
     public nint pvProducer;

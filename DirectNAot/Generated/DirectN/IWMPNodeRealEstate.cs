@@ -5,15 +5,15 @@ public partial interface IWMPNodeRealEstate
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesiredSize(ref FoundationSIZE pSize);
+    HRESULT GetDesiredSize(ref SIZE pSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRects(FoundationRECT pSrc, FoundationRECT pDest, FoundationRECT pClip);
+    HRESULT SetRects(in RECT pSrc, in RECT pDest, in RECT pClip);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRects(ref FoundationRECT pSrc, ref FoundationRECT pDest, ref FoundationRECT pClip);
+    HRESULT GetRects(ref RECT pSrc, ref RECT pDest, ref RECT pClip);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

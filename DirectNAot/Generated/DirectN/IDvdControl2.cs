@@ -153,12 +153,12 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-activateatposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateAtPosition(in FoundationPOINT point);
+    HRESULT ActivateAtPosition(POINT point);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectatposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SelectAtPosition(in FoundationPOINT point);
+    HRESULT SelectAtPosition(POINT point);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playchaptersautostop
     [PreserveSig]

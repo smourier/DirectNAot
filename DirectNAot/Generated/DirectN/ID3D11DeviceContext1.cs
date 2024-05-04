@@ -75,9 +75,9 @@ public partial interface ID3D11DeviceContext1 : ID3D11DeviceContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-clearview
     [PreserveSig]
-    void ClearView(ID3D11View pView, [MarshalUsing(ConstantElementCount = 4)] in float[] Color, nint /* optional FoundationRECT* */ pRect, uint NumRects);
+    void ClearView(ID3D11View pView, [MarshalUsing(ConstantElementCount = 4)] in float[] Color, nint /* optional RECT* */ pRect, uint NumRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-discardview1
     [PreserveSig]
-    void DiscardView1(ID3D11View pResourceView, nint /* optional FoundationRECT* */ pRects, uint NumRects);
+    void DiscardView1(ID3D11View pResourceView, nint /* optional RECT* */ pRects, uint NumRects);
 }

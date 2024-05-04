@@ -4,6 +4,6 @@
 public partial struct MCI_ANIM_UPDATE_PARMS
 {
     public nuint dwCallback;
-    public FoundationRECT rc;
+    public RECT rc;
     public HDC hDC;
 }

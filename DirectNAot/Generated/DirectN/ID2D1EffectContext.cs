@@ -37,12 +37,12 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createoffsettransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateOffsetTransform(in FoundationPOINT offset, out ID2D1OffsetTransform transform);
+    HRESULT CreateOffsetTransform(POINT offset, out ID2D1OffsetTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createboundsadjustmenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBoundsAdjustmentTransform(FoundationRECT outputRectangle, out ID2D1BoundsAdjustmentTransform transform);
+    HRESULT CreateBoundsAdjustmentTransform(in RECT outputRectangle, out ID2D1BoundsAdjustmentTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-loadpixelshader
     [PreserveSig]

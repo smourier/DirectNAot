@@ -8,5 +8,5 @@ public partial struct RGNDATAHEADER
     public uint iType;
     public uint nCount;
     public uint nRgnSize;
-    public FoundationRECT rcBound;
+    public RECT rcBound;
 }

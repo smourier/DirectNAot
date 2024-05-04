@@ -7,5 +7,5 @@ public partial struct KSPROPERTY_CAMERACONTROL_S_EX
     public int Value;
     public uint Flags;
     public uint Capabilities;
-    public FoundationRECT FocusRect;
+    public RECT FocusRect;
 }

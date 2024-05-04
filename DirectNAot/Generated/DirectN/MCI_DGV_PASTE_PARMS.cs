@@ -6,7 +6,7 @@ public partial struct MCI_DGV_PASTE_PARMS
 {
     public nuint dwCallback;
     public uint dwTo;
-    public FoundationRECT rc;
+    public RECT rc;
     public uint dwAudioStream;
     public uint dwVideoStream;
 }

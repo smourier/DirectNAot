@@ -28,12 +28,12 @@ public partial interface IMixerOCX
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-ondraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDraw(HDC hdcDraw, FoundationRECT prcDraw);
+    HRESULT OnDraw(HDC hdcDraw, in RECT prcDraw);
     
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-setdrawregion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDrawRegion(in FoundationPOINT lpptTopLeftSC, FoundationRECT prcDrawCC, FoundationRECT lprcClip);
+    HRESULT SetDrawRegion(in POINT lpptTopLeftSC, in RECT prcDrawCC, in RECT lprcClip);
     
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-advise
     [PreserveSig]

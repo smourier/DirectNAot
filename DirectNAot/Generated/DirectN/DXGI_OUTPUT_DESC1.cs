@@ -5,7 +5,7 @@
 public partial struct DXGI_OUTPUT_DESC1
 {
     public InlineArraySystemChar32 DeviceName;
-    public FoundationRECT DesktopCoordinates;
+    public RECT DesktopCoordinates;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool AttachedToDesktop;

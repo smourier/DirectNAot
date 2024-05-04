@@ -19,5 +19,5 @@ public partial struct DDHAL_BLTDATA
     public RECTL rOrigDest;
     public RECTL rOrigSrc;
     public uint dwRectCnt;
-    public FoundationRECT prDestRects;
+    public nint prDestRects;
 }

@@ -7,7 +7,7 @@ public partial struct DXVA2TraceVideoProcessBltData
     public ulong pObject;
     public ulong pRenderTarget;
     public ulong TargetFrameTime;
-    public FoundationRECT TargetRect;
+    public RECT TargetRect;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool Enter;

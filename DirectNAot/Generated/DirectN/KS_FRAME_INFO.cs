@@ -36,7 +36,7 @@ public partial struct KS_FRAME_INFO
     public long DropCount;
     public HANDLE hDirectDraw;
     public HANDLE hSurfaceHandle;
-    public FoundationRECT DirectDrawRect;
+    public RECT DirectDrawRect;
     public _Anonymous1_e__Union Anonymous1;
     public uint Reserved2;
     public _Anonymous2_e__Union Anonymous2;

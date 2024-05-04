@@ -4,9 +4,9 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDBLTBATCH
 {
-    public FoundationRECT lprDest;
+    public nint lprDest;
     public nint lpDDSSrc;
-    public FoundationRECT lprSrc;
+    public nint lprSrc;
     public uint dwFlags;
     public nint lpDDBltFx;
 }

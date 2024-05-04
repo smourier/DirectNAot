@@ -22,5 +22,13 @@ namespace DirectNAot.InteropBuilder.Cli
             context.ImplicitNamespaces.Add(Namespace);
             return context;
         }
+
+        protected override void AddMappedTypes(BuilderContext context)
+        {
+            base.AddMappedTypes(context);
+            context.MappedTypes[TypeMappings.Point] = context.AllTypes[TypeMappings.POINT];
+            context.MappedTypes[TypeMappings.Rect] = context.AllTypes[TypeMappings.RECT];
+            context.MappedTypes[TypeMappings.Size] = context.AllTypes[TypeMappings.SIZE];
+        }
     }
 }

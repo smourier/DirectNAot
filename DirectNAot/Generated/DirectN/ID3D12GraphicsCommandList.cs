@@ -60,7 +60,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-rssetscissorrects
     [PreserveSig]
-    void RSSetScissorRects(uint NumRects, [In][Out][MarshalUsing(CountElementName = nameof(NumRects))] FoundationRECT[] pRects);
+    void RSSetScissorRects(uint NumRects, [MarshalUsing(CountElementName = nameof(NumRects))] in RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-omsetblendfactor
     [PreserveSig]
@@ -160,19 +160,19 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-cleardepthstencilview
     [PreserveSig]
-    void ClearDepthStencilView(D3D12_CPU_DESCRIPTOR_HANDLE DepthStencilView, D3D12_CLEAR_FLAGS ClearFlags, float Depth, byte Stencil, uint NumRects, [In][Out][MarshalUsing(CountElementName = nameof(NumRects))] FoundationRECT[] pRects);
+    void ClearDepthStencilView(D3D12_CPU_DESCRIPTOR_HANDLE DepthStencilView, D3D12_CLEAR_FLAGS ClearFlags, float Depth, byte Stencil, uint NumRects, [MarshalUsing(CountElementName = nameof(NumRects))] in RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, [MarshalUsing(ConstantElementCount = 4)] in float[] ColorRGBA, uint NumRects, nint /* optional FoundationRECT* */ pRects);
+    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, [MarshalUsing(ConstantElementCount = 4)] in float[] ColorRGBA, uint NumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewuint
     [PreserveSig]
-    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in uint[] Values, uint NumRects, [In][Out][MarshalUsing(CountElementName = nameof(NumRects))] FoundationRECT[] pRects);
+    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in uint[] Values, uint NumRects, [MarshalUsing(CountElementName = nameof(NumRects))] in RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewfloat
     [PreserveSig]
-    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in float[] Values, uint NumRects, [In][Out][MarshalUsing(CountElementName = nameof(NumRects))] FoundationRECT[] pRects);
+    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in float[] Values, uint NumRects, [MarshalUsing(CountElementName = nameof(NumRects))] in RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-discardresource
     [PreserveSig]

@@ -4,7 +4,7 @@
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_PROCESS_TRANSFORM
 {
-    public FoundationRECT SourceRectangle;
-    public FoundationRECT DestinationRectangle;
+    public RECT SourceRectangle;
+    public RECT DestinationRectangle;
     public D3D12_VIDEO_PROCESS_ORIENTATION Orientation;
 }

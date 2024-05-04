@@ -18,7 +18,7 @@ public partial struct AVISTREAMINFOW
     public uint dwSuggestedBufferSize;
     public uint dwQuality;
     public uint dwSampleSize;
-    public FoundationRECT rcFrame;
+    public RECT rcFrame;
     public uint dwEditCount;
     public uint dwFormatChangeCount;
     public InlineArraySystemChar64 szName;

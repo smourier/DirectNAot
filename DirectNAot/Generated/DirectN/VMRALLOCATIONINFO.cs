@@ -7,9 +7,9 @@ public partial struct VMRALLOCATIONINFO
     public uint dwFlags;
     public nint lpHdr;
     public nint lpPixFmt;
-    public FoundationSIZE szAspectRatio;
+    public SIZE szAspectRatio;
     public uint dwMinBuffers;
     public uint dwMaxBuffers;
     public uint dwInterlaceFlags;
-    public FoundationSIZE szNativeSize;
+    public SIZE szNativeSize;
 }

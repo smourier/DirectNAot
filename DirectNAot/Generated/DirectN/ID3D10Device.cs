@@ -118,7 +118,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetscissorrects
     [PreserveSig]
-    void RSSetScissorRects(uint NumRects, nint /* optional FoundationRECT* */ pRects);
+    void RSSetScissorRects(uint NumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-copysubresourceregion
     [PreserveSig]
@@ -242,7 +242,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetscissorrects
     [PreserveSig]
-    void RSGetScissorRects(ref uint NumRects, nint /* optional FoundationRECT* */ pRects);
+    void RSGetScissorRects(ref uint NumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getdeviceremovedreason
     [PreserveSig]

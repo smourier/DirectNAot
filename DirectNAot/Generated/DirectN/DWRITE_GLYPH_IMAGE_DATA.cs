@@ -9,8 +9,8 @@ public partial struct DWRITE_GLYPH_IMAGE_DATA
     public uint uniqueDataId;
     public uint pixelsPerEm;
     public D2D_SIZE_U pixelSize;
-    public nint horizontalLeftOrigin;
-    public nint horizontalRightOrigin;
-    public nint verticalTopOrigin;
-    public nint verticalBottomOrigin;
+    public POINT horizontalLeftOrigin;
+    public POINT horizontalRightOrigin;
+    public POINT verticalTopOrigin;
+    public POINT verticalBottomOrigin;
 }

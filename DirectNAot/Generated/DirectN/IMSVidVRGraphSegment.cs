@@ -41,23 +41,23 @@ public partial interface IMSVidVRGraphSegment : IMSVidGraphSegment
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Source(out FoundationRECT r);
+    HRESULT get_Source(out RECT r);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Source(FoundationRECT r);
+    HRESULT put_Source(RECT r);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Destination(out FoundationRECT r);
+    HRESULT get_Destination(out RECT r);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Destination(FoundationRECT r);
+    HRESULT put_Destination(RECT r);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_NativeSize(out FoundationSIZE sizeval, out FoundationSIZE aspectratio);
+    HRESULT get_NativeSize(out SIZE sizeval, out SIZE aspectratio);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

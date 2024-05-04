@@ -167,12 +167,12 @@ public partial interface IDvdControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol-mouseactivate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MouseActivate(in FoundationPOINT point);
+    HRESULT MouseActivate(POINT point);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol-mouseselect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MouseSelect(in FoundationPOINT point);
+    HRESULT MouseSelect(POINT point);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol-chapterplayautostop
     [PreserveSig]

@@ -6,5 +6,5 @@ public partial struct DXVAHD_STREAM_STATE_DESTINATION_RECT_DATA
 {
     [MarshalAs(UnmanagedType.U4)]
     public bool Enable;
-    public FoundationRECT DestinationRect;
+    public RECT DestinationRect;
 }

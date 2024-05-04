@@ -17,7 +17,7 @@ public partial interface IDirect3DTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dtexture9-lockrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockRect(uint Level, ref D3DLOCKED_RECT pLockedRect, FoundationRECT pRect, uint Flags);
+    HRESULT LockRect(uint Level, ref D3DLOCKED_RECT pLockedRect, in RECT pRect, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dtexture9-unlockrect
     [PreserveSig]
@@ -27,5 +27,5 @@ public partial interface IDirect3DTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dtexture9-adddirtyrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDirtyRect(FoundationRECT pDirtyRect);
+    HRESULT AddDirtyRect(in RECT pDirtyRect);
 }

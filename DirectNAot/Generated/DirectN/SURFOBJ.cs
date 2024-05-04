@@ -8,7 +8,7 @@ public partial struct SURFOBJ
     public HSURF hsurf;
     public DHPDEV dhpdev;
     public HDEV hdev;
-    public FoundationSIZE sizlBitmap;
+    public SIZE sizlBitmap;
     public uint cjBits;
     public nint pvBits;
     public nint pvScan0;

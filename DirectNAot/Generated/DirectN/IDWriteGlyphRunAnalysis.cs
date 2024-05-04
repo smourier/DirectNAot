@@ -8,12 +8,12 @@ public partial interface IDWriteGlyphRunAnalysis
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteglyphrunanalysis-getalphatexturebounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAlphaTextureBounds(DWRITE_TEXTURE_TYPE textureType, out FoundationRECT textureBounds);
+    HRESULT GetAlphaTextureBounds(DWRITE_TEXTURE_TYPE textureType, out RECT textureBounds);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteglyphrunanalysis-createalphatexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAlphaTexture(DWRITE_TEXTURE_TYPE textureType, FoundationRECT textureBounds, nint /* byte array */ alphaValues, uint bufferSize);
+    HRESULT CreateAlphaTexture(DWRITE_TEXTURE_TYPE textureType, in RECT textureBounds, nint /* byte array */ alphaValues, uint bufferSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwriteglyphrunanalysis-getalphablendparams
     [PreserveSig]

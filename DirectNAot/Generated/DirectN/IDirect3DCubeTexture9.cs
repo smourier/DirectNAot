@@ -17,7 +17,7 @@ public partial interface IDirect3DCubeTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcubetexture9-lockrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockRect(D3DCUBEMAP_FACES FaceType, uint Level, ref D3DLOCKED_RECT pLockedRect, FoundationRECT pRect, uint Flags);
+    HRESULT LockRect(D3DCUBEMAP_FACES FaceType, uint Level, ref D3DLOCKED_RECT pLockedRect, in RECT pRect, uint Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcubetexture9-unlockrect
     [PreserveSig]
@@ -27,5 +27,5 @@ public partial interface IDirect3DCubeTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcubetexture9-adddirtyrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDirtyRect(D3DCUBEMAP_FACES FaceType, FoundationRECT pDirtyRect);
+    HRESULT AddDirtyRect(D3DCUBEMAP_FACES FaceType, in RECT pDirtyRect);
 }

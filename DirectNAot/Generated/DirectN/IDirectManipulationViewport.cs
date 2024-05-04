@@ -48,12 +48,12 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-getviewportrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetViewportRect(out FoundationRECT viewport);
+    HRESULT GetViewportRect(out RECT viewport);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-setviewportrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetViewportRect(FoundationRECT viewport);
+    HRESULT SetViewportRect(in RECT viewport);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-zoomtorect
     [PreserveSig]

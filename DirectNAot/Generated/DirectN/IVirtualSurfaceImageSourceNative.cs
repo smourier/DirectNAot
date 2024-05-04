@@ -7,7 +7,7 @@ public partial interface IVirtualSurfaceImageSourceNative : ISurfaceImageSourceN
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-invalidate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Invalidate(FoundationRECT updateRect);
+    HRESULT Invalidate(RECT updateRect);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-getupdaterectcount
     [PreserveSig]
@@ -17,12 +17,12 @@ public partial interface IVirtualSurfaceImageSourceNative : ISurfaceImageSourceN
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-getupdaterects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUpdateRects([MarshalUsing(CountElementName = nameof(count))] out FoundationRECT[] updates, uint count);
+    HRESULT GetUpdateRects([MarshalUsing(CountElementName = nameof(count))] out RECT[] updates, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-getvisiblebounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVisibleBounds(out FoundationRECT bounds);
+    HRESULT GetVisibleBounds(out RECT bounds);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-registerforupdatesneeded
     [PreserveSig]

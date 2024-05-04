@@ -13,8 +13,8 @@ public partial struct KS_VIDEOINFOHEADER2
         public uint dwReserved1;
     }
     
-    public FoundationRECT rcSource;
-    public FoundationRECT rcTarget;
+    public RECT rcSource;
+    public RECT rcTarget;
     public uint dwBitRate;
     public uint dwBitErrorRate;
     public long AvgTimePerFrame;

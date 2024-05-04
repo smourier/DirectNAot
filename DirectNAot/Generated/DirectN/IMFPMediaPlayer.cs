@@ -118,12 +118,12 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getnativevideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNativeVideoSize(nint /* optional FoundationSIZE* */ pszVideo, nint /* optional FoundationSIZE* */ pszARVideo);
+    HRESULT GetNativeVideoSize(nint /* optional SIZE* */ pszVideo, nint /* optional SIZE* */ pszARVideo);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getidealvideosize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIdealVideoSize(nint /* optional FoundationSIZE* */ pszMin, nint /* optional FoundationSIZE* */ pszMax);
+    HRESULT GetIdealVideoSize(nint /* optional SIZE* */ pszMin, nint /* optional SIZE* */ pszMax);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-setvideosourcerect
     [PreserveSig]

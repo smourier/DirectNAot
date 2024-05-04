@@ -12,7 +12,7 @@ public partial interface IPhotoAcquireItem
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-getthumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetThumbnail(FoundationSIZE sizeThumbnail, out HBITMAP phbmpThumbnail);
+    HRESULT GetThumbnail(SIZE sizeThumbnail, out HBITMAP phbmpThumbnail);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-getproperty
     [PreserveSig]

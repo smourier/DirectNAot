@@ -8,12 +8,12 @@ public partial interface IDirectManipulationContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getcontentrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContentRect(out FoundationRECT contentSize);
+    HRESULT GetContentRect(out RECT contentSize);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-setcontentrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetContentRect(FoundationRECT contentSize);
+    HRESULT SetContentRect(in RECT contentSize);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getviewport
     [PreserveSig]

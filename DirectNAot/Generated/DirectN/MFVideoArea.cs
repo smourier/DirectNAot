@@ -6,5 +6,5 @@ public partial struct MFVideoArea
 {
     public MFOffset OffsetX;
     public MFOffset OffsetY;
-    public FoundationSIZE Area;
+    public SIZE Area;
 }
