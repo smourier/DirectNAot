@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_3/nn-d2d1_3-id2d1spritebatch
 [GeneratedComInterface, Guid("4dc583bf-3a10-438a-8722-e9765224f1f1")]

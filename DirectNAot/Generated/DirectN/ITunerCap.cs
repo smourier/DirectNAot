@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/tuner/nn-tuner-itunercap
 [GeneratedComInterface, Guid("e60dfa45-8d56-4e65-a8ab-d6be9412c249")]

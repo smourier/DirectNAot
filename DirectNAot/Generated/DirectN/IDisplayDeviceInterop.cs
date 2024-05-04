@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("64338358-366a-471b-bd56-dd8ef48e439b")]
 public partial interface IDisplayDeviceInterop

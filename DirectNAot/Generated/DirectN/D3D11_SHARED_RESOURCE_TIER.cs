@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11/ne-d3d11-d3d11_shared_resource_tier
 public enum D3D11_SHARED_RESOURCE_TIER

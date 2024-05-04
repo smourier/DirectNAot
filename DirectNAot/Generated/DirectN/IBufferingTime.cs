@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("1e00486a-78dd-11d2-8dd3-006097c9a2b2")]
 public partial interface IBufferingTime

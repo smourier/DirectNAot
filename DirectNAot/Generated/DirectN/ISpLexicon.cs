@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("da41a7c2-5383-4db2-916b-6c1719e3db58")]
 public partial interface ISpLexicon

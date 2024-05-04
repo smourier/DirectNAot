@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(512)]
 public partial struct InlineArrayByte512

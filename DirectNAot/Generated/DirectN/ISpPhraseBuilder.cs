@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("88a3342a-0bed-4834-922b-88d43173162f")]
 public partial interface ISpPhraseBuilder : ISpPhrase

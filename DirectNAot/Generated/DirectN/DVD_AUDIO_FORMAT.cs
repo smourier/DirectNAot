@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ne-strmif-dvd_audio_format
 public enum DVD_AUDIO_FORMAT

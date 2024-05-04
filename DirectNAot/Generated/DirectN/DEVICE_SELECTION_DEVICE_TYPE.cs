@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/photoacquire/ne-photoacquire-device_selection_device_type
 public enum DEVICE_SELECTION_DEVICE_TYPE

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite/ne-dwrite-dwrite_texture_type
 public enum DWRITE_TEXTURE_TYPE

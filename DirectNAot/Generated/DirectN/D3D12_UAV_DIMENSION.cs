@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_uav_dimension
 public enum D3D12_UAV_DIMENSION

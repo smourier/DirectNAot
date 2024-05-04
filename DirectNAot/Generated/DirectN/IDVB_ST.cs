@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nn-dvbsiparser-idvb_st
 [GeneratedComInterface, Guid("4d5b9f23-2a02-45de-bcda-5d5dbfbfbe62")]

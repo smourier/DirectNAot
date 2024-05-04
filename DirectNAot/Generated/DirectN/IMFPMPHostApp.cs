@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfidl/nn-mfidl-imfpmphostapp
 [SupportedOSPlatform("windows8.0")]

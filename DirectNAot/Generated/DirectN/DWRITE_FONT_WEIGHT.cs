@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite/ne-dwrite-dwrite_font_weight
 public enum DWRITE_FONT_WEIGHT

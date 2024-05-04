@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum CAPTURE_MEMORY_ALLOCATION_FLAGS
 {

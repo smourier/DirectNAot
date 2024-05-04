@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("a6ba4205-e59e-4e71-b25b-4e436d21ee3d")]
 public partial interface IDisplayPathInterop

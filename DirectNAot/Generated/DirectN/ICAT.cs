@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nn-mpeg2psiparser-icat
 [GeneratedComInterface, Guid("7c6995fb-2a31-4bd7-953e-b1ad7fb7d31c")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum KSCAMERA_EXTENDEDPROP_MetadataAlignment
 {

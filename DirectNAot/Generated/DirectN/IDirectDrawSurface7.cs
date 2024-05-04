@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddraw/nn-ddraw-idirectdrawsurface7
 [GeneratedComInterface, Guid("06675a80-3b9b-11d2-b92f-00609797ea5b")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("19666fb4-babe-4c55-bc03-0a074da37e2a")]
 public partial interface IMFSourceBufferAppendMode

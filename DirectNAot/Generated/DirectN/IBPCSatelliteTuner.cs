@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/nn-strmif-ibpcsatellitetuner
 [GeneratedComInterface, Guid("211a8765-03ac-11d1-8d13-00aa00bd8339")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum OPM_TYPE_ENFORCEMENT_HDCP_PROTECTION_LEVEL
 {

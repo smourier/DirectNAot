@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmstreamprioritization
 [GeneratedComInterface, Guid("8c1c6090-f9a8-4748-8ec3-dd1108ba1e77")]

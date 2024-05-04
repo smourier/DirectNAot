@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("8fcebc98-4e49-4067-9c6c-d86a0e092e3d")]
 public partial interface ISpPhraseAlt : ISpPhrase

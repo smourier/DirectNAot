@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidanalogtuner2
 [GeneratedComInterface, Guid("37647bf7-3dde-4cc8-a4dc-0d534d3d0037")]

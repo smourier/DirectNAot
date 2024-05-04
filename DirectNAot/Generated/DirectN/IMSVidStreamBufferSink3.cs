@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidstreambuffersink3
 [GeneratedComInterface, Guid("4f8721d7-7d59-4d8b-99f5-a77775586bd5")]

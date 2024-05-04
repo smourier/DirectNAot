@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("58346cda-dde7-4497-9461-6f87af5e0659")]
 public partial interface IDxcResult : IDxcOperationResult

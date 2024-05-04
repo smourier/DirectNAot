@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("41e64aae-98c0-4239-8e95-a330dd6aa18b")]
 public partial interface ICompositionDrawingSurfaceInterop2 : ICompositionDrawingSurfaceInterop

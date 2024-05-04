@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("ee0a7fb5-def4-4c23-a454-c9c7dc878398")]
 public partial interface IDWriteFactory8 : IDWriteFactory7

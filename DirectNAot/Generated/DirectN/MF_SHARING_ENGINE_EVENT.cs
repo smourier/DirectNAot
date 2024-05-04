@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfsharingengine/ne-mfsharingengine-mf_sharing_engine_event
 public enum MF_SHARING_ENGINE_EVENT

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("8445c581-0cac-4a38-abfe-9b2ce2826455")]
 public partial interface ISpPhoneConverter : ISpObjectWithToken

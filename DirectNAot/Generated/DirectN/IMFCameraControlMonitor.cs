@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfidl/nn-mfidl-imfcameracontrolmonitor
 [GeneratedComInterface, Guid("4d46f2c9-28ba-4970-8c7b-1f0c9d80af69")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("133adcd4-19b4-4020-9fdc-842e78253b17")]
 public partial interface ISpPhoneticAlphabetConverter

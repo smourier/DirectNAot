@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("577ad2a0-9fc7-4dda-8b18-dab810140052")]
 public partial interface ID2D1EffectContext2 : ID2D1EffectContext1

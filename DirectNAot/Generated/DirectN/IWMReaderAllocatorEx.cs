@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmreaderallocatorex
 [GeneratedComInterface, Guid("9f762fa7-a22e-428d-93c9-ac82f3aafe5a")]

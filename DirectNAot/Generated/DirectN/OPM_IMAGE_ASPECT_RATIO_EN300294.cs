@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/opmapi/ne-opmapi-opm_image_aspect_ratio_en300294
 public enum OPM_IMAGE_ASPECT_RATIO_EN300294

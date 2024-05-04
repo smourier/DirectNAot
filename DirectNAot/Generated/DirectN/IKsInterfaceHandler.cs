@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("d3abc7e0-9a61-11d0-a40d-00a0c9223196")]
 public partial interface IKsInterfaceHandler

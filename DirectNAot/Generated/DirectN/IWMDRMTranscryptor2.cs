@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("e0da439f-d331-496a-bece-18e5bac5dd23")]
 public partial interface IWMDRMTranscryptor2 : IWMDRMTranscryptor

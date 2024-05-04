@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(22)]
 public partial struct InlineArrayChar22

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c560298a-535c-48f9-866a-632540660cb4")]
 public partial interface IPrintDocumentPackageTarget2

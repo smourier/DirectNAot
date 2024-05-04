@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidvmr9
 [GeneratedComInterface, Guid("d58b0015-ebef-44bb-bbdd-3f3699d76ea1")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/DirectShow/ikspropertyset
 [GeneratedComInterface, Guid("31efac30-515c-11d0-a9aa-00aa0061be93")]

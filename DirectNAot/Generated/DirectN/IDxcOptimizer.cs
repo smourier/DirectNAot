@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("25740e2e-9cba-401b-9119-4fb42f39f270")]
 public partial interface IDxcOptimizer

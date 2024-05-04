@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("2177db29-7f45-47d0-8554-067e91c80502")]
 public partial interface ISpRecoGrammar : ISpGrammarBuilder

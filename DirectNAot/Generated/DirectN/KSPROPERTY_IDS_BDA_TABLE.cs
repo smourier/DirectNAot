@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum KSPROPERTY_IDS_BDA_TABLE
 {

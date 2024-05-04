@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct MFT_STREAM_STATE_PARAM

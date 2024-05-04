@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(2044)]
 public partial struct InlineArrayAVISTDINDEX_ENTRY2044

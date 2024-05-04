@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [Flags]
 public enum OPM_HDCP_FLAGS

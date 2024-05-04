@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum BDA_CONDITIONALACCESS_SESSION_RESULT
 {

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("ad128745-211b-40a0-9981-fe65f166d0fd")]
 public partial interface IMFTimedTextCueList

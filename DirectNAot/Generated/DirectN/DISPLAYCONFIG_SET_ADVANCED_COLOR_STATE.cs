@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DISPLAYCONFIG_SET_ADVANCED_COLOR_STATE

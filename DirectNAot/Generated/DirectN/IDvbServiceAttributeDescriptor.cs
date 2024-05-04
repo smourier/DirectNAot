@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("0f37bd92-d6a1-4854-b950-3a969d27f30e")]
 public partial interface IDvbServiceAttributeDescriptor

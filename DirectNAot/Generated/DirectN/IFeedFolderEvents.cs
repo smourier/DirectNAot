@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("20a59fa6-a844-4630-9e98-175f70b4d55b")]
 public partial interface IFeedFolderEvents : IDispatch

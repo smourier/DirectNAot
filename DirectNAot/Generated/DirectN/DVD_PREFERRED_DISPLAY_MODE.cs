@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ne-strmif-dvd_preferred_display_mode
 public enum DVD_PREFERRED_DISPLAY_MODE

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nn-mfreadwrite-imfsourcereadercallback2
 [GeneratedComInterface, Guid("cf839fe6-8c2a-4dd2-b6ea-c22d6961af05")]

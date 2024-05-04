@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcomp/nn-dcomp-idcompositionbrightnesseffect
 [GeneratedComInterface, Guid("6027496e-cb3a-49ab-934f-d798da4f7da6")]

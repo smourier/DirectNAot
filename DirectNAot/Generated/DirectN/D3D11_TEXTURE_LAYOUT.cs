@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11_3/ne-d3d11_3-d3d11_texture_layout
 public enum D3D11_TEXTURE_LAYOUT

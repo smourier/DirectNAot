@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("81f04ad1-4194-4d7d-86d6-11813cec163c")]
 public partial interface IFeedFolder : IDispatch

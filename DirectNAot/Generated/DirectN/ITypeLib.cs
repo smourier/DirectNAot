@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/oaidl/nn-oaidl-itypelib
 [GeneratedComInterface, Guid("00020402-0000-0000-c000-000000000046")]

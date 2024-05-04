@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/nn-strmif-idvdinfo
 [GeneratedComInterface, Guid("a70efe60-e2a3-11d0-a9be-00aa0061be93")]

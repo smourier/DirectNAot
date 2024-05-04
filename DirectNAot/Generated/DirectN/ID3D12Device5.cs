@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/nn-d3d12-id3d12device5
 [SupportedOSPlatform("windows10.0.17763")]

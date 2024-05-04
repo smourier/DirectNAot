@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum DISPLAYCONFIG_COLOR_ENCODING
 {

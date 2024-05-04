@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/msopc/ne-msopc-opc_signature_time_format
 public enum OPC_SIGNATURE_TIME_FORMAT

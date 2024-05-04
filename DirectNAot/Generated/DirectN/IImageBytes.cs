@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("025d1823-6c7d-447b-bbdb-a3cbc3dfa2fc")]
 public partial interface IImageBytes

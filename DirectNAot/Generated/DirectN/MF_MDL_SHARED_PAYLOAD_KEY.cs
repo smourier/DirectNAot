@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Explicit)]
 public partial struct MF_MDL_SHARED_PAYLOAD_KEY

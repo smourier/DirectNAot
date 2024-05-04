@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite_3/nn-dwrite_3-idwritefontset1
 [GeneratedComInterface, Guid("7e9fda85-6c92-4053-bc47-7ae3530db4d3")]

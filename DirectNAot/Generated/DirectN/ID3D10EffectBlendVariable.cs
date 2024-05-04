@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectblendvariable
 [GeneratedComInterface, Guid("1fcd2294-df6d-4eae-86b3-0e9160cfb07b")]

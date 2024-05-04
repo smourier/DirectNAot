@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentation/nn-presentation-ipresentationsurface
 [GeneratedComInterface, Guid("956710fb-ea40-4eba-a3eb-4375a0eb4edc")]

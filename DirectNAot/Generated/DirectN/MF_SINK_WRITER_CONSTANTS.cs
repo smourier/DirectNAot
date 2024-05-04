@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MF_SINK_WRITER_CONSTANTS : uint
 {

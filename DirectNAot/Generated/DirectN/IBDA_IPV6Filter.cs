@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ibda_ipv6filter
 [GeneratedComInterface, Guid("e1785a74-2a23-4fb3-9245-a8f88017ef33")]

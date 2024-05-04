@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [Flags]
 public enum DISPATCH_FLAGS : ushort

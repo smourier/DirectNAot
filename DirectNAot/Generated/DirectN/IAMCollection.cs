@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("56a868b9-0ad4-11ce-b03a-0020af0ba770")]
 public partial interface IAMCollection : IDispatch

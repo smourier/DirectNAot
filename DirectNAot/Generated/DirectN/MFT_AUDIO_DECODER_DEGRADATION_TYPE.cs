@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MFT_AUDIO_DECODER_DEGRADATION_TYPE
 {

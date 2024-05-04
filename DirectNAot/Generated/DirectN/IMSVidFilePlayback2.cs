@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidfileplayback2
 [GeneratedComInterface, Guid("2f7e44af-6e52-4660-bc08-d8d542587d72")]

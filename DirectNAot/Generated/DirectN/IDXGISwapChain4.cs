@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_5/nn-dxgi1_5-idxgiswapchain4
 [GeneratedComInterface, Guid("3d585d5a-bd4a-489e-b1f4-3dbcb6452ffb")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct PANEL_GET_BACKLIGHT_REDUCTION

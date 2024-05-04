@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmlanguagelist
 [GeneratedComInterface, Guid("df683f00-2d49-4d8e-92b7-fb19f6a0dc57")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfobjects/nn-mfobjects-imfplugincontrol
 [SupportedOSPlatform("windows6.1")]

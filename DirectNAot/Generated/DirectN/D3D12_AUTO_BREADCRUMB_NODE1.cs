@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_AUTO_BREADCRUMB_NODE1

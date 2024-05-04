@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c3a9f406-2222-436d-86d5-ba3229279efb")]
 public partial interface IMSEventBinder : IDispatch

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c2448e9b-547d-4057-8cf5-8144ede1c2da")]
 public partial interface IDCompositionDelegatedInkTrail

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("4be6fa3d-07cd-4139-8b80-8c18ba3aec88")]
 public partial interface IBDA_WMDRMSession

@@ -47,10 +47,24 @@
     "IDispatch",
     "STGC",
     "STGTY",
+    "-!D2D_MATRIX_*",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
   "MemberInputs": [
-    "CoCreateInstance"
+    "AdjustWindowRectEx",
+    "CoCreateInstance",
+    "EnumDisplayMonitors",
+    "FreeLibrary",
+    "GetDesktopWindow",
+    "GetDpiFromDpiAwarenessContext",
+    "GetMonitorInfo",
+    "GetProcAddress",
+    "GetScaleFactorForMonitor",
+    "GetShellWindow",
+    "GetWindowDpiAwarenessContext",
+    "LoadLibraryW",
+    "MonitorFromPoint",
+    "MonitorFromWindow",
   ]
 }

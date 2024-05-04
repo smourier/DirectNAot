@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/evr/ne-evr-mfvp_message_type
 public enum MFVP_MESSAGE_TYPE

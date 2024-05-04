@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("61ded640-e912-11ce-a099-00aa00479a58")]
 public partial interface IBaseVideoMixer

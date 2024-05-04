@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3787614f-65f7-4003-b673-ead8293a0e60")]
 public partial interface IMFMediaEngineClassFactory3

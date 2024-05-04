@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1svg/nn-d2d1svg-id2d1svgstrokedasharray
 [GeneratedComInterface, Guid("f1c0ca52-92a3-4f00-b4ce-f35691efd9d9")]

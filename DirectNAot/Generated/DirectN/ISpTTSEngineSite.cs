@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("9880499b-cce9-11d2-b503-00c04f797396")]
 public partial interface ISpTTSEngineSite : ISpEventSink

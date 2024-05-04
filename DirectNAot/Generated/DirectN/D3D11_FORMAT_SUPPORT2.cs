@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11/ne-d3d11-d3d11_format_support2
 public enum D3D11_FORMAT_SUPPORT2

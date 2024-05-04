@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmreaderadvanced3
 [GeneratedComInterface, Guid("5dc0674b-f04b-4a4e-9f2a-b1afde2c8100")]

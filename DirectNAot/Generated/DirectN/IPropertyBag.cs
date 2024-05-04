@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/oaidl/nn-oaidl-ipropertybag
 [GeneratedComInterface, Guid("55272a00-42cb-11ce-8135-00aa004bb851")]

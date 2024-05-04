@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("dd1d7110-7836-11cf-bf47-00aa0055595a")]
 public partial interface IFullScreenVideo

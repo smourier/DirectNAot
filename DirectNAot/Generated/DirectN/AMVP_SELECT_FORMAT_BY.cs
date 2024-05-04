@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/vptype/ne-vptype-amvp_select_format_by
 public enum AMVP_SELECT_FORMAT_BY

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("6536115a-7b2d-11d2-ba18-0000f875ac12")]
 public partial interface IDirectMusic

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfplay/ne-mfplay-_mfp_credential_flags
 public enum _MFP_CREDENTIAL_FLAGS

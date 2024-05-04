@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ne-dxvahd-dxvahd_input_format_caps
 public enum DXVAHD_INPUT_FORMAT_CAPS

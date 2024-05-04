@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdatif/nn-bdatif-ibda_tif_registration
 [GeneratedComInterface, Guid("dfef4a68-ee61-415f-9ccb-cd95f2f98a3a")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ocidl/nn-ocidl-iconnectionpoint
 [SupportedOSPlatform("windows5.0")]

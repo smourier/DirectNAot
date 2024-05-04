@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f90ad9d0-b854-4b68-9cc1-b2cc96119d85")]
 public partial interface ISIInbandEPG

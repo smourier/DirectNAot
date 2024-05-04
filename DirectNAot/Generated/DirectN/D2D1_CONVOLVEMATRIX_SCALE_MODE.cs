@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1effects/ne-d2d1effects-d2d1_convolvematrix_scale_mode
 public enum D2D1_CONVOLVEMATRIX_SCALE_MODE

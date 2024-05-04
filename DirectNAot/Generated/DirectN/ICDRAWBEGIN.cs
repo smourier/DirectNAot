@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdrawbegin
 [StructLayout(LayoutKind.Sequential)]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmwriterfilesink3
 [GeneratedComInterface, Guid("3fea4feb-2945-47a7-a1dd-c53a8fc4c45c")]

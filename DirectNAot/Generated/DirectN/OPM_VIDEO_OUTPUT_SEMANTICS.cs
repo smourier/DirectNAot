@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/opmapi/ne-opmapi-opm_video_output_semantics
 public enum OPM_VIDEO_OUTPUT_SEMANTICS

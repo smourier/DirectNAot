@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mftransform/nn-mftransform-imfdevicetransform
 [SupportedOSPlatform("windows10.0.15063")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mtpext/ns-mtpext-mtp_command_data_in
 [StructLayout(LayoutKind.Sequential)]

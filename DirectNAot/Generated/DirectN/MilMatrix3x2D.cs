@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mileffects/ns-mileffects-milmatrix3x2d
 [StructLayout(LayoutKind.Sequential)]

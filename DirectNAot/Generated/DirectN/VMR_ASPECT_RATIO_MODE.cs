@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ne-strmif-vmr_aspect_ratio_mode
 public enum VMR_ASPECT_RATIO_MODE

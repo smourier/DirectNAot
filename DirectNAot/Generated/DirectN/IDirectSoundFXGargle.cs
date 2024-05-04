@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("d616f352-d622-11ce-aac5-0020af0b99a3")]
 public partial interface IDirectSoundFXGargle

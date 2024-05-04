@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfobjects/ne-mfobjects-mf_attributes_match_type
 public enum MF_ATTRIBUTES_MATCH_TYPE

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/vpnotify/nn-vpnotify-ivpbasenotify
 [SupportedOSPlatform("windows5.0")]

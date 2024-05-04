@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(1362)]
 public partial struct InlineArrayAVITIMEDINDEX_ENTRY1362

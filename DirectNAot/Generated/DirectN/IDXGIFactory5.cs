@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_5/nn-dxgi1_5-idxgifactory5
 [GeneratedComInterface, Guid("7632e1f5-ee65-4dca-87fd-84cd75f8838d")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("1a6dd0ad-1e2a-4e99-a5ba-91f17818290e")]
 public partial interface IPrintPreviewDxgiPackageTarget

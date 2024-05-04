@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("7a1ef0d5-1581-4741-88e4-209a49f11a10")]
 public partial interface ISpeechWaveFormatEx : IDispatch

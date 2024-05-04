@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(1)]
 public partial struct InlineArrayKSAUDIO_MIX_CAPS1

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("990641b0-739f-4e94-a808-9888da8f75af")]
 public partial interface IWMCodecVideoAccelerator

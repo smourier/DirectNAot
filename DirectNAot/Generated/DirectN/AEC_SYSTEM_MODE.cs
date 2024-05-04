@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/ne-wmcodecdsp-aec_system_mode
 public enum AEC_SYSTEM_MODE

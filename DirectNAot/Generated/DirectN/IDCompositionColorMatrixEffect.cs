@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcomp/nn-dcomp-idcompositioncolormatrixeffect
 [GeneratedComInterface, Guid("c1170a22-3ce2-4966-90d4-55408bfc84c4")]

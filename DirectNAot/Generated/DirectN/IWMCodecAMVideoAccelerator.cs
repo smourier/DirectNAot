@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmdxva/nn-wmdxva-iwmcodecamvideoaccelerator
 [GeneratedComInterface, Guid("d98ee251-34e0-4a2d-9312-9b4c788d9fa1")]

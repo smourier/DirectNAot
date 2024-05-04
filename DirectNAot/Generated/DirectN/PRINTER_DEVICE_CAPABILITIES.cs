@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum PRINTER_DEVICE_CAPABILITIES : ushort
 {

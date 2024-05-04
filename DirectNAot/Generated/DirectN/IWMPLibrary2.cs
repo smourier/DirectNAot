@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmp/nn-wmp-iwmplibrary2
 [GeneratedComInterface, Guid("dd578a4e-79b1-426c-bf8f-3add9072500b")]

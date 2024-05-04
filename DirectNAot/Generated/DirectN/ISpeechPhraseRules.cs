@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("9047d593-01dd-4b72-81a3-e4a0ca69f407")]
 public partial interface ISpeechPhraseRules : IDispatch

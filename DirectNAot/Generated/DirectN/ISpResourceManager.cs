@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("93384e18-5014-43d5-adbb-a78e055926bd")]
 public partial interface ISpResourceManager : IServiceProvider

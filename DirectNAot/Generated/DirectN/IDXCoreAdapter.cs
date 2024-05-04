@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nn-dxcore_interface-idxcoreadapter
 [GeneratedComInterface, Guid("f0db4c7f-fe5a-42a2-bd62-f2a6cf6fc83e")]

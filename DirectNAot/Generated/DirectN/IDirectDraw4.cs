@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("9c59509a-39bd-11d1-8c4a-00c04fd930c5")]
 public partial interface IDirectDraw4

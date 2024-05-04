@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("7ba1db8f-78ad-49cd-9591-f79d80a17c81")]
 public partial interface IAudioProcessingObjectVBR

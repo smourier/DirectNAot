@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcomp/nn-dcomp-idcompositiongaussianblureffect
 [GeneratedComInterface, Guid("45d4d0b7-1bd4-454e-8894-2bfa68443033")]

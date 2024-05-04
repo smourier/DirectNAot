@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("76c6a6f5-4955-4de5-b27b-14b734cc14b4")]
 public partial interface IMFTimedTextRuby

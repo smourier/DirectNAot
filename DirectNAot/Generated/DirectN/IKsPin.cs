@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/DirectShow/ikspin
 [GeneratedComInterface, Guid("b61178d1-a2d9-11cf-9e53-00aa00a216a1")]

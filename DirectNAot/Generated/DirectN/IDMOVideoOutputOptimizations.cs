@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mediaobj/nn-mediaobj-idmovideooutputoptimizations
 [GeneratedComInterface, Guid("be8f4f4e-5b16-4d29-b350-7f6b5d9298ac")]

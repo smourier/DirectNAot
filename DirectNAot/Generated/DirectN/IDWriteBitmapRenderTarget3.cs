@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("aeec37db-c337-40f1-8e2a-9a41b167b238")]
 public partial interface IDWriteBitmapRenderTarget3 : IDWriteBitmapRenderTarget2

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12video/nn-d3d12video-id3d12videoencodecommandlist2
 [GeneratedComInterface, Guid("895491e2-e701-46a9-9a1f-8d3480ed867a")]

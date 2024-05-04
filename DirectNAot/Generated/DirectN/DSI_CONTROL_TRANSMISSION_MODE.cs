@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum DSI_CONTROL_TRANSMISSION_MODE
 {

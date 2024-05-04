@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(8)]
 public partial struct InlineArrayD3D12_VIDEO_ENCODER_AV1_SEGMENT_DATA8

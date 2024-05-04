@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [Flags]
 public enum ADVANCED_FEATURE_FLAGS : ushort

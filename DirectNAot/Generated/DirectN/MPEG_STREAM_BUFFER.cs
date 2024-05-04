@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2structs/ns-mpeg2structs-mpeg_stream_buffer
 [StructLayout(LayoutKind.Sequential)]

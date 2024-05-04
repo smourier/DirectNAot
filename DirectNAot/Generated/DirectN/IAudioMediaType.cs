@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audiomediatype/nn-audiomediatype-iaudiomediatype
 [GeneratedComInterface, Guid("4e997f73-b71f-4798-873b-ed7dfcf15b4d")]

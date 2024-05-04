@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/sbe/ne-sbe-streambuffer_attr_datatype
 public enum STREAMBUFFER_ATTR_DATATYPE

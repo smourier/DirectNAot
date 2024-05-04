@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum D3DSHADER_PARAM_SRCMOD_TYPE
 {

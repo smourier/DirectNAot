@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum DirectWriteDWRITE_PAINT_FEATURE_LEVEL
 {

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f1df64b6-57fd-49cd-8807-c0eb88b45c8f")]
 public partial interface ID3D12SwapChainAssistant

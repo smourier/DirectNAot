@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/tuner/nn-tuner-iesclosemmievent
 [SupportedOSPlatform("windows6.1")]

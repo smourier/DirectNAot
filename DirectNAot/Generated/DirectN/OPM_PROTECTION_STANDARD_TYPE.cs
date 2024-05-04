@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum OPM_PROTECTION_STANDARD_TYPE : uint
 {

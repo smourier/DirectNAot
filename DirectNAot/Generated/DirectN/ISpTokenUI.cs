@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f8e690f0-39cb-4843-b8d7-c84696e1119d")]
 public partial interface ISpTokenUI

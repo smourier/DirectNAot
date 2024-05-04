@@ -20,6 +20,7 @@
 
 	<ItemGroup>
 		<Using Include="DirectN" />
+		<Using Include="System" />
 		<Using Include="System.Runtime.Versioning" />
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
@@ -27,7 +28,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Generated\" />
+	  <EditorConfigFiles Remove="Generated\DirectN\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Generated\DirectN\.editorconfig" />
 	</ItemGroup>
 
 </Project>

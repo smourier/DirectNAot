@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/office/client-developer/outlook/mapi/filetime
 [StructLayout(LayoutKind.Sequential)]

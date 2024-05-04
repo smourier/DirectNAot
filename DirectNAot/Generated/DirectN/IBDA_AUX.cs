@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ibda_aux
 [GeneratedComInterface, Guid("7def4c09-6e66-4567-a819-f0e17f4a81ab")]

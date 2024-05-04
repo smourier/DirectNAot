@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("ec891cf7-9b69-4851-9def-4e0915771e62")]
 public partial interface ID2D1DeviceContext7 : ID2D1DeviceContext6

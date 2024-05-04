@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("22f55882-280b-11d0-a8a9-00a0c90c2004")]
 public partial interface IPropertyBag2

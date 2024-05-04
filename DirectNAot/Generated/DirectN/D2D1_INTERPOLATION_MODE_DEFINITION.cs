@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum D2D1_INTERPOLATION_MODE_DEFINITION
 {

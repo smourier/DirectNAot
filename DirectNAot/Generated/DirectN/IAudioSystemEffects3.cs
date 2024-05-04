@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/nn-audioengineextensionapo-iaudiosystemeffects3
 [GeneratedComInterface, Guid("c58b31cd-fc6a-4255-bc1f-ad29bb0a4a17")]

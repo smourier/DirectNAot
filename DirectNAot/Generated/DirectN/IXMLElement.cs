@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3f7f31ac-e15f-11d0-9c25-00c04fc99c8e")]
 public partial interface IXMLElement : IDispatch

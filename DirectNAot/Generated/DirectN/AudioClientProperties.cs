@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioclient/ns-audioclient-audioclientproperties~r1
 [StructLayout(LayoutKind.Sequential)]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("15806f6e-1d70-4b48-98e6-3b1a007509ab")]
 public partial interface ISpMMSysAudio : ISpAudio

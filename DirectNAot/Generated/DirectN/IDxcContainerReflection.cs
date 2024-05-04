@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("d2c21b26-8350-4bdc-976a-331ce6f4c54c")]
 public partial interface IDxcContainerReflection

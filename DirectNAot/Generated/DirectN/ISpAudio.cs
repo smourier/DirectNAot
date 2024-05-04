@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c05c768f-fae8-4ec2-8e07-338321c12452")]
 public partial interface ISpAudio : ISpStreamFormat

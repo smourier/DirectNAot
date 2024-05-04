@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/photoacquire/nn-photoacquire-iphotoprogressdialog
 [GeneratedComInterface, Guid("00f246f9-0750-4f08-9381-2cd8e906a4ae")]

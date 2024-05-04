@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/nn-d3d12-id3d12pipelinelibrary
 [GeneratedComInterface, Guid("c64226a8-9201-46af-b4cc-53fb9ff7414f")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite_2/ne-dwrite_2-dwrite_optical_alignment
 public enum DWRITE_OPTICAL_ALIGNMENT

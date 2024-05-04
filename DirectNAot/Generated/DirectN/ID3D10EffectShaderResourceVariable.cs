@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectshaderresourcevariable
 [GeneratedComInterface, Guid("c0a7157b-d872-4b1d-8073-efc2acd4b1fc")]

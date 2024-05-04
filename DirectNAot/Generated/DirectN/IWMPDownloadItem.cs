@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c9470e8e-3f6b-46a9-a0a9-452815c34297")]
 public partial interface IWMPDownloadItem : IDispatch

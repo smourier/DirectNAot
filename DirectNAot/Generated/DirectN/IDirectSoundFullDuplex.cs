@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("edcb4c7a-daab-4216-a42e-6c50596ddc1d")]
 public partial interface IDirectSoundFullDuplex

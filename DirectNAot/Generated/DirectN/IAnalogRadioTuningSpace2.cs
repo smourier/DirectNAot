@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/tuner/nn-tuner-ianalogradiotuningspace2
 [GeneratedComInterface, Guid("39dd45da-2da8-46ba-8a8a-87e2b73d983a")]

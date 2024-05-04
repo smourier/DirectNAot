@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfidl/ne-mfidl-mf_opm_cgmsa_protection_level
 public enum MF_OPM_CGMSA_PROTECTION_LEVEL

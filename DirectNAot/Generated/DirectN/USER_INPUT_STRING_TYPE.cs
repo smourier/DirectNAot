@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/photoacquire/ne-photoacquire-user_input_string_type
 public enum USER_INPUT_STRING_TYPE

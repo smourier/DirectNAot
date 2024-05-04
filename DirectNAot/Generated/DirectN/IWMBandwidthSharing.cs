@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmbandwidthsharing
 [GeneratedComInterface, Guid("ad694af1-f8d9-42f8-bc47-70311b0c4f9e")]

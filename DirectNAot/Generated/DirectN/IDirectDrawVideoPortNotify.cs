@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("a655fb94-0589-4e57-b333-567a89468c88")]
 public partial interface IDirectDrawVideoPortNotify

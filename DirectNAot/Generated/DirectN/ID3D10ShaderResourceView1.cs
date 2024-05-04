@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10_1/nn-d3d10_1-id3d10shaderresourceview1
 [GeneratedComInterface, Guid("9b7e4c87-342c-4106-a19f-4f2704f689f0")]

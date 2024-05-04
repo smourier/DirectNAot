@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ifrequencymap
 [GeneratedComInterface, Guid("06fb45c1-693c-4ea7-b79f-7a6a54d8def2")]

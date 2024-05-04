@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum D3D10_STANDARD_MULTISAMPLE_QUALITY_LEVELS
 {

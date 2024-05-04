@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("8128e912-3b97-42a5-ab6c-24aad3a86e54")]
 public partial interface IDWritePaintReader

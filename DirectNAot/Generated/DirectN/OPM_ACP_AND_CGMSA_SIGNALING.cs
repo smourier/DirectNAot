@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/opmapi/ns-opmapi-opm_acp_and_cgmsa_signaling
 [StructLayout(LayoutKind.Sequential)]

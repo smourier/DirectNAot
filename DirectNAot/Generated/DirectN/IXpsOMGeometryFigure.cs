@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nn-xpsobjectmodel-ixpsomgeometryfigure
 [SupportedOSPlatform("windows6.1")]
@@ -28,7 +29,7 @@ public partial interface IXpsOMGeometryFigure
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-setsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSegments(uint segmentCount, uint segmentDataCount, [In][Out][MarshalUsing(CountElementName = nameof(segmentCount))] XPS_SEGMENT_TYPE[] segmentTypes, [In][Out][MarshalUsing(CountElementName = nameof(segmentDataCount))] float[] segmentData, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] bool[] segmentStrokes);
+    HRESULT SetSegments(uint segmentCount, uint segmentDataCount, [In][Out][MarshalUsing(CountElementName = nameof(segmentCount))] XPS_SEGMENT_TYPE[] segmentTypes, [In][Out][MarshalUsing(CountElementName = nameof(segmentDataCount))] float[] segmentData, [In][Out][MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] bool[] segmentStrokes);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-getstartpoint
     [PreserveSig]

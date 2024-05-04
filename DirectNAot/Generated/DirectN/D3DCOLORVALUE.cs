@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3ddxgi/d3dcolorvalue
 [StructLayout(LayoutKind.Sequential)]

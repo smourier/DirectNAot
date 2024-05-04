@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11shader/nn-d3d11shader-id3d11libraryreflection
 [GeneratedComInterface, Guid("54384f1b-5b3e-4bb7-ae01-60ba3097cbb6")]

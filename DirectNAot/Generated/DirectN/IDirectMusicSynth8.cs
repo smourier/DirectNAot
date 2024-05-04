@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dmusics/nn-dmusics-idirectmusicsynth8
 [GeneratedComInterface, Guid("53cab625-2711-4c9f-9de7-1b7f925f6fc8")]

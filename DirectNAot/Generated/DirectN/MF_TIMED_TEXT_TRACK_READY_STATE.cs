@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MF_TIMED_TEXT_TRACK_READY_STATE
 {

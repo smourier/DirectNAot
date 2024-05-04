@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(11)]
 public partial struct InlineArrayNABTS_BUFFER_LINE11

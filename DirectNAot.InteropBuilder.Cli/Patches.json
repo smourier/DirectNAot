@@ -33,6 +33,8 @@
             {
               "Name": "segmentStrokes",
               "Def": {
+                "IsIn": true,
+                "IsOut": true,
                 "TypeName": "bool[]",
                 "MarshalAs": {
                   "UnmanagedType": "LPArray",

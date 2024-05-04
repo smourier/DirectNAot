@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmmediaprops
 [GeneratedComInterface, Guid("96406bce-2b2b-11d3-b36b-00c04f6108ff")]

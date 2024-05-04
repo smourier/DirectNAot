@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mftransform/ne-mftransform-_mft_process_output_flags
 public enum _MFT_PROCESS_OUTPUT_FLAGS

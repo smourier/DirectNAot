@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentation/nn-presentation-iindependentflipframepresentstatistics
 [GeneratedComInterface, Guid("8c93be27-ad94-4da0-8fd4-2413132d124e")]

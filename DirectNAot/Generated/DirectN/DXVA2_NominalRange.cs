@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxva2api/ne-dxva2api-dxva2_nominalrange
 public enum DXVA2_NominalRange

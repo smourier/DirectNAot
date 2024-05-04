@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum DEVMODE_DISPLAY_FIXED_OUTPUT : uint
 {

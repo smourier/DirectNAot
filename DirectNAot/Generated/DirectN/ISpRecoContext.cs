@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f740a62f-7c15-489e-8234-940a33d9272d")]
 public partial interface ISpRecoContext : ISpEventSource

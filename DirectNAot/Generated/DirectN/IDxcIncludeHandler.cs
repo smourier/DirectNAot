@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("7f61fc7d-950d-467f-b3e3-3c02fb49187c")]
 public partial interface IDxcIncludeHandler

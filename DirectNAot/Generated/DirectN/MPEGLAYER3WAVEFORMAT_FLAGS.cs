@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MPEGLAYER3WAVEFORMAT_FLAGS : uint
 {

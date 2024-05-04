@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("ed311e41-fbae-4175-9625-cd0854f693ca")]
 public partial interface IDirectSoundCaptureFXNoiseSuppress

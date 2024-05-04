@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddstream/nn-ddstream-idirectdrawstreamsample
 [GeneratedComInterface, Guid("f4104fcf-9a70-11d0-8fde-00c04fd9189d")]

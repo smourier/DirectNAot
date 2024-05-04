@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xapo/nn-xapo-ixapo
 [GeneratedComInterface, Guid("a410b984-9839-4819-a0be-2856ae6b3adb")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("bed530be-2606-4f4d-a1c0-54c5cda5566f")]
 public partial interface ISpStreamFormat : IStream

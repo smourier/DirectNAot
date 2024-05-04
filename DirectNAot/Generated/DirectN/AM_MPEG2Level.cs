@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvdmedia/ne-dvdmedia-am_mpeg2level
 public enum AM_MPEG2Level

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3c76af6d-1fd7-4831-81d1-3b71d5a13c44")]
 public partial interface ISpeechMMSysAudio : ISpeechAudio

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfidl/ne-mfidl-mfnetsource_statistics_ids
 public enum MFNETSOURCE_STATISTICS_IDS

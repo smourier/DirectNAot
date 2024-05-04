@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("5b4fb971-b115-4de1-ad97-e482e3bf6ee4")]
 public partial interface ISpProperties

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/nn-d3d12-id3d12lifetimetracker
 [GeneratedComInterface, Guid("3fd03d36-4eb1-424a-a582-494ecb8ba813")]

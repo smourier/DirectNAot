@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/photoacquire/ne-photoacquire-error_advise_message_type
 public enum ERROR_ADVISE_MESSAGE_TYPE

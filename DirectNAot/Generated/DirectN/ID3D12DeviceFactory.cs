@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("61f307d3-d34e-4e7c-8374-3ba4de23cccb")]
 public partial interface ID3D12DeviceFactory

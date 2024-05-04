@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-iccsubstreamfiltering
 [GeneratedComInterface, Guid("4b2bd7ea-8347-467b-8dbf-62f784929cc3")]

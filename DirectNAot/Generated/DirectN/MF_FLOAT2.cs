@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mf_float2
 [StructLayout(LayoutKind.Sequential)]

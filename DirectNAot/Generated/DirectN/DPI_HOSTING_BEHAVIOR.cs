@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/windef/ne-windef-dpi_hosting_behavior
 public enum DPI_HOSTING_BEHAVIOR

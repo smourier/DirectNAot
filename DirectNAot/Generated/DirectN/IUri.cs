@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("a39ee748-6a27-4817-a6f2-13914bef5890")]
 public partial interface IUri

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MF_MSE_VP9_SUPPORT_TYPE
 {

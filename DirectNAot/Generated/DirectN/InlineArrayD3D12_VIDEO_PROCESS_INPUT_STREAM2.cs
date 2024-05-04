@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(2)]
 public partial struct InlineArrayD3D12_VIDEO_PROCESS_INPUT_STREAM2

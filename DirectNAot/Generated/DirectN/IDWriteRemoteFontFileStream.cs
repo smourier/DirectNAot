@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite_3/nn-dwrite_3-idwriteremotefontfilestream
 [GeneratedComInterface, Guid("4db3757a-2c72-4ed9-b2b6-1ababe1aff9c")]

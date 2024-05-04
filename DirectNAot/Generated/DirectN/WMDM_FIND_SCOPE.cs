@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/wmdm-find-scope
 public enum WMDM_FIND_SCOPE

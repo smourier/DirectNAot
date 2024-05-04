@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c5bc37d6-75c7-46a1-a132-81b5f723c20f")]
 public partial interface IMFMediaStream2 : IMFMediaStream

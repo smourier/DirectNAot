@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("b0210782-89cd-11d0-af08-00a0c925cd16")]
 public partial interface IDirectSoundCaptureBuffer

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("92a66e2b-c830-4149-83df-6fc2ba1e7a5b")]
 public partial interface ISpRegDataKey : ISpDataKey

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MEDIA_EVENT_GENERATOR_GET_EVENT_FLAGS : uint
 {

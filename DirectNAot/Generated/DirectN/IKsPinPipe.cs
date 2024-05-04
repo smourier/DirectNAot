@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("e539cd90-a8b4-11d1-8189-00a0c9062802")]
 public partial interface IKsPinPipe

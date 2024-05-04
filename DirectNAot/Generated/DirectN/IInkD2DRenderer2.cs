@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/inkrenderer/nn-inkrenderer-iinkd2drenderer2
 [GeneratedComInterface, Guid("0a95dcd9-4578-4b71-b20b-bf664d4bfeee")]

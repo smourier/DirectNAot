@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/Multimedia/mci-vd-play-parms
 [StructLayout(LayoutKind.Sequential)]

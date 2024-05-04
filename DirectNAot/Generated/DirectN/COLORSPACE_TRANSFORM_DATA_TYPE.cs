@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum COLORSPACE_TRANSFORM_DATA_TYPE
 {

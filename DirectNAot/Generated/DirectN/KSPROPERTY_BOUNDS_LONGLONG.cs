@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Explicit)]
 public partial struct KSPROPERTY_BOUNDS_LONGLONG

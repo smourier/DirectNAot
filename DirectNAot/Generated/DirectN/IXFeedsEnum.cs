@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("dc43a9d5-5015-4301-8c96-a47434b4d658")]
 public partial interface IXFeedsEnum

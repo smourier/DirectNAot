@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/amstream/nn-amstream-imediastreamfilter
 [GeneratedComInterface, Guid("bebe595e-9a6f-11d0-8fde-00c04fd9189d")]

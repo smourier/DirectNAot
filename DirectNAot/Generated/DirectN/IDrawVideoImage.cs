@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/nn-strmif-idrawvideoimage
 [GeneratedComInterface, Guid("48efb120-ab49-11d2-aed2-00a0c995e8d5")]

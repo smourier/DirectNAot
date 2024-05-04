@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mswmdm/nn-mswmdm-imdspdirecttransfer
 [GeneratedComInterface, Guid("c2fe57a8-9304-478c-9ee4-47e397b912d7")]

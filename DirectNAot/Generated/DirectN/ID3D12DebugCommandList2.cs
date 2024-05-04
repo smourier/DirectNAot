@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("aeb575cf-4e06-48be-ba3b-c450fc96652e")]
 public partial interface ID3D12DebugCommandList2 : ID3D12DebugCommandList

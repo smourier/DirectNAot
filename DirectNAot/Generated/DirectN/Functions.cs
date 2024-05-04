@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public static partial class Functions
 {
@@ -265,6 +266,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial HRESULT ActivateAudioInterfaceAsync(PWSTR deviceInterfacePath, in Guid riid, nint /* optional PROPVARIANT* */ activationParams, IActivateAudioInterfaceCompletionHandler completionHandler, out IActivateAudioInterfaceAsyncOperation activationOperation);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-adjustwindowrectex
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool AdjustWindowRectEx(ref RECT lpRect, WINDOW_STYLE dwStyle, [MarshalAs(UnmanagedType.U4)] bool bMenu, WINDOW_EX_STYLE dwExStyle);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-adjustwindowrectexfordpi
     [LibraryImport("USER32")]
@@ -2623,6 +2631,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial void FONTOBJ_vGetInfo(ref FONTOBJ pfo, uint cjSize, ref FONTINFO pfi);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-freelibrary
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool FreeLibrary(HMODULE hLibModule);
     
     [LibraryImport("gdiplus")]
     [PreserveSig]
@@ -5213,6 +5228,12 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdesktopwindow
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND GetDesktopWindow();
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getdevicegammaramp
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -5422,6 +5443,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetPixelFormat(HDC hdc);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial FARPROC GetProcAddress(HMODULE hModule, PSTR lpProcName);
+    
     // https://learn.microsoft.com/windows/win32/api/shellscalingapi/nf-shellscalingapi-getprocessdpiawareness
     [LibraryImport("api-ms-win-shcore-scaling-l1-1-1")]
     [SupportedOSPlatform("windows8.1")]
@@ -5459,6 +5486,18 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetSaveFileNamePreviewW(ref OPENFILENAMEW lpofn);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellscalingapi/nf-shellscalingapi-getscalefactorformonitor
+    [LibraryImport("api-ms-win-shcore-scaling-l1-1-1")]
+    [SupportedOSPlatform("windows8.1")]
+    [PreserveSig]
+    public static partial HRESULT GetScaleFactorForMonitor(HMONITOR hMon, out DEVICE_SCALE_FACTOR pScale);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getshellwindow
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND GetShellWindow();
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getstandardcolorspaceprofilea
     [LibraryImport("mscms")]
@@ -7737,6 +7776,12 @@ public static partial class Functions
     [LibraryImport("ksproxy.ax")]
     [PreserveSig]
     public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint /* optional void* */ InBuffer, uint InLength, nint /* optional void* */ OutBuffer, uint OutLength, nint /* optional uint* */ BytesReturned);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HMODULE LoadLibraryW(PWSTR lpLibFileName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-logicaltophysicalpointforpermonitordpi
     [LibraryImport("USER32")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winuser/ne-winuser-pointer_button_change_type
 public enum POINTER_BUTTON_CHANGE_TYPE

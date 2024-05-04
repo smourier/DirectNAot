@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_1/ne-d2d1_1-d2d1_property
 public enum D2D1_PROPERTY

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3c5f3e8a-90c0-464e-8136-898d2975f847")]
 public partial interface IMFTimedTextBouten

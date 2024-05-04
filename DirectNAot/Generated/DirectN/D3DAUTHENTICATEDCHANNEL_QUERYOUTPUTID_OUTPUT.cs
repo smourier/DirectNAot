@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT

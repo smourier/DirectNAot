@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cert_extension
 [StructLayout(LayoutKind.Sequential)]

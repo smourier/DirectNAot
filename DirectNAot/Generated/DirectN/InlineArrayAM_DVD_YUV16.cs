@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(16)]
 public partial struct InlineArrayAM_DVD_YUV16

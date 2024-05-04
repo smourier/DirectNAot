@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("aaec54af-8f85-4924-944d-b79d39d72e19")]
 public partial interface ISpeechXMLRecoResult : ISpeechRecoResult

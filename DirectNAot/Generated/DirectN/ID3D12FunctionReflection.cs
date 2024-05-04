@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12shader/nn-d3d12shader-id3d12functionreflection
 [GeneratedComInterface, Guid("1108795c-2772-4ba9-b2a8-d464dc7e2799")]

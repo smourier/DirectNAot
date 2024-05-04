@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wincodec/nn-wincodec-iwicbitmapencoder
 [GeneratedComInterface, Guid("00000103-a8f2-4877-ba0a-fd2b6645fb94")]

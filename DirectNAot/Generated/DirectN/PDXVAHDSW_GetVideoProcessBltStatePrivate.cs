@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
 public delegate HRESULT PDXVAHDSW_GetVideoProcessBltStatePrivate(HANDLE hVideoProcessor, nint pData);

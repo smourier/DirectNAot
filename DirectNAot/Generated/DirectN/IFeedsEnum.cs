@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("e3cd0028-2eed-4c60-8fae-a3225309a836")]
 public partial interface IFeedsEnum : IDispatch

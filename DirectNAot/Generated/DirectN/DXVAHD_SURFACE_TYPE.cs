@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ne-dxvahd-dxvahd_surface_type
 public enum DXVAHD_SURFACE_TYPE

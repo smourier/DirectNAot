@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(16)]
 public partial struct InlineArrayBRIGHTNESS_NIT_RANGE16

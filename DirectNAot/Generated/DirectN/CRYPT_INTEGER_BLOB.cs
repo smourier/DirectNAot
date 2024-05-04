@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dpapi/ns-dpapi-crypt_integer_blob
 [StructLayout(LayoutKind.Sequential)]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_3/nn-d2d1_3-id2d1commandsink5
 [GeneratedComInterface, Guid("7047dd26-b1e7-44a7-959a-8349e2144fa8")]

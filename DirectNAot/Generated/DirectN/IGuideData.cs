@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdatif/nn-bdatif-iguidedata
 [GeneratedComInterface, Guid("61571138-5b01-43cd-aeaf-60b784a0bf93")]

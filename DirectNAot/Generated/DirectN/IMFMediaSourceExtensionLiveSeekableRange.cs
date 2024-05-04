@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("5d1abfd6-450a-4d92-9efc-d6b6cbc1f4da")]
 public partial interface IMFMediaSourceExtensionLiveSeekableRange

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f3d3f926-11fc-11d3-bb97-00c04f8ee6c0")]
 public partial interface ISpCFGInterpreter

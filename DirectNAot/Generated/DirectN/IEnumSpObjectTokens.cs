@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("06b64f9e-7fda-11d2-b4f2-00c04f797396")]
 public partial interface IEnumSpObjectTokens

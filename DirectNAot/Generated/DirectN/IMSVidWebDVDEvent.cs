@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("b4f7a674-9b83-49cb-a357-c63b871be958")]
 public partial interface IMSVidWebDVDEvent : IMSVidPlaybackEvent

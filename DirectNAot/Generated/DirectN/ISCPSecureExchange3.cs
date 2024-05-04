@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mswmdm/nn-mswmdm-iscpsecureexchange3
 [GeneratedComInterface, Guid("ab4e77e4-8908-4b17-bd2a-b1dbe6dd69e1")]

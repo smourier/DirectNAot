@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MF_SOURCE_READER_CURRENT_TYPE_CONSTANTS
 {

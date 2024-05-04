@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ibda_ipsinkcontrol
 [GeneratedComInterface, Guid("3f4dc8e2-4050-11d3-8f4b-00c04f7971e2")]

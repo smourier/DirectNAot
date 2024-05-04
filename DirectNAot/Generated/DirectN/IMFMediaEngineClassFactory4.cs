@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nn-mfmediaengine-imfmediaengineclassfactory4
 [GeneratedComInterface, Guid("fbe256c1-43cf-4a9b-8cb8-ce8632a34186")]

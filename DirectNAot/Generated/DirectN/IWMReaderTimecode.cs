@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmreadertimecode
 [GeneratedComInterface, Guid("f369e2f0-e081-4fe6-8450-b810b2f410d1")]

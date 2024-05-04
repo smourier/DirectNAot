@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/control/nn-control-ideferredcommand
 [SupportedOSPlatform("windows5.0")]

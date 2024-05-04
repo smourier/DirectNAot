@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(1025)]
 public partial struct InlineArrayGAMMA_RAMP_RGB1025

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nn-audioenginebaseapo-iaudioprocessingobjectrt
 [GeneratedComInterface, Guid("9e1d6a6d-ddbc-4e95-a4c7-ad64ba37846c")]

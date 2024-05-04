@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentation/ne-presentation-compositionframeinstancekind
 public enum CompositionFrameInstanceKind

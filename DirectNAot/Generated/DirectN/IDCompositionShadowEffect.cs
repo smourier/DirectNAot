@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcomp/nn-dcomp-idcompositionshadoweffect
 [GeneratedComInterface, Guid("4ad18ac0-cfd2-4c2f-bb62-96e54fdb6879")]

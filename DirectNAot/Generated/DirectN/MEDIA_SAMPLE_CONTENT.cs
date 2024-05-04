@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/DirectShow/media-sample-content
 public enum MEDIA_SAMPLE_CONTENT

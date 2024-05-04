@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("2baeef81-2ca3-4331-98f3-26ec5abefb03")]
 public partial interface ISpTaskManager

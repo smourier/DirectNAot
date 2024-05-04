@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("091bb63a-603f-11d1-b067-00a0c9062802")]
 public partial interface IKsAllocatorEx : IKsAllocator

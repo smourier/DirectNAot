@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfplay/ne-mfplay-mfp_mediaplayer_state
 public enum MFP_MEDIAPLAYER_STATE

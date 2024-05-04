@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum KS_AM_PROPERTY_TS_RATE_CHANGE
 {

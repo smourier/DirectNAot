@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfplay/ne-mfplay-mfp_event_type
 public enum MFP_EVENT_TYPE

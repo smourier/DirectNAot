@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("db639199-c809-4c89-bfca-d0bbb9729d6e")]
 public partial interface IMFTimedTextStyle2

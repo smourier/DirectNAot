@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ibda_digitaldemodulator2
 [GeneratedComInterface, Guid("525ed3ee-5cf3-4e1e-9a06-5368a84f9a6e")]

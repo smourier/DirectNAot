@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmpropertyvault
 [GeneratedComInterface, Guid("72995a79-5090-42a4-9c8c-d9d0b6d34be5")]

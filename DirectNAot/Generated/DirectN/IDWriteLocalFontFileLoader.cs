@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/DirectWrite/idwritelocalfontfileloader
 [GeneratedComInterface, Guid("b2d9f3ec-c9fe-4a11-a2ec-d86208f7c0a2")]

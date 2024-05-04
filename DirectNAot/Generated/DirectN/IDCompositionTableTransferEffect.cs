@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dcomp/nn-dcomp-idcompositiontabletransfereffect
 [GeneratedComInterface, Guid("9b7e82e2-69c5-4eb4-a5f5-a7033f5132cd")]

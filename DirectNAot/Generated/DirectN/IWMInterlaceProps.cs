@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("7b12e5d1-bd22-48ea-bc06-98e893221c89")]
 public partial interface IWMInterlaceProps

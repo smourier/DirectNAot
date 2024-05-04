@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d9/nn-d3d9-idirect3dvertexbuffer9
 [GeneratedComInterface, Guid("b64bb1b5-fd70-4df6-bf91-19d0a12455e3")]

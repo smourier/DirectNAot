@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wtypes/ns-wtypes-cy~r1
 [StructLayout(LayoutKind.Explicit)]

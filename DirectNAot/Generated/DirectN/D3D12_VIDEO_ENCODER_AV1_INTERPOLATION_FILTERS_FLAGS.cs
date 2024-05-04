@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [Flags]
 public enum D3D12_VIDEO_ENCODER_AV1_INTERPOLATION_FILTERS_FLAGS

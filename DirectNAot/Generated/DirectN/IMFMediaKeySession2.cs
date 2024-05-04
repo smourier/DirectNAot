@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("e9707e05-6d55-4636-b185-3de21210bd75")]
 public partial interface IMFMediaKeySession2 : IMFMediaKeySession

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("812d5f95-b572-45dc-bafc-ae24199ddda8")]
 public partial interface IMFExtendedCameraIntrinsicsDistortionModelArcTan

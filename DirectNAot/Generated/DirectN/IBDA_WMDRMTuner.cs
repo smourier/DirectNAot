@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("86d979cf-a8a7-4f94-b5fb-14c0aca68fe6")]
 public partial interface IBDA_WMDRMTuner

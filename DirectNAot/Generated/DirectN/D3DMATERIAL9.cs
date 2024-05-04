@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3dmaterial9
 [StructLayout(LayoutKind.Sequential)]

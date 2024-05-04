@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentation/nn-presentation-icompositionframepresentstatistics
 [GeneratedComInterface, Guid("ab41d127-c101-4c0a-911d-f9f2e9d08e64")]

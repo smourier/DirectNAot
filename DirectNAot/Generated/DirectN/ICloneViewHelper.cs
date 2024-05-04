@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("f6a3d4c4-5632-4d83-b0a1-fb88712b1eb7")]
 public partial interface ICloneViewHelper

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3628e81b-3cac-4c60-b7f4-23ce0e0c3356")]
 public partial interface IGraphicsCaptureItemInterop

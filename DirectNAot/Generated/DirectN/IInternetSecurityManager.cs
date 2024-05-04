@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("79eac9ee-baf9-11ce-8c82-00aa004ba90b")]
 public partial interface IInternetSecurityManager

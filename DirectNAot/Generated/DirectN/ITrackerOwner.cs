@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("eb24c20b-9816-4ac7-8cff-36f67a118f4e")]
 public partial interface ITrackerOwner

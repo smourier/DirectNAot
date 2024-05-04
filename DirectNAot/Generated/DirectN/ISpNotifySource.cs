@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("5eff4aef-8487-11d2-961c-00c04f8ee628")]
 public partial interface ISpNotifySource

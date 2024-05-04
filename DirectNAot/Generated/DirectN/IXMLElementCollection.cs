@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/msxml/nn-msxml-ixmlelementcollection
 [GeneratedComInterface, Guid("65725580-9b5d-11d0-9bfe-00c04fc99c8e")]

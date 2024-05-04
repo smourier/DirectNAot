@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11_4/nn-d3d11_4-id3d11multithread
 [GeneratedComInterface, Guid("9b7e4e00-342c-4106-a19f-4f2704f689f0")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/nn-strmif-iamphysicalpininfo
 [GeneratedComInterface, Guid("f938c991-3029-11cf-8c44-00aa006b6814")]

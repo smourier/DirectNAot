@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite_3/nn-dwrite_3-idwritefactory4
 [GeneratedComInterface, Guid("4b0b5bd3-0797-4549-8ac5-fe915cc53856")]

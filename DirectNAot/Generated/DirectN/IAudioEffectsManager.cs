@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioclient/nn-audioclient-iaudioeffectsmanager
 [GeneratedComInterface, Guid("4460b3ae-4b44-4527-8676-7548a8acd260")]

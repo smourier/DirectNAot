@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/medparam/nn-medparam-imediaparams
 [GeneratedComInterface, Guid("6d6cbb61-a223-44aa-842f-a2f06750be6e")]

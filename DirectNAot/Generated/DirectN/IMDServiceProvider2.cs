@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mswmdm/nn-mswmdm-imdserviceprovider2
 [GeneratedComInterface, Guid("b2fa24b7-cda3-4694-9862-413ae1a34819")]

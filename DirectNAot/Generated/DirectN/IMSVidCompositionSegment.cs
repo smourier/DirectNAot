@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("1c15d483-911d-11d2-b632-00c04f79498e")]
 public partial interface IMSVidCompositionSegment : IMSVidGraphSegment

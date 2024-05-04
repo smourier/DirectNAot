@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum OPM_OUTPUT_HARDWARE_PROTECTION
 {

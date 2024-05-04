@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsbuffer/nn-wmsbuffer-inssbuffer
 [GeneratedComInterface, Guid("e1cd3524-03d7-11d2-9eed-006097d2d7cf")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("20ee9be9-cd57-49ab-8f6e-1d07aeb8e482")]
 public partial interface IDvbTerrestrial2DeliverySystemDescriptor

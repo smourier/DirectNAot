@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("26d836a5-0c15-44c7-ac59-b0da8728f240")]
 public partial interface IPTFilterLicenseRenewal

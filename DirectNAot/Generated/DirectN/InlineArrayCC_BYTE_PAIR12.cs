@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(12)]
 public partial struct InlineArrayCC_BYTE_PAIR12

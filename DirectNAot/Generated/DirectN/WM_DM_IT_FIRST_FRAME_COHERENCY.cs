@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum WM_DM_IT_FIRST_FRAME_COHERENCY
 {

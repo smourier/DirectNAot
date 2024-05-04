@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmp/nn-wmp-iwmpfoldermonitorservices
 [GeneratedComInterface, Guid("788c8743-e57f-439d-a468-5bc77f2e59c6")]

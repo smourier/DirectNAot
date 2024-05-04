@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum XAML_REFERENCETRACKER_DISCONNECT
 {

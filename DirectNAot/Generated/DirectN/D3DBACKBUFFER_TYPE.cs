@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3dbackbuffer-type
 public enum D3DBACKBUFFER_TYPE

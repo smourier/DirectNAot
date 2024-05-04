@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(1022)]
 public partial struct InlineArrayTIMECODEDATA1022

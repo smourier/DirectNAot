@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11_4/nn-d3d11_4-id3d11videodevice2
 [GeneratedComInterface, Guid("59c0cb01-35f0-4a70-8f67-87905c906a53")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("c74a3adc-b727-4500-a84a-b526721c8b8c")]
 public partial interface ISpeechObjectToken : IDispatch

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wcsplugin/nn-wcsplugin-igamutmapmodelplugin
 [GeneratedComInterface, Guid("2dd80115-ad1e-41f6-a219-a4f4b583d1f9")]

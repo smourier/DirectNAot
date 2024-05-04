@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/wmdm-storage-enum-mode
 public enum WMDM_STORAGE_ENUM_MODE

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("687f6dac-6987-4750-a16a-734d1e7a10fe")]
 public partial interface IMFExtendedCameraIntrinsics

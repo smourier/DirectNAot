@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ne-wingdi-displayconfig_topology_id
 public enum DISPLAYCONFIG_TOPOLOGY_ID

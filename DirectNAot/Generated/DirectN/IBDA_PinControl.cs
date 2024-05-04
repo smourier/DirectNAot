@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface/nn-bdaiface-ibda_pincontrol
 [GeneratedComInterface, Guid("0ded49d5-a8b7-4d5d-97a1-12b0c195874d")]

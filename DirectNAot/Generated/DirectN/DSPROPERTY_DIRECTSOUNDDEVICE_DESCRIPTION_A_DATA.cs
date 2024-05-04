@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA

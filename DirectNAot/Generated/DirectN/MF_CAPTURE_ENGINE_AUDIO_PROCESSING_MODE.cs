@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum MF_CAPTURE_ENGINE_AUDIO_PROCESSING_MODE
 {

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/msopc/ne-msopc-opc_canonicalization_method
 public enum OPC_CANONICALIZATION_METHOD

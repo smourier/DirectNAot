@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dsattrib/nn-dsattrib-iattributeset
 [GeneratedComInterface, Guid("583ec3cc-4960-4857-982b-41a33ea0a006")]

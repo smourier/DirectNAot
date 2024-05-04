@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mftransform/ne-mftransform-mft_message_type
 public enum MFT_MESSAGE_TYPE

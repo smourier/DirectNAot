@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioclient/nn-audioclient-iaudioclient2
 [SupportedOSPlatform("windows8.0")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum ENHANCED_METAFILE_RECORD_TYPE : uint
 {

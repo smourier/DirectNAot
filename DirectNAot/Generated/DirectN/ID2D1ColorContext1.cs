@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_3/nn-d2d1_3-id2d1colorcontext1
 [GeneratedComInterface, Guid("1ab42875-c57f-4be9-bd85-9cd78d6f55ee")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mftransform/ns-mftransform-mft_input_stream_info
 [StructLayout(LayoutKind.Sequential)]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("28724c91-df35-4856-9f76-d6a26413f3df")]
 public partial interface IAudioAmbisonicsControl

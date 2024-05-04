@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("a005a9d9-b8bb-4594-b5c9-0e633bec4d37")]
 public partial interface IDxcCompiler2 : IDxcCompiler

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3f07f7b7-c680-41d9-9423-915107ec9ff9")]
 public partial interface IClusterDetector

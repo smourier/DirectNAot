@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("d3eef34c-0667-4afc-8d13-867607b0fe91")]
 public partial interface ICompositorInterop2

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ne-dxvahd-dxvahd_blt_state
 public enum DXVAHD_BLT_STATE

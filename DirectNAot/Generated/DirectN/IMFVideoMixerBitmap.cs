@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/evr9/nn-evr9-imfvideomixerbitmap
 [SupportedOSPlatform("windows6.0.6000")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("e85ccef5-aaaa-47f0-b5e3-61f7aecdc4c1")]
 public partial interface IViewHelper

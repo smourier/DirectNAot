@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("33f2ea09-1398-4ab9-b6a4-f94b49d0a42e")]
 public partial interface IFeed2 : IFeed

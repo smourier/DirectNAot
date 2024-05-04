@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [InlineArray(10)]
 public partial struct InlineArrayD3D12_VIDEO_DECODE_FRAME_ARGUMENT10

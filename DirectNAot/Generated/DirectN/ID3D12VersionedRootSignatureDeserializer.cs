@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/nn-d3d12-id3d12versionedrootsignaturedeserializer
 [GeneratedComInterface, Guid("7f91ce67-090c-4bb7-b78e-ed8ff2e31da0")]

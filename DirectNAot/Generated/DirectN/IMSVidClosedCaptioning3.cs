@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/segment/nn-segment-imsvidclosedcaptioning3
 [GeneratedComInterface, Guid("c8638e8a-7625-4c51-9366-2f40a9831fc0")]

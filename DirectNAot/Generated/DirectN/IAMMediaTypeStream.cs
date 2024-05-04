@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/amstream/nn-amstream-iammediatypestream
 [GeneratedComInterface, Guid("ab6b4afa-f6e4-11d0-900d-00c04fd9189d")]

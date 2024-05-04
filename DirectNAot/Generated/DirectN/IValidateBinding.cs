@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("04a578b2-e778-422a-a805-b3ee54d90bd9")]
 public partial interface IValidateBinding

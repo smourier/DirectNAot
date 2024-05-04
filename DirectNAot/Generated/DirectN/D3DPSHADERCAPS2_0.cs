@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d9caps/ns-d3d9caps-d3dpshadercaps2_0
 [StructLayout(LayoutKind.Sequential)]

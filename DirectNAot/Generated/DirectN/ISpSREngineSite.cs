@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3b414aec-720c-4883-b9ef-178cd394fb3a")]
 public partial interface ISpSREngineSite

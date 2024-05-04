@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum COLOR_MATCH_TO_TARGET_ACTION : uint
 {

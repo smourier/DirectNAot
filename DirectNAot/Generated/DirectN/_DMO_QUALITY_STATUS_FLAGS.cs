@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum _DMO_QUALITY_STATUS_FLAGS
 {

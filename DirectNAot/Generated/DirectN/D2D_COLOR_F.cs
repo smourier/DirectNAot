@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/Direct2D/d2d-color-f
 [StructLayout(LayoutKind.Sequential)]

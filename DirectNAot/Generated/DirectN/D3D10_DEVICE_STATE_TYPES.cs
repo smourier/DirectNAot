@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/ne-d3d10effect-d3d10_device_state_types
 public enum D3D10_DEVICE_STATE_TYPES

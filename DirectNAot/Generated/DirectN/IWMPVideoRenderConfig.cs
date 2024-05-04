@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmprealestate/nn-wmprealestate-iwmpvideorenderconfig
 [GeneratedComInterface, Guid("6d6cf803-1ec0-4c8d-b3ca-f18e27282074")]

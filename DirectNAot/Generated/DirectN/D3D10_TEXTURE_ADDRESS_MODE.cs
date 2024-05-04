@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10/ne-d3d10-d3d10_texture_address_mode
 public enum D3D10_TEXTURE_ADDRESS_MODE

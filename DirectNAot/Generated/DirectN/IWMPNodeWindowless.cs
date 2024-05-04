@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("9b9199ad-780c-4eda-b816-261eba5d1575")]
 public partial interface IWMPNodeWindowless : IWMPWindowMessageSink

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nn-wmsdkidl-iwmwriterpreprocess
 [GeneratedComInterface, Guid("fc54a285-38c4-45b5-aa23-85b9f7cb424b")]

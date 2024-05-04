@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mediaobj/nn-mediaobj-imediaobjectinplace
 [GeneratedComInterface, Guid("651b9ad0-0fc7-4aa9-9538-d89931010741")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum D3D12_VIDEO_ENCODER_AV1_SEGMENTATION_BLOCK_SIZE
 {

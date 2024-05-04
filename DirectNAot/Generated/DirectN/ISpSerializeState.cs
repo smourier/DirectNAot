@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("21b501a0-0ec7-46c9-92c3-a2bc784c54b9")]
 public partial interface ISpSerializeState

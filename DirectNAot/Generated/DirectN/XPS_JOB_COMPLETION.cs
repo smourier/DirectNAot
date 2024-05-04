@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xpsprint/ne-xpsprint-xps_job_completion
 public enum XPS_JOB_COMPLETION

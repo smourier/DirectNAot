@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("42751198-5a50-4460-bcb4-709f8bdc8e59")]
 public partial interface IWMPNodeRealEstate

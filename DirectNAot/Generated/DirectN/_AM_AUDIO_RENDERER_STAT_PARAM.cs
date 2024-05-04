@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ne-strmif-_am_audio_renderer_stat_param
 public enum _AM_AUDIO_RENDERER_STAT_PARAM

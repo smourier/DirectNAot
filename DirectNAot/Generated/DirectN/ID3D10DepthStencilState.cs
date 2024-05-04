@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10/nn-d3d10-id3d10depthstencilstate
 [GeneratedComInterface, Guid("2b4b1cc8-a4ad-41f8-8322-ca86fc3ec675")]

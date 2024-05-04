@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/nn-strmif-iamanalogvideoencoder
 [GeneratedComInterface, Guid("c6e133b0-30ac-11d0-a18c-00a0c9118956")]

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum KSMETHOD_BDA_DEVICE_CONFIGURATION
 {

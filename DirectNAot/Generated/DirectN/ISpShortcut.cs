@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("3df681e2-ea56-11d9-8bde-f66bad1e3f3a")]
 public partial interface ISpShortcut

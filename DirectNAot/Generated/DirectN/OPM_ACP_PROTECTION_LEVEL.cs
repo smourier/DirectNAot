@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/opmapi/ne-opmapi-opm_acp_protection_level
 public enum OPM_ACP_PROTECTION_LEVEL

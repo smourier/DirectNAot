@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectrasterizervariable
 [GeneratedComInterface, Guid("21af9f0e-4d94-4ea9-9785-2cb76b8c0b34")]

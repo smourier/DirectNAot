@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_1/nn-d2d1_1-id2d1effect
 [SupportedOSPlatform("windows8.0")]

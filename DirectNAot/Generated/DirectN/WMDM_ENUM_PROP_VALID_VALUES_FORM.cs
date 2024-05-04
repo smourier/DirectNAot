@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/wmdm-enum-prop-valid-values-form
 public enum WMDM_ENUM_PROP_VALID_VALUES_FORM

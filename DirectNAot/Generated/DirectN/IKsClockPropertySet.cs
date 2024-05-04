@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("5c5cbd84-e755-11d0-ac18-00a0c9223196")]
 public partial interface IKsClockPropertySet

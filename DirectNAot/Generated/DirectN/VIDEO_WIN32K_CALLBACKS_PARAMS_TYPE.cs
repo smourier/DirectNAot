@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum VIDEO_WIN32K_CALLBACKS_PARAMS_TYPE
 {

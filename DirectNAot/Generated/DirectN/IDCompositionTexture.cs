@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("929bb1aa-725f-433b-abd7-273075a835f2")]
 public partial interface IDCompositionTexture

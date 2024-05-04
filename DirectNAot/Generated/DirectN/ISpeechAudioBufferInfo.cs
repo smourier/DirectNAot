@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("11b103d8-1142-4edf-a093-82fb3915f8cc")]
 public partial interface ISpeechAudioBufferInfo : IDispatch

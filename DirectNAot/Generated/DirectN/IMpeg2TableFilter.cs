@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2data/nn-mpeg2data-impeg2tablefilter
 [GeneratedComInterface, Guid("bdcdd913-9ecd-4fb2-81ae-adf747ea75a5")]

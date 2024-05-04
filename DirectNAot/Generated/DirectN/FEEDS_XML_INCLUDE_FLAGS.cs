@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 public enum FEEDS_XML_INCLUDE_FLAGS
 {

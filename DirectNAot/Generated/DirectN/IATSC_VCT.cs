@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nn-atscpsipparser-iatsc_vct
 [GeneratedComInterface, Guid("26879a18-32f9-46c6-91f0-fb6479270e8c")]

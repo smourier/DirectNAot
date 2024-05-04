@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xapo/ne-xapo-xapo_buffer_flags
 public enum XAPO_BUFFER_FLAGS

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("b8be681a-eb2c-47f0-b415-94d5452f0e05")]
 public partial interface IMSVidWebDVDAdm : IDispatch

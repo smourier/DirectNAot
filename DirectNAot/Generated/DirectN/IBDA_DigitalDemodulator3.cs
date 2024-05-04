@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("13f19604-7d32-4359-93a2-a05205d90ac9")]
 public partial interface IBDA_DigitalDemodulator3 : IBDA_DigitalDemodulator2

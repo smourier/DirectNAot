@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 [GeneratedComInterface, Guid("6c142760-a733-11ce-a521-0020af0be560")]
 public partial interface IDDVideoPortContainer

@@ -1,4 +1,5 @@
-﻿namespace DirectN;
+﻿#nullable enable
+namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddraw/nn-ddraw-idirectdrawgammacontrol
 [GeneratedComInterface, Guid("69c11c3e-b46b-11d1-ad7a-00c04fc29b4e")]
