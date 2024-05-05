@@ -8,6 +8,8 @@ public partial struct AVISUPERINDEX
     [InlineArray(1022)]
     public partial struct InlineArray_avisuperindex_entry1022
     {
+        public static int Length => 1022;
+        
         public _avisuperindex_entry Data;
     }
     

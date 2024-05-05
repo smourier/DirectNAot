@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 
 namespace DirectNAot.Extensions.Utilities;
 
@@ -6,6 +7,145 @@ public static class Conversions
 {
     private static readonly char[] _enumSeparators = [',', ';', '+', '|', ' '];
     private static readonly string[] _dateFormatsUtc = ["yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"];
+
+    public static string ToHexa(this byte[] bytes, bool addEllipsis = false) => bytes != null ? ToHexa(bytes, 0, bytes.Length, addEllipsis) : "0x";
+    public static string ToHexa(this byte[] bytes, int count, bool addEllipsis = false) => ToHexa(bytes, 0, count, addEllipsis);
+    public static string ToHexa(this byte[] bytes, int offset, int count, bool addEllipsis = false)
+    {
+        if (bytes == null)
+            return "0x";
+
+        if (offset < 0)
+            throw new ArgumentException(null, nameof(offset));
+
+        if (count < 0)
+            throw new ArgumentException(null, nameof(count));
+
+        if (offset >= bytes.Length)
+            throw new ArgumentException(null, nameof(offset));
+
+        count = Math.Min(count, bytes.Length - offset);
+        var sb = new StringBuilder(count * 2);
+        for (var i = offset; i < (offset + count); i++)
+        {
+            _ = sb.Append(bytes[i].ToString("X2"));
+        }
+
+        var s = "0x" + sb.ToString();
+        if (addEllipsis && bytes.Length > (offset + count))
+        {
+            s += "... (" + (bytes.Length - (offset + count)) + ")";
+        }
+        return s;
+    }
+
+    public static string? ToHexaDump(string text, Encoding? encoding = null)
+    {
+        if (text == null)
+            return null;
+
+        encoding ??= Encoding.Unicode;
+        return ToHexaDump(encoding.GetBytes(text));
+    }
+
+    public static string ToHexaDump(this byte[] bytes) => ToHexaDump(bytes, null);
+    public static string ToHexaDump(this byte[] bytes, string? prefix)
+    {
+        ArgumentNullException.ThrowIfNull(bytes);
+        return ToHexaDump(bytes, 0, bytes.Length, prefix, true);
+    }
+
+    public static string ToHexaDump(this IntPtr ptr, int count) => ToHexaDump(ptr, 0, count, null, true);
+    public static string ToHexaDump(this IntPtr ptr, int offset, int count, string? prefix = null, bool addHeader = true)
+    {
+        using var writer = new StringWriter();
+        WriteHexaDump(ptr, writer, offset, count, prefix, addHeader);
+        return writer.ToString();
+    }
+
+    public static void WriteHexaDump(this byte[] bytes, TextWriter writer, string? prefix = null) => WriteHexaDump(bytes, writer, 0, bytes.Length, prefix, true);
+    public static void WriteHexaDump(this IntPtr ptr, TextWriter writer, int count) => WriteHexaDump(ptr, writer, 0, count, null, true);
+    public static void WriteHexaDump(this IntPtr ptr, TextWriter writer, int offset, int count, string? prefix = null, bool addHeader = true)
+    {
+        if (ptr == 0)
+            throw new ArgumentException(null, nameof(ptr));
+
+        var bytes = new byte[count];
+        Marshal.Copy(ptr, bytes, offset, count);
+        WriteHexaDump(bytes, writer, 0, count, prefix, addHeader);
+    }
+
+    public static string ToHexaDump(this byte[] bytes, int count) => ToHexaDump(bytes, 0, count, null, true);
+    public static string ToHexaDump(this byte[] bytes, int offset, int count) => ToHexaDump(bytes, offset, count, null, true);
+    public static string ToHexaDump(this byte[] bytes, int offset, int count, string? prefix = null, bool addHeader = true)
+    {
+        using var writer = new StringWriter();
+        WriteHexaDump(bytes, writer, offset, count, prefix, addHeader);
+        return writer.ToString();
+    }
+
+    public static void WriteHexaDump(this byte[] bytes, TextWriter writer, int count) => WriteHexaDump(bytes, writer, 0, count, null, true);
+    public static void WriteHexaDump(this byte[] bytes, TextWriter writer, int offset, int count, string? prefix = null, bool addHeader = true)
+    {
+        ArgumentNullException.ThrowIfNull(bytes);
+        ArgumentNullException.ThrowIfNull(writer);
+
+        if (offset < 0)
+        {
+            offset = 0;
+        }
+
+        if (count < 0)
+        {
+            count = bytes.Length;
+        }
+
+        if ((offset + count) > bytes.Length)
+        {
+            count = bytes.Length - offset;
+        }
+
+        if (addHeader)
+        {
+            writer.Write(prefix);
+            //             0         1         2         3         4         5         6         7
+            //             01234567890123456789012345678901234567890123456789012345678901234567890123456789
+            writer.WriteLine("Offset    00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  0123456789ABCDEF");
+            writer.WriteLine("--------  -----------------------------------------------  ----------------");
+        }
+
+        for (var i = 0; i < count; i += 16)
+        {
+            writer.Write(prefix);
+            writer.Write(string.Format("{0:X8}  ", i + offset));
+
+            int j;
+            for (j = 0; (j < 16) && ((i + j) < count); j++)
+            {
+                writer.Write(string.Format("{0:X2} ", bytes[i + j + offset]));
+            }
+
+            writer.Write(' ');
+            if (j < 16)
+            {
+                writer.Write(new string(' ', 3 * (16 - j)));
+            }
+            for (j = 0; j < 16 && (i + j) < count; j++)
+            {
+                var b = bytes[i + j + offset];
+                if (b > 31 && b < 128)
+                {
+                    writer.Write((char)b);
+                }
+                else
+                {
+                    writer.Write('.');
+                }
+            }
+
+            writer.WriteLine();
+        }
+    }
 
     public static bool IsNullable(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>); }
     public static bool IsReallyValueType(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsValueType && !IsNullable(type); }

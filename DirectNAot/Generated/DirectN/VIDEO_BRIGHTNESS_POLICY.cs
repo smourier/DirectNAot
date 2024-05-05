@@ -7,6 +7,8 @@ public partial struct VIDEO_BRIGHTNESS_POLICY
     [InlineArray(1)]
     public partial struct InlineArray_Anonymous_e__Struct1
     {
+        public static int Length => 1;
+        
         public _Anonymous_e__Struct Data;
     }
     

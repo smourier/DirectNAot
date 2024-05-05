@@ -4,5 +4,7 @@ namespace DirectN;
 [InlineArray(162)]
 public partial struct InlineArrayByte162
 {
+    public static int Length => 162;
+    
     public byte Data;
 }

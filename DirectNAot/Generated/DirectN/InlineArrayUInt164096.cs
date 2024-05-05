@@ -4,5 +4,7 @@ namespace DirectN;
 [InlineArray(4096)]
 public partial struct InlineArrayUInt164096
 {
+    public static int Length => 4096;
+    
     public ushort Data;
 }

@@ -165,6 +165,7 @@
     "SendMessageW",
     "SetCapture",
     "SetCaretPos",
+    "SetCursor",
     "SetForegroundWindow",
     "SetParent",
     "SetProcessDpiAwareness",

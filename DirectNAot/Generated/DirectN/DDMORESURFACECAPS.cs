@@ -7,6 +7,8 @@ public partial struct DDMORESURFACECAPS
     [InlineArray(1)]
     public partial struct InlineArrayExtendedHeapRestrictions1
     {
+        public static int Length => 1;
+        
         public ExtendedHeapRestrictions Data;
     }
     

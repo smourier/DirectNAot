@@ -4,5 +4,7 @@ namespace DirectN;
 [InlineArray(1)]
 public partial struct InlineArrayMIPI_DSI_PACKET1
 {
+    public static int Length => 1;
+    
     public MIPI_DSI_PACKET Data;
 }

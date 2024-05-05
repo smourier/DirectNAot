@@ -7,6 +7,8 @@ public partial struct VIDEO_CLUT
     [InlineArray(1)]
     public partial struct InlineArray_Anonymous_e__Union1
     {
+        public static int Length => 1;
+        
         public _Anonymous_e__Union Data;
     }
     

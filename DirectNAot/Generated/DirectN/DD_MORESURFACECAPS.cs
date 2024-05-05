@@ -8,6 +8,8 @@ public partial struct DD_MORESURFACECAPS
     [InlineArray(1)]
     public partial struct InlineArrayNTExtendedHeapRestrictions1
     {
+        public static int Length => 1;
+        
         public NTExtendedHeapRestrictions Data;
     }
     

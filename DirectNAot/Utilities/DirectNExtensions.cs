@@ -13,11 +13,15 @@ namespace DirectN
         public static bool IsMin(this float value) => value == float.MinValue;
         public static int SignedLOWORD(this IntPtr value) => SignedLOWORD((int)(long)value);
         public static int SignedLOWORD(this int value) => (short)(value & 0xffff);
+        public static int SignedLOWORD(this uint value) => (short)(value & 0xffff);
         public static int SignedHIWORD(this IntPtr value) => SignedHIWORD((int)(long)value);
         public static int SignedHIWORD(this int value) => (short)((value >> 0x10) & 0xffff);
+        public static int SignedHIWORD(this uint value) => (short)((value >> 0x10) & 0xffff);
         public static int HIWORD(this int value) => (value >> 0x10) & 0xffff;
+        public static uint HIWORD(this uint value) => (value >> 0x10) & 0xffff;
         public static int HIWORD(this IntPtr value) => HIWORD((int)(long)value);
         public static int LOWORD(this int value) => value & 0xffff;
+        public static uint LOWORD(this uint value) => value & 0xffff;
         public static int LOWORD(this IntPtr value) => LOWORD((int)(long)value);
         public static float ToZero(this float value) => float.IsNaN(value) ? 0 : value;
 

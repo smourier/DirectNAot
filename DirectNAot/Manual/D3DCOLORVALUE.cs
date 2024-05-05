@@ -78,7 +78,8 @@ public partial struct D3DCOLORVALUE : IEquatable<D3DCOLORVALUE>
 
     private static bool IsHexa(char c) => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 
-    public static D3DCOLORVALUE FromCOLORREF(int color, byte alpha = 255)
+    public static D3DCOLORVALUE FromCOLORREF(COLORREF color, byte alpha = 255) => FromCOLORREF(color.Value, alpha);
+    public static D3DCOLORVALUE FromCOLORREF(uint color, byte alpha = 255)
     {
         // swap r & b
         var r = (color & 0xFF) << 16;

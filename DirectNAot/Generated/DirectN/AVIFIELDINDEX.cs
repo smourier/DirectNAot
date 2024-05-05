@@ -7,6 +7,8 @@ public partial struct AVIFIELDINDEX
     [InlineArray(1)]
     public partial struct InlineArray_avifieldindex_entry1
     {
+        public static int Length => 1;
+        
         public _avifieldindex_entry Data;
     }
     

@@ -4,5 +4,7 @@ namespace DirectN;
 [InlineArray(9)]
 public partial struct InlineArraySingle9
 {
+    public static int Length => 9;
+    
     public float Data;
 }

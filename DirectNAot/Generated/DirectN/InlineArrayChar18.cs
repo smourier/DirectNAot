@@ -4,6 +4,8 @@ namespace DirectN;
 [InlineArray(18)]
 public partial struct InlineArrayChar18
 {
+    public static int Length => 18;
+    
     public char Data;
     
     public override readonly string ToString() => ((ReadOnlySpan<char>)this).ToString().TrimEnd('\0');

@@ -8,6 +8,8 @@ public partial struct AVIOLDINDEX
     [InlineArray(1)]
     public partial struct InlineArray_avioldindex_entry1
     {
+        public static int Length => 1;
+        
         public _avioldindex_entry Data;
     }
     
