@@ -13,15 +13,12 @@
 
             var options = new DispatcherQueueOptions
             {
-                dwSize = sizeof(DispatcherQueueOptions),
-                threadType = DQTYPE_THREAD_CURRENT,
-                apartmentType = DQTAT_COM_STA
+                dwSize = (uint)sizeof(DispatcherQueueOptions),
+                threadType = DISPATCHERQUEUE_THREAD_TYPE.DQTYPE_THREAD_CURRENT,
+                apartmentType = DISPATCHERQUEUE_THREAD_APARTMENTTYPE.DQTAT_COM_STA,
             };
 
-            var hr = CreateDispatcherQueueController(options, out var controller);
-            if (hr != 0)
-                Marshal.ThrowExceptionForHR(hr);
-
+            Functions.CreateDispatcherQueueController(options, out var controller).ThrowOnError();
             _controller = Windows.System.DispatcherQueueController.FromAbi(controller);
         }
 
@@ -33,19 +30,5 @@
 
             return Task.CompletedTask;
         }
-
-        private const int DQTYPE_THREAD_CURRENT = 2;
-        private const int DQTAT_COM_STA = 2;
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct DispatcherQueueOptions
-        {
-            public int dwSize;
-            public int threadType;
-            public int apartmentType;
-        }
-
-        [LibraryImport("coreMessaging")]
-        private static partial int CreateDispatcherQueueController(DispatcherQueueOptions options, out nint controller);
     }
 }

@@ -903,6 +903,12 @@ public static partial class Constants
     
     public static readonly Guid CAPTION_FORMAT_ECHOSTAR = new("ebb1a262-1158-4b99-ae80-92ac776952c4");
     
+    public const string CastingSourceInfo_Property_CastingTypes = @"CastingTypes";
+    
+    public const string CastingSourceInfo_Property_PreferredSourceUriScheme = @"PreferredSourceUriScheme";
+    
+    public const string CastingSourceInfo_Property_ProtectedMedia = @"ProtectedMedia";
+    
     public static readonly Guid CATID_WcsPlugin = new("a0b402e0-8240-405f-8a16-8a5b4df2f0dd");
     
     public static readonly Guid CATID_WICBitmapDecoders = new("7ed96837-96f0-4812-b211-f13c24117ed3");
@@ -17350,6 +17356,8 @@ public static partial class Constants
     public const uint MAX_DEVICE_IDENTIFIER_STRING = 512;
     
     public const uint MAX_DRIVER_NAME = 32;
+    
+    public const uint MAX_ERROR_MESSAGE_CHARS = 512;
     
     public const uint MAX_ERROR_TEXT_LEN = 160;
     

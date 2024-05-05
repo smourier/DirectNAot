@@ -28,7 +28,7 @@ namespace DirectNAot.Extensions.Utilities
         // you should always use this one and it will fallback if necessary
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdpiforwindow
         [SupportedOSPlatform("windows6.1")]
-        public static D2D_SIZE_U GetDpiForWindow(IntPtr hwnd)
+        public static D2D_SIZE_U GetDpiForWindow(HWND hwnd)
         {
             using var pwstr = new Pwstr("user32.dll");
             var module = Functions.LoadLibraryW(pwstr);
@@ -36,12 +36,11 @@ namespace DirectNAot.Extensions.Utilities
             {
                 using var pstr = new Pstr("GetDpiForWindow");
                 var proc = Functions.GetProcAddress(module, pstr); // Windows 10 1607
-                if (proc == null)
+                if (proc == 0)
                     return GetDpiForNearestMonitor(hwnd);
 
-                throw new NotImplementedException();
-                //var dpi = Marshal.GetDelegateForFunctionPointer<GetDpiForWindowFn>(proc)(hwnd);
-                //return new D2D_SIZE_U((uint)dpi, (uint)dpi);
+                var dpi = Marshal.GetDelegateForFunctionPointer<GetDpiForWindowFn>(proc)(hwnd.Value);
+                return new D2D_SIZE_U((uint)dpi, (uint)dpi);
             }
             finally
             {
@@ -52,17 +51,16 @@ namespace DirectNAot.Extensions.Utilities
             }
         }
 
+        [SupportedOSPlatform("windows6.1")]
+        public static D2D_SIZE_U GetDpiForNearestMonitor(HWND hwnd) => GetDpiForMonitor(Functions.MonitorFromWindow(hwnd, MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST));
 
         [SupportedOSPlatform("windows6.1")]
-        public static D2D_SIZE_U GetDpiForNearestMonitor(IntPtr hwnd) => throw new NotImplementedException();// GetDpiForMonitor(Functions.MonitorFromWindow(Monitor.GetNearestFromWindow(hwnd));
+        public static D2D_SIZE_U GetDpiForNearestMonitor(int x, int y) => GetDpiForMonitor(Functions.MonitorFromPoint(new POINT(x, y), MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST));
 
         [SupportedOSPlatform("windows6.1")]
-        public static D2D_SIZE_U GetDpiForNearestMonitor(int x, int y) => throw new NotImplementedException();// GetDpiForMonitor(Monitor.GetNearestFromPoint(x, y));
-
-        [SupportedOSPlatform("windows6.1")]
-        public static D2D_SIZE_U GetDpiForMonitor(IntPtr monitor, MONITOR_DPI_TYPE type = MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI)
+        public static D2D_SIZE_U GetDpiForMonitor(HMONITOR monitor, MONITOR_DPI_TYPE type = MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI)
         {
-            if (monitor == IntPtr.Zero)
+            if (monitor.Value == 0)
                 return new D2D_SIZE_U(96, 96);
 
             using var pwstr = new Pwstr("shcore.dll");
@@ -71,15 +69,20 @@ namespace DirectNAot.Extensions.Utilities
             {
                 using var pstr = new Pstr("GetDpiForMonitor");
                 var proc = Functions.GetProcAddress(module, pstr); // Windows 8.1
-                if (proc == null)
+                if (proc == 0)
                     return GetDpiForDesktop();
 
-                throw new NotImplementedException();
-                //var hr = Marshal.GetDelegateForFunctionPointer<GetDpiForMonitorFn>(proc)(monitor, type, out int x, out int y);
-                //if (hr < 0)
-                //    return GetDpiForDesktop();
+                int hr;
+                uint x;
+                uint y;
+                unsafe
+                {
+                    hr = Marshal.GetDelegateForFunctionPointer<GetDpiForMonitorFn>(proc)(monitor.Value, type, &x, &y);
+                }
+                if (hr < 0)
+                    return GetDpiForDesktop();
 
-                //return new D2D_SIZE_U((uint)x, (uint)y);
+                return new D2D_SIZE_U(x, y);
             }
             finally
             {
@@ -94,11 +97,7 @@ namespace DirectNAot.Extensions.Utilities
         public static D2D_SIZE_F GetDpiForDesktopF() => Functions.GetDesktopDpi();
 
         [SupportedOSPlatform("windows6.1")]
-        public static D2D_SIZE_U GetDpiForDesktop()
-        {
-            var dpi = Functions.GetDesktopDpi();
-            return new D2D_SIZE_U((uint)dpi.width, (uint)dpi.height);
-        }
+        public static D2D_SIZE_U GetDpiForDesktop() { var dpi = Functions.GetDesktopDpi(); return new D2D_SIZE_U((uint)dpi.width, (uint)dpi.height); }
 
         [SupportedOSPlatform("windows10.0.17134")]
         public static uint GetDpiFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT value)
@@ -125,7 +124,8 @@ namespace DirectNAot.Extensions.Utilities
             return DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_INVALID;
         }
 
-        public static int AdjustForWindowDpi(int value, IntPtr handle)
+        [SupportedOSPlatform("windows6.1")]
+        public static int AdjustForWindowDpi(int value, HWND handle)
         {
             var dpi = GetDpiForWindow(handle);
             if (dpi.width == 96)
@@ -134,7 +134,8 @@ namespace DirectNAot.Extensions.Utilities
             return (int)(value * dpi.width / 96);
         }
 
-        public static float AdjustForWindowDpi(float value, IntPtr handle)
+        [SupportedOSPlatform("windows6.1")]
+        public static float AdjustForWindowDpi(float value, HWND handle)
         {
             var dpi = GetDpiForWindow(handle);
             if (dpi.width == 96)
@@ -143,7 +144,7 @@ namespace DirectNAot.Extensions.Utilities
             return value * dpi.width / 96;
         }
 
-        private delegate int GetDpiForWindowFn(IntPtr hwnd);
-        private delegate int GetDpiForMonitorFn(IntPtr hmonitor, MONITOR_DPI_TYPE dpiType, out int dpiX, out int dpiY);
+        private delegate int GetDpiForWindowFn(nint hwnd);
+        private unsafe delegate int GetDpiForMonitorFn(nint hmonitor, MONITOR_DPI_TYPE dpiType, uint* dpiX, uint* dpiY);
     }
 }
