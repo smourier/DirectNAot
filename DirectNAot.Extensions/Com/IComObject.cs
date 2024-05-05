@@ -2,14 +2,14 @@
 
 namespace DirectNAot.Extensions.Com
 {
-    public interface IUnknownObject : IDisposable
+    public interface IComObject : IDisposable
     {
         [AllowNull]
-        ComObject Object { get; }
+        System.Runtime.InteropServices.Marshalling.ComObject Object { get; }
         Type InterfaceType { get; }
     }
 
-    public interface IUnknownObject<out T> : IUnknownObject
+    public interface IComObject<out T> : IComObject
     {
         [AllowNull]
         new T Object { get; }

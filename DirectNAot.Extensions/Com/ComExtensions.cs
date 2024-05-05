@@ -8,7 +8,7 @@
                 return;
 
             // note: only works on unique instance objects
-            ((ComObject)comObject).FinalRelease();
+            ((System.Runtime.InteropServices.Marshalling.ComObject)comObject).FinalRelease();
         }
     }
 }

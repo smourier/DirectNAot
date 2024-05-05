@@ -2,15 +2,15 @@
 
 namespace DirectNAot.Extensions.Com
 {
-    public abstract class UnknownObject : IUnknownObject
+    public abstract class ComObject : IComObject
     {
-        private ComObject? _comObject;
+        private System.Runtime.InteropServices.Marshalling.ComObject? _comObject;
         private readonly bool _releaseOnDispose;
 
-        public UnknownObject(object? comObject, bool releaseOnDispose = true)
+        public ComObject(object? comObject, bool releaseOnDispose = true)
         {
             ArgumentNullException.ThrowIfNull(comObject);
-            if (comObject is not ComObject co)
+            if (comObject is not System.Runtime.InteropServices.Marshalling.ComObject co)
                 throw new ArgumentException(null, nameof(comObject));
 
             _comObject = co;
@@ -19,7 +19,7 @@ namespace DirectNAot.Extensions.Com
 
         public abstract Type InterfaceType { get; }
         [AllowNull]
-        public ComObject Object
+        public System.Runtime.InteropServices.Marshalling.ComObject Object
         {
             get
             {
@@ -31,7 +31,7 @@ namespace DirectNAot.Extensions.Com
 
         public static object? Unwrap(object? obj)
         {
-            if (obj is UnknownObject unko)
+            if (obj is ComObject unko)
                 return unko.Object;
 
             return obj;
@@ -42,7 +42,7 @@ namespace DirectNAot.Extensions.Com
             if (obj == null)
                 return default;
 
-            if (obj is UnknownObject unko)
+            if (obj is ComObject unko)
                 return (T?)(object?)unko.Object;
 
             return (T)obj;
@@ -56,11 +56,11 @@ namespace DirectNAot.Extensions.Com
             }
         }
 
-        ~UnknownObject() { Dispose(disposing: false); }
+        ~ComObject() { Dispose(disposing: false); }
         public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
     }
 
-    public class UnknownObject<T>(object? comObject, bool releaseOnDispose = true) : UnknownObject((T?)comObject, releaseOnDispose), IUnknownObject<T>
+    public class UnknownObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
     {
         [AllowNull]
         public new T Object => (T)(object?)base.Object!;

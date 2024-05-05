@@ -12,8 +12,8 @@
       //"IWic*"
     ]
   },
-  // per-language configuration
-  "Language": {
+  // per-generator configuration
+  "Generator": {
     "CSharp": {
       "GenerateTypeKeywords": true,
 

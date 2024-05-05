@@ -11,7 +11,7 @@ namespace DirectNAot.InteropBuilder.Cli
         public const string ProjectName = "DirectNAot";
         public const string ExtensionsProjectName = "DirectNAot.Extensions";
 
-        public override BuilderContext CreateBuilderContext(BuilderConfiguration configuration, ILanguage language)
+        public override BuilderContext CreateBuilderContext(BuilderConfiguration configuration, IGenerator language)
         {
             ArgumentNullException.ThrowIfNull(configuration);
             ArgumentNullException.ThrowIfNull(language);

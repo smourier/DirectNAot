@@ -1,17 +1,17 @@
 ﻿using System;
 using Win32InteropBuilder;
-using Win32InteropBuilder.Languages;
+using Win32InteropBuilder.Generators;
 using Win32InteropBuilder.Model;
 
 namespace DirectNAot.InteropBuilder.Cli
 {
-    public class DirectNBuilderContext(BuilderConfiguration configuration, ILanguage language) : BuilderContext(configuration, language)
+    public class DirectNBuilderContext(BuilderConfiguration configuration, IGenerator language) : BuilderContext(configuration, language)
     {
         public override string GetConstantValue(BuilderType type, Constant constant)
         {
             ArgumentNullException.ThrowIfNull(type);
             ArgumentNullException.ThrowIfNull(constant);
-            if (Language is not CSharpLanguage)
+            if (Generator is not CSharpGenerator)
                 throw new NotSupportedException();
 
             if (type.FullName == DEVPROPKEY)
