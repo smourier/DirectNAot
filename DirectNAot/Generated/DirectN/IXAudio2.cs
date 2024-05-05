@@ -27,7 +27,7 @@ public partial interface IXAudio2
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-createmasteringvoice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMasteringVoice(out IXAudio2MasteringVoice ppMasteringVoice, uint InputChannels, uint InputSampleRate, uint Flags, PWSTR? szDeviceId, nint /* optional XAUDIO2_EFFECT_CHAIN* */ pEffectChain, AUDIO_STREAM_CATEGORY StreamCategory);
+    HRESULT CreateMasteringVoice(out IXAudio2MasteringVoice ppMasteringVoice, uint InputChannels, uint InputSampleRate, uint Flags, PWSTR szDeviceId, nint /* optional XAUDIO2_EFFECT_CHAIN* */ pEffectChain, AUDIO_STREAM_CATEGORY StreamCategory);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2-startengine
     [PreserveSig]

@@ -116,7 +116,7 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createsharedhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSharedHandle(ID3D12DeviceChild pObject, nint /* optional SECURITY_ATTRIBUTES* */ pAttributes, uint Access, PWSTR? Name, out HANDLE pHandle);
+    HRESULT CreateSharedHandle(ID3D12DeviceChild pObject, nint /* optional SECURITY_ATTRIBUTES* */ pAttributes, uint Access, PWSTR Name, out HANDLE pHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-opensharedhandle
     [PreserveSig]

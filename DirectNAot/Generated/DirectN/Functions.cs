@@ -302,13 +302,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool AssociateColorProfileWithDeviceA(PSTR? pMachineName, PSTR pProfileName, PSTR pDeviceName);
+    public static partial bool AssociateColorProfileWithDeviceA(PSTR pMachineName, PSTR pProfileName, PSTR pDeviceName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-associatecolorprofilewithdevicew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool AssociateColorProfileWithDeviceW(PWSTR? pMachineName, PWSTR pProfileName, PWSTR pDeviceName);
+    public static partial bool AssociateColorProfileWithDeviceW(PWSTR pMachineName, PWSTR pProfileName, PWSTR pDeviceName);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetdevcapsa
     [LibraryImport("WINMM")]
@@ -692,13 +692,13 @@ public static partial class Functions
     [LibraryImport("AVICAP32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND capCreateCaptureWindowA(PSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND? hwndParent, int nID);
+    public static partial HWND capCreateCaptureWindowA(PSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND hwndParent, int nID);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindoww
     [LibraryImport("AVICAP32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND capCreateCaptureWindowW(PWSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND? hwndParent, int nID);
+    public static partial HWND capCreateCaptureWindowW(PWSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND hwndParent, int nID);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capgetdriverdescriptiona
     [LibraryImport("AVICAP32")]
@@ -718,7 +718,7 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CheckBitmapBits(nint hColorTransform, nint pSrcBits, BMFORMAT bmInput, uint dwWidth, uint dwHeight, uint dwStride, nint /* byte array */ paResult, LPBMCALLBACKFN? pfnCallback, LPARAM? lpCallbackData);
+    public static partial bool CheckBitmapBits(nint hColorTransform, nint pSrcBits, BMFORMAT bmInput, uint dwWidth, uint dwHeight, uint dwStride, nint /* byte array */ paResult, LPBMCALLBACKFN? pfnCallback, LPARAM lpCallbackData);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-checkcolors
     [LibraryImport("mscms")]
@@ -1005,7 +1005,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CreateCaret(HWND hWnd, HBITMAP? hBitmap, int nWidth, int nHeight);
+    public static partial bool CreateCaret(HWND hWnd, HBITMAP hBitmap, int nWidth, int nHeight);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createcolorspacea
     [LibraryImport("GDI32")]
@@ -1043,7 +1043,7 @@ public static partial class Functions
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HDC CreateDCW(PWSTR? pwszDriver, PWSTR? pwszDevice, PWSTR? pszPort, nint /* optional DEVMODEW* */ pdm);
+    public static partial HDC CreateDCW(PWSTR pwszDriver, PWSTR pwszDevice, PWSTR pszPort, nint /* optional DEVMODEW* */ pdm);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createdevicelinkprofile
     [LibraryImport("mscms")]
@@ -1171,7 +1171,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND CreateWindowExW(WINDOW_EX_STYLE dwExStyle, PWSTR? lpClassName, PWSTR? lpWindowName, WINDOW_STYLE dwStyle, int X, int Y, int nWidth, int nHeight, HWND? hWndParent, HMENU? hMenu, HINSTANCE? hInstance, nint /* optional void* */ lpParam);
+    public static partial HWND CreateWindowExW(WINDOW_EX_STYLE dwExStyle, PWSTR lpClassName, PWSTR lpWindowName, WINDOW_STYLE dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, nint /* optional void* */ lpParam);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_2/nf-d2d1_2-d2d1computemaximumscalefactor
     [LibraryImport("d2d1")]
@@ -1257,7 +1257,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10compileshader
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10CompileShader(PSTR pSrcData, nuint SrcDataSize, PSTR? pFileName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR pFunctionName, PSTR pProfile, uint Flags, out ID3DBlob ppShader, nint /* optional ID3DBlob* */ ppErrorMsgs);
+    public static partial HRESULT D3D10CompileShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR pFunctionName, PSTR pProfile, uint Flags, out ID3DBlob ppShader, nint /* optional ID3DBlob* */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createblob
     [LibraryImport("d3d10")]
@@ -1307,7 +1307,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10disassembleshader
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10DisassembleShader(nint pShader, nuint BytecodeLength, [MarshalAs(UnmanagedType.U4)] bool EnableColorCode, PSTR? pComments, out ID3DBlob ppDisassembly);
+    public static partial HRESULT D3D10DisassembleShader(nint pShader, nuint BytecodeLength, [MarshalAs(UnmanagedType.U4)] bool EnableColorCode, PSTR pComments, out ID3DBlob ppDisassembly);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getgeometryshaderprofile
     [LibraryImport("d3d10")]
@@ -1347,7 +1347,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10preprocessshader
     [LibraryImport("d3d10")]
     [PreserveSig]
-    public static partial HRESULT D3D10PreprocessShader(PSTR pSrcData, nuint SrcDataSize, PSTR? pFileName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, out ID3DBlob ppShaderText, nint /* optional ID3DBlob* */ ppErrorMsgs);
+    public static partial HRESULT D3D10PreprocessShader(PSTR pSrcData, nuint SrcDataSize, PSTR pFileName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, out ID3DBlob ppShaderText, nint /* optional ID3DBlob* */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10reflectshader
     [LibraryImport("d3d10")]
@@ -1453,12 +1453,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DCompile(nint pSrcData, nuint SrcDataSize, PSTR? pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR? pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint /* optional ID3DBlob* */ ppErrorMsgs);
+    public static partial HRESULT D3DCompile(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, out ID3DBlob ppCode, nint /* optional ID3DBlob* */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile2
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DCompile2(nint pSrcData, nuint SrcDataSize, PSTR? pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, uint SecondaryDataFlags, nint /* optional void* */ pSecondaryData, nuint SecondaryDataSize, out ID3DBlob ppCode, nint /* optional ID3DBlob* */ ppErrorMsgs);
+    public static partial HRESULT D3DCompile2(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, PSTR pEntrypoint, PSTR pTarget, uint Flags1, uint Flags2, uint SecondaryDataFlags, nint /* optional void* */ pSecondaryData, nuint SecondaryDataSize, out ID3DBlob ppCode, nint /* optional ID3DBlob* */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompilefromfile
     [LibraryImport("D3DCOMPILER_47")]
@@ -1493,7 +1493,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DDisassemble(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR? szComments, out ID3DBlob ppDisassembly);
+    public static partial HRESULT D3DDisassemble(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR szComments, out ID3DBlob ppDisassembly);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble10effect
     [LibraryImport("D3DCOMPILER_47")]
@@ -1509,7 +1509,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassembleregion
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DDisassembleRegion(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR? szComments, nuint StartByteOffset, nuint NumInsts, nint /* optional nuint* */ pFinishByteOffset, out ID3DBlob ppDisassembly);
+    public static partial HRESULT D3DDisassembleRegion(nint pSrcData, nuint SrcDataSize, uint Flags, PSTR szComments, nuint StartByteOffset, nuint NumInsts, nint /* optional nuint* */ pFinishByteOffset, out ID3DBlob ppDisassembly);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetblobpart
     [LibraryImport("D3DCOMPILER_47")]
@@ -1585,7 +1585,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dpreprocess
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DPreprocess(nint pSrcData, nuint SrcDataSize, PSTR? pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, out ID3DBlob ppCodeText, nint /* optional ID3DBlob* */ ppErrorMsgs);
+    public static partial HRESULT D3DPreprocess(nint pSrcData, nuint SrcDataSize, PSTR pSourceName, nint /* optional D3D_SHADER_MACRO* */ pDefines, ID3DInclude? pInclude, out ID3DBlob ppCodeText, nint /* optional ID3DBlob* */ ppErrorMsgs);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreadfiletoblob
     [LibraryImport("D3DCOMPILER_47")]
@@ -1803,13 +1803,13 @@ public static partial class Functions
     [LibraryImport("winspool.drv")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int DeviceCapabilitiesA(PSTR pDevice, PSTR? pPort, PRINTER_DEVICE_CAPABILITIES fwCapability, out PSTR? pOutput, nint /* optional DEVMODEA* */ pDevMode);
+    public static partial int DeviceCapabilitiesA(PSTR pDevice, PSTR pPort, PRINTER_DEVICE_CAPABILITIES fwCapability, out PSTR pOutput, nint /* optional DEVMODEA* */ pDevMode);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-devicecapabilitiesw
     [LibraryImport("winspool.drv", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int DeviceCapabilitiesW(PWSTR pDevice, PWSTR? pPort, PRINTER_DEVICE_CAPABILITIES fwCapability, out PWSTR? pOutput, nint /* optional DEVMODEW* */ pDevMode);
+    public static partial int DeviceCapabilitiesW(PWSTR pDevice, PWSTR pPort, PRINTER_DEVICE_CAPABILITIES fwCapability, out PWSTR pOutput, nint /* optional DEVMODEW* */ pDevMode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-direct3dcreate9
     [LibraryImport("d3d9")]
@@ -1905,13 +1905,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool DisassociateColorProfileFromDeviceA(PSTR? pMachineName, PSTR pProfileName, PSTR pDeviceName);
+    public static partial bool DisassociateColorProfileFromDeviceA(PSTR pMachineName, PSTR pProfileName, PSTR pDeviceName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-disassociatecolorprofilefromdevicew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool DisassociateColorProfileFromDeviceW(PWSTR? pMachineName, PWSTR pProfileName, PWSTR pDeviceName);
+    public static partial bool DisassociateColorProfileFromDeviceW(PWSTR pMachineName, PWSTR pProfileName, PWSTR pDeviceName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-dispatchmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
@@ -1961,7 +1961,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool DrawDibBegin(nint hdd, HDC? hdc, int dxDst, int dyDst, in BITMAPINFOHEADER lpbi, int dxSrc, int dySrc, uint wFlags);
+    public static partial bool DrawDibBegin(nint hdd, HDC hdc, int dxDst, int dyDst, in BITMAPINFOHEADER lpbi, int dxSrc, int dySrc, uint wFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibchangepalette
     [LibraryImport("MSVFW32")]
@@ -2026,7 +2026,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool DrawDibSetPalette(nint hdd, HPALETTE? hpal);
+    public static partial bool DrawDibSetPalette(nint hdd, HPALETTE hpal);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibstart
     [LibraryImport("MSVFW32")]
@@ -2145,7 +2145,7 @@ public static partial class Functions
     [LibraryImport("dwmapi")]
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
-    public static partial HRESULT DwmGetUnmetTabRequirements(HWND? appWindow, out DWM_TAB_WINDOW_REQUIREMENTS value);
+    public static partial HRESULT DwmGetUnmetTabRequirements(HWND appWindow, out DWM_TAB_WINDOW_REQUIREMENTS value);
     
     // https://learn.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmgetwindowattribute
     [LibraryImport("dwmapi")]
@@ -2593,7 +2593,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EngMultiByteToWideChar(uint CodePage, out PWSTR? WideCharString, int BytesInWideCharString, PSTR? MultiByteString, int BytesInMultiByteString);
+    public static partial int EngMultiByteToWideChar(uint CodePage, out PWSTR WideCharString, int BytesInWideCharString, PSTR MultiByteString, int BytesInMultiByteString);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engpaint
     [LibraryImport("GDI32")]
@@ -2684,52 +2684,59 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EngWideCharToMultiByte(uint CodePage, PWSTR? WideCharString, int BytesInWideCharString, out PSTR? MultiByteString, int BytesInMultiByteString);
+    public static partial int EngWideCharToMultiByte(uint CodePage, PWSTR WideCharString, int BytesInWideCharString, out PSTR MultiByteString, int BytesInMultiByteString);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumchildwindows
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool EnumChildWindows(HWND? hWndParent, WNDENUMPROC lpEnumFunc, LPARAM lParam);
+    public static partial bool EnumChildWindows(HWND hWndParent, WNDENUMPROC lpEnumFunc, LPARAM lParam);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesa
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool EnumColorProfilesA(PSTR? pMachineName, in ENUMTYPEA pEnumRecord, nint /* optional byte* */ pEnumerationBuffer, ref uint pdwSizeOfEnumerationBuffer, nint /* optional uint* */ pnProfiles);
+    public static partial bool EnumColorProfilesA(PSTR pMachineName, in ENUMTYPEA pEnumRecord, nint /* optional byte* */ pEnumerationBuffer, ref uint pdwSizeOfEnumerationBuffer, nint /* optional uint* */ pnProfiles);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesw
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool EnumColorProfilesW(PWSTR? pMachineName, in ENUMTYPEW pEnumRecord, nint /* optional byte* */ pEnumerationBuffer, ref uint pdwSizeOfEnumerationBuffer, nint /* optional uint* */ pnProfiles);
+    public static partial bool EnumColorProfilesW(PWSTR pMachineName, in ENUMTYPEW pEnumRecord, nint /* optional byte* */ pEnumerationBuffer, ref uint pdwSizeOfEnumerationBuffer, nint /* optional uint* */ pnProfiles);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdisplaydevicesw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool EnumDisplayDevicesW(PWSTR? lpDevice, uint iDevNum, ref DISPLAY_DEVICEW lpDisplayDevice, uint dwFlags);
+    public static partial bool EnumDisplayDevicesW(PWSTR lpDevice, uint iDevNum, ref DISPLAY_DEVICEW lpDisplayDevice, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdisplaymonitors
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool EnumDisplayMonitors(HDC? hdc, nint /* optional RECT* */ lprcClip, MONITORENUMPROC lpfnEnum, LPARAM dwData);
+    public static partial bool EnumDisplayMonitors(HDC hdc, nint /* optional RECT* */ lprcClip, MONITORENUMPROC lpfnEnum, LPARAM dwData);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsexw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool EnumDisplaySettingsExW(PWSTR lpszDeviceName, ENUM_DISPLAY_SETTINGS_MODE iModeNum, ref DEVMODEW lpDevMode, ENUM_DISPLAY_SETTINGS_FLAGS dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enumicmprofilesa
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EnumICMProfilesA(HDC hdc, ICMENUMPROCA proc, LPARAM? param2);
+    public static partial int EnumICMProfilesA(HDC hdc, ICMENUMPROCA proc, LPARAM param2);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enumicmprofilesw
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EnumICMProfilesW(HDC hdc, ICMENUMPROCW proc, LPARAM? param2);
+    public static partial int EnumICMProfilesW(HDC hdc, ICMENUMPROCW proc, LPARAM param2);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumwindows
     [LibraryImport("USER32")]
@@ -2742,13 +2749,13 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int Escape(HDC hdc, int iEscape, int cjIn, PSTR? pvIn, nint /* optional void* */ pvOut);
+    public static partial int Escape(HDC hdc, int iEscape, int cjIn, PSTR pvIn, nint /* optional void* */ pvOut);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-extescape
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR? lpInData, int cjOutput, out PSTR? lpOutData);
+    public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR lpInData, int cjOutput, out PSTR lpOutData);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetallglyphhandles
     [LibraryImport("GDI32")]
@@ -5364,7 +5371,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetClassInfoW(HINSTANCE? hInstance, PWSTR lpClassName, out WNDCLASSW lpWndClass);
+    public static partial bool GetClassInfoW(HINSTANCE hInstance, PWSTR lpClassName, out WNDCLASSW lpWndClass);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclassnamew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
@@ -5388,13 +5395,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetColorDirectoryA(PSTR? pMachineName, out PSTR? pBuffer, ref uint pdwSize);
+    public static partial bool GetColorDirectoryA(PSTR pMachineName, out PSTR pBuffer, ref uint pdwSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolordirectoryw
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetColorDirectoryW(PWSTR? pMachineName, out PWSTR? pBuffer, ref uint pdwSize);
+    public static partial bool GetColorDirectoryW(PWSTR pMachineName, out PWSTR pBuffer, ref uint pdwSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileelement
     [LibraryImport("mscms")]
@@ -5595,7 +5602,14 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetMessageW(out MSG lpMsg, HWND? hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+    public static partial bool GetMessageW(out MSG lpMsg, HWND hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandleexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool GetModuleHandleExW(uint dwFlags, PWSTR lpModuleName, out HMODULE phModule);
     
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorbrightness
     [LibraryImport("dxva2")]
@@ -5760,7 +5774,7 @@ public static partial class Functions
     [LibraryImport("api-ms-win-shcore-scaling-l1-1-1")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
-    public static partial HRESULT GetProcessDpiAwareness(HANDLE? hprocess, out PROCESS_DPI_AWARENESS value);
+    public static partial HRESULT GetProcessDpiAwareness(HANDLE hprocess, out PROCESS_DPI_AWARENESS value);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getps2colorrenderingdictionary
     [LibraryImport("mscms")]
@@ -5816,13 +5830,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetStandardColorSpaceProfileA(PSTR? pMachineName, uint dwSCS, out PSTR? pBuffer, ref uint pcbSize);
+    public static partial bool GetStandardColorSpaceProfileA(PSTR pMachineName, uint dwSCS, out PSTR pBuffer, ref uint pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getstandardcolorspaceprofilew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetStandardColorSpaceProfileW(PWSTR? pMachineName, uint dwSCS, out PWSTR? pBuffer, ref uint pcbSize);
+    public static partial bool GetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwSCS, out PWSTR pBuffer, ref uint pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getstockobject
     [LibraryImport("GDI32")]
@@ -5864,7 +5878,7 @@ public static partial class Functions
     [LibraryImport("UxTheme")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial COLORREF GetThemeSysColor(HTHEME? hTheme, int iColorId);
+    public static partial COLORREF GetThemeSysColor(HTHEME hTheme, int iColorId);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getthreaddpiawarenesscontext
     [LibraryImport("USER32")]
@@ -7964,7 +7978,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool ICCompressorChoose(HWND? hwnd, uint uiFlags, nint /* optional void* */ pvIn, nint /* optional void* */ lpData, ref COMPVARS pc, PSTR? lpszTitle);
+    public static partial bool ICCompressorChoose(HWND hwnd, uint uiFlags, nint /* optional void* */ pvIn, nint /* optional void* */ lpData, ref COMPVARS pc, PSTR lpszTitle);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompressorfree
     [LibraryImport("MSVFW32")]
@@ -7988,13 +8002,13 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint ICDrawBegin(HIC hic, uint dwFlags, HPALETTE? hpal, HWND? hwnd, HDC? hdc, int xDst, int yDst, int dxDst, int dyDst, in BITMAPINFOHEADER lpbi, int xSrc, int ySrc, int dxSrc, int dySrc, uint dwRate, uint dwScale);
+    public static partial uint ICDrawBegin(HIC hic, uint dwFlags, HPALETTE hpal, HWND hwnd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, in BITMAPINFOHEADER lpbi, int xSrc, int ySrc, int dxSrc, int dySrc, uint dwRate, uint dwScale);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icgetdisplayformat
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HIC ICGetDisplayFormat(HIC? hic, in BITMAPINFOHEADER lpbiIn, out BITMAPINFOHEADER lpbiOut, int BitDepth, int dx, int dy);
+    public static partial HIC ICGetDisplayFormat(HIC hic, in BITMAPINFOHEADER lpbiIn, out BITMAPINFOHEADER lpbiOut, int BitDepth, int dx, int dy);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icgetinfo
     [LibraryImport("MSVFW32")]
@@ -8012,7 +8026,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HANDLE ICImageDecompress(HIC? hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO* */ lpbiOut);
+    public static partial HANDLE ICImageDecompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO* */ lpbiOut);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icinfo
     [LibraryImport("MSVFW32")]
@@ -8082,13 +8096,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool InstallColorProfileA(PSTR? pMachineName, PSTR pProfileName);
+    public static partial bool InstallColorProfileA(PSTR pMachineName, PSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-installcolorprofilew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool InstallColorProfileW(PWSTR? pMachineName, PWSTR pProfileName);
+    public static partial bool InstallColorProfileW(PWSTR pMachineName, PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-ischild
     [LibraryImport("USER32")]
@@ -8202,7 +8216,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool KillTimer(HWND? hWnd, nuint uIDEvent);
+    public static partial bool KillTimer(HWND hWnd, nuint uIDEvent);
     
     [LibraryImport("ksuser")]
     [PreserveSig]
@@ -8264,7 +8278,7 @@ public static partial class Functions
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HCURSOR LoadCursorA(HINSTANCE? hInstance, PSTR lpCursorName);
+    public static partial HCURSOR LoadCursorA(HINSTANCE hInstance, PSTR lpCursorName);
     
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16)]
@@ -8277,7 +8291,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool LogicalToPhysicalPointForPerMonitorDPI(HWND? hWnd, ref POINT lpPoint);
+    public static partial bool LogicalToPhysicalPointForPerMonitorDPI(HWND hWnd, ref POINT lpPoint);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-mapvirtualkeyw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
@@ -8289,7 +8303,7 @@ public static partial class Functions
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int MapWindowPoints(HWND? hWndFrom, HWND? hWndTo, [MarshalUsing(CountElementName = nameof(cPoints))] ref POINT[] lpPoints, uint cPoints);
+    public static partial int MapWindowPoints(HWND hWndFrom, HWND hWndTo, [MarshalUsing(CountElementName = nameof(cPoints))] ref POINT[] lpPoints, uint cPoints);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -8357,11 +8371,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint mciSendStringA(PSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PSTR[] lpstrReturnString, uint uReturnLength, HWND? hwndCallback);
+    public static partial uint mciSendStringA(PSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PSTR[] lpstrReturnString, uint uReturnLength, HWND hwndCallback);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint mciSendStringW(PWSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PWSTR[] lpstrReturnString, uint uReturnLength, HWND? hwndCallback);
+    public static partial uint mciSendStringW(PWSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PWSTR[] lpstrReturnString, uint uReturnLength, HWND hwndCallback);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -8377,13 +8391,13 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND MCIWndCreateA(HWND? hwndParent, HINSTANCE? hInstance, uint dwStyle, PSTR? szFile);
+    public static partial HWND MCIWndCreateA(HWND hwndParent, HINSTANCE hInstance, uint dwStyle, PSTR szFile);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndcreatew
     [LibraryImport("MSVFW32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND MCIWndCreateW(HWND? hwndParent, HINSTANCE? hInstance, uint dwStyle, PWSTR? szFile);
+    public static partial HWND MCIWndCreateW(HWND hwndParent, HINSTANCE hInstance, uint dwStyle, PWSTR szFile);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndregisterclass
     [LibraryImport("MSVFW32")]
@@ -8396,7 +8410,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial MESSAGEBOX_RESULT MessageBoxW(HWND? hWnd, PWSTR? lpText, PWSTR? lpCaption, MESSAGEBOX_STYLE uType);
+    public static partial MESSAGEBOX_RESULT MessageBoxW(HWND hWnd, PWSTR lpText, PWSTR lpCaption, MESSAGEBOX_STYLE uType);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfaddperiodiccallback
     [LibraryImport("MFPlat")]
@@ -8989,7 +9003,7 @@ public static partial class Functions
     [LibraryImport("MFSENSORGROUP")]
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
-    public static partial HRESULT MFCreateSensorProfile(in Guid ProfileType, uint ProfileIndex, PWSTR? Constraints, out IMFSensorProfile ppProfile);
+    public static partial HRESULT MFCreateSensorProfile(in Guid ProfileType, uint ProfileIndex, PWSTR Constraints, out IMFSensorProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesensorprofilecollection
     [LibraryImport("MFSENSORGROUP")]
@@ -9031,7 +9045,7 @@ public static partial class Functions
     [LibraryImport("MFReadWrite")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFCreateSinkWriterFromURL(PWSTR? pwszOutputURL, IMFByteStream? pByteStream, IMFAttributes? pAttributes, out IMFSinkWriter ppSinkWriter);
+    public static partial HRESULT MFCreateSinkWriterFromURL(PWSTR pwszOutputURL, IMFByteStream? pByteStream, IMFAttributes? pAttributes, out IMFSinkWriter ppSinkWriter);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-mfcreatesourcereaderfrombytestream
     [LibraryImport("MFReadWrite")]
@@ -9408,7 +9422,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial void MFHeapAlloc(nuint nSize, uint dwFlags, PSTR? pszFile, int line, EAllocationType eat);
+    public static partial void MFHeapAlloc(nuint nSize, uint dwFlags, PSTR pszFile, int line, EAllocationType eat);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfheapfree
     [LibraryImport("MFPlat")]
@@ -9558,7 +9572,7 @@ public static partial class Functions
     [LibraryImport("MFPlay")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial HRESULT MFPCreateMediaPlayer(PWSTR? pwszURL, [MarshalAs(UnmanagedType.U4)] bool fStartPlayback, MFP_CREATION_OPTIONS creationOptions, IMFPMediaPlayerCallback? pCallback, HWND? hWnd, nint /* optional IMFPMediaPlayer* */ ppMediaPlayer);
+    public static partial HRESULT MFPCreateMediaPlayer(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fStartPlayback, MFP_CREATION_OPTIONS creationOptions, IMFPMediaPlayerCallback? pCallback, HWND hWnd, nint /* optional IMFPMediaPlayer* */ ppMediaPlayer);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputwaitingworkitem
     [LibraryImport("MFPlat")]
@@ -9840,7 +9854,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInMessage(HMIDIIN? hmi, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint midiInMessage(HMIDIIN hmi, uint uMsg, nuint? dw1, nuint? dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinopen
     [LibraryImport("WINMM")]
@@ -9936,7 +9950,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutGetVolume(HMIDIOUT? hmo, out uint pdwVolume);
+    public static partial uint midiOutGetVolume(HMIDIOUT hmo, out uint pdwVolume);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutlongmsg
     [LibraryImport("WINMM")]
@@ -9948,7 +9962,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutMessage(HMIDIOUT? hmo, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint midiOutMessage(HMIDIOUT hmo, uint uMsg, nuint? dw1, nuint? dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutopen
     [LibraryImport("WINMM")]
@@ -9972,7 +9986,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutSetVolume(HMIDIOUT? hmo, uint dwVolume);
+    public static partial uint midiOutSetVolume(HMIDIOUT hmo, uint dwVolume);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutshortmsg
     [LibraryImport("WINMM")]
@@ -10044,13 +10058,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetControlDetailsA(HMIXEROBJ? hmxobj, ref MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
+    public static partial uint mixerGetControlDetailsA(HMIXEROBJ hmxobj, ref MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetcontroldetailsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetControlDetailsW(HMIXEROBJ? hmxobj, ref MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
+    public static partial uint mixerGetControlDetailsW(HMIXEROBJ hmxobj, ref MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetdevcapsa
     [LibraryImport("WINMM")]
@@ -10068,31 +10082,31 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetID(HMIXEROBJ? hmxobj, out uint puMxId, uint fdwId);
+    public static partial uint mixerGetID(HMIXEROBJ hmxobj, out uint puMxId, uint fdwId);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlinecontrolsa
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetLineControlsA(HMIXEROBJ? hmxobj, ref MIXERLINECONTROLSA pmxlc, uint fdwControls);
+    public static partial uint mixerGetLineControlsA(HMIXEROBJ hmxobj, ref MIXERLINECONTROLSA pmxlc, uint fdwControls);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlinecontrolsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetLineControlsW(HMIXEROBJ? hmxobj, ref MIXERLINECONTROLSW pmxlc, uint fdwControls);
+    public static partial uint mixerGetLineControlsW(HMIXEROBJ hmxobj, ref MIXERLINECONTROLSW pmxlc, uint fdwControls);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlineinfoa
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetLineInfoA(HMIXEROBJ? hmxobj, ref MIXERLINEA pmxl, uint fdwInfo);
+    public static partial uint mixerGetLineInfoA(HMIXEROBJ hmxobj, ref MIXERLINEA pmxl, uint fdwInfo);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlineinfow
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetLineInfoW(HMIXEROBJ? hmxobj, ref MIXERLINEW pmxl, uint fdwInfo);
+    public static partial uint mixerGetLineInfoW(HMIXEROBJ hmxobj, ref MIXERLINEW pmxl, uint fdwInfo);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetnumdevs
     [LibraryImport("WINMM")]
@@ -10104,7 +10118,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerMessage(HMIXER? hmx, uint uMsg, nuint? dwParam1, nuint? dwParam2);
+    public static partial uint mixerMessage(HMIXER hmx, uint uMsg, nuint? dwParam1, nuint? dwParam2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixeropen
     [LibraryImport("WINMM")]
@@ -10116,7 +10130,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerSetControlDetails(HMIXEROBJ? hmxobj, in MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
+    public static partial uint mixerSetControlDetails(HMIXEROBJ hmxobj, in MIXERCONTROLDETAILS pmxcd, uint fdwDetails);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -10221,7 +10235,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial LRESULT mmioSendMessage(HMMIO hmmio, uint uMsg, LPARAM? lParam1, LPARAM? lParam2);
+    public static partial LRESULT mmioSendMessage(HMMIO hmmio, uint uMsg, LPARAM lParam1, LPARAM lParam2);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiosetbuffer
     [LibraryImport("WINMM")]
@@ -10336,13 +10350,13 @@ public static partial class Functions
     [LibraryImport("UXTHEME")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HTHEME OpenThemeData(HWND? hwnd, PWSTR pszClassList);
+    public static partial HTHEME OpenThemeData(HWND hwnd, PWSTR pszClassList);
     
     // https://learn.microsoft.com/windows/win32/api/uxtheme/nf-uxtheme-openthemedatafordpi
     [LibraryImport("UxTheme")]
     [SupportedOSPlatform("windows10.0.15063")]
     [PreserveSig]
-    public static partial HTHEME OpenThemeDataForDpi(HWND? hwnd, PWSTR pszClassList, uint dpi);
+    public static partial HTHEME OpenThemeDataForDpi(HWND hwnd, PWSTR pszClassList, uint dpi);
     
     // https://learn.microsoft.com/windows/win32/api/opmapi/nf-opmapi-opmgetvideooutputfortarget
     [LibraryImport("dxva2")]
@@ -10416,31 +10430,31 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PeekMessageW(out MSG lpMsg, HWND? hWnd, uint wMsgFilterMin, uint wMsgFilterMax, PEEK_MESSAGE_REMOVE_TYPE wRemoveMsg);
+    public static partial bool PeekMessageW(out MSG lpMsg, HWND hWnd, uint wMsgFilterMin, uint wMsgFilterMax, PEEK_MESSAGE_REMOVE_TYPE wRemoveMsg);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-physicaltologicalpointforpermonitordpi
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PhysicalToLogicalPointForPerMonitorDPI(HWND? hWnd, ref POINT lpPoint);
+    public static partial bool PhysicalToLogicalPointForPerMonitorDPI(HWND hWnd, ref POINT lpPoint);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PlaySoundA(PSTR? pszSound, HMODULE? hmod, SND_FLAGS fdwSound);
+    public static partial bool PlaySoundA(PSTR pszSound, HMODULE hmod, SND_FLAGS fdwSound);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PlaySoundW(PWSTR? pszSound, HMODULE? hmod, SND_FLAGS fdwSound);
+    public static partial bool PlaySoundW(PWSTR pszSound, HMODULE hmod, SND_FLAGS fdwSound);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool PostMessageW(HWND? hWnd, uint Msg, WPARAM wParam, LPARAM lParam);
+    public static partial bool PostMessageW(HWND hWnd, uint Msg, WPARAM wParam, LPARAM lParam);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postquitmessage
     [LibraryImport("USER32")]
@@ -10471,13 +10485,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RegisterCMMA(PSTR? pMachineName, uint cmmID, PSTR pCMMdll);
+    public static partial bool RegisterCMMA(PSTR pMachineName, uint cmmID, PSTR pCMMdll);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-registercmmw
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RegisterCMMW(PWSTR? pMachineName, uint cmmID, PWSTR pCMMdll);
+    public static partial bool RegisterCMMW(PWSTR pMachineName, uint cmmID, PWSTR pCMMdll);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-releasecapture
     [LibraryImport("USER32")]
@@ -10586,7 +10600,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RoOriginateError(HRESULT error, HSTRING? message);
+    public static partial bool RoOriginateError(HRESULT error, HSTRING message);
     
     // https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rooriginateerrorw
     [LibraryImport("api-ms-win-core-winrt-error-l1-1-0", StringMarshalling = StringMarshalling.Utf16)]
@@ -10600,7 +10614,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RoOriginateLanguageException(HRESULT error, HSTRING? message, nint languageException);
+    public static partial bool RoOriginateLanguageException(HRESULT error, HSTRING message, nint languageException);
     
     // https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roregisteractivationfactories
     [LibraryImport("api-ms-win-core-winrt-l1-1-0")]
@@ -10647,7 +10661,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RoTransformError(HRESULT oldError, HRESULT newError, HSTRING? message);
+    public static partial bool RoTransformError(HRESULT oldError, HRESULT newError, HSTRING message);
     
     // https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rotransformerrorw
     [LibraryImport("api-ms-win-core-winrt-error-l1-1-0", StringMarshalling = StringMarshalling.Utf16)]
@@ -10703,7 +10717,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial LRESULT SendMessageW(HWND hWnd, uint Msg, WPARAM? wParam, LPARAM? lParam);
+    public static partial LRESULT SendMessageW(HWND hWnd, uint Msg, WPARAM wParam, LPARAM lParam);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setabortproc
     [LibraryImport("GDI32")]
@@ -10860,7 +10874,7 @@ public static partial class Functions
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HWND SetParent(HWND hWndChild, HWND? hWndNewParent);
+    public static partial HWND SetParent(HWND hWndChild, HWND hWndNewParent);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setpixelformat
     [LibraryImport("GDI32")]
@@ -10892,13 +10906,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool SetStandardColorSpaceProfileA(PSTR? pMachineName, uint dwProfileID, PSTR pProfilename);
+    public static partial bool SetStandardColorSpaceProfileA(PSTR pMachineName, uint dwProfileID, PSTR pProfilename);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setstandardcolorspaceprofilew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool SetStandardColorSpaceProfileW(PWSTR? pMachineName, uint dwProfileID, PWSTR pProfileName);
+    public static partial bool SetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwProfileID, PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setthreaddpiawarenesscontext
     [LibraryImport("USER32")]
@@ -10916,7 +10930,7 @@ public static partial class Functions
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial nuint SetTimer(HWND? hWnd, nuint nIDEvent, uint uElapse, TIMERPROC? lpTimerFunc);
+    public static partial nuint SetTimer(HWND hWnd, nuint nIDEvent, uint uElapse, TIMERPROC? lpTimerFunc);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setupcolormatchinga
     [LibraryImport("ICMUI")]
@@ -10960,20 +10974,20 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool SetWindowPos(HWND hWnd, HWND? hWndInsertAfter, int X, int Y, int cx, int cy, SET_WINDOW_POS_FLAGS uFlags);
+    public static partial bool SetWindowPos(HWND hWnd, HWND hWndInsertAfter, int X, int Y, int cx, int cy, SET_WINDOW_POS_FLAGS uFlags);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowtextw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool SetWindowTextW(HWND hWnd, PWSTR? lpString);
+    public static partial bool SetWindowTextW(HWND hWnd, PWSTR lpString);
     
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shellaboutw
     [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial int ShellAboutW(HWND? hWnd, PWSTR szApp, PWSTR? szOtherStuff, HICON? hIcon);
+    public static partial int ShellAboutW(HWND hWnd, PWSTR szApp, PWSTR szOtherStuff, HICON hIcon);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-showwindow
     [LibraryImport("USER32")]
@@ -10998,12 +11012,12 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool sndPlaySoundA(PSTR? pszSound, uint fuSound);
+    public static partial bool sndPlaySoundA(PSTR pszSound, uint fuSound);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool sndPlaySoundW(PWSTR? pszSound, uint fuSound);
+    public static partial bool sndPlaySoundW(PWSTR pszSound, uint fuSound);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-startdoca
     [LibraryImport("GDI32")]
@@ -11150,7 +11164,7 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool TranslateBitmapBits(nint hColorTransform, nint pSrcBits, BMFORMAT bmInput, uint dwWidth, uint dwHeight, uint dwInputStride, nint pDestBits, BMFORMAT bmOutput, uint dwOutputStride, LPBMCALLBACKFN? pfnCallBack, LPARAM? ulCallbackData);
+    public static partial bool TranslateBitmapBits(nint hColorTransform, nint pSrcBits, BMFORMAT bmInput, uint dwWidth, uint dwHeight, uint dwInputStride, nint pDestBits, BMFORMAT bmOutput, uint dwOutputStride, LPBMCALLBACKFN? pfnCallBack, LPARAM ulCallbackData);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-translatecolors
     [LibraryImport("mscms")]
@@ -11169,32 +11183,32 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool UninstallColorProfileA(PSTR? pMachineName, PSTR pProfileName, [MarshalAs(UnmanagedType.U4)] bool bDelete);
+    public static partial bool UninstallColorProfileA(PSTR pMachineName, PSTR pProfileName, [MarshalAs(UnmanagedType.U4)] bool bDelete);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-uninstallcolorprofilew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool UninstallColorProfileW(PWSTR? pMachineName, PWSTR pProfileName, [MarshalAs(UnmanagedType.U4)] bool bDelete);
+    public static partial bool UninstallColorProfileW(PWSTR pMachineName, PWSTR pProfileName, [MarshalAs(UnmanagedType.U4)] bool bDelete);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregisterclassw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool UnregisterClassW(PWSTR lpClassName, HINSTANCE? hInstance);
+    public static partial bool UnregisterClassW(PWSTR lpClassName, HINSTANCE hInstance);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-unregistercmma
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool UnregisterCMMA(PSTR? pMachineName, uint cmmID);
+    public static partial bool UnregisterCMMA(PSTR pMachineName, uint cmmID);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-unregistercmmw
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool UnregisterCMMW(PWSTR? pMachineName, uint cmmID);
+    public static partial bool UnregisterCMMW(PWSTR pMachineName, uint cmmID);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-updateicmregkeya
     [LibraryImport("GDI32")]
@@ -11264,7 +11278,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveInMessage(HWAVEIN? hwi, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint waveInMessage(HWAVEIN hwi, uint uMsg, nuint? dw1, nuint? dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinopen
     [LibraryImport("WINMM")]
@@ -11364,13 +11378,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveOutGetVolume(HWAVEOUT? hwo, out uint pdwVolume);
+    public static partial uint waveOutGetVolume(HWAVEOUT hwo, out uint pdwVolume);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutmessage
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveOutMessage(HWAVEOUT? hwo, uint uMsg, nuint dw1, nuint dw2);
+    public static partial uint waveOutMessage(HWAVEOUT hwo, uint uMsg, nuint dw1, nuint dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutopen
     [LibraryImport("WINMM")]
@@ -11418,7 +11432,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveOutSetVolume(HWAVEOUT? hwo, uint dwVolume);
+    public static partial uint waveOutSetVolume(HWAVEOUT hwo, uint dwVolume);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutunprepareheader
     [LibraryImport("WINMM")]
@@ -11477,13 +11491,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool WcsGetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR? pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, uint cbProfileName, out PWSTR pProfileName);
+    public static partial bool WcsGetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, uint cbProfileName, out PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultcolorprofilesize
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool WcsGetDefaultColorProfileSize(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR? pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, out uint pcbProfileName);
+    public static partial bool WcsGetDefaultColorProfileSize(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, out uint pcbProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultrenderingintent
     [LibraryImport("mscms")]
@@ -11517,7 +11531,7 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool WcsSetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR? pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, PWSTR? pProfileName);
+    public static partial bool WcsSetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcssetdefaultrenderingintent
     [LibraryImport("mscms")]
@@ -11714,13 +11728,13 @@ public static partial class Functions
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsCompareStringOrdinal(HSTRING? string1, HSTRING? string2, out int result);
+    public static partial HRESULT WindowsCompareStringOrdinal(HSTRING string1, HSTRING string2, out int result);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsconcatstring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsConcatString(HSTRING? string1, HSTRING? string2, out HSTRING newString);
+    public static partial HRESULT WindowsConcatString(HSTRING string1, HSTRING string2, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscreatestring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
@@ -11732,37 +11746,37 @@ public static partial class Functions
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsCreateStringReference(PWSTR? sourceString, uint length, out HSTRING_HEADER hstringHeader, out HSTRING @string);
+    public static partial HRESULT WindowsCreateStringReference(PWSTR sourceString, uint length, out HSTRING_HEADER hstringHeader, out HSTRING @string);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsdeletestring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsDeleteString(HSTRING? @string);
+    public static partial HRESULT WindowsDeleteString(HSTRING @string);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsdeletestringbuffer
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsDeleteStringBuffer(HSTRING_BUFFER? bufferHandle);
+    public static partial HRESULT WindowsDeleteStringBuffer(HSTRING_BUFFER bufferHandle);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsduplicatestring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsDuplicateString(HSTRING? @string, out HSTRING newString);
+    public static partial HRESULT WindowsDuplicateString(HSTRING @string, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsgetstringlen
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial uint WindowsGetStringLen(HSTRING? @string);
+    public static partial uint WindowsGetStringLen(HSTRING @string);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsgetstringrawbuffer
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial PWSTR WindowsGetStringRawBuffer(HSTRING? @string, nint /* optional uint* */ length);
+    public static partial PWSTR WindowsGetStringRawBuffer(HSTRING @string, nint /* optional uint* */ length);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsinspectstring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
@@ -11781,7 +11795,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool WindowsIsStringEmpty(HSTRING? @string);
+    public static partial bool WindowsIsStringEmpty(HSTRING @string);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowspreallocatestringbuffer
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
@@ -11799,37 +11813,37 @@ public static partial class Functions
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsReplaceString(HSTRING? @string, HSTRING? stringReplaced, HSTRING? stringReplaceWith, out HSTRING newString);
+    public static partial HRESULT WindowsReplaceString(HSTRING @string, HSTRING stringReplaced, HSTRING stringReplaceWith, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsstringhasembeddednull
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsStringHasEmbeddedNull(HSTRING? @string, [MarshalAs(UnmanagedType.U4)] out bool hasEmbedNull);
+    public static partial HRESULT WindowsStringHasEmbeddedNull(HSTRING @string, [MarshalAs(UnmanagedType.U4)] out bool hasEmbedNull);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowssubstring
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsSubstring(HSTRING? @string, uint startIndex, out HSTRING newString);
+    public static partial HRESULT WindowsSubstring(HSTRING @string, uint startIndex, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowssubstringwithspecifiedlength
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsSubstringWithSpecifiedLength(HSTRING? @string, uint startIndex, uint length, out HSTRING newString);
+    public static partial HRESULT WindowsSubstringWithSpecifiedLength(HSTRING @string, uint startIndex, uint length, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowstrimstringend
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsTrimStringEnd(HSTRING? @string, HSTRING? trimString, out HSTRING newString);
+    public static partial HRESULT WindowsTrimStringEnd(HSTRING @string, HSTRING trimString, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowstrimstringstart
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsTrimStringStart(HSTRING? @string, HSTRING? trimString, out HSTRING newString);
+    public static partial HRESULT WindowsTrimStringStart(HSTRING @string, HSTRING trimString, out HSTRING newString);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-wmcreatebackuprestorer
     [LibraryImport("WMVCore")]

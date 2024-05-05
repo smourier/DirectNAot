@@ -51,6 +51,7 @@
     "STGTY",
     "MONITORINFOEXW",
     "-!D2D_MATRIX_*",
+    "-D3DCOLORVALUE",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
@@ -79,7 +80,7 @@
     "EnumChildWindows",
     "EnumDisplayDevicesW",
     "EnumDisplayMonitors",
-    "EnumDisplaySettings",
+    "EnumDisplaySettingsExW",
     "EnumWindows",
     "EnableNonClientDpiScaling",
     "EnableMouseInPointer",
@@ -108,7 +109,7 @@
     "GetIconInfo",
     "GetMessageW",
     "GetMessagePos",
-    "GetModuleHandleEx",
+    "GetModuleHandleExW",
     "GetMonitorInfoW",
     "GetObjectW",
     "GetParent",

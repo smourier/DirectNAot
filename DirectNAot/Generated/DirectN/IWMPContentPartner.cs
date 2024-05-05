@@ -63,7 +63,7 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-refreshlicense
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RefreshLicense(uint dwCookie, VARIANT_BOOL fLocal, BSTR? bstrURL, WMPStreamingType type, uint contentID, BSTR bstrRefreshReason, in VARIANT pReasonContext);
+    HRESULT RefreshLicense(uint dwCookie, VARIANT_BOOL fLocal, BSTR bstrURL, WMPStreamingType type, uint contentID, BSTR bstrRefreshReason, in VARIANT pReasonContext);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-getcatalogurl
     [PreserveSig]

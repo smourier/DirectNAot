@@ -2,6 +2,8 @@
 
 public partial struct PSTR // not disposable as we don't know here who allocated it
 {
+    public static readonly PSTR Null = new();
+
     public PSTR(nint value)
     {
         Value = value;

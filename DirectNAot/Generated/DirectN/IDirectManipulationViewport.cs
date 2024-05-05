@@ -119,7 +119,7 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-addeventhandler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEventHandler(HWND? window, IDirectManipulationViewportEventHandler eventHandler, out uint cookie);
+    HRESULT AddEventHandler(HWND window, IDirectManipulationViewportEventHandler eventHandler, out uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-removeeventhandler
     [PreserveSig]

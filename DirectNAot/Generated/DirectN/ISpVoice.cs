@@ -34,7 +34,7 @@ public partial interface ISpVoice : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Speak(PWSTR? pwcs, uint dwFlags, nint /* optional uint* */ pulStreamNumber);
+    HRESULT Speak(PWSTR pwcs, uint dwFlags, nint /* optional uint* */ pulStreamNumber);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

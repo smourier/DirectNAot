@@ -22,6 +22,8 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_HANDLE = unchecked((int)0x80070006);
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_EXCEPTION = unchecked((int)0x80020009);
 
+    public const int MONITORINFOF_PRIMARY = 0x00000001;
+
     public static readonly Guid IID_Unknown = new(IID_UnknownString);
     public const string IID_UnknownString = "00000000-0000-0000-C000-000000000046";
 

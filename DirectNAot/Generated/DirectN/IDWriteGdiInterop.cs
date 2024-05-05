@@ -29,5 +29,5 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createbitmaprendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapRenderTarget(HDC? hdc, uint width, uint height, out IDWriteBitmapRenderTarget renderTarget);
+    HRESULT CreateBitmapRenderTarget(HDC hdc, uint width, uint height, out IDWriteBitmapRenderTarget renderTarget);
 }

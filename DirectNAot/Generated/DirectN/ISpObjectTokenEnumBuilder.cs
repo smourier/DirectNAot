@@ -6,7 +6,7 @@ public partial interface ISpObjectTokenEnumBuilder : IEnumSpObjectTokens
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAttribs(PWSTR? pszReqAttribs, PWSTR? pszOptAttribs);
+    HRESULT SetAttribs(PWSTR pszReqAttribs, PWSTR pszOptAttribs);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

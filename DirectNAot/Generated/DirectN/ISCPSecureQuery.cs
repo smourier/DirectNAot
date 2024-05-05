@@ -13,7 +13,7 @@ public partial interface ISCPSecureQuery
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecurequery-examinedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExamineData(uint fuFlags, PWSTR? pwszExtension, nint /* byte array */ pData, uint dwSize, nint /* byte array */ abMac);
+    HRESULT ExamineData(uint fuFlags, PWSTR pwszExtension, nint /* byte array */ pData, uint dwSize, nint /* byte array */ abMac);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecurequery-makedecision
     [PreserveSig]

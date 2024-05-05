@@ -10,7 +10,7 @@ public partial interface ISpRecoResult2 : ISpRecoResult
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CommitText(uint ulStartElement, uint cElements, PWSTR? pszCorrectedData, uint eCommitFlags);
+    HRESULT CommitText(uint ulStartElement, uint cElements, PWSTR pszCorrectedData, uint eCommitFlags);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

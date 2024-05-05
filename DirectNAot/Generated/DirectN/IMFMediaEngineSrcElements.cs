@@ -28,7 +28,7 @@ public partial interface IMFMediaEngineSrcElements
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesrcelements-addelement
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddElement(BSTR? pURL, BSTR? pType, BSTR? pMedia);
+    HRESULT AddElement(BSTR pURL, BSTR pType, BSTR pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesrcelements-removeallelements
     [PreserveSig]

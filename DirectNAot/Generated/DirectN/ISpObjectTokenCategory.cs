@@ -18,7 +18,7 @@ public partial interface ISpObjectTokenCategory : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumTokens(PWSTR? pzsReqAttribs, PWSTR? pszOptAttribs, out IEnumSpObjectTokens ppEnum);
+    HRESULT EnumTokens(PWSTR pzsReqAttribs, PWSTR pszOptAttribs, out IEnumSpObjectTokens ppEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

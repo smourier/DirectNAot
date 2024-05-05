@@ -9,7 +9,7 @@ public partial interface IDWriteFontFallbackBuilder
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontfallbackbuilder-addmapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMapping([MarshalUsing(CountElementName = nameof(rangesCount))] in DWRITE_UNICODE_RANGE[] ranges, uint rangesCount, [MarshalUsing(CountElementName = nameof(targetFamilyNamesCount))] in ushort[] targetFamilyNames, uint targetFamilyNamesCount, IDWriteFontCollection? fontCollection, PWSTR? localeName, PWSTR? baseFamilyName, float scale);
+    HRESULT AddMapping([MarshalUsing(CountElementName = nameof(rangesCount))] in DWRITE_UNICODE_RANGE[] ranges, uint rangesCount, [MarshalUsing(CountElementName = nameof(targetFamilyNamesCount))] in ushort[] targetFamilyNames, uint targetFamilyNamesCount, IDWriteFontCollection? fontCollection, PWSTR localeName, PWSTR baseFamilyName, float scale);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontfallbackbuilder-addmappings
     [PreserveSig]

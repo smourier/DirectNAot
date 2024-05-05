@@ -13,7 +13,7 @@ public partial interface IPhotoAcquire
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquire-acquire
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Acquire(IPhotoAcquireSource? pPhotoAcquireSource, [MarshalAs(UnmanagedType.U4)] bool fShowProgress, HWND? hWndParent, PWSTR? pszApplicationName, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB);
+    HRESULT Acquire(IPhotoAcquireSource? pPhotoAcquireSource, [MarshalAs(UnmanagedType.U4)] bool fShowProgress, HWND hWndParent, PWSTR pszApplicationName, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquire-enumresults
     [PreserveSig]

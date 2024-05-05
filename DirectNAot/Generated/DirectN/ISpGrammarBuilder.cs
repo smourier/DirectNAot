@@ -22,7 +22,7 @@ public partial interface ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddWordTransition(SPSTATEHANDLE hFromState, SPSTATEHANDLE hToState, PWSTR? psz, PWSTR? pszSeparators, SPGRAMMARWORDTYPE eWordType, float Weight, in SPPROPERTYINFO pPropInfo);
+    HRESULT AddWordTransition(SPSTATEHANDLE hFromState, SPSTATEHANDLE hToState, PWSTR psz, PWSTR pszSeparators, SPGRAMMARWORDTYPE eWordType, float Weight, in SPPROPERTYINFO pPropInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddResource(SPSTATEHANDLE hRuleState, PWSTR pszResourceName, PWSTR? pszResourceValue);
+    HRESULT AddResource(SPSTATEHANDLE hRuleState, PWSTR pszResourceName, PWSTR pszResourceValue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

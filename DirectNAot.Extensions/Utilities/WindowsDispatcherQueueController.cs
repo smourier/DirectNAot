@@ -1,34 +1,33 @@
-﻿namespace DirectNAot.Extensions.Utilities
+﻿namespace DirectNAot.Extensions.Utilities;
+
+[SupportedOSPlatform("windows10.0.16299.0")]
+public partial class WindowsDispatcherQueueController
 {
-    [SupportedOSPlatform("windows10.0.16299.0")]
-    public partial class WindowsDispatcherQueueController
+    private Windows.System.DispatcherQueueController? _controller;
+    public Windows.System.DispatcherQueueController? Controller => _controller;
+
+    public unsafe void EnsureOnCurrentThread()
     {
-        private Windows.System.DispatcherQueueController? _controller;
-        public Windows.System.DispatcherQueueController? Controller => _controller;
+        if (Windows.System.DispatcherQueue.GetForCurrentThread() != null || _controller != null)
+            return;
 
-        public unsafe void EnsureOnCurrentThread()
+        var options = new DispatcherQueueOptions
         {
-            if (Windows.System.DispatcherQueue.GetForCurrentThread() != null || _controller != null)
-                return;
+            dwSize = (uint)sizeof(DispatcherQueueOptions),
+            threadType = DISPATCHERQUEUE_THREAD_TYPE.DQTYPE_THREAD_CURRENT,
+            apartmentType = DISPATCHERQUEUE_THREAD_APARTMENTTYPE.DQTAT_COM_STA,
+        };
 
-            var options = new DispatcherQueueOptions
-            {
-                dwSize = (uint)sizeof(DispatcherQueueOptions),
-                threadType = DISPATCHERQUEUE_THREAD_TYPE.DQTYPE_THREAD_CURRENT,
-                apartmentType = DISPATCHERQUEUE_THREAD_APARTMENTTYPE.DQTAT_COM_STA,
-            };
+        Functions.CreateDispatcherQueueController(options, out var controller).ThrowOnError();
+        _controller = Windows.System.DispatcherQueueController.FromAbi(controller);
+    }
 
-            Functions.CreateDispatcherQueueController(options, out var controller).ThrowOnError();
-            _controller = Windows.System.DispatcherQueueController.FromAbi(controller);
-        }
+    public Task ShutdownAsync()
+    {
+        var controller = Interlocked.Exchange(ref _controller, null);
+        if (controller != null)
+            return controller.ShutdownQueueAsync().AsTask();
 
-        public Task ShutdownAsync()
-        {
-            var controller = Interlocked.Exchange(ref _controller, null);
-            if (controller != null)
-                return controller.ShutdownQueueAsync().AsTask();
-
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

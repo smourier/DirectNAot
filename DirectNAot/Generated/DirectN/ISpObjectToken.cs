@@ -6,7 +6,7 @@ public partial interface ISpObjectToken : ISpDataKey
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetId(PWSTR? pszCategoryId, PWSTR pszTokenId, [MarshalAs(UnmanagedType.U4)] bool fCreateIfNotExist);
+    HRESULT SetId(PWSTR pszCategoryId, PWSTR pszTokenId, [MarshalAs(UnmanagedType.U4)] bool fCreateIfNotExist);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,7 +22,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorageFileName(in Guid clsidCaller, PWSTR pszValueName, PWSTR? pszFileNameSpecifier, uint nFolder, out PWSTR ppszFilePath);
+    HRESULT GetStorageFileName(in Guid clsidCaller, PWSTR pszValueName, PWSTR pszFileNameSpecifier, uint nFolder, out PWSTR ppszFilePath);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

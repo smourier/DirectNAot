@@ -2,6 +2,8 @@
 
 public partial struct PWSTR // not disposable as we don't know here who allocated it
 {
+    public static readonly PWSTR Null = new();
+
     public PWSTR(nint value)
     {
         Value = value;

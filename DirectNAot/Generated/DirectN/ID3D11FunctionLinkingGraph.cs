@@ -23,7 +23,7 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-callfunction
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CallFunction(PSTR? pModuleInstanceNamespace, ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, out ID3D11LinkingNode ppCallNode);
+    HRESULT CallFunction(PSTR pModuleInstanceNamespace, ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, out ID3D11LinkingNode ppCallNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-passvalue
     [PreserveSig]

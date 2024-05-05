@@ -6,5 +6,5 @@ public partial struct InlineArrayChar33
 {
     public char Data;
     
-    public override readonly string ToString() => ((ReadOnlySpan<char>)this).ToString();
+    public override readonly string ToString() => ((ReadOnlySpan<char>)this).ToString().TrimEnd('\0');
 }

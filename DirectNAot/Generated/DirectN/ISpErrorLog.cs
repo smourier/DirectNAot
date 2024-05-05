@@ -6,5 +6,5 @@ public partial interface ISpErrorLog
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddError(int lLineNumber, HRESULT hr, PWSTR pszDescription, PWSTR? pszHelpFile, uint dwHelpContext);
+    HRESULT AddError(int lLineNumber, HRESULT hr, PWSTR pszDescription, PWSTR pszHelpFile, uint dwHelpContext);
 }

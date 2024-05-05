@@ -8,7 +8,7 @@ public partial interface IAudioSystemEffects3 : IAudioSystemEffects2
     // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/nf-audioengineextensionapo-iaudiosystemeffects3-getcontrollablesystemeffectslist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetControllableSystemEffectsList(out nint effects, out uint numEffects, HANDLE? @event);
+    HRESULT GetControllableSystemEffectsList(out nint effects, out uint numEffects, HANDLE @event);
     
     // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/nf-audioengineextensionapo-iaudiosystemeffects3-setaudiosystemeffectstate
     [PreserveSig]

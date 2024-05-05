@@ -19,12 +19,12 @@ public partial interface IGraphBuilder : IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-renderfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderFile(PWSTR lpcwstrFile, PWSTR? lpcwstrPlayList);
+    HRESULT RenderFile(PWSTR lpcwstrFile, PWSTR lpcwstrPlayList);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-addsourcefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSourceFilter(PWSTR lpcwstrFileName, PWSTR? lpcwstrFilterName, out IBaseFilter ppFilter);
+    HRESULT AddSourceFilter(PWSTR lpcwstrFileName, PWSTR lpcwstrFilterName, out IBaseFilter ppFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-setlogfile
     [PreserveSig]
