@@ -2593,7 +2593,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EngMultiByteToWideChar(uint CodePage, out PWSTR WideCharString, int BytesInWideCharString, PSTR MultiByteString, int BytesInMultiByteString);
+    public static partial int EngMultiByteToWideChar(uint CodePage, PWSTR WideCharString, int BytesInWideCharString, PSTR MultiByteString, int BytesInMultiByteString);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engpaint
     [LibraryImport("GDI32")]
@@ -2684,7 +2684,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int EngWideCharToMultiByte(uint CodePage, PWSTR WideCharString, int BytesInWideCharString, out PSTR MultiByteString, int BytesInMultiByteString);
+    public static partial int EngWideCharToMultiByte(uint CodePage, PWSTR WideCharString, int BytesInWideCharString, PSTR MultiByteString, int BytesInMultiByteString);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumchildwindows
     [LibraryImport("USER32")]
@@ -2694,7 +2694,7 @@ public static partial class Functions
     public static partial bool EnumChildWindows(HWND hWndParent, WNDENUMPROC lpEnumFunc, LPARAM lParam);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesa
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool EnumColorProfilesA(PSTR pMachineName, in ENUMTYPEA pEnumRecord, nint /* optional byte* */ pEnumerationBuffer, ref uint pdwSizeOfEnumerationBuffer, nint /* optional uint* */ pnProfiles);
@@ -2755,7 +2755,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR lpInData, int cjOutput, out PSTR lpOutData);
+    public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR lpInData, int cjOutput, PSTR lpOutData);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetallglyphhandles
     [LibraryImport("GDI32")]
@@ -5392,16 +5392,16 @@ public static partial class Functions
     public static partial uint GetCMMInfo(nint hColorTransform, uint param1);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolordirectorya
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetColorDirectoryA(PSTR pMachineName, out PSTR pBuffer, ref uint pdwSize);
+    public static partial bool GetColorDirectoryA(PSTR pMachineName, PSTR pBuffer, ref uint pdwSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolordirectoryw
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetColorDirectoryW(PWSTR pMachineName, out PWSTR pBuffer, ref uint pdwSize);
+    public static partial bool GetColorDirectoryW(PWSTR pMachineName, PWSTR pBuffer, ref uint pdwSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileelement
     [LibraryImport("mscms")]
@@ -5410,13 +5410,13 @@ public static partial class Functions
     public static partial bool GetColorProfileElement(nint hProfile, uint tag, uint dwOffset, ref uint pcbElement, nint /* optional void* */ pElement, [MarshalAs(UnmanagedType.U4)] out bool pbReference);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileelementtag
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetColorProfileElementTag(nint hProfile, uint dwIndex, out uint pTag);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofilefromhandle
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetColorProfileFromHandle(nint hProfile, nint /* optional byte* */ pProfile, ref uint pcbProfile);
@@ -5439,7 +5439,7 @@ public static partial class Functions
     public static partial HWND GetConsoleWindow();
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcountcolorprofileelements
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
@@ -5830,13 +5830,13 @@ public static partial class Functions
     [LibraryImport("mscms")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetStandardColorSpaceProfileA(PSTR pMachineName, uint dwSCS, out PSTR pBuffer, ref uint pcbSize);
+    public static partial bool GetStandardColorSpaceProfileA(PSTR pMachineName, uint dwSCS, PSTR pBuffer, ref uint pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getstandardcolorspaceprofilew
     [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwSCS, out PWSTR pBuffer, ref uint pcbSize);
+    public static partial bool GetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwSCS, PWSTR pBuffer, ref uint pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getstockobject
     [LibraryImport("GDI32")]
@@ -10331,12 +10331,12 @@ public static partial class Functions
     public static partial HMONITOR MonitorFromWindow(HWND hwnd, MONITOR_FROM_FLAGS dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-opencolorprofilea
-    [LibraryImport("mscms")]
+    [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     public static partial nint OpenColorProfileA(in PROFILE pProfile, uint dwDesiredAccess, uint dwShareMode, uint dwCreationMode);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-opencolorprofilew
-    [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16)]
+    [LibraryImport("mscms", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [PreserveSig]
     public static partial nint OpenColorProfileW(in PROFILE pProfile, uint dwDesiredAccess, uint dwShareMode, uint dwCreationMode);
     

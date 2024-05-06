@@ -29,7 +29,7 @@ public partial interface IKsTopologyInfo
     // https://learn.microsoft.com/windows/win32/api/vidcap/nf-vidcap-ikstopologyinfo-get_nodename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_NodeName(uint dwNodeId, out PWSTR pwchNodeName, uint dwBufSize, out uint pdwNameLen);
+    HRESULT get_NodeName(uint dwNodeId, PWSTR pwchNodeName, uint dwBufSize, out uint pdwNameLen);
     
     // https://learn.microsoft.com/windows/win32/api/vidcap/nf-vidcap-ikstopologyinfo-get_numnodes
     [PreserveSig]

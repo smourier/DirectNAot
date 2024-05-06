@@ -10,12 +10,23 @@ public class Pstr : IDisposable
         Value = value;
     }
 
+    public Pstr(int sizeInBytes)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(sizeInBytes);
+        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem(sizeInBytes) : 0;
+    }
+
+    public Pstr(uint sizeInBytes)
+    {
+        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem((int)sizeInBytes) : 0;
+    }
+
     public Pstr(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemAnsi(value);
     }
 
-    public override string ToString() => Marshal.PtrToStringAnsi(Value)!;
+    public override string? ToString() => Marshal.PtrToStringAnsi(Value)!;
 
     public static implicit operator Pstr(string value) => new(value);
     public static implicit operator PSTR(Pstr value) => new(value.Value);

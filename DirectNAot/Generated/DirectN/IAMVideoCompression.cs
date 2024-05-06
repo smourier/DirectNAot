@@ -49,7 +49,7 @@ public partial interface IAMVideoCompression
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocompression-getinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInfo(out PWSTR pszVersion, nint /* optional int* */ pcbVersion, out PWSTR pszDescription, nint /* optional int* */ pcbDescription, nint /* optional int* */ pDefaultKeyFrameRate, nint /* optional int* */ pDefaultPFramesPerKey, nint /* optional double* */ pDefaultQuality, nint /* optional int* */ pCapabilities);
+    HRESULT GetInfo(PWSTR pszVersion, nint /* optional int* */ pcbVersion, PWSTR pszDescription, nint /* optional int* */ pcbDescription, nint /* optional int* */ pDefaultKeyFrameRate, nint /* optional int* */ pDefaultPFramesPerKey, nint /* optional double* */ pDefaultQuality, nint /* optional int* */ pCapabilities);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocompression-overridekeyframe
     [PreserveSig]

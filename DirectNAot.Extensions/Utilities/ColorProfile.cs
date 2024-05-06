@@ -5,11 +5,11 @@ namespace DirectNAot.Extensions.Utilities;
 
 public sealed class ColorProfile
 {
-    private static readonly Lazy<IReadOnlyList<ColorProfile>> _localProfiles = new(() => GetColorProfiles(null), true);
+    private static readonly Lazy<IReadOnlyList<ColorProfile>> _localProfiles = new(() => GetColorProfiles(null, false), true);
     public static IReadOnlyList<ColorProfile> LocalProfiles => _localProfiles.Value;
 
-    private static readonly Lazy<string> _colorDirectoryPath = new(() => GetColorDirectoryPath(null), true);
-    public static string LocalColorDirectoryPath => _colorDirectoryPath.Value;
+    private static readonly Lazy<string?> _colorDirectoryPath = new(() => GetColorDirectoryPath(null), true);
+    public static string? LocalColorDirectoryPath => _colorDirectoryPath.Value;
 
     private ColorProfile(nint handle)
     {
@@ -362,15 +362,15 @@ public sealed class ColorProfile
         }
     }
 
-    public static ColorProfile FromStream(Stream stream)
+    public static ColorProfile? FromStream(Stream stream, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(stream);
         using var bytes = new MemoryStream();
         stream.CopyTo(bytes);
-        return FromMemory(bytes.ToArray());
+        return FromMemory(bytes.ToArray(), throwOnError);
     }
 
-    public static ColorProfile FromMemory(byte[] buffer)
+    public static ColorProfile? FromMemory(byte[] buffer, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(buffer);
         unsafe
@@ -384,9 +384,14 @@ public sealed class ColorProfile
                     cbDataSize = (uint)buffer.Length
                 };
 
-                var handle = Functions.OpenColorProfileW(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
+                var handle = Functions.OpenColorProfileA(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
                 if (handle == 0)
-                    throw new Win32Exception(Marshal.GetLastWin32Error());
+                {
+                    if (throwOnError)
+                        throw new Win32Exception(Marshal.GetLastWin32Error());
+
+                    return null;
+                }
 
                 try
                 {
@@ -400,13 +405,17 @@ public sealed class ColorProfile
         }
     }
 
-    public static ColorProfile FromFileName(string fileName, string? machineName = null)
+    public static ColorProfile? FromFileName(string fileName, string? machineName = null, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(fileName);
         string path;
         if (fileName.IndexOfAny([Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar]) < 0)
         {
-            path = Path.Combine(GetColorDirectoryPath(machineName), fileName);
+            var dirPath = GetColorDirectoryPath(machineName);
+            if (dirPath == null)
+                return null;
+
+            path = Path.Combine(dirPath, fileName);
         }
         else
         {
@@ -428,9 +437,14 @@ public sealed class ColorProfile
                 pProfileData = ptr,
                 cbDataSize = (uint)(name.Length + 1)
             };
-            var handle = Functions.OpenColorProfileW(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
+            var handle = Functions.OpenColorProfileA(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
             if (handle == 0)
-                throw new Win32Exception(Marshal.GetLastWin32Error());
+            {
+                if (throwOnError)
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
+
+                return null;
+            }
 
             try
             {
@@ -447,26 +461,20 @@ public sealed class ColorProfile
         }
     }
 
-    public static string GetColorDirectoryPath(string? machineName = null)
+    public static string? GetColorDirectoryPath(string? machineName = null)
     {
         uint size = 0;
         using var name = new Pwstr(machineName);
-        if (!Functions.GetColorDirectoryW(name, out var p, ref size))
-        {
-            var gle = Marshal.GetLastWin32Error();
-            if (gle != (int)WIN32_ERROR.ERROR_INSUFFICIENT_BUFFER)
-                throw new Win32Exception(gle);
-        }
+        Functions.GetColorDirectoryW(name, PWSTR.Null, ref size);
+        if (size == 0)
+            return null;
 
-        if (!Functions.GetColorDirectoryW(name, out var str, ref size))
-            throw new Win32Exception(Marshal.GetLastWin32Error());
-
-        var result = str.ToString();
-        PWSTR.Dispose(ref str);
-        return result;
+        using var buffer = new Pwstr(size);
+        Functions.GetColorDirectoryW(name, buffer, ref size);
+        return buffer.ToString();
     }
 
-    public static IReadOnlyList<ColorProfile> GetColorProfiles(string? machineName = null)
+    public static IReadOnlyList<ColorProfile> GetColorProfiles(string? machineName = null, bool throwOnProfileError = true)
     {
         var list = new List<ColorProfile>();
         uint size = 0;
@@ -502,7 +510,7 @@ public sealed class ColorProfile
                         if (string.IsNullOrEmpty(str))
                             break;
 
-                        var profile = FromFileName(str, machineName);
+                        var profile = FromFileName(str, machineName, throwOnProfileError);
                         if (profile != null)
                         {
                             list.Add(profile);

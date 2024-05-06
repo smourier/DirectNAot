@@ -10,12 +10,23 @@ public class Pwstr : IDisposable
         Value = value;
     }
 
+    public Pwstr(int sizeInBytes)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(sizeInBytes);
+        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem(sizeInBytes) : 0;
+    }
+
+    public Pwstr(uint sizeInBytes)
+    {
+        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem((int)sizeInBytes) : 0;
+    }
+
     public Pwstr(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
     }
 
-    public override string ToString() => Marshal.PtrToStringUni(Value)!;
+    public override string? ToString() => Marshal.PtrToStringUni(Value)!;
 
     public static implicit operator Pwstr(string value) => new(value);
     public static implicit operator PWSTR(Pwstr value) => new(value.Value);
