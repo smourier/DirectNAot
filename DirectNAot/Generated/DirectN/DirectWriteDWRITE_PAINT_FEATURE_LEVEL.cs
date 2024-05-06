@@ -1,9 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum DirectWriteDWRITE_PAINT_FEATURE_LEVEL
-{
-    DWRITE_PAINT_FEATURE_LEVEL_NONE = 0,
-    DWRITE_PAINT_FEATURE_LEVEL_COLR_V0 = 1,
-    DWRITE_PAINT_FEATURE_LEVEL_COLR_V1 = 2,
-}

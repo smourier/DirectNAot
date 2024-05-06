@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface IDWriteBitmapRenderTarget3 : IDWriteBitmapRenderTarget2
 {
     [PreserveSig]
-    DirectWriteDWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel();
+    DWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

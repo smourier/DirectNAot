@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface ID2D1DeviceContext7 : ID2D1DeviceContext6
 {
     [PreserveSig]
-    Direct2DDWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel();
+    DWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel();
     
     [PreserveSig]
     void DrawPaintGlyphRun(D2D_POINT_2F baselineOrigin, in DWRITE_GLYPH_RUN glyphRun, ID2D1Brush? defaultFillBrush, uint colorPaletteIndex, DWRITE_MEASURING_MODE measuringMode);

@@ -5,9 +5,9 @@ namespace DirectN;
 public partial interface IDWriteFontFace7 : IDWriteFontFace6
 {
     [PreserveSig]
-    DirectWriteDWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat);
+    DWRITE_PAINT_FEATURE_LEVEL GetPaintFeatureLevel(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePaintReader(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, DirectWriteDWRITE_PAINT_FEATURE_LEVEL paintFeatureLevel, out IDWritePaintReader paintReader);
+    HRESULT CreatePaintReader(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, DWRITE_PAINT_FEATURE_LEVEL paintFeatureLevel, out IDWritePaintReader paintReader);
 }

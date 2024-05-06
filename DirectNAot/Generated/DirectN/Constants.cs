@@ -17,6 +17,8 @@ public static partial class Constants
     
     public const uint _FACDXGI = 2170;
     
+    public static readonly Guid AACMFTEncoder = new("93af0c51-2275-45d2-a35b-f2ba21caed00");
+    
     public const int ACCESSRECT_BROKEN = 4;
     
     public const int ACCESSRECT_NOTHOLDINGWIN16LOCK = 2;
@@ -335,6 +337,8 @@ public static partial class Constants
     
     public const uint AEC_STATUS_FD_HISTORY_UNINITIALIZED = 0;
     
+    public static readonly Guid ALawCodecWrapper = new("36cb6e0c-78c1-42b2-9943-846262f31786");
+    
     public const uint AllocatorStrategy_DontCare = 0;
     
     public const uint AllocatorStrategy_MaximizeSpeed = 8;
@@ -583,11 +587,27 @@ public static partial class Constants
     
     public const uint AMVA_TYPEINDEX_OUTPUTFRAME = uint.MaxValue;
     
+    public static readonly Guid ANALOG_AUXIN_NETWORK_TYPE = new("742ef867-09e1-40a3-82d3-9669ba35325f");
+    
+    public static readonly Guid ANALOG_FM_NETWORK_TYPE = new("7728087b-2bb9-4e30-8078-449476e59dbb");
+    
+    public static readonly Guid ANALOG_TV_NETWORK_TYPE = new("b820d87e-e0e3-478f-8a38-4e13f7b3df42");
+    
+    public static readonly Guid AnalogAudioComponentType = new("28ab0005-e845-4ffa-aa9b-f4665236141c");
+    
+    public static readonly Guid AnalogLocator = new("49638b91-48ab-48b7-a47a-7d0e75a08ede");
+    
+    public static readonly Guid AnalogRadioTuningSpace = new("8a674b4c-1f63-11d3-b64c-00c04f79498e");
+    
+    public static readonly Guid AnalogTVTuningSpace = new("8a674b4d-1f63-11d3-b64c-00c04f79498e");
+    
     public const uint AnalogVideo_NTSC_Mask = 7;
     
     public const uint AnalogVideo_PAL_Mask = 1052656;
     
     public const uint AnalogVideo_SECAM_Mask = 1044480;
+    
+    public static readonly Guid APO_CLASS_UUID = new("5989fce8-9cd0-467d-8a6a-5419e31529d4");
     
     public const uint ATSC_EIT_TID = 203;
     
@@ -615,11 +635,21 @@ public static partial class Constants
     
     public const uint ATSC_STT_TID = 205;
     
+    public static readonly Guid ATSC_TERRESTRIAL_TV_NETWORK_TYPE = new("0dad2fdd-5fd7-11d3-8f50-00c04f7971e2");
+    
     public const uint ATSC_VCT_CABL_TID = 201;
     
     public const uint ATSC_VCT_PID = 8187;
     
     public const uint ATSC_VCT_TERR_TID = 200;
+    
+    public static readonly Guid ATSCChannelTuneRequest = new("0369b4e6-45b6-11d3-b650-00c04f79498e");
+    
+    public static readonly Guid ATSCComponentType = new("a8dcf3d5-0780-4ef4-8a83-2cffaacb8ace");
+    
+    public static readonly Guid ATSCLocator = new("8872ff1b-98fa-4d7a-8d93-c9f1055f85bb");
+    
+    public static readonly Guid ATSCTuningSpace = new("a2e30750-6c3d-11d3-b653-00c04f79498e");
     
     public const uint ATTRIB_MATTE = 2;
     
@@ -645,6 +675,44 @@ public static partial class Constants
     
     public const uint AUDCLNT_STREAMFLAGS_SRC_DEFAULT_QUALITY = 134217728;
     
+    public static readonly Guid AUDIO_EFFECT_TYPE_ACOUSTIC_ECHO_CANCELLATION = new("6f64adbe-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_AUTOMATIC_GAIN_CONTROL = new("6f64adc0-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_BASS_BOOST = new("6f64adc5-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_BASS_MANAGEMENT = new("6f64adca-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_BEAMFORMING = new("6f64adc1-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_CONSTANT_TONE_REMOVAL = new("6f64adc2-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_DEEP_NOISE_SUPPRESSION = new("6f64add0-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_DYNAMIC_RANGE_COMPRESSION = new("6f64adce-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_ENVIRONMENTAL_EFFECTS = new("6f64adcb-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_EQUALIZER = new("6f64adc3-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_FAR_FIELD_BEAMFORMING = new("6f64adcf-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_LOUDNESS_EQUALIZER = new("6f64adc4-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_NOISE_SUPPRESSION = new("6f64adbf-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_ROOM_CORRECTION = new("6f64adc9-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_SPEAKER_COMPENSATION = new("6f64adcd-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_SPEAKER_FILL = new("6f64adc8-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_SPEAKER_PROTECTION = new("6f64adcc-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_VIRTUAL_HEADPHONES = new("6f64adc7-8211-11e2-8c70-2c27d7f001fa");
+    
+    public static readonly Guid AUDIO_EFFECT_TYPE_VIRTUAL_SURROUND = new("6f64adc6-8211-11e2-8c70-2c27d7f001fa");
+    
     public const uint AUDIO_MAX_CHANNELS = 4096;
     
     public const double AUDIO_MAX_FRAMERATE = 384000d;
@@ -653,7 +721,25 @@ public static partial class Constants
     
     public const double AUDIO_MIN_FRAMERATE = 10d;
     
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS = new("98951333-b9cd-48b1-a0a3-ff40682d73f7");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_DEFAULT = new("c18e2f7e-933d-4965-b7d1-1eef228d2af3");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_FAR_FIELD_SPEECH = new("28941cba-3be6-4a78-9a76-30fd91559b64");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_MEDIA = new("4780004e-7133-41d8-8c74-660dadd2c0ee");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_MOVIE = new("b26feb0d-ec94-477c-9494-d1ab8e753f6e");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_NOTIFICATION = new("9cf2a70b-f377-403b-bd6b-360863e0355c");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_RAW = new("9e90ea20-b493-4fd1-a1a8-7e1361a956cf");
+    
+    public static readonly Guid AUDIO_SIGNALPROCESSINGMODE_SPEECH = new("fc1cfc9b-b9d6-4cfa-b5e0-4bb2166878b2");
+    
     public const uint AUDIOCLOCK_CHARACTERISTIC_FIXED_FREQ = 1;
+    
+    public static readonly Guid AUDIOENDPOINT_CLASS_UUID = new("c166523c-fe0c-4a94-a586-f1a80cfbbf3e");
     
     public const uint AUDIOMEDIATYPE_EQUAL_FORMAT_DATA = 4;
     
@@ -664,6 +750,8 @@ public static partial class Constants
     public const uint AUDIOMODULE_MAX_DATA_SIZE = 64000;
     
     public const uint AUDIOMODULE_MAX_NAME_CCH_SIZE = 128;
+    
+    public static readonly Guid AudioReverb = new("c2633b16-471b-4498-b8c5-4f0959e2ec09");
     
     public const uint AudioType_Commentary = 5;
     
@@ -683,6 +771,8 @@ public static partial class Constants
     
     public const uint AudioType_Voiceover = 7;
     
+    public static readonly Guid AudioVolumeMeter = new("4fc3b166-972a-40cf-bc37-7db03db2fba3");
+    
     public const uint AUXCAPS_AUXIN = 2;
     
     public const uint AUXCAPS_CDAUDIO = 1;
@@ -698,6 +788,8 @@ public static partial class Constants
     public const uint AUXDM_GETVOLUME = 5;
     
     public const uint AUXDM_SETVOLUME = 6;
+    
+    public static readonly Guid AuxInTuningSpace = new("f9769a06-7aca-4e39-9cfb-97bb35f0e77e");
     
     public const uint AUXM_INIT = 100;
     
@@ -809,7 +901,13 @@ public static partial class Constants
     
     public const uint AVSTREAMMASTER_NONE = 1;
     
+    public static readonly Guid BDA_DEBUG_DATA_AVAILABLE = new("69c24f54-9983-497e-b415-282be4c555fb");
+    
+    public static readonly Guid BDA_DEBUG_DATA_TYPE_STRING = new("a806e767-de5c-430c-80bf-a21ebe06c748");
+    
     public const int BDA_PLP_ID_NOT_SET = -1;
+    
+    public static readonly Guid BDANETWORKTYPE_ATSC = new("71985f51-1ca1-11d3-9cc8-00c04f7971e0");
     
     public const uint BEST_MODE = 3;
     
@@ -826,6 +924,10 @@ public static partial class Constants
     public const uint BITMAP_PLANES = 1;
     
     public const uint BLUE_SHIFT = 0;
+    
+    public static readonly Guid BLUETOOTH_MIDI_DATAIO_CHARACTERISTIC = new("7772e5db-3868-4112-a1a9-f2669d106bf3");
+    
+    public static readonly Guid BLUETOOTHLE_MIDI_SERVICE_UUID = new("03b80e5a-ede8-4b33-a751-6ce34ec4c700");
     
     public static readonly Guid BlurEffectGuid = new("633c80a4-1843-482b-9ef2-be2834c5fdd4");
     
@@ -887,6 +989,10 @@ public static partial class Constants
     
     public static readonly Guid BrightnessContrastEffectGuid = new("d3a1dbe1-8ec4-4c17-9f4c-ea97ad1c343d");
     
+    public static readonly Guid BroadcastEventService = new("0b3ffb92-0919-4934-9d5b-619c719d0202");
+    
+    public static readonly Guid BSKYB_TERRESTRIAL_TV_NETWORK_TYPE = new("9e9e46c6-3aba-4f08-ad0e-cc5ac8148c2b");
+    
     public const uint BUS_INTERFACE_REFERENCE_VERSION = 256;
     
     public const uint c_DwmMaxAdapters = 16;
@@ -894,6 +1000,8 @@ public static partial class Constants
     public const uint c_DwmMaxMonitors = 16;
     
     public const uint c_DwmMaxQueuedBuffers = 8;
+    
+    public static readonly Guid CAC3DecMediaObject = new("03d7c802-ecfa-47d9-b268-5fb3e310dee4");
     
     public static readonly Guid CAPTION_FORMAT_ATSC = new("3ed9cb31-fd10-4ade-bccc-fb9105d2f3ef");
     
@@ -927,6 +1035,14 @@ public static partial class Constants
     
     public const uint CCHDEVICENAME = 32;
     
+    public static readonly Guid CClusterDetectorDmo = new("36e820c4-165a-4521-863c-619e1160d4d4");
+    
+    public static readonly Guid CColorControlDmo = new("798059f0-89ca-4160-b325-aeb48efe4f9a");
+    
+    public static readonly Guid CColorConvertDMO = new("98230571-0087-4204-b020-3282538e57d3");
+    
+    public static readonly Guid CColorLegalizerDmo = new("fdfaa753-e48e-4e33-9c74-98a27fc6726a");
+    
     public const int CD_ANY = 4;
     
     public const int CD_LEFTDOWN = 1;
@@ -951,6 +1067,8 @@ public static partial class Constants
     
     public const uint CDBEX_REUSE = 16;
     
+    public static readonly Guid CDeColorConvMediaObject = new("49034c05-f43c-400f-84c1-90a683195a3a");
+    
     public const uint CDEF_BYPASS_CLASS_MANAGER = 2;
     
     public const uint CDEF_CLASS_DEFAULT = 1;
@@ -967,7 +1085,25 @@ public static partial class Constants
     
     public const uint CDEF_MERIT_ABOVE_DO_NOT_USE = 8;
     
+    public static readonly Guid CDTVAudDecoderDS = new("8e269032-fe03-4753-9b17-18253c21722e");
+    
+    public static readonly Guid CDTVVidDecoderDS = new("64777dc8-4e24-4beb-9d19-60a35be1daaf");
+    
+    public static readonly Guid CDVDecoderMediaObject = new("e54709c5-1e17-4c8d-94e7-478940433584");
+    
+    public static readonly Guid CDVEncoderMediaObject = new("c82ae729-c327-4cce-914d-8171fefebefb");
+    
+    public static readonly Guid CFrameInterpDMO = new("0a7cfe1b-6ab5-4334-9ed8-3f97cb37daa1");
+    
+    public static readonly Guid CFrameRateConvertDmo = new("01f36ce2-0907-4d8b-979d-f151be91c883");
+    
     public const string CFSTR_VFW_FILTERLIST = @"Video for Windows 4 Filters";
+    
+    public static readonly Guid ChannelIDTuneRequest = new("3a9428a7-31a4-45e9-9efb-e055bf7bb3db");
+    
+    public static readonly Guid ChannelIDTuningSpace = new("cc829a2f-3365-463f-af13-81dbb6f3a555");
+    
+    public static readonly Guid ChannelTuneRequest = new("0369b4e5-45b6-11d3-b650-00c04f79498e");
     
     public const uint CHAR_TYPE_LEADING = 2;
     
@@ -976,6 +1112,8 @@ public static partial class Constants
     public const uint CHAR_TYPE_TRAILING = 3;
     
     public const uint CHARS_IN_GUID = 39;
+    
+    public static readonly Guid CInterlaceMediaObject = new("b5a89c80-4901-407b-9abc-90d9a644bb46");
     
     public static readonly Guid CLSID_ACMWrapper = new("6a08cf80-0e18-11cf-a24d-0020afd79767");
     
@@ -1395,6 +1533,8 @@ public static partial class Constants
     
     public static readonly Guid CLSID_IVideoEncoderProxy = new("b43c4eec-8c32-4791-9102-508ada5ee8e7");
     
+    public static readonly Guid CLSID_KsIBasicAudioInterfaceHandler = new("b9f8ac3e-0f71-11d2-b72c-00c04fb6bd3d");
+    
     public static readonly Guid CLSID_LegacyAmFilterCategory = new("083863f1-70de-11d0-bd40-00a0c911ce86");
     
     public static readonly Guid CLSID_Line21Decoder = new("6e8d4a20-310c-11d0-b79a-00aa003767a7");
@@ -1504,6 +1644,8 @@ public static partial class Constants
     public static readonly Guid CLSID_PlayToSourceClassFactory = new("da17539a-3dc3-42c1-a749-a183b51f085e");
     
     public static readonly Guid CLSID_ProtoFilterGraph = new("e436ebb0-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid CLSID_Proxy = new("17cca71b-ecd7-11d0-b908-00a0c9223196");
     
     public static readonly Guid CLSID_PTFilter = new("9cd31617-b303-4f96-8330-2eb173ea4dc6");
     
@@ -1877,6 +2019,38 @@ public static partial class Constants
     
     public const uint CMM_WIN_VERSION = 0;
     
+    public static readonly Guid CMP3DecMediaObject = new("bbeea841-0a63-4f52-a7ab-a9b3a84ed38a");
+    
+    public static readonly Guid CMPEG2AudDecoderDS = new("e1f1a0b8-beee-490d-ba7c-066c40b5e2b9");
+    
+    public static readonly Guid CMPEG2AudioEncoderMFT = new("46a4dd5c-73f8-4304-94df-308f760974f4");
+    
+    public static readonly Guid CMpeg2DecMediaObject = new("863d66cd-cdce-4617-b47f-c8929cfc28a6");
+    
+    public static readonly Guid CMPEG2EncoderAudioDS = new("acd453bc-c58a-44d1-bbf5-bfb325be2d78");
+    
+    public static readonly Guid CMPEG2EncoderDS = new("5f5aff4a-2f7f-4279-88c2-cd88eb39d144");
+    
+    public static readonly Guid CMPEG2EncoderVideoDS = new("42150cd9-ca9a-4ea5-9939-30ee037f6e74");
+    
+    public static readonly Guid CMPEG2VidDecoderDS = new("212690fb-83e5-4526-8fd7-74478b7939cd");
+    
+    public static readonly Guid CMPEG2VideoEncoderMFT = new("e6335f02-80b7-4dc4-adfa-dfe7210d20d5");
+    
+    public static readonly Guid CMpeg43DecMediaObject = new("cba9e78b-49a3-49ea-93d4-6bcba8c4de07");
+    
+    public static readonly Guid CMpeg4DecMediaObject = new("f371728a-6052-4d47-827c-d039335dfe0a");
+    
+    public static readonly Guid CMpeg4EncMediaObject = new("24f258d8-c651-4042-93e4-ca654abb682c");
+    
+    public static readonly Guid CMpeg4sDecMediaObject = new("2a11bae2-fe6e-4249-864b-9e9ed6e8dbc2");
+    
+    public static readonly Guid CMpeg4sDecMFT = new("5686a0d9-fe39-409f-9dff-3fdbc849f9f5");
+    
+    public static readonly Guid CMpeg4sEncMediaObject = new("6ec5a7be-d81e-4f9e-ada3-cd1bf262b6d8");
+    
+    public static readonly Guid CMPEGAACDecMediaObject = new("8dde1772-edad-41c3-b4be-1f30fb4ee0d6");
+    
     public const uint CMS_BACKWARD = 1;
     
     public const uint CMS_DISABLEICM = 1;
@@ -1911,21 +2085,701 @@ public static partial class Constants
     
     public const uint CMS_USEHOOK = 128;
     
+    public static readonly Guid CMSAACDecMFT = new("32d186a7-218f-4c75-8876-dd77273a8999");
+    
+    public static readonly Guid CMSAC3Enc = new("c6b400e2-20a7-4e58-a2fe-24619682ce6c");
+    
+    public static readonly Guid CMSALACDecMFT = new("c0cd7d12-31fc-4bbc-b363-7322ee3e1879");
+    
+    public static readonly Guid CMSALACEncMFT = new("9ab6a28c-748e-4b6a-bfff-cc443b8e8fb4");
+    
+    public static readonly Guid CMSDDPlusDecMFT = new("177c0afe-900b-48d4-9e4c-57add250b3d4");
+    
+    public static readonly Guid CMSDolbyDigitalEncMFT = new("ac3315c9-f481-45d7-826c-0b406c1f64b8");
+    
+    public static readonly Guid CMSFLACDecMFT = new("6b0b3e6b-a2c5-4514-8055-afe8a95242d9");
+    
+    public static readonly Guid CMSFLACEncMFT = new("128509e9-c44e-45dc-95e9-c255b8f466a6");
+    
+    public static readonly Guid CMSH263EncoderMFT = new("bc47fcfe-98a0-4f27-bb07-698af24f2b38");
+    
+    public static readonly Guid CMSH264DecoderMFT = new("62ce7e72-4c71-4d20-b15d-452831a87d9d");
+    
+    public static readonly Guid CMSH264EncoderMFT = new("6ca50344-051a-4ded-9779-a43305165e35");
+    
+    public static readonly Guid CMSH264RemuxMFT = new("05a47ebb-8bf0-4cbf-ad2f-3b71d75866f5");
+    
+    public static readonly Guid CMSH265EncoderMFT = new("f2f84074-8bca-40bd-9159-e880f673dd3b");
+    
+    public static readonly Guid CMSMPEGAudDecMFT = new("70707b39-b2ca-4015-abea-f8447d22d88b");
+    
+    public static readonly Guid CMSMPEGDecoderMFT = new("2d709e52-123f-49b5-9cbc-9af5cde28fb9");
+    
+    public static readonly Guid CMSOpusDecMFT = new("63e17c10-2d43-4c42-8fe3-8d8b63e46a6a");
+    
+    public static readonly Guid CMSSCDecMediaObject = new("7bafb3b1-d8f4-4279-9253-27da423108de");
+    
+    public static readonly Guid CMSSCEncMediaObject = new("8cb9cc06-d139-4ae6-8bb4-41e612e141d5");
+    
+    public static readonly Guid CMSSCEncMediaObject2 = new("f7ffe0a0-a4f5-44b5-949e-15ed2bc66f9d");
+    
+    public static readonly Guid CMSVideoDSPMFT = new("51571744-7fe4-4ff2-a498-2dc34ff74f1b");
+    
+    public static readonly Guid CMSVPXEncoderMFT = new("aeb6c755-2546-4881-82cc-e15ae5ebff3d");
+    
+    public static readonly Guid CNokiaAACCCDecMediaObject = new("eabf7a6f-ccba-4d60-8620-b152cc977263");
+    
+    public static readonly Guid CNokiaAACDecMediaObject = new("3cb2bde4-4e29-4c44-a73e-2d7c2c46d6ec");
+    
     public static readonly Guid CODECAPI_ALLSETTINGS = new("6a577e92-83e1-4113-adc2-4fcec32f83a1");
     
     public static readonly Guid CODECAPI_AUDIO_ENCODER = new("b9d19a3e-f897-429c-bc46-8138b7272b2d");
     
+    public static readonly Guid CODECAPI_AVAudioChannelConfig = new("17f89cb3-c38d-4368-9ede-63b94d177f9f");
+    
+    public static readonly Guid CODECAPI_AVAudioChannelCount = new("1d3583c4-1583-474e-b71a-5ee463c198e4");
+    
+    public static readonly Guid CODECAPI_AVAudioSampleRate = new("971d2723-1acb-42e7-855c-520a4b70a5f2");
+    
+    public static readonly Guid CODECAPI_AVDDSurroundMode = new("99f2f386-98d1-4452-a163-abc78a6eb770");
+    
+    public static readonly Guid CODECAPI_AVDecAACDownmixMode = new("01274475-f6bb-4017-b084-81a763c942d4");
+    
+    public static readonly Guid CODECAPI_AVDecAudioDualMono = new("4a52cda8-30f8-4216-be0f-ba0b2025921d");
+    
+    public static readonly Guid CODECAPI_AVDecAudioDualMonoReproMode = new("a5106186-cc94-4bc9-8cd9-aa2f61f6807e");
+    
+    public static readonly Guid CODECAPI_AVDecCommonInputFormat = new("e5005239-bd89-4be3-9c0f-5dde317988cc");
+    
+    public static readonly Guid CODECAPI_AVDecCommonMeanBitRate = new("59488217-007a-4f7a-8e41-5c48b1eac5c6");
+    
+    public static readonly Guid CODECAPI_AVDecCommonMeanBitRateInterval = new("0ee437c6-38a7-4c5c-944c-68ab42116b85");
+    
+    public static readonly Guid CODECAPI_AVDecCommonOutputFormat = new("3c790028-c0ce-4256-b1a2-1b0fc8b1dcdc");
+    
+    public static readonly Guid CODECAPI_AVDecDDDynamicRangeScaleHigh = new("50196c21-1f33-4af5-b296-11426d6c8789");
+    
+    public static readonly Guid CODECAPI_AVDecDDDynamicRangeScaleLow = new("044e62e4-11a5-42d5-a3b2-3bb2c7c2d7cf");
+    
+    public static readonly Guid CODECAPI_AVDecDDMatrixDecodingMode = new("ddc811a5-04ed-4bf3-a0ca-d00449f9355f");
+    
+    public static readonly Guid CODECAPI_AVDecDDOperationalMode = new("d6d6c6d1-064e-4fdd-a40e-3ecbfcb7ebd0");
+    
+    public static readonly Guid CODECAPI_AVDecDDStereoDownMixMode = new("6ce4122c-3ee9-4182-b4ae-c10fc088649d");
+    
+    public static readonly Guid CODECAPI_AVDecDisableVideoPostProcessing = new("f8749193-667a-4f2c-a9e8-5d4af924f08f");
+    
+    public static readonly Guid CODECAPI_AVDecHEAACDynamicRangeControl = new("287c8abe-69a4-4d39-8080-d3d9712178a0");
+    
     public static readonly Guid CODECAPI_AVDecMmcssClass = new("e0ad4828-df66-4893-9f33-788aa4ec4082");
+    
+    public static readonly Guid CODECAPI_AVDecNumWorkerThreads = new("9561c3e8-ea9e-4435-9b1e-a93e691894d8");
+    
+    public static readonly Guid CODECAPI_AVDecSoftwareDynamicFormatChange = new("862e2f0a-507b-47ff-af47-01e2624298b7");
+    
+    public static readonly Guid CODECAPI_AVDecVideoAcceleration_H264 = new("f7db8a2f-4f48-4ee8-ae31-8b6ebe558ae2");
+    
+    public static readonly Guid CODECAPI_AVDecVideoAcceleration_MPEG2 = new("f7db8a2e-4f48-4ee8-ae31-8b6ebe558ae2");
+    
+    public static readonly Guid CODECAPI_AVDecVideoAcceleration_VC1 = new("f7db8a30-4f48-4ee8-ae31-8b6ebe558ae2");
+    
+    public static readonly Guid CODECAPI_AVDecVideoCodecType = new("434528e5-21f0-46b6-b62c-9b1b6b658cd1");
+    
+    public static readonly Guid CODECAPI_AVDecVideoDropPicWithMissingRef = new("f8226383-14c2-4567-9734-5004e96ff887");
+    
+    public static readonly Guid CODECAPI_AVDecVideoDXVABusEncryption = new("42153c8b-fd0b-4765-a462-ddd9e8bcc388");
+    
+    public static readonly Guid CODECAPI_AVDecVideoDXVAMode = new("f758f09e-7337-4ae7-8387-73dc2d54e67d");
+    
+    public static readonly Guid CODECAPI_AVDecVideoFastDecodeMode = new("6b529f7d-d3b1-49c6-a999-9ec6911bedbf");
+    
+    public static readonly Guid CODECAPI_AVDecVideoH264ErrorConcealment = new("ececace8-3436-462c-9294-cd7bacd758a9");
+    
+    public static readonly Guid CODECAPI_AVDecVideoImageSize = new("5ee5747c-6801-4cab-aaf1-6248fa841ba4");
+    
+    public static readonly Guid CODECAPI_AVDecVideoInputScanType = new("38477e1f-0ea7-42cd-8cd1-130ced57c580");
+    
+    public static readonly Guid CODECAPI_AVDecVideoMaxCodedHeight = new("7262a16a-d2dc-4e75-9ba8-65c0c6d32b13");
+    
+    public static readonly Guid CODECAPI_AVDecVideoMaxCodedWidth = new("5ae557b8-77af-41f5-9fa6-4db2fe1d4bca");
+    
+    public static readonly Guid CODECAPI_AVDecVideoMPEG2ErrorConcealment = new("9d2bfe18-728d-48d2-b358-bc7e436c6674");
+    
+    public static readonly Guid CODECAPI_AVDecVideoPixelAspectRatio = new("b0cf8245-f32d-41df-b02c-87bd304d12ab");
+    
+    public static readonly Guid CODECAPI_AVDecVideoProcDeinterlaceCSC = new("f7db8a31-4f48-4ee8-ae31-8b6ebe558ae2");
+    
+    public static readonly Guid CODECAPI_AVDecVideoSoftwareDeinterlaceMode = new("0c08d1ce-9ced-4540-bae3-ceb380141109");
+    
+    public static readonly Guid CODECAPI_AVDecVideoSWPowerLevel = new("fb5d2347-4dd8-4509-aed0-db5fa9aa93f4");
+    
+    public static readonly Guid CODECAPI_AVDecVideoThumbnailGenerationMode = new("2efd8eee-1150-4328-9cf5-66dce933fcf4");
+    
+    public static readonly Guid CODECAPI_AVDSPLoudnessEqualization = new("8afd1a15-1812-4cbf-9319-433a5b2a3b27");
+    
+    public static readonly Guid CODECAPI_AVDSPSpeakerFill = new("5612bca1-56da-4582-8da1-ca8090f92768");
+    
+    public static readonly Guid CODECAPI_AVEnableInLoopDeblockFilter = new("d2e8e399-0623-4bf3-92a8-4d1818529ded");
+    
+    public static readonly Guid CODECAPI_AVEncAACEnableVBR = new("e836bb98-fca3-44b6-9a39-24786be41be1");
+    
+    public static readonly Guid CODECAPI_AVEncAdaptiveMode = new("4419b185-da1f-4f53-bc76-097d0c1efb1e");
+    
+    public static readonly Guid CODECAPI_AVEncAudioDualMono = new("3648126b-a3e8-4329-9b3a-5ce566a43bd3");
+    
+    public static readonly Guid CODECAPI_AVEncAudioInputContent = new("3e226c2b-60b9-4a39-b00b-a7b40f70d566");
+    
+    public static readonly Guid CODECAPI_AVEncAudioIntervalToEncode = new("866e4b4d-725a-467c-bb01-b496b23b25f9");
+    
+    public static readonly Guid CODECAPI_AVEncAudioIntervalToSkip = new("88c15f94-c38c-4796-a9e8-96e967983f26");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel0 = new("bc5d0b60-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel1 = new("bc5d0b61-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel10 = new("bc5d0b6a-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel11 = new("bc5d0b6b-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel12 = new("bc5d0b6c-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel13 = new("bc5d0b6d-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel14 = new("bc5d0b6e-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel15 = new("bc5d0b6f-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel2 = new("bc5d0b62-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel3 = new("bc5d0b63-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel4 = new("bc5d0b64-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel5 = new("bc5d0b65-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel6 = new("bc5d0b66-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel7 = new("bc5d0b67-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel8 = new("bc5d0b68-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMapDestChannel9 = new("bc5d0b69-df6a-4e16-9803-b82007a30c8d");
+    
+    public static readonly Guid CODECAPI_AVEncAudioMeanBitRate = new("921295bb-4fca-4679-aab8-9e2a1d753384");
+    
+    public static readonly Guid CODECAPI_AVEncChromaEncodeMode = new("8a47ab5a-4798-4c93-b5a5-554f9a3b9f50");
+    
+    public static readonly Guid CODECAPI_AVEncChromaUpdateTime = new("4b4fd998-4274-40bb-8ee4-07553e7e2d3a");
+    
+    public static readonly Guid CODECAPI_AVEncCodecType = new("08af4ac1-f3f2-4c74-9dcf-37f2ec79f826");
+    
+    public static readonly Guid CODECAPI_AVEncCommonAllowFrameDrops = new("d8477dcb-9598-48e3-8d0c-752bf206093e");
+    
+    public static readonly Guid CODECAPI_AVEncCommonBufferInLevel = new("d9c5c8db-fc74-4064-94e9-cd19f947ed45");
+    
+    public static readonly Guid CODECAPI_AVEncCommonBufferOutLevel = new("ccae7f49-d0bc-4e3d-a57e-fb5740140069");
+    
+    public static readonly Guid CODECAPI_AVEncCommonBufferSize = new("0db96574-b6a4-4c8b-8106-3773de0310cd");
+    
+    public static readonly Guid CODECAPI_AVEncCommonFormatConstraint = new("57cbb9b8-116f-4951-b40c-c2a035ed8f17");
+    
+    public static readonly Guid CODECAPI_AVEncCommonLowLatency = new("9d3ecd55-89e8-490a-970a-0c9548d5a56e");
+    
+    public static readonly Guid CODECAPI_AVEncCommonMaxBitRate = new("9651eae4-39b9-4ebf-85ef-d7f444ec7465");
+    
+    public static readonly Guid CODECAPI_AVEncCommonMeanBitRate = new("f7222374-2144-4815-b550-a37f8e12ee52");
+    
+    public static readonly Guid CODECAPI_AVEncCommonMeanBitRateInterval = new("bfaa2f0c-cb82-4bc0-8474-f06a8a0d0258");
+    
+    public static readonly Guid CODECAPI_AVEncCommonMinBitRate = new("101405b2-2083-4034-a806-efbeddd7c9ff");
+    
+    public static readonly Guid CODECAPI_AVEncCommonMultipassMode = new("22533d4c-47e1-41b5-9352-a2b7780e7ac4");
+    
+    public static readonly Guid CODECAPI_AVEncCommonPassEnd = new("0e3d01bc-c85c-467d-8b60-c41012ee3bf6");
+    
+    public static readonly Guid CODECAPI_AVEncCommonPassStart = new("6a67739f-4eb5-4385-9928-f276a939ef95");
+    
+    public static readonly Guid CODECAPI_AVEncCommonQuality = new("fcbf57a3-7ea5-4b0c-9644-69b40c39c391");
+    
+    public static readonly Guid CODECAPI_AVEncCommonQualityVsSpeed = new("98332df8-03cd-476b-89fa-3f9e442dec9f");
+    
+    public static readonly Guid CODECAPI_AVEncCommonRateControlMode = new("1c0608e9-370c-4710-8a58-cb6181c42423");
+    
+    public static readonly Guid CODECAPI_AVEncCommonRealTime = new("143a0ff6-a131-43da-b81e-98fbb8ec378e");
+    
+    public static readonly Guid CODECAPI_AVEncCommonStreamEndHandling = new("6aad30af-6ba8-4ccc-8fca-18d19beaeb1c");
+    
+    public static readonly Guid CODECAPI_AVEncCommonTranscodeEncodingProfile = new("6947787c-f508-4ea9-b1e9-a1fe3a49fbc9");
+    
+    public static readonly Guid CODECAPI_AVEncDDAtoDConverterType = new("719f9612-81a1-47e0-9a05-d94ad5fca948");
+    
+    public static readonly Guid CODECAPI_AVEncDDCentreDownMixLevel = new("e285072c-c958-4a81-afd2-e5e0daf1b148");
+    
+    public static readonly Guid CODECAPI_AVEncDDChannelBWLowPassFilter = new("e197821d-d2e7-43e2-ad2c-00582f518545");
+    
+    public static readonly Guid CODECAPI_AVEncDDCopyright = new("8694f076-cd75-481d-a5c6-a904dcc828f0");
+    
+    public static readonly Guid CODECAPI_AVEncDDDCHighPassFilter = new("9565239f-861c-4ac8-bfda-e00cb4db8548");
+    
+    public static readonly Guid CODECAPI_AVEncDDDialogNormalization = new("d7055acf-f125-437d-a704-79c79f0404a8");
+    
+    public static readonly Guid CODECAPI_AVEncDDDigitalDeemphasis = new("e024a2c2-947c-45ac-87d8-f1030c5c0082");
+    
+    public static readonly Guid CODECAPI_AVEncDDDynamicRangeCompressionControl = new("cfc2ff6d-79b8-4b8d-a8aa-a0c9bd1c2940");
+    
+    public static readonly Guid CODECAPI_AVEncDDHeadphoneMode = new("4052dbec-52f5-42f5-9b00-d134b1341b9d");
+    
+    public static readonly Guid CODECAPI_AVEncDDLFELowPassFilter = new("d3b80f6f-9d15-45e5-91be-019c3fab1f01");
+    
+    public static readonly Guid CODECAPI_AVEncDDLoRoCenterMixLvl_x10 = new("1cfba222-25b3-4bf4-9bfd-e7111267858c");
+    
+    public static readonly Guid CODECAPI_AVEncDDLoRoSurroundMixLvl_x10 = new("e725cff6-eb56-40c7-8450-2b9367e91555");
+    
+    public static readonly Guid CODECAPI_AVEncDDLtRtCenterMixLvl_x10 = new("dca128a2-491f-4600-b2da-76e3344b4197");
+    
+    public static readonly Guid CODECAPI_AVEncDDLtRtSurroundMixLvl_x10 = new("212246c7-3d2c-4dfa-bc21-652a9098690d");
+    
+    public static readonly Guid CODECAPI_AVEncDDOriginalBitstream = new("966ae800-5bd3-4ff9-95b9-d30566273856");
+    
+    public static readonly Guid CODECAPI_AVEncDDPreferredStereoDownMixMode = new("7f4e6b31-9185-403d-b0a2-763743e6f063");
+    
+    public static readonly Guid CODECAPI_AVEncDDProductionInfoExists = new("b0b7fe5f-b6ab-4f40-964d-8d91f17c19e8");
+    
+    public static readonly Guid CODECAPI_AVEncDDProductionMixLevel = new("301d103a-cbf9-4776-8899-7c15b461ab26");
+    
+    public static readonly Guid CODECAPI_AVEncDDProductionRoomType = new("dad7ad60-23d8-4ab7-a284-556986d8a6fe");
+    
+    public static readonly Guid CODECAPI_AVEncDDRFPreEmphasisFilter = new("21af44c0-244e-4f3d-a2cc-3d3068b2e73f");
+    
+    public static readonly Guid CODECAPI_AVEncDDService = new("d2e1bec7-5172-4d2a-a50e-2f3b82b1ddf8");
+    
+    public static readonly Guid CODECAPI_AVEncDDSurround3dBAttenuation = new("4d43b99d-31e2-48b9-bf2e-5cbf1a572784");
+    
+    public static readonly Guid CODECAPI_AVEncDDSurround90DegreeePhaseShift = new("25ecec9d-3553-42c0-bb56-d25792104f80");
+    
+    public static readonly Guid CODECAPI_AVEncDDSurroundDownMixLevel = new("7b20d6e5-0bcf-4273-a487-506b047997e9");
+    
+    public static readonly Guid CODECAPI_AVEncDDSurroundExMode = new("91607cee-dbdd-4eb6-bca2-aadfafa3dd68");
+    
+    public static readonly Guid CODECAPI_AVEncEnableVideoProcessing = new("006f4bf6-0ea3-4d42-8702-b5d8be0f7a92");
+    
+    public static readonly Guid CODECAPI_AVEncH264CABACEnable = new("ee6cad62-d305-4248-a50e-e1b255f7caf8");
+    
+    public static readonly Guid CODECAPI_AVEncH264PPSID = new("bfe29ec2-056c-4d68-a38d-ae5944c8582e");
+    
+    public static readonly Guid CODECAPI_AVEncH264SPSID = new("50f38f51-2b79-40e3-b39c-7e9fa0770501");
+    
+    public static readonly Guid CODECAPI_AVEncInputVideoSystem = new("bede146d-b616-4dc7-92b2-f5d9fa9298f7");
+    
+    public static readonly Guid CODECAPI_AVEncLowPowerEncoder = new("b668d582-8bad-4f6a-9141-375a95358b6d");
+    
+    public static readonly Guid CODECAPI_AVEncMaxFrameRate = new("b98e1b31-19fa-4d4f-9931-d6a5b8aab93c");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxDVDNavPacks = new("c7607ced-8cf1-4a99-83a1-ee5461be3574");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxEarliestPTS = new("157232b6-f809-474e-9464-a7f93014a817");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxInitialSCR = new("3433ad21-1b91-4a0b-b190-2b77063b63a4");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxLargestPacketSize = new("35ceb711-f461-4b92-a4ef-17b6841ed254");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxMuxRate = new("ee047c72-4bdb-4a9d-8e21-41926c823da7");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxNumStreams = new("f7164a41-dced-4659-a8f2-fb693f2a4cd0");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxPacketOverhead = new("e40bd720-3955-4453-acf9-b79132a38fa0");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxPackSize = new("f916053a-1ce8-4faf-aa0b-ba31c80034b8");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysAudioLock = new("0fbb5752-1d43-47bf-bd79-f2293d8ce337");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysCSPS = new("7952ff45-9c0d-4822-bc82-8ad772e02993");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysFixed = new("cefb987e-894f-452e-8f89-a4ef8cec063a");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysRateBound = new("05f0428a-ee30-489d-ae28-205c72446710");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysSTDBufferBound = new("35746903-b545-43e7-bb35-c5e0a7d5093c");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxSysVideoLock = new("b8296408-2430-4d37-a2a1-95b3e435a91d");
+    
+    public static readonly Guid CODECAPI_AVEncMP12MuxTargetPacketizer = new("d862212a-2015-45dd-9a32-1b3aa88205a0");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzCopyright = new("c8f4b0c1-094c-43c7-8e68-a595405a6ef8");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzInitialPTS = new("2a4f2065-9a63-4d20-ae22-0a1bc896a315");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzOriginal = new("6b178416-31b9-4964-94cb-6bff866cdf83");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzPacketSize = new("ab71347a-1332-4dde-a0e5-ccf7da8a0f22");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzSTDBuffer = new("0b751bd0-819e-478c-9435-75208926b377");
+    
+    public static readonly Guid CODECAPI_AVEncMP12PktzStreamID = new("c834d038-f5e8-4408-9b60-88f36493fedf");
+    
+    public static readonly Guid CODECAPI_AVEncMPACodingMode = new("b16ade03-4b93-43d7-a550-90b4fe224537");
+    
+    public static readonly Guid CODECAPI_AVEncMPACopyright = new("a6ae762a-d0a9-4454-b8ef-f2dbeefdd3bd");
+    
+    public static readonly Guid CODECAPI_AVEncMPAEmphasisType = new("2d59fcda-bf4e-4ed6-b5df-5b03b36b0a1f");
+    
+    public static readonly Guid CODECAPI_AVEncMPAEnableRedundancyProtection = new("5e54b09e-b2e7-4973-a89b-0b3650a3beda");
+    
+    public static readonly Guid CODECAPI_AVEncMPALayer = new("9d377230-f91b-453d-9ce0-78445414c22d");
+    
+    public static readonly Guid CODECAPI_AVEncMPAOriginalBitstream = new("3cfb7855-9cc9-47ff-b829-b36786c92346");
+    
+    public static readonly Guid CODECAPI_AVEncMPAPrivateUserBit = new("afa505ce-c1e3-4e3d-851b-61b700e5e6cc");
+    
+    public static readonly Guid CODECAPI_AVEncMPVAddSeqEndCode = new("a823178f-57df-4c7a-b8fd-e5ec8887708d");
+    
+    public static readonly Guid CODECAPI_AVEncMPVDefaultBPictureCount = new("8d390aac-dc5c-4200-b57f-814d04babab2");
+    
+    public static readonly Guid CODECAPI_AVEncMPVFrameFieldMode = new("acb5de96-7b93-4c2f-8825-b0295fa93bf4");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGenerateHeaderPicDispExt = new("c6412f84-c03f-4f40-a00c-4293df8395bb");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGenerateHeaderPicExt = new("1b8464ab-944f-45f0-b74e-3a58dad11f37");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGenerateHeaderSeqDispExt = new("6437aa6f-5a3c-4de9-8a16-53d9c4ad326f");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGenerateHeaderSeqExt = new("d5e78611-082d-4e6b-98af-0f51ab139222");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGenerateHeaderSeqScaleExt = new("0722d62f-dd59-4a86-9cd5-644f8e2653d8");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGOPOpen = new("b1d5d4a6-3300-49b1-ae61-a09937ab0e49");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGOPSInSeq = new("993410d4-2691-4192-9978-98dc2603669f");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGOPSize = new("95f31b26-95a4-41aa-9303-246a7fc6eef1");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGOPSizeMax = new("fe7de4c4-1936-4fe2-bdf7-1f18ca1d001f");
+    
+    public static readonly Guid CODECAPI_AVEncMPVGOPSizeMin = new("7155cf20-d440-4852-ad0f-9c4abfe37a6a");
+    
+    public static readonly Guid CODECAPI_AVEncMPVIntraDCPrecision = new("a0116151-cbc8-4af3-97dc-d00cceb82d79");
+    
+    public static readonly Guid CODECAPI_AVEncMPVIntraVLCTable = new("a2b83ff5-1a99-405a-af95-c5997d558d3a");
+    
+    public static readonly Guid CODECAPI_AVEncMPVLevel = new("6ee40c40-a60c-41ef-8f50-37c2249e2cb3");
+    
+    public static readonly Guid CODECAPI_AVEncMPVProfile = new("dabb534a-1d99-4284-975a-d90e2239baa1");
+    
+    public static readonly Guid CODECAPI_AVEncMPVQScaleType = new("2b79ebb7-f484-4af7-bb58-a2a188c5cbbe");
+    
+    public static readonly Guid CODECAPI_AVEncMPVQuantMatrixChromaIntra = new("9eb9ecd4-018d-4ffd-8f2d-39e49f07b17a");
+    
+    public static readonly Guid CODECAPI_AVEncMPVQuantMatrixChromaNonIntra = new("1415b6b1-362a-4338-ba9a-1ef58703c05b");
+    
+    public static readonly Guid CODECAPI_AVEncMPVQuantMatrixIntra = new("9bea04f3-6621-442c-8ba1-3ac378979698");
+    
+    public static readonly Guid CODECAPI_AVEncMPVQuantMatrixNonIntra = new("87f441d8-0997-4beb-a08e-8573d409cf75");
+    
+    public static readonly Guid CODECAPI_AVEncMPVScanPattern = new("7f8a478e-7bbb-4ae2-b2fc-96d17fc4a2d6");
+    
+    public static readonly Guid CODECAPI_AVEncMPVSceneDetection = new("552799f1-db4c-405b-8a3a-c93f2d0674dc");
+    
+    public static readonly Guid CODECAPI_AVEncMPVUseConcealmentMotionVectors = new("ec770cf3-6908-4b4b-aa30-7fb986214fea");
+    
+    public static readonly Guid CODECAPI_AVEncMuxOutputStreamType = new("cedd9e8f-34d3-44db-a1d8-f81520254f3e");
+    
+    public static readonly Guid CODECAPI_AVEncNoInputCopy = new("d2b46a2a-e8ee-4ec5-869e-449b6c62c81a");
+    
+    public static readonly Guid CODECAPI_AVEncNumWorkerThreads = new("b0c8bf60-16f7-4951-a30b-1db1609293d6");
+    
+    public static readonly Guid CODECAPI_AVEncProgressiveUpdateTime = new("649faf66-afc6-4828-8fdc-0771cd9ab17d");
+    
+    public static readonly Guid CODECAPI_AVEncSliceControlMode = new("e9e782ef-5f18-44c9-a90b-e9c3c2c17b0b");
+    
+    public static readonly Guid CODECAPI_AVEncSliceControlSize = new("92f51df3-07a5-4172-aefe-c69ca3b60e35");
+    
+    public static readonly Guid CODECAPI_AVEncSliceGenerationMode = new("8a6bc67f-9497-4286-b46b-02db8d60edbc");
+    
+    public static readonly Guid CODECAPI_AVEncStatAudioAverageBPS = new("ca6724db-7059-4351-8b43-f82198826a14");
+    
+    public static readonly Guid CODECAPI_AVEncStatAudioAveragePCMValue = new("979272f8-d17f-4e32-bb73-4e731c68ba2d");
+    
+    public static readonly Guid CODECAPI_AVEncStatAudioPeakPCMValue = new("dce7fd34-dc00-4c16-821b-35d9eb00fb1a");
+    
+    public static readonly Guid CODECAPI_AVEncStatAverageBPS = new("ca6724db-7059-4351-8b43-f82198826a14");
+    
+    public static readonly Guid CODECAPI_AVEncStatCommonCompletedPasses = new("3e5de533-9df7-438c-854f-9f7dd3683d34");
+    
+    public static readonly Guid CODECAPI_AVEncStatHardwareBandwidthUtilitization = new("0124ba9b-dc41-4826-b45f-18ac01b3d5a8");
+    
+    public static readonly Guid CODECAPI_AVEncStatHardwareProcessorUtilitization = new("995dc027-cb95-49e6-b91b-5967753cdcb8");
+    
+    public static readonly Guid CODECAPI_AVEncStatMPVSkippedEmptyFrames = new("32195fd3-590d-4812-a7ed-6d639a1f9711");
+    
+    public static readonly Guid CODECAPI_AVEncStatVideoCodedFrames = new("d47f8d61-6f5a-4a26-bb9f-cd9518462bcd");
+    
+    public static readonly Guid CODECAPI_AVEncStatVideoOutputFrameRate = new("be747849-9ab4-4a63-98fe-f143f04f8ee9");
+    
+    public static readonly Guid CODECAPI_AVEncStatVideoTotalFrames = new("fdaa9916-119a-4222-9ad6-3f7cab99cc8b");
+    
+    public static readonly Guid CODECAPI_AVEncStatWMVCBAvg = new("6aa6229f-d602-4b9d-b68c-c1ad78884bef");
+    
+    public static readonly Guid CODECAPI_AVEncStatWMVCBMax = new("e976bef8-00fe-44b4-b625-8f238bc03499");
+    
+    public static readonly Guid CODECAPI_AVEncStatWMVDecoderComplexityProfile = new("89e69fc3-0f9b-436c-974a-df821227c90d");
+    
+    public static readonly Guid CODECAPI_AVEncTileColumns = new("b4b31205-01e8-452c-b876-8c6506545925");
+    
+    public static readonly Guid CODECAPI_AVEncTileRows = new("fbc650fc-41ab-4f9b-84b5-065be9cd99ee");
+    
+    public static readonly Guid CODECAPI_AVEncVideoCBRMotionTradeoff = new("0d49451e-18d5-4367-a4ef-3240df1693c4");
+    
+    public static readonly Guid CODECAPI_AVEncVideoCodedVideoAccessUnitSize = new("b4b10c15-14a7-4ce8-b173-dc90a0b4fcdb");
+    
+    public static readonly Guid CODECAPI_AVEncVideoConsecutiveFramesForLayer = new("0af35522-d984-45ae-bbb8-53933e0ab1b5");
+    
+    public static readonly Guid CODECAPI_AVEncVideoContentType = new("66117aca-eb77-459d-930c-a48d9d0683fc");
+    
+    public static readonly Guid CODECAPI_AVEncVideoCTBSize = new("d47db8b2-e73b-4cb9-8c3e-bd877d06d77b");
+    
+    public static readonly Guid CODECAPI_AVEncVideoDefaultUpperFieldDominant = new("810167c4-0bc1-47ca-8fc2-57055a1474a5");
+    
+    public static readonly Guid CODECAPI_AVEncVideoDirtyRectEnabled = new("8acb8fdd-5e0c-4c66-8729-b8f629ab04fb");
+    
+    public static readonly Guid CODECAPI_AVEncVideoDisplayDimension = new("de053668-f4ec-47a9-86d0-836770f0c1d5");
+    
+    public static readonly Guid CODECAPI_AVEncVideoEncodeDimension = new("1074df28-7e0f-47a4-a453-cdd73870f5ce");
+    
+    public static readonly Guid CODECAPI_AVEncVideoEncodeFrameTypeQP = new("aa70b610-e03f-450c-ad07-07314e639ce7");
+    
+    public static readonly Guid CODECAPI_AVEncVideoEncodeOffsetOrigin = new("6bc098fe-a71a-4454-852e-4d2ddeb2cd24");
+    
+    public static readonly Guid CODECAPI_AVEncVideoEncodeQP = new("2cb5696b-23fb-4ce1-a0f9-ef5b90fd55ca");
+    
+    public static readonly Guid CODECAPI_AVEncVideoFieldSwap = new("fefd7569-4e0a-49f2-9f2b-360ea48c19a2");
+    
+    public static readonly Guid CODECAPI_AVEncVideoForceKeyFrame = new("398c1b98-8353-475a-9ef2-8f265d260345");
+    
+    public static readonly Guid CODECAPI_AVEncVideoForceSourceScanType = new("1ef2065f-058a-4765-a4fc-8a864c103012");
+    
+    public static readonly Guid CODECAPI_AVEncVideoGradualIntraRefresh = new("8f347dee-cb0d-49ba-b462-db6927ee2101");
+    
+    public static readonly Guid CODECAPI_AVEncVideoHeaderDropFrame = new("6ed9e124-7925-43fe-971b-e019f62222b4");
+    
+    public static readonly Guid CODECAPI_AVEncVideoHeaderFrames = new("afd5f567-5c1b-4adc-bdaf-735610381436");
+    
+    public static readonly Guid CODECAPI_AVEncVideoHeaderHours = new("2acc7702-e2da-4158-bf9b-88880129d740");
+    
+    public static readonly Guid CODECAPI_AVEncVideoHeaderMinutes = new("dc1a99ce-0307-408b-880b-b8348ee8ca7f");
+    
+    public static readonly Guid CODECAPI_AVEncVideoHeaderSeconds = new("4a2e1a05-a780-4f58-8120-9a449d69656b");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputChromaResolution = new("bb0cec33-16f1-47b0-8a88-37815bee1739");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputChromaSubsampling = new("a8e73a39-4435-4ec3-a6ea-98300f4b36f7");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputColorLighting = new("46a99549-0015-4a45-9c30-1d5cfa258316");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputColorNominalRange = new("16cf25c6-a2a6-48e9-ae80-21aec41d427e");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputColorPrimaries = new("c24d783f-7ce6-4278-90ab-28a4f1e5f86c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputColorTransferFunction = new("8c056111-a9c3-4b08-a0a0-ce13f8a27c75");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputColorTransferMatrix = new("52ed68b9-72d5-4089-958d-f5405d55081c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInstantTemporalUpSwitching = new("a3308307-0d96-4ba4-b1f0-b91a5e49df10");
+    
+    public static readonly Guid CODECAPI_AVEncVideoIntraLayerPrediction = new("d3af46b8-bf47-44bb-a283-69f0b0228ff9");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInverseTelecineEnable = new("2ea9098b-e76d-4ccd-a030-d3b889c1b64c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInverseTelecineThreshold = new("40247d84-e895-497f-b44c-b74560acfe27");
+    
+    public static readonly Guid CODECAPI_AVEncVideoLTRBufferControl = new("a4a0e93d-4cbc-444c-89f4-826d310e92a7");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMarkLTRFrame = new("e42f4748-a06d-4ef9-8cea-3d05fde3bd3b");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxCTBSize = new("822363ff-cec8-43e5-92fd-e097488485e9");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxKeyframeDistance = new("2987123a-ba93-4704-b489-ec1e5f25292c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxNumRefFrame = new("964829ed-94f9-43b4-b74d-ef40944b69a0");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxNumRefFrameForLayer = new("3141c639-6329-40d1-b7e7-2f0e3ac18e02");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxQP = new("3daf6f66-a6a7-45e0-a8e5-f2743f46a3a2");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMaxTemporalLayers = new("9c668cfe-08e1-424a-934e-b764b064802a");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMeanAbsoluteDifference = new("e5c0c10f-81a4-422d-8c3f-b474a4581336");
+    
+    public static readonly Guid CODECAPI_AVEncVideoMinQP = new("0ee22c6a-a37c-4568-b5f1-9d4c2b3ab886");
+    
+    public static readonly Guid CODECAPI_AVEncVideoNoOfFieldsToEncode = new("61e4bbe2-4ee0-40e7-80ab-51ddeebe6291");
+    
+    public static readonly Guid CODECAPI_AVEncVideoNoOfFieldsToSkip = new("a97e1240-1427-4c16-a7f7-3dcfd8ba4cc5");
+    
+    public static readonly Guid CODECAPI_AVEncVideoNumGOPsPerIDR = new("83bc5bdb-5b89-4521-8f66-33151c373176");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputChromaResolution = new("6097b4c9-7c1d-4e64-bfcc-9e9765318ae7");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputChromaSubsampling = new("fa561c6c-7d17-44f0-83c9-32ed12e96343");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputColorLighting = new("0e5aaac6-ace6-4c5c-998e-1a8c9c6c0f89");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputColorNominalRange = new("972835ed-87b5-4e95-9500-c73958566e54");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputColorPrimaries = new("be95907c-9d04-4921-8985-a6d6d87d1a6c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputColorTransferFunction = new("4a7f884a-ea11-460d-bf57-b88bc75900de");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputColorTransferMatrix = new("a9b90444-af40-4310-8fbe-ed6d933f892b");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputFrameRate = new("ea85e7c3-9567-4d99-87c4-02c1c278ca7c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputFrameRateConversion = new("8c068bf4-369a-4ba3-82fd-b2518fb3396e");
+    
+    public static readonly Guid CODECAPI_AVEncVideoOutputScanType = new("460b5576-842e-49ab-a62d-b36f7312c9db");
+    
+    public static readonly Guid CODECAPI_AVEncVideoPixelAspectRatio = new("3cdc718f-b3e9-4eb6-a57f-cf1f1b321b87");
+    
+    public static readonly Guid CODECAPI_AVEncVideoRateControlParams = new("87d43767-7645-44ec-b438-d3322fbca29f");
+    
+    public static readonly Guid CODECAPI_AVEncVideoROIEnabled = new("d74f7f18-44dd-4b85-aba3-05d9f42a8280");
+    
+    public static readonly Guid CODECAPI_AVEncVideoSelectLayer = new("eb1084f5-6aaa-4914-bb2f-6147227f12e7");
+    
+    public static readonly Guid CODECAPI_AVEncVideoSourceFilmContent = new("1791c64b-ccfc-4827-a0ed-2557793b2b1c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoSourceIsBW = new("42ffc49b-1812-4fdc-8d24-7054c521e6eb");
+    
+    public static readonly Guid CODECAPI_AVEncVideoSupportedControls = new("d3f40fdd-77b9-473d-8196-061259e69cff");
+    
+    public static readonly Guid CODECAPI_AVEncVideoTemporalLayerCount = new("19caebff-b74d-4cfd-8c27-c2f9d97d5f52");
+    
+    public static readonly Guid CODECAPI_AVEncVideoUsage = new("1f636849-5dc1-49f1-b1d8-ce3cf62ea385");
+    
+    public static readonly Guid CODECAPI_AVEncVideoUseLTRFrame = new("00752db8-55f7-4f80-895b-27639195f2ad");
+    
+    public static readonly Guid CODECAPI_AVEncWMVDecoderComplexity = new("f32c0dab-f3cb-4217-b79f-8762768b5f67");
+    
+    public static readonly Guid CODECAPI_AVEncWMVInterlacedEncoding = new("e3d00f8a-c6f5-4e14-a588-0ec87a726f9b");
+    
+    public static readonly Guid CODECAPI_AVEncWMVKeyFrameBufferLevelMarker = new("51ff1115-33ac-426c-a1b1-09321bdf96b4");
+    
+    public static readonly Guid CODECAPI_AVEncWMVKeyFrameDistance = new("5569055e-e268-4771-b83e-9555ea28aed3");
+    
+    public static readonly Guid CODECAPI_AVEncWMVProduceDummyFrames = new("d669d001-183c-42e3-a3ca-2f4586d2396c");
+    
+    public static readonly Guid CODECAPI_AVLowLatencyMode = new("9c27891a-ed7a-40e1-88e8-b22727a024ee");
+    
+    public static readonly Guid CODECAPI_AVPriorityControl = new("54ba3dc8-bdde-4329-b187-2018bc5c2ba1");
+    
+    public static readonly Guid CODECAPI_AVRealtimeControl = new("6f440632-c4ad-4bf7-9e52-456942b454b0");
+    
+    public static readonly Guid CODECAPI_AVScenarioInfo = new("b28a6e64-3ff9-446a-8a4b-0d7a53413236");
     
     public static readonly Guid CODECAPI_CHANGELISTS = new("62b12acf-f6b0-47d9-9456-96f22c4e0b9d");
     
     public static readonly Guid CODECAPI_CURRENTCHANGELIST = new("1cb14e83-7d72-4657-83fd-47a2c5b9d13d");
     
+    public static readonly Guid CODECAPI_GetOPMContext = new("2f036c05-4c14-4689-8839-294c6d73e053");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputAAC = new("97df7828-b94a-47e2-a4bc-51194db22a4d");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputDolby = new("8e4228a0-f000-4e0b-8f54-ab8d24ad61a2");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputDolbyDigitalPlus = new("0803e185-8f5d-47f5-9908-19a5bbc9fe34");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputDTS = new("600bc0ca-6a1f-4e91-b241-1bbeb1cb19e0");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputHEAAC = new("16efb4aa-330e-4f5c-98a8-cf6ac55cbe60");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputMPEG = new("91106f36-02c5-4f75-9719-3b7abf75e1f6");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputPCM = new("f2421da5-bbb4-4cd5-a996-933c6b5d1347");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputWMA = new("c95e8dcf-4058-4204-8c42-cb24d91e4b9b");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioInputWMAPro = new("0128b7c7-da72-4fe3-bef8-5c52e3557704");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_PCM = new("696e1d31-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_PCM_Headphones = new("696e1d34-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_PCM_Stereo_Auto = new("696e1d35-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_PCM_Stereo_MatrixEncoded = new("696e1d30-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_SPDIF_Bitstream = new("696e1d33-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVDecAudioOutputFormat_SPDIF_PCM = new("696e1d32-548f-4036-825f-7026c60011bd");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatATSC = new("8d7b897c-a019-4670-aa76-2edcac7ac296");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatDVB = new("71830d8f-6c33-430d-844b-c2705baae6db");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatDVD_DashVR = new("e55199d6-044c-4dae-a488-531ed306235b");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatDVD_PlusVR = new("e74c6f2e-ec37-478d-9af4-a5e135b6271c");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatDVD_V = new("cc9598c4-e7fe-451d-b1ca-761bc840b7f3");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatHighMAT = new("1eabe760-fb2b-4928-90d1-78db88eee889");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatHighMPV = new("a2d25db8-b8f9-42c2-8bc7-0b93cf604788");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatMP3 = new("349733cd-eb08-4dc2-8197-e49835ef828b");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatSVCD = new("51d85818-8220-448c-8066-d69bed16c9ad");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatUnSpecified = new("af46a35a-6024-4525-a48a-094b97f5b3c2");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncCommonFormatVCD = new("95035bf7-9d90-40ff-ad5c-5cf8cf71ca1d");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDolbyDigitalConsumer = new("c1a7bf6c-0059-4bfa-94ef-ef747a768d52");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDolbyDigitalPlus = new("698d1b80-f7dd-415c-971c-42492a2056c6");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDolbyDigitalPro = new("f5be76cc-0ff8-40eb-9cb1-bba94004d44f");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDTS = new("45fbcaa2-5e6e-4ab0-8893-5903bee93acf");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDTSHD = new("2052e630-469d-4bfb-80ca-1d656e7e918f");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncDV = new("09b769c7-3329-44fb-8954-fa30937d3d5a");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncH264Video = new("95044eab-31b3-47de-8e75-38a42bb03e28");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncMLP = new("05f73e29-f0d1-431e-a41c-a47432ec5a66");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncMPEG1Audio = new("d4dd1362-cd4a-4cd6-8138-b94db4542b04");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncMPEG1Video = new("c8dafefe-da1e-4774-b27d-11830c16b1fe");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncMPEG2Audio = new("ee4cbb1f-9c3f-4770-92b5-fcb7c2a8d381");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncMPEG2Video = new("046dc19a-6677-4aaa-a31d-c1ab716f4560");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncPCM = new("844be7f4-26cf-4779-b386-cc05d187990c");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncSDDS = new("1dc1b82f-11c8-4c71-b7b6-ee3eb9bc2b94");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncWMALossless = new("55ca7265-23d8-4761-9031-b74fbe12f4c1");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncWMAPro = new("1955f90c-33f7-4a68-ab81-53f5657125c4");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncWMAVoice = new("13ed18cb-50e8-4276-a288-a6aa228382d9");
+    
+    public static readonly Guid CODECAPI_GUID_AVEncWMV = new("4e0fef9b-1d43-41bd-b8bd-4d7bf7457a2a");
+    
+    public static readonly Guid CODECAPI_GUID_AVEndMPEG4Video = new("dd37b12a-9503-4f8b-b8d0-324a00c0a1cf");
+    
     public static readonly Guid CODECAPI_SETALLDEFAULTS = new("6c5e6a7c-acf8-4f55-a999-1a628109051b");
+    
+    public static readonly Guid CODECAPI_SetHDCPManagerContext = new("6d2d1fc8-3dc9-47eb-a1a2-471c80cd60d0");
     
     public static readonly Guid CODECAPI_SUPPORTSEVENTS = new("0581af97-7693-4dbd-9dca-3f9ebd6585a1");
     
     public static readonly Guid CODECAPI_VIDEO_ENCODER = new("7112e8e1-3d03-47ef-8e60-03f1cf537301");
+    
+    public static readonly Guid CODECAPI_VideoEncoderDisplayContentType = new("79b90b27-f4b1-42dc-9dd7-cdaf8135c400");
     
     public static readonly Guid CodecIImageBytes = new("025d1823-6c7d-447b-bbdb-a3cbc3dfa2fc");
     
@@ -1939,6 +2793,8 @@ public static partial class Constants
     
     public static readonly Guid ColorMatrixEffectGuid = new("718f2615-7933-40e3-a511-5f68fe14dd74");
     
+    public static readonly Guid Component = new("59dc47a8-116c-11d3-9d8e-00c04f72d980");
+    
     public const uint COMPONENT_TAG_CAPTION_MAX = 55;
     
     public const uint COMPONENT_TAG_CAPTION_MIN = 48;
@@ -1946,6 +2802,12 @@ public static partial class Constants
     public const uint COMPONENT_TAG_SUPERIMPOSE_MAX = 63;
     
     public const uint COMPONENT_TAG_SUPERIMPOSE_MIN = 56;
+    
+    public static readonly Guid Components = new("809b6661-94c4-49e6-b6ec-3f0f862215aa");
+    
+    public static readonly Guid ComponentType = new("823535a0-0318-11d3-9d8e-00c04f72d980");
+    
+    public static readonly Guid ComponentTypes = new("a1a2b1c4-0e3a-11d3-9d8e-00c04f72d980");
     
     public const uint COMPOSITION_STATS_MAX_TARGETS = 256;
     
@@ -2085,6 +2947,18 @@ public static partial class Constants
     
     public const int COPP_ProtectionType_Unknown = int.MinValue;
     
+    public static readonly Guid CPK_DS_AC3Decoder = new("6c9c69d6-0ffc-4481-afdb-cdf1c79c6f3e");
+    
+    public static readonly Guid CPK_DS_MPEG2Decoder = new("9910c5cd-95c9-4e06-865a-efa1c8016bf4");
+    
+    public static readonly Guid CreatePropBagOnRegKey = new("8a674b49-1f63-11d3-b64c-00c04f79498e");
+    
+    public static readonly Guid CResamplerMediaObject = new("f447b69e-1884-4a7e-8055-346f74d6edb3");
+    
+    public static readonly Guid CResizerDMO = new("1ea1ea14-48f4-4054-ad1a-e8aee10ac805");
+    
+    public static readonly Guid CResizerMediaObject = new("d3ec8b8b-7728-4fd8-9fe0-7b67d19f73a3");
+    
     public const uint CRYSTAL_NET_SFM_CODEC = 1;
     
     public const uint CSA_A = 1;
@@ -2103,7 +2977,65 @@ public static partial class Constants
     
     public const uint CSA_RGB = 6;
     
+    public static readonly Guid CShotDetectorDmo = new("56aefacd-110c-4397-9292-b0a0c61b6750");
+    
+    public static readonly Guid CSmpteTransformsDmo = new("bde6388b-da25-485d-ba7f-fabc28b20318");
+    
     public const int CT_RECTANGLES = 0;
+    
+    public static readonly Guid CThumbnailGeneratorDmo = new("559c6bad-1ea8-4963-a087-8a6810f9218b");
+    
+    public static readonly Guid CTocGeneratorDmo = new("4dda1941-77a0-4fb1-a518-e2185041d70c");
+    
+    public static readonly Guid CVodafoneAACCCDecMediaObject = new("7e76bf7f-c993-4e26-8fab-470a70c0d59c");
+    
+    public static readonly Guid CVodafoneAACDecMediaObject = new("7f36f942-dcf3-4d82-9289-5b1820278f7c");
+    
+    public static readonly Guid CWMADecMediaObject = new("2eeb4adf-4578-4d10-bca7-bb955f56320a");
+    
+    public static readonly Guid CWMAEncMediaObject = new("70f598e9-f4ab-495a-99e2-a7c4d3d89abf");
+    
+    public static readonly Guid CWMATransMediaObject = new("edcad9cb-3127-40df-b527-0152ccb3f6f5");
+    
+    public static readonly Guid CWMAudioAEC = new("745057c7-f353-4f2d-a7ee-58434477730e");
+    
+    public static readonly Guid CWMAudioCAPXGFXAPO = new("13ab3ebd-137e-4903-9d89-60be8277fd17");
+    
+    public static readonly Guid CWMAudioCAPXLFXAPO = new("c9453e73-8c5c-4463-9984-af8bab2f5447");
+    
+    public static readonly Guid CWMAudioGFXAPO = new("637c490d-eee3-4c0a-973f-371958802da2");
+    
+    public static readonly Guid CWMAudioLFXAPO = new("62dc1a93-ae24-464c-a43e-452f824c4250");
+    
+    public static readonly Guid CWMAudioSpdTxDMO = new("5210f8e4-b0bb-47c3-a8d9-7b2282cc79ed");
+    
+    public static readonly Guid CWMSPDecMediaObject = new("874131cb-4ecc-443b-8948-746b89595d20");
+    
+    public static readonly Guid CWMSPEncMediaObject = new("67841b03-c689-4188-ad3f-4c9ebeec710b");
+    
+    public static readonly Guid CWMSPEncMediaObject2 = new("1f1f4e1a-2252-4063-84bb-eee75f8856d5");
+    
+    public static readonly Guid CWMTDecMediaObject = new("f9dbc64e-2dd0-45dd-9b52-66642ef94431");
+    
+    public static readonly Guid CWMTEncMediaObject = new("60b67652-e46b-4e44-8609-f74bffdc083c");
+    
+    public static readonly Guid CWMV9EncMediaObject = new("d23b90d0-144f-46bd-841d-59e4eb19dc59");
+    
+    public static readonly Guid CWMVDecMediaObject = new("82d353df-90bd-4382-8bc2-3f6192b76e34");
+    
+    public static readonly Guid CWMVEncMediaObject2 = new("96b57cdd-8966-410c-bb1f-c97eea765c04");
+    
+    public static readonly Guid CWMVXEncMediaObject = new("7e320092-596a-41b2-bbeb-175d10504eb6");
+    
+    public static readonly Guid CWVC1DecMediaObject = new("c9bfbccf-e60e-4588-a3df-5a03b1fd9585");
+    
+    public static readonly Guid CWVC1EncMediaObject = new("44653d0d-8cca-41e7-baca-884337b747ac");
+    
+    public static readonly Guid CXDSData = new("c4c4c4f4-0049-4e2b-98fb-9537f6ce516d");
+    
+    public static readonly Guid CZuneAACCCDecMediaObject = new("a74e98f2-52d6-4b4e-885b-e0a6ca4f187a");
+    
+    public static readonly Guid CZuneM4S2DecMediaObject = new("c56fc25c-0fc6-404a-9503-b10bf51a8ab9");
     
     public const uint D2D1_APPEND_ALIGNED_ELEMENT = uint.MaxValue;
     
@@ -6399,6 +7331,8 @@ public static partial class Constants
     
     public const uint DCICOMMAND = 3075;
     
+    public static readonly Guid DCompManipulationCompositor = new("79dea627-a08a-43ac-8ef5-6900b9299126");
+    
     public const uint DCOMPOSITION_MAX_WAITFORCOMPOSITORCLOCK_OBJECTS = 32;
     
     public const uint DCR_DRIVER = 1;
@@ -8113,9 +9047,13 @@ public static partial class Constants
     
     public const uint DEVICE_STATEMASK_ALL = 15;
     
+    public static readonly Guid DeviceTopology = new("1df639d0-5ec1-47aa-9379-828dc1aa8c59");
+    
     public static readonly Guid DEVINTERFACE_AUDIO_CAPTURE = new("2eef81be-33fa-4800-9670-1cd474972c3f");
     
     public static readonly Guid DEVINTERFACE_AUDIO_RENDER = new("e6327cad-dcec-4949-ae8a-991e976a79d2");
+    
+    public static readonly Guid DEVINTERFACE_AUDIOENDPOINTPLUGIN = new("9f2f7b66-65ac-4fa6-8ae4-123c78b89313");
     
     public static readonly Guid DEVINTERFACE_MIDI_INPUT = new("504be32c-ccf6-4d2c-b73f-6f8b3747e22b");
     
@@ -8167,6 +9105,18 @@ public static partial class Constants
     
     public static readonly DEVPROPKEY DEVPKEY_KsAudio_PacketSize_Constraints2 = new(new Guid("9404f781-7191-409b-8b0b-80bf6ec229ae"), 2);
     
+    public static readonly Guid DIGITAL_CABLE_NETWORK_TYPE = new("143827ab-f77b-498d-81ca-5a007aec28bf");
+    
+    public static readonly Guid DigitalCableLocator = new("03c06416-d127-407a-ab4c-fdd279abbe5d");
+    
+    public static readonly Guid DigitalCableTuneRequest = new("26ec0b63-aa90-458a-8df4-5659f2c8a18a");
+    
+    public static readonly Guid DigitalCableTuningSpace = new("d9bb4cee-b87a-47f1-ac92-b08d9c7813fc");
+    
+    public static readonly Guid DigitalLocator = new("6e50cc0d-c19b-4bf6-810b-5bd60761f5cc");
+    
+    public static readonly Guid DIRECT_TV_SATELLITE_TV_NETWORK_TYPE = new("93b66fb5-93d4-4323-921c-c1f52df61d3f");
+    
     public const uint DIRECT3D_VERSION = 2304;
     
     public const uint DIRECTDRAW_VERSION = 1792;
@@ -8174,6 +9124,16 @@ public static partial class Constants
     public const uint DIRECTMANIPULATION_KEYBOARDFOCUS = 4294967294;
     
     public const uint DIRECTMANIPULATION_MOUSEFOCUS = 4294967293;
+    
+    public static readonly Guid DirectManipulationManager = new("54e211b6-3650-4f75-8334-fa359598e1c5");
+    
+    public static readonly Guid DirectManipulationPrimaryContent = new("caa02661-d59e-41c7-8393-3ba3bacb6b57");
+    
+    public static readonly Guid DirectManipulationSharedManager = new("99793286-77cc-4b57-96db-3b354f6f9fb5");
+    
+    public static readonly Guid DirectManipulationUpdateManager = new("9fc1bfd5-1835-441a-b3b1-b6cc74b727d0");
+    
+    public static readonly Guid DirectManipulationViewport = new("34e211b6-3650-4f75-8334-fa359598e1c5");
     
     public const uint DIRECTSOUND_VERSION = 1792;
     
@@ -10191,6 +11151,8 @@ public static partial class Constants
     
     public const uint DSSPEAKER_SURROUND = 5;
     
+    public static readonly Guid DTFilter = new("c4c4c4f2-0049-4e2b-98fb-9537f6ce516d");
+    
     public const uint DTV_CardStatus_Error = 2;
     
     public const uint DTV_CardStatus_FirmwareDownload = 3;
@@ -10315,6 +11277,8 @@ public static partial class Constants
     
     public const uint DVB_BAT_TID = 74;
     
+    public static readonly Guid DVB_CABLE_TV_NETWORK_TYPE = new("dc0c0fe7-0485-4266-b93f-68fbf80ed834");
+    
     public const uint DVB_DIT_PID = 30;
     
     public const uint DVB_DIT_TID = 126;
@@ -10334,6 +11298,8 @@ public static partial class Constants
     public const uint DVB_RST_PID = 19;
     
     public const uint DVB_RST_TID = 113;
+    
+    public static readonly Guid DVB_SATELLITE_TV_NETWORK_TYPE = new("fa4b375a-45b4-4d45-8440-263957b11623");
     
     public const uint DVB_SDT_ACTUAL_TID = 66;
     
@@ -10361,11 +11327,27 @@ public static partial class Constants
     
     public const uint DVB_TDT_TID = 112;
     
+    public static readonly Guid DVB_TERRESTRIAL_TV_NETWORK_TYPE = new("216c62df-6d7f-4e9a-8571-05f14edb766a");
+    
     public const uint DVB_TOT_PID = 20;
     
     public const uint DVB_TOT_TID = 115;
     
+    public static readonly Guid DVBCLocator = new("c531d9fd-9685-4028-8b68-6e1232079f1e");
+    
     public const uint DVBS_SCAN_TABLE_MAX_SIZE = 400;
+    
+    public static readonly Guid DVBSLocator = new("1df7d126-4050-47f0-a7cf-4c4ca9241333");
+    
+    public static readonly Guid DVBSTuningSpace = new("b64016f3-c9a2-4066-96f0-bd9563314726");
+    
+    public static readonly Guid DVBTLocator = new("9cd64701-bdf3-4d14-8e03-f12983d86664");
+    
+    public static readonly Guid DVBTLocator2 = new("efe3fa02-45d7-4920-be96-53fa7f35b0e6");
+    
+    public static readonly Guid DVBTuneRequest = new("15d6504a-5494-499c-886c-973c9e53b9f1");
+    
+    public static readonly Guid DVBTuningSpace = new("c6b14b32-76aa-4a86-a7ac-5c79aaf58da7");
     
     public const uint DVD_AUDIO_CAPS_AC3 = 1;
     
@@ -11371,6 +12353,8 @@ public static partial class Constants
     
     public const uint EC_WMT_INDEX_EVENT = 593;
     
+    public static readonly Guid ECHOSTAR_SATELLITE_TV_NETWORK_TYPE = new("c4f6b31b-c6bf-4759-886f-a7386dca27a0");
+    
     public const uint ECS_REDRAW = 2;
     
     public const uint ECS_TEARDOWN = 1;
@@ -11451,6 +12435,10 @@ public static partial class Constants
     
     public const uint ENUM_TYPE_VERSION = 768;
     
+    public static readonly Guid ESEventFactory = new("8e8a07da-71f8-40c1-a929-5e3a868ac2c6");
+    
+    public static readonly Guid ESEventService = new("c20447fc-ec60-475e-813f-d2b0a6decefe");
+    
     public const uint ET_ATTRIBUTES = 8192;
     
     public const uint ET_CLASS = 32;
@@ -11489,11 +12477,95 @@ public static partial class Constants
     
     public const uint ET_STANDARDDISPLAYCOLOR = 131072;
     
+    public static readonly Guid ETFilter = new("c4c4c4f1-0049-4e2b-98fb-9537f6ce516d");
+    
+    public static readonly Guid EvalRat = new("c5c5c5f1-3abc-11d6-b25b-00c04fa0c026");
+    
     public static readonly Guid EVENT_WMDM_CONTENT_TRANSFER = new("339c9bf4-bcfe-4ed8-94df-eaf8c26ab61b");
     
     public static readonly Guid EVENTCONTEXT_VOLUMESLIDER = new("e2c2e9de-09b1-4b04-84e5-07931225ee04");
     
+    public static readonly Guid EVENTID_ARIBcontentSpanningEvent = new("3a954083-93d0-463e-90b2-0742c496edf0");
+    
+    public static readonly Guid EVENTID_AudioDescriptorSpanningEvent = new("107bd41c-a6da-4691-8369-11b2cdaa288e");
+    
+    public static readonly Guid EVENTID_AudioTypeSpanningEvent = new("501cbfbe-b849-42ce-9be9-3db869fb82b3");
+    
+    public static readonly Guid EVENTID_BDA_CASBroadcastMMI = new("676876f0-1132-404c-a7ca-e72069a9d54f");
+    
+    public static readonly Guid EVENTID_BDA_CASCloseMMI = new("5d0f550f-de2e-479d-8345-ec0e9557e8a2");
+    
+    public static readonly Guid EVENTID_BDA_CASOpenMMI = new("85dac915-e593-410d-8471-d6812105f28e");
+    
+    public static readonly Guid EVENTID_BDA_CASReleaseTuner = new("20c1a16b-441f-49a5-bb5c-e9a04495c6c1");
+    
+    public static readonly Guid EVENTID_BDA_CASRequestTuner = new("cf39a9d8-f5d3-4685-be57-ed81dba46b27");
+    
+    public static readonly Guid EVENTID_BDA_DiseqCResponseAvailable = new("efa628f8-1f2c-4b67-9ea5-acf6fa9a1f36");
+    
+    public static readonly Guid EVENTID_BDA_EncoderSignalLock = new("5ec90eb9-39fa-4cfc-b93f-00bb11077f5e");
+    
+    public static readonly Guid EVENTID_BDA_FdcStatus = new("05f25366-d0eb-43d2-bc3c-682b863df142");
+    
+    public static readonly Guid EVENTID_BDA_FdcTableSection = new("6a0cd757-4ce3-4e5b-9444-7187b87152c5");
+    
+    public static readonly Guid EVENTID_BDA_GPNVValueUpdate = new("ff75c68c-f416-4e7e-bf17-6d55c5df1575");
+    
+    public static readonly Guid EVENTID_BDA_GuideDataAvailable = new("98db717a-478a-4cd4-92d0-95f66b89e5b1");
+    
+    public static readonly Guid EVENTID_BDA_GuideDataError = new("ac33c448-6f73-4fd7-b341-594c360d8d74");
+    
+    public static readonly Guid EVENTID_BDA_GuideServiceInformationUpdated = new("a1c3ea2b-175f-4458-b735-507d22db23a6");
+    
+    public static readonly Guid EVENTID_BDA_IsdbCASResponse = new("d4cb1966-41bc-4ced-9a20-fdceac78f70d");
+    
+    public static readonly Guid EVENTID_BDA_LbigsCloseConnectionHandle = new("c2f08b99-65ef-4314-9671-e99d4cce0bae");
+    
+    public static readonly Guid EVENTID_BDA_LbigsOpenConnection = new("356207b2-6f31-4eb0-a271-b3fa6bb7680f");
+    
+    public static readonly Guid EVENTID_BDA_LbigsSendData = new("1123277b-f1c6-4154-8b0d-48e6157059aa");
+    
+    public static readonly Guid EVENTID_BDA_RatingPinReset = new("c6e048c0-c574-4c26-bcda-2f4d35eb5e85");
+    
+    public static readonly Guid EVENTID_BDA_TransprtStreamSelectorInfo = new("c40f9f85-09d0-489c-9e9c-0abbb56951b0");
+    
+    public static readonly Guid EVENTID_BDA_TunerNoSignal = new("e29b382b-1edd-4930-bc46-682fd72d2dfb");
+    
+    public static readonly Guid EVENTID_BDA_TunerSignalLock = new("1872e740-f573-429b-a00e-d9c1e408af09");
+    
+    public static readonly Guid EVENTID_BDA_UpdateDrmStatus = new("65a6f681-1462-473b-88ce-cb731427bdb5");
+    
+    public static readonly Guid EVENTID_BDA_UpdateScanState = new("55702b50-7b49-42b8-a82f-4afb691b0628");
+    
+    public static readonly Guid EVENTID_BDAConditionalAccessTAG = new("efc3a459-ae8b-4b4a-8fe9-79a0d097f3ea");
+    
+    public static readonly Guid EVENTID_BDAEventingServicePendingEvent = new("5ca51711-5ddc-41a6-9430-e41b8b3bbc5b");
+    
+    public static readonly Guid EVENTID_CADenialCountChanged = new("2a65c528-2249-4070-ac16-00390cdfb2dd");
+    
+    public static readonly Guid EVENTID_CandidatePostTuneData = new("9f02d3d0-9f06-4369-9f1e-3ad6ca19807e");
+    
+    public static readonly Guid EVENTID_CardStatusChanged = new("a265faea-f874-4b38-9ff7-c53d02969996");
+    
+    public static readonly Guid EVENTID_CASFailureSpanningEvent = new("ead831ae-5529-4d1f-afce-0d8cd1257d30");
+    
+    public static readonly Guid EVENTID_ChannelChangeSpanningEvent = new("9067c5e5-4c5c-4205-86c8-7afe20fe1efa");
+    
+    public static readonly Guid EVENTID_ChannelInfoSpanningEvent = new("41f36d80-4132-4cc2-b121-01a43219d81b");
+    
+    public static readonly Guid EVENTID_ChannelTypeSpanningEvent = new("72ab1d51-87d2-489b-ba11-0e08dc210243");
+    
+    public static readonly Guid EVENTID_CSDescriptorSpanningEvent = new("efe779d9-97f0-4786-800d-95cf505ddc66");
+    
+    public static readonly Guid EVENTID_CtxADescriptorSpanningEvent = new("3ab4a2e6-4247-4b34-896c-30afa5d21c24");
+    
     public static readonly Guid EVENTID_DemultiplexerFilterDiscontinuity = new("16155770-aed5-475c-bb98-95a33070df0c");
+    
+    public static readonly Guid EVENTID_DFNWithNoActualAVData = new("f5689ffe-55f9-4bb3-96be-ae971c63bae0");
+    
+    public static readonly Guid EVENTID_DRMParingStatusChanged = new("000906f5-f0d1-41d6-a7df-4028697669f6");
+    
+    public static readonly Guid EVENTID_DRMParingStepComplete = new("5b2ebf78-b752-4420-b41e-a472dc95828e");
     
     public static readonly Guid EVENTID_DTFilterCOPPBlock = new("c4c4c4ea-0049-4e2b-98fb-9537f6ce516d");
     
@@ -11511,9 +12583,21 @@ public static partial class Constants
     
     public static readonly Guid EVENTID_DTFilterXDSPacket = new("c4c4c4e5-0049-4e2b-98fb-9537f6ce516d");
     
+    public static readonly Guid EVENTID_DualMonoSpanningEvent = new("a9a29b56-a84b-488c-89d5-0d4e7657c8ce");
+    
+    public static readonly Guid EVENTID_DvbParentalRatingDescriptor = new("2a67a58d-eca5-4eac-abcb-e734d3776d0a");
+    
+    public static readonly Guid EVENTID_DVBScramblingControlSpanningEvent = new("4bd4e1c4-90a1-4109-8236-27f00e7dcc5b");
+    
+    public static readonly Guid EVENTID_EASMessageReceived = new("d10df9d5-c261-4b85-9e8a-517b3299cab2");
+    
+    public static readonly Guid EVENTID_EmmMessageSpanningEvent = new("6bf00268-4f7e-4294-aa87-e9e953e43f14");
+    
     public static readonly Guid EVENTID_EncDecFilterError = new("c4c4c4e9-0049-4e2b-98fb-9537f6ce516d");
     
     public static readonly Guid EVENTID_EncDecFilterEvent = new("4a1b465b-0fb9-4159-afbd-e33006a0f9f4");
+    
+    public static readonly Guid EVENTID_EntitlementChanged = new("9071ad5d-2359-4c95-8694-afa81d70bfd5");
     
     public static readonly Guid EVENTID_ETDTFilterLicenseFailure = new("c4c4c4ef-0049-4e2b-98fb-9537f6ce516d");
     
@@ -11529,15 +12613,63 @@ public static partial class Constants
     
     public static readonly Guid EVENTID_FormatNotSupportedEvent = new("24b2280a-b2aa-4777-bf65-63f35e7b024a");
     
+    public static readonly Guid EVENTID_LanguageSpanningEvent = new("e292666d-9c02-448d-aa8d-781a93fdc395");
+    
+    public static readonly Guid EVENTID_MMIMessage = new("052c29af-09a4-4b93-890f-bd6a348968a4");
+    
+    public static readonly Guid EVENTID_NewSignalAcquired = new("c87ec52d-cd18-404a-a076-c02a273d3de7");
+    
+    public static readonly Guid EVENTID_PBDAParentalControlEvent = new("f947aa85-fb52-48e8-b9c5-e1e1f411a51a");
+    
+    public static readonly Guid EVENTID_PIDListSpanningEvent = new("47fc8f65-e2bb-4634-9cef-fdbfe6261d5c");
+    
+    public static readonly Guid EVENTID_PSITable = new("1b9c3703-d447-4e16-97bb-01799fc031ed");
+    
+    public static readonly Guid EVENTID_RRTSpanningEvent = new("f6cfc8f4-da93-4f2f-bff8-ba1ee6fca3a2");
+    
     public static readonly Guid EVENTID_SBE2RecControlStarted = new("8966a89e-f83e-4c0e-bc3b-bfa7649e04cb");
     
     public static readonly Guid EVENTID_SBE2RecControlStopped = new("454b1ec8-0c9b-4caa-b1a1-1e7a2666f6c3");
+    
+    public static readonly Guid EVENTID_ServiceTerminated = new("0a1d591c-e0d2-4f8e-8960-2335bef45ccb");
+    
+    public static readonly Guid EVENTID_SignalAndServiceStatusSpanningEvent = new("8068c5cb-3c04-492b-b47d-0308820dce51");
+    
+    public static readonly Guid EVENTID_SignalStatusChanged = new("6d9cfaf2-702d-4b01-8dff-6892ad20d191");
+    
+    public static readonly Guid EVENTID_STBChannelNumber = new("17c4d730-d0f0-413a-8c99-500469de35ad");
+    
+    public static readonly Guid EVENTID_StreamIDSpanningEvent = new("caf1ab68-e153-4d41-a6b3-a7c998db75ee");
+    
+    public static readonly Guid EVENTID_StreamTypeSpanningEvent = new("82af2ebc-30a6-4264-a80b-ad2e1372ac60");
+    
+    public static readonly Guid EVENTID_SubtitleSpanningEvent = new("5dcec048-d0b9-4163-872c-4f32223be88a");
+    
+    public static readonly Guid EVENTID_TeletextSpanningEvent = new("9599d950-5f33-4617-af7c-1e54b510daa3");
+    
+    public static readonly Guid EVENTID_TuneFailureEvent = new("d97287b2-2dfd-436a-9485-99d7d4ab5a69");
+    
+    public static readonly Guid EVENTID_TuneFailureSpanningEvent = new("6f8aa455-5ee1-48ab-a27c-4c8d70b9aeba");
+    
+    public static readonly Guid EVENTID_TuningChanged = new("9d7e6235-4b7d-425d-a6d1-d717c33b9c4c");
+    
+    public static readonly Guid EVENTID_TuningChanging = new("83183c03-c09e-45c4-a719-807a94952bf9");
     
     public static readonly Guid EVENTID_XDSCodecDuplicateXDSRating = new("c4c4c4df-0049-4e2b-98fb-9537f6ce516d");
     
     public static readonly Guid EVENTID_XDSCodecNewXDSPacket = new("c4c4c4e1-0049-4e2b-98fb-9537f6ce516d");
     
     public static readonly Guid EVENTID_XDSCodecNewXDSRating = new("c4c4c4e0-0049-4e2b-98fb-9537f6ce516d");
+    
+    public static readonly Guid EVENTSETID_CROSSBAR = new("6a2e0641-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid EVENTSETID_TUNER = new("6a2e0606-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid EVENTSETID_VIDCAP_CAMERACONTROL_REGION_OF_INTEREST = new("2fdffc5d-c732-4ba6-b5df-6b4d7fc88b8b");
+    
+    public static readonly Guid EVENTSETID_VIDEODECODER = new("6a2e0621-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid EVENTTYPE_CASDescrambleFailureEvent = new("b2127d42-7be5-4f4b-9130-6679899f4f4b");
     
     public static readonly Guid EVRConfig_ForceBatching = new("e447df09-10ca-4d17-b17e-6a840f8a3a4c");
     
@@ -11601,9 +12733,17 @@ public static partial class Constants
     
     public const uint FDM_TYPE_ZERO_BEARINGS = 8;
     
+    public static readonly Guid FeedFolderWatcher = new("281001ed-7765-4cb0-84af-e9b387af01ff");
+    
+    public static readonly Guid FeedsManager = new("faeb54c4-f66f-4806-83a0-805299f5e3ad");
+    
+    public static readonly Guid FeedWatcher = new("18a6737b-f433-4687-89bc-a1b4dfb9f123");
+    
     public const uint FF_IGNORED_SIGNATURE = 2;
     
     public const uint FF_SIGNATURE_VERIFIED = 1;
+    
+    public static readonly Guid FilgraphManager = new("e436ebb3-524f-11ce-9f53-0020af0ba770");
     
     public const uint FILTERCHOOSE_CUSTOM_VERIFY = 2;
     
@@ -11857,6 +12997,8 @@ public static partial class Constants
     
     public static readonly Guid FrameDimensionTime = new("6aedbd6d-3fb5-418a-83a6-7f45229dc872");
     
+    public static readonly Guid FXEcho = new("5039d740-f736-449a-84d3-a56202557b87");
+    
     public const float FXECHO_DEFAULT_DELAY = 500f;
     
     public const float FXECHO_DEFAULT_FEEDBACK = 0.5f;
@@ -11874,6 +13016,8 @@ public static partial class Constants
     public const float FXECHO_MIN_FEEDBACK = 0f;
     
     public const float FXECHO_MIN_WETDRYMIX = 0f;
+    
+    public static readonly Guid FXEQ = new("f5e01117-d6c4-485a-a3f5-695196f3dbfa");
     
     public const float FXEQ_DEFAULT_BANDWIDTH = 1f;
     
@@ -11907,6 +13051,8 @@ public static partial class Constants
     
     public const uint FXLOUDNESS_DEFAULT_SHORTTERM_MS = 3000;
     
+    public static readonly Guid FXMasteringLimiter = new("c4137916-2be1-46fd-8599-441536f49856");
+    
     public const uint FXMASTERINGLIMITER_DEFAULT_LOUDNESS = 1000;
     
     public const uint FXMASTERINGLIMITER_DEFAULT_RELEASE = 6;
@@ -11918,6 +13064,8 @@ public static partial class Constants
     public const uint FXMASTERINGLIMITER_MIN_LOUDNESS = 1;
     
     public const uint FXMASTERINGLIMITER_MIN_RELEASE = 1;
+    
+    public static readonly Guid FXReverb = new("7d9aca56-cb68-4807-b632-b137352e8596");
     
     public const float FXREVERB_DEFAULT_DIFFUSION = 0.9f;
     
@@ -14611,6 +15759,8 @@ public static partial class Constants
     
     public static readonly Guid GUID_NTPrivateDriverCaps = new("fad16a23-7b66-11d2-83d7-00c04f7ce58c");
     
+    public static readonly Guid GUID_NULL = new("00000000-0000-0000-0000-000000000000");
+    
     public static readonly Guid GUID_OptSurfaceKmodeInfo = new("e05c8472-51d4-11d1-8cce-00a0c90629a8");
     
     public static readonly Guid GUID_OptSurfaceUmodeInfo = new("9d792804-5fa8-11d1-8cd0-00a0c90629a8");
@@ -15649,6 +16799,10 @@ public static partial class Constants
     
     public const uint INDIRECT_DISPLAY_INFO_FLAGS_CREATED_IDDCX_ADAPTER = 1;
     
+    public static readonly Guid InkD2DRenderer = new("4044e60c-7b01-4671-a97c-04e0210a07a5");
+    
+    public static readonly Guid InkDesktopHost = new("062584a6-f830-4bdc-a4d2-0a10ab062b1d");
+    
     public const uint INTENT_ABSOLUTE_COLORIMETRIC = 3;
     
     public const uint INTENT_PERCEPTUAL = 0;
@@ -15841,6 +16995,8 @@ public static partial class Constants
     
     public const uint ISDB_BIT_TID = 196;
     
+    public static readonly Guid ISDB_CABLE_TV_NETWORK_TYPE = new("c974ddb5-41fe-4b25-9741-92f049f1d5d1");
+    
     public const uint ISDB_CDT_PID = 41;
     
     public const uint ISDB_CDT_TID = 200;
@@ -15857,6 +17013,10 @@ public static partial class Constants
     
     public const uint ISDB_NBIT_REF_TID = 198;
     
+    public static readonly Guid ISDB_S_NETWORK_TYPE = new("a1e78202-1459-41b1-9ca9-2a92587a42cc");
+    
+    public static readonly Guid ISDB_SATELLITE_TV_NETWORK_TYPE = new("b0a4e6a0-6a1a-4b83-bb5b-903e1d90e6b6");
+    
     public const uint ISDB_SDTT_ALT_PID = 40;
     
     public const uint ISDB_SDTT_PID = 35;
@@ -15864,6 +17024,12 @@ public static partial class Constants
     public const uint ISDB_SDTT_TID = 195;
     
     public const uint ISDB_ST_TID = 114;
+    
+    public static readonly Guid ISDB_T_NETWORK_TYPE = new("fc3855a6-c901-4f2e-aba8-90815afc6c83");
+    
+    public static readonly Guid ISDB_TERRESTRIAL_TV_NETWORK_TYPE = new("95037f6f-3ac7-4452-b6c4-45a9ce9292a2");
+    
+    public static readonly Guid ISDBSLocator = new("6504afed-a629-455c-a7f1-04964dea5cc4");
     
     public const uint iTRUECOLOR = 16;
     
@@ -16347,6 +17513,8 @@ public static partial class Constants
     
     public const uint KS_NABTS_GROUPID_TELEVISION_STATION_CONTENT_BASE = 2176;
     
+    public static readonly Guid KS_SECURE_CAMERA_SCENARIO_ID = new("ae53fc6e-8d89-4488-9d2e-4d008731c5fd");
+    
     public const uint KS_TVAUDIO_MODE_LANG_A = 16;
     
     public const uint KS_TVAUDIO_MODE_LANG_B = 32;
@@ -16463,6 +17631,14 @@ public static partial class Constants
     
     public const uint KSAC3_SERVICE_VOICE_OVER = 7;
     
+    public static readonly Guid KSALGORITHMINSTANCE_SYSTEM_ACOUSTIC_ECHO_CANCEL = new("1c22c56d-9879-4f5b-a389-27996ddc2810");
+    
+    public static readonly Guid KSALGORITHMINSTANCE_SYSTEM_AGC = new("950e55b9-877c-4c67-be08-e47b5611130a");
+    
+    public static readonly Guid KSALGORITHMINSTANCE_SYSTEM_MICROPHONE_ARRAY_PROCESSOR = new("b6f5a0a0-9e61-4f8c-91e3-76cf0f3c471f");
+    
+    public static readonly Guid KSALGORITHMINSTANCE_SYSTEM_NOISE_SUPPRESS = new("5ab0882e-7274-4516-877d-4eee99ba4fd0");
+    
     public const uint KSALLOCATOR_FLAG_2D_BUFFER_REQUIRED = 32768;
     
     public const uint KSALLOCATOR_FLAG_ALLOCATOR_EXISTS = 2048;
@@ -16507,11 +17683,115 @@ public static partial class Constants
     
     public const uint KSATTRIBUTE_REQUIRED = 1;
     
+    public static readonly Guid KSATTRIBUTEID_AUDIOSIGNALPROCESSING_MODE = new("e1f89eb5-5f46-419b-967b-ff6770b98401");
+    
     public const uint KSAUDDECOUTMODE_PCM_51 = 2;
     
     public const uint KSAUDDECOUTMODE_SPDIFF = 4;
     
     public const uint KSAUDDECOUTMODE_STEREO_ANALOG = 1;
+    
+    public static readonly Guid KSAUDFNAME_3D_CENTER = new("9f0670b4-991f-11d2-ac4d-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_3D_DEPTH = new("63ff5747-991f-11d2-ac4d-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_3D_STEREO = new("185fede2-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_ALTERNATE_MICROPHONE = new("2bc31d6b-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_AUX = new("185fedfe-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_AUX_MUTE = new("185fedfd-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_AUX_VOLUME = new("185fedfc-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_BASS = new("185fede0-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_CD_AUDIO = new("185fedfb-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_CD_IN_VOLUME = new("185fedf3-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_CD_MUTE = new("185fedea-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_CD_VOLUME = new("185fede9-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_LINE_IN = new("185fedf9-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_LINE_IN_VOLUME = new("185fedf4-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_LINE_MUTE = new("185fedec-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_LINE_VOLUME = new("185fedeb-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MASTER_MUTE = new("185fede4-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MASTER_VOLUME = new("185fede3-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIC_IN_VOLUME = new("185fedf5-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIC_MUTE = new("185fedee-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIC_VOLUME = new("185feded-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MICROPHONE_BOOST = new("2bc31d6a-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MIDI = new("185fedf8-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIDI_IN_VOLUME = new("185fedf2-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIDI_MUTE = new("185fede8-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIDI_VOLUME = new("185fede7-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_MIDRANGE = new("a2cbe478-ae84-49a1-8b72-4ad09b78ed34");
+    
+    public static readonly Guid KSAUDFNAME_MONO_MIX = new("00dff078-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MONO_MIX_MUTE = new("2bc31d69-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MONO_MIX_VOLUME = new("22b0eafe-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MONO_OUT = new("f9b41dc3-96e2-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MONO_OUT_MUTE = new("1ad247ec-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_MONO_OUT_VOLUME = new("1ad247eb-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_PC_SPEAKER = new("185fedff-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_PC_SPEAKER_MUTE = new("185fedf1-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_PC_SPEAKER_VOLUME = new("185fedf0-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_PEAKMETER = new("57e24340-fc5b-4612-a562-72b11a29dfae");
+    
+    public static readonly Guid KSAUDFNAME_RECORDING_CONTROL = new("185fedfa-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_RECORDING_SOURCE = new("185fedef-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_STEREO_MIX = new("00dff077-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_STEREO_MIX_MUTE = new("22b0eafd-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_STEREO_MIX_VOLUME = new("1ad247ed-96e3-11d2-ac4c-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_TREBLE = new("185fede1-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_VIDEO = new("915daec4-a434-11d2-ac52-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_VIDEO_MUTE = new("9b46e709-992a-11d2-ac4d-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_VIDEO_VOLUME = new("9b46e708-992a-11d2-ac4d-00c04f8efb68");
+    
+    public static readonly Guid KSAUDFNAME_VOLUME_CONTROL = new("185fedf7-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_WAVE_IN_VOLUME = new("185fedf6-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_WAVE_MUTE = new("185fede6-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_WAVE_OUT_MIX = new("185fee00-9905-11d1-95a9-00c04fb925d3");
+    
+    public static readonly Guid KSAUDFNAME_WAVE_VOLUME = new("185fede5-9905-11d1-95a9-00c04fb925d3");
     
     public const uint KSAUDIO_CPU_RESOURCES_HOST_CPU = 2147483647;
     
@@ -16867,6 +18147,12 @@ public static partial class Constants
     
     public const ulong KSCAMERA_PERFRAMESETTING_MANUAL = 8589934592;
     
+    public static readonly Guid KSCAMERAPROFILE_BalancedVideoAndPhoto = new("6b52b017-42c7-4a21-bfe3-23f009149887");
+    
+    public static readonly Guid KSCAMERAPROFILE_CompressedCamera = new("0e34cdc1-27ad-437f-abde-02b629f37b44");
+    
+    public static readonly Guid KSCAMERAPROFILE_FaceAuth_Mode = new("81361b22-700b-4546-a2d4-c52e907bfc27");
+    
     public const ulong KSCAMERAPROFILE_FLAGS_FACEDETECTION = 8;
     
     public const ulong KSCAMERAPROFILE_FLAGS_PHOTOHDR = 4;
@@ -16878,6 +18164,26 @@ public static partial class Constants
     public const ulong KSCAMERAPROFILE_FLAGS_VIDEOHDR = 2;
     
     public const ulong KSCAMERAPROFILE_FLAGS_VIDEOSTABLIZATION = 1;
+    
+    public static readonly Guid KSCAMERAPROFILE_HDRWithWCGPhoto = new("9bf6f1ff-b555-4625-b326-a46def318fb7");
+    
+    public static readonly Guid KSCAMERAPROFILE_HDRWithWCGVideo = new("4b27c336-4924-4989-b994-fdaf1dc7cd85");
+    
+    public static readonly Guid KSCAMERAPROFILE_HighFrameRate = new("566e6113-8c35-48e7-b89f-d23fdc1219dc");
+    
+    public static readonly Guid KSCAMERAPROFILE_HighQualityPhoto = new("32440725-961b-4ca3-b5b2-854e719d9e1b");
+    
+    public static readonly Guid KSCAMERAPROFILE_Legacy = new("b4894d81-62b7-4eec-8740-80658c4a9d3e");
+    
+    public static readonly Guid KSCAMERAPROFILE_PhotoSequence = new("02399d9d-4ee8-49ba-bc07-5ff156531413");
+    
+    public static readonly Guid KSCAMERAPROFILE_VariablePhotoSequence = new("9ff2cb56-e75a-49b1-a928-9985d5946f87");
+    
+    public static readonly Guid KSCAMERAPROFILE_VideoConferencing = new("c5444a88-e1bf-4597-b2dd-9e1ead864bb8");
+    
+    public static readonly Guid KSCAMERAPROFILE_VideoHDR8 = new("d4f3f4ec-bdff-4314-b1d4-008e281f74e7");
+    
+    public static readonly Guid KSCAMERAPROFILE_VideoRecording = new("a0e517e8-8f8c-4f6f-9a57-46fc2f647ec0");
     
     public const uint KSCameraProfileSensorType_Custom = 128;
     
@@ -16891,6 +18197,94 @@ public static partial class Constants
     
     public const uint KSCameraProfileSensorType_RGB = 1;
     
+    public static readonly Guid KSCATEGORY_ACOUSTIC_ECHO_CANCEL = new("bf963d80-c559-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSCATEGORY_AUDIO = new("6994ad04-93ef-11d0-a3cc-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_BDA_IP_SINK = new("71985f4a-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSCATEGORY_BDA_NETWORK_EPG = new("71985f49-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSCATEGORY_BDA_NETWORK_PROVIDER = new("71985f4b-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSCATEGORY_BDA_NETWORK_TUNER = new("71985f48-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSCATEGORY_BDA_RECEIVER_COMPONENT = new("fd0a5af4-b41d-11d2-9c95-00c04f7971e0");
+    
+    public static readonly Guid KSCATEGORY_BDA_TRANSPORT_INFORMATION = new("a2e3074f-6c3d-11d3-b653-00c04f79498e");
+    
+    public static readonly Guid KSCATEGORY_BRIDGE = new("085aff00-62ce-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_CAPTURE = new("65e8773d-8f56-11d0-a3b9-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_CLOCK = new("53172480-4791-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_COMMUNICATIONSTRANSFORM = new("cf1dda2c-9743-11d0-a3ee-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_CROSSBAR = new("a799a801-a46d-11d0-a18c-00a02401dcd4");
+    
+    public static readonly Guid KSCATEGORY_DATACOMPRESSOR = new("1e84c900-7e70-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_DATADECOMPRESSOR = new("2721ae20-7e70-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_DATATRANSFORM = new("2eb07ea0-7e70-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_ENCODER = new("19689bf6-c384-48fd-ad51-90e58c79f70b");
+    
+    public static readonly Guid KSCATEGORY_ESCALANTE_PLATFORM_DRIVER = new("74f3aea8-9768-11d1-8e07-00a0c95ec22e");
+    
+    public static readonly Guid KSCATEGORY_FILESYSTEM = new("760fed5e-9357-11d0-a3cc-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_INTERFACETRANSFORM = new("cf1dda2d-9743-11d0-a3ee-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_MEDIUMTRANSFORM = new("cf1dda2e-9743-11d0-a3ee-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_MICROPHONE_ARRAY_PROCESSOR = new("830a44f2-a32d-476b-be97-42845673b35a");
+    
+    public static readonly Guid KSCATEGORY_MIXER = new("ad809c00-7b88-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_MULTIPLEXER = new("7a5de1d3-01a1-452c-b481-4fa2b96271e8");
+    
+    public static readonly Guid KSCATEGORY_NETWORK = new("67c9cc3c-69c4-11d2-8759-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_NETWORK_CAMERA = new("b8238652-b500-41eb-b4f3-4234f7f5ae99");
+    
+    public static readonly Guid KSCATEGORY_PROXY = new("97ebaaca-95bd-11d0-a3ea-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_QUALITY = new("97ebaacb-95bd-11d0-a3ea-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_REALTIME = new("eb115ffc-10c8-4964-831d-6dcb02e6f23f");
+    
+    public static readonly Guid KSCATEGORY_RENDER = new("65e8773e-8f56-11d0-a3b9-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_SENSOR_CAMERA = new("24e552d7-6523-47f7-a647-d3465bf1f5ca");
+    
+    public static readonly Guid KSCATEGORY_SENSOR_GROUP = new("669c7214-0a88-4311-a7f3-4e79820e33bd");
+    
+    public static readonly Guid KSCATEGORY_SPLITTER = new("0a4252a0-7e70-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSCATEGORY_TEXT = new("6994ad06-93ef-11d0-a3cc-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_TOPOLOGY = new("dda54a40-1e4c-11d1-a050-405705c10000");
+    
+    public static readonly Guid KSCATEGORY_TVAUDIO = new("a799a802-a46d-11d0-a18c-00a02401dcd4");
+    
+    public static readonly Guid KSCATEGORY_TVTUNER = new("a799a800-a46d-11d0-a18c-00a02401dcd4");
+    
+    public static readonly Guid KSCATEGORY_VBICODEC = new("07dad660-22f1-11d1-a9f4-00c04fbbde8f");
+    
+    public static readonly Guid KSCATEGORY_VIDEO = new("6994ad05-93ef-11d0-a3cc-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_VIDEO_CAMERA = new("e5323777-f976-4f5b-9b55-b94699c46e44");
+    
+    public static readonly Guid KSCATEGORY_VIRTUAL = new("3503eac4-1f26-11d1-8ab0-00a0c9223196");
+    
+    public static readonly Guid KSCATEGORY_VPMUX = new("a799a803-a46d-11d0-a18c-00a02401dcd4");
+    
+    public static readonly Guid KSCATEGORY_WDMAUD_USE_PIN_NAME = new("47a4fa20-a251-11d1-a050-0000f8004788");
+    
+    public static readonly Guid KSCOMPONENTID_USBAUDIO = new("8f1275f0-26e9-4264-ba4d-39fff01d94aa");
+    
     public const uint KSCREATE_ITEM_FREEONSTOP = 8;
     
     public const uint KSCREATE_ITEM_NOPARAMETERS = 4;
@@ -16903,9 +18297,273 @@ public static partial class Constants
     
     public const uint KSDATAFORMAT_BIT_TEMPORAL_COMPRESSION = 0;
     
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_AC3_AUDIO = new("e06d80e4-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_ANALOGVIDEO = new("0482dde0-7817-11cf-8a03-00aa006ecb65");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_BDA_IP = new("6b891420-db09-11d2-8f32-00c04f7971e2");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_BDA_TRANSPORT = new("8deda6fd-ac5f-4334-8ecf-a4ba8fa7d0f0");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DIALECT_AC3_AUDIO = new("36523b35-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DIALECT_MPEG1_AUDIO = new("36523b32-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DIALECT_MPEG1_VIDEO = new("36523b31-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DIALECT_MPEG2_AUDIO = new("36523b34-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DIALECT_MPEG2_VIDEO = new("36523b33-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_DSOUND = new("518590a2-a184-11d0-8522-00c04fd9baf3");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_FILEHANDLE = new("65e8773c-8f56-11d0-a3b9-00a0c9223196");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_FILENAME = new("aa797b40-e974-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_H264_VIDEO = new("2017be05-6629-4248-aaed-7e1a47bc9b9c");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_IMAGE = new("692fa379-d3e8-4651-b5b4-0b94b013eeaf");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_JPEG_IMAGE = new("692fa379-d3e8-4651-b5b4-0b94b013eeaf");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_LPCM_AUDIO = new("e06d80e6-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_MPEG1_VIDEO = new("05589f82-c356-11ce-bf01-00aa0055595a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_MPEG2_AUDIO = new("e06d80e5-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_MPEG2_VIDEO = new("e06d80e3-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_NONE = new("0f6417d6-c318-11d0-a43f-00a0c9223196");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_VBI = new("f72a76e0-eb0a-11d0-ace4-0000c0cc16ba");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_VC_ID = new("ad98d184-aac3-11d0-a41c-00a0c9223196");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_VIDEOINFO = new("05589f80-c356-11ce-bf01-00aa0055595a");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_VIDEOINFO2 = new("f72a76a0-eb0a-11d0-ace4-0000c0cc16ba");
+    
+    public static readonly Guid KSDATAFORMAT_SPECIFIER_WAVEFORMATEX = new("05589f81-c356-11ce-bf01-00aa0055595a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_AC3_AUDIO = new("e06d802c-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_ANALOG = new("6dba3190-67bd-11cf-a0f7-0020afd156e4");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_ATSC_SI = new("b3c7397c-d303-414d-b33c-4ed2c9d29733");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_BDA_IP = new("5a9a213c-db08-11d2-8f32-00c04f7971e2");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_BDA_IP_CONTROL = new("499856e8-e85b-48ed-9bea-410d0dd4ef81");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_BDA_MPEG2_TRANSPORT = new("f4aeb342-0329-4fdd-a8fd-4aff4926c978");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_BDA_OPENCABLE_OOB_PSIP = new("951727db-d2ce-4528-96f6-3301fabb2de0");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_BDA_OPENCABLE_PSIP = new("762e3f66-336f-48d1-bf83-2b00352c11f0");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_CC = new("33214cc1-011f-11d2-b4b1-00a0d102cfbe");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_D16 = new("00000050-0004-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_DSS_AUDIO = new("a0af4f82-e163-11d0-bad9-00609744111a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_DSS_VIDEO = new("a0af4f81-e163-11d0-bad9-00609744111a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_DTS_AUDIO = new("e06d8033-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_DVB_SI = new("e9dd31a3-221d-4adb-8532-9af309c1a408");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_AAC = new("00000006-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_ATRAC = new("00000008-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_DIGITAL = new("00000092-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_DIGITAL_PLUS = new("0000000a-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_DIGITAL_PLUS_ATMOS = new("0000010a-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_MAT20 = new("0000010c-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_MAT21 = new("0000030c-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DOLBY_MLP = new("0000000c-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DST = new("0000000d-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DTS = new("00000008-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DTS_HD = new("0000000b-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DTSX_E1 = new("0000010b-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_DTSX_E2 = new("0000030b-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_MPEG1 = new("00000003-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_MPEG2 = new("00000004-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_MPEG3 = new("00000005-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_ONE_BIT_AUDIO = new("00000009-0cea-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEC61937_WMA_PRO = new("00000164-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IEEE_FLOAT = new("00000003-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_IMAGE_RGB32 = new("00000016-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_ISDB_SI = new("4a2eeb99-6458-4538-b187-04017c41413f");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_JPEG = new("19e4a5aa-5662-4fc5-a0c0-1758028e1057");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L16 = new("00000051-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L16_CUSTOM = new("00000051-8000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L16_IR = new("00000051-0002-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L8 = new("00000032-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L8_CUSTOM = new("00000032-8000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_L8_IR = new("00000032-0002-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_Line21_BytePair = new("6e8d4a22-310c-11d0-b79a-00aa003767a7");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_Line21_GOPPacket = new("6e8d4a23-310c-11d0-b79a-00aa003767a7");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_LPCM_AUDIO = new("e06d8032-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MIDI = new("1d262760-e957-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MIDI_BUS = new("2ca15fa0-6cfe-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MJPG_CUSTOM = new("47504a4d-8000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MJPG_DEPTH = new("47504a4d-0004-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MJPG_IR = new("47504a4d-0002-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG_HEAAC = new("00001610-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG1Packet = new("e436eb80-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG1Payload = new("e436eb81-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG1Video = new("e436eb86-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG2_AUDIO = new("e06d802b-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEG2_VIDEO = new("e06d8026-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_MPEGLAYER3 = new("00000055-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_NABTS = new("f72a76e2-eb0a-11d0-ace4-0000c0cc16ba");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_NABTS_FEC = new("e757bca1-39ac-11d1-a9f5-00c04fbbde8f");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_NONE = new("e436eb8e-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_OVERLAY = new("e436eb7f-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_PBDA_TRANSPORT_RAW = new("0d7aed42-cb9a-11db-9705-005056c00008");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_PCM = new("00000001-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_RAW8 = new("ca20d9a0-3e3e-11d1-9bf9-00c04fbbdebf");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_RIFF = new("4995daee-9ee6-11d0-a40e-00a0c9223196");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_RIFFMIDI = new("4995daf0-9ee6-11d0-a40e-00a0c9223196");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_RIFFWAVE = new("e436eb8b-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_SDDS_AUDIO = new("e06d8034-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_STANDARD_AC3_AUDIO = new("36523b25-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_STANDARD_MPEG1_AUDIO = new("36523b22-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_STANDARD_MPEG1_VIDEO = new("36523b21-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_STANDARD_MPEG2_AUDIO = new("36523b24-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_STANDARD_MPEG2_VIDEO = new("36523b23-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_SUBPICTURE = new("e06d802d-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_TELETEXT = new("f72a76e3-eb0a-11d0-ace4-0000c0cc16ba");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_VPVBI = new("5a9b6a41-1a22-11d1-bad9-00609744111a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_VPVideo = new("5a9b6a40-1a22-11d1-bad9-00609744111a");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_WAVEFORMATEX = new("00000000-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_WMAUDIO_LOSSLESS = new("00000163-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_WMAUDIO2 = new("00000161-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_SUBTYPE_WMAUDIO3 = new("00000162-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_ANALOGAUDIO = new("0482dee1-7817-11cf-8a03-00aa006ecb65");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_ANALOGVIDEO = new("0482dde1-7817-11cf-8a03-00aa006ecb65");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_AUDIO = new("73647561-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_AUXLine21Data = new("670aea80-3a82-11d0-b79b-00aa003767a7");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_BDA_ANTENNA = new("71985f41-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_BDA_IF_SIGNAL = new("61be0b47-a5eb-499b-9a85-5b16c07f1258");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_BDA_IP = new("e25f7b8e-cccc-11d2-8f25-00c04f7971e2");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_BDA_IP_CONTROL = new("dadd5799-7d5b-4b63-80fb-d1442f26b621");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_DVD_ENCRYPTED_PACK = new("ed0b916a-044d-11d1-aa78-00c04fc31d60");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_IMAGE = new("72178c23-e45b-11d5-bc2a-00b0d0f3f4ab");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MIDI = new("7364696d-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MPE = new("455f176c-4b06-47ce-9aef-8caef73df7b5");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MPEG2_PES = new("e06d8020-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MPEG2_PROGRAM = new("e06d8022-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MPEG2_SECTIONS = new("455f176c-4b06-47ce-9aef-8caef73df7b5");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MPEG2_TRANSPORT = new("e06d8023-db46-11cf-b4d1-00805f6cbbea");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_MUSIC = new("e725d360-62cc-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_NABTS = new("e757bca0-39ac-11d1-a9f5-00c04fbbde8f");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_STANDARD_ELEMENTARY_STREAM = new("36523b11-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_STANDARD_PACK_HEADER = new("36523b13-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_STANDARD_PES_PACKET = new("36523b12-8ee5-11d1-8ca3-0060b057664a");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_STREAM = new("e436eb83-524f-11ce-9f53-0020af0ba770");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_TEXT = new("73747874-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_VBI = new("f72a76e1-eb0a-11d0-ace4-0000c0cc16ba");
+    
+    public static readonly Guid KSDATAFORMAT_TYPE_VIDEO = new("73646976-0000-0010-8000-00aa00389b71");
+    
     public const uint KSDATARANGE_BIT_ATTRIBUTES = 1;
     
     public const uint KSDATARANGE_BIT_REQUIRED_ATTRIBUTES = 2;
+    
+    public static readonly Guid KSDEGRADESETID_Standard = new("9f564180-704c-11d0-a5d6-28db04c10000");
     
     public const uint KSDEVICE_DESCRIPTOR_VERSION = 256;
     
@@ -16983,6 +18641,54 @@ public static partial class Constants
     
     public const uint KSEVENTF_WORKITEM = 32;
     
+    public static readonly Guid KSEVENTSETID_AudioControlChange = new("e85e9698-fa2f-11d1-95bd-00c04fb925d3");
+    
+    public static readonly Guid KSEVENTSETID_BdaCAEvent = new("488c4ccc-b768-4129-8eb1-b00a071f9068");
+    
+    public static readonly Guid KSEVENTSETID_BdaDiseqCEvent = new("8b19bbf0-4184-43ac-ad3c-0c889be4c212");
+    
+    public static readonly Guid KSEVENTSETID_BdaEvent = new("ae7e55b2-96d7-4e29-908f-62f95b2a1679");
+    
+    public static readonly Guid KSEVENTSETID_BdaPinEvent = new("104781cd-50bd-40d5-95fb-087e0e86a591");
+    
+    public static readonly Guid KSEVENTSETID_BdaTunerEvent = new("aab59e17-01c9-4ebf-93f2-fc3b79b46f91");
+    
+    public static readonly Guid KSEVENTSETID_CameraAsyncControl = new("22a11754-9701-4088-b33f-6b9cbc52df5e");
+    
+    public static readonly Guid KSEVENTSETID_CameraEvent = new("7899b2e0-6b43-4964-9d2a-a21f4061f576");
+    
+    public static readonly Guid KSEVENTSETID_Clock = new("364d8e20-62c7-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSEVENTSETID_Connection = new("7f4bcbe0-9ea5-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSEVENTSETID_Device = new("288296ec-9f94-41b4-a153-aa31aeecb33f");
+    
+    public static readonly Guid KSEVENTSETID_DynamicFormatChange = new("162ac456-83d7-4239-96df-c75ffa138bc6");
+    
+    public static readonly Guid KSEVENTSETID_EXTDEV_Command = new("109c7988-b3cb-11d2-b48e-006097b3391b");
+    
+    public static readonly Guid KSEVENTSETID_ExtendedCameraControl = new("571c92c9-13a2-47e3-a649-d2a778166384");
+    
+    public static readonly Guid KSEVENTSETID_LoopedStreaming = new("4682b940-c6ef-11d0-96d8-00aa0051e51d");
+    
+    public static readonly Guid KSEVENTSETID_PinCapsChange = new("dd4f192e-3b78-49ad-a534-2c315b822000");
+    
+    public static readonly Guid KSEVENTSETID_SoundDetector = new("69785c9b-fc2d-49d6-ac32-4799f87de9f6");
+    
+    public static readonly Guid KSEVENTSETID_StreamAllocator = new("75d95571-073c-11d0-a161-0020afd156e4");
+    
+    public static readonly Guid KSEVENTSETID_Telephony = new("b77f12b4-ceb4-4484-8d5e-52c1e7d8762d");
+    
+    public static readonly Guid KSEVENTSETID_VIDCAP_TVAUDIO = new("6a2e0651-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid KSEVENTSETID_VIDCAPTOSTI = new("db47de20-f628-11d1-ba41-00a0c90d2b05");
+    
+    public static readonly Guid KSEVENTSETID_VolumeLimit = new("da168465-3a7c-4858-9d4a-3e8e24701aef");
+    
+    public static readonly Guid KSEVENTSETID_VPNotify = new("20c5598e-d3c8-11d0-8dfc-00c04fd7c08b");
+    
+    public static readonly Guid KSEVENTSETID_VPVBINotify = new("ec529b01-1a1f-11d1-bad9-00609744111a");
+    
     public const uint KSFILTER_FLAG_CRITICAL_PROCESSING = 2;
     
     public const uint KSFILTER_FLAG_DENY_USERMODE_ACCESS = 2147483648;
@@ -16997,9 +18703,31 @@ public static partial class Constants
     
     public const uint KSFRAMETIME_VARIABLESIZE = 1;
     
+    public static readonly Guid KSINTERFACESETID_FileIo = new("8c6f932c-e771-11d0-b8ff-00a0c9223196");
+    
+    public static readonly Guid KSINTERFACESETID_Media = new("3a13eb40-30a7-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSINTERFACESETID_Standard = new("1a8766a0-62ce-11cf-a5d6-28db04c10000");
+    
     public const uint KSMEDIUM_STANDARD_DEVIO = 0;
     
     public const uint KSMEDIUM_TYPE_ANYINSTANCE = 0;
+    
+    public static readonly Guid KSMEDIUMSETID_MidiBus = new("05908040-3246-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSMEDIUMSETID_Standard = new("4747b320-62ce-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSMEDIUMSETID_VPBus = new("a18c15ec-ce43-11d0-abe7-00a0c9223196");
+    
+    public static readonly Guid KSMEMORY_TYPE_DEVICE_UNKNOWN = new("091bb639-603f-11d1-b067-00a0c9062802");
+    
+    public static readonly Guid KSMEMORY_TYPE_KERNEL_NONPAGED = new("4a6d5fc4-7895-11d1-b069-00a0c9062802");
+    
+    public static readonly Guid KSMEMORY_TYPE_KERNEL_PAGED = new("d833f8f8-7894-11d1-b069-00a0c9062802");
+    
+    public static readonly Guid KSMEMORY_TYPE_SYSTEM = new("091bb638-603f-11d1-b067-00a0c9062802");
+    
+    public static readonly Guid KSMEMORY_TYPE_USER = new("8cb0fc28-7893-11d1-b069-00a0c9062802");
     
     public const uint KSMETHOD_TYPE_BASICSUPPORT = 512;
     
@@ -17021,11 +18749,133 @@ public static partial class Constants
     
     public const uint KSMETHOD_WAVE_QUEUED_BREAKLOOP = 1;
     
+    public static readonly Guid KSMETHODSETID_BdaChangeSync = new("fd0a5af3-b41d-11d2-9c95-00c04f7971e0");
+    
+    public static readonly Guid KSMETHODSETID_BdaConditionalAccessService = new("10ced3b4-320b-41bf-9824-1b2e68e71eb9");
+    
+    public static readonly Guid KSMETHODSETID_BdaDebug = new("0d4a90ec-c69d-4ee2-8c5a-fb1f63a50da1");
+    
+    public static readonly Guid KSMETHODSETID_BdaDeviceConfiguration = new("71985f45-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSMETHODSETID_BdaDrmService = new("bff6b5bb-b0ae-484c-9dca-73528fb0b46e");
+    
+    public static readonly Guid KSMETHODSETID_BdaEventing = new("f99492da-6193-4eb0-8690-6686cbff713e");
+    
+    public static readonly Guid KSMETHODSETID_BdaGuideDataDeliveryService = new("8d9d5562-1589-417d-99ce-ac531dda19f9");
+    
+    public static readonly Guid KSMETHODSETID_BdaIsdbConditionalAccess = new("5e68c627-16c2-4e6c-b1e2-d00170cdaa0f");
+    
+    public static readonly Guid KSMETHODSETID_BdaMux = new("942aafec-4c05-4c74-b8eb-8706c2a4943f");
+    
+    public static readonly Guid KSMETHODSETID_BdaNameValue = new("36e07304-9f0d-4e88-9118-ac0ba317b7f2");
+    
+    public static readonly Guid KSMETHODSETID_BdaNameValueA = new("0c24096d-5ff5-47de-a856-062e587e3727");
+    
+    public static readonly Guid KSMETHODSETID_BdaScanning = new("12eb49df-6249-47f3-b190-e21e6e2f8a9c");
+    
+    public static readonly Guid KSMETHODSETID_BdaTSSelector = new("1dcfafe9-b45e-41b3-bb2a-561eb129ae98");
+    
+    public static readonly Guid KSMETHODSETID_BdaTuner = new("b774102f-ac07-478a-8228-2742d961fa7e");
+    
+    public static readonly Guid KSMETHODSETID_BdaUserActivity = new("eda5c834-4531-483c-be0a-94e6c96ff396");
+    
+    public static readonly Guid KSMETHODSETID_BdaWmdrmSession = new("4be6fa3d-07cd-4139-8b80-8c18ba3aec88");
+    
+    public static readonly Guid KSMETHODSETID_BdaWmdrmTuner = new("86d979cf-a8a7-4f94-b5fb-14c0aca68fe6");
+    
+    public static readonly Guid KSMETHODSETID_StreamAllocator = new("cf6e4341-ec87-11cf-a130-0020afd156e4");
+    
+    public static readonly Guid KSMETHODSETID_StreamIo = new("65d003ca-1523-11d2-b27a-00a0c9223196");
+    
+    public static readonly Guid KSMETHODSETID_Wavetable = new("dcef31eb-d907-11d0-9583-00c04fb925d3");
+    
+    public static readonly Guid KSMFT_CATEGORY_AUDIO_DECODER = new("9ea73fb4-ef7a-4559-8d5d-719d8f0426c7");
+    
+    public static readonly Guid KSMFT_CATEGORY_AUDIO_EFFECT = new("11064c48-3648-4ed0-932e-05ce8ac811b7");
+    
+    public static readonly Guid KSMFT_CATEGORY_AUDIO_ENCODER = new("91c64bd0-f91e-4d8c-9276-db248279d975");
+    
+    public static readonly Guid KSMFT_CATEGORY_DEMULTIPLEXER = new("a8700a7a-939b-44c5-99d7-76226b23b3f1");
+    
+    public static readonly Guid KSMFT_CATEGORY_MULTIPLEXER = new("059c561e-05ae-4b61-b69d-55b61ee54a7b");
+    
+    public static readonly Guid KSMFT_CATEGORY_OTHER = new("90175d57-b7ea-4901-aeb3-933a8747756f");
+    
+    public static readonly Guid KSMFT_CATEGORY_VIDEO_DECODER = new("d6c02d4b-6833-45b4-971a-05a4b04bab91");
+    
+    public static readonly Guid KSMFT_CATEGORY_VIDEO_EFFECT = new("12e17c21-532c-4a6e-8a1c-40825a736397");
+    
+    public static readonly Guid KSMFT_CATEGORY_VIDEO_ENCODER = new("f79eac7d-e545-4387-bdee-d647d7bde42a");
+    
+    public static readonly Guid KSMFT_CATEGORY_VIDEO_PROCESSOR = new("302ea3fc-aa5f-47f9-9f7a-c2188bb16302");
+    
     public const uint KSMPEGVIDMODE_LTRBOX = 2;
     
     public const uint KSMPEGVIDMODE_PANSCAN = 1;
     
     public const uint KSMPEGVIDMODE_SCALE = 4;
+    
+    public static readonly Guid KSMUSIC_TECHNOLOGY_FMSYNTH = new("252c5c80-62e9-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSMUSIC_TECHNOLOGY_PORT = new("86c92e60-62e8-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSMUSIC_TECHNOLOGY_SQSYNTH = new("0ecf4380-62e9-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSMUSIC_TECHNOLOGY_SWSYNTH = new("37407736-3620-11d1-85d3-0000f8754380");
+    
+    public static readonly Guid KSMUSIC_TECHNOLOGY_WAVETABLE = new("394ec7c0-62e9-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSNAME_Allocator = new("642f5d00-4791-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSNAME_Clock = new("53172480-4791-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSNAME_Filter = new("9b365890-165f-11d0-a195-0020afd156e4");
+    
+    public static readonly Guid KSNAME_Pin = new("146f1a80-4791-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSNAME_TopologyNode = new("0621061a-ee75-11d0-b915-00a0c9223196");
+    
+    public static readonly Guid KSNODE_BDA_8PSK_DEMODULATOR = new("e957a0e7-dd98-4a3c-810b-3525157ab62e");
+    
+    public static readonly Guid KSNODE_BDA_8VSB_DEMODULATOR = new("71985f4f-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSNODE_BDA_ANALOG_DEMODULATOR = new("634db199-27dd-46b8-acfb-ecc98e61a2ad");
+    
+    public static readonly Guid KSNODE_BDA_COFDM_DEMODULATOR = new("2dac6e05-edbe-4b9c-b387-1b6fad7d6495");
+    
+    public static readonly Guid KSNODE_BDA_COMMON_CA_POD = new("d83ef8fc-f3b8-45ab-8b71-ecf7c339deb4");
+    
+    public static readonly Guid KSNODE_BDA_DRI_DRM = new("4f95ad74-cefb-42d2-94a9-68c5b2c1aabe");
+    
+    public static readonly Guid KSNODE_BDA_IP_SINK = new("71985f4e-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSNODE_BDA_ISDB_S_DEMODULATOR = new("edde230a-9086-432d-b8a5-6670263807e9");
+    
+    public static readonly Guid KSNODE_BDA_ISDB_T_DEMODULATOR = new("fcea3ae3-2cb2-464d-8f5d-305c0bb778a2");
+    
+    public static readonly Guid KSNODE_BDA_OPENCABLE_POD = new("345812a0-fb7c-4790-aa7e-b1db88ac19c9");
+    
+    public static readonly Guid KSNODE_BDA_PBDA_CAS = new("c026869f-7129-4e71-8696-ec8f75299b77");
+    
+    public static readonly Guid KSNODE_BDA_PBDA_DRM = new("9eeebd03-eea1-450f-96ae-633e6de63cce");
+    
+    public static readonly Guid KSNODE_BDA_PBDA_ISDBCAS = new("f2cf2ab3-5b9d-40ae-ab7c-4e7ad0bd1c52");
+    
+    public static readonly Guid KSNODE_BDA_PBDA_MUX = new("f88c7787-6678-4f4b-a13e-da09861d682b");
+    
+    public static readonly Guid KSNODE_BDA_PBDA_TUNER = new("aa5e8286-593c-4979-9494-46a2a9dfe076");
+    
+    public static readonly Guid KSNODE_BDA_PID_FILTER = new("f5412789-b0a0-44e1-ae4f-ee999b1b7fbe");
+    
+    public static readonly Guid KSNODE_BDA_QAM_DEMODULATOR = new("71985f4d-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSNODE_BDA_QPSK_DEMODULATOR = new("6390c905-27c1-4d67-bdb7-77c50d079300");
+    
+    public static readonly Guid KSNODE_BDA_RF_TUNER = new("71985f4c-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSNODE_BDA_TS_SELECTOR = new("5eddf185-fed1-4f45-9685-bbb73c323cfc");
+    
+    public static readonly Guid KSNODE_BDA_VIDEO_ENCODER = new("d98429e3-65c9-4ac4-93aa-766782833b7a");
     
     public const uint KSNODEPIN_AEC_CAPTURE_IN = 2;
     
@@ -17046,6 +18896,208 @@ public static partial class Constants
     public const uint KSNODEPIN_SUM_MUX_IN = 1;
     
     public const uint KSNODEPIN_SUM_MUX_OUT = 0;
+    
+    public static readonly Guid KSNODETYPE_1394_DA_STREAM = new("dff21fe6-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_1394_DV_STREAM_SOUNDTRACK = new("dff21fe7-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_3D_EFFECTS = new("55515860-c559-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_ADC = new("4d837fe0-c555-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_AGC = new("e88c9ba0-c557-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_ANALOG_CONNECTOR = new("dff21fe1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_ANALOG_TAPE = new("dff220e7-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_AUDIO_ENGINE = new("35caf6e4-f3b3-4168-bb4b-55e77a461c7e");
+    
+    public static readonly Guid KSNODETYPE_AUDIO_KEYWORDDETECTOR = new("3817e0b8-df58-4375-b669-c49634331f9d");
+    
+    public static readonly Guid KSNODETYPE_AUDIO_LOOPBACK = new("8f42c0b2-91ce-4bcf-9ccd-0e599037ab35");
+    
+    public static readonly Guid KSNODETYPE_AUDIO_MODULE = new("45aab42e-caeb-4052-8aa9-b38cb5109619");
+    
+    public static readonly Guid KSNODETYPE_BIDIRECTIONAL_UNDEFINED = new("dff21de0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_CABLE_TUNER_AUDIO = new("dff220ee-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_CD_PLAYER = new("dff220e3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_CHORUS = new("20173f20-c559-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_COMMUNICATION_SPEAKER = new("dff21ce6-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DAC = new("507ae360-c554-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_DAT_IO_DIGITAL_AUDIO_TAPE = new("dff220e4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DCC_IO_DIGITAL_COMPACT_CASSETTE = new("dff220e5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DELAY = new("144981e0-c558-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_DEMUX = new("c0eb67d4-e807-11d0-958a-00c04fb925d3");
+    
+    public static readonly Guid KSNODETYPE_DESKTOP_MICROPHONE = new("dff21be2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DESKTOP_SPEAKER = new("dff21ce4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DEV_SPECIFIC = new("941c7ac0-c559-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_DIGITAL_AUDIO_INTERFACE = new("dff21fe2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DISPLAYPORT_INTERFACE = new("e47e4031-3ea6-418d-8f9b-b73843ccba97");
+    
+    public static readonly Guid KSNODETYPE_DOWN_LINE_PHONE = new("dff21ee3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DRM_DESCRAMBLE = new("ffbb6e3f-ccfe-4d84-90d9-421418b03a8e");
+    
+    public static readonly Guid KSNODETYPE_DSS_AUDIO = new("dff220ef-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DVD_AUDIO = new("dff220eb-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_DYN_RANGE_COMPRESSOR = new("08c8a6a8-601f-4af8-8793-d905ff4ca97d");
+    
+    public static readonly Guid KSNODETYPE_ECHO_CANCELING_SPEAKERPHONE = new("dff21de5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_ECHO_SUPPRESSING_SPEAKERPHONE = new("dff21de4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_EMBEDDED_UNDEFINED = new("dff220e0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_EQUALIZATION_NOISE = new("dff220e2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_EQUALIZER = new("9d41b4a0-c557-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_EXTERNAL_UNDEFINED = new("dff21fe0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_FM_RX = new("834a733c-f485-41c0-a62b-513025014e40");
+    
+    public static readonly Guid KSNODETYPE_HANDSET = new("dff21de1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_HDMI_INTERFACE = new("d1b9cc2a-f519-417f-91c9-55fa65481001");
+    
+    public static readonly Guid KSNODETYPE_HEAD_MOUNTED_DISPLAY_AUDIO = new("dff21ce3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_HEADPHONES = new("dff21ce2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_HEADSET = new("dff21de2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_INPUT_UNDEFINED = new("dff21be0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_LEGACY_AUDIO_CONNECTOR = new("dff21fe4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_LEVEL_CALIBRATION_NOISE_SOURCE = new("dff220e1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_LINE_CONNECTOR = new("dff21fe3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_LOUDNESS = new("41887440-c558-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_LOW_FREQUENCY_EFFECTS_SPEAKER = new("dff21ce7-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_MICROPHONE = new("dff21be1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_MICROPHONE_ARRAY = new("dff21be5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_MIDI_ELEMENT = new("01c6fe66-6e48-4c65-ac9b-52db5d656c7e");
+    
+    public static readonly Guid KSNODETYPE_MIDI_JACK = new("265e0c3f-fa39-4df3-ab04-be01b91e299a");
+    
+    public static readonly Guid KSNODETYPE_MINIDISK = new("dff220e6-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_MULTITRACK_RECORDER = new("dff220f2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_MUTE = new("02b223c0-c557-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_MUX = new("2ceaf780-c556-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_NOISE_SUPPRESS = new("e07f903f-62fd-4e60-8cdd-dea7236665b5");
+    
+    public static readonly Guid KSNODETYPE_OMNI_DIRECTIONAL_MICROPHONE = new("dff21be4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_OUTPUT_UNDEFINED = new("dff21ce0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_PARAMETRIC_EQUALIZER = new("19bb3a6a-ce2b-4442-87ec-6727c3cab477");
+    
+    public static readonly Guid KSNODETYPE_PEAKMETER = new("a085651e-5f0d-4b36-a869-d195d6ab4b9e");
+    
+    public static readonly Guid KSNODETYPE_PERSONAL_MICROPHONE = new("dff21be3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_PHONE_LINE = new("dff21ee1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_PHONOGRAPH = new("dff220e8-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_PROCESSING_MICROPHONE_ARRAY = new("dff21be6-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_PROLOGIC_DECODER = new("831c2c80-c558-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_PROLOGIC_ENCODER = new("8074c5b2-3c66-11d2-b45a-3078302c2030");
+    
+    public static readonly Guid KSNODETYPE_RADIO_RECEIVER = new("dff220f0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_RADIO_TRANSMITTER = new("dff220f1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_REVERB = new("ef0328e0-c558-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_ROOM_SPEAKER = new("dff21ce5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_SATELLITE_RECEIVER_AUDIO = new("dff220ed-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_SPDIF_INTERFACE = new("dff21fe5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_SPEAKER = new("dff21ce1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_SPEAKERPHONE_NO_ECHO_REDUCTION = new("dff21de3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_SPEAKERS_STATIC_JACK = new("28e04f87-4dbe-4f8d-8589-025d209dfb4a");
+    
+    public static readonly Guid KSNODETYPE_SRC = new("9db7b9e0-c555-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_STEREO_WIDE = new("a9e69800-c558-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_SUM = new("da441a60-c556-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_SUPERMIX = new("e573adc0-c555-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_SYNTHESIZER = new("dff220f3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_TELEPHONE = new("dff21ee2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_TELEPHONY_BIDI = new("686d7cc0-d903-4258-b443-3a3d3580741c");
+    
+    public static readonly Guid KSNODETYPE_TELEPHONY_UNDEFINED = new("dff21ee0-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_TONE = new("7607e580-c557-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNODETYPE_TV_TUNER_AUDIO = new("dff220ec-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_UPDOWN_MIX = new("b7edc5cf-7b63-4ee2-a100-29ee2cb6b2de");
+    
+    public static readonly Guid KSNODETYPE_VCR_AUDIO = new("dff220e9-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_CAMERA_TERMINAL = new("dff229e6-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_DISC_AUDIO = new("dff220ea-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_INPUT_MTT = new("dff229e7-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_INPUT_TERMINAL = new("dff229e2-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_OUTPUT_MTT = new("dff229e8-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_OUTPUT_TERMINAL = new("dff229e3-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_PROCESSING = new("dff229e5-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_SELECTOR = new("dff229e4-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VIDEO_STREAMING = new("dff229e1-f70f-11d0-b917-00a0c9223196");
+    
+    public static readonly Guid KSNODETYPE_VOLUME = new("3a5acc00-c557-11d0-8a2b-00a0c9255ac1");
+    
+    public static readonly Guid KSNOTIFICATIONID_AudioModule = new("9c2220f0-d9a6-4d5c-a036-573857fd50d2");
+    
+    public static readonly Guid KSNOTIFICATIONID_SoundDetector = new("6389d844-bb32-4c4c-a802-f4b4b77afead");
     
     public const uint KSPIN_FLAG_ASYNCHRONOUS_PROCESSING = 8;
     
@@ -17225,6 +19277,150 @@ public static partial class Constants
     
     public static readonly Guid KSPROPERTYSETID_ANYCAMERACONTROL = new("94dd0c30-28c7-4efb-9d6b-812300fb0c7f");
     
+    public static readonly Guid KSPROPERTYSETID_ExtendedCameraControl = new("1cb79112-c0d2-4213-9ca6-cd4fdb927972");
+    
+    public static readonly Guid KSPROPERTYSETID_NetworkCameraControl = new("0e780f09-5745-4e3a-bc9f-f226ea43a6ec");
+    
+    public static readonly Guid KSPROPERTYSETID_PerFrameSettingControl = new("f1f3e261-dee6-4537-bff5-ee206db54aac");
+    
+    public static readonly Guid KSPROPSETID_AC3 = new("bfabe720-6e1f-11d0-bcf2-444553540000");
+    
+    public static readonly Guid KSPROPSETID_Audio = new("45ffaaa0-6e1b-11d0-bcf2-444553540000");
+    
+    public static readonly Guid KSPROPSETID_AudioBufferDuration = new("4e73c07f-23cc-4955-a7ea-3da502496290");
+    
+    public static readonly Guid KSPROPSETID_AudioDecoderOut = new("6ca6e020-43bd-11d0-bd6a-003505c103a9");
+    
+    public static readonly Guid KSPROPSETID_AudioEngine = new("3a2f82dc-886f-4baa-9eb4-082b9025c536");
+    
+    public static readonly Guid KSPROPSETID_AudioModule = new("c034fdb0-ff75-47c8-aa3c-ee46716b50c6");
+    
+    public static readonly Guid KSPROPSETID_AudioPosture = new("a3fb7b0d-474e-4f51-a379-51282dd4fa8f");
+    
+    public static readonly Guid KSPROPSETID_AudioResourceManagement = new("d0b305e1-b2cc-484c-8f23-e5d28ad9cf88");
+    
+    public static readonly Guid KSPROPSETID_AudioSignalProcessing = new("4f67b528-30c9-40de-b2fb-859ddd1f3470");
+    
+    public static readonly Guid KSPROPSETID_BdaAutodemodulate = new("ddf15b12-bd25-11d2-9ca0-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaCA = new("b0693766-5278-4ec6-b9e1-3ce40560ef5a");
+    
+    public static readonly Guid KSPROPSETID_BdaDigitalDemodulator = new("ef30f379-985b-4d10-b640-a79d5e04e1e0");
+    
+    public static readonly Guid KSPROPSETID_BdaDiseqCommand = new("f84e2ab0-3c6b-45e3-a0fc-8669d4b81f11");
+    
+    public static readonly Guid KSPROPSETID_BdaEthernetFilter = new("71985f43-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaFrequencyFilter = new("71985f47-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaIPv4Filter = new("71985f44-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaIPv6Filter = new("e1785a74-2a23-4fb3-9245-a8f88017ef33");
+    
+    public static readonly Guid KSPROPSETID_BdaLNBInfo = new("992cf102-49f9-4719-a664-c4f23e2408f4");
+    
+    public static readonly Guid KSPROPSETID_BdaNullTransform = new("ddf15b0d-bd25-11d2-9ca0-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaPIDFilter = new("d0a67d65-08df-4fec-8533-e5b550410b85");
+    
+    public static readonly Guid KSPROPSETID_BdaPinControl = new("0ded49d5-a8b7-4d5d-97a1-12b0c195874d");
+    
+    public static readonly Guid KSPROPSETID_BdaSignalStats = new("1347d106-cf3a-428a-a5cb-ac0d9a2a4338");
+    
+    public static readonly Guid KSPROPSETID_BdaTableSection = new("516b99c5-971c-4aaf-b3f3-d9fda8a15e16");
+    
+    public static readonly Guid KSPROPSETID_BdaTopology = new("a14ee835-0a23-11d3-9cc7-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_BdaVoidTransform = new("71985f46-1ca1-11d3-9cc8-00c04f7971e0");
+    
+    public static readonly Guid KSPROPSETID_Bibliographic = new("07ba150e-e2b1-11d0-ac17-00a0c9223196");
+    
+    public static readonly Guid KSPROPSETID_BtAudio = new("7fa06c40-b8f6-4c7e-8556-e8c33a12e54d");
+    
+    public static readonly Guid KSPROPSETID_Clock = new("df12a4c0-ac17-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSPROPSETID_Connection = new("1d58c920-ac9b-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSPROPSETID_CopyProt = new("0e8a0a40-6aef-11d0-9ed0-00a024ca19b3");
+    
+    public static readonly Guid KSPROPSETID_Cyclic = new("3ffeaea0-2bee-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSPROPSETID_DirectSound3DBuffer = new("437b3411-d060-11d0-8583-00c04fd9baf3");
+    
+    public static readonly Guid KSPROPSETID_DirectSound3DListener = new("437b3414-d060-11d0-8583-00c04fd9baf3");
+    
+    public static readonly Guid KSPROPSETID_DrmAudioStream = new("2f2c8ddd-4198-4fac-ba29-61bb05b7de06");
+    
+    public static readonly Guid KSPROPSETID_DvdSubPic = new("ac390460-43af-11d0-bd6a-003505c103a9");
+    
+    public static readonly Guid KSPROPSETID_FMRXControl = new("947bba3a-e8ee-4786-90c4-8428185f05be");
+    
+    public static readonly Guid KSPROPSETID_FMRXTopology = new("0c46ce8f-dc2d-4204-9dc9-f58963366563");
+    
+    public static readonly Guid KSPROPSETID_General = new("1464eda5-6a8f-11d1-9aa7-00a0c9223196");
+    
+    public static readonly Guid KSPROPSETID_Hrtf3d = new("b66decb0-a083-11d0-851e-00c04fd9baf3");
+    
+    public static readonly Guid KSPROPSETID_InterleavedAudio = new("e9ebe550-d619-4c0a-976b-7062322b3006");
+    
+    public static readonly Guid KSPROPSETID_Itd3d = new("6429f090-9fd9-11d0-a75b-00a0c90365e3");
+    
+    public static readonly Guid KSPROPSETID_Jack = new("4509f757-2d46-4637-8e62-ce7db944f57b");
+    
+    public static readonly Guid KSPROPSETID_MediaSeeking = new("ee904f0c-d09b-11d0-abe9-00a0c9223196");
+    
+    public static readonly Guid KSPROPSETID_MemoryTransport = new("0a3d1c5d-5243-4819-9ed0-aee8044cee2b");
+    
+    public static readonly Guid KSPROPSETID_Mpeg2Vid = new("c8e11b60-0cc9-11d0-bd69-003505c103a9");
+    
+    public static readonly Guid KSPROPSETID_MPEG4_MediaType_Attributes = new("ff6c4bfa-07a9-4c7b-a237-672f9d68065f");
+    
+    public static readonly Guid KSPROPSETID_OPMVideoOutput = new("06f414bb-f43a-4fe2-a566-774b4c81f0db");
+    
+    public static readonly Guid KSPROPSETID_OverlayUpdate = new("490ea5cf-7681-11d1-a21c-00a0c9223196");
+    
+    public static readonly Guid KSPROPSETID_Pin = new("8c134960-51ad-11cf-878a-94f801c10000");
+    
+    public static readonly Guid KSPROPSETID_PinMDLCacheClearProp = new("bd718a7b-97fc-40c7-88ce-d3ff06f55b16");
+    
+    public static readonly Guid KSPROPSETID_Quality = new("d16ad380-ac1a-11cf-a5d6-28db04c10000");
+    
+    public static readonly Guid KSPROPSETID_RtAudio = new("a855a48c-2f78-4729-9051-1968746b9eef");
+    
+    public static readonly Guid KSPROPSETID_SoundDetector = new("113c425e-fd17-4057-b422-ed4074f1afdf");
+    
+    public static readonly Guid KSPROPSETID_SoundDetector2 = new("fe07e322-450c-4bd5-84ca-a948500ea6aa");
+    
+    public static readonly Guid KSPROPSETID_Stream = new("65aaba60-98ae-11cf-a10d-0020afd156e4");
+    
+    public static readonly Guid KSPROPSETID_StreamAllocator = new("cf6e4342-ec87-11cf-a130-0020afd156e4");
+    
+    public static readonly Guid KSPROPSETID_StreamInterface = new("1fdd8ee1-9cd3-11d0-82aa-0000f822fe8a");
+    
+    public static readonly Guid KSPROPSETID_TelephonyControl = new("b6df7eb1-d099-489f-a6a0-c0106f0887a7");
+    
+    public static readonly Guid KSPROPSETID_TelephonyTopology = new("abf25c7e-0e64-4e32-b190-d0f6d7c53e97");
+    
+    public static readonly Guid KSPROPSETID_Topology = new("720d4ac0-7533-11d0-a5d6-28db04c10000");
+    
+    public static readonly Guid KSPROPSETID_TopologyNode = new("45ffaaa1-6e1b-11d0-bcf2-444553540000");
+    
+    public static readonly Guid KSPROPSETID_TSRateChange = new("a503c5c0-1d1d-11d1-ad80-444553540000");
+    
+    public static readonly Guid KSPROPSETID_VBICAP_PROPERTIES = new("f162c607-7b35-496f-ad7f-2dca3b46b718");
+    
+    public static readonly Guid KSPROPSETID_VBICodecFiltering = new("cafeb0ca-8715-11d0-bd6a-0035c0edbabe");
+    
+    public static readonly Guid KSPROPSETID_VPConfig = new("bc29a660-30e3-11d0-9e69-00c04fd7c15b");
+    
+    public static readonly Guid KSPROPSETID_VPVBIConfig = new("ec529b00-1a1f-11d1-bad9-00609744111a");
+    
+    public static readonly Guid KSPROPSETID_VramCapture = new("e73face3-2880-4902-b799-88d0cd634e0f");
+    
+    public static readonly Guid KSPROPSETID_Wave = new("924e54b0-630f-11cf-ada7-08003e30494a");
+    
+    public static readonly Guid KSPROPTYPESETID_General = new("97e99ba0-bdea-11cf-a5d6-28db04c10000");
+    
     public const uint KSRATE_NOPRESENTATIONDURATION = 2;
     
     public const uint KSRATE_NOPRESENTATIONSTART = 1;
@@ -17297,6 +19493,16 @@ public static partial class Constants
     
     public const string KSSTRING_TopologyNode = @"{0621061A-EE75-11D0-B915-00A0C9223196}";
     
+    public static readonly Guid KSTIME_FORMAT_BYTE = new("7b785571-8c82-11cf-bc0c-00aa00ac74f6");
+    
+    public static readonly Guid KSTIME_FORMAT_FIELD = new("7b785573-8c82-11cf-bc0c-00aa00ac74f6");
+    
+    public static readonly Guid KSTIME_FORMAT_FRAME = new("7b785570-8c82-11cf-bc0c-00aa00ac74f6");
+    
+    public static readonly Guid KSTIME_FORMAT_MEDIA_TIME = new("7b785574-8c82-11cf-bc0c-00aa00ac74f6");
+    
+    public static readonly Guid KSTIME_FORMAT_SAMPLE = new("7b785572-8c82-11cf-bc0c-00aa00ac74f6");
+    
     public const uint KSWAVE_BUFFER_ATTRIBUTEF_LOOPING = 1;
     
     public const uint KSWAVE_BUFFER_ATTRIBUTEF_STATIC = 2;
@@ -17313,6 +19519,8 @@ public static partial class Constants
     
     public const uint LA_STYLED = 8;
     
+    public static readonly Guid LanguageComponentType = new("1be49f30-0e1b-11d3-9d8e-00c04f72d980");
+    
     public static readonly Guid LevelsEffectGuid = new("99c354ec-2a31-4f3a-8c34-17a803b33a25");
     
     public static readonly Guid LIBID_QuartzNetTypeLib = new("56a868b1-0ad4-11ce-b03a-0020af0ba770");
@@ -17320,6 +19528,8 @@ public static partial class Constants
     public static readonly Guid LIBID_QuartzTypeLib = new("56a868b0-0ad4-11ce-b03a-0020af0ba770");
     
     public const uint LOCAL_D3DFMT_DEFINES = 1;
+    
+    public static readonly Guid Locator = new("0888c883-ac4f-4943-b516-2c38d9b34562");
     
     public static readonly Guid LOOK_DOWNSTREAM_ONLY = new("ac798be1-98e3-11d1-b3f1-00aa003761c5");
     
@@ -19044,6 +21254,10 @@ public static partial class Constants
     public const uint MDSP_WRITE = 2;
     
     public static readonly Guid MEDeviceStreamCreated = new("0252a1cf-3540-43b4-9164-d72eb405fa40");
+    
+    public static readonly Guid MediaDevMgr = new("25baad81-3560-11d3-8471-00c04f79dbc0");
+    
+    public static readonly Guid MediaDevMgrClassFactory = new("50040c1d-bdbf-4924-b873-f14d6c5bfd66");
     
     public const uint MEDIASINK_CAN_PREROLL = 16;
     
@@ -20809,6 +23023,10 @@ public static partial class Constants
     
     public static readonly Guid MF_XVP_SAMPLE_LOCK_TIMEOUT = new("aa4ddb29-5134-4363-ac72-83ec4bc10426");
     
+    public static readonly Guid MFAMRNBByteStreamHandler = new("efe6208a-0a2c-49fa-8a01-3768b559b6da");
+    
+    public static readonly Guid MFAMRNBSinkClassFactory = new("b0271158-70d2-4c5b-9f94-76f549d90fdf");
+    
     public const uint MFASF_DEFAULT_BUFFER_WINDOW_MS = 3000;
     
     public const uint MFASF_INVALID_STREAM_NUMBER = 128;
@@ -21064,6 +23282,10 @@ public static partial class Constants
     public static readonly Guid MFENABLETYPE_WMDRMV7_LicenseAcquisition = new("003306df-4a06-4884-a097-ef6d22ec84a3");
     
     public const uint MFEVRDLL = 0;
+    
+    public static readonly Guid MFFLACBytestreamHandler = new("0e41cfb8-0506-40f4-a516-77cc23642d91");
+    
+    public static readonly Guid MFFLACSinkClassFactory = new("7d39c56f-6075-47c9-9bae-8cf9e531b5f5");
     
     public static readonly Guid MFImageFormat_JPEG = new("19e4a5aa-5662-4fc5-a0c0-1758028e1057");
     
@@ -25135,6 +27357,8 @@ public static partial class Constants
     
     public const uint MM_ZYXEL_ACM_ADPCM = 1;
     
+    public static readonly Guid MMDeviceEnumerator = new("bcde0395-e52f-467c-8e3d-c4579291692e");
+    
     public const uint MMIO_ALLOCBUF = 65536;
     
     public const uint MMIO_COMPAT = 0;
@@ -25359,6 +27583,8 @@ public static partial class Constants
     
     public const uint MODM_USER = 16384;
     
+    public static readonly Guid MP3ACMCodecWrapper = new("11103421-354c-4cca-a7a3-1aff9a5b6701");
+    
     public const uint MPBOOL_FALSE = 0;
     
     public const uint MPBOOL_TRUE = 1;
@@ -25394,6 +27620,20 @@ public static partial class Constants
     public const uint MPEG2_PROGRAM_STREAM_MAP = 0;
     
     public const uint MPEG2_PROGRAM_SYSTEM_HEADER = 5;
+    
+    public static readonly Guid MPEG2Component = new("055cb2d7-2969-45cd-914b-76890722f112");
+    
+    public static readonly Guid MPEG2ComponentType = new("418008f3-cf67-4668-9628-10dc52be1d08");
+    
+    public static readonly Guid Mpeg2Data = new("c666e115-bb62-4027-a113-82d643fe2d99");
+    
+    public static readonly Guid Mpeg2DataLib = new("dbaf6c1b-b6a4-4898-ae65-204f0d9509a1");
+    
+    public static readonly Guid Mpeg2Stream = new("f91d96c7-8509-4d0b-ab26-a0dd10904bb7");
+    
+    public static readonly Guid MPEG2TuneRequest = new("0955ac62-bf2e-4cba-a2b9-a63f772d46cf");
+    
+    public static readonly Guid MPEG2TuneRequestFactory = new("2c63e4eb-4cea-41b8-919c-e947ea19a77c");
     
     public const uint MPEGLAYER3_ID_CONSTANTFRAMESIZE = 2;
     
@@ -25439,15 +27679,145 @@ public static partial class Constants
     
     public const uint MS_SHAREDACCESS = 2;
     
+    public static readonly Guid MSAMRNBDecoder = new("265011ae-5481-4f77-a295-abb6ffe8d63e");
+    
+    public static readonly Guid MSAMRNBEncoder = new("2fae8afe-04a3-423a-a814-85db454712b0");
+    
     public const uint MSAUDIO1_BITS_PER_SAMPLE = 16;
     
     public const uint MSAUDIO1_MAX_CHANNELS = 2;
+    
+    public static readonly Guid MSEventBinder = new("577faa18-4518-445e-8f70-1473f8cf4ba4");
     
     public static readonly Guid MSPID_PrimaryAudio = new("a35ff56b-9fda-11d0-8fdf-00c04fd9189d");
     
     public static readonly Guid MSPID_PrimaryVideo = new("a35ff56a-9fda-11d0-8fdf-00c04fd9189d");
     
     public static readonly Guid MSTapeDeviceGUID = new("8c0f6af2-0edb-44c1-8aeb-59040bd830ed");
+    
+    public static readonly Guid MSVidAnalogCaptureToCCA = new("942b7909-a28e-49a1-a207-34ebcbcb4b3b");
+    
+    public static readonly Guid MSVidAnalogCaptureToDataServices = new("c5702cd6-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidAnalogCaptureToOverlayMixer = new("e18af75a-08af-11d3-b64a-00c04f79498e");
+    
+    public static readonly Guid MSVidAnalogCaptureToStreamBufferSink = new("9f50e8b1-9530-4ddc-825e-1af81d47aed6");
+    
+    public static readonly Guid MSVidAnalogCaptureToXDS = new("3540d440-5b1d-49cb-821a-e84b8cf065a7");
+    
+    public static readonly Guid MSVidAnalogTunerDevice = new("1c15d484-911d-11d2-b632-00c04f79498e");
+    
+    public static readonly Guid MSVidAnalogTVToEncoder = new("28953661-0231-41db-8986-21ff4388ee9b");
+    
+    public static readonly Guid MSVidAudioRenderer = new("37b03544-a4c8-11d2-b634-00c04f79498e");
+    
+    public static readonly Guid MSVidAudioRendererDevices = new("c5702ccf-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidBDATunerDevice = new("a2e3074e-6c3d-11d3-b653-00c04f79498e");
+    
+    public static readonly Guid MSVidCCA = new("86151827-e47b-45ee-8421-d10e6e690979");
+    
+    public static readonly Guid MSVidCCAToStreamBufferSink = new("3ef76d68-8661-4843-8b8f-c37163d8c9ce");
+    
+    public static readonly Guid MSVidCCToAR = new("d76334ca-d89e-4baf-86ab-ddb59372afc2");
+    
+    public static readonly Guid MSVidCCToVMR = new("c4bf2784-ae00-41ba-9828-9c953bd3c54a");
+    
+    public static readonly Guid MSVidClosedCaptioning = new("7f9cb14d-48e4-43b6-9346-1aebc39c64d3");
+    
+    public static readonly Guid MSVidClosedCaptioningSI = new("92ed88bf-879e-448f-b6b6-a385bceb846d");
+    
+    public static readonly Guid MSVidCtl = new("b0edf163-910a-11d2-b632-00c04f79498e");
+    
+    public static readonly Guid MSVidDataServices = new("334125c0-77e5-11d3-b653-00c04f79498e");
+    
+    public static readonly Guid MSVidDataServicesToStreamBufferSink = new("38f03426-e83b-4e68-b65b-dcae73304838");
+    
+    public static readonly Guid MSVidDataServicesToXDS = new("0429ec6e-1144-4bed-b88b-2fb9899a4a3d");
+    
+    public static readonly Guid MSVidDevice = new("6e40476f-9c49-4c3e-8bb9-8587958eff74");
+    
+    public static readonly Guid MSVidDevice2 = new("30997f7d-b3b5-4a1c-983a-1fe8098cb77d");
+    
+    public static readonly Guid MSVidDigitalCaptureToCCA = new("73d14237-b9db-4efa-a6dd-84350421fb2f");
+    
+    public static readonly Guid MSVidDigitalCaptureToITV = new("5d8e73f7-4989-4ac8-8a98-39ba0d325302");
+    
+    public static readonly Guid MSVidDigitalCaptureToStreamBufferSink = new("abe40035-27c3-4a2f-8153-6624471608af");
+    
+    public static readonly Guid MSVidEncoder = new("bb530c63-d9df-4b49-9439-63453962e598");
+    
+    public static readonly Guid MSVidEncoderToStreamBufferSink = new("a0b9b497-afbc-45ad-a8a6-9b077c40d4f2");
+    
+    public static readonly Guid MSVidEVR = new("c45268a2-fa81-4e19-b1e3-72edbd60aeda");
+    
+    public static readonly Guid MSVidFeature = new("7748530b-c08a-47ea-b24c-be8695ff405f");
+    
+    public static readonly Guid MSVidFeatures = new("c5702cd0-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidFilePlaybackDevice = new("37b0353c-a4c8-11d2-b634-00c04f79498e");
+    
+    public static readonly Guid MSVidFilePlaybackToAudioRenderer = new("cc23f537-18d4-4ece-93bd-207a84726979");
+    
+    public static readonly Guid MSVidFilePlaybackToVideoRenderer = new("b401c5eb-8457-427f-84ea-a4d2363364b0");
+    
+    public static readonly Guid MSVidGenericComposite = new("2764bce5-cc39-11d2-b639-00c04f79498e");
+    
+    public static readonly Guid MSVidGenericSink = new("4a5869cf-929d-4040-ae03-fcafc5b9cd42");
+    
+    public static readonly Guid MSVidInputDevice = new("ac1972f2-138a-4ca3-90da-ae51112eda28");
+    
+    public static readonly Guid MSVidInputDevices = new("c5702ccc-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidITVCapture = new("5740a302-ef0b-45ce-bf3b-4470a14a8980");
+    
+    public static readonly Guid MSVidITVPlayback = new("9e797ed0-5253-4243-a9b7-bd06c58f8ef3");
+    
+    public static readonly Guid MSVidITVToStreamBufferSink = new("92b94828-1af7-4e6e-9ebf-770657f77af5");
+    
+    public static readonly Guid MSVidMPEG2DecoderToClosedCaptioning = new("6ad28ee1-5002-4e71-aaf7-bd077907b1a4");
+    
+    public static readonly Guid MSVidOutput = new("87eb890d-03ad-4e9d-9866-376e5ec572ed");
+    
+    public static readonly Guid MSVidOutputDevices = new("c5702ccd-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidRect = new("cb4276e6-7d5f-4cf1-9727-629c5e6db6ae");
+    
+    public static readonly Guid MSVidSBESourceToCC = new("9193a8f9-0cba-400e-aa97-eb4709164576");
+    
+    public static readonly Guid MSVidSBESourceToGenericSink = new("991da7e5-953f-435b-be5e-b92a05edfc42");
+    
+    public static readonly Guid MSVidSBESourceToITV = new("2291478c-5ee3-4bef-ab5d-b5ff2cf58352");
+    
+    public static readonly Guid MSVidStreamBufferRecordingControl = new("caafdd83-cefc-4e3d-ba03-175f17a24f91");
+    
+    public static readonly Guid MSVidStreamBufferSink = new("9e77aac4-35e5-42a1-bdc2-8f3ff399847c");
+    
+    public static readonly Guid MSVidStreamBufferSource = new("ad8e510d-217f-409b-8076-29c5e73b98e8");
+    
+    public static readonly Guid MSVidStreamBufferSourceToVideoRenderer = new("3c4708dc-b181-46a8-8da8-4ab0371758cd");
+    
+    public static readonly Guid MSVidStreamBufferV2Source = new("fd351ea1-4173-4af4-821d-80d4ae979048");
+    
+    public static readonly Guid MSVidVideoInputDevice = new("95f4820b-bb3a-4e2d-bc64-5b817bc2c30e");
+    
+    public static readonly Guid MSVidVideoPlaybackDevice = new("1990d634-1a5e-4071-a34a-53aaffce9f36");
+    
+    public static readonly Guid MSVidVideoRenderer = new("37b03543-a4c8-11d2-b634-00c04f79498e");
+    
+    public static readonly Guid MSVidVideoRendererDevices = new("c5702cce-9b79-11d3-b654-00c04f79498e");
+    
+    public static readonly Guid MSVidVMR9 = new("24dc3975-09bf-4231-8655-3ee71f43837d");
+    
+    public static readonly Guid MSVidWebDVD = new("011b3619-fe63-4814-8a84-15a194ce9ce3");
+    
+    public static readonly Guid MSVidWebDVDAdm = new("fa7c375b-66a7-4280-879d-fd459c84bb02");
+    
+    public static readonly Guid MSVidWebDVDToAudioRenderer = new("8d04238e-9fd1-41c6-8de3-9e1ee309e935");
+    
+    public static readonly Guid MSVidWebDVDToVideoRenderer = new("267db0b3-55e3-4902-949b-df8f5cec0191");
+    
+    public static readonly Guid MSVidXDS = new("0149eedf-d08f-4142-8d73-d23903d21e90");
     
     public const uint MTP_COMMAND_MAX_PARAMS = 5;
     
@@ -25460,6 +27830,8 @@ public static partial class Constants
     public const uint MTP_RESPONSE_MAX_PARAMS = 5;
     
     public const ushort MTP_RESPONSE_OK = 8193;
+    
+    public static readonly Guid MULawCodecWrapper = new("92b66080-5e2d-449e-90c4-c41f268e5514");
     
     public const uint MXDM_BASE = 1;
     
@@ -25573,6 +27945,8 @@ public static partial class Constants
     
     public const uint PARENTAL_CONTROL_VALUE_UNDEFINED = 0;
     
+    public static readonly Guid PBDA_ALWAYS_TUNE_IN_MUX = new("1e1d7141-583f-4ac2-b019-1f430eda0f4c");
+    
     public static readonly Guid PBDA_AUX_CONNECTOR_TYPE_Composite = new("f6298b4c-c725-4d42-849b-410bbb14ea62");
     
     public static readonly Guid PBDA_AUX_CONNECTOR_TYPE_SVideo = new("a0e905f4-24c9-4a54-b761-213355efc13a");
@@ -25617,6 +27991,8 @@ public static partial class Constants
     
     public const uint PD_STRETCHDIB_1_N_OK = 16;
     
+    public static readonly Guid PersistTuneXmlUtility = new("e77026b0-b97f-4cbb-b7fb-f4f03ad69f11");
+    
     public const uint PFINDEX_UNINITIALIZED = 0;
     
     public const uint PHOTOACQ_ABORT_ON_SETTINGS_UPDATE = 2048;
@@ -25647,6 +28023,18 @@ public static partial class Constants
     
     public const uint PHOTOACQ_RUN_DEFAULT = 0;
     
+    public static readonly Guid PhotoAcquire = new("00f26e02-e9f2-4a9f-9fdd-5a962fb26a98");
+    
+    public static readonly Guid PhotoAcquireAutoPlayDropTarget = new("00f20eb5-8fd6-4d9d-b75e-36801766c8f1");
+    
+    public static readonly Guid PhotoAcquireAutoPlayHWEventHandler = new("00f2b433-44e4-4d88-b2b0-2698a0a91dba");
+    
+    public static readonly Guid PhotoAcquireDeviceSelectionDialog = new("00f29a34-b8a1-482c-bcf8-3ac7b0fe8f62");
+    
+    public static readonly Guid PhotoAcquireOptionsDialog = new("00f210a1-62f0-438b-9f7e-9618d72a1831");
+    
+    public static readonly Guid PhotoProgressDialog = new("00f24ca0-748f-4e8a-894f-0e0357c6799f");
+    
     public const uint PHYSICAL_MONITOR_DESCRIPTION_SIZE = 128;
     
     public static readonly Guid PIN_CATEGORY_ANALOGVIDEOIN = new("fb6c4283-0353-11d1-905f-0000c0cc16ba");
@@ -25672,6 +28060,60 @@ public static partial class Constants
     public static readonly Guid PIN_CATEGORY_VIDEOPORT = new("fb6c4285-0353-11d1-905f-0000c0cc16ba");
     
     public static readonly Guid PIN_CATEGORY_VIDEOPORT_VBI = new("fb6c428c-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_BDA_ANALOG_AUDIO = new("d28a580a-9b1f-4b0c-9c33-9bf0a8ea636b");
+    
+    public static readonly Guid PINNAME_BDA_ANALOG_VIDEO = new("5c0c8281-5667-486c-8482-63e31f01a6e9");
+    
+    public static readonly Guid PINNAME_BDA_FM_RADIO = new("d2855fed-b2d3-4eeb-9bd0-193436a2f890");
+    
+    public static readonly Guid PINNAME_BDA_IF_PIN = new("1a9d4a42-f3cd-48a1-9aea-71de133cbe14");
+    
+    public static readonly Guid PINNAME_BDA_OPENCABLE_PSIP_PIN = new("297bb104-e5c9-4ace-b123-95c3cbb24d4f");
+    
+    public static readonly Guid PINNAME_BDA_TRANSPORT = new("78216a81-cfa8-493e-9711-36a61c08bd9d");
+    
+    public static readonly Guid PINNAME_DISPLAYPORT_OUT = new("21fbb329-1a4a-48da-a076-2318a3c59b26");
+    
+    public static readonly Guid PINNAME_HDMI_OUT = new("387bfc03-e7ef-4901-86e0-35b7c32b00ef");
+    
+    public static readonly Guid PINNAME_IMAGE = new("38a0cd98-d49b-4ce8-b48a-344667a17830");
+    
+    public static readonly Guid PINNAME_IPSINK_INPUT = new("3fdffa70-ac9a-11d2-8f17-00c04f7971e2");
+    
+    public static readonly Guid PINNAME_MPE = new("c1b06d73-1dbb-11d3-8f46-00c04f7971e2");
+    
+    public static readonly Guid PINNAME_SPDIF_IN = new("15dc9025-22ad-41b3-8875-f4ceb0299e20");
+    
+    public static readonly Guid PINNAME_SPDIF_OUT = new("3a264481-e52c-4b82-8e7a-c8e2f91dc380");
+    
+    public static readonly Guid PINNAME_VIDEO_ANALOGVIDEOIN = new("fb6c4283-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_CAPTURE = new("fb6c4281-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_CC = new("fb6c4289-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_CC_CAPTURE = new("1aad8061-012d-11d2-b4b1-00a0d102cfbe");
+    
+    public static readonly Guid PINNAME_VIDEO_EDS = new("fb6c4287-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_NABTS = new("fb6c4286-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_NABTS_CAPTURE = new("29703660-498a-11d2-b4b1-00a0d102cfbe");
+    
+    public static readonly Guid PINNAME_VIDEO_PREVIEW = new("fb6c4282-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_STILL = new("fb6c428a-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_TELETEXT = new("fb6c4288-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_TIMECODE = new("fb6c428b-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_VBI = new("fb6c4284-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_VIDEOPORT = new("fb6c4285-0353-11d1-905f-0000c0cc16ba");
+    
+    public static readonly Guid PINNAME_VIDEO_VIDEOPORT_VBI = new("fb6c428c-0353-11d1-905f-0000c0cc16ba");
     
     public const uint PipeFactor_Align = 512;
     
@@ -25824,6 +28266,10 @@ public static partial class Constants
     public const uint PRIMARY_ORDER_CAB = 5;
     
     public const uint PRIMARY_ORDER_CBA = 4;
+    
+    public static readonly Guid PrintDocumentPackageTarget = new("4842669e-9947-46ea-8ba2-d8cce432c2ca");
+    
+    public static readonly Guid PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");
     
     public const uint Processor1 = 1;
     
@@ -26387,6 +28833,44 @@ public static partial class Constants
     
     public const uint PropertyTagYResolution = 283;
     
+    public static readonly Guid PROPSETID_ALLOCATOR_CONTROL = new("53171960-148e-11d2-9979-0000c0cc16ba");
+    
+    public static readonly Guid PROPSETID_EXT_DEVICE = new("b5730a90-1a2c-11cf-8c23-00aa006b6814");
+    
+    public static readonly Guid PROPSETID_EXT_TRANSPORT = new("a03cd5f0-3045-11cf-8c44-00aa006b6814");
+    
+    public static readonly Guid PROPSETID_TIMECODE_READER = new("9b496ce1-811b-11cf-8c77-00aa006b6814");
+    
+    public static readonly Guid PROPSETID_TUNER = new("6a2e0605-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CAMERACONTROL = new("c6e13370-30ac-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CAMERACONTROL_FLASH = new("785e8f49-63a2-4144-ab70-ffb278fa26ce");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CAMERACONTROL_IMAGE_PIN_CAPABILITY = new("9d3d7bbf-5c6d-4138-bb00-584edd20f7c5");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CAMERACONTROL_REGION_OF_INTEREST = new("9d12d198-f86c-4fed-b023-5d87653da793");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CAMERACONTROL_VIDEO_STABILIZATION = new("43964bd3-7716-404e-8be1-d299b20e50fd");
+    
+    public static readonly Guid PROPSETID_VIDCAP_CROSSBAR = new("6a2e0640-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_DROPPEDFRAMES = new("c6e13344-30ac-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_SELECTOR = new("1abdaeca-68b6-4f83-9371-b413907c7b9f");
+    
+    public static readonly Guid PROPSETID_VIDCAP_TVAUDIO = new("6a2e0650-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_VIDEOCOMPRESSION = new("c6e13343-30ac-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_VIDEOCONTROL = new("6a2e0670-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_VIDEODECODER = new("c6e13350-30ac-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_VIDEOENCODER = new("6a2e0610-28e4-11d0-a18c-00a0c9118956");
+    
+    public static readonly Guid PROPSETID_VIDCAP_VIDEOPROCAMP = new("c6e13360-30ac-11d0-a18c-00a0c9118956");
+    
     public const uint QAW_GETEASYWIDTHS = 1;
     
     public const uint QAW_GETWIDTHS = 0;
@@ -26571,6 +29055,8 @@ public static partial class Constants
     
     public const int SEARCH_NEAREST = 4;
     
+    public static readonly Guid SectionList = new("73da5d04-4347-45d3-a9dc-fae9ddbe558d");
+    
     public const uint SEEK_CUR = 1;
     
     public const uint SEEK_END = 2;
@@ -26653,6 +29139,8 @@ public static partial class Constants
     
     public const uint SPATIAL_AUDIO_STANDARD_COMMANDS_START = 200;
     
+    public static readonly Guid SpAudioFormat = new("9ef96870-e160-4792-820d-48cf0649e4ec");
+    
     public const string SPCAT_APPLEXICONS = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AppLexicons";
     
     public const string SPCAT_AUDIOIN = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput";
@@ -26669,9 +29157,15 @@ public static partial class Constants
     
     public const string SPCAT_VOICES = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices";
     
+    public static readonly Guid SpCompressedLexicon = new("90903716-2f42-11d3-9c26-00c04f8ef87c");
+    
     public const string SPCURRENT_USER_LEXICON_TOKEN_ID = @"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserLexicon";
     
     public const string SPCURRENT_USER_SHORTCUT_TOKEN_ID = @"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech\CurrentUserShortcut";
+    
+    public static readonly Guid SpCustomStream = new("8dbef13f-1948-4aa8-8cf0-048eebed95d8");
+    
+    public static readonly Guid SpDataKey = new("d9f6ee60-58c9-458b-88e1-2f908fd7f87c");
     
     public const string SPDICTATION = @"*";
     
@@ -26751,11 +29245,51 @@ public static partial class Constants
     
     public const int SpeechAllElements = -1;
     
+    public static readonly Guid SpFileStream = new("947812b3-2ae1-4644-ba86-9e90ded7ec91");
+    
+    public static readonly Guid SpGramCompBackend = new("da93e903-c843-11d2-a084-00c04f8ef9b5");
+    
+    public static readonly Guid SpGrammarCompiler = new("b1e29d59-a675-11d2-8302-00c04f8ee6c0");
+    
     public const string SPINFDICTATION = @"*+";
+    
+    public static readonly Guid SpInProcRecoContext = new("73ad6842-ace0-45e8-a4dd-8795881a2c2a");
+    
+    public static readonly Guid SpInprocRecognizer = new("41b89b6b-9399-11d2-9623-00c04f8ee628");
+    
+    public static readonly Guid SpITNProcessor = new("12d73610-a1c9-11d3-bc90-00c04f72df9f");
+    
+    public static readonly Guid SpLexicon = new("0655e396-25d0-11d3-9c26-00c04f8ef87c");
+    
+    public static readonly Guid SpMemoryStream = new("5fb7ef7d-dff4-468a-b6b7-2fcbd188f994");
+    
+    public static readonly Guid SpMMAudioEnum = new("ab1890a0-e91f-11d2-bb91-00c04f8ee6c0");
+    
+    public static readonly Guid SpMMAudioIn = new("cf3d2e50-53f2-11d2-960c-00c04f8ee628");
+    
+    public static readonly Guid SpMMAudioOut = new("a8c680eb-3d32-11d2-9ee7-00c04f797396");
     
     public const string SPMMSYS_AUDIO_IN_TOKEN_ID = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioInput\TokenEnums\MMAudioIn\";
     
     public const string SPMMSYS_AUDIO_OUT_TOKEN_ID = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\AudioOutput\TokenEnums\MMAudioOut\";
+    
+    public static readonly Guid SpNotifyTranslator = new("e2ae5372-5d40-11d2-960e-00c04f8ee628");
+    
+    public static readonly Guid SpNullPhoneConverter = new("455f24e9-7396-4a16-9715-7c0fdbe3efe3");
+    
+    public static readonly Guid SpObjectToken = new("ef411752-3736-4cb4-9c8c-8ef4ccb58efe");
+    
+    public static readonly Guid SpObjectTokenCategory = new("a910187f-0c7a-45ac-92cc-59edafb77b53");
+    
+    public static readonly Guid SpObjectTokenEnum = new("3918d75f-0acb-41f2-b733-92aa15bcecf6");
+    
+    public static readonly Guid SpPhoneConverter = new("9185f743-1143-4c28-86b5-bff14f20e5c8");
+    
+    public static readonly Guid SpPhoneticAlphabetConverter = new("4f414126-dfe3-4629-99ee-797978317ead");
+    
+    public static readonly Guid SpPhraseBuilder = new("777b6bbd-2ff2-11d3-88fe-00c04f8ef9b5");
+    
+    public static readonly Guid SpPhraseInfoBuilder = new("c23fc28d-c55f-4720-8b32-91f73c2bd5d1");
     
     public const string SPPROP_ADAPTATION_ON = @"AdaptationOn";
     
@@ -26784,6 +29318,8 @@ public static partial class Constants
     public const string SPREG_SAFE_USER_TOKENS = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\UserTokens";
     
     public const string SPREG_USER_ROOT = @"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Speech";
+    
+    public static readonly Guid SpResourceManager = new("96749373-3391-11d2-9ee3-00c04f797396");
     
     public const uint SPRP_NORMAL = 0;
     
@@ -26817,6 +29353,18 @@ public static partial class Constants
     
     public const int SPS_RESERVED1 = 64;
     
+    public static readonly Guid SpSharedRecoContext = new("47206204-5eca-11d2-960f-00c04f8ee628");
+    
+    public static readonly Guid SpSharedRecognizer = new("3bee4890-4fe9-4a37-8c1e-5e7e12791c1f");
+    
+    public static readonly Guid SpShortcut = new("0d722f1a-9fcf-4e62-96d8-6df8f01a26aa");
+    
+    public static readonly Guid SpStream = new("715d9c59-4442-11d2-9605-00c04f8ee628");
+    
+    public static readonly Guid SpStreamFormatConverter = new("7013943a-e2ec-11d2-a086-00c04f8ef9b5");
+    
+    public static readonly Guid SpTextSelectionInformation = new("0f92030a-cbfd-4ab8-a164-ff5985547ff6");
+    
     public const string SPTOKENKEY_ATTRIBUTES = @"Attributes";
     
     public const string SPTOKENKEY_AUDIO_LATENCY_TRUNCATE = @"LatencyTruncateThreshold";
@@ -26835,7 +29383,15 @@ public static partial class Constants
     
     public const string SPTOPIC_SPELLING = @"Spelling";
     
+    public static readonly Guid SpUnCompressedLexicon = new("c9e37c15-df92-4727-85d6-72e5eeb6995a");
+    
+    public static readonly Guid SpVoice = new("96749377-3391-11d2-9ee3-00c04f797396");
+    
     public const string SPVOICECATEGORY_TTSRATE = @"DefaultTTSRate";
+    
+    public static readonly Guid SpW3CGrammarCompiler = new("d2c13906-51ef-454e-bc67-a52475ff074c");
+    
+    public static readonly Guid SpWaveFormatEx = new("c79a574c-63be-44b9-801f-283f87f898be");
     
     public const string SPWILDCARD = @"...";
     
@@ -26921,6 +29477,8 @@ public static partial class Constants
     
     public const uint SYSFXUI_DONOTSHOW_VIRTUALSURROUND = 32;
     
+    public static readonly Guid SystemTuningSpaces = new("d02aac50-027e-11d3-9d8e-00c04f72d980");
+    
     public const string TARGET_DEVICE_FRIENDLY_NAME = @"TargetDeviceFriendlyName";
     
     public const string TARGET_DEVICE_OPEN_EXCLUSIVELY = @"TargetDeviceOpenExclusively";
@@ -26944,6 +29502,8 @@ public static partial class Constants
     public const uint TDD_KILLTIMEREVENT = 2048;
     
     public const uint TDD_SETTIMEREVENT = 2052;
+    
+    public static readonly Guid TIFLoad = new("14eb8748-1753-4393-95ae-4f7e7a87aad6");
     
     public const uint TIME_BYTES = 4;
     
@@ -27006,6 +29566,12 @@ public static partial class Constants
     public const uint TTO_QUBICS = 2;
     
     public const uint TTO_UNHINTED = 4;
+    
+    public static readonly Guid TuneRequest = new("b46e0d38-ab35-4a06-a137-70576b01b39f");
+    
+    public static readonly Guid TunerMarshaler = new("6438570b-0c08-4a25-9504-8012bb4d50cf");
+    
+    public static readonly Guid TuningSpace = new("5ffdc5e6-b83a-4b55-b6e8-c69e765fe9db");
     
     public const uint USE_RELATIVE_COLORIMETRIC = 131072;
     
@@ -27208,6 +29774,8 @@ public static partial class Constants
     public const uint VMRBITMAP_SRCCOLORKEY = 8;
     
     public const uint VMRBITMAP_SRCRECT = 16;
+    
+    public static readonly Guid VorbisDecoderMFT = new("1a198ef2-60e5-4ea8-90d8-da1f2832c288");
     
     public const uint VP_COMMAND_GET = 1;
     
@@ -28049,6 +30617,10 @@ public static partial class Constants
     
     public const uint WINDDI_MAXSETPALETTECOLORS = 256;
     
+    public static readonly Guid WindowsMediaLibrarySharingServices = new("ad581b00-7b64-4e59-a38d-d2c5bf51ddb3");
+    
+    public static readonly Guid WindowsMediaPlayer = new("6bf52a52-394a-11d3-b153-00c04f79faa6");
+    
     public static readonly Guid WKPDID_CommentStringW = new("d0149dc0-90e8-4ec8-8144-e900ad266bb2");
     
     public static readonly Guid WKPDID_D3D12UniqueObjectId = new("1b39de15-ec04-4bae-ba4d-8cef79fc04c1");
@@ -28603,7 +31175,19 @@ public static partial class Constants
     
     public const uint WMDM_WMDM_REVOKED = 1;
     
+    public static readonly Guid WMDMDevice = new("807b3cdf-357a-11d3-8471-00c04f79dbc0");
+    
+    public static readonly Guid WMDMDeviceEnum = new("430e35af-3971-11d3-8474-00c04f79dbc0");
+    
     public const uint WMDMID_LENGTH = 128;
+    
+    public static readonly Guid WMDMLogger = new("110a3202-5a79-11d3-8d78-444553540000");
+    
+    public static readonly Guid WMDMStorage = new("807b3ce0-357a-11d3-8471-00c04f79dbc0");
+    
+    public static readonly Guid WMDMStorageEnum = new("eb401a3b-3af7-11d3-8474-00c04f79dbc0");
+    
+    public static readonly Guid WMDMStorageGlobal = new("807b3ce1-357a-11d3-8471-00c04f79dbc0");
     
     public const uint WMDRM_IMPORT_INIT_STRUCT_DEFINED = 1;
     
@@ -28755,7 +31339,11 @@ public static partial class Constants
     
     public const uint WMPGC_FLAGS_USE_CUSTOM_GRAPH = 16;
     
+    public static readonly Guid WMPLib = new("6bf52a50-394a-11d3-b153-00c04f79faa6");
+    
     public const uint WMPOCXEVENT_BASE = 6500;
+    
+    public static readonly Guid WMPRemoteMediaServices = new("df333473-2cf7-4be2-907f-9aad5661364f");
     
     public static readonly Guid WMProfile_V40_100Video = new("8f99ddd8-6684-456b-a0a3-33e1316895f0");
     
@@ -29351,6 +31939,10 @@ public static partial class Constants
     
     public const float XAUDIO2FX_REVERB_MIN_WET_DRY_MIX = 0f;
     
+    public static readonly Guid XDSCodec = new("c4c4c4f3-0049-4e2b-98fb-9537f6ce516d");
+    
+    public static readonly Guid XDSToRat = new("c5c5c5f0-3abc-11d6-b25b-00c04fa0c026");
+    
     public const int XF_INV_FXTOL = 3;
     
     public const int XF_INV_LTOL = 1;
@@ -29381,4 +31973,9 @@ public static partial class Constants
     
     public const uint XO_TRIVIAL = 1;
     
+    public static readonly Guid XpsOMObjectFactory = new("e974d26d-3d9b-4d47-88cc-3872f2dc3585");
+    
+    public static readonly Guid XpsOMThumbnailGenerator = new("7e4a23e2-b969-4761-be35-1a8ced58e323");
+    
+    public static readonly Guid XpsSignatureManager = new("b0c43320-2315-44a2-b70a-0943a140a8ee");
 }

@@ -29,6 +29,7 @@ namespace DirectNAot.InteropBuilder.Cli
             context.MappedTypes[TypeMappings.Point] = context.AllTypes[TypeMappings.POINT];
             context.MappedTypes[TypeMappings.Rect] = context.AllTypes[TypeMappings.RECT];
             context.MappedTypes[TypeMappings.Size] = context.AllTypes[TypeMappings.SIZE];
+            context.MappedTypes[TypeMappings.Direct2DDWRITE_PAINT_FEATURE_LEVEL] = context.AllTypes[TypeMappings.DirectWriteDWRITE_PAINT_FEATURE_LEVEL];
         }
     }
 }
