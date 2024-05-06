@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct EncoderParameters
 {
     public uint Count;
-    public InlineArrayEncoderParameter1 Parameter; // variable-length array placeholder
+    public InlineArrayEncoderParameter_1 Parameter; // variable-length array placeholder
 }

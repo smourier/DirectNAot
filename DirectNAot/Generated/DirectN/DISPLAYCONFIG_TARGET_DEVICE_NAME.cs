@@ -11,6 +11,6 @@ public partial struct DISPLAYCONFIG_TARGET_DEVICE_NAME
     public ushort edidManufactureId;
     public ushort edidProductCodeId;
     public uint connectorInstance;
-    public InlineArraySystemChar64 monitorFriendlyDeviceName;
-    public InlineArraySystemChar128 monitorDevicePath;
+    public InlineArraySystemChar_64 monitorFriendlyDeviceName;
+    public InlineArraySystemChar_128 monitorDevicePath;
 }

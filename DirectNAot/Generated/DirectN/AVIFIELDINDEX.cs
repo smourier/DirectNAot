@@ -4,10 +4,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AVIFIELDINDEX
 {
-    [InlineArray(1)]
-    public partial struct InlineArray_avifieldindex_entry1
+    [InlineArray(InlineArray_avifieldindex_entry_1.Length)]
+    public partial struct InlineArray_avifieldindex_entry_1
     {
-        public static int Length => 1;
+        public const int Length = 1;
         
         public _avifieldindex_entry Data;
     }
@@ -29,5 +29,5 @@ public partial struct AVIFIELDINDEX
     public uint dwChunkId;
     public ulong qwBaseOffset;
     public uint dwReserved3;
-    public InlineArray_avifieldindex_entry1 aIndex;
+    public InlineArray_avifieldindex_entry_1 aIndex;
 }

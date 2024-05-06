@@ -9,5 +9,5 @@ public partial struct OPM_CONFIGURE_PARAMETERS
     public Guid guidSetting;
     public uint ulSequenceNumber;
     public uint cbParametersSize;
-    public InlineArrayByte4056 abParameters;
+    public InlineArrayByte_4056 abParameters;
 }

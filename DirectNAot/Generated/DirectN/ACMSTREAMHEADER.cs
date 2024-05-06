@@ -16,5 +16,5 @@ public partial struct ACMSTREAMHEADER
     public uint cbDstLength;
     public uint cbDstLengthUsed;
     public nuint dwDstUser;
-    public InlineArrayUInt3215 dwReservedDriver;
+    public InlineArrayUInt32_15 dwReservedDriver;
 }

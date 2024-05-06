@@ -7,7 +7,7 @@ public partial struct MTP_COMMAND_DATA_OUT
 {
     public ushort ResponseCode;
     public uint NumParams;
-    public InlineArrayUInt325 Params;
+    public InlineArrayUInt32_5 Params;
     public uint CommandReadDataSize;
-    public InlineArrayByte1 CommandReadData; // variable-length array placeholder
+    public InlineArrayByte_1 CommandReadData; // variable-length array placeholder
 }

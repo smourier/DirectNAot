@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct OPM_OMAC
 {
-    public InlineArrayByte16 abOMAC;
+    public InlineArrayByte_16 abOMAC;
 }

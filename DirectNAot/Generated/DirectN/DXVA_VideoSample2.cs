@@ -13,5 +13,5 @@ public partial struct DXVA_VideoSample2
     public nint lpDDSSrcSurface;
     public RECT rcSrc;
     public RECT rcDst;
-    public InlineArrayDXVA_AYUVsample216 Palette;
+    public InlineArrayDXVA_AYUVsample2_16 Palette;
 }

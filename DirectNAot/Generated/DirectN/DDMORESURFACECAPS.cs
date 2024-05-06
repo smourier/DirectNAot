@@ -4,10 +4,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDMORESURFACECAPS
 {
-    [InlineArray(1)]
-    public partial struct InlineArrayExtendedHeapRestrictions1
+    [InlineArray(InlineArrayExtendedHeapRestrictions_1.Length)]
+    public partial struct InlineArrayExtendedHeapRestrictions_1
     {
-        public static int Length => 1;
+        public const int Length = 1;
         
         public ExtendedHeapRestrictions Data;
     }
@@ -21,5 +21,5 @@ public partial struct DDMORESURFACECAPS
     
     public uint dwSize;
     public DDSCAPSEX ddsCapsMore;
-    public InlineArrayExtendedHeapRestrictions1 ddsExtendedHeapRestrictions; // variable-length array placeholder
+    public InlineArrayExtendedHeapRestrictions_1 ddsExtendedHeapRestrictions; // variable-length array placeholder
 }

@@ -10,8 +10,8 @@ public partial struct ACMFILTERCHOOSEA
     public nint pwfltr;
     public uint cbwfltr;
     public PSTR pszTitle;
-    public InlineArrayFoundationCHAR48 szFilterTag;
-    public InlineArrayFoundationCHAR128 szFilter;
+    public InlineArrayFoundationCHAR_48 szFilterTag;
+    public InlineArrayFoundationCHAR_128 szFilter;
     public PSTR pszName;
     public uint cchName;
     public uint fdwEnum;

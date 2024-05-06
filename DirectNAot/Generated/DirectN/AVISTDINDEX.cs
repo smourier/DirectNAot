@@ -14,5 +14,5 @@ public partial struct AVISTDINDEX
     public uint dwChunkId;
     public ulong qwBaseOffset;
     public uint dwReserved_3;
-    public InlineArrayAVISTDINDEX_ENTRY2044 aIndex;
+    public InlineArrayAVISTDINDEX_ENTRY_2044 aIndex;
 }

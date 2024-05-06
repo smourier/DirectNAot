@@ -8,6 +8,6 @@ public partial struct MIDIINCAPSW
     public ushort wMid;
     public ushort wPid;
     public uint vDriverVersion;
-    public InlineArraySystemChar32 szPname;
+    public InlineArraySystemChar_32 szPname;
     public uint dwSupport;
 }

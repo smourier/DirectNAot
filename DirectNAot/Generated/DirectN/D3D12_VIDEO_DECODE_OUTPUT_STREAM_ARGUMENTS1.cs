@@ -8,5 +8,5 @@ public partial struct D3D12_VIDEO_DECODE_OUTPUT_STREAM_ARGUMENTS1
     public nint pOutputTexture2D;
     public uint OutputSubresource;
     public D3D12_VIDEO_DECODE_CONVERSION_ARGUMENTS1 ConversionArguments;
-    public InlineArrayD3D12_VIDEO_DECODE_OUTPUT_HISTOGRAM4 Histograms;
+    public InlineArrayD3D12_VIDEO_DECODE_OUTPUT_HISTOGRAM_4 Histograms;
 }

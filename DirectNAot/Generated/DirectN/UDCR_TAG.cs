@@ -5,7 +5,7 @@ namespace DirectN;
 public partial struct UDCR_TAG
 {
     public byte bVersion;
-    public InlineArrayByte25 KID;
+    public InlineArrayByte_25 KID;
     public ulong ullBaseCounter;
     public ulong ullBaseCounterRange;
     

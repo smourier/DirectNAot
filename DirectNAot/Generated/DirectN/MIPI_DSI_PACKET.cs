@@ -40,5 +40,5 @@ public partial struct MIPI_DSI_PACKET
     public _Anonymous1_e__Union Anonymous1;
     public _Anonymous2_e__Union Anonymous2;
     public byte EccFiller;
-    public InlineArrayByte8 Payload;
+    public InlineArrayByte_8 Payload;
 }

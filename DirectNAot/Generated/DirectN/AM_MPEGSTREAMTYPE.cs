@@ -8,5 +8,5 @@ public partial struct AM_MPEGSTREAMTYPE
     public uint dwStreamId;
     public uint dwReserved;
     public AM_MEDIA_TYPE mt;
-    public InlineArrayByte1 bFormat; // variable-length array placeholder
+    public InlineArrayByte_1 bFormat; // variable-length array placeholder
 }

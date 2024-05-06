@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct Adapters
 {
     public int numAdapters;
-    public InlineArrayAdapter1 adapter; // variable-length array placeholder
+    public InlineArrayAdapter_1 adapter; // variable-length array placeholder
 }

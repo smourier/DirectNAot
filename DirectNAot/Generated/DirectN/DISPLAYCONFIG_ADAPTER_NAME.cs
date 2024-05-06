@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct DISPLAYCONFIG_ADAPTER_NAME
 {
     public DISPLAYCONFIG_DEVICE_INFO_HEADER header;
-    public InlineArraySystemChar128 adapterDevicePath;
+    public InlineArraySystemChar_128 adapterDevicePath;
 }

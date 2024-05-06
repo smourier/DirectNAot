@@ -6,7 +6,7 @@ namespace DirectN;
 public partial struct D3DX11_FFT_DESC
 {
     public uint NumDimensions;
-    public InlineArrayUInt3232 ElementLengths;
+    public InlineArrayUInt32_32 ElementLengths;
     public uint DimensionMask;
     public D3DX11_FFT_DATA_TYPE Type;
 }

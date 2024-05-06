@@ -18,8 +18,8 @@ public partial struct DVD_TitleAttributes
     public _Anonymous_e__Union Anonymous;
     public DVD_VideoAttributes VideoAttributes;
     public uint ulNumberOfAudioStreams;
-    public InlineArrayDVD_AudioAttributes8 AudioAttributes;
-    public InlineArrayDVD_MultichannelAudioAttributes8 MultichannelAudioAttributes;
+    public InlineArrayDVD_AudioAttributes_8 AudioAttributes;
+    public InlineArrayDVD_MultichannelAudioAttributes_8 MultichannelAudioAttributes;
     public uint ulNumberOfSubpictureStreams;
-    public InlineArrayDVD_SubpictureAttributes32 SubpictureAttributes;
+    public InlineArrayDVD_SubpictureAttributes_32 SubpictureAttributes;
 }

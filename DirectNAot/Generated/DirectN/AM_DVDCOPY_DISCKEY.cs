@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AM_DVDCOPY_DISCKEY
 {
-    public InlineArrayByte2048 DiscKey;
+    public InlineArrayByte_2048 DiscKey;
 }

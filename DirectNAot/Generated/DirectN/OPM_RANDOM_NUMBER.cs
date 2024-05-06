@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct OPM_RANDOM_NUMBER
 {
-    public InlineArrayByte16 abRandomNumber;
+    public InlineArrayByte_16 abRandomNumber;
 }

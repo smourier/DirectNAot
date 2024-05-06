@@ -10,7 +10,7 @@ public partial struct DXVA_DeinterlaceBltEx
     public long rtTarget;
     public uint NumSourceSurfaces;
     public float Alpha;
-    public InlineArrayDXVA_VideoSample232 Source;
+    public InlineArrayDXVA_VideoSample2_32 Source;
     public uint DestinationFormat;
     public uint DestinationFlags;
 }

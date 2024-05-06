@@ -8,10 +8,10 @@ public partial struct D3D12_SAMPLER_DESC2
     public struct _Anonymous_e__Union
     {
         [FieldOffset(0)]
-        public InlineArraySingle4 FloatBorderColor;
+        public InlineArraySingle_4 FloatBorderColor;
         
         [FieldOffset(0)]
-        public InlineArrayUInt324 UintBorderColor;
+        public InlineArrayUInt32_4 UintBorderColor;
     }
     
     public D3D12_FILTER Filter;

@@ -10,5 +10,5 @@ public partial struct MIDIOPENDESC
     public nuint dwInstance;
     public nuint dnDevNode;
     public uint cIds;
-    public InlineArrayMIDIOPENSTRMID1 rgIds; // variable-length array placeholder
+    public InlineArrayMIDIOPENSTRMID_1 rgIds; // variable-length array placeholder
 }

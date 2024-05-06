@@ -16,5 +16,5 @@ public partial struct DVD_AudioAttributes
     public uint dwFrequency;
     public byte bQuantization;
     public byte bNumberOfChannels;
-    public InlineArrayUInt322 dwReserved;
+    public InlineArrayUInt32_2 dwReserved;
 }

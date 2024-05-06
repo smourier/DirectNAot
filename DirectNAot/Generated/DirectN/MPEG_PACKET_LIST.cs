@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct MPEG_PACKET_LIST
 {
     public ushort wPacketCount;
-    public InlineArrayMPEG_RQST_PACKET1 PacketList; // variable-length array placeholder
+    public InlineArrayMPEG_RQST_PACKET_1 PacketList; // variable-length array placeholder
 }

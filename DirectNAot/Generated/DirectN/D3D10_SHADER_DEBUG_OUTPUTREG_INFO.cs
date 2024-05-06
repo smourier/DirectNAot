@@ -8,8 +8,8 @@ public partial struct D3D10_SHADER_DEBUG_OUTPUTREG_INFO
     public D3D10_SHADER_DEBUG_REGTYPE OutputRegisterSet;
     public uint OutputReg;
     public uint TempArrayReg;
-    public InlineArrayUInt324 OutputComponents;
-    public InlineArrayD3D10_SHADER_DEBUG_OUTPUTVAR4 OutputVars;
+    public InlineArrayUInt32_4 OutputComponents;
+    public InlineArrayD3D10_SHADER_DEBUG_OUTPUTVAR_4 OutputVars;
     public uint IndexReg;
     public uint IndexComp;
 }

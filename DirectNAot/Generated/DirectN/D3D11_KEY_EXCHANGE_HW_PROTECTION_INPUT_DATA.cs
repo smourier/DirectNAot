@@ -7,5 +7,5 @@ public partial struct D3D11_KEY_EXCHANGE_HW_PROTECTION_INPUT_DATA
 {
     public uint PrivateDataSize;
     public uint HWProtectionDataSize;
-    public InlineArrayByte4 pbInput;
+    public InlineArrayByte_4 pbInput;
 }

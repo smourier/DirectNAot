@@ -8,5 +8,5 @@ public partial struct KSCAMERA_METADATA_BACKGROUNDSEGMENTATIONMASK
     public RECT MaskCoverageBoundingBox;
     public SIZE MaskResolution;
     public RECT ForegroundBoundingBox;
-    public InlineArrayByte1 MaskData; // variable-length array placeholder
+    public InlineArrayByte_1 MaskData; // variable-length array placeholder
 }

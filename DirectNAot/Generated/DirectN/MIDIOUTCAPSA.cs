@@ -8,7 +8,7 @@ public partial struct MIDIOUTCAPSA
     public ushort wMid;
     public ushort wPid;
     public uint vDriverVersion;
-    public InlineArrayFoundationCHAR32 szPname;
+    public InlineArrayFoundationCHAR_32 szPname;
     public ushort wTechnology;
     public ushort wVoices;
     public ushort wNotes;

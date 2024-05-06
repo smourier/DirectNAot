@@ -7,5 +7,5 @@ public partial struct AMCOPPStatusOutput
 {
     public Guid macKDI;
     public uint cbSizeData;
-    public InlineArrayByte4076 COPPStatus;
+    public InlineArrayByte_4076 COPPStatus;
 }

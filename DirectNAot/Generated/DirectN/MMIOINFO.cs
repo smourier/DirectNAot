@@ -16,7 +16,7 @@ public partial struct MMIOINFO
     public nint pchEndWrite;
     public int lBufOffset;
     public int lDiskOffset;
-    public InlineArrayUInt323 adwInfo;
+    public InlineArrayUInt32_3 adwInfo;
     public uint dwReserved1;
     public uint dwReserved2;
     public HMMIO hmmio;

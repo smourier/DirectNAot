@@ -4,6 +4,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct KS_TRUECOLORINFO
 {
-    public InlineArrayUInt323 dwBitMasks;
-    public InlineArrayKS_RGBQUAD256 bmiColors;
+    public InlineArrayUInt32_3 dwBitMasks;
+    public InlineArrayKS_RGBQUAD_256 bmiColors;
 }

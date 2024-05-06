@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct BDA_RATING_PINRESET
 {
     public byte bPinLength;
-    public InlineArrayByte1 argbNewPin; // variable-length array placeholder
+    public InlineArrayByte_1 argbNewPin; // variable-length array placeholder
 }

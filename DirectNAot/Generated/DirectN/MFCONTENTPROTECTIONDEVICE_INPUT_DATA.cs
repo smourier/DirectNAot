@@ -9,5 +9,5 @@ public partial struct MFCONTENTPROTECTIONDEVICE_INPUT_DATA
     public uint PrivateDataByteCount;
     public uint HWProtectionDataByteCount;
     public uint Reserved;
-    public InlineArrayByte4 InputData;
+    public InlineArrayByte_4 InputData;
 }

@@ -16,6 +16,6 @@ public partial struct OPM_ACP_AND_CGMSA_SIGNALING
     public uint ulAspectRatioData2;
     public uint ulAspectRatioValidMask3;
     public uint ulAspectRatioData3;
-    public InlineArrayUInt324 ulReserved2;
-    public InlineArrayUInt324 ulReserved3;
+    public InlineArrayUInt32_4 ulReserved2;
+    public InlineArrayUInt32_4 ulReserved3;
 }

@@ -29,7 +29,7 @@ public partial struct MIXERCONTROLW
         public _Anonymous2_e__Struct Anonymous2;
         
         [FieldOffset(0)]
-        public InlineArrayUInt326 dwReserved;
+        public InlineArrayUInt32_6 dwReserved;
     }
     
     [StructLayout(LayoutKind.Explicit)]
@@ -42,7 +42,7 @@ public partial struct MIXERCONTROLW
         public uint cbCustomData;
         
         [FieldOffset(0)]
-        public InlineArrayUInt326 dwReserved;
+        public InlineArrayUInt32_6 dwReserved;
     }
     
     public uint cbStruct;
@@ -50,8 +50,8 @@ public partial struct MIXERCONTROLW
     public uint dwControlType;
     public uint fdwControl;
     public uint cMultipleItems;
-    public InlineArraySystemChar16 szShortName;
-    public InlineArraySystemChar64 szName;
+    public InlineArraySystemChar_16 szShortName;
+    public InlineArraySystemChar_64 szName;
     public _Bounds_e__Union Bounds;
     public _Metrics_e__Union Metrics;
 }

@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_DISPLAY_COLOR_SPACE
 {
-    public InlineArraySingle16 PrimaryCoordinates;
-    public InlineArraySingle32 WhitePoints;
+    public InlineArraySingle_16 PrimaryCoordinates;
+    public InlineArraySingle_32 WhitePoints;
 }

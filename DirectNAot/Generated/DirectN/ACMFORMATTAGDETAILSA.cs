@@ -10,5 +10,5 @@ public partial struct ACMFORMATTAGDETAILSA
     public uint cbFormatSize;
     public uint fdwSupport;
     public uint cStandardFormats;
-    public InlineArrayFoundationCHAR48 szFormatTag;
+    public InlineArrayFoundationCHAR_48 szFormatTag;
 }

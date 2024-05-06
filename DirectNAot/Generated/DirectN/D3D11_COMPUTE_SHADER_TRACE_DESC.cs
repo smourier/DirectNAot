@@ -6,6 +6,6 @@ namespace DirectN;
 public partial struct D3D11_COMPUTE_SHADER_TRACE_DESC
 {
     public ulong Invocation;
-    public InlineArrayUInt323 ThreadIDInGroup;
-    public InlineArrayUInt323 ThreadGroupID;
+    public InlineArrayUInt32_3 ThreadIDInGroup;
+    public InlineArrayUInt32_3 ThreadGroupID;
 }

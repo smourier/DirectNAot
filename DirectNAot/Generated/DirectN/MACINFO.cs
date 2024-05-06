@@ -6,5 +6,5 @@ public partial struct MACINFO
 {
     [MarshalAs(UnmanagedType.U4)]
     public bool fUsed;
-    public InlineArrayByte36 abMacState;
+    public InlineArrayByte_36 abMacState;
 }

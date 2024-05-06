@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct BDA_PID_UNMAP
 {
     public uint ulcPIDs;
-    public InlineArrayUInt321 aulPIDs; // variable-length array placeholder
+    public InlineArrayUInt32_1 aulPIDs; // variable-length array placeholder
 }

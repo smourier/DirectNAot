@@ -11,7 +11,7 @@ public partial struct AVITCDLINDEX
     public byte bIndexType;
     public uint nEntriesInUse;
     public uint dwChunkId;
-    public InlineArrayUInt323 dwReserved;
-    public InlineArrayAVITCDLINDEX_ENTRY584 aIndex;
-    public InlineArrayUInt323512 adwTrailingFill;
+    public InlineArrayUInt32_3 dwReserved;
+    public InlineArrayAVITCDLINDEX_ENTRY_584 aIndex;
+    public InlineArrayUInt32_3512 adwTrailingFill;
 }

@@ -8,7 +8,7 @@ public partial struct AUXCAPSW
     public ushort wMid;
     public ushort wPid;
     public uint vDriverVersion;
-    public InlineArraySystemChar32 szPname;
+    public InlineArraySystemChar_32 szPname;
     public ushort wTechnology;
     public ushort wReserved1;
     public uint dwSupport;

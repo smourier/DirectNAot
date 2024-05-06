@@ -4,10 +4,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_CLUT
 {
-    [InlineArray(1)]
-    public partial struct InlineArray_Anonymous_e__Union1
+    [InlineArray(InlineArray_Anonymous_e__Union_1.Length)]
+    public partial struct InlineArray_Anonymous_e__Union_1
     {
-        public static int Length => 1;
+        public const int Length = 1;
         
         public _Anonymous_e__Union Data;
     }
@@ -24,5 +24,5 @@ public partial struct VIDEO_CLUT
     
     public ushort NumEntries;
     public ushort FirstEntry;
-    public InlineArray_Anonymous_e__Union1 LookupTable; // variable-length array placeholder
+    public InlineArray_Anonymous_e__Union_1 LookupTable; // variable-length array placeholder
 }

@@ -12,6 +12,6 @@ public partial struct AVIMETAINDEX
     public byte bIndexType;
     public uint nEntriesInUse;
     public uint dwChunkId;
-    public InlineArrayUInt323 dwReserved;
-    public InlineArrayUInt321 adwIndex;
+    public InlineArrayUInt32_3 dwReserved;
+    public InlineArrayUInt32_1 adwIndex;
 }

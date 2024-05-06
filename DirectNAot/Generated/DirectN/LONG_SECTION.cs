@@ -31,5 +31,5 @@ public partial struct LONG_SECTION
     public _Version_e__Union Version;
     public byte SectionNumber;
     public byte LastSectionNumber;
-    public InlineArrayByte1 RemainingData; // variable-length array placeholder
+    public InlineArrayByte_1 RemainingData; // variable-length array placeholder
 }

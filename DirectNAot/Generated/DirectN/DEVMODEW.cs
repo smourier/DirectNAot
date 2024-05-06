@@ -46,7 +46,7 @@ public partial struct DEVMODEW
         public uint dmNup;
     }
     
-    public InlineArraySystemChar32 dmDeviceName;
+    public InlineArraySystemChar_32 dmDeviceName;
     public ushort dmSpecVersion;
     public ushort dmDriverVersion;
     public ushort dmSize;
@@ -58,7 +58,7 @@ public partial struct DEVMODEW
     public short dmYResolution;
     public DEVMODE_TRUETYPE_OPTION dmTTOption;
     public DEVMODE_COLLATE dmCollate;
-    public InlineArraySystemChar32 dmFormName;
+    public InlineArraySystemChar_32 dmFormName;
     public ushort dmLogPixels;
     public uint dmBitsPerPel;
     public uint dmPelsWidth;

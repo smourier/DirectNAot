@@ -7,8 +7,8 @@ public partial struct MTP_COMMAND_DATA_IN
 {
     public ushort OpCode;
     public uint NumParams;
-    public InlineArrayUInt325 Params;
+    public InlineArrayUInt32_5 Params;
     public uint NextPhase;
     public uint CommandWriteDataSize;
-    public InlineArrayByte1 CommandWriteData; // variable-length array placeholder
+    public InlineArrayByte_1 CommandWriteData; // variable-length array placeholder
 }

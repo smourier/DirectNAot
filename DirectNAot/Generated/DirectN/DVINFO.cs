@@ -11,5 +11,5 @@ public partial struct DVINFO
     public uint dwDVAAuxCtl1;
     public uint dwDVVAuxSrc;
     public uint dwDVVAuxCtl;
-    public InlineArrayUInt322 dwDVReserved;
+    public InlineArrayUInt32_2 dwDVReserved;
 }

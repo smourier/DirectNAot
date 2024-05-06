@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_RT_FORMAT_ARRAY
 {
-    public InlineArrayDXGI_FORMAT8 RTFormats;
+    public InlineArrayDXGI_FORMAT_8 RTFormats;
     public uint NumRenderTargets;
 }

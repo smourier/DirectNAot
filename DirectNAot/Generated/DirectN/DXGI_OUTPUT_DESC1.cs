@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_OUTPUT_DESC1
 {
-    public InlineArraySystemChar32 DeviceName;
+    public InlineArraySystemChar_32 DeviceName;
     public RECT DesktopCoordinates;
     
     [MarshalAs(UnmanagedType.U4)]
@@ -14,10 +14,10 @@ public partial struct DXGI_OUTPUT_DESC1
     public HMONITOR Monitor;
     public uint BitsPerColor;
     public DXGI_COLOR_SPACE_TYPE ColorSpace;
-    public InlineArraySingle2 RedPrimary;
-    public InlineArraySingle2 GreenPrimary;
-    public InlineArraySingle2 BluePrimary;
-    public InlineArraySingle2 WhitePoint;
+    public InlineArraySingle_2 RedPrimary;
+    public InlineArraySingle_2 GreenPrimary;
+    public InlineArraySingle_2 BluePrimary;
+    public InlineArraySingle_2 WhitePoint;
     public float MinLuminance;
     public float MaxLuminance;
     public float MaxFullFrameLuminance;

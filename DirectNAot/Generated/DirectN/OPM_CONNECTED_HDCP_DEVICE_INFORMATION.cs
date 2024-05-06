@@ -9,7 +9,7 @@ public partial struct OPM_CONNECTED_HDCP_DEVICE_INFORMATION
     public uint ulStatusFlags;
     public uint ulHDCPFlags;
     public OPM_HDCP_KEY_SELECTION_VECTOR ksvB;
-    public InlineArrayByte11 Reserved;
-    public InlineArrayByte16 Reserved2;
-    public InlineArrayByte16 Reserved3;
+    public InlineArrayByte_11 Reserved;
+    public InlineArrayByte_16 Reserved2;
+    public InlineArrayByte_16 Reserved3;
 }

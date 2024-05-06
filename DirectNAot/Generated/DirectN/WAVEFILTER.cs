@@ -8,5 +8,5 @@ public partial struct WAVEFILTER
     public uint cbStruct;
     public uint dwFilterTag;
     public uint fdwFilter;
-    public InlineArrayUInt325 dwReserved;
+    public InlineArrayUInt32_5 dwReserved;
 }

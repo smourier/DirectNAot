@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct RGNDATA
 {
     public RGNDATAHEADER rdh;
-    public InlineArrayFoundationCHAR1 Buffer; // variable-length array placeholder
+    public InlineArrayFoundationCHAR_1 Buffer; // variable-length array placeholder
 }

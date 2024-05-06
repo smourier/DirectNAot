@@ -6,5 +6,5 @@ public partial struct DXVA_DeinterlaceQueryAvailableModes
 {
     public uint Size;
     public uint NumGuids;
-    public InlineArrayGuid32 Guids;
+    public InlineArrayGuid_32 Guids;
 }

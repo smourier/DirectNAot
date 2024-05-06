@@ -17,5 +17,5 @@ public partial struct SECTION
     
     public byte TableId;
     public _Header_e__Union Header;
-    public InlineArrayByte1 SectionData; // variable-length array placeholder
+    public InlineArrayByte_1 SectionData; // variable-length array placeholder
 }

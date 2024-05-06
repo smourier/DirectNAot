@@ -7,5 +7,5 @@ public partial struct MFVideoSurfaceInfo
 {
     public uint Format;
     public uint PaletteEntries;
-    public InlineArrayMFPaletteEntry1 Palette; // variable-length array placeholder
+    public InlineArrayMFPaletteEntry_1 Palette; // variable-length array placeholder
 }

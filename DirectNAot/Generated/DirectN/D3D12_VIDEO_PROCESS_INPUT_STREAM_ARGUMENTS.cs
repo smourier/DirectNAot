@@ -5,10 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS
 {
-    public InlineArrayD3D12_VIDEO_PROCESS_INPUT_STREAM2 InputStream;
+    public InlineArrayD3D12_VIDEO_PROCESS_INPUT_STREAM_2 InputStream;
     public D3D12_VIDEO_PROCESS_TRANSFORM Transform;
     public D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAGS Flags;
     public D3D12_VIDEO_PROCESS_INPUT_STREAM_RATE RateInfo;
-    public InlineArrayInt3232 FilterLevels;
+    public InlineArrayInt32_32 FilterLevels;
     public D3D12_VIDEO_PROCESS_ALPHA_BLENDING AlphaBlending;
 }

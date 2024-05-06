@@ -10,5 +10,5 @@ public partial struct ACMFILTERTAGDETAILSA
     public uint cbFilterSize;
     public uint fdwSupport;
     public uint cStandardFilters;
-    public InlineArrayFoundationCHAR48 szFilterTag;
+    public InlineArrayFoundationCHAR_48 szFilterTag;
 }

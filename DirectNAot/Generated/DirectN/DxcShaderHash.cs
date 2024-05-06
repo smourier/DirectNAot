@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct DxcShaderHash
 {
     public uint Flags;
-    public InlineArrayByte16 HashDigest;
+    public InlineArrayByte_16 HashDigest;
 }

@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AM_DVDCOPY_CHLGKEY
 {
-    public InlineArrayByte10 ChlgKey;
-    public InlineArrayByte2 Reserved;
+    public InlineArrayByte_10 ChlgKey;
+    public InlineArrayByte_2 Reserved;
 }

@@ -16,6 +16,6 @@ public partial struct DXVA_COPPStatusSignalingCmdData
     public uint AspectRatioData2;
     public uint AspectRatioValidMask3;
     public uint AspectRatioData3;
-    public InlineArrayUInt324 ExtendedInfoValidMask;
-    public InlineArrayUInt324 ExtendedInfoData;
+    public InlineArrayUInt32_4 ExtendedInfoValidMask;
+    public InlineArrayUInt32_4 ExtendedInfoData;
 }

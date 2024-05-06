@@ -6,7 +6,7 @@ public partial struct JOYCAPS2W
 {
     public ushort wMid;
     public ushort wPid;
-    public InlineArraySystemChar32 szPname;
+    public InlineArraySystemChar_32 szPname;
     public uint wXmin;
     public uint wXmax;
     public uint wYmin;
@@ -26,8 +26,8 @@ public partial struct JOYCAPS2W
     public uint wMaxAxes;
     public uint wNumAxes;
     public uint wMaxButtons;
-    public InlineArraySystemChar32 szRegKey;
-    public InlineArraySystemChar260 szOEMVxD;
+    public InlineArraySystemChar_32 szRegKey;
+    public InlineArraySystemChar_260 szOEMVxD;
     public Guid ManufacturerGuid;
     public Guid ProductGuid;
     public Guid NameGuid;

@@ -22,5 +22,5 @@ public partial struct AVISTREAMINFOA
     public RECT rcFrame;
     public uint dwEditCount;
     public uint dwFormatChangeCount;
-    public InlineArrayFoundationCHAR64 szName;
+    public InlineArrayFoundationCHAR_64 szName;
 }

@@ -11,5 +11,5 @@ public partial struct MPEG2VIDEOINFO
     public uint dwProfile;
     public uint dwLevel;
     public MPEG2VIDEOINFO_FLAGS dwFlags;
-    public InlineArrayUInt321 dwSequenceHeader; // variable-length array placeholder
+    public InlineArrayUInt32_1 dwSequenceHeader; // variable-length array placeholder
 }

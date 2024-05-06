@@ -30,7 +30,7 @@ public partial struct DDCAPS_DX6
     public uint dwAlignBoundaryDest;
     public uint dwAlignSizeDest;
     public uint dwAlignStrideAlign;
-    public InlineArrayUInt328 dwRops;
+    public InlineArrayUInt32_8 dwRops;
     public DDSCAPS ddsOldCaps;
     public uint dwMinOverlayStretch;
     public uint dwMaxOverlayStretch;
@@ -44,15 +44,15 @@ public partial struct DDCAPS_DX6
     public uint dwSVBCaps;
     public uint dwSVBCKeyCaps;
     public uint dwSVBFXCaps;
-    public InlineArrayUInt328 dwSVBRops;
+    public InlineArrayUInt32_8 dwSVBRops;
     public uint dwVSBCaps;
     public uint dwVSBCKeyCaps;
     public uint dwVSBFXCaps;
-    public InlineArrayUInt328 dwVSBRops;
+    public InlineArrayUInt32_8 dwVSBRops;
     public uint dwSSBCaps;
     public uint dwSSBCKeyCaps;
     public uint dwSSBFXCaps;
-    public InlineArrayUInt328 dwSSBRops;
+    public InlineArrayUInt32_8 dwSSBRops;
     public uint dwMaxVideoPorts;
     public uint dwCurrVideoPorts;
     public uint dwSVBCaps2;
@@ -60,6 +60,6 @@ public partial struct DDCAPS_DX6
     public uint dwNLVBCaps2;
     public uint dwNLVBCKeyCaps;
     public uint dwNLVBFXCaps;
-    public InlineArrayUInt328 dwNLVBRops;
+    public InlineArrayUInt32_8 dwNLVBRops;
     public DDSCAPS2 ddsCaps;
 }

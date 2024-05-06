@@ -13,5 +13,5 @@ public partial struct DMUS_REGION
     public uint ulFirstExtCkIdx;
     public WAVELINK WaveLink;
     public WSMPL WSMP;
-    public InlineArrayWLOOP1 WLOOP; // variable-length array placeholder
+    public InlineArrayWLOOP_1 WLOOP; // variable-length array placeholder
 }

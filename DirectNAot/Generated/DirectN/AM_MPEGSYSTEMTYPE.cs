@@ -7,5 +7,5 @@ public partial struct AM_MPEGSYSTEMTYPE
 {
     public uint dwBitRate;
     public uint cStreams;
-    public InlineArrayAM_MPEGSTREAMTYPE1 Streams; // variable-length array placeholder
+    public InlineArrayAM_MPEGSTREAMTYPE_1 Streams; // variable-length array placeholder
 }

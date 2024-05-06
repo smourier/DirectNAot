@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct HEAACWAVEFORMAT
 {
     public HEAACWAVEINFO wfInfo;
-    public InlineArrayByte1 pbAudioSpecificConfig; // variable-length array placeholder
+    public InlineArrayByte_1 pbAudioSpecificConfig; // variable-length array placeholder
 }

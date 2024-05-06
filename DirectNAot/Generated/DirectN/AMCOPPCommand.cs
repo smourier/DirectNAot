@@ -9,5 +9,5 @@ public partial struct AMCOPPCommand
     public Guid guidCommandID;
     public uint dwSequence;
     public uint cbSizeData;
-    public InlineArrayByte4056 CommandData;
+    public InlineArrayByte_4056 CommandData;
 }

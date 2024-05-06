@@ -5,9 +5,9 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DADAPTER_IDENTIFIER9
 {
-    public InlineArrayFoundationCHAR512 Driver;
-    public InlineArrayFoundationCHAR512 Description;
-    public InlineArrayFoundationCHAR32 DeviceName;
+    public InlineArrayFoundationCHAR_512 Driver;
+    public InlineArrayFoundationCHAR_512 Description;
+    public InlineArrayFoundationCHAR_32 DeviceName;
     public long DriverVersion;
     public uint VendorId;
     public uint DeviceId;

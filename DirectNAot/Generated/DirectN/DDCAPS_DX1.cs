@@ -29,7 +29,7 @@ public partial struct DDCAPS_DX1
     public uint dwAlignBoundaryDest;
     public uint dwAlignSizeDest;
     public uint dwAlignStrideAlign;
-    public InlineArrayUInt328 dwRops;
+    public InlineArrayUInt32_8 dwRops;
     public DDSCAPS ddsCaps;
     public uint dwMinOverlayStretch;
     public uint dwMaxOverlayStretch;

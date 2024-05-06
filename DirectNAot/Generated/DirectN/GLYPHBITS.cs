@@ -7,5 +7,5 @@ public partial struct GLYPHBITS
 {
     public POINTL ptlOrigin;
     public SIZE sizlBitmap;
-    public InlineArrayByte1 aj; // variable-length array placeholder
+    public InlineArrayByte_1 aj; // variable-length array placeholder
 }

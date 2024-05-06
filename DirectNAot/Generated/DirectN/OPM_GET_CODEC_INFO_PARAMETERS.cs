@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct OPM_GET_CODEC_INFO_PARAMETERS
 {
     public uint cbVerifier;
-    public InlineArrayByte4052 Verifier;
+    public InlineArrayByte_4052 Verifier;
 }

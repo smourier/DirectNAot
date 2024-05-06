@@ -11,7 +11,7 @@ public partial struct ICINFO
     public uint dwFlags;
     public uint dwVersion;
     public uint dwVersionICM;
-    public InlineArraySystemChar16 szName;
-    public InlineArraySystemChar128 szDescription;
-    public InlineArraySystemChar128 szDriver;
+    public InlineArraySystemChar_16 szName;
+    public InlineArraySystemChar_128 szDescription;
+    public InlineArraySystemChar_128 szDriver;
 }

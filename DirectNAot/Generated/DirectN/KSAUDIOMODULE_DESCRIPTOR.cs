@@ -8,5 +8,5 @@ public partial struct KSAUDIOMODULE_DESCRIPTOR
     public uint InstanceId;
     public uint VersionMajor;
     public uint VersionMinor;
-    public InlineArraySystemChar128 Name;
+    public InlineArraySystemChar_128 Name;
 }

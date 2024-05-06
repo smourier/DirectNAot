@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_OMAC
 {
-    public InlineArrayByte16 Omac;
+    public InlineArrayByte_16 Omac;
 }

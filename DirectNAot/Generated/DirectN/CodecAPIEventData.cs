@@ -7,5 +7,5 @@ public partial struct CodecAPIEventData
 {
     public Guid guid;
     public uint dataLength;
-    public InlineArrayUInt323 reserved;
+    public InlineArrayUInt32_3 reserved;
 }

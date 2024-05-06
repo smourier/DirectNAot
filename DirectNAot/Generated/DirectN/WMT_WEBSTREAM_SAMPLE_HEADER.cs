@@ -9,5 +9,5 @@ public partial struct WMT_WEBSTREAM_SAMPLE_HEADER
     public ushort wPart;
     public ushort cTotalParts;
     public ushort wSampleType;
-    public InlineArraySystemChar1 wszURL; // variable-length array placeholder
+    public InlineArraySystemChar_1 wszURL; // variable-length array placeholder
 }

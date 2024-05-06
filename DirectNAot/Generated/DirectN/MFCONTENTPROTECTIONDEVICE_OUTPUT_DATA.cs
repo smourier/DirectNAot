@@ -11,5 +11,5 @@ public partial struct MFCONTENTPROTECTIONDEVICE_OUTPUT_DATA
     public HRESULT Status;
     public long TransportTimeInHundredsOfNanoseconds;
     public long ExecutionTimeInHundredsOfNanoseconds;
-    public InlineArrayByte4 OutputData;
+    public InlineArrayByte_4 OutputData;
 }

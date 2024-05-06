@@ -13,7 +13,7 @@ public partial struct MIXERLINEA
         public ushort wMid;
         public ushort wPid;
         public uint vDriverVersion;
-        public InlineArrayFoundationCHAR32 szPname;
+        public InlineArrayFoundationCHAR_32 szPname;
     }
     
     public uint cbStruct;
@@ -26,7 +26,7 @@ public partial struct MIXERLINEA
     public uint cChannels;
     public uint cConnections;
     public uint cControls;
-    public InlineArrayFoundationCHAR16 szShortName;
-    public InlineArrayFoundationCHAR64 szName;
+    public InlineArrayFoundationCHAR_16 szShortName;
+    public InlineArrayFoundationCHAR_64 szName;
     public _Target_e__Struct Target;
 }

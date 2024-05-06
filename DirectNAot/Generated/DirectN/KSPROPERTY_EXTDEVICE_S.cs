@@ -17,10 +17,10 @@ public partial struct KSPROPERTY_EXTDEVICE_S
         public uint PowerState;
         
         [FieldOffset(0)]
-        public InlineArraySystemChar260 pawchString;
+        public InlineArraySystemChar_260 pawchString;
         
         [FieldOffset(0)]
-        public InlineArrayUInt322 NodeUniqueID;
+        public InlineArrayUInt32_2 NodeUniqueID;
     }
     
     public KSIDENTIFIER Property;

@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct WST_BUFFER_LINE
 {
     public byte Confidence;
-    public InlineArrayByte42 Bytes;
+    public InlineArrayByte_42 Bytes;
 }

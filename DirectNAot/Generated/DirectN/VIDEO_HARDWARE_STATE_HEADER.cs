@@ -5,7 +5,7 @@ namespace DirectN;
 public partial struct VIDEO_HARDWARE_STATE_HEADER
 {
     public uint Length;
-    public InlineArrayByte48 PortValue;
+    public InlineArrayByte_48 PortValue;
     public uint AttribIndexDataState;
     public uint BasicSequencerOffset;
     public uint BasicCrtContOffset;

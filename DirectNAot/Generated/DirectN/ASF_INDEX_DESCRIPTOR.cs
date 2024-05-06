@@ -7,6 +7,6 @@ public partial struct ASF_INDEX_DESCRIPTOR
 {
     public ASF_INDEX_IDENTIFIER Identifier;
     public ushort cPerEntryBytes;
-    public InlineArraySystemChar32 szDescription;
+    public InlineArraySystemChar_32 szDescription;
     public uint dwInterval;
 }

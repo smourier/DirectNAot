@@ -16,8 +16,8 @@ public partial struct MPEG2_FILTER2
             
             [MarshalAs(UnmanagedType.U4)]
             public bool fUseRawFilteringBits;
-            public InlineArrayByte16 Filter;
-            public InlineArrayByte16 Mask;
+            public InlineArrayByte_16 Filter;
+            public InlineArrayByte_16 Mask;
             
             [MarshalAs(UnmanagedType.U4)]
             public bool fSpecifyTableIdExtension;
@@ -50,7 +50,7 @@ public partial struct MPEG2_FILTER2
         public _Anonymous_e__Struct Anonymous;
         
         [FieldOffset(0)]
-        public InlineArrayByte124 bVersion1Bytes;
+        public InlineArrayByte_124 bVersion1Bytes;
     }
     
     public _Anonymous_e__Union Anonymous;

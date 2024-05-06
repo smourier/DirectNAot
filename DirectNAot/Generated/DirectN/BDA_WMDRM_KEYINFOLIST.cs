@@ -6,5 +6,5 @@ public partial struct BDA_WMDRM_KEYINFOLIST
 {
     public int lResult;
     public uint ulKeyuuidBufferLen;
-    public InlineArrayGuid1 argKeyuuidBuffer; // variable-length array placeholder
+    public InlineArrayGuid_1 argKeyuuidBuffer; // variable-length array placeholder
 }

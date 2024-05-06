@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct HiFiCOLOR
 {
-    public InlineArrayByte8 channel;
+    public InlineArrayByte_8 channel;
 }

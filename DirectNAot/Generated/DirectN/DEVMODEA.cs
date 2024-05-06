@@ -46,7 +46,7 @@ public partial struct DEVMODEA
         public uint dmNup;
     }
     
-    public InlineArrayByte32 dmDeviceName;
+    public InlineArrayByte_32 dmDeviceName;
     public ushort dmSpecVersion;
     public ushort dmDriverVersion;
     public ushort dmSize;
@@ -58,7 +58,7 @@ public partial struct DEVMODEA
     public short dmYResolution;
     public DEVMODE_TRUETYPE_OPTION dmTTOption;
     public DEVMODE_COLLATE dmCollate;
-    public InlineArrayByte32 dmFormName;
+    public InlineArrayByte_32 dmFormName;
     public ushort dmLogPixels;
     public uint dmBitsPerPel;
     public uint dmPelsWidth;

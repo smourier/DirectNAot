@@ -8,5 +8,5 @@ public partial struct OPAQUECOMMAND
     public Guid guidCommand;
     public uint dwDataLen;
     public nint pData;
-    public InlineArrayByte20 abMAC;
+    public InlineArrayByte_20 abMAC;
 }

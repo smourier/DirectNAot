@@ -24,5 +24,5 @@ public partial struct DISPLAYCONFIG_SET_MONITOR_SPECIALIZATION
     public _Anonymous_e__Union Anonymous;
     public Guid specializationType;
     public Guid specializationSubType;
-    public InlineArraySystemChar128 specializationApplicationName;
+    public InlineArraySystemChar_128 specializationApplicationName;
 }

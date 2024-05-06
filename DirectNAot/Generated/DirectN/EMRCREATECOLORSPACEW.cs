@@ -10,5 +10,5 @@ public partial struct EMRCREATECOLORSPACEW
     public LOGCOLORSPACEW lcs;
     public uint dwFlags;
     public uint cbData;
-    public InlineArrayByte1 Data; // variable-length array placeholder
+    public InlineArrayByte_1 Data; // variable-length array placeholder
 }

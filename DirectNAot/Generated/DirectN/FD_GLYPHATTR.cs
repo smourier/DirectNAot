@@ -8,5 +8,5 @@ public partial struct FD_GLYPHATTR
     public uint cjThis;
     public uint cGlyphs;
     public uint iMode;
-    public InlineArrayByte1 aGlyphAttr; // variable-length array placeholder
+    public InlineArrayByte_1 aGlyphAttr; // variable-length array placeholder
 }

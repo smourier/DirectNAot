@@ -12,7 +12,7 @@ public partial struct DXVA_COPPSetSignalingCmdData
     public uint AspectRatioData2;
     public uint AspectRatioChangeMask3;
     public uint AspectRatioData3;
-    public InlineArrayUInt324 ExtendedInfoChangeMask;
-    public InlineArrayUInt324 ExtendedInfoData;
+    public InlineArrayUInt32_4 ExtendedInfoChangeMask;
+    public InlineArrayUInt32_4 ExtendedInfoData;
     public uint Reserved;
 }

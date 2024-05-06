@@ -15,9 +15,9 @@ public partial struct ACMDRIVERDETAILSA
     public uint cFormatTags;
     public uint cFilterTags;
     public HICON hicon;
-    public InlineArrayFoundationCHAR32 szShortName;
-    public InlineArrayFoundationCHAR128 szLongName;
-    public InlineArrayFoundationCHAR80 szCopyright;
-    public InlineArrayFoundationCHAR128 szLicensing;
-    public InlineArrayFoundationCHAR512 szFeatures;
+    public InlineArrayFoundationCHAR_32 szShortName;
+    public InlineArrayFoundationCHAR_128 szLongName;
+    public InlineArrayFoundationCHAR_80 szCopyright;
+    public InlineArrayFoundationCHAR_128 szLicensing;
+    public InlineArrayFoundationCHAR_512 szFeatures;
 }

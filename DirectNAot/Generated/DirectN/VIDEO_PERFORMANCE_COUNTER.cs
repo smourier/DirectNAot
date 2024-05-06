@@ -4,12 +4,12 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_PERFORMANCE_COUNTER
 {
-    public InlineArrayUInt6410 NbOfAllocationEvicted;
-    public InlineArrayUInt6410 NbOfAllocationMarked;
-    public InlineArrayUInt6410 NbOfAllocationRestored;
-    public InlineArrayUInt6410 KBytesEvicted;
-    public InlineArrayUInt6410 KBytesMarked;
-    public InlineArrayUInt6410 KBytesRestored;
+    public InlineArrayUInt64_10 NbOfAllocationEvicted;
+    public InlineArrayUInt64_10 NbOfAllocationMarked;
+    public InlineArrayUInt64_10 NbOfAllocationRestored;
+    public InlineArrayUInt64_10 KBytesEvicted;
+    public InlineArrayUInt64_10 KBytesMarked;
+    public InlineArrayUInt64_10 KBytesRestored;
     public ulong NbProcessCommited;
     public ulong NbAllocationCommited;
     public ulong NbAllocationMarked;

@@ -19,5 +19,5 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_PROCESS_SUPPORT
     public D3D12_VIDEO_PROCESS_DEINTERLACE_FLAGS DeinterlaceSupport;
     public D3D12_VIDEO_PROCESS_AUTO_PROCESSING_FLAGS AutoProcessingSupport;
     public D3D12_VIDEO_PROCESS_FILTER_FLAGS FilterSupport;
-    public InlineArrayD3D12_VIDEO_PROCESS_FILTER_RANGE32 FilterRangeSupport;
+    public InlineArrayD3D12_VIDEO_PROCESS_FILTER_RANGE_32 FilterRangeSupport;
 }

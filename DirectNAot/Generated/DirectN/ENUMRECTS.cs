@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct ENUMRECTS
 {
     public uint c;
-    public InlineArrayRECTL1 arcl; // variable-length array placeholder
+    public InlineArrayRECTL_1 arcl; // variable-length array placeholder
 }

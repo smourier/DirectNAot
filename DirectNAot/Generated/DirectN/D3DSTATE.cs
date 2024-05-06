@@ -18,10 +18,10 @@ public partial struct D3DSTATE
     public struct _Anonymous2_e__Union
     {
         [FieldOffset(0)]
-        public InlineArrayUInt321 dwArg;
+        public InlineArrayUInt32_1 dwArg;
         
         [FieldOffset(0)]
-        public InlineArraySingle1 dvArg; // variable-length array placeholder
+        public InlineArraySingle_1 dvArg; // variable-length array placeholder
     }
     
     public _Anonymous1_e__Union Anonymous1;

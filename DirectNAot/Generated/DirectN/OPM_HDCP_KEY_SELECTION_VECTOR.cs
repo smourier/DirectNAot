@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct OPM_HDCP_KEY_SELECTION_VECTOR
 {
-    public InlineArrayByte5 abKeySelectionVector;
+    public InlineArrayByte_5 abKeySelectionVector;
 }

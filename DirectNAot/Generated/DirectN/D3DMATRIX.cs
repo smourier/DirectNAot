@@ -33,7 +33,7 @@ public partial struct D3DMATRIX
         public _Anonymous_e__Struct Anonymous;
         
         [FieldOffset(0)]
-        public InlineArraySingle16 m;
+        public InlineArraySingle_16 m;
     }
     
     public _Anonymous_e__Union Anonymous;

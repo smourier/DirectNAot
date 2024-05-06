@@ -10,6 +10,6 @@ public partial struct SPRECOGNIZERSTATUS
     public uint ulNumActive;
     public Guid clsidEngine;
     public uint cLangIDs;
-    public InlineArrayUInt1620 aLangID;
+    public InlineArrayUInt16_20 aLangID;
     public ulong ullRecognitionStreamTime;
 }

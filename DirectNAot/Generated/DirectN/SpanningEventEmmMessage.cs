@@ -16,5 +16,5 @@ public partial struct SpanningEventEmmMessage
     public byte bFormatVersion;
     public byte bDisplayPosition;
     public ushort wMessageLength;
-    public InlineArraySystemChar1 szMessageArea; // variable-length array placeholder
+    public InlineArraySystemChar_1 szMessageArea; // variable-length array placeholder
 }

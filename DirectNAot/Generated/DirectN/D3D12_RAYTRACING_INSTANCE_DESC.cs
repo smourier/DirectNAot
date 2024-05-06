@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_RAYTRACING_INSTANCE_DESC
 {
-    public InlineArraySingle12 Transform;
+    public InlineArraySingle_12 Transform;
     public uint _bitfield1;
     public uint _bitfield2;
     public ulong AccelerationStructure;

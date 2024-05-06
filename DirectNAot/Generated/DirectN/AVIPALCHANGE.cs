@@ -8,5 +8,5 @@ public partial struct AVIPALCHANGE
     public byte bFirstEntry;
     public byte bNumEntries;
     public ushort wFlags;
-    public InlineArrayPALETTEENTRY1 peNew;
+    public InlineArrayPALETTEENTRY_1 peNew;
 }

@@ -7,5 +7,5 @@ public partial struct PIN_INFO
 {
     public nint pFilter;
     public PIN_DIRECTION dir;
-    public InlineArraySystemChar128 achName;
+    public InlineArraySystemChar_128 achName;
 }

@@ -11,5 +11,5 @@ public partial struct D2D1_BLEND_DESCRIPTION
     public D2D1_BLEND sourceBlendAlpha;
     public D2D1_BLEND destinationBlendAlpha;
     public D2D1_BLEND_OPERATION blendOperationAlpha;
-    public InlineArraySingle4 blendFactor;
+    public InlineArraySingle_4 blendFactor;
 }

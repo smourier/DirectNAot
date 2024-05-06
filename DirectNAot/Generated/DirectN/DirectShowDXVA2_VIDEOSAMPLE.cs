@@ -11,6 +11,6 @@ public partial struct DirectShowDXVA2_VIDEOSAMPLE
     public nint SrcResource;
     public RECT SrcRect;
     public RECT DstRect;
-    public InlineArrayDXVA2_AYUVSample816 Pal;
+    public InlineArrayDXVA2_AYUVSample8_16 Pal;
     public DXVA2_Fixed32 PlanarAlpha;
 }

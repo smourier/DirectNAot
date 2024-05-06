@@ -10,5 +10,5 @@ public partial struct ACMFORMATDETAILSA
     public uint fdwSupport;
     public nint pwfx;
     public uint cbwfx;
-    public InlineArrayFoundationCHAR128 szFormat;
+    public InlineArrayFoundationCHAR_128 szFormat;
 }

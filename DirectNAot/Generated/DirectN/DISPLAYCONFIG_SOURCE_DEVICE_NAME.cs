@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct DISPLAYCONFIG_SOURCE_DEVICE_NAME
 {
     public DISPLAYCONFIG_DEVICE_INFO_HEADER header;
-    public InlineArraySystemChar32 viewGdiDeviceName;
+    public InlineArraySystemChar_32 viewGdiDeviceName;
 }

@@ -6,5 +6,5 @@ public partial struct DIRTYRECT_INFO
 {
     public uint FrameNumber;
     public uint NumDirtyRects;
-    public InlineArrayRECT1 DirtyRects; // variable-length array placeholder
+    public InlineArrayRECT_1 DirtyRects; // variable-length array placeholder
 }

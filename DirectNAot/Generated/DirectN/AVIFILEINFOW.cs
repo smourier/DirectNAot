@@ -16,5 +16,5 @@ public partial struct AVIFILEINFOW
     public uint dwRate;
     public uint dwLength;
     public uint dwEditCount;
-    public InlineArraySystemChar64 szFileType;
+    public InlineArraySystemChar_64 szFileType;
 }

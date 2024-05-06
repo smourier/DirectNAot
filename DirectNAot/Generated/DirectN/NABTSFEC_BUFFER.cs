@@ -7,5 +7,5 @@ public partial struct NABTSFEC_BUFFER
     public uint dataSize;
     public ushort groupID;
     public ushort Reserved;
-    public InlineArrayByte448 data;
+    public InlineArrayByte_448 data;
 }

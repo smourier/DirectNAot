@@ -9,8 +9,8 @@ public partial struct VMRMONITORINFO
     public RECT rcMonitor;
     public HMONITOR hMon;
     public uint dwFlags;
-    public InlineArraySystemChar32 szDevice;
-    public InlineArraySystemChar256 szDescription;
+    public InlineArraySystemChar_32 szDevice;
+    public InlineArraySystemChar_256 szDescription;
     public long liDriverVersion;
     public uint dwVendorId;
     public uint dwDeviceId;

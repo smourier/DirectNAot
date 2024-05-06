@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER
 {
     public Guid DriverOpaqueGUID;
-    public InlineArrayByte16 DriverOpaqueVersioningData;
+    public InlineArrayByte_16 DriverOpaqueVersioningData;
 }

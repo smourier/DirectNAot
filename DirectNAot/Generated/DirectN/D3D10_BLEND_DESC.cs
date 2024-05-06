@@ -7,12 +7,12 @@ public partial struct D3D10_BLEND_DESC
 {
     [MarshalAs(UnmanagedType.U4)]
     public bool AlphaToCoverageEnable;
-    public InlineArrayBOOL8 BlendEnable;
+    public InlineArrayBOOL_8 BlendEnable;
     public D3D10_BLEND SrcBlend;
     public D3D10_BLEND DestBlend;
     public D3D10_BLEND_OP BlendOp;
     public D3D10_BLEND SrcBlendAlpha;
     public D3D10_BLEND DestBlendAlpha;
     public D3D10_BLEND_OP BlendOpAlpha;
-    public InlineArrayByte8 RenderTargetWriteMask;
+    public InlineArrayByte_8 RenderTargetWriteMask;
 }

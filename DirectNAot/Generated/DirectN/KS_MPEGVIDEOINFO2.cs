@@ -10,5 +10,5 @@ public partial struct KS_MPEGVIDEOINFO2
     public uint dwProfile;
     public uint dwLevel;
     public uint dwFlags;
-    public InlineArrayUInt321 bSequenceHeader; // variable-length array placeholder
+    public InlineArrayUInt32_1 bSequenceHeader; // variable-length array placeholder
 }

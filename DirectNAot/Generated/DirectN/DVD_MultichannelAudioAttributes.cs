@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_MultichannelAudioAttributes
 {
-    public InlineArrayDVD_MUA_MixingInfo8 Info;
-    public InlineArrayDVD_MUA_Coeff8 Coeff;
+    public InlineArrayDVD_MUA_MixingInfo_8 Info;
+    public InlineArrayDVD_MUA_Coeff_8 Coeff;
 }

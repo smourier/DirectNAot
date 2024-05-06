@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DRM_VAL16
 {
-    public InlineArrayByte16 val;
+    public InlineArrayByte_16 val;
 }

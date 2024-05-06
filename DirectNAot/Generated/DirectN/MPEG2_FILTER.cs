@@ -10,8 +10,8 @@ public partial struct MPEG2_FILTER
     
     [MarshalAs(UnmanagedType.U4)]
     public bool fUseRawFilteringBits;
-    public InlineArrayByte16 Filter;
-    public InlineArrayByte16 Mask;
+    public InlineArrayByte_16 Filter;
+    public InlineArrayByte_16 Mask;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool fSpecifyTableIdExtension;

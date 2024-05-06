@@ -7,5 +7,5 @@ public partial struct KSDISPLAYCHANGE
     public uint PelsWidth;
     public uint PelsHeight;
     public uint BitsPerPel;
-    public InlineArraySystemChar1 DeviceID; // variable-length array placeholder
+    public InlineArraySystemChar_1 DeviceID; // variable-length array placeholder
 }

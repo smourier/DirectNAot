@@ -9,7 +9,7 @@ public partial struct D3D12_CLEAR_VALUE
     public struct _Anonymous_e__Union
     {
         [FieldOffset(0)]
-        public InlineArraySingle4 Color;
+        public InlineArraySingle_4 Color;
         
         [FieldOffset(0)]
         public D3D12_DEPTH_STENCIL_VALUE DepthStencil;

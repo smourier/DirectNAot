@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct MFPinholeCameraIntrinsics
 {
     public uint IntrinsicModelCount;
-    public InlineArrayMFPinholeCameraIntrinsic_IntrinsicModel1 IntrinsicModels; // variable-length array placeholder
+    public InlineArrayMFPinholeCameraIntrinsic_IntrinsicModel_1 IntrinsicModels; // variable-length array placeholder
 }

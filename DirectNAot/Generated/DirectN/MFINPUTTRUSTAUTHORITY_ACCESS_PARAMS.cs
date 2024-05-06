@@ -12,5 +12,5 @@ public partial struct MFINPUTTRUSTAUTHORITY_ACCESS_PARAMS
     public uint cbExtensionOffset;
     public uint cbExtensionSize;
     public uint cActions;
-    public InlineArrayMFINPUTTRUSTAUTHORITY_ACCESS_ACTION1 rgOutputActions; // variable-length array placeholder
+    public InlineArrayMFINPUTTRUSTAUTHORITY_ACCESS_ACTION_1 rgOutputActions; // variable-length array placeholder
 }

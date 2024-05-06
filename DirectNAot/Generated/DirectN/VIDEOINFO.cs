@@ -9,10 +9,10 @@ public partial struct VIDEOINFO
     public struct _Anonymous_e__Union
     {
         [FieldOffset(0)]
-        public InlineArrayRGBQUAD256 bmiColors;
+        public InlineArrayRGBQUAD_256 bmiColors;
         
         [FieldOffset(0)]
-        public InlineArrayUInt323 dwBitMasks;
+        public InlineArrayUInt32_3 dwBitMasks;
         
         [FieldOffset(0)]
         public TRUECOLORINFO TrueColorInfo;

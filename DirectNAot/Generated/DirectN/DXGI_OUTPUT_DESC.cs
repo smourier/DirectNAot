@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_OUTPUT_DESC
 {
-    public InlineArraySystemChar32 DeviceName;
+    public InlineArraySystemChar_32 DeviceName;
     public RECT DesktopCoordinates;
     
     [MarshalAs(UnmanagedType.U4)]

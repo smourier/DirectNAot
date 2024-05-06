@@ -6,5 +6,5 @@ public partial struct NABTS_BUFFER
 {
     public VBICODECFILTERING_SCANLINES ScanlinesRequested;
     public long PictureNumber;
-    public InlineArrayNABTS_BUFFER_LINE11 NabtsLines;
+    public InlineArrayNABTS_BUFFER_LINE_11 NabtsLines;
 }

@@ -13,5 +13,5 @@ public partial struct DVD_KaraokeAttributes
     [MarshalAs(UnmanagedType.U4)]
     public bool fDuet;
     public DVD_KARAOKE_ASSIGNMENT ChannelAssignment;
-    public InlineArrayUInt168 wChannelContents;
+    public InlineArrayUInt16_8 wChannelContents;
 }

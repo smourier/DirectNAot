@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct HrtfOrientation
 {
-    public InlineArraySingle9 element;
+    public InlineArraySingle_9 element;
 }

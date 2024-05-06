@@ -11,5 +11,5 @@ public partial struct VIDEOHDR
     public uint dwTimeCaptured;
     public nuint dwUser;
     public uint dwFlags;
-    public InlineArrayUIntPtr4 dwReserved;
+    public InlineArrayUIntPtr_4 dwReserved;
 }

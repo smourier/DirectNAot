@@ -11,7 +11,7 @@ public partial struct ENUMTYPEA
     public PSTR pDeviceName;
     public uint dwMediaType;
     public uint dwDitheringMode;
-    public InlineArrayUInt322 dwResolution;
+    public InlineArrayUInt32_2 dwResolution;
     public uint dwCMMType;
     public uint dwClass;
     public uint dwDataColorSpace;
@@ -21,7 +21,7 @@ public partial struct ENUMTYPEA
     public uint dwProfileFlags;
     public uint dwManufacturer;
     public uint dwModel;
-    public InlineArrayUInt322 dwAttributes;
+    public InlineArrayUInt32_2 dwAttributes;
     public uint dwRenderingIntent;
     public uint dwCreator;
     public uint dwDeviceClass;

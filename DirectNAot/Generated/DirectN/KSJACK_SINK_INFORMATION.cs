@@ -16,6 +16,6 @@ public partial struct KSJACK_SINK_INFORMATION
     [MarshalAs(UnmanagedType.U4)]
     public bool AICapable;
     public byte SinkDescriptionLength;
-    public InlineArraySystemChar32 SinkDescription;
+    public InlineArraySystemChar_32 SinkDescription;
     public LUID PortId;
 }

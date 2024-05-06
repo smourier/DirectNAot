@@ -7,5 +7,5 @@ public partial struct MIXERCONTROLDETAILS_LISTTEXTW
 {
     public uint dwParam1;
     public uint dwParam2;
-    public InlineArraySystemChar64 szName;
+    public InlineArraySystemChar_64 szName;
 }

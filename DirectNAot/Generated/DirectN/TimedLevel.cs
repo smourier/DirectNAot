@@ -5,8 +5,8 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct TimedLevel
 {
-    public InlineArrayByte2048 frequency;
-    public InlineArrayByte2048 waveform;
+    public InlineArrayByte_2048 frequency;
+    public InlineArrayByte_2048 waveform;
     public int state;
     public long timeStamp;
 }

@@ -10,5 +10,5 @@ public partial struct DD_NONLOCALVIDMEMCAPS
     public uint dwNLVBCaps2;
     public uint dwNLVBCKeyCaps;
     public uint dwNLVBFXCaps;
-    public InlineArrayUInt328 dwNLVBRops;
+    public InlineArrayUInt32_8 dwNLVBRops;
 }

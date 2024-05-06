@@ -13,6 +13,6 @@ public partial struct AVITIMEDINDEX
     public uint dwChunkId;
     public ulong qwBaseOffset;
     public uint dwReserved_3;
-    public InlineArrayAVITIMEDINDEX_ENTRY1362 aIndex;
-    public InlineArrayUInt322734 adwTrailingFill;
+    public InlineArrayAVITIMEDINDEX_ENTRY_1362 aIndex;
+    public InlineArrayUInt32_2734 adwTrailingFill;
 }

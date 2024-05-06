@@ -10,8 +10,8 @@ public partial struct ACMFORMATCHOOSEA
     public nint pwfx;
     public uint cbwfx;
     public PSTR pszTitle;
-    public InlineArrayFoundationCHAR48 szFormatTag;
-    public InlineArrayFoundationCHAR128 szFormat;
+    public InlineArrayFoundationCHAR_48 szFormatTag;
+    public InlineArrayFoundationCHAR_128 szFormat;
     public PSTR pszName;
     public uint cchName;
     public uint fdwEnum;

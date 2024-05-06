@@ -6,9 +6,9 @@ namespace DirectN;
 public partial struct DISPLAY_DEVICEW
 {
     public uint cb;
-    public InlineArraySystemChar32 DeviceName;
-    public InlineArraySystemChar128 DeviceString;
+    public InlineArraySystemChar_32 DeviceName;
+    public InlineArraySystemChar_128 DeviceString;
     public uint StateFlags;
-    public InlineArraySystemChar128 DeviceID;
-    public InlineArraySystemChar128 DeviceKey;
+    public InlineArraySystemChar_128 DeviceID;
+    public InlineArraySystemChar_128 DeviceKey;
 }

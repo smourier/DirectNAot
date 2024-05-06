@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct BRIGHTNESS_LEVEL
 {
     public byte Count;
-    public InlineArrayByte103 Level;
+    public InlineArrayByte_103 Level;
 }

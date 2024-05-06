@@ -23,8 +23,8 @@ public partial struct TRANSPORTBASICPARMS
     public int ServoRef;
     public int WarnGenlock;
     public int SetTracking;
-    public InlineArraySByte40 VolumeName;
-    public InlineArrayInt3220 Ballistic;
+    public InlineArraySByte_40 VolumeName;
+    public InlineArrayInt32_20 Ballistic;
     public int Speed;
     public int CounterFormat;
     public int TunerChannel;

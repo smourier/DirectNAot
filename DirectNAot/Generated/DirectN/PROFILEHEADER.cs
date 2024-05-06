@@ -11,15 +11,15 @@ public partial struct PROFILEHEADER
     public uint phClass;
     public uint phDataColorSpace;
     public uint phConnectionSpace;
-    public InlineArrayUInt323 phDateTime;
+    public InlineArrayUInt32_3 phDateTime;
     public uint phSignature;
     public uint phPlatform;
     public uint phProfileFlags;
     public uint phManufacturer;
     public uint phModel;
-    public InlineArrayUInt322 phAttributes;
+    public InlineArrayUInt32_2 phAttributes;
     public uint phRenderingIntent;
     public CIEXYZ phIlluminant;
     public uint phCreator;
-    public InlineArrayByte44 phReserved;
+    public InlineArrayByte_44 phReserved;
 }

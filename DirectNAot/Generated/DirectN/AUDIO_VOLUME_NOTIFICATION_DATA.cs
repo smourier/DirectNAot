@@ -11,5 +11,5 @@ public partial struct AUDIO_VOLUME_NOTIFICATION_DATA
     public bool bMuted;
     public float fMasterVolume;
     public uint nChannels;
-    public InlineArraySingle1 afChannelVolumes; // variable-length array placeholder
+    public InlineArraySingle_1 afChannelVolumes; // variable-length array placeholder
 }

@@ -10,6 +10,6 @@ public partial struct MP_PARAMINFO
     public float mpdMinValue;
     public float mpdMaxValue;
     public float mpdNeutralValue;
-    public InlineArraySystemChar32 szUnitText;
-    public InlineArraySystemChar32 szLabel;
+    public InlineArraySystemChar_32 szUnitText;
+    public InlineArraySystemChar_32 szLabel;
 }

@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct DMUS_COPYRIGHT
 {
     public uint cbSize;
-    public InlineArrayByte4 byCopyright;
+    public InlineArrayByte_4 byCopyright;
 }

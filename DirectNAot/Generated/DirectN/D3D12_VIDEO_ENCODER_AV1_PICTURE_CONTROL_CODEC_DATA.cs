@@ -15,8 +15,8 @@ public partial struct D3D12_VIDEO_ENCODER_AV1_PICTURE_CONTROL_CODEC_DATA
     public uint PictureIndex;
     public uint TemporalLayerIndexPlus1;
     public uint SpatialLayerIndexPlus1;
-    public InlineArrayD3D12_VIDEO_ENCODER_AV1_REFERENCE_PICTURE_DESCRIPTOR8 ReferenceFramesReconPictureDescriptors;
-    public InlineArrayUInt327 ReferenceIndices;
+    public InlineArrayD3D12_VIDEO_ENCODER_AV1_REFERENCE_PICTURE_DESCRIPTOR_8 ReferenceFramesReconPictureDescriptors;
+    public InlineArrayUInt32_7 ReferenceIndices;
     public uint PrimaryRefFrame;
     public uint RefreshFrameFlags;
     public D3D12_VIDEO_ENCODER_CODEC_AV1_LOOP_FILTER_CONFIG LoopFilter;

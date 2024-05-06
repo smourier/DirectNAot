@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DGAMMARAMP
 {
-    public InlineArrayUInt16256 red;
-    public InlineArrayUInt16256 green;
-    public InlineArrayUInt16256 blue;
+    public InlineArrayUInt16_256 red;
+    public InlineArrayUInt16_256 green;
+    public InlineArrayUInt16_256 blue;
 }

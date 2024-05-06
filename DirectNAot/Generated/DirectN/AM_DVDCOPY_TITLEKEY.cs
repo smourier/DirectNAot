@@ -6,7 +6,7 @@ namespace DirectN;
 public partial struct AM_DVDCOPY_TITLEKEY
 {
     public uint KeyFlags;
-    public InlineArrayUInt322 Reserved1;
-    public InlineArrayByte6 TitleKey;
-    public InlineArrayByte2 Reserved2;
+    public InlineArrayUInt32_2 Reserved1;
+    public InlineArrayByte_6 TitleKey;
+    public InlineArrayByte_2 Reserved2;
 }

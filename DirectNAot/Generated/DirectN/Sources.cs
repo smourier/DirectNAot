@@ -7,5 +7,5 @@ public partial struct Sources
 {
     public uint sourceId;
     public int numTargets;
-    public InlineArrayUInt321 aTargets; // variable-length array placeholder
+    public InlineArrayUInt32_1 aTargets; // variable-length array placeholder
 }

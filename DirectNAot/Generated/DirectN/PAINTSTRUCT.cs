@@ -16,5 +16,5 @@ public partial struct PAINTSTRUCT
     
     [MarshalAs(UnmanagedType.U4)]
     public bool fIncUpdate;
-    public InlineArrayByte32 rgbReserved;
+    public InlineArrayByte_32 rgbReserved;
 }

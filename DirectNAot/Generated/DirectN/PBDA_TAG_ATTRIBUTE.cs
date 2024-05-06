@@ -8,5 +8,5 @@ public partial struct PBDA_TAG_ATTRIBUTE
     public byte TableId;
     public ushort VersionNo;
     public uint TableDataSize;
-    public InlineArrayByte1 TableData; // variable-length array placeholder
+    public InlineArrayByte_1 TableData; // variable-length array placeholder
 }

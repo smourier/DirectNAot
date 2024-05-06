@@ -16,7 +16,7 @@ public partial struct MMTIME
             public byte frame;
             public byte fps;
             public byte dummy;
-            public InlineArrayByte2 pad;
+            public InlineArrayByte_2 pad;
         }
         
         [StructLayout(LayoutKind.Sequential)]

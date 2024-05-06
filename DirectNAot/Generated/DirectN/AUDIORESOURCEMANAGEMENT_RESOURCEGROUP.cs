@@ -6,5 +6,5 @@ public partial struct AUDIORESOURCEMANAGEMENT_RESOURCEGROUP
 {
     [MarshalAs(UnmanagedType.U4)]
     public bool ResourceGroupAcquired;
-    public InlineArraySystemChar256 ResourceGroupName;
+    public InlineArraySystemChar_256 ResourceGroupName;
 }

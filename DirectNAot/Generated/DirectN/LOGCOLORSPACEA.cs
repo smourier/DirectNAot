@@ -14,5 +14,5 @@ public partial struct LOGCOLORSPACEA
     public uint lcsGammaRed;
     public uint lcsGammaGreen;
     public uint lcsGammaBlue;
-    public InlineArrayFoundationCHAR260 lcsFilename;
+    public InlineArrayFoundationCHAR_260 lcsFilename;
 }

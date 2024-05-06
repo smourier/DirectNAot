@@ -18,5 +18,5 @@ public partial struct LOGFONTA
     public FONT_CLIP_PRECISION lfClipPrecision;
     public FONT_QUALITY lfQuality;
     public byte lfPitchAndFamily;
-    public InlineArrayFoundationCHAR32 lfFaceName;
+    public InlineArrayFoundationCHAR_32 lfFaceName;
 }

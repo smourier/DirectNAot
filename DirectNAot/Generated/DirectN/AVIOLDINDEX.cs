@@ -5,10 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AVIOLDINDEX
 {
-    [InlineArray(1)]
-    public partial struct InlineArray_avioldindex_entry1
+    [InlineArray(InlineArray_avioldindex_entry_1.Length)]
+    public partial struct InlineArray_avioldindex_entry_1
     {
-        public static int Length => 1;
+        public const int Length = 1;
         
         public _avioldindex_entry Data;
     }
@@ -24,5 +24,5 @@ public partial struct AVIOLDINDEX
     
     public uint fcc;
     public uint cb;
-    public InlineArray_avioldindex_entry1 aIndex;
+    public InlineArray_avioldindex_entry_1 aIndex;
 }

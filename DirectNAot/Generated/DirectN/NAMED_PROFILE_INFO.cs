@@ -8,6 +8,6 @@ public partial struct NAMED_PROFILE_INFO
     public uint dwFlags;
     public uint dwCount;
     public uint dwCountDevCoordinates;
-    public InlineArraySByte32 szPrefix;
-    public InlineArraySByte32 szSuffix;
+    public InlineArraySByte_32 szPrefix;
+    public InlineArraySByte_32 szSuffix;
 }

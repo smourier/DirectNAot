@@ -60,7 +60,7 @@ public partial struct IFIMETRICS
     public POINTL ptlAspect;
     public POINTL ptlCaret;
     public RECTL rclFontBox;
-    public InlineArrayByte4 achVendId;
+    public InlineArrayByte_4 achVendId;
     public uint cKerningPairs;
     public uint ulPanoseCulture;
     public PANOSE panose;

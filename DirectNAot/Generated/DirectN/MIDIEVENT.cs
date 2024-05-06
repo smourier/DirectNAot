@@ -8,5 +8,5 @@ public partial struct MIDIEVENT
     public uint dwDeltaTime;
     public uint dwStreamID;
     public uint dwEvent;
-    public InlineArrayUInt321 dwParms; // variable-length array placeholder
+    public InlineArrayUInt32_1 dwParms; // variable-length array placeholder
 }

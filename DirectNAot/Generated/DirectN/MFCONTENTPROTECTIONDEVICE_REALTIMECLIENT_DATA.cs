@@ -6,6 +6,6 @@ namespace DirectN;
 public partial struct MFCONTENTPROTECTIONDEVICE_REALTIMECLIENT_DATA
 {
     public uint TaskIndex;
-    public InlineArraySystemChar260 ClassName;
+    public InlineArraySystemChar_260 ClassName;
     public int BasePriority;
 }

@@ -66,7 +66,7 @@ public partial struct DWRITE_PANOSE
     }
     
     [FieldOffset(0)]
-    public InlineArrayByte10 values;
+    public InlineArrayByte_10 values;
     
     [FieldOffset(0)]
     public byte familyKind;

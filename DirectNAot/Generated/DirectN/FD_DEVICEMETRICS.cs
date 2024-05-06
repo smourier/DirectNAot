@@ -26,5 +26,5 @@ public partial struct FD_DEVICEMETRICS
     public int lMinA;
     public int lMinC;
     public int lMinD;
-    public InlineArrayInt321 alReserved; // variable-length array placeholder
+    public InlineArrayInt32_1 alReserved; // variable-length array placeholder
 }

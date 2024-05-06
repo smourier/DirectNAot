@@ -9,19 +9,19 @@ public partial struct D3D11_TRACE_STATS
     public byte NumInvocationsInStamp;
     public byte TargetStampIndex;
     public uint NumTraceSteps;
-    public InlineArrayByte32 InputMask;
-    public InlineArrayByte32 OutputMask;
+    public InlineArrayByte_32 InputMask;
+    public InlineArrayByte_32 OutputMask;
     public ushort NumTemps;
     public ushort MaxIndexableTempIndex;
-    public InlineArrayUInt164096 IndexableTempSize;
+    public InlineArrayUInt16_4096 IndexableTempSize;
     public ushort ImmediateConstantBufferSize;
-    public InlineArrayUInt328 PixelPosition;
-    public InlineArrayUInt644 PixelCoverageMask;
-    public InlineArrayUInt644 PixelDiscardedMask;
-    public InlineArrayUInt644 PixelCoverageMaskAfterShader;
-    public InlineArrayUInt644 PixelCoverageMaskAfterA2CSampleMask;
-    public InlineArrayUInt644 PixelCoverageMaskAfterA2CSampleMaskDepth;
-    public InlineArrayUInt644 PixelCoverageMaskAfterA2CSampleMaskDepthStencil;
+    public InlineArrayUInt32_8 PixelPosition;
+    public InlineArrayUInt64_4 PixelCoverageMask;
+    public InlineArrayUInt64_4 PixelDiscardedMask;
+    public InlineArrayUInt64_4 PixelCoverageMaskAfterShader;
+    public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMask;
+    public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMaskDepth;
+    public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMaskDepthStencil;
     
     [MarshalAs(UnmanagedType.U4)]
     public bool PSOutputsDepth;
@@ -32,6 +32,6 @@ public partial struct D3D11_TRACE_STATS
     
     [MarshalAs(UnmanagedType.U4)]
     public bool GSInputsPrimitiveID;
-    public InlineArrayByte32 HSOutputPatchConstantMask;
-    public InlineArrayByte32 DSInputPatchConstantMask;
+    public InlineArrayByte_32 HSOutputPatchConstantMask;
+    public InlineArrayByte_32 DSInputPatchConstantMask;
 }

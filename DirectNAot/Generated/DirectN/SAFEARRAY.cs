@@ -10,5 +10,5 @@ public partial struct SAFEARRAY
     public uint cbElements;
     public uint cLocks;
     public nint pvData;
-    public InlineArraySAFEARRAYBOUND1 rgsabound; // variable-length array placeholder
+    public InlineArraySAFEARRAYBOUND_1 rgsabound; // variable-length array placeholder
 }

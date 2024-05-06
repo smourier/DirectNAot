@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct DisplayModes
 {
     public int numDisplayModes;
-    public InlineArrayDisplayMode1 displayMode; // variable-length array placeholder
+    public InlineArrayDisplayMode_1 displayMode; // variable-length array placeholder
 }

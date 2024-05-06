@@ -6,18 +6,18 @@ namespace DirectN;
 public partial struct D3D10_STATE_BLOCK_MASK
 {
     public byte VS;
-    public InlineArrayByte2 VSSamplers;
-    public InlineArrayByte16 VSShaderResources;
-    public InlineArrayByte2 VSConstantBuffers;
+    public InlineArrayByte_2 VSSamplers;
+    public InlineArrayByte_16 VSShaderResources;
+    public InlineArrayByte_2 VSConstantBuffers;
     public byte GS;
-    public InlineArrayByte2 GSSamplers;
-    public InlineArrayByte16 GSShaderResources;
-    public InlineArrayByte2 GSConstantBuffers;
+    public InlineArrayByte_2 GSSamplers;
+    public InlineArrayByte_16 GSShaderResources;
+    public InlineArrayByte_2 GSConstantBuffers;
     public byte PS;
-    public InlineArrayByte2 PSSamplers;
-    public InlineArrayByte16 PSShaderResources;
-    public InlineArrayByte2 PSConstantBuffers;
-    public InlineArrayByte2 IAVertexBuffers;
+    public InlineArrayByte_2 PSSamplers;
+    public InlineArrayByte_16 PSShaderResources;
+    public InlineArrayByte_2 PSConstantBuffers;
+    public InlineArrayByte_2 IAVertexBuffers;
     public byte IAIndexBuffer;
     public byte IAInputLayout;
     public byte IAPrimitiveTopology;

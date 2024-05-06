@@ -10,5 +10,5 @@ public partial struct D3D11_BLEND_DESC1
     
     [MarshalAs(UnmanagedType.U4)]
     public bool IndependentBlendEnable;
-    public InlineArrayD3D11_RENDER_TARGET_BLEND_DESC18 RenderTarget;
+    public InlineArrayD3D11_RENDER_TARGET_BLEND_DESC1_8 RenderTarget;
 }

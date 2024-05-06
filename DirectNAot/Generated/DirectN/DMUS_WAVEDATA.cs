@@ -5,5 +5,5 @@ namespace DirectN;
 public partial struct DMUS_WAVEDATA
 {
     public uint cbSize;
-    public InlineArrayByte4 byData;
+    public InlineArrayByte_4 byData;
 }

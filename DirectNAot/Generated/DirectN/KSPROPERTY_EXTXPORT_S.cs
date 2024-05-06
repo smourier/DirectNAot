@@ -20,7 +20,7 @@ public partial struct KSPROPERTY_EXTXPORT_S
         public struct _RawAVC_e__Struct
         {
             public uint PayloadSize;
-            public InlineArrayByte512 Payload;
+            public InlineArrayByte_512 Payload;
         }
         
         [FieldOffset(0)]

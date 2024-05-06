@@ -11,5 +11,5 @@ public partial struct VIDEO_POINTER_ATTRIBUTES
     public uint Enable;
     public short Column;
     public short Row;
-    public InlineArrayByte1 Pixels; // variable-length array placeholder
+    public InlineArrayByte_1 Pixels; // variable-length array placeholder
 }

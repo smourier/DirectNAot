@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct PHYSICAL_MONITOR
 {
     public HANDLE hPhysicalMonitor;
-    public InlineArraySystemChar128 szPhysicalMonitorDescription;
+    public InlineArraySystemChar_128 szPhysicalMonitorDescription;
 }

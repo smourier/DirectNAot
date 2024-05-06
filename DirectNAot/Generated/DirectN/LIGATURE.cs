@@ -7,5 +7,5 @@ public partial struct LIGATURE
     public uint culSize;
     public PWSTR pwsz;
     public uint chglyph;
-    public InlineArrayUInt321 ahglyph; // variable-length array placeholder
+    public InlineArrayUInt32_1 ahglyph; // variable-length array placeholder
 }

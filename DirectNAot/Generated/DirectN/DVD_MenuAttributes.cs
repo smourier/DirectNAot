@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_MenuAttributes
 {
-    public InlineArrayBOOL8 fCompatibleRegion;
+    public InlineArrayBOOL_8 fCompatibleRegion;
     public DVD_VideoAttributes VideoAttributes;
     
     [MarshalAs(UnmanagedType.U4)]

@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct GamutShellTriangle
 {
-    public InlineArrayUInt323 aVertexIndex;
+    public InlineArrayUInt32_3 aVertexIndex;
 }

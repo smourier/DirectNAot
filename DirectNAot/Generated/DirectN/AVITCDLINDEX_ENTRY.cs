@@ -8,5 +8,5 @@ public partial struct AVITCDLINDEX_ENTRY
     public TIMECODE time;
     public uint dwSMPTEflags;
     public uint dwUser;
-    public InlineArraySByte12 szReelId;
+    public InlineArraySByte_12 szReelId;
 }

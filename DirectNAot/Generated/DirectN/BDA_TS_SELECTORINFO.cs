@@ -5,8 +5,8 @@ namespace DirectN;
 public partial struct BDA_TS_SELECTORINFO
 {
     public byte bTSInfolength;
-    public InlineArrayByte2 bReserved;
+    public InlineArrayByte_2 bReserved;
     public Guid guidNetworkType;
     public byte bTSIDCount;
-    public InlineArrayUInt161 usTSID; // variable-length array placeholder
+    public InlineArrayUInt16_1 usTSID; // variable-length array placeholder
 }

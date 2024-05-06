@@ -8,7 +8,7 @@ public partial struct D3D10_SHADER_DEBUG_INST_INFO
     public uint Id;
     public uint Opcode;
     public uint uOutputs;
-    public InlineArrayD3D10_SHADER_DEBUG_OUTPUTREG_INFO2 pOutputs;
+    public InlineArrayD3D10_SHADER_DEBUG_OUTPUTREG_INFO_2 pOutputs;
     public uint TokenId;
     public uint NestingLevel;
     public uint Scopes;

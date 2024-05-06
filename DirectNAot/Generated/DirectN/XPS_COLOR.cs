@@ -30,7 +30,7 @@ public partial struct XPS_COLOR
         public struct _context_e__Struct
         {
             public byte channelCount;
-            public InlineArraySingle9 channels;
+            public InlineArraySingle_9 channels;
         }
         
         [FieldOffset(0)]

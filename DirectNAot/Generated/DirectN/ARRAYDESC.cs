@@ -7,5 +7,5 @@ public partial struct ARRAYDESC
 {
     public TYPEDESC tdescElem;
     public ushort cDims;
-    public InlineArraySAFEARRAYBOUND1 rgbounds; // variable-length array placeholder
+    public InlineArraySAFEARRAYBOUND_1 rgbounds; // variable-length array placeholder
 }

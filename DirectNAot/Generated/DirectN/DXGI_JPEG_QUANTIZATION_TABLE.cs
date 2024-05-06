@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_JPEG_QUANTIZATION_TABLE
 {
-    public InlineArrayByte64 Elements;
+    public InlineArrayByte_64 Elements;
 }

@@ -9,5 +9,5 @@ public partial struct FD_GLYPHSET
     public uint flAccel;
     public uint cGlyphsSupported;
     public uint cRuns;
-    public InlineArrayWCRUN1 awcrun; // variable-length array placeholder
+    public InlineArrayWCRUN_1 awcrun; // variable-length array placeholder
 }

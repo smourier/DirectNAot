@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct BITMAPINFO
 {
     public BITMAPINFOHEADER bmiHeader;
-    public InlineArrayRGBQUAD1 bmiColors; // variable-length array placeholder
+    public InlineArrayRGBQUAD_1 bmiColors; // variable-length array placeholder
 }

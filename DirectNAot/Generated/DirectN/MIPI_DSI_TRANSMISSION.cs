@@ -18,5 +18,5 @@ public partial struct MIPI_DSI_TRANSMISSION
     public ushort FinalCommandExtraPayload;
     public ushort MipiErrors;
     public ushort HostErrors;
-    public InlineArrayMIPI_DSI_PACKET1 Packets; // variable-length array placeholder
+    public InlineArrayMIPI_DSI_PACKET_1 Packets; // variable-length array placeholder
 }

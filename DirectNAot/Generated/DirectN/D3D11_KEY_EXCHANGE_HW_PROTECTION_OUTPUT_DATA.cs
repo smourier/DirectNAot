@@ -10,5 +10,5 @@ public partial struct D3D11_KEY_EXCHANGE_HW_PROTECTION_OUTPUT_DATA
     public uint HWProtectionDataSize;
     public ulong TransportTime;
     public ulong ExecutionTime;
-    public InlineArrayByte4 pbOutput;
+    public InlineArrayByte_4 pbOutput;
 }

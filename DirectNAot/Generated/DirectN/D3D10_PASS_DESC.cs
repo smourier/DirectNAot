@@ -11,5 +11,5 @@ public partial struct D3D10_PASS_DESC
     public nuint IAInputSignatureSize;
     public uint StencilRef;
     public uint SampleMask;
-    public InlineArraySingle4 BlendFactor;
+    public InlineArraySingle_4 BlendFactor;
 }

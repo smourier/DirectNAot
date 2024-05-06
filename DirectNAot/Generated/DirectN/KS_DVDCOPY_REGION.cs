@@ -6,5 +6,5 @@ public partial struct KS_DVDCOPY_REGION
 {
     public byte Reserved;
     public byte RegionData;
-    public InlineArrayByte2 Reserved2;
+    public InlineArrayByte_2 Reserved2;
 }

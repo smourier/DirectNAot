@@ -12,7 +12,7 @@ public partial struct D3D11_TRACE_REGISTER
         public ushort Index1D;
         
         [FieldOffset(0)]
-        public InlineArrayUInt162 Index2D;
+        public InlineArrayUInt16_2 Index2D;
     }
     
     public D3D11_TRACE_REGISTER_TYPE RegType;

@@ -4,6 +4,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct KSTOPOLOGY_ENDPOINTID
 {
-    public InlineArraySystemChar260 TopologyName;
+    public InlineArraySystemChar_260 TopologyName;
     public uint PinId;
 }

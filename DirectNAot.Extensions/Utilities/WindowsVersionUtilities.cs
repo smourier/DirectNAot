@@ -71,7 +71,7 @@ public static partial class WindowsVersionUtilities
         public int dwMinorVersion;
         public int dwBuildNumber;
         public int dwPlatformId;
-        public InlineArraySystemChar128 szCSDVersion;
+        public InlineArraySystemChar_128 szCSDVersion;
         public short wServicePackMajor;
         public short wServicePackMinor;
         public short wSuiteMask;

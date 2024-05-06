@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AMCOPPSignature
 {
-    public InlineArrayByte256 Signature;
+    public InlineArrayByte_256 Signature;
 }

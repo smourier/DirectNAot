@@ -27,5 +27,5 @@ public partial struct VIDEOPARAMETERS
     public uint dwCPStandard;
     public uint dwCPKey;
     public uint bCP_APSTriggerBits;
-    public InlineArrayByte256 bOEMCopyProtection;
+    public InlineArrayByte_256 bOEMCopyProtection;
 }

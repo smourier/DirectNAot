@@ -12,7 +12,7 @@ public partial struct D3D12_SAMPLER_DESC
     public float MipLODBias;
     public uint MaxAnisotropy;
     public D3D12_COMPARISON_FUNC ComparisonFunc;
-    public InlineArraySingle4 BorderColor;
+    public InlineArraySingle_4 BorderColor;
     public float MinLOD;
     public float MaxLOD;
 }

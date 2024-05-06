@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct FILTER_INFO
 {
-    public InlineArraySystemChar128 achName;
+    public InlineArraySystemChar_128 achName;
     public nint pGraph;
 }

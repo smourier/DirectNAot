@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct OPM_ENCRYPTED_INITIALIZATION_PARAMETERS
 {
-    public InlineArrayByte256 abEncryptedInitializationParameters;
+    public InlineArrayByte_256 abEncryptedInitializationParameters;
 }

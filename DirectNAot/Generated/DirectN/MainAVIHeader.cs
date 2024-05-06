@@ -14,5 +14,5 @@ public partial struct MainAVIHeader
     public uint dwSuggestedBufferSize;
     public uint dwWidth;
     public uint dwHeight;
-    public InlineArrayUInt324 dwReserved;
+    public InlineArrayUInt32_4 dwReserved;
 }

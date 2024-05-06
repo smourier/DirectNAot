@@ -6,7 +6,7 @@ namespace DirectN;
 public partial struct D3DX11_FFT_BUFFER_INFO
 {
     public uint NumTempBufferSizes;
-    public InlineArrayUInt324 TempBufferFloatSizes;
+    public InlineArrayUInt32_4 TempBufferFloatSizes;
     public uint NumPrecomputeBufferSizes;
-    public InlineArrayUInt324 PrecomputeBufferFloatSizes;
+    public InlineArrayUInt32_4 PrecomputeBufferFloatSizes;
 }

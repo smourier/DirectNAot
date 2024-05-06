@@ -4,10 +4,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_BRIGHTNESS_POLICY
 {
-    [InlineArray(1)]
-    public partial struct InlineArray_Anonymous_e__Struct1
+    [InlineArray(InlineArray_Anonymous_e__Struct_1.Length)]
+    public partial struct InlineArray_Anonymous_e__Struct_1
     {
-        public static int Length => 1;
+        public const int Length = 1;
         
         public _Anonymous_e__Struct Data;
     }
@@ -21,5 +21,5 @@ public partial struct VIDEO_BRIGHTNESS_POLICY
     
     public BOOLEAN DefaultToBiosPolicy;
     public byte LevelCount;
-    public InlineArray_Anonymous_e__Struct1 Level; // variable-length array placeholder
+    public InlineArray_Anonymous_e__Struct_1 Level; // variable-length array placeholder
 }

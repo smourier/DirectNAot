@@ -12,5 +12,5 @@ public partial struct AUDIO_VOLUME_NOTIFICATION_DATA2
     public float volumeIncrementInDb;
     public uint step;
     public uint stepCount;
-    public InlineArraySingle1 channelVolumesInDb; // variable-length array placeholder
+    public InlineArraySingle_1 channelVolumesInDb; // variable-length array placeholder
 }

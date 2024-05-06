@@ -6,8 +6,8 @@ namespace DirectN;
 public partial struct XAPO_REGISTRATION_PROPERTIES
 {
     public Guid clsid;
-    public InlineArraySystemChar256 FriendlyName;
-    public InlineArraySystemChar256 CopyrightInfo;
+    public InlineArraySystemChar_256 FriendlyName;
+    public InlineArraySystemChar_256 CopyrightInfo;
     public uint MajorVersion;
     public uint MinorVersion;
     public uint Flags;

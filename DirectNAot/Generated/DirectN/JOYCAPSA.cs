@@ -7,7 +7,7 @@ public partial struct JOYCAPSA
 {
     public ushort wMid;
     public ushort wPid;
-    public InlineArrayFoundationCHAR32 szPname;
+    public InlineArrayFoundationCHAR_32 szPname;
     public uint wXmin;
     public uint wXmax;
     public uint wYmin;
@@ -27,6 +27,6 @@ public partial struct JOYCAPSA
     public uint wMaxAxes;
     public uint wNumAxes;
     public uint wMaxButtons;
-    public InlineArrayFoundationCHAR32 szRegKey;
-    public InlineArrayFoundationCHAR260 szOEMVxD;
+    public InlineArrayFoundationCHAR_32 szRegKey;
+    public InlineArrayFoundationCHAR_260 szOEMVxD;
 }

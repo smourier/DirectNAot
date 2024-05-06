@@ -8,5 +8,5 @@ public partial struct DXVA_COPPStatusInput
     public Guid guidStatusRequestID;
     public uint dwSequence;
     public uint cbSizeData;
-    public InlineArrayByte4056 StatusData;
+    public InlineArrayByte_4056 StatusData;
 }

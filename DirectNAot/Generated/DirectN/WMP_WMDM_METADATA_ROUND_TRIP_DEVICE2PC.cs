@@ -10,5 +10,5 @@ public partial struct WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC
     public uint dwUnretrievedObjectCount;
     public uint dwDeletedObjectStartingOffset;
     public uint dwFlags;
-    public InlineArraySystemChar1 wsObjectPathnameList; // variable-length array placeholder
+    public InlineArraySystemChar_1 wsObjectPathnameList; // variable-length array placeholder
 }

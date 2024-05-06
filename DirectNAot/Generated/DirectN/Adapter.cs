@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct Adapter
 {
-    public InlineArraySystemChar128 AdapterName;
+    public InlineArraySystemChar_128 AdapterName;
     public int numSources;
-    public InlineArraySources1 sources; // variable-length array placeholder
+    public InlineArraySources_1 sources; // variable-length array placeholder
 }

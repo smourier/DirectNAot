@@ -9,5 +9,5 @@ public partial struct CLIPLINE
     public POINTFIX ptfxB;
     public int lStyleState;
     public uint c;
-    public InlineArrayRUN1 arun; // variable-length array placeholder
+    public InlineArrayRUN_1 arun; // variable-length array placeholder
 }

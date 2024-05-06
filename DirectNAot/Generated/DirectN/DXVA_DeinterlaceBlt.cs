@@ -11,5 +11,5 @@ public partial struct DXVA_DeinterlaceBlt
     public RECT SrcRect;
     public uint NumSourceSurfaces;
     public float Alpha;
-    public InlineArrayDXVA_VideoSample32 Source;
+    public InlineArrayDXVA_VideoSample_32 Source;
 }

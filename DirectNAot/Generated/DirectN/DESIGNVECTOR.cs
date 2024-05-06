@@ -7,5 +7,5 @@ public partial struct DESIGNVECTOR
 {
     public uint dvReserved;
     public uint dvNumAxes;
-    public InlineArrayInt3216 dvValues;
+    public InlineArrayInt32_16 dvValues;
 }

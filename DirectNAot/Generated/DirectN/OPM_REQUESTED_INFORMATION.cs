@@ -7,5 +7,5 @@ public partial struct OPM_REQUESTED_INFORMATION
 {
     public OPM_OMAC omac;
     public uint cbRequestedInformationSize;
-    public InlineArrayByte4076 abRequestedInformation;
+    public InlineArrayByte_4076 abRequestedInformation;
 }

@@ -10,5 +10,5 @@ public partial struct tACMFORMATDETAILSW
     public uint fdwSupport;
     public nint pwfx;
     public uint cbwfx;
-    public InlineArraySystemChar128 szFormat;
+    public InlineArraySystemChar_128 szFormat;
 }

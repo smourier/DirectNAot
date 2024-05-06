@@ -8,7 +8,7 @@ public partial struct WAVEINCAPSA
     public ushort wMid;
     public ushort wPid;
     public uint vDriverVersion;
-    public InlineArrayFoundationCHAR32 szPname;
+    public InlineArrayFoundationCHAR_32 szPname;
     public uint dwFormats;
     public ushort wChannels;
     public ushort wReserved1;

@@ -10,5 +10,5 @@ public partial struct IFIEXTRA
     public uint cig;
     public int dpDesignVector;
     public int dpAxesInfoW;
-    public InlineArrayUInt321 aulReserved; // variable-length array placeholder
+    public InlineArrayUInt32_1 aulReserved; // variable-length array placeholder
 }

@@ -8,5 +8,5 @@ public partial struct D3DDRAWPRIMITIVESTRIDEDDATA
     public D3DDP_PTRSTRIDE normal;
     public D3DDP_PTRSTRIDE diffuse;
     public D3DDP_PTRSTRIDE specular;
-    public InlineArrayD3DDP_PTRSTRIDE8 textureCoords;
+    public InlineArrayD3DDP_PTRSTRIDE_8 textureCoords;
 }

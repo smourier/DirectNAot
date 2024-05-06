@@ -10,5 +10,5 @@ public partial struct OPM_GET_INFO_PARAMETERS
     public Guid guidInformation;
     public uint ulSequenceNumber;
     public uint cbParametersSize;
-    public InlineArrayByte4056 abParameters;
+    public InlineArrayByte_4056 abParameters;
 }

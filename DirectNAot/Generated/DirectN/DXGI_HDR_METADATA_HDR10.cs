@@ -5,10 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_HDR_METADATA_HDR10
 {
-    public InlineArrayUInt162 RedPrimary;
-    public InlineArrayUInt162 GreenPrimary;
-    public InlineArrayUInt162 BluePrimary;
-    public InlineArrayUInt162 WhitePoint;
+    public InlineArrayUInt16_2 RedPrimary;
+    public InlineArrayUInt16_2 GreenPrimary;
+    public InlineArrayUInt16_2 BluePrimary;
+    public InlineArrayUInt16_2 WhitePoint;
     public uint MaxMasteringLuminance;
     public uint MinMasteringLuminance;
     public ushort MaxContentLightLevel;

@@ -14,5 +14,5 @@ public partial struct DMUS_PORTCAPS
     public uint dwMaxVoices;
     public uint dwMaxAudioChannels;
     public uint dwEffectFlags;
-    public InlineArraySystemChar128 wszDescription;
+    public InlineArraySystemChar_128 wszDescription;
 }

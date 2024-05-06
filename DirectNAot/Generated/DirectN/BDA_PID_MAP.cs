@@ -6,5 +6,5 @@ public partial struct BDA_PID_MAP
 {
     public MEDIA_SAMPLE_CONTENT MediaSampleContent;
     public uint ulcPIDs;
-    public InlineArrayUInt321 aulPIDs; // variable-length array placeholder
+    public InlineArrayUInt32_1 aulPIDs; // variable-length array placeholder
 }

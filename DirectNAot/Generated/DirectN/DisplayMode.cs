@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DisplayMode
 {
-    public InlineArraySystemChar32 DeviceName;
+    public InlineArraySystemChar_32 DeviceName;
     public DEVMODEW devMode;
 }

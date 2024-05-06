@@ -5,7 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_ADAPTER_DESC
 {
-    public InlineArraySystemChar128 Description;
+    public InlineArraySystemChar_128 Description;
     public uint VendorId;
     public uint DeviceId;
     public uint SubSysId;

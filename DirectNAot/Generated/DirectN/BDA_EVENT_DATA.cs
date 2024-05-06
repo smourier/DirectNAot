@@ -8,5 +8,5 @@ public partial struct BDA_EVENT_DATA
     public uint ulEventID;
     public Guid uuidEventType;
     public uint ulEventDataLength;
-    public InlineArrayByte1 argbEventData; // variable-length array placeholder
+    public InlineArrayByte_1 argbEventData; // variable-length array placeholder
 }

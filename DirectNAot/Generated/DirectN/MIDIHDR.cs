@@ -13,5 +13,5 @@ public partial struct MIDIHDR
     public nint lpNext;
     public nuint reserved;
     public uint dwOffset;
-    public InlineArrayUIntPtr8 dwReserved;
+    public InlineArrayUIntPtr_8 dwReserved;
 }

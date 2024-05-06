@@ -11,5 +11,5 @@ public partial struct VRAM_SURFACE_INFO
     public uint dwHeight;
     public uint dwLinearSize;
     public int lPitch;
-    public InlineArrayUInt6416 ullReserved;
+    public InlineArrayUInt64_16 ullReserved;
 }

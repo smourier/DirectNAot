@@ -11,7 +11,7 @@ public partial struct KSEVENTDATA
         public struct _EventHandle_e__Struct
         {
             public HANDLE Event;
-            public InlineArrayUIntPtr2 Reserved;
+            public InlineArrayUIntPtr_2 Reserved;
         }
         
         [StructLayout(LayoutKind.Sequential)]
@@ -26,7 +26,7 @@ public partial struct KSEVENTDATA
         public struct _Alignment_e__Struct
         {
             public nint Unused;
-            public InlineArrayIntPtr2 Alignment;
+            public InlineArrayIntPtr_2 Alignment;
         }
         
         [FieldOffset(0)]

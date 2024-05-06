@@ -11,7 +11,7 @@ public partial struct MediaFoundationDXVA2_VideoSample
     public nint SrcSurface;
     public RECT SrcRect;
     public RECT DstRect;
-    public InlineArrayDXVA2_AYUVSample816 Pal;
+    public InlineArrayDXVA2_AYUVSample8_16 Pal;
     public DXVA2_Fixed32 PlanarAlpha;
     public uint SampleData;
 }

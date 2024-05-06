@@ -5,7 +5,7 @@ namespace DirectN;
 public partial struct DXVA_ConfigPictureDecode
 {
     public uint dwFunction;
-    public InlineArrayUInt323 dwReservedBits;
+    public InlineArrayUInt32_3 dwReservedBits;
     public Guid guidConfigBitstreamEncryption;
     public Guid guidConfigMBcontrolEncryption;
     public Guid guidConfigResidDiffEncryption;

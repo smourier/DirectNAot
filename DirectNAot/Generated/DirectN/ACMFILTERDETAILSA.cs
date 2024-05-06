@@ -10,5 +10,5 @@ public partial struct ACMFILTERDETAILSA
     public uint fdwSupport;
     public nint pwfltr;
     public uint cbwfltr;
-    public InlineArrayFoundationCHAR128 szFilter;
+    public InlineArrayFoundationCHAR_128 szFilter;
 }

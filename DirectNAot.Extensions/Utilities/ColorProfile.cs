@@ -30,7 +30,7 @@ public sealed class ColorProfile
         Model = header.phModel;
         var span = ((ReadOnlySpan<uint>)header.phAttributes);
         var atts = new List<ColorProfileAttribute>();
-        for (var i = 0; i < InlineArrayUInt322.Length; i++)
+        for (var i = 0; i < InlineArrayUInt32_2.Length; i++)
         {
             atts.Add((ColorProfileAttribute)span[i]);
         }

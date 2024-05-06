@@ -20,7 +20,7 @@ public partial struct D3D12_GRAPHICS_PIPELINE_STATE_DESC
     public D3D12_INDEX_BUFFER_STRIP_CUT_VALUE IBStripCutValue;
     public D3D12_PRIMITIVE_TOPOLOGY_TYPE PrimitiveTopologyType;
     public uint NumRenderTargets;
-    public InlineArrayDXGI_FORMAT8 RTVFormats;
+    public InlineArrayDXGI_FORMAT_8 RTVFormats;
     public DXGI_FORMAT DSVFormat;
     public DXGI_SAMPLE_DESC SampleDesc;
     public uint NodeMask;

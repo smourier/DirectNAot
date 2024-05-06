@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct AM_PROPERTY_SPPAL
 {
-    public InlineArrayAM_DVD_YUV16 sppal;
+    public InlineArrayAM_DVD_YUV_16 sppal;
 }

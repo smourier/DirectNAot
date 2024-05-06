@@ -8,10 +8,10 @@ public partial struct KS_VIDEOINFO
     public struct _Anonymous_e__Union
     {
         [FieldOffset(0)]
-        public InlineArrayKS_RGBQUAD256 bmiColors;
+        public InlineArrayKS_RGBQUAD_256 bmiColors;
         
         [FieldOffset(0)]
-        public InlineArrayUInt323 dwBitMasks;
+        public InlineArrayUInt32_3 dwBitMasks;
         
         [FieldOffset(0)]
         public KS_TRUECOLORINFO TrueColorInfo;

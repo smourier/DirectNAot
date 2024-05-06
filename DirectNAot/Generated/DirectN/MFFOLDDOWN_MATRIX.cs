@@ -9,5 +9,5 @@ public partial struct MFFOLDDOWN_MATRIX
     public uint cSrcChannels;
     public uint cDstChannels;
     public uint dwChannelMask;
-    public InlineArrayInt3264 Coeff;
+    public InlineArrayInt32_64 Coeff;
 }

@@ -7,8 +7,8 @@ public partial struct APO_REG_PROPERTIES
 {
     public Guid clsid;
     public APO_FLAG Flags;
-    public InlineArraySystemChar256 szFriendlyName;
-    public InlineArraySystemChar256 szCopyrightInfo;
+    public InlineArraySystemChar_256 szFriendlyName;
+    public InlineArraySystemChar_256 szCopyrightInfo;
     public uint u32MajorVersion;
     public uint u32MinorVersion;
     public uint u32MinInputConnections;
@@ -17,5 +17,5 @@ public partial struct APO_REG_PROPERTIES
     public uint u32MaxOutputConnections;
     public uint u32MaxInstances;
     public uint u32NumAPOInterfaces;
-    public InlineArrayGuid1 iidAPOInterfaceList; // variable-length array placeholder
+    public InlineArrayGuid_1 iidAPOInterfaceList; // variable-length array placeholder
 }

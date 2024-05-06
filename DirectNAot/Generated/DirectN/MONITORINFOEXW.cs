@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct MONITORINFOEXW
 {
     public MONITORINFO monitorInfo;
-    public InlineArraySystemChar32 szDevice;
+    public InlineArraySystemChar_32 szDevice;
 }

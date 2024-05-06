@@ -8,5 +8,5 @@ public partial struct BDA_CAS_OPENMMIDATA
     public uint ulDialogRequest;
     public Guid uuidDialogType;
     public ushort usDialogDataLength;
-    public InlineArrayByte1 argbDialogData; // variable-length array placeholder
+    public InlineArrayByte_1 argbDialogData; // variable-length array placeholder
 }

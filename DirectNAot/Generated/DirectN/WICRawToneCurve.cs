@@ -6,5 +6,5 @@ namespace DirectN;
 public partial struct WICRawToneCurve
 {
     public uint cPoints;
-    public InlineArrayWICRawToneCurvePoint1 aPoints; // variable-length array placeholder
+    public InlineArrayWICRawToneCurvePoint_1 aPoints; // variable-length array placeholder
 }

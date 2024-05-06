@@ -38,5 +38,5 @@ public partial struct DSMCC_SECTION
     public byte Reserved;
     public byte AdaptationLength;
     public ushort MessageLength;
-    public InlineArrayByte1 RemainingData; // variable-length array placeholder
+    public InlineArrayByte_1 RemainingData; // variable-length array placeholder
 }

@@ -28,7 +28,7 @@ public partial struct DDRAWI_DDRAWSURFACE_MORE
     public nint lpOriginalGammaRamp;
     public nint lpDDrawReserved6;
     public uint dwSurfaceHandle;
-    public InlineArrayUInt322 qwDDrawReserved8;
+    public InlineArrayUInt32_2 qwDDrawReserved8;
     public nint lpDDrawReserved9;
     public uint cSurfaces;
     public nint pCreatedDDSurfaceDesc2;

@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS
 {
-    public InlineArrayD3D12_VIDEO_PROCESS_OUTPUT_STREAM2 OutputStream;
+    public InlineArrayD3D12_VIDEO_PROCESS_OUTPUT_STREAM_2 OutputStream;
     public RECT TargetRectangle;
 }

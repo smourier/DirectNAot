@@ -5,6 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_JPEG_AC_HUFFMAN_TABLE
 {
-    public InlineArrayByte16 CodeCounts;
-    public InlineArrayByte162 CodeValues;
+    public InlineArrayByte_16 CodeCounts;
+    public InlineArrayByte_162 CodeValues;
 }

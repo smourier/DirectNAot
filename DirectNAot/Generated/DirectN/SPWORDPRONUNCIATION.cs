@@ -9,5 +9,5 @@ public partial struct SPWORDPRONUNCIATION
     public ushort LangID;
     public ushort wPronunciationFlags;
     public SPPARTOFSPEECH ePartOfSpeech;
-    public InlineArrayUInt161 szPronunciation; // variable-length array placeholder
+    public InlineArrayUInt16_1 szPronunciation; // variable-length array placeholder
 }

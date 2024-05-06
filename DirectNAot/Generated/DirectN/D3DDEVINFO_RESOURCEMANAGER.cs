@@ -5,5 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DDEVINFO_RESOURCEMANAGER
 {
-    public InlineArrayD3DRESOURCESTATS8 stats;
+    public InlineArrayD3DRESOURCESTATS_8 stats;
 }

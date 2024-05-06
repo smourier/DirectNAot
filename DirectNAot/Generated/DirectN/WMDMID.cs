@@ -7,6 +7,6 @@ public partial struct WMDMID
 {
     public uint cbSize;
     public uint dwVendorID;
-    public InlineArrayByte128 pID;
+    public InlineArrayByte_128 pID;
     public uint SerialNumberLength;
 }

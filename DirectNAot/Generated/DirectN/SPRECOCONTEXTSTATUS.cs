@@ -5,7 +5,7 @@ namespace DirectN;
 public partial struct SPRECOCONTEXTSTATUS
 {
     public SPINTERFERENCE eInterference;
-    public InlineArrayChar255 szRequestTypeOfUI;
+    public InlineArrayChar_255 szRequestTypeOfUI;
     public uint dwReserved1;
     public uint dwReserved2;
 }

@@ -9,5 +9,5 @@ public partial struct DXGI_GAMMA_CONTROL_CAPABILITIES
     public float MaxConvertedValue;
     public float MinConvertedValue;
     public uint NumGammaControlPoints;
-    public InlineArraySingle1025 ControlPointPositions;
+    public InlineArraySingle_1025 ControlPointPositions;
 }

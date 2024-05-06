@@ -9,7 +9,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public nuint fpPrimaryOrig;
     public DDCORECAPS ddCaps;
     public uint dwInternal1;
-    public InlineArrayUInt329 dwUnused1;
+    public InlineArrayUInt32_9 dwUnused1;
     public nint lpDDCBtmp;
     public nint dsList;
     public nint palList;
@@ -19,7 +19,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public uint dwCurrOverlays;
     public uint dwMonitorFrequency;
     public DDCORECAPS ddHELCaps;
-    public InlineArrayUInt3250 dwUnused2;
+    public InlineArrayUInt32_50 dwUnused2;
     public DDCOLORKEY ddckCKDestOverlay;
     public DDCOLORKEY ddckCKSrcOverlay;
     public VIDMEMINFO vmiData;
@@ -36,7 +36,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public uint dwAliasedLockCnt;
     public nuint dwReserved3;
     public nuint hDD;
-    public InlineArrayFoundationCHAR12 cObsolete;
+    public InlineArrayFoundationCHAR_12 cObsolete;
     public uint dwReserved1;
     public uint dwReserved2;
     public DBLNODE dbnOverlayRoot;
@@ -67,7 +67,7 @@ public partial struct DDRAWI_DIRECTDRAW_GBL
     public nuint lpD3DExtendedCaps;
     public uint dwDOSBoxEvent;
     public RECT rectDesktop;
-    public InlineArrayFoundationCHAR32 cDriverName;
+    public InlineArrayFoundationCHAR_32 cDriverName;
     public nuint lpD3DHALCallbacks3;
     public uint dwNumZPixelFormats;
     public nint lpZPixelFormats;

@@ -6,7 +6,7 @@ namespace DirectN;
 public partial struct MFRR_COMPONENT_HASH_INFO
 {
     public uint ulReason;
-    public InlineArrayChar43 rgHeaderHash;
-    public InlineArrayChar43 rgPublicKeyHash;
-    public InlineArraySystemChar260 wszName;
+    public InlineArrayChar_43 rgHeaderHash;
+    public InlineArrayChar_43 rgPublicKeyHash;
+    public InlineArraySystemChar_260 wszName;
 }
