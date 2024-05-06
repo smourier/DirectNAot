@@ -14,8 +14,19 @@ You don't have to use the extensions, but I strongly recommend to use it.
 The reason Extensions is separated from DirectNAot is more an engineering reason. Roslyn/.NET source generators at work here tend to choke on ~10000 source-generated classes, so the DirectNAot is just very difficult to work with in Visual Studio.
 
 The key points that drive how code is generated and built:
-* modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
-* both DirectNAot and Extensions are AOT-friendly.
+* Although Win32InteropBuilder is totally generic, the goal for **DirectNAot** is still to create built-in interop code for modern media & graphics technologies only:
+    * DirectX (9 => 12)
+    * Direct2D
+    * DXGI
+    * Media Foundation
+    * Windows Imaging Component (WIC)
+    * Direct Composition
+    * Direct Write
+    * Audio (WASAPI)
+    * XPS
+    * others (dependencies, etc)
+* Modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
+* Both DirectNAot and Extensions are AOT-friendly.
 * `unsafe` usage is limited.
-* raw pointers usage is not exposed, only `interface` types, `object` types, or `nint` depending on the situation.
-* doing interop is inherently unsafe but we want to keep a.NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the generated code and net result are quite different.
+* Raw pointers usage is not exposed, only `interface` types, `object` types, or `nint` depending on the situation.
+* Doing interop is inherently unsafe but we want to keep a.NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the generated code and net result are quite different.
