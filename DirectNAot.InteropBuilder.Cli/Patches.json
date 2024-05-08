@@ -46,31 +46,5 @@
         }
       ]
     }
-  ],
-  "Methods": [
-    {
-      "Name": "EnumColorProfiles*",
-      "SetLastError": true
-    },
-    {
-      "Name": "GetColorDirectory*",
-      "SetLastError": true
-    },
-    {
-      "Name": "OpenColorProfile*",
-      "SetLastError": true
-    },
-    {
-      "Name": "GetColorProfileFromHandle",
-      "SetLastError": true
-    },
-    {
-      "Name": "GetCountColorProfileElements",
-      "SetLastError": true
-    },
-    {
-      "Name": "GetColorProfileElementTag",
-      "SetLastError": true
-    }
   ]
 }
