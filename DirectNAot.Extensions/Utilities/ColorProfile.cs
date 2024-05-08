@@ -294,7 +294,18 @@ public sealed class ColorProfile
     public IReadOnlyList<ColorProfileElement> Elements { get; }
     public IReadOnlyDictionary<string, IReadOnlyList<string>> LocalizedStrings { get; }
 
-    public override string ToString() => Description ?? string.Empty;
+    private string GetDisplayName()
+    {
+        if (!string.IsNullOrWhiteSpace(Description))
+            return Description;
+
+        if (FilePath != null)
+            return Path.GetFileNameWithoutExtension(FilePath);
+
+        return string.Empty;
+    }
+
+    public override string ToString() => GetDisplayName();
 
     private static string? TrimTerminatingZeros(string str)
     {
