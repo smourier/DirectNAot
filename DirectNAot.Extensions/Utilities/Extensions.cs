@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DirectNAot.Extensions.Com;
 
 namespace DirectNAot.Extensions.Utilities;
 
@@ -46,6 +47,41 @@ public static class Extensions
         return DateTimeOffset.FromFileTime(ft);
     }
 
+    public static long CopyTo(this Stream input, Stream output, long count = long.MaxValue, int bufferSize = 0x14000)
+    {
+        ArgumentNullException.ThrowIfNull(input);
+        ArgumentNullException.ThrowIfNull(output);
+
+        if (count <= 0)
+            throw new ArgumentException(null, nameof(count));
+
+        if (bufferSize <= 0)
+            throw new ArgumentException(null, nameof(bufferSize));
+
+        if (count < bufferSize)
+        {
+            bufferSize = (int)count;
+        }
+
+        var bytes = new byte[bufferSize];
+        var total = 0;
+        do
+        {
+            var max = (int)Math.Min(count - total, bytes.Length);
+            var read = input.Read(bytes, 0, max);
+            if (read == 0)
+                break;
+
+            output.Write(bytes, 0, read);
+            total += read;
+            if (total == count)
+                break;
+        }
+        while (true);
+        return total;
+    }
+
+    public static void SafeDispose(this IComObject? comObject) => comObject?.Object?.FinalRelease();
     public static void Dispose(this IEnumerable disposables, bool throwOnError = false)
     {
         if (disposables == null)

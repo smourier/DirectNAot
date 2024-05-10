@@ -9,7 +9,7 @@
       "Namespace": "DirectN"
     },
     "InterfaceExtensions": [
-      //"IWic*"
+      "IWic*"
     ]
   },
   // per-generator configuration

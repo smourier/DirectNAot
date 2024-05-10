@@ -18,6 +18,7 @@ namespace DirectNAot.Extensions.Com
         }
 
         public abstract Type InterfaceType { get; }
+
         [AllowNull]
         public System.Runtime.InteropServices.Marshalling.ComObject Object
         {
@@ -60,10 +61,20 @@ namespace DirectNAot.Extensions.Com
         public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
     }
 
-    public class UnknownObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
+    public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
     {
         [AllowNull]
         public new T Object => (T)(object?)base.Object!;
         public override Type InterfaceType => typeof(T);
+
+        public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, IntPtr outer = 0, bool throwOnError = true)
+        {
+            // we use IUnknown first, some objects don't support direct query interface
+            Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var ppv).ThrowOnError(throwOnError);
+            if (ppv == null)
+                return default;
+
+            return new ComObject<T>((T)ppv);
+        }
     }
 }

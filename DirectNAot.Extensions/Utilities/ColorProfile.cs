@@ -381,9 +381,11 @@ public sealed class ColorProfile
         return FromMemory(bytes.ToArray(), throwOnError);
     }
 
-    public static ColorProfile? FromMemory(byte[] buffer, bool throwOnError = true)
+    public static ColorProfile? FromMemory(byte[]? buffer, bool throwOnError = true)
     {
-        ArgumentNullException.ThrowIfNull(buffer);
+        if (buffer == null)
+            return null;
+
         unsafe
         {
             fixed (byte* mem = buffer)
@@ -483,6 +485,27 @@ public sealed class ColorProfile
         using var buffer = new Pwstr(size);
         Functions.GetColorDirectoryW(name, buffer, ref size);
         return buffer.ToString();
+    }
+
+    public static string GetStandardColorSpaceProfile()
+    {
+        const int sRGB = 0x73524742; //  'sRGB'
+        uint size = 0;
+        Functions.GetStandardColorSpaceProfileW(PWSTR.Null, sRGB, PWSTR.Null, ref size);
+        using var buffer = new Pwstr(size);
+        Functions.GetStandardColorSpaceProfileW(PWSTR.Null, sRGB, buffer, ref size);
+        var s = buffer.ToString();
+        if (string.IsNullOrWhiteSpace(s))
+            return string.Empty;
+
+        if (Path.IsPathRooted(s))
+            return s;
+
+        var dir = GetColorDirectoryPath();
+        if (string.IsNullOrEmpty(dir))
+            return string.Empty;
+
+        return Path.Combine(dir, s);
     }
 
     public static IReadOnlyList<ColorProfile> GetColorProfiles(string? machineName = null, bool throwOnProfileError = true)
