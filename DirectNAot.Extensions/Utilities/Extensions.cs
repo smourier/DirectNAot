@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using DirectNAot.Extensions.Com;
 
 namespace DirectNAot.Extensions.Utilities;
 
@@ -51,7 +50,6 @@ public static class Extensions
     {
         ArgumentNullException.ThrowIfNull(input);
         ArgumentNullException.ThrowIfNull(output);
-
         if (count <= 0)
             throw new ArgumentException(null, nameof(count));
 
@@ -81,7 +79,6 @@ public static class Extensions
         return total;
     }
 
-    public static void SafeDispose(this IComObject? comObject) => comObject?.Object?.FinalRelease();
     public static void Dispose(this IEnumerable disposables, bool throwOnError = false)
     {
         if (disposables == null)
@@ -101,6 +98,144 @@ public static class Extensions
                 try
                 {
                     disposable?.Dispose();
+                }
+                catch
+                {
+                    // continue
+                }
+            }
+        }
+    }
+
+    public static void WithDispose(this IEnumerable disposables, Action action, bool throwOnError = false)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        if (disposables == null)
+        {
+            action();
+            return;
+        }
+
+        try
+        {
+            action();
+        }
+        finally
+        {
+            if (throwOnError)
+            {
+                foreach (var disposable in disposables.OfType<IDisposable>())
+                {
+                    disposable?.Dispose();
+                }
+            }
+            else
+            {
+                foreach (var disposable in disposables.OfType<IDisposable>())
+                {
+                    try
+                    {
+                        disposable?.Dispose();
+                    }
+                    catch
+                    {
+                        // continue
+                    }
+                }
+            }
+        }
+    }
+
+    public static T WithDispose<T>(this IEnumerable disposables, Func<T> func, bool throwOnError = false)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        if (disposables == null)
+            return func();
+
+        try
+        {
+            return func();
+        }
+        finally
+        {
+            if (throwOnError)
+            {
+                foreach (var disposable in disposables.OfType<IDisposable>())
+                {
+                    disposable?.Dispose();
+                }
+            }
+            else
+            {
+                foreach (var disposable in disposables.OfType<IDisposable>())
+                {
+                    try
+                    {
+                        disposable?.Dispose();
+                    }
+                    catch
+                    {
+                        // continue
+                    }
+                }
+            }
+        }
+    }
+
+    public static void WithDispose(this IDisposable disposable, Action action, bool throwOnError = false)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        if (disposable == null)
+        {
+            action();
+            return;
+        }
+
+        try
+        {
+            action();
+        }
+        finally
+        {
+            if (throwOnError)
+            {
+                disposable.Dispose();
+            }
+            else
+            {
+                try
+                {
+                    disposable.Dispose();
+                }
+                catch
+                {
+                    // continue
+                }
+            }
+        }
+    }
+
+    public static T WithDispose<T>(this IDisposable disposable, Func<T> func, bool throwOnError = false)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        if (disposable == null)
+            return func();
+
+        try
+        {
+            return func();
+        }
+        finally
+        {
+            if (throwOnError)
+            {
+                disposable.Dispose();
+            }
+            else
+            {
+                try
+                {
+                    disposable.Dispose();
                 }
                 catch
                 {

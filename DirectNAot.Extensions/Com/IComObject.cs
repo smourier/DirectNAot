@@ -4,6 +4,8 @@ namespace DirectNAot.Extensions.Com
 {
     public interface IComObject : IDisposable
     {
+        bool IsDisposed { get; }
+
         [AllowNull]
         System.Runtime.InteropServices.Marshalling.ComObject Object { get; }
         Type InterfaceType { get; }

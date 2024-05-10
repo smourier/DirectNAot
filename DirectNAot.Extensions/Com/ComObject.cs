@@ -18,6 +18,7 @@ namespace DirectNAot.Extensions.Com
         }
 
         public abstract Type InterfaceType { get; }
+        public bool IsDisposed => _comObject == null;
 
         [AllowNull]
         public System.Runtime.InteropServices.Marshalling.ComObject Object
