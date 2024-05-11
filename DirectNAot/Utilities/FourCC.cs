@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace DirectNAot.Extensions.Utilities;
+namespace DirectN;
 
 // https://docs.microsoft.com/en-us/windows/desktop/medfound/video-fourccs
 // https://docs.microsoft.com/en-us/windows/desktop/medfound/video-subtype-guids
@@ -101,17 +101,12 @@ public struct FourCC : IEquatable<FourCC>, IFormattable
 
         formatProvider ??= CultureInfo.CurrentCulture;
 
-        switch (format.ToUpperInvariant())
+        return format.ToUpperInvariant() switch
         {
-            case "G":
-                return ToString();
-
-            case "I":
-                return _value.ToString("X08", formatProvider);
-
-            default:
-                return _value.ToString(format, formatProvider);
-        }
+            "G" => ToString(),
+            "I" => _value.ToString("X08", formatProvider),
+            _ => _value.ToString(format, formatProvider),
+        };
     }
 
     public static bool operator ==(FourCC left, FourCC right) => left.Equals(right);

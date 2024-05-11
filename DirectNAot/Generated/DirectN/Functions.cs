@@ -1081,7 +1081,7 @@ public static partial class Functions
     [LibraryImport("dxgi")]
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
-    public static partial HRESULT CreateDXGIFactory2(uint Flags, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFactory);
+    public static partial HRESULT CreateDXGIFactory2(DXGI_CREATE_FACTORY_FLAGS Flags, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppFactory);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-createeditablestream
     [LibraryImport("AVIFIL32")]
@@ -8092,6 +8092,12 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool ICSeqCompressFrameStart(in COMPVARS pc, in BITMAPINFO lpbiIn);
     
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromfiletime
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT InitPropVariantFromFileTime(in FILETIME pftIn, out PROPVARIANT ppropvar);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-installcolorprofilea
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -10469,6 +10475,36 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool PrintWindow(HWND hwnd, HDC hdcBlt, PRINT_WINDOW_FLAGS nFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantchangetype
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PropVariantChangeType(out PROPVARIANT ppropvarDest, in PROPVARIANT propvarSrc, PROPVAR_CHANGE_FLAGS flags, VARENUM vt);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-propvariantclear
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT PropVariantClear(ref PROPVARIANT pvar);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-propvariantcopy
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT PropVariantCopy(out PROPVARIANT pvarDest, in PROPVARIANT pvarSrc);
+    
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttovariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial HRESULT PropVariantToVariant(in PROPVARIANT pPropVar, out VARIANT pVar);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-propvarianttowinrtpropertyvalue
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial HRESULT PropVariantToWinRTPropertyValue(in PROPVARIANT propvar, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-querydisplayconfig
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows6.1")]
@@ -11055,6 +11091,18 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT StartXpsPrintJob1(PWSTR printerName, PWSTR jobName, PWSTR outputFileName, HANDLE progressEvent, HANDLE completionEvent, out IXpsPrintJob xpsPrintJob, out IXpsOMPackageTarget printContentReceiver);
     
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgdeserializepropvariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT StgDeserializePropVariant(in SERIALIZEDPROPERTYVALUE pprop, uint cbMax, out PROPVARIANT ppropvar);
+    
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgserializepropvariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT StgSerializePropVariant(in PROPVARIANT ppropvar, out nint ppProp, out uint pcb);
+    
     // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-strformatbytesizew
     [LibraryImport("SHLWAPI", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
@@ -11229,6 +11277,12 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool UpdateICMRegKeyW(uint? reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
+    
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttopropvariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial HRESULT VariantToPropVariant(in VARIANT pVar, out PROPVARIANT pPropVar);
     
     [LibraryImport("MSVFW32")]
     [PreserveSig]
@@ -11850,6 +11904,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial HRESULT WindowsTrimStringStart(HSTRING @string, HSTRING trimString, out HSTRING newString);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-winrtpropertyvaluetopropvariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial HRESULT WinRTPropertyValueToPropVariant(nint punkPropertyValue, out PROPVARIANT ppropvar);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-wmcreatebackuprestorer
     [LibraryImport("WMVCore")]

@@ -8,7 +8,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-present
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Present(uint SyncInterval, uint Flags);
+    HRESULT Present(uint SyncInterval, DXGI_PRESENT Flags);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-getbuffer
     [PreserveSig]

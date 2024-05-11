@@ -13,7 +13,7 @@ public partial interface IDXGISurface : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgisurface-map
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Map(out DXGI_MAPPED_RECT pLockedRect, uint MapFlags);
+    HRESULT Map(out DXGI_MAPPED_RECT pLockedRect, DXGI_MAP_FLAGS MapFlags);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgisurface-unmap
     [PreserveSig]

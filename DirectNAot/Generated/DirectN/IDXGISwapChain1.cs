@@ -29,7 +29,7 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-present1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Present1(uint SyncInterval, uint PresentFlags, in DXGI_PRESENT_PARAMETERS pPresentParameters);
+    HRESULT Present1(uint SyncInterval, DXGI_PRESENT PresentFlags, in DXGI_PRESENT_PARAMETERS pPresentParameters);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-istemporarymonosupported
     [PreserveSig]

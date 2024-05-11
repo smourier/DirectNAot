@@ -2,6 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi/ne-dxgi-dxgi_swap_chain_flag
+[Flags]
 public enum DXGI_SWAP_CHAIN_FLAG
 {
     DXGI_SWAP_CHAIN_FLAG_NONPREROTATED = 1,

@@ -15,6 +15,9 @@ public partial struct D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT
         public nint pHEVCSupport;
         
         [FieldOffset(0)]
+        public nint pHEVCSupport1;
+        
+        [FieldOffset(0)]
         public nint pAV1Support;
     }
     

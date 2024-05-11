@@ -18,10 +18,10 @@ public partial interface IDXGIResource : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiresource-setevictionpriority
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEvictionPriority(uint EvictionPriority);
+    HRESULT SetEvictionPriority(DXGI_RESOURCE_PRIORITY EvictionPriority);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiresource-getevictionpriority
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEvictionPriority(out uint pEvictionPriority);
+    HRESULT GetEvictionPriority(out DXGI_RESOURCE_PRIORITY pEvictionPriority);
 }

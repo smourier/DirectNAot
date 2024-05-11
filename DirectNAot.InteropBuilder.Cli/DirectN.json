@@ -9,7 +9,7 @@
       "Namespace": "DirectN"
     },
     "InterfaceExtensions": [
-      "IWic*"
+      //"IWic*"
     ]
   },
   // per-generator configuration
@@ -141,6 +141,7 @@
     "GetWindowModuleFileNameW",
     "GetWindowThreadProcessId",
     "KillTimer",
+    "InitPropVariantFromFileTime",
     "IsChild",
     "IsMouseInPointerEnabled",
     "IsValidDpiAwarenessContext",
@@ -159,6 +160,11 @@
     "PhysicalToLogicalPointForPerMonitorDPI",
     "PostMessageW",
     "PostQuitMessage",
+    "PropVariantChangeType",
+    "PropVariantClear",
+    "PropVariantCopy",
+    "PropVariantToVariant",
+    "PropVariantToWinRTPropertyValue",
     "RegisterClassW",
     "ReleaseCapture",
     "ScreenToClient",
@@ -181,12 +187,16 @@
     "ShellAboutW",
     "ShowWindow",
     "SkipPointerFrameMessages",
+    "StgDeserializePropVariant",
+    "StgSerializePropVariant",
     "StrFormatByteSizeW",
     "SystemParametersInfoW",
     "SystemParametersInfoForDpi",
     "TaskDialogIndirect",
     "TrackMouseEvent",
     "TranslateMessage",
-    "UnregisterClassW"
+    "UnregisterClassW",
+    "VariantToPropVariant",
+    "WinRTPropertyValueToPropVariant"
   ]
 }

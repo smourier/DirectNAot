@@ -2,6 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wtypes/ne-wtypes-varenum
+[Flags]
 public enum VARENUM : ushort
 {
     VT_EMPTY = 0,

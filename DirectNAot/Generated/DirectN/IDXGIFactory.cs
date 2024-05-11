@@ -13,7 +13,7 @@ public partial interface IDXGIFactory : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-makewindowassociation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MakeWindowAssociation(HWND WindowHandle, uint Flags);
+    HRESULT MakeWindowAssociation(HWND WindowHandle, DXGI_MWA_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-getwindowassociation
     [PreserveSig]

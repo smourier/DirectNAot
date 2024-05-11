@@ -15,6 +15,9 @@ public partial struct D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA
         public nint pHEVCPicData;
         
         [FieldOffset(0)]
+        public nint pHEVCPicData1;
+        
+        [FieldOffset(0)]
         public nint pAV1PicData;
     }
     

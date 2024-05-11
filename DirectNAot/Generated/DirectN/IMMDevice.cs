@@ -23,5 +23,6 @@ public partial interface IMMDevice
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-getstate
     [PreserveSig]
-    DEVICE_STATE GetState(out uint pdwState);
+    [return: MarshalAs(UnmanagedType.Error)]
+    HRESULT GetState(out DEVICE_STATE pdwState);
 }

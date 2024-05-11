@@ -3155,6 +3155,8 @@ public static partial class Constants
     
     public const uint D3D_SHADER_FEATURE_ROVS = 4096;
     
+    public const uint D3D_SHADER_FEATURE_SAMPLE_CMP_GRADIENT_OR_BIAS = 2147483648;
+    
     public const uint D3D_SHADER_FEATURE_SAMPLER_DESCRIPTOR_HEAP_INDEXING = 67108864;
     
     public const uint D3D_SHADER_FEATURE_SAMPLER_FEEDBACK = 2097152;
@@ -3184,6 +3186,8 @@ public static partial class Constants
     public const uint D3D_SHADER_REQUIRES_11_1_SHADER_EXTENSIONS = 64;
     
     public const uint D3D_SHADER_REQUIRES_64_UAVS = 8;
+    
+    public const uint D3D_SHADER_REQUIRES_ADVANCED_TEXTURE_OPS = 536870912;
     
     public const uint D3D_SHADER_REQUIRES_ATOMIC_INT64_ON_DESCRIPTOR_HEAP_RESOURCE = 268435456;
     
@@ -3215,6 +3219,8 @@ public static partial class Constants
     
     public const uint D3D_SHADER_REQUIRES_ROVS = 4096;
     
+    public const uint D3D_SHADER_REQUIRES_SAMPLE_CMP_GRADIENT_OR_BIAS = 2147483648;
+    
     public const uint D3D_SHADER_REQUIRES_SAMPLER_DESCRIPTOR_HEAP_INDEXING = 67108864;
     
     public const uint D3D_SHADER_REQUIRES_SAMPLER_FEEDBACK = 2097152;
@@ -3236,6 +3242,8 @@ public static partial class Constants
     public const uint D3D_SHADER_REQUIRES_WAVE_MMA = 134217728;
     
     public const uint D3D_SHADER_REQUIRES_WAVE_OPS = 16384;
+    
+    public const uint D3D_SHADER_REQUIRES_WRITEABLE_MSAA_TEXTURES = 1073741824;
     
     public const uint D3D_SPEC_DATE_DAY = 8;
     
@@ -5371,7 +5379,7 @@ public static partial class Constants
     
     public const uint D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 16;
     
-    public const uint D3D12_PREVIEW_SDK_VERSION = 712;
+    public const uint D3D12_PREVIEW_SDK_VERSION = 713;
     
     public static readonly Guid D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED = new("62b0084e-c70e-4daa-a109-30ff8d5a0482");
     
@@ -5507,7 +5515,7 @@ public static partial class Constants
     
     public const uint D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT = 2;
     
-    public const uint D3D12_SDK_VERSION = 611;
+    public const uint D3D12_SDK_VERSION = 613;
     
     public const uint D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES = 4096;
     
@@ -5683,6 +5691,20 @@ public static partial class Constants
     
     public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_HEVC_MONOCHROME10 = new("142a1d0f-69dd-4ec9-8591-b12ffcb91a29");
     
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_JPEG_VLD_420 = new("cf782c83-bef5-4a2c-87cb-6019e7b175ac");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_JPEG_VLD_422 = new("f04df417-eee2-4067-a778-f35c15ab9721");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_JPEG_VLD_444 = new("4cd00e17-89ba-48ef-b9f9-edcb82713f65");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MJPEG_VLD_420 = new("725cb506-0c29-43c4-9440-8e9397903a04");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MJPEG_VLD_422 = new("5b77b9cd-1a35-4c30-9fd8-ef4b60c035dd");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MJPEG_VLD_444 = new("d95161f9-0d44-47e6-bcf5-1bfbfb268f97");
+    
+    public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MJPEG_VLD_4444 = new("c91748d5-fd18-4aca-9db3-3a6634ab547d");
+    
     public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MPEG1_AND_MPEG2 = new("86695f12-340e-4f04-9fd3-9253dd327460");
     
     public static readonly Guid D3D12_VIDEO_DECODE_PROFILE_MPEG2 = new("ee27417f-5e28-4e65-beea-1d26b508adc9");
@@ -5746,6 +5768,10 @@ public static partial class Constants
     public const uint D3D12_WHQL_DRAW_VERTEX_COUNT_2_TO_EXP = 25;
     
     public const uint D3D12_WHQL_DRAWINDEXED_INDEX_COUNT_2_TO_EXP = 25;
+    
+    public const uint D3D12_WORK_GRAPHS_BACKING_MEMORY_ALIGNMENT_IN_BYTES = 8;
+    
+    public const uint D3D12_WORK_GRAPHS_MAX_NODE_DEPTH = 32;
     
     public static readonly Guid D3D12ExperimentalShaderModels = new("76f5573e-f13a-40f5-b297-81ce9e18933f");
     
@@ -11517,8 +11543,6 @@ public static partial class Constants
     
     public const uint DXGI_CPU_ACCESS_SCRATCH = 3;
     
-    public const uint DXGI_CREATE_FACTORY_DEBUG = 1;
-    
     public static readonly Guid DXGI_DEBUG_ALL = new("e48ae283-da80-490b-87e6-43e9a9cfda08");
     
     public static readonly Guid DXGI_DEBUG_APP = new("06cd6e01-4219-4ebd-8709-27ed23360c62");
@@ -11535,67 +11559,13 @@ public static partial class Constants
     
     public static readonly Guid DXGI_DEBUG_DXGI = new("25cddaa4-b1c6-47e1-ac3e-98875b5a2e2a");
     
-    public const uint DXGI_ENUM_MODES_DISABLED_STEREO = 8;
-    
-    public const uint DXGI_ENUM_MODES_INTERLACED = 1;
-    
-    public const uint DXGI_ENUM_MODES_SCALING = 2;
-    
-    public const uint DXGI_ENUM_MODES_STEREO = 4;
-    
     public const uint DXGI_FORMAT_DEFINED = 1;
     
     public const uint DXGI_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
     
     public const uint DXGI_INFO_QUEUE_MESSAGE_ID_STRING_FROM_APPLICATION = 0;
     
-    public const uint DXGI_MAP_DISCARD = 4;
-    
-    public const uint DXGI_MAP_READ = 1;
-    
-    public const uint DXGI_MAP_WRITE = 2;
-    
     public const uint DXGI_MAX_SWAP_CHAIN_BUFFERS = 16;
-    
-    public const uint DXGI_MWA_NO_ALT_ENTER = 2;
-    
-    public const uint DXGI_MWA_NO_PRINT_SCREEN = 4;
-    
-    public const uint DXGI_MWA_NO_WINDOW_CHANGES = 1;
-    
-    public const uint DXGI_MWA_VALID = 7;
-    
-    public const uint DXGI_PRESENT_ALLOW_TEARING = 512;
-    
-    public const uint DXGI_PRESENT_DO_NOT_SEQUENCE = 2;
-    
-    public const uint DXGI_PRESENT_DO_NOT_WAIT = 8;
-    
-    public const uint DXGI_PRESENT_RESTART = 4;
-    
-    public const uint DXGI_PRESENT_RESTRICT_TO_OUTPUT = 64;
-    
-    public const uint DXGI_PRESENT_STEREO_PREFER_RIGHT = 16;
-    
-    public const uint DXGI_PRESENT_STEREO_TEMPORARY_MONO = 32;
-    
-    public const uint DXGI_PRESENT_TEST = 1;
-    
-    public const uint DXGI_PRESENT_USE_DURATION = 256;
-    
-    public const uint DXGI_RESOURCE_PRIORITY_HIGH = 2684354560;
-    
-    public const uint DXGI_RESOURCE_PRIORITY_LOW = 1342177280;
-    
-    public const uint DXGI_RESOURCE_PRIORITY_MAXIMUM = 3355443200;
-    
-    public const uint DXGI_RESOURCE_PRIORITY_MINIMUM = 671088640;
-    
-    public const uint DXGI_RESOURCE_PRIORITY_NORMAL = 2013265920;
-    
-    public const uint DXGI_SHARED_RESOURCE_READ = 2147483648;
-    
-    public const uint DXGI_SHARED_RESOURCE_WRITE = 1;
     
     public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = uint.MaxValue;
     

@@ -40,6 +40,13 @@ public partial struct D3D12_INDIRECT_ARGUMENT_DESC
             public uint RootParameterIndex;
         }
         
+        [StructLayout(LayoutKind.Sequential)]
+        public struct _IncrementingConstant_e__Struct
+        {
+            public uint RootParameterIndex;
+            public uint DestOffsetIn32BitValues;
+        }
+        
         [FieldOffset(0)]
         public _VertexBuffer_e__Struct VertexBuffer;
         
@@ -54,6 +61,9 @@ public partial struct D3D12_INDIRECT_ARGUMENT_DESC
         
         [FieldOffset(0)]
         public _UnorderedAccessView_e__Struct UnorderedAccessView;
+        
+        [FieldOffset(0)]
+        public _IncrementingConstant_e__Struct IncrementingConstant;
     }
     
     public D3D12_INDIRECT_ARGUMENT_TYPE Type;

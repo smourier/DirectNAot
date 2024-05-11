@@ -9,7 +9,7 @@ public partial interface IDXGIOutput1 : IDXGIOutput
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutput1-getdisplaymodelist1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDisplayModeList1(DXGI_FORMAT EnumFormat, uint Flags, ref uint pNumModes, nint /* optional DXGI_MODE_DESC1* */ pDesc);
+    HRESULT GetDisplayModeList1(DXGI_FORMAT EnumFormat, DXGI_ENUM_MODES Flags, ref uint pNumModes, nint /* optional DXGI_MODE_DESC1* */ pDesc);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutput1-findclosestmatchingmode1
     [PreserveSig]
