@@ -628,13 +628,14 @@ namespace DirectNAot.Extensions.Utilities
 
         public static PropVariant? Deserialize(byte[] bytes, bool throwOnError = true)
         {
-            ArgumentNullException.ThrowIfNull(bytes);
+            if (bytes == null)
+                return null;
+
             unsafe
             {
                 fixed (byte* pbytes = bytes)
                 {
-                    var p = *(SERIALIZEDPROPERTYVALUE*)pbytes;
-                    var hr = Functions.StgDeserializePropVariant(p, (uint)bytes.Length, out var inner).ThrowOnError();
+                    var hr = Functions.StgDeserializePropVariant((nint)pbytes, (uint)bytes.Length, out var inner).ThrowOnError();
                     if (hr.IsError)
                         return null;
 
@@ -646,17 +647,13 @@ namespace DirectNAot.Extensions.Utilities
         public static PropVariant? Deserialize(nint ptr, uint size, bool throwOnError = true)
         {
             if (ptr == 0)
-                throw new ArgumentNullException(nameof(ptr));
+                return null;
 
-            unsafe
-            {
-                var p = *(SERIALIZEDPROPERTYVALUE*)ptr;
-                var hr = Functions.StgDeserializePropVariant(p, size, out var inner).ThrowOnError(throwOnError);
-                if (hr.IsError)
-                    return null;
+            var hr = Functions.StgDeserializePropVariant(ptr, size, out var inner).ThrowOnError(throwOnError);
+            if (hr.IsError)
+                return null;
 
-                return new PropVariant { _inner = inner };
-            }
+            return new PropVariant { _inner = inner };
         }
 
         [SupportedOSPlatform("windows6.0.6000")]

@@ -44,4 +44,10 @@ public static partial class Functions
 
     [LibraryImport("kernel32", EntryPoint = "RtlZeroMemory")]
     public static partial void ZeroMemory(nint pdst, nint cb);
+
+    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgdeserializepropvariant
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT StgDeserializePropVariant(nint pprop, uint cbMax, out PROPVARIANT ppropvar);
 }
