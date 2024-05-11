@@ -35,6 +35,7 @@
               "Def": {
                 "IsIn": true,
                 "IsOut": true,
+                "IsNullDirection": true,
                 "TypeName": "bool[]",
                 "MarshalAs": {
                   "UnmanagedType": "LPArray",

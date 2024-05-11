@@ -7,5 +7,5 @@ public partial interface ID3D12RootSignatureDeserializer
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12rootsignaturedeserializer-getrootsignaturedesc
     [PreserveSig]
-    D3D12_ROOT_SIGNATURE_DESC GetRootSignatureDesc();
+    nint GetRootSignatureDesc();
 }

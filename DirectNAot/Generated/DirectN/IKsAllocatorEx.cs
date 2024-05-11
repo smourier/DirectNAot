@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface IKsAllocatorEx : IKsAllocator
 {
     [PreserveSig]
-    ALLOCATOR_PROPERTIES_EX KsGetProperties();
+    nint KsGetProperties();
     
     [PreserveSig]
     void KsSetProperties(in ALLOCATOR_PROPERTIES_EX param0);

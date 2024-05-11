@@ -8,7 +8,7 @@ public partial struct D3D12_NODE_OUTPUT_OVERRIDES
     public nint pNewName;
     
     [MarshalAs(UnmanagedType.U4)]
-    public bool pAllowSparseNodes;
+    public nint pAllowSparseNodes;
     public nint pMaxRecords;
     public nint pMaxRecordsSharedWithOutputIndex;
 }

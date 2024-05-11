@@ -58,7 +58,7 @@ public partial interface ID3D10EffectScalarVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-setboolarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBoolArray([In][Out][MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] bool[] pData, uint Offset, uint Count);
+    HRESULT SetBoolArray([MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] in bool[] pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-getboolarray
     [PreserveSig]

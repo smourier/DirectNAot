@@ -351,8 +351,6 @@ public static partial class Constants
     
     public const uint ALLOW_OUTOFBAND_NOTIFICATION = 2;
     
-    public const uint ALPHA_SHIFT = 24;
-    
     public const uint AM_AC3_ALTERNATE_AUDIO_1 = 1;
     
     public const uint AM_AC3_ALTERNATE_AUDIO_2 = 2;
@@ -923,13 +921,9 @@ public static partial class Constants
     
     public const uint BITMAP_PLANES = 1;
     
-    public const uint BLUE_SHIFT = 0;
-    
     public static readonly Guid BLUETOOTH_MIDI_DATAIO_CHARACTERISTIC = new("7772e5db-3868-4112-a1a9-f2669d106bf3");
     
     public static readonly Guid BLUETOOTHLE_MIDI_SERVICE_UUID = new("03b80e5a-ede8-4b33-a751-6ce34ec4c700");
-    
-    public static readonly Guid BlurEffectGuid = new("633c80a4-1843-482b-9ef2-be2834c5fdd4");
     
     public const int BMF_16BPP = 4;
     
@@ -986,8 +980,6 @@ public static partial class Constants
     public const uint BRIGHTNESS_MAX_LEVEL_COUNT = 103;
     
     public const uint BRIGHTNESS_MAX_NIT_RANGE_COUNT = 16;
-    
-    public static readonly Guid BrightnessContrastEffectGuid = new("d3a1dbe1-8ec4-4c17-9f4c-ea97ad1c343d");
     
     public static readonly Guid BroadcastEventService = new("0b3ffb92-0919-4934-9d5b-619c719d0202");
     
@@ -2781,17 +2773,7 @@ public static partial class Constants
     
     public static readonly Guid CODECAPI_VideoEncoderDisplayContentType = new("79b90b27-f4b1-42dc-9dd7-cdaf8135c400");
     
-    public static readonly Guid CodecIImageBytes = new("025d1823-6c7d-447b-bbdb-a3cbc3dfa2fc");
-    
     public const uint COLOR_MATCH_VERSION = 512;
-    
-    public static readonly Guid ColorBalanceEffectGuid = new("537e597d-251e-48da-9664-29ca496b70f8");
-    
-    public static readonly Guid ColorCurveEffectGuid = new("dd6a0022-58e4-4a67-9d9b-d48eb881a53d");
-    
-    public static readonly Guid ColorLUTEffectGuid = new("a7ce72a9-0f7f-40d7-b3cc-d0c02d5c3212");
-    
-    public static readonly Guid ColorMatrixEffectGuid = new("718f2615-7933-40e3-a511-5f68fe14dd74");
     
     public static readonly Guid Component = new("59dc47a8-116c-11d3-9d8e-00c04f72d980");
     
@@ -12355,32 +12337,6 @@ public static partial class Constants
     
     public static readonly Guid ENCAPIPARAM_SAP_MODE = new("0c0171db-fefc-4af7-9991-a5657c191cd1");
     
-    public static readonly Guid EncoderChrominanceTable = new("f2e455dc-09b3-4316-8260-676ada32481c");
-    
-    public static readonly Guid EncoderColorDepth = new("66087055-ad66-4c7c-9a18-38a2310b8337");
-    
-    public static readonly Guid EncoderColorSpace = new("ae7a62a0-ee2c-49d8-9d07-1ba8a927596e");
-    
-    public static readonly Guid EncoderCompression = new("e09d739d-ccd4-44ee-8eba-3fbf8be4fc58");
-    
-    public static readonly Guid EncoderImageItems = new("63875e13-1f1d-45ab-9195-a29b6066a650");
-    
-    public static readonly Guid EncoderLuminanceTable = new("edb33bce-0266-4a77-b904-27216099e717");
-    
-    public static readonly Guid EncoderQuality = new("1d5be4b5-fa4a-452d-9cdd-5db35105e7eb");
-    
-    public static readonly Guid EncoderRenderMethod = new("6d42c53a-229a-4825-8bb7-5c99e2b9a8b8");
-    
-    public static readonly Guid EncoderSaveAsCMYK = new("a219bbc9-0a9d-4005-a3ee-3a421b8bb06c");
-    
-    public static readonly Guid EncoderSaveFlag = new("292266fc-ac40-47bf-8cfc-a85b89a655de");
-    
-    public static readonly Guid EncoderScanMethod = new("3a4e2661-3109-4e56-8536-42c156e7dcfa");
-    
-    public static readonly Guid EncoderTransformation = new("8d0eb2d1-a58e-4ea8-aa14-108074b7b6f9");
-    
-    public static readonly Guid EncoderVersion = new("24d18c76-814a-41a4-bf53-1c219cccf797");
-    
     public const int ENDCAP_BUTT = 2;
     
     public const int ENDCAP_ROUND = 0;
@@ -12763,8 +12719,6 @@ public static partial class Constants
     
     public const uint FLAG_ENABLE_CHROMATIC_ADAPTATION = 33554432;
     
-    public const float FlatnessDefault = 0.25f;
-    
     public const uint FM_EDITABLE_EMBED = 8;
     
     public const uint FM_INFO_16BPP = 256;
@@ -12949,10 +12903,6 @@ public static partial class Constants
     
     public const uint FORMATCHOOSE_MESSAGE = 0;
     
-    public static readonly Guid FormatIDImageInformation = new("e5836cbe-5eef-4f1d-acde-ae4c43b608ce");
-    
-    public static readonly Guid FormatIDJpegAppHeaders = new("1c4afdcd-6177-43cf-abc7-5f51af39ee85");
-    
     public static readonly Guid FORMATTYPE_CPFilters_Processed = new("6739b36f-1d5f-4ac2-8192-28bb0e73d16a");
     
     public static readonly Guid FORMATTYPE_ETDTFilter_Tagged = new("c4c4c4d1-0049-4e2b-98fb-9537f6ce516d");
@@ -12960,12 +12910,6 @@ public static partial class Constants
     public const int FP_ALTERNATEMODE = 1;
     
     public const int FP_WINDINGMODE = 2;
-    
-    public static readonly Guid FrameDimensionPage = new("7462dc86-6180-4c7e-8e3f-ee7333a7a483");
-    
-    public static readonly Guid FrameDimensionResolution = new("84236f7b-3bd3-428f-8dab-4ea1439ca315");
-    
-    public static readonly Guid FrameDimensionTime = new("6aedbd6d-3fb5-418a-83a6-7f45229dc872");
     
     public static readonly Guid FXEcho = new("5039d740-f736-449a-84d3-a56202557b87");
     
@@ -14062,12 +14006,6 @@ public static partial class Constants
     public const uint GCAPS2_xxxx = 2;
     
     public const uint GDI_DRIVER_VERSION = 16384;
-    
-    public const uint GDIP_EMFPLUS_RECORD_BASE = 16384;
-    
-    public const uint GDIP_EMFPLUSFLAGS_DISPLAY = 1;
-    
-    public const uint GDIP_WMF_RECORD_BASE = 65536;
     
     public const uint GETCONNECTEDIDS_SOURCE = 1;
     
@@ -15479,8 +15417,6 @@ public static partial class Constants
     
     public const uint GLU_VERTEX = 100101;
     
-    public const uint GREEN_SHIFT = 8;
-    
     public const uint GS_16BIT_HANDLES = 4;
     
     public const uint GS_8BIT_HANDLES = 2;
@@ -16121,8 +16057,6 @@ public static partial class Constants
     
     public const uint HT_USERPAT_CY_MIN = 4;
     
-    public static readonly Guid HueSaturationLightnessEffectGuid = new("8b2dd6c3-eb07-4d87-a5f0-7108e26a9c5f");
-    
     public const uint iBLUE = 2;
     
     public const int ICCOMPRESS_KEYFRAME = 1;
@@ -16534,32 +16468,6 @@ public static partial class Constants
     public const uint IGRF_RGB_256BYTES = 0;
     
     public const uint IGRF_RGB_256WORDS = 1;
-    
-    public static readonly Guid ImageFormatBMP = new("b96b3cab-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatEMF = new("b96b3cac-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatEXIF = new("b96b3cb2-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatGIF = new("b96b3cb0-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatHEIF = new("b96b3cb6-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatIcon = new("b96b3cb5-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatJPEG = new("b96b3cae-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatMemoryBMP = new("b96b3caa-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatPNG = new("b96b3caf-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatTIFF = new("b96b3cb1-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatUndefined = new("b96b3ca9-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatWEBP = new("b96b3cb7-0728-11d3-9d7b-0000f81ef32e");
-    
-    public static readonly Guid ImageFormatWMF = new("b96b3cad-0728-11d3-9d7b-0000f81ef32e");
     
     public const uint iMASK_COLORS = 3;
     
@@ -19490,8 +19398,6 @@ public static partial class Constants
     public const uint LA_STYLED = 8;
     
     public static readonly Guid LanguageComponentType = new("1be49f30-0e1b-11d3-9d8e-00c04f72d980");
-    
-    public static readonly Guid LevelsEffectGuid = new("99c354ec-2a31-4f3a-8c34-17a803b33a25");
     
     public static readonly Guid LIBID_QuartzNetTypeLib = new("56a868b1-0ad4-11ce-b03a-0020af0ba770");
     
@@ -28111,24 +28017,6 @@ public static partial class Constants
     
     public const uint PipeFactor_UserModeUpstream = 1;
     
-    public const uint PixelFormatAlpha = 262144;
-    
-    public const uint PixelFormatCanonical = 2097152;
-    
-    public const uint PixelFormatDontCare = 0;
-    
-    public const uint PixelFormatExtended = 1048576;
-    
-    public const uint PixelFormatGDI = 131072;
-    
-    public const uint PixelFormatIndexed = 65536;
-    
-    public const uint PixelFormatMax = 16;
-    
-    public const uint PixelFormatPAlpha = 524288;
-    
-    public const uint PixelFormatUndefined = 0;
-    
     public static readonly Guid PKEY_FX_EffectPack_Schema_V1 = new("7abf23d9-727e-4d0b-86a3-dd501d260001");
     
     public const uint PLANAR_HC = 1;
@@ -28317,492 +28205,6 @@ public static partial class Constants
     
     public const uint PROOF_MODE = 1;
     
-    public const uint PropertyTagArtist = 315;
-    
-    public const uint PropertyTagBitsPerSample = 258;
-    
-    public const uint PropertyTagCellHeight = 265;
-    
-    public const uint PropertyTagCellWidth = 264;
-    
-    public const uint PropertyTagChrominanceTable = 20625;
-    
-    public const uint PropertyTagColorMap = 320;
-    
-    public const uint PropertyTagColorTransferFunction = 20506;
-    
-    public const uint PropertyTagCompression = 259;
-    
-    public const uint PropertyTagCopyright = 33432;
-    
-    public const uint PropertyTagDateTime = 306;
-    
-    public const uint PropertyTagDocumentName = 269;
-    
-    public const uint PropertyTagDotRange = 336;
-    
-    public const uint PropertyTagEquipMake = 271;
-    
-    public const uint PropertyTagEquipModel = 272;
-    
-    public const uint PropertyTagExifAperture = 37378;
-    
-    public const uint PropertyTagExifBrightness = 37379;
-    
-    public const uint PropertyTagExifCfaPattern = 41730;
-    
-    public const uint PropertyTagExifColorSpace = 40961;
-    
-    public const uint PropertyTagExifCompBPP = 37122;
-    
-    public const uint PropertyTagExifCompConfig = 37121;
-    
-    public const uint PropertyTagExifContrast = 41992;
-    
-    public const uint PropertyTagExifCustomRendered = 41985;
-    
-    public const uint PropertyTagExifDeviceSettingDesc = 41995;
-    
-    public const uint PropertyTagExifDigitalZoomRatio = 41988;
-    
-    public const uint PropertyTagExifDTDigitized = 36868;
-    
-    public const uint PropertyTagExifDTDigSS = 37522;
-    
-    public const uint PropertyTagExifDTOrig = 36867;
-    
-    public const uint PropertyTagExifDTOrigSS = 37521;
-    
-    public const uint PropertyTagExifDTSubsec = 37520;
-    
-    public const uint PropertyTagExifExposureBias = 37380;
-    
-    public const uint PropertyTagExifExposureIndex = 41493;
-    
-    public const uint PropertyTagExifExposureMode = 41986;
-    
-    public const uint PropertyTagExifExposureProg = 34850;
-    
-    public const uint PropertyTagExifExposureTime = 33434;
-    
-    public const uint PropertyTagExifFileSource = 41728;
-    
-    public const uint PropertyTagExifFlash = 37385;
-    
-    public const uint PropertyTagExifFlashEnergy = 41483;
-    
-    public const uint PropertyTagExifFNumber = 33437;
-    
-    public const uint PropertyTagExifFocalLength = 37386;
-    
-    public const uint PropertyTagExifFocalLengthIn35mmFilm = 41989;
-    
-    public const uint PropertyTagExifFocalResUnit = 41488;
-    
-    public const uint PropertyTagExifFocalXRes = 41486;
-    
-    public const uint PropertyTagExifFocalYRes = 41487;
-    
-    public const uint PropertyTagExifFPXVer = 40960;
-    
-    public const uint PropertyTagExifGainControl = 41991;
-    
-    public const uint PropertyTagExifIFD = 34665;
-    
-    public const uint PropertyTagExifInterop = 40965;
-    
-    public const uint PropertyTagExifISOSpeed = 34855;
-    
-    public const uint PropertyTagExifLightSource = 37384;
-    
-    public const uint PropertyTagExifMakerNote = 37500;
-    
-    public const uint PropertyTagExifMaxAperture = 37381;
-    
-    public const uint PropertyTagExifMeteringMode = 37383;
-    
-    public const uint PropertyTagExifOECF = 34856;
-    
-    public const uint PropertyTagExifPixXDim = 40962;
-    
-    public const uint PropertyTagExifPixYDim = 40963;
-    
-    public const uint PropertyTagExifRelatedWav = 40964;
-    
-    public const uint PropertyTagExifSaturation = 41993;
-    
-    public const uint PropertyTagExifSceneCaptureType = 41990;
-    
-    public const uint PropertyTagExifSceneType = 41729;
-    
-    public const uint PropertyTagExifSensingMethod = 41495;
-    
-    public const uint PropertyTagExifSharpness = 41994;
-    
-    public const uint PropertyTagExifShutterSpeed = 37377;
-    
-    public const uint PropertyTagExifSpatialFR = 41484;
-    
-    public const uint PropertyTagExifSpectralSense = 34852;
-    
-    public const uint PropertyTagExifSubjectArea = 37396;
-    
-    public const uint PropertyTagExifSubjectDist = 37382;
-    
-    public const uint PropertyTagExifSubjectDistanceRange = 41996;
-    
-    public const uint PropertyTagExifSubjectLoc = 41492;
-    
-    public const uint PropertyTagExifUniqueImageID = 42016;
-    
-    public const uint PropertyTagExifUserComment = 37510;
-    
-    public const uint PropertyTagExifVer = 36864;
-    
-    public const uint PropertyTagExifWhiteBalance = 41987;
-    
-    public const uint PropertyTagExtraSamples = 338;
-    
-    public const uint PropertyTagFillOrder = 266;
-    
-    public const uint PropertyTagFrameDelay = 20736;
-    
-    public const uint PropertyTagFreeByteCounts = 289;
-    
-    public const uint PropertyTagFreeOffset = 288;
-    
-    public const uint PropertyTagGamma = 769;
-    
-    public const uint PropertyTagGlobalPalette = 20738;
-    
-    public const uint PropertyTagGpsAltitude = 6;
-    
-    public const uint PropertyTagGpsAltitudeRef = 5;
-    
-    public const uint PropertyTagGpsAreaInformation = 28;
-    
-    public const uint PropertyTagGpsDate = 29;
-    
-    public const uint PropertyTagGpsDestBear = 24;
-    
-    public const uint PropertyTagGpsDestBearRef = 23;
-    
-    public const uint PropertyTagGpsDestDist = 26;
-    
-    public const uint PropertyTagGpsDestDistRef = 25;
-    
-    public const uint PropertyTagGpsDestLat = 20;
-    
-    public const uint PropertyTagGpsDestLatRef = 19;
-    
-    public const uint PropertyTagGpsDestLong = 22;
-    
-    public const uint PropertyTagGpsDestLongRef = 21;
-    
-    public const uint PropertyTagGpsDifferential = 30;
-    
-    public const uint PropertyTagGpsGpsDop = 11;
-    
-    public const uint PropertyTagGpsGpsMeasureMode = 10;
-    
-    public const uint PropertyTagGpsGpsSatellites = 8;
-    
-    public const uint PropertyTagGpsGpsStatus = 9;
-    
-    public const uint PropertyTagGpsGpsTime = 7;
-    
-    public const uint PropertyTagGpsIFD = 34853;
-    
-    public const uint PropertyTagGpsImgDir = 17;
-    
-    public const uint PropertyTagGpsImgDirRef = 16;
-    
-    public const uint PropertyTagGpsLatitude = 2;
-    
-    public const uint PropertyTagGpsLatitudeRef = 1;
-    
-    public const uint PropertyTagGpsLongitude = 4;
-    
-    public const uint PropertyTagGpsLongitudeRef = 3;
-    
-    public const uint PropertyTagGpsMapDatum = 18;
-    
-    public const uint PropertyTagGpsProcessingMethod = 27;
-    
-    public const uint PropertyTagGpsSpeed = 13;
-    
-    public const uint PropertyTagGpsSpeedRef = 12;
-    
-    public const uint PropertyTagGpsTrack = 15;
-    
-    public const uint PropertyTagGpsTrackRef = 14;
-    
-    public const uint PropertyTagGpsVer = 0;
-    
-    public const uint PropertyTagGrayResponseCurve = 291;
-    
-    public const uint PropertyTagGrayResponseUnit = 290;
-    
-    public const uint PropertyTagGridSize = 20497;
-    
-    public const uint PropertyTagHalftoneDegree = 20492;
-    
-    public const uint PropertyTagHalftoneHints = 321;
-    
-    public const uint PropertyTagHalftoneLPI = 20490;
-    
-    public const uint PropertyTagHalftoneLPIUnit = 20491;
-    
-    public const uint PropertyTagHalftoneMisc = 20494;
-    
-    public const uint PropertyTagHalftoneScreen = 20495;
-    
-    public const uint PropertyTagHalftoneShape = 20493;
-    
-    public const uint PropertyTagHostComputer = 316;
-    
-    public const uint PropertyTagICCProfile = 34675;
-    
-    public const uint PropertyTagICCProfileDescriptor = 770;
-    
-    public const uint PropertyTagImageDescription = 270;
-    
-    public const uint PropertyTagImageHeight = 257;
-    
-    public const uint PropertyTagImageTitle = 800;
-    
-    public const uint PropertyTagImageWidth = 256;
-    
-    public const uint PropertyTagIndexBackground = 20739;
-    
-    public const uint PropertyTagIndexTransparent = 20740;
-    
-    public const uint PropertyTagInkNames = 333;
-    
-    public const uint PropertyTagInkSet = 332;
-    
-    public const uint PropertyTagJPEGACTables = 521;
-    
-    public const uint PropertyTagJPEGDCTables = 520;
-    
-    public const uint PropertyTagJPEGInterFormat = 513;
-    
-    public const uint PropertyTagJPEGInterLength = 514;
-    
-    public const uint PropertyTagJPEGLosslessPredictors = 517;
-    
-    public const uint PropertyTagJPEGPointTransforms = 518;
-    
-    public const uint PropertyTagJPEGProc = 512;
-    
-    public const uint PropertyTagJPEGQTables = 519;
-    
-    public const uint PropertyTagJPEGQuality = 20496;
-    
-    public const uint PropertyTagJPEGRestartInterval = 515;
-    
-    public const uint PropertyTagLoopCount = 20737;
-    
-    public const uint PropertyTagLuminanceTable = 20624;
-    
-    public const uint PropertyTagMaxSampleValue = 281;
-    
-    public const uint PropertyTagMinSampleValue = 280;
-    
-    public const uint PropertyTagNewSubfileType = 254;
-    
-    public const uint PropertyTagNumberOfInks = 334;
-    
-    public const uint PropertyTagOrientation = 274;
-    
-    public const uint PropertyTagPageName = 285;
-    
-    public const uint PropertyTagPageNumber = 297;
-    
-    public const uint PropertyTagPaletteHistogram = 20755;
-    
-    public const uint PropertyTagPhotometricInterp = 262;
-    
-    public const uint PropertyTagPixelPerUnitX = 20753;
-    
-    public const uint PropertyTagPixelPerUnitY = 20754;
-    
-    public const uint PropertyTagPixelUnit = 20752;
-    
-    public const uint PropertyTagPlanarConfig = 284;
-    
-    public const uint PropertyTagPredictor = 317;
-    
-    public const uint PropertyTagPrimaryChromaticities = 319;
-    
-    public const uint PropertyTagPrintFlags = 20485;
-    
-    public const uint PropertyTagPrintFlagsBleedWidth = 20488;
-    
-    public const uint PropertyTagPrintFlagsBleedWidthScale = 20489;
-    
-    public const uint PropertyTagPrintFlagsCrop = 20487;
-    
-    public const uint PropertyTagPrintFlagsVersion = 20486;
-    
-    public const uint PropertyTagREFBlackWhite = 532;
-    
-    public const uint PropertyTagResolutionUnit = 296;
-    
-    public const uint PropertyTagResolutionXLengthUnit = 20483;
-    
-    public const uint PropertyTagResolutionXUnit = 20481;
-    
-    public const uint PropertyTagResolutionYLengthUnit = 20484;
-    
-    public const uint PropertyTagResolutionYUnit = 20482;
-    
-    public const uint PropertyTagRowsPerStrip = 278;
-    
-    public const uint PropertyTagSampleFormat = 339;
-    
-    public const uint PropertyTagSamplesPerPixel = 277;
-    
-    public const uint PropertyTagSMaxSampleValue = 341;
-    
-    public const uint PropertyTagSMinSampleValue = 340;
-    
-    public const uint PropertyTagSoftwareUsed = 305;
-    
-    public const uint PropertyTagSRGBRenderingIntent = 771;
-    
-    public const uint PropertyTagStripBytesCount = 279;
-    
-    public const uint PropertyTagStripOffsets = 273;
-    
-    public const uint PropertyTagSubfileType = 255;
-    
-    public const uint PropertyTagT4Option = 292;
-    
-    public const uint PropertyTagT6Option = 293;
-    
-    public const uint PropertyTagTargetPrinter = 337;
-    
-    public const uint PropertyTagThreshHolding = 263;
-    
-    public const uint PropertyTagThumbnailArtist = 20532;
-    
-    public const uint PropertyTagThumbnailBitsPerSample = 20514;
-    
-    public const uint PropertyTagThumbnailColorDepth = 20501;
-    
-    public const uint PropertyTagThumbnailCompressedSize = 20505;
-    
-    public const uint PropertyTagThumbnailCompression = 20515;
-    
-    public const uint PropertyTagThumbnailCopyRight = 20539;
-    
-    public const uint PropertyTagThumbnailData = 20507;
-    
-    public const uint PropertyTagThumbnailDateTime = 20531;
-    
-    public const uint PropertyTagThumbnailEquipMake = 20518;
-    
-    public const uint PropertyTagThumbnailEquipModel = 20519;
-    
-    public const uint PropertyTagThumbnailFormat = 20498;
-    
-    public const uint PropertyTagThumbnailHeight = 20500;
-    
-    public const uint PropertyTagThumbnailImageDescription = 20517;
-    
-    public const uint PropertyTagThumbnailImageHeight = 20513;
-    
-    public const uint PropertyTagThumbnailImageWidth = 20512;
-    
-    public const uint PropertyTagThumbnailOrientation = 20521;
-    
-    public const uint PropertyTagThumbnailPhotometricInterp = 20516;
-    
-    public const uint PropertyTagThumbnailPlanarConfig = 20527;
-    
-    public const uint PropertyTagThumbnailPlanes = 20502;
-    
-    public const uint PropertyTagThumbnailPrimaryChromaticities = 20534;
-    
-    public const uint PropertyTagThumbnailRawBytes = 20503;
-    
-    public const uint PropertyTagThumbnailRefBlackWhite = 20538;
-    
-    public const uint PropertyTagThumbnailResolutionUnit = 20528;
-    
-    public const uint PropertyTagThumbnailResolutionX = 20525;
-    
-    public const uint PropertyTagThumbnailResolutionY = 20526;
-    
-    public const uint PropertyTagThumbnailRowsPerStrip = 20523;
-    
-    public const uint PropertyTagThumbnailSamplesPerPixel = 20522;
-    
-    public const uint PropertyTagThumbnailSize = 20504;
-    
-    public const uint PropertyTagThumbnailSoftwareUsed = 20530;
-    
-    public const uint PropertyTagThumbnailStripBytesCount = 20524;
-    
-    public const uint PropertyTagThumbnailStripOffsets = 20520;
-    
-    public const uint PropertyTagThumbnailTransferFunction = 20529;
-    
-    public const uint PropertyTagThumbnailWhitePoint = 20533;
-    
-    public const uint PropertyTagThumbnailWidth = 20499;
-    
-    public const uint PropertyTagThumbnailYCbCrCoefficients = 20535;
-    
-    public const uint PropertyTagThumbnailYCbCrPositioning = 20537;
-    
-    public const uint PropertyTagThumbnailYCbCrSubsampling = 20536;
-    
-    public const uint PropertyTagTileByteCounts = 325;
-    
-    public const uint PropertyTagTileLength = 323;
-    
-    public const uint PropertyTagTileOffset = 324;
-    
-    public const uint PropertyTagTileWidth = 322;
-    
-    public const uint PropertyTagTransferFuncition = 301;
-    
-    public const uint PropertyTagTransferRange = 342;
-    
-    public const uint PropertyTagTypeASCII = 2;
-    
-    public const uint PropertyTagTypeByte = 1;
-    
-    public const uint PropertyTagTypeLong = 4;
-    
-    public const uint PropertyTagTypeRational = 5;
-    
-    public const uint PropertyTagTypeShort = 3;
-    
-    public const uint PropertyTagTypeSLONG = 9;
-    
-    public const uint PropertyTagTypeSRational = 10;
-    
-    public const uint PropertyTagTypeUndefined = 7;
-    
-    public const uint PropertyTagWhitePoint = 318;
-    
-    public const uint PropertyTagXPosition = 286;
-    
-    public const uint PropertyTagXResolution = 282;
-    
-    public const uint PropertyTagYCbCrCoefficients = 529;
-    
-    public const uint PropertyTagYCbCrPositioning = 531;
-    
-    public const uint PropertyTagYCbCrSubsampling = 530;
-    
-    public const uint PropertyTagYPosition = 287;
-    
-    public const uint PropertyTagYResolution = 283;
-    
     public static readonly Guid PROPSETID_ALLOCATOR_CONTROL = new("53171960-148e-11d2-9979-0000c0cc16ba");
     
     public static readonly Guid PROPSETID_EXT_DEVICE = new("b5730a90-1a2c-11cf-8c23-00aa006b6814");
@@ -28896,10 +28298,6 @@ public static partial class Constants
     public const uint QSA_SSE3 = 524288;
     
     public const int RB_DITHERCOLOR = int.MinValue;
-    
-    public const uint RED_SHIFT = 16;
-    
-    public static readonly Guid RedEyeCorrectionEffectGuid = new("74d29d05-69a4-4266-9549-3cc52836b632");
     
     public const uint REFRESH_F_LASTBUFFER = 1;
     
@@ -29044,8 +28442,6 @@ public static partial class Constants
     public const uint SGI_EXTRASPACE = 0;
     
     public const uint SHA_HASH_LEN = 20;
-    
-    public static readonly Guid SharpenEffectGuid = new("63cbf3ee-c526-402c-8f71-62c540bf5142");
     
     public static readonly Guid SID_AudioProcessingObjectLoggingService = new("8b8008af-09f9-456e-a173-bdb58499bce7");
     
@@ -29524,8 +28920,6 @@ public static partial class Constants
     public const uint TIMERR_NOERROR = 0;
     
     public const uint TIMERR_STRUCT = 129;
-    
-    public static readonly Guid TintEffectGuid = new("1077af00-2848-4441-9489-44ad4c2d7a2c");
     
     public const uint TOC_ENTRY_MAX_TITLE_SIZE = 65535;
     

@@ -8,6 +8,48 @@ public static class Conversions
     private static readonly char[] _enumSeparators = [',', ';', '+', '|', ' '];
     private static readonly string[] _dateFormatsUtc = ["yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"];
 
+    public static long ToPositiveFileTime(DateTime dt)
+    {
+        var ft = ToFileTimeUtc(dt.ToUniversalTime());
+        return ft < 0 ? 0 : ft;
+    }
+
+    public static long ToPositiveFileTimeUtc(DateTime dt)
+    {
+        var ft = ToFileTimeUtc(dt);
+        return ft < 0 ? 0 : ft;
+    }
+
+    public static long ToFileTime(DateTime dt) => ToFileTimeUtc(dt.ToUniversalTime());
+    public static long ToFileTimeUtc(DateTime dt)
+    {
+        const long ticksPerMillisecond = 10000;
+        const long ticksPerSecond = ticksPerMillisecond * 1000;
+        const long ticksPerMinute = ticksPerSecond * 60;
+        const long ticksPerHour = ticksPerMinute * 60;
+        const long ticksPerDay = ticksPerHour * 24;
+        const int daysPerYear = 365;
+        const int daysPer4Years = daysPerYear * 4 + 1;
+        const int daysPer100Years = daysPer4Years * 25 - 1;
+        const int daysPer400Years = daysPer100Years * 4 + 1;
+        const int daysTo1601 = daysPer400Years * 4;
+        const long fileTimeOffset = daysTo1601 * ticksPerDay;
+        long ticks = dt.Kind == DateTimeKind.Local ? dt.ToUniversalTime().Ticks : dt.Ticks;
+        ticks -= fileTimeOffset;
+        return ticks;
+    }
+
+    public static FILETIME ToPositiveFILETIME(DateTime dt) => ToFILETIME(ToPositiveFileTime(dt));
+    public static FILETIME ToPositiveFILETIMEUtc(DateTime dt) => ToFILETIME(ToPositiveFileTimeUtc(dt));
+    public static FILETIME ToFILETIME(DateTime dt) => ToFILETIME(ToFileTime(dt));
+    public static FILETIME ToFILETIMEUtc(DateTime dt) => ToFILETIME(ToFileTimeUtc(dt));
+    public static FILETIME ToFILETIME(long ft) => ToFILETIME((ulong)ft);
+    public static FILETIME ToFILETIME(ulong ft) => new FILETIME { dwLowDateTime = (uint)(ft & 0xFFFFFFFF), dwHighDateTime = (uint)(ft >> 32) };
+
+    public static long ToFileTime(this FILETIME ft) => (long)(ft.dwLowDateTime | (ulong)ft.dwHighDateTime << 32);
+    public static DateTime ToDateTime(this FILETIME ft) => DateTime.FromFileTime(ToFileTime(ft));
+    public static DateTime ToDateTimeUtc(this FILETIME ft) => DateTime.FromFileTimeUtc(ToFileTime(ft));
+
     public static string ToHexa(this byte[] bytes, bool addEllipsis = false) => bytes != null ? ToHexa(bytes, 0, bytes.Length, addEllipsis) : "0x";
     public static string ToHexa(this byte[] bytes, int count, bool addEllipsis = false) => ToHexa(bytes, 0, count, addEllipsis);
     public static string ToHexa(this byte[] bytes, int offset, int count, bool addEllipsis = false)

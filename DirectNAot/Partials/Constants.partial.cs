@@ -24,8 +24,11 @@ public static partial class Constants
 
     public const int MONITORINFOF_PRIMARY = 0x00000001;
 
-    public static readonly Guid IID_Unknown = new(IID_UnknownString);
     public const string IID_UnknownString = "00000000-0000-0000-C000-000000000046";
+    public static readonly Guid IID_Unknown = new(IID_UnknownString);
+
+    public const string IID_IPropertyValueString = "4bd682dd-7554-40e9-9a9b-82654ede7e62";
+    public static readonly Guid IID_IPropertyValue = new Guid(IID_IPropertyValueString);
 
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");

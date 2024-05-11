@@ -8,7 +8,7 @@ public partial interface IMFVideoMediaType : IMFMediaType
 {
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfvideomediatype-getvideoformat
     [PreserveSig]
-    MFVIDEOFORMAT GetVideoFormat();
+    nint GetVideoFormat();
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfvideomediatype-getvideorepresentation
     [PreserveSig]

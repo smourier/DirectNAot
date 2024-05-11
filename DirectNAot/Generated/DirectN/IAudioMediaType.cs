@@ -17,7 +17,7 @@ public partial interface IAudioMediaType
     
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-getaudioformat
     [PreserveSig]
-    WAVEFORMATEX GetAudioFormat();
+    nint GetAudioFormat();
     
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-getuncompressedaudioformat
     [PreserveSig]

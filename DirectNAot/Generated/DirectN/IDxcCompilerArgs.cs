@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface IDxcCompilerArgs
 {
     [PreserveSig]
-    PWSTR GetArguments();
+    nint GetArguments();
     
     [PreserveSig]
     uint GetCount();

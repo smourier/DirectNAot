@@ -22,11 +22,11 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsFeed(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] bool pbFeedExists);
+    HRESULT ExistsFeed(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] in bool pbFeedExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsSubfolder(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] bool pbSubfolderExists);
+    HRESULT ExistsSubfolder(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] in bool pbSubfolderExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

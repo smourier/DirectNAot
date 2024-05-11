@@ -8,5 +8,5 @@ public partial interface IMFAudioMediaType : IMFMediaType
 {
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfaudiomediatype-getaudioformat
     [PreserveSig]
-    WAVEFORMATEX GetAudioFormat();
+    nint GetAudioFormat();
 }

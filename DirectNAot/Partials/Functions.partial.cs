@@ -38,4 +38,10 @@ public static partial class Functions
     public static int DipsToPixels(int dips, double dpi) => (int)(dips * dpi / 96);
     public static float PixelsToDips(int pixels, float dpi) => pixels * 96 / dpi;
     public static int DipsToPixels(int dips, float dpi) => (int)(dips * dpi / 96);
+
+    [LibraryImport("kernel32", EntryPoint = "RtlMoveMemory")]
+    public static partial void CopyMemory(nint pdst, nint psrc, nint cb);
+
+    [LibraryImport("kernel32", EntryPoint = "RtlZeroMemory")]
+    public static partial void ZeroMemory(nint pdst, nint cb);
 }

@@ -477,7 +477,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setvertexshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVertexShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] bool pConstantData, uint BoolCount);
+    HRESULT SetVertexShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] in bool pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getvertexshaderconstantb
     [PreserveSig]
@@ -552,7 +552,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setpixelshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPixelShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] bool pConstantData, uint BoolCount);
+    HRESULT SetPixelShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] in bool pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getpixelshaderconstantb
     [PreserveSig]

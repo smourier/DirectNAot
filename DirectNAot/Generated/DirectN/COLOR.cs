@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-color
 [StructLayout(LayoutKind.Explicit)]
-public partial struct ColorSystemCOLOR
+public partial struct COLOR
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct _Anonymous_e__Struct

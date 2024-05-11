@@ -245,7 +245,7 @@ public partial struct PROPVARIANT
         public _Anonymous_e__Struct Anonymous;
         
         [FieldOffset(0)]
-        public DECIMAL decVal;
+        public decimal decVal;
     }
     
     public _Anonymous_e__Union Anonymous;

@@ -25,7 +25,7 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
     public readonly bool IsOk => Value == 0;
     public readonly bool IsFalse => Value == 1;
 
-    public readonly int ThrowOnError(bool throwOnError = true) => ThrowOnErrorExcept(null, throwOnError).Value;
+    public readonly HRESULT ThrowOnError(bool throwOnError = true) => ThrowOnErrorExcept(null, throwOnError);
     public readonly HRESULT ThrowOnErrorExcept(HRESULT exceptedValue, bool throwOnError = true) => ThrowOnErrorExcept([exceptedValue], throwOnError);
     public readonly HRESULT ThrowOnErrorExcept(IEnumerable<HRESULT>? exceptedValues, bool throwOnError = true)
     {

@@ -17,6 +17,6 @@ public partial struct DXVA2_VIDEOPROCESSBLT
     public DXVA2_FilterValues NoiseFilterChroma;
     public DXVA2_FilterValues DetailFilterLuma;
     public DXVA2_FilterValues DetailFilterChroma;
-    public DirectShowDXVA2_VIDEOSAMPLE pSrcSurfaces;
+    public nint pSrcSurfaces;
     public uint NumSrcSurfaces;
 }

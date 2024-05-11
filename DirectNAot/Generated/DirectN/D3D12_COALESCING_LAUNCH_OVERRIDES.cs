@@ -7,7 +7,7 @@ public partial struct D3D12_COALESCING_LAUNCH_OVERRIDES
     public nint pLocalRootArgumentsTableIndex;
     
     [MarshalAs(UnmanagedType.U4)]
-    public bool pProgramEntry;
+    public nint pProgramEntry;
     public nint pNewName;
     public nint pShareInputOf;
     public uint NumOutputOverrides;
