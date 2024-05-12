@@ -13,7 +13,7 @@ public partial interface IWMHeaderInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-getattributebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributeByIndex(ushort wIndex, ref ushort pwStreamNum, [MarshalUsing(CountElementName = nameof(pcchNameLen))] out PWSTR[] pwszName, ref ushort pcchNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref ushort pcbLength);
+    HRESULT GetAttributeByIndex(ushort wIndex, ref ushort pwStreamNum, [MarshalUsing(CountElementName = nameof(pcchNameLen))] out PWSTR pwszName, ref ushort pcchNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref ushort pcbLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-getattributebyname
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IWMHeaderInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-getmarker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMarker(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchMarkerNameLen))] out PWSTR[] pwszMarkerName, ref ushort pcchMarkerNameLen, out ulong pcnsMarkerTime);
+    HRESULT GetMarker(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchMarkerNameLen))] out PWSTR pwszMarkerName, ref ushort pcchMarkerNameLen, out ulong pcnsMarkerTime);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-addmarker
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IWMHeaderInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-getscript
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetScript(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchTypeLen))] out PWSTR[] pwszType, ref ushort pcchTypeLen, [MarshalUsing(CountElementName = nameof(pcchCommandLen))] out PWSTR[] pwszCommand, ref ushort pcchCommandLen, out ulong pcnsScriptTime);
+    HRESULT GetScript(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchTypeLen))] out PWSTR pwszType, ref ushort pcchTypeLen, [MarshalUsing(CountElementName = nameof(pcchCommandLen))] out PWSTR pwszCommand, ref ushort pcchCommandLen, out ulong pcnsScriptTime);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo-addscript
     [PreserveSig]

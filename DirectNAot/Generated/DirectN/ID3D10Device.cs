@@ -394,7 +394,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, [MarshalUsing(CountElementName = nameof(pNameLength))] out PSTR[] szName, nint /* optional uint* */ pNameLength, [MarshalUsing(CountElementName = nameof(pUnitsLength))] out PSTR[] szUnits, nint /* optional uint* */ pUnitsLength, [MarshalUsing(CountElementName = nameof(pDescriptionLength))] out PSTR[] szDescription, nint /* optional uint* */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D10_COUNTER_DESC pDesc, out D3D10_COUNTER_TYPE pType, out uint pActiveCounters, [MarshalUsing(CountElementName = nameof(pNameLength))] out PSTR szName, nint /* optional uint* */ pNameLength, [MarshalUsing(CountElementName = nameof(pUnitsLength))] out PSTR szUnits, nint /* optional uint* */ pUnitsLength, [MarshalUsing(CountElementName = nameof(pDescriptionLength))] out PSTR szDescription, nint /* optional uint* */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getcreationflags
     [PreserveSig]

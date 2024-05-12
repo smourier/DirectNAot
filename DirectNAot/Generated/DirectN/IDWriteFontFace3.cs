@@ -65,7 +65,7 @@ public partial interface IDWriteFontFace3 : IDWriteFontFace2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-arecharacterslocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AreCharactersLocal([In][Out][MarshalUsing(CountElementName = nameof(characterCount))] PWSTR[] characters, uint characterCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
+    HRESULT AreCharactersLocal([MarshalUsing(CountElementName = nameof(characterCount))] PWSTR characters, uint characterCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-areglyphslocal
     [PreserveSig]

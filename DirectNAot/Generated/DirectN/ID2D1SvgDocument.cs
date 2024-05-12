@@ -41,7 +41,7 @@ public partial interface ID2D1SvgDocument : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgdocument-createpaint-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePaint(D2D1_SVG_PAINT_TYPE paintType, nint /* optional D2D1_COLOR_F* */ color, PWSTR id, out ID2D1SvgPaint paint);
+    HRESULT CreatePaint(D2D1_SVG_PAINT_TYPE paintType, nint /* optional D3DCOLORVALUE* */ color, PWSTR id, out ID2D1SvgPaint paint);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-createstrokedasharray
     [PreserveSig]

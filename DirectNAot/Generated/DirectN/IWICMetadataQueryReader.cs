@@ -14,7 +14,7 @@ public partial interface IWICMetadataQueryReader
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicmetadataqueryreader-getlocation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocation(uint cchMaxLength, [MarshalUsing(CountElementName = nameof(cchMaxLength))] ref PWSTR[] wzNamespace, out uint pcchActualLength);
+    HRESULT GetLocation(uint cchMaxLength, [MarshalUsing(CountElementName = nameof(cchMaxLength))] ref PWSTR wzNamespace, out uint pcchActualLength);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicmetadataqueryreader-getmetadatabyname
     [PreserveSig]

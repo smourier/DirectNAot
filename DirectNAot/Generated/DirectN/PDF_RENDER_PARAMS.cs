@@ -8,6 +8,6 @@ public partial struct PDF_RENDER_PARAMS
     public D2D_RECT_F SourceRect;
     public uint DestinationWidth;
     public uint DestinationHeight;
-    public D2D_COLOR_F BackgroundColor;
+    public D3DCOLORVALUE BackgroundColor;
     public BOOLEAN IgnoreHighContrast;
 }

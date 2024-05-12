@@ -58,7 +58,7 @@ public partial interface IDWriteFontFaceReference
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-enqueuecharacterdownloadrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnqueueCharacterDownloadRequest([In][Out][MarshalUsing(CountElementName = nameof(characterCount))] PWSTR[] characters, uint characterCount);
+    HRESULT EnqueueCharacterDownloadRequest([MarshalUsing(CountElementName = nameof(characterCount))] PWSTR characters, uint characterCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-enqueueglyphdownloadrequest
     [PreserveSig]

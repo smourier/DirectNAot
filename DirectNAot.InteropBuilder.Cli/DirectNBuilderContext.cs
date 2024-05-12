@@ -25,7 +25,7 @@ namespace DirectNAot.InteropBuilder.Cli
 
         public override string GetValueAsString(BuilderType type, object? value, string defaultValueAsString)
         {
-            if (type.FullName == PWSTR)
+            if (type.FullName == FullName.PWSTR)
                 return $"new({defaultValueAsString})";
 
             return base.GetValueAsString(type, value, defaultValueAsString);
@@ -33,7 +33,6 @@ namespace DirectNAot.InteropBuilder.Cli
 
         // types used to define constants
         public static FullName DEVPROPKEY { get; } = new("Windows.Win32.Devices.Properties.DEVPROPKEY");
-        public static FullName PWSTR { get; } = new(FullName.FoundationNamespace + ".PWSTR");
 
         public static (Guid fmtid, uint pid) ParsePropertyKey(string pk)
         {

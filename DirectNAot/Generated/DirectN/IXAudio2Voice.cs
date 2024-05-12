@@ -77,7 +77,7 @@ public partial interface IXAudio2Voice
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getchannelvolumes
     [PreserveSig]
-    void GetChannelVolumes(uint Channels, [MarshalUsing(CountElementName = nameof(Channels))] out float[] pVolumes);
+    void GetChannelVolumes(uint Channels, [MarshalUsing(CountElementName = nameof(Channels))] ref float[] pVolumes);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputmatrix
     [PreserveSig]

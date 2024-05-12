@@ -14,7 +14,7 @@ public partial interface IWMBackupRestoreProps
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmbackuprestoreprops-getpropbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropByIndex(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchNameLen))] out PWSTR[] pwszName, ref ushort pcchNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref ushort pcbLength);
+    HRESULT GetPropByIndex(ushort wIndex, [MarshalUsing(CountElementName = nameof(pcchNameLen))] out PWSTR pwszName, ref ushort pcchNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref ushort pcbLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmbackuprestoreprops-getpropbyname
     [PreserveSig]

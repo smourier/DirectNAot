@@ -9,7 +9,7 @@ public partial interface ID3D12DeviceConfiguration
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnabledExperimentalFeatures([MarshalUsing(CountElementName = nameof(NumGuids))] out Guid[] pGuids, uint NumGuids);
+    HRESULT GetEnabledExperimentalFeatures([MarshalUsing(CountElementName = nameof(NumGuids))] ref Guid[] pGuids, uint NumGuids);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

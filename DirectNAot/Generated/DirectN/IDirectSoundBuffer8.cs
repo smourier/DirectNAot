@@ -10,7 +10,7 @@ public partial interface IDirectSoundBuffer8 : IDirectSoundBuffer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AcquireResources(uint dwFlags, uint dwEffectsCount, [MarshalUsing(CountElementName = nameof(dwEffectsCount))] out uint[] pdwResultCodes);
+    HRESULT AcquireResources(uint dwFlags, uint dwEffectsCount, [MarshalUsing(CountElementName = nameof(dwEffectsCount))] ref uint[] pdwResultCodes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

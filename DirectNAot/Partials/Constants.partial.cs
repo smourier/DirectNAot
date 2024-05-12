@@ -28,7 +28,10 @@ public static partial class Constants
     public static readonly Guid IID_Unknown = new(IID_UnknownString);
 
     public const string IID_IPropertyValueString = "4bd682dd-7554-40e9-9a9b-82654ede7e62";
-    public static readonly Guid IID_IPropertyValue = new Guid(IID_IPropertyValueString);
+    public static readonly Guid IID_IPropertyValue = new(IID_IPropertyValueString);
+
+    public const string IID_ISoftwareBitmapString = "689e0708-7eef-483f-963f-da938818e073";
+    public static readonly Guid IID_ISoftwareBitmap = new(IID_ISoftwareBitmapString);
 
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");

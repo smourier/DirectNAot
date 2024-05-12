@@ -34,5 +34,5 @@ public partial interface ID3D12VideoEncoderHeap : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencoderheap-getresolutionlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetResolutionList(uint ResolutionsListCount, [MarshalUsing(CountElementName = nameof(ResolutionsListCount))] out D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC[] pResolutionList);
+    HRESULT GetResolutionList(uint ResolutionsListCount, [MarshalUsing(CountElementName = nameof(ResolutionsListCount))] ref D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC[] pResolutionList);
 }

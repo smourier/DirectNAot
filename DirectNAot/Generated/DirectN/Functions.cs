@@ -284,12 +284,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/errors/nf-errors-amgeterrortexta
     [LibraryImport("QUARTZ")]
     [PreserveSig]
-    public static partial uint AMGetErrorTextA(HRESULT hr, [MarshalUsing(CountElementName = nameof(MaxLen))] out PSTR[] pbuffer, uint MaxLen);
+    public static partial uint AMGetErrorTextA(HRESULT hr, [MarshalUsing(CountElementName = nameof(MaxLen))] out PSTR pbuffer, uint MaxLen);
     
     // https://learn.microsoft.com/windows/win32/api/errors/nf-errors-amgeterrortextw
     [LibraryImport("QUARTZ", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint AMGetErrorTextW(HRESULT hr, [MarshalUsing(CountElementName = nameof(MaxLen))] out PWSTR[] pbuffer, uint MaxLen);
+    public static partial uint AMGetErrorTextW(HRESULT hr, [MarshalUsing(CountElementName = nameof(MaxLen))] out PWSTR pbuffer, uint MaxLen);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-aredpiawarenesscontextsequal
     [LibraryImport("USER32", SetLastError = true)]
@@ -350,13 +350,13 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIBuildFilterA([MarshalUsing(CountElementName = nameof(cbFilter))] out PSTR[] lpszFilter, int cbFilter, [MarshalAs(UnmanagedType.U4)] bool fSaving);
+    public static partial HRESULT AVIBuildFilterA([MarshalUsing(CountElementName = nameof(cbFilter))] out PSTR lpszFilter, int cbFilter, [MarshalAs(UnmanagedType.U4)] bool fSaving);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avibuildfilterw
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIBuildFilterW([MarshalUsing(CountElementName = nameof(cbFilter))] out PWSTR[] lpszFilter, int cbFilter, [MarshalAs(UnmanagedType.U4)] bool fSaving);
+    public static partial HRESULT AVIBuildFilterW([MarshalUsing(CountElementName = nameof(cbFilter))] out PWSTR lpszFilter, int cbFilter, [MarshalAs(UnmanagedType.U4)] bool fSaving);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-aviclearclipboard
     [LibraryImport("AVIFIL32")]
@@ -686,7 +686,7 @@ public static partial class Functions
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial int CapabilitiesRequestAndCapabilitiesReply(HANDLE hMonitor, [MarshalUsing(CountElementName = nameof(dwCapabilitiesStringLengthInCharacters))] out PSTR[] pszASCIICapabilitiesString, uint dwCapabilitiesStringLengthInCharacters);
+    public static partial int CapabilitiesRequestAndCapabilitiesReply(HANDLE hMonitor, [MarshalUsing(CountElementName = nameof(dwCapabilitiesStringLengthInCharacters))] out PSTR pszASCIICapabilitiesString, uint dwCapabilitiesStringLengthInCharacters);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindowa
     [LibraryImport("AVICAP32", SetLastError = true)]
@@ -705,14 +705,14 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool capGetDriverDescriptionA(uint wDriverIndex, [MarshalUsing(CountElementName = nameof(cbName))] out PSTR[] lpszName, int cbName, [MarshalUsing(CountElementName = nameof(cbVer))] out PSTR[] lpszVer, int cbVer);
+    public static partial bool capGetDriverDescriptionA(uint wDriverIndex, [MarshalUsing(CountElementName = nameof(cbName))] out PSTR lpszName, int cbName, [MarshalUsing(CountElementName = nameof(cbVer))] out PSTR lpszVer, int cbVer);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capgetdriverdescriptionw
     [LibraryImport("AVICAP32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool capGetDriverDescriptionW(uint wDriverIndex, [MarshalUsing(CountElementName = nameof(cbName))] out PWSTR[] lpszName, int cbName, [MarshalUsing(CountElementName = nameof(cbVer))] out PWSTR[] lpszVer, int cbVer);
+    public static partial bool capGetDriverDescriptionW(uint wDriverIndex, [MarshalUsing(CountElementName = nameof(cbName))] out PWSTR lpszName, int cbName, [MarshalUsing(CountElementName = nameof(cbVer))] out PWSTR lpszVer, int cbVer);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-checkbitmapbits
     [LibraryImport("mscms", SetLastError = true)]
@@ -805,13 +805,13 @@ public static partial class Functions
     [LibraryImport("ICM32", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CMConvertColorNameToIndex(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in sbyte[] paColorName, [MarshalUsing(CountElementName = nameof(dwCount))] out uint[] paIndex, uint dwCount);
+    public static partial bool CMConvertColorNameToIndex(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in sbyte[] paColorName, [MarshalUsing(CountElementName = nameof(dwCount))] ref uint[] paIndex, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmconvertindextocolorname
     [LibraryImport("ICM32", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CMConvertIndexToColorName(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in uint[] paIndex, [MarshalUsing(CountElementName = nameof(dwCount))] out sbyte[] paColorName, uint dwCount);
+    public static partial bool CMConvertIndexToColorName(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in uint[] paIndex, [MarshalUsing(CountElementName = nameof(dwCount))] ref sbyte[] paColorName, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatedevicelinkprofile
     [LibraryImport("ICM32", SetLastError = true)]
@@ -883,7 +883,7 @@ public static partial class Functions
     [LibraryImport("ICM32", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool CMTranslateColors(nint hcmTransform, [MarshalUsing(CountElementName = nameof(nColors))] in COLOR[] lpaInputColors, uint nColors, COLORTYPE ctInput, [MarshalUsing(CountElementName = nameof(nColors))] out COLOR[] lpaOutputColors, COLORTYPE ctOutput);
+    public static partial bool CMTranslateColors(nint hcmTransform, [MarshalUsing(CountElementName = nameof(nColors))] in COLOR[] lpaInputColors, uint nColors, COLORTYPE ctInput, [MarshalUsing(CountElementName = nameof(nColors))] ref COLOR[] lpaOutputColors, COLORTYPE ctOutput);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmtranslatergb
     [LibraryImport("ICM32", SetLastError = true)]
@@ -962,13 +962,13 @@ public static partial class Functions
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool ConvertColorNameToIndex(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in sbyte[] paColorName, [MarshalUsing(CountElementName = nameof(dwCount))] out uint[] paIndex, uint dwCount);
+    public static partial bool ConvertColorNameToIndex(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in sbyte[] paColorName, [MarshalUsing(CountElementName = nameof(dwCount))] ref uint[] paIndex, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-convertindextocolorname
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool ConvertIndexToColorName(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in uint[] paIndex, [MarshalUsing(CountElementName = nameof(dwCount))] out sbyte[] paColorName, uint dwCount);
+    public static partial bool ConvertIndexToColorName(nint hProfile, [MarshalUsing(CountElementName = nameof(dwCount))] in uint[] paIndex, [MarshalUsing(CountElementName = nameof(dwCount))] ref sbyte[] paColorName, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregistermessagefilter
     [LibraryImport("OLE32")]
@@ -1182,7 +1182,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-d2d1convertcolorspace
     [LibraryImport("d2d1")]
     [PreserveSig]
-    public static partial D2D1_COLOR_F D2D1ConvertColorSpace(D2D1_COLOR_SPACE sourceColorSpace, D2D1_COLOR_SPACE destinationColorSpace, in D2D1_COLOR_F color);
+    public static partial D3DCOLORVALUE D2D1ConvertColorSpace(D2D1_COLOR_SPACE sourceColorSpace, D2D1_COLOR_SPACE destinationColorSpace, in D3DCOLORVALUE color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-d2d1createdevice
     [LibraryImport("d2d1")]
@@ -1939,7 +1939,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmogetname
     [LibraryImport("msdmo")]
     [PreserveSig]
-    public static partial HRESULT DMOGetName(in Guid clsidDMO, [MarshalUsing(ConstantElementCount = 80)] out PWSTR[] szName);
+    public static partial HRESULT DMOGetName(in Guid clsidDMO, [MarshalUsing(ConstantElementCount = 80)] out PWSTR szName);
     
     // https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmogettypes
     [LibraryImport("msdmo")]
@@ -2859,7 +2859,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int GetClassNameW(HWND hWnd, [MarshalUsing(CountElementName = nameof(nMaxCount))] out PWSTR[] lpClassName, int nMaxCount);
+    public static partial int GetClassNameW(HWND hWnd, [MarshalUsing(CountElementName = nameof(nMaxCount))] out PWSTR lpClassName, int nMaxCount);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclientrect
     [LibraryImport("USER32", SetLastError = true)]
@@ -3037,14 +3037,14 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetICMProfileA(HDC hdc, ref uint pBufSize, [MarshalUsing(CountElementName = nameof(pBufSize))] out PSTR[] pszFilename);
+    public static partial bool GetICMProfileA(HDC hdc, ref uint pBufSize, [MarshalUsing(CountElementName = nameof(pBufSize))] out PSTR pszFilename);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-geticmprofilew
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetICMProfileW(HDC hdc, ref uint pBufSize, [MarshalUsing(CountElementName = nameof(pBufSize))] out PWSTR[] pszFilename);
+    public static partial bool GetICMProfileW(HDC hdc, ref uint pBufSize, [MarshalUsing(CountElementName = nameof(pBufSize))] out PWSTR pszFilename);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-geticoninfo
     [LibraryImport("USER32", SetLastError = true)]
@@ -3204,13 +3204,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetPhysicalMonitorsFromHMONITOR(HMONITOR hMonitor, uint dwPhysicalMonitorArraySize, [MarshalUsing(CountElementName = nameof(dwPhysicalMonitorArraySize))] out PHYSICAL_MONITOR[] pPhysicalMonitorArray);
+    public static partial bool GetPhysicalMonitorsFromHMONITOR(HMONITOR hMonitor, uint dwPhysicalMonitorArraySize, [MarshalUsing(CountElementName = nameof(dwPhysicalMonitorArraySize))] ref PHYSICAL_MONITOR[] pPhysicalMonitorArray);
     
     // https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getphysicalmonitorsfromidirect3ddevice9
     [LibraryImport("dxva2")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT GetPhysicalMonitorsFromIDirect3DDevice9(IDirect3DDevice9 pDirect3DDevice9, uint dwPhysicalMonitorArraySize, [MarshalUsing(CountElementName = nameof(dwPhysicalMonitorArraySize))] out PHYSICAL_MONITOR[] pPhysicalMonitorArray);
+    public static partial HRESULT GetPhysicalMonitorsFromIDirect3DDevice9(IDirect3DDevice9 pDirect3DDevice9, uint dwPhysicalMonitorArraySize, [MarshalUsing(CountElementName = nameof(dwPhysicalMonitorArraySize))] ref PHYSICAL_MONITOR[] pPhysicalMonitorArray);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getpixelformat
     [LibraryImport("GDI32", SetLastError = true)]
@@ -3427,7 +3427,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint GetWindowModuleFileNameW(HWND hwnd, [MarshalUsing(CountElementName = nameof(cchFileNameMax))] out PWSTR[] pszFileName, uint cchFileNameMax);
+    public static partial uint GetWindowModuleFileNameW(HWND hwnd, [MarshalUsing(CountElementName = nameof(cchFileNameMax))] out PWSTR pszFileName, uint cchFileNameMax);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowrect
     [LibraryImport("USER32", SetLastError = true)]
@@ -3440,7 +3440,7 @@ public static partial class Functions
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int GetWindowTextW(HWND hWnd, [MarshalUsing(CountElementName = nameof(nMaxCount))] out PWSTR[] lpString, int nMaxCount);
+    public static partial int GetWindowTextW(HWND hWnd, [MarshalUsing(CountElementName = nameof(nMaxCount))] out PWSTR lpString, int nMaxCount);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowthreadprocessid
     [LibraryImport("USER32")]
@@ -5840,12 +5840,12 @@ public static partial class Functions
     [LibraryImport("WINMM", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool mciGetErrorStringA(uint mcierr, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR[] pszText, uint cchText);
+    public static partial bool mciGetErrorStringA(uint mcierr, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR pszText, uint cchText);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool mciGetErrorStringW(uint mcierr, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR[] pszText, uint cchText);
+    public static partial bool mciGetErrorStringW(uint mcierr, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR pszText, uint cchText);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -5865,11 +5865,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint mciSendStringA(PSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PSTR[] lpstrReturnString, uint uReturnLength, HWND hwndCallback);
+    public static partial uint mciSendStringA(PSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PSTR lpstrReturnString, uint uReturnLength, HWND hwndCallback);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint mciSendStringW(PWSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PWSTR[] lpstrReturnString, uint uReturnLength, HWND hwndCallback);
+    public static partial uint mciSendStringW(PWSTR lpstrCommand, [MarshalUsing(CountElementName = nameof(uReturnLength))] out PWSTR lpstrReturnString, uint uReturnLength, HWND hwndCallback);
     
     [LibraryImport("WINMM", SetLastError = true)]
     [PreserveSig]
@@ -6013,13 +6013,13 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFConvertFromFP16Array([MarshalUsing(CountElementName = nameof(dwCount))] out float[] pDest, [MarshalUsing(CountElementName = nameof(dwCount))] in ushort[] pSrc, uint dwCount);
+    public static partial HRESULT MFConvertFromFP16Array([MarshalUsing(CountElementName = nameof(dwCount))] ref float[] pDest, [MarshalUsing(CountElementName = nameof(dwCount))] in ushort[] pSrc, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfconverttofp16array
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFConvertToFP16Array([MarshalUsing(CountElementName = nameof(dwCount))] out ushort[] pDest, [MarshalUsing(CountElementName = nameof(dwCount))] in float[] pSrc, uint dwCount);
+    public static partial HRESULT MFConvertToFP16Array([MarshalUsing(CountElementName = nameof(dwCount))] ref ushort[] pDest, [MarshalUsing(CountElementName = nameof(dwCount))] in float[] pSrc, uint dwCount);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcopyimage
     [LibraryImport("MFPlat")]
@@ -6898,7 +6898,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFGetWorkQueueMMCSSClass(uint dwWorkQueueId, [MarshalUsing(CountElementName = nameof(pcchClass))] out PWSTR[] pwszClass, ref uint pcchClass);
+    public static partial HRESULT MFGetWorkQueueMMCSSClass(uint dwWorkQueueId, [MarshalUsing(CountElementName = nameof(pcchClass))] out PWSTR pwszClass, ref uint pcchClass);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetworkqueuemmcsspriority
     [LibraryImport("MFPlat")]
@@ -7324,13 +7324,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR[] pszText, uint cchText);
+    public static partial uint midiInGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingeterrortextw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR[] pszText, uint cchText);
+    public static partial uint midiInGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetid
     [LibraryImport("WINMM")]
@@ -7420,13 +7420,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR[] pszText, uint cchText);
+    public static partial uint midiOutGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgeterrortextw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR[] pszText, uint cchText);
+    public static partial uint midiOutGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetid
     [LibraryImport("WINMM")]
@@ -7693,13 +7693,13 @@ public static partial class Functions
     [LibraryImport("WINMM", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HMMIO mmioOpenA([MarshalUsing(ConstantElementCount = 128)] ref PSTR[] pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
+    public static partial HMMIO mmioOpenA([MarshalUsing(ConstantElementCount = 128)] ref PSTR pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopenw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HMMIO mmioOpenW([MarshalUsing(ConstantElementCount = 128)] ref PWSTR[] pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
+    public static partial HMMIO mmioOpenW([MarshalUsing(ConstantElementCount = 128)] ref PWSTR pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioread
     [LibraryImport("WINMM")]
@@ -7735,7 +7735,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mmioSetBuffer(HMMIO hmmio, [MarshalUsing(CountElementName = nameof(cchBuffer))] out PSTR[] pchBuffer, int cchBuffer, uint fuBuffer);
+    public static partial uint mmioSetBuffer(HMMIO hmmio, [MarshalUsing(CountElementName = nameof(cchBuffer))] out PSTR pchBuffer, int cchBuffer, uint fuBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiosetinfo
     [LibraryImport("WINMM")]
@@ -8131,7 +8131,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RoOriginateErrorW(HRESULT error, uint cchMax, [In][Out][MarshalUsing(ConstantElementCount = 512)] PWSTR[] message);
+    public static partial bool RoOriginateErrorW(HRESULT error, uint cchMax, [MarshalUsing(ConstantElementCount = 512)] PWSTR message);
     
     // https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rooriginatelanguageexception
     [LibraryImport("api-ms-win-core-winrt-error-l1-1-1", SetLastError = true)]
@@ -8192,7 +8192,7 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool RoTransformErrorW(HRESULT oldError, HRESULT newError, uint cchMax, [In][Out][MarshalUsing(ConstantElementCount = 512)] PWSTR[] message);
+    public static partial bool RoTransformErrorW(HRESULT oldError, HRESULT newError, uint cchMax, [MarshalUsing(ConstantElementCount = 512)] PWSTR message);
     
     // https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rouninitialize
     [LibraryImport("api-ms-win-core-winrt-l1-1-0")]
@@ -8625,7 +8625,7 @@ public static partial class Functions
     [LibraryImport("SHLWAPI", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial PWSTR StrFormatByteSizeW(long qdw, [MarshalUsing(CountElementName = nameof(cchBuf))] out PWSTR[] pszBuf, uint cchBuf);
+    public static partial PWSTR StrFormatByteSizeW(long qdw, [MarshalUsing(CountElementName = nameof(cchBuf))] out PWSTR pszBuf, uint cchBuf);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_benum
     [LibraryImport("GDI32", SetLastError = true)]
@@ -8742,7 +8742,7 @@ public static partial class Functions
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool TranslateColors(nint hColorTransform, [MarshalUsing(CountElementName = nameof(nColors))] in COLOR[] paInputColors, uint nColors, COLORTYPE ctInput, [MarshalUsing(CountElementName = nameof(nColors))] out COLOR[] paOutputColors, COLORTYPE ctOutput);
+    public static partial bool TranslateColors(nint hColorTransform, [MarshalUsing(CountElementName = nameof(nColors))] in COLOR[] paInputColors, uint nColors, COLORTYPE ctInput, [MarshalUsing(CountElementName = nameof(nColors))] ref COLOR[] paOutputColors, COLORTYPE ctOutput);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-translatemessage
     [LibraryImport("USER32", SetLastError = true)]
@@ -8848,11 +8848,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint waveInGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR[] pszText, uint cchText);
+    public static partial uint waveInGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR pszText, uint cchText);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint waveInGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR[] pszText, uint cchText);
+    public static partial uint waveInGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveingetid
     [LibraryImport("WINMM")]
@@ -8936,11 +8936,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint waveOutGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR[] pszText, uint cchText);
+    public static partial uint waveOutGetErrorTextA(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PSTR pszText, uint cchText);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint waveOutGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR[] pszText, uint cchText);
+    public static partial uint waveOutGetErrorTextW(uint mmrError, [MarshalUsing(CountElementName = nameof(cchText))] out PWSTR pszText, uint cchText);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetid
     [LibraryImport("WINMM")]
@@ -9296,13 +9296,13 @@ public static partial class Functions
     [LibraryImport("WindowsCodecs")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT WICMapGuidToShortName(in Guid guid, uint cchName, [MarshalUsing(CountElementName = nameof(cchName))] ref PWSTR[] wzName, out uint pcchActual);
+    public static partial HRESULT WICMapGuidToShortName(in Guid guid, uint cchName, [MarshalUsing(CountElementName = nameof(cchName))] ref PWSTR wzName, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicmapschematoname
     [LibraryImport("WindowsCodecs")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT WICMapSchemaToName(in Guid guidMetadataFormat, PWSTR pwzSchema, uint cchName, [MarshalUsing(CountElementName = nameof(cchName))] ref PWSTR[] wzName, out uint pcchActual);
+    public static partial HRESULT WICMapSchemaToName(in Guid guidMetadataFormat, PWSTR pwzSchema, uint cchName, [MarshalUsing(CountElementName = nameof(cchName))] ref PWSTR wzName, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicmapshortnametoguid
     [LibraryImport("WindowsCodecs")]
@@ -9338,7 +9338,7 @@ public static partial class Functions
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT WindowsCreateString([In][Out][MarshalUsing(CountElementName = nameof(length))] PWSTR[] sourceString, uint length, out HSTRING @string);
+    public static partial HRESULT WindowsCreateString([MarshalUsing(CountElementName = nameof(length))] PWSTR sourceString, uint length, out HSTRING @string);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscreatestringreference
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]

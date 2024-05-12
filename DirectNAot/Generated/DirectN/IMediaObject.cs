@@ -103,7 +103,7 @@ public partial interface IMediaObject
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-processoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, [MarshalUsing(CountElementName = nameof(cOutputBufferCount))] out DMO_OUTPUT_DATA_BUFFER[] pOutputBuffers, out uint pdwStatus);
+    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, [MarshalUsing(CountElementName = nameof(cOutputBufferCount))] ref DMO_OUTPUT_DATA_BUFFER[] pOutputBuffers, out uint pdwStatus);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-lock
     [PreserveSig]

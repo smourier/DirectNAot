@@ -28,7 +28,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNames(int memid, [MarshalUsing(CountElementName = nameof(cMaxNames))] out BSTR[] rgBstrNames, uint cMaxNames, out uint pcNames);
+    HRESULT GetNames(int memid, [MarshalUsing(CountElementName = nameof(cMaxNames))] ref BSTR[] rgBstrNames, uint cMaxNames, out uint pcNames);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getreftypeofimpltype
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIDsOfNames([MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, [MarshalUsing(CountElementName = nameof(cNames))] out int[] pMemId);
+    HRESULT GetIDsOfNames([MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, [MarshalUsing(CountElementName = nameof(cNames))] ref int[] pMemId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-invoke
     [PreserveSig]

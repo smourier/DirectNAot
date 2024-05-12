@@ -9,7 +9,7 @@ public partial interface IDCompositionVisualDebug : IDCompositionVisual2
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-enableheatmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableHeatMap(in D2D1_COLOR_F color);
+    HRESULT EnableHeatMap(in D3DCOLORVALUE color);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisualdebug-disableheatmap
     [PreserveSig]

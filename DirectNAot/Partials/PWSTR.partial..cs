@@ -28,5 +28,5 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
         }
     }
 
-    public override readonly string ToString() => Marshal.PtrToStringUni(Value)!;
+    public override readonly string? ToString() => Marshal.PtrToStringUni(Value)!;
 }

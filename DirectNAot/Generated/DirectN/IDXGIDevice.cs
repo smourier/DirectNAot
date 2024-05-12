@@ -18,7 +18,7 @@ public partial interface IDXGIDevice : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-queryresourceresidency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryResourceResidency([In][Out][MarshalUsing(CountElementName = nameof(NumResources))] nint[] ppResources, [MarshalUsing(CountElementName = nameof(NumResources))] out DXGI_RESIDENCY[] pResidencyStatus, uint NumResources);
+    HRESULT QueryResourceResidency([In][Out][MarshalUsing(CountElementName = nameof(NumResources))] nint[] ppResources, [MarshalUsing(CountElementName = nameof(NumResources))] ref DXGI_RESIDENCY[] pResidencyStatus, uint NumResources);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-setgputhreadpriority
     [PreserveSig]

@@ -14,7 +14,7 @@ public partial interface ITocEntry
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentry-gettitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTitle(ref ushort pwTitleSize, [MarshalUsing(CountElementName = nameof(pwTitleSize))] out PWSTR[] pwszTitle);
+    HRESULT GetTitle(ref ushort pwTitleSize, [MarshalUsing(CountElementName = nameof(pwTitleSize))] out PWSTR pwszTitle);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentry-setdescriptor
     [PreserveSig]

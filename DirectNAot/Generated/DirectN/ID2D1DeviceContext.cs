@@ -155,12 +155,12 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-geteffectinvalidrectangles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectInvalidRectangles(ID2D1Effect effect, [MarshalUsing(CountElementName = nameof(rectanglesCount))] out D2D_RECT_F[] rectangles, uint rectanglesCount);
+    HRESULT GetEffectInvalidRectangles(ID2D1Effect effect, [MarshalUsing(CountElementName = nameof(rectanglesCount))] ref D2D_RECT_F[] rectangles, uint rectanglesCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-geteffectrequiredinputrectangles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint /* optional D2D_RECT_F* */ renderImageRectangle, [MarshalUsing(CountElementName = nameof(inputCount))] in D2D1_EFFECT_INPUT_DESCRIPTION[] inputDescriptions, [MarshalUsing(CountElementName = nameof(inputCount))] out D2D_RECT_F[] requiredInputRects, uint inputCount);
+    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint /* optional D2D_RECT_F* */ renderImageRectangle, [MarshalUsing(CountElementName = nameof(inputCount))] in D2D1_EFFECT_INPUT_DESCRIPTION[] inputDescriptions, [MarshalUsing(CountElementName = nameof(inputCount))] ref D2D_RECT_F[] requiredInputRects, uint inputCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-fillopacitymask(id2d1bitmap_id2d1brush_constd2d1_rect_f__constd2d1_rect_f)
     [PreserveSig]

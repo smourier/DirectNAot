@@ -58,7 +58,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWordSequenceData(nint pvEngineGrammar, [In][Out][MarshalUsing(CountElementName = nameof(cchText))] PWSTR[] pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
+    HRESULT SetWordSequenceData(nint pvEngineGrammar, [MarshalUsing(CountElementName = nameof(cchText))] PWSTR pText, uint cchText, in SPTEXTSELECTIONINFO pInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -82,7 +82,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAdaptationData(nint pvEngineContext, [In][Out][MarshalUsing(CountElementName = nameof(cch))] PWSTR[] pAdaptationData, uint cch);
+    HRESULT SetAdaptationData(nint pvEngineContext, [MarshalUsing(CountElementName = nameof(cch))] PWSTR pAdaptationData, uint cch);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

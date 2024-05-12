@@ -18,7 +18,7 @@ public partial interface IWMHeaderInfo3 : IWMHeaderInfo2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo3-getattributebyindexex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributeByIndexEx(ushort wStreamNum, ushort wIndex, [MarshalUsing(CountElementName = nameof(pwNameLen))] out PWSTR[] pwszName, ref ushort pwNameLen, out WMT_ATTR_DATATYPE pType, out ushort pwLangIndex, nint /* byte array */ pValue, ref uint pdwDataLength);
+    HRESULT GetAttributeByIndexEx(ushort wStreamNum, ushort wIndex, [MarshalUsing(CountElementName = nameof(pwNameLen))] out PWSTR pwszName, ref ushort pwNameLen, out WMT_ATTR_DATATYPE pType, out ushort pwLangIndex, nint /* byte array */ pValue, ref uint pdwDataLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmheaderinfo3-modifyattribute
     [PreserveSig]

@@ -13,7 +13,7 @@ public partial interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-getlanguage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLanguage(uint dwOutputNum, ushort wLanguage, [MarshalUsing(CountElementName = nameof(pcchLanguageStringLength))] out PWSTR[] pwszLanguageString, ref ushort pcchLanguageStringLength);
+    HRESULT GetLanguage(uint dwOutputNum, ushort wLanguage, [MarshalUsing(CountElementName = nameof(pcchLanguageStringLength))] out PWSTR pwszLanguageString, ref ushort pcchLanguageStringLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-getmaxspeedfactor
     [PreserveSig]
@@ -48,5 +48,5 @@ public partial interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-geturl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetURL([MarshalUsing(CountElementName = nameof(pcchURL))] out PWSTR[] pwszURL, ref uint pcchURL);
+    HRESULT GetURL([MarshalUsing(CountElementName = nameof(pcchURL))] out PWSTR pwszURL, ref uint pcchURL);
 }

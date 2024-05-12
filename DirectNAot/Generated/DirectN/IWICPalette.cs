@@ -39,7 +39,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-getcolors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColors(uint cCount, [MarshalUsing(CountElementName = nameof(cCount))] out uint[] pColors, out uint pcActualColors);
+    HRESULT GetColors(uint cCount, [MarshalUsing(CountElementName = nameof(cCount))] ref uint[] pColors, out uint pcActualColors);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-isblackwhite
     [PreserveSig]

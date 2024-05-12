@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Globalization;
 
 namespace DirectNAot.Extensions.Utilities;
 
@@ -243,5 +244,82 @@ public static class Extensions
                 }
             }
         }
+    }
+
+    public static object? ChangeType(this VARENUM vt, object? value)
+    {
+        object? changed;
+        switch (vt)
+        {
+            case VARENUM.VT_UI1:
+                changed = Conversions.ChangeType<byte>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_UI2:
+                changed = Conversions.ChangeType<ushort>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_UI4:
+                changed = Conversions.ChangeType<uint>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_UI8:
+                changed = Conversions.ChangeType<ulong>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_I1:
+                changed = Conversions.ChangeType<sbyte>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_I2:
+                changed = Conversions.ChangeType<short>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_I4:
+                changed = Conversions.ChangeType<int>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_I8:
+                changed = Conversions.ChangeType<long>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_BOOL:
+                changed = Conversions.ChangeType<bool>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_R4:
+                changed = Conversions.ChangeType<float>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_R8:
+                changed = Conversions.ChangeType<double>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_LPSTR:
+            case VARENUM.VT_LPWSTR:
+            case VARENUM.VT_BSTR:
+                changed = Conversions.ChangeType<string>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_DECIMAL:
+                changed = Conversions.ChangeType<decimal>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            case VARENUM.VT_DATE:
+                changed = Conversions.ChangeType<DateTime>(value, provider: CultureInfo.InvariantCulture).ToOADate();
+                break;
+
+            case VARENUM.VT_FILETIME:
+                changed = Conversions.ChangeType<DateTime>(value, provider: CultureInfo.InvariantCulture).ToFileTime();
+                break;
+
+            case VARENUM.VT_CLSID:
+                changed = Conversions.ChangeType<Guid>(value, provider: CultureInfo.InvariantCulture);
+                break;
+
+            default:
+                throw new NotSupportedException();
+        }
+        return changed;
     }
 }

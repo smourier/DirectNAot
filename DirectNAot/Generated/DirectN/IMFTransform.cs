@@ -19,7 +19,7 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getstreamids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamIDs(uint dwInputIDArraySize, [MarshalUsing(CountElementName = nameof(dwInputIDArraySize))] out uint[] pdwInputIDs, uint dwOutputIDArraySize, [MarshalUsing(CountElementName = nameof(dwOutputIDArraySize))] out uint[] pdwOutputIDs);
+    HRESULT GetStreamIDs(uint dwInputIDArraySize, [MarshalUsing(CountElementName = nameof(dwInputIDArraySize))] ref uint[] pdwInputIDs, uint dwOutputIDArraySize, [MarshalUsing(CountElementName = nameof(dwOutputIDArraySize))] ref uint[] pdwOutputIDs);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputstreaminfo
     [PreserveSig]

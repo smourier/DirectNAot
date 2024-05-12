@@ -44,7 +44,7 @@ public partial interface IDirectManipulationPrimaryContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationprimarycontent-getinertiaendtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInertiaEndTransform([MarshalUsing(CountElementName = nameof(pointCount))] out float[] matrix, uint pointCount);
+    HRESULT GetInertiaEndTransform([MarshalUsing(CountElementName = nameof(pointCount))] ref float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationprimarycontent-getcenterpoint
     [PreserveSig]

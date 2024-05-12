@@ -17,11 +17,11 @@ public partial interface ID2D1SvgPaint : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgpaint-setcolor-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetColor(in D2D1_COLOR_F color);
+    HRESULT SetColor(in D3DCOLORVALUE color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-getcolor
     [PreserveSig]
-    void GetColor(out D2D1_COLOR_F color);
+    void GetColor(out D3DCOLORVALUE color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-setid
     [PreserveSig]
@@ -31,7 +31,7 @@ public partial interface ID2D1SvgPaint : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-getid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetId([MarshalUsing(CountElementName = nameof(idCount))] out PWSTR[] id, uint idCount);
+    HRESULT GetId([MarshalUsing(CountElementName = nameof(idCount))] out PWSTR id, uint idCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpaint-getidlength
     [PreserveSig]

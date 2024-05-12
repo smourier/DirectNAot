@@ -9,7 +9,7 @@ public partial interface IEnumStreamIdMap
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumstreamidmap-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cRequest, [MarshalUsing(CountElementName = nameof(cRequest))] out STREAM_ID_MAP[] pStreamIdMap, nint /* optional uint* */ pcReceived);
+    HRESULT Next(uint cRequest, [MarshalUsing(CountElementName = nameof(cRequest))] ref STREAM_ID_MAP[] pStreamIdMap, nint /* optional uint* */ pcReceived);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumstreamidmap-skip
     [PreserveSig]

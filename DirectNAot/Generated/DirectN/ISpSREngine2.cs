@@ -10,7 +10,7 @@ public partial interface ISpSREngine2 : ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAdaptationData2(nint pvEngineContext, [In][Out][MarshalUsing(CountElementName = nameof(cch))] PWSTR[] pAdaptationData, uint cch, PWSTR pTopicName, SPADAPTATIONSETTINGS eSettings, SPADAPTATIONRELEVANCE eRelevance);
+    HRESULT SetAdaptationData2(nint pvEngineContext, [MarshalUsing(CountElementName = nameof(cch))] PWSTR pAdaptationData, uint cch, PWSTR pTopicName, SPADAPTATIONSETTINGS eSettings, SPADAPTATIONRELEVANCE eRelevance);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -9,7 +9,7 @@ public partial interface IEnumGUID
     // https://learn.microsoft.com/windows/win32/api/comcat/nf-comcat-ienumguid-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out Guid[] rgelt, nint /* optional uint* */ pceltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] ref Guid[] rgelt, nint /* optional uint* */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/comcat/nf-comcat-ienumguid-skip
     [PreserveSig]

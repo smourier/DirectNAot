@@ -84,12 +84,12 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createtextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTextLayout([In][Out][MarshalUsing(CountElementName = nameof(stringLength))] PWSTR[] @string, uint stringLength, IDWriteTextFormat textFormat, float maxWidth, float maxHeight, out IDWriteTextLayout textLayout);
+    HRESULT CreateTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float maxWidth, float maxHeight, out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-creategdicompatibletextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGdiCompatibleTextLayout([In][Out][MarshalUsing(CountElementName = nameof(stringLength))] PWSTR[] @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, out IDWriteTextLayout textLayout);
+    HRESULT CreateGdiCompatibleTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createellipsistrimmingsign
     [PreserveSig]

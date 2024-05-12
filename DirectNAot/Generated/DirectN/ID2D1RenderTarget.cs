@@ -29,7 +29,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createsolidcolorbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSolidColorBrush(in D2D1_COLOR_F color, nint /* optional D2D1_BRUSH_PROPERTIES* */ brushProperties, out ID2D1SolidColorBrush solidColorBrush);
+    HRESULT CreateSolidColorBrush(in D3DCOLORVALUE color, nint /* optional D2D1_BRUSH_PROPERTIES* */ brushProperties, out ID2D1SolidColorBrush solidColorBrush);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-creategradientstopcollection
     [PreserveSig]
@@ -111,7 +111,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-drawtext
     [PreserveSig]
-    void DrawText([In][Out][MarshalUsing(CountElementName = nameof(stringLength))] PWSTR[] @string, uint stringLength, IDWriteTextFormat textFormat, in D2D_RECT_F layoutRect, ID2D1Brush defaultFillBrush, D2D1_DRAW_TEXT_OPTIONS options, DWRITE_MEASURING_MODE measuringMode);
+    void DrawText([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, in D2D_RECT_F layoutRect, ID2D1Brush defaultFillBrush, D2D1_DRAW_TEXT_OPTIONS options, DWRITE_MEASURING_MODE measuringMode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-drawtextlayout
     [PreserveSig]
@@ -192,7 +192,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-clear
     [PreserveSig]
-    void Clear(nint /* optional D2D1_COLOR_F* */ clearColor);
+    void Clear(nint /* optional D3DCOLORVALUE* */ clearColor);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-begindraw
     [PreserveSig]

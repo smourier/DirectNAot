@@ -21,12 +21,12 @@ public partial interface IDWriteFontResource
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getdefaultfontaxisvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDefaultFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] out DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
+    HRESULT GetDefaultFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] ref DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getfontaxisranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisRanges([MarshalUsing(CountElementName = nameof(fontAxisRangeCount))] out DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint fontAxisRangeCount);
+    HRESULT GetFontAxisRanges([MarshalUsing(CountElementName = nameof(fontAxisRangeCount))] ref DWRITE_FONT_AXIS_RANGE[] fontAxisRanges, uint fontAxisRangeCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-getfontaxisattributes
     [PreserveSig]

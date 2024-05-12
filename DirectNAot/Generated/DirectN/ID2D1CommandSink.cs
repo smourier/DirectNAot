@@ -54,7 +54,7 @@ public partial interface ID2D1CommandSink
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-clear
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clear(nint /* optional D2D1_COLOR_F* */ color);
+    HRESULT Clear(nint /* optional D3DCOLORVALUE* */ color);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1commandsink-drawglyphrun
     [PreserveSig]

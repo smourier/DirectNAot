@@ -17,7 +17,7 @@ public partial interface IDWriteTextFormat3 : IDWriteTextFormat2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritetextformat3-getfontaxisvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] out DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
+    HRESULT GetFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] ref DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritetextformat3-getautomaticfontaxes
     [PreserveSig]

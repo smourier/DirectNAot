@@ -24,7 +24,7 @@ public partial interface IToc
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoc-getdescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDescription(ref ushort pwDescriptionSize, [MarshalUsing(CountElementName = nameof(pwDescriptionSize))] out PWSTR[] pwszDescription);
+    HRESULT GetDescription(ref ushort pwDescriptionSize, [MarshalUsing(CountElementName = nameof(pwDescriptionSize))] out PWSTR pwszDescription);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoc-setcontext
     [PreserveSig]

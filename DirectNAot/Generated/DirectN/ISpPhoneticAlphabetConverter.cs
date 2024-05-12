@@ -14,11 +14,11 @@ public partial interface ISpPhoneticAlphabetConverter
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SAPI2UPS(in ushort pszSAPIId, [MarshalUsing(CountElementName = nameof(cMaxLength))] out ushort[] pszUPSId, uint cMaxLength);
+    HRESULT SAPI2UPS(in ushort pszSAPIId, [MarshalUsing(CountElementName = nameof(cMaxLength))] ref ushort[] pszUPSId, uint cMaxLength);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UPS2SAPI(in ushort pszUPSId, [MarshalUsing(CountElementName = nameof(cMaxLength))] out ushort[] pszSAPIId, uint cMaxLength);
+    HRESULT UPS2SAPI(in ushort pszUPSId, [MarshalUsing(CountElementName = nameof(cMaxLength))] ref ushort[] pszSAPIId, uint cMaxLength);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

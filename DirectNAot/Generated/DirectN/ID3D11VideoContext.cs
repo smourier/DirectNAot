@@ -169,7 +169,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreampalette
     [PreserveSig]
-    void VideoProcessorGetStreamPalette(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, uint Count, [MarshalUsing(CountElementName = nameof(Count))] out uint[] pEntries);
+    void VideoProcessorGetStreamPalette(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, uint Count, [MarshalUsing(CountElementName = nameof(Count))] ref uint[] pEntries);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreampixelaspectratio
     [PreserveSig]

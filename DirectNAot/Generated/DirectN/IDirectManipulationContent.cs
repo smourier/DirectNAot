@@ -34,12 +34,12 @@ public partial interface IDirectManipulationContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getoutputtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputTransform([MarshalUsing(CountElementName = nameof(pointCount))] out float[] matrix, uint pointCount);
+    HRESULT GetOutputTransform([MarshalUsing(CountElementName = nameof(pointCount))] ref float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-getcontenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContentTransform([MarshalUsing(CountElementName = nameof(pointCount))] out float[] matrix, uint pointCount);
+    HRESULT GetContentTransform([MarshalUsing(CountElementName = nameof(pointCount))] ref float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-synccontenttransform
     [PreserveSig]

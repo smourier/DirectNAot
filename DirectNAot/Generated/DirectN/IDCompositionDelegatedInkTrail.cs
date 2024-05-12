@@ -18,5 +18,5 @@ public partial interface IDCompositionDelegatedInkTrail
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartNewTrail(in D2D1_COLOR_F color);
+    HRESULT StartNewTrail(in D3DCOLORVALUE color);
 }

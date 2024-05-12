@@ -24,7 +24,7 @@ public partial interface IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccomponentinfo-getauthor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAuthor(uint cchAuthor, [MarshalUsing(CountElementName = nameof(cchAuthor))] ref PWSTR[] wzAuthor, out uint pcchActual);
+    HRESULT GetAuthor(uint cchAuthor, [MarshalUsing(CountElementName = nameof(cchAuthor))] ref PWSTR wzAuthor, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccomponentinfo-getvendorguid
     [PreserveSig]
@@ -34,15 +34,15 @@ public partial interface IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccomponentinfo-getversion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVersion(uint cchVersion, [MarshalUsing(CountElementName = nameof(cchVersion))] ref PWSTR[] wzVersion, out uint pcchActual);
+    HRESULT GetVersion(uint cchVersion, [MarshalUsing(CountElementName = nameof(cchVersion))] ref PWSTR wzVersion, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccomponentinfo-getspecversion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecVersion(uint cchSpecVersion, [MarshalUsing(CountElementName = nameof(cchSpecVersion))] ref PWSTR[] wzSpecVersion, out uint pcchActual);
+    HRESULT GetSpecVersion(uint cchSpecVersion, [MarshalUsing(CountElementName = nameof(cchSpecVersion))] ref PWSTR wzSpecVersion, out uint pcchActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwiccomponentinfo-getfriendlyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFriendlyName(uint cchFriendlyName, [MarshalUsing(CountElementName = nameof(cchFriendlyName))] ref PWSTR[] wzFriendlyName, out uint pcchActual);
+    HRESULT GetFriendlyName(uint cchFriendlyName, [MarshalUsing(CountElementName = nameof(cchFriendlyName))] ref PWSTR wzFriendlyName, out uint pcchActual);
 }

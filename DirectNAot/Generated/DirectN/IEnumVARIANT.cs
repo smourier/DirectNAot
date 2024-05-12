@@ -8,7 +8,7 @@ public partial interface IEnumVARIANT
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ienumvariant-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out VARIANT[] rgVar, out uint pCeltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] ref VARIANT[] rgVar, out uint pCeltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ienumvariant-skip
     [PreserveSig]

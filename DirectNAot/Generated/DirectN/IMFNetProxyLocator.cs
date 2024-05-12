@@ -24,7 +24,7 @@ public partial interface IMFNetProxyLocator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocator-getcurrentproxy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentProxy([MarshalUsing(CountElementName = nameof(pcchStr))] out PWSTR[] pszStr, ref uint pcchStr);
+    HRESULT GetCurrentProxy([MarshalUsing(CountElementName = nameof(pcchStr))] out PWSTR pszStr, ref uint pcchStr);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocator-clone
     [PreserveSig]

@@ -28,5 +28,5 @@ public partial struct PSTR // not disposable as we don't know here who allocated
         }
     }
 
-    public override readonly string ToString() => Marshal.PtrToStringAnsi(Value)!;
+    public override readonly string? ToString() => Marshal.PtrToStringAnsi(Value)!;
 }

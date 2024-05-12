@@ -23,7 +23,7 @@ public partial interface IDWriteLocalizedStrings
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritelocalizedstrings-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocaleName(uint index, [MarshalUsing(CountElementName = nameof(size))] out PWSTR[] localeName, uint size);
+    HRESULT GetLocaleName(uint index, [MarshalUsing(CountElementName = nameof(size))] out PWSTR localeName, uint size);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritelocalizedstrings-getstringlength
     [PreserveSig]
@@ -33,5 +33,5 @@ public partial interface IDWriteLocalizedStrings
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritelocalizedstrings-getstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetString(uint index, [MarshalUsing(CountElementName = nameof(size))] out PWSTR[] stringBuffer, uint size);
+    HRESULT GetString(uint index, [MarshalUsing(CountElementName = nameof(size))] out PWSTR stringBuffer, uint size);
 }

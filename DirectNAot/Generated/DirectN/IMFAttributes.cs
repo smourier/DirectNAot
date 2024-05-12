@@ -54,7 +54,7 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetString(in Guid guidKey, [MarshalUsing(CountElementName = nameof(cchBufSize))] out PWSTR[] pwszValue, uint cchBufSize, nint /* optional uint* */ pcchLength);
+    HRESULT GetString(in Guid guidKey, [MarshalUsing(CountElementName = nameof(cchBufSize))] out PWSTR pwszValue, uint cchBufSize, nint /* optional uint* */ pcchLength);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-getallocatedstring
     [PreserveSig]

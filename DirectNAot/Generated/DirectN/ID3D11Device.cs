@@ -153,7 +153,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, [MarshalUsing(CountElementName = nameof(pNameLength))] out PSTR[] szName, nint /* optional uint* */ pNameLength, [MarshalUsing(CountElementName = nameof(pUnitsLength))] out PSTR[] szUnits, nint /* optional uint* */ pUnitsLength, [MarshalUsing(CountElementName = nameof(pDescriptionLength))] out PSTR[] szDescription, nint /* optional uint* */ pDescriptionLength);
+    HRESULT CheckCounter(in D3D11_COUNTER_DESC pDesc, out D3D11_COUNTER_TYPE pType, out uint pActiveCounters, [MarshalUsing(CountElementName = nameof(pNameLength))] out PSTR szName, nint /* optional uint* */ pNameLength, [MarshalUsing(CountElementName = nameof(pUnitsLength))] out PSTR szUnits, nint /* optional uint* */ pUnitsLength, [MarshalUsing(CountElementName = nameof(pDescriptionLength))] out PSTR szDescription, nint /* optional uint* */ pDescriptionLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-checkfeaturesupport
     [PreserveSig]

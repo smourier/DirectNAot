@@ -97,7 +97,7 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFamilyName(uint currentPosition, [MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR[] fontFamilyName, uint nameSize, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetFontFamilyName(uint currentPosition, [MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR fontFamilyName, uint nameSize, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontweight
     [PreserveSig]
@@ -152,7 +152,7 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocaleName(uint currentPosition, [MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR[] localeName, uint nameSize, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetLocaleName(uint currentPosition, [MarshalUsing(CountElementName = nameof(nameSize))] out PWSTR localeName, uint nameSize, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-draw
     [PreserveSig]

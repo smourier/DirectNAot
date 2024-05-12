@@ -29,5 +29,5 @@ public partial interface IVMRMonitorConfig9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrmonitorconfig9-getavailablemonitors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAvailableMonitors([MarshalUsing(CountElementName = nameof(dwMaxInfoArraySize))] out VMR9MonitorInfo[] pInfo, uint dwMaxInfoArraySize, out uint pdwNumDevices);
+    HRESULT GetAvailableMonitors([MarshalUsing(CountElementName = nameof(dwMaxInfoArraySize))] ref VMR9MonitorInfo[] pInfo, uint dwMaxInfoArraySize, out uint pdwNumDevices);
 }

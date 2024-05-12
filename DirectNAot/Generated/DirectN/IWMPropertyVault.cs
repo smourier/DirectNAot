@@ -23,7 +23,7 @@ public partial interface IWMPropertyVault
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmpropertyvault-getpropertybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropertyByIndex(uint dwIndex, [MarshalUsing(CountElementName = nameof(pdwNameLen))] out PWSTR[] pszName, ref uint pdwNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref uint pdwSize);
+    HRESULT GetPropertyByIndex(uint dwIndex, [MarshalUsing(CountElementName = nameof(pdwNameLen))] out PWSTR pszName, ref uint pdwNameLen, out WMT_ATTR_DATATYPE pType, nint /* byte array */ pValue, ref uint pdwSize);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmpropertyvault-copypropertiesfrom
     [PreserveSig]

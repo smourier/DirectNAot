@@ -22,7 +22,7 @@ public partial interface IDWriteFontFace2 : IDWriteFontFace1
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontface2-getpaletteentries
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPaletteEntries(uint colorPaletteIndex, uint firstEntryIndex, uint entryCount, [MarshalUsing(CountElementName = nameof(entryCount))] out DWRITE_COLOR_F[] paletteEntries);
+    HRESULT GetPaletteEntries(uint colorPaletteIndex, uint firstEntryIndex, uint entryCount, [MarshalUsing(CountElementName = nameof(entryCount))] ref DWRITE_COLOR_F[] paletteEntries);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontface2-getrecommendedrenderingmode
     [PreserveSig]

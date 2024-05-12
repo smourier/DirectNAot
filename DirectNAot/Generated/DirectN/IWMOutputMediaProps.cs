@@ -8,10 +8,10 @@ public partial interface IWMOutputMediaProps : IWMMediaProps
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmoutputmediaprops-getstreamgroupname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamGroupName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR[] pwszName, ref ushort pcchName);
+    HRESULT GetStreamGroupName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR pwszName, ref ushort pcchName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmoutputmediaprops-getconnectionname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnectionName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR[] pwszName, ref ushort pcchName);
+    HRESULT GetConnectionName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR pwszName, ref ushort pcchName);
 }

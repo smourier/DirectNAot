@@ -18,7 +18,7 @@ public partial interface IDeviceModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-devicetocolorimetriccolors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeviceToColorimetricColors(uint cColors, uint cChannels, in float pDeviceValues, [MarshalUsing(CountElementName = nameof(cColors))] out XYZColorF[] pXYZColors);
+    HRESULT DeviceToColorimetricColors(uint cColors, uint cChannels, in float pDeviceValues, [MarshalUsing(CountElementName = nameof(cColors))] ref XYZColorF[] pXYZColors);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-colorimetrictodevicecolors
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IDeviceModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-getgamutboundarymesh
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGamutBoundaryMesh(uint cChannels, uint cVertices, uint cTriangles, out float pVertices, [MarshalUsing(CountElementName = nameof(cTriangles))] out GamutShellTriangle[] pTriangles);
+    HRESULT GetGamutBoundaryMesh(uint cChannels, uint cVertices, uint cTriangles, out float pVertices, [MarshalUsing(CountElementName = nameof(cTriangles))] ref GamutShellTriangle[] pTriangles);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-getneutralaxissize
     [PreserveSig]
@@ -58,5 +58,5 @@ public partial interface IDeviceModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-getneutralaxis
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNeutralAxis(uint cColors, [MarshalUsing(CountElementName = nameof(cColors))] out XYZColorF[] pXYZColors);
+    HRESULT GetNeutralAxis(uint cColors, [MarshalUsing(CountElementName = nameof(cColors))] ref XYZColorF[] pXYZColors);
 }

@@ -13,5 +13,5 @@ public partial interface IDXGIDevice4 : IDXGIDevice3
     // https://learn.microsoft.com/windows/win32/api/dxgi1_5/nf-dxgi1_5-idxgidevice4-reclaimresources1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReclaimResources1(uint NumResources, [MarshalUsing(CountElementName = nameof(NumResources))] in IDXGIResource[] ppResources, [MarshalUsing(CountElementName = nameof(NumResources))] out DXGI_RECLAIM_RESOURCE_RESULTS[] pResults);
+    HRESULT ReclaimResources1(uint NumResources, [MarshalUsing(CountElementName = nameof(NumResources))] in IDXGIResource[] ppResources, [MarshalUsing(CountElementName = nameof(NumResources))] ref DXGI_RECLAIM_RESOURCE_RESULTS[] pResults);
 }
