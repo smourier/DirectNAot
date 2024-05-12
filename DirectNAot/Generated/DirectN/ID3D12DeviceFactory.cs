@@ -25,7 +25,7 @@ public partial interface ID3D12DeviceFactory
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableExperimentalFeatures(uint NumFeatures, [MarshalUsing(CountElementName = nameof(NumFeatures))] in Guid[] pIIDs, nint /* optional void* */ pConfigurationStructs, nint /* optional uint* */ pConfigurationStructSizes);
+    HRESULT EnableExperimentalFeatures(uint NumFeatures, [In][MarshalUsing(CountElementName = nameof(NumFeatures))] Guid[] pIIDs, nint /* optional void* */ pConfigurationStructs, nint /* optional uint* */ pConfigurationStructSizes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

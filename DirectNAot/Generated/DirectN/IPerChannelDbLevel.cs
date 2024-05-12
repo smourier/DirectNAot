@@ -34,5 +34,5 @@ public partial interface IPerChannelDbLevel
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iperchanneldblevel-setlevelallchannels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLevelAllChannels([MarshalUsing(CountElementName = nameof(cChannels))] in float[] aLevelsDB, uint cChannels, nint /* optional Guid* */ pguidEventContext);
+    HRESULT SetLevelAllChannels([In][MarshalUsing(CountElementName = nameof(cChannels))] float[] aLevelsDB, uint cChannels, nint /* optional Guid* */ pguidEventContext);
 }

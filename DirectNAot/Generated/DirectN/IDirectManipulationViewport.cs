@@ -64,12 +64,12 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-setviewporttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetViewportTransform([MarshalUsing(CountElementName = nameof(pointCount))] in float[] matrix, uint pointCount);
+    HRESULT SetViewportTransform([In][MarshalUsing(CountElementName = nameof(pointCount))] float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-syncdisplaytransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SyncDisplayTransform([MarshalUsing(CountElementName = nameof(pointCount))] in float[] matrix, uint pointCount);
+    HRESULT SyncDisplayTransform([In][MarshalUsing(CountElementName = nameof(pointCount))] float[] matrix, uint pointCount);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-getprimarycontent
     [PreserveSig]

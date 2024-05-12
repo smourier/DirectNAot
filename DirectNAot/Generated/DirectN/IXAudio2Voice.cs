@@ -73,7 +73,7 @@ public partial interface IXAudio2Voice
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setchannelvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetChannelVolumes(uint Channels, [MarshalUsing(CountElementName = nameof(Channels))] in float[] pVolumes, uint OperationSet);
+    HRESULT SetChannelVolumes(uint Channels, [In][MarshalUsing(CountElementName = nameof(Channels))] float[] pVolumes, uint OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getchannelvolumes
     [PreserveSig]

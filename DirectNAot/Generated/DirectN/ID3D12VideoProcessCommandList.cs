@@ -21,7 +21,7 @@ public partial interface ID3D12VideoProcessCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-resourcebarrier
     [PreserveSig]
-    void ResourceBarrier(uint NumBarriers, [MarshalUsing(CountElementName = nameof(NumBarriers))] in D3D12_RESOURCE_BARRIER[] pBarriers);
+    void ResourceBarrier(uint NumBarriers, [In][MarshalUsing(CountElementName = nameof(NumBarriers))] D3D12_RESOURCE_BARRIER[] pBarriers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-discardresource
     [PreserveSig]
@@ -57,9 +57,9 @@ public partial interface ID3D12VideoProcessCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-processframes
     [PreserveSig]
-    void ProcessFrames(ID3D12VideoProcessor pVideoProcessor, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS pOutputArguments, uint NumInputStreams, [MarshalUsing(CountElementName = nameof(NumInputStreams))] in D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS[] pInputArguments);
+    void ProcessFrames(ID3D12VideoProcessor pVideoProcessor, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS pOutputArguments, uint NumInputStreams, [In][MarshalUsing(CountElementName = nameof(NumInputStreams))] D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS[] pInputArguments);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist-writebufferimmediate
     [PreserveSig]
-    void WriteBufferImmediate(uint Count, [MarshalUsing(CountElementName = nameof(Count))] in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER[] pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE* */ pModes);
+    void WriteBufferImmediate(uint Count, [In][MarshalUsing(CountElementName = nameof(Count))] D3D12_WRITEBUFFERIMMEDIATE_PARAMETER[] pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE* */ pModes);
 }

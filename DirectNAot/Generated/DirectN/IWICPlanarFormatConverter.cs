@@ -9,10 +9,10 @@ public partial interface IWICPlanarFormatConverter : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarformatconverter-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize([MarshalUsing(CountElementName = nameof(cPlanes))] in IWICBitmapSource[] ppPlanes, uint cPlanes, in Guid dstFormat, WICBitmapDitherType dither, IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
+    HRESULT Initialize([In][MarshalUsing(CountElementName = nameof(cPlanes))] IWICBitmapSource[] ppPlanes, uint cPlanes, in Guid dstFormat, WICBitmapDitherType dither, IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarformatconverter-canconvert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanConvert([MarshalUsing(CountElementName = nameof(cSrcPlanes))] in Guid[] pSrcPixelFormats, uint cSrcPlanes, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
+    HRESULT CanConvert([In][MarshalUsing(CountElementName = nameof(cSrcPlanes))] Guid[] pSrcPixelFormats, uint cSrcPlanes, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
 }

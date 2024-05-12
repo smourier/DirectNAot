@@ -8,22 +8,22 @@ public partial interface IDCompositionTableTransferEffect : IDCompositionFilterE
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setredtable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
+    HRESULT SetRedTable([In][MarshalUsing(CountElementName = nameof(count))] float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setgreentable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGreenTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
+    HRESULT SetGreenTable([In][MarshalUsing(CountElementName = nameof(count))] float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setbluetable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBlueTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
+    HRESULT SetBlueTable([In][MarshalUsing(CountElementName = nameof(count))] float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setalphatable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAlphaTable([MarshalUsing(CountElementName = nameof(count))] in float[] tableValues, uint count);
+    HRESULT SetAlphaTable([In][MarshalUsing(CountElementName = nameof(count))] float[] tableValues, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setreddisable
     [PreserveSig]

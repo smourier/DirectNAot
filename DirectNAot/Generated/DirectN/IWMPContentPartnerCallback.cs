@@ -38,7 +38,7 @@ public partial interface IWMPContentPartnerCallback
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-addlistcontents
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddListContents(uint dwListCookie, uint cItems, [MarshalUsing(CountElementName = nameof(cItems))] in uint[] prgItems);
+    HRESULT AddListContents(uint dwListCookie, uint cItems, [In][MarshalUsing(CountElementName = nameof(cItems))] uint[] prgItems);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartnercallback-listcontentscomplete
     [PreserveSig]

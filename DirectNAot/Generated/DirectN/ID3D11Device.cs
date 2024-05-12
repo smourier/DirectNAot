@@ -49,7 +49,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createinputlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInputLayout([MarshalUsing(CountElementName = nameof(NumElements))] in D3D11_INPUT_ELEMENT_DESC[] pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint /* optional ID3D11InputLayout* */ ppInputLayout);
+    HRESULT CreateInputLayout([In][MarshalUsing(CountElementName = nameof(NumElements))] D3D11_INPUT_ELEMENT_DESC[] pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint /* optional ID3D11InputLayout* */ ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createvertexshader
     [PreserveSig]

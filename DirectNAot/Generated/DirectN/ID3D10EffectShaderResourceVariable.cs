@@ -18,7 +18,7 @@ public partial interface ID3D10EffectShaderResourceVariable : ID3D10EffectVariab
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-setresourcearray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetResourceArray([MarshalUsing(CountElementName = nameof(Count))] in ID3D10ShaderResourceView[] ppResources, uint Offset, uint Count);
+    HRESULT SetResourceArray([In][MarshalUsing(CountElementName = nameof(Count))] ID3D10ShaderResourceView[] ppResources, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-getresourcearray
     [PreserveSig]

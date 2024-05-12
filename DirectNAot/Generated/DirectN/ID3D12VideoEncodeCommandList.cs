@@ -22,7 +22,7 @@ public partial interface ID3D12VideoEncodeCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-resourcebarrier
     [PreserveSig]
-    void ResourceBarrier(uint NumBarriers, [MarshalUsing(CountElementName = nameof(NumBarriers))] in D3D12_RESOURCE_BARRIER[] pBarriers);
+    void ResourceBarrier(uint NumBarriers, [In][MarshalUsing(CountElementName = nameof(NumBarriers))] D3D12_RESOURCE_BARRIER[] pBarriers);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-discardresource
     [PreserveSig]
@@ -66,7 +66,7 @@ public partial interface ID3D12VideoEncodeCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-writebufferimmediate
     [PreserveSig]
-    void WriteBufferImmediate(uint Count, [MarshalUsing(CountElementName = nameof(Count))] in D3D12_WRITEBUFFERIMMEDIATE_PARAMETER[] pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE* */ pModes);
+    void WriteBufferImmediate(uint Count, [In][MarshalUsing(CountElementName = nameof(Count))] D3D12_WRITEBUFFERIMMEDIATE_PARAMETER[] pParams, nint /* optional D3D12_WRITEBUFFERIMMEDIATE_MODE* */ pModes);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist-setprotectedresourcesession
     [PreserveSig]

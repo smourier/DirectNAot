@@ -27,7 +27,7 @@ public partial interface ID3D12GraphicsCommandList4 : ID3D12GraphicsCommandList3
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-emitraytracingaccelerationstructurepostbuildinfo
     [PreserveSig]
-    void EmitRaytracingAccelerationStructurePostbuildInfo(in D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESC pDesc, uint NumSourceAccelerationStructures, [MarshalUsing(CountElementName = nameof(NumSourceAccelerationStructures))] in ulong[] pSourceAccelerationStructureData);
+    void EmitRaytracingAccelerationStructurePostbuildInfo(in D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESC pDesc, uint NumSourceAccelerationStructures, [In][MarshalUsing(CountElementName = nameof(NumSourceAccelerationStructures))] ulong[] pSourceAccelerationStructureData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-copyraytracingaccelerationstructure
     [PreserveSig]

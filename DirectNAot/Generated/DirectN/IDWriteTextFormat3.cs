@@ -8,7 +8,7 @@ public partial interface IDWriteTextFormat3 : IDWriteTextFormat2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritetextformat3-setfontaxisvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
+    HRESULT SetFontAxisValues([In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritetextformat3-getfontaxisvaluecount
     [PreserveSig]

@@ -13,7 +13,7 @@ public partial interface IFrequencyMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-put_frequencymapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_FrequencyMapping(uint ulCount, [MarshalUsing(CountElementName = nameof(ulCount))] in uint[] pList);
+    HRESULT put_FrequencyMapping(uint ulCount, [In][MarshalUsing(CountElementName = nameof(ulCount))] uint[] pList);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ifrequencymap-get_countrycode
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface IAudioAmbisonicsControl
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetData([MarshalUsing(CountElementName = nameof(cbAmbisonicsParams))] in AMBISONICS_PARAMS[] pAmbisonicsParams, uint cbAmbisonicsParams);
+    HRESULT SetData([In][MarshalUsing(CountElementName = nameof(cbAmbisonicsParams))] AMBISONICS_PARAMS[] pAmbisonicsParams, uint cbAmbisonicsParams);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

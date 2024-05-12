@@ -87,7 +87,9 @@ public static class IWICBitmapFrameEncodeExtensions
         frame.Commit().ThrowOnError();
     }
 
+    public static void SetColorContexts(this WicBitmapFrameEncode frameBag, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(frameBag?.Encode!, contexts);
     public static void SetColorContexts(this WicBitmapFrameEncode frameBag, IEnumerable<IWICColorContext> contexts) => SetColorContexts(frameBag?.Encode!, contexts);
+    public static void SetColorContexts(this IComObject<IWICBitmapFrameEncode> frame, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(frame?.Object!, contexts?.Select(c => c.Object)!);
     public static void SetColorContexts(this IComObject<IWICBitmapFrameEncode> frame, IEnumerable<IWICColorContext> contexts) => SetColorContexts(frame?.Object!, contexts);
     public static void SetColorContexts(this IWICBitmapFrameEncode frame, IEnumerable<IWICColorContext> contexts)
     {

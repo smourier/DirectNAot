@@ -43,7 +43,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIDsOfNames([MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, [In][Out][MarshalUsing(CountElementName = nameof(cNames))] int[] pMemId);
+    HRESULT GetIDsOfNames([In][MarshalUsing(CountElementName = nameof(cNames))] PWSTR[] rgszNames, uint cNames, [In][Out][MarshalUsing(CountElementName = nameof(cNames))] int[] pMemId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-invoke
     [PreserveSig]

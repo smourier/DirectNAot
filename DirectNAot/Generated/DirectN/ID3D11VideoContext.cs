@@ -29,7 +29,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-submitdecoderbuffers
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SubmitDecoderBuffers(ID3D11VideoDecoder pDecoder, uint NumBuffers, [MarshalUsing(CountElementName = nameof(NumBuffers))] in D3D11_VIDEO_DECODER_BUFFER_DESC[] pBufferDesc);
+    HRESULT SubmitDecoderBuffers(ID3D11VideoDecoder pDecoder, uint NumBuffers, [In][MarshalUsing(CountElementName = nameof(NumBuffers))] D3D11_VIDEO_DECODER_BUFFER_DESC[] pBufferDesc);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-decoderextension
     [PreserveSig]
@@ -198,7 +198,7 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorblt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT VideoProcessorBlt(ID3D11VideoProcessor pVideoProcessor, ID3D11VideoProcessorOutputView pView, uint OutputFrame, uint StreamCount, [MarshalUsing(CountElementName = nameof(StreamCount))] in D3D11_VIDEO_PROCESSOR_STREAM[] pStreams);
+    HRESULT VideoProcessorBlt(ID3D11VideoProcessor pVideoProcessor, ID3D11VideoProcessorOutputView pView, uint OutputFrame, uint StreamCount, [In][MarshalUsing(CountElementName = nameof(StreamCount))] D3D11_VIDEO_PROCESSOR_STREAM[] pStreams);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-negotiatecryptosessionkeyexchange
     [PreserveSig]

@@ -44,5 +44,5 @@ public partial interface IDirectManipulationContent
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcontent-synccontenttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SyncContentTransform([MarshalUsing(CountElementName = nameof(pointCount))] in float[] matrix, uint pointCount);
+    HRESULT SyncContentTransform([In][MarshalUsing(CountElementName = nameof(pointCount))] float[] matrix, uint pointCount);
 }

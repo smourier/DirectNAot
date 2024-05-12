@@ -34,7 +34,7 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-creategradientstopcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGradientStopCollection([MarshalUsing(CountElementName = nameof(gradientStopsCount))] in D2D1_GRADIENT_STOP[] gradientStops, uint gradientStopsCount, D2D1_GAMMA colorInterpolationGamma, D2D1_EXTEND_MODE extendMode, out ID2D1GradientStopCollection gradientStopCollection);
+    HRESULT CreateGradientStopCollection([In][MarshalUsing(CountElementName = nameof(gradientStopsCount))] D2D1_GRADIENT_STOP[] gradientStops, uint gradientStopsCount, D2D1_GAMMA colorInterpolationGamma, D2D1_EXTEND_MODE extendMode, out ID2D1GradientStopCollection gradientStopCollection);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1rendertarget-createlineargradientbrush
     [PreserveSig]

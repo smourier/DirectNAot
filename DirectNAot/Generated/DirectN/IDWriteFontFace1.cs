@@ -32,17 +32,17 @@ public partial interface IDWriteFontFace1 : IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-getdesignglyphadvances
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesignGlyphAdvances(uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvances, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT GetDesignGlyphAdvances(uint glyphCount, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvances, [MarshalAs(UnmanagedType.U4)] bool isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-getgdicompatibleglyphadvances
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGdiCompatibleGlyphAdvances(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, [MarshalAs(UnmanagedType.U4)] bool isSideways, uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvances);
+    HRESULT GetGdiCompatibleGlyphAdvances(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, [MarshalAs(UnmanagedType.U4)] bool isSideways, uint glyphCount, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvances);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-getkerningpairadjustments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetKerningPairAdjustments(uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvanceAdjustments);
+    HRESULT GetKerningPairAdjustments(uint glyphCount, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] int[] glyphAdvanceAdjustments);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-haskerningpairs
     [PreserveSig]
@@ -57,7 +57,7 @@ public partial interface IDWriteFontFace1 : IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-getverticalglyphvariants
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVerticalGlyphVariants(uint glyphCount, [MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] nominalGlyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] verticalGlyphIndices);
+    HRESULT GetVerticalGlyphVariants(uint glyphCount, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] nominalGlyphIndices, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] verticalGlyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefontface1-hasverticalglyphvariants
     [PreserveSig]

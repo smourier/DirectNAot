@@ -20,11 +20,11 @@ public partial interface ID2D1SimplifiedGeometrySink
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1simplifiedgeometrysink-addlines
     [PreserveSig]
-    void AddLines([MarshalUsing(CountElementName = nameof(pointsCount))] in D2D_POINT_2F[] points, uint pointsCount);
+    void AddLines([In][MarshalUsing(CountElementName = nameof(pointsCount))] D2D_POINT_2F[] points, uint pointsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1simplifiedgeometrysink-addbeziers
     [PreserveSig]
-    void AddBeziers([MarshalUsing(CountElementName = nameof(beziersCount))] in D2D1_BEZIER_SEGMENT[] beziers, uint beziersCount);
+    void AddBeziers([In][MarshalUsing(CountElementName = nameof(beziersCount))] D2D1_BEZIER_SEGMENT[] beziers, uint beziersCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1simplifiedgeometrysink-endfigure
     [PreserveSig]

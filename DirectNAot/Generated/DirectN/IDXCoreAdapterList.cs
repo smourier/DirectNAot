@@ -27,7 +27,7 @@ public partial interface IDXCoreAdapterList
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-sort
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Sort(uint numPreferences, [MarshalUsing(CountElementName = nameof(numPreferences))] in DXCoreAdapterPreference[] preferences);
+    HRESULT Sort(uint numPreferences, [In][MarshalUsing(CountElementName = nameof(numPreferences))] DXCoreAdapterPreference[] preferences);
     
     // https://learn.microsoft.com/windows/win32/api/dxcore_interface/nf-dxcore_interface-idxcoreadapterlist-isadapterpreferencesupported
     [PreserveSig]

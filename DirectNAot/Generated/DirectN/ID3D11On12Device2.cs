@@ -14,5 +14,5 @@ public partial interface ID3D11On12Device2 : ID3D11On12Device1
     // https://learn.microsoft.com/windows/win32/api/d3d11on12/nf-d3d11on12-id3d11on12device2-returnunderlyingresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReturnUnderlyingResource(ID3D11Resource pResource11, uint NumSync, [MarshalUsing(CountElementName = nameof(NumSync))] in ulong[] pSignalValues, [MarshalUsing(CountElementName = nameof(NumSync))] in ID3D12Fence[] ppFences);
+    HRESULT ReturnUnderlyingResource(ID3D11Resource pResource11, uint NumSync, [In][MarshalUsing(CountElementName = nameof(NumSync))] ulong[] pSignalValues, [In][MarshalUsing(CountElementName = nameof(NumSync))] ID3D12Fence[] ppFences);
 }

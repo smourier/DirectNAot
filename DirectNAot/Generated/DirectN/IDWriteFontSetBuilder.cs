@@ -8,7 +8,7 @@ public partial interface IDWriteFontSetBuilder
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-addfontfacereference(idwritefontfacereference)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFontFaceReference(IDWriteFontFaceReference fontFaceReference, [MarshalUsing(CountElementName = nameof(propertyCount))] in DWRITE_FONT_PROPERTY[] properties, uint propertyCount);
+    HRESULT AddFontFaceReference(IDWriteFontFaceReference fontFaceReference, [In][MarshalUsing(CountElementName = nameof(propertyCount))] DWRITE_FONT_PROPERTY[] properties, uint propertyCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-addfontfacereference(idwritefontfacereference)
     [PreserveSig]

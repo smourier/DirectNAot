@@ -29,7 +29,7 @@ public partial interface IMemInputPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-receivemultiple
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReceiveMultiple([MarshalUsing(CountElementName = nameof(nSamples))] in IMediaSample[] pSamples, int nSamples, out int nSamplesProcessed);
+    HRESULT ReceiveMultiple([In][MarshalUsing(CountElementName = nameof(nSamples))] IMediaSample[] pSamples, int nSamples, out int nSamplesProcessed);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-receivecanblock
     [PreserveSig]

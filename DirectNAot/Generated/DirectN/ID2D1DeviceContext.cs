@@ -44,7 +44,7 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-creategradientstopcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGradientStopCollection([MarshalUsing(CountElementName = nameof(straightAlphaGradientStopsCount))] in D2D1_GRADIENT_STOP[] straightAlphaGradientStops, uint straightAlphaGradientStopsCount, D2D1_COLOR_SPACE preInterpolationSpace, D2D1_COLOR_SPACE postInterpolationSpace, D2D1_BUFFER_PRECISION bufferPrecision, D2D1_EXTEND_MODE extendMode, D2D1_COLOR_INTERPOLATION_MODE colorInterpolationMode, out ID2D1GradientStopCollection1 gradientStopCollection1);
+    HRESULT CreateGradientStopCollection([In][MarshalUsing(CountElementName = nameof(straightAlphaGradientStopsCount))] D2D1_GRADIENT_STOP[] straightAlphaGradientStops, uint straightAlphaGradientStopsCount, D2D1_COLOR_SPACE preInterpolationSpace, D2D1_COLOR_SPACE postInterpolationSpace, D2D1_BUFFER_PRECISION bufferPrecision, D2D1_EXTEND_MODE extendMode, D2D1_COLOR_INTERPOLATION_MODE colorInterpolationMode, out ID2D1GradientStopCollection1 gradientStopCollection1);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-createimagebrush(id2d1image_constd2d1_image_brush_properties__id2d1imagebrush)
     [PreserveSig]
@@ -160,7 +160,7 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-geteffectrequiredinputrectangles
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint /* optional D2D_RECT_F* */ renderImageRectangle, [MarshalUsing(CountElementName = nameof(inputCount))] in D2D1_EFFECT_INPUT_DESCRIPTION[] inputDescriptions, [In][Out][MarshalUsing(CountElementName = nameof(inputCount))] D2D_RECT_F[] requiredInputRects, uint inputCount);
+    HRESULT GetEffectRequiredInputRectangles(ID2D1Effect renderEffect, nint /* optional D2D_RECT_F* */ renderImageRectangle, [In][MarshalUsing(CountElementName = nameof(inputCount))] D2D1_EFFECT_INPUT_DESCRIPTION[] inputDescriptions, [In][Out][MarshalUsing(CountElementName = nameof(inputCount))] D2D_RECT_F[] requiredInputRects, uint inputCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-fillopacitymask(id2d1bitmap_id2d1brush_constd2d1_rect_f__constd2d1_rect_f)
     [PreserveSig]

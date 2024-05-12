@@ -13,12 +13,12 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setinputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputSignature([MarshalUsing(CountElementName = nameof(cInputParameters))] in D3D11_PARAMETER_DESC[] pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
+    HRESULT SetInputSignature([In][MarshalUsing(CountElementName = nameof(cInputParameters))] D3D11_PARAMETER_DESC[] pInputParameters, uint cInputParameters, out ID3D11LinkingNode ppInputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-setoutputsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputSignature([MarshalUsing(CountElementName = nameof(cOutputParameters))] in D3D11_PARAMETER_DESC[] pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
+    HRESULT SetOutputSignature([In][MarshalUsing(CountElementName = nameof(cOutputParameters))] D3D11_PARAMETER_DESC[] pOutputParameters, uint cOutputParameters, out ID3D11LinkingNode ppOutputNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-callfunction
     [PreserveSig]

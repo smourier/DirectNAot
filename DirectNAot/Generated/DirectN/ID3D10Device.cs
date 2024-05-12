@@ -320,7 +320,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createinputlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInputLayout([MarshalUsing(CountElementName = nameof(NumElements))] in D3D10_INPUT_ELEMENT_DESC[] pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint /* optional ID3D10InputLayout* */ ppInputLayout);
+    HRESULT CreateInputLayout([In][MarshalUsing(CountElementName = nameof(NumElements))] D3D10_INPUT_ELEMENT_DESC[] pInputElementDescs, uint NumElements, nint pShaderBytecodeWithInputSignature, nuint BytecodeLength, nint /* optional ID3D10InputLayout* */ ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createvertexshader
     [PreserveSig]

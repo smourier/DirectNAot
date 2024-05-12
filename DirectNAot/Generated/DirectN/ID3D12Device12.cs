@@ -5,5 +5,5 @@ namespace DirectN;
 public partial interface ID3D12Device12 : ID3D12Device11
 {
     [PreserveSig]
-    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo3(uint visibleMask, uint numResourceDescs, [MarshalUsing(CountElementName = nameof(numResourceDescs))] in D3D12_RESOURCE_DESC1[] pResourceDescs, nint /* optional uint* */ pNumCastableFormats, nint /* optional DXGI_FORMAT** */ ppCastableFormats, nint /* optional D3D12_RESOURCE_ALLOCATION_INFO1* */ pResourceAllocationInfo1);
+    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo3(uint visibleMask, uint numResourceDescs, [In][MarshalUsing(CountElementName = nameof(numResourceDescs))] D3D12_RESOURCE_DESC1[] pResourceDescs, nint /* optional uint* */ pNumCastableFormats, nint /* optional DXGI_FORMAT** */ ppCastableFormats, nint /* optional D3D12_RESOURCE_ALLOCATION_INFO1* */ pResourceAllocationInfo1);
 }

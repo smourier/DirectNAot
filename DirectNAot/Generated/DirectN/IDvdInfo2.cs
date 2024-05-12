@@ -139,7 +139,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getdvddirectory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDVDDirectory([MarshalUsing(CountElementName = nameof(ulMaxSize))] out PWSTR pszwPath, uint ulMaxSize, out uint pulActualSize);
+    HRESULT GetDVDDirectory([MarshalUsing(CountElementName = nameof(ulMaxSize))] PWSTR pszwPath, uint ulMaxSize, out uint pulActualSize);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-isaudiostreamenabled
     [PreserveSig]

@@ -23,12 +23,12 @@ public partial interface IDeviceModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-colorimetrictodevicecolors
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ColorimetricToDeviceColors(uint cColors, uint cChannels, [MarshalUsing(CountElementName = nameof(cColors))] in XYZColorF[] pXYZColors, out float pDeviceValues);
+    HRESULT ColorimetricToDeviceColors(uint cColors, uint cChannels, [In][MarshalUsing(CountElementName = nameof(cColors))] XYZColorF[] pXYZColors, out float pDeviceValues);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-colorimetrictodevicecolorswithblack
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ColorimetricToDeviceColorsWithBlack(uint cColors, uint cChannels, [MarshalUsing(CountElementName = nameof(cColors))] in XYZColorF[] pXYZColors, [MarshalUsing(CountElementName = nameof(cColors))] in BlackInformation[] pBlackInformation, out float pDeviceValues);
+    HRESULT ColorimetricToDeviceColorsWithBlack(uint cColors, uint cChannels, [In][MarshalUsing(CountElementName = nameof(cColors))] XYZColorF[] pXYZColors, [In][MarshalUsing(CountElementName = nameof(cColors))] BlackInformation[] pBlackInformation, out float pDeviceValues);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-settransformdevicemodelinfo
     [PreserveSig]

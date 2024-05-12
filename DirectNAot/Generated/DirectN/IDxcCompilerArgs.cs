@@ -20,5 +20,5 @@ public partial interface IDxcCompilerArgs
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDefines([MarshalUsing(CountElementName = nameof(defineCount))] in DxcDefine[] pDefines, uint defineCount);
+    HRESULT AddDefines([In][MarshalUsing(CountElementName = nameof(defineCount))] DxcDefine[] pDefines, uint defineCount);
 }

@@ -23,7 +23,7 @@ public partial interface IMDSPStorage4 : IMDSPStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-getspecifiedmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedMetadata(uint cProperties, [MarshalUsing(CountElementName = nameof(cProperties))] in PWSTR[] ppwszPropNames, IWMDMMetaData? pMetadata);
+    HRESULT GetSpecifiedMetadata(uint cProperties, [In][MarshalUsing(CountElementName = nameof(cProperties))] PWSTR[] ppwszPropNames, IWMDMMetaData? pMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-findstorage
     [PreserveSig]

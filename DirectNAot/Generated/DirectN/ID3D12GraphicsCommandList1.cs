@@ -7,11 +7,11 @@ public partial interface ID3D12GraphicsCommandList1 : ID3D12GraphicsCommandList
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist1-atomiccopybufferuint
     [PreserveSig]
-    void AtomicCopyBufferUINT(ID3D12Resource pDstBuffer, ulong DstOffset, ID3D12Resource pSrcBuffer, ulong SrcOffset, uint Dependencies, [MarshalUsing(CountElementName = nameof(Dependencies))] in ID3D12Resource[] ppDependentResources, [MarshalUsing(CountElementName = nameof(Dependencies))] in D3D12_SUBRESOURCE_RANGE_UINT64[] pDependentSubresourceRanges);
+    void AtomicCopyBufferUINT(ID3D12Resource pDstBuffer, ulong DstOffset, ID3D12Resource pSrcBuffer, ulong SrcOffset, uint Dependencies, [In][MarshalUsing(CountElementName = nameof(Dependencies))] ID3D12Resource[] ppDependentResources, [In][MarshalUsing(CountElementName = nameof(Dependencies))] D3D12_SUBRESOURCE_RANGE_UINT64[] pDependentSubresourceRanges);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist1-atomiccopybufferuint64
     [PreserveSig]
-    void AtomicCopyBufferUINT64(ID3D12Resource pDstBuffer, ulong DstOffset, ID3D12Resource pSrcBuffer, ulong SrcOffset, uint Dependencies, [MarshalUsing(CountElementName = nameof(Dependencies))] in ID3D12Resource[] ppDependentResources, [MarshalUsing(CountElementName = nameof(Dependencies))] in D3D12_SUBRESOURCE_RANGE_UINT64[] pDependentSubresourceRanges);
+    void AtomicCopyBufferUINT64(ID3D12Resource pDstBuffer, ulong DstOffset, ID3D12Resource pSrcBuffer, ulong SrcOffset, uint Dependencies, [In][MarshalUsing(CountElementName = nameof(Dependencies))] ID3D12Resource[] ppDependentResources, [In][MarshalUsing(CountElementName = nameof(Dependencies))] D3D12_SUBRESOURCE_RANGE_UINT64[] pDependentSubresourceRanges);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist1-omsetdepthbounds
     [PreserveSig]

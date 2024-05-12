@@ -13,12 +13,12 @@ public partial interface ID2D1SvgStrokeDashArray : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgstrokedasharray-updatedashes-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateDashes([MarshalUsing(CountElementName = nameof(dashesCount))] in D2D1_SVG_LENGTH[] dashes, uint dashesCount, uint startIndex);
+    HRESULT UpdateDashes([In][MarshalUsing(CountElementName = nameof(dashesCount))] D2D1_SVG_LENGTH[] dashes, uint dashesCount, uint startIndex);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgstrokedasharray-updatedashes-overload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateDashes([MarshalUsing(CountElementName = nameof(dashesCount))] in float[] dashes, uint dashesCount, uint startIndex);
+    HRESULT UpdateDashes([In][MarshalUsing(CountElementName = nameof(dashesCount))] float[] dashes, uint dashesCount, uint startIndex);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgstrokedasharray-getdashes-overload
     [PreserveSig]

@@ -16,7 +16,7 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-addsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSegments([MarshalUsing(CountElementName = nameof(segmentsCount))] in D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
+    HRESULT AddSegments([In][MarshalUsing(CountElementName = nameof(segmentsCount))] D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-removesegmentsatend
     [PreserveSig]
@@ -26,7 +26,7 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-setsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSegments(uint startSegment, [MarshalUsing(CountElementName = nameof(segmentsCount))] in D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
+    HRESULT SetSegments(uint startSegment, [In][MarshalUsing(CountElementName = nameof(segmentsCount))] D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-setsegmentatend(constd2d1_ink_bezier_segment)
     [PreserveSig]

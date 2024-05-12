@@ -13,7 +13,7 @@ public partial interface ID2D1SvgPointCollection : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpointcollection-updatepoints
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdatePoints([MarshalUsing(CountElementName = nameof(pointsCount))] in D2D_POINT_2F[] points, uint pointsCount, uint startIndex);
+    HRESULT UpdatePoints([In][MarshalUsing(CountElementName = nameof(pointsCount))] D2D_POINT_2F[] points, uint pointsCount, uint startIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpointcollection-getpoints
     [PreserveSig]

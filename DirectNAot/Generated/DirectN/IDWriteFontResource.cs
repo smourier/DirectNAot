@@ -54,10 +54,10 @@ public partial interface IDWriteFontResource
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-createfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFace(DWRITE_FONT_SIMULATIONS fontSimulations, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFace5 fontFace);
+    HRESULT CreateFontFace(DWRITE_FONT_SIMULATIONS fontSimulations, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFace5 fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-createfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFaceReference(DWRITE_FONT_SIMULATIONS fontSimulations, [MarshalUsing(CountElementName = nameof(fontAxisValueCount))] in DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFaceReference1 fontFaceReference);
+    HRESULT CreateFontFaceReference(DWRITE_FONT_SIMULATIONS fontSimulations, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontFaceReference1 fontFaceReference);
 }

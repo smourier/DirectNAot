@@ -118,5 +118,5 @@ public partial interface IDvdInfo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getroot
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRoot([MarshalUsing(CountElementName = nameof(ulBufSize))] out PSTR pRoot, uint ulBufSize, out uint pulActualSize);
+    HRESULT GetRoot([MarshalUsing(CountElementName = nameof(ulBufSize))] PSTR pRoot, uint ulBufSize, out uint pulActualSize);
 }

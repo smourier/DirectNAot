@@ -32,5 +32,5 @@ public partial interface ID3D12Device4 : ID3D12Device3
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device4-getresourceallocationinfo1
     [PreserveSig]
-    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo1(uint visibleMask, uint numResourceDescs, [MarshalUsing(CountElementName = nameof(numResourceDescs))] in D3D12_RESOURCE_DESC[] pResourceDescs, nint /* optional D3D12_RESOURCE_ALLOCATION_INFO1* */ pResourceAllocationInfo1);
+    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo1(uint visibleMask, uint numResourceDescs, [In][MarshalUsing(CountElementName = nameof(numResourceDescs))] D3D12_RESOURCE_DESC[] pResourceDescs, nint /* optional D3D12_RESOURCE_ALLOCATION_INFO1* */ pResourceAllocationInfo1);
 }

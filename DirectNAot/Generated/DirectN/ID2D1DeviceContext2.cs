@@ -19,7 +19,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-creategradientmesh
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGradientMesh([MarshalUsing(CountElementName = nameof(patchesCount))] in D2D1_GRADIENT_MESH_PATCH[] patches, uint patchesCount, out ID2D1GradientMesh gradientMesh);
+    HRESULT CreateGradientMesh([In][MarshalUsing(CountElementName = nameof(patchesCount))] D2D1_GRADIENT_MESH_PATCH[] patches, uint patchesCount, out ID2D1GradientMesh gradientMesh);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createimagesourcefromwic(iwicbitmapsource_d2d1_image_source_loading_options_id2d1imagesourcefromwic)
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createimagesourcefromdxgi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageSourceFromDxgi([MarshalUsing(CountElementName = nameof(surfaceCount))] in IDXGISurface[] surfaces, uint surfaceCount, DXGI_COLOR_SPACE_TYPE colorSpace, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options, out ID2D1ImageSource imageSource);
+    HRESULT CreateImageSourceFromDxgi([In][MarshalUsing(CountElementName = nameof(surfaceCount))] IDXGISurface[] surfaces, uint surfaceCount, DXGI_COLOR_SPACE_TYPE colorSpace, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options, out ID2D1ImageSource imageSource);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-getgradientmeshworldbounds
     [PreserveSig]

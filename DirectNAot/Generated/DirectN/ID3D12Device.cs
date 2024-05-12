@@ -79,7 +79,7 @@ public partial interface ID3D12Device : ID3D12Object
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-copydescriptors
     [PreserveSig]
-    void CopyDescriptors(uint NumDestDescriptorRanges, [MarshalUsing(CountElementName = nameof(NumDestDescriptorRanges))] in D3D12_CPU_DESCRIPTOR_HANDLE[] pDestDescriptorRangeStarts, nint /* optional uint* */ pDestDescriptorRangeSizes, uint NumSrcDescriptorRanges, [MarshalUsing(CountElementName = nameof(NumSrcDescriptorRanges))] in D3D12_CPU_DESCRIPTOR_HANDLE[] pSrcDescriptorRangeStarts, nint /* optional uint* */ pSrcDescriptorRangeSizes, D3D12_DESCRIPTOR_HEAP_TYPE DescriptorHeapsType);
+    void CopyDescriptors(uint NumDestDescriptorRanges, [In][MarshalUsing(CountElementName = nameof(NumDestDescriptorRanges))] D3D12_CPU_DESCRIPTOR_HANDLE[] pDestDescriptorRangeStarts, nint /* optional uint* */ pDestDescriptorRangeSizes, uint NumSrcDescriptorRanges, [In][MarshalUsing(CountElementName = nameof(NumSrcDescriptorRanges))] D3D12_CPU_DESCRIPTOR_HANDLE[] pSrcDescriptorRangeStarts, nint /* optional uint* */ pSrcDescriptorRangeSizes, D3D12_DESCRIPTOR_HEAP_TYPE DescriptorHeapsType);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-copydescriptorssimple
     [PreserveSig]
@@ -87,7 +87,7 @@ public partial interface ID3D12Device : ID3D12Object
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-getresourceallocationinfo
     [PreserveSig]
-    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo(uint visibleMask, uint numResourceDescs, [MarshalUsing(CountElementName = nameof(numResourceDescs))] in D3D12_RESOURCE_DESC[] pResourceDescs);
+    D3D12_RESOURCE_ALLOCATION_INFO GetResourceAllocationInfo(uint visibleMask, uint numResourceDescs, [In][MarshalUsing(CountElementName = nameof(numResourceDescs))] D3D12_RESOURCE_DESC[] pResourceDescs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-getcustomheapproperties
     [PreserveSig]
@@ -131,12 +131,12 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-makeresident
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MakeResident(uint NumObjects, [MarshalUsing(CountElementName = nameof(NumObjects))] in ID3D12Pageable[] ppObjects);
+    HRESULT MakeResident(uint NumObjects, [In][MarshalUsing(CountElementName = nameof(NumObjects))] ID3D12Pageable[] ppObjects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-evict
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Evict(uint NumObjects, [MarshalUsing(CountElementName = nameof(NumObjects))] in ID3D12Pageable[] ppObjects);
+    HRESULT Evict(uint NumObjects, [In][MarshalUsing(CountElementName = nameof(NumObjects))] ID3D12Pageable[] ppObjects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createfence
     [PreserveSig]

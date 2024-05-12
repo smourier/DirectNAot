@@ -28,12 +28,12 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-getcommands
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCommands(BSTR location, in VARIANT pLocationContext, BSTR itemLocation, uint cItemIDs, [MarshalUsing(CountElementName = nameof(cItemIDs))] in uint[] prgItemIDs, out uint pcItemIDs, out nint pprgItems);
+    HRESULT GetCommands(BSTR location, in VARIANT pLocationContext, BSTR itemLocation, uint cItemIDs, [In][MarshalUsing(CountElementName = nameof(cItemIDs))] uint[] prgItemIDs, out uint pcItemIDs, out nint pprgItems);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-invokecommand
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InvokeCommand(uint dwCommandID, BSTR location, in VARIANT pLocationContext, BSTR itemLocation, uint cItemIDs, [MarshalUsing(CountElementName = nameof(cItemIDs))] in uint[] rgItemIDs);
+    HRESULT InvokeCommand(uint dwCommandID, BSTR location, in VARIANT pLocationContext, BSTR itemLocation, uint cItemIDs, [In][MarshalUsing(CountElementName = nameof(cItemIDs))] uint[] rgItemIDs);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-canbuysilent
     [PreserveSig]

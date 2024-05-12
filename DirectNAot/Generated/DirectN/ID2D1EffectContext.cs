@@ -18,7 +18,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-getmaximumsupportedfeaturelevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMaximumSupportedFeatureLevel([MarshalUsing(CountElementName = nameof(featureLevelsCount))] in D3D_FEATURE_LEVEL[] featureLevels, uint featureLevelsCount, out D3D_FEATURE_LEVEL maximumSupportedFeatureLevel);
+    HRESULT GetMaximumSupportedFeatureLevel([In][MarshalUsing(CountElementName = nameof(featureLevelsCount))] D3D_FEATURE_LEVEL[] featureLevels, uint featureLevelsCount, out D3D_FEATURE_LEVEL maximumSupportedFeatureLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createtransformnodefromeffect
     [PreserveSig]

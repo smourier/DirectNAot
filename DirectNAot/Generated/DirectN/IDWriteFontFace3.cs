@@ -70,5 +70,5 @@ public partial interface IDWriteFontFace3 : IDWriteFontFace2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-areglyphslocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AreGlyphsLocal([MarshalUsing(CountElementName = nameof(glyphCount))] in ushort[] glyphIndices, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
+    HRESULT AreGlyphsLocal([In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
 }

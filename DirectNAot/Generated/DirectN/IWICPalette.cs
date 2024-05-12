@@ -14,7 +14,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializecustom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeCustom([MarshalUsing(CountElementName = nameof(cCount))] in uint[] pColors, uint cCount);
+    HRESULT InitializeCustom([In][MarshalUsing(CountElementName = nameof(cCount))] uint[] pColors, uint cCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializefrombitmap
     [PreserveSig]

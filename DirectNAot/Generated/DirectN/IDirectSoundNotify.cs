@@ -6,5 +6,5 @@ public partial interface IDirectSoundNotify
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNotificationPositions(uint dwPositionNotifies, [MarshalUsing(CountElementName = nameof(dwPositionNotifies))] in DSBPOSITIONNOTIFY[] pcPositionNotifies);
+    HRESULT SetNotificationPositions(uint dwPositionNotifies, [In][MarshalUsing(CountElementName = nameof(dwPositionNotifies))] DSBPOSITIONNOTIFY[] pcPositionNotifies);
 }

@@ -18,7 +18,7 @@ public partial interface ID3D10EffectDepthStencilViewVariable : ID3D10EffectVari
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-setdepthstencilarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDepthStencilArray([MarshalUsing(CountElementName = nameof(Count))] in ID3D10DepthStencilView[] ppResources, uint Offset, uint Count);
+    HRESULT SetDepthStencilArray([In][MarshalUsing(CountElementName = nameof(Count))] ID3D10DepthStencilView[] ppResources, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-getdepthstencilarray
     [PreserveSig]

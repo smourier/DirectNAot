@@ -7,5 +7,5 @@ public partial interface ID3D12VideoProcessCommandList1 : ID3D12VideoProcessComm
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist1-processframes1
     [PreserveSig]
-    void ProcessFrames1(ID3D12VideoProcessor pVideoProcessor, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS pOutputArguments, uint NumInputStreams, [MarshalUsing(CountElementName = nameof(NumInputStreams))] in D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS1[] pInputArguments);
+    void ProcessFrames1(ID3D12VideoProcessor pVideoProcessor, in D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS pOutputArguments, uint NumInputStreams, [In][MarshalUsing(CountElementName = nameof(NumInputStreams))] D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS1[] pInputArguments);
 }

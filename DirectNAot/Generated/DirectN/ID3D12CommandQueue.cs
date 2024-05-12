@@ -15,7 +15,7 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-executecommandlists
     [PreserveSig]
-    void ExecuteCommandLists(uint NumCommandLists, [MarshalUsing(CountElementName = nameof(NumCommandLists))] in ID3D12CommandList[] ppCommandLists);
+    void ExecuteCommandLists(uint NumCommandLists, [In][MarshalUsing(CountElementName = nameof(NumCommandLists))] ID3D12CommandList[] ppCommandLists);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-setmarker
     [PreserveSig]

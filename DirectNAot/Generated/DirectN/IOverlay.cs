@@ -14,7 +14,7 @@ public partial interface IOverlay
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-setpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPalette(uint dwColors, [MarshalUsing(CountElementName = nameof(dwColors))] in PALETTEENTRY[] pPalette);
+    HRESULT SetPalette(uint dwColors, [In][MarshalUsing(CountElementName = nameof(dwColors))] PALETTEENTRY[] pPalette);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-getdefaultcolorkey
     [PreserveSig]

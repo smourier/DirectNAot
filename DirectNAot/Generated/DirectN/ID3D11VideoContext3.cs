@@ -12,5 +12,5 @@ public partial interface ID3D11VideoContext3 : ID3D11VideoContext2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SubmitDecoderBuffers2(ID3D11VideoDecoder pDecoder, uint NumBuffers, [MarshalUsing(CountElementName = nameof(NumBuffers))] in D3D11_VIDEO_DECODER_BUFFER_DESC2[] pBufferDesc);
+    HRESULT SubmitDecoderBuffers2(ID3D11VideoDecoder pDecoder, uint NumBuffers, [In][MarshalUsing(CountElementName = nameof(NumBuffers))] D3D11_VIDEO_DECODER_BUFFER_DESC2[] pBufferDesc);
 }

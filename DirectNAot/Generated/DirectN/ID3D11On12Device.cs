@@ -12,9 +12,9 @@ public partial interface ID3D11On12Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d11on12/nf-d3d11on12-id3d11on12device-releasewrappedresources
     [PreserveSig]
-    void ReleaseWrappedResources([MarshalUsing(CountElementName = nameof(NumResources))] in ID3D11Resource[] ppResources, uint NumResources);
+    void ReleaseWrappedResources([In][MarshalUsing(CountElementName = nameof(NumResources))] ID3D11Resource[] ppResources, uint NumResources);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11on12/nf-d3d11on12-id3d11on12device-acquirewrappedresources
     [PreserveSig]
-    void AcquireWrappedResources([MarshalUsing(CountElementName = nameof(NumResources))] in ID3D11Resource[] ppResources, uint NumResources);
+    void AcquireWrappedResources([In][MarshalUsing(CountElementName = nameof(NumResources))] ID3D11Resource[] ppResources, uint NumResources);
 }

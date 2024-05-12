@@ -7,5 +7,5 @@ public partial interface ID3D12VideoProcessCommandList3 : ID3D12VideoProcessComm
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoprocesscommandlist3-barrier
     [PreserveSig]
-    void Barrier(uint NumBarrierGroups, [MarshalUsing(CountElementName = nameof(NumBarrierGroups))] in D3D12_BARRIER_GROUP[] pBarrierGroups);
+    void Barrier(uint NumBarrierGroups, [In][MarshalUsing(CountElementName = nameof(NumBarrierGroups))] D3D12_BARRIER_GROUP[] pBarrierGroups);
 }

@@ -18,7 +18,7 @@ public partial interface IDWritePaintReader
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCustomColorPalette([MarshalUsing(CountElementName = nameof(paletteEntryCount))] in DWRITE_COLOR_F[] paletteEntries, uint paletteEntryCount);
+    HRESULT SetCustomColorPalette([In][MarshalUsing(CountElementName = nameof(paletteEntryCount))] DWRITE_COLOR_F[] paletteEntries, uint paletteEntryCount);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

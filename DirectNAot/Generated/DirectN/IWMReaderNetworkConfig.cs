@@ -23,7 +23,7 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setudpportranges
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUDPPortRanges([MarshalUsing(CountElementName = nameof(cRanges))] in WM_PORT_NUMBER_RANGE[] pRangeArray, uint cRanges);
+    HRESULT SetUDPPortRanges([In][MarshalUsing(CountElementName = nameof(cRanges))] WM_PORT_NUMBER_RANGE[] pRangeArray, uint cRanges);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getproxysettings
     [PreserveSig]

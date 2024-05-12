@@ -23,5 +23,5 @@ public partial interface IWMDMDevice2 : IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getcanonicalname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCanonicalName([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR pwszPnPName, uint nMaxChars);
+    HRESULT GetCanonicalName([MarshalUsing(CountElementName = nameof(nMaxChars))] PWSTR pwszPnPName, uint nMaxChars);
 }

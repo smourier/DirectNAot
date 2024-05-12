@@ -53,5 +53,5 @@ public partial interface IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-getmatchingfonts(dwrite_font_propertyconst_uint32_idwritefontset)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMatchingFonts([MarshalUsing(CountElementName = nameof(propertyCount))] in DWRITE_FONT_PROPERTY[] properties, uint propertyCount, out IDWriteFontSet filteredSet);
+    HRESULT GetMatchingFonts([In][MarshalUsing(CountElementName = nameof(propertyCount))] DWRITE_FONT_PROPERTY[] properties, uint propertyCount, out IDWriteFontSet filteredSet);
 }

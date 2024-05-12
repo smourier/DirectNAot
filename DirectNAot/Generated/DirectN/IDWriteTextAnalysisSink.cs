@@ -14,7 +14,7 @@ public partial interface IDWriteTextAnalysisSink
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissink-setlinebreakpoints
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLineBreakpoints(uint textPosition, uint textLength, [MarshalUsing(CountElementName = nameof(textLength))] in DWRITE_LINE_BREAKPOINT[] lineBreakpoints);
+    HRESULT SetLineBreakpoints(uint textPosition, uint textLength, [In][MarshalUsing(CountElementName = nameof(textLength))] DWRITE_LINE_BREAKPOINT[] lineBreakpoints);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissink-setbidilevel
     [PreserveSig]

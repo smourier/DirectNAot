@@ -8,12 +8,12 @@ public partial interface IMDSPDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetName([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR pwszName, uint nMaxChars);
+    HRESULT GetName([MarshalUsing(CountElementName = nameof(nMaxChars))] PWSTR pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getmanufacturer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetManufacturer([MarshalUsing(CountElementName = nameof(nMaxChars))] out PWSTR pwszName, uint nMaxChars);
+    HRESULT GetManufacturer([MarshalUsing(CountElementName = nameof(nMaxChars))] PWSTR pwszName, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice-getversion
     [PreserveSig]

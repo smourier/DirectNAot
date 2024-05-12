@@ -9,5 +9,5 @@ public partial interface IMFTopologyNodeAttributeEditor
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynodeattributeeditor-updatenodeattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateNodeAttributes(ulong TopoId, uint cUpdates, [MarshalUsing(CountElementName = nameof(cUpdates))] in MFTOPONODE_ATTRIBUTE_UPDATE[] pUpdates);
+    HRESULT UpdateNodeAttributes(ulong TopoId, uint cUpdates, [In][MarshalUsing(CountElementName = nameof(cUpdates))] MFTOPONODE_ATTRIBUTE_UPDATE[] pUpdates);
 }

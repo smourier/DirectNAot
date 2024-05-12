@@ -54,7 +54,7 @@ public partial interface IAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-execute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Execute(uint dwFunction, nint lpPrivateInputData, uint cbPrivateInputData, nint lpPrivateOutputDat, uint cbPrivateOutputData, uint dwNumBuffers, [MarshalUsing(CountElementName = nameof(dwNumBuffers))] in AMVABUFFERINFO[] pamvaBufferInfo);
+    HRESULT Execute(uint dwFunction, nint lpPrivateInputData, uint cbPrivateInputData, nint lpPrivateOutputDat, uint cbPrivateOutputData, uint dwNumBuffers, [In][MarshalUsing(CountElementName = nameof(dwNumBuffers))] AMVABUFFERINFO[] pamvaBufferInfo);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-queryrenderstatus
     [PreserveSig]

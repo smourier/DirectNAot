@@ -13,7 +13,7 @@ public partial interface IDWriteLocalFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritelocalfontfileloader-getfilepathfromkey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilePathFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, [MarshalUsing(CountElementName = nameof(filePathSize))] out PWSTR filePath, uint filePathSize);
+    HRESULT GetFilePathFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, [MarshalUsing(CountElementName = nameof(filePathSize))] PWSTR filePath, uint filePathSize);
     
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritelocalfontfileloader-getlastwritetimefromkey
     [PreserveSig]

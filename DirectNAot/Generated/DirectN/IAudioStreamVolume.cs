@@ -24,7 +24,7 @@ public partial interface IAudioStreamVolume
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudiostreamvolume-setallvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllVolumes(uint dwCount, [MarshalUsing(CountElementName = nameof(dwCount))] in float[] pfVolumes);
+    HRESULT SetAllVolumes(uint dwCount, [In][MarshalUsing(CountElementName = nameof(dwCount))] float[] pfVolumes);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudiostreamvolume-getallvolumes
     [PreserveSig]
