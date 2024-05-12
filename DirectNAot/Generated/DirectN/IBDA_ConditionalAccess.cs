@@ -19,7 +19,7 @@ public partial interface IBDA_ConditionalAccess
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_conditionalaccess-get_smartcardapplications
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SmartCardApplications(ref uint pulcApplications, uint ulcApplicationsMax, [MarshalUsing(CountElementName = nameof(ulcApplicationsMax))] ref SmartCardApplication[] rgApplications);
+    HRESULT get_SmartCardApplications(ref uint pulcApplications, uint ulcApplicationsMax, [In][Out][MarshalUsing(CountElementName = nameof(ulcApplicationsMax))] SmartCardApplication[] rgApplications);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_conditionalaccess-get_entitlement
     [PreserveSig]

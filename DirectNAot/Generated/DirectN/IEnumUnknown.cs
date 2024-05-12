@@ -9,7 +9,7 @@ public partial interface IEnumUnknown
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumunknown-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out nint[] rgelt, nint /* optional uint* */ pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] nint[] rgelt, nint /* optional uint* */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumunknown-skip
     [PreserveSig]

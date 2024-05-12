@@ -30,13 +30,13 @@ public static class IWICBitmapFrameDecodeExtensions
     public static IComObject<IWICColorContext>[] GetColorContexts(this IWICBitmapFrameDecode frame)
     {
         ArgumentNullException.ThrowIfNull(frame);
-        frame.GetColorContexts(0, ref Unsafe.NullRef<IWICColorContext[]>(), out var count);
+        frame.GetColorContexts(0, null!, out var count);
         if (count == 0)
             return [];
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
         var array = colorContexts.Select(cc => cc.Object).ToArray();
-        frame.GetColorContexts((uint)colorContexts.Length, ref array, out _).ThrowOnError();
+        frame.GetColorContexts((uint)colorContexts.Length, array, out _).ThrowOnError();
         return colorContexts;
     }
 }

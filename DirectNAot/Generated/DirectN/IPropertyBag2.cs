@@ -6,7 +6,7 @@ public partial interface IPropertyBag2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(uint cProperties, [MarshalUsing(CountElementName = nameof(cProperties))] in PROPBAG2[] pPropBag, IErrorLog pErrLog, [MarshalUsing(CountElementName = nameof(cProperties))] ref VARIANT[] pvarValue, [MarshalUsing(CountElementName = nameof(cProperties))] ref HRESULT[] phrError);
+    HRESULT Read(uint cProperties, [MarshalUsing(CountElementName = nameof(cProperties))] in PROPBAG2[] pPropBag, IErrorLog pErrLog, [In][Out][MarshalUsing(CountElementName = nameof(cProperties))] VARIANT[] pvarValue, [In][Out][MarshalUsing(CountElementName = nameof(cProperties))] HRESULT[] phrError);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,7 +18,7 @@ public partial interface IPropertyBag2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropertyInfo(uint iProperty, uint cProperties, [MarshalUsing(CountElementName = nameof(cProperties))] ref PROPBAG2[] pPropBag, out uint pcProperties);
+    HRESULT GetPropertyInfo(uint iProperty, uint cProperties, [In][Out][MarshalUsing(CountElementName = nameof(cProperties))] PROPBAG2[] pPropBag, out uint pcProperties);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

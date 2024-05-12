@@ -18,7 +18,7 @@ public partial interface IDispatch
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-getidsofnames
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIDsOfNames(in Guid riid, [MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, uint lcid, [MarshalUsing(CountElementName = nameof(cNames))] ref int[] rgDispId);
+    HRESULT GetIDsOfNames(in Guid riid, [MarshalUsing(CountElementName = nameof(cNames))] in PWSTR[] rgszNames, uint cNames, uint lcid, [In][Out][MarshalUsing(CountElementName = nameof(cNames))] int[] rgDispId);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke
     [PreserveSig]

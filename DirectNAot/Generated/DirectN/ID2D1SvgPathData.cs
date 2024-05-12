@@ -18,7 +18,7 @@ public partial interface ID2D1SvgPathData : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpathdata-getsegmentdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSegmentData([MarshalUsing(CountElementName = nameof(dataCount))] ref float[] data, uint dataCount, uint startIndex);
+    HRESULT GetSegmentData([In][Out][MarshalUsing(CountElementName = nameof(dataCount))] float[] data, uint dataCount, uint startIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpathdata-getsegmentdatacount
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface ID2D1SvgPathData : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpathdata-getcommands
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCommands([MarshalUsing(CountElementName = nameof(commandsCount))] ref D2D1_SVG_PATH_COMMAND[] commands, uint commandsCount, uint startIndex);
+    HRESULT GetCommands([In][Out][MarshalUsing(CountElementName = nameof(commandsCount))] D2D1_SVG_PATH_COMMAND[] commands, uint commandsCount, uint startIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpathdata-getcommandscount
     [PreserveSig]

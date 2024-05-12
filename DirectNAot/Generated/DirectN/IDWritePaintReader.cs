@@ -34,9 +34,9 @@ public partial interface IDWritePaintReader
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, [MarshalUsing(CountElementName = nameof(gradientStopCount))] ref D2D1_GRADIENT_STOP[] gradientStops);
+    HRESULT GetGradientStops(uint firstGradientStopIndex, uint gradientStopCount, [In][Out][MarshalUsing(CountElementName = nameof(gradientStopCount))] D2D1_GRADIENT_STOP[] gradientStops);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, [MarshalUsing(CountElementName = nameof(gradientStopCount))] ref DWRITE_PAINT_COLOR[] gradientStopColors);
+    HRESULT GetGradientStopColors(uint firstGradientStopIndex, uint gradientStopCount, [In][Out][MarshalUsing(CountElementName = nameof(gradientStopCount))] DWRITE_PAINT_COLOR[] gradientStopColors);
 }

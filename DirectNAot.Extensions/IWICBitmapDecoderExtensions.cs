@@ -94,13 +94,13 @@ public static class IWICBitmapDecoderExtensions
     public static IComObject<IWICColorContext>[] GetColorContexts(this IWICBitmapDecoder decoder)
     {
         ArgumentNullException.ThrowIfNull(decoder);
-        decoder.GetColorContexts(0, ref Unsafe.NullRef<IWICColorContext[]>(), out var count);
+        decoder.GetColorContexts(0, null!, out var count);
         if (count == 0)
             return [];
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
         var array = colorContexts.Select(cc => cc.Object).ToArray();
-        decoder.GetColorContexts((uint)colorContexts.Length, ref array, out _).ThrowOnError();
+        decoder.GetColorContexts((uint)colorContexts.Length, array, out _).ThrowOnError();
         return colorContexts;
     }
 }

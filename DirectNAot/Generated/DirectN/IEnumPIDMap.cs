@@ -9,7 +9,7 @@ public partial interface IEnumPIDMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ienumpidmap-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cRequest, [MarshalUsing(CountElementName = nameof(cRequest))] ref PID_MAP[] pPIDMap, out uint pcReceived);
+    HRESULT Next(uint cRequest, [In][Out][MarshalUsing(CountElementName = nameof(cRequest))] PID_MAP[] pPIDMap, out uint pcReceived);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ienumpidmap-skip
     [PreserveSig]

@@ -18,7 +18,7 @@ public partial interface IVirtualSurfaceImageSourceNative : ISurfaceImageSourceN
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-getupdaterects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUpdateRects([MarshalUsing(CountElementName = nameof(count))] ref RECT[] updates, uint count);
+    HRESULT GetUpdateRects([In][Out][MarshalUsing(CountElementName = nameof(count))] RECT[] updates, uint count);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-getvisiblebounds
     [PreserveSig]

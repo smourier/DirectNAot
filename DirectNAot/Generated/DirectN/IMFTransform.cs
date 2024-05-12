@@ -19,7 +19,7 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getstreamids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamIDs(uint dwInputIDArraySize, [MarshalUsing(CountElementName = nameof(dwInputIDArraySize))] ref uint[] pdwInputIDs, uint dwOutputIDArraySize, [MarshalUsing(CountElementName = nameof(dwOutputIDArraySize))] ref uint[] pdwOutputIDs);
+    HRESULT GetStreamIDs(uint dwInputIDArraySize, [In][Out][MarshalUsing(CountElementName = nameof(dwInputIDArraySize))] uint[] pdwInputIDs, uint dwOutputIDArraySize, [In][Out][MarshalUsing(CountElementName = nameof(dwOutputIDArraySize))] uint[] pdwOutputIDs);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputstreaminfo
     [PreserveSig]
@@ -119,5 +119,5 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-processoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, [MarshalUsing(CountElementName = nameof(cOutputBufferCount))] ref MFT_OUTPUT_DATA_BUFFER[] pOutputSamples, out uint pdwStatus);
+    HRESULT ProcessOutput(uint dwFlags, uint cOutputBufferCount, [In][Out][MarshalUsing(CountElementName = nameof(cOutputBufferCount))] MFT_OUTPUT_DATA_BUFFER[] pOutputSamples, out uint pdwStatus);
 }

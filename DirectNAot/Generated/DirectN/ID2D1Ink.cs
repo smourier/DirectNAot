@@ -40,7 +40,7 @@ public partial interface ID2D1Ink : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-getsegments
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSegments(uint startSegment, [MarshalUsing(CountElementName = nameof(segmentsCount))] ref D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
+    HRESULT GetSegments(uint startSegment, [In][Out][MarshalUsing(CountElementName = nameof(segmentsCount))] D2D1_INK_BEZIER_SEGMENT[] segments, uint segmentsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1ink-streamasgeometry(id2d1inkstyle_constd2d1_matrix_3x2_f__float_id2d1simplifiedgeometrysink)
     [PreserveSig]

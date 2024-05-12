@@ -533,7 +533,7 @@ namespace DirectNAot.Extensions.Utilities
                 }
                 else
                 {
-                    Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), (nint)size);
+                    Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), size);
                 }
             }
             _inner.Anonymous.Anonymous.vt = vt | VARENUM.VT_VECTOR;

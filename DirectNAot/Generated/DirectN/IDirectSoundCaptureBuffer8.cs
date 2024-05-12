@@ -10,5 +10,5 @@ public partial interface IDirectSoundCaptureBuffer8 : IDirectSoundCaptureBuffer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFXStatus(uint dwEffectsCount, [MarshalUsing(CountElementName = nameof(dwEffectsCount))] ref uint[] pdwFXStatus);
+    HRESULT GetFXStatus(uint dwEffectsCount, [In][Out][MarshalUsing(CountElementName = nameof(dwEffectsCount))] uint[] pdwFXStatus);
 }

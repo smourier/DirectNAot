@@ -9,7 +9,7 @@ public partial interface IWICPlanarBitmapSourceTransform
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarbitmapsourcetransform-doessupporttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportTransform(ref uint puiWidth, ref uint puiHeight, WICBitmapTransformOptions dstTransform, WICPlanarOptions dstPlanarOptions, [MarshalUsing(CountElementName = nameof(cPlanes))] in Guid[] pguidDstFormats, [MarshalUsing(CountElementName = nameof(cPlanes))] ref WICBitmapPlaneDescription[] pPlaneDescriptions, uint cPlanes, [MarshalAs(UnmanagedType.U4)] out bool pfIsSupported);
+    HRESULT DoesSupportTransform(ref uint puiWidth, ref uint puiHeight, WICBitmapTransformOptions dstTransform, WICPlanarOptions dstPlanarOptions, [MarshalUsing(CountElementName = nameof(cPlanes))] in Guid[] pguidDstFormats, [In][Out][MarshalUsing(CountElementName = nameof(cPlanes))] WICBitmapPlaneDescription[] pPlaneDescriptions, uint cPlanes, [MarshalAs(UnmanagedType.U4)] out bool pfIsSupported);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarbitmapsourcetransform-copypixels
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IWICEnumMetadataItem
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] ref PROPVARIANT[] rgeltSchema, [MarshalUsing(CountElementName = nameof(celt))] ref PROPVARIANT[] rgeltId, [MarshalUsing(CountElementName = nameof(celt))] ref PROPVARIANT[] rgeltValue, out uint pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] PROPVARIANT[] rgeltSchema, [In][Out][MarshalUsing(CountElementName = nameof(celt))] PROPVARIANT[] rgeltId, [In][Out][MarshalUsing(CountElementName = nameof(celt))] PROPVARIANT[] rgeltValue, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-skip
     [PreserveSig]

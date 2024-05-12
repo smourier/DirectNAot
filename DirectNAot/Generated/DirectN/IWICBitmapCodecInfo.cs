@@ -14,7 +14,7 @@ public partial interface IWICBitmapCodecInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getpixelformats
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPixelFormats(uint cFormats, [MarshalUsing(CountElementName = nameof(cFormats))] ref Guid[] pguidPixelFormats, out uint pcActual);
+    HRESULT GetPixelFormats(uint cFormats, [In][Out][MarshalUsing(CountElementName = nameof(cFormats))] Guid[] pguidPixelFormats, out uint pcActual);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-getcolormanagementversion
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface ISBE2EnumStream
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2enumstream-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cRequest, [MarshalUsing(CountElementName = nameof(cRequest))] ref SBE2_STREAM_DESC[] pStreamDesc, out uint pcReceived);
+    HRESULT Next(uint cRequest, [In][Out][MarshalUsing(CountElementName = nameof(cRequest))] SBE2_STREAM_DESC[] pStreamDesc, out uint pcReceived);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2enumstream-skip
     [PreserveSig]

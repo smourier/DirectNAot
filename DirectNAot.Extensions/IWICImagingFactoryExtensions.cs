@@ -201,7 +201,8 @@ public static class IWICImagingFactoryExtensions
         var sw = new StrategyBasedComWrappers();
         do
         {
-            if (!enumerator.Object.Next(1, out var array, 0).IsOk)
+            var array = new nint[1];
+            if (!enumerator.Object.Next(1, array, 0).IsOk)
                 break;
 
             var obj = sw.GetOrCreateObjectForComInstance(array[0], CreateObjectFlags.UniqueInstance);

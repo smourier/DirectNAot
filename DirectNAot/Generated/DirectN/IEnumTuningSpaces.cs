@@ -9,7 +9,7 @@ public partial interface IEnumTuningSpaces
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumtuningspaces-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out ITuningSpace[] rgelt, out uint pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] ITuningSpace[] rgelt, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumtuningspaces-skip
     [PreserveSig]

@@ -17,5 +17,5 @@ public partial interface IDWriteFontFaceReference1 : IDWriteFontFaceReference
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference1-getfontaxisvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontAxisValues([MarshalUsing(CountElementName = nameof(fontAxisValueCount))] ref DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
+    HRESULT GetFontAxisValues([In][Out][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount);
 }

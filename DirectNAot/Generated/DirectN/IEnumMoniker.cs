@@ -9,7 +9,7 @@ public partial interface IEnumMoniker
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienummoniker-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out IMoniker[] rgelt, nint /* optional uint* */ pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] IMoniker[] rgelt, nint /* optional uint* */ pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienummoniker-skip
     [PreserveSig]

@@ -23,7 +23,7 @@ public static class IPropertyBag2Extensions
             var props = new PROPBAG2[1];
             using var name = new Pwstr(kv.Key);
             props[0].pstrName = name;
-            bag.GetPropertyInfo((uint)i, 1, ref props, out _).ThrowOnError();
+            bag.GetPropertyInfo((uint)i, 1, props, out _).ThrowOnError();
 
             var value = props[0].vt.ChangeType(kv.Value);
             using var v = new Variant(value);
@@ -43,7 +43,7 @@ public static class IPropertyBag2Extensions
             var props = new PROPBAG2[1];
             using var p = new Pwstr(name);
             props[0].pstrName = p;
-            bag.GetPropertyInfo((uint)i, 1, ref props, out _).ThrowOnError();
+            bag.GetPropertyInfo((uint)i, 1, props, out _).ThrowOnError();
             if (props[0].pstrName.ToString().EqualsIgnoreCase(name))
                 return i;
         }

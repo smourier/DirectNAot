@@ -9,7 +9,7 @@ public partial interface IEnumConnectionPoints
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-ienumconnectionpoints-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cConnections, [MarshalUsing(CountElementName = nameof(cConnections))] out IConnectionPoint[] ppCP, out uint pcFetched);
+    HRESULT Next(uint cConnections, [In][Out][MarshalUsing(CountElementName = nameof(cConnections))] IConnectionPoint[] ppCP, out uint pcFetched);
     
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-ienumconnectionpoints-skip
     [PreserveSig]

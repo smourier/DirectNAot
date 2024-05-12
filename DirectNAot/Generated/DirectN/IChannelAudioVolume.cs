@@ -29,5 +29,5 @@ public partial interface IChannelAudioVolume
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-ichannelaudiovolume-getallvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllVolumes(uint dwCount, [MarshalUsing(CountElementName = nameof(dwCount))] ref float[] pfVolumes);
+    HRESULT GetAllVolumes(uint dwCount, [In][Out][MarshalUsing(CountElementName = nameof(dwCount))] float[] pfVolumes);
 }

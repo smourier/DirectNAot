@@ -19,7 +19,7 @@ public partial interface IAudioMeterInformation
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudiometerinformation-getchannelspeakvalues
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetChannelsPeakValues(uint u32ChannelCount, [MarshalUsing(CountElementName = nameof(u32ChannelCount))] ref float[] afPeakValues);
+    HRESULT GetChannelsPeakValues(uint u32ChannelCount, [In][Out][MarshalUsing(CountElementName = nameof(u32ChannelCount))] float[] afPeakValues);
     
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudiometerinformation-queryhardwaresupport
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface IMDSPEnumStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspenumstorage-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [MarshalUsing(CountElementName = nameof(celt))] out IMDSPStorage[] ppStorage, out uint pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] IMDSPStorage[] ppStorage, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspenumstorage-skip
     [PreserveSig]

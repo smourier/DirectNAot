@@ -44,7 +44,7 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getcolorcontexts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColorContexts(uint cCount, [MarshalUsing(CountElementName = nameof(cCount))] ref IWICColorContext[] ppIColorContexts, out uint pcActualCount);
+    HRESULT GetColorContexts(uint cCount, [In][Out][MarshalUsing(CountElementName = nameof(cCount))] IWICColorContext[] ppIColorContexts, out uint pcActualCount);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getthumbnail
     [PreserveSig]

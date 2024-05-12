@@ -8,7 +8,7 @@ public partial interface ID2D1GradientStopCollection1 : ID2D1GradientStopCollect
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gradientstopcollection1-getgradientstops1
     [PreserveSig]
-    void GetGradientStops1([MarshalUsing(CountElementName = nameof(gradientStopsCount))] ref D2D1_GRADIENT_STOP[] gradientStops, uint gradientStopsCount);
+    void GetGradientStops1([In][Out][MarshalUsing(CountElementName = nameof(gradientStopsCount))] D2D1_GRADIENT_STOP[] gradientStops, uint gradientStopsCount);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gradientstopcollection1-getpreinterpolationspace
     [PreserveSig]

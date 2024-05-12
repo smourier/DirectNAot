@@ -13,12 +13,12 @@ public partial interface IDXGIDevice : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-createsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurface(in DXGI_SURFACE_DESC pDesc, uint NumSurfaces, DXGI_USAGE Usage, nint /* optional DXGI_SHARED_RESOURCE* */ pSharedResource, [MarshalUsing(CountElementName = nameof(NumSurfaces))] out IDXGISurface[] ppSurface);
+    HRESULT CreateSurface(in DXGI_SURFACE_DESC pDesc, uint NumSurfaces, DXGI_USAGE Usage, nint /* optional DXGI_SHARED_RESOURCE* */ pSharedResource, [In][Out][MarshalUsing(CountElementName = nameof(NumSurfaces))] IDXGISurface[] ppSurface);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-queryresourceresidency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryResourceResidency([In][Out][MarshalUsing(CountElementName = nameof(NumResources))] nint[] ppResources, [MarshalUsing(CountElementName = nameof(NumResources))] ref DXGI_RESIDENCY[] pResidencyStatus, uint NumResources);
+    HRESULT QueryResourceResidency([In][Out][MarshalUsing(CountElementName = nameof(NumResources))] nint[] ppResources, [In][Out][MarshalUsing(CountElementName = nameof(NumResources))] DXGI_RESIDENCY[] pResidencyStatus, uint NumResources);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-setgputhreadpriority
     [PreserveSig]

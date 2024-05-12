@@ -29,5 +29,5 @@ public partial interface IMFAudioStreamVolume
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfaudiostreamvolume-getallvolumes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllVolumes(uint dwCount, [MarshalUsing(CountElementName = nameof(dwCount))] ref float[] pfVolumes);
+    HRESULT GetAllVolumes(uint dwCount, [In][Out][MarshalUsing(CountElementName = nameof(dwCount))] float[] pfVolumes);
 }
