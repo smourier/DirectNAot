@@ -11,6 +11,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Generated\**" />
+	  <EmbeddedResource Remove="Generated\**" />
+	  <None Remove="Generated\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Include="..\DirectNAot\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
 	</ItemGroup>
 
@@ -24,10 +30,6 @@
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
 		<Using Include="System.Runtime.InteropServices.Marshalling" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Generated\" />
 	</ItemGroup>
 
 </Project>
