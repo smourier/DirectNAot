@@ -29,11 +29,25 @@ namespace DirectNAot.Extensions.Utilities
                 return;
             }
 
-            value = PropVariant.Unwrap(value);
+            value = Unwrap(value);
+
+            if (value is nint ptr)
+            {
+                _inner.Anonymous.Anonymous.Anonymous.punkVal = ptr;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+                return;
+            }
+
+            if (value is nuint uptr)
+            {
+                _inner.Anonymous.Anonymous.Anonymous.punkVal = (nint)uptr;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+                return;
+            }
 
             if (value is ComObject co)
             {
-                var sw = new StrategyBasedComWrappers();
+                var sw = Com.ComObject.ComWrappers;
                 _inner.Anonymous.Anonymous.Anonymous.punkVal = sw.GetOrCreateComInterfaceForObject(co, CreateComInterfaceFlags.None);
                 _inner.Anonymous.Anonymous.vt = VARENUM.VT_UNKNOWN;
                 return;
@@ -264,7 +278,7 @@ namespace DirectNAot.Extensions.Utilities
 
                     case VARENUM.VT_UNKNOWN:
                     case VARENUM.VT_DISPATCH:
-                        var sw = new StrategyBasedComWrappers();
+                        var sw = Com.ComObject.ComWrappers;
                         return sw.GetOrCreateObjectForComInstance(_inner.Anonymous.Anonymous.Anonymous.punkVal, CreateObjectFlags.UniqueInstance);
 
                     case VARENUM.VT_DECIMAL:
@@ -335,6 +349,8 @@ namespace DirectNAot.Extensions.Utilities
             }
             return pv;
         }
+
+        public static object? Unwrap(object? value) => PropVariant.Unwrap(value);
 
         public override string ToString()
         {

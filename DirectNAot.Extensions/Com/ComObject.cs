@@ -4,6 +4,8 @@ namespace DirectNAot.Extensions.Com
 {
     public abstract class ComObject : IComObject
     {
+        public static ComWrappers ComWrappers { get; } = new StrategyBasedComWrappers();
+
         private System.Runtime.InteropServices.Marshalling.ComObject? _comObject;
         private readonly bool _releaseOnDispose;
 

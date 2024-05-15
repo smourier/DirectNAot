@@ -20,17 +20,31 @@ namespace DirectNAot.Extensions.Utilities
         {
             if (value == null)
             {
-                _inner.Anonymous.Anonymous.vt = VARENUM.VT_NULL;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_NULL;
                 return;
             }
 
             value = Unwrap(value);
 
+            if (value is nint ptr)
+            {
+                _inner.Anonymous.Anonymous.Anonymous.punkVal = ptr;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+                return;
+            }
+
+            if (value is nuint uptr)
+            {
+                _inner.Anonymous.Anonymous.Anonymous.punkVal = (nint)uptr;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+                return;
+            }
+
             if (value is ComObject co)
             {
-                var sw = new StrategyBasedComWrappers();
+                var sw = Com.ComObject.ComWrappers;
                 _inner.Anonymous.Anonymous.Anonymous.punkVal = sw.GetOrCreateComInterfaceForObject(co, CreateComInterfaceFlags.None);
-                _inner.Anonymous.Anonymous.vt = VARENUM.VT_UNKNOWN;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
                 return;
             }
 
@@ -63,7 +77,7 @@ namespace DirectNAot.Extensions.Utilities
 
             if (value == null)
             {
-                _inner.Anonymous.Anonymous.vt = VARENUM.VT_NULL;
+                _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_NULL;
                 return;
             }
 
@@ -278,7 +292,7 @@ namespace DirectNAot.Extensions.Utilities
 
                     case VARENUM.VT_UNKNOWN:
                     case VARENUM.VT_DISPATCH:
-                        var sw = new StrategyBasedComWrappers();
+                        var sw = Com.ComObject.ComWrappers;
                         return sw.GetOrCreateObjectForComInstance(_inner.Anonymous.Anonymous.Anonymous.punkVal, CreateObjectFlags.UniqueInstance);
 
                     case VARENUM.VT_DECIMAL:
@@ -816,7 +830,7 @@ namespace DirectNAot.Extensions.Utilities
             }
         }
 
-        internal static string? PtrTostring(nint ptr, VARENUM vt)
+        public static string? PtrTostring(nint ptr, VARENUM vt)
         {
             if (ptr == 0)
                 return null;
@@ -837,29 +851,32 @@ namespace DirectNAot.Extensions.Utilities
             }
         }
 
-        internal static nint MarshalString(string? str, VARENUM vt)
+        public static nint MarshalString(string? text, VARENUM vt)
         {
-            if (str == null)
+            if (text == null)
                 return 0;
 
             switch (vt)
             {
                 case VARENUM.VT_LPWSTR:
-                    return Marshal.StringToCoTaskMemUni(str);
+                    return Marshal.StringToCoTaskMemUni(text);
 
                 case VARENUM.VT_BSTR:
-                    return Marshal.StringToBSTR(str);
+                    return Marshal.StringToBSTR(text);
 
                 case VARENUM.VT_LPSTR:
-                    return Marshal.StringToCoTaskMemAnsi(str);
+                    return Marshal.StringToCoTaskMemAnsi(text);
 
                 default:
                     throw new NotSupportedException("A string can only be of property type VT_LPWSTR, VT_LPSTR or VT_BSTR.");
             }
         }
 
-        internal static object? Unwrap(object? value)
+        public static object? Unwrap(object? value)
         {
+            if (value is Com.IComObject co)
+                return Unwrap(co.Object);
+
             if (value is Variant variant)
                 return Unwrap(variant.Value);
 

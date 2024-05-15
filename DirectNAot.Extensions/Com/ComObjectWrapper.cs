@@ -1,6 +1,6 @@
 ﻿namespace DirectNAot.Extensions.Com
 {
-    public sealed class ComObjectWrapper<T> : IDisposable
+    public sealed class ComObjectWrapper<T> : IComObject, IDisposable
     {
         private readonly IComObject<T> _cot;
 
@@ -40,6 +40,10 @@
 
         public T Object => _cot.Object;
         public IComObject<T> ComObject => _cot;
+
+        bool IComObject.IsDisposed => _cot.IsDisposed;
+        System.Runtime.InteropServices.Marshalling.ComObject IComObject.Object => (Object as System.Runtime.InteropServices.Marshalling.ComObject)!;
+        Type IComObject.InterfaceType => typeof(T);
 
         public void Dispose()
         {
