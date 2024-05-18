@@ -3093,6 +3093,12 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetModuleHandleExW(uint dwFlags, PWSTR lpModuleName, out HMODULE phModule);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HMODULE GetModuleHandleW(PWSTR lpModuleName);
+    
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorbrightness
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -8549,6 +8555,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial int ShellAboutW(HWND hWnd, PWSTR szApp, PWSTR szOtherStuff, HICON hIcon);
     
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetpropertystoreforwindow
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    public static partial HRESULT SHGetPropertyStoreForWindow(HWND hwnd, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<object>))] out object /* void */ ppv);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-showwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -9321,6 +9333,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT WICSerializeMetadataContent(in Guid guidContainerFormat, IWICMetadataWriter pIWriter, uint dwPersistOptions, IStream pIStream);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfrompoint
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND WindowFromPoint(POINT Point);
     
     // https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscomparestringordinal
     [LibraryImport("api-ms-win-core-winrt-string-l1-1-0")]

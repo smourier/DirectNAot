@@ -5,26 +5,19 @@ public class Pwstr : IDisposable
 {
     public nint Value;
 
+    protected Pwstr() { }
+
     public Pwstr(nint value)
     {
         Value = value;
-    }
-
-    public Pwstr(int sizeInBytes)
-    {
-        ArgumentOutOfRangeException.ThrowIfNegative(sizeInBytes);
-        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem(sizeInBytes) : 0;
-    }
-
-    public Pwstr(uint sizeInBytes)
-    {
-        Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem((int)sizeInBytes) : 0;
     }
 
     public Pwstr(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
     }
+
+    public int? Length => ToString()?.Length;
 
     public override string? ToString() => Marshal.PtrToStringUni(Value)!;
 

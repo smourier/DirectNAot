@@ -1,9 +1,10 @@
 ﻿namespace DirectNAot.Extensions.Utilities;
 
-[StructLayout(LayoutKind.Sequential)]
 public class Pstr : IDisposable
 {
     public nint Value;
+
+    protected Pstr() { }
 
     public Pstr(nint value)
     {

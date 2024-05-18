@@ -479,7 +479,7 @@ public sealed class ColorProfile
         if (size == 0)
             return null;
 
-        using var buffer = new Pwstr(size);
+        using var buffer = new AllocPwstr(size);
         Functions.GetColorDirectoryW(name, buffer, ref size);
         return buffer.ToString();
     }
@@ -489,7 +489,7 @@ public sealed class ColorProfile
         const int sRGB = 0x73524742; //  'sRGB'
         uint size = 0;
         Functions.GetStandardColorSpaceProfileW(PWSTR.Null, sRGB, PWSTR.Null, ref size);
-        using var buffer = new Pwstr(size);
+        using var buffer = new AllocPwstr(size);
         Functions.GetStandardColorSpaceProfileW(PWSTR.Null, sRGB, buffer, ref size);
         var s = buffer.ToString();
         if (string.IsNullOrWhiteSpace(s))

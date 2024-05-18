@@ -1,4 +1,6 @@
-﻿namespace DirectNAot.Extensions.Utilities;
+﻿using System.Security.Cryptography;
+
+namespace DirectNAot.Extensions.Utilities;
 
 public static class Extensions
 {
@@ -37,6 +39,51 @@ public static class Extensions
     // we don't want unspecified datetimes
     public static bool IsValid(this DateTime dt) => dt != DateTime.MinValue && dt != DateTime.MaxValue && dt.Kind != DateTimeKind.Unspecified;
     public static bool IsValid(this DateTime? dt) => dt.HasValue && IsValid(dt.Value);
+
+    public static Guid ComputeGuidHash(this string? text)
+    {
+        if (text == null)
+            return Guid.Empty;
+
+        return new Guid(MD5.HashData(Encoding.UTF8.GetBytes(text)));
+    }
+
+    public static string? GetAllMessages(this Exception? exception) => GetAllMessages(exception, Environment.NewLine);
+    public static string? GetAllMessages(this Exception? exception, string separator)
+    {
+        if (exception == null)
+            return null;
+
+        var sb = new StringBuilder();
+        AppendMessages(sb, exception, separator);
+        return sb.ToString().Replace("..", ".");
+    }
+
+    private static void AppendMessages(StringBuilder sb, Exception? e, string separator)
+    {
+        if (e == null)
+            return;
+
+        // this one is not interesting...
+        if (e is not TargetInvocationException)
+        {
+            if (sb.Length > 0)
+            {
+                sb.Append(separator);
+            }
+            sb.Append(e.Message);
+        }
+        AppendMessages(sb, e.InnerException, separator);
+    }
+
+    public static string? GetInterestingExceptionMessage(this Exception? exception) => GetInterestingException(exception)?.Message;
+    public static Exception? GetInterestingException(this Exception? exception)
+    {
+        if (exception is TargetInvocationException tie && tie.InnerException != null)
+            return GetInterestingException(tie.InnerException);
+
+        return exception;
+    }
 
     public static DateTimeOffset ToDateTimeOffset(this FILETIME fileTime)
     {

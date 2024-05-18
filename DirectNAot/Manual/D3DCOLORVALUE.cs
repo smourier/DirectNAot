@@ -213,6 +213,8 @@ public partial struct D3DCOLORVALUE : IEquatable<D3DCOLORVALUE>
     public static bool operator !=(D3DCOLORVALUE left, D2D_VECTOR_4F right) => !left.Equals(right);
     public static implicit operator D2D_VECTOR_4F(D3DCOLORVALUE c) => new(c.r, c.g, c.b, c.a);
     public static implicit operator D3DCOLORVALUE(D2D_VECTOR_4F vc) => new(vc.x, vc.y, vc.z, vc.w);
+    public static implicit operator D3DCOLORVALUE(uint ui) => new(ui);
+    public static implicit operator D3DCOLORVALUE(int i) => new(i);
 
     private static float ByteToSingle(byte value) => value / 255f;
     private static byte SingleToByte(float value) => (byte)(value * 255);

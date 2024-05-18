@@ -629,7 +629,12 @@ public static partial class Constants
     // d3dhal.h
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT D3DERR_COMMAND_UNPARSED = unchecked((int)0x88760BB8);
 
-
+    // from <Windows SDK Path>\um\winuser.rh
+    public const int WHEEL_DELTA = 120;
+    public const int ICON_BIG = 1;
+    public const int ICON_SMALL = 0;
+    public const int ICON_SMALL2 = 2;
+    public const int CW_USEDEFAULT = unchecked((int)0x80000000);
     public const int MONITORINFOF_PRIMARY = 0x00000001;
 
     public const string IID_UnknownString = "00000000-0000-0000-C000-000000000046";

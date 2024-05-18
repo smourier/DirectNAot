@@ -27,11 +27,11 @@
   // types that we want to include or exclude
   "TypeInputs": [
     "Windows.Win32.Devices.Display",
+    "Windows.Win32.Graphics.Dwm*",
     "Windows.Win32.Graphics*",
     "!Windows.Win32.Graphics.Gdi*",
     "!Windows.Win32.Graphics.GdiPlus*",
     "!Windows.Win32.Graphics.Printing*",
-    "Windows.Win32.Graphics.Dwm*",
     "Windows.Win32.Storage.Xps*",
     "Windows.Win32.Media*",
     "Windows.Win32.System.WinRT.Composition",
@@ -51,6 +51,10 @@
     "STGC",
     "STGTY",
     "MONITORINFOEXW",
+    "VIRTUAL_KEY",
+    "MODIFIERKEYS_FLAGS",
+    "TITLEBARINFOEX",
+    "Windows.Win32.Graphics.Gdi.BITMAP",
     "-!D2D_MATRIX_*",
     "-D3DCOLORVALUE",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
@@ -110,6 +114,7 @@
     "GetIconInfo",
     "GetMessageW",
     "GetMessagePos",
+    "GetModuleHandleW",
     "GetModuleHandleExW",
     "GetMonitorInfoW",
     "GetObjectW",
@@ -194,6 +199,7 @@
     "SetWindowTextW",
     "ShellAboutW",
     "ShowWindow",
+    "SHGetPropertyStoreForWindow",
     "SkipPointerFrameMessages",
     "StgDeserializePropVariant",
     "StgSerializePropVariant",
@@ -209,6 +215,7 @@
     "VariantCopy",
     "VariantInit",
     "VariantToPropVariant",
-    "WinRTPropertyValueToPropVariant"
+    "WinRTPropertyValueToPropVariant",
+    "WindowFromPoint"
   ]
 }
