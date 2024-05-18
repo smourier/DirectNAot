@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-
-namespace DirectNAot.Extensions.Utilities
+﻿namespace DirectNAot.Extensions.Utilities
 {
     // note this class considers dpix = dpiy
     public static class DpiUtilities

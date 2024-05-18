@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public sealed class VerticalBlankTickerEventArgs : CancelEventArgs
 {

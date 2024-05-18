@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace DirectN;
+﻿namespace DirectN;
 
 public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
 {

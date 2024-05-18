@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public sealed class ColorProfile
 {

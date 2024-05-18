@@ -1,8 +1,4 @@
-﻿using System.Collections.Concurrent;
-using System.ComponentModel;
-using System.Reflection;
-
-namespace DirectN;
+﻿namespace DirectN;
 
 public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
 {

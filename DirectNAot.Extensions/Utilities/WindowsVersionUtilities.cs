@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public static partial class WindowsVersionUtilities
 {

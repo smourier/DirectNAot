@@ -1,9 +1,4 @@
-﻿using System.Collections.Concurrent;
-using System.ComponentModel;
-using System.Globalization;
-using System.Reflection;
-
-namespace DirectN;
+﻿namespace DirectN;
 
 [TypeConverter(typeof(D3DCOLORVALUEConverter))]
 [StructLayout(LayoutKind.Sequential)]

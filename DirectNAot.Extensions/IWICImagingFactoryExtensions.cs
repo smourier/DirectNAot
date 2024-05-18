@@ -1,7 +1,4 @@
-﻿using DirectNAot.Extensions.Com;
-using DirectNAot.Extensions.Utilities;
-
-namespace DirectNAot.Extensions;
+﻿namespace DirectNAot.Extensions;
 
 public static class IWICImagingFactoryExtensions
 {

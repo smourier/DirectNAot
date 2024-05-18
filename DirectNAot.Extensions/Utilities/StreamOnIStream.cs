@@ -1,6 +1,4 @@
-﻿using DirectNAot.Extensions.Com;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public class StreamOnIStream(IStream stream, bool releaseOnDispose = false) : Stream
 {

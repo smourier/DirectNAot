@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Globalization;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public static class Extensions
 {

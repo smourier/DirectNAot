@@ -1,6 +1,4 @@
-﻿using DirectNAot.Extensions.Com;
-
-namespace DirectNAot.Extensions;
+﻿namespace DirectNAot.Extensions;
 
 public static class IWICBitmapEncoderExtensions
 {

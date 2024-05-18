@@ -20,7 +20,12 @@
 
 	<ItemGroup>
 		<Using Include="DirectN" />
-		<Using Include="System" />
+		<Using Include="System.Collections.Concurrent" />
+		<Using Include="System.ComponentModel" />
+		<Using Include="System.Diagnostics.CodeAnalysis" />
+		<Using Include="System.Globalization" />
+		<Using Include="System.Numerics" />
+		<Using Include="System.Reflection" />
 		<Using Include="System.Runtime.Versioning" />
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />

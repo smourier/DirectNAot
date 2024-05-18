@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace DirectNAot.Extensions.Utilities
+﻿namespace DirectNAot.Extensions.Utilities
 {
     public sealed class Variant : IDisposable
     {
@@ -45,7 +43,7 @@ namespace DirectNAot.Extensions.Utilities
                 return;
             }
 
-            if (value is ComObject co)
+            if (value is System.Runtime.InteropServices.Marshalling.ComObject co)
             {
                 var sw = Com.ComObject.ComWrappers;
                 _inner.Anonymous.Anonymous.Anonymous.punkVal = sw.GetOrCreateComInterfaceForObject(co, CreateComInterfaceFlags.None);

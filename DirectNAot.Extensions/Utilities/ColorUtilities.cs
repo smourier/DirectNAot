@@ -1,6 +1,4 @@
-﻿using System.Collections.Concurrent;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public static partial class ColorUtilities
 {

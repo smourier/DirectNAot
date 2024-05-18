@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Globalization;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 [TypeConverter(typeof(CursorConverter))]
 public class Cursor : IEquatable<Cursor>

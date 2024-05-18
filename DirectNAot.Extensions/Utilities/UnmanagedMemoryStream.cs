@@ -1,6 +1,4 @@
-﻿using DirectNAot.Extensions.Com;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 [GeneratedComClass]
 public sealed partial class UnmanagedMemoryStream : Stream, IStream

@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Text;
-
-namespace DirectNAot.Extensions.Utilities;
+﻿namespace DirectNAot.Extensions.Utilities;
 
 public static class Conversions
 {

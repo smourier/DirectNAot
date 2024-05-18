@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-#if DEBUG
+﻿#if DEBUG
 [assembly: AssemblyConfiguration("DEBUG")]
 #else
 [assembly: AssemblyConfiguration("RELEASE")]
