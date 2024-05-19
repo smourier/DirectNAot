@@ -1,5 +1,5 @@
 # DirectNAot
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Only for x64 targets (doesn't mean it won't work for x32 targets, but it's not designed for it when there are ambiguities) . Only for .NET Core 8 and beyond.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Only for x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types) . Only for .NET Core 8 and beyond.
 
 This is a work in progress. If you want to discuss how and where this is going, just create an issue.
 
