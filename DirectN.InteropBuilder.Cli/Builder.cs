@@ -8,8 +8,8 @@ namespace DirectN.InteropBuilder.Cli
     public partial class Builder : Win32InteropBuilder.Builder
     {
         public const string Namespace = "DirectN";
-        public const string ProjectName = "DirectNAot";
-        public const string ExtensionsProjectName = "DirectNAot.Extensions";
+        public const string ProjectName = "DirectN";
+        public const string ExtensionsProjectName = "DirectN.Extensions";
 
         public override BuilderContext CreateBuilderContext(BuilderConfiguration configuration, IGenerator language)
         {

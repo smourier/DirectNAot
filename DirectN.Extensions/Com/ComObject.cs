@@ -33,8 +33,8 @@ public abstract class ComObject : IComObject
 
     public static object? Unwrap(object? obj)
     {
-        if (obj is ComObject unko)
-            return unko.Object;
+        if (obj is IComObject ico)
+            return ico.Object;
 
         return obj;
     }
@@ -44,7 +44,10 @@ public abstract class ComObject : IComObject
         if (obj == null)
             return default;
 
-        if (obj is ComObject unko)
+        if (obj is IComObject<T> ico)
+            return ico.Object;
+
+        if (obj is IComObject unko)
         {
             if (unko.Object is T t1)
                 return t1;

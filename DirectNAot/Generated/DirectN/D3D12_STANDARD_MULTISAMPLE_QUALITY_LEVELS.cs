@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum D3D12_STANDARD_MULTISAMPLE_QUALITY_LEVELS
-{
-    D3D12_STANDARD_MULTISAMPLE_PATTERN = -1,
-    D3D12_CENTER_MULTISAMPLE_PATTERN = -2,
-}

@@ -1,9 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum DIRECTSOUNDDEVICE_TYPE
-{
-    DIRECTSOUNDDEVICE_TYPE_EMULATED = 0,
-    DIRECTSOUNDDEVICE_TYPE_VXD = 1,
-    DIRECTSOUNDDEVICE_TYPE_WDM = 2,
-}

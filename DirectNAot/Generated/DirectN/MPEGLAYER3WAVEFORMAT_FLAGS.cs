@@ -1,9 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum MPEGLAYER3WAVEFORMAT_FLAGS : uint
-{
-    MPEGLAYER3_FLAG_PADDING_ISO = 0,
-    MPEGLAYER3_FLAG_PADDING_ON = 1,
-    MPEGLAYER3_FLAG_PADDING_OFF = 2,
-}

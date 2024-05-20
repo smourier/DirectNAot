@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum KSPROPERTY_VIDCAP_SELECTOR
-{
-    KSPROPERTY_SELECTOR_SOURCE_NODE_ID = 0,
-    KSPROPERTY_SELECTOR_NUM_SOURCES = 1,
-}
