@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSPROPERTY_TOPOLOGYNODE
+{
+    KSPROPERTY_TOPOLOGYNODE_ENABLE = 1,
+    KSPROPERTY_TOPOLOGYNODE_RESET = 2,
+}

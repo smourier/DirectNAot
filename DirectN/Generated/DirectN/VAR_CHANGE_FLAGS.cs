@@ -1,0 +1,15 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum VAR_CHANGE_FLAGS : ushort
+{
+    VARIANT_NOVALUEPROP = 1,
+    VARIANT_ALPHABOOL = 2,
+    VARIANT_NOUSEROVERRIDE = 4,
+    VARIANT_CALENDAR_HIJRI = 8,
+    VARIANT_LOCALBOOL = 16,
+    VARIANT_CALENDAR_THAI = 32,
+    VARIANT_CALENDAR_GREGORIAN = 64,
+    VARIANT_USE_NLS = 128,
+}

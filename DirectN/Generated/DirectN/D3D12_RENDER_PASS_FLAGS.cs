@@ -1,0 +1,14 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_render_pass_flags
+[Flags]
+public enum D3D12_RENDER_PASS_FLAGS
+{
+    D3D12_RENDER_PASS_FLAG_NONE = 0,
+    D3D12_RENDER_PASS_FLAG_ALLOW_UAV_WRITES = 1,
+    D3D12_RENDER_PASS_FLAG_SUSPENDING_PASS = 2,
+    D3D12_RENDER_PASS_FLAG_RESUMING_PASS = 4,
+    D3D12_RENDER_PASS_FLAG_BIND_READ_ONLY_DEPTH = 8,
+    D3D12_RENDER_PASS_FLAG_BIND_READ_ONLY_STENCIL = 16,
+}

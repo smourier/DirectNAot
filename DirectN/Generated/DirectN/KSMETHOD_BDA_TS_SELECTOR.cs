@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSMETHOD_BDA_TS_SELECTOR
+{
+    KSMETHOD_BDA_TS_SELECTOR_SETTSID = 0,
+    KSMETHOD_BDA_TS_SELECTOR_GETTSINFORMATION = 1,
+}

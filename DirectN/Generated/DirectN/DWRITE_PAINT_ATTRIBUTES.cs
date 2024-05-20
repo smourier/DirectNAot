@@ -1,0 +1,10 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum DWRITE_PAINT_ATTRIBUTES
+{
+    DWRITE_PAINT_ATTRIBUTES_NONE = 0,
+    DWRITE_PAINT_ATTRIBUTES_USES_PALETTE = 1,
+    DWRITE_PAINT_ATTRIBUTES_USES_TEXT_COLOR = 2,
+}

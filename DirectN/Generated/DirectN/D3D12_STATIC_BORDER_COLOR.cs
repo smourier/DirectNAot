@@ -1,0 +1,12 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_static_border_color
+public enum D3D12_STATIC_BORDER_COLOR
+{
+    D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK = 0,
+    D3D12_STATIC_BORDER_COLOR_OPAQUE_BLACK = 1,
+    D3D12_STATIC_BORDER_COLOR_OPAQUE_WHITE = 2,
+    D3D12_STATIC_BORDER_COLOR_OPAQUE_BLACK_UINT = 3,
+    D3D12_STATIC_BORDER_COLOR_OPAQUE_WHITE_UINT = 4,
+}

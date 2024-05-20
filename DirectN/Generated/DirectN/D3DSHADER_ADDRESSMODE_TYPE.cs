@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum D3DSHADER_ADDRESSMODE_TYPE
+{
+    D3DSHADER_ADDRMODE_ABSOLUTE = 0,
+    D3DSHADER_ADDRMODE_RELATIVE = 8192,
+}

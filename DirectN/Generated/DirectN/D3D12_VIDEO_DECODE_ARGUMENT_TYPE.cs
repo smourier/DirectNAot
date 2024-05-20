@@ -1,0 +1,11 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ne-d3d12video-d3d12_video_decode_argument_type
+public enum D3D12_VIDEO_DECODE_ARGUMENT_TYPE
+{
+    D3D12_VIDEO_DECODE_ARGUMENT_TYPE_PICTURE_PARAMETERS = 0,
+    D3D12_VIDEO_DECODE_ARGUMENT_TYPE_INVERSE_QUANTIZATION_MATRIX = 1,
+    D3D12_VIDEO_DECODE_ARGUMENT_TYPE_SLICE_CONTROL = 2,
+    D3D12_VIDEO_DECODE_ARGUMENT_TYPE_HUFFMAN_TABLE = 3,
+}

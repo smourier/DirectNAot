@@ -1,0 +1,7 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSPROPERTY_AUDIOSIGNALPROCESSING
+{
+    KSPROPERTY_AUDIOSIGNALPROCESSING_MODES = 0,
+}

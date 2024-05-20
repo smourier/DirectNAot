@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum _AMSTREAMSELECTENABLEFLAGS
+{
+    AMSTREAMSELECTENABLE_ENABLE = 1,
+    AMSTREAMSELECTENABLE_ENABLEALL = 2,
+}

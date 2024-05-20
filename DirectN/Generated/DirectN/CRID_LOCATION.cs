@@ -1,0 +1,10 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum CRID_LOCATION
+{
+    CRID_LOCATION_IN_DESCRIPTOR = 0,
+    CRID_LOCATION_IN_CIT = 1,
+    CRID_LOCATION_DVB_RESERVED1 = 2,
+    CRID_LOCATION_DVB_RESERVED2 = 3,
+}

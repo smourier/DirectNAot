@@ -1,0 +1,7 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSPROPERTY_AUDIORESOURCEMANAGEMENT
+{
+    KSPROPERTY_AUDIORESOURCEMANAGEMENT_RESOURCEGROUP = 0,
+}

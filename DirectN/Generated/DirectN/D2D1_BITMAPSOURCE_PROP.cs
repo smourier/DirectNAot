@@ -1,0 +1,13 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d2d1effects/ne-d2d1effects-d2d1_bitmapsource_prop
+public enum D2D1_BITMAPSOURCE_PROP
+{
+    D2D1_BITMAPSOURCE_PROP_WIC_BITMAP_SOURCE = 0,
+    D2D1_BITMAPSOURCE_PROP_SCALE = 1,
+    D2D1_BITMAPSOURCE_PROP_INTERPOLATION_MODE = 2,
+    D2D1_BITMAPSOURCE_PROP_ENABLE_DPI_CORRECTION = 3,
+    D2D1_BITMAPSOURCE_PROP_ALPHA_MODE = 4,
+    D2D1_BITMAPSOURCE_PROP_ORIENTATION = 5,
+}

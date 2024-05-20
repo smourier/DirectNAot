@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum D3DANTIALIASMODE
+{
+    D3DANTIALIAS_NONE = 0,
+    D3DANTIALIAS_SORTDEPENDENT = 1,
+    D3DANTIALIAS_SORTINDEPENDENT = 2,
+}

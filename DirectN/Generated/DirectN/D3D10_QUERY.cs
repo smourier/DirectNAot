@@ -1,0 +1,15 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d10/ne-d3d10-d3d10_query
+public enum D3D10_QUERY
+{
+    D3D10_QUERY_EVENT = 0,
+    D3D10_QUERY_OCCLUSION = 1,
+    D3D10_QUERY_TIMESTAMP = 2,
+    D3D10_QUERY_TIMESTAMP_DISJOINT = 3,
+    D3D10_QUERY_PIPELINE_STATISTICS = 4,
+    D3D10_QUERY_OCCLUSION_PREDICATE = 5,
+    D3D10_QUERY_SO_STATISTICS = 6,
+    D3D10_QUERY_SO_OVERFLOW_PREDICATE = 7,
+}

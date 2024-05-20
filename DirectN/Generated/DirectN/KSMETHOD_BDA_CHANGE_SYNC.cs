@@ -1,0 +1,10 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSMETHOD_BDA_CHANGE_SYNC
+{
+    KSMETHOD_BDA_START_CHANGES = 0,
+    KSMETHOD_BDA_CHECK_CHANGES = 1,
+    KSMETHOD_BDA_COMMIT_CHANGES = 2,
+    KSMETHOD_BDA_GET_CHANGE_STATE = 3,
+}

@@ -1,0 +1,11 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ne-d3d12-d3d12_conservative_rasterization_tier
+public enum D3D12_CONSERVATIVE_RASTERIZATION_TIER
+{
+    D3D12_CONSERVATIVE_RASTERIZATION_TIER_NOT_SUPPORTED = 0,
+    D3D12_CONSERVATIVE_RASTERIZATION_TIER_1 = 1,
+    D3D12_CONSERVATIVE_RASTERIZATION_TIER_2 = 2,
+    D3D12_CONSERVATIVE_RASTERIZATION_TIER_3 = 3,
+}

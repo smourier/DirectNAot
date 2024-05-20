@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum KSPROPERTY_FMRX_TOPOLOGY
+{
+    KSPROPERTY_FMRX_ENDPOINTID = 0,
+    KSPROPERTY_FMRX_VOLUME = 1,
+    KSPROPERTY_FMRX_ANTENNAENDPOINTID = 2,
+}

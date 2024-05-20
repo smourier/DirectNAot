@@ -1,0 +1,35 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum MSViddispidList
+{
+    dispidInputs = 0,
+    dispidOutputs = 1,
+    dispid_Inputs = 2,
+    dispid_Outputs = 3,
+    dispidVideoRenderers = 4,
+    dispidAudioRenderers = 5,
+    dispidFeatures = 6,
+    dispidInput = 7,
+    dispidOutput = 8,
+    dispidVideoRenderer = 9,
+    dispidAudioRenderer = 10,
+    dispidSelectedFeatures = 11,
+    dispidView = 12,
+    dispidBuild = 13,
+    dispidPause = 14,
+    dispidRun = 15,
+    dispidStop = 16,
+    dispidDecompose = 17,
+    dispidDisplaySize = 18,
+    dispidMaintainAspectRatio = 19,
+    dispidColorKey = 20,
+    dispidStateChange = 21,
+    dispidgetState = 22,
+    dispidunbind = 23,
+    dispidbind = 24,
+    dispidDisableVideo = 25,
+    dispidDisableAudio = 26,
+    dispidViewNext = 27,
+    dispidServiceP = 28,
+}

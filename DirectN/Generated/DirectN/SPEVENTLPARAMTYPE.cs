@@ -1,0 +1,11 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum SPEVENTLPARAMTYPE
+{
+    SPET_LPARAM_IS_UNDEFINED = 0,
+    SPET_LPARAM_IS_TOKEN = 1,
+    SPET_LPARAM_IS_OBJECT = 2,
+    SPET_LPARAM_IS_POINTER = 3,
+    SPET_LPARAM_IS_STRING = 4,
+}

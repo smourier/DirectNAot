@@ -1,0 +1,15 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/d3d10_1shader/ne-d3d10_1shader-d3d10_shader_debug_scopetype
+public enum D3D10_SHADER_DEBUG_SCOPETYPE
+{
+    D3D10_SHADER_DEBUG_SCOPE_GLOBAL = 0,
+    D3D10_SHADER_DEBUG_SCOPE_BLOCK = 1,
+    D3D10_SHADER_DEBUG_SCOPE_FORLOOP = 2,
+    D3D10_SHADER_DEBUG_SCOPE_STRUCT = 3,
+    D3D10_SHADER_DEBUG_SCOPE_FUNC_PARAMS = 4,
+    D3D10_SHADER_DEBUG_SCOPE_STATEBLOCK = 5,
+    D3D10_SHADER_DEBUG_SCOPE_NAMESPACE = 6,
+    D3D10_SHADER_DEBUG_SCOPE_ANNOTATION = 7,
+}

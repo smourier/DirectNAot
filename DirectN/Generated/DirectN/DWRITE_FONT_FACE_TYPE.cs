@@ -1,0 +1,16 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ne-dwrite-dwrite_font_face_type
+public enum DWRITE_FONT_FACE_TYPE
+{
+    DWRITE_FONT_FACE_TYPE_CFF = 0,
+    DWRITE_FONT_FACE_TYPE_TRUETYPE = 1,
+    DWRITE_FONT_FACE_TYPE_OPENTYPE_COLLECTION = 2,
+    DWRITE_FONT_FACE_TYPE_TYPE1 = 3,
+    DWRITE_FONT_FACE_TYPE_VECTOR = 4,
+    DWRITE_FONT_FACE_TYPE_BITMAP = 5,
+    DWRITE_FONT_FACE_TYPE_UNKNOWN = 6,
+    DWRITE_FONT_FACE_TYPE_RAW_CFF = 7,
+    DWRITE_FONT_FACE_TYPE_TRUETYPE_COLLECTION = 2,
+}

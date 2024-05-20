@@ -1,0 +1,10 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum KSPROPERTY_IPSINK
+{
+    KSPROPERTY_IPSINK_MULTICASTLIST = 0,
+    KSPROPERTY_IPSINK_ADAPTER_DESCRIPTION = 1,
+    KSPROPERTY_IPSINK_ADAPTER_ADDRESS = 2,
+}
