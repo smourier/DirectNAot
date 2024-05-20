@@ -195,7 +195,7 @@ public static class IWICImagingFactoryExtensions
     {
         ArgumentNullException.ThrowIfNull(factory);
         using var enumerator = factory.CreateComponentEnumerator(type, options);
-        var sw = Com.ComObject.ComWrappers;
+        var sw = ComObject.ComWrappers;
         do
         {
             var array = new nint[1];

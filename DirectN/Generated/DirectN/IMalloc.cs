@@ -8,11 +8,11 @@ public partial interface IMalloc
 {
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imalloc-alloc
     [PreserveSig]
-    void Alloc(nuint cb);
+    nint Alloc(nuint cb);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-realloc
     [PreserveSig]
-    void Realloc(nint /* optional void* */ pv, nuint cb);
+    nint Realloc(nint /* optional void* */ pv, nuint cb);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imalloc-free
     [PreserveSig]

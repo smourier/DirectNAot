@@ -41,7 +41,7 @@ public static class Conversions
     public static FILETIME ToFILETIME(DateTime dt) => ToFILETIME(ToFileTime(dt));
     public static FILETIME ToFILETIMEUtc(DateTime dt) => ToFILETIME(ToFileTimeUtc(dt));
     public static FILETIME ToFILETIME(long ft) => ToFILETIME((ulong)ft);
-    public static FILETIME ToFILETIME(ulong ft) => new FILETIME { dwLowDateTime = (uint)(ft & 0xFFFFFFFF), dwHighDateTime = (uint)(ft >> 32) };
+    public static FILETIME ToFILETIME(ulong ft) => new() { dwLowDateTime = (uint)(ft & 0xFFFFFFFF), dwHighDateTime = (uint)(ft >> 32) };
 
     public static long ToFileTime(this FILETIME ft) => (long)(ft.dwLowDateTime | (ulong)ft.dwHighDateTime << 32);
     public static DateTime ToDateTime(this FILETIME ft) => DateTime.FromFileTime(ToFileTime(ft));

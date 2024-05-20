@@ -72,7 +72,7 @@ public partial interface IRecordInfo
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-recordcreate
     [PreserveSig]
-    void RecordCreate();
+    nint RecordCreate();
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-recordcreatecopy
     [PreserveSig]

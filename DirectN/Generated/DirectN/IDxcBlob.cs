@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface IDxcBlob
 {
     [PreserveSig]
-    void GetBufferPointer();
+    nint GetBufferPointer();
     
     [PreserveSig]
     nuint GetBufferSize();

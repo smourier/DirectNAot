@@ -1,4 +1,6 @@
-﻿namespace DirectN.Extensions.Com;
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace DirectN.Extensions.Com;
 
 public abstract class ComObject : IComObject
 {
@@ -61,16 +63,79 @@ public abstract class ComObject : IComObject
         return default;
     }
 
-    public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    public static IComObject<T>? FromPointer<T>(nint unknown, bool releaseUknown = true, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
     {
         if (unknown == 0)
             return null;
 
         var instance = ComWrappers.GetOrCreateObjectForComInstance(unknown, flags);
         if (instance == null || instance is not T t)
+        {
+            if (releaseUknown)
+            {
+                Marshal.Release(unknown);
+            }
             return null;
+        }
 
-        return new ComObject<T>(t);
+        var co = new ComObject<T>(t);
+        if (releaseUknown)
+        {
+            Marshal.Release(unknown);
+        }
+        return co;
+    }
+
+    public static nint ToComInstance(object? obj)
+    {
+        if (obj == null)
+            return 0;
+
+        var unwrapped = Unwrap(obj);
+        if (unwrapped == null)
+            return 0;
+
+        if (unwrapped is nint ptr)
+            return ptr;
+
+        ComWrappers.TryGetComInstance(obj, out var unk);
+        return unk;
+    }
+
+    public static int Release(nint unk)
+    {
+        if (unk == 0)
+            return 0;
+
+        return Marshal.Release(unk);
+    }
+
+    public static void WithComInstance(object? obj, Action<nint> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        var unk = ToComInstance(obj);
+        try
+        {
+            action(unk);
+        }
+        finally
+        {
+            Release(unk);
+        }
+    }
+
+    public static T WithComInstance<T>(object? obj, Func<nint, T> func)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        var unk = ToComInstance(obj);
+        try
+        {
+            return func(unk);
+        }
+        finally
+        {
+            Release(unk);
+        }
     }
 
     protected virtual void Dispose(bool disposing)

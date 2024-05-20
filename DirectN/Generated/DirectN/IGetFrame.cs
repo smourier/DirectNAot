@@ -8,7 +8,7 @@ public partial interface IGetFrame
 {
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-igetframe-getframe
     [PreserveSig]
-    void GetFrame(int lPos);
+    nint GetFrame(int lPos);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-igetframe-begin
     [PreserveSig]

@@ -548,7 +548,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void AVIStreamGetFrame(IGetFrame pg, int lPos);
+    public static partial nint AVIStreamGetFrame(IGetFrame pg, int lPos);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamgetframeclose
     [LibraryImport("AVIFIL32")]
@@ -668,13 +668,13 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void BRUSHOBJ_pvAllocRbrush(ref BRUSHOBJ pbo, uint cj);
+    public static partial nint BRUSHOBJ_pvAllocRbrush(ref BRUSHOBJ pbo, uint cj);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_pvgetrbrush
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void BRUSHOBJ_pvGetRbrush(ref BRUSHOBJ pbo);
+    public static partial nint BRUSHOBJ_pvGetRbrush(ref BRUSHOBJ pbo);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_ulgetbrushcolor
     [LibraryImport("GDI32")]
@@ -1995,7 +1995,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void DrawDibGetBuffer(nint hdd, out BITMAPINFOHEADER lpbi, uint dwSize, uint dwFlags);
+    public static partial nint DrawDibGetBuffer(nint hdd, out BITMAPINFOHEADER lpbi, uint dwSize, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibgetpalette
     [LibraryImport("MSVFW32", SetLastError = true)]
@@ -2524,7 +2524,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void EngFindResource(HANDLE h, int iName, int iType, out uint pulSize);
+    public static partial nint EngFindResource(HANDLE h, int iName, int iType, out uint pulSize);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engfreemodule
     [LibraryImport("GDI32")]
@@ -2791,7 +2791,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void FONTOBJ_pvTrueTypeFontFile(ref FONTOBJ pfo, ref uint pcjFile);
+    public static partial nint FONTOBJ_pvTrueTypeFontFile(ref FONTOBJ pfo, ref uint pcjFile);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pxogetxform
     [LibraryImport("GDI32")]
@@ -5565,7 +5565,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void ICSeqCompressFrame(in COMPVARS pc, uint? uiFlags, nint lpBits, [MarshalAs(UnmanagedType.U4)] out bool pfKey, nint /* optional int* */ plSize);
+    public static partial nint ICSeqCompressFrame(in COMPVARS pc, uint? uiFlags, nint lpBits, [MarshalAs(UnmanagedType.U4)] out bool pfKey, nint /* optional int* */ plSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframeend
     [LibraryImport("MSVFW32")]
@@ -6922,7 +6922,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial void MFHeapAlloc(nuint nSize, uint dwFlags, PSTR pszFile, int line, EAllocationType eat);
+    public static partial nint MFHeapAlloc(nuint nSize, uint dwFlags, PSTR pszFile, int line, EAllocationType eat);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfheapfree
     [LibraryImport("MFPlat")]

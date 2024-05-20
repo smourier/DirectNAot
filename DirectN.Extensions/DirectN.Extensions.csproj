@@ -40,7 +40,6 @@
 		<Using Include="System.Reflection" />
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
-		<Using Include="System.Runtime.InteropServices.Marshalling" />
 		<Using Include="System.Runtime.Versioning" />
 		<Using Include="System.Text" />
 	</ItemGroup>

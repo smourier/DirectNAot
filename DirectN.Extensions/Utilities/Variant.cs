@@ -45,7 +45,7 @@
 
             if (value is System.Runtime.InteropServices.Marshalling.ComObject co)
             {
-                var sw = Com.ComObject.ComWrappers;
+                var sw = ComObject.ComWrappers;
                 _inner.Anonymous.Anonymous.Anonymous.punkVal = sw.GetOrCreateComInterfaceForObject(co, CreateComInterfaceFlags.None);
                 _inner.Anonymous.Anonymous.vt = VARENUM.VT_UNKNOWN;
                 return;
@@ -276,7 +276,7 @@
 
                     case VARENUM.VT_UNKNOWN:
                     case VARENUM.VT_DISPATCH:
-                        var sw = Com.ComObject.ComWrappers;
+                        var sw = ComObject.ComWrappers;
                         return sw.GetOrCreateObjectForComInstance(_inner.Anonymous.Anonymous.Anonymous.punkVal, CreateObjectFlags.UniqueInstance);
 
                     case VARENUM.VT_DECIMAL:

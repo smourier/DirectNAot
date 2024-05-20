@@ -5,7 +5,7 @@ namespace DirectN;
 public partial interface ID3DBlob
 {
     [PreserveSig]
-    void GetBufferPointer();
+    nint GetBufferPointer();
     
     [PreserveSig]
     nuint GetBufferSize();

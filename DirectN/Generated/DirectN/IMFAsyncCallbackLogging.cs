@@ -8,7 +8,7 @@ public partial interface IMFAsyncCallbackLogging : IMFAsyncCallback
 {
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasynccallbacklogging-getobjectpointer
     [PreserveSig]
-    void GetObjectPointer();
+    nint GetObjectPointer();
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasynccallbacklogging-getobjecttag
     [PreserveSig]

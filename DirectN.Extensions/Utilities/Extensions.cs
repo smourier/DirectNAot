@@ -36,6 +36,14 @@ public static class Extensions
         return t.Length == 0 ? null : t;
     }
 
+    public static unsafe nint CopyToPointer<T>(this T? structure) where T : struct
+    {
+        if (structure == null)
+            return 0;
+
+        return (nint)Unsafe.AsPointer(ref (new T[] { structure.Value })[0]);
+    }
+
     // we don't want unspecified datetimes
     public static bool IsValid(this DateTime dt) => dt != DateTime.MinValue && dt != DateTime.MaxValue && dt.Kind != DateTimeKind.Unspecified;
     public static bool IsValid(this DateTime? dt) => dt.HasValue && IsValid(dt.Value);

@@ -7,7 +7,7 @@ public partial interface ID3D12StateObjectProperties
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12stateobjectproperties-getshaderidentifier
     [PreserveSig]
-    void GetShaderIdentifier(PWSTR pExportName);
+    nint GetShaderIdentifier(PWSTR pExportName);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12stateobjectproperties-getshaderstacksize
     [PreserveSig]
