@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum KSPROPERTY_TELEPHONY_TOPOLOGY
-{
-    KSPROPERTY_TELEPHONY_ENDPOINTIDPAIR = 0,
-    KSPROPERTY_TELEPHONY_VOLUME = 1,
-}

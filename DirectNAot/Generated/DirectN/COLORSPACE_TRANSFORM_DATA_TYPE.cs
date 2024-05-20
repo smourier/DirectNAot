@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum COLORSPACE_TRANSFORM_DATA_TYPE
-{
-    COLORSPACE_TRANSFORM_DATA_TYPE_FIXED_POINT = 0,
-    COLORSPACE_TRANSFORM_DATA_TYPE_FLOAT = 1,
-}

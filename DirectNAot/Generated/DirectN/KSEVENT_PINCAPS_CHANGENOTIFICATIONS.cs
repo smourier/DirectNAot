@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum KSEVENT_PINCAPS_CHANGENOTIFICATIONS
-{
-    KSEVENT_PINCAPS_FORMATCHANGE = 0,
-    KSEVENT_PINCAPS_JACKINFOCHANGE = 1,
-}

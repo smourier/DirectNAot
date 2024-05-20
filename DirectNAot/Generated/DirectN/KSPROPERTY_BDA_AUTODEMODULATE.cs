@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum KSPROPERTY_BDA_AUTODEMODULATE
-{
-    KSPROPERTY_BDA_AUTODEMODULATE_START = 0,
-    KSPROPERTY_BDA_AUTODEMODULATE_STOP = 1,
-}

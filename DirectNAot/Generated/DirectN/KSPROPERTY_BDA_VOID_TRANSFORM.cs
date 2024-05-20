@@ -1,8 +1,0 @@
-﻿#nullable enable
-namespace DirectN;
-
-public enum KSPROPERTY_BDA_VOID_TRANSFORM
-{
-    KSPROPERTY_BDA_VOID_TRANSFORM_START = 0,
-    KSPROPERTY_BDA_VOID_TRANSFORM_STOP = 1,
-}
