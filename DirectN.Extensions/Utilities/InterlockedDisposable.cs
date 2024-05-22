@@ -1,0 +1,44 @@
+﻿namespace DirectN.Extensions.Utilities;
+
+public abstract class InterlockedDisposable<T> : IDisposable where T : class, IDisposable
+{
+    private T? _disposable;
+
+    protected InterlockedDisposable(T disposable)
+    {
+        ArgumentNullException.ThrowIfNull(disposable);
+        _disposable = disposable;
+    }
+
+    public bool IsDisposed => _disposable == null;
+    protected T? RawDisposable => _disposable;
+    public T Disposable
+    {
+        get
+        {
+            var disposable = _disposable;
+            ObjectDisposedException.ThrowIf(disposable == null, this);
+            return disposable!;
+        }
+    }
+
+    protected virtual T? ExchangeDisposable(T? disposable)
+    {
+        // note there's no lock here
+        var existing = _disposable;
+        existing?.Dispose();
+        return Interlocked.Exchange(ref _disposable, disposable);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            var disposable = Interlocked.Exchange(ref _disposable, null);
+            disposable?.Dispose();
+        }
+    }
+
+    ~InterlockedDisposable() { Dispose(false); }
+    public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
+}
