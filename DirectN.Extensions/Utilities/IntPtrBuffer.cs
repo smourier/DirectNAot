@@ -1,8 +1,8 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-public sealed class IntPtrBuffer : SafeBuffer
+public sealed class nintBuffer : SafeBuffer
 {
-    public IntPtrBuffer(nint pointer, long byteLength)
+    public nintBuffer(nint pointer, long byteLength)
         : base(false)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(byteLength);
@@ -10,7 +10,7 @@ public sealed class IntPtrBuffer : SafeBuffer
         Initialize((ulong)byteLength);
     }
 
-    public IntPtrBuffer(int byteLength)
+    public nintBuffer(int byteLength)
         : base(true)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(byteLength);

@@ -146,14 +146,8 @@ public static class IWICImagingFactoryExtensions
     {
         ArgumentNullException.ThrowIfNull(factory);
         ArgumentNullException.ThrowIfNull(buffer);
-        unsafe
-        {
-            fixed (byte* ptr = buffer)
-            {
-                factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, (uint)buffer.Length, (nint)ptr, out var value).ThrowOnError();
-                return new ComObject<IWICBitmap>(value);
-            }
-        }
+        factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, buffer.Length(), buffer.AsPointer(), out var value).ThrowOnError();
+        return new ComObject<IWICBitmap>(value);
     }
 
     public static IComObject<IWICBitmap> CreateBitmapFromSource(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => CreateBitmapFromSource(factory?.Object!, source?.Object!, option);
@@ -165,12 +159,12 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, int x, int y, uint width, uint height) => CreateBitmapFromSourceRect(factory?.Object!, source?.Object!, x, y, width, height);
-    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IWICImagingFactory factory, IWICBitmapSource source, int x, int y, uint width, uint height)
+    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, uint x, uint y, uint width, uint height) => CreateBitmapFromSourceRect(factory?.Object!, source?.Object!, x, y, width, height);
+    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IWICImagingFactory factory, IWICBitmapSource source, uint x, uint y, uint width, uint height)
     {
         ArgumentNullException.ThrowIfNull(factory);
         ArgumentNullException.ThrowIfNull(source);
-        factory.CreateBitmapFromSourceRect(source, (uint)x, (uint)y, width, height, out var value).ThrowOnError();
+        factory.CreateBitmapFromSourceRect(source, x, y, width, height, out var value).ThrowOnError();
         return new ComObject<IWICBitmap>(value);
     }
 
@@ -202,9 +196,9 @@ public static class IWICImagingFactoryExtensions
             if (!enumerator.Object.Next(1, array, 0).IsOk)
                 break;
 
-            var obj = sw.GetOrCreateObjectForComInstance(array[0], CreateObjectFlags.UniqueInstance);
-            if (obj is IWICComponentInfo info)
-                yield return new ComObject<IWICComponentInfo>(info);
+            var info = ComObject.FromPointer<IWICComponentInfo>(array[0]);
+            if (info != null)
+                yield return info;
         }
         while (true);
     }

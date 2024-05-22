@@ -1,4 +1,6 @@
-﻿namespace DirectN.Extensions.Utilities;
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace DirectN.Extensions.Utilities;
 
 [ComVisible(true)]
 [GeneratedComClass]

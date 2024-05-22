@@ -3,7 +3,7 @@
 [SupportedOSPlatform("windows6.1")]
 public static class IDWriteFontCollectionExtensions
 {
-    public static IEnumerable<IComObject<IDWriteFontFamily>> GetFamilies(this IComObject<IDWriteFontCollection> collection) => GetFamilies(collection?.Object!).Select(f => new ComObject<IDWriteFontFamily>(f));
+    public static IEnumerable<IComObject<IDWriteFontFamily>> GetFamilies(this IComObject<IDWriteFontCollection> collection) => GetFamilies(collection?.Object!).ToComObjects();
     public static IReadOnlyList<IDWriteFontFamily> GetFamilies(this IDWriteFontCollection collection)
     {
         ArgumentNullException.ThrowIfNull(collection);

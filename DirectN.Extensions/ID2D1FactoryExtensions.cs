@@ -47,22 +47,8 @@ public static class ID2D1FactoryExtensions
     public static IComObject<T> CreateStrokeStyle<T>(this ID2D1Factory factory, D2D1_STROKE_STYLE_PROPERTIES properties, IEnumerable<float>? dashes = null) where T : ID2D1StrokeStyle
     {
         ArgumentNullException.ThrowIfNull(factory);
-        ID2D1StrokeStyle style;
-        if (dashes == null)
-        {
-            factory.CreateStrokeStyle(properties, 0, 0, out style).ThrowOnError();
-        }
-        else
-        {
-            var array = dashes.ToArray();
-            unsafe
-            {
-                fixed (float* d = array)
-                {
-                    factory.CreateStrokeStyle(properties, (nint)d, (uint)array.Length, out style).ThrowOnError();
-                }
-            }
-        }
+        var array = dashes?.ToArray();
+        factory.CreateStrokeStyle(properties, array.AsPointer(), array.Length(), out var style).ThrowOnError();
         return new ComObject<T>((T)style);
     }
 
@@ -139,14 +125,9 @@ public static class ID2D1FactoryExtensions
             factory.GetRegisteredEffects(0, 0, ptr, ptr + 4).ThrowOnError();
             var ret = Marshal.ReadInt32(ptr);
             var reg = Marshal.ReadInt32(ptr + 4);
-
             var clsids = new Guid[reg];
-            unsafe
-            {
-                fixed (Guid* gs = clsids)
-                    factory.GetRegisteredEffects((nint)gs, (uint)clsids.Length, ptr, ptr + 4).ThrowOnError();
-                return clsids;
-            }
+            factory.GetRegisteredEffects(clsids.AsPointer(), clsids.Length(), ptr, ptr + 4).ThrowOnError();
+            return clsids;
         }
         finally
         {

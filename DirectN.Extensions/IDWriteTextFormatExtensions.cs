@@ -9,7 +9,7 @@ public static class IDWriteTextFormatExtensions
         ArgumentNullException.ThrowIfNull(format);
         var len = format.GetFontFamilyNameLength();
         using var p = new AllocPwstr((len + 1) * 2);
-        format.GetFontFamilyName(p, len + 1).ThrowOnError();
+        format.GetFontFamilyName(p, p.SizeInChars).ThrowOnError();
         return p.ToString() ?? string.Empty;
     }
 
@@ -19,7 +19,7 @@ public static class IDWriteTextFormatExtensions
         ArgumentNullException.ThrowIfNull(format);
         var len = format.GetLocaleNameLength();
         using var p = new AllocPwstr((len + 1) * 2);
-        format.GetLocaleName(p, len + 1).ThrowOnError();
+        format.GetLocaleName(p, p.SizeInChars).ThrowOnError();
         return p.ToString() ?? string.Empty;
     }
 

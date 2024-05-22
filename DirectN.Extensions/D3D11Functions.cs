@@ -22,21 +22,18 @@ public static class D3D11Functions
         //};
 
         nint devicePtr;
-        fixed (D3D_FEATURE_LEVEL* levels = featureLevels)
-        {
-            Functions.D3D11CreateDevice(
-                adapter,
-                driverType,
-                HMODULE.Null,
-                flags,
-                (nint)levels,
-                (uint)(featureLevels?.Length).GetValueOrDefault(),
-                sdkVersion,
-                (nint)(&devicePtr),
-                0,
-                0).ThrowOnError();
-            return ComObject.FromPointer<ID3D11Device>(devicePtr)!;
-        }
+        Functions.D3D11CreateDevice(
+            adapter,
+            driverType,
+            HMODULE.Null,
+            flags,
+            featureLevels.AsPointer(),
+            featureLevels.Length(),
+            sdkVersion,
+            (nint)(&devicePtr),
+            0,
+            0).ThrowOnError();
+        return ComObject.FromPointer<ID3D11Device>(devicePtr)!;
     }
 
     [SupportedOSPlatform("windows6.1")]
@@ -61,22 +58,19 @@ public static class D3D11Functions
 
         nint devicePtr;
         nint deviceContextPtr;
-        fixed (D3D_FEATURE_LEVEL* levels = featureLevels)
-        {
-            Functions.D3D11CreateDevice(
-            adapter,
-            driverType,
-            HMODULE.Null,
-            flags,
-            (nint)levels,
-            (uint)(featureLevels?.Length).GetValueOrDefault(),
-            sdkVersion,
-            (nint)(&devicePtr),
-            0,
-            (nint)(&deviceContextPtr)).ThrowOnError();
-            deviceContext = ComObject.FromPointer<ID3D11DeviceContext>(deviceContextPtr)!;
-            return ComObject.FromPointer<ID3D11Device>(devicePtr)!;
-        }
+        Functions.D3D11CreateDevice(
+        adapter,
+        driverType,
+        HMODULE.Null,
+        flags,
+        featureLevels.AsPointer(),
+        featureLevels.Length(),
+        sdkVersion,
+        (nint)(&devicePtr),
+        0,
+        (nint)(&deviceContextPtr)).ThrowOnError();
+        deviceContext = ComObject.FromPointer<ID3D11DeviceContext>(deviceContextPtr)!;
+        return ComObject.FromPointer<ID3D11Device>(devicePtr)!;
     }
 
     public static IComObject<ID3DBlob> D3DReadFileToBlob(string filename)
@@ -120,22 +114,19 @@ public static class D3D11Functions
         using var pe = new Pstr(entrypoint);
         using var pt = new Pstr(target);
         nint errorBlobUnk;
-        fixed (byte* bytes = srcData)
+        var hr = Functions.D3DCompile(srcData.AsPointer(), srcData.Length(), p, 0, null, pe, pt, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
+        if (errorBlobUnk != 0)
         {
-            var hr = Functions.D3DCompile((nint)bytes, (nuint)srcData.Length, p, 0, null, pe, pt, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
-            if (errorBlobUnk != 0)
-            {
-                using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);
-                var str = errorBlob.GetAnsiStringFromBlob();
-                if (str != null)
-                    throw new Win32Exception(hr.Value, str);
+            using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);
+            var str = errorBlob.GetAnsiStringFromBlob();
+            if (str != null)
+                throw new Win32Exception(hr.Value, str);
 
-                throw new Win32Exception(hr.Value);
-            }
-
-            hr.ThrowOnError();
-            return new ComObject<ID3DBlob>(blob);
+            throw new Win32Exception(hr.Value);
         }
+
+        hr.ThrowOnError();
+        return new ComObject<ID3DBlob>(blob);
     }
 
     public static IComObject<ID3DBlob> D3DCompile(nint srcData, long srcDataSize, string sourceName, string entrypoint, string target, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, sourceName, entrypoint, target, flags1, flags2);

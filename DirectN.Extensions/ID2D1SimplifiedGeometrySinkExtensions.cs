@@ -13,7 +13,7 @@ public static class ID2D1SimplifiedGeometrySinkExtensions
         if (array.Length == 0)
             throw new ArgumentException(null, nameof(segments));
 
-        sink.AddBeziers(array, (uint)array.Length);
+        sink.AddBeziers(array, array.Length());
     }
 
     public static void AddBezier(this IComObject<ID2D1SimplifiedGeometrySink> sink, D2D1_BEZIER_SEGMENT segment) => AddBezier(sink?.Object!, segment);
@@ -40,7 +40,7 @@ public static class ID2D1SimplifiedGeometrySinkExtensions
         if (array.Length == 0)
             throw new ArgumentException(null, nameof(points));
 
-        sink.AddLines(array, (uint)array.Length);
+        sink.AddLines(array, array.Length());
     }
 
     public static void AddLine(this IComObject<ID2D1SimplifiedGeometrySink> sink, D2D_POINT_2F point) => AddLine(sink?.Object!, point);

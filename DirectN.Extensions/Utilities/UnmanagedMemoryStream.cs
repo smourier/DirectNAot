@@ -1,4 +1,6 @@
-﻿namespace DirectN.Extensions.Utilities;
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace DirectN.Extensions.Utilities;
 
 [GeneratedComClass]
 public sealed partial class UnmanagedMemoryStream : Stream, IStream
@@ -41,13 +43,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     public UnmanagedMemoryStream(byte[] bytes)
     {
         ArgumentNullException.ThrowIfNull(bytes);
-        unsafe
-        {
-            fixed (byte* p = bytes)
-            {
-                _stream = SHCreateMemStream((nint)p, bytes.Length);
-            }
-        }
+        _stream = SHCreateMemStream(bytes.AsPointer(), bytes.Length);
         CheckStream();
         Position = 0;
     }

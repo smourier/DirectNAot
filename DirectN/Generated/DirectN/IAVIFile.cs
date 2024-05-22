@@ -9,7 +9,7 @@ public partial interface IAVIFile
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavifile-info
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Info(out AVIFILEINFOW pfi, int lSize);
+    HRESULT Info(nint pfi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavifile-getstream
     [PreserveSig]

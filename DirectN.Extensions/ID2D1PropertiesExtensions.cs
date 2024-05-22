@@ -3,7 +3,7 @@
 [SupportedOSPlatform("windows8.0")]
 public static class ID2D1PropertiesExtensions
 {
-    public static T? GetValue<T>(this IComObject<ID2D1Properties> properties, int index, T? defaultValue = default)
+    public static T? GetValue<T>(this IComObject<ID2D1Properties> properties, uint index, T? defaultValue = default)
     {
         ArgumentNullException.ThrowIfNull(properties);
         if (!TryGetValue(properties, index, out var value))
@@ -30,76 +30,79 @@ public static class ID2D1PropertiesExtensions
         value = null;
         using var p = new Pwstr(name);
         var index = properties.GetPropertyIndex(p);
-        if (index < 0)
-            return false;
-
-        return TryGetValue(properties, (int)index, out value);
+        return TryGetValue(properties, index, out value);
     }
 
-    public static bool TryGetValue(this IComObject<ID2D1Properties> properties, int index, out object? value) => TryGetValue(properties?.Object!, index, out value);
-    public static bool TryGetValue(this ID2D1Properties properties, int index, out object? value)
+    public static bool TryGetValue(this IComObject<ID2D1Properties> properties, uint index, out object? value) => TryGetValue(properties?.Object!, index, out value);
+    public static bool TryGetValue(this ID2D1Properties properties, uint index, out object? value)
     {
         ArgumentNullException.ThrowIfNull(properties);
         value = null;
-        var size = properties.GetValueSize((uint)index);
-        if (size < 0)
-            return false;
+        var size = properties.GetValueSize(index);
+        var type = properties.GetType(index);
+        var ret = ComExtensions.WithAllocatedMemory<(bool, object?)>(size, ptr =>
+        {
+            var hr = properties.GetValue(index, type, ptr, size);
+            if (hr.IsError)
+                return (false, null);
 
-        var type = properties.GetType((uint)index);
-        var bytes = new byte[size];
-        var hr = properties.GetValue((uint)index, type, bytes, bytes.Length);
-        if (hr.IsError)
-            return false;
+            if (!TryGetValue(type, ptr, size, out var inValue))
+                return (false, null);
 
-        return TryGetValue(type, bytes, out value);
+            return (true, inValue);
+        });
+
+        value = ret.Item2;
+        return ret.Item1;
     }
 
-    public static bool TryGetValue(D2D1_PROPERTY_TYPE type, byte[] data, out object? value)
+    public static unsafe bool TryGetValue(D2D1_PROPERTY_TYPE type, nint data, uint size, out object? value)
     {
         value = null;
-        if (data == null || data.Length == 0)
+        if (data == 0 || size == 0)
             return false;
 
         switch (type)
         {
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_BOOL:
-                value = BitConverter.ToInt32(data, 0) != 0;
+                value = *(bool*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_STRING:
-                var s = Encoding.Unicode.GetString(data);
-                if (!string.IsNullOrEmpty(s))
+                var str = Encoding.Unicode.GetString((byte*)data, (int)size);
+                if (!string.IsNullOrEmpty(str))
                 {
-                    while (s[s.Length - 1] == '0')
+                    while (str[^1] == '0')
                     {
-                        s = s.Substring(0, s.Length - 1);
+                        str = str[..^1];
                     }
                 }
-                value = s;
+
+                value = str;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UINT32:
-                value = BitConverter.ToUInt32(data, 0);
+                value = *(uint*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_INT32:
-                value = BitConverter.ToInt32(data, 0);
+                value = *(int*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_FLOAT:
-                value = BitConverter.ToSingle(data, 0);
+                value = *(float*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR2:
-                value = data.BytesToStructure<D2D_VECTOR_2F>();
+                value = *(D2D_VECTOR_2F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR3:
-                value = data.BytesToStructure<D2D_VECTOR_3F>();
+                value = *(D2D_VECTOR_3F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR4:
-                value = data.BytesToStructure<D2D_VECTOR_4F>();
+                value = *(D2D_VECTOR_4F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_BLOB:
@@ -107,34 +110,33 @@ public static class ID2D1PropertiesExtensions
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_ENUM:
-                value = BitConverter.ToUInt32(data, 0);
+                value = *(uint*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_CLSID:
-                value = new Guid(data);
+                value = *(Guid*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_3X2:
-                value = data.BytesToStructure<D2D_MATRIX_3X2_F>();
+                value = *(D2D_MATRIX_3X2_F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X3:
-                value = data.BytesToStructure<D2D_MATRIX_4X3_F>();
+                value = *(D2D_MATRIX_4X3_F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X4:
-                value = data.BytesToStructure<D2D_MATRIX_4X4_F>();
+                value = *(D2D_MATRIX_4X4_F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_5X4:
-                value = data.BytesToStructure<D2D_MATRIX_5X4_F>();
+                value = *(D2D_MATRIX_5X4_F*)data;
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_IUNKNOWN:
-                var ptr = data.BytesToIntPtr();
-                if (ptr != IntPtr.Zero)
+                if (data != 0)
                 {
-                    value = Marshal.GetObjectForIUnknown(ptr);
+                    value = ComObject.ComWrappers.GetOrCreateObjectForComInstance(data, CreateObjectFlags.UniqueInstance);
                 }
                 return true;
         }
@@ -151,20 +153,18 @@ public static class ID2D1PropertiesExtensions
         for (uint i = 0; i < properties.GetPropertyCount(); i++)
         {
             var len = properties.GetPropertyNameLength(i);
-            var name = new string('\0', (int)len);
-            using var p = new Pwstr(name);
-            properties.GetPropertyName(i, p, len + 1).ThrowOnError();
-            var property = new D2D1Property
+            using var p = new AllocPwstr((len * 1) * 2);
+            properties.GetPropertyName(i, p, p.SizeInChars).ThrowOnError();
+            var property = new D2D1Property(properties.GetType(i))
             {
-                Name = name,
-                Type = properties.GetType(i)
+                Name = p.ToString()!
             };
 
             var size = properties.GetValueSize(i);
             if (size > 0)
             {
                 var data = new byte[size];
-                properties.GetValue(i, property.Type, data, (uint)data.Length).ThrowOnError();
+                properties.GetValue(i, property.Type, data.AsPointer(), size).ThrowOnError();
                 property.ValueBytes = data;
             }
 
@@ -274,7 +274,7 @@ public static class ID2D1PropertiesExtensions
         }
 
         var data = new byte[size];
-        if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data, (uint)data.Length).IsError)
+        if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data.AsPointer(), data.Length()).IsError)
         {
             value = null;
             return false;
@@ -292,25 +292,20 @@ public static class ID2D1PropertiesExtensions
         if (properties == null)
             return null;
 
-        var prop = new D2D1Property
-        {
-            Type = properties.GetType(index)
-        };
-
+        var prop = new D2D1Property(properties.GetType(index));
         var len = properties.GetPropertyNameLength(index);
         if (len > 0)
         {
-            var name = new string('\0', (int)len);
-            using var p = new Pwstr(name);
-            properties.GetPropertyName(index, p, len + 1);
-            prop.Name = name;
+            using var p = new AllocPwstr((len + 1) * 2);
+            properties.GetPropertyName(index, p, p.SizeInChars);
+            prop.Name = p.ToString() ?? string.Empty;
         }
 
         var size = properties.GetValueSize(index);
         if (size > 0)
         {
             var data = new byte[size];
-            if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data, (uint)data.Length).IsSuccess)
+            if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data.AsPointer(), data.Length()).IsSuccess)
             {
                 prop.ValueBytes = data;
             }
@@ -322,21 +317,21 @@ public static class ID2D1PropertiesExtensions
         return prop;
     }
 
-    public static void SetValue(this ID2D1Properties properties, int index, string value)
+    public static void SetValue(this ID2D1Properties properties, uint index, string value)
     {
         ArgumentNullException.ThrowIfNull(properties);
         var bytes = value != null ? Encoding.Unicode.GetBytes(value) : null;
-        properties.SetValue((uint)index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, bytes, (bytes?.Length).GetValueOrDefault()).ThrowOnError();
+        properties.SetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, bytes.AsPointer(), bytes.Length()).ThrowOnError();
     }
 
-    public static void SetValue(this IComObject<ID2D1Properties> properties, int index, object value) => SetValue(properties?.Object!, index, value);
-    public static void SetValue(this ID2D1Properties properties, int index, object value)
+    public static void SetValue(this IComObject<ID2D1Properties> properties, uint index, object value) => SetValue(properties?.Object!, index, value);
+    public static void SetValue(this ID2D1Properties properties, uint index, object value)
     {
         ArgumentNullException.ThrowIfNull(properties);
         if (!TryGetData(value, out var type, out var data))
             throw new NotSupportedException();
 
-        properties.SetValue((uint)index, type, data, (uint)data.Length).ThrowOnError();
+        properties.SetValue(index, type, data.AsPointer(), data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, object value) => SetValue(properties?.Object!, name, value);
@@ -347,15 +342,16 @@ public static class ID2D1PropertiesExtensions
         if (!TryGetData(value, out var type, out var data))
             throw new NotSupportedException();
 
-        properties.SetValueByName(name, type, data, (uint)data.Length).ThrowOnError();
+        using var p = new Pwstr(name);
+        properties.SetValueByName(p, type, data.AsPointer(), data.Length()).ThrowOnError();
     }
 
-    public static void SetValue(this IComObject<ID2D1Properties> properties, int index, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, index, type, data);
-    public static void SetValue(this ID2D1Properties properties, int index, D2D1_PROPERTY_TYPE type, byte[] data)
+    public static void SetValue(this IComObject<ID2D1Properties> properties, uint index, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, index, type, data);
+    public static void SetValue(this ID2D1Properties properties, uint index, D2D1_PROPERTY_TYPE type, byte[] data)
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(data);
-        properties.SetValue((uint)index, type, data, (uint)data.Length).ThrowOnError();
+        properties.SetValue(index, type, data.AsPointer(), data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, name, type, data);
@@ -365,7 +361,17 @@ public static class ID2D1PropertiesExtensions
         ArgumentNullException.ThrowIfNull(name);
         ArgumentNullException.ThrowIfNull(data);
         using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, data, (uint)data.Length).ThrowOnError();
+        properties.SetValueByName(p, type, data.AsPointer(), data.Length()).ThrowOnError();
+    }
+
+    public static void SetValue(this IComObject<ID2D1Properties> properties, string name, D2D1_PROPERTY_TYPE type, nint data, uint dataLength) => SetValue(properties?.Object!, name, type, data, dataLength);
+    public static void SetValue(this ID2D1Properties properties, string name, D2D1_PROPERTY_TYPE type, nint data, uint dataLength)
+    {
+        ArgumentNullException.ThrowIfNull(properties);
+        ArgumentNullException.ThrowIfNull(name);
+        ArgumentNullException.ThrowIfNull(data);
+        using var p = new Pwstr(name);
+        properties.SetValueByName(p, type, data, dataLength).ThrowOnError();
     }
 
     public static bool TryGetData(object value, out D2D1_PROPERTY_TYPE type, [NotNullWhen(true)] out byte[]? data)
@@ -442,75 +448,79 @@ public static class ID2D1PropertiesExtensions
                     return true;
                 }
 
-                if (value is D2D_VECTOR_2F v2)
+                unsafe
                 {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR2;
-                    data = v2.StructureToBytes();
-                    return true;
+                    if (value is D2D_VECTOR_2F v2)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR2;
+                        data = new byte[sizeof(D2D_VECTOR_2F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&v2), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_VECTOR_3F v3)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR3;
+                        data = new byte[sizeof(D2D_VECTOR_3F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&v3), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_VECTOR_4F v4)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR4;
+                        data = new byte[sizeof(D2D_VECTOR_4F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&v4), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_MATRIX_3X2_F m32)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_3X2;
+                        data = new byte[sizeof(D2D_MATRIX_3X2_F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&m32), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_MATRIX_4X3_F m43)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X3;
+                        data = new byte[sizeof(D2D_MATRIX_4X3_F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&m43), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_MATRIX_4X4_F m44)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X4;
+                        data = new byte[sizeof(D2D_MATRIX_4X4_F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&m44), data.Length);
+                        return true;
+                    }
+
+                    if (value is D2D_MATRIX_5X4_F m54)
+                    {
+                        type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_5X4;
+                        data = new byte[sizeof(D2D_MATRIX_5X4_F)];
+                        Functions.CopyMemory(data.AsPointer(), (nint)(&m54), data.Length);
+                        return true;
+                    }
                 }
 
-                if (value is D2D_VECTOR_3F v3)
+                if (value is IComObject co && ComWrappers.TryGetComInstance(co.Object, out var unk1))
                 {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR3;
-                    data = v3.StructureToBytes();
-                    return true;
-                }
-
-                if (value is D2D_VECTOR_4F v4)
-                {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR4;
-                    data = v4.StructureToBytes();
-                    return true;
-                }
-
-                if (value is D2D_MATRIX_3X2_F m32)
-                {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_3X2;
-                    data = m32.StructureToBytes();
-                    return true;
-                }
-
-                if (value is D2D_MATRIX_4X3_F m43)
-                {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X3;
-                    data = m43.StructureToBytes();
-                    return true;
-                }
-
-                if (value is D2D_MATRIX_4X4_F m44)
-                {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X4;
-                    data = m44.StructureToBytes();
-                    return true;
-                }
-
-                if (value is D2D_MATRIX_5X4_F m54)
-                {
-                    type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_5X4;
-                    data = m54.StructureToBytes();
-                    return true;
-                }
-
-                if (value is IComObject co)
-                {
-                    var unk = Marshal.GetComInterfaceForObject(co.Object, co.InterfaceType);
                     type = typeof(ID2D1ColorContext).IsAssignableFrom(co.InterfaceType) ? D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_COLOR_CONTEXT : D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_IUNKNOWN;
-                    data = unk.IntPtrToBytes();
-                    Marshal.Release(unk);
+                    data = unk1.IntPtrToBytes();
+                    Marshal.Release(unk1);
                     return true;
                 }
 
-                try
+                if (ComWrappers.TryGetComInstance(value, out var unk2))
                 {
-                    var unk = Marshal.GetIUnknownForObject(value);
                     type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_IUNKNOWN;
-                    data = unk.IntPtrToBytes();
-                    Marshal.Release(unk);
+                    data = unk2.IntPtrToBytes();
+                    Marshal.Release(unk2);
                     return true;
-                }
-                catch
-                {
-                    // continue
                 }
                 break;
         }
@@ -526,7 +536,7 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(value);
-        properties.SetValue((uint)index, type, value, (uint)value.Length).ThrowOnError();
+        properties.SetValue((uint)index, type, value.AsPointer(), value.Length()).ThrowOnError();
     }
 
     public static void SetValueByName(this ID2D1Properties properties, string name, object? value)
@@ -589,8 +599,13 @@ public static class ID2D1PropertiesExtensions
 
         if (value is ValueType vt) // matrix & vector types
         {
-            using var mem = new ComMemory(vt);
-            SetValueByName(properties, name, mem.ToArray());
+            unsafe
+            {
+#pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
+                var size = (uint)Marshal.SizeOf(vt);
+#pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
+                SetValueByName(properties, name, (nint)Unsafe.AsPointer(ref vt), size);
+            }
             return;
         }
         throw new NotSupportedException("Value of type '" + value.GetType().FullName + "' is not supported.");
@@ -601,8 +616,7 @@ public static class ID2D1PropertiesExtensions
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
         var bytes = value != null ? Encoding.Unicode.GetBytes(value) : null;
-        using var p = new Pwstr(name);
-        properties.SetValueByName(p, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, bytes, (bytes?.Length).GetValueOrDefault()).ThrowOnError();
+        SetValueByName(properties, name, bytes);
     }
 
     public static void SetValueByName(this ID2D1Properties properties, string name, bool value) => SetValueByName(properties, name, value ? 1 : 0);
@@ -610,12 +624,12 @@ public static class ID2D1PropertiesExtensions
     public static void SetValueByName(this ID2D1Properties properties, string name, float value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
     public static void SetValueByName(this ID2D1Properties properties, string name, uint value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
     public static void SetValueByName(this ID2D1Properties properties, string name, int value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
-    public static void SetValueByName(this ID2D1Properties properties, string name, byte[] value, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN)
+    public static void SetValueByName(this ID2D1Properties properties, string name, byte[]? value, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN) => SetValueByName(properties, name, value.AsPointer(), value.Length(), type);
+    public static void SetValueByName(this ID2D1Properties properties, string name, nint valuePointer, uint valueSize, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN)
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
-        ArgumentNullException.ThrowIfNull(value);
         using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, value, (uint)value.Length).ThrowOnError();
+        properties.SetValueByName(p, type, valuePointer, valueSize).ThrowOnError();
     }
 }

@@ -59,13 +59,7 @@ public static class IWICBitmapFrameEncodeExtensions
     {
         ArgumentNullException.ThrowIfNull(frame);
         ArgumentNullException.ThrowIfNull(pixels);
-        unsafe
-        {
-            fixed (byte* ptr = pixels)
-            {
-                frame.WritePixels(lineCount, stride, (uint)pixels.Length, (nint)ptr).ThrowOnError();
-            }
-        }
+        frame.WritePixels(lineCount, stride, pixels.Length(), pixels.AsPointer()).ThrowOnError();
     }
 
     public static IComObject<IWICMetadataQueryWriter> GetMetadataQueryWriter(this WicBitmapFrameEncode frameBag) => GetMetadataQueryWriter(frameBag?.Encode!);
@@ -87,12 +81,13 @@ public static class IWICBitmapFrameEncodeExtensions
 
     public static void SetColorContexts(this WicBitmapFrameEncode frameBag, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(frameBag?.Encode!, contexts);
     public static void SetColorContexts(this WicBitmapFrameEncode frameBag, IEnumerable<IWICColorContext> contexts) => SetColorContexts(frameBag?.Encode!, contexts);
-    public static void SetColorContexts(this IComObject<IWICBitmapFrameEncode> frame, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(frame?.Object!, contexts?.Select(c => c.Object)!);
+    public static void SetColorContexts(this IComObject<IWICBitmapFrameEncode> frame, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(frame?.Object!, contexts.Unwrap());
     public static void SetColorContexts(this IComObject<IWICBitmapFrameEncode> frame, IEnumerable<IWICColorContext> contexts) => SetColorContexts(frame?.Object!, contexts);
     public static void SetColorContexts(this IWICBitmapFrameEncode frame, IEnumerable<IWICColorContext> contexts)
     {
         ArgumentNullException.ThrowIfNull(frame);
-        frame.SetColorContexts((uint)(contexts?.Count()).GetValueOrDefault(), contexts?.ToArray()!).ThrowOnError();
+        var array = contexts?.ToArray();
+        frame.SetColorContexts(array.Length(), array!).ThrowOnError();
     }
 
     public static void SetPalette(this WicBitmapFrameEncode frameBag, IComObject<IWICPalette> palette) => SetPalette(frameBag?.Encode!, palette);

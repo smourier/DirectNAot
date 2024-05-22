@@ -33,8 +33,8 @@ public static class IWICBitmapFrameDecodeExtensions
             return [];
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
-        var array = colorContexts.Select(cc => cc.Object).ToArray();
-        frame.GetColorContexts((uint)colorContexts.Length, array, out _).ThrowOnError();
+        var array = colorContexts.UnwrapAsArray();
+        frame.GetColorContexts(colorContexts.Length(), array, out _).ThrowOnError();
         return colorContexts;
     }
 }

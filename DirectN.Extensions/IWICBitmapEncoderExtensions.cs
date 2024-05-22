@@ -26,12 +26,13 @@ public static class IWICBitmapEncoderExtensions
         encoder.Commit().ThrowOnError();
     }
 
-    public static void SetColorContexts(this IComObject<IWICBitmapEncoder> encoder, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(encoder?.Object!, contexts?.Select(c => c.Object)!);
+    public static void SetColorContexts(this IComObject<IWICBitmapEncoder> encoder, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(encoder?.Object!, contexts.Unwrap());
     public static void SetColorContexts(this IComObject<IWICBitmapEncoder> encoder, IEnumerable<IWICColorContext> contexts) => SetColorContexts(encoder?.Object!, contexts);
     public static void SetColorContexts(this IWICBitmapEncoder encoder, IEnumerable<IWICColorContext> contexts)
     {
         ArgumentNullException.ThrowIfNull(encoder);
-        encoder.SetColorContexts((uint)(contexts?.Count()).GetValueOrDefault(), contexts?.ToArray()!).ThrowOnError();
+        var array = contexts?.ToArray();
+        encoder.SetColorContexts(array.Length(), array!).ThrowOnError();
     }
 
     public static void SetPalette(this IComObject<IWICBitmapEncoder> encoder, IComObject<IWICPalette> palette) => SetPalette(encoder?.Object!, palette?.Object!);

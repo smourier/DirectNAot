@@ -12,12 +12,12 @@ public static class IDWriteLocalizedStringsExtensions
             var name = new DWriteLocalizedString();
             strings.GetLocaleNameLength((uint)i, out var len).ThrowOnError();
             using var p1 = new AllocPwstr((len + 1) * 2);
-            strings.GetLocaleName((uint)i, p1, len + 1);
+            strings.GetLocaleName((uint)i, p1, p1.SizeInChars);
             name.LocaleName = p1.ToString();
 
             strings.GetStringLength((uint)i, out len).ThrowOnError();
             using var p2 = new AllocPwstr((len + 1) * 2);
-            strings.GetString((uint)i, p2, len + 1);
+            strings.GetString((uint)i, p2, p2.SizeInChars);
             name.String = p2.ToString();
 
             list.Add(name);

@@ -14,7 +14,7 @@ public partial interface IAVIStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-info
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Info(out AVISTREAMINFOW psi, int lSize);
+    HRESULT Info(nint psi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavistream-findsample
     [PreserveSig]

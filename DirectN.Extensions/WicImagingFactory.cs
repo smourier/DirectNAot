@@ -17,11 +17,11 @@ public static class WicImagingFactory
     public static IComObject<IWICBitmap> CreateBitmapFromHBITMAP(HBITMAP bitmapHandle, HPALETTE paletteHandle, WICBitmapAlphaChannelOption options = WICBitmapAlphaChannelOption.WICBitmapUseAlpha) => WithFactory(f => f.CreateBitmapFromHBITMAP(bitmapHandle, paletteHandle, options));
     public static IComObject<IWICBitmap> CreateBitmapFromHICON(HICON iconHandle) => WithFactory(f => f.CreateBitmapFromHICON(iconHandle));
     public static IComObject<IWICBitmap> CreateBitmapFromMemory(uint width, uint height, Guid pixelFormat, uint stride, byte[] buffer) => WithFactory(f => f.CreateBitmapFromMemory(width, height, pixelFormat, stride, buffer));
-    public static IComObject<IWICBitmap> CreateBitmapFromSource(IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => WithFactory(f => f.CreateBitmapFromSource(source?.Object!, option));
-    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(IComObject<IWICBitmapSource> source, int x, int y, uint width, uint height) => WithFactory(f => f.CreateBitmapFromSourceRect(source?.Object!, x, y, width, height));
+    public static IComObject<IWICBitmap> CreateBitmapFromSource(IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => WithFactory(f => f.CreateBitmapFromSource(source, option));
+    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(IComObject<IWICBitmapSource> source, uint x, uint y, uint width, uint height) => WithFactory(f => f.CreateBitmapFromSourceRect(source, x, y, width, height));
 
     [SupportedOSPlatform("windows8.0")]
-    public static IComObject<IWICImageEncoder> CreateImageEncoder(IComObject<ID2D1Device> device) => WithFactory2(f => f.CreateImageEncoder(device?.Object!));
+    public static IComObject<IWICImageEncoder> CreateImageEncoder(IComObject<ID2D1Device> device) => WithFactory2(f => f.CreateImageEncoder(device));
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<IWICColorTransform> CreateColorTransformer() => WithFactory2(f => f.CreateColorTransformer());
@@ -37,40 +37,40 @@ public static class WicImagingFactory
         return colorContexts;
     });
 
-    public static void WithFactory(Action<IWICImagingFactory> action)
+    public static void WithFactory(Action<IComObject<IWICImagingFactory>> action)
     {
         ArgumentNullException.ThrowIfNull(action);
-        using var factory = Create();
-        action(factory!.Object);
+        using var factory = Create()!;
+        action(factory);
     }
 
-    public static T WithFactory<T>(Func<IWICImagingFactory, T> func)
+    public static T WithFactory<T>(Func<IComObject<IWICImagingFactory>, T> func)
     {
         ArgumentNullException.ThrowIfNull(func);
-        using var factory = Create();
-        return func(factory!.Object);
+        using var factory = Create()!;
+        return func(factory);
     }
 
     [SupportedOSPlatform("windows8.0")]
-    public static void WithFactory2(Action<IWICImagingFactory2> action)
+    public static void WithFactory2(Action<IComObject<IWICImagingFactory2>> action)
     {
         ArgumentNullException.ThrowIfNull(action);
-        using var factory = Create<IWICImagingFactory2>(Constants.CLSID_WICImagingFactory2);
-        action(factory!.Object);
+        using var factory = Create<IWICImagingFactory2>(Constants.CLSID_WICImagingFactory2)!;
+        action(factory);
     }
 
     [SupportedOSPlatform("windows8.0")]
-    public static T WithFactory2<T>(Func<IWICImagingFactory2, T> func)
+    public static T WithFactory2<T>(Func<IComObject<IWICImagingFactory2>, T> func)
     {
         ArgumentNullException.ThrowIfNull(func);
-        using var factory = Create<IWICImagingFactory2>(Constants.CLSID_WICImagingFactory2);
-        return func(factory!.Object);
+        using var factory = Create<IWICImagingFactory2>(Constants.CLSID_WICImagingFactory2)!;
+        return func(factory);
     }
 
-    public static IComObject<IWICImagingFactory>? Create(Guid? clsid = null, bool throwOnError = true) => Create<IWICImagingFactory>(clsid, throwOnError);
-    public static IComObject<T>? Create<T>(Guid? clsid = null, bool throwOnError = true) where T : IWICImagingFactory
+    public static IComObject<IWICImagingFactory>? Create(Guid? clsid = null, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true) => Create<IWICImagingFactory>(clsid, flags, throwOnError);
+    public static IComObject<T>? Create<T>(Guid? clsid = null, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true) where T : IWICImagingFactory
     {
         clsid ??= Constants.CLSID_WICImagingFactory;
-        return ComObject<T>.CoCreate(clsid.Value, throwOnError: throwOnError);
+        return ComObject<T>.CoCreate(clsid.Value, flags: flags, throwOnError: throwOnError);
     }
 }

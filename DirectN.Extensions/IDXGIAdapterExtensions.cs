@@ -11,6 +11,7 @@ public static class IDXGIAdapterExtensions
     public static IComObject<T> GetParent<T>(this IComObject<IDXGIAdapter> adapter) => GetParent<T>(adapter?.Object!);
     public static IComObject<T> GetParent<T>(this IDXGIAdapter adapter) => IDXGIObjectExtensions.GetParent<T>(adapter);
 
+    [SupportedOSPlatform("windows6.1")]
     public static int GetIndex(this IDXGIAdapter adapter)
     {
         ArgumentNullException.ThrowIfNull(adapter);

@@ -12,14 +12,14 @@ public static class IDXGIObjectExtensions
         _ = child.SetPrivateData(Constants.WKPDID_D3DDebugObjectNameW, (uint)(name.Length * 2), p.Value).ThrowOnError();
     }
 
-    public static void SetPrivateData(this IComObject<IDXGIObject> obj, Guid guid, uint dataSize, IntPtr data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
-    public static void SetPrivateData(this IDXGIObject obj, Guid guid, uint dataSize, IntPtr data)
+    public static void SetPrivateData(this IComObject<IDXGIObject> obj, Guid guid, uint dataSize, nint data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
+    public static void SetPrivateData(this IDXGIObject obj, Guid guid, uint dataSize, nint data)
     {
         obj.SetPrivateData(guid, dataSize, data).ThrowOnError();
     }
 
-    public static void SetPrivateDataInterface(this IComObject<IDXGIObject> obj, Guid guid, IntPtr data) => SetPrivateDataInterface(obj?.Object!, guid, data);
-    public static void SetPrivateDataInterface(this IDXGIObject obj, Guid guid, IntPtr data)
+    public static void SetPrivateDataInterface(this IComObject<IDXGIObject> obj, Guid guid, nint data) => SetPrivateDataInterface(obj?.Object!, guid, data);
+    public static void SetPrivateDataInterface(this IDXGIObject obj, Guid guid, nint data)
     {
         obj.SetPrivateDataInterface(guid, data).ThrowOnError();
     }

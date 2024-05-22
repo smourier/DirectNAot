@@ -48,11 +48,8 @@ public sealed class ColorProfile
         Profile = new byte[size];
         unsafe
         {
-            fixed (byte* profileBytes = Profile)
-            {
-                if (!Functions.GetColorProfileFromHandle(handle, (nint)profileBytes, ref size))
-                    throw new Win32Exception(Marshal.GetLastWin32Error());
-            }
+            if (!Functions.GetColorProfileFromHandle(handle, Profile.AsPointer(), ref size))
+                throw new Win32Exception(Marshal.GetLastWin32Error());
         }
 
         var elements = new List<ColorProfileElement>();
@@ -67,175 +64,169 @@ public sealed class ColorProfile
                 if (size > 0)
                 {
                     var bytes = new byte[size];
-                    unsafe
+                    if (Functions.GetColorProfileElement(handle, tag, 0, ref size, bytes.AsPointer(), out _))
                     {
-                        fixed (byte* p = bytes)
+                        elements.Add(new ColorProfileElement(tag, bytes));
+
+                        int offset;
+                        // https://www.color.org/specification/ICC.1-2022-05.pdf
+                        var type = Get4BytesString(BitConverter.ToInt32(bytes, 0));
+                        switch (type)
                         {
-                            if (Functions.GetColorProfileElement(handle, tag, 0, ref size, (nint)p, out _))
-                            {
-                                elements.Add(new ColorProfileElement(tag, bytes));
-
-                                int offset;
-                                // https://www.color.org/specification/ICC.1-2022-05.pdf
-                                var type = Get4BytesString(BitConverter.ToInt32(bytes, 0));
-                                switch (type)
+                            case "text":
+                                offset = 8;
+                                switch (tag)
                                 {
-                                    case "text":
-                                        offset = 8;
-                                        switch (tag)
-                                        {
-                                            case 0x63707274: // cprt
-                                                Copyright = getAscii(bytes.Length - 8);
-                                                break;
-
-                                            case 0x74617267: // targ
-                                                RegisteredCharacterization = getAscii(bytes.Length - 8);
-                                                break;
-                                        }
+                                    case 0x63707274: // cprt
+                                        Copyright = getAscii(bytes.Length - 8);
                                         break;
 
-                                    case "desc":
-                                        // search old ICC doc for "textDescriptionType" https://www.color.org/icc32.pdf 
-                                        offset = 8;
-                                        var n = getInt32();
-                                        if (n > 0)
-                                        {
-                                            switch (tag)
-                                            {
-                                                case 0x64657363: // desc
-                                                    Description = getAscii(n);
-                                                    break;
-
-                                                case 0x646d6e64: // dmnd
-                                                    ManufacturerDescription = getAscii(n);
-                                                    break;
-
-                                                case 0x646d6464: // dmdd
-                                                    ModelDescription = getAscii(n);
-                                                    break;
-
-                                                case 0x76756564: // vued
-                                                    ViewingCondition = getAscii(n);
-                                                    break;
-                                            }
-                                        }
-
-                                        UnicodeLanguageCode = getInt32();
-                                        var m = getInt32();
-                                        if (m > 0)
-                                        {
-                                            switch (tag)
-                                            {
-                                                case 0x64657363: // desc
-                                                    Description = getUnicode(n);
-                                                    break;
-
-                                                case 0x646d6e64: // dmnd
-                                                    ManufacturerDescription = getUnicode(n);
-                                                    break;
-
-                                                case 0x646d6464: // dmdd
-                                                    ModelDescription = getUnicode(n);
-                                                    break;
-
-                                                case 0x76756564: // vued
-                                                    ViewingCondition = getUnicode(n);
-                                                    break;
-                                            }
-                                        }
-                                        break;
-
-                                    case "mluc": // multiLocalizedUnicodeType
-                                        offset = 8;
-                                        var records = getInt32();
-                                        _ = getInt32(); // record size
-                                        var languageCode = Get2BytesString(BitConverter.ToInt16(bytes, offset));
-                                        offset += 2;
-                                        var countryCode = Get2BytesString(BitConverter.ToInt16(bytes, offset));
-
-                                        var lcid = languageCode + "-" + countryCode;
-                                        offset += 2;
-                                        for (var ir = 0; ir < records; ir++)
-                                        {
-                                            var sl = getInt32();
-                                            var o = offset; // save
-                                            offset = getInt32();
-                                            var s = getBEUnicode(sl / 2);
-                                            offset = o; // restore
-
-                                            if (s == null)
-                                                break;
-
-                                            if (!localizedStrings.TryGetValue(lcid, out var list))
-                                            {
-                                                list = [];
-                                                localizedStrings.Add(lcid, list);
-                                            }
-
-                                            list.Add(s);
-
-                                            switch (tag)
-                                            {
-                                                case 0x63707274: // cprt
-                                                    Copyright = s;
-                                                    break;
-
-                                                case 0x74617267: // targ
-                                                    RegisteredCharacterization = s;
-                                                    break;
-
-                                                case 0x64657363: // desc
-                                                    Description = s;
-                                                    break;
-
-                                                case 0x646d6e64: // dmnd
-                                                    ManufacturerDescription = s;
-                                                    break;
-
-                                                case 0x646d6464: // dmdd
-                                                    ModelDescription = s;
-                                                    break;
-
-                                                case 0x76756564: // vued
-                                                    ViewingCondition = s;
-                                                    break;
-                                            }
-                                        }
-                                        break;
-
-                                    default:
+                                    case 0x74617267: // targ
+                                        RegisteredCharacterization = getAscii(bytes.Length - 8);
                                         break;
                                 }
+                                break;
 
-                                int getInt32() => (bytes[offset++] << 24) | (bytes[offset++] << 16) | (bytes[offset++] << 8) | bytes[offset++];
-                                string? getAscii(int len)
+                            case "desc":
+                                // search old ICC doc for "textDescriptionType" https://www.color.org/icc32.pdf 
+                                offset = 8;
+                                var n = getInt32();
+                                if (n > 0)
                                 {
-                                    var s = TrimTerminatingZeros(Encoding.ASCII.GetString(bytes, offset, len));
-                                    offset += len;
-                                    return s;
-                                }
-
-                                string? getBEUnicode(int len)
-                                {
-                                    var s = TrimTerminatingZeros(Encoding.BigEndianUnicode.GetString(bytes, offset, len * 2));
-                                    offset += len;
-                                    return s;
-                                }
-
-                                string? getUnicode(int len)
-                                {
-                                    var bom = BitConverter.ToInt16(bytes, offset);
-                                    if (bom == -2)
+                                    switch (tag)
                                     {
-                                        offset += 3;
-                                        //len -= 1;
+                                        case 0x64657363: // desc
+                                            Description = getAscii(n);
+                                            break;
+
+                                        case 0x646d6e64: // dmnd
+                                            ManufacturerDescription = getAscii(n);
+                                            break;
+
+                                        case 0x646d6464: // dmdd
+                                            ModelDescription = getAscii(n);
+                                            break;
+
+                                        case 0x76756564: // vued
+                                            ViewingCondition = getAscii(n);
+                                            break;
+                                    }
+                                }
+
+                                UnicodeLanguageCode = getInt32();
+                                var m = getInt32();
+                                if (m > 0)
+                                {
+                                    switch (tag)
+                                    {
+                                        case 0x64657363: // desc
+                                            Description = getUnicode(n);
+                                            break;
+
+                                        case 0x646d6e64: // dmnd
+                                            ManufacturerDescription = getUnicode(n);
+                                            break;
+
+                                        case 0x646d6464: // dmdd
+                                            ModelDescription = getUnicode(n);
+                                            break;
+
+                                        case 0x76756564: // vued
+                                            ViewingCondition = getUnicode(n);
+                                            break;
+                                    }
+                                }
+                                break;
+
+                            case "mluc": // multiLocalizedUnicodeType
+                                offset = 8;
+                                var records = getInt32();
+                                _ = getInt32(); // record size
+                                var languageCode = Get2BytesString(BitConverter.ToInt16(bytes, offset));
+                                offset += 2;
+                                var countryCode = Get2BytesString(BitConverter.ToInt16(bytes, offset));
+
+                                var lcid = languageCode + "-" + countryCode;
+                                offset += 2;
+                                for (var ir = 0; ir < records; ir++)
+                                {
+                                    var sl = getInt32();
+                                    var o = offset; // save
+                                    offset = getInt32();
+                                    var s = getBEUnicode(sl / 2);
+                                    offset = o; // restore
+
+                                    if (s == null)
+                                        break;
+
+                                    if (!localizedStrings.TryGetValue(lcid, out var list))
+                                    {
+                                        list = [];
+                                        localizedStrings.Add(lcid, list);
                                     }
 
-                                    var s = TrimTerminatingZeros(Encoding.Unicode.GetString(bytes, offset, len * 2));
-                                    offset += len;
-                                    return s;
+                                    list.Add(s);
+
+                                    switch (tag)
+                                    {
+                                        case 0x63707274: // cprt
+                                            Copyright = s;
+                                            break;
+
+                                        case 0x74617267: // targ
+                                            RegisteredCharacterization = s;
+                                            break;
+
+                                        case 0x64657363: // desc
+                                            Description = s;
+                                            break;
+
+                                        case 0x646d6e64: // dmnd
+                                            ManufacturerDescription = s;
+                                            break;
+
+                                        case 0x646d6464: // dmdd
+                                            ModelDescription = s;
+                                            break;
+
+                                        case 0x76756564: // vued
+                                            ViewingCondition = s;
+                                            break;
+                                    }
                                 }
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        int getInt32() => (bytes[offset++] << 24) | (bytes[offset++] << 16) | (bytes[offset++] << 8) | bytes[offset++];
+                        string? getAscii(int len)
+                        {
+                            var s = TrimTerminatingZeros(Encoding.ASCII.GetString(bytes, offset, len));
+                            offset += len;
+                            return s;
+                        }
+
+                        string? getBEUnicode(int len)
+                        {
+                            var s = TrimTerminatingZeros(Encoding.BigEndianUnicode.GetString(bytes, offset, len * 2));
+                            offset += len;
+                            return s;
+                        }
+
+                        string? getUnicode(int len)
+                        {
+                            var bom = BitConverter.ToInt16(bytes, offset);
+                            if (bom == -2)
+                            {
+                                offset += 3;
+                                //len -= 1;
                             }
+
+                            var s = TrimTerminatingZeros(Encoding.Unicode.GetString(bytes, offset, len * 2));
+                            offset += len;
+                            return s;
                         }
                     }
                 }
@@ -383,35 +374,29 @@ public sealed class ColorProfile
         if (buffer == null)
             return null;
 
-        unsafe
+        var prof = new PROFILE
         {
-            fixed (byte* mem = buffer)
-            {
-                var prof = new PROFILE
-                {
-                    dwType = PROFILE_MEMBUFFER,
-                    pProfileData = (nint)mem,
-                    cbDataSize = (uint)buffer.Length
-                };
+            dwType = PROFILE_MEMBUFFER,
+            pProfileData = buffer.AsPointer(),
+            cbDataSize = buffer.Length()
+        };
 
-                var handle = Functions.OpenColorProfileA(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
-                if (handle == 0)
-                {
-                    if (throwOnError)
-                        throw new Win32Exception(Marshal.GetLastWin32Error());
+        var handle = Functions.OpenColorProfileA(prof, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING);
+        if (handle == 0)
+        {
+            if (throwOnError)
+                throw new Win32Exception(Marshal.GetLastWin32Error());
 
-                    return null;
-                }
+            return null;
+        }
 
-                try
-                {
-                    return new ColorProfile(handle);
-                }
-                finally
-                {
-                    Functions.CloseColorProfile(handle);
-                }
-            }
+        try
+        {
+            return new ColorProfile(handle);
+        }
+        finally
+        {
+            Functions.CloseColorProfile(handle);
         }
     }
 
@@ -529,27 +514,25 @@ public sealed class ColorProfile
 
             if (count > 0)
             {
-                fixed (byte* mem = new byte[size])
+                var bytes = new byte[size];
+                var ptr = bytes.AsPointer();
+                if (!Functions.EnumColorProfilesW(name, enumType, ptr, ref size, (nint)pc))
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
+
+                do
                 {
-                    if (!Functions.EnumColorProfilesW(name, enumType, (nint)mem, ref size, (nint)pc))
-                        throw new Win32Exception(Marshal.GetLastWin32Error());
+                    var str = Marshal.PtrToStringUni(ptr);
+                    if (string.IsNullOrEmpty(str))
+                        break;
 
-                    var ptr = (nint)mem;
-                    do
+                    var profile = FromFileName(str, machineName, throwOnProfileError);
+                    if (profile != null)
                     {
-                        var str = Marshal.PtrToStringUni(ptr);
-                        if (string.IsNullOrEmpty(str))
-                            break;
-
-                        var profile = FromFileName(str, machineName, throwOnProfileError);
-                        if (profile != null)
-                        {
-                            list.Add(profile);
-                        }
-                        ptr += (str.Length + 1) * 2;
+                        list.Add(profile);
                     }
-                    while (true);
+                    ptr += (str.Length + 1) * 2;
                 }
+                while (true);
             }
         }
         return list;

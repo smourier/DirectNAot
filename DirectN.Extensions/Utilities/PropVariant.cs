@@ -643,17 +643,11 @@
             if (bytes == null)
                 return null;
 
-            unsafe
-            {
-                fixed (byte* pbytes = bytes)
-                {
-                    var hr = Functions.StgDeserializePropVariant((nint)pbytes, (uint)bytes.Length, out var inner).ThrowOnError();
-                    if (hr.IsError)
-                        return null;
+            var hr = Functions.StgDeserializePropVariant(bytes.AsPointer(), bytes.Length(), out var inner).ThrowOnError(throwOnError);
+            if (hr.IsError)
+                return null;
 
-                    return new PropVariant { _inner = inner };
-                }
-            }
+            return new PropVariant { _inner = inner };
         }
 
         public static PropVariant? Deserialize(nint ptr, uint size, bool throwOnError = true)

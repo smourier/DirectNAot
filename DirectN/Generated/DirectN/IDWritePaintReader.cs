@@ -6,7 +6,7 @@ public partial interface IDWritePaintReader
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCurrentGlyph(uint glyphIndex, out DWRITE_PAINT_ELEMENT paintElement, uint structSize, out D2D_RECT_F clipBox, nint /* optional DWRITE_PAINT_ATTRIBUTES* */ glyphAttributes);
+    HRESULT SetCurrentGlyph(uint glyphIndex, nint paintElement, uint structSize, out D2D_RECT_F clipBox, nint /* optional DWRITE_PAINT_ATTRIBUTES* */ glyphAttributes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,11 +22,11 @@ public partial interface IDWritePaintReader
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveToFirstChild(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
+    HRESULT MoveToFirstChild(nint paintElement, uint structSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveToNextSibling(out DWRITE_PAINT_ELEMENT paintElement, uint structSize);
+    HRESULT MoveToNextSibling(nint paintElement, uint structSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

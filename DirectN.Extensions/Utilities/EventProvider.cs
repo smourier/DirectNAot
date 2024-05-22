@@ -27,7 +27,7 @@ public sealed partial class EventProvider : IDisposable
     }
 
     [LibraryImport("advapi32")]
-    private static partial int EventRegister(in Guid ProviderId, IntPtr EnableCallback, IntPtr CallbackContext, out long RegHandle);
+    private static partial int EventRegister(in Guid ProviderId, nint EnableCallback, nint CallbackContext, out long RegHandle);
 
     [LibraryImport("advapi32")]
     private static partial int EventUnregister(long RegHandle);

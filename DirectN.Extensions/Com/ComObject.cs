@@ -63,27 +63,16 @@ public abstract class ComObject : IComObject
         return default;
     }
 
-    public static IComObject<T>? FromPointer<T>(nint unknown, bool releaseUknown = true, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
     {
         if (unknown == 0)
             return null;
 
         var instance = ComWrappers.GetOrCreateObjectForComInstance(unknown, flags);
         if (instance == null || instance is not T t)
-        {
-            if (releaseUknown)
-            {
-                Marshal.Release(unknown);
-            }
             return null;
-        }
 
-        var co = new ComObject<T>(t);
-        if (releaseUknown)
-        {
-            Marshal.Release(unknown);
-        }
-        return co;
+        return new ComObject<T>(t);
     }
 
     public static nint ToComInstance(object? obj)
@@ -102,6 +91,7 @@ public abstract class ComObject : IComObject
         return unk;
     }
 
+    public static void Release(System.Runtime.InteropServices.Marshalling.ComObject obj) => obj?.FinalRelease();
     public static int Release(nint unk)
     {
         if (unk == 0)
@@ -156,10 +146,10 @@ public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : Com
     public new T Object => (T)(object?)base.Object!;
     public override Type InterfaceType => typeof(T);
 
-    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, IntPtr outer = 0, bool throwOnError = true)
+    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
     {
         // we use IUnknown first, some objects don't support direct query interface
         Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
-        return FromPointer<T>(unk);
+        return FromPointer<T>(unk, flags);
     }
 }

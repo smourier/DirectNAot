@@ -43,20 +43,30 @@ public static partial class Functions
     public static int DipsToPixels(int dips, float dpi) => (int)(dips * dpi / 96);
 
     [LibraryImport("kernel32", EntryPoint = "RtlMoveMemory")]
+    [PreserveSig]
     public static partial void CopyMemory(nint pdst, nint psrc, nint cb);
 
     [LibraryImport("kernel32", EntryPoint = "RtlZeroMemory")]
+    [PreserveSig]
     public static partial void ZeroMemory(nint pdst, nint cb);
 
-    // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgdeserializepropvariant
     [LibraryImport("PROPSYS")]
-    [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT StgDeserializePropVariant(nint pprop, uint cbMax, out PROPVARIANT ppropvar);
 
     [LibraryImport("user32")]
+    [PreserveSig]
     public static partial HRESULT SetWindowCompositionAttribute(HWND hwnd, ref WINDOWCOMPOSITIONATTRIBDATA data);
 
     [LibraryImport("user32")]
+    [PreserveSig]
     public static partial HRESULT GetWindowCompositionAttribute(HWND hwnd, ref WINDOWCOMPOSITIONATTRIBDATA data);
+
+    [LibraryImport("DWriteCore")]
+    [PreserveSig]
+    public static partial HRESULT DWriteCoreCreateFactory(DWRITE_FACTORY_TYPE factoryType, in Guid iid, out nint factory);
+
+    [LibraryImport("dxgidebug")]
+    [PreserveSig]
+    public static partial HRESULT DXGIGetDebugInterface(in Guid riid, out nint ppDebug);
 }

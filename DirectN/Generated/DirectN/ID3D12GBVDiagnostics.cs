@@ -6,7 +6,7 @@ public partial interface ID3D12GBVDiagnostics
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGBVEntireSubresourceStatesData(ID3D12Resource pResource, out int pData, uint DataSize);
+    HRESULT GetGBVEntireSubresourceStatesData(ID3D12Resource pResource, nint pData, uint DataSize);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

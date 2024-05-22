@@ -36,12 +36,40 @@ public static class Extensions
         return t.Length == 0 ? null : t;
     }
 
+    public static void CopyTo(this nint source, nint destination, int length) => Functions.CopyMemory(destination, source, length);
+    public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);
+
     public static unsafe nint CopyToPointer<T>(this T? structure) where T : struct
     {
         if (structure == null)
             return 0;
 
         return (nint)Unsafe.AsPointer(ref (new T[] { structure.Value })[0]);
+    }
+
+    public static unsafe uint Length<T>(this T[]? array)
+    {
+        if (array == null)
+            return 0;
+
+        return (uint)array.Length;
+    }
+
+    public static unsafe nint AsPointer<T>(this T[]? array)
+    {
+        if (array == null)
+            return 0;
+
+        return (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(array));
+    }
+
+    public static byte[] IntPtrToBytes(this IntPtr ptr)
+    {
+        if (IntPtr.Size == 4)
+            return BitConverter.GetBytes(ptr.ToInt32());
+
+        return BitConverter.GetBytes(ptr.ToInt64());
     }
 
     // we don't want unspecified datetimes
@@ -56,7 +84,10 @@ public static class Extensions
         return new Guid(MD5.HashData(Encoding.UTF8.GetBytes(text)));
     }
 
+    [return: NotNullIfNotNull(nameof(exception))]
     public static string? GetAllMessages(this Exception? exception) => GetAllMessages(exception, Environment.NewLine);
+
+    [return: NotNullIfNotNull(nameof(exception))]
     public static string? GetAllMessages(this Exception? exception, string separator)
     {
         if (exception == null)

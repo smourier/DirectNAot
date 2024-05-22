@@ -8,14 +8,14 @@ public static class ID3D12ObjectExtensions
         obj.SetName(name);
     }
 
-    public static void SetPrivateData(this IComObject<ID3D12Object> obj, Guid guid, uint dataSize, IntPtr data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
-    public static void SetPrivateData(this ID3D12Object obj, Guid guid, uint dataSize, IntPtr data)
+    public static void SetPrivateData(this IComObject<ID3D12Object> obj, Guid guid, uint dataSize, nint data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
+    public static void SetPrivateData(this ID3D12Object obj, Guid guid, uint dataSize, nint data)
     {
         obj.SetPrivateData(guid, dataSize, data).ThrowOnError();
     }
 
-    public static void SetPrivateDataInterface(this IComObject<ID3D12Object> obj, Guid guid, IntPtr data) => SetPrivateDataInterface(obj?.Object!, guid, data);
-    public static void SetPrivateDataInterface(this ID3D12Object obj, Guid guid, IntPtr data)
+    public static void SetPrivateDataInterface(this IComObject<ID3D12Object> obj, Guid guid, nint data) => SetPrivateDataInterface(obj?.Object!, guid, data);
+    public static void SetPrivateDataInterface(this ID3D12Object obj, Guid guid, nint data)
     {
         obj.SetPrivateDataInterface(guid, data).ThrowOnError();
     }
@@ -62,8 +62,8 @@ public static class ID3D12ObjectExtensions
         return resource.GetDesc();
     }
 
-    public static IntPtr Map(this IComObject<ID3D12Resource> resource, uint subresource, D3D12_RANGE? readRange = null) => Map(resource?.Object!, subresource, readRange);
-    public static unsafe IntPtr Map(this ID3D12Resource resource, uint subresource, D3D12_RANGE? readRange = null)
+    public static nint Map(this IComObject<ID3D12Resource> resource, uint subresource, D3D12_RANGE? readRange = null) => Map(resource?.Object!, subresource, readRange);
+    public static unsafe nint Map(this ID3D12Resource resource, uint subresource, D3D12_RANGE? readRange = null)
     {
         ArgumentNullException.ThrowIfNull(resource);
         nint data;
@@ -78,8 +78,8 @@ public static class ID3D12ObjectExtensions
         resource.Unmap(subresource, writtenRange.CopyToPointer());
     }
 
-    public static void WithMap(this IComObject<ID3D12Resource> resource, uint subresource, Action<IntPtr> action, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null) => WithMap(resource?.Object!, subresource, action, readRange, writtenRange);
-    public static void WithMap(this ID3D12Resource resource, uint subresource, Action<IntPtr> action, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null)
+    public static void WithMap(this IComObject<ID3D12Resource> resource, uint subresource, Action<nint> action, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null) => WithMap(resource?.Object!, subresource, action, readRange, writtenRange);
+    public static void WithMap(this ID3D12Resource resource, uint subresource, Action<nint> action, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null)
     {
         ArgumentNullException.ThrowIfNull(resource);
         ArgumentNullException.ThrowIfNull(action);
@@ -94,8 +94,8 @@ public static class ID3D12ObjectExtensions
         }
     }
 
-    public static T WithMap<T>(this IComObject<ID3D12Resource> resource, uint subresource, Func<IntPtr, T> func, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null) => WithMap(resource?.Object!, subresource, func, readRange, writtenRange);
-    public static T WithMap<T>(this ID3D12Resource resource, uint subresource, Func<IntPtr, T> func, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null)
+    public static T WithMap<T>(this IComObject<ID3D12Resource> resource, uint subresource, Func<nint, T> func, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null) => WithMap(resource?.Object!, subresource, func, readRange, writtenRange);
+    public static T WithMap<T>(this ID3D12Resource resource, uint subresource, Func<nint, T> func, D3D12_RANGE? readRange = null, D3D12_RANGE? writtenRange = null)
     {
         ArgumentNullException.ThrowIfNull(resource);
         ArgumentNullException.ThrowIfNull(func);
@@ -110,15 +110,15 @@ public static class ID3D12ObjectExtensions
         }
     }
 
-    public static void WriteToSubresource(this IComObject<ID3D12Resource> resource, uint subresource, IntPtr srcData, uint srcRowPitch, uint srcDepthPitch, D3D12_BOX? dstBox = null) => WriteToSubresource(resource?.Object!, subresource, srcData, srcRowPitch, srcDepthPitch, dstBox);
-    public static void WriteToSubresource(this ID3D12Resource resource, uint subresource, IntPtr srcData, uint srcRowPitch, uint srcDepthPitch, D3D12_BOX? dstBox = null)
+    public static void WriteToSubresource(this IComObject<ID3D12Resource> resource, uint subresource, nint srcData, uint srcRowPitch, uint srcDepthPitch, D3D12_BOX? dstBox = null) => WriteToSubresource(resource?.Object!, subresource, srcData, srcRowPitch, srcDepthPitch, dstBox);
+    public static void WriteToSubresource(this ID3D12Resource resource, uint subresource, nint srcData, uint srcRowPitch, uint srcDepthPitch, D3D12_BOX? dstBox = null)
     {
         ArgumentNullException.ThrowIfNull(resource);
         resource.WriteToSubresource(subresource, dstBox.CopyToPointer(), srcData, srcRowPitch, srcDepthPitch).ThrowOnError();
     }
 
-    public static void ReadFromSubresource(this IComObject<ID3D12Resource> resource, IntPtr dstData, uint dstRowPitch, uint dstDepthPitch, uint srcSubresource, D3D12_BOX? dstBox = null) => ReadFromSubresource(resource?.Object!, dstData, dstRowPitch, dstDepthPitch, srcSubresource, dstBox);
-    public static void ReadFromSubresource(this ID3D12Resource resource, IntPtr dstData, uint dstRowPitch, uint dstDepthPitch, uint srcSubresource, D3D12_BOX? dstBox = null)
+    public static void ReadFromSubresource(this IComObject<ID3D12Resource> resource, nint dstData, uint dstRowPitch, uint dstDepthPitch, uint srcSubresource, D3D12_BOX? dstBox = null) => ReadFromSubresource(resource?.Object!, dstData, dstRowPitch, dstDepthPitch, srcSubresource, dstBox);
+    public static void ReadFromSubresource(this ID3D12Resource resource, nint dstData, uint dstRowPitch, uint dstDepthPitch, uint srcSubresource, D3D12_BOX? dstBox = null)
     {
         ArgumentNullException.ThrowIfNull(resource);
         resource.ReadFromSubresource(dstData, dstRowPitch, dstDepthPitch, srcSubresource, dstBox.CopyToPointer()).ThrowOnError();

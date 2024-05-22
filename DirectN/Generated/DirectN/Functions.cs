@@ -314,13 +314,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint auxGetDevCapsA(nuint uDeviceID, out AUXCAPSA pac, uint cbac);
+    public static partial uint auxGetDevCapsA(nuint uDeviceID, nint pac, uint cbac);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetdevcapsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint auxGetDevCapsW(nuint uDeviceID, out AUXCAPSW pac, uint cbac);
+    public static partial uint auxGetDevCapsW(nuint uDeviceID, nint pac, uint cbac);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetnumdevs
     [LibraryImport("WINMM")]
@@ -404,13 +404,13 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIFileInfoA(IAVIFile pfile, out AVIFILEINFOA pfi, int lSize);
+    public static partial HRESULT AVIFileInfoA(IAVIFile pfile, nint pfi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileinfow
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIFileInfoW(IAVIFile pfile, out AVIFILEINFOW pfi, int lSize);
+    public static partial HRESULT AVIFileInfoW(IAVIFile pfile, nint pfi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileinit
     [LibraryImport("AVIFIL32")]
@@ -566,13 +566,13 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamInfoA(IAVIStream pavi, out AVISTREAMINFOA psi, int lSize);
+    public static partial HRESULT AVIStreamInfoA(IAVIStream pavi, nint psi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreaminfow
     [LibraryImport("AVIFIL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT AVIStreamInfoW(IAVIStream pavi, out AVISTREAMINFOW psi, int lSize);
+    public static partial HRESULT AVIStreamInfoW(IAVIStream pavi, nint psi, int lSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamlength
     [LibraryImport("AVIFIL32")]
@@ -1088,6 +1088,11 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT CreateEditableStream(out IAVIStream ppsEditable, IAVIStream psSource);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createerrorinfo
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT CreateErrorInfo(out ICreateErrorInfo pperrinfo);
     
     // https://learn.microsoft.com/windows/win32/api/xapofx/nf-xapofx-createfx
     [LibraryImport("XAudio2_8")]
@@ -2587,7 +2592,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void EngMultiByteToUnicodeN(out PWSTR UnicodeString, uint MaxBytesInUnicodeString, nint /* optional uint* */ BytesInUnicodeString, PSTR MultiByteString, uint BytesInMultiByteString);
+    public static partial void EngMultiByteToUnicodeN(PWSTR UnicodeString, uint MaxBytesInUnicodeString, nint /* optional uint* */ BytesInUnicodeString, PSTR MultiByteString, uint BytesInMultiByteString);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engmultibytetowidechar
     [LibraryImport("GDI32")]
@@ -2672,7 +2677,7 @@ public static partial class Functions
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial void EngUnicodeToMultiByteN(out PSTR MultiByteString, uint MaxBytesInMultiByteString, nint /* optional uint* */ BytesInMultiByteString, PWSTR UnicodeString, uint BytesInUnicodeString);
+    public static partial void EngUnicodeToMultiByteN(PSTR MultiByteString, uint MaxBytesInMultiByteString, nint /* optional uint* */ BytesInMultiByteString, PWSTR UnicodeString, uint BytesInUnicodeString);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engunlocksurface
     [LibraryImport("GDI32")]
@@ -3026,6 +3031,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint GetEnhMetaFilePixelFormat(HENHMETAFILE hemf, uint cbBuffer, nint /* optional PIXELFORMATDESCRIPTOR* */ ppfd);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-geterrorinfo
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT GetErrorInfo(uint dwReserved, out IErrorInfo pperrinfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getforegroundwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3064,14 +3074,14 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetLogColorSpaceA(HCOLORSPACE hColorSpace, out LOGCOLORSPACEA lpBuffer, uint nSize);
+    public static partial bool GetLogColorSpaceA(HCOLORSPACE hColorSpace, nint lpBuffer, uint nSize);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getlogcolorspacew
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool GetLogColorSpaceW(HCOLORSPACE hColorSpace, out LOGCOLORSPACEW lpBuffer, uint nSize);
+    public static partial bool GetLogColorSpaceW(HCOLORSPACE hColorSpace, nint lpBuffer, uint nSize);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmessagepos
     [LibraryImport("USER32")]
@@ -5502,7 +5512,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial LRESULT ICGetInfo(HIC hic, out ICINFO picinfo, uint cb);
+    public static partial LRESULT ICGetInfo(HIC hic, nint picinfo, uint cb);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagecompress
     [LibraryImport("MSVFW32", SetLastError = true)]
@@ -5661,13 +5671,13 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetdevcapsa
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint joyGetDevCapsA(nuint uJoyID, out JOYCAPSA pjc, uint cbjc);
+    public static partial uint joyGetDevCapsA(nuint uJoyID, nint pjc, uint cbjc);
     
     // https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetdevcapsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint joyGetDevCapsW(nuint uJoyID, out JOYCAPSW pjc, uint cbjc);
+    public static partial uint joyGetDevCapsW(nuint uJoyID, nint pjc, uint cbjc);
     
     // https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetnumdevs
     [LibraryImport("WINMM")]
@@ -7306,7 +7316,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInAddBuffer(HMIDIIN hmi, out MIDIHDR pmh, uint cbmh);
+    public static partial uint midiInAddBuffer(HMIDIIN hmi, nint pmh, uint cbmh);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinclose
     [LibraryImport("WINMM")]
@@ -7318,13 +7328,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInGetDevCapsA(nuint uDeviceID, out MIDIINCAPSA pmic, uint cbmic);
+    public static partial uint midiInGetDevCapsA(nuint uDeviceID, nint pmic, uint cbmic);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetdevcapsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInGetDevCapsW(nuint uDeviceID, out MIDIINCAPSW pmic, uint cbmic);
+    public static partial uint midiInGetDevCapsW(nuint uDeviceID, nint pmic, uint cbmic);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingeterrortexta
     [LibraryImport("WINMM")]
@@ -7414,13 +7424,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutGetDevCapsA(nuint uDeviceID, out MIDIOUTCAPSA pmoc, uint cbmoc);
+    public static partial uint midiOutGetDevCapsA(nuint uDeviceID, nint pmoc, uint cbmoc);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetdevcapsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutGetDevCapsW(nuint uDeviceID, out MIDIOUTCAPSW pmoc, uint cbmoc);
+    public static partial uint midiOutGetDevCapsW(nuint uDeviceID, nint pmoc, uint cbmoc);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgeterrortexta
     [LibraryImport("WINMM")]
@@ -7516,7 +7526,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiStreamOut(HMIDISTRM hms, out MIDIHDR pmh, uint cbmh);
+    public static partial uint midiStreamOut(HMIDISTRM hms, nint pmh, uint cbmh);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreampause
     [LibraryImport("WINMM")]
@@ -7528,7 +7538,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiStreamPosition(HMIDISTRM hms, out MMTIME lpmmt, uint cbmmt);
+    public static partial uint midiStreamPosition(HMIDISTRM hms, nint lpmmt, uint cbmmt);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamproperty
     [LibraryImport("WINMM")]
@@ -7570,13 +7580,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetDevCapsA(nuint uMxId, out MIXERCAPSA pmxcaps, uint cbmxcaps);
+    public static partial uint mixerGetDevCapsA(nuint uMxId, nint pmxcaps, uint cbmxcaps);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetdevcapsw
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerGetDevCapsW(nuint uMxId, out MIXERCAPSW pmxcaps, uint cbmxcaps);
+    public static partial uint mixerGetDevCapsW(nuint uMxId, nint pmxcaps, uint cbmxcaps);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetid
     [LibraryImport("WINMM")]
@@ -7711,7 +7721,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial int mmioRead(HMMIO hmmio, out sbyte pch, int cch);
+    public static partial int mmioRead(HMMIO hmmio, nint pch, int cch);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiorenamea
     [LibraryImport("WINMM")]
@@ -8367,6 +8377,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial int SetDisplayConfig(uint numPathArrayElements, nint /* optional DISPLAYCONFIG_PATH_INFO* */ pathArray, uint numModeInfoArrayElements, nint /* optional DISPLAYCONFIG_MODE_INFO* */ modeInfoArray, SET_DISPLAY_CONFIG_FLAGS flags);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-seterrorinfo
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT SetErrorInfo(uint dwReserved, IErrorInfo? perrinfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setforegroundwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8715,13 +8730,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint timeGetDevCaps(out TIMECAPS ptc, uint cbtc);
+    public static partial uint timeGetDevCaps(nint ptc, uint cbtc);
     
     // https://learn.microsoft.com/windows/win32/api/timeapi/nf-timeapi-timegetsystemtime
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint timeGetSystemTime(out MMTIME pmmt, uint cbmmt);
+    public static partial uint timeGetSystemTime(nint pmmt, uint cbmmt);
     
     // https://learn.microsoft.com/windows/win32/api/timeapi/nf-timeapi-timegettime
     [LibraryImport("WINMM")]
@@ -8852,11 +8867,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint waveInGetDevCapsA(nuint uDeviceID, out WAVEINCAPSA pwic, uint cbwic);
+    public static partial uint waveInGetDevCapsA(nuint uDeviceID, nint pwic, uint cbwic);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint waveInGetDevCapsW(nuint uDeviceID, out WAVEINCAPSW pwic, uint cbwic);
+    public static partial uint waveInGetDevCapsW(nuint uDeviceID, nint pwic, uint cbwic);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -9101,7 +9116,7 @@ public static partial class Functions
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
-    public static partial bool WcsGetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, uint cbProfileName, out PWSTR pProfileName);
+    public static partial bool WcsGetDefaultColorProfile(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR pDeviceName, COLORPROFILETYPE cptColorProfileType, COLORPROFILESUBTYPE cpstColorProfileSubType, uint dwProfileID, uint cbProfileName, PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultcolorprofilesize
     [LibraryImport("mscms", SetLastError = true)]

@@ -116,7 +116,7 @@ public static partial class ColorUtilities
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     private struct IMMERSIVE_COLOR_NAMED_TYPES
     {
-        public IntPtr pszColorType;
+        public nint pszColorType;
         public int colorType;
     }
 

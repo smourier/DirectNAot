@@ -90,11 +90,11 @@ public static class ID2D1BitmapExtensions
         bitmap.CopyFromRenderTarget(destinationPoint.CopyToPointer(), renderTarget, sourceRect.CopyToPointer()).ThrowOnError();
     }
 
-    public static void CopyFromMemory(this IComObject<ID2D1Bitmap> bitmap, IntPtr sourceData, uint pitch, D2D_RECT_U? destinationRect = null) => CopyFromMemory(bitmap?.Object!, sourceData, pitch, destinationRect);
-    public static void CopyFromMemory(this ID2D1Bitmap bitmap, IntPtr sourceData, uint pitch, D2D_RECT_U? destinationRect = null)
+    public static void CopyFromMemory(this IComObject<ID2D1Bitmap> bitmap, nint sourceData, uint pitch, D2D_RECT_U? destinationRect = null) => CopyFromMemory(bitmap?.Object!, sourceData, pitch, destinationRect);
+    public static void CopyFromMemory(this ID2D1Bitmap bitmap, nint sourceData, uint pitch, D2D_RECT_U? destinationRect = null)
     {
         ArgumentNullException.ThrowIfNull(bitmap);
-        if (sourceData == IntPtr.Zero)
+        if (sourceData == 0)
             throw new ArgumentException(null, nameof(sourceData));
 
         if (pitch == 0)

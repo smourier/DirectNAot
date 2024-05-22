@@ -154,7 +154,7 @@ public static class ID3D12CommandListExtensions
         list.ExecuteBundle(commandLists);
     }
 
-    public static void SetDescriptorHeaps(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<IComObject<ID3D12DescriptorHeap>> heaps) => SetDescriptorHeaps(list?.Object!, heaps?.Select(h => h.Object)!);
+    public static void SetDescriptorHeaps(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<IComObject<ID3D12DescriptorHeap>> heaps) => SetDescriptorHeaps(list?.Object!, heaps.Unwrap());
     public static void SetDescriptorHeaps(this ID3D12GraphicsCommandList list, IEnumerable<ID3D12DescriptorHeap> heaps)
     {
         ArgumentNullException.ThrowIfNull(list);
@@ -205,15 +205,15 @@ public static class ID3D12CommandListExtensions
         list.SetGraphicsRoot32BitConstant(rootParameterIndex, srcData, destOffsetIn32BitValues);
     }
 
-    public static void SetComputeRoot32BitConstants(this IComObject<ID3D12GraphicsCommandList> list, uint rootParameterIndex, uint num32BitValuesToSet, IntPtr srcData, uint destOffsetIn32BitValues) => SetComputeRoot32BitConstants(list?.Object!, rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
-    public static void SetComputeRoot32BitConstants(this ID3D12GraphicsCommandList list, uint rootParameterIndex, uint num32BitValuesToSet, IntPtr srcData, uint destOffsetIn32BitValues)
+    public static void SetComputeRoot32BitConstants(this IComObject<ID3D12GraphicsCommandList> list, uint rootParameterIndex, uint num32BitValuesToSet, nint srcData, uint destOffsetIn32BitValues) => SetComputeRoot32BitConstants(list?.Object!, rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
+    public static void SetComputeRoot32BitConstants(this ID3D12GraphicsCommandList list, uint rootParameterIndex, uint num32BitValuesToSet, nint srcData, uint destOffsetIn32BitValues)
     {
         ArgumentNullException.ThrowIfNull(list);
         list.SetComputeRoot32BitConstants(rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
     }
 
-    public static void SetGraphicsRoot32BitConstants(this IComObject<ID3D12GraphicsCommandList> list, uint rootParameterIndex, uint num32BitValuesToSet, IntPtr srcData, uint destOffsetIn32BitValues) => SetGraphicsRoot32BitConstants(list?.Object!, rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
-    public static void SetGraphicsRoot32BitConstants(this ID3D12GraphicsCommandList list, uint rootParameterIndex, uint num32BitValuesToSet, IntPtr srcData, uint destOffsetIn32BitValues)
+    public static void SetGraphicsRoot32BitConstants(this IComObject<ID3D12GraphicsCommandList> list, uint rootParameterIndex, uint num32BitValuesToSet, nint srcData, uint destOffsetIn32BitValues) => SetGraphicsRoot32BitConstants(list?.Object!, rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
+    public static void SetGraphicsRoot32BitConstants(this ID3D12GraphicsCommandList list, uint rootParameterIndex, uint num32BitValuesToSet, nint srcData, uint destOffsetIn32BitValues)
     {
         ArgumentNullException.ThrowIfNull(list);
         list.SetGraphicsRoot32BitConstants(rootParameterIndex, num32BitValuesToSet, srcData, destOffsetIn32BitValues);
@@ -274,7 +274,7 @@ public static class ID3D12CommandListExtensions
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(views);
         var array = views.ToArray();
-        list.IASetVertexBuffers(startSlot, (uint)array.Length, array);
+        list.IASetVertexBuffers(startSlot, array.Length(), array.AsPointer());
     }
 
     public static void SOSetTargets(this IComObject<ID3D12GraphicsCommandList> list, uint startSlot, IEnumerable<D3D12_STREAM_OUTPUT_BUFFER_VIEW> views) => SOSetTargets(list?.Object!, startSlot, views);
@@ -283,7 +283,7 @@ public static class ID3D12CommandListExtensions
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(views);
         var array = views.ToArray();
-        list.SOSetTargets(startSlot, (uint)array.Length, array);
+        list.SOSetTargets(startSlot, array.Length(), array.AsPointer());
     }
 
     public static void OMSetRenderTargets(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<D3D12_CPU_DESCRIPTOR_HANDLE> renderTargetDescriptors, bool rtsSingleHandleToDescriptorRange, D3D12_CPU_DESCRIPTOR_HANDLE? depthStencilDescriptor = null) => OMSetRenderTargets(list?.Object!, renderTargetDescriptors, rtsSingleHandleToDescriptorRange, depthStencilDescriptor);
@@ -291,42 +291,41 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = renderTargetDescriptors?.ToArray();
-        using var desc = new ComMemory(array);
-        list.OMSetRenderTargets((uint)(array?.Length).GetValueOrDefault(), desc.Pointer, rtsSingleHandleToDescriptorRange, depthStencilDescriptor.CopyToPointer());
+        list.OMSetRenderTargets(array.Length(), array.AsPointer(), rtsSingleHandleToDescriptorRange, depthStencilDescriptor.CopyToPointer());
     }
 
-    public static void ClearDepthStencilView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT> rects = null) => ClearDepthStencilView(list?.Object!, depthStencilView, clearFlags, depth, stencil, rects);
-    public static void ClearDepthStencilView(this ID3D12GraphicsCommandList list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT> rects = null)
+    public static void ClearDepthStencilView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT>? rects = null) => ClearDepthStencilView(list?.Object!, depthStencilView, clearFlags, depth, stencil, rects);
+    public static void ClearDepthStencilView(this ID3D12GraphicsCommandList list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT>? rects = null)
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = rects?.ToArray();
-        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, (array?.Length).GetValueOrDefault(), array);
+        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, array.Length(), array!);
     }
 
-    public static void ClearRenderTargetView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT> rects = null) => ClearRenderTargetView(list?.Object!, renderTargetView, colorRGBA, rects);
-    public static void ClearRenderTargetView(this ID3D12GraphicsCommandList list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT> rects = null)
+    public static void ClearRenderTargetView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT>? rects = null) => ClearRenderTargetView(list?.Object!, renderTargetView, colorRGBA, rects);
+    public static void ClearRenderTargetView(this ID3D12GraphicsCommandList list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT>? rects = null)
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = rects?.ToArray();
-        list.ClearRenderTargetView(renderTargetView, colorRGBA, (array?.Length).GetValueOrDefault(), array);
+        list.ClearRenderTargetView(renderTargetView, colorRGBA, array.Length(), array.AsPointer());
     }
 
-    public static void ClearUnorderedAccessViewUint(this IComObject<ID3D12GraphicsCommandList> list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, IComObject<ID3D12Resource> resource, uint[] values, IEnumerable<RECT> rects = null) => ClearUnorderedAccessViewUint(list?.Object!, viewGPUHandleInCurrentHeap, viewCPUHandle, resource?.Object!, values, rects);
-    public static void ClearUnorderedAccessViewUint(this ID3D12GraphicsCommandList list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, ID3D12Resource resource, uint[] values, IEnumerable<RECT> rects = null)
+    public static void ClearUnorderedAccessViewUint(this IComObject<ID3D12GraphicsCommandList> list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, IComObject<ID3D12Resource> resource, uint[] values, IEnumerable<RECT>? rects = null) => ClearUnorderedAccessViewUint(list?.Object!, viewGPUHandleInCurrentHeap, viewCPUHandle, resource?.Object!, values, rects);
+    public static void ClearUnorderedAccessViewUint(this ID3D12GraphicsCommandList list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, ID3D12Resource resource, uint[] values, IEnumerable<RECT>? rects = null)
     {
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(resource);
         var array = rects?.ToArray();
-        list.ClearUnorderedAccessViewUint(viewGPUHandleInCurrentHeap, viewCPUHandle, resource, values, (array?.Length).GetValueOrDefault(), array);
+        list.ClearUnorderedAccessViewUint(viewGPUHandleInCurrentHeap, viewCPUHandle, resource, values, array.Length(), array!);
     }
 
-    public static void ClearUnorderedAccessViewFloat(this IComObject<ID3D12GraphicsCommandList> list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, IComObject<ID3D12Resource> resource, float[] values, IEnumerable<RECT> rects = null) => ClearUnorderedAccessViewFloat(list?.Object!, viewGPUHandleInCurrentHeap, viewCPUHandle, resource?.Object!, values, rects);
-    public static void ClearUnorderedAccessViewFloat(this ID3D12GraphicsCommandList list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, ID3D12Resource resource, float[] values, IEnumerable<RECT> rects = null)
+    public static void ClearUnorderedAccessViewFloat(this IComObject<ID3D12GraphicsCommandList> list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, IComObject<ID3D12Resource> resource, float[] values, IEnumerable<RECT>? rects = null) => ClearUnorderedAccessViewFloat(list?.Object!, viewGPUHandleInCurrentHeap, viewCPUHandle, resource?.Object!, values, rects);
+    public static void ClearUnorderedAccessViewFloat(this ID3D12GraphicsCommandList list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, ID3D12Resource resource, float[] values, IEnumerable<RECT>? rects = null)
     {
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(resource);
-        var array = rects.ToArray();
-        list.ClearUnorderedAccessViewFloat(viewGPUHandleInCurrentHeap, viewCPUHandle, resource, values, (array?.Length).GetValueOrDefault(), array);
+        var array = rects?.ToArray();
+        list.ClearUnorderedAccessViewFloat(viewGPUHandleInCurrentHeap, viewCPUHandle, resource, values, array.Length(), array!);
     }
 
     public static void DiscardResource(this IComObject<ID3D12GraphicsCommandList> list, IComObject<ID3D12Resource> resource, D3D12_DISCARD_REGION? region = null) => DiscardResource(list?.Object!, resource?.Object!, region);
@@ -370,15 +369,15 @@ public static class ID3D12CommandListExtensions
         list.SetPredication(buffer, alignedBufferOffset, operation);
     }
 
-    public static void SetMarker(this IComObject<ID3D12GraphicsCommandList> list, uint metadata, IntPtr data, uint size) => SetMarker(list?.Object!, metadata, data, size);
-    public static void SetMarker(this ID3D12GraphicsCommandList list, uint metadata, IntPtr data, uint size)
+    public static void SetMarker(this IComObject<ID3D12GraphicsCommandList> list, uint metadata, nint data, uint size) => SetMarker(list?.Object!, metadata, data, size);
+    public static void SetMarker(this ID3D12GraphicsCommandList list, uint metadata, nint data, uint size)
     {
         ArgumentNullException.ThrowIfNull(list);
         list.SetMarker(metadata, data, size);
     }
 
-    public static void BeginEvent(this IComObject<ID3D12GraphicsCommandList> list, uint metadata, IntPtr data, uint size) => BeginEvent(list?.Object!, metadata, data, size);
-    public static void BeginEvent(this ID3D12GraphicsCommandList list, uint metadata, IntPtr data, uint size)
+    public static void BeginEvent(this IComObject<ID3D12GraphicsCommandList> list, uint metadata, nint data, uint size) => BeginEvent(list?.Object!, metadata, data, size);
+    public static void BeginEvent(this ID3D12GraphicsCommandList list, uint metadata, nint data, uint size)
     {
         ArgumentNullException.ThrowIfNull(list);
         list.BeginEvent(metadata, data, size);

@@ -3,14 +3,14 @@
 [SupportedOSPlatform("windows6.0.6000")]
 public class DwmThumbnail : IDisposable
 {
-    private IntPtr _id;
+    private nint _id;
 
     public DwmThumbnail(HWND hwndDestination, HWND hwndSource, bool throwOnError = true)
     {
         Functions.DwmRegisterThumbnail(hwndDestination, hwndSource, out _id).ThrowOnError(throwOnError);
     }
 
-    public IntPtr Id => _id;
+    public nint Id => _id;
     public SIZE SourceSize
     {
         get
@@ -24,7 +24,7 @@ public class DwmThumbnail : IDisposable
 
     public override string ToString() => Id.ToString();
 
-    protected IntPtr CheckDisposed()
+    protected nint CheckDisposed()
     {
         var id = Id;
         ObjectDisposedException.ThrowIf(id == 0, this);
@@ -33,8 +33,8 @@ public class DwmThumbnail : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        var id = Interlocked.Exchange(ref _id, IntPtr.Zero);
-        if (id != IntPtr.Zero)
+        var id = Interlocked.Exchange(ref _id, nint.Zero);
+        if (id != 0)
         {
             if (disposing)
             {

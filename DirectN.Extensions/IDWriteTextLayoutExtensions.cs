@@ -16,7 +16,7 @@ public static class IDWriteTextLayoutExtensions
         {
             layout.GetFontFamilyNameLength(currentPosition, out var len, ptr).ThrowOnError();
             using var p = new AllocPwstr((len + 1) * 2);
-            layout.GetFontFamilyName(currentPosition, p, len + 1, ptr).ThrowOnError();
+            layout.GetFontFamilyName(currentPosition, p, p.SizeInChars, ptr).ThrowOnError();
             return p.ToString() ?? string.Empty;
         }
     }
@@ -34,7 +34,7 @@ public static class IDWriteTextLayoutExtensions
         {
             layout.GetLocaleNameLength(currentPosition, out var len, ptr).ThrowOnError();
             using var p = new AllocPwstr((len + 1) * 2);
-            layout.GetLocaleName(currentPosition, p, len + 1, ptr).ThrowOnError();
+            layout.GetLocaleName(currentPosition, p, p.SizeInChars, ptr).ThrowOnError();
             return p.ToString() ?? string.Empty;
         }
     }

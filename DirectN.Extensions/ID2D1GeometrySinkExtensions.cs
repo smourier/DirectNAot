@@ -28,7 +28,7 @@ public static class ID2D1GeometrySinkExtensions
         if (array.Length == 0)
             throw new ArgumentException(null, nameof(segments));
 
-        sink.AddQuadraticBeziers(array, (uint)array.Length);
+        sink.AddQuadraticBeziers(array, array.Length());
     }
 
     public static void AddQuadraticBezier(this IComObject<ID2D1GeometrySink> sink, D2D1_QUADRATIC_BEZIER_SEGMENT segment) => AddQuadraticBezier(sink?.Object!, segment);

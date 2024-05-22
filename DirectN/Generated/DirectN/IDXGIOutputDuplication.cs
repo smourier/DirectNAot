@@ -18,12 +18,12 @@ public partial interface IDXGIOutputDuplication : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframedirtyrects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrameDirtyRects(uint DirtyRectsBufferSize, out RECT pDirtyRectsBuffer, out uint pDirtyRectsBufferSizeRequired);
+    HRESULT GetFrameDirtyRects(uint DirtyRectsBufferSize, nint pDirtyRectsBuffer, out uint pDirtyRectsBufferSizeRequired);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframemoverects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrameMoveRects(uint MoveRectsBufferSize, out DXGI_OUTDUPL_MOVE_RECT pMoveRectBuffer, out uint pMoveRectsBufferSizeRequired);
+    HRESULT GetFrameMoveRects(uint MoveRectsBufferSize, nint pMoveRectBuffer, out uint pMoveRectsBufferSizeRequired);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframepointershape
     [PreserveSig]

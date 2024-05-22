@@ -18,11 +18,11 @@ public static class IWICBitmapDecoderExtensions
         return value;
     }
 
-    public static IComObject<IWICBitmapFrameDecode> GetFrame(this IComObject<IWICBitmapDecoder> decoder, int index) => GetFrame(decoder?.Object!, index);
-    public static IComObject<IWICBitmapFrameDecode> GetFrame(this IWICBitmapDecoder decoder, int index)
+    public static IComObject<IWICBitmapFrameDecode> GetFrame(this IComObject<IWICBitmapDecoder> decoder, uint index) => GetFrame(decoder?.Object!, index);
+    public static IComObject<IWICBitmapFrameDecode> GetFrame(this IWICBitmapDecoder decoder, uint index)
     {
         ArgumentNullException.ThrowIfNull(decoder);
-        decoder.GetFrame((uint)index, out var value).ThrowOnError();
+        decoder.GetFrame(index, out var value).ThrowOnError();
         return new ComObject<IWICBitmapFrameDecode>(value);
     }
 
@@ -97,8 +97,8 @@ public static class IWICBitmapDecoderExtensions
             return [];
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
-        var array = colorContexts.Select(cc => cc.Object).ToArray();
-        decoder.GetColorContexts((uint)colorContexts.Length, array, out _).ThrowOnError();
+        var array = colorContexts.UnwrapAsArray();
+        decoder.GetColorContexts(colorContexts.Length(), array, out _).ThrowOnError();
         return colorContexts;
     }
 }

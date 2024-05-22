@@ -3,21 +3,21 @@
 [SupportedOSPlatform("windows8.0")]
 public static class ID2D1EffectExtensions
 {
-    public static void SetInput(this IComObject<ID2D1Effect> effect, IComObject<ID2D1Image> image, int index = 0, bool invalidate = false) => SetInput(effect?.Object!, image?.Object!, index, invalidate);
-    public static void SetInput(this ID2D1Effect effect, ID2D1Image image, int index = 0, bool invalidate = false)
+    public static void SetInput(this IComObject<ID2D1Effect> effect, IComObject<ID2D1Image> image, uint index = 0, bool invalidate = false) => SetInput(effect?.Object!, image?.Object!, index, invalidate);
+    public static void SetInput(this ID2D1Effect effect, ID2D1Image image, uint index = 0, bool invalidate = false)
     {
         ArgumentNullException.ThrowIfNull(effect);
         ArgumentNullException.ThrowIfNull(image);
-        effect.SetInput((uint)index, image, invalidate);
+        effect.SetInput(index, image, invalidate);
     }
 
-    public static void SetInput(this IComObject<ID2D1Effect> effect, IComObject<ID2D1Effect>? input = null, int index = 0, bool invalidate = false) => SetInput(effect?.Object!, input?.Object!, index, invalidate);
-    public static void SetInput(this ID2D1Effect effect, ID2D1Effect? input = null, int index = 0, bool invalidate = false)
+    public static void SetInput(this IComObject<ID2D1Effect> effect, IComObject<ID2D1Effect>? input = null, uint index = 0, bool invalidate = false) => SetInput(effect?.Object!, input?.Object!, index, invalidate);
+    public static void SetInput(this ID2D1Effect effect, ID2D1Effect? input = null, uint index = 0, bool invalidate = false)
     {
         ArgumentNullException.ThrowIfNull(effect);
         ArgumentNullException.ThrowIfNull(input);
         using var output = input.GetOutput();
-        effect.SetInput((uint)index, output.Object, invalidate);
+        effect.SetInput(index, output.Object, invalidate);
     }
 
     public static IComObject<ID2D1Image> GetInput(this IComObject<ID2D1Effect> effect, uint index) => GetInput(effect?.Object!, index);

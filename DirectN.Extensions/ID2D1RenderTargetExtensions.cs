@@ -34,9 +34,9 @@ public static class ID2D1RenderTargetExtensions
     }
 
     public static IComObject<ID2D1Bitmap> CreateBitmap(this IComObject<ID2D1RenderTarget> device, D2D_SIZE_U size, D2D1_BITMAP_PROPERTIES properties) => CreateBitmap<ID2D1Bitmap>(device?.Object!, size, 0, 0, properties);
-    public static IComObject<ID2D1Bitmap> CreateBitmap(this IComObject<ID2D1RenderTarget> device, D2D_SIZE_U size, IntPtr srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) => CreateBitmap<ID2D1Bitmap>(device?.Object!, size, srcData, pitch, properties);
-    public static IComObject<T> CreateBitmap<T>(this IComObject<ID2D1RenderTarget> device, D2D_SIZE_U size, IntPtr srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) where T : ID2D1Bitmap => CreateBitmap<T>(device?.Object!, size, srcData, pitch, properties);
-    public static IComObject<T> CreateBitmap<T>(this ID2D1RenderTarget device, D2D_SIZE_U size, IntPtr srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) where T : ID2D1Bitmap
+    public static IComObject<ID2D1Bitmap> CreateBitmap(this IComObject<ID2D1RenderTarget> device, D2D_SIZE_U size, nint srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) => CreateBitmap<ID2D1Bitmap>(device?.Object!, size, srcData, pitch, properties);
+    public static IComObject<T> CreateBitmap<T>(this IComObject<ID2D1RenderTarget> device, D2D_SIZE_U size, nint srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) where T : ID2D1Bitmap => CreateBitmap<T>(device?.Object!, size, srcData, pitch, properties);
+    public static IComObject<T> CreateBitmap<T>(this ID2D1RenderTarget device, D2D_SIZE_U size, nint srcData, uint pitch, D2D1_BITMAP_PROPERTIES properties) where T : ID2D1Bitmap
     {
         ArgumentNullException.ThrowIfNull(device);
         device.CreateBitmap(size, srcData, pitch, properties, out var bmp).ThrowOnError();
@@ -87,7 +87,7 @@ public static class ID2D1RenderTargetExtensions
         if (finalStops.Length == 0)
             throw new ArgumentException(null, nameof(stops));
 
-        context.CreateGradientStopCollection(finalStops, (uint)finalStops.Length, gamma, extendMode, out var stps).ThrowOnError();
+        context.CreateGradientStopCollection(finalStops, finalStops.Length(), gamma, extendMode, out var stps).ThrowOnError();
         return new ComObject<ID2D1GradientStopCollection>(stps);
     }
 

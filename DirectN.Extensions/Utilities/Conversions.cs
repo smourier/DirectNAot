@@ -94,8 +94,8 @@ public static class Conversions
         return ToHexaDump(bytes, 0, bytes.Length, prefix, true);
     }
 
-    public static string ToHexaDump(this IntPtr ptr, int count) => ToHexaDump(ptr, 0, count, null, true);
-    public static string ToHexaDump(this IntPtr ptr, int offset, int count, string? prefix = null, bool addHeader = true)
+    public static string ToHexaDump(this nint ptr, int count) => ToHexaDump(ptr, 0, count, null, true);
+    public static string ToHexaDump(this nint ptr, int offset, int count, string? prefix = null, bool addHeader = true)
     {
         using var writer = new StringWriter();
         WriteHexaDump(ptr, writer, offset, count, prefix, addHeader);
@@ -103,8 +103,8 @@ public static class Conversions
     }
 
     public static void WriteHexaDump(this byte[] bytes, TextWriter writer, string? prefix = null) => WriteHexaDump(bytes, writer, 0, bytes.Length, prefix, true);
-    public static void WriteHexaDump(this IntPtr ptr, TextWriter writer, int count) => WriteHexaDump(ptr, writer, 0, count, null, true);
-    public static void WriteHexaDump(this IntPtr ptr, TextWriter writer, int offset, int count, string? prefix = null, bool addHeader = true)
+    public static void WriteHexaDump(this nint ptr, TextWriter writer, int count) => WriteHexaDump(ptr, writer, 0, count, null, true);
+    public static void WriteHexaDump(this nint ptr, TextWriter writer, int offset, int count, string? prefix = null, bool addHeader = true)
     {
         if (ptr == 0)
             throw new ArgumentException(null, nameof(ptr));
@@ -624,19 +624,19 @@ public static class Conversions
             return false;
         }
 
-        if (conversionType == typeof(IntPtr))
+        if (conversionType == typeof(nint))
         {
-            if (IntPtr.Size == 8)
+            if (nint.Size == 8)
             {
                 if (TryChangeType(input, provider, out long l))
                 {
-                    value = new IntPtr(l);
+                    value = new nint(l);
                     return true;
                 }
             }
             else if (TryChangeType(input, provider, out int i))
             {
-                value = new IntPtr(i);
+                value = new nint(i);
                 return true;
             }
 
