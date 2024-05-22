@@ -9,7 +9,7 @@ public partial interface IWICBitmap : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmap-lock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Lock(in WICRect prcLock, uint flags, out IWICBitmapLock ppILock);
+    HRESULT Lock(in WICRect prcLock, uint flags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapLock>))] out IWICBitmapLock ppILock);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmap-setpalette
     [PreserveSig]
