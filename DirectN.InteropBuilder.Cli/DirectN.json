@@ -200,6 +200,8 @@
     "SetWindowLongPtrW",
     "SetWindowPos",
     "SetWindowTextW",
+    "SHCreateMemStream",
+    "SHCreateStreamOnFileW",
     "ShellAboutW",
     "ShowWindow",
     "SHGetPropertyStoreForWindow",

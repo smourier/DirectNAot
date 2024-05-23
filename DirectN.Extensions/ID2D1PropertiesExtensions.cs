@@ -40,23 +40,21 @@ public static class ID2D1PropertiesExtensions
         value = null;
         var size = properties.GetValueSize(index);
         var type = properties.GetType(index);
-        var ret = ComExtensions.WithAllocatedMemory<(bool, object?)>(size, ptr =>
+        var bytes = new byte[size];
+        var hr = properties.GetValue(index, type, bytes.AsPointer(), size);
+        if (hr.IsError)
+            return false;
+
+        if (type == D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_BLOB)
         {
-            var hr = properties.GetValue(index, type, ptr, size);
-            if (hr.IsError)
-                return (false, null);
+            value = bytes;
+            return true;
+        }
 
-            if (!TryGetValue(type, ptr, size, out var inValue))
-                return (false, null);
-
-            return (true, inValue);
-        });
-
-        value = ret.Item2;
-        return ret.Item1;
+        return TryGetValue(type, bytes.AsPointer(), size, out value);
     }
 
-    public static unsafe bool TryGetValue(D2D1_PROPERTY_TYPE type, nint data, uint size, out object? value)
+    private static unsafe bool TryGetValue(D2D1_PROPERTY_TYPE type, nint data, uint size, out object? value)
     {
         value = null;
         if (data == 0 || size == 0)
@@ -106,8 +104,7 @@ public static class ID2D1PropertiesExtensions
                 return true;
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_BLOB:
-                value = data;
-                return true;
+                throw new NotSupportedException();
 
             case D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_ENUM:
                 value = *(uint*)data;

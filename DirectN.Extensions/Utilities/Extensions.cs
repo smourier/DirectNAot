@@ -64,9 +64,9 @@ public static class Extensions
         return (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(array));
     }
 
-    public static byte[] IntPtrToBytes(this IntPtr ptr)
+    public static byte[] IntPtrToBytes(this nint ptr)
     {
-        if (IntPtr.Size == 4)
+        if (nint.Size == 4)
             return BitConverter.GetBytes(ptr.ToInt32());
 
         return BitConverter.GetBytes(ptr.ToInt64());

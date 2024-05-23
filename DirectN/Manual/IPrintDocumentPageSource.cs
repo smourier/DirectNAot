@@ -10,5 +10,5 @@ public partial interface IPrintDocumentPageSource
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MakeDocument(IntPtr printTaskOptions, IPrintDocumentPackageTarget docPackageTarget);
+    HRESULT MakeDocument(nint printTaskOptions, IPrintDocumentPackageTarget docPackageTarget);
 }

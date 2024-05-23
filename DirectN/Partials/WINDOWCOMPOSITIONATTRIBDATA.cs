@@ -4,6 +4,6 @@
 public struct WINDOWCOMPOSITIONATTRIBDATA
 {
     public WINDOWCOMPOSITIONATTRIB dwAttrib;
-    public IntPtr pvData;
-    public IntPtr cbData;
+    public nint pvData;
+    public nint cbData;
 }

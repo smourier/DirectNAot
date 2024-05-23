@@ -128,6 +128,15 @@ public abstract class ComObject : IComObject
         }
     }
 
+    public static Type? GetComObjectComType(Type type)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+        if (!type.IsGenericType || type.GetGenericTypeDefinition() != typeof(ComObject<>))
+            return null;
+
+        return type.GetGenericArguments()[0];
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (disposing && _releaseOnDispose)

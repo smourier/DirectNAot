@@ -6,7 +6,7 @@ public partial interface IPrintPreviewPageCollection
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Paginate(int currentJobPage, IntPtr printTaskOptions);
+    HRESULT Paginate(int currentJobPage, nint printTaskOptions);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

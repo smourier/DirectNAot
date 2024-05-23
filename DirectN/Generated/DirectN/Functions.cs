@@ -8564,6 +8564,18 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool SetWindowTextW(HWND hWnd, PWSTR lpString);
     
+    // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-shcreatememstream
+    [LibraryImport("SHLWAPI")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial IStream SHCreateMemStream(nint /* optional byte* */ pInit, uint cbInit);
+    
+    // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-shcreatestreamonfilew
+    [LibraryImport("SHLWAPI", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT SHCreateStreamOnFileW(PWSTR pszFile, uint grfMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
+    
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shellaboutw
     [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.1.2600")]

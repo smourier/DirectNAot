@@ -16,7 +16,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
 
     public UnmanagedMemoryStream()
     {
-        _stream = SHCreateMemStream(0, 0);
+        _stream = Functions.SHCreateMemStream(0, 0);
         CheckStream();
         Position = 0;
     }
@@ -24,7 +24,8 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     public UnmanagedMemoryStream(string filePath, STGM mode = STGM.STGM_READ)
     {
         ArgumentNullException.ThrowIfNull(filePath);
-        SHCreateStreamOnFile(filePath, mode, out _stream).ThrowOnError();
+        using var p = new Pwstr(filePath);
+        Functions.SHCreateStreamOnFileW(p, (uint)mode, out _stream).ThrowOnError();
         Position = 0;
     }
 
@@ -43,7 +44,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     public UnmanagedMemoryStream(byte[] bytes)
     {
         ArgumentNullException.ThrowIfNull(bytes);
-        _stream = SHCreateMemStream(bytes.AsPointer(), bytes.Length);
+        _stream = Functions.SHCreateMemStream(bytes.AsPointer(), bytes.Length());
         CheckStream();
         Position = 0;
     }
@@ -54,7 +55,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
         if (bytes == 0 && length > 0)
             throw new ArgumentOutOfRangeException(nameof(length));
 
-        _stream = SHCreateMemStream(bytes, length);
+        _stream = Functions.SHCreateMemStream(bytes, length);
         CheckStream();
         Position = 0;
     }
@@ -149,15 +150,6 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
         }
         base.Dispose(disposing);
     }
-
-    [LibraryImport("shlwapi")]
-    private static partial IStream SHCreateMemStream(nint pInit, uint cbInit);
-
-    [LibraryImport("shlwapi")]
-    private static partial IStream SHCreateMemStream(nint pInit, int cbInit);
-
-    [LibraryImport("shlwapi", StringMarshalling = StringMarshalling.Utf16)]
-    private static partial HRESULT SHCreateStreamOnFile(string pszFile, STGM grfMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
 
     unsafe HRESULT IStream.Seek(long dlibMove, STREAM_SEEK dwOrigin, nint plibNewPosition)
     {
