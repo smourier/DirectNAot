@@ -13,7 +13,7 @@ public partial interface IDispatch
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-gettypeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypeInfo(uint iTInfo, uint lcid, out ITypeInfo ppTInfo);
+    HRESULT GetTypeInfo(uint iTInfo, uint lcid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeInfo>))] out ITypeInfo ppTInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-idispatch-getidsofnames
     [PreserveSig]

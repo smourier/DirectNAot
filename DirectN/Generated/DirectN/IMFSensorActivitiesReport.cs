@@ -14,10 +14,10 @@ public partial interface IMFSensorActivitiesReport
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensoractivitiesreport-getactivityreport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetActivityReport(uint Index, out IMFSensorActivityReport sensorActivityReport);
+    HRESULT GetActivityReport(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorActivityReport>))] out IMFSensorActivityReport sensorActivityReport);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensoractivitiesreport-getactivityreportbydevicename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetActivityReportByDeviceName(PWSTR SymbolicName, out IMFSensorActivityReport sensorActivityReport);
+    HRESULT GetActivityReportByDeviceName(PWSTR SymbolicName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorActivityReport>))] out IMFSensorActivityReport sensorActivityReport);
 }

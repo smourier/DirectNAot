@@ -13,7 +13,7 @@ public partial interface IDirect3DCubeTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcubetexture9-getcubemapsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCubeMapSurface(D3DCUBEMAP_FACES FaceType, uint Level, out IDirect3DSurface9 ppCubeMapSurface);
+    HRESULT GetCubeMapSurface(D3DCUBEMAP_FACES FaceType, uint Level, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppCubeMapSurface);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcubetexture9-lockrect
     [PreserveSig]

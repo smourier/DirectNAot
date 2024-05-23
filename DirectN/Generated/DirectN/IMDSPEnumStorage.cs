@@ -23,5 +23,5 @@ public partial interface IMDSPEnumStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspenumstorage-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMDSPEnumStorage ppEnumStorage);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPEnumStorage>))] out IMDSPEnumStorage ppEnumStorage);
 }

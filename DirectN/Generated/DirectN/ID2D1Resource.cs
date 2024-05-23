@@ -8,5 +8,5 @@ public partial interface ID2D1Resource
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1resource-getfactory
     [PreserveSig]
-    void GetFactory(out ID2D1Factory factory);
+    void GetFactory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Factory>))] out ID2D1Factory factory);
 }

@@ -87,7 +87,7 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontCollection(uint currentPosition, out IDWriteFontCollection fontCollection, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetFontCollection(uint currentPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getfontfamilynamelength
     [PreserveSig]
@@ -132,17 +132,17 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getdrawingeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDrawingEffect(uint currentPosition, out nint drawingEffect, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetDrawingEffect(uint currentPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint drawingEffect, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getinlineobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInlineObject(uint currentPosition, out IDWriteInlineObject inlineObject, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetInlineObject(uint currentPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteInlineObject>))] out IDWriteInlineObject inlineObject, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-gettypography
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypography(uint currentPosition, out IDWriteTypography typography, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetTypography(uint currentPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTypography>))] out IDWriteTypography typography, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getlocalenamelength
     [PreserveSig]

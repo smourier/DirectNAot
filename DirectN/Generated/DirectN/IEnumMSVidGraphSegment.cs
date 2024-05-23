@@ -6,7 +6,7 @@ public partial interface IEnumMSVidGraphSegment
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out IMSVidGraphSegment rgelt, out uint pceltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegment>))] out IMSVidGraphSegment rgelt, out uint pceltFetched);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,5 +18,5 @@ public partial interface IEnumMSVidGraphSegment
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumMSVidGraphSegment ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMSVidGraphSegment>))] out IEnumMSVidGraphSegment ppenum);
 }

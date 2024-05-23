@@ -9,5 +9,5 @@ public partial interface IAdvancedMediaCapture
     // https://learn.microsoft.com/windows/win32/api/mfmediacapture/nf-mfmediacapture-iadvancedmediacapture-getadvancedmediacapturesettings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAdvancedMediaCaptureSettings(out IAdvancedMediaCaptureSettings value);
+    HRESULT GetAdvancedMediaCaptureSettings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAdvancedMediaCaptureSettings>))] out IAdvancedMediaCaptureSettings value);
 }

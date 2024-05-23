@@ -9,7 +9,7 @@ public partial interface IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomshareable-getowner
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOwner(out nint owner);
+    HRESULT GetOwner([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint owner);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomshareable-gettype
     [PreserveSig]

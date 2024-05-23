@@ -6,5 +6,5 @@ public partial interface IMFMediaEngineClassFactory3
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaKeySystemAccess(BSTR keySystem, [In][MarshalUsing(CountElementName = nameof(uSize))] IPropertyStore[] ppSupportedConfigurationsArray, uint uSize, out IMFMediaKeySystemAccess ppKeyAccess);
+    HRESULT CreateMediaKeySystemAccess(BSTR keySystem, [In][MarshalUsing(CountElementName = nameof(uSize))] IPropertyStore[] ppSupportedConfigurationsArray, uint uSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaKeySystemAccess>))] out IMFMediaKeySystemAccess ppKeyAccess);
 }

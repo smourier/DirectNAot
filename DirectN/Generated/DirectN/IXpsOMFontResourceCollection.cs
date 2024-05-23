@@ -14,7 +14,7 @@ public partial interface IXpsOMFontResourceCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomfontresourcecollection-getat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAt(uint index, out IXpsOMFontResource value);
+    HRESULT GetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource value);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomfontresourcecollection-setat
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IXpsOMFontResourceCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomfontresourcecollection-getbypartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetByPartName(IOpcPartUri partName, out IXpsOMFontResource part);
+    HRESULT GetByPartName(IOpcPartUri partName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource part);
 }

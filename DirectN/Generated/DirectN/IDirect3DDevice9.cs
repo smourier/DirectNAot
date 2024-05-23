@@ -22,7 +22,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getdirect3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDirect3D(out IDirect3D9 ppD3D9);
+    HRESULT GetDirect3D([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3D9>))] out IDirect3D9 ppD3D9);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getdevicecaps
     [PreserveSig]
@@ -56,12 +56,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createadditionalswapchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAdditionalSwapChain(ref D3DPRESENT_PARAMETERS pPresentationParameters, out IDirect3DSwapChain9 pSwapChain);
+    HRESULT CreateAdditionalSwapChain(ref D3DPRESENT_PARAMETERS pPresentationParameters, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSwapChain9>))] out IDirect3DSwapChain9 pSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getswapchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSwapChain(uint iSwapChain, out IDirect3DSwapChain9 pSwapChain);
+    HRESULT GetSwapChain(uint iSwapChain, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSwapChain9>))] out IDirect3DSwapChain9 pSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getnumberofswapchains
     [PreserveSig]
@@ -80,7 +80,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getbackbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBackBuffer(uint iSwapChain, uint iBackBuffer, D3DBACKBUFFER_TYPE Type, out IDirect3DSurface9 ppBackBuffer);
+    HRESULT GetBackBuffer(uint iSwapChain, uint iBackBuffer, D3DBACKBUFFER_TYPE Type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppBackBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getrasterstatus
     [PreserveSig]
@@ -103,37 +103,37 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createtexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture(uint Width, uint Height, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DTexture9 ppTexture, ref HANDLE pSharedHandle);
+    HRESULT CreateTexture(uint Width, uint Height, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DTexture9>))] out IDirect3DTexture9 ppTexture, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createvolumetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVolumeTexture(uint Width, uint Height, uint Depth, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DVolumeTexture9 ppVolumeTexture, ref HANDLE pSharedHandle);
+    HRESULT CreateVolumeTexture(uint Width, uint Height, uint Depth, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVolumeTexture9>))] out IDirect3DVolumeTexture9 ppVolumeTexture, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createcubetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCubeTexture(uint EdgeLength, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DCubeTexture9 ppCubeTexture, ref HANDLE pSharedHandle);
+    HRESULT CreateCubeTexture(uint EdgeLength, uint Levels, uint Usage, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DCubeTexture9>))] out IDirect3DCubeTexture9 ppCubeTexture, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createvertexbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexBuffer(uint Length, uint Usage, uint FVF, D3DPOOL Pool, out IDirect3DVertexBuffer9 ppVertexBuffer, ref HANDLE pSharedHandle);
+    HRESULT CreateVertexBuffer(uint Length, uint Usage, uint FVF, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexBuffer9>))] out IDirect3DVertexBuffer9 ppVertexBuffer, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createindexbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateIndexBuffer(uint Length, uint Usage, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DIndexBuffer9 ppIndexBuffer, ref HANDLE pSharedHandle);
+    HRESULT CreateIndexBuffer(uint Length, uint Usage, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DIndexBuffer9>))] out IDirect3DIndexBuffer9 ppIndexBuffer, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createrendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTarget(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Lockable, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
+    HRESULT CreateRenderTarget(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Lockable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createdepthstencilsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilSurface(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Discard, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
+    HRESULT CreateDepthStencilSurface(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Discard, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-updatesurface
     [PreserveSig]
@@ -168,7 +168,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createoffscreenplainsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateOffscreenPlainSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
+    HRESULT CreateOffscreenPlainSurface(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setrendertarget
     [PreserveSig]
@@ -178,7 +178,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getrendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRenderTarget(uint RenderTargetIndex, out IDirect3DSurface9 ppRenderTarget);
+    HRESULT GetRenderTarget(uint RenderTargetIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppRenderTarget);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setdepthstencilsurface
     [PreserveSig]
@@ -188,7 +188,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getdepthstencilsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDepthStencilSurface(out IDirect3DSurface9 ppZStencilSurface);
+    HRESULT GetDepthStencilSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppZStencilSurface);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-beginscene
     [PreserveSig]
@@ -283,7 +283,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createstateblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStateBlock(D3DSTATEBLOCKTYPE Type, out IDirect3DStateBlock9 ppSB);
+    HRESULT CreateStateBlock(D3DSTATEBLOCKTYPE Type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DStateBlock9>))] out IDirect3DStateBlock9 ppSB);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-beginstateblock
     [PreserveSig]
@@ -293,7 +293,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-endstateblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndStateBlock(out IDirect3DStateBlock9 ppSB);
+    HRESULT EndStateBlock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DStateBlock9>))] out IDirect3DStateBlock9 ppSB);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setclipstatus
     [PreserveSig]
@@ -308,7 +308,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-gettexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTexture(uint Stage, out IDirect3DBaseTexture9 ppTexture);
+    HRESULT GetTexture(uint Stage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DBaseTexture9>))] out IDirect3DBaseTexture9 ppTexture);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-settexture
     [PreserveSig]
@@ -417,7 +417,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createvertexdeclaration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexDeclaration(in D3DVERTEXELEMENT9 pVertexElements, out IDirect3DVertexDeclaration9 ppDecl);
+    HRESULT CreateVertexDeclaration(in D3DVERTEXELEMENT9 pVertexElements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexDeclaration9>))] out IDirect3DVertexDeclaration9 ppDecl);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setvertexdeclaration
     [PreserveSig]
@@ -427,7 +427,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getvertexdeclaration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVertexDeclaration(out IDirect3DVertexDeclaration9 ppDecl);
+    HRESULT GetVertexDeclaration([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexDeclaration9>))] out IDirect3DVertexDeclaration9 ppDecl);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setfvf
     [PreserveSig]
@@ -442,7 +442,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVertexShader(in uint pFunction, out IDirect3DVertexShader9 ppShader);
+    HRESULT CreateVertexShader(in uint pFunction, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexShader9>))] out IDirect3DVertexShader9 ppShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setvertexshader
     [PreserveSig]
@@ -452,7 +452,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getvertexshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVertexShader(out IDirect3DVertexShader9 ppShader);
+    HRESULT GetVertexShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexShader9>))] out IDirect3DVertexShader9 ppShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setvertexshaderconstantf
     [PreserveSig]
@@ -492,7 +492,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getstreamsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSource(uint StreamNumber, out IDirect3DVertexBuffer9 ppStreamData, ref uint pOffsetInBytes, ref uint pStride);
+    HRESULT GetStreamSource(uint StreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexBuffer9>))] out IDirect3DVertexBuffer9 ppStreamData, ref uint pOffsetInBytes, ref uint pStride);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setstreamsourcefreq
     [PreserveSig]
@@ -512,12 +512,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getindices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIndices(out IDirect3DIndexBuffer9 ppIndexData);
+    HRESULT GetIndices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DIndexBuffer9>))] out IDirect3DIndexBuffer9 ppIndexData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePixelShader(in uint pFunction, out IDirect3DPixelShader9 ppShader);
+    HRESULT CreatePixelShader(in uint pFunction, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DPixelShader9>))] out IDirect3DPixelShader9 ppShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setpixelshader
     [PreserveSig]
@@ -527,7 +527,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getpixelshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPixelShader(out IDirect3DPixelShader9 ppShader);
+    HRESULT GetPixelShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DPixelShader9>))] out IDirect3DPixelShader9 ppShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setpixelshaderconstantf
     [PreserveSig]
@@ -577,5 +577,5 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateQuery(D3DQUERYTYPE Type, out IDirect3DQuery9 ppQuery);
+    HRESULT CreateQuery(D3DQUERYTYPE Type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DQuery9>))] out IDirect3DQuery9 ppQuery);
 }

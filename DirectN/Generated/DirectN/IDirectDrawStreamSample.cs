@@ -8,7 +8,7 @@ public partial interface IDirectDrawStreamSample : IStreamSample
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawstreamsample-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface(out IDirectDrawSurface ppDirectDrawSurface, out RECT pRect);
+    HRESULT GetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface ppDirectDrawSurface, out RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawstreamsample-setrect
     [PreserveSig]

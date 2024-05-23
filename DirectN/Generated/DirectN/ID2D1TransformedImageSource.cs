@@ -7,7 +7,7 @@ public partial interface ID2D1TransformedImageSource : ID2D1Image
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1transformedimagesource-getsource
     [PreserveSig]
-    void GetSource(out ID2D1ImageSource imageSource);
+    void GetSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ImageSource>))] out ID2D1ImageSource imageSource);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1transformedimagesource-getproperties
     [PreserveSig]

@@ -9,5 +9,5 @@ public partial interface ICreateDevEnum
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icreatedevenum-createclassenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateClassEnumerator(in Guid clsidDeviceClass, out IEnumMoniker ppEnumMoniker, uint dwFlags);
+    HRESULT CreateClassEnumerator(in Guid clsidDeviceClass, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppEnumMoniker, uint dwFlags);
 }

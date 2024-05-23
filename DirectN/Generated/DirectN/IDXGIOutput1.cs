@@ -24,5 +24,5 @@ public partial interface IDXGIOutput1 : IDXGIOutput
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutput1-duplicateoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateOutput(nint pDevice, out IDXGIOutputDuplication ppOutputDuplication);
+    HRESULT DuplicateOutput(nint pDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIOutputDuplication>))] out IDXGIOutputDuplication ppOutputDuplication);
 }

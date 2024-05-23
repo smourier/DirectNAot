@@ -8,7 +8,7 @@ public partial interface ID3D10EffectSamplerVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectsamplervariable-getsampler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSampler(uint Index, out ID3D10SamplerState ppSampler);
+    HRESULT GetSampler(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10SamplerState>))] out ID3D10SamplerState ppSampler);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectsamplervariable-getbackingstore
     [PreserveSig]

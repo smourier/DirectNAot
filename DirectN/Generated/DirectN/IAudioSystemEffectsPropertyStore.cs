@@ -8,17 +8,17 @@ public partial interface IAudioSystemEffectsPropertyStore
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-opendefaultpropertystore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenDefaultPropertyStore(uint stgmAccess, out IPropertyStore propStore);
+    HRESULT OpenDefaultPropertyStore(uint stgmAccess, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore propStore);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-openuserpropertystore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenUserPropertyStore(uint stgmAccess, out IPropertyStore propStore);
+    HRESULT OpenUserPropertyStore(uint stgmAccess, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore propStore);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-openvolatilepropertystore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenVolatilePropertyStore(uint stgmAccess, out IPropertyStore propStore);
+    HRESULT OpenVolatilePropertyStore(uint stgmAccess, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore propStore);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-resetuserpropertystore
     [PreserveSig]

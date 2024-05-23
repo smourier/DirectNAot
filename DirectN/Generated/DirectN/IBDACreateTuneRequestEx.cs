@@ -9,5 +9,5 @@ public partial interface IBDACreateTuneRequestEx
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ibdacreatetunerequestex-createtunerequestex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTuneRequestEx(in Guid TuneRequestIID, out ITuneRequest TuneRequest);
+    HRESULT CreateTuneRequestEx(in Guid TuneRequestIID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
 }

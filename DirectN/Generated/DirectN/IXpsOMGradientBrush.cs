@@ -9,17 +9,17 @@ public partial interface IXpsOMGradientBrush : IXpsOMBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientbrush-getgradientstops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGradientStops(out IXpsOMGradientStopCollection gradientStops);
+    HRESULT GetGradientStops([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStopCollection>))] out IXpsOMGradientStopCollection gradientStops);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientbrush-gettransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransform(out IXpsOMMatrixTransform transform);
+    HRESULT GetTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientbrush-gettransformlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformLocal(out IXpsOMMatrixTransform transform);
+    HRESULT GetTransformLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientbrush-settransformlocal
     [PreserveSig]

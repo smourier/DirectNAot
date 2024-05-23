@@ -13,7 +13,7 @@ public partial interface IAudioSystemEffectsCustomFormats
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudiosystemeffectscustomformats-getformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(uint nFormat, out IAudioMediaType ppFormat);
+    HRESULT GetFormat(uint nFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppFormat);
     
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudiosystemeffectscustomformats-getformatrepresentation
     [PreserveSig]

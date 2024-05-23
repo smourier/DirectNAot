@@ -39,7 +39,7 @@ public partial interface IMFASFSplitter
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-getnextsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextSample(out ASF_STATUSFLAGS pdwStatusFlags, out ushort pwStreamNumber, out IMFSample ppISample);
+    HRESULT GetNextSample(out ASF_STATUSFLAGS pdwStatusFlags, out ushort pwStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] out IMFSample ppISample);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-flush
     [PreserveSig]

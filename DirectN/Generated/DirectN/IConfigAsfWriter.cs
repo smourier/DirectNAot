@@ -34,7 +34,7 @@ public partial interface IConfigAsfWriter
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-getcurrentprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentProfile(out IWMProfile ppProfile);
+    HRESULT GetCurrentProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] out IWMProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-setindexmode
     [PreserveSig]

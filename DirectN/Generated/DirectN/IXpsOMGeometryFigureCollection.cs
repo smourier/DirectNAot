@@ -14,7 +14,7 @@ public partial interface IXpsOMGeometryFigureCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-getat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAt(uint index, out IXpsOMGeometryFigure geometryFigure);
+    HRESULT GetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometryFigure>))] out IXpsOMGeometryFigure geometryFigure);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-insertat
     [PreserveSig]

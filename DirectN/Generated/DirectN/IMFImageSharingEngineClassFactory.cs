@@ -9,5 +9,5 @@ public partial interface IMFImageSharingEngineClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfsharingengine/nf-mfsharingengine-imfimagesharingengineclassfactory-createinstancefromudn
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstanceFromUDN(BSTR pUniqueDeviceName, out IMFImageSharingEngine ppEngine);
+    HRESULT CreateInstanceFromUDN(BSTR pUniqueDeviceName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFImageSharingEngine>))] out IMFImageSharingEngine ppEngine);
 }

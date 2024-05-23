@@ -49,7 +49,7 @@ public partial interface IVPBaseConfig
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-getoverlaysurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOverlaySurface(out IDirectDrawSurface ppddOverlaySurface);
+    HRESULT GetOverlaySurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface ppddOverlaySurface);
     
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpbaseconfig-setdirectdrawkernelhandle
     [PreserveSig]

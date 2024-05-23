@@ -8,7 +8,7 @@ public partial interface IMediaStream
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-getmultimediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMultiMediaStream(out IMultiMediaStream ppMultiMediaStream);
+    HRESULT GetMultiMediaStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMultiMediaStream>))] out IMultiMediaStream ppMultiMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-getinformation
     [PreserveSig]
@@ -23,12 +23,12 @@ public partial interface IMediaStream
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-allocatesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateSample(uint dwFlags, out IStreamSample ppSample);
+    HRESULT AllocateSample(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamSample>))] out IStreamSample ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-createsharedsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSharedSample(IStreamSample pExistingSample, uint dwFlags, out IStreamSample ppNewSample);
+    HRESULT CreateSharedSample(IStreamSample pExistingSample, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamSample>))] out IStreamSample ppNewSample);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-sendendofstream
     [PreserveSig]

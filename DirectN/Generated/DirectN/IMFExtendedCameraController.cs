@@ -8,5 +8,5 @@ public partial interface IMFExtendedCameraController
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfextendedcameracontroller-getextendedcameracontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetExtendedCameraControl(uint dwStreamIndex, uint ulPropertyId, out IMFExtendedCameraControl ppControl);
+    HRESULT GetExtendedCameraControl(uint dwStreamIndex, uint ulPropertyId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFExtendedCameraControl>))] out IMFExtendedCameraControl ppControl);
 }

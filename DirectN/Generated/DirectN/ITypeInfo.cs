@@ -13,7 +13,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-gettypecomp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypeComp(out ITypeComp ppTComp);
+    HRESULT GetTypeComp([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeComp>))] out ITypeComp ppTComp);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getfuncdesc
     [PreserveSig]
@@ -63,7 +63,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getreftypeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRefTypeInfo(uint hRefType, out ITypeInfo ppTInfo);
+    HRESULT GetRefTypeInfo(uint hRefType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeInfo>))] out ITypeInfo ppTInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-addressofmember
     [PreserveSig]
@@ -83,7 +83,7 @@ public partial interface ITypeInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-getcontainingtypelib
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainingTypeLib(out ITypeLib ppTLib, out uint pIndex);
+    HRESULT GetContainingTypeLib([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] out ITypeLib ppTLib, out uint pIndex);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-releasetypeattr
     [PreserveSig]

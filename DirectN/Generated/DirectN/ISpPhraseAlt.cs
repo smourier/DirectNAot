@@ -6,7 +6,7 @@ public partial interface ISpPhraseAlt : ISpPhrase
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAltInfo(out ISpPhrase ppParent, ref uint pulStartElementInParent, ref uint pcElementsInParent, ref uint pcElementsInAlt);
+    HRESULT GetAltInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhrase>))] out ISpPhrase ppParent, ref uint pulStartElementInParent, ref uint pcElementsInParent, ref uint pcElementsInAlt);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

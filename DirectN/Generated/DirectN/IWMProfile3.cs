@@ -23,7 +23,7 @@ public partial interface IWMProfile3 : IWMProfile2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-getbandwidthsharing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBandwidthSharing(uint dwBSIndex, out IWMBandwidthSharing ppBS);
+    HRESULT GetBandwidthSharing(uint dwBSIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMBandwidthSharing>))] out IWMBandwidthSharing ppBS);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-removebandwidthsharing
     [PreserveSig]
@@ -38,12 +38,12 @@ public partial interface IWMProfile3 : IWMProfile2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-createnewbandwidthsharing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewBandwidthSharing(out IWMBandwidthSharing ppBS);
+    HRESULT CreateNewBandwidthSharing([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMBandwidthSharing>))] out IWMBandwidthSharing ppBS);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-getstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamPrioritization(out IWMStreamPrioritization ppSP);
+    HRESULT GetStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamPrioritization>))] out IWMStreamPrioritization ppSP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-setstreamprioritization
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IWMProfile3 : IWMProfile2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-createnewstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewStreamPrioritization(out IWMStreamPrioritization ppSP);
+    HRESULT CreateNewStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamPrioritization>))] out IWMStreamPrioritization ppSP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-getexpectedpacketcount
     [PreserveSig]

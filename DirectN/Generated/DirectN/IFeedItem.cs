@@ -38,7 +38,7 @@ public partial interface IFeedItem : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Enclosure(out IDispatch disp);
+    HRESULT get_Enclosure([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -54,7 +54,7 @@ public partial interface IFeedItem : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Parent(out IDispatch disp);
+    HRESULT get_Parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -9,10 +9,10 @@ public partial interface ISpatialAudioObjectRenderStreamForMetadata : ISpatialAu
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudioobjectrenderstreamformetadata-activatespatialaudioobjectformetadatacommands
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateSpatialAudioObjectForMetadataCommands(AudioObjectType type, out ISpatialAudioObjectForMetadataCommands audioObject);
+    HRESULT ActivateSpatialAudioObjectForMetadataCommands(AudioObjectType type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioObjectForMetadataCommands>))] out ISpatialAudioObjectForMetadataCommands audioObject);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudioobjectrenderstreamformetadata-activatespatialaudioobjectformetadataitems
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateSpatialAudioObjectForMetadataItems(AudioObjectType type, out ISpatialAudioObjectForMetadataItems audioObject);
+    HRESULT ActivateSpatialAudioObjectForMetadataItems(AudioObjectType type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioObjectForMetadataItems>))] out ISpatialAudioObjectForMetadataItems audioObject);
 }

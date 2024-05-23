@@ -9,12 +9,12 @@ public partial interface IMFMediaSourceEx : IMFMediaSource
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasourceex-getsourceattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSourceAttributes(out IMFAttributes ppAttributes);
+    HRESULT GetSourceAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasourceex-getstreamattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamAttributes(uint dwStreamIdentifier, out IMFAttributes ppAttributes);
+    HRESULT GetStreamAttributes(uint dwStreamIdentifier, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasourceex-setd3dmanager
     [PreserveSig]

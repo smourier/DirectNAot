@@ -10,11 +10,11 @@ public partial interface ISpeechObjectToken : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DataKey(out ISpeechDataKey DataKey);
+    HRESULT get_DataKey([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechDataKey>))] out ISpeechDataKey DataKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Category(out ISpeechObjectTokenCategory Category);
+    HRESULT get_Category([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokenCategory>))] out ISpeechObjectTokenCategory Category);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface ISpeechObjectToken : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(nint pUnkOuter, SpeechTokenContext ClsContext, out nint Object);
+    HRESULT CreateInstance(nint pUnkOuter, SpeechTokenContext ClsContext, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint Object);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

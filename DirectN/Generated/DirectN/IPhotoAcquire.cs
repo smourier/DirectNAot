@@ -8,7 +8,7 @@ public partial interface IPhotoAcquire
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquire-createphotosource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePhotoSource(PWSTR pszDevice, out IPhotoAcquireSource ppPhotoAcquireSource);
+    HRESULT CreatePhotoSource(PWSTR pszDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireSource>))] out IPhotoAcquireSource ppPhotoAcquireSource);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquire-acquire
     [PreserveSig]
@@ -18,5 +18,5 @@ public partial interface IPhotoAcquire
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquire-enumresults
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumResults(out IEnumString ppEnumFilePaths);
+    HRESULT EnumResults([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumString>))] out IEnumString ppEnumFilePaths);
 }

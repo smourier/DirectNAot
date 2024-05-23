@@ -14,7 +14,7 @@ public partial interface IOpcPartUri : IOpcUri
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcparturi-getsourceuri
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSourceUri(out IOpcUri sourceUri);
+    HRESULT GetSourceUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcUri>))] out IOpcUri sourceUri);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcparturi-isrelationshipsparturi
     [PreserveSig]

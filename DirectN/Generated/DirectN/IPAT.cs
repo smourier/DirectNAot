@@ -48,7 +48,7 @@ public partial interface IPAT
     // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nf-mpeg2psiparser-ipat-getnexttable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextTable(out IPAT ppPAT);
+    HRESULT GetNextTable([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPAT>))] out IPAT ppPAT);
     
     // https://learn.microsoft.com/windows/win32/api/mpeg2psiparser/nf-mpeg2psiparser-ipat-registerforwhencurrent
     [PreserveSig]

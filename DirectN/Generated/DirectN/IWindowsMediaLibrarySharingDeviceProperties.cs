@@ -9,7 +9,7 @@ public partial interface IWindowsMediaLibrarySharingDeviceProperties : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdeviceproperties-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(int index, out IWindowsMediaLibrarySharingDeviceProperty property);
+    HRESULT get_Item(int index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDeviceProperty>))] out IWindowsMediaLibrarySharingDeviceProperty property);
     
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdeviceproperties-get_count
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IWindowsMediaLibrarySharingDeviceProperties : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdeviceproperties-getproperty
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProperty(BSTR name, out IWindowsMediaLibrarySharingDeviceProperty property);
+    HRESULT GetProperty(BSTR name, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDeviceProperty>))] out IWindowsMediaLibrarySharingDeviceProperty property);
 }

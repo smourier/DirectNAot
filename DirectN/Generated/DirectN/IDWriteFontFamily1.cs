@@ -13,10 +13,10 @@ public partial interface IDWriteFontFamily1 : IDWriteFontFamily
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfamily1-getfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFont(uint listIndex, out IDWriteFont3 font);
+    HRESULT GetFont(uint listIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFont3>))] out IDWriteFont3 font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfamily1-getfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFaceReference(uint listIndex, out IDWriteFontFaceReference fontFaceReference);
+    HRESULT GetFontFaceReference(uint listIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] out IDWriteFontFaceReference fontFaceReference);
 }

@@ -9,15 +9,15 @@ public partial interface IDCompositionDesktopDevice : IDCompositionDevice2
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondesktopdevice-createtargetforhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTargetForHwnd(HWND hwnd, [MarshalAs(UnmanagedType.U4)] bool topmost, out IDCompositionTarget target);
+    HRESULT CreateTargetForHwnd(HWND hwnd, [MarshalAs(UnmanagedType.U4)] bool topmost, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionTarget>))] out IDCompositionTarget target);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondesktopdevice-createsurfacefromhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurfaceFromHandle(HANDLE handle, out nint surface);
+    HRESULT CreateSurfaceFromHandle(HANDLE handle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint surface);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondesktopdevice-createsurfacefromhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurfaceFromHwnd(HWND hwnd, out nint surface);
+    HRESULT CreateSurfaceFromHwnd(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint surface);
 }

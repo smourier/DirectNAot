@@ -14,7 +14,7 @@ public partial interface IMFTrustedOutput
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftrustedoutput-getoutputtrustauthoritybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputTrustAuthorityByIndex(uint dwIndex, out IMFOutputTrustAuthority ppauthority);
+    HRESULT GetOutputTrustAuthorityByIndex(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFOutputTrustAuthority>))] out IMFOutputTrustAuthority ppauthority);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftrustedoutput-isfinal
     [PreserveSig]

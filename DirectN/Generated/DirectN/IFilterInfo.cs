@@ -6,7 +6,7 @@ public partial interface IFilterInfo : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindPin(BSTR strPinID, out IDispatch ppUnk);
+    HRESULT FindPin(BSTR strPinID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,11 +18,11 @@ public partial interface IFilterInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Filter(out nint ppUnk);
+    HRESULT get_Filter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Pins(out IDispatch ppUnk);
+    HRESULT get_Pins([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

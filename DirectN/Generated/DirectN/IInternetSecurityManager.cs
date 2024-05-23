@@ -10,7 +10,7 @@ public partial interface IInternetSecurityManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSecuritySite(out IInternetSecurityMgrSite ppSite);
+    HRESULT GetSecuritySite([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInternetSecurityMgrSite>))] out IInternetSecurityMgrSite ppSite);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,5 +34,5 @@ public partial interface IInternetSecurityManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetZoneMappings(uint dwZone, out IEnumString ppenumString, uint dwFlags);
+    HRESULT GetZoneMappings(uint dwZone, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumString>))] out IEnumString ppenumString, uint dwFlags);
 }

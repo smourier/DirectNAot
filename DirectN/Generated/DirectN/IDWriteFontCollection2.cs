@@ -8,12 +8,12 @@ public partial interface IDWriteFontCollection2 : IDWriteFontCollection1
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontcollection2-getfontfamily
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFamily(uint index, out IDWriteFontFamily2 fontFamily);
+    HRESULT GetFontFamily(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFamily2>))] out IDWriteFontFamily2 fontFamily);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontcollection2-getmatchingfonts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMatchingFonts(PWSTR familyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, out IDWriteFontList2 fontList);
+    HRESULT GetMatchingFonts(PWSTR familyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontList2>))] out IDWriteFontList2 fontList);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontcollection2-getfontfamilymodel
     [PreserveSig]
@@ -22,5 +22,5 @@ public partial interface IDWriteFontCollection2 : IDWriteFontCollection1
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontcollection2-getfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontSet(out IDWriteFontSet1 fontSet);
+    HRESULT GetFontSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet1>))] out IDWriteFontSet1 fontSet);
 }

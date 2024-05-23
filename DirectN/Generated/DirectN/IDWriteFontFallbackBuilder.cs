@@ -19,5 +19,5 @@ public partial interface IDWriteFontFallbackBuilder
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontfallbackbuilder-createfontfallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFallback(out IDWriteFontFallback fontFallback);
+    HRESULT CreateFontFallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFallback>))] out IDWriteFontFallback fontFallback);
 }

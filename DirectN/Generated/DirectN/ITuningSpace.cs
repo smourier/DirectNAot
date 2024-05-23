@@ -54,22 +54,22 @@ public partial interface ITuningSpace : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-createtunerequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTuneRequest(out ITuneRequest TuneRequest);
+    HRESULT CreateTuneRequest([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-enumcategoryguids
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumCategoryGUIDs(out IEnumGUID ppEnum);
+    HRESULT EnumCategoryGUIDs([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumGUID>))] out IEnumGUID ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-enumdevicemonikers
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumDeviceMonikers(out IEnumMoniker ppEnum);
+    HRESULT EnumDeviceMonikers([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-get_defaultpreferredcomponenttypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DefaultPreferredComponentTypes(out IComponentTypes ComponentTypes);
+    HRESULT get_DefaultPreferredComponentTypes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentTypes>))] out IComponentTypes ComponentTypes);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-put_defaultpreferredcomponenttypes
     [PreserveSig]
@@ -89,7 +89,7 @@ public partial interface ITuningSpace : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-get_defaultlocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DefaultLocator(out ILocator LocatorVal);
+    HRESULT get_DefaultLocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ILocator>))] out ILocator LocatorVal);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-put_defaultlocator
     [PreserveSig]
@@ -99,5 +99,5 @@ public partial interface ITuningSpace : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out ITuningSpace NewTS);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpace>))] out ITuningSpace NewTS);
 }

@@ -298,7 +298,7 @@ public partial interface IMSVidWebDVD : IMSVidPlayback
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DVDAdm(out IDispatch pVal);
+    HRESULT get_DVDAdm([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch pVal);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -374,11 +374,11 @@ public partial interface IMSVidWebDVD : IMSVidPlayback
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ButtonRect(int lButton, out IMSVidRect pRect);
+    HRESULT get_ButtonRect(int lButton, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect pRect);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DVDScreenInMouseCoordinates(out IMSVidRect ppRect);
+    HRESULT get_DVDScreenInMouseCoordinates([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect ppRect);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -38,7 +38,7 @@ public partial interface IRecordInfo
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-gettypeinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTypeInfo(out ITypeInfo ppTypeInfo);
+    HRESULT GetTypeInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeInfo>))] out ITypeInfo ppTypeInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-getfield
     [PreserveSig]

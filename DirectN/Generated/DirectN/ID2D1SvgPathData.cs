@@ -46,5 +46,5 @@ public partial interface ID2D1SvgPathData : ID2D1SvgAttribute
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgpathdata-createpathgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePathGeometry(D2D1_FILL_MODE fillMode, out ID2D1PathGeometry1 pathGeometry);
+    HRESULT CreatePathGeometry(D2D1_FILL_MODE fillMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1PathGeometry1>))] out ID2D1PathGeometry1 pathGeometry);
 }

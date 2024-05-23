@@ -9,7 +9,7 @@ public partial interface IMFMediaEngineEME
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineeme-get_keys
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Keys(out IMFMediaKeys keys);
+    HRESULT get_Keys([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaKeys>))] out IMFMediaKeys keys);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineeme-setmediakeys
     [PreserveSig]

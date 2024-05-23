@@ -24,7 +24,7 @@ public partial interface ISpatialAudioClient
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioclient-getsupportedaudioobjectformatenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSupportedAudioObjectFormatEnumerator(out IAudioFormatEnumerator enumerator);
+    HRESULT GetSupportedAudioObjectFormatEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioFormatEnumerator>))] out IAudioFormatEnumerator enumerator);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioclient-getmaxframecount
     [PreserveSig]

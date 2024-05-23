@@ -9,7 +9,7 @@ public partial interface IFilterGraph2 : IGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph2-addsourcefilterformoniker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSourceFilterForMoniker(IMoniker pMoniker, IBindCtx pCtx, PWSTR lpcwstrFilterName, out IBaseFilter ppFilter);
+    HRESULT AddSourceFilterForMoniker(IMoniker pMoniker, IBindCtx pCtx, PWSTR lpcwstrFilterName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] out IBaseFilter ppFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph2-reconnectex
     [PreserveSig]

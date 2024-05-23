@@ -6,7 +6,7 @@ public partial interface IFeedsManager : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RootFolder(out IDispatch disp);
+    HRESULT get_RootFolder([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,11 +18,11 @@ public partial interface IFeedsManager : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeed(BSTR feedPath, out IDispatch disp);
+    HRESULT GetFeed(BSTR feedPath, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeedByUrl(BSTR feedUrl, out IDispatch disp);
+    HRESULT GetFeedByUrl(BSTR feedUrl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface IFeedsManager : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFolder(BSTR folderPath, out IDispatch disp);
+    HRESULT GetFolder(BSTR folderPath, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -39,7 +39,7 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-getrestricttooutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRestrictToOutput(out IDXGIOutput ppRestrictToOutput);
+    HRESULT GetRestrictToOutput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIOutput>))] out IDXGIOutput ppRestrictToOutput);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-setbackgroundcolor
     [PreserveSig]

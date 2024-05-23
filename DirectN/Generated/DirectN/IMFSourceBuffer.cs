@@ -14,7 +14,7 @@ public partial interface IMFSourceBuffer
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-getbuffered
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffered(out IMFMediaTimeRange ppBuffered);
+    HRESULT GetBuffered([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTimeRange>))] out IMFMediaTimeRange ppBuffered);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-gettimestampoffset
     [PreserveSig]

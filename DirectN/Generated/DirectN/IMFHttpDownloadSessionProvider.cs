@@ -9,5 +9,5 @@ public partial interface IMFHttpDownloadSessionProvider
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadsessionprovider-createhttpdownloadsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateHttpDownloadSession(PWSTR wszScheme, out IMFHttpDownloadSession ppDownloadSession);
+    HRESULT CreateHttpDownloadSession(PWSTR wszScheme, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFHttpDownloadSession>))] out IMFHttpDownloadSession ppDownloadSession);
 }

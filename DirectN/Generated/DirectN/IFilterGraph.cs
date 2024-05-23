@@ -19,12 +19,12 @@ public partial interface IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-enumfilters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumFilters(out IEnumFilters ppEnum);
+    HRESULT EnumFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumFilters>))] out IEnumFilters ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-findfilterbyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFilterByName(PWSTR pName, out IBaseFilter ppFilter);
+    HRESULT FindFilterByName(PWSTR pName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] out IBaseFilter ppFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-connectdirect
     [PreserveSig]

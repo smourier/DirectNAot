@@ -6,15 +6,15 @@ public partial interface ISpeechAudio : ISpeechBaseStream
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Status(out ISpeechAudioStatus Status);
+    HRESULT get_Status([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioStatus>))] out ISpeechAudioStatus Status);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_BufferInfo(out ISpeechAudioBufferInfo BufferInfo);
+    HRESULT get_BufferInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioBufferInfo>))] out ISpeechAudioBufferInfo BufferInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_DefaultFormat(out ISpeechAudioFormat StreamFormat);
+    HRESULT get_DefaultFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat>))] out ISpeechAudioFormat StreamFormat);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

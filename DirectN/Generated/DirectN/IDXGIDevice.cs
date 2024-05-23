@@ -8,7 +8,7 @@ public partial interface IDXGIDevice : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-getadapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAdapter(out IDXGIAdapter pAdapter);
+    HRESULT GetAdapter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIAdapter>))] out IDXGIAdapter pAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-createsurface
     [PreserveSig]

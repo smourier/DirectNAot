@@ -9,12 +9,12 @@ public partial interface IXpsSignatureBlock
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignatureblock-getrequests
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRequests(out IXpsSignatureRequestCollection requests);
+    HRESULT GetRequests([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignatureRequestCollection>))] out IXpsSignatureRequestCollection requests);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignatureblock-getpartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPartName(out IOpcPartUri partName);
+    HRESULT GetPartName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri partName);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignatureblock-getdocumentindex
     [PreserveSig]
@@ -24,10 +24,10 @@ public partial interface IXpsSignatureBlock
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignatureblock-getdocumentname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentName(out IOpcPartUri fixedDocumentName);
+    HRESULT GetDocumentName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri fixedDocumentName);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignatureblock-createrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRequest(PWSTR requestId, out IXpsSignatureRequest signatureRequest);
+    HRESULT CreateRequest(PWSTR requestId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignatureRequest>))] out IXpsSignatureRequest signatureRequest);
 }

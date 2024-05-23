@@ -8,7 +8,7 @@ public partial interface ID2D1Bitmap1 : ID2D1Bitmap
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmap1-getcolorcontext
     [PreserveSig]
-    void GetColorContext(out ID2D1ColorContext colorContext);
+    void GetColorContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ColorContext>))] out ID2D1ColorContext colorContext);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmap1-getoptions
     [PreserveSig]
@@ -17,7 +17,7 @@ public partial interface ID2D1Bitmap1 : ID2D1Bitmap
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmap1-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface(out IDXGISurface dxgiSurface);
+    HRESULT GetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISurface>))] out IDXGISurface dxgiSurface);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1bitmap1-map
     [PreserveSig]

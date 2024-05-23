@@ -9,17 +9,17 @@ public partial interface IAMDirectSound
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-getdirectsoundinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDirectSoundInterface(out IDirectSound lplpds);
+    HRESULT GetDirectSoundInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] out IDirectSound lplpds);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-getprimarybufferinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrimaryBufferInterface(out IDirectSoundBuffer lplpdsb);
+    HRESULT GetPrimaryBufferInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer lplpdsb);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-getsecondarybufferinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSecondaryBufferInterface(out IDirectSoundBuffer lplpdsb);
+    HRESULT GetSecondaryBufferInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer lplpdsb);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-releasedirectsoundinterface
     [PreserveSig]

@@ -9,5 +9,5 @@ public partial interface IMFDXGIDeviceManagerSource
     // https://learn.microsoft.com/windows/win32/medfound/imfdxgidevicemanagersource-getmanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetManager(out IMFDXGIDeviceManager ppManager);
+    HRESULT GetManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFDXGIDeviceManager>))] out IMFDXGIDeviceManager ppManager);
 }

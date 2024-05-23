@@ -23,7 +23,7 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getpostviewprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPostViewProps(ushort wStreamNumber, out IWMMediaProps ppOutput);
+    HRESULT GetPostViewProps(ushort wStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMMediaProps>))] out IWMMediaProps ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setpostviewprops
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getpostviewformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPostViewFormat(ushort wStreamNumber, uint dwFormatNumber, out IWMMediaProps ppProps);
+    HRESULT GetPostViewFormat(ushort wStreamNumber, uint dwFormatNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMMediaProps>))] out IWMMediaProps ppProps);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setallocateforpostview
     [PreserveSig]

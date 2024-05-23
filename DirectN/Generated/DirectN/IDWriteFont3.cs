@@ -9,7 +9,7 @@ public partial interface IDWriteFont3 : IDWriteFont2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-createfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFace(out IDWriteFontFace3 fontFace);
+    HRESULT CreateFontFace([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace3>))] out IDWriteFontFace3 fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-equals
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IDWriteFont3 : IDWriteFont2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-getfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFaceReference(out IDWriteFontFaceReference fontFaceReference);
+    HRESULT GetFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] out IDWriteFontFaceReference fontFaceReference);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]

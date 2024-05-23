@@ -18,7 +18,7 @@ public partial interface IWMPLibrary
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary-get_mediacollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_mediaCollection(out IWMPMediaCollection ppIWMPMediaCollection);
+    HRESULT get_mediaCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMediaCollection>))] out IWMPMediaCollection ppIWMPMediaCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary-isidentical
     [PreserveSig]

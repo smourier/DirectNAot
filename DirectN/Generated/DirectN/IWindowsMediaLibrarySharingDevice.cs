@@ -24,5 +24,5 @@ public partial interface IWindowsMediaLibrarySharingDevice : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdevice-get_properties
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Properties(out IWindowsMediaLibrarySharingDeviceProperties deviceProperties);
+    HRESULT get_Properties([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDeviceProperties>))] out IWindowsMediaLibrarySharingDeviceProperties deviceProperties);
 }

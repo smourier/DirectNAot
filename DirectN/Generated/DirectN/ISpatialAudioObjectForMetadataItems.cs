@@ -9,5 +9,5 @@ public partial interface ISpatialAudioObjectForMetadataItems : ISpatialAudioObje
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudioobjectformetadataitems-getspatialaudiometadataitems
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpatialAudioMetadataItems(out ISpatialAudioMetadataItems metadataItems);
+    HRESULT GetSpatialAudioMetadataItems([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioMetadataItems>))] out ISpatialAudioMetadataItems metadataItems);
 }

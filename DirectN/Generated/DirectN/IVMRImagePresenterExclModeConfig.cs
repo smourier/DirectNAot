@@ -14,5 +14,5 @@ public partial interface IVMRImagePresenterExclModeConfig : IVMRImagePresenterCo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagepresenterexclmodeconfig-getxlcmodeddobjandprimarysurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetXlcModeDDObjAndPrimarySurface(out IDirectDraw7 lpDDObj, out IDirectDrawSurface7 lpPrimarySurf);
+    HRESULT GetXlcModeDDObjAndPrimarySurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw7>))] out IDirectDraw7 lpDDObj, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 lpPrimarySurf);
 }

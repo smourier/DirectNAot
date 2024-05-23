@@ -10,7 +10,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Recognizer(out ISpeechObjectToken Recognizer);
+    HRESULT get_Recognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken Recognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioInput(out ISpeechObjectToken AudioInput);
+    HRESULT get_AudioInput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken AudioInput);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioInputStream(out ISpeechBaseStream AudioInputStream);
+    HRESULT get_AudioInputStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechBaseStream>))] out ISpeechBaseStream AudioInputStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -50,7 +50,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Status(out ISpeechRecognizerStatus Status);
+    HRESULT get_Status([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecognizerStatus>))] out ISpeechRecognizerStatus Status);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -58,7 +58,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Profile(out ISpeechObjectToken Profile);
+    HRESULT get_Profile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken Profile);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -66,11 +66,11 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRecoContext(out ISpeechRecoContext NewContext);
+    HRESULT CreateRecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoContext>))] out ISpeechRecoContext NewContext);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(SpeechFormatType Type, out ISpeechAudioFormat Format);
+    HRESULT GetFormat(SpeechFormatType Type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat>))] out ISpeechAudioFormat Format);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -98,13 +98,13 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecognizers(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens ObjectTokens);
+    HRESULT GetRecognizers(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens ObjectTokens);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudioInputs(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens ObjectTokens);
+    HRESULT GetAudioInputs(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens ObjectTokens);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProfiles(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens ObjectTokens);
+    HRESULT GetProfiles(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens ObjectTokens);
 }

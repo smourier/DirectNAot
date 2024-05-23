@@ -19,5 +19,5 @@ public partial interface IOpcCertificateSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopccertificateset-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IOpcCertificateEnumerator certificateEnumerator);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcCertificateEnumerator>))] out IOpcCertificateEnumerator certificateEnumerator);
 }

@@ -19,12 +19,12 @@ public partial interface IXpsSignatureManager
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-sign
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Sign(IXpsSigningOptions signOptions, in CERT_CONTEXT x509Certificate, out IXpsSignature signature);
+    HRESULT Sign(IXpsSigningOptions signOptions, in CERT_CONTEXT x509Certificate, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignature>))] out IXpsSignature signature);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-getsignatureoriginpartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignatureOriginPartName(out IOpcPartUri signatureOriginPartName);
+    HRESULT GetSignatureOriginPartName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri signatureOriginPartName);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-setsignatureoriginpartname
     [PreserveSig]
@@ -34,22 +34,22 @@ public partial interface IXpsSignatureManager
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-getsignatures
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignatures(out IXpsSignatureCollection signatures);
+    HRESULT GetSignatures([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignatureCollection>))] out IXpsSignatureCollection signatures);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-addsignatureblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSignatureBlock(IOpcPartUri partName, uint fixedDocumentIndex, out IXpsSignatureBlock signatureBlock);
+    HRESULT AddSignatureBlock(IOpcPartUri partName, uint fixedDocumentIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignatureBlock>))] out IXpsSignatureBlock signatureBlock);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-getsignatureblocks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignatureBlocks(out IXpsSignatureBlockCollection signatureBlocks);
+    HRESULT GetSignatureBlocks([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignatureBlockCollection>))] out IXpsSignatureBlockCollection signatureBlocks);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-createsigningoptions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSigningOptions(out IXpsSigningOptions signingOptions);
+    HRESULT CreateSigningOptions([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSigningOptions>))] out IXpsSigningOptions signingOptions);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturemanager-savepackagetofile
     [PreserveSig]

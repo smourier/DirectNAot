@@ -9,12 +9,12 @@ public partial interface IMFMediaEngineClassFactoryEx : IMFMediaEngineClassFacto
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactoryex-createmediasourceextension
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaSourceExtension(uint dwFlags, IMFAttributes pAttr, out IMFMediaSourceExtension ppMSE);
+    HRESULT CreateMediaSourceExtension(uint dwFlags, IMFAttributes pAttr, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSourceExtension>))] out IMFMediaSourceExtension ppMSE);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactoryex-createmediakeys
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaKeys(BSTR keySystem, BSTR cdmStorePath, out IMFMediaKeys ppKeys);
+    HRESULT CreateMediaKeys(BSTR keySystem, BSTR cdmStorePath, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaKeys>))] out IMFMediaKeys ppKeys);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactoryex-istypesupported
     [PreserveSig]

@@ -23,7 +23,7 @@ public partial interface IReferenceTracker
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetracker-getreferencetrackermanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReferenceTrackerManager(out IReferenceTrackerManager value);
+    HRESULT GetReferenceTrackerManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceTrackerManager>))] out IReferenceTrackerManager value);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetracker-addreffromtrackersource
     [PreserveSig]

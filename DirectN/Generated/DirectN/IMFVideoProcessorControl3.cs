@@ -6,7 +6,7 @@ public partial interface IMFVideoProcessorControl3 : IMFVideoProcessorControl2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNaturalOutputType(out IMFMediaType ppType);
+    HRESULT GetNaturalOutputType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

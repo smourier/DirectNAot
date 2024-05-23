@@ -8,5 +8,5 @@ public partial interface ID2D1EffectContext1 : ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor_1/nf-d2d1effectauthor_1-id2d1effectcontext1-createlookuptable3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, [MarshalUsing(ConstantElementCount = 3)] in uint[] extents, nint /* byte array */ data, uint dataCount, [MarshalUsing(ConstantElementCount = 2)] in uint[] strides, out ID2D1LookupTable3D lookupTable);
+    HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, [MarshalUsing(ConstantElementCount = 3)] in uint[] extents, nint /* byte array */ data, uint dataCount, [MarshalUsing(ConstantElementCount = 2)] in uint[] strides, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1LookupTable3D>))] out ID2D1LookupTable3D lookupTable);
 }

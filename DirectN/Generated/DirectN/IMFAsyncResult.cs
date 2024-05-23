@@ -9,7 +9,7 @@ public partial interface IMFAsyncResult
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasyncresult-getstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetState(out nint ppunkState);
+    HRESULT GetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasyncresult-getstatus
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFAsyncResult
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasyncresult-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject(out nint ppObject);
+    HRESULT GetObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasyncresult-getstatenoaddref
     [PreserveSig]

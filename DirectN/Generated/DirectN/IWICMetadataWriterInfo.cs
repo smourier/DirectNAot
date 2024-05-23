@@ -14,5 +14,5 @@ public partial interface IWICMetadataWriterInfo : IWICMetadataHandlerInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatawriterinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(out IWICMetadataWriter ppIWriter);
+    HRESULT CreateInstance([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataWriter>))] out IWICMetadataWriter ppIWriter);
 }

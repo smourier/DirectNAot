@@ -13,5 +13,5 @@ public partial interface IWMPSyncServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncservices-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getDevice(int lIndex, out IWMPSyncDevice ppDevice);
+    HRESULT getDevice(int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] out IWMPSyncDevice ppDevice);
 }

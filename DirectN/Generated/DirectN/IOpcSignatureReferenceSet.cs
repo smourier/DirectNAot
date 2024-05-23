@@ -9,7 +9,7 @@ public partial interface IOpcSignatureReferenceSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceset-create
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Create(IUri referenceUri, PWSTR referenceId, PWSTR type, PWSTR digestMethod, OPC_CANONICALIZATION_METHOD transformMethod, out IOpcSignatureReference reference);
+    HRESULT Create(IUri referenceUri, PWSTR referenceId, PWSTR type, PWSTR digestMethod, OPC_CANONICALIZATION_METHOD transformMethod, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureReference>))] out IOpcSignatureReference reference);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceset-delete
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IOpcSignatureReferenceSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceset-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IOpcSignatureReferenceEnumerator referenceEnumerator);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureReferenceEnumerator>))] out IOpcSignatureReferenceEnumerator referenceEnumerator);
 }

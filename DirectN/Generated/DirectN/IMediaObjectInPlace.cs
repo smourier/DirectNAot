@@ -13,7 +13,7 @@ public partial interface IMediaObjectInPlace
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobjectinplace-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMediaObjectInPlace ppMediaObject);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaObjectInPlace>))] out IMediaObjectInPlace ppMediaObject);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobjectinplace-getlatency
     [PreserveSig]

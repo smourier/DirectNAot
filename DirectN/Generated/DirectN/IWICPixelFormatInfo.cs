@@ -14,7 +14,7 @@ public partial interface IWICPixelFormatInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getcolorcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColorContext(out IWICColorContext ppIColorContext);
+    HRESULT GetColorContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICColorContext>))] out IWICColorContext ppIColorContext);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo-getbitsperpixel
     [PreserveSig]

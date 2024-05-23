@@ -14,11 +14,11 @@ public partial interface IWMPDownloadCollection : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(int lItem, out IWMPDownloadItem2 ppDownload);
+    HRESULT item(int lItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPDownloadItem2>))] out IWMPDownloadItem2 ppDownload);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT startDownload(BSTR bstrSourceURL, BSTR bstrType, out IWMPDownloadItem2 ppDownload);
+    HRESULT startDownload(BSTR bstrSourceURL, BSTR bstrType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPDownloadItem2>))] out IWMPDownloadItem2 ppDownload);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

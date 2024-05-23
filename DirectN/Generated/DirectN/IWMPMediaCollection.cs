@@ -8,37 +8,37 @@ public partial interface IWMPMediaCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT add(BSTR bstrURL, out IWMPMedia ppItem);
+    HRESULT add(BSTR bstrURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] out IWMPMedia ppItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getall
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAll(out IWMPPlaylist ppMediaItems);
+    HRESULT getAll([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getbyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByName(BSTR bstrName, out IWMPPlaylist ppMediaItems);
+    HRESULT getByName(BSTR bstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getbygenre
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByGenre(BSTR bstrGenre, out IWMPPlaylist ppMediaItems);
+    HRESULT getByGenre(BSTR bstrGenre, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getbyauthor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByAuthor(BSTR bstrAuthor, out IWMPPlaylist ppMediaItems);
+    HRESULT getByAuthor(BSTR bstrAuthor, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getbyalbum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByAlbum(BSTR bstrAlbum, out IWMPPlaylist ppMediaItems);
+    HRESULT getByAlbum(BSTR bstrAlbum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getbyattribute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByAttribute(BSTR bstrAttribute, BSTR bstrValue, out IWMPPlaylist ppMediaItems);
+    HRESULT getByAttribute(BSTR bstrAttribute, BSTR bstrValue, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-remove
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IWMPMediaCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getattributestringcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAttributeStringCollection(BSTR bstrAttribute, BSTR bstrMediaType, out IWMPStringCollection ppStringCollection);
+    HRESULT getAttributeStringCollection(BSTR bstrAttribute, BSTR bstrMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPStringCollection>))] out IWMPStringCollection ppStringCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getmediaatom
     [PreserveSig]

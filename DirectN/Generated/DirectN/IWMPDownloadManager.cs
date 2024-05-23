@@ -6,9 +6,9 @@ public partial interface IWMPDownloadManager : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getDownloadCollection(int lCollectionId, out IWMPDownloadCollection ppCollection);
+    HRESULT getDownloadCollection(int lCollectionId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPDownloadCollection>))] out IWMPDownloadCollection ppCollection);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT createDownloadCollection(out IWMPDownloadCollection ppCollection);
+    HRESULT createDownloadCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPDownloadCollection>))] out IWMPDownloadCollection ppCollection);
 }

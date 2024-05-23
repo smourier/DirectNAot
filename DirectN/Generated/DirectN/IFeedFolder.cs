@@ -6,19 +6,19 @@ public partial interface IFeedFolder : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Feeds(out IDispatch disp);
+    HRESULT get_Feeds([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Subfolders(out IDispatch disp);
+    HRESULT get_Subfolders([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFeed(BSTR feedName, BSTR feedUrl, out IDispatch disp);
+    HRESULT CreateFeed(BSTR feedName, BSTR feedUrl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSubfolder(BSTR folderName, out IDispatch disp);
+    HRESULT CreateSubfolder(BSTR folderName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface IFeedFolder : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFeed(BSTR feedName, out IDispatch disp);
+    HRESULT GetFeed(BSTR feedName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface IFeedFolder : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubfolder(BSTR folderName, out IDispatch disp);
+    HRESULT GetSubfolder(BSTR folderName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -58,7 +58,7 @@ public partial interface IFeedFolder : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Parent(out IDispatch disp);
+    HRESULT get_Parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -74,5 +74,5 @@ public partial interface IFeedFolder : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, out IDispatch disp);
+    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
 }

@@ -13,5 +13,5 @@ public partial interface IMDServiceProvider
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdserviceprovider-enumdevices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumDevices(out IMDSPEnumDevice ppEnumDevice);
+    HRESULT EnumDevices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPEnumDevice>))] out IMDSPEnumDevice ppEnumDevice);
 }

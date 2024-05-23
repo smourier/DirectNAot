@@ -8,12 +8,12 @@ public partial interface IHolographicCameraInterop : IInspectable
     // https://learn.microsoft.com/windows/win32/api/windows.graphics.holographic.interop/nf-windows-graphics-holographic-interop-iholographiccamerainterop-createdirect3d12backbufferresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDirect3D12BackBufferResource(ID3D12Device pDevice, in D3D12_RESOURCE_DESC pTexture2DDesc, out ID3D12Resource ppCreatedTexture2DResource);
+    HRESULT CreateDirect3D12BackBufferResource(ID3D12Device pDevice, in D3D12_RESOURCE_DESC pTexture2DDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] out ID3D12Resource ppCreatedTexture2DResource);
     
     // https://learn.microsoft.com/windows/win32/api/windows.graphics.holographic.interop/nf-windows-graphics-holographic-interop-iholographiccamerainterop-createdirect3d12hardwareprotectedbackbufferresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDirect3D12HardwareProtectedBackBufferResource(ID3D12Device pDevice, in D3D12_RESOURCE_DESC pTexture2DDesc, ID3D12ProtectedResourceSession pProtectedResourceSession, out ID3D12Resource ppCreatedTexture2DResource);
+    HRESULT CreateDirect3D12HardwareProtectedBackBufferResource(ID3D12Device pDevice, in D3D12_RESOURCE_DESC pTexture2DDesc, ID3D12ProtectedResourceSession pProtectedResourceSession, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] out ID3D12Resource ppCreatedTexture2DResource);
     
     // https://learn.microsoft.com/windows/win32/api/windows.graphics.holographic.interop/nf-windows-graphics-holographic-interop-iholographiccamerainterop-acquiredirect3d12bufferresource
     [PreserveSig]

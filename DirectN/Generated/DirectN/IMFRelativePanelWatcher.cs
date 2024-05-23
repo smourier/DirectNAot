@@ -14,10 +14,10 @@ public partial interface IMFRelativePanelWatcher : IMFShutdown
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfrelativepanelwatcher-endgetreport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndGetReport(IMFAsyncResult pResult, out IMFRelativePanelReport ppRelativePanelReport);
+    HRESULT EndGetReport(IMFAsyncResult pResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFRelativePanelReport>))] out IMFRelativePanelReport ppRelativePanelReport);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfrelativepanelwatcher-getreport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReport(out IMFRelativePanelReport ppRelativePanelReport);
+    HRESULT GetReport([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFRelativePanelReport>))] out IMFRelativePanelReport ppRelativePanelReport);
 }

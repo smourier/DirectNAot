@@ -8,5 +8,5 @@ public partial interface IMSVidXDS : IMSVidFeature
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidxds-get_channelchangeinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ChannelChangeInterface(out nint punkCC);
+    HRESULT get_ChannelChangeInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint punkCC);
 }

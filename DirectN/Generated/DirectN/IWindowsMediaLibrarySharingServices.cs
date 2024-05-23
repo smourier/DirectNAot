@@ -94,7 +94,7 @@ public partial interface IWindowsMediaLibrarySharingServices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingservices-getalldevices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAllDevices(out IWindowsMediaLibrarySharingDevices devices);
+    HRESULT getAllDevices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDevices>))] out IWindowsMediaLibrarySharingDevices devices);
     
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingservices-get_customsettingsapplied
     [PreserveSig]

@@ -14,10 +14,10 @@ public partial interface IDirect3DDevice9Video
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9video-createauthenticatedchannel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAuthenticatedChannel(D3DAUTHENTICATEDCHANNELTYPE ChannelType, out IDirect3DAuthenticatedChannel9 ppAuthenticatedChannel, ref HANDLE pChannelHandle);
+    HRESULT CreateAuthenticatedChannel(D3DAUTHENTICATEDCHANNELTYPE ChannelType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DAuthenticatedChannel9>))] out IDirect3DAuthenticatedChannel9 ppAuthenticatedChannel, ref HANDLE pChannelHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9video-createcryptosession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCryptoSession(in Guid pCryptoType, in Guid pDecodeProfile, out IDirect3DCryptoSession9 ppCryptoSession, ref HANDLE pCryptoHandle);
+    HRESULT CreateCryptoSession(in Guid pCryptoType, in Guid pDecodeProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DCryptoSession9>))] out IDirect3DCryptoSession9 ppCryptoSession, ref HANDLE pCryptoHandle);
 }

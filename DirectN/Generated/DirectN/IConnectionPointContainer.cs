@@ -9,10 +9,10 @@ public partial interface IConnectionPointContainer
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iconnectionpointcontainer-enumconnectionpoints
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumConnectionPoints(out IEnumConnectionPoints ppEnum);
+    HRESULT EnumConnectionPoints([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumConnectionPoints>))] out IEnumConnectionPoints ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iconnectionpointcontainer-findconnectionpoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindConnectionPoint(in Guid riid, out IConnectionPoint ppCP);
+    HRESULT FindConnectionPoint(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IConnectionPoint>))] out IConnectionPoint ppCP);
 }

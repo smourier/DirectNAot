@@ -13,7 +13,7 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNetSourceCreator(out INSNetSourceCreator ppNetSourceCreator);
+    HRESULT GetNetSourceCreator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSNetSourceCreator>))] out INSNetSourceCreator ppNetSourceCreator);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-setcredentials
     [PreserveSig]

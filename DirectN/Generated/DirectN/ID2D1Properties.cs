@@ -54,5 +54,5 @@ public partial interface ID2D1Properties
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1properties-getsubproperties(uint32_id2d1properties)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubProperties(uint index, out ID2D1Properties subProperties);
+    HRESULT GetSubProperties(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Properties>))] out ID2D1Properties subProperties);
 }

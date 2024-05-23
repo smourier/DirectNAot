@@ -24,5 +24,5 @@ public partial interface IEnumConnectionPoints
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-ienumconnectionpoints-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumConnectionPoints ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumConnectionPoints>))] out IEnumConnectionPoints ppEnum);
 }

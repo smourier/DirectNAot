@@ -28,7 +28,7 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getnextsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextSample(ushort wStreamNum, out INSSBuffer ppSample, out ulong pcnsSampleTime, out ulong pcnsDuration, out uint pdwFlags, out uint pdwOutputNum, out ushort pwStreamNum);
+    HRESULT GetNextSample(ushort wStreamNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppSample, out ulong pcnsSampleTime, out ulong pcnsDuration, out uint pdwFlags, out uint pdwOutputNum, out ushort pwStreamNum);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-setstreamsselected
     [PreserveSig]
@@ -68,7 +68,7 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getoutputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputProps(uint dwOutputNum, out IWMOutputMediaProps ppOutput);
+    HRESULT GetOutputProps(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] out IWMOutputMediaProps ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-setoutputprops
     [PreserveSig]
@@ -83,7 +83,7 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getoutputformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputFormat(uint dwOutputNum, uint dwFormatNum, out IWMOutputMediaProps ppProps);
+    HRESULT GetOutputFormat(uint dwOutputNum, uint dwFormatNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] out IWMOutputMediaProps ppProps);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getoutputnumberforstream
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface IDirectSoundCapture
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCaptureBuffer(in DSCBUFFERDESC pcDSCBufferDesc, out IDirectSoundCaptureBuffer ppDSCBuffer, nint pUnkOuter);
+    HRESULT CreateCaptureBuffer(in DSCBUFFERDESC pcDSCBufferDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundCaptureBuffer>))] out IDirectSoundCaptureBuffer ppDSCBuffer, nint pUnkOuter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

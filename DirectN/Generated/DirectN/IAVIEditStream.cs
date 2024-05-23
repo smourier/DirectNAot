@@ -9,12 +9,12 @@ public partial interface IAVIEditStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-cut
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Cut(ref int plStart, ref int plLength, out IAVIStream ppResult);
+    HRESULT Cut(ref int plStart, ref int plLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] out IAVIStream ppResult);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-copy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Copy(ref int plStart, ref int plLength, out IAVIStream ppResult);
+    HRESULT Copy(ref int plStart, ref int plLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] out IAVIStream ppResult);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-paste
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IAVIEditStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IAVIStream ppResult);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] out IAVIStream ppResult);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-setinfo
     [PreserveSig]

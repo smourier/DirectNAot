@@ -19,5 +19,5 @@ public partial interface IMPEG2PIDMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-impeg2pidmap-enumpidmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumPIDMap(out IEnumPIDMap pIEnumPIDMap);
+    HRESULT EnumPIDMap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumPIDMap>))] out IEnumPIDMap pIEnumPIDMap);
 }

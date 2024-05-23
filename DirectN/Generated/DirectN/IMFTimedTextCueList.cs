@@ -9,15 +9,15 @@ public partial interface IMFTimedTextCueList
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCueByIndex(uint index, out IMFTimedTextCue cue);
+    HRESULT GetCueByIndex(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextCue>))] out IMFTimedTextCue cue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCueById(uint id, out IMFTimedTextCue cue);
+    HRESULT GetCueById(uint id, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextCue>))] out IMFTimedTextCue cue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCueByOriginalId(PWSTR originalId, out IMFTimedTextCue cue);
+    HRESULT GetCueByOriginalId(PWSTR originalId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextCue>))] out IMFTimedTextCue cue);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

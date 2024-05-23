@@ -9,5 +9,5 @@ public partial interface IAdvancedMediaCaptureSettings
     // https://learn.microsoft.com/windows/win32/api/mfmediacapture/nf-mfmediacapture-iadvancedmediacapturesettings-getdirectxdevicemanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDirectxDeviceManager(out IMFDXGIDeviceManager value);
+    HRESULT GetDirectxDeviceManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFDXGIDeviceManager>))] out IMFDXGIDeviceManager value);
 }

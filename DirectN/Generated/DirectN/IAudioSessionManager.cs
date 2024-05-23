@@ -9,10 +9,10 @@ public partial interface IAudioSessionManager
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager-getaudiosessioncontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudioSessionControl(nint /* optional Guid* */ AudioSessionGuid, uint StreamFlags, out IAudioSessionControl SessionControl);
+    HRESULT GetAudioSessionControl(nint /* optional Guid* */ AudioSessionGuid, uint StreamFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionControl>))] out IAudioSessionControl SessionControl);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager-getsimpleaudiovolume
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSimpleAudioVolume(nint /* optional Guid* */ AudioSessionGuid, uint StreamFlags, out ISimpleAudioVolume AudioVolume);
+    HRESULT GetSimpleAudioVolume(nint /* optional Guid* */ AudioSessionGuid, uint StreamFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISimpleAudioVolume>))] out ISimpleAudioVolume AudioVolume);
 }

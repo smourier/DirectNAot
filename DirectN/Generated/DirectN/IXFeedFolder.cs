@@ -6,11 +6,11 @@ public partial interface IXFeedFolder
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Feeds(out IXFeedsEnum ppfe);
+    HRESULT Feeds([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXFeedsEnum>))] out IXFeedsEnum ppfe);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Subfolders(out IXFeedsEnum ppfe);
+    HRESULT Subfolders([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXFeedsEnum>))] out IXFeedsEnum ppfe);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

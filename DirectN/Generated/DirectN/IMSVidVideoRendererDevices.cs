@@ -14,12 +14,12 @@ public partial interface IMSVidVideoRendererDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorendererdevices-get__newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT pD);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT pD);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorendererdevices-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT v, out IMSVidVideoRenderer pDB);
+    HRESULT get_Item(VARIANT v, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidVideoRenderer>))] out IMSVidVideoRenderer pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorendererdevices-add
     [PreserveSig]

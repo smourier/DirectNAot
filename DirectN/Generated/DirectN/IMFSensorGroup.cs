@@ -19,7 +19,7 @@ public partial interface IMFSensorGroup
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-getsensorgroupattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSensorGroupAttributes(out IMFAttributes ppAttributes);
+    HRESULT GetSensorGroupAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-getsensordevicecount
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IMFSensorGroup
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-getsensordevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSensorDevice(uint dwIndex, out IMFSensorDevice ppDevice);
+    HRESULT GetSensorDevice(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorDevice>))] out IMFSensorDevice ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-setdefaultsensordeviceindex
     [PreserveSig]
@@ -44,5 +44,5 @@ public partial interface IMFSensorGroup
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorgroup-createmediasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaSource(out IMFMediaSource ppSource);
+    HRESULT CreateMediaSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSource>))] out IMFMediaSource ppSource);
 }

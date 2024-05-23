@@ -8,5 +8,5 @@ public partial interface ID3D12PipelineState : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinestate-getcachedblob
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCachedBlob(out ID3DBlob ppBlob);
+    HRESULT GetCachedBlob([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DBlob>))] out ID3DBlob ppBlob);
 }

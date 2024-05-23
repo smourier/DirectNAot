@@ -10,9 +10,9 @@ public partial interface ISpeechObjectTokens : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(int Index, out ISpeechObjectToken Token);
+    HRESULT Item(int Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken Token);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out nint ppEnumVARIANT);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppEnumVARIANT);
 }

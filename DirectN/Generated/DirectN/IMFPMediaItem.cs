@@ -9,7 +9,7 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getmediaplayer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaPlayer(out IMFPMediaPlayer ppMediaPlayer);
+    HRESULT GetMediaPlayer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPMediaPlayer>))] out IMFPMediaPlayer ppMediaPlayer);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-geturl
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject(out nint ppIUnknown);
+    HRESULT GetObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppIUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getuserdata
     [PreserveSig]
@@ -99,5 +99,5 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadata(out IPropertyStore ppMetadataStore);
+    HRESULT GetMetadata([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore ppMetadataStore);
 }

@@ -29,7 +29,7 @@ public partial interface IMFTopology : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNode(ushort wIndex, out IMFTopologyNode ppNode);
+    HRESULT GetNode(ushort wIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] out IMFTopologyNode ppNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-clear
     [PreserveSig]
@@ -44,15 +44,15 @@ public partial interface IMFTopology : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getnodebyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNodeByID(ulong qwTopoNodeID, out IMFTopologyNode ppNode);
+    HRESULT GetNodeByID(ulong qwTopoNodeID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] out IMFTopologyNode ppNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getsourcenodecollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSourceNodeCollection(out IMFCollection ppCollection);
+    HRESULT GetSourceNodeCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCollection>))] out IMFCollection ppCollection);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getoutputnodecollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputNodeCollection(out IMFCollection ppCollection);
+    HRESULT GetOutputNodeCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCollection>))] out IMFCollection ppCollection);
 }

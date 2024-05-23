@@ -24,5 +24,5 @@ public partial interface IEnumUnknown
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumunknown-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumUnknown ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumUnknown>))] out IEnumUnknown ppenum);
 }

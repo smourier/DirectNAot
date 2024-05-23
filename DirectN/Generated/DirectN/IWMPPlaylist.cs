@@ -33,7 +33,7 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_item(int lIndex, out IWMPMedia ppIWMPMedia);
+    HRESULT get_item(int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] out IWMPMedia ppIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-getiteminfo
     [PreserveSig]

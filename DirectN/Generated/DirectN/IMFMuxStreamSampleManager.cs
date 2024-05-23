@@ -14,7 +14,7 @@ public partial interface IMFMuxStreamSampleManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmuxstreamsamplemanager-getsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSample(uint dwMuxStreamIndex, out IMFSample ppSample);
+    HRESULT GetSample(uint dwMuxStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] out IMFSample ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmuxstreamsamplemanager-getstreamconfiguration
     [PreserveSig]

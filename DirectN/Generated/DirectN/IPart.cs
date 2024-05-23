@@ -39,22 +39,22 @@ public partial interface IPart
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-getcontrolinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetControlInterface(uint nIndex, out IControlInterface ppInterfaceDesc);
+    HRESULT GetControlInterface(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IControlInterface>))] out IControlInterface ppInterfaceDesc);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-enumpartsincoming
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumPartsIncoming(out IPartsList ppParts);
+    HRESULT EnumPartsIncoming([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPartsList>))] out IPartsList ppParts);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-enumpartsoutgoing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumPartsOutgoing(out IPartsList ppParts);
+    HRESULT EnumPartsOutgoing([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPartsList>))] out IPartsList ppParts);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-gettopologyobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTopologyObject(out IDeviceTopology ppTopology);
+    HRESULT GetTopologyObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeviceTopology>))] out IDeviceTopology ppTopology);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-activate
     [PreserveSig]

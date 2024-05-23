@@ -84,7 +84,7 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getmediaitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaItem(out IMFPMediaItem ppIMFPMediaItem);
+    HRESULT GetMediaItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPMediaItem>))] out IMFPMediaItem ppIMFPMediaItem);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getvolume
     [PreserveSig]

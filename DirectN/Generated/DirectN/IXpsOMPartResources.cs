@@ -9,20 +9,20 @@ public partial interface IXpsOMPartResources
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompartresources-getfontresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontResources(out IXpsOMFontResourceCollection fontResources);
+    HRESULT GetFontResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResourceCollection>))] out IXpsOMFontResourceCollection fontResources);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompartresources-getimageresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetImageResources(out IXpsOMImageResourceCollection imageResources);
+    HRESULT GetImageResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResourceCollection>))] out IXpsOMImageResourceCollection imageResources);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompartresources-getcolorprofileresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColorProfileResources(out IXpsOMColorProfileResourceCollection colorProfileResources);
+    HRESULT GetColorProfileResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResourceCollection>))] out IXpsOMColorProfileResourceCollection colorProfileResources);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompartresources-getremotedictionaryresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRemoteDictionaryResources(out IXpsOMRemoteDictionaryResourceCollection dictionaryResources);
+    HRESULT GetRemoteDictionaryResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResourceCollection>))] out IXpsOMRemoteDictionaryResourceCollection dictionaryResources);
 }

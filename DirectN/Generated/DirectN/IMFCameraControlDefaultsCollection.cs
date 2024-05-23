@@ -12,17 +12,17 @@ public partial interface IMFCameraControlDefaultsCollection : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaultscollection-getcontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetControl(uint index, out IMFCameraControlDefaults configuration);
+    HRESULT GetControl(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraControlDefaults>))] out IMFCameraControlDefaults configuration);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaultscollection-getoraddextendedcontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOrAddExtendedControl(MF_CAMERA_CONTROL_CONFIGURATION_TYPE configType, uint constrolId, uint streamId, uint dataSize, out IMFCameraControlDefaults defaults);
+    HRESULT GetOrAddExtendedControl(MF_CAMERA_CONTROL_CONFIGURATION_TYPE configType, uint constrolId, uint streamId, uint dataSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraControlDefaults>))] out IMFCameraControlDefaults defaults);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaultscollection-getoraddcontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOrAddControl(MF_CAMERA_CONTROL_CONFIGURATION_TYPE configType, in Guid controlSet, uint constrolId, uint controlSize, uint dataSize, out IMFCameraControlDefaults defaults);
+    HRESULT GetOrAddControl(MF_CAMERA_CONTROL_CONFIGURATION_TYPE configType, in Guid controlSet, uint constrolId, uint controlSize, uint dataSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraControlDefaults>))] out IMFCameraControlDefaults defaults);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameracontroldefaultscollection-removecontrol
     [PreserveSig]

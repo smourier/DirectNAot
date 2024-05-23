@@ -38,12 +38,12 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStream(uint dwStreamIndex, out IWMStreamConfig ppConfig);
+    HRESULT GetStream(uint dwStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamConfig>))] out IWMStreamConfig ppConfig);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getstreambynumber
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamByNumber(ushort wStreamNum, out IWMStreamConfig ppConfig);
+    HRESULT GetStreamByNumber(ushort wStreamNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamConfig>))] out IWMStreamConfig ppConfig);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-removestream
     [PreserveSig]
@@ -68,7 +68,7 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-createnewstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewStream(in Guid guidStreamType, out IWMStreamConfig ppConfig);
+    HRESULT CreateNewStream(in Guid guidStreamType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamConfig>))] out IWMStreamConfig ppConfig);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getmutualexclusioncount
     [PreserveSig]
@@ -78,7 +78,7 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getmutualexclusion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMutualExclusion(uint dwMEIndex, out IWMMutualExclusion ppME);
+    HRESULT GetMutualExclusion(uint dwMEIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMMutualExclusion>))] out IWMMutualExclusion ppME);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-removemutualexclusion
     [PreserveSig]
@@ -93,5 +93,5 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-createnewmutualexclusion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewMutualExclusion(out IWMMutualExclusion ppME);
+    HRESULT CreateNewMutualExclusion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMMutualExclusion>))] out IWMMutualExclusion ppME);
 }

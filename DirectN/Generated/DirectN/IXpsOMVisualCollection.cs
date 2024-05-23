@@ -14,7 +14,7 @@ public partial interface IXpsOMVisualCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualcollection-getat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAt(uint index, out IXpsOMVisual @object);
+    HRESULT GetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMVisual>))] out IXpsOMVisual @object);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualcollection-insertat
     [PreserveSig]

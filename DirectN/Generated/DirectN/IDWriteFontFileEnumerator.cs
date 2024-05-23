@@ -14,5 +14,5 @@ public partial interface IDWriteFontFileEnumerator
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfileenumerator-getcurrentfontfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentFontFile(out IDWriteFontFile fontFile);
+    HRESULT GetCurrentFontFile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
 }

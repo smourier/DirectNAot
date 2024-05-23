@@ -10,15 +10,15 @@ public partial interface IComponentsOld : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT ppNewEnum);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT ppNewEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumComponents(out IEnumComponents ppNewEnum);
+    HRESULT EnumComponents([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumComponents>))] out IEnumComponents ppNewEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT Index, out IComponent ppComponent);
+    HRESULT get_Item(VARIANT Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] out IComponent ppComponent);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,5 +30,5 @@ public partial interface IComponentsOld : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IComponents NewList);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponents>))] out IComponents NewList);
 }

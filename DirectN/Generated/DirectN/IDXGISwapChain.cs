@@ -43,7 +43,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-getcontainingoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainingOutput(out IDXGIOutput ppOutput);
+    HRESULT GetContainingOutput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIOutput>))] out IDXGIOutput ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-getframestatistics
     [PreserveSig]

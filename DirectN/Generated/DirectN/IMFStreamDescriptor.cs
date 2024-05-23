@@ -14,5 +14,5 @@ public partial interface IMFStreamDescriptor : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamdescriptor-getmediatypehandler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaTypeHandler(out IMFMediaTypeHandler ppMediaTypeHandler);
+    HRESULT GetMediaTypeHandler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTypeHandler>))] out IMFMediaTypeHandler ppMediaTypeHandler);
 }

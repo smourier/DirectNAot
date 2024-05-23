@@ -49,7 +49,7 @@ public partial interface IXpsSignatureRequest
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturerequest-getspotlocation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpotLocation(out int pageIndex, out IOpcPartUri pagePartName, out float x, out float y);
+    HRESULT GetSpotLocation(out int pageIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri pagePartName, out float x, out float y);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturerequest-setspotlocation
     [PreserveSig]
@@ -64,5 +64,5 @@ public partial interface IXpsSignatureRequest
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignaturerequest-getsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignature(out IXpsSignature signature);
+    HRESULT GetSignature([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsSignature>))] out IXpsSignature signature);
 }

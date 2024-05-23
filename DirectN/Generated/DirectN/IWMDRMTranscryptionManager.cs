@@ -7,5 +7,5 @@ public partial interface IWMDRMTranscryptionManager
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmtranscryptionmanager-createtranscryptor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTranscryptor(out IWMDRMTranscryptor ppTranscryptor);
+    HRESULT CreateTranscryptor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDRMTranscryptor>))] out IWMDRMTranscryptor ppTranscryptor);
 }

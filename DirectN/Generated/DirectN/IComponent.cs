@@ -9,7 +9,7 @@ public partial interface IComponent : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponent-get_type
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Type(out IComponentType CT);
+    HRESULT get_Type([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentType>))] out IComponentType CT);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponent-put_type
     [PreserveSig]
@@ -49,5 +49,5 @@ public partial interface IComponent : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponent-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IComponent NewComponent);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] out IComponent NewComponent);
 }

@@ -9,7 +9,7 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-geterror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetError(out IMFMediaError ppError);
+    HRESULT GetError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaError>))] out IMFMediaError ppError);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-seterrorcode
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getbuffered
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffered(out IMFMediaTimeRange ppBuffered);
+    HRESULT GetBuffered([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTimeRange>))] out IMFMediaTimeRange ppBuffered);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-load
     [PreserveSig]
@@ -111,12 +111,12 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getplayed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPlayed(out IMFMediaTimeRange ppPlayed);
+    HRESULT GetPlayed([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTimeRange>))] out IMFMediaTimeRange ppPlayed);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getseekable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSeekable(out IMFMediaTimeRange ppSeekable);
+    HRESULT GetSeekable([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTimeRange>))] out IMFMediaTimeRange ppSeekable);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-isended
     [PreserveSig]

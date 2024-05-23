@@ -29,7 +29,7 @@ public partial interface IMFSensorDevice
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensordevice-getdeviceattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeviceAttributes(out IMFAttributes ppAttributes);
+    HRESULT GetDeviceAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensordevice-getstreamattributescount
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IMFSensorDevice
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensordevice-getstreamattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamAttributes(MFSensorStreamType eType, uint dwIndex, out IMFAttributes ppAttributes);
+    HRESULT GetStreamAttributes(MFSensorStreamType eType, uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensordevice-setsensordevicemode
     [PreserveSig]

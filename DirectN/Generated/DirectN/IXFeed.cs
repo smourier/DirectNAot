@@ -6,7 +6,7 @@ public partial interface IXFeed
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Xml(uint uiItemCount, FEEDS_XML_SORT_PROPERTY sortProperty, FEEDS_XML_SORT_ORDER sortOrder, FEEDS_XML_FILTER_FLAGS filterFlags, FEEDS_XML_INCLUDE_FLAGS includeFlags, out IStream pps);
+    HRESULT Xml(uint uiItemCount, FEEDS_XML_SORT_PROPERTY sortProperty, FEEDS_XML_SORT_ORDER sortOrder, FEEDS_XML_FILTER_FLAGS filterFlags, FEEDS_XML_INCLUDE_FLAGS includeFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream pps);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -86,7 +86,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Items(out IXFeedsEnum ppfe);
+    HRESULT Items([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXFeedsEnum>))] out IXFeedsEnum ppfe);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

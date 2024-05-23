@@ -24,5 +24,5 @@ public partial interface IVMRSurface9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurface9-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface(out IDirect3DSurface9 lplpSurface);
+    HRESULT GetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 lplpSurface);
 }

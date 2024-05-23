@@ -20,5 +20,5 @@ public partial interface ID2D1DrawingStateBlock : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1drawingstateblock-gettextrenderingparams
     [PreserveSig]
-    void GetTextRenderingParams(out IDWriteRenderingParams textRenderingParams);
+    void GetTextRenderingParams([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteRenderingParams>))] out IDWriteRenderingParams textRenderingParams);
 }

@@ -8,17 +8,17 @@ public partial interface IWMPPlaylistCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-newplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT newPlaylist(BSTR bstrName, out IWMPPlaylist ppItem);
+    HRESULT newPlaylist(BSTR bstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-getall
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAll(out IWMPPlaylistArray ppPlaylistArray);
+    HRESULT getAll([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylistArray>))] out IWMPPlaylistArray ppPlaylistArray);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-getbyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByName(BSTR bstrName, out IWMPPlaylistArray ppPlaylistArray);
+    HRESULT getByName(BSTR bstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylistArray>))] out IWMPPlaylistArray ppPlaylistArray);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-remove
     [PreserveSig]
@@ -38,5 +38,5 @@ public partial interface IWMPPlaylistCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-importplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT importPlaylist(IWMPPlaylist pItem, out IWMPPlaylist ppImportedItem);
+    HRESULT importPlaylist(IWMPPlaylist pItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppImportedItem);
 }

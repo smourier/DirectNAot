@@ -13,7 +13,7 @@ public partial interface IWMWriterAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-getsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSink(uint dwSinkNum, out IWMWriterSink ppSink);
+    HRESULT GetSink(uint dwSinkNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMWriterSink>))] out IWMWriterSink ppSink);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-addsink
     [PreserveSig]

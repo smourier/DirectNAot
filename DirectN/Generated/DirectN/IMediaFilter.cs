@@ -34,5 +34,5 @@ public partial interface IMediaFilter : IPersist
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediafilter-getsyncsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSyncSource(out IReferenceClock pClock);
+    HRESULT GetSyncSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] out IReferenceClock pClock);
 }

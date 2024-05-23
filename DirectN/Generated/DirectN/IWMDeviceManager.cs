@@ -18,5 +18,5 @@ public partial interface IWMDeviceManager
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdevicemanager-enumdevices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumDevices(out IWMDMEnumDevice ppEnumDevice);
+    HRESULT EnumDevices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMEnumDevice>))] out IWMDMEnumDevice ppEnumDevice);
 }

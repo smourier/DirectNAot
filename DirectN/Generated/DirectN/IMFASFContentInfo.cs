@@ -24,7 +24,7 @@ public partial interface IMFASFContentInfo
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-getprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProfile(out IMFASFProfile ppIProfile);
+    HRESULT GetProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFProfile>))] out IMFASFProfile ppIProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-setprofile
     [PreserveSig]
@@ -34,10 +34,10 @@ public partial interface IMFASFContentInfo
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-generatepresentationdescriptor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GeneratePresentationDescriptor(out IMFPresentationDescriptor ppIPresentationDescriptor);
+    HRESULT GeneratePresentationDescriptor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor>))] out IMFPresentationDescriptor ppIPresentationDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-getencodingconfigurationpropertystore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEncodingConfigurationPropertyStore(ushort wStreamNumber, out IPropertyStore ppIStore);
+    HRESULT GetEncodingConfigurationPropertyStore(ushort wStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore ppIStore);
 }

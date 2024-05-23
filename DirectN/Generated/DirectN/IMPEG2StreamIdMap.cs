@@ -19,5 +19,5 @@ public partial interface IMPEG2StreamIdMap
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-impeg2streamidmap-enumstreamidmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumStreamIdMap(out IEnumStreamIdMap ppIEnumStreamIdMap);
+    HRESULT EnumStreamIdMap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumStreamIdMap>))] out IEnumStreamIdMap ppIEnumStreamIdMap);
 }

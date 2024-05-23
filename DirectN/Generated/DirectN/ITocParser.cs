@@ -19,12 +19,12 @@ public partial interface ITocParser
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocparser-gettocbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTocByIndex(TOC_POS_TYPE enumTocPosType, uint dwTocIndex, out IToc ppToc);
+    HRESULT GetTocByIndex(TOC_POS_TYPE enumTocPosType, uint dwTocIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] out IToc ppToc);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocparser-gettocbytype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTocByType(TOC_POS_TYPE enumTocPosType, Guid guidTocType, out ITocCollection ppTocs);
+    HRESULT GetTocByType(TOC_POS_TYPE enumTocPosType, Guid guidTocType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocCollection>))] out ITocCollection ppTocs);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocparser-addtoc
     [PreserveSig]

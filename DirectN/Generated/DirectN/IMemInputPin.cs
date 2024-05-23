@@ -9,7 +9,7 @@ public partial interface IMemInputPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-getallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllocator(out IMemAllocator ppAllocator);
+    HRESULT GetAllocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))] out IMemAllocator ppAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-notifyallocator
     [PreserveSig]

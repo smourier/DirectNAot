@@ -6,7 +6,7 @@ public partial interface IMFMediaKeys2 : IMFMediaKeys
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSession2(MF_MEDIAKEYSESSION_TYPE eSessionType, IMFMediaKeySessionNotify2 pMFMediaKeySessionNotify2, out IMFMediaKeySession2 ppSession);
+    HRESULT CreateSession2(MF_MEDIAKEYSESSION_TYPE eSessionType, IMFMediaKeySessionNotify2 pMFMediaKeySessionNotify2, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaKeySession2>))] out IMFMediaKeySession2 ppSession);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

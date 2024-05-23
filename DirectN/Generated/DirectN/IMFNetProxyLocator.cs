@@ -29,5 +29,5 @@ public partial interface IMFNetProxyLocator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocator-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMFNetProxyLocator ppProxyLocator);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetProxyLocator>))] out IMFNetProxyLocator ppProxyLocator);
 }

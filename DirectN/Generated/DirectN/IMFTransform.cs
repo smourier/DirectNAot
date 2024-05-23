@@ -34,17 +34,17 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributes(out IMFAttributes pAttributes);
+    HRESULT GetAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes pAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputstreamattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputStreamAttributes(uint dwInputStreamID, out IMFAttributes pAttributes);
+    HRESULT GetInputStreamAttributes(uint dwInputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes pAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getoutputstreamattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputStreamAttributes(uint dwOutputStreamID, out IMFAttributes pAttributes);
+    HRESULT GetOutputStreamAttributes(uint dwOutputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes pAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-deleteinputstream
     [PreserveSig]
@@ -59,12 +59,12 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputavailabletype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputAvailableType(uint dwInputStreamID, uint dwTypeIndex, out IMFMediaType ppType);
+    HRESULT GetInputAvailableType(uint dwInputStreamID, uint dwTypeIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getoutputavailabletype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputAvailableType(uint dwOutputStreamID, uint dwTypeIndex, out IMFMediaType ppType);
+    HRESULT GetOutputAvailableType(uint dwOutputStreamID, uint dwTypeIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-setinputtype
     [PreserveSig]
@@ -79,12 +79,12 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputcurrenttype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputCurrentType(uint dwInputStreamID, out IMFMediaType ppType);
+    HRESULT GetInputCurrentType(uint dwInputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getoutputcurrenttype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputCurrentType(uint dwOutputStreamID, out IMFMediaType ppType);
+    HRESULT GetOutputCurrentType(uint dwOutputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputstatus
     [PreserveSig]

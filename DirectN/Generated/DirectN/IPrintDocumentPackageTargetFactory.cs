@@ -9,5 +9,5 @@ public partial interface IPrintDocumentPackageTargetFactory
     // https://learn.microsoft.com/windows/win32/api/documenttarget/nf-documenttarget-iprintdocumentpackagetargetfactory-createdocumentpackagetargetforprintjob
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDocumentPackageTargetForPrintJob(PWSTR printerName, PWSTR jobName, IStream jobOutputStream, IStream jobPrintTicketStream, out IPrintDocumentPackageTarget docPackageTarget);
+    HRESULT CreateDocumentPackageTargetForPrintJob(PWSTR printerName, PWSTR jobName, IStream jobOutputStream, IStream jobPrintTicketStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPrintDocumentPackageTarget>))] out IPrintDocumentPackageTarget docPackageTarget);
 }

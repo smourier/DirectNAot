@@ -9,5 +9,5 @@ public partial interface IDirectDrawMediaSampleAllocator
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-idirectdrawmediasampleallocator-getdirectdraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDirectDraw(out IDirectDraw ppDirectDraw);
+    HRESULT GetDirectDraw([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] out IDirectDraw ppDirectDraw);
 }

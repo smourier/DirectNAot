@@ -6,7 +6,7 @@ public partial interface IEnumSpObjectTokens
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out ISpObjectToken pelt, nint /* optional uint* */ pceltFetched);
+    HRESULT Next(uint celt, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken pelt, nint /* optional uint* */ pceltFetched);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,11 +18,11 @@ public partial interface IEnumSpObjectTokens
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumSpObjectTokens ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSpObjectTokens>))] out IEnumSpObjectTokens ppEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(uint Index, out ISpObjectToken ppToken);
+    HRESULT Item(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken ppToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -10,19 +10,19 @@ public partial interface IDirectDraw2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateClipper(uint param0, out IDirectDrawClipper param1, nint param2);
+    HRESULT CreateClipper(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] out IDirectDrawClipper param1, nint param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, out IDirectDrawPalette param2, nint param3);
+    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] out IDirectDrawPalette param2, nint param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurface(ref DDSURFACEDESC param0, out IDirectDrawSurface param1, nint param2);
+    HRESULT CreateSurface(ref DDSURFACEDESC param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface param1, nint param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSurface(IDirectDrawSurface param0, out IDirectDrawSurface param1);
+    HRESULT DuplicateSurface(IDirectDrawSurface param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -50,7 +50,7 @@ public partial interface IDirectDraw2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGDISurface(out IDirectDrawSurface param0);
+    HRESULT GetGDISurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

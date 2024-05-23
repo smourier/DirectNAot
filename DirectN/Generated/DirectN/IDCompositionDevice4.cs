@@ -10,5 +10,5 @@ public partial interface IDCompositionDevice4 : IDCompositionDevice3
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCompositionTexture(nint d3dTexture, out IDCompositionTexture compositionTexture);
+    HRESULT CreateCompositionTexture(nint d3dTexture, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionTexture>))] out IDCompositionTexture compositionTexture);
 }

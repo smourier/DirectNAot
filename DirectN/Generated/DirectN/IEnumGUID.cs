@@ -24,5 +24,5 @@ public partial interface IEnumGUID
     // https://learn.microsoft.com/windows/win32/api/comcat/nf-comcat-ienumguid-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumGUID ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumGUID>))] out IEnumGUID ppenum);
 }

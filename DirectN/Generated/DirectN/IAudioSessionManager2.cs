@@ -9,7 +9,7 @@ public partial interface IAudioSessionManager2 : IAudioSessionManager
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-getsessionenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSessionEnumerator(out IAudioSessionEnumerator SessionEnum);
+    HRESULT GetSessionEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionEnumerator>))] out IAudioSessionEnumerator SessionEnum);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-registersessionnotification
     [PreserveSig]

@@ -14,17 +14,17 @@ public partial interface IComponents : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-get__newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT ppNewEnum);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT ppNewEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-enumcomponents
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumComponents(out IEnumComponents ppNewEnum);
+    HRESULT EnumComponents([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumComponents>))] out IEnumComponents ppNewEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT Index, out IComponent ppComponent);
+    HRESULT get_Item(VARIANT Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] out IComponent ppComponent);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-add
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IComponents : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IComponents NewList);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponents>))] out IComponents NewList);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-put_item
     [PreserveSig]

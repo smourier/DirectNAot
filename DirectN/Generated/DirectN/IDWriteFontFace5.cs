@@ -22,7 +22,7 @@ public partial interface IDWriteFontFace5 : IDWriteFontFace4
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface5-getfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontResource(out IDWriteFontResource fontResource);
+    HRESULT GetFontResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontResource>))] out IDWriteFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface5-equals
     [PreserveSig]

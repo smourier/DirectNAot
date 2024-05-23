@@ -18,7 +18,7 @@ public partial interface IWMPError : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmperror-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_item(int dwIndex, out IWMPErrorItem ppErrorItem);
+    HRESULT get_item(int dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPErrorItem>))] out IWMPErrorItem ppErrorItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmperror-webhelp
     [PreserveSig]

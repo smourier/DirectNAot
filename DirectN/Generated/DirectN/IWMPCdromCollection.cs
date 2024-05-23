@@ -13,10 +13,10 @@ public partial interface IWMPCdromCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromcollection-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(int lIndex, out IWMPCdrom ppItem);
+    HRESULT item(int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdrom>))] out IWMPCdrom ppItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromcollection-getbydrivespecifier
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByDriveSpecifier(BSTR bstrDriveSpecifier, out IWMPCdrom ppCdrom);
+    HRESULT getByDriveSpecifier(BSTR bstrDriveSpecifier, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdrom>))] out IWMPCdrom ppCdrom);
 }

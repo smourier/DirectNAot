@@ -8,7 +8,7 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-getformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFormat(out DDSURFACEDESC pDDSDCurrent, out IDirectDrawPalette ppDirectDrawPalette, out DDSURFACEDESC pDDSDDesired, out uint pdwFlags);
+    HRESULT GetFormat(out DDSURFACEDESC pDDSDCurrent, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] out IDirectDrawPalette ppDirectDrawPalette, out DDSURFACEDESC pDDSDDesired, out uint pdwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-setformat
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-getdirectdraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDirectDraw(out IDirectDraw ppDirectDraw);
+    HRESULT GetDirectDraw([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] out IDirectDraw ppDirectDraw);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-setdirectdraw
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-createsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSample(IDirectDrawSurface pSurface, in RECT pRect, uint dwFlags, out IDirectDrawStreamSample ppSample);
+    HRESULT CreateSample(IDirectDrawSurface pSurface, in RECT pRect, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawStreamSample>))] out IDirectDrawStreamSample ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-gettimeperframe
     [PreserveSig]

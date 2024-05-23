@@ -18,7 +18,7 @@ public partial interface IAMMediaTypeStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediatypestream-createsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSample(int lSampleSize, nint /* byte array */ pbBuffer, uint dwFlags, nint pUnkOuter, out IAMMediaTypeSample ppAMMediaTypeSample);
+    HRESULT CreateSample(int lSampleSize, nint /* byte array */ pbBuffer, uint dwFlags, nint pUnkOuter, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMMediaTypeSample>))] out IAMMediaTypeSample ppAMMediaTypeSample);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediatypestream-getstreamallocatorrequirements
     [PreserveSig]

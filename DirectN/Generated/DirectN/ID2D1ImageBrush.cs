@@ -28,7 +28,7 @@ public partial interface ID2D1ImageBrush : ID2D1Brush
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1imagebrush-getimage
     [PreserveSig]
-    void GetImage(out ID2D1Image image);
+    void GetImage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Image>))] out ID2D1Image image);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1imagebrush-getextendmodex
     [PreserveSig]

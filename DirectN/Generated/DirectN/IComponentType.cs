@@ -89,5 +89,5 @@ public partial interface IComponentType : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponenttype-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IComponentType NewCT);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentType>))] out IComponentType NewCT);
 }

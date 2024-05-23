@@ -10,19 +10,19 @@ public partial interface IDirectDraw4
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateClipper(uint param0, out IDirectDrawClipper param1, nint param2);
+    HRESULT CreateClipper(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] out IDirectDrawClipper param1, nint param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, out IDirectDrawPalette param2, nint param3);
+    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] out IDirectDrawPalette param2, nint param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurface(ref DDSURFACEDESC2 param0, out IDirectDrawSurface4 param1, nint param2);
+    HRESULT CreateSurface(ref DDSURFACEDESC2 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface4>))] out IDirectDrawSurface4 param1, nint param2);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSurface(IDirectDrawSurface4 param0, out IDirectDrawSurface4 param1);
+    HRESULT DuplicateSurface(IDirectDrawSurface4 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface4>))] out IDirectDrawSurface4 param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -50,7 +50,7 @@ public partial interface IDirectDraw4
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGDISurface(out IDirectDrawSurface4 param0);
+    HRESULT GetGDISurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface4>))] out IDirectDrawSurface4 param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -90,7 +90,7 @@ public partial interface IDirectDraw4
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurfaceFromDC(HDC param0, out IDirectDrawSurface4 param1);
+    HRESULT GetSurfaceFromDC(HDC param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface4>))] out IDirectDrawSurface4 param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

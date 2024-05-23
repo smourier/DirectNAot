@@ -8,7 +8,7 @@ public partial interface IDXGIAdapter : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiadapter-enumoutputs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumOutputs(uint Output, out IDXGIOutput ppOutput);
+    HRESULT EnumOutputs(uint Output, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIOutput>))] out IDXGIOutput ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiadapter-getdesc
     [PreserveSig]

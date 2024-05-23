@@ -9,7 +9,7 @@ public partial interface IWindowsMediaLibrarySharingDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdevices-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(int index, out IWindowsMediaLibrarySharingDevice device);
+    HRESULT get_Item(int index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDevice>))] out IWindowsMediaLibrarySharingDevice device);
     
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdevices-get_count
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IWindowsMediaLibrarySharingDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmlss/nf-wmlss-iwindowsmedialibrarysharingdevices-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevice(BSTR deviceID, out IWindowsMediaLibrarySharingDevice device);
+    HRESULT GetDevice(BSTR deviceID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWindowsMediaLibrarySharingDevice>))] out IWindowsMediaLibrarySharingDevice device);
 }

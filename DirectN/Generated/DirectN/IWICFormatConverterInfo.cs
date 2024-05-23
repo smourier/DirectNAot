@@ -14,5 +14,5 @@ public partial interface IWICFormatConverterInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverterinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(out IWICFormatConverter ppIConverter);
+    HRESULT CreateInstance([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICFormatConverter>))] out IWICFormatConverter ppIConverter);
 }

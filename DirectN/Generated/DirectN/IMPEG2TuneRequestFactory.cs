@@ -9,5 +9,5 @@ public partial interface IMPEG2TuneRequestFactory : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-impeg2tunerequestfactory-createtunerequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTuneRequest(ITuningSpace TuningSpace, out IMPEG2TuneRequest TuneRequest);
+    HRESULT CreateTuneRequest(ITuningSpace TuningSpace, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMPEG2TuneRequest>))] out IMPEG2TuneRequest TuneRequest);
 }

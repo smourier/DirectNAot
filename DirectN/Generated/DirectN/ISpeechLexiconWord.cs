@@ -18,5 +18,5 @@ public partial interface ISpeechLexiconWord : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Pronunciations(out ISpeechLexiconPronunciations Pronunciations);
+    HRESULT get_Pronunciations([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechLexiconPronunciations>))] out ISpeechLexiconPronunciations Pronunciations);
 }

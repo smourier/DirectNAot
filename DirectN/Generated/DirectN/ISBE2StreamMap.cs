@@ -19,5 +19,5 @@ public partial interface ISBE2StreamMap
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2streammap-enummappedstreams
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMappedStreams(out ISBE2EnumStream ppStreams);
+    HRESULT EnumMappedStreams([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISBE2EnumStream>))] out ISBE2EnumStream ppStreams);
 }

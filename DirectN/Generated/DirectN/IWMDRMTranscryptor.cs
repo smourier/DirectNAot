@@ -9,7 +9,7 @@ public partial interface IWMDRMTranscryptor
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmtranscryptor-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(BSTR bstrFileName, nint /* byte array */ pbLicenseRequestMsg, uint cbLicenseRequestMsg, out INSSBuffer ppLicenseResponseMsg, IWMStatusCallback pCallback, nint pvContext);
+    HRESULT Initialize(BSTR bstrFileName, nint /* byte array */ pbLicenseRequestMsg, uint cbLicenseRequestMsg, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppLicenseResponseMsg, IWMStatusCallback pCallback, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmtranscryptor-seek
     [PreserveSig]

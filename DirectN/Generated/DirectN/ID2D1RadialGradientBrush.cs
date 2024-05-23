@@ -40,5 +40,5 @@ public partial interface ID2D1RadialGradientBrush : ID2D1Brush
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1radialgradientbrush-getgradientstopcollection
     [PreserveSig]
-    void GetGradientStopCollection(out ID2D1GradientStopCollection gradientStopCollection);
+    void GetGradientStopCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1GradientStopCollection>))] out ID2D1GradientStopCollection gradientStopCollection);
 }

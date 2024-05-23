@@ -29,5 +29,5 @@ public partial interface IMFSpatialAudioObjectBuffer : IMFMediaBuffer
     // https://learn.microsoft.com/windows/win32/api/mfspatialaudio/nf-mfspatialaudio-imfspatialaudioobjectbuffer-getmetadataitems
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataItems(out ISpatialAudioMetadataItems ppMetadataItems);
+    HRESULT GetMetadataItems([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioMetadataItems>))] out ISpatialAudioMetadataItems ppMetadataItems);
 }

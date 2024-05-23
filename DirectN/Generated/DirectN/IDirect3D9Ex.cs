@@ -22,7 +22,7 @@ public partial interface IDirect3D9Ex : IDirect3D9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9ex-createdeviceex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDeviceEx(uint Adapter, D3DDEVTYPE DeviceType, HWND hFocusWindow, uint BehaviorFlags, ref D3DPRESENT_PARAMETERS pPresentationParameters, ref D3DDISPLAYMODEEX pFullscreenDisplayMode, out IDirect3DDevice9Ex ppReturnedDeviceInterface);
+    HRESULT CreateDeviceEx(uint Adapter, D3DDEVTYPE DeviceType, HWND hFocusWindow, uint BehaviorFlags, ref D3DPRESENT_PARAMETERS pPresentationParameters, ref D3DDISPLAYMODEEX pFullscreenDisplayMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9Ex>))] out IDirect3DDevice9Ex ppReturnedDeviceInterface);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9ex-getadapterluid
     [PreserveSig]

@@ -9,12 +9,12 @@ public partial interface IMFMediaStream : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediastream-getmediasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaSource(out IMFMediaSource ppMediaSource);
+    HRESULT GetMediaSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSource>))] out IMFMediaSource ppMediaSource);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediastream-getstreamdescriptor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamDescriptor(out IMFStreamDescriptor ppStreamDescriptor);
+    HRESULT GetStreamDescriptor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamDescriptor>))] out IMFStreamDescriptor ppStreamDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediastream-requestsample
     [PreserveSig]

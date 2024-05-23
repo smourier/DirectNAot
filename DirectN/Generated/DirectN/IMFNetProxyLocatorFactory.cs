@@ -9,5 +9,5 @@ public partial interface IMFNetProxyLocatorFactory
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocatorfactory-createproxylocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateProxyLocator(PWSTR pszProtocol, out IMFNetProxyLocator ppProxyLocator);
+    HRESULT CreateProxyLocator(PWSTR pszProtocol, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetProxyLocator>))] out IMFNetProxyLocator ppProxyLocator);
 }

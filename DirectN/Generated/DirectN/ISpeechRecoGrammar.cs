@@ -10,7 +10,7 @@ public partial interface ISpeechRecoGrammar : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RecoContext(out ISpeechRecoContext RecoContext);
+    HRESULT get_RecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoContext>))] out ISpeechRecoContext RecoContext);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,7 +22,7 @@ public partial interface ISpeechRecoGrammar : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Rules(out ISpeechGrammarRules Rules);
+    HRESULT get_Rules([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRules>))] out ISpeechGrammarRules Rules);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

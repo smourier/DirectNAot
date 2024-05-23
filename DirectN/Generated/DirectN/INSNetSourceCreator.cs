@@ -18,12 +18,12 @@ public partial interface INSNetSourceCreator
     // https://learn.microsoft.com/windows/win32/api/wmnetsourcecreator/nn-wmnetsourcecreator-insnetsourcecreator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNetSourceProperties(PWSTR pszStreamName, out nint ppPropertiesNode);
+    HRESULT GetNetSourceProperties(PWSTR pszStreamName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppPropertiesNode);
     
     // https://learn.microsoft.com/windows/win32/api/wmnetsourcecreator/nn-wmnetsourcecreator-insnetsourcecreator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNetSourceSharedNamespace(out nint ppSharedNamespace);
+    HRESULT GetNetSourceSharedNamespace([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppSharedNamespace);
     
     // https://learn.microsoft.com/windows/win32/api/wmnetsourcecreator/nf-wmnetsourcecreator-insnetsourcecreator-getnetsourceadmininterface
     [PreserveSig]

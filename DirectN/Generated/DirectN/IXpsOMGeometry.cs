@@ -9,7 +9,7 @@ public partial interface IXpsOMGeometry : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-getfigures
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFigures(out IXpsOMGeometryFigureCollection figures);
+    HRESULT GetFigures([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometryFigureCollection>))] out IXpsOMGeometryFigureCollection figures);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-getfillrule
     [PreserveSig]
@@ -24,12 +24,12 @@ public partial interface IXpsOMGeometry : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-gettransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransform(out IXpsOMMatrixTransform transform);
+    HRESULT GetTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-gettransformlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformLocal(out IXpsOMMatrixTransform transform);
+    HRESULT GetTransformLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform transform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-settransformlocal
     [PreserveSig]
@@ -49,5 +49,5 @@ public partial interface IXpsOMGeometry : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometry-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMGeometry geometry);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] out IXpsOMGeometry geometry);
 }

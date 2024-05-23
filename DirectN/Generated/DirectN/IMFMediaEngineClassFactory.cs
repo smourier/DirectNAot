@@ -9,15 +9,15 @@ public partial interface IMFMediaEngineClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactory-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(uint dwFlags, IMFAttributes pAttr, out IMFMediaEngine ppPlayer);
+    HRESULT CreateInstance(uint dwFlags, IMFAttributes pAttr, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEngine>))] out IMFMediaEngine ppPlayer);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactory-createtimerange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTimeRange(out IMFMediaTimeRange ppTimeRange);
+    HRESULT CreateTimeRange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTimeRange>))] out IMFMediaTimeRange ppTimeRange);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactory-createerror
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateError(out IMFMediaError ppError);
+    HRESULT CreateError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaError>))] out IMFMediaError ppError);
 }

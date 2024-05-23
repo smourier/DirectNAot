@@ -14,12 +14,12 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStream(uint dwStreamIndex, out ushort pwStreamNumber, out IMFASFStreamConfig ppIStream);
+    HRESULT GetStream(uint dwStreamIndex, out ushort pwStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getstreambynumber
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamByNumber(ushort wStreamNumber, out IMFASFStreamConfig ppIStream);
+    HRESULT GetStreamByNumber(ushort wStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-setstream
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-createstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStream(IMFMediaType pIMediaType, out IMFASFStreamConfig ppIStream);
+    HRESULT CreateStream(IMFMediaType pIMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getmutualexclusioncount
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getmutualexclusion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMutualExclusion(uint dwMutexIndex, out IMFASFMutualExclusion ppIMutex);
+    HRESULT GetMutualExclusion(uint dwMutexIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFMutualExclusion>))] out IMFASFMutualExclusion ppIMutex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-addmutualexclusion
     [PreserveSig]
@@ -59,12 +59,12 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-createmutualexclusion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMutualExclusion(out IMFASFMutualExclusion ppIMutex);
+    HRESULT CreateMutualExclusion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFMutualExclusion>))] out IMFASFMutualExclusion ppIMutex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamPrioritization(out IMFASFStreamPrioritization ppIStreamPrioritization);
+    HRESULT GetStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamPrioritization>))] out IMFASFStreamPrioritization ppIStreamPrioritization);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-addstreamprioritization
     [PreserveSig]
@@ -79,10 +79,10 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-createstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStreamPrioritization(out IMFASFStreamPrioritization ppIStreamPrioritization);
+    HRESULT CreateStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamPrioritization>))] out IMFASFStreamPrioritization ppIStreamPrioritization);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMFASFProfile ppIProfile);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFProfile>))] out IMFASFProfile ppIProfile);
 }

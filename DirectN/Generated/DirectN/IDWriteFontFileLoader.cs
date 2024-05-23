@@ -9,5 +9,5 @@ public partial interface IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfileloader-createstreamfromkey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out IDWriteFontFileStream fontFileStream);
+    HRESULT CreateStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFileStream>))] out IDWriteFontFileStream fontFileStream);
 }

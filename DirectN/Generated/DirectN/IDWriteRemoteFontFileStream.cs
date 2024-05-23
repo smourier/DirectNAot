@@ -22,5 +22,5 @@ public partial interface IDWriteRemoteFontFileStream : IDWriteFontFileStream
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-begindownload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDownload(in Guid downloadOperationID, [In][MarshalUsing(CountElementName = nameof(fragmentCount))] DWRITE_FILE_FRAGMENT[] fileFragments, uint fragmentCount, out IDWriteAsyncResult asyncResult);
+    HRESULT BeginDownload(in Guid downloadOperationID, [In][MarshalUsing(CountElementName = nameof(fragmentCount))] DWRITE_FILE_FRAGMENT[] fileFragments, uint fragmentCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteAsyncResult>))] out IDWriteAsyncResult asyncResult);
 }

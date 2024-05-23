@@ -24,5 +24,5 @@ public partial interface IEnumMoniker
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienummoniker-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumMoniker ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppenum);
 }

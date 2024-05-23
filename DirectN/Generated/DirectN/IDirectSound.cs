@@ -6,7 +6,7 @@ public partial interface IDirectSound
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSoundBuffer(in DSBUFFERDESC pcDSBufferDesc, out IDirectSoundBuffer ppDSBuffer, nint pUnkOuter);
+    HRESULT CreateSoundBuffer(in DSBUFFERDESC pcDSBufferDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer ppDSBuffer, nint pUnkOuter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,7 +14,7 @@ public partial interface IDirectSound
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSoundBuffer(IDirectSoundBuffer pDSBufferOriginal, out IDirectSoundBuffer ppDSBufferDuplicate);
+    HRESULT DuplicateSoundBuffer(IDirectSoundBuffer pDSBufferOriginal, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer ppDSBufferDuplicate);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

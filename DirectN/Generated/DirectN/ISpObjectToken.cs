@@ -14,7 +14,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCategory(out ISpObjectTokenCategory ppTokenCategory);
+    HRESULT GetCategory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectTokenCategory>))] out ISpObjectTokenCategory ppTokenCategory);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -7,7 +7,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
 {
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getdocument
     [PreserveSig]
-    void GetDocument(out ID2D1SvgDocument document);
+    void GetDocument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgDocument>))] out ID2D1SvgDocument document);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-gettagname
     [PreserveSig]
@@ -25,7 +25,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getparent
     [PreserveSig]
-    void GetParent(out ID2D1SvgElement parent);
+    void GetParent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement parent);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-haschildren
     [PreserveSig]
@@ -34,21 +34,21 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getfirstchild
     [PreserveSig]
-    void GetFirstChild(out ID2D1SvgElement child);
+    void GetFirstChild([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement child);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getlastchild
     [PreserveSig]
-    void GetLastChild(out ID2D1SvgElement child);
+    void GetLastChild([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement child);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getpreviouschild
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPreviousChild(ID2D1SvgElement referenceChild, out ID2D1SvgElement previousChild);
+    HRESULT GetPreviousChild(ID2D1SvgElement referenceChild, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement previousChild);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-getnextchild
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextChild(ID2D1SvgElement referenceChild, out ID2D1SvgElement nextChild);
+    HRESULT GetNextChild(ID2D1SvgElement referenceChild, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement nextChild);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-insertchildbefore
     [PreserveSig]
@@ -73,7 +73,7 @@ public partial interface ID2D1SvgElement : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-createchild
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateChild(PWSTR tagName, out ID2D1SvgElement newChild);
+    HRESULT CreateChild(PWSTR tagName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement newChild);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgelement-isattributespecified
     [PreserveSig]

@@ -19,5 +19,5 @@ public partial interface IXpsOMMatrixTransform : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsommatrixtransform-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMMatrixTransform matrixTransform);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform matrixTransform);
 }

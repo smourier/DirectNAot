@@ -9,5 +9,5 @@ public partial interface IFilterMapper3 : IFilterMapper2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper3-geticreatedevenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetICreateDevEnum(out ICreateDevEnum ppEnum);
+    HRESULT GetICreateDevEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICreateDevEnum>))] out ICreateDevEnum ppEnum);
 }

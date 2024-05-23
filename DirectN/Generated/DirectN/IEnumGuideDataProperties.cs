@@ -8,7 +8,7 @@ public partial interface IEnumGuideDataProperties
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumguidedataproperties-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out IGuideDataProperty ppprop, out uint pcelt);
+    HRESULT Next(uint celt, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGuideDataProperty>))] out IGuideDataProperty ppprop, out uint pcelt);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumguidedataproperties-skip
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IEnumGuideDataProperties
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumguidedataproperties-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumGuideDataProperties ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumGuideDataProperties>))] out IEnumGuideDataProperties ppenum);
 }

@@ -23,7 +23,7 @@ public partial interface IMFASFStreamConfig : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamconfig-getmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaType(out IMFMediaType ppIMediaType);
+    HRESULT GetMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppIMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamconfig-setmediatype
     [PreserveSig]
@@ -53,5 +53,5 @@ public partial interface IMFASFStreamConfig : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamconfig-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMFASFStreamConfig ppIStreamConfig);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStreamConfig);
 }

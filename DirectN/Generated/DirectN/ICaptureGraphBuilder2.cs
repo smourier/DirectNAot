@@ -14,12 +14,12 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-getfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFiltergraph(out IGraphBuilder ppfg);
+    HRESULT GetFiltergraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] out IGraphBuilder ppfg);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-setoutputfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputFileName(in Guid pType, PWSTR lpstrFile, out IBaseFilter ppf, nint /* optional IFileSinkFilter* */ ppSink);
+    HRESULT SetOutputFileName(in Guid pType, PWSTR lpstrFile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] out IBaseFilter ppf, nint /* optional IFileSinkFilter* */ ppSink);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findinterface
     [PreserveSig]
@@ -49,5 +49,5 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findpin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindPin(nint pSource, PIN_DIRECTION pindir, nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalAs(UnmanagedType.U4)] bool fUnconnected, int num, out IPin ppPin);
+    HRESULT FindPin(nint pSource, PIN_DIRECTION pindir, nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalAs(UnmanagedType.U4)] bool fUnconnected, int num, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppPin);
 }

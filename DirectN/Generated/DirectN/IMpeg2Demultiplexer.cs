@@ -9,7 +9,7 @@ public partial interface IMpeg2Demultiplexer
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-impeg2demultiplexer-createoutputpin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateOutputPin(in AM_MEDIA_TYPE pMediaType, PWSTR pszPinName, out IPin ppIPin);
+    HRESULT CreateOutputPin(in AM_MEDIA_TYPE pMediaType, PWSTR pszPinName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppIPin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-impeg2demultiplexer-setoutputpinmediatype
     [PreserveSig]

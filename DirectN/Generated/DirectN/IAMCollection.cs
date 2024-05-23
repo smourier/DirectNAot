@@ -10,9 +10,9 @@ public partial interface IAMCollection : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(int lItem, out nint ppUnk);
+    HRESULT Item(int lItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out nint ppUnk);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
 }

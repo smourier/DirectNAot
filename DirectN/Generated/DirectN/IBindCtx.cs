@@ -34,7 +34,7 @@ public partial interface IBindCtx
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-getrunningobjecttable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRunningObjectTable(out IRunningObjectTable pprot);
+    HRESULT GetRunningObjectTable([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IRunningObjectTable>))] out IRunningObjectTable pprot);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-registerobjectparam
     [PreserveSig]
@@ -44,12 +44,12 @@ public partial interface IBindCtx
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-getobjectparam
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObjectParam(PWSTR pszKey, out nint ppunk);
+    HRESULT GetObjectParam(PWSTR pszKey, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunk);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-enumobjectparam
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumObjectParam(out IEnumString ppenum);
+    HRESULT EnumObjectParam([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumString>))] out IEnumString ppenum);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-revokeobjectparam
     [PreserveSig]

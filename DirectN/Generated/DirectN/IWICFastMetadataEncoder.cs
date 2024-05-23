@@ -14,5 +14,5 @@ public partial interface IWICFastMetadataEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicfastmetadataencoder-getmetadataquerywriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataQueryWriter(out IWICMetadataQueryWriter ppIMetadataQueryWriter);
+    HRESULT GetMetadataQueryWriter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataQueryWriter>))] out IWICMetadataQueryWriter ppIMetadataQueryWriter);
 }

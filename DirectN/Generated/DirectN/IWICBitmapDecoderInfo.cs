@@ -19,5 +19,5 @@ public partial interface IWICBitmapDecoderInfo : IWICBitmapCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(out IWICBitmapDecoder ppIBitmapDecoder);
+    HRESULT CreateInstance([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapDecoder>))] out IWICBitmapDecoder ppIBitmapDecoder);
 }

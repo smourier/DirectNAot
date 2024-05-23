@@ -28,7 +28,7 @@ public partial interface IPhotoAcquireItem
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStream(out IStream ppStream);
+    HRESULT GetStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppStream);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-candelete
     [PreserveSig]
@@ -48,5 +48,5 @@ public partial interface IPhotoAcquireItem
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-getsubitemat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubItemAt(uint nItemIndex, out IPhotoAcquireItem ppPhotoAcquireItem);
+    HRESULT GetSubItemAt(uint nItemIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireItem>))] out IPhotoAcquireItem ppPhotoAcquireItem);
 }

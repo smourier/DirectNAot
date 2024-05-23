@@ -9,7 +9,7 @@ public partial interface IDvdGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdgraphbuilder-getfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFiltergraph(out IGraphBuilder ppGB);
+    HRESULT GetFiltergraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] out IGraphBuilder ppGB);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdgraphbuilder-getdvdinterface
     [PreserveSig]

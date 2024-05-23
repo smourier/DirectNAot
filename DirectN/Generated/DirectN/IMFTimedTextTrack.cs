@@ -63,5 +63,5 @@ public partial interface IMFTimedTextTrack
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCueList(out IMFTimedTextCueList cues);
+    HRESULT GetCueList([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextCueList>))] out IMFTimedTextCueList cues);
 }

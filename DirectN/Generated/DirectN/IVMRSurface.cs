@@ -24,5 +24,5 @@ public partial interface IVMRSurface
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurface-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface(out IDirectDrawSurface7 lplpSurface);
+    HRESULT GetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 lplpSurface);
 }

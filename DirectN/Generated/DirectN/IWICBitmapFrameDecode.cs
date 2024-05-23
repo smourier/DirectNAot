@@ -9,7 +9,7 @@ public partial interface IWICBitmapFrameDecode : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframedecode-getmetadataqueryreader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataQueryReader(out IWICMetadataQueryReader ppIMetadataQueryReader);
+    HRESULT GetMetadataQueryReader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataQueryReader>))] out IWICMetadataQueryReader ppIMetadataQueryReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframedecode-getcolorcontexts
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IWICBitmapFrameDecode : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframedecode-getthumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetThumbnail(out IWICBitmapSource ppIThumbnail);
+    HRESULT GetThumbnail([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] out IWICBitmapSource ppIThumbnail);
 }

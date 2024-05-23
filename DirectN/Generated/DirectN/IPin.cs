@@ -24,7 +24,7 @@ public partial interface IPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-connectedto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectedTo(out IPin pPin);
+    HRESULT ConnectedTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin pPin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-connectionmediatype
     [PreserveSig]
@@ -54,7 +54,7 @@ public partial interface IPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-enummediatypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMediaTypes(out IEnumMediaTypes ppEnum);
+    HRESULT EnumMediaTypes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMediaTypes>))] out IEnumMediaTypes ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-queryinternalconnections
     [PreserveSig]

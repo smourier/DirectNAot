@@ -14,7 +14,7 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-getsuspendnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSuspendNotify(out IMFCdmSuspendNotify notify);
+    HRESULT GetSuspendNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCdmSuspendNotify>))] out IMFCdmSuspendNotify notify);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-setpmphostapp
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-createsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSession(MF_MEDIAKEYSESSION_TYPE sessionType, IMFContentDecryptionModuleSessionCallbacks callbacks, out IMFContentDecryptionModuleSession session);
+    HRESULT CreateSession(MF_MEDIAKEYSESSION_TYPE sessionType, IMFContentDecryptionModuleSessionCallbacks callbacks, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentDecryptionModuleSession>))] out IMFContentDecryptionModuleSession session);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-setservercertificate
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-createtrustedinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTrustedInput(nint /* byte array */ contentInitData, uint contentInitDataSize, out IMFTrustedInput trustedInput);
+    HRESULT CreateTrustedInput(nint /* byte array */ contentInitData, uint contentInitDataSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTrustedInput>))] out IMFTrustedInput trustedInput);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-getprotectionsystemids
     [PreserveSig]

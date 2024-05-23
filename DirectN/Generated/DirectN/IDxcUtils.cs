@@ -6,39 +6,39 @@ public partial interface IDxcUtils
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobFromBlob(IDxcBlob pBlob, uint offset, uint length, out IDxcBlob ppResult);
+    HRESULT CreateBlobFromBlob(IDxcBlob pBlob, uint offset, uint length, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobFromPinned(nint pData, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobFromPinned(nint pData, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveToBlob(nint pData, IMalloc pIMalloc, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT MoveToBlob(nint pData, IMalloc pIMalloc, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlob(nint pData, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlob(nint pData, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadFile(PWSTR pFileName, nint /* optional DXC_CP* */ pCodePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT LoadFile(PWSTR pFileName, nint /* optional DXC_CP* */ pCodePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateReadOnlyStreamFromBlob(IDxcBlob pBlob, out IStream ppStream);
+    HRESULT CreateReadOnlyStreamFromBlob(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDefaultIncludeHandler(out IDxcIncludeHandler ppResult);
+    HRESULT CreateDefaultIncludeHandler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcIncludeHandler>))] out IDxcIncludeHandler ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBlobAsUtf8(IDxcBlob pBlob, out IDxcBlobUtf8 pBlobEncoding);
+    HRESULT GetBlobAsUtf8(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobUtf8>))] out IDxcBlobUtf8 pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBlobAsUtf16(IDxcBlob pBlob, out IDxcBlobUtf16 pBlobEncoding);
+    HRESULT GetBlobAsUtf16(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobUtf16>))] out IDxcBlobUtf16 pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -50,9 +50,9 @@ public partial interface IDxcUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BuildArguments(PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR* */ pArguments, uint argCount, [In][MarshalUsing(CountElementName = nameof(defineCount))] DxcDefine[] pDefines, uint defineCount, out IDxcCompilerArgs ppArgs);
+    HRESULT BuildArguments(PWSTR pSourceName, PWSTR pEntryPoint, PWSTR pTargetProfile, nint /* optional PWSTR* */ pArguments, uint argCount, [In][MarshalUsing(CountElementName = nameof(defineCount))] DxcDefine[] pDefines, uint defineCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcCompilerArgs>))] out IDxcCompilerArgs ppArgs);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPDBContents(IDxcBlob pPDBBlob, out IDxcBlob ppHash, out IDxcBlob ppContainer);
+    HRESULT GetPDBContents(IDxcBlob pPDBBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppHash, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppContainer);
 }

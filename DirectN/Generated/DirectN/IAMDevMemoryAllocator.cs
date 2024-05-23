@@ -28,5 +28,5 @@ public partial interface IAMDevMemoryAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamdevmemoryallocator-getdevmemoryobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevMemoryObject(out nint ppUnkInnner, nint pUnkOuter);
+    HRESULT GetDevMemoryObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkInnner, nint pUnkOuter);
 }

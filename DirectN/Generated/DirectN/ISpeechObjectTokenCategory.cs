@@ -22,9 +22,9 @@ public partial interface ISpeechObjectTokenCategory : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDataKey(SpeechDataKeyLocation Location, out ISpeechDataKey DataKey);
+    HRESULT GetDataKey(SpeechDataKeyLocation Location, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechDataKey>))] out ISpeechDataKey DataKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumerateTokens(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens Tokens);
+    HRESULT EnumerateTokens(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens Tokens);
 }

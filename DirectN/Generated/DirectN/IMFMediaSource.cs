@@ -14,7 +14,7 @@ public partial interface IMFMediaSource : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasource-createpresentationdescriptor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePresentationDescriptor(out IMFPresentationDescriptor ppPresentationDescriptor);
+    HRESULT CreatePresentationDescriptor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor>))] out IMFPresentationDescriptor ppPresentationDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasource-start
     [PreserveSig]

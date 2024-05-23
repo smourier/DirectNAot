@@ -8,7 +8,7 @@ public partial interface IDWriteRemoteFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-createremotestreamfromkey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRemoteStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, out IDWriteRemoteFontFileStream fontFileStream);
+    HRESULT CreateRemoteStreamFromKey(nint fontFileReferenceKey, uint fontFileReferenceKeySize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteRemoteFontFileStream>))] out IDWriteRemoteFontFileStream fontFileStream);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-getlocalityfromkey
     [PreserveSig]
@@ -18,5 +18,5 @@ public partial interface IDWriteRemoteFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-createfontfilereferencefromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFileReferenceFromUrl(IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, out IDWriteFontFile fontFile);
+    HRESULT CreateFontFileReferenceFromUrl(IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
 }

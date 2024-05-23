@@ -10,7 +10,7 @@ public partial interface ISpeechLexicon : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWords(SpeechLexiconType Flags, out int GenerationID, out ISpeechLexiconWords Words);
+    HRESULT GetWords(SpeechLexiconType Flags, out int GenerationID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechLexiconWords>))] out ISpeechLexiconWords Words);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,9 +30,9 @@ public partial interface ISpeechLexicon : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPronunciations(BSTR bstrWord, int LangId, SpeechLexiconType TypeFlags, out ISpeechLexiconPronunciations ppPronunciations);
+    HRESULT GetPronunciations(BSTR bstrWord, int LangId, SpeechLexiconType TypeFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechLexiconPronunciations>))] out ISpeechLexiconPronunciations ppPronunciations);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGenerationChange(ref int GenerationID, out ISpeechLexiconWords ppWords);
+    HRESULT GetGenerationChange(ref int GenerationID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechLexiconWords>))] out ISpeechLexiconWords ppWords);
 }

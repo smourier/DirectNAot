@@ -23,5 +23,5 @@ public partial interface IDWriteFontSetBuilder
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-createfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontSet(out IDWriteFontSet fontSet);
+    HRESULT CreateFontSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet>))] out IDWriteFontSet fontSet);
 }

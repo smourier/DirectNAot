@@ -10,7 +10,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecoContext(out ISpRecoContext ppRecoCtxt);
+    HRESULT GetRecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoContext>))] out ISpRecoContext ppRecoCtxt);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

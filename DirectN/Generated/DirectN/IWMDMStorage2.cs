@@ -8,7 +8,7 @@ public partial interface IWMDMStorage2 : IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage2-getstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorage(PWSTR pszStorageName, out IWMDMStorage ppStorage);
+    HRESULT GetStorage(PWSTR pszStorageName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMStorage>))] out IWMDMStorage ppStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage2-setattributes2
     [PreserveSig]

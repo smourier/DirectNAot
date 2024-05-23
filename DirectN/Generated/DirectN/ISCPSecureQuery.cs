@@ -18,7 +18,7 @@ public partial interface ISCPSecureQuery
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecurequery-makedecision
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MakeDecision(uint fuFlags, nint /* byte array */ pData, uint dwSize, uint dwAppSec, nint /* byte array */ pbSPSessionKey, uint dwSessionKeyLen, IMDSPStorageGlobals? pStorageGlobals, out ISCPSecureExchange ppExchange, nint /* byte array */ abMac);
+    HRESULT MakeDecision(uint fuFlags, nint /* byte array */ pData, uint dwSize, uint dwAppSec, nint /* byte array */ pbSPSessionKey, uint dwSessionKeyLen, IMDSPStorageGlobals? pStorageGlobals, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISCPSecureExchange>))] out ISCPSecureExchange ppExchange, nint /* byte array */ abMac);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecurequery-getrights
     [PreserveSig]

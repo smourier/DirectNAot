@@ -18,7 +18,7 @@ public partial interface ISpSREngineSite
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ParseFromTransitions(in SPPARSEINFO pParseInfo, out ISpPhraseBuilder ppNewPhrase);
+    HRESULT ParseFromTransitions(in SPPARSEINFO pParseInfo, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhraseBuilder>))] out ISpPhraseBuilder ppNewPhrase);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

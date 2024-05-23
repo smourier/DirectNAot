@@ -13,5 +13,5 @@ public partial interface IWMWriterPostViewCallback : IWMStatusCallback
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostviewcallback-allocateforpostview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateForPostView(ushort wStreamNum, uint cbBuffer, out INSSBuffer ppBuffer, nint pvContext);
+    HRESULT AllocateForPostView(ushort wStreamNum, uint cbBuffer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer, nint pvContext);
 }

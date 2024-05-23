@@ -14,7 +14,7 @@ public partial interface IMMDevice
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-openpropertystore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenPropertyStore(STGM stgmAccess, out IPropertyStore ppProperties);
+    HRESULT OpenPropertyStore(STGM stgmAccess, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] out IPropertyStore ppProperties);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-getid
     [PreserveSig]

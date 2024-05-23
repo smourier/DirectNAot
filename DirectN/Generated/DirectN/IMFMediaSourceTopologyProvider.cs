@@ -9,5 +9,5 @@ public partial interface IMFMediaSourceTopologyProvider
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasourcetopologyprovider-getmediasourcetopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaSourceTopology(IMFPresentationDescriptor pPresentationDescriptor, out IMFTopology ppTopology);
+    HRESULT GetMediaSourceTopology(IMFPresentationDescriptor pPresentationDescriptor, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] out IMFTopology ppTopology);
 }

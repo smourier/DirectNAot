@@ -23,7 +23,7 @@ public partial interface IReferenceTrackerHost
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetrackerhost-gettrackertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTrackerTarget(nint unknown, out IReferenceTrackerTarget newReference);
+    HRESULT GetTrackerTarget(nint unknown, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceTrackerTarget>))] out IReferenceTrackerTarget newReference);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetrackerhost-addmemorypressure
     [PreserveSig]

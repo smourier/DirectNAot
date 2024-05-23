@@ -89,7 +89,7 @@ public partial interface ID3D11Device
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createclasslinkage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateClassLinkage(out ID3D11ClassLinkage ppLinkage);
+    HRESULT CreateClassLinkage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11ClassLinkage>))] out ID3D11ClassLinkage ppLinkage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-createblendstate
     [PreserveSig]
@@ -190,7 +190,7 @@ public partial interface ID3D11Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-getimmediatecontext
     [PreserveSig]
-    void GetImmediateContext(out ID3D11DeviceContext ppImmediateContext);
+    void GetImmediateContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11DeviceContext>))] out ID3D11DeviceContext ppImmediateContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11device-setexceptionmode
     [PreserveSig]

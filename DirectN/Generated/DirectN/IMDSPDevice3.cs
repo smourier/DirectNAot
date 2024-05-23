@@ -28,5 +28,5 @@ public partial interface IMDSPDevice3 : IMDSPDevice2
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspdevice3-findstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindStorage(WMDM_FIND_SCOPE findScope, PWSTR pwszUniqueID, out IMDSPStorage ppStorage);
+    HRESULT FindStorage(WMDM_FIND_SCOPE findScope, PWSTR pwszUniqueID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppStorage);
 }

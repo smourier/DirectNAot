@@ -14,7 +14,7 @@ public partial interface IMFNetCredentialManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialmanager-endgetcredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndGetCredentials(IMFAsyncResult pResult, out IMFNetCredential ppCred);
+    HRESULT EndGetCredentials(IMFAsyncResult pResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetCredential>))] out IMFNetCredential ppCred);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialmanager-setgood
     [PreserveSig]

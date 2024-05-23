@@ -14,7 +14,7 @@ public partial interface IOpcSignatureReference
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereference-geturi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUri(out IUri referenceUri);
+    HRESULT GetUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IUri>))] out IUri referenceUri);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereference-gettype
     [PreserveSig]

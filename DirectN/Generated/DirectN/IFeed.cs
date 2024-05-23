@@ -38,7 +38,7 @@ public partial interface IFeed : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Parent(out IDispatch disp);
+    HRESULT get_Parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -86,11 +86,11 @@ public partial interface IFeed : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Items(out IDispatch disp);
+    HRESULT get_Items([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItem(int itemId, out IDispatch disp);
+    HRESULT GetItem(int itemId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -170,7 +170,7 @@ public partial interface IFeed : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, out IDispatch disp);
+    HRESULT GetWatcher(FEEDS_EVENTS_SCOPE scope, FEEDS_EVENTS_MASK mask, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

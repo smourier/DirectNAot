@@ -24,5 +24,5 @@ public partial interface IWICEnumMetadataItem
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicenummetadataitem-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IWICEnumMetadataItem ppIEnumMetadataItem);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICEnumMetadataItem>))] out IWICEnumMetadataItem ppIEnumMetadataItem);
 }

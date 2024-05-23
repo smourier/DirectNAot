@@ -30,11 +30,11 @@ public partial interface ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenKey(PWSTR pszSubKeyName, out ISpDataKey ppSubKey);
+    HRESULT OpenKey(PWSTR pszSubKeyName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpDataKey>))] out ISpDataKey ppSubKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateKey(PWSTR pszSubKey, out ISpDataKey ppSubKey);
+    HRESULT CreateKey(PWSTR pszSubKey, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpDataKey>))] out ISpDataKey ppSubKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

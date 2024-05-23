@@ -23,5 +23,5 @@ public partial interface ID3D10StateBlock
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10stateblock-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevice(out ID3D10Device ppDevice);
+    HRESULT GetDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Device>))] out ID3D10Device ppDevice);
 }

@@ -23,7 +23,7 @@ public partial interface IWMReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreader-getoutputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputProps(uint dwOutputNum, out IWMOutputMediaProps ppOutput);
+    HRESULT GetOutputProps(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] out IWMOutputMediaProps ppOutput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreader-setoutputprops
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWMReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreader-getoutputformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputFormat(uint dwOutputNumber, uint dwFormatNumber, out IWMOutputMediaProps ppProps);
+    HRESULT GetOutputFormat(uint dwOutputNumber, uint dwFormatNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] out IWMOutputMediaProps ppProps);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreader-start
     [PreserveSig]

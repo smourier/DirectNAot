@@ -34,19 +34,19 @@ public partial interface ISpeechPhraseInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Rule(out ISpeechPhraseRule Rule);
+    HRESULT get_Rule([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseRule>))] out ISpeechPhraseRule Rule);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Properties(out ISpeechPhraseProperties Properties);
+    HRESULT get_Properties([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseProperties>))] out ISpeechPhraseProperties Properties);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Elements(out ISpeechPhraseElements Elements);
+    HRESULT get_Elements([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseElements>))] out ISpeechPhraseElements Elements);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Replacements(out ISpeechPhraseReplacements Replacements);
+    HRESULT get_Replacements([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseReplacements>))] out ISpeechPhraseReplacements Replacements);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

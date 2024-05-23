@@ -14,7 +14,7 @@ public partial interface IDWriteFontFile
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfile-getloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLoader(out IDWriteFontFileLoader fontFileLoader);
+    HRESULT GetLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFileLoader>))] out IDWriteFontFileLoader fontFileLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontfile-analyze
     [PreserveSig]

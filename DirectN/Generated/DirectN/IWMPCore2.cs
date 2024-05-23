@@ -8,5 +8,5 @@ public partial interface IWMPCore2 : IWMPCore
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore2-get_dvd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_dvd(out IWMPDVD ppDVD);
+    HRESULT get_dvd([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPDVD>))] out IWMPDVD ppDVD);
 }

@@ -9,7 +9,7 @@ public partial interface IXpsOMPackage
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-getdocumentsequence
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentSequence(out IXpsOMDocumentSequence documentSequence);
+    HRESULT GetDocumentSequence([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentSequence>))] out IXpsOMDocumentSequence documentSequence);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-setdocumentsequence
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IXpsOMPackage
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-getcoreproperties
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCoreProperties(out IXpsOMCoreProperties coreProperties);
+    HRESULT GetCoreProperties([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMCoreProperties>))] out IXpsOMCoreProperties coreProperties);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-setcoreproperties
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IXpsOMPackage
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-getdiscardcontrolpartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDiscardControlPartName(out IOpcPartUri discardControlPartUri);
+    HRESULT GetDiscardControlPartName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri discardControlPartUri);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-setdiscardcontrolpartname
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IXpsOMPackage
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-getthumbnailresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetThumbnailResource(out IXpsOMImageResource imageResource);
+    HRESULT GetThumbnailResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] out IXpsOMImageResource imageResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-setthumbnailresource
     [PreserveSig]

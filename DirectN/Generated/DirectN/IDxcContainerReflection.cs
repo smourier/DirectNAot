@@ -18,7 +18,7 @@ public partial interface IDxcContainerReflection
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPartContent(uint idx, out IDxcBlob ppResult);
+    HRESULT GetPartContent(uint idx, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

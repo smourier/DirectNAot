@@ -19,7 +19,7 @@ public partial interface IXpsSignature
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getcertificateenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCertificateEnumerator(out IOpcCertificateEnumerator certificateEnumerator);
+    HRESULT GetCertificateEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcCertificateEnumerator>))] out IOpcCertificateEnumerator certificateEnumerator);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getsigningtime
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IXpsSignature
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getsignaturepartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignaturePartName(out IOpcPartUri signaturePartName);
+    HRESULT GetSignaturePartName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri signaturePartName);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-verify
     [PreserveSig]
@@ -49,12 +49,12 @@ public partial interface IXpsSignature
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getcustomobjectenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCustomObjectEnumerator(out IOpcSignatureCustomObjectEnumerator customObjectEnumerator);
+    HRESULT GetCustomObjectEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObjectEnumerator>))] out IOpcSignatureCustomObjectEnumerator customObjectEnumerator);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getcustomreferenceenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCustomReferenceEnumerator(out IOpcSignatureReferenceEnumerator customReferenceEnumerator);
+    HRESULT GetCustomReferenceEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureReferenceEnumerator>))] out IOpcSignatureReferenceEnumerator customReferenceEnumerator);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssignature-getsignaturexml
     [PreserveSig]

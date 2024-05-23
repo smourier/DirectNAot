@@ -44,7 +44,7 @@ public partial interface IMFMediaSession : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-getclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClock(out IMFClock ppClock);
+    HRESULT GetClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFClock>))] out IMFClock ppClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-getsessioncapabilities
     [PreserveSig]
@@ -54,5 +54,5 @@ public partial interface IMFMediaSession : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-getfulltopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFullTopology(uint dwGetFullTopologyFlags, ulong TopoId, out IMFTopology ppFullTopology);
+    HRESULT GetFullTopology(uint dwGetFullTopologyFlags, ulong TopoId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] out IMFTopology ppFullTopology);
 }

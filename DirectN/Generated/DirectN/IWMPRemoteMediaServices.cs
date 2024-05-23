@@ -18,7 +18,7 @@ public partial interface IWMPRemoteMediaServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getscriptableobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetScriptableObject(ref BSTR pbstrName, out IDispatch ppDispatch);
+    HRESULT GetScriptableObject(ref BSTR pbstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppDispatch);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getcustomuimode
     [PreserveSig]

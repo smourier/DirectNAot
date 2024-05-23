@@ -14,5 +14,5 @@ public partial interface IDirect3DDevice9On12
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReturnUnderlyingResource(IDirect3DResource9 pResource, uint NumSync, ref ulong pSignalValues, out ID3D12Fence ppFences);
+    HRESULT ReturnUnderlyingResource(IDirect3DResource9 pResource, uint NumSync, ref ulong pSignalValues, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Fence>))] out ID3D12Fence ppFences);
 }

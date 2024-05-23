@@ -24,11 +24,9 @@ public static partial class Functions
     {
         D2D1CreateFactory(D2D1_FACTORY_TYPE.D2D1_FACTORY_TYPE_SINGLE_THREADED, typeof(ID2D1Factory).GUID, 0, out var unk).ThrowOnError();
         var sw = new StrategyBasedComWrappers();
-        var factory = (ID2D1Factory)sw.GetOrCreateObjectForComInstance(unk, CreateObjectFlags.UniqueInstance);
+        var factory = (ID2D1Factory)sw.GetOrCreateObjectForComInstance(unk, CreateObjectFlags.None);
         factory.GetDesktopDpi(out var x, out var y);
-        var size = new D2D_SIZE_F(x, y);
-        ((ComObject)(object)factory).FinalRelease();
-        return size;
+        return new D2D_SIZE_F(x, y);
     }
 
     // https://blogs.msdn.microsoft.com/text/2009/12/11/wpf-text-measurement-units/

@@ -63,7 +63,7 @@ public partial interface IWMPControls : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-get_currentitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentItem(out IWMPMedia ppIWMPMedia);
+    HRESULT get_currentItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] out IWMPMedia ppIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-put_currentitem
     [PreserveSig]

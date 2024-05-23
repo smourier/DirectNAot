@@ -13,7 +13,7 @@ public partial interface IDirect3DVolumeTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolumetexture9-getvolumelevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVolumeLevel(uint Level, out IDirect3DVolume9 ppVolumeLevel);
+    HRESULT GetVolumeLevel(uint Level, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVolume9>))] out IDirect3DVolume9 ppVolumeLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolumetexture9-lockbox
     [PreserveSig]

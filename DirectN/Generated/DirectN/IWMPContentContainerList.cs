@@ -18,5 +18,5 @@ public partial interface IWMPContentContainerList
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentcontainerlist-getcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainer(uint idxContainer, out IWMPContentContainer ppContent);
+    HRESULT GetContainer(uint idxContainer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainer>))] out IWMPContentContainer ppContent);
 }

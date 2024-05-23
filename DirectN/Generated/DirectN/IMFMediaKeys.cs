@@ -9,7 +9,7 @@ public partial interface IMFMediaKeys
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeys-createsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSession(BSTR mimeType, nint /* optional byte* */ initData, uint? cb, nint /* optional byte* */ customData, uint cbCustomData, IMFMediaKeySessionNotify notify, out IMFMediaKeySession ppSession);
+    HRESULT CreateSession(BSTR mimeType, nint /* optional byte* */ initData, uint? cb, nint /* optional byte* */ customData, uint cbCustomData, IMFMediaKeySessionNotify notify, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaKeySession>))] out IMFMediaKeySession ppSession);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeys-get_keysystem
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface IMFMediaKeys
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediakeys-getsuspendnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSuspendNotify(out IMFCdmSuspendNotify notify);
+    HRESULT GetSuspendNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCdmSuspendNotify>))] out IMFCdmSuspendNotify notify);
 }

@@ -14,5 +14,5 @@ public partial interface IAudioSessionEnumerator
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionenumerator-getsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSession(int SessionCount, out IAudioSessionControl Session);
+    HRESULT GetSession(int SessionCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionControl>))] out IAudioSessionControl Session);
 }

@@ -43,10 +43,10 @@ public partial interface IMDSPStorageGlobals
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorageglobals-getdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDevice(out IMDSPDevice ppDevice);
+    HRESULT GetDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPDevice>))] out IMDSPDevice ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorageglobals-getrootstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRootStorage(out IMDSPStorage ppRoot);
+    HRESULT GetRootStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppRoot);
 }

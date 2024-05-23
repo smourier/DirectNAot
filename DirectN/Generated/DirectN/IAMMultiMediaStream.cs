@@ -13,17 +13,17 @@ public partial interface IAMMultiMediaStream : IMultiMediaStream
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-getfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilterGraph(out IGraphBuilder ppGraphBuilder);
+    HRESULT GetFilterGraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] out IGraphBuilder ppGraphBuilder);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-getfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilter(out IMediaStreamFilter ppFilter);
+    HRESULT GetFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStreamFilter>))] out IMediaStreamFilter ppFilter);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-addmediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMediaStream(nint pStreamObject, in Guid PurposeId, uint dwFlags, out IMediaStream ppNewStream);
+    HRESULT AddMediaStream(nint pStreamObject, in Guid PurposeId, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] out IMediaStream ppNewStream);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-openfile
     [PreserveSig]

@@ -13,22 +13,22 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-createclipper
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateClipper(uint param0, out IDirectDrawClipper param1, nint param2);
+    HRESULT CreateClipper(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] out IDirectDrawClipper param1, nint param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-createpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, out IDirectDrawPalette param2, nint param3);
+    HRESULT CreatePalette(uint param0, ref PALETTEENTRY param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] out IDirectDrawPalette param2, nint param3);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-createsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurface(ref DDSURFACEDESC2 param0, out IDirectDrawSurface7 param1, nint param2);
+    HRESULT CreateSurface(ref DDSURFACEDESC2 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param1, nint param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-duplicatesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSurface(IDirectDrawSurface7 param0, out IDirectDrawSurface7 param1);
+    HRESULT DuplicateSurface(IDirectDrawSurface7 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-enumdisplaymodes
     [PreserveSig]
@@ -63,7 +63,7 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-getgdisurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGDISurface(out IDirectDrawSurface7 param0);
+    HRESULT GetGDISurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-getmonitorfrequency
     [PreserveSig]
@@ -113,7 +113,7 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-getsurfacefromdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurfaceFromDC(HDC param0, out IDirectDrawSurface7 param1);
+    HRESULT GetSurfaceFromDC(HDC param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-restoreallsurfaces
     [PreserveSig]

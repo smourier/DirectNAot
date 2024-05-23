@@ -18,7 +18,7 @@ public partial interface IWICBitmapEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-getencoderinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEncoderInfo(out IWICBitmapEncoderInfo ppIEncoderInfo);
+    HRESULT GetEncoderInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapEncoderInfo>))] out IWICBitmapEncoderInfo ppIEncoderInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-setcolorcontexts
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IWICBitmapEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-createnewframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewFrame(out IWICBitmapFrameEncode ppIFrameEncode, ref IPropertyBag2 ppIEncoderOptions);
+    HRESULT CreateNewFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapFrameEncode>))] out IWICBitmapFrameEncode ppIFrameEncode, ref IPropertyBag2 ppIEncoderOptions);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-commit
     [PreserveSig]
@@ -53,5 +53,5 @@ public partial interface IWICBitmapEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapencoder-getmetadataquerywriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataQueryWriter(out IWICMetadataQueryWriter ppIMetadataQueryWriter);
+    HRESULT GetMetadataQueryWriter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataQueryWriter>))] out IWICMetadataQueryWriter ppIMetadataQueryWriter);
 }

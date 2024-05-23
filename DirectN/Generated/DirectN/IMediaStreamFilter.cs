@@ -13,12 +13,12 @@ public partial interface IMediaStreamFilter : IBaseFilter
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-getmediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaStream(in Guid idPurpose, out IMediaStream ppMediaStream);
+    HRESULT GetMediaStream(in Guid idPurpose, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] out IMediaStream ppMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-enummediastreams
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMediaStreams(int Index, out IMediaStream ppMediaStream);
+    HRESULT EnumMediaStreams(int Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] out IMediaStream ppMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-supportseeking
     [PreserveSig]

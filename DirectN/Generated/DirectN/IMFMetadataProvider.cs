@@ -9,5 +9,5 @@ public partial interface IMFMetadataProvider
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmetadataprovider-getmfmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMFMetadata(IMFPresentationDescriptor pPresentationDescriptor, uint dwStreamIdentifier, uint dwFlags, out IMFMetadata ppMFMetadata);
+    HRESULT GetMFMetadata(IMFPresentationDescriptor pPresentationDescriptor, uint dwStreamIdentifier, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMetadata>))] out IMFMetadata ppMFMetadata);
 }

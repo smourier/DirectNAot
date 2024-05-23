@@ -10,9 +10,9 @@ public partial interface ISpeechPhraseReplacements : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(int Index, out ISpeechPhraseReplacement Reps);
+    HRESULT Item(int Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseReplacement>))] out ISpeechPhraseReplacement Reps);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out nint EnumVARIANT);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint EnumVARIANT);
 }

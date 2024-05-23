@@ -34,17 +34,17 @@ public partial interface IMFTimedTextCue
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextcue-getdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetData(out IMFTimedTextBinary data);
+    HRESULT GetData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextBinary>))] out IMFTimedTextBinary data);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextcue-getregion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRegion(out IMFTimedTextRegion region);
+    HRESULT GetRegion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextRegion>))] out IMFTimedTextRegion region);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextcue-getstyle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStyle(out IMFTimedTextStyle style);
+    HRESULT GetStyle([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextStyle>))] out IMFTimedTextStyle style);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextcue-getlinecount
     [PreserveSig]
@@ -53,5 +53,5 @@ public partial interface IMFTimedTextCue
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextcue-getline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLine(uint index, out IMFTimedTextFormattedText line);
+    HRESULT GetLine(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextFormattedText>))] out IMFTimedTextFormattedText line);
 }

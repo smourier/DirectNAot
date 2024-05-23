@@ -10,37 +10,37 @@ public partial interface IDxcLibrary
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobFromBlob(IDxcBlob pBlob, uint offset, uint length, out IDxcBlob ppResult);
+    HRESULT CreateBlobFromBlob(IDxcBlob pBlob, uint offset, uint length, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobFromFile(PWSTR pFileName, nint /* optional DXC_CP* */ codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobFromFile(PWSTR pFileName, nint /* optional DXC_CP* */ codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobWithEncodingFromPinned(nint pText, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobWithEncodingFromPinned(nint pText, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobWithEncodingOnHeapCopy(nint pText, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobWithEncodingOnHeapCopy(nint pText, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBlobWithEncodingOnMalloc(nint pText, IMalloc pIMalloc, uint size, DXC_CP codePage, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT CreateBlobWithEncodingOnMalloc(nint pText, IMalloc pIMalloc, uint size, DXC_CP codePage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateIncludeHandler(out IDxcIncludeHandler ppResult);
+    HRESULT CreateIncludeHandler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcIncludeHandler>))] out IDxcIncludeHandler ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStreamFromBlobReadOnly(IDxcBlob pBlob, out IStream ppStream);
+    HRESULT CreateStreamFromBlobReadOnly(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBlobAsUtf8(IDxcBlob pBlob, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT GetBlobAsUtf8(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBlobAsUtf16(IDxcBlob pBlob, out IDxcBlobEncoding pBlobEncoding);
+    HRESULT GetBlobAsUtf16(IDxcBlob pBlob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding pBlobEncoding);
 }

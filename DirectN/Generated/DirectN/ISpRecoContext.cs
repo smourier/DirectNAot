@@ -6,11 +6,11 @@ public partial interface ISpRecoContext : ISpEventSource
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecognizer(out ISpRecognizer ppRecognizer);
+    HRESULT GetRecognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecognizer>))] out ISpRecognizer ppRecognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGrammar(ulong ullGrammarId, out ISpRecoGrammar ppGrammar);
+    HRESULT CreateGrammar(ulong ullGrammarId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoGrammar>))] out ISpRecoGrammar ppGrammar);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface ISpRecoContext : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeserializeResult(in SPSERIALIZEDRESULT pSerializedResult, out ISpRecoResult ppResult);
+    HRESULT DeserializeResult(in SPSERIALIZEDRESULT pSerializedResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoResult>))] out ISpRecoResult ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -58,7 +58,7 @@ public partial interface ISpRecoContext : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVoice(out ISpVoice ppVoice);
+    HRESULT GetVoice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpVoice>))] out ISpVoice ppVoice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -159,7 +159,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetshader
     [PreserveSig]
-    void PSGetShader(out ID3D10PixelShader ppPixelShader);
+    void PSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10PixelShader>))] out ID3D10PixelShader ppPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetsamplers
     [PreserveSig]
@@ -167,7 +167,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetshader
     [PreserveSig]
-    void VSGetShader(out ID3D10VertexShader ppVertexShader);
+    void VSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10VertexShader>))] out ID3D10VertexShader ppVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-psgetconstantbuffers
     [PreserveSig]
@@ -175,7 +175,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetinputlayout
     [PreserveSig]
-    void IAGetInputLayout(out ID3D10InputLayout ppInputLayout);
+    void IAGetInputLayout([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10InputLayout>))] out ID3D10InputLayout ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetvertexbuffers
     [PreserveSig]
@@ -191,7 +191,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetshader
     [PreserveSig]
-    void GSGetShader(out ID3D10GeometryShader ppGeometryShader);
+    void GSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10GeometryShader>))] out ID3D10GeometryShader ppGeometryShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iagetprimitivetopology
     [PreserveSig]
@@ -235,7 +235,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetstate
     [PreserveSig]
-    void RSGetState(out ID3D10RasterizerState ppRasterizerState);
+    void RSGetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10RasterizerState>))] out ID3D10RasterizerState ppRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rsgetviewports
     [PreserveSig]
@@ -290,17 +290,17 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture1d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture1D(in D3D10_TEXTURE1D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, out ID3D10Texture1D ppTexture1D);
+    HRESULT CreateTexture1D(in D3D10_TEXTURE1D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Texture1D>))] out ID3D10Texture1D ppTexture1D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture2d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture2D(in D3D10_TEXTURE2D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, out ID3D10Texture2D ppTexture2D);
+    HRESULT CreateTexture2D(in D3D10_TEXTURE2D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Texture2D>))] out ID3D10Texture2D ppTexture2D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createtexture3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTexture3D(in D3D10_TEXTURE3D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, out ID3D10Texture3D ppTexture3D);
+    HRESULT CreateTexture3D(in D3D10_TEXTURE3D_DESC pDesc, nint /* optional D3D10_SUBRESOURCE_DATA* */ pInitialData, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Texture3D>))] out ID3D10Texture3D ppTexture3D);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createshaderresourceview
     [PreserveSig]

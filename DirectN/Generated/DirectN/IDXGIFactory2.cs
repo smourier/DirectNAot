@@ -14,12 +14,12 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, in DXGI_SWAP_CHAIN_DESC1 pDesc, nint /* optional DXGI_SWAP_CHAIN_FULLSCREEN_DESC* */ pFullscreenDesc, IDXGIOutput? pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForHwnd(nint pDevice, HWND hWnd, in DXGI_SWAP_CHAIN_DESC1 pDesc, nint /* optional DXGI_SWAP_CHAIN_FULLSCREEN_DESC* */ pFullscreenDesc, IDXGIOutput? pRestrictToOutput, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain1>))] out IDXGISwapChain1 ppSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforcorewindow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForCoreWindow(nint pDevice, nint pWindow, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput? pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForCoreWindow(nint pDevice, nint pWindow, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput? pRestrictToOutput, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain1>))] out IDXGISwapChain1 ppSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-getsharedresourceadapterluid
     [PreserveSig]
@@ -57,5 +57,5 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforcomposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChainForComposition(nint pDevice, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput? pRestrictToOutput, out IDXGISwapChain1 ppSwapChain);
+    HRESULT CreateSwapChainForComposition(nint pDevice, in DXGI_SWAP_CHAIN_DESC1 pDesc, IDXGIOutput? pRestrictToOutput, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain1>))] out IDXGISwapChain1 ppSwapChain);
 }

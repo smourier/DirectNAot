@@ -8,7 +8,7 @@ public partial interface IWMDMDevice2 : IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorage(PWSTR pszStorageName, out IWMDMStorage ppStorage);
+    HRESULT GetStorage(PWSTR pszStorageName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMStorage>))] out IWMDMStorage ppStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getformatsupport2
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IWMDMDevice2 : IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getspecifypropertypages
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifyPropertyPages(out ISpecifyPropertyPages ppSpecifyPropPages, out nint pppUnknowns, out uint pcUnks);
+    HRESULT GetSpecifyPropertyPages([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpecifyPropertyPages>))] out ISpecifyPropertyPages ppSpecifyPropPages, out nint pppUnknowns, out uint pcUnks);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice2-getcanonicalname
     [PreserveSig]

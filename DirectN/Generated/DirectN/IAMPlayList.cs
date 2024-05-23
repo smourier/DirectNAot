@@ -14,11 +14,11 @@ public partial interface IAMPlayList
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItem(uint dwItemIndex, out IAMPlayListItem ppItem);
+    HRESULT GetItem(uint dwItemIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMPlayListItem>))] out IAMPlayListItem ppItem);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNamedEvent(PWSTR pwszEventName, uint dwItemIndex, out IAMPlayListItem ppItem, out uint pdwFlags);
+    HRESULT GetNamedEvent(PWSTR pwszEventName, uint dwItemIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMPlayListItem>))] out IAMPlayListItem ppItem, out uint pdwFlags);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

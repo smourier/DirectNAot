@@ -23,5 +23,5 @@ public partial interface IMDSPEnumDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspenumdevice-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMDSPEnumDevice ppEnumDevice);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPEnumDevice>))] out IMDSPEnumDevice ppEnumDevice);
 }

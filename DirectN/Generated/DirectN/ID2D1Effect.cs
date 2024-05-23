@@ -17,7 +17,7 @@ public partial interface ID2D1Effect : ID2D1Properties
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1effect-getinput
     [PreserveSig]
-    void GetInput(uint index, out ID2D1Image input);
+    void GetInput(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Image>))] out ID2D1Image input);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1effect-getinputcount
     [PreserveSig]
@@ -25,5 +25,5 @@ public partial interface ID2D1Effect : ID2D1Properties
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1effect-getoutput
     [PreserveSig]
-    void GetOutput(out ID2D1Image outputImage);
+    void GetOutput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Image>))] out ID2D1Image outputImage);
 }

@@ -28,10 +28,10 @@ public partial interface IWMReaderCallbackAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadercallbackadvanced-allocateforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateForStream(ushort wStreamNum, uint cbBuffer, out INSSBuffer ppBuffer, nint pvContext);
+    HRESULT AllocateForStream(ushort wStreamNum, uint cbBuffer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadercallbackadvanced-allocateforoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateForOutput(uint dwOutputNum, uint cbBuffer, out INSSBuffer ppBuffer, nint pvContext);
+    HRESULT AllocateForOutput(uint dwOutputNum, uint cbBuffer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer, nint pvContext);
 }

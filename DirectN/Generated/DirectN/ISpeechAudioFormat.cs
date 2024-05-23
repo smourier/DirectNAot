@@ -22,7 +22,7 @@ public partial interface ISpeechAudioFormat : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWaveFormatEx(out ISpeechWaveFormatEx SpeechWaveFormatEx);
+    HRESULT GetWaveFormatEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechWaveFormatEx>))] out ISpeechWaveFormatEx SpeechWaveFormatEx);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

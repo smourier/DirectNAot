@@ -47,5 +47,5 @@ public partial interface IDWriteTextLayout2 : IDWriteTextLayout1
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextlayout2-getfontfallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFallback(out IDWriteFontFallback fontFallback);
+    HRESULT GetFontFallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFallback>))] out IDWriteFontFallback fontFallback);
 }

@@ -9,15 +9,15 @@ public partial interface IOpcUri : IUri
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcuri-getrelationshipsparturi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRelationshipsPartUri(out IOpcPartUri relationshipPartUri);
+    HRESULT GetRelationshipsPartUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri relationshipPartUri);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcuri-getrelativeuri
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRelativeUri(IOpcPartUri targetPartUri, out IUri relativeUri);
+    HRESULT GetRelativeUri(IOpcPartUri targetPartUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IUri>))] out IUri relativeUri);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcuri-combineparturi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CombinePartUri(IUri relativeUri, out IOpcPartUri combinedUri);
+    HRESULT CombinePartUri(IUri relativeUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri combinedUri);
 }

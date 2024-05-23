@@ -9,5 +9,5 @@ public partial interface ISpatialAudioObjectRenderStreamForHrtf : ISpatialAudioO
     // https://learn.microsoft.com/windows/win32/api/spatialaudiohrtf/nf-spatialaudiohrtf-ispatialaudioobjectrenderstreamforhrtf-activatespatialaudioobjectforhrtf
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateSpatialAudioObjectForHrtf(AudioObjectType type, out ISpatialAudioObjectForHrtf audioObject);
+    HRESULT ActivateSpatialAudioObjectForHrtf(AudioObjectType type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioObjectForHrtf>))] out ISpatialAudioObjectForHrtf audioObject);
 }

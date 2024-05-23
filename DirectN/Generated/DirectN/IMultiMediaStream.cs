@@ -13,12 +13,12 @@ public partial interface IMultiMediaStream
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imultimediastream-getmediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaStream(in Guid idPurpose, out IMediaStream ppMediaStream);
+    HRESULT GetMediaStream(in Guid idPurpose, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] out IMediaStream ppMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imultimediastream-enummediastreams
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMediaStreams(int Index, out IMediaStream ppMediaStream);
+    HRESULT EnumMediaStreams(int Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] out IMediaStream ppMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imultimediastream-getstate
     [PreserveSig]

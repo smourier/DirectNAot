@@ -8,7 +8,7 @@ public partial interface ITuner
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-get_tuningspace
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_TuningSpace(out ITuningSpace TuningSpace);
+    HRESULT get_TuningSpace([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpace>))] out ITuningSpace TuningSpace);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-put_tuningspace
     [PreserveSig]
@@ -18,12 +18,12 @@ public partial interface ITuner
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-enumtuningspaces
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumTuningSpaces(out IEnumTuningSpaces ppEnum);
+    HRESULT EnumTuningSpaces([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumTuningSpaces>))] out IEnumTuningSpaces ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-get_tunerequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_TuneRequest(out ITuneRequest TuneRequest);
+    HRESULT get_TuneRequest([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-put_tunerequest
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface ITuner
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-get_preferredcomponenttypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_PreferredComponentTypes(out IComponentTypes ComponentTypes);
+    HRESULT get_PreferredComponentTypes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentTypes>))] out IComponentTypes ComponentTypes);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituner-put_preferredcomponenttypes
     [PreserveSig]

@@ -18,5 +18,5 @@ public partial interface IDxcContainerBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SerializeContainer(out IDxcOperationResult ppResult);
+    HRESULT SerializeContainer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcOperationResult>))] out IDxcOperationResult ppResult);
 }

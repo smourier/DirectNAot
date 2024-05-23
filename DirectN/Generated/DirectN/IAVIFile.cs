@@ -14,12 +14,12 @@ public partial interface IAVIFile
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavifile-getstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStream(out IAVIStream ppStream, uint fccType, int lParam);
+    HRESULT GetStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] out IAVIStream ppStream, uint fccType, int lParam);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavifile-createstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStream(out IAVIStream ppStream, in AVISTREAMINFOW psi);
+    HRESULT CreateStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] out IAVIStream ppStream, in AVISTREAMINFOW psi);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavifile-writedata
     [PreserveSig]

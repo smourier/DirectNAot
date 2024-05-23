@@ -38,7 +38,7 @@ public partial interface IDirect3DDevice9Ex : IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-checkresourceresidency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckResourceResidency(out IDirect3DResource9 pResourceArray, uint NumResources);
+    HRESULT CheckResourceResidency([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DResource9>))] out IDirect3DResource9 pResourceArray, uint NumResources);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-setmaximumframelatency
     [PreserveSig]
@@ -58,17 +58,17 @@ public partial interface IDirect3DDevice9Ex : IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-createrendertargetex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTargetEx(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Lockable, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
+    HRESULT CreateRenderTargetEx(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Lockable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-createoffscreenplainsurfaceex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateOffscreenPlainSurfaceEx(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
+    HRESULT CreateOffscreenPlainSurfaceEx(uint Width, uint Height, D3DFORMAT Format, D3DPOOL Pool, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-createdepthstencilsurfaceex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilSurfaceEx(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Discard, out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
+    HRESULT CreateDepthStencilSurfaceEx(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Discard, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle, uint Usage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-resetex
     [PreserveSig]

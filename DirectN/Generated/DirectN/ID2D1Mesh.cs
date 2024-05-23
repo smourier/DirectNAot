@@ -9,5 +9,5 @@ public partial interface ID2D1Mesh : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1mesh-open
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Open(out ID2D1TessellationSink tessellationSink);
+    HRESULT Open([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TessellationSink>))] out ID2D1TessellationSink tessellationSink);
 }

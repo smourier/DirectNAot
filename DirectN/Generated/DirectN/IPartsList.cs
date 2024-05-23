@@ -14,5 +14,5 @@ public partial interface IPartsList
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipartslist-getpart
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPart(uint nIndex, out IPart ppPart);
+    HRESULT GetPart(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPart>))] out IPart ppPart);
 }

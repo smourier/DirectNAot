@@ -28,12 +28,12 @@ public partial interface IPhotoAcquireSource
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getitemat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItemAt(uint nIndex, out IPhotoAcquireItem ppPhotoAcquireItem);
+    HRESULT GetItemAt(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireItem>))] out IPhotoAcquireItem ppPhotoAcquireItem);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getphotoacquiresettings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPhotoAcquireSettings(out IPhotoAcquireSettings ppPhotoAcquireSettings);
+    HRESULT GetPhotoAcquireSettings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireSettings>))] out IPhotoAcquireSettings ppPhotoAcquireSettings);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getdeviceid
     [PreserveSig]

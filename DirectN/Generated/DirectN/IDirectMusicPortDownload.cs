@@ -6,11 +6,11 @@ public partial interface IDirectMusicPortDownload
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(uint dwDLId, out IDirectMusicDownload ppIDMDownload);
+    HRESULT GetBuffer(uint dwDLId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownload>))] out IDirectMusicDownload ppIDMDownload);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateBuffer(uint dwSize, out IDirectMusicDownload ppIDMDownload);
+    HRESULT AllocateBuffer(uint dwSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownload>))] out IDirectMusicDownload ppIDMDownload);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -30,11 +30,11 @@ public partial interface ISpeechDataKey : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenKey(BSTR SubKeyName, out ISpeechDataKey SubKey);
+    HRESULT OpenKey(BSTR SubKeyName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechDataKey>))] out ISpeechDataKey SubKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateKey(BSTR SubKeyName, out ISpeechDataKey SubKey);
+    HRESULT CreateKey(BSTR SubKeyName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechDataKey>))] out ISpeechDataKey SubKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

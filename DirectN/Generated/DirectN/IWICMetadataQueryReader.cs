@@ -24,5 +24,5 @@ public partial interface IWICMetadataQueryReader
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicmetadataqueryreader-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IEnumString ppIEnumString);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumString>))] out IEnumString ppIEnumString);
 }

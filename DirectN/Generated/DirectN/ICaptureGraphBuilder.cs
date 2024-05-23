@@ -13,12 +13,12 @@ public partial interface ICaptureGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-getfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFiltergraph(out IGraphBuilder ppfg);
+    HRESULT GetFiltergraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] out IGraphBuilder ppfg);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-setoutputfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputFileName(in Guid pType, PWSTR lpstrFile, out IBaseFilter ppf, out IFileSinkFilter ppSink);
+    HRESULT SetOutputFileName(in Guid pType, PWSTR lpstrFile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] out IBaseFilter ppf, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFileSinkFilter>))] out IFileSinkFilter ppSink);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder-findinterface
     [PreserveSig]

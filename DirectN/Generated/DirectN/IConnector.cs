@@ -34,7 +34,7 @@ public partial interface IConnector
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-getconnectedto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnectedTo(out IConnector ppConTo);
+    HRESULT GetConnectedTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IConnector>))] out IConnector ppConTo);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-getconnectoridconnectedto
     [PreserveSig]

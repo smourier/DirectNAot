@@ -14,7 +14,7 @@ public partial interface IMFMediaEngineSupportsSourceTransfer
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesupportssourcetransfer-detachmediasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DetachMediaSource(out IMFByteStream ppByteStream, out IMFMediaSource ppMediaSource, out IMFMediaSourceExtension ppMSE);
+    HRESULT DetachMediaSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] out IMFByteStream ppByteStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSource>))] out IMFMediaSource ppMediaSource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSourceExtension>))] out IMFMediaSourceExtension ppMSE);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesupportssourcetransfer-attachmediasource
     [PreserveSig]

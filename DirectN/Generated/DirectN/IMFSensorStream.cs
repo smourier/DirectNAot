@@ -14,10 +14,10 @@ public partial interface IMFSensorStream : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorstream-getmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaType(uint dwIndex, out IMFMediaType ppMediaType);
+    HRESULT GetMediaType(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorstream-clonesensorstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CloneSensorStream(out IMFSensorStream ppStream);
+    HRESULT CloneSensorStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorStream>))] out IMFSensorStream ppStream);
 }

@@ -9,12 +9,12 @@ public partial interface IXpsOMVisualBrush : IXpsOMTileBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-getvisual
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVisual(out IXpsOMVisual visual);
+    HRESULT GetVisual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMVisual>))] out IXpsOMVisual visual);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-getvisuallocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVisualLocal(out IXpsOMVisual visual);
+    HRESULT GetVisualLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMVisual>))] out IXpsOMVisual visual);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-setvisuallocal
     [PreserveSig]
@@ -34,5 +34,5 @@ public partial interface IXpsOMVisualBrush : IXpsOMTileBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMVisualBrush visualBrush);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMVisualBrush>))] out IXpsOMVisualBrush visualBrush);
 }

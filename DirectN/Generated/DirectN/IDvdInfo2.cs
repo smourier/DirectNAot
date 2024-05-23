@@ -154,7 +154,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetState(out IDvdState pStateData);
+    HRESULT GetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdState>))] out IDvdState pStateData);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getmenulanguages
     [PreserveSig]
@@ -169,7 +169,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getcmdfromevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCmdFromEvent(nint lParam1, out IDvdCmd pCmdObj);
+    HRESULT GetCmdFromEvent(nint lParam1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd pCmdObj);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getdefaultmenulanguage
     [PreserveSig]

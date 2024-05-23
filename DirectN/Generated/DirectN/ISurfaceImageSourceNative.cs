@@ -13,7 +13,7 @@ public partial interface ISurfaceImageSourceNative
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-isurfaceimagesourcenative-begindraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginDraw(RECT updateRect, out IDXGISurface surface, out POINT offset);
+    HRESULT BeginDraw(RECT updateRect, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISurface>))] out IDXGISurface surface, out POINT offset);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-isurfaceimagesourcenative-enddraw
     [PreserveSig]

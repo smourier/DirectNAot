@@ -8,12 +8,12 @@ public partial interface IMDSPStorage2 : IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage2-getstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorage(PWSTR pszStorageName, out IMDSPStorage ppStorage);
+    HRESULT GetStorage(PWSTR pszStorageName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage2-createstorage2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorage2(uint dwAttributes, uint dwAttributesEx, nint /* optional WAVEFORMATEX* */ pAudioFormat, nint /* optional VIDEOINFOHEADER* */ pVideoFormat, PWSTR pwszName, ulong qwFileSize, out IMDSPStorage ppNewStorage);
+    HRESULT CreateStorage2(uint dwAttributes, uint dwAttributesEx, nint /* optional WAVEFORMATEX* */ pAudioFormat, nint /* optional VIDEOINFOHEADER* */ pVideoFormat, PWSTR pwszName, ulong qwFileSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppNewStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage2-setattributes2
     [PreserveSig]

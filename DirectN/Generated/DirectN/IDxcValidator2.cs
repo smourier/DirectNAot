@@ -6,5 +6,5 @@ public partial interface IDxcValidator2 : IDxcValidator
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ValidateWithDebug(IDxcBlob pShader, uint Flags, nint /* optional DxcBuffer* */ pOptDebugBitcode, out IDxcOperationResult ppResult);
+    HRESULT ValidateWithDebug(IDxcBlob pShader, uint Flags, nint /* optional DxcBuffer* */ pOptDebugBitcode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcOperationResult>))] out IDxcOperationResult ppResult);
 }

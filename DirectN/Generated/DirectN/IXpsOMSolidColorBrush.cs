@@ -9,7 +9,7 @@ public partial interface IXpsOMSolidColorBrush : IXpsOMBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsolidcolorbrush-getcolor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColor(out XPS_COLOR color, out IXpsOMColorProfileResource colorProfile);
+    HRESULT GetColor(out XPS_COLOR color, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] out IXpsOMColorProfileResource colorProfile);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsolidcolorbrush-setcolor
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IXpsOMSolidColorBrush : IXpsOMBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsolidcolorbrush-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMSolidColorBrush solidColorBrush);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSolidColorBrush>))] out IXpsOMSolidColorBrush solidColorBrush);
 }

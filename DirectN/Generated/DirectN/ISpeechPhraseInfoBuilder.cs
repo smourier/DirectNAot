@@ -6,5 +6,5 @@ public partial interface ISpeechPhraseInfoBuilder : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RestorePhraseFromMemory(in VARIANT PhraseInMemory, out ISpeechPhraseInfo PhraseInfo);
+    HRESULT RestorePhraseFromMemory(in VARIANT PhraseInMemory, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseInfo>))] out ISpeechPhraseInfo PhraseInfo);
 }

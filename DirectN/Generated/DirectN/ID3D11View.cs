@@ -8,5 +8,5 @@ public partial interface ID3D11View : ID3D11DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11view-getresource
     [PreserveSig]
-    void GetResource(out ID3D11Resource ppResource);
+    void GetResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] out ID3D11Resource ppResource);
 }

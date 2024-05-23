@@ -9,17 +9,17 @@ public partial interface IXpsOMDocument : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-getowner
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOwner(out IXpsOMDocumentSequence documentSequence);
+    HRESULT GetOwner([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentSequence>))] out IXpsOMDocumentSequence documentSequence);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-getpagereferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPageReferences(out IXpsOMPageReferenceCollection pageReferences);
+    HRESULT GetPageReferences([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPageReferenceCollection>))] out IXpsOMPageReferenceCollection pageReferences);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-getprintticketresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrintTicketResource(out IXpsOMPrintTicketResource printTicketResource);
+    HRESULT GetPrintTicketResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] out IXpsOMPrintTicketResource printTicketResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-setprintticketresource
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IXpsOMDocument : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-getdocumentstructureresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDocumentStructureResource(out IXpsOMDocumentStructureResource documentStructureResource);
+    HRESULT GetDocumentStructureResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentStructureResource>))] out IXpsOMDocumentStructureResource documentStructureResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-setdocumentstructureresource
     [PreserveSig]
@@ -39,10 +39,10 @@ public partial interface IXpsOMDocument : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-getsignatureblockresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignatureBlockResources(out IXpsOMSignatureBlockResourceCollection signatureBlockResources);
+    HRESULT GetSignatureBlockResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResourceCollection>))] out IXpsOMSignatureBlockResourceCollection signatureBlockResources);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocument-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMDocument document);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocument>))] out IXpsOMDocument document);
 }

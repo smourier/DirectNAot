@@ -6,7 +6,7 @@ public partial interface IXFeedItem
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Xml(FEEDS_XML_INCLUDE_FLAGS fxif, out IStream pps);
+    HRESULT Xml(FEEDS_XML_INCLUDE_FLAGS fxif, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream pps);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

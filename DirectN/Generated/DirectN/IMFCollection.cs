@@ -14,7 +14,7 @@ public partial interface IMFCollection
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfcollection-getelement
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetElement(uint dwElementIndex, out nint ppUnkElement);
+    HRESULT GetElement(uint dwElementIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkElement);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfcollection-addelement
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFCollection
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfcollection-removeelement
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveElement(uint dwElementIndex, out nint ppUnkElement);
+    HRESULT RemoveElement(uint dwElementIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkElement);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfcollection-insertelementat
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IOpcSignatureCustomObjectSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectset-create
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Create(nint /* byte array */ xmlMarkup, uint count, out IOpcSignatureCustomObject customObject);
+    HRESULT Create(nint /* byte array */ xmlMarkup, uint count, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObject>))] out IOpcSignatureCustomObject customObject);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectset-delete
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IOpcSignatureCustomObjectSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectset-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IOpcSignatureCustomObjectEnumerator customObjectEnumerator);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObjectEnumerator>))] out IOpcSignatureCustomObjectEnumerator customObjectEnumerator);
 }

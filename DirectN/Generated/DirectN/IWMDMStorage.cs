@@ -13,7 +13,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getstorageglobals
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorageGlobals(out IWMDMStorageGlobals ppStorageGlobals);
+    HRESULT GetStorageGlobals([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMStorageGlobals>))] out IWMDMStorageGlobals ppStorageGlobals);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-getattributes
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IWMDMStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-enumstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumStorage(out IWMDMEnumStorage pEnumStorage);
+    HRESULT EnumStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMEnumStorage>))] out IWMDMEnumStorage pEnumStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage-sendopaquecommand
     [PreserveSig]

@@ -91,7 +91,7 @@ public abstract class ComObject : IComObject
         return unk;
     }
 
-    public static void Release(System.Runtime.InteropServices.Marshalling.ComObject obj) => obj?.FinalRelease();
+    public static void Release(System.Runtime.InteropServices.Marshalling.ComObject? obj) => ComExtensions.FinalRelease(obj);
     public static int Release(nint unk)
     {
         if (unk == 0)
@@ -132,7 +132,7 @@ public abstract class ComObject : IComObject
     {
         if (disposing && _releaseOnDispose)
         {
-            Interlocked.Exchange(ref _comObject, null)?.FinalRelease();
+            ComExtensions.FinalRelease(Interlocked.Exchange(ref _comObject, null));
         }
     }
 

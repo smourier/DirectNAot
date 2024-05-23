@@ -8,7 +8,7 @@ public partial interface ID3D10EffectRasterizerVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrasterizervariable-getrasterizerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRasterizerState(uint Index, out ID3D10RasterizerState ppRasterizerState);
+    HRESULT GetRasterizerState(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10RasterizerState>))] out ID3D10RasterizerState ppRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrasterizervariable-getbackingstore
     [PreserveSig]

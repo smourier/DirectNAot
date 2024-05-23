@@ -9,22 +9,22 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideodecoder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoDecoder(in D3D11_VIDEO_DECODER_DESC pVideoDesc, in D3D11_VIDEO_DECODER_CONFIG pConfig, out ID3D11VideoDecoder ppDecoder);
+    HRESULT CreateVideoDecoder(in D3D11_VIDEO_DECODER_DESC pVideoDesc, in D3D11_VIDEO_DECODER_CONFIG pConfig, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoDecoder>))] out ID3D11VideoDecoder ppDecoder);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessor(ID3D11VideoProcessorEnumerator pEnum, uint RateConversionIndex, out ID3D11VideoProcessor ppVideoProcessor);
+    HRESULT CreateVideoProcessor(ID3D11VideoProcessorEnumerator pEnum, uint RateConversionIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessor>))] out ID3D11VideoProcessor ppVideoProcessor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createauthenticatedchannel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAuthenticatedChannel(D3D11_AUTHENTICATED_CHANNEL_TYPE ChannelType, out ID3D11AuthenticatedChannel ppAuthenticatedChannel);
+    HRESULT CreateAuthenticatedChannel(D3D11_AUTHENTICATED_CHANNEL_TYPE ChannelType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11AuthenticatedChannel>))] out ID3D11AuthenticatedChannel ppAuthenticatedChannel);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createcryptosession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCryptoSession(in Guid pCryptoType, nint /* optional Guid* */ pDecoderProfile, in Guid pKeyExchangeType, out ID3D11CryptoSession ppCryptoSession);
+    HRESULT CreateCryptoSession(in Guid pCryptoType, nint /* optional Guid* */ pDecoderProfile, in Guid pKeyExchangeType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11CryptoSession>))] out ID3D11CryptoSession ppCryptoSession);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideodecoderoutputview
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessorenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessorEnumerator(in D3D11_VIDEO_PROCESSOR_CONTENT_DESC pDesc, out ID3D11VideoProcessorEnumerator ppEnum);
+    HRESULT CreateVideoProcessorEnumerator(in D3D11_VIDEO_PROCESSOR_CONTENT_DESC pDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessorEnumerator>))] out ID3D11VideoProcessorEnumerator ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-getvideodecoderprofilecount
     [PreserveSig]

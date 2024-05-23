@@ -39,7 +39,7 @@ public partial interface IXpsSigningOptions
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-getsignaturepartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignaturePartName(out IOpcPartUri signaturePartName);
+    HRESULT GetSignaturePartName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] out IOpcPartUri signaturePartName);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-setsignaturepartname
     [PreserveSig]
@@ -69,17 +69,17 @@ public partial interface IXpsSigningOptions
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-getcustomobjects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCustomObjects(out IOpcSignatureCustomObjectSet customObjectSet);
+    HRESULT GetCustomObjects([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObjectSet>))] out IOpcSignatureCustomObjectSet customObjectSet);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-getcustomreferences
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCustomReferences(out IOpcSignatureReferenceSet customReferenceSet);
+    HRESULT GetCustomReferences([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureReferenceSet>))] out IOpcSignatureReferenceSet customReferenceSet);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-getcertificateset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCertificateSet(out IOpcCertificateSet certificateSet);
+    HRESULT GetCertificateSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcCertificateSet>))] out IOpcCertificateSet certificateSet);
     
     // https://learn.microsoft.com/windows/win32/api/xpsdigitalsignature/nf-xpsdigitalsignature-ixpssigningoptions-getflags
     [PreserveSig]

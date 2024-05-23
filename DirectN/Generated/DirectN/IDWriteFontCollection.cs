@@ -13,7 +13,7 @@ public partial interface IDWriteFontCollection
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfamily
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFamily(uint index, out IDWriteFontFamily fontFamily);
+    HRESULT GetFontFamily(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFamily>))] out IDWriteFontFamily fontFamily);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-findfamilyname
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IDWriteFontCollection
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfromfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontFromFontFace(IDWriteFontFace fontFace, out IDWriteFont font);
+    HRESULT GetFontFromFontFace(IDWriteFontFace fontFace, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFont>))] out IDWriteFont font);
 }

@@ -34,9 +34,9 @@ public partial interface ISpeechPhraseProperty : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Parent(out ISpeechPhraseProperty ParentProperty);
+    HRESULT get_Parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseProperty>))] out ISpeechPhraseProperty ParentProperty);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Children(out ISpeechPhraseProperties Children);
+    HRESULT get_Children([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseProperties>))] out ISpeechPhraseProperties Children);
 }

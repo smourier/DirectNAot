@@ -8,5 +8,5 @@ public partial interface IAudioStreamSample : IStreamSample
     // https://learn.microsoft.com/windows/win32/api/austream/nf-austream-iaudiostreamsample-getaudiodata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudioData(out IAudioData ppAudio);
+    HRESULT GetAudioData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioData>))] out IAudioData ppAudio);
 }

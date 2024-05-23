@@ -14,5 +14,5 @@ public partial interface IWICDdsDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsdecoder-getframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrame(uint arrayIndex, uint mipLevel, uint sliceIndex, out IWICBitmapFrameDecode ppIBitmapFrame);
+    HRESULT GetFrame(uint arrayIndex, uint mipLevel, uint sliceIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapFrameDecode>))] out IWICBitmapFrameDecode ppIBitmapFrame);
 }

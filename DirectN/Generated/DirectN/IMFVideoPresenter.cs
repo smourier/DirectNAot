@@ -14,5 +14,5 @@ public partial interface IMFVideoPresenter : IMFClockStateSink
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideopresenter-getcurrentmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentMediaType(out IMFVideoMediaType ppMediaType);
+    HRESULT GetCurrentMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFVideoMediaType>))] out IMFVideoMediaType ppMediaType);
 }

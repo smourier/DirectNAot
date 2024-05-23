@@ -6,7 +6,7 @@ public partial interface ISpRecoResult2 : ISpRecoResult
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CommitAlternate(ISpPhraseAlt pPhraseAlt, out ISpRecoResult ppNewResult);
+    HRESULT CommitAlternate(ISpPhraseAlt pPhraseAlt, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoResult>))] out ISpRecoResult ppNewResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

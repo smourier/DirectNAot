@@ -13,7 +13,7 @@ public partial interface ID3D12DeviceConfiguration
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pDesc, out ID3DBlob ppResult, nint /* optional ID3DBlob* */ ppError);
+    HRESULT SerializeVersionedRootSignature(in D3D12_VERSIONED_ROOT_SIGNATURE_DESC pDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DBlob>))] out ID3DBlob ppResult, nint /* optional ID3DBlob* */ ppError);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

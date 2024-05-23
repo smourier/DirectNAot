@@ -13,5 +13,5 @@ public partial interface IWMPPlaylistArray : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistarray-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(int lIndex, out IWMPPlaylist ppItem);
+    HRESULT item(int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppItem);
 }

@@ -9,7 +9,7 @@ public partial interface IMFNetCredentialCache
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialcache-getcredential
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCredential(PWSTR pszUrl, PWSTR pszRealm, uint dwAuthenticationFlags, out IMFNetCredential ppCred, out uint pdwRequirementsFlags);
+    HRESULT GetCredential(PWSTR pszUrl, PWSTR pszRealm, uint dwAuthenticationFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetCredential>))] out IMFNetCredential ppCred, out uint pdwRequirementsFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialcache-setgood
     [PreserveSig]

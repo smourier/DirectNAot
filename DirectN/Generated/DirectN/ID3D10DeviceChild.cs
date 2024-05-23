@@ -7,7 +7,7 @@ public partial interface ID3D10DeviceChild
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10devicechild-getdevice
     [PreserveSig]
-    void GetDevice(out ID3D10Device ppDevice);
+    void GetDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Device>))] out ID3D10Device ppDevice);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10devicechild-getprivatedata
     [PreserveSig]

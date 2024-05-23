@@ -14,12 +14,12 @@ public partial interface IMSVidOutputDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidoutputdevices-get__newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT pD);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT pD);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidoutputdevices-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT v, out IMSVidOutputDevice pDB);
+    HRESULT get_Item(VARIANT v, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidOutputDevice>))] out IMSVidOutputDevice pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidoutputdevices-add
     [PreserveSig]

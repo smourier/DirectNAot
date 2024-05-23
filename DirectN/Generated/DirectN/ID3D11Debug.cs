@@ -32,7 +32,7 @@ public partial interface ID3D11Debug
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11debug-getswapchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSwapChain(out IDXGISwapChain ppSwapChain);
+    HRESULT GetSwapChain([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain>))] out IDXGISwapChain ppSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11debug-validatecontext
     [PreserveSig]

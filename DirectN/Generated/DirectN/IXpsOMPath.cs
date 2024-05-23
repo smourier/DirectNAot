@@ -9,12 +9,12 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGeometry(out IXpsOMGeometry geometry);
+    HRESULT GetGeometry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] out IXpsOMGeometry geometry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getgeometrylocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGeometryLocal(out IXpsOMGeometry geometry);
+    HRESULT GetGeometryLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] out IXpsOMGeometry geometry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-setgeometrylocal
     [PreserveSig]
@@ -64,12 +64,12 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getstrokebrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStrokeBrush(out IXpsOMBrush brush);
+    HRESULT GetStrokeBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush brush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getstrokebrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStrokeBrushLocal(out IXpsOMBrush brush);
+    HRESULT GetStrokeBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush brush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-setstrokebrushlocal
     [PreserveSig]
@@ -89,7 +89,7 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getstrokedashes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStrokeDashes(out IXpsOMDashCollection strokeDashes);
+    HRESULT GetStrokeDashes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDashCollection>))] out IXpsOMDashCollection strokeDashes);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getstrokedashcap
     [PreserveSig]
@@ -164,12 +164,12 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getfillbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFillBrush(out IXpsOMBrush brush);
+    HRESULT GetFillBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush brush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getfillbrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFillBrushLocal(out IXpsOMBrush brush);
+    HRESULT GetFillBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush brush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-setfillbrushlocal
     [PreserveSig]
@@ -189,5 +189,5 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMPath path);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPath>))] out IXpsOMPath path);
 }

@@ -8,10 +8,10 @@ public partial interface ITypeComp
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypecomp-bind
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Bind(PWSTR szName, uint lHashVal, ushort wFlags, out ITypeInfo ppTInfo, out DESCKIND pDescKind, out BINDPTR pBindPtr);
+    HRESULT Bind(PWSTR szName, uint lHashVal, ushort wFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeInfo>))] out ITypeInfo ppTInfo, out DESCKIND pDescKind, out BINDPTR pBindPtr);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypecomp-bindtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BindType(PWSTR szName, uint lHashVal, out ITypeInfo ppTInfo, out ITypeComp ppTComp);
+    HRESULT BindType(PWSTR szName, uint lHashVal, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeInfo>))] out ITypeInfo ppTInfo, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeComp>))] out ITypeComp ppTComp);
 }

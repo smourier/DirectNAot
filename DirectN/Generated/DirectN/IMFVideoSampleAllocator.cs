@@ -24,5 +24,5 @@ public partial interface IMFVideoSampleAllocator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocator-allocatesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateSample(out IMFSample ppSample);
+    HRESULT AllocateSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] out IMFSample ppSample);
 }

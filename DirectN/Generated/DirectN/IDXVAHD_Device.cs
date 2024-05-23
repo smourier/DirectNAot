@@ -44,5 +44,5 @@ public partial interface IDXVAHD_Device
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-idxvahd_device-createvideoprocessor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessor(in Guid pVPGuid, out IDXVAHD_VideoProcessor ppVideoProcessor);
+    HRESULT CreateVideoProcessor(in Guid pVPGuid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXVAHD_VideoProcessor>))] out IDXVAHD_VideoProcessor ppVideoProcessor);
 }

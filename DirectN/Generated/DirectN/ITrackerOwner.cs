@@ -17,5 +17,5 @@ public partial interface ITrackerOwner
     HRESULT SetTrackerValue(TrackerHandle handle, nint value);
     
     [PreserveSig]
-    byte TryGetSafeTrackerValue(TrackerHandle handle, out nint returnValue);
+    byte TryGetSafeTrackerValue(TrackerHandle handle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint returnValue);
 }

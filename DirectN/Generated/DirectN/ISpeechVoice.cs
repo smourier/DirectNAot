@@ -6,11 +6,11 @@ public partial interface ISpeechVoice : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Status(out ISpeechVoiceStatus Status);
+    HRESULT get_Status([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechVoiceStatus>))] out ISpeechVoiceStatus Status);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Voice(out ISpeechObjectToken Voice);
+    HRESULT get_Voice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken Voice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,7 +18,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioOutput(out ISpeechObjectToken AudioOutput);
+    HRESULT get_AudioOutput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken>))] out ISpeechObjectToken AudioOutput);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioOutputStream(out ISpeechBaseStream AudioOutputStream);
+    HRESULT get_AudioOutputStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechBaseStream>))] out ISpeechBaseStream AudioOutputStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -110,11 +110,11 @@ public partial interface ISpeechVoice : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVoices(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens ObjectTokens);
+    HRESULT GetVoices(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens ObjectTokens);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudioOutputs(BSTR RequiredAttributes, BSTR OptionalAttributes, out ISpeechObjectTokens ObjectTokens);
+    HRESULT GetAudioOutputs(BSTR RequiredAttributes, BSTR OptionalAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectTokens>))] out ISpeechObjectTokens ObjectTokens);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -8,7 +8,7 @@ public partial interface ID3D11Linker
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11linker-link
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Link(ID3D11ModuleInstance pEntry, PSTR pEntryName, PSTR pTargetName, uint uFlags, out ID3DBlob ppShaderBlob, nint /* optional ID3DBlob* */ ppErrorBuffer);
+    HRESULT Link(ID3D11ModuleInstance pEntry, PSTR pEntryName, PSTR pTargetName, uint uFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DBlob>))] out ID3DBlob ppShaderBlob, nint /* optional ID3DBlob* */ ppErrorBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11linker-uselibrary
     [PreserveSig]

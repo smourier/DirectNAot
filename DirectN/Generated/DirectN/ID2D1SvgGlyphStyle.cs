@@ -12,7 +12,7 @@ public partial interface ID2D1SvgGlyphStyle : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1svgglyphstyle-getfill
     [PreserveSig]
-    void GetFill(out ID2D1Brush brush);
+    void GetFill([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Brush>))] out ID2D1Brush brush);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1svgglyphstyle-setstroke
     [PreserveSig]

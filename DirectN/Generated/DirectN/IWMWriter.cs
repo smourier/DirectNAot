@@ -28,7 +28,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-getinputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputProps(uint dwInputNum, out IWMInputMediaProps ppInput);
+    HRESULT GetInputProps(uint dwInputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMInputMediaProps>))] out IWMInputMediaProps ppInput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-setinputprops
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-getinputformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputFormat(uint dwInputNumber, uint dwFormatNumber, out IWMInputMediaProps pProps);
+    HRESULT GetInputFormat(uint dwInputNumber, uint dwFormatNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMInputMediaProps>))] out IWMInputMediaProps pProps);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-beginwriting
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-allocatesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateSample(uint dwSampleSize, out INSSBuffer ppSample);
+    HRESULT AllocateSample(uint dwSampleSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-writesample
     [PreserveSig]

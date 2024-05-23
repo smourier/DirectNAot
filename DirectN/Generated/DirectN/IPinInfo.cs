@@ -6,19 +6,19 @@ public partial interface IPinInfo : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Pin(out nint ppUnk);
+    HRESULT get_Pin([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ConnectedTo(out IDispatch ppUnk);
+    HRESULT get_ConnectedTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ConnectionMediaType(out IDispatch ppUnk);
+    HRESULT get_ConnectionMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_FilterInfo(out IDispatch ppUnk);
+    HRESULT get_FilterInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface IPinInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MediaTypes(out IDispatch ppUnk);
+    HRESULT get_MediaTypes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

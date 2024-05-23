@@ -9,7 +9,7 @@ public partial interface IDirectXVideoProcessor
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessor-getvideoprocessorservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoProcessorService(out IDirectXVideoProcessorService ppService);
+    HRESULT GetVideoProcessorService([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectXVideoProcessorService>))] out IDirectXVideoProcessorService ppService);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessor-getcreationparameters
     [PreserveSig]

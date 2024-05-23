@@ -19,5 +19,5 @@ public partial interface IWICDdsEncoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicddsencoder-createnewframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNewFrame(out IWICBitmapFrameEncode ppIFrameEncode, out uint pArrayIndex, out uint pMipLevel, out uint pSliceIndex);
+    HRESULT CreateNewFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapFrameEncode>))] out IWICBitmapFrameEncode ppIFrameEncode, out uint pArrayIndex, out uint pMipLevel, out uint pSliceIndex);
 }

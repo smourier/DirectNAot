@@ -14,12 +14,12 @@ public partial interface ITuningSpaceContainer : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-get__newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT NewEnum);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT NewEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT varIndex, out ITuningSpace TuningSpace);
+    HRESULT get_Item(VARIANT varIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpace>))] out ITuningSpace TuningSpace);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-put_item
     [PreserveSig]
@@ -29,16 +29,16 @@ public partial interface ITuningSpaceContainer : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-tuningspacesforclsid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TuningSpacesForCLSID(BSTR SpaceCLSID, out ITuningSpaces NewColl);
+    HRESULT TuningSpacesForCLSID(BSTR SpaceCLSID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpaces>))] out ITuningSpaces NewColl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT _TuningSpacesForCLSID2(in Guid SpaceCLSID, out ITuningSpaces NewColl);
+    HRESULT _TuningSpacesForCLSID2(in Guid SpaceCLSID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpaces>))] out ITuningSpaces NewColl);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-tuningspacesforname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TuningSpacesForName(BSTR Name, out ITuningSpaces NewColl);
+    HRESULT TuningSpacesForName(BSTR Name, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpaces>))] out ITuningSpaces NewColl);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-findid
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface ITuningSpaceContainer : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-get_enumtuningspaces
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_EnumTuningSpaces(out IEnumTuningSpaces ppEnum);
+    HRESULT get_EnumTuningSpaces([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumTuningSpaces>))] out IEnumTuningSpaces ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspacecontainer-remove
     [PreserveSig]

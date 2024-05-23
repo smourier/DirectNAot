@@ -10,9 +10,9 @@ public partial interface IDxcOptimizer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAvailablePass(uint index, out IDxcOptimizerPass ppResult);
+    HRESULT GetAvailablePass(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcOptimizerPass>))] out IDxcOptimizerPass ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RunOptimizer(IDxcBlob pBlob, [In][MarshalUsing(CountElementName = nameof(optionCount))] PWSTR[] ppOptions, uint optionCount, out IDxcBlob pOutputModule, nint /* optional IDxcBlobEncoding* */ ppOutputText);
+    HRESULT RunOptimizer(IDxcBlob pBlob, [In][MarshalUsing(CountElementName = nameof(optionCount))] PWSTR[] ppOptions, uint optionCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob pOutputModule, nint /* optional IDxcBlobEncoding* */ ppOutputText);
 }

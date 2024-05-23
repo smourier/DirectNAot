@@ -9,5 +9,5 @@ public partial interface IWMGetSecureChannel
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmgetsecurechannel-getpeersecurechannelinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPeerSecureChannelInterface(out IWMSecureChannel ppPeer);
+    HRESULT GetPeerSecureChannelInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMSecureChannel>))] out IWMSecureChannel ppPeer);
 }

@@ -8,20 +8,20 @@ public partial interface IWMPMediaCollection2 : IWMPMediaCollection
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-createquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT createQuery(out IWMPQuery ppQuery);
+    HRESULT createQuery([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPQuery>))] out IWMPQuery ppQuery);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getplaylistbyquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getPlaylistByQuery(IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, out IWMPPlaylist ppPlaylist);
+    HRESULT getPlaylistByQuery(IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getstringcollectionbyquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getStringCollectionByQuery(BSTR bstrAttribute, IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, out IWMPStringCollection ppStringCollection);
+    HRESULT getStringCollectionByQuery(BSTR bstrAttribute, IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPStringCollection>))] out IWMPStringCollection ppStringCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getbyattributeandmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getByAttributeAndMediaType(BSTR bstrAttribute, BSTR bstrValue, BSTR bstrMediaType, out IWMPPlaylist ppMediaItems);
+    HRESULT getByAttributeAndMediaType(BSTR bstrAttribute, BSTR bstrValue, BSTR bstrMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppMediaItems);
 }

@@ -14,7 +14,7 @@ public partial interface IWICMetadataBlockWriter : IWICMetadataBlockReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-getwriterbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWriterByIndex(uint nIndex, out IWICMetadataWriter ppIMetadataWriter);
+    HRESULT GetWriterByIndex(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataWriter>))] out IWICMetadataWriter ppIMetadataWriter);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockwriter-addwriter
     [PreserveSig]

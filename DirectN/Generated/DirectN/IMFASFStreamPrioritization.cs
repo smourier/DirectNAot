@@ -29,5 +29,5 @@ public partial interface IMFASFStreamPrioritization
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamprioritization-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMFASFStreamPrioritization ppIStreamPrioritization);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamPrioritization>))] out IMFASFStreamPrioritization ppIStreamPrioritization);
 }

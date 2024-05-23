@@ -14,5 +14,5 @@ public partial interface IMFContentDecryptionModuleFactory
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulefactory-createcontentdecryptionmoduleaccess
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateContentDecryptionModuleAccess(PWSTR keySystem, [In][MarshalUsing(CountElementName = nameof(numConfigurations))] IPropertyStore[] configurations, uint numConfigurations, out IMFContentDecryptionModuleAccess contentDecryptionModuleAccess);
+    HRESULT CreateContentDecryptionModuleAccess(PWSTR keySystem, [In][MarshalUsing(CountElementName = nameof(numConfigurations))] IPropertyStore[] configurations, uint numConfigurations, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentDecryptionModuleAccess>))] out IMFContentDecryptionModuleAccess contentDecryptionModuleAccess);
 }

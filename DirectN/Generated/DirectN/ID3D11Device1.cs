@@ -8,7 +8,7 @@ public partial interface ID3D11Device1 : ID3D11Device
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11device1-getimmediatecontext1
     [PreserveSig]
-    void GetImmediateContext1(out ID3D11DeviceContext1 ppImmediateContext);
+    void GetImmediateContext1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11DeviceContext1>))] out ID3D11DeviceContext1 ppImmediateContext);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11device1-createdeferredcontext1
     [PreserveSig]

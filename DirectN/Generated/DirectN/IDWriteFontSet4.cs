@@ -12,5 +12,5 @@ public partial interface IDWriteFontSet4 : IDWriteFontSet3
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset4-getmatchingfonts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMatchingFonts(PWSTR familyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, DWRITE_FONT_SIMULATIONS allowedSimulations, out IDWriteFontSet4 matchingFonts);
+    HRESULT GetMatchingFonts(PWSTR familyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, DWRITE_FONT_SIMULATIONS allowedSimulations, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet4>))] out IDWriteFontSet4 matchingFonts);
 }

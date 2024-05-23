@@ -9,5 +9,5 @@ public partial interface IActivationFactory : IInspectable
     // https://learn.microsoft.com/windows/win32/api/activation/nf-activation-iactivationfactory-activateinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateInstance(out IInspectable instance);
+    HRESULT ActivateInstance([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInspectable>))] out IInspectable instance);
 }

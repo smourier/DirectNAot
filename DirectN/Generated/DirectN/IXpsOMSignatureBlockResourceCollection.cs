@@ -14,7 +14,7 @@ public partial interface IXpsOMSignatureBlockResourceCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsignatureblockresourcecollection-getat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAt(uint index, out IXpsOMSignatureBlockResource signatureBlockResource);
+    HRESULT GetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResource>))] out IXpsOMSignatureBlockResource signatureBlockResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsignatureblockresourcecollection-insertat
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IXpsOMSignatureBlockResourceCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomsignatureblockresourcecollection-getbypartname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetByPartName(IOpcPartUri partName, out IXpsOMSignatureBlockResource signatureBlockResource);
+    HRESULT GetByPartName(IOpcPartUri partName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResource>))] out IXpsOMSignatureBlockResource signatureBlockResource);
 }

@@ -10,7 +10,7 @@ public partial interface ISpeechGrammarRule : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_InitialState(out ISpeechGrammarRuleState State);
+    HRESULT get_InitialState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleState>))] out ISpeechGrammarRuleState State);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,5 +30,5 @@ public partial interface ISpeechGrammarRule : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddState(out ISpeechGrammarRuleState State);
+    HRESULT AddState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleState>))] out ISpeechGrammarRuleState State);
 }

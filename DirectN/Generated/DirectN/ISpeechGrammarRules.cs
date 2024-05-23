@@ -10,15 +10,15 @@ public partial interface ISpeechGrammarRules : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindRule(VARIANT RuleNameOrId, out ISpeechGrammarRule Rule);
+    HRESULT FindRule(VARIANT RuleNameOrId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRule>))] out ISpeechGrammarRule Rule);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(int Index, out ISpeechGrammarRule Rule);
+    HRESULT Item(int Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRule>))] out ISpeechGrammarRule Rule);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out nint EnumVARIANT);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint EnumVARIANT);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface ISpeechGrammarRules : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(BSTR RuleName, SpeechRuleAttributes Attributes, int RuleId, out ISpeechGrammarRule Rule);
+    HRESULT Add(BSTR RuleName, SpeechRuleAttributes Attributes, int RuleId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRule>))] out ISpeechGrammarRule Rule);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

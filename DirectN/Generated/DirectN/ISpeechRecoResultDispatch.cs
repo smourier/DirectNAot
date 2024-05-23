@@ -6,11 +6,11 @@ public partial interface ISpeechRecoResultDispatch : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RecoContext(out ISpeechRecoContext RecoContext);
+    HRESULT get_RecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoContext>))] out ISpeechRecoContext RecoContext);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Times(out ISpeechRecoResultTimes Times);
+    HRESULT get_Times([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoResultTimes>))] out ISpeechRecoResultTimes Times);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,19 +18,19 @@ public partial interface ISpeechRecoResultDispatch : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioFormat(out ISpeechAudioFormat Format);
+    HRESULT get_AudioFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat>))] out ISpeechAudioFormat Format);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_PhraseInfo(out ISpeechPhraseInfo PhraseInfo);
+    HRESULT get_PhraseInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseInfo>))] out ISpeechPhraseInfo PhraseInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Alternates(int RequestCount, int StartElement, int Elements, out ISpeechPhraseAlternates Alternates);
+    HRESULT Alternates(int RequestCount, int StartElement, int Elements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseAlternates>))] out ISpeechPhraseAlternates Alternates);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Audio(int StartElement, int Elements, out ISpeechMemoryStream Stream);
+    HRESULT Audio(int StartElement, int Elements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechMemoryStream>))] out ISpeechMemoryStream Stream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

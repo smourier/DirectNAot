@@ -13,7 +13,7 @@ public partial interface IWMPCdrom : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdrom-get_playlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_playlist(out IWMPPlaylist ppPlaylist);
+    HRESULT get_playlist([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdrom-eject
     [PreserveSig]

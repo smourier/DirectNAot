@@ -61,7 +61,7 @@ public partial interface IWMPPlayer4 : IWMPCore3
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplayer4-get_playerapplication
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_playerApplication(out IWMPPlayerApplication ppIWMPPlayerApplication);
+    HRESULT get_playerApplication([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlayerApplication>))] out IWMPPlayerApplication ppIWMPPlayerApplication);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplayer4-openplayer
     [PreserveSig]

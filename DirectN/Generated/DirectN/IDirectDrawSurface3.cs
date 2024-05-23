@@ -42,7 +42,7 @@ public partial interface IDirectDrawSurface3
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttachedSurface(ref DDSCAPS param0, out IDirectDrawSurface3 param1);
+    HRESULT GetAttachedSurface(ref DDSCAPS param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface3>))] out IDirectDrawSurface3 param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -54,7 +54,7 @@ public partial interface IDirectDrawSurface3
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipper(out IDirectDrawClipper param0);
+    HRESULT GetClipper([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] out IDirectDrawClipper param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -74,7 +74,7 @@ public partial interface IDirectDrawSurface3
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPalette(out IDirectDrawPalette param0);
+    HRESULT GetPalette([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] out IDirectDrawPalette param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

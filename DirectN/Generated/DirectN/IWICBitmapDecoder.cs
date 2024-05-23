@@ -24,7 +24,7 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getdecoderinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecoderInfo(out IWICBitmapDecoderInfo ppIDecoderInfo);
+    HRESULT GetDecoderInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapDecoderInfo>))] out IWICBitmapDecoderInfo ppIDecoderInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-copypalette
     [PreserveSig]
@@ -34,12 +34,12 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getmetadataqueryreader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataQueryReader(out IWICMetadataQueryReader ppIMetadataQueryReader);
+    HRESULT GetMetadataQueryReader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataQueryReader>))] out IWICMetadataQueryReader ppIMetadataQueryReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getpreview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPreview(out IWICBitmapSource ppIBitmapSource);
+    HRESULT GetPreview([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] out IWICBitmapSource ppIBitmapSource);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getcolorcontexts
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getthumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetThumbnail(out IWICBitmapSource ppIThumbnail);
+    HRESULT GetThumbnail([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] out IWICBitmapSource ppIThumbnail);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getframecount
     [PreserveSig]
@@ -59,5 +59,5 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrame(uint index, out IWICBitmapFrameDecode ppIBitmapFrame);
+    HRESULT GetFrame(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapFrameDecode>))] out IWICBitmapFrameDecode ppIBitmapFrame);
 }

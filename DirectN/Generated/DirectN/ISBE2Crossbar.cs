@@ -14,15 +14,15 @@ public partial interface ISBE2Crossbar
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2crossbar-getinitialprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInitialProfile(out ISBE2MediaTypeProfile ppProfile);
+    HRESULT GetInitialProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISBE2MediaTypeProfile>))] out ISBE2MediaTypeProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2crossbar-setoutputprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputProfile(ISBE2MediaTypeProfile pProfile, out uint pcOutputPins, out IPin ppOutputPins);
+    HRESULT SetOutputProfile(ISBE2MediaTypeProfile pProfile, out uint pcOutputPins, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppOutputPins);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2crossbar-enumstreams
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumStreams(out ISBE2EnumStream ppStreams);
+    HRESULT EnumStreams([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISBE2EnumStream>))] out ISBE2EnumStream ppStreams);
 }

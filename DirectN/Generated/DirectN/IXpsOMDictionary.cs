@@ -9,7 +9,7 @@ public partial interface IXpsOMDictionary
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getowner
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOwner(out nint owner);
+    HRESULT GetOwner([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint owner);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getcount
     [PreserveSig]
@@ -19,12 +19,12 @@ public partial interface IXpsOMDictionary
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAt(uint index, out PWSTR key, out IXpsOMShareable entry);
+    HRESULT GetAt(uint index, out PWSTR key, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] out IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getbykey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetByKey(PWSTR key, IXpsOMShareable beforeEntry, out IXpsOMShareable entry);
+    HRESULT GetByKey(PWSTR key, IXpsOMShareable beforeEntry, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] out IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getindex
     [PreserveSig]
@@ -54,5 +54,5 @@ public partial interface IXpsOMDictionary
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMDictionary dictionary);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDictionary>))] out IXpsOMDictionary dictionary);
 }

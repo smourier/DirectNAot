@@ -14,7 +14,7 @@ public partial interface IXMLElement : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_parent(out IXMLElement ppParent);
+    HRESULT get_parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXMLElement>))] out IXMLElement ppParent);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface IXMLElement : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_children(out IXMLElementCollection pp);
+    HRESULT get_children([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXMLElementCollection>))] out IXMLElementCollection pp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

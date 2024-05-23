@@ -44,12 +44,12 @@ public partial interface IMFSample : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-getbufferbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBufferByIndex(uint dwIndex, out IMFMediaBuffer ppBuffer);
+    HRESULT GetBufferByIndex(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] out IMFMediaBuffer ppBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-converttocontiguousbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConvertToContiguousBuffer(out IMFMediaBuffer ppBuffer);
+    HRESULT ConvertToContiguousBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] out IMFMediaBuffer ppBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-addbuffer
     [PreserveSig]

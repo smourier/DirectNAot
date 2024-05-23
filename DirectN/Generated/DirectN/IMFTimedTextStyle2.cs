@@ -6,11 +6,11 @@ public partial interface IMFTimedTextStyle2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRuby(out IMFTimedTextRuby ruby);
+    HRESULT GetRuby([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextRuby>))] out IMFTimedTextRuby ruby);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBouten(out IMFTimedTextBouten bouten);
+    HRESULT GetBouten([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextBouten>))] out IMFTimedTextBouten bouten);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

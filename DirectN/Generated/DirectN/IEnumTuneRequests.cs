@@ -8,7 +8,7 @@ public partial interface IEnumTuneRequests
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumtunerequests-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, out ITuneRequest ppprop, out uint pcelt);
+    HRESULT Next(uint celt, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest ppprop, out uint pcelt);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumtunerequests-skip
     [PreserveSig]
@@ -23,5 +23,5 @@ public partial interface IEnumTuneRequests
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ienumtunerequests-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumTuneRequests ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumTuneRequests>))] out IEnumTuneRequests ppenum);
 }

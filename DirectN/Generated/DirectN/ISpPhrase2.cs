@@ -14,5 +14,5 @@ public partial interface ISpPhrase2 : ISpPhrase
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudio(uint ulStartElement, uint cElements, out ISpStreamFormat ppStream);
+    HRESULT GetAudio(uint ulStartElement, uint cElements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpStreamFormat>))] out ISpStreamFormat ppStream);
 }

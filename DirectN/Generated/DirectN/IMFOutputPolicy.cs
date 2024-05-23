@@ -9,7 +9,7 @@ public partial interface IMFOutputPolicy : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfoutputpolicy-generaterequiredschemas
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateRequiredSchemas(uint dwAttributes, Guid guidOutputSubType, in Guid rgGuidProtectionSchemasSupported, uint cProtectionSchemasSupported, out IMFCollection ppRequiredProtectionSchemas);
+    HRESULT GenerateRequiredSchemas(uint dwAttributes, Guid guidOutputSubType, in Guid rgGuidProtectionSchemasSupported, uint cProtectionSchemasSupported, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCollection>))] out IMFCollection ppRequiredProtectionSchemas);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfoutputpolicy-getoriginatorid
     [PreserveSig]

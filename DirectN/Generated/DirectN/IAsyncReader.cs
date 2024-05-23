@@ -9,7 +9,7 @@ public partial interface IAsyncReader
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-requestallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RequestAllocator(IMemAllocator pPreferred, in ALLOCATOR_PROPERTIES pProps, out IMemAllocator ppActual);
+    HRESULT RequestAllocator(IMemAllocator pPreferred, in ALLOCATOR_PROPERTIES pProps, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))] out IMemAllocator ppActual);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-request
     [PreserveSig]

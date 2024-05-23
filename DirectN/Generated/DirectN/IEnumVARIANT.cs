@@ -23,5 +23,5 @@ public partial interface IEnumVARIANT
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ienumvariant-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumVARIANT ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT ppEnum);
 }

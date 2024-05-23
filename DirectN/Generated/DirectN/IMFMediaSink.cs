@@ -14,7 +14,7 @@ public partial interface IMFMediaSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-addstreamsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddStreamSink(uint dwStreamSinkIdentifier, IMFMediaType pMediaType, out IMFStreamSink ppStreamSink);
+    HRESULT AddStreamSink(uint dwStreamSinkIdentifier, IMFMediaType pMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamSink>))] out IMFStreamSink ppStreamSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-removestreamsink
     [PreserveSig]
@@ -29,12 +29,12 @@ public partial interface IMFMediaSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-getstreamsinkbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSinkByIndex(uint dwIndex, out IMFStreamSink ppStreamSink);
+    HRESULT GetStreamSinkByIndex(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamSink>))] out IMFStreamSink ppStreamSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-getstreamsinkbyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSinkById(uint dwStreamSinkIdentifier, out IMFStreamSink ppStreamSink);
+    HRESULT GetStreamSinkById(uint dwStreamSinkIdentifier, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamSink>))] out IMFStreamSink ppStreamSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-setpresentationclock
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface IMFMediaSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-getpresentationclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPresentationClock(out IMFPresentationClock ppPresentationClock);
+    HRESULT GetPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock>))] out IMFPresentationClock ppPresentationClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-shutdown
     [PreserveSig]

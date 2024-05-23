@@ -29,5 +29,5 @@ public partial interface IStreamBufferRecordingAttribute
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferrecordingattribute-enumattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAttributes(out IEnumStreamBufferRecordingAttrib ppIEnumStreamBufferAttrib);
+    HRESULT EnumAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumStreamBufferRecordingAttrib>))] out IEnumStreamBufferRecordingAttrib ppIEnumStreamBufferAttrib);
 }

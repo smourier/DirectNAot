@@ -24,5 +24,5 @@ public partial interface IEnumComponentTypes
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumcomponenttypes-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumComponentTypes ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumComponentTypes>))] out IEnumComponentTypes ppEnum);
 }

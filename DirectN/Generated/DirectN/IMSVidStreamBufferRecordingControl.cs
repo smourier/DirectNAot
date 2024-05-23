@@ -44,5 +44,5 @@ public partial interface IMSVidStreamBufferRecordingControl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambufferrecordingcontrol-get_recordingattribute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RecordingAttribute(out nint pRecordingAttribute);
+    HRESULT get_RecordingAttribute([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pRecordingAttribute);
 }

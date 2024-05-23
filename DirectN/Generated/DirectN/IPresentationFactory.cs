@@ -16,5 +16,5 @@ public partial interface IPresentationFactory
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationfactory-createpresentationmanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePresentationManager(out IPresentationManager ppPresentationManager);
+    HRESULT CreatePresentationManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPresentationManager>))] out IPresentationManager ppPresentationManager);
 }

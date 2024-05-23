@@ -24,5 +24,5 @@ public partial interface ISBE2EnumStream
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2enumstream-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out ISBE2EnumStream ppIEnumStream);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISBE2EnumStream>))] out ISBE2EnumStream ppIEnumStream);
 }

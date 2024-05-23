@@ -19,17 +19,17 @@ public partial interface IMoniker : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-reduce
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reduce(IBindCtx pbc, uint dwReduceHowFar, ref IMoniker ppmkToLeft, out IMoniker ppmkReduced);
+    HRESULT Reduce(IBindCtx pbc, uint dwReduceHowFar, ref IMoniker ppmkToLeft, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkReduced);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-composewith
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ComposeWith(IMoniker pmkRight, [MarshalAs(UnmanagedType.U4)] bool fOnlyIfNotGeneric, out IMoniker ppmkComposite);
+    HRESULT ComposeWith(IMoniker pmkRight, [MarshalAs(UnmanagedType.U4)] bool fOnlyIfNotGeneric, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkComposite);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-enum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Enum([MarshalAs(UnmanagedType.U4)] bool fForward, out IEnumMoniker ppenumMoniker);
+    HRESULT Enum([MarshalAs(UnmanagedType.U4)] bool fForward, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppenumMoniker);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-isequal
     [PreserveSig]
@@ -54,17 +54,17 @@ public partial interface IMoniker : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-inverse
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Inverse(out IMoniker ppmk);
+    HRESULT Inverse([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmk);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-commonprefixwith
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CommonPrefixWith(IMoniker pmkOther, out IMoniker ppmkPrefix);
+    HRESULT CommonPrefixWith(IMoniker pmkOther, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkPrefix);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-relativepathto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RelativePathTo(IMoniker pmkOther, out IMoniker ppmkRelPath);
+    HRESULT RelativePathTo(IMoniker pmkOther, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkRelPath);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-getdisplayname
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface IMoniker : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-parsedisplayname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ParseDisplayName(IBindCtx pbc, IMoniker pmkToLeft, PWSTR pszDisplayName, out uint pchEaten, out IMoniker ppmkOut);
+    HRESULT ParseDisplayName(IBindCtx pbc, IMoniker pmkToLeft, PWSTR pszDisplayName, out uint pchEaten, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkOut);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-issystemmoniker
     [PreserveSig]

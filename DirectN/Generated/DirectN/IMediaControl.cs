@@ -34,17 +34,17 @@ public partial interface IMediaControl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-imediacontrol-addsourcefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSourceFilter(BSTR strFilename, out IDispatch ppUnk);
+    HRESULT AddSourceFilter(BSTR strFilename, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-imediacontrol-get_filtercollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_FilterCollection(out IDispatch ppUnk);
+    HRESULT get_FilterCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-imediacontrol-get_regfiltercollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RegFilterCollection(out IDispatch ppUnk);
+    HRESULT get_RegFilterCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-imediacontrol-stopwhenready
     [PreserveSig]

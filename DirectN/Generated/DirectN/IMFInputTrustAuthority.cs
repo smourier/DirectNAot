@@ -14,12 +14,12 @@ public partial interface IMFInputTrustAuthority
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfinputtrustauthority-requestaccess
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RequestAccess(MFPOLICYMANAGER_ACTION Action, out IMFActivate ppContentEnablerActivate);
+    HRESULT RequestAccess(MFPOLICYMANAGER_ACTION Action, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFActivate>))] out IMFActivate ppContentEnablerActivate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfinputtrustauthority-getpolicy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPolicy(MFPOLICYMANAGER_ACTION Action, out IMFOutputPolicy ppPolicy);
+    HRESULT GetPolicy(MFPOLICYMANAGER_ACTION Action, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFOutputPolicy>))] out IMFOutputPolicy ppPolicy);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfinputtrustauthority-bindaccess
     [PreserveSig]

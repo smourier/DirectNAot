@@ -6,7 +6,7 @@ public partial interface IFeed2 : IFeed
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetItemByEffectiveId(int itemEffectiveId, out IDispatch disp);
+    HRESULT GetItemByEffectiveId(int itemEffectiveId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch disp);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

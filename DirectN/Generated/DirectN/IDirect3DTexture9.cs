@@ -13,7 +13,7 @@ public partial interface IDirect3DTexture9 : IDirect3DBaseTexture9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dtexture9-getsurfacelevel
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurfaceLevel(uint Level, out IDirect3DSurface9 ppSurfaceLevel);
+    HRESULT GetSurfaceLevel(uint Level, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurfaceLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dtexture9-lockrect
     [PreserveSig]

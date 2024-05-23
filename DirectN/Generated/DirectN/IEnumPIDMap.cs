@@ -24,5 +24,5 @@ public partial interface IEnumPIDMap
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ienumpidmap-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumPIDMap ppIEnumPIDMap);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumPIDMap>))] out IEnumPIDMap ppIEnumPIDMap);
 }

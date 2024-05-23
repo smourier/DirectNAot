@@ -8,7 +8,7 @@ public partial interface IDXGIFactory : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-enumadapters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumAdapters(uint Adapter, out IDXGIAdapter ppAdapter);
+    HRESULT EnumAdapters(uint Adapter, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIAdapter>))] out IDXGIAdapter ppAdapter);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-makewindowassociation
     [PreserveSig]
@@ -23,10 +23,10 @@ public partial interface IDXGIFactory : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-createswapchain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSwapChain(nint pDevice, in DXGI_SWAP_CHAIN_DESC pDesc, out IDXGISwapChain ppSwapChain);
+    HRESULT CreateSwapChain(nint pDevice, in DXGI_SWAP_CHAIN_DESC pDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain>))] out IDXGISwapChain ppSwapChain);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory-createsoftwareadapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSoftwareAdapter(HMODULE Module, out IDXGIAdapter ppAdapter);
+    HRESULT CreateSoftwareAdapter(HMODULE Module, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIAdapter>))] out IDXGIAdapter ppAdapter);
 }

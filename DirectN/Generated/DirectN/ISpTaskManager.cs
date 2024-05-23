@@ -18,11 +18,11 @@ public partial interface ISpTaskManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateReoccurringTask(ISpTask pTask, nint pvTaskData, HANDLE hCompEvent, out ISpNotifySink ppTaskCtrl);
+    HRESULT CreateReoccurringTask(ISpTask pTask, nint pvTaskData, HANDLE hCompEvent, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpNotifySink>))] out ISpNotifySink ppTaskCtrl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateThreadControl(ISpThreadTask pTask, nint pvTaskData, int nPriority, out ISpThreadControl ppTaskCtrl);
+    HRESULT CreateThreadControl(ISpThreadTask pTask, nint pvTaskData, int nPriority, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpThreadControl>))] out ISpThreadControl ppTaskCtrl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

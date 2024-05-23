@@ -24,5 +24,5 @@ public partial interface IEnumTuningSpaces
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumtuningspaces-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumTuningSpaces ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumTuningSpaces>))] out IEnumTuningSpaces ppEnum);
 }

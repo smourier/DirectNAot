@@ -14,7 +14,7 @@ public partial interface IMSVidStreamBufferSource : IMSVidFilePlayback
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource-get_recordingattribute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RecordingAttribute(out nint pRecordingAttribute);
+    HRESULT get_RecordingAttribute([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pRecordingAttribute);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource-currentratings
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IMSVidStreamBufferSource : IMSVidFilePlayback
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource-get_sbesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SBESource(out nint sbeFilter);
+    HRESULT get_SBESource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint sbeFilter);
 }

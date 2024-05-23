@@ -10,5 +10,5 @@ public partial interface IRegFilterInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Filter(out IDispatch ppUnk);
+    HRESULT Filter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppUnk);
 }

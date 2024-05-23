@@ -9,22 +9,22 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-createstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStream(PWSTR pwcsName, STGM grfMode, uint reserved1, uint reserved2, out IStream ppstm);
+    HRESULT CreateStream(PWSTR pwcsName, STGM grfMode, uint reserved1, uint reserved2, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-openstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenStream(PWSTR pwcsName, nint /* optional void* */ reserved1, STGM grfMode, uint reserved2, out IStream ppstm);
+    HRESULT OpenStream(PWSTR pwcsName, nint /* optional void* */ reserved1, STGM grfMode, uint reserved2, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-createstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorage(PWSTR pwcsName, STGM grfMode, uint reserved1, uint reserved2, out IStorage ppstg);
+    HRESULT CreateStorage(PWSTR pwcsName, STGM grfMode, uint reserved1, uint reserved2, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] out IStorage ppstg);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-openstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenStorage(PWSTR pwcsName, IStorage pstgPriority, STGM grfMode, in ushort snbExclude, uint reserved, out IStorage ppstg);
+    HRESULT OpenStorage(PWSTR pwcsName, IStorage pstgPriority, STGM grfMode, in ushort snbExclude, uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] out IStorage ppstg);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-copyto
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-enumelements
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumElements(uint? reserved1, nint /* optional void* */ reserved2, uint? reserved3, out IEnumSTATSTG ppenum);
+    HRESULT EnumElements(uint? reserved1, nint /* optional void* */ reserved2, uint? reserved3, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSTATSTG>))] out IEnumSTATSTG ppenum);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-destroyelement
     [PreserveSig]

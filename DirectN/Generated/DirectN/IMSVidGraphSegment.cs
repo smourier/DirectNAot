@@ -6,7 +6,7 @@ public partial interface IMSVidGraphSegment : IPersist
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Init(out nint pInit);
+    HRESULT get_Init([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pInit);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,11 +14,11 @@ public partial interface IMSVidGraphSegment : IPersist
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumFilters(out IEnumFilters pNewEnum);
+    HRESULT EnumFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumFilters>))] out IEnumFilters pNewEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Container(out IMSVidGraphSegmentContainer ppCtl);
+    HRESULT get_Container([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegmentContainer>))] out IMSVidGraphSegmentContainer ppCtl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

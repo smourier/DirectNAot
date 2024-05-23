@@ -13,7 +13,7 @@ public partial interface ID3D10EffectDepthStencilViewVariable : ID3D10EffectVari
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-getdepthstencil
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDepthStencil(out ID3D10DepthStencilView ppResource);
+    HRESULT GetDepthStencil([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10DepthStencilView>))] out ID3D10DepthStencilView ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-setdepthstencilarray
     [PreserveSig]

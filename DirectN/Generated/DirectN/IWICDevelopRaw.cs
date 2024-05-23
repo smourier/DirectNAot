@@ -19,7 +19,7 @@ public partial interface IWICDevelopRaw : IWICBitmapFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-getcurrentparameterset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentParameterSet(out IPropertyBag2 ppCurrentParameterSet);
+    HRESULT GetCurrentParameterSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2>))] out IPropertyBag2 ppCurrentParameterSet);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-setexposurecompensation
     [PreserveSig]

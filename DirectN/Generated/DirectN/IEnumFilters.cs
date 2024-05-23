@@ -24,5 +24,5 @@ public partial interface IEnumFilters
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumfilters-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumFilters ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumFilters>))] out IEnumFilters ppEnum);
 }

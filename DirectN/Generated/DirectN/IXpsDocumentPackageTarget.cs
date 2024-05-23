@@ -9,12 +9,12 @@ public partial interface IXpsDocumentPackageTarget
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_1/nf-xpsobjectmodel_1-ixpsdocumentpackagetarget-getxpsompackagewriter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetXpsOMPackageWriter(IOpcPartUri documentSequencePartName, IOpcPartUri discardControlPartName, out IXpsOMPackageWriter packageWriter);
+    HRESULT GetXpsOMPackageWriter(IOpcPartUri documentSequencePartName, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_1/nf-xpsobjectmodel_1-ixpsdocumentpackagetarget-getxpsomfactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetXpsOMFactory(out IXpsOMObjectFactory xpsFactory);
+    HRESULT GetXpsOMFactory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMObjectFactory>))] out IXpsOMObjectFactory xpsFactory);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_1/nf-xpsobjectmodel_1-ixpsdocumentpackagetarget-getxpstype
     [PreserveSig]

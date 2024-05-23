@@ -9,5 +9,5 @@ public partial interface IMFSinkWriterEx : IMFSinkWriter
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsinkwriterex-gettransformforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformForStream(uint dwStreamIndex, uint dwTransformIndex, nint /* optional Guid* */ pGuidCategory, out IMFTransform ppTransform);
+    HRESULT GetTransformForStream(uint dwStreamIndex, uint dwTransformIndex, nint /* optional Guid* */ pGuidCategory, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTransform>))] out IMFTransform ppTransform);
 }

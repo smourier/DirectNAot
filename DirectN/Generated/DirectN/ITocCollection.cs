@@ -14,7 +14,7 @@ public partial interface ITocCollection
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoccollection-getentrybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEntryByIndex(uint dwEntryIndex, out IToc ppToc);
+    HRESULT GetEntryByIndex(uint dwEntryIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] out IToc ppToc);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoccollection-addentry
     [PreserveSig]

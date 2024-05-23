@@ -14,7 +14,7 @@ public partial interface IMFMuxStreamMediaTypeManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmuxstreammediatypemanager-getmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaType(uint dwMuxStreamIndex, out IMFMediaType ppMediaType);
+    HRESULT GetMediaType(uint dwMuxStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmuxstreammediatypemanager-getstreamconfigurationcount
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface ISpeechRecognizerStatus : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioStatus(out ISpeechAudioStatus AudioStatus);
+    HRESULT get_AudioStatus([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioStatus>))] out ISpeechAudioStatus AudioStatus);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

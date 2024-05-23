@@ -89,7 +89,7 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFontResource(out IXpsOMFontResource fontResource);
+    HRESULT GetFontResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-setfontresource
     [PreserveSig]
@@ -109,12 +109,12 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getfillbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFillBrush(out IXpsOMBrush fillBrush);
+    HRESULT GetFillBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush fillBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getfillbrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFillBrushLocal(out IXpsOMBrush fillBrush);
+    HRESULT GetFillBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush fillBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-setfillbrushlocal
     [PreserveSig]
@@ -134,10 +134,10 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getglyphseditor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGlyphsEditor(out IXpsOMGlyphsEditor editor);
+    HRESULT GetGlyphsEditor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGlyphsEditor>))] out IXpsOMGlyphsEditor editor);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMGlyphs glyphs);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGlyphs>))] out IXpsOMGlyphs glyphs);
 }

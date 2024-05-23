@@ -8,10 +8,10 @@ public partial interface IWMReaderAllocatorEx
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderallocatorex-allocateforstreamex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateForStreamEx(ushort wStreamNum, uint cbBuffer, out INSSBuffer ppBuffer, uint dwFlags, ulong cnsSampleTime, ulong cnsSampleDuration, nint pvContext);
+    HRESULT AllocateForStreamEx(ushort wStreamNum, uint cbBuffer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer, uint dwFlags, ulong cnsSampleTime, ulong cnsSampleDuration, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderallocatorex-allocateforoutputex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateForOutputEx(uint dwOutputNum, uint cbBuffer, out INSSBuffer ppBuffer, uint dwFlags, ulong cnsSampleTime, ulong cnsSampleDuration, nint pvContext);
+    HRESULT AllocateForOutputEx(uint dwOutputNum, uint cbBuffer, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer, uint dwFlags, ulong cnsSampleTime, ulong cnsSampleDuration, nint pvContext);
 }

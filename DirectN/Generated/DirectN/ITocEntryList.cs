@@ -14,7 +14,7 @@ public partial interface ITocEntryList
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentrylist-getentrybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEntryByIndex(uint dwEntryIndex, out ITocEntry ppEntry);
+    HRESULT GetEntryByIndex(uint dwEntryIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocEntry>))] out ITocEntry ppEntry);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentrylist-addentry
     [PreserveSig]

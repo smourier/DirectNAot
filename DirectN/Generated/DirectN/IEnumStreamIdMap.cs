@@ -24,5 +24,5 @@ public partial interface IEnumStreamIdMap
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumstreamidmap-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumStreamIdMap ppIEnumStreamIdMap);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumStreamIdMap>))] out IEnumStreamIdMap ppIEnumStreamIdMap);
 }

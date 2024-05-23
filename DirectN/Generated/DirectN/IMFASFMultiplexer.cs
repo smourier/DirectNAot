@@ -29,7 +29,7 @@ public partial interface IMFASFMultiplexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-getnextpacket
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextPacket(out uint pdwStatusFlags, out IMFSample ppIPacket);
+    HRESULT GetNextPacket(out uint pdwStatusFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] out IMFSample ppIPacket);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-flush
     [PreserveSig]

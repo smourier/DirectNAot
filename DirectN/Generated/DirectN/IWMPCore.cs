@@ -33,17 +33,17 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_controls
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_controls(out IWMPControls ppControl);
+    HRESULT get_controls([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPControls>))] out IWMPControls ppControl);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_settings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_settings(out IWMPSettings ppSettings);
+    HRESULT get_settings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSettings>))] out IWMPSettings ppSettings);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_currentmedia
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentMedia(out IWMPMedia ppMedia);
+    HRESULT get_currentMedia([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] out IWMPMedia ppMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-put_currentmedia
     [PreserveSig]
@@ -53,12 +53,12 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_mediacollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_mediaCollection(out IWMPMediaCollection ppMediaCollection);
+    HRESULT get_mediaCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMediaCollection>))] out IWMPMediaCollection ppMediaCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_playlistcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_playlistCollection(out IWMPPlaylistCollection ppPlaylistCollection);
+    HRESULT get_playlistCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylistCollection>))] out IWMPPlaylistCollection ppPlaylistCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_versioninfo
     [PreserveSig]
@@ -73,12 +73,12 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_network
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_network(out IWMPNetwork ppQNI);
+    HRESULT get_network([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPNetwork>))] out IWMPNetwork ppQNI);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_currentplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentPlaylist(out IWMPPlaylist ppPL);
+    HRESULT get_currentPlaylist([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPL);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-put_currentplaylist
     [PreserveSig]
@@ -88,12 +88,12 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_cdromcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_cdromCollection(out IWMPCdromCollection ppCdromCollection);
+    HRESULT get_cdromCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromCollection>))] out IWMPCdromCollection ppCdromCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_closedcaption
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_closedCaption(out IWMPClosedCaption ppClosedCaption);
+    HRESULT get_closedCaption([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPClosedCaption>))] out IWMPClosedCaption ppClosedCaption);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_isonline
     [PreserveSig]
@@ -103,7 +103,7 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_error
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_error(out IWMPError ppError);
+    HRESULT get_error([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPError>))] out IWMPError ppError);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_status
     [PreserveSig]

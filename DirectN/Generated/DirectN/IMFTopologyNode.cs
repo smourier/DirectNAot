@@ -14,7 +14,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject(out nint ppObject);
+    HRESULT GetObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getnodetype
     [PreserveSig]
@@ -54,12 +54,12 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInput(uint dwInputIndex, out IMFTopologyNode ppUpstreamNode, out uint pdwOutputIndexOnUpstreamNode);
+    HRESULT GetInput(uint dwInputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] out IMFTopologyNode ppUpstreamNode, out uint pdwOutputIndexOnUpstreamNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutput(uint dwOutputIndex, out IMFTopologyNode ppDownstreamNode, out uint pdwInputIndexOnDownstreamNode);
+    HRESULT GetOutput(uint dwOutputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] out IMFTopologyNode ppDownstreamNode, out uint pdwInputIndexOnDownstreamNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-setoutputpreftype
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getoutputpreftype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputPrefType(uint dwOutputIndex, out IMFMediaType ppType);
+    HRESULT GetOutputPrefType(uint dwOutputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-setinputpreftype
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getinputpreftype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputPrefType(uint dwInputIndex, out IMFMediaType ppType);
+    HRESULT GetInputPrefType(uint dwInputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-clonefrom
     [PreserveSig]

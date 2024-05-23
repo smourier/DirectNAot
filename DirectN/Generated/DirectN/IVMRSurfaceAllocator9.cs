@@ -19,7 +19,7 @@ public partial interface IVMRSurfaceAllocator9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocator9-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface(nuint dwUserID, uint SurfaceIndex, uint SurfaceFlags, out IDirect3DSurface9 lplpSurface);
+    HRESULT GetSurface(nuint dwUserID, uint SurfaceIndex, uint SurfaceFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 lplpSurface);
     
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocator9-advisenotify
     [PreserveSig]

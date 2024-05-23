@@ -16,10 +16,10 @@ public partial interface IXMLElementCollection : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__newEnum(out nint ppUnk);
+    HRESULT get__newEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/msxml/nf-msxml-ixmlelementcollection-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(VARIANT var1, VARIANT var2, out IDispatch ppDisp);
+    HRESULT item(VARIANT var1, VARIANT var2, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppDisp);
 }

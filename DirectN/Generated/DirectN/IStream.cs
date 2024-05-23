@@ -49,5 +49,5 @@ public partial interface IStream : ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IStream ppstm);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
 }

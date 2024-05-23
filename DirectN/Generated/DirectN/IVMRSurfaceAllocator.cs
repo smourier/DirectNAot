@@ -9,7 +9,7 @@ public partial interface IVMRSurfaceAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocator-allocatesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateSurface(nuint dwUserID, in VMRALLOCATIONINFO lpAllocInfo, ref uint lpdwActualBuffers, out IDirectDrawSurface7 lplpSurface);
+    HRESULT AllocateSurface(nuint dwUserID, in VMRALLOCATIONINFO lpAllocInfo, ref uint lpdwActualBuffers, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 lplpSurface);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocator-freesurface
     [PreserveSig]

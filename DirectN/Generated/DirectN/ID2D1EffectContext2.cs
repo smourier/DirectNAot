@@ -6,9 +6,9 @@ public partial interface ID2D1EffectContext2 : ID2D1EffectContext1
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateColorContextFromDxgiColorSpace(DXGI_COLOR_SPACE_TYPE colorSpace, out ID2D1ColorContext1 colorContext);
+    HRESULT CreateColorContextFromDxgiColorSpace(DXGI_COLOR_SPACE_TYPE colorSpace, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ColorContext1>))] out ID2D1ColorContext1 colorContext);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateColorContextFromSimpleColorProfile(in D2D1_SIMPLE_COLOR_PROFILE simpleProfile, out ID2D1ColorContext1 colorContext);
+    HRESULT CreateColorContextFromSimpleColorProfile(in D2D1_SIMPLE_COLOR_PROFILE simpleProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ColorContext1>))] out ID2D1ColorContext1 colorContext);
 }

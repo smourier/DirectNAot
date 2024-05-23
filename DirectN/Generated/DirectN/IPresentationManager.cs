@@ -7,12 +7,12 @@ public partial interface IPresentationManager
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddBufferFromResource(nint resource, out IPresentationBuffer presentationBuffer);
+    HRESULT AddBufferFromResource(nint resource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPresentationBuffer>))] out IPresentationBuffer presentationBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-createpresentationsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePresentationSurface(HANDLE compositionSurfaceHandle, out IPresentationSurface presentationSurface);
+    HRESULT CreatePresentationSurface(HANDLE compositionSurfaceHandle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPresentationSurface>))] out IPresentationSurface presentationSurface);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getnextpresentid
     [PreserveSig]
@@ -66,5 +66,5 @@ public partial interface IPresentationManager
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getnextpresentstatistics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextPresentStatistics(out IPresentStatistics nextPresentStatistics);
+    HRESULT GetNextPresentStatistics([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPresentStatistics>))] out IPresentStatistics nextPresentStatistics);
 }

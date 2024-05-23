@@ -22,7 +22,7 @@ public partial interface IMFExtendedCameraIntrinsics
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIntrinsicModelByIndex(uint dwIndex, out IMFExtendedCameraIntrinsicModel ppIntrinsicModel);
+    HRESULT GetIntrinsicModelByIndex(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFExtendedCameraIntrinsicModel>))] out IMFExtendedCameraIntrinsicModel ppIntrinsicModel);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

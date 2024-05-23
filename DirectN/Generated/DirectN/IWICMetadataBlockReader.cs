@@ -19,10 +19,10 @@ public partial interface IWICMetadataBlockReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getreaderbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReaderByIndex(uint nIndex, out IWICMetadataReader ppIMetadataReader);
+    HRESULT GetReaderByIndex(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataReader>))] out IWICMetadataReader ppIMetadataReader);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatablockreader-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IEnumUnknown ppIEnumMetadata);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumUnknown>))] out IEnumUnknown ppIEnumMetadata);
 }

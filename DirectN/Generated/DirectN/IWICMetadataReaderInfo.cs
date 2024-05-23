@@ -19,5 +19,5 @@ public partial interface IWICMetadataReaderInfo : IWICMetadataHandlerInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareaderinfo-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(out IWICMetadataReader ppIReader);
+    HRESULT CreateInstance([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataReader>))] out IWICMetadataReader ppIReader);
 }

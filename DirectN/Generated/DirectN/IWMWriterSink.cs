@@ -18,7 +18,7 @@ public partial interface IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-allocatedataunit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateDataUnit(uint cbDataUnit, out INSSBuffer ppDataUnit);
+    HRESULT AllocateDataUnit(uint cbDataUnit, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppDataUnit);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-ondataunit
     [PreserveSig]

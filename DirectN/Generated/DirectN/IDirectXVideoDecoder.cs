@@ -9,7 +9,7 @@ public partial interface IDirectXVideoDecoder
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getvideodecoderservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoDecoderService(out IDirectXVideoDecoderService ppService);
+    HRESULT GetVideoDecoderService([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectXVideoDecoderService>))] out IDirectXVideoDecoderService ppService);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getcreationparameters
     [PreserveSig]

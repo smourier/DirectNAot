@@ -14,5 +14,5 @@ public partial interface IMMDeviceCollection
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevicecollection-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Item(uint nDevice, out IMMDevice ppDevice);
+    HRESULT Item(uint nDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMMDevice>))] out IMMDevice ppDevice);
 }

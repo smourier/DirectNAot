@@ -24,5 +24,5 @@ public partial interface IEnumString
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-ienumstring-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumString ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumString>))] out IEnumString ppenum);
 }

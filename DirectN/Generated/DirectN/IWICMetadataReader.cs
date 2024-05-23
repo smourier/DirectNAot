@@ -14,7 +14,7 @@ public partial interface IWICMetadataReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getmetadatahandlerinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataHandlerInfo(out IWICMetadataHandlerInfo ppIHandler);
+    HRESULT GetMetadataHandlerInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataHandlerInfo>))] out IWICMetadataHandlerInfo ppIHandler);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getcount
     [PreserveSig]
@@ -34,5 +34,5 @@ public partial interface IWICMetadataReader
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareader-getenumerator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnumerator(out IWICEnumMetadataItem ppIEnumMetadata);
+    HRESULT GetEnumerator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICEnumMetadataItem>))] out IWICEnumMetadataItem ppIEnumMetadata);
 }

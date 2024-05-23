@@ -22,11 +22,11 @@ public partial interface ISpeechPhraseRule : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Parent(out ISpeechPhraseRule Parent);
+    HRESULT get_Parent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseRule>))] out ISpeechPhraseRule Parent);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Children(out ISpeechPhraseRules Children);
+    HRESULT get_Children([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseRules>))] out ISpeechPhraseRules Children);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

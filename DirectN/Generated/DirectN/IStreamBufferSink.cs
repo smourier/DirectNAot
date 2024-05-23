@@ -14,7 +14,7 @@ public partial interface IStreamBufferSink
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambuffersink-createrecorder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRecorder(PWSTR pszFilename, uint dwRecordType, out nint pRecordingIUnknown);
+    HRESULT CreateRecorder(PWSTR pszFilename, uint dwRecordType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pRecordingIUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambuffersink-isprofilelocked
     [PreserveSig]

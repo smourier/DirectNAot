@@ -9,5 +9,5 @@ public partial interface IDWriteFontFace7 : IDWriteFontFace6
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePaintReader(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, DWRITE_PAINT_FEATURE_LEVEL paintFeatureLevel, out IDWritePaintReader paintReader);
+    HRESULT CreatePaintReader(DWRITE_GLYPH_IMAGE_FORMATS glyphImageFormat, DWRITE_PAINT_FEATURE_LEVEL paintFeatureLevel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWritePaintReader>))] out IDWritePaintReader paintReader);
 }

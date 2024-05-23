@@ -24,5 +24,5 @@ public partial interface IEnumSTATSTG
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ienumstatstg-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumSTATSTG ppenum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSTATSTG>))] out IEnumSTATSTG ppenum);
 }

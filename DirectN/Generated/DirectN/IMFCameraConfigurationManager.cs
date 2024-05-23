@@ -8,7 +8,7 @@ public partial interface IMFCameraConfigurationManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameraconfigurationmanager-loaddefaults
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadDefaults(IMFAttributes cameraAttributes, out IMFCameraControlDefaultsCollection configurations);
+    HRESULT LoadDefaults(IMFAttributes cameraAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraControlDefaultsCollection>))] out IMFCameraControlDefaultsCollection configurations);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameraconfigurationmanager-savedefaults
     [PreserveSig]

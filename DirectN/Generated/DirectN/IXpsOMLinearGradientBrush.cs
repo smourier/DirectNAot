@@ -29,5 +29,5 @@ public partial interface IXpsOMLinearGradientBrush : IXpsOMGradientBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomlineargradientbrush-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMLinearGradientBrush linearGradientBrush);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMLinearGradientBrush>))] out IXpsOMLinearGradientBrush linearGradientBrush);
 }

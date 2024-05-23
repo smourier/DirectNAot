@@ -19,10 +19,10 @@ public partial interface IOpcSignatureCustomObjectEnumerator
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectenumerator-getcurrent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrent(out IOpcSignatureCustomObject customObject);
+    HRESULT GetCurrent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObject>))] out IOpcSignatureCustomObject customObject);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectenumerator-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IOpcSignatureCustomObjectEnumerator copy);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObjectEnumerator>))] out IOpcSignatureCustomObjectEnumerator copy);
 }

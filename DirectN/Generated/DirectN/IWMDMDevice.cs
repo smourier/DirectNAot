@@ -48,7 +48,7 @@ public partial interface IWMDMDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice-enumstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumStorage(out IWMDMEnumStorage ppEnumStorage);
+    HRESULT EnumStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMEnumStorage>))] out IWMDMEnumStorage ppEnumStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmdevice-getformatsupport
     [PreserveSig]

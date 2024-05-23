@@ -10,7 +10,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecognizer(out ISpObjectToken ppRecognizer);
+    HRESULT GetRecognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken ppRecognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,19 +18,19 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputObjectToken(out ISpObjectToken ppToken);
+    HRESULT GetInputObjectToken([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken ppToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputStream(out ISpStreamFormat ppStream);
+    HRESULT GetInputStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpStreamFormat>))] out ISpStreamFormat ppStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRecoContext(out ISpRecoContext ppNewCtxt);
+    HRESULT CreateRecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoContext>))] out ISpRecoContext ppNewCtxt);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecoProfile(out ISpObjectToken ppToken);
+    HRESULT GetRecoProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken ppToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -13,7 +13,7 @@ public partial interface IDXGIOutputDuplication : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-acquirenextframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AcquireNextFrame(uint TimeoutInMilliseconds, out DXGI_OUTDUPL_FRAME_INFO pFrameInfo, out IDXGIResource ppDesktopResource);
+    HRESULT AcquireNextFrame(uint TimeoutInMilliseconds, out DXGI_OUTDUPL_FRAME_INFO pFrameInfo, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIResource>))] out IDXGIResource ppDesktopResource);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutputduplication-getframedirtyrects
     [PreserveSig]

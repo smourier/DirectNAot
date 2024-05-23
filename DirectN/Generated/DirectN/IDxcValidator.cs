@@ -6,5 +6,5 @@ public partial interface IDxcValidator
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Validate(IDxcBlob pShader, uint Flags, out IDxcOperationResult ppResult);
+    HRESULT Validate(IDxcBlob pShader, uint Flags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcOperationResult>))] out IDxcOperationResult ppResult);
 }

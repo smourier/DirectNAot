@@ -10,5 +10,5 @@ public partial interface ISpObjectWithToken
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObjectToken(out ISpObjectToken ppToken);
+    HRESULT GetObjectToken([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] out ISpObjectToken ppToken);
 }

@@ -14,7 +14,7 @@ public partial interface IDeviceTopology
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getconnector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnector(uint nIndex, out IConnector ppConnector);
+    HRESULT GetConnector(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IConnector>))] out IConnector ppConnector);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getsubunitcount
     [PreserveSig]
@@ -24,12 +24,12 @@ public partial interface IDeviceTopology
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getsubunit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubunit(uint nIndex, out ISubunit ppSubunit);
+    HRESULT GetSubunit(uint nIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISubunit>))] out ISubunit ppSubunit);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getpartbyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPartById(uint nId, out IPart ppPart);
+    HRESULT GetPartById(uint nId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPart>))] out IPart ppPart);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getdeviceid
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IDeviceTopology
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getsignalpath
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignalPath(IPart pIPartFrom, IPart pIPartTo, [MarshalAs(UnmanagedType.U4)] bool bRejectMixedPaths, out IPartsList ppParts);
+    HRESULT GetSignalPath(IPart pIPartFrom, IPart pIPartTo, [MarshalAs(UnmanagedType.U4)] bool bRejectMixedPaths, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPartsList>))] out IPartsList ppParts);
 }

@@ -8,17 +8,17 @@ public partial interface IWMProfileManager
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-createemptyprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateEmptyProfile(WMT_VERSION dwVersion, out IWMProfile ppProfile);
+    HRESULT CreateEmptyProfile(WMT_VERSION dwVersion, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] out IWMProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-loadprofilebyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadProfileByID(in Guid guidProfile, out IWMProfile ppProfile);
+    HRESULT LoadProfileByID(in Guid guidProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] out IWMProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-loadprofilebydata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadProfileByData(PWSTR pwszProfile, out IWMProfile ppProfile);
+    HRESULT LoadProfileByData(PWSTR pwszProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] out IWMProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-saveprofile
     [PreserveSig]
@@ -33,5 +33,5 @@ public partial interface IWMProfileManager
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-loadsystemprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadSystemProfile(uint dwProfileIndex, out IWMProfile ppProfile);
+    HRESULT LoadSystemProfile(uint dwProfileIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] out IWMProfile ppProfile);
 }

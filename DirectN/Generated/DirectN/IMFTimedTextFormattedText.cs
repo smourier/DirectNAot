@@ -18,5 +18,5 @@ public partial interface IMFTimedTextFormattedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextformattedtext-getsubformatting
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSubformatting(uint index, out uint firstChar, out uint charLength, out IMFTimedTextStyle style);
+    HRESULT GetSubformatting(uint index, out uint firstChar, out uint charLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextStyle>))] out IMFTimedTextStyle style);
 }

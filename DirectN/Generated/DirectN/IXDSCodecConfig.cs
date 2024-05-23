@@ -8,7 +8,7 @@ public partial interface IXDSCodecConfig
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-ixdscodecconfig-getsecurechannelobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSecureChannelObject(out nint ppUnkDRMSecureChannel);
+    HRESULT GetSecureChannelObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkDRMSecureChannel);
     
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-ixdscodecconfig-setpausebuffertime
     [PreserveSig]

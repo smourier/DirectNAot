@@ -6,7 +6,7 @@ public partial interface ISpeechPhraseAlternate : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RecoResult(out ISpeechRecoResult RecoResult);
+    HRESULT get_RecoResult([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoResult>))] out ISpeechRecoResult RecoResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -18,7 +18,7 @@ public partial interface ISpeechPhraseAlternate : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_PhraseInfo(out ISpeechPhraseInfo PhraseInfo);
+    HRESULT get_PhraseInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechPhraseInfo>))] out ISpeechPhraseInfo PhraseInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

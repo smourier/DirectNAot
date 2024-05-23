@@ -24,5 +24,5 @@ public partial interface IEnumPins
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumpins-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumPins ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumPins>))] out IEnumPins ppEnum);
 }

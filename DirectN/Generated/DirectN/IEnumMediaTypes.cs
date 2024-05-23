@@ -24,5 +24,5 @@ public partial interface IEnumMediaTypes
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienummediatypes-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IEnumMediaTypes ppEnum);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMediaTypes>))] out IEnumMediaTypes ppEnum);
 }

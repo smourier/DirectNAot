@@ -9,5 +9,5 @@ public partial interface IMFPresentationTimeSource : IMFClock
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationtimesource-getunderlyingclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnderlyingClock(out IMFClock ppClock);
+    HRESULT GetUnderlyingClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFClock>))] out IMFClock ppClock);
 }

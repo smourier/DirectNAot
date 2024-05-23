@@ -13,7 +13,7 @@ public partial interface IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-getstorageglobals
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStorageGlobals(out IMDSPStorageGlobals ppStorageGlobals);
+    HRESULT GetStorageGlobals([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorageGlobals>))] out IMDSPStorageGlobals ppStorageGlobals);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-getattributes
     [PreserveSig]
@@ -43,12 +43,12 @@ public partial interface IMDSPStorage
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-createstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorage(uint dwAttributes, nint /* optional WAVEFORMATEX* */ pFormat, PWSTR pwszName, out IMDSPStorage ppNewStorage);
+    HRESULT CreateStorage(uint dwAttributes, nint /* optional WAVEFORMATEX* */ pFormat, PWSTR pwszName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppNewStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-enumstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumStorage(out IMDSPEnumStorage ppEnumStorage);
+    HRESULT EnumStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPEnumStorage>))] out IMDSPEnumStorage ppEnumStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage-sendopaquecommand
     [PreserveSig]

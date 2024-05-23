@@ -8,10 +8,10 @@ public partial interface IWMPCore3 : IWMPCore2
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore3-newplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT newPlaylist(BSTR bstrName, BSTR bstrURL, out IWMPPlaylist ppPlaylist);
+    HRESULT newPlaylist(BSTR bstrName, BSTR bstrURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore3-newmedia
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT newMedia(BSTR bstrURL, out IWMPMedia ppMedia);
+    HRESULT newMedia(BSTR bstrURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] out IWMPMedia ppMedia);
 }

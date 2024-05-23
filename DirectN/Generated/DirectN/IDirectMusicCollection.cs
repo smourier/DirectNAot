@@ -6,7 +6,7 @@ public partial interface IDirectMusicCollection
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInstrument(uint dwPatch, out IDirectMusicInstrument ppInstrument);
+    HRESULT GetInstrument(uint dwPatch, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicInstrument>))] out IDirectMusicInstrument ppInstrument);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

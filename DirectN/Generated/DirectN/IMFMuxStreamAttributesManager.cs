@@ -14,5 +14,5 @@ public partial interface IMFMuxStreamAttributesManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmuxstreamattributesmanager-getattributes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributes(uint dwMuxStreamIndex, out IMFAttributes ppStreamAttributes);
+    HRESULT GetAttributes(uint dwMuxStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppStreamAttributes);
 }

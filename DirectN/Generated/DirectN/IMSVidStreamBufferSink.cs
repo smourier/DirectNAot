@@ -9,12 +9,12 @@ public partial interface IMSVidStreamBufferSink : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersink-get_contentrecorder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ContentRecorder(BSTR pszFilename, out IMSVidStreamBufferRecordingControl pRecordingIUnknown);
+    HRESULT get_ContentRecorder(BSTR pszFilename, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidStreamBufferRecordingControl>))] out IMSVidStreamBufferRecordingControl pRecordingIUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersink-get_referencerecorder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ReferenceRecorder(BSTR pszFilename, out IMSVidStreamBufferRecordingControl pRecordingIUnknown);
+    HRESULT get_ReferenceRecorder(BSTR pszFilename, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidStreamBufferRecordingControl>))] out IMSVidStreamBufferRecordingControl pRecordingIUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersink-get_sinkname
     [PreserveSig]
@@ -34,5 +34,5 @@ public partial interface IMSVidStreamBufferSink : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersink-get_sbesink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SBESink(out nint sbeConfig);
+    HRESULT get_SBESink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint sbeConfig);
 }

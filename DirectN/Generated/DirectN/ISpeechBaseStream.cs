@@ -6,7 +6,7 @@ public partial interface ISpeechBaseStream : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Format(out ISpeechAudioFormat AudioFormat);
+    HRESULT get_Format([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat>))] out ISpeechAudioFormat AudioFormat);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

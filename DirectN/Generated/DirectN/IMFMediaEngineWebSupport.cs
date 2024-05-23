@@ -13,7 +13,7 @@ public partial interface IMFMediaEngineWebSupport
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginewebsupport-connectwebaudio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectWebAudio(uint dwSampleRate, out IAudioSourceProvider ppSourceProvider);
+    HRESULT ConnectWebAudio(uint dwSampleRate, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSourceProvider>))] out IAudioSourceProvider ppSourceProvider);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginewebsupport-disconnectwebaudio
     [PreserveSig]

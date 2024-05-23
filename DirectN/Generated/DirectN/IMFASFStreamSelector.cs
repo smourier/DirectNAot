@@ -49,7 +49,7 @@ public partial interface IMFASFStreamSelector
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamselector-getoutputmutex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputMutex(uint dwOutputNum, uint dwMutexNum, out nint ppMutex);
+    HRESULT GetOutputMutex(uint dwOutputNum, uint dwMutexNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppMutex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfstreamselector-setoutputmutexselection
     [PreserveSig]

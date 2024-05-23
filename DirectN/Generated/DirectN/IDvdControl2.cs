@@ -9,17 +9,17 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playtitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayTitle(uint ulTitle, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayTitle(uint ulTitle, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playchapterintitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayChapterInTitle(uint ulTitle, uint ulChapter, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayChapterInTitle(uint ulTitle, uint ulChapter, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playattimeintitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayAtTimeInTitle(uint ulTitle, in DVD_HMSF_TIMECODE pStartTime, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayAtTimeInTitle(uint ulTitle, in DVD_HMSF_TIMECODE pStartTime, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-stop
     [PreserveSig]
@@ -29,52 +29,52 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-returnfromsubmenu
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReturnFromSubmenu(uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT ReturnFromSubmenu(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playattime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayAtTime(in DVD_HMSF_TIMECODE pTime, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayAtTime(in DVD_HMSF_TIMECODE pTime, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playchapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayChapter(uint ulChapter, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayChapter(uint ulChapter, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playprevchapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayPrevChapter(uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayPrevChapter(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-replaychapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReplayChapter(uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT ReplayChapter(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playnextchapter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayNextChapter(uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayNextChapter(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playforwards
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayForwards(double dSpeed, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayForwards(double dSpeed, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playbackwards
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayBackwards(double dSpeed, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayBackwards(double dSpeed, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-showmenu
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ShowMenu(DVD_MENU_ID MenuID, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT ShowMenu(DVD_MENU_ID MenuID, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-resume
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Resume(uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT Resume(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectrelativebutton
     [PreserveSig]
@@ -109,22 +109,22 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectaudiostream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SelectAudioStream(uint ulAudio, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SelectAudioStream(uint ulAudio, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectsubpicturestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SelectSubpictureStream(uint ulSubPicture, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SelectSubpictureStream(uint ulSubPicture, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setsubpicturestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSubpictureState([MarshalAs(UnmanagedType.U4)] bool bState, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SetSubpictureState([MarshalAs(UnmanagedType.U4)] bool bState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectangle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SelectAngle(uint ulAngle, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SelectAngle(uint ulAngle, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectparentallevel
     [PreserveSig]
@@ -164,7 +164,7 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playchaptersautostop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayChaptersAutoStop(uint ulTitle, uint ulChapter, uint ulChaptersToPlay, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayChaptersAutoStop(uint ulTitle, uint ulChapter, uint ulChaptersToPlay, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-acceptparentallevelchange
     [PreserveSig]
@@ -179,17 +179,17 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetState(IDvdState pState, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SetState(IDvdState pState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playperiodintitleautostop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayPeriodInTitleAutoStop(uint ulTitle, in DVD_HMSF_TIMECODE pStartTime, in DVD_HMSF_TIMECODE pEndTime, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT PlayPeriodInTitleAutoStop(uint ulTitle, in DVD_HMSF_TIMECODE pStartTime, in DVD_HMSF_TIMECODE pEndTime, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setgprm
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGPRM(uint ulIndex, ushort wValue, uint dwFlags, out IDvdCmd ppCmd);
+    HRESULT SetGPRM(uint ulIndex, ushort wValue, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectdefaultmenulanguage
     [PreserveSig]

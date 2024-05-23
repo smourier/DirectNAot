@@ -10,11 +10,11 @@ public partial interface IDirectMusic
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMusicBuffer(ref DMUS_BUFFERDESC pBufferDesc, out IDirectMusicBuffer ppBuffer, nint pUnkOuter);
+    HRESULT CreateMusicBuffer(ref DMUS_BUFFERDESC pBufferDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicBuffer>))] out IDirectMusicBuffer ppBuffer, nint pUnkOuter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePort(in Guid rclsidPort, ref DMUS_PORTPARAMS8 pPortParams, out IDirectMusicPort ppPort, nint pUnkOuter);
+    HRESULT CreatePort(in Guid rclsidPort, ref DMUS_PORTPARAMS8 pPortParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicPort>))] out IDirectMusicPort ppPort, nint pUnkOuter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,7 +22,7 @@ public partial interface IDirectMusic
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMasterClock(ref Guid pguidClock, out IReferenceClock ppReferenceClock);
+    HRESULT GetMasterClock(ref Guid pguidClock, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] out IReferenceClock ppReferenceClock);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

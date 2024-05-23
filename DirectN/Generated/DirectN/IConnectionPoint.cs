@@ -14,7 +14,7 @@ public partial interface IConnectionPoint
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iconnectionpoint-getconnectionpointcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnectionPointContainer(out IConnectionPointContainer ppCPC);
+    HRESULT GetConnectionPointContainer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IConnectionPointContainer>))] out IConnectionPointContainer ppCPC);
     
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iconnectionpoint-advise
     [PreserveSig]
@@ -29,5 +29,5 @@ public partial interface IConnectionPoint
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iconnectionpoint-enumconnections
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumConnections(out IEnumConnections ppEnum);
+    HRESULT EnumConnections([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumConnections>))] out IEnumConnections ppEnum);
 }

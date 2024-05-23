@@ -43,5 +43,5 @@ public partial interface IFilterMapper
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper-enummatchingfilters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMatchingFilters(out IEnumRegFilters ppEnum, uint dwMerit, [MarshalAs(UnmanagedType.U4)] bool bInputNeeded, Guid clsInMaj, Guid clsInSub, [MarshalAs(UnmanagedType.U4)] bool bRender, [MarshalAs(UnmanagedType.U4)] bool bOututNeeded, Guid clsOutMaj, Guid clsOutSub);
+    HRESULT EnumMatchingFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumRegFilters>))] out IEnumRegFilters ppEnum, uint dwMerit, [MarshalAs(UnmanagedType.U4)] bool bInputNeeded, Guid clsInMaj, Guid clsInSub, [MarshalAs(UnmanagedType.U4)] bool bRender, [MarshalAs(UnmanagedType.U4)] bool bOututNeeded, Guid clsOutMaj, Guid clsOutSub);
 }

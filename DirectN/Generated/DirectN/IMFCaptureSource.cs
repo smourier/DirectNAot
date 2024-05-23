@@ -49,7 +49,7 @@ public partial interface IMFCaptureSource
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesource-getcurrentdevicemediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentDeviceMediaType(uint dwSourceStreamIndex, out IMFMediaType ppMediaType);
+    HRESULT GetCurrentDeviceMediaType(uint dwSourceStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesource-getdevicestreamcount
     [PreserveSig]

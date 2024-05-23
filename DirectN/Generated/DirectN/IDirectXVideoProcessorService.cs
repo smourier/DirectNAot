@@ -44,5 +44,5 @@ public partial interface IDirectXVideoProcessorService : IDirectXVideoAccelerati
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessorservice-createvideoprocessor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessor(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, D3DFORMAT RenderTargetFormat, uint MaxNumSubStreams, out IDirectXVideoProcessor ppVidProcess);
+    HRESULT CreateVideoProcessor(in Guid VideoProcDeviceGuid, in DXVA2_VideoDesc pVideoDesc, D3DFORMAT RenderTargetFormat, uint MaxNumSubStreams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectXVideoProcessor>))] out IDirectXVideoProcessor ppVidProcess);
 }

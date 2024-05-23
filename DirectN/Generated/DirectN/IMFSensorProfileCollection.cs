@@ -12,7 +12,7 @@ public partial interface IMFSensorProfileCollection
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-getprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProfile(uint Index, out IMFSensorProfile ppProfile);
+    HRESULT GetProfile(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorProfile>))] out IMFSensorProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-addprofile
     [PreserveSig]
@@ -22,7 +22,7 @@ public partial interface IMFSensorProfileCollection
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-findprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindProfile(in SENSORPROFILEID ProfileId, out IMFSensorProfile ppProfile);
+    HRESULT FindProfile(in SENSORPROFILEID ProfileId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorProfile>))] out IMFSensorProfile ppProfile);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-removeprofilebyindex
     [PreserveSig]

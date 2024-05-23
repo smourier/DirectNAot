@@ -16,5 +16,5 @@ public partial interface ID2D1Device1 : ID2D1Device
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, out ID2D1DeviceContext1 deviceContext1);
+    HRESULT CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS options, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1DeviceContext1>))] out ID2D1DeviceContext1 deviceContext1);
 }

@@ -28,5 +28,5 @@ public partial interface IDWriteTextAnalysisSource
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissource-getnumbersubstitution
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNumberSubstitution(uint textPosition, out uint textLength, out IDWriteNumberSubstitution numberSubstitution);
+    HRESULT GetNumberSubstitution(uint textPosition, out uint textLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteNumberSubstitution>))] out IDWriteNumberSubstitution numberSubstitution);
 }

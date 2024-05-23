@@ -38,7 +38,7 @@ public partial interface IMFVirtualCamera : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-getmediasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaSource(out IMFMediaSource ppMediaSource);
+    HRESULT GetMediaSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSource>))] out IMFMediaSource ppMediaSource);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-sendcameraproperty
     [PreserveSig]
@@ -48,12 +48,12 @@ public partial interface IMFVirtualCamera : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-createsyncevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSyncEvent(in Guid kseventSet, uint kseventId, uint kseventFlags, HANDLE eventHandle, out IMFCameraSyncObject cameraSyncObject);
+    HRESULT CreateSyncEvent(in Guid kseventSet, uint kseventId, uint kseventFlags, HANDLE eventHandle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraSyncObject>))] out IMFCameraSyncObject cameraSyncObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-createsyncsemaphore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSyncSemaphore(in Guid kseventSet, uint kseventId, uint kseventFlags, HANDLE semaphoreHandle, int semaphoreAdjustment, out IMFCameraSyncObject cameraSyncObject);
+    HRESULT CreateSyncSemaphore(in Guid kseventSet, uint kseventId, uint kseventFlags, HANDLE semaphoreHandle, int semaphoreAdjustment, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraSyncObject>))] out IMFCameraSyncObject cameraSyncObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-shutdown
     [PreserveSig]

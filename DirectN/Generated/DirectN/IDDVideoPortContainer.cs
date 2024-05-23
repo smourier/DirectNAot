@@ -6,7 +6,7 @@ public partial interface IDDVideoPortContainer
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoPort(uint param0, ref DDVIDEOPORTDESC param1, out IDirectDrawVideoPort param2, nint param3);
+    HRESULT CreateVideoPort(uint param0, ref DDVIDEOPORTDESC param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawVideoPort>))] out IDirectDrawVideoPort param2, nint param3);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

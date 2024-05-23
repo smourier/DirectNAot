@@ -19,7 +19,7 @@ public partial interface IMFMediaTypeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getmediatypebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaTypeByIndex(uint dwIndex, out IMFMediaType ppType);
+    HRESULT GetMediaTypeByIndex(uint dwIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-setcurrentmediatype
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IMFMediaTypeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getcurrentmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentMediaType(out IMFMediaType ppMediaType);
+    HRESULT GetCurrentMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] out IMFMediaType ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getmajortype
     [PreserveSig]

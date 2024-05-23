@@ -39,10 +39,10 @@ public partial interface IMFCaptureEngine
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-getsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSink(MF_CAPTURE_ENGINE_SINK_TYPE mfCaptureEngineSinkType, out IMFCaptureSink ppSink);
+    HRESULT GetSink(MF_CAPTURE_ENGINE_SINK_TYPE mfCaptureEngineSinkType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCaptureSink>))] out IMFCaptureSink ppSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-getsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSource(out IMFCaptureSource ppSource);
+    HRESULT GetSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCaptureSource>))] out IMFCaptureSource ppSource);
 }

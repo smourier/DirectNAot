@@ -8,7 +8,7 @@ public partial interface IMFSensorTransformFactory
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFactoryAttributes(out IMFAttributes ppAttributes);
+    HRESULT GetFactoryAttributes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-initializefactory
     [PreserveSig]
@@ -23,10 +23,10 @@ public partial interface IMFSensorTransformFactory
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-gettransforminformation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformInformation(uint TransformIndex, out Guid pguidTransformId, out IMFAttributes ppAttributes, out IMFCollection ppStreamInformation);
+    HRESULT GetTransformInformation(uint TransformIndex, out Guid pguidTransformId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] out IMFAttributes ppAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCollection>))] out IMFCollection ppStreamInformation);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensortransformfactory-createtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransform(in Guid guidSensorTransformID, IMFAttributes? pAttributes, out IMFDeviceTransform ppDeviceMFT);
+    HRESULT CreateTransform(in Guid guidSensorTransformID, IMFAttributes? pAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFDeviceTransform>))] out IMFDeviceTransform ppDeviceMFT);
 }

@@ -14,7 +14,7 @@ public partial interface IMFByteStreamHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamhandler-endcreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndCreateObject(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
+    HRESULT EndCreateObject(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamhandler-cancelobjectcreation
     [PreserveSig]

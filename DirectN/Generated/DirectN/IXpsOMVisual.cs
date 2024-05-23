@@ -9,12 +9,12 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-gettransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransform(out IXpsOMMatrixTransform matrixTransform);
+    HRESULT GetTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform matrixTransform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-gettransformlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformLocal(out IXpsOMMatrixTransform matrixTransform);
+    HRESULT GetTransformLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] out IXpsOMMatrixTransform matrixTransform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-settransformlocal
     [PreserveSig]
@@ -34,12 +34,12 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getclipgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipGeometry(out IXpsOMGeometry clipGeometry);
+    HRESULT GetClipGeometry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] out IXpsOMGeometry clipGeometry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getclipgeometrylocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipGeometryLocal(out IXpsOMGeometry clipGeometry);
+    HRESULT GetClipGeometryLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] out IXpsOMGeometry clipGeometry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-setclipgeometrylocal
     [PreserveSig]
@@ -69,12 +69,12 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getopacitymaskbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOpacityMaskBrush(out IXpsOMBrush opacityMaskBrush);
+    HRESULT GetOpacityMaskBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush opacityMaskBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getopacitymaskbrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOpacityMaskBrushLocal(out IXpsOMBrush opacityMaskBrush);
+    HRESULT GetOpacityMaskBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] out IXpsOMBrush opacityMaskBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-setopacitymaskbrushlocal
     [PreserveSig]
@@ -114,7 +114,7 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-gethyperlinknavigateuri
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHyperlinkNavigateUri(out IUri hyperlinkUri);
+    HRESULT GetHyperlinkNavigateUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IUri>))] out IUri hyperlinkUri);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-sethyperlinknavigateuri
     [PreserveSig]

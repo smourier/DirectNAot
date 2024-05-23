@@ -62,7 +62,7 @@ public partial interface IXFeedsManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Normalize(IStream pStreamIn, out IStream ppStreamOut);
+    HRESULT Normalize(IStream pStreamIn, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppStreamOut);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

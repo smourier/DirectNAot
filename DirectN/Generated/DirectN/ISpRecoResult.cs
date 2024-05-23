@@ -14,7 +14,7 @@ public partial interface ISpRecoResult : ISpPhrase
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAudio(uint ulStartElement, uint cElements, out ISpStreamFormat ppStream);
+    HRESULT GetAudio(uint ulStartElement, uint cElements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpStreamFormat>))] out ISpStreamFormat ppStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,5 +30,5 @@ public partial interface ISpRecoResult : ISpPhrase
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecoContext(out ISpRecoContext ppRecoContext);
+    HRESULT GetRecoContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpRecoContext>))] out ISpRecoContext ppRecoContext);
 }

@@ -13,5 +13,5 @@ public partial interface IWMPLibraryServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibraryservices-getlibrarybytype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getLibraryByType(WMPLibraryType wmplt, int lIndex, out IWMPLibrary ppIWMPLibrary);
+    HRESULT getLibraryByType(WMPLibraryType wmplt, int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPLibrary>))] out IWMPLibrary ppIWMPLibrary);
 }

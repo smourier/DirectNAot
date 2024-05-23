@@ -9,12 +9,12 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getowner
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOwner(out IXpsOMDocument document);
+    HRESULT GetOwner([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocument>))] out IXpsOMDocument document);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getpage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPage(out IXpsOMPage page);
+    HRESULT GetPage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-setpage
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getstoryfragmentsresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStoryFragmentsResource(out IXpsOMStoryFragmentsResource storyFragmentsResource);
+    HRESULT GetStoryFragmentsResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMStoryFragmentsResource>))] out IXpsOMStoryFragmentsResource storyFragmentsResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-setstoryfragmentsresource
     [PreserveSig]
@@ -54,7 +54,7 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getprintticketresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPrintTicketResource(out IXpsOMPrintTicketResource printTicketResource);
+    HRESULT GetPrintTicketResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] out IXpsOMPrintTicketResource printTicketResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-setprintticketresource
     [PreserveSig]
@@ -64,7 +64,7 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getthumbnailresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetThumbnailResource(out IXpsOMImageResource imageResource);
+    HRESULT GetThumbnailResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] out IXpsOMImageResource imageResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-setthumbnailresource
     [PreserveSig]
@@ -74,12 +74,12 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-collectlinktargets
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CollectLinkTargets(out IXpsOMNameCollection linkTargets);
+    HRESULT CollectLinkTargets([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMNameCollection>))] out IXpsOMNameCollection linkTargets);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-collectpartresources
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CollectPartResources(out IXpsOMPartResources partResources);
+    HRESULT CollectPartResources([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPartResources>))] out IXpsOMPartResources partResources);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-hasrestrictedfonts
     [PreserveSig]
@@ -89,5 +89,5 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IXpsOMPageReference pageReference);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPageReference>))] out IXpsOMPageReference pageReference);
 }

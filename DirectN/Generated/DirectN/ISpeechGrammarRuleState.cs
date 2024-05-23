@@ -6,11 +6,11 @@ public partial interface ISpeechGrammarRuleState : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Rule(out ISpeechGrammarRule Rule);
+    HRESULT get_Rule([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRule>))] out ISpeechGrammarRule Rule);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Transitions(out ISpeechGrammarRuleStateTransitions Transitions);
+    HRESULT get_Transitions([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleStateTransitions>))] out ISpeechGrammarRuleStateTransitions Transitions);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

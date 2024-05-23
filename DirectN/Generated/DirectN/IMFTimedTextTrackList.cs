@@ -13,10 +13,10 @@ public partial interface IMFTimedTextTrackList
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttracklist-gettrack
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTrack(uint index, out IMFTimedTextTrack track);
+    HRESULT GetTrack(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrack>))] out IMFTimedTextTrack track);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttracklist-gettrackbyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTrackById(uint trackId, out IMFTimedTextTrack track);
+    HRESULT GetTrackById(uint trackId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrack>))] out IMFTimedTextTrack track);
 }

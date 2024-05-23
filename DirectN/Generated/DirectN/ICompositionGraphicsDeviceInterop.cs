@@ -8,7 +8,7 @@ public partial interface ICompositionGraphicsDeviceInterop
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiongraphicsdeviceinterop-getrenderingdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRenderingDevice(out nint value);
+    HRESULT GetRenderingDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint value);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.composition.interop/nf-windows-ui-composition-interop-icompositiongraphicsdeviceinterop-setrenderingdevice
     [PreserveSig]

@@ -9,12 +9,12 @@ public partial interface IBaseFilter : IMediaFilter
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ibasefilter-enumpins
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumPins(out IEnumPins ppEnum);
+    HRESULT EnumPins([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumPins>))] out IEnumPins ppEnum);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ibasefilter-findpin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindPin(PWSTR Id, out IPin ppPin);
+    HRESULT FindPin(PWSTR Id, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppPin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ibasefilter-queryfilterinfo
     [PreserveSig]

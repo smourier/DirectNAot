@@ -278,7 +278,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-psgetshader
     [PreserveSig]
-    void PSGetShader(out ID3D11PixelShader ppPixelShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void PSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11PixelShader>))] out ID3D11PixelShader ppPixelShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-psgetsamplers
     [PreserveSig]
@@ -286,7 +286,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-vsgetshader
     [PreserveSig]
-    void VSGetShader(out ID3D11VertexShader ppVertexShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void VSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VertexShader>))] out ID3D11VertexShader ppVertexShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-psgetconstantbuffers
     [PreserveSig]
@@ -294,7 +294,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iagetinputlayout
     [PreserveSig]
-    void IAGetInputLayout(out ID3D11InputLayout ppInputLayout);
+    void IAGetInputLayout([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11InputLayout>))] out ID3D11InputLayout ppInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iagetvertexbuffers
     [PreserveSig]
@@ -310,7 +310,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-gsgetshader
     [PreserveSig]
-    void GSGetShader(out ID3D11GeometryShader ppGeometryShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void GSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11GeometryShader>))] out ID3D11GeometryShader ppGeometryShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-iagetprimitivetopology
     [PreserveSig]
@@ -358,7 +358,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rsgetstate
     [PreserveSig]
-    void RSGetState(out ID3D11RasterizerState ppRasterizerState);
+    void RSGetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11RasterizerState>))] out ID3D11RasterizerState ppRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-rsgetviewports
     [PreserveSig]
@@ -374,7 +374,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hsgetshader
     [PreserveSig]
-    void HSGetShader(out ID3D11HullShader ppHullShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void HSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11HullShader>))] out ID3D11HullShader ppHullShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hsgetsamplers
     [PreserveSig]
@@ -390,7 +390,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-dsgetshader
     [PreserveSig]
-    void DSGetShader(out ID3D11DomainShader ppDomainShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void DSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11DomainShader>))] out ID3D11DomainShader ppDomainShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-dsgetsamplers
     [PreserveSig]
@@ -410,7 +410,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-csgetshader
     [PreserveSig]
-    void CSGetShader(out ID3D11ComputeShader ppComputeShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
+    void CSGetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11ComputeShader>))] out ID3D11ComputeShader ppComputeShader, nint /* optional ID3D11ClassInstance* */ ppClassInstances, nint /* optional uint* */ pNumClassInstances);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-csgetsamplers
     [PreserveSig]

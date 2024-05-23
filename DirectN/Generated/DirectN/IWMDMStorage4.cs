@@ -23,15 +23,15 @@ public partial interface IWMDMStorage4 : IWMDMStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getspecifiedmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedMetadata(uint cProperties, [In][MarshalUsing(CountElementName = nameof(cProperties))] PWSTR[] ppwszPropNames, out IWMDMMetaData ppMetadata);
+    HRESULT GetSpecifiedMetadata(uint cProperties, [In][MarshalUsing(CountElementName = nameof(cProperties))] PWSTR[] ppwszPropNames, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMMetaData>))] out IWMDMMetaData ppMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-findstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindStorage(WMDM_FIND_SCOPE findScope, PWSTR pwszUniqueID, out IWMDMStorage ppStorage);
+    HRESULT FindStorage(WMDM_FIND_SCOPE findScope, PWSTR pwszUniqueID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMStorage>))] out IWMDMStorage ppStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorage4-getparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetParent(out IWMDMStorage ppStorage);
+    HRESULT GetParent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMStorage>))] out IWMDMStorage ppStorage);
 }

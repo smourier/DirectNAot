@@ -24,7 +24,7 @@ public partial interface IGraphConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-enumcachefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumCacheFilter(out IEnumFilters pEnum);
+    HRESULT EnumCacheFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumFilters>))] out IEnumFilters pEnum);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-removefilterfromcache
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IMFMediaEventQueue
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-getevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEvent(uint dwFlags, out IMFMediaEvent ppEvent);
+    HRESULT GetEvent(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] out IMFMediaEvent ppEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-begingetevent
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFMediaEventQueue
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-endgetevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndGetEvent(IMFAsyncResult pResult, out IMFMediaEvent ppEvent);
+    HRESULT EndGetEvent(IMFAsyncResult pResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] out IMFMediaEvent ppEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-queueevent
     [PreserveSig]

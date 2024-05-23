@@ -10,9 +10,9 @@ public partial interface IMSVidCompositionSegment : IMSVidGraphSegment
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Up(out IMSVidGraphSegment upstream);
+    HRESULT get_Up([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegment>))] out IMSVidGraphSegment upstream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Down(out IMSVidGraphSegment downstream);
+    HRESULT get_Down([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegment>))] out IMSVidGraphSegment downstream);
 }

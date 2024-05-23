@@ -6,7 +6,7 @@ public partial interface ISpeechRecoContext : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Recognizer(out ISpeechRecognizer Recognizer);
+    HRESULT get_Recognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecognizer>))] out ISpeechRecognizer Recognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,7 +22,7 @@ public partial interface ISpeechRecoContext : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Voice(out ISpeechVoice Voice);
+    HRESULT get_Voice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechVoice>))] out ISpeechVoice Voice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -78,7 +78,7 @@ public partial interface ISpeechRecoContext : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_RetainedAudioFormat(out ISpeechAudioFormat Format);
+    HRESULT get_RetainedAudioFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat>))] out ISpeechAudioFormat Format);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -90,11 +90,11 @@ public partial interface ISpeechRecoContext : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGrammar(VARIANT GrammarId, out ISpeechRecoGrammar Grammar);
+    HRESULT CreateGrammar(VARIANT GrammarId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoGrammar>))] out ISpeechRecoGrammar Grammar);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateResultFromMemory(in VARIANT ResultBlock, out ISpeechRecoResult Result);
+    HRESULT CreateResultFromMemory(in VARIANT ResultBlock, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechRecoResult>))] out ISpeechRecoResult Result);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

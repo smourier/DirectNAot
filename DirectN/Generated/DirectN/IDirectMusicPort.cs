@@ -18,7 +18,7 @@ public partial interface IDirectMusicPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DownloadInstrument(IDirectMusicInstrument pInstrument, out IDirectMusicDownloadedInstrument ppDownloadedInstrument, ref DMUS_NOTERANGE pNoteRanges, uint dwNumNoteRanges);
+    HRESULT DownloadInstrument(IDirectMusicInstrument pInstrument, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownloadedInstrument>))] out IDirectMusicDownloadedInstrument ppDownloadedInstrument, ref DMUS_NOTERANGE pNoteRanges, uint dwNumNoteRanges);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface IDirectMusicPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLatencyClock(out IReferenceClock ppClock);
+    HRESULT GetLatencyClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] out IReferenceClock ppClock);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

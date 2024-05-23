@@ -9,10 +9,10 @@ public partial interface IMSVidEncoder : IMSVidFeature
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidencoder-get_videoencoderinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_VideoEncoderInterface(out nint ppEncInt);
+    HRESULT get_VideoEncoderInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppEncInt);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidencoder-get_audioencoderinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioEncoderInterface(out nint ppEncInt);
+    HRESULT get_AudioEncoderInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppEncInt);
 }

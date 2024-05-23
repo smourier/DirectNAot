@@ -29,7 +29,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get__customcompositor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__CustomCompositor(out IVMRImageCompositor Compositor);
+    HRESULT get__CustomCompositor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRImageCompositor>))] out IVMRImageCompositor Compositor);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put__customcompositor
     [PreserveSig]
@@ -39,12 +39,12 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_mixerbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MixerBitmap(out IPictureDisp MixerPictureDisp);
+    HRESULT get_MixerBitmap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPictureDisp>))] out IPictureDisp MixerPictureDisp);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get__mixerbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__MixerBitmap(out IVMRMixerBitmap MixerPicture);
+    HRESULT get__MixerBitmap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRMixerBitmap>))] out IVMRMixerBitmap MixerPicture);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_mixerbitmap
     [PreserveSig]
@@ -59,7 +59,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_mixerbitmappositionrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MixerBitmapPositionRect(out IMSVidRect rDest);
+    HRESULT get_MixerBitmapPositionRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect rDest);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_mixerbitmappositionrect
     [PreserveSig]
@@ -104,22 +104,22 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_availablesourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AvailableSourceRect(out IMSVidRect pRect);
+    HRESULT get_AvailableSourceRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect pRect);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_maxvidrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MaxVidRect(out IMSVidRect ppVidRect);
+    HRESULT get_MaxVidRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect ppVidRect);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_minvidrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MinVidRect(out IMSVidRect ppVidRect);
+    HRESULT get_MinVidRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect ppVidRect);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_clippedsourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ClippedSourceRect(out IMSVidRect pRect);
+    HRESULT get_ClippedSourceRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] out IMSVidRect pRect);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_clippedsourcerect
     [PreserveSig]
@@ -139,7 +139,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-capture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Capture(out IPictureDisp currentImage);
+    HRESULT Capture([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPictureDisp>))] out IPictureDisp currentImage);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_framespersecond
     [PreserveSig]

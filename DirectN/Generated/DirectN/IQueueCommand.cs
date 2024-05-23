@@ -9,10 +9,10 @@ public partial interface IQueueCommand
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-iqueuecommand-invokeatstreamtime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InvokeAtStreamTime(out IDeferredCommand pCmd, double time, in Guid iid, int dispidMethod, short wFlags, int cArgs, in VARIANT pDispParams, ref VARIANT pvarResult, out short puArgErr);
+    HRESULT InvokeAtStreamTime([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeferredCommand>))] out IDeferredCommand pCmd, double time, in Guid iid, int dispidMethod, short wFlags, int cArgs, in VARIANT pDispParams, ref VARIANT pvarResult, out short puArgErr);
     
     // https://learn.microsoft.com/windows/win32/api/control/nf-control-iqueuecommand-invokeatpresentationtime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InvokeAtPresentationTime(out IDeferredCommand pCmd, double time, in Guid iid, int dispidMethod, short wFlags, int cArgs, in VARIANT pDispParams, ref VARIANT pvarResult, out short puArgErr);
+    HRESULT InvokeAtPresentationTime([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeferredCommand>))] out IDeferredCommand pCmd, double time, in Guid iid, int dispidMethod, short wFlags, int cArgs, in VARIANT pDispParams, ref VARIANT pvarResult, out short puArgErr);
 }

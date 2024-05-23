@@ -14,11 +14,11 @@ public partial interface ISpObjectTokenCategory : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDataKey(SPDATAKEYLOCATION spdkl, out ISpDataKey ppDataKey);
+    HRESULT GetDataKey(SPDATAKEYLOCATION spdkl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpDataKey>))] out ISpDataKey ppDataKey);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumTokens(PWSTR pzsReqAttribs, PWSTR pszOptAttribs, out IEnumSpObjectTokens ppEnum);
+    HRESULT EnumTokens(PWSTR pzsReqAttribs, PWSTR pszOptAttribs, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSpObjectTokens>))] out IEnumSpObjectTokens ppEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

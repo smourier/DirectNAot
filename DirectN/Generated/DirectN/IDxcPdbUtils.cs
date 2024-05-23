@@ -14,7 +14,7 @@ public partial interface IDxcPdbUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSource(uint uIndex, out IDxcBlobEncoding ppResult);
+    HRESULT GetSource(uint uIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlobEncoding>))] out IDxcBlobEncoding ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -66,7 +66,7 @@ public partial interface IDxcPdbUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHash(out IDxcBlob ppResult);
+    HRESULT GetHash([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -78,11 +78,11 @@ public partial interface IDxcPdbUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFullPDB(out IDxcBlob ppFullPDB);
+    HRESULT GetFullPDB([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob ppFullPDB);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVersionInfo(out IDxcVersionInfo ppVersionInfo);
+    HRESULT GetVersionInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcVersionInfo>))] out IDxcVersionInfo ppVersionInfo);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -90,7 +90,7 @@ public partial interface IDxcPdbUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompileForFullPDB(out IDxcResult ppResult);
+    HRESULT CompileForFullPDB([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcResult>))] out IDxcResult ppResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -8,10 +8,10 @@ public partial interface IWMSBufferAllocator
     // https://learn.microsoft.com/windows/win32/api/wmsbuffer/nf-wmsbuffer-iwmsbufferallocator-allocatebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocateBuffer(uint dwMaxBufferSize, out INSSBuffer ppBuffer);
+    HRESULT AllocateBuffer(uint dwMaxBufferSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/wmsbuffer/nf-wmsbuffer-iwmsbufferallocator-allocatepagesizebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AllocatePageSizeBuffer(uint dwMaxBufferSize, out INSSBuffer ppBuffer);
+    HRESULT AllocatePageSizeBuffer(uint dwMaxBufferSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppBuffer);
 }

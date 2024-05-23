@@ -10,7 +10,7 @@ public partial interface ISpStream : ISpStreamFormat
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBaseStream(out IStream ppStream);
+    HRESULT GetBaseStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

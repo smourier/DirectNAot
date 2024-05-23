@@ -9,7 +9,7 @@ public partial interface IMFStreamSink : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-getmediasink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaSink(out IMFMediaSink ppMediaSink);
+    HRESULT GetMediaSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSink>))] out IMFMediaSink ppMediaSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-getidentifier
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFStreamSink : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-getmediatypehandler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMediaTypeHandler(out IMFMediaTypeHandler ppHandler);
+    HRESULT GetMediaTypeHandler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaTypeHandler>))] out IMFMediaTypeHandler ppHandler);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-processsample
     [PreserveSig]

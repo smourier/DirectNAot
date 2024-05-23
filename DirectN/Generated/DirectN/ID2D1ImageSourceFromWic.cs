@@ -17,5 +17,5 @@ public partial interface ID2D1ImageSourceFromWic : ID2D1ImageSource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1imagesourcefromwic-getsource
     [PreserveSig]
-    void GetSource(out IWICBitmapSource wicBitmapSource);
+    void GetSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] out IWICBitmapSource wicBitmapSource);
 }

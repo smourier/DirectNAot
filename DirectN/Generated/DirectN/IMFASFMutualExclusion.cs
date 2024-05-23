@@ -49,5 +49,5 @@ public partial interface IMFASFMutualExclusion
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmutualexclusion-clone
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Clone(out IMFASFMutualExclusion ppIMutex);
+    HRESULT Clone([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFMutualExclusion>))] out IMFASFMutualExclusion ppIMutex);
 }

@@ -8,5 +8,5 @@ public partial interface ISCPSecureAuthenticate
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsecureauthenticate-getsecurequery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSecureQuery(out ISCPSecureQuery ppSecureQuery);
+    HRESULT GetSecureQuery([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISCPSecureQuery>))] out ISCPSecureQuery ppSecureQuery);
 }

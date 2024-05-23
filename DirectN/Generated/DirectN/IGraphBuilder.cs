@@ -24,7 +24,7 @@ public partial interface IGraphBuilder : IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-addsourcefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSourceFilter(PWSTR lpcwstrFileName, PWSTR lpcwstrFilterName, out IBaseFilter ppFilter);
+    HRESULT AddSourceFilter(PWSTR lpcwstrFileName, PWSTR lpcwstrFilterName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] out IBaseFilter ppFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-setlogfile
     [PreserveSig]

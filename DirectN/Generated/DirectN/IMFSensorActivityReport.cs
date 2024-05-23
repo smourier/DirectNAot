@@ -24,5 +24,5 @@ public partial interface IMFSensorActivityReport
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensoractivityreport-getprocessactivity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProcessActivity(uint Index, out IMFSensorProcessActivity ppProcessActivity);
+    HRESULT GetProcessActivity(uint Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorProcessActivity>))] out IMFSensorProcessActivity ppProcessActivity);
 }

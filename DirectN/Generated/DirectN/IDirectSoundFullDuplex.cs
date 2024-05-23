@@ -6,5 +6,5 @@ public partial interface IDirectSoundFullDuplex
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(in Guid pCaptureGuid, in Guid pRenderGuid, in DSCBUFFERDESC lpDscBufferDesc, in DSBUFFERDESC lpDsBufferDesc, HWND hWnd, uint dwLevel, out IDirectSoundCaptureBuffer8 lplpDirectSoundCaptureBuffer8, out IDirectSoundBuffer8 lplpDirectSoundBuffer8);
+    HRESULT Initialize(in Guid pCaptureGuid, in Guid pRenderGuid, in DSCBUFFERDESC lpDscBufferDesc, in DSBUFFERDESC lpDsBufferDesc, HWND hWnd, uint dwLevel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundCaptureBuffer8>))] out IDirectSoundCaptureBuffer8 lplpDirectSoundCaptureBuffer8, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer8>))] out IDirectSoundBuffer8 lplpDirectSoundBuffer8);
 }

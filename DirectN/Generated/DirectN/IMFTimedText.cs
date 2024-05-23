@@ -28,7 +28,7 @@ public partial interface IMFTimedText
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddTrack(PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, out IMFTimedTextTrack track);
+    HRESULT AddTrack(PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrack>))] out IMFTimedTextTrack track);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-removetrack
     [PreserveSig]
@@ -48,22 +48,22 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-gettracks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTracks(out IMFTimedTextTrackList tracks);
+    HRESULT GetTracks([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrackList>))] out IMFTimedTextTrackList tracks);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-getactivetracks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetActiveTracks(out IMFTimedTextTrackList activeTracks);
+    HRESULT GetActiveTracks([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrackList>))] out IMFTimedTextTrackList activeTracks);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-gettexttracks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextTracks(out IMFTimedTextTrackList textTracks);
+    HRESULT GetTextTracks([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrackList>))] out IMFTimedTextTrackList textTracks);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-getmetadatatracks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMetadataTracks(out IMFTimedTextTrackList metadataTracks);
+    HRESULT GetMetadataTracks([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrackList>))] out IMFTimedTextTrackList metadataTracks);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-setinbandenabled
     [PreserveSig]

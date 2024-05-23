@@ -14,15 +14,15 @@ public partial interface ITuningSpaces : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspaces-get__newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum(out IEnumVARIANT NewEnum);
+    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumVARIANT>))] out IEnumVARIANT NewEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspaces-get_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Item(VARIANT varIndex, out ITuningSpace TuningSpace);
+    HRESULT get_Item(VARIANT varIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpace>))] out ITuningSpace TuningSpace);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspaces-get_enumtuningspaces
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_EnumTuningSpaces(out IEnumTuningSpaces NewEnum);
+    HRESULT get_EnumTuningSpaces([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumTuningSpaces>))] out IEnumTuningSpaces NewEnum);
 }

@@ -9,7 +9,7 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createfontfromlogfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFromLOGFONT(in LOGFONTW logFont, out IDWriteFont font);
+    HRESULT CreateFontFromLOGFONT(in LOGFONTW logFont, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFont>))] out IDWriteFont font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfonttologfont
     [PreserveSig]
@@ -24,10 +24,10 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createfontfacefromhdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFaceFromHdc(HDC hdc, out IDWriteFontFace fontFace);
+    HRESULT CreateFontFaceFromHdc(HDC hdc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace>))] out IDWriteFontFace fontFace);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createbitmaprendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateBitmapRenderTarget(HDC hdc, uint width, uint height, out IDWriteBitmapRenderTarget renderTarget);
+    HRESULT CreateBitmapRenderTarget(HDC hdc, uint width, uint height, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteBitmapRenderTarget>))] out IDWriteBitmapRenderTarget renderTarget);
 }

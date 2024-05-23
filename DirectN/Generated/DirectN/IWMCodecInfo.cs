@@ -18,5 +18,5 @@ public partial interface IWMCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmcodecinfo-getcodecformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecFormat(in Guid guidType, uint dwCodecIndex, uint dwFormatIndex, out IWMStreamConfig ppIStreamConfig);
+    HRESULT GetCodecFormat(in Guid guidType, uint dwCodecIndex, uint dwFormatIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamConfig>))] out IWMStreamConfig ppIStreamConfig);
 }

@@ -9,5 +9,5 @@ public partial interface IMFTopoLoader
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopoloader-load
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IMFTopology pInputTopo, out IMFTopology ppOutputTopo, IMFTopology pCurrentTopo);
+    HRESULT Load(IMFTopology pInputTopo, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] out IMFTopology ppOutputTopo, IMFTopology pCurrentTopo);
 }

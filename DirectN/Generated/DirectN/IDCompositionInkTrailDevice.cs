@@ -6,9 +6,9 @@ public partial interface IDCompositionInkTrailDevice
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDelegatedInkTrail(out IDCompositionDelegatedInkTrail inkTrail);
+    HRESULT CreateDelegatedInkTrail([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionDelegatedInkTrail>))] out IDCompositionDelegatedInkTrail inkTrail);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDelegatedInkTrailForSwapChain(nint swapChain, out IDCompositionDelegatedInkTrail inkTrail);
+    HRESULT CreateDelegatedInkTrailForSwapChain(nint swapChain, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionDelegatedInkTrail>))] out IDCompositionDelegatedInkTrail inkTrail);
 }
