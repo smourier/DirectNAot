@@ -1,5 +1,5 @@
 # DirectN Aot
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Only for x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types) . Only for .NET Core 8 and beyond.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types) . Only for .NET Core 8 and beyond, it won't work under .NET 8 or with .NET Framework.
 
 This is a work in progress although it's been stabilizing lately. If you want to discuss how, where, why, just create an issue.
 
@@ -9,7 +9,7 @@ This is a work in progress although it's been stabilizing lately. If you want to
 
 So, DirectN has now been split into two projects: the interop code in one project, and the utilities, add-ons and extensions code in another project.
 
-You don't have to use the extensions, but I strongly recommend to use it.
+You don't have to use the extensions, but it's strongly recommend to use it.
 
 The reason Extensions is separated from DirectN is more an engineering reason. Roslyn/.NET source generators at work here tend to choke on ~10000 source-generated classes, so the DirectN project is just very difficult to work with in Visual Studio.
 
