@@ -28,5 +28,5 @@ public partial struct BSTR // not disposable as we don't know here who allocated
         }
     }
 
-    public override readonly string? ToString() => Marshal.PtrToStringBSTR(Value)!;
+    public override readonly string? ToString() => Marshal.PtrToStringBSTR(Value);
 }

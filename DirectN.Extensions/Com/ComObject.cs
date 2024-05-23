@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
+using DirectN.Utilities;
 
 namespace DirectN.Extensions.Com;
 
@@ -137,6 +138,37 @@ public abstract class ComObject : IComObject
         return type.GetGenericArguments()[0];
     }
 
+    public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
+    {
+        // we use IUnknown first, some objects don't support direct query interface
+        Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
+        return FromPointer<T>(unk, flags);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static IComObject<T>? GetActivationFactory<T>(string activatableClassId, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
+    {
+        ArgumentNullException.ThrowIfNull(activatableClassId);
+        using var p = new Hstring(activatableClassId);
+        Functions.RoGetActivationFactory(p, typeof(T).GUID, out var unk).ThrowOnError(throwOnError);
+        if (unk == 0)
+            return default;
+
+        return FromPointer<T>(unk, flags);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static object? GetActivationFactory(string activatableClassId, Guid iid, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
+    {
+        ArgumentNullException.ThrowIfNull(activatableClassId);
+        using var p = new Hstring(activatableClassId);
+        Functions.RoGetActivationFactory(p, iid, out var unk).ThrowOnError(throwOnError);
+        if (unk == 0)
+            return null;
+
+        return ComWrappers.GetOrCreateObjectForComInstance(unk, flags);
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (disposing && _releaseOnDispose)
@@ -155,10 +187,5 @@ public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : Com
     public new T Object => (T)(object?)base.Object!;
     public override Type InterfaceType => typeof(T);
 
-    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
-    {
-        // we use IUnknown first, some objects don't support direct query interface
-        Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
-        return FromPointer<T>(unk, flags);
-    }
+    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true) => CoCreate<T>(classId, ctx, outer, flags, throwOnError);
 }

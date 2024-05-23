@@ -11,10 +11,17 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
 
     unsafe public PWSTR(char* value)
     {
-        Value = (nint)value;
+        if (value != null)
+        {
+            Value = (nint)value;
+        }
+        else
+        {
+            Value = 0;
+        }
     }
 
-    public PWSTR(string value)
+    public PWSTR(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
     }
@@ -28,5 +35,5 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
         }
     }
 
-    public override readonly string? ToString() => Marshal.PtrToStringUni(Value)!;
+    public override readonly string? ToString() => Marshal.PtrToStringUni(Value);
 }

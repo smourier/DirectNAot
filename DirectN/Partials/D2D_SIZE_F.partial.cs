@@ -50,6 +50,8 @@ public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_F>
     public readonly D2D_SIZE_U ToD2D_SIZE_U() => new(width.ToUInt32(), height.ToUInt32());
     public readonly D2D_SIZE_F ToD2D_SIZE_F() => new(width, height);
     public readonly D2D_VECTOR_2F ToD2D_VECTOR_2F() => new(width, height);
+    public readonly Vector2 ToVector2() => new(width, height);
+    public readonly Vector3 ToVector3() => new(width, height, 0);
 
 #if DEBUG
     public static readonly D2D_SIZE_F Invalid = new() { width = float.NaN, height = float.NaN };

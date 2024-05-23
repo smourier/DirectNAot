@@ -28453,6 +28453,8 @@ public static partial class Constants
     
     public const uint SIZE_DVINFO = 32;
     
+    public const uint SIZE_MINIMIZED = 1;
+    
     public const uint SND_ALIAS_START = 0;
     
     public const int SND_RING = 1048576;

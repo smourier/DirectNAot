@@ -52,6 +52,7 @@
     "STGTY",
     "MONITORINFOEXW",
     "VIRTUAL_KEY",
+    "MINMAXINFO",
     "MODIFIERKEYS_FLAGS",
     "TITLEBARINFOEX",
     "Windows.Win32.Graphics.Gdi.BITMAP",
@@ -221,6 +222,7 @@
     "VariantInit",
     "VariantToPropVariant",
     "WinRTPropertyValueToPropVariant",
-    "WindowFromPoint"
+    "WindowFromPoint",
+    "SIZE_MINIMIZED"
   ]
 }

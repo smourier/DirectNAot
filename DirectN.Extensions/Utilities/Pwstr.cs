@@ -12,6 +12,18 @@ public class Pwstr : IDisposable
         Value = value;
     }
 
+    unsafe public Pwstr(char* value)
+    {
+        if (value != null)
+        {
+            Value = (nint)value;
+        }
+        else
+        {
+            Value = 0;
+        }
+    }
+
     public Pwstr(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
@@ -21,7 +33,7 @@ public class Pwstr : IDisposable
 
     public override string? ToString() => Marshal.PtrToStringUni(Value)!;
 
-    public static implicit operator Pwstr(string value) => new(value);
+    public static implicit operator Pwstr(string? value) => new(value);
     public static implicit operator PWSTR(Pwstr value) => new(value.Value);
 
     protected virtual void Dispose(bool disposing)

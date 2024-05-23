@@ -9,12 +9,19 @@ public partial struct PSTR // not disposable as we don't know here who allocated
         Value = value;
     }
 
-    unsafe public PSTR(char* value)
+    unsafe public PSTR(byte* value)
     {
-        Value = (nint)value;
+        if (value != null)
+        {
+            Value = (nint)value;
+        }
+        else
+        {
+            Value = 0;
+        }
     }
 
-    public PSTR(string value)
+    public PSTR(string? value)
     {
         Value = value == null ? 0 : Marshal.StringToCoTaskMemAnsi(value);
     }
@@ -28,5 +35,5 @@ public partial struct PSTR // not disposable as we don't know here who allocated
         }
     }
 
-    public override readonly string? ToString() => Marshal.PtrToStringAnsi(Value)!;
+    public override readonly string? ToString() => Marshal.PtrToStringAnsi(Value);
 }

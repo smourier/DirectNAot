@@ -36,6 +36,20 @@ public static class Extensions
         return t.Length == 0 ? null : t;
     }
 
+    public static int AddRange<T>(this ICollection<T>? collection, IEnumerable<T>? enumerable)
+    {
+        if (collection == null || enumerable == null)
+            return 0;
+
+        var i = 0;
+        foreach (var item in enumerable)
+        {
+            collection.Add(item);
+            i++;
+        }
+        return i;
+    }
+
     public static void CopyTo(this nint source, nint destination, int length) => Functions.CopyMemory(destination, source, length);
     public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);

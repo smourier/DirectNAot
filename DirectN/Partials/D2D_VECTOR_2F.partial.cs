@@ -36,4 +36,7 @@ public partial struct D2D_VECTOR_2F : IEquatable<D2D_VECTOR_2F>
     public static D2D_VECTOR_2F operator *(D2D_VECTOR_2F left, D2D_VECTOR_2F right) => new(left.x * right.x, left.y * right.y);
     public static D2D_VECTOR_2F operator /(D2D_VECTOR_2F left, D2D_VECTOR_2F right) => new(left.x / right.x, left.y / right.y);
     public readonly D2D_SIZE_F ToD2D_SIZE_F() => new(x, y);
+    public readonly Vector2 ToVector2() => new(x, y);
+    public readonly Vector3 ToVector3() => new(x, y, 0);
+    public static D2D_VECTOR_2F From(Vector2 value) => new(value.X, value.Y);
 }

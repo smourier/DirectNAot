@@ -29,7 +29,7 @@ public class Cursor : IEquatable<Cursor>
     public static readonly Cursor Wait = new(32514);
 
     private static void Set(HCURSOR handle) => Functions.SetCursor(handle);
-    public static void Set(Cursor cursor)
+    public static void Set(Cursor? cursor)
     {
         if (cursor == null || cursor.Handle.Value == 0)
         {

@@ -67,4 +67,10 @@ public static partial class Functions
     [LibraryImport("dxgidebug")]
     [PreserveSig]
     public static partial HRESULT DXGIGetDebugInterface(in Guid riid, out nint ppDebug);
+
+    [SupportedOSPlatform("windows5.0")]
+    public static LRESULT SendMessageW(HWND hWnd, uint Msg, WPARAM wParam) => SendMessageW(hWnd, Msg, wParam, LPARAM.Null);
+
+    [SupportedOSPlatform("windows5.0")]
+    public static LRESULT SendMessageW(HWND hWnd, uint Msg) => SendMessageW(hWnd, Msg, WPARAM.Null, LPARAM.Null);
 }

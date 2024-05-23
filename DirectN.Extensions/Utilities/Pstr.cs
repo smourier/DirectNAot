@@ -11,6 +11,18 @@ public class Pstr : IDisposable
         Value = value;
     }
 
+    unsafe public Pstr(byte* value)
+    {
+        if (value != null)
+        {
+            Value = (nint)value;
+        }
+        else
+        {
+            Value = 0;
+        }
+    }
+
     public Pstr(int sizeInBytes)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(sizeInBytes);
@@ -29,7 +41,7 @@ public class Pstr : IDisposable
 
     public override string? ToString() => Marshal.PtrToStringAnsi(Value)!;
 
-    public static implicit operator Pstr(string value) => new(value);
+    public static implicit operator Pstr(string? value) => new(value);
     public static implicit operator PSTR(Pstr value) => new(value.Value);
 
     protected virtual void Dispose(bool disposing)
