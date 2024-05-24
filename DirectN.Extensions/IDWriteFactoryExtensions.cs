@@ -33,9 +33,7 @@ public static class IDWriteFactoryExtensions
         ArgumentNullException.ThrowIfNull(factory);
         ArgumentNullException.ThrowIfNull(familyName);
         localeName ??= string.Empty;
-        using var p1 = new Pwstr(familyName);
-        using var p2 = new Pwstr(localeName);
-        factory.CreateTextFormat(p1, fonts, weight, style, stretch, size, p2, out var format).ThrowOnError();
+        factory.CreateTextFormat(PWSTR.From(familyName), fonts, weight, style, stretch, size, PWSTR.From(localeName), out var format).ThrowOnError();
         return new ComObject<T>((T)format);
     }
 
@@ -65,8 +63,7 @@ public static class IDWriteFactoryExtensions
         ArgumentNullException.ThrowIfNull(format);
         ArgumentNullException.ThrowIfNull(text);
         textLength = textLength <= 0 ? text.Length : textLength;
-        using var p = new Pwstr(text);
-        factory.CreateTextLayout(p, (uint)textLength, format, maxWidth, maxHeight, out var layout).ThrowOnError();
+        factory.CreateTextLayout(PWSTR.From(text), (uint)textLength, format, maxWidth, maxHeight, out var layout).ThrowOnError();
         return new ComObject<T>((T)layout);
     }
 

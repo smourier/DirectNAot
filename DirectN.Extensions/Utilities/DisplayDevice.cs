@@ -15,8 +15,7 @@
             get
             {
                 var dd = CreateDISPLAY_DEVICEW();
-                using var name = new Pwstr(DeviceName);
-                _ = Functions.EnumDisplayDevicesW(name, 0, ref dd, 0);
+                _ = Functions.EnumDisplayDevicesW(PWSTR.From(DeviceName), 0, ref dd, 0);
                 return dd.DeviceString.ToString();
             }
         }
@@ -62,8 +61,7 @@
             get
             {
                 var mode = new DEVMODEW();
-                using var name = new Pwstr(DeviceName);
-                Functions.EnumDisplaySettingsExW(name, ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref mode, 0);
+                Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref mode, 0);
                 return mode;
             }
         }
@@ -73,8 +71,7 @@
             get
             {
                 var mode = new DEVMODEW();
-                using var name = new Pwstr(DeviceName);
-                Functions.EnumDisplaySettingsExW(name, ENUM_DISPLAY_SETTINGS_MODE.ENUM_REGISTRY_SETTINGS, ref mode, 0);
+                Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_REGISTRY_SETTINGS, ref mode, 0);
                 return mode;
             }
         }
@@ -83,8 +80,7 @@
         {
             var i = 0;
             var mode = new DEVMODEW();
-            using var name = new Pwstr(DeviceName);
-            while (Functions.EnumDisplaySettingsExW(name, (ENUM_DISPLAY_SETTINGS_MODE)i++, ref mode, flags))
+            while (Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), (ENUM_DISPLAY_SETTINGS_MODE)i++, ref mode, flags))
             {
                 yield return mode;
             }

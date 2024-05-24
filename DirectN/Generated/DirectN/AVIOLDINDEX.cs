@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/aviriff/ns-aviriff-avioldindex
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVIOLDINDEX
 {
     [InlineArray(InlineArray_avioldindex_entry_1.Length)]
@@ -13,7 +13,7 @@ public partial struct AVIOLDINDEX
         public _avioldindex_entry Data;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public struct _avioldindex_entry
     {
         public uint dwChunkId;

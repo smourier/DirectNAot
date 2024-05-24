@@ -2,10 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2structs/ns-mpeg2structs-dsmcc_section
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct DSMCC_SECTION
 {
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Header_e__Union
     {
         [FieldOffset(0)]

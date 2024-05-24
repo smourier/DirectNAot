@@ -459,13 +459,12 @@ public sealed class ColorProfile
     public static string? GetColorDirectoryPath(string? machineName = null)
     {
         uint size = 0;
-        using var name = new Pwstr(machineName);
-        Functions.GetColorDirectoryW(name, PWSTR.Null, ref size);
+        Functions.GetColorDirectoryW(PWSTR.From(machineName), PWSTR.Null, ref size);
         if (size == 0)
             return null;
 
         using var buffer = new AllocPwstr(size);
-        Functions.GetColorDirectoryW(name, buffer, ref size);
+        Functions.GetColorDirectoryW(PWSTR.From(machineName), buffer, ref size);
         return buffer.ToString();
     }
 
@@ -504,8 +503,7 @@ public sealed class ColorProfile
 
             var count = 0;
             var pc = &count;
-            using var name = new Pwstr(machineName);
-            if (!Functions.EnumColorProfilesW(name, enumType, 0, ref size, (nint)pc))
+            if (!Functions.EnumColorProfilesW(PWSTR.From(machineName), enumType, 0, ref size, (nint)pc))
             {
                 var gle = Marshal.GetLastWin32Error();
                 if (gle != (int)WIN32_ERROR.ERROR_INSUFFICIENT_BUFFER)
@@ -516,7 +514,7 @@ public sealed class ColorProfile
             {
                 var bytes = new byte[size];
                 var ptr = bytes.AsPointer();
-                if (!Functions.EnumColorProfilesW(name, enumType, ptr, ref size, (nint)pc))
+                if (!Functions.EnumColorProfilesW(PWSTR.From(machineName), enumType, ptr, ref size, (nint)pc))
                     throw new Win32Exception(Marshal.GetLastWin32Error());
 
                 do

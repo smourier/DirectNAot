@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/aviriff/ns-aviriff-avistdindex_entry
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVISTDINDEX_ENTRY
 {
     public uint dwOffset;

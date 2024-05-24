@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mileffects/ns-mileffects-milmatrix3x2d
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MilMatrix3x2D
 {
     public double S_11;

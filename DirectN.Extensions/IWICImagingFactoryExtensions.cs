@@ -59,13 +59,8 @@ public static class IWICImagingFactoryExtensions
             rights |= GENERIC_ACCESS_RIGHTS.GENERIC_WRITE;
         }
 
-        using var p = new Pwstr(fileName);
-        unsafe
-        {
-            var pg = Unsafe.AsPointer(ref guidVendor);
-            factory.CreateDecoderFromFilename(p, (nint)pg, rights, metadataOptions, out var value).ThrowOnError();
-            return new ComObject<IWICBitmapDecoder>(value);
-        }
+        factory.CreateDecoderFromFilename(PWSTR.From(fileName), guidVendor.CopyToPointer(), rights, metadataOptions, out var value).ThrowOnError();
+        return new ComObject<IWICBitmapDecoder>(value);
     }
 
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromStream(this IComObject<IWICImagingFactory> factory, IStream stream, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand) => CreateDecoderFromStream(factory?.Object!, stream, guidVendor, metadataOptions);

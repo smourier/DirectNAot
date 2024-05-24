@@ -2,10 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixerlinew
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MIXERLINEW
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct _Target_e__Struct
     {
         public uint dwType;

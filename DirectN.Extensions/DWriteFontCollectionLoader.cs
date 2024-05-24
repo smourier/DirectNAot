@@ -83,8 +83,7 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
             if (file is DWriteFontStreamFile sf && sf.FilePath != null)
             {
                 var ft = sf.LastWriteTime?.ToFileTime();
-                using var p = new Pwstr(sf.FilePath);
-                return _factory.CreateFontFileReference(p, ft.CopyToPointer(), out fontFile);
+                return _factory.CreateFontFileReference(PWSTR.From(sf.FilePath), ft.CopyToPointer(), out fontFile);
             }
 
             var stream = new FontFileStream(file);

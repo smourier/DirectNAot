@@ -21,17 +21,14 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
         }
     }
 
-    public PWSTR(string? value)
+    public unsafe static PWSTR From(string? str)
     {
-        Value = value == null ? 0 : Marshal.StringToCoTaskMemUni(value);
-    }
+        if (str == null)
+            return Null;
 
-    public static void Dispose(ref PWSTR pwstr)
-    {
-        var value = Interlocked.Exchange(ref pwstr.Value, 0);
-        if (value != 0)
+        fixed (char* chars = str)
         {
-            Marshal.FreeCoTaskMem(value);
+            return new PWSTR(chars);
         }
     }
 

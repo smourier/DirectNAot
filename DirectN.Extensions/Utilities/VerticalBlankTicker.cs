@@ -61,8 +61,7 @@ public sealed partial class VerticalBlankTicker : IDisposable
         var deviceName = ((string)state!).Nullify() ?? DisplayDevice.Primary?.DeviceName.Nullify();
         DeviceName = deviceName ?? @"\\.\DISPLAY1";
 
-        using var name = new Pwstr(DeviceName);
-        var hdc = Functions.CreateDCW(PWSTR.Null, name, PWSTR.Null, 0);
+        var hdc = Functions.CreateDCW(PWSTR.Null, PWSTR.From(DeviceName), PWSTR.Null, 0);
         if (hdc.Value == 0)
         {
             IsRunning = false;

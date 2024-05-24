@@ -6,13 +6,10 @@ public static class ComError
     {
         ArgumentNullException.ThrowIfNull(description);
         Functions.CreateErrorInfo(out var info).ThrowOnError();
-        using var pd = new Pwstr(description);
-        info.SetDescription(pd).ThrowOnError();
-
+        info.SetDescription(PWSTR.From(description)).ThrowOnError();
         if (source != null)
         {
-            using var ps = new Pwstr(source);
-            info.SetSource(ps).ThrowOnError();
+            info.SetSource(PWSTR.From(source)).ThrowOnError();
         }
 
         var ei = (IErrorInfo)info;

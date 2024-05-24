@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/aviriff/ns-aviriff-avisuperindex
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVISUPERINDEX
 {
     [InlineArray(InlineArray_avisuperindex_entry_1022.Length)]
@@ -13,7 +13,7 @@ public partial struct AVISUPERINDEX
         public _avisuperindex_entry Data;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public struct _avisuperindex_entry
     {
         public ulong qwOffset;

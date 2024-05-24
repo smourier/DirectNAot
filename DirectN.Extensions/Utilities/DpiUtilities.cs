@@ -28,8 +28,7 @@
         [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForWindow(HWND hwnd)
         {
-            using var pwstr = new Pwstr("user32.dll");
-            var module = Functions.LoadLibraryW(pwstr);
+            var module = Functions.LoadLibraryW(PWSTR.From("user32.dll"));
             try
             {
                 using var pstr = new Pstr("GetDpiForWindow");
@@ -61,8 +60,7 @@
             if (monitor.Value == 0)
                 return new D2D_SIZE_U(96, 96);
 
-            using var pwstr = new Pwstr("shcore.dll");
-            var module = Functions.LoadLibraryW(pwstr);
+            var module = Functions.LoadLibraryW(PWSTR.From("shcore.dll"));
             try
             {
                 using var pstr = new Pstr("GetDpiForMonitor");

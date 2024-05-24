@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct BDA_MUX_PIDLISTITEM
 {
     public ushort usPIDNumber;

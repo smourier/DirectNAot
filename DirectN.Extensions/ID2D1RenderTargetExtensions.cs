@@ -186,8 +186,7 @@ public static class ID2D1RenderTargetExtensions
         if (text == null)
             return;
 
-        using var p = new Pwstr(text);
-        device.DrawText(p, (uint)text.Length, format, rect, brush, options, measuringMode);
+        device.DrawText(PWSTR.From(text), (uint)text.Length, format, rect, brush, options, measuringMode);
     }
 
     [SupportedOSPlatform("windows8.0")]

@@ -8,8 +8,7 @@ public static class IDXGIObjectExtensions
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException(null, nameof(name));
 
-        using var p = new Pwstr(name);
-        _ = child.SetPrivateData(Constants.WKPDID_D3DDebugObjectNameW, (uint)(name.Length * 2), p.Value).ThrowOnError();
+        _ = child.SetPrivateData(Constants.WKPDID_D3DDebugObjectNameW, (uint)(name.Length * 2), PWSTR.From(name).Value).ThrowOnError();
     }
 
     public static void SetPrivateData(this IComObject<IDXGIObject> obj, Guid guid, uint dataSize, nint data) => SetPrivateData(obj?.Object!, guid, dataSize, data);

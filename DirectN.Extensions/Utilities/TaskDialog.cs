@@ -23,26 +23,19 @@ public class TaskDialog
 
     public unsafe virtual MESSAGEBOX_RESULT Show(HWND hwnd)
     {
-        using var title = new Pwstr(Title);
-        using var mainInstruction = new Pwstr(MainInstruction);
-        using var content = new Pwstr(Content);
-        using var verificationText = new Pwstr(VerificationText);
-        using var expandedInformation = new Pwstr(ExpandedInformation);
-        using var collapsedControlText = new Pwstr(CollapsedControlText);
-        using var footer = new Pwstr(Footer);
         var config = new TASKDIALOGCONFIG
         {
             cbSize = (uint)sizeof(TASKDIALOGCONFIG),
             hwndParent = hwnd,
             dwFlags = Flags,
             dwCommonButtons = CommonButtonFlags,
-            pszWindowTitle = title,
-            pszMainInstruction = mainInstruction,
-            pszContent = content,
-            pszVerificationText = verificationText,
-            pszExpandedControlText = expandedInformation,
-            pszCollapsedControlText = collapsedControlText,
-            pszFooter = footer,
+            pszWindowTitle = PWSTR.From(Title),
+            pszMainInstruction = PWSTR.From(MainInstruction),
+            pszContent = PWSTR.From(Content),
+            pszVerificationText = PWSTR.From(VerificationText),
+            pszExpandedControlText = PWSTR.From(ExpandedInformation),
+            pszCollapsedControlText = PWSTR.From(CollapsedControlText),
+            pszFooter = PWSTR.From(Footer),
             cxWidth = Width
         };
 

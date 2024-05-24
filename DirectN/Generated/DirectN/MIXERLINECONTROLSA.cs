@@ -2,10 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixerlinecontrolsa
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MIXERLINECONTROLSA
 {
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Anonymous_e__Union
     {
         [FieldOffset(0)]

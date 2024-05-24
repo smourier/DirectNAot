@@ -24,8 +24,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     public UnmanagedMemoryStream(string filePath, STGM mode = STGM.STGM_READ)
     {
         ArgumentNullException.ThrowIfNull(filePath);
-        using var p = new Pwstr(filePath);
-        Functions.SHCreateStreamOnFileW(p, (uint)mode, out _stream).ThrowOnError();
+        Functions.SHCreateStreamOnFileW(PWSTR.From(filePath), (uint)mode, out _stream).ThrowOnError();
         Position = 0;
     }
 

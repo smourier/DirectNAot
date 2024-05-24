@@ -2,20 +2,20 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixercontrolw
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MIXERCONTROLW
 {
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Bounds_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct _Anonymous1_e__Struct
         {
             public int lMinimum;
             public int lMaximum;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct _Anonymous2_e__Struct
         {
             public uint dwMinimum;
@@ -32,7 +32,7 @@ public partial struct MIXERCONTROLW
         public InlineArrayUInt32_6 dwReserved;
     }
     
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Metrics_e__Union
     {
         [FieldOffset(0)]

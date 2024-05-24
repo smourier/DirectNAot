@@ -210,8 +210,7 @@ public static class ID2D1DeviceContextExtensions
         if (text == null)
             return;
 
-        using var p = new Pwstr(text);
-        context.DrawText(p, (uint)text.Length, format, rect, defaultFillBrush, options, measuringMode);
+        context.DrawText(PWSTR.From(text), (uint)text.Length, format, rect, defaultFillBrush, options, measuringMode);
     }
 
     public static void DrawTextLayout(this IComObject<ID2D1DeviceContext> context,
@@ -334,8 +333,7 @@ public static class ID2D1DeviceContextExtensions
     public static IComObject<ID2D1ColorContext> CreateColorContextFromFilename(this ID2D1DeviceContext context, string filePath)
     {
         ArgumentNullException.ThrowIfNull(context);
-        using var p = new Pwstr(filePath);
-        context.CreateColorContextFromFilename(p, out var d2dColorContext).ThrowOnError();
+        context.CreateColorContextFromFilename(PWSTR.From(filePath), out var d2dColorContext).ThrowOnError();
         return new ComObject<ID2D1ColorContext>(d2dColorContext);
     }
 

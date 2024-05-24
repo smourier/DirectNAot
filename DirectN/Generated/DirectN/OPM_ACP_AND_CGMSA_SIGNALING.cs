@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/opmapi/ns-opmapi-opm_acp_and_cgmsa_signaling
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct OPM_ACP_AND_CGMSA_SIGNALING
 {
     public OPM_RANDOM_NUMBER rnRandomNumber;

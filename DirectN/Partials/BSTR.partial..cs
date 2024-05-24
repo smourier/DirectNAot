@@ -14,11 +14,6 @@ public partial struct BSTR // not disposable as we don't know here who allocated
         Value = (nint)value;
     }
 
-    public BSTR(string value)
-    {
-        Value = value == null ? 0 : Marshal.StringToBSTR(value);
-    }
-
     public static void Dispose(ref BSTR bstr)
     {
         var value = Interlocked.Exchange(ref bstr.Value, 0);

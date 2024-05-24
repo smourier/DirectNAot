@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 4)]
 public partial struct DMUS_EVENTHEADER
 {
     public uint cbEvent;

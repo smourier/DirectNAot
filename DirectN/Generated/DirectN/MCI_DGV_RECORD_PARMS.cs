@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_record_parms
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MCI_DGV_RECORD_PARMS
 {
     public nuint dwCallback;

@@ -1,4 +1,6 @@
-﻿namespace DirectN;
+﻿using System.Text;
+
+namespace DirectN;
 
 public partial struct PSTR // not disposable as we don't know here who allocated it
 {
@@ -21,17 +23,16 @@ public partial struct PSTR // not disposable as we don't know here who allocated
         }
     }
 
-    public PSTR(string? value)
+    public unsafe static PSTR From(string? str, Encoding? encoding = null)
     {
-        Value = value == null ? 0 : Marshal.StringToCoTaskMemAnsi(value);
-    }
+        if (str == null)
+            return Null;
 
-    public static void Dispose(ref PSTR pstr)
-    {
-        var value = Interlocked.Exchange(ref pstr.Value, 0);
-        if (value != 0)
+        encoding ??= Encoding.Default;
+        var bytes = encoding.GetBytes(str);
+        fixed (byte* p = bytes)
         {
-            Marshal.FreeCoTaskMem(value);
+            return new PSTR(p);
         }
     }
 

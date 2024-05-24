@@ -2,13 +2,13 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2structs/ns-mpeg2structs-mpeg2_filter2
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MPEG2_FILTER2
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct _Anonymous_e__Struct
         {
             public byte bVersionNumber;

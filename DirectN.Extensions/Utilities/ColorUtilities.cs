@@ -44,8 +44,7 @@ public static partial class ColorUtilities
     {
         ArgumentNullException.ThrowIfNull(classList);
 
-        using var list = new Pwstr(classList);
-        var theme = Functions.OpenThemeData(hwnd ?? HWND.Null, list);
+        var theme = Functions.OpenThemeData(hwnd ?? HWND.Null, PWSTR.From(classList));
         if (theme.Value == 0)
             return defaultColor ?? D3DCOLORVALUE.Black;
 

@@ -193,8 +193,7 @@ public static class IMFAttributesExtensions
     public static void Set(this IComObject<IMFAttributes> input, Guid key, Enum value) => input?.Object!.SetUINT32(key, (uint)Convert.ChangeType(value, typeof(uint), CultureInfo.InvariantCulture)).ThrowOnError();
     public static void Set(this IComObject<IMFAttributes> input, Guid key, string? value)
     {
-        using var p = new Pwstr(value);
-        input?.Object!.SetString(key, p).ThrowOnError();
+        input?.Object!.SetString(key, PWSTR.From(value)).ThrowOnError();
     }
 
     public static T? Get<T>(this IComObject<IMFAttributes> input, Guid key, T? defaultValue = default, IFormatProvider? provider = null) => Get(input?.Object!, key, defaultValue, provider);

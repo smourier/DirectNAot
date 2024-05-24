@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[StructLayout(LayoutKind.Sequential)]
 public class Pwstr : IDisposable
 {
     public nint Value;

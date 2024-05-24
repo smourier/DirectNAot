@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct RATING_SYSTEM
 {
     public Guid rating_system_id;

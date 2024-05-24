@@ -2,10 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-taskdialogconfig
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct TASKDIALOGCONFIG
 {
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Anonymous1_e__Union
     {
         [FieldOffset(0)]
@@ -15,7 +15,7 @@ public partial struct TASKDIALOGCONFIG
         public PWSTR pszMainIcon;
     }
     
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _Anonymous2_e__Union
     {
         [FieldOffset(0)]

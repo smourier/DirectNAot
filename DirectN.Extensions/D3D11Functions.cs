@@ -76,8 +76,7 @@ public static class D3D11Functions
     public static IComObject<ID3DBlob> D3DReadFileToBlob(string filename)
     {
         ArgumentNullException.ThrowIfNull(filename);
-        using var p = new Pwstr(filename);
-        Functions.D3DReadFileToBlob(p, out var blob).ThrowOnError();
+        Functions.D3DReadFileToBlob(PWSTR.From(filename), out var blob).ThrowOnError();
         return new ComObject<ID3DBlob>(blob);
     }
 
@@ -86,11 +85,8 @@ public static class D3D11Functions
         ArgumentNullException.ThrowIfNull(filename);
         ArgumentNullException.ThrowIfNull(entrypoint);
         ArgumentNullException.ThrowIfNull(target);
-        using var p = new Pwstr(filename);
-        using var pe = new Pstr(entrypoint);
-        using var pt = new Pstr(target);
         nint errorBlobUnk;
-        var hr = Functions.D3DCompileFromFile(p, 0, null, pe, pt, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
+        var hr = Functions.D3DCompileFromFile(PWSTR.From(filename), 0, null, PSTR.From(entrypoint), PSTR.From(target), flags1, flags2, out var blob, (nint)(&errorBlobUnk));
         if (errorBlobUnk != 0)
         {
             using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);

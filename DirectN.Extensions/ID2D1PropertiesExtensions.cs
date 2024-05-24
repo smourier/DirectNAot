@@ -27,9 +27,7 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
-        value = null;
-        using var p = new Pwstr(name);
-        var index = properties.GetPropertyIndex(p);
+        var index = properties.GetPropertyIndex(PWSTR.From(name));
         return TryGetValue(properties, index, out value);
     }
 
@@ -232,7 +230,6 @@ public static class ID2D1PropertiesExtensions
         return list;
     }
 
-    //public static bool TryGetProperty(this IComObject<ID2D1Effect> effect, string name, out object value) => TryGetProperty(effect?.Object!, name, out value);
     public static bool TryGetProperty(this IComObject<ID2D1Properties> properties, string name, out object? value) => TryGetProperty(properties?.Object!, name, out value);
     public static bool TryGetProperty(this ID2D1Properties properties, string name, out object? value)
     {
@@ -243,8 +240,7 @@ public static class ID2D1PropertiesExtensions
         }
 
         ArgumentNullException.ThrowIfNull(name);
-        using var p = new Pwstr(name);
-        var index = properties.GetPropertyIndex(p);
+        var index = properties.GetPropertyIndex(PWSTR.From(name));
         if (index == uint.MaxValue)
         {
             value = null;
@@ -253,7 +249,6 @@ public static class ID2D1PropertiesExtensions
         return TryGetProperty(properties, index, out value);
     }
 
-    //public static bool TryGetProperty(this IComObject<ID2D1Effect> effect, uint index, out object value) => TryGetProperty(effect?.Object!, index, out value);
     public static bool TryGetProperty(this IComObject<ID2D1Properties> properties, uint index, out object? value) => TryGetProperty(properties?.Object!, index, out value);
     public static bool TryGetProperty(this ID2D1Properties properties, uint index, out object? value)
     {
@@ -339,8 +334,7 @@ public static class ID2D1PropertiesExtensions
         if (!TryGetData(value, out var type, out var data))
             throw new NotSupportedException();
 
-        using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, data.AsPointer(), data.Length()).ThrowOnError();
+        properties.SetValueByName(PWSTR.From(name), type, data.AsPointer(), data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, uint index, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, index, type, data);
@@ -357,8 +351,7 @@ public static class ID2D1PropertiesExtensions
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
         ArgumentNullException.ThrowIfNull(data);
-        using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, data.AsPointer(), data.Length()).ThrowOnError();
+        properties.SetValueByName(PWSTR.From(name), type, data.AsPointer(), data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, D2D1_PROPERTY_TYPE type, nint data, uint dataLength) => SetValue(properties?.Object!, name, type, data, dataLength);
@@ -367,8 +360,7 @@ public static class ID2D1PropertiesExtensions
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
         ArgumentNullException.ThrowIfNull(data);
-        using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, data, dataLength).ThrowOnError();
+        properties.SetValueByName(PWSTR.From(name), type, data, dataLength).ThrowOnError();
     }
 
     public static bool TryGetData(object value, out D2D1_PROPERTY_TYPE type, [NotNullWhen(true)] out byte[]? data)
@@ -626,7 +618,6 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
-        using var p = new Pwstr(name);
-        properties.SetValueByName(p, type, valuePointer, valueSize).ThrowOnError();
+        properties.SetValueByName(PWSTR.From(name), type, valuePointer, valueSize).ThrowOnError();
     }
 }

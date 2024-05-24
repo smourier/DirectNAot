@@ -34,9 +34,18 @@ public class Pstr : IDisposable
         Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem((int)sizeInBytes) : 0;
     }
 
-    public Pstr(string? value)
+    public Pstr(string? value, Encoding? encoding = null)
     {
-        Value = value == null ? 0 : Marshal.StringToCoTaskMemAnsi(value);
+        if (value == null)
+        {
+            Value = 0;
+            return;
+        }
+
+        encoding ??= Encoding.Default;
+        var bytes = encoding.GetBytes(value);
+        Value = Marshal.AllocCoTaskMem(bytes.Length);
+        Marshal.Copy(bytes, 0, Value, bytes.Length);
     }
 
     public override string? ToString() => Marshal.PtrToStringAnsi(Value)!;

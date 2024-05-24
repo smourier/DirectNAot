@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/Multimedia/mci-seq-set-parms
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MCI_SEQ_SET_PARMS
 {
     public nuint dwCallback;

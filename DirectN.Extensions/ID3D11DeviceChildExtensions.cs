@@ -9,7 +9,6 @@ public static class ID3D11DeviceChildExtensions
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException(null, nameof(name));
 
-        using var p = new Pwstr(name);
-        _ = child.SetPrivateData(Constants.WKPDID_D3DDebugObjectNameW, (uint)(name.Length * 2), p.Value).ThrowOnError();
+        _ = child.SetPrivateData(Constants.WKPDID_D3DDebugObjectNameW, (uint)(name.Length * 2), PWSTR.From(name).Value).ThrowOnError();
     }
 }

@@ -1,10 +1,10 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct MMTIME
 {
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _u_e__Union
     {
         [StructLayout(LayoutKind.Sequential)]
@@ -19,7 +19,7 @@ public partial struct MMTIME
             public InlineArrayByte_2 pad;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct _midi_e__Struct
         {
             public uint songptrpos;

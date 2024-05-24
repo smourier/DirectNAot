@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVIFIELDINDEX
 {
     [InlineArray(InlineArray_avifieldindex_entry_1.Length)]
@@ -12,7 +12,7 @@ public partial struct AVIFIELDINDEX
         public _avifieldindex_entry Data;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public struct _avifieldindex_entry
     {
         public uint dwOffset;
