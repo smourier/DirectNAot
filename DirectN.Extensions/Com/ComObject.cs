@@ -129,6 +129,50 @@ public abstract class ComObject : IComObject
         }
     }
 
+    public static void WithComInstanceOfType<Ti>(object? obj, Action<nint> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        nint iface = 0;
+        var unk = ToComInstance(obj);
+        if (unk != 0)
+        {
+            var iid = typeof(Ti).GUID;
+            _ = Marshal.QueryInterface(unk, ref iid, out iface);
+        }
+
+        try
+        {
+            action(iface);
+        }
+        finally
+        {
+            Release(iface);
+            Release(unk);
+        }
+    }
+
+    public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        nint iface = 0;
+        var unk = ToComInstance(obj);
+        if (unk != 0)
+        {
+            var iid = typeof(Ti).GUID;
+            _ = Marshal.QueryInterface(unk, ref iid, out iface);
+        }
+
+        try
+        {
+            return func(iface);
+        }
+        finally
+        {
+            Release(iface);
+            Release(unk);
+        }
+    }
+
     public static Type? GetComObjectComType(Type type)
     {
         ArgumentNullException.ThrowIfNull(type);

@@ -44,7 +44,7 @@ public class Cursor : IEquatable<Cursor>
     public override int GetHashCode() => Handle.GetHashCode();
     public override string ToString() => Id + " " + Handle;
     public override bool Equals(object? obj) => Equals(obj as Cursor);
-    public bool Equals(Cursor? other) => other != null && (Id == other.Id || Handle.Value == other.Handle.Value);
+    public bool Equals(Cursor? other) => other != null && (Id == other.Id || Handle == other.Handle);
 }
 
 public class CursorConverter : TypeConverter

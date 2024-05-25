@@ -1,0 +1,35 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum MENU_ITEM_FLAGS : uint
+{
+    MF_BYCOMMAND = 0,
+    MF_BYPOSITION = 1024,
+    MF_BITMAP = 4,
+    MF_CHECKED = 8,
+    MF_DISABLED = 2,
+    MF_ENABLED = 0,
+    MF_GRAYED = 1,
+    MF_MENUBARBREAK = 32,
+    MF_MENUBREAK = 64,
+    MF_OWNERDRAW = 256,
+    MF_POPUP = 16,
+    MF_SEPARATOR = 2048,
+    MF_STRING = 0,
+    MF_UNCHECKED = 0,
+    MF_INSERT = 0,
+    MF_CHANGE = 128,
+    MF_APPEND = 256,
+    MF_DELETE = 512,
+    MF_REMOVE = 4096,
+    MF_USECHECKBITMAPS = 512,
+    MF_UNHILITE = 0,
+    MF_HILITE = 128,
+    MF_DEFAULT = 4096,
+    MF_SYSMENU = 8192,
+    MF_HELP = 16384,
+    MF_RIGHTJUSTIFY = 16384,
+    MF_MOUSESELECT = 32768,
+    MF_END = 128,
+}

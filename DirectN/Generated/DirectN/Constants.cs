@@ -607,6 +607,14 @@ public static partial class Constants
     
     public static readonly Guid APO_CLASS_UUID = new("5989fce8-9cd0-467d-8a6a-5419e31529d4");
     
+    public const uint ATP_CHANGE = 1;
+    
+    public const uint ATP_NOCHANGE = 0;
+    
+    public const uint ATP_NODELIMITER = 2;
+    
+    public const uint ATP_REPLACEALLTEXT = 4;
+    
     public const uint ATSC_EIT_TID = 203;
     
     public const uint ATSC_ETM_LOCATION_IN_PTC_FOR_EVENT = 2;
@@ -770,6 +778,20 @@ public static partial class Constants
     public const uint AudioType_Voiceover = 7;
     
     public static readonly Guid AudioVolumeMeter = new("4fc3b166-972a-40cf-bc37-7db03db2fba3");
+    
+    public const uint AURL_DISABLEMIXEDLGC = 32;
+    
+    public const uint AURL_ENABLEDRIVELETTERS = 16;
+    
+    public const uint AURL_ENABLEEA = 1;
+    
+    public const uint AURL_ENABLEEAURLS = 8;
+    
+    public const uint AURL_ENABLEEMAILADDR = 2;
+    
+    public const uint AURL_ENABLETELNO = 4;
+    
+    public const uint AURL_ENABLEURL = 1;
     
     public const uint AUXCAPS_AUXIN = 2;
     
@@ -969,6 +991,36 @@ public static partial class Constants
     
     public const uint BMF_WINDOW_BLT = 64;
     
+    public const uint BOE_CONTEXTALIGNMENT = 16;
+    
+    public const uint BOE_CONTEXTREADING = 8;
+    
+    public const uint BOE_FORCERECALC = 32;
+    
+    public const uint BOE_LEGACYBIDICLASS = 64;
+    
+    public const uint BOE_NEUTRALOVERRIDE = 4;
+    
+    public const uint BOE_PLAINTEXT = 2;
+    
+    public const uint BOE_RTLDIR = 1;
+    
+    public const uint BOE_UNICODEBIDI = 128;
+    
+    public const uint BOM_CONTEXTALIGNMENT = 16;
+    
+    public const uint BOM_CONTEXTREADING = 8;
+    
+    public const uint BOM_DEFPARADIR = 1;
+    
+    public const uint BOM_LEGACYBIDICLASS = 64;
+    
+    public const uint BOM_NEUTRALOVERRIDE = 4;
+    
+    public const uint BOM_PLAINTEXT = 2;
+    
+    public const uint BOM_UNICODEBIDI = 128;
+    
     public const uint BR_CMYKCOLOR = 4;
     
     public const uint BR_DEVICE_ICM = 1;
@@ -1027,6 +1079,8 @@ public static partial class Constants
     
     public const uint CCHDEVICENAME = 32;
     
+    public const uint cchTextLimitDefault = 32767;
+    
     public static readonly Guid CClusterDetectorDmo = new("36e820c4-165a-4521-863c-619e1160d4d4");
     
     public static readonly Guid CColorControlDmo = new("798059f0-89ca-4160-b325-aeb48efe4f9a");
@@ -1084,6 +1138,16 @@ public static partial class Constants
     public static readonly Guid CDVDecoderMediaObject = new("e54709c5-1e17-4c8d-94e7-478940433584");
     
     public static readonly Guid CDVEncoderMediaObject = new("c82ae729-c327-4cce-914d-8171fefebefb");
+    
+    public const string CERICHEDIT_CLASSA = @"RichEditCEA";
+    
+    public const string CERICHEDIT_CLASSW = @"RichEditCEW";
+    
+    public const string CF_RETEXTOBJ = @"RichEdit Text and Objects";
+    
+    public const string CF_RTF = @"Rich Text Format";
+    
+    public const string CF_RTFNOOBJS = @"Rich Text Format Without Objects";
     
     public static readonly Guid CFrameInterpDMO = new("0a7cfe1b-6ab5-4334-9ed8-3f97cb37daa1");
     
@@ -2964,6 +3028,32 @@ public static partial class Constants
     public static readonly Guid CSmpteTransformsDmo = new("bde6388b-da25-485d-ba7f-fabc28b20318");
     
     public const int CT_RECTANGLES = 0;
+    
+    public const uint CTFMODEBIAS_CONVERSATION = 5;
+    
+    public const uint CTFMODEBIAS_DATETIME = 4;
+    
+    public const uint CTFMODEBIAS_DEFAULT = 0;
+    
+    public const uint CTFMODEBIAS_FILENAME = 1;
+    
+    public const uint CTFMODEBIAS_FULLWIDTHALPHANUMERIC = 11;
+    
+    public const uint CTFMODEBIAS_HALFWIDTHALPHANUMERIC = 12;
+    
+    public const uint CTFMODEBIAS_HALFWIDTHKATAKANA = 10;
+    
+    public const uint CTFMODEBIAS_HANGUL = 9;
+    
+    public const uint CTFMODEBIAS_HIRAGANA = 7;
+    
+    public const uint CTFMODEBIAS_KATAKANA = 8;
+    
+    public const uint CTFMODEBIAS_NAME = 2;
+    
+    public const uint CTFMODEBIAS_NUMERIC = 6;
+    
+    public const uint CTFMODEBIAS_READING = 3;
     
     public static readonly Guid CThumbnailGeneratorDmo = new("559c6bad-1ea8-4963-a087-8a6810f9218b");
     
@@ -12307,6 +12397,32 @@ public static partial class Constants
     
     public static readonly Guid ECHOSTAR_SATELLITE_TV_NETWORK_TYPE = new("c4f6b31b-c6bf-4759-886f-a7386dca27a0");
     
+    public const uint ECO_AUTOHSCROLL = 128;
+    
+    public const uint ECO_AUTOVSCROLL = 64;
+    
+    public const uint ECO_AUTOWORDSELECTION = 1;
+    
+    public const uint ECO_NOHIDESEL = 256;
+    
+    public const uint ECO_READONLY = 2048;
+    
+    public const uint ECO_SAVESEL = 32768;
+    
+    public const uint ECO_SELECTIONBAR = 16777216;
+    
+    public const uint ECO_VERTICAL = 4194304;
+    
+    public const uint ECO_WANTRETURN = 4096;
+    
+    public const uint ECOOP_AND = 3;
+    
+    public const uint ECOOP_OR = 2;
+    
+    public const uint ECOOP_SET = 1;
+    
+    public const uint ECOOP_XOR = 4;
+    
     public const uint ECS_REDRAW = 2;
     
     public const uint ECS_TEARDOWN = 1;
@@ -12326,6 +12442,296 @@ public static partial class Constants
     public const uint EHN_ERROR = 1;
     
     public const uint EHN_RESTORED = 0;
+    
+    public const uint ELLIPSIS_END = 1;
+    
+    public const uint ELLIPSIS_MASK = 3;
+    
+    public const uint ELLIPSIS_NONE = 0;
+    
+    public const uint ELLIPSIS_WORD = 3;
+    
+    public const uint EM_AUTOURLDETECT = 1115;
+    
+    public const uint EM_CALLAUTOCORRECTPROC = 1279;
+    
+    public const uint EM_CANPASTE = 1074;
+    
+    public const uint EM_CANREDO = 1109;
+    
+    public const uint EM_CONVPOSITION = 1132;
+    
+    public const uint EM_DISPLAYBAND = 1075;
+    
+    public const uint EM_EXGETSEL = 1076;
+    
+    public const uint EM_EXLIMITTEXT = 1077;
+    
+    public const uint EM_EXLINEFROMCHAR = 1078;
+    
+    public const uint EM_EXSETSEL = 1079;
+    
+    public const uint EM_FINDTEXT = 1080;
+    
+    public const uint EM_FINDTEXTEX = 1103;
+    
+    public const uint EM_FINDTEXTEXW = 1148;
+    
+    public const uint EM_FINDTEXTW = 1147;
+    
+    public const uint EM_FINDWORDBREAK = 1100;
+    
+    public const uint EM_FORMATRANGE = 1081;
+    
+    public const uint EM_GETAUTOCORRECTPROC = 1257;
+    
+    public const uint EM_GETAUTOURLDETECT = 1116;
+    
+    public const uint EM_GETBIDIOPTIONS = 1225;
+    
+    public const uint EM_GETCHARFORMAT = 1082;
+    
+    public const uint EM_GETCTFMODEBIAS = 1261;
+    
+    public const uint EM_GETCTFOPENSTATUS = 1264;
+    
+    public const uint EM_GETEDITSTYLE = 1229;
+    
+    public const uint EM_GETEDITSTYLEEX = 1300;
+    
+    public const uint EM_GETELLIPSISMODE = 1329;
+    
+    public const uint EM_GETELLIPSISSTATE = 1346;
+    
+    public const uint EM_GETEVENTMASK = 1083;
+    
+    public const uint EM_GETHYPHENATEINFO = 1254;
+    
+    public const uint EM_GETIMECOLOR = 1129;
+    
+    public const uint EM_GETIMECOMPMODE = 1146;
+    
+    public const uint EM_GETIMECOMPTEXT = 1266;
+    
+    public const uint EM_GETIMEMODEBIAS = 1151;
+    
+    public const uint EM_GETIMEOPTIONS = 1131;
+    
+    public const uint EM_GETIMEPROPERTY = 1268;
+    
+    public const uint EM_GETLANGOPTIONS = 1145;
+    
+    public const uint EM_GETOLEINTERFACE = 1084;
+    
+    public const uint EM_GETOPTIONS = 1102;
+    
+    public const uint EM_GETPAGE = 1252;
+    
+    public const uint EM_GETPAGEROTATE = 1259;
+    
+    public const uint EM_GETPARAFORMAT = 1085;
+    
+    public const uint EM_GETPUNCTUATION = 1125;
+    
+    public const uint EM_GETQUERYRTFOBJ = 1293;
+    
+    public const uint EM_GETREDONAME = 1111;
+    
+    public const uint EM_GETSCROLLPOS = 1245;
+    
+    public const uint EM_GETSELTEXT = 1086;
+    
+    public const uint EM_GETSTORYTYPE = 1314;
+    
+    public const uint EM_GETTABLEPARMS = 1289;
+    
+    public const uint EM_GETTEXTEX = 1118;
+    
+    public const uint EM_GETTEXTLENGTHEX = 1119;
+    
+    public const uint EM_GETTEXTMODE = 1114;
+    
+    public const uint EM_GETTEXTRANGE = 1099;
+    
+    public const uint EM_GETTOUCHOPTIONS = 1334;
+    
+    public const uint EM_GETTYPOGRAPHYOPTIONS = 1227;
+    
+    public const uint EM_GETUNDONAME = 1110;
+    
+    public const uint EM_GETVIEWKIND = 1250;
+    
+    public const uint EM_GETWORDBREAKPROCEX = 1104;
+    
+    public const uint EM_GETWORDWRAPMODE = 1127;
+    
+    public const uint EM_GETZOOM = 1248;
+    
+    public const uint EM_HIDESELECTION = 1087;
+    
+    public const uint EM_INSERTIMAGE = 1338;
+    
+    public const uint EM_INSERTTABLE = 1256;
+    
+    public const uint EM_ISIME = 1267;
+    
+    public const uint EM_OUTLINE = 1244;
+    
+    public const uint EM_PASTESPECIAL = 1088;
+    
+    public const uint EM_RECONVERSION = 1149;
+    
+    public const uint EM_REDO = 1108;
+    
+    public const uint EM_REQUESTRESIZE = 1089;
+    
+    public const uint EM_SELECTIONTYPE = 1090;
+    
+    public const uint EM_SETAUTOCORRECTPROC = 1258;
+    
+    public const uint EM_SETBIDIOPTIONS = 1224;
+    
+    public const uint EM_SETBKGNDCOLOR = 1091;
+    
+    public const uint EM_SETCHARFORMAT = 1092;
+    
+    public const uint EM_SETCTFMODEBIAS = 1262;
+    
+    public const uint EM_SETCTFOPENSTATUS = 1265;
+    
+    public const uint EM_SETDISABLEOLELINKCONVERSION = 1428;
+    
+    public const uint EM_SETEDITSTYLE = 1228;
+    
+    public const uint EM_SETEDITSTYLEEX = 1299;
+    
+    public const uint EM_SETELLIPSISMODE = 1330;
+    
+    public const uint EM_SETEVENTMASK = 1093;
+    
+    public const uint EM_SETFONTSIZE = 1247;
+    
+    public const uint EM_SETHYPHENATEINFO = 1255;
+    
+    public const uint EM_SETIMECOLOR = 1128;
+    
+    public const uint EM_SETIMEMODEBIAS = 1150;
+    
+    public const uint EM_SETIMEOPTIONS = 1130;
+    
+    public const uint EM_SETLANGOPTIONS = 1144;
+    
+    public const uint EM_SETOLECALLBACK = 1094;
+    
+    public const uint EM_SETOPTIONS = 1101;
+    
+    public const uint EM_SETPAGE = 1253;
+    
+    public const uint EM_SETPAGEROTATE = 1260;
+    
+    public const uint EM_SETPALETTE = 1117;
+    
+    public const uint EM_SETPARAFORMAT = 1095;
+    
+    public const uint EM_SETPUNCTUATION = 1124;
+    
+    public const uint EM_SETQUERYCONVERTOLELINKCALLBACK = 1427;
+    
+    public const uint EM_SETQUERYRTFOBJ = 1294;
+    
+    public const uint EM_SETSCROLLPOS = 1246;
+    
+    public const uint EM_SETSTORYTYPE = 1315;
+    
+    public const uint EM_SETTABLEPARMS = 1331;
+    
+    public const uint EM_SETTARGETDEVICE = 1096;
+    
+    public const uint EM_SETTEXTEX = 1121;
+    
+    public const uint EM_SETTEXTMODE = 1113;
+    
+    public const uint EM_SETTOUCHOPTIONS = 1335;
+    
+    public const uint EM_SETTYPOGRAPHYOPTIONS = 1226;
+    
+    public const uint EM_SETUIANAME = 1344;
+    
+    public const uint EM_SETUNDOLIMIT = 1106;
+    
+    public const uint EM_SETVIEWKIND = 1251;
+    
+    public const uint EM_SETWORDBREAKPROCEX = 1105;
+    
+    public const uint EM_SETWORDWRAPMODE = 1126;
+    
+    public const uint EM_SETZOOM = 1249;
+    
+    public const uint EM_SHOWSCROLLBAR = 1120;
+    
+    public const uint EM_STOPGROUPTYPING = 1112;
+    
+    public const uint EM_STREAMIN = 1097;
+    
+    public const uint EM_STREAMOUT = 1098;
+    
+    public const uint EMO_ENTER = 1;
+    
+    public const uint EMO_EXIT = 0;
+    
+    public const uint EMO_EXPAND = 3;
+    
+    public const uint EMO_EXPANDDOCUMENT = 1;
+    
+    public const uint EMO_EXPANDSELECTION = 0;
+    
+    public const uint EMO_GETVIEWMODE = 5;
+    
+    public const uint EMO_MOVESELECTION = 4;
+    
+    public const uint EMO_PROMOTE = 2;
+    
+    public const uint EN_ALIGNLTR = 1808;
+    
+    public const uint EN_ALIGNRTL = 1809;
+    
+    public const uint EN_CLIPFORMAT = 1810;
+    
+    public const uint EN_CORRECTTEXT = 1797;
+    
+    public const uint EN_DRAGDROPDONE = 1804;
+    
+    public const uint EN_DROPFILES = 1795;
+    
+    public const uint EN_ENDCOMPOSITION = 1812;
+    
+    public const uint EN_IMECHANGE = 1799;
+    
+    public const uint EN_LINK = 1803;
+    
+    public const uint EN_LOWFIRTF = 1807;
+    
+    public const uint EN_MSGFILTER = 1792;
+    
+    public const uint EN_OBJECTPOSITIONS = 1802;
+    
+    public const uint EN_OLEOPFAILED = 1801;
+    
+    public const uint EN_PAGECHANGE = 1806;
+    
+    public const uint EN_PARAGRAPHEXPANDED = 1805;
+    
+    public const uint EN_PROTECTED = 1796;
+    
+    public const uint EN_REQUESTRESIZE = 1793;
+    
+    public const uint EN_SAVECLIPBOARD = 1800;
+    
+    public const uint EN_SELCHANGE = 1794;
+    
+    public const uint EN_STARTCOMPOSITION = 1811;
+    
+    public const uint EN_STOPNOUNDO = 1798;
     
     public const uint ENABLE_GAMUT_CHECKING = 65536;
     
@@ -12359,7 +12765,85 @@ public static partial class Constants
     
     public const uint ENG_FNT_CACHE_WRITE_FAULT = 2;
     
+    public const uint ENM_CHANGE = 1;
+    
+    public const uint ENM_CLIPFORMAT = 128;
+    
+    public const uint ENM_CORRECTTEXT = 4194304;
+    
+    public const uint ENM_DRAGDROPDONE = 16;
+    
+    public const uint ENM_DROPFILES = 1048576;
+    
+    public const uint ENM_ENDCOMPOSITION = 536870912;
+    
+    public const uint ENM_GROUPTYPINGCHANGE = 1073741824;
+    
+    public const uint ENM_HIDELINKTOOLTIP = 2147483648;
+    
+    public const uint ENM_IMECHANGE = 8388608;
+    
+    public const uint ENM_KEYEVENTS = 65536;
+    
+    public const uint ENM_LANGCHANGE = 16777216;
+    
+    public const uint ENM_LINK = 67108864;
+    
+    public const uint ENM_LOWFIRTF = 134217728;
+    
+    public const uint ENM_MOUSEEVENTS = 131072;
+    
+    public const uint ENM_NONE = 0;
+    
+    public const uint ENM_OBJECTPOSITIONS = 33554432;
+    
+    public const uint ENM_PAGECHANGE = 64;
+    
+    public const uint ENM_PARAGRAPHEXPANDED = 32;
+    
+    public const uint ENM_PROTECTED = 2097152;
+    
+    public const uint ENM_REQUESTRESIZE = 262144;
+    
+    public const uint ENM_SCROLL = 4;
+    
+    public const uint ENM_SCROLLEVENTS = 8;
+    
+    public const uint ENM_SELCHANGE = 524288;
+    
+    public const uint ENM_STARTCOMPOSITION = 268435456;
+    
+    public const uint ENM_UPDATE = 2;
+    
     public const uint ENUM_TYPE_VERSION = 768;
+    
+    public const uint EPR_0 = 0;
+    
+    public const uint EPR_180 = 2;
+    
+    public const uint EPR_270 = 1;
+    
+    public const uint EPR_90 = 3;
+    
+    public const uint EPR_SE = 5;
+    
+    public const uint ES_DISABLENOSCROLL = 8192;
+    
+    public const uint ES_EX_NOCALLOLEINIT = 0;
+    
+    public const uint ES_NOIME = 524288;
+    
+    public const uint ES_NOOLEDRAGDROP = 8;
+    
+    public const uint ES_SAVESEL = 32768;
+    
+    public const uint ES_SELECTIONBAR = 16777216;
+    
+    public const uint ES_SELFIME = 262144;
+    
+    public const uint ES_SUNKEN = 16384;
+    
+    public const uint ES_VERTICAL = 4194304;
     
     public static readonly Guid ESEventFactory = new("8e8a07da-71f8-40c1-a929-5e3a868ac2c6");
     
@@ -14004,6 +14488,18 @@ public static partial class Constants
     public const uint GCAPS2_SYNCTIMER = 128;
     
     public const uint GCAPS2_xxxx = 2;
+    
+    public const uint GCM_MOUSEMENU = 8192;
+    
+    public const uint GCM_TOUCHMENU = 16384;
+    
+    public const uint GCMF_GRIPPER = 1;
+    
+    public const uint GCMF_MOUSEMENU = 8192;
+    
+    public const uint GCMF_SPELLING = 2;
+    
+    public const uint GCMF_TOUCHMENU = 16384;
     
     public const uint GDI_DRIVER_VERSION = 16384;
     
@@ -16169,6 +16665,8 @@ public static partial class Constants
     
     public const uint ICM_CONFIGURE = 20490;
     
+    public const uint ICM_CTF = 5;
+    
     public const uint ICM_DECOMPRESS = 16397;
     
     public const uint ICM_DECOMPRESS_BEGIN = 16396;
@@ -16250,6 +16748,16 @@ public static partial class Constants
     public const uint ICM_GETQUALITY = 20511;
     
     public const uint ICM_GETSTATE = 20480;
+    
+    public const uint ICM_LEVEL2 = 2;
+    
+    public const uint ICM_LEVEL2_5 = 3;
+    
+    public const uint ICM_LEVEL2_SUI = 4;
+    
+    public const uint ICM_LEVEL3 = 1;
+    
+    public const uint ICM_NOTOPEN = 0;
     
     public const uint ICM_RESERVED = 20480;
     
@@ -16472,6 +16980,54 @@ public static partial class Constants
     public const uint iMASK_COLORS = 3;
     
     public const uint iMAXBITS = 8;
+    
+    public const uint IMF_AUTOFONT = 2;
+    
+    public const uint IMF_AUTOFONTSIZEADJUST = 16;
+    
+    public const uint IMF_AUTOKEYBOARD = 1;
+    
+    public const uint IMF_CLOSESTATUSWINDOW = 8;
+    
+    public const uint IMF_DUALFONT = 128;
+    
+    public const uint IMF_FORCEACTIVE = 64;
+    
+    public const uint IMF_FORCEDISABLE = 4;
+    
+    public const uint IMF_FORCEENABLE = 2;
+    
+    public const uint IMF_FORCEINACTIVE = 128;
+    
+    public const uint IMF_FORCENONE = 1;
+    
+    public const uint IMF_FORCEREMEMBER = 256;
+    
+    public const uint IMF_IMEALWAYSSENDNOTIFY = 8;
+    
+    public const uint IMF_IMECANCELCOMPLETE = 4;
+    
+    public const uint IMF_IMEUIINTEGRATION = 8192;
+    
+    public const uint IMF_MULTIPLEEDIT = 1024;
+    
+    public const uint IMF_NOIMPLICITLANG = 64;
+    
+    public const uint IMF_NOKBDLIDFIXUP = 512;
+    
+    public const uint IMF_NORTFFONTSUBSTITUTE = 1024;
+    
+    public const uint IMF_SMODE_NONE = 2;
+    
+    public const uint IMF_SMODE_PLAURALCLAUSE = 1;
+    
+    public const uint IMF_SPELLCHECKING = 2048;
+    
+    public const uint IMF_TKBPREDICTION = 4096;
+    
+    public const uint IMF_UIFONTS = 32;
+    
+    public const uint IMF_VERTICAL = 32;
     
     public const uint INDEX_DONT_CARE = 0;
     
@@ -19399,6 +19955,8 @@ public static partial class Constants
     
     public static readonly Guid LanguageComponentType = new("1be49f30-0e1b-11d3-9d8e-00c04f72d980");
     
+    public const uint lDefaultTab = 720;
+    
     public static readonly Guid LIBID_QuartzNetTypeLib = new("56a868b1-0ad4-11ce-b03a-0020af0ba770");
     
     public static readonly Guid LIBID_QuartzTypeLib = new("56a868b0-0ad4-11ce-b03a-0020af0ba770");
@@ -19464,6 +20022,10 @@ public static partial class Constants
     public const uint MAX_SIZE_MPEG1_SEQUENCE_INFO = 140;
     
     public const uint MAX_SUBSTREAMS = 15;
+    
+    public const uint MAX_TAB_STOPS = 32;
+    
+    public const uint MAX_TABLE_CELLS = 63;
     
     public const uint MAX_WST_VBI_LINES_PER_FIELD = 17;
     
@@ -27565,6 +28127,8 @@ public static partial class Constants
     
     public static readonly Guid MSEventBinder = new("577faa18-4518-445e-8f70-1473f8cf4ba4");
     
+    public const string MSFTEDIT_CLASS = @"RICHEDIT50W";
+    
     public static readonly Guid MSPID_PrimaryAudio = new("a35ff56b-9fda-11d0-8fdf-00c04fd9189d");
     
     public static readonly Guid MSPID_PrimaryVideo = new("a35ff56a-9fda-11d0-8fdf-00c04fd9189d");
@@ -27751,6 +28315,8 @@ public static partial class Constants
     
     public const uint OCUR_PAIRING_PROTOCOL_VERSION = 2;
     
+    public const uint OLEOP_DOVERB = 1;
+    
     public const uint OPENGL_CMD = 4352;
     
     public const uint OPENGL_GETINFO = 4353;
@@ -27846,6 +28412,14 @@ public static partial class Constants
     public const uint PBDA_Encoder_Video_MPEG4Part10 = 1;
     
     public const uint PBDA_PAIRING_PROTOCOL_VERSION = 3;
+    
+    public const uint PC_DELIMITER = 4;
+    
+    public const uint PC_FOLLOWING = 1;
+    
+    public const uint PC_LEADING = 2;
+    
+    public const uint PC_OVERFLOW = 3;
     
     public const uint PD_BEGINSUBPATH = 1;
     
@@ -28309,9 +28883,23 @@ public static partial class Constants
     
     public const string REGSTR_PATH_SOFTWARESYNTHS = @"Software\Microsoft\DirectMusic\SoftwareSynths";
     
+    public const int REO_NULL = 0;
+    
+    public const int REO_READWRITEMASK = 2047;
+    
     public const uint REQUIRED_PARENTAL_CONTROL_TIME_RANGE = 2;
     
     public const uint RESERVED = 2147483648;
+    
+    public const string RICHEDIT_CLASS = @"RichEdit20W";
+    
+    public const string RICHEDIT_CLASS10A = @"RICHEDIT";
+    
+    public const string RICHEDIT_CLASSA = @"RichEdit20A";
+    
+    public const string RICHEDIT_CLASSW = @"RichEdit20W";
+    
+    public const string RICHEDIT60_CLASS = @"RICHEDIT60W";
     
     public const uint ROCKWELL_WA1_MIXER = 103;
     
@@ -28346,6 +28934,12 @@ public static partial class Constants
     public static readonly PWSTR RT_RCDATA = new('\u000a');
     
     public static readonly PWSTR RT_STRING = new('\u0006');
+    
+    public const uint RTO_DISABLEHANDLES = 2;
+    
+    public const uint RTO_READINGMODE = 3;
+    
+    public const uint RTO_SHOWHANDLES = 1;
     
     public const uint S_INIT = 2;
     
@@ -28399,6 +28993,26 @@ public static partial class Constants
     
     public static readonly Guid SBE2_V2_STREAMS_CREATION_EVENT = new("a72530a3-0344-4cab-a2d0-fe937dbdcab3");
     
+    public const uint SCF_ALL = 4;
+    
+    public const uint SCF_ASSOCIATEFONT = 16;
+    
+    public const uint SCF_ASSOCIATEFONT2 = 64;
+    
+    public const uint SCF_CHARREPFROMLCID = 256;
+    
+    public const uint SCF_DEFAULT = 0;
+    
+    public const uint SCF_NOKBUPDATE = 32;
+    
+    public const uint SCF_SELECTION = 1;
+    
+    public const uint SCF_SMARTFONT = 128;
+    
+    public const uint SCF_USEUIRULES = 8;
+    
+    public const uint SCF_WORD = 2;
+    
     public static readonly Guid SCP_EVENTID_ACQSECURECLOCK = new("86248cc9-4a59-43e2-9146-48a7f3f4140c");
     
     public static readonly Guid SCP_EVENTID_DRMINFO = new("213dd287-41d2-432b-9e3f-3b4f7b3581dd");
@@ -28433,11 +29047,125 @@ public static partial class Constants
     
     public const uint SEQUENTIAL_TRANSFORM = 2155872256;
     
+    public const uint SES_ALLOWBEEPS = 256;
+    
+    public const uint SES_BEEPONMAXTEXT = 2;
+    
+    public const uint SES_BIDI = 4096;
+    
+    public const uint SES_CTFALLOWEMBED = 2097152;
+    
+    public const uint SES_CTFALLOWPROOFING = 8388608;
+    
+    public const uint SES_CTFALLOWSMARTTAG = 4194304;
+    
+    public const uint SES_CTFNOLOCK = 268435456;
+    
+    public const uint SES_CUSTOMLOOK = 524288;
+    
+    public const uint SES_DEFAULTLATINLIGA = 16;
+    
+    public const uint SES_DRAFTMODE = 32768;
+    
+    public const uint SES_EMULATE10 = 16;
+    
+    public const uint SES_EMULATESYSEDIT = 1;
+    
+    public const uint SES_EX_HANDLEFRIENDLYURL = 256;
+    
+    public const uint SES_EX_HIDETEMPFORMAT = 268435456;
+    
+    public const uint SES_EX_MULTITOUCH = 134217728;
+    
+    public const uint SES_EX_NOACETATESELECTION = 1048576;
+    
+    public const uint SES_EX_NOMATH = 64;
+    
+    public const uint SES_EX_NOTABLE = 4;
+    
+    public const uint SES_EX_NOTHEMING = 524288;
+    
+    public const uint SES_EX_USEMOUSEWPARAM = 536870912;
+    
+    public const uint SES_EX_USESINGLELINE = 2097152;
+    
+    public const uint SES_EXTENDBACKCOLOR = 4;
+    
+    public const uint SES_HIDEGRIDLINES = 131072;
+    
+    public const uint SES_HYPERLINKTOOLTIPS = 8;
+    
+    public const uint SES_LBSCROLLNOTIFY = 1048576;
+    
+    public const uint SES_LOGICALCARET = 16777216;
+    
+    public const uint SES_LOWERCASE = 1024;
+    
+    public const uint SES_MAPCPS = 8;
+    
+    public const uint SES_MAX = 536870912;
+    
+    public const uint SES_MULTISELECT = 134217728;
+    
+    public const uint SES_NOEALINEHEIGHTADJUST = 536870912;
+    
+    public const uint SES_NOFOCUSLINKNOTIFY = 32;
+    
+    public const uint SES_NOIME = 128;
+    
+    public const uint SES_NOINPUTSEQUENCECHK = 2048;
+    
+    public const uint SES_SCROLLONKILLFOCUS = 8192;
+    
+    public const uint SES_SMARTDRAGDROP = 67108864;
+    
+    public const uint SES_UPPERCASE = 512;
+    
+    public const uint SES_USEAIMM = 64;
+    
+    public const uint SES_USEATFONT = 262144;
+    
+    public const uint SES_USECRLF = 32;
+    
+    public const uint SES_USECTF = 65536;
+    
+    public const uint SES_WORDDRAGDROP = 33554432;
+    
+    public const uint SES_XLTCRCRLFTOCR = 16384;
+    
     public const uint SETCONFIGURATION_STATUS_ADDITIONAL = 1;
     
     public const uint SETCONFIGURATION_STATUS_APPLIED = 0;
     
     public const uint SETCONFIGURATION_STATUS_OVERRIDDEN = 2;
+    
+    public const uint SF_NCRFORNONASCII = 64;
+    
+    public const uint SF_RTF = 2;
+    
+    public const uint SF_RTFNOOBJS = 3;
+    
+    public const uint SF_RTFVAL = 1792;
+    
+    public const uint SF_TEXT = 1;
+    
+    public const uint SF_TEXTIZED = 4;
+    
+    public const uint SF_UNICODE = 16;
+    
+    public const uint SF_USECODEPAGE = 32;
+    
+    public const uint SFF_KEEPDOCINFO = 4096;
+    
+    public const uint SFF_PERSISTVIEWSCALE = 8192;
+    
+    public const uint SFF_PLAINRTF = 16384;
+    
+    public const uint SFF_PWD = 2048;
+    
+    public const uint SFF_SELECTION = 32768;
+    
+    public const uint SFF_WRITEXTRAPAR = 128;
     
     public const uint SGI_EXTRASPACE = 0;
     
@@ -28613,6 +29341,10 @@ public static partial class Constants
     
     public const int SpeechAllElements = -1;
     
+    public const uint SPF_DONTSETDEFAULT = 2;
+    
+    public const uint SPF_SETDEFAULT = 4;
+    
     public static readonly Guid SpFileStream = new("947812b3-2ae1-4644-ba86-9e90ded7ec91");
     
     public static readonly Guid SpGramCompBackend = new("da93e903-c843-11d2-a084-00c04f8ef9b5");
@@ -28771,6 +29503,16 @@ public static partial class Constants
     
     public const uint SS_SAVE = 0;
     
+    public const uint ST_DEFAULT = 0;
+    
+    public const uint ST_KEEPUNDO = 1;
+    
+    public const uint ST_NEWCHARS = 4;
+    
+    public const uint ST_SELECTION = 2;
+    
+    public const uint ST_UNICODE = 8;
+    
     public const uint STDINDEXSIZE = 16384;
     
     public const uint STREAMBUFFER_EC_BASE = 806;
@@ -28923,6 +29665,14 @@ public static partial class Constants
     
     public const uint TIMERR_STRUCT = 129;
     
+    public const uint TO_ADVANCEDLAYOUT = 8;
+    
+    public const uint TO_ADVANCEDTYPOGRAPHY = 1;
+    
+    public const uint TO_DISABLECUSTOMTEXTOUT = 4;
+    
+    public const uint TO_SIMPLELINEBREAK = 2;
+    
     public const uint TOC_ENTRY_MAX_TITLE_SIZE = 65535;
     
     public const uint TOC_MAX_DESCRIPTION_SIZE = 65535;
@@ -28938,6 +29688,68 @@ public static partial class Constants
     public static readonly Guid TunerMarshaler = new("6438570b-0c08-4a25-9504-8012bb4d50cf");
     
     public static readonly Guid TuningSpace = new("5ffdc5e6-b83a-4b55-b6e8-c69e765fe9db");
+    
+    public const uint TXES_ISDIALOG = 1;
+    
+    public const uint TXTBIT_ADVANCEDINPUT = 536870912;
+    
+    public const uint TXTBIT_ALLOWBEEP = 2048;
+    
+    public const uint TXTBIT_AUTOWORDSEL = 128;
+    
+    public const uint TXTBIT_BACKSTYLECHANGE = 16384;
+    
+    public const uint TXTBIT_CHARFORMATCHANGE = 131072;
+    
+    public const uint TXTBIT_CLIENTRECTCHANGE = 1048576;
+    
+    public const uint TXTBIT_D2DDWRITE = 16777216;
+    
+    public const uint TXTBIT_D2DPIXELSNAPPED = 67108864;
+    
+    public const uint TXTBIT_D2DSIMPLETYPOGRAPHY = 33554432;
+    
+    public const uint TXTBIT_D2DSUBPIXELLINES = 134217728;
+    
+    public const uint TXTBIT_DISABLEDRAG = 4096;
+    
+    public const uint TXTBIT_EXTENTCHANGE = 524288;
+    
+    public const uint TXTBIT_FLASHLASTPASSWORDCHAR = 268435456;
+    
+    public const uint TXTBIT_HIDESELECTION = 32;
+    
+    public const uint TXTBIT_MAXLENGTHCHANGE = 32768;
+    
+    public const uint TXTBIT_MULTILINE = 2;
+    
+    public const uint TXTBIT_NOTHREADREFCOUNT = 4194304;
+    
+    public const uint TXTBIT_PARAFORMATCHANGE = 262144;
+    
+    public const uint TXTBIT_READONLY = 4;
+    
+    public const uint TXTBIT_RICHTEXT = 1;
+    
+    public const uint TXTBIT_SAVESELECTION = 64;
+    
+    public const uint TXTBIT_SCROLLBARCHANGE = 65536;
+    
+    public const uint TXTBIT_SELBARCHANGE = 512;
+    
+    public const uint TXTBIT_SHOWACCELERATOR = 8;
+    
+    public const uint TXTBIT_SHOWPASSWORD = 8388608;
+    
+    public const uint TXTBIT_USECURRENTBKG = 2097152;
+    
+    public const uint TXTBIT_USEPASSWORD = 16;
+    
+    public const uint TXTBIT_VERTICAL = 256;
+    
+    public const uint TXTBIT_VIEWINSETCHANGE = 8192;
+    
+    public const uint TXTBIT_WORDWRAP = 1024;
     
     public const uint USE_RELATIVE_COLORIMETRIC = 131072;
     
@@ -29114,6 +29926,12 @@ public static partial class Constants
     public const int VIDMEM_ISWC = 16;
     
     public const string VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK = @"VAD\Process_Loopback";
+    
+    public const uint VM_NORMAL = 4;
+    
+    public const uint VM_OUTLINE = 2;
+    
+    public const uint VM_PAGE = 9;
     
     public const int VMEMHEAP_ALIGNMENT = 4;
     
@@ -29860,6 +30678,26 @@ public static partial class Constants
     public const uint WAVERR_SYNC = 35;
     
     public const uint WAVERR_UNPREPARED = 34;
+    
+    public const uint WB_MOVEWORDNEXT = 5;
+    
+    public const uint WB_MOVEWORDPREV = 4;
+    
+    public const uint WB_NEXTBREAK = 7;
+    
+    public const uint WB_PREVBREAK = 6;
+    
+    public const uint WBF_CUSTOM = 512;
+    
+    public const uint WBF_LEVEL1 = 128;
+    
+    public const uint WBF_LEVEL2 = 256;
+    
+    public const uint WBF_OVERFLOW = 64;
+    
+    public const uint WBF_WORDBREAK = 32;
+    
+    public const uint WBF_WORDWRAP = 16;
     
     public const uint WCS_ALWAYS = 2097152;
     
@@ -31344,4 +32182,6 @@ public static partial class Constants
     public static readonly Guid XpsOMThumbnailGenerator = new("7e4a23e2-b969-4761-be35-1a8ced58e323");
     
     public static readonly Guid XpsSignatureManager = new("b0c43320-2315-44a2-b70a-0943a140a8ee");
+    
+    public const uint yHeightCharPtsMost = 1638;
 }

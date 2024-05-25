@@ -3096,6 +3096,12 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool GetMessageW(out MSG lpMsg, HWND hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial uint GetModuleFileNameW(HMODULE hModule, [MarshalUsing(CountElementName = nameof(nSize))] PWSTR lpFilename, uint nSize);
+    
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandleexw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]

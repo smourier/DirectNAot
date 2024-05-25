@@ -104,6 +104,14 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IEnumUnknown>(value);
     }
 
+    public static IComObject<IWICFormatConverter> CreateFormatConverter(this IComObject<IWICImagingFactory> factory) => CreateFormatConverter(factory.Object!);
+    public static IComObject<IWICFormatConverter> CreateFormatConverter(this IWICImagingFactory factory)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        factory.CreateFormatConverter(out var value).ThrowOnError();
+        return new ComObject<IWICFormatConverter>(value);
+    }
+
     public static IComObject<IWICBitmapEncoder> CreateEncoder(this IComObject<IWICImagingFactory> factory, Guid containerFormat, Guid? vendor = null) => CreateEncoder(factory?.Object!, containerFormat, vendor);
     public static IComObject<IWICBitmapEncoder> CreateEncoder(this IWICImagingFactory factory, Guid containerFormat, Guid? vendor = null)
     {

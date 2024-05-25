@@ -29,6 +29,7 @@
     "Windows.Win32.Devices.Display",
     "Windows.Win32.Graphics.Dwm*",
     "Windows.Win32.Graphics*",
+    "Windows.Win32.UI.Controls.RichEdit*",
     "!Windows.Win32.Graphics.Gdi*",
     "!Windows.Win32.Graphics.GdiPlus*",
     "!Windows.Win32.Graphics.Printing*",
@@ -58,6 +59,7 @@
     "Windows.Win32.Graphics.Gdi.BITMAP",
     "-!D2D_MATRIX_*",
     "-D3DCOLORVALUE",
+    "-tomConstants",
     "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
@@ -117,6 +119,7 @@
     "GetIconInfo",
     "GetMessageW",
     "GetMessagePos",
+    "GetModuleFileNameW",
     "GetModuleHandleW",
     "GetModuleHandleExW",
     "GetMonitorInfoW",

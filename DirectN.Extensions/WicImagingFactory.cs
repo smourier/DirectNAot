@@ -19,6 +19,7 @@ public static class WicImagingFactory
     public static IComObject<IWICBitmap> CreateBitmapFromMemory(uint width, uint height, Guid pixelFormat, uint stride, byte[] buffer) => WithFactory(f => f.CreateBitmapFromMemory(width, height, pixelFormat, stride, buffer));
     public static IComObject<IWICBitmap> CreateBitmapFromSource(IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => WithFactory(f => f.CreateBitmapFromSource(source, option));
     public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(IComObject<IWICBitmapSource> source, uint x, uint y, uint width, uint height) => WithFactory(f => f.CreateBitmapFromSourceRect(source, x, y, width, height));
+    public static IComObject<IWICFormatConverter> CreateFormatConverter() => WithFactory(f => f.CreateFormatConverter());
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<IWICImageEncoder> CreateImageEncoder(IComObject<ID2D1Device> device) => WithFactory2(f => f.CreateImageEncoder(device));

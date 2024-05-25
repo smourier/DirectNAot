@@ -1,0 +1,13 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum TXTNATURALSIZE
+{
+    TXTNS_FITTOCONTENT2 = 0,
+    TXTNS_FITTOCONTENT = 1,
+    TXTNS_ROUNDTOLINE = 2,
+    TXTNS_FITTOCONTENT3 = 3,
+    TXTNS_FITTOCONTENTWSP = 4,
+    TXTNS_INCLUDELASTLINE = 1073741824,
+    TXTNS_EMU = int.MinValue,
+}
