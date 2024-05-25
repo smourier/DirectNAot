@@ -1,4 +1,6 @@
-﻿namespace DirectN.Extensions.Utilities;
+﻿using Windows.Foundation.Metadata;
+
+namespace DirectN.Extensions.Utilities;
 
 public static partial class WindowsVersionUtilities
 {
@@ -39,6 +41,19 @@ public static partial class WindowsVersionUtilities
             wServicePackMajor = servicePackMajor
         };
         return VerifyVersionInfoW(osvi, VER_MAJORVERSION | VER_MINORVERSION | VER_SERVICEPACKMAJOR, mask);
+    }
+
+    private static readonly ConcurrentDictionary<ushort, bool> _apiContractAvailable = new();
+
+    [SupportedOSPlatform("windows10.0.10240.0")]
+    public static bool IsApiContractAvailable(ushort version)
+    {
+        if (_apiContractAvailable.TryGetValue(version, out var available))
+            return available;
+
+        available = ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", version);
+        _apiContractAvailable[version] = available;
+        return available;
     }
 
     private const int VER_GREATER_EQUAL = 3;

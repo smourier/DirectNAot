@@ -50,6 +50,23 @@ public static class Extensions
         return i;
     }
 
+    public static int IndexOf<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+        if (source == null)
+            return -1;
+
+        var index = 0;
+        foreach (var item in source)
+        {
+            if (predicate(item))
+                return index;
+
+            index++;
+        }
+        return -1;
+    }
+
     public static void CopyTo(this nint source, nint destination, int length) => Functions.CopyMemory(destination, source, length);
     public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);
@@ -341,6 +358,41 @@ public static class Extensions
                 }
             }
         }
+    }
+
+    private static readonly ConcurrentDictionary<string, string> _loadedStrings = new(StringComparer.OrdinalIgnoreCase);
+
+    [SupportedOSPlatform("windows6.0.6000")]
+    public static string LoadString(string libPath, uint id, int lcid = -1)
+    {
+        ArgumentNullException.ThrowIfNull(libPath);
+        if (lcid == -1) // default => current UI culture
+        {
+            lcid = Thread.CurrentThread.CurrentUICulture.LCID;
+        }
+
+        var key = lcid + "!" + id + "!" + libPath;
+        if (_loadedStrings.TryGetValue(key, out var str))
+            return str;
+
+        var h = Functions.LoadLibraryExW(PWSTR.From(libPath), HANDLE.Null, LOAD_LIBRARY_FLAGS.LOAD_LIBRARY_AS_IMAGE_RESOURCE);
+        if (h.Value == 0)
+            return key;
+
+        var oldLcid = Functions.GetThreadUILanguage();
+        Functions.SetThreadUILanguage((ushort)lcid);
+
+        var ret = Functions.LoadStringW(new HINSTANCE { Value = h.Value }, id, out var ptr, 0);
+        Functions.SetThreadUILanguage(oldLcid);
+        if (ret == 0)
+            return key;
+
+        // each string starts with its size (a bit like a bstr)
+        var len = Marshal.ReadInt16(ptr.Value, -2);
+        str = len > 0 ? Marshal.PtrToStringUni(ptr.Value, len) : key;
+        _loadedStrings[key] = str;
+        Functions.FreeLibrary(h);
+        return str;
     }
 
     public static object? ChangeType(this VARENUM vt, object? value)

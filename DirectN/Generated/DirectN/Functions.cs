@@ -2762,6 +2762,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR lpInData, int cjOutput, PSTR lpOutData);
     
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatediconw
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HICON ExtractAssociatedIconW(HINSTANCE hInst, [MarshalUsing(ConstantElementCount = 128)] PWSTR pszIconPath, ref ushort piIcon);
+    
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetallglyphhandles
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -3395,6 +3401,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial DPI_HOSTING_BEHAVIOR GetThreadDpiHostingBehavior();
+    
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getthreaduilanguage
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial ushort GetThreadUILanguage();
     
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-gettimingreport
     [LibraryImport("dxva2", SetLastError = true)]
@@ -5796,11 +5808,23 @@ public static partial class Functions
     [PreserveSig]
     public static partial HCURSOR LoadCursorA(HINSTANCE hInstance, PSTR lpCursorName);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HMODULE LoadLibraryExW(PWSTR lpLibFileName, HANDLE hFile, LOAD_LIBRARY_FLAGS dwFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HMODULE LoadLibraryW(PWSTR lpLibFileName);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadstringw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int LoadStringW(HINSTANCE hInstance, uint uID, out PWSTR lpBuffer, int cchBufferMax);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-logicaltophysicalpointforpermonitordpi
     [LibraryImport("USER32", SetLastError = true)]
@@ -8512,6 +8536,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial DPI_HOSTING_BEHAVIOR SetThreadDpiHostingBehavior(DPI_HOSTING_BEHAVIOR value);
+    
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-setthreaduilanguage
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial ushort SetThreadUILanguage(ushort LangId);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-settimer
     [LibraryImport("USER32", SetLastError = true)]

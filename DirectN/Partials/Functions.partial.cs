@@ -73,4 +73,20 @@ public static partial class Functions
 
     [SupportedOSPlatform("windows5.0")]
     public static LRESULT SendMessageW(HWND hWnd, uint Msg) => SendMessageW(hWnd, Msg, WPARAM.Null, LPARAM.Null);
+
+    [LibraryImport("user32")]
+    private static partial nint MB_GetString(int button);
+
+    public static string? GetMessageBoxString(MESSAGEBOX_RESULT button, bool removeMnemonics = true)
+    {
+        var ptr = MB_GetString((int)(button - 1));
+        if (ptr == IntPtr.Zero)
+            return null;
+
+        var str = Marshal.PtrToStringUni(ptr);
+        if (removeMnemonics)
+            return str?.Replace("&", string.Empty);
+
+        return str;
+    }
 }

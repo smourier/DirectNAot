@@ -16,5 +16,5 @@ public class AllocPwstr : Pwstr
     }
 
     public uint SizeInBytes { get; }
-    public uint SizeInChars => SizeInChars / 2;
+    public uint SizeInChars => SizeInBytes / 2;
 }

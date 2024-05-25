@@ -189,11 +189,11 @@ public static class Conversions
     public static bool IsNullable(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>); }
     public static bool IsReallyValueType(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsValueType && !IsNullable(type); }
 
-    public static object? ChangeType(object? input, Type conversionType, object? defaultValue, IFormatProvider? provider = null)
+    public static object? ChangeObjectType(object? input, Type conversionType, object? defaultValue = null, IFormatProvider? provider = null)
     {
-        if (!TryChangeType(input, conversionType, provider, out object? value))
+        if (!TryChangeObjectType(input, conversionType, provider, out object? value))
         {
-            if (TryChangeType(defaultValue, conversionType, provider, out var def))
+            if (TryChangeObjectType(defaultValue, conversionType, provider, out var def))
                 return def;
 
             return GetDefaultValue(conversionType);
@@ -209,8 +209,8 @@ public static class Conversions
         return value;
     }
 
-    public static bool TryChangeType(object? input, Type conversionType, out object? value) => TryChangeType(input, conversionType, null, out value);
-    public static bool TryChangeType(object? input, Type conversionType, IFormatProvider? provider, out object? value)
+    public static bool TryChangeObjectType(object? input, Type conversionType, out object? value) => TryChangeObjectType(input, conversionType, null, out value);
+    public static bool TryChangeObjectType(object? input, Type conversionType, IFormatProvider? provider, out object? value)
     {
         ArgumentNullException.ThrowIfNull(conversionType);
         if (input == null)
@@ -229,7 +229,7 @@ public static class Conversions
         if (conversionType.IsNullable())
         {
             var firstType = conversionType.GetGenericArguments()[0];
-            if (TryChangeType(input, firstType, provider, out object? vtValue))
+            if (TryChangeObjectType(input, firstType, provider, out object? vtValue))
             {
 #pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
                 var nt = typeof(Nullable<>).MakeGenericType(firstType);
@@ -1366,7 +1366,7 @@ public static class Conversions
     public static bool TryChangeType<T>(object? input, out T? value) => TryChangeType(input, null, out value);
     public static bool TryChangeType<T>(object? input, IFormatProvider? provider, out T? value)
     {
-        if (!TryChangeType(input, typeof(T), provider, out object? tvalue))
+        if (!TryChangeObjectType(input, typeof(T), provider, out object? tvalue))
         {
             value = default;
             return false;
@@ -1374,5 +1374,264 @@ public static class Conversions
 
         value = (T?)tvalue;
         return true;
+    }
+
+    public static string? CapitalizeFirst(this string? thisString, CultureInfo? culture = null)
+    {
+        if (string.IsNullOrEmpty(thisString))
+            return null;
+
+        if (culture == null)
+            return char.ToUpper(thisString[0]) + thisString[1..];
+
+        return char.ToUpper(thisString[0], culture) + thisString[1..];
+    }
+
+    public static bool IsFlagsEnum(Type enumType)
+    {
+        ArgumentNullException.ThrowIfNull(enumType);
+        if (!enumType.IsEnum)
+            throw new ArgumentException(null, nameof(enumType));
+
+        return enumType.IsDefined(typeof(FlagsAttribute), true);
+    }
+
+    [return: NotNullIfNotNull(nameof(text))]
+    public static string? Decamelize(string? text, DecamelizeOptions options = DecamelizeOptions.Default)
+    {
+        // input: a string like loadByWhateverStuff
+        // output: a string like Load By Whatever Stuff
+        // BBKing -> BBKing
+        // BBOKing -> BboKing
+        // LoadBy25Years -> Load By 25 Years
+        // SoftFluent.PetShop -> Soft Fluent. Pet Shop
+        // Data2_FileName -> Data 2 File Name
+        // _WhatIs -> _What is
+        // __WhatIs -> __What is
+        // __What__Is -> __What is
+        // MyParam1 -> My Param 1
+        // MyParam1Baby -> My Param1 Baby (if DontDecamelizeNumbers)
+
+        if (string.IsNullOrWhiteSpace(text))
+            return text;
+
+        var lastCategory = CharUnicodeInfo.GetUnicodeCategory(text[0]);
+        var prevCategory = lastCategory;
+        if (lastCategory == UnicodeCategory.UppercaseLetter)
+        {
+            lastCategory = UnicodeCategory.LowercaseLetter;
+        }
+
+        var i = 0;
+        var firstIsStillUnderscore = text[0] == '_';
+        var sb = new StringBuilder(text.Length);
+
+        var separated = false;
+        var cat = char.GetUnicodeCategory(text[0]);
+        switch (cat)
+        {
+            case UnicodeCategory.ClosePunctuation:
+            case UnicodeCategory.ConnectorPunctuation:
+            case UnicodeCategory.DashPunctuation:
+            case UnicodeCategory.EnclosingMark:
+            case UnicodeCategory.FinalQuotePunctuation:
+            case UnicodeCategory.Format:
+            case UnicodeCategory.InitialQuotePunctuation:
+            case UnicodeCategory.LineSeparator:
+            case UnicodeCategory.OpenPunctuation:
+            case UnicodeCategory.OtherPunctuation:
+            case UnicodeCategory.ParagraphSeparator:
+            case UnicodeCategory.SpaceSeparator:
+            case UnicodeCategory.SpacingCombiningMark:
+                separated = true;
+                break;
+        }
+
+        if (options.HasFlag(DecamelizeOptions.UnescapeUnicode) && CanUnicodeEscape(text, 0))
+        {
+            _ = sb.Append(GetUnicodeEscape(text, ref i));
+        }
+        else if (options.HasFlag(DecamelizeOptions.UnescapeHexadecimal) && CanHexadecimalEscape(text, 0))
+        {
+            _ = sb.Append(GetHexadecimalEscape(text, ref i));
+        }
+        else
+        {
+            if (options.HasFlag(DecamelizeOptions.ForceFirstUpper))
+            {
+                _ = sb.Append(char.ToUpper(text[0]));
+            }
+            else
+            {
+                _ = sb.Append(text[0]);
+            }
+        }
+
+        for (i++; i < text.Length; i++)
+        {
+            var c = text[i];
+            if (options.HasFlag(DecamelizeOptions.UnescapeUnicode) && CanUnicodeEscape(text, i))
+            {
+                _ = sb.Append(GetUnicodeEscape(text, ref i));
+                separated = true;
+            }
+            else if (options.HasFlag(DecamelizeOptions.UnescapeHexadecimal) && CanHexadecimalEscape(text, i))
+            {
+                _ = sb.Append(GetHexadecimalEscape(text, ref i));
+                separated = true;
+            }
+            else if (c == '_')
+            {
+                if (!firstIsStillUnderscore || !options.HasFlag(DecamelizeOptions.KeepFirstUnderscores))
+                {
+                    _ = sb.Append(' ');
+                    separated = true;
+                }
+                else
+                {
+                    _ = sb.Append(c);
+                }
+            }
+            else
+            {
+                var category = CharUnicodeInfo.GetUnicodeCategory(c);
+                switch (category)
+                {
+                    case UnicodeCategory.ClosePunctuation:
+                    case UnicodeCategory.ConnectorPunctuation:
+                    case UnicodeCategory.DashPunctuation:
+                    case UnicodeCategory.EnclosingMark:
+                    case UnicodeCategory.FinalQuotePunctuation:
+                    case UnicodeCategory.Format:
+                    case UnicodeCategory.InitialQuotePunctuation:
+                    case UnicodeCategory.LineSeparator:
+                    case UnicodeCategory.OpenPunctuation:
+                    case UnicodeCategory.OtherPunctuation:
+                    case UnicodeCategory.ParagraphSeparator:
+                    case UnicodeCategory.SpaceSeparator:
+                    case UnicodeCategory.SpacingCombiningMark:
+                        if (options.HasFlag(DecamelizeOptions.KeepFormattingIndices) && c == '{')
+                        {
+                            while (c != '}')
+                            {
+                                c = text[i++];
+                                _ = sb.Append(c);
+                            }
+
+                            i--;
+                            separated = true;
+                            break;
+                        }
+
+                        if (options.HasFlag(DecamelizeOptions.ForceRestLower))
+                        {
+                            _ = sb.Append(char.ToLower(c));
+                        }
+                        else
+                        {
+                            _ = sb.Append(c);
+                        }
+
+                        if (c != ' ' && !separated)
+                        {
+                            _ = sb.Append(' ');
+                        }
+                        separated = true;
+                        break;
+
+                    case UnicodeCategory.LetterNumber:
+                    case UnicodeCategory.DecimalDigitNumber:
+                    case UnicodeCategory.OtherNumber:
+                    case UnicodeCategory.CurrencySymbol:
+                    case UnicodeCategory.LowercaseLetter:
+                    case UnicodeCategory.MathSymbol:
+                    case UnicodeCategory.ModifierLetter:
+                    case UnicodeCategory.ModifierSymbol:
+                    case UnicodeCategory.NonSpacingMark:
+                    case UnicodeCategory.OtherLetter:
+                    case UnicodeCategory.OtherNotAssigned:
+                    case UnicodeCategory.Control:
+                    case UnicodeCategory.OtherSymbol:
+                    case UnicodeCategory.Surrogate:
+                    case UnicodeCategory.PrivateUse:
+                    case UnicodeCategory.TitlecaseLetter:
+                    case UnicodeCategory.UppercaseLetter:
+                        if (category != lastCategory && c != ' ' && IsNewCategory(category, options))
+                        {
+                            if (!separated && prevCategory != UnicodeCategory.UppercaseLetter &&
+                                (!firstIsStillUnderscore || !options.HasFlag(DecamelizeOptions.KeepFirstUnderscores)))
+                            {
+                                _ = sb.Append(' ');
+                            }
+
+                            if (options.HasFlag(DecamelizeOptions.ForceRestLower))
+                            {
+                                _ = sb.Append(char.ToLower(c));
+                            }
+                            else
+                            {
+                                _ = sb.Append(char.ToUpper(c));
+                            }
+
+                            var upper = char.ToUpper(c);
+                            category = CharUnicodeInfo.GetUnicodeCategory(upper);
+                            if (category == UnicodeCategory.UppercaseLetter)
+                            {
+                                lastCategory = UnicodeCategory.LowercaseLetter;
+                            }
+                            else
+                            {
+                                lastCategory = category;
+                            }
+                        }
+                        else
+                        {
+                            if (options.HasFlag(DecamelizeOptions.ForceRestLower))
+                            {
+                                _ = sb.Append(char.ToLower(c));
+                            }
+                            else
+                            {
+                                _ = sb.Append(c);
+                            }
+                        }
+                        separated = false;
+                        break;
+                }
+
+                firstIsStillUnderscore = firstIsStillUnderscore && c == '_';
+                prevCategory = category;
+            }
+        }
+
+        if (options.HasFlag(DecamelizeOptions.ReplaceSpacesByUnderscore))
+            return sb.Replace(' ', '_').ToString();
+
+        if (options.HasFlag(DecamelizeOptions.ReplaceSpacesByMinus))
+            return sb.Replace(' ', '-').ToString();
+
+        if (options.HasFlag(DecamelizeOptions.ReplaceSpacesByDot))
+            return sb.Replace(' ', '.').ToString();
+
+        return sb.ToString();
+
+        // note: we don't want to use char.IsDigit nor char.IsNumber
+        static bool IsAsciiNumber(char c) => c >= '0' && c <= '9';
+        static bool CanUnicodeEscape(string text, int i) => (i + 5) < text.Length && text[i] == '\\' && text[i + 1] == 'u' && IsAsciiNumber(text[i + 2]) && IsAsciiNumber(text[i + 3]) && IsAsciiNumber(text[i + 4]) && IsAsciiNumber(text[i + 5]);
+        static bool IsHexNumber(char c) => IsAsciiNumber(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+        static bool CanHexadecimalEscape(string text, int i) => (i + 6) < text.Length && text[i] == '_' && text[i + 1] == 'x' && text[i + 6] == '_' && IsHexNumber(text[i + 2]) && IsHexNumber(text[i + 3]) && IsHexNumber(text[i + 4]) && IsHexNumber(text[i + 5]);
+        static char GetUnicodeEscape(string text, ref int i) { i += 5; return (char)int.Parse(text.Substring(2, 4)); }
+        static char GetHexadecimalEscape(string text, ref int i) { i += 6; return (char)int.Parse(text.Substring(2, 4), NumberStyles.HexNumber); }
+        static bool IsNewCategory(UnicodeCategory category, DecamelizeOptions options)
+        {
+            if (options.HasFlag(DecamelizeOptions.DontDecamelizeNumbers))
+            {
+                if (category == UnicodeCategory.LetterNumber ||
+                    category == UnicodeCategory.DecimalDigitNumber ||
+                    category == UnicodeCategory.OtherNumber)
+                    return false;
+            }
+            return true;
+        }
     }
 }

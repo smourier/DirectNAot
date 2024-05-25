@@ -11,8 +11,11 @@ public static class DXGIFunctions
         try
         {
             Functions.DXGIGetDebugInterface(typeof(IDXGIDebug).GUID, out var debug);
-            Marshal.ReleaseComObject(debug);
-            return true;
+            if (debug != 0)
+            {
+                Marshal.Release(debug);
+            }
+            return debug != 0;
         }
         catch (DllNotFoundException)
         {
