@@ -2,11 +2,10 @@
 
 public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject<T>>
 {
-    protected InterlockedComObject(IComObject<T> comObject)
+    protected InterlockedComObject(IComObject<T>? comObject)
         : base(comObject)
     {
-        ArgumentNullException.ThrowIfNull(comObject);
-        if (comObject.IsDisposed)
+        if (comObject?.IsDisposed == true)
             throw new ArgumentException("Object is disposed.", nameof(comObject));
     }
 

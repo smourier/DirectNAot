@@ -1,14 +1,8 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-public abstract class InterlockedDisposable<T> : IDisposable where T : class, IDisposable
+public abstract class InterlockedDisposable<T>(T? disposable) : IDisposable where T : class, IDisposable
 {
-    private T? _disposable;
-
-    protected InterlockedDisposable(T disposable)
-    {
-        ArgumentNullException.ThrowIfNull(disposable);
-        _disposable = disposable;
-    }
+    private T? _disposable = disposable;
 
     public bool IsDisposed => _disposable == null;
     protected T? RawDisposable => _disposable;

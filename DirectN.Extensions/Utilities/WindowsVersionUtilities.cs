@@ -1,4 +1,5 @@
-﻿using Windows.Foundation.Metadata;
+﻿using System.Runtime.InteropServices.Marshalling;
+using DirectN.Utilities;
 
 namespace DirectN.Extensions.Utilities;
 
@@ -51,7 +52,9 @@ public static partial class WindowsVersionUtilities
         if (_apiContractAvailable.TryGetValue(version, out var available))
             return available;
 
-        available = ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", version);
+        using var statics = Com.ComObject.GetActivationFactory<IApiInformationStatics>("Windows.Foundation.Metadata.ApiInformation")!;
+        using var h = new Hstring("Windows.Foundation.UniversalApiContract");
+        statics.Object.IsApiContractPresentByMajor(h, version, out available).ThrowOnError();
         _apiContractAvailable[version] = available;
         return available;
     }
@@ -90,5 +93,23 @@ public static partial class WindowsVersionUtilities
         public short wSuiteMask;
         public byte wProductType;
         public byte wReserved;
+    }
+
+    [GeneratedComInterface, Guid("997439fe-f681-4a11-b416-c13a47e8ba36")]
+    internal partial interface IApiInformationStatics : IInspectableLocal
+    {
+        // undefs
+        void IsTypePresent();
+        void IsMethodPresent();
+        void IsMethodPresentWithArity();
+        void IsEventPresent();
+        void IsPropertyPresent();
+        void IsReadOnlyPropertyPresent();
+        void IsWriteablePropertyPresent();
+        void IsEnumNamedValuePresent();
+
+        [PreserveSig]
+        [return: MarshalAs(UnmanagedType.Error)]
+        HRESULT IsApiContractPresentByMajor(HSTRING contractName, ushort majorVersion, [MarshalAs(UnmanagedType.U1)] out bool result);
     }
 }
