@@ -25,14 +25,12 @@
 
         // you should always use this one and it will fallback if necessary
         // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdpiforwindow
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForWindow(HWND hwnd)
         {
             var module = Functions.LoadLibraryW(PWSTR.From("user32.dll"));
             try
             {
-                using var pstr = new Pstr("GetDpiForWindow");
-                var proc = Functions.GetProcAddress(module, pstr); // Windows 10 1607
+                var proc = Functions.GetProcAddress(module, PSTR.From("GetDpiForWindow")); // Windows 10 1607
                 if (proc == 0)
                     return GetDpiForNearestMonitor(hwnd);
 
@@ -48,13 +46,8 @@
             }
         }
 
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForNearestMonitor(HWND hwnd) => GetDpiForMonitor(Functions.MonitorFromWindow(hwnd, MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST));
-
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForNearestMonitor(int x, int y) => GetDpiForMonitor(Functions.MonitorFromPoint(new POINT(x, y), MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST));
-
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForMonitor(HMONITOR monitor, MONITOR_DPI_TYPE type = MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI)
         {
             if (monitor.Value == 0)
@@ -63,8 +56,7 @@
             var module = Functions.LoadLibraryW(PWSTR.From("shcore.dll"));
             try
             {
-                using var pstr = new Pstr("GetDpiForMonitor");
-                var proc = Functions.GetProcAddress(module, pstr); // Windows 8.1
+                var proc = Functions.GetProcAddress(module, PSTR.From("GetDpiForMonitor")); // Windows 8.1
                 if (proc == 0)
                     return GetDpiForDesktop();
 
@@ -89,32 +81,21 @@
             }
         }
 
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_F GetDpiForDesktopF() => Functions.GetDesktopDpi();
-
-        [SupportedOSPlatform("windows6.1")]
         public static D2D_SIZE_U GetDpiForDesktop() { var dpi = Functions.GetDesktopDpi(); return new D2D_SIZE_U((uint)dpi.width, (uint)dpi.height); }
-
-        [SupportedOSPlatform("windows10.0.17134")]
         public static uint GetDpiFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT value)
         {
-            // Windows 10, version 1803
-            // see here for correspondance https://en.wikipedia.org/wiki/Windows_10_version_history
-            if (WindowsVersionUtilities.KernelVersion >= new Version(10, 0, 17134))
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
                 return Functions.GetDpiFromDpiAwarenessContext(value);
 
-            return 0;
+            return 96;
         }
 
-        [SupportedOSPlatform("windows10.0.17134")]
         public static uint GetWindowDpi(HWND hwnd) => GetDpiFromDpiAwarenessContext(GetWindowDpiAwarenessContext(hwnd));
 
-        [SupportedOSPlatform("windows10.0.17134")]
         public static DPI_AWARENESS_CONTEXT GetWindowDpiAwarenessContext(HWND hwnd)
         {
-            // Windows 10, version 1607
-            // see here for correspondance https://en.wikipedia.org/wiki/Windows_10_version_history
-            if (WindowsVersionUtilities.KernelVersion >= new Version(10, 0, 14393))
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
                 return Functions.GetWindowDpiAwarenessContext(hwnd);
 
             return DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_INVALID;

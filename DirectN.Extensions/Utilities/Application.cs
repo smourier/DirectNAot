@@ -7,12 +7,12 @@ public class Application : IDisposable
     private static bool _exiting;
     private static ConcurrentDictionary<Window, object?> _windows = [];
     private readonly static ConcurrentQueue<Error> _errors = [];
-
-    private bool _disposedValue;
+    internal const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
 
     public static event EventHandler<ValueEventArgs<Window>>? WindowRemoved;
     public static event EventHandler<ValueEventArgs<Window>>? WindowAdded;
     public static event EventHandler? ApplicationExit;
+    public static event EventHandler<CancelEventArgs>? ShowingFatalError;
 
     static Application()
     {
@@ -24,21 +24,31 @@ public class Application : IDisposable
         if (e.ExceptionObject is Exception error)
         {
             AddError(error);
-            var handle = _windows.FirstOrDefault(w => !w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
-            if (handle == null)
+            var e2 = new CancelEventArgs();
+            ShowingFatalError?.Invoke(Current, e2);
+            if (e2.Cancel)
+                return;
+
+            if (CanShowFatalError)
             {
-                handle = _windows.FirstOrDefault(w => w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
+                var handle = _windows.FirstOrDefault(w => !w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
+                if (handle == null)
+                {
+                    handle = _windows.FirstOrDefault(w => w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
+                }
+                ShowFatalError(handle ?? HWND.Null);
             }
-            ShowFatalError(handle ?? HWND.Null);
         }
     }
+
+    private bool _disposedValue;
 
     public Application()
     {
         if (Interlocked.CompareExchange(ref _current, this, null) != null)
-            throw new Exception("0003: There can be only one Application instance.");
+            throw new DirectNException("0003: There can be only one Application instance.");
 
-        MainThreadId = Environment.CurrentManagedThreadId;
+        UIhreadId = Environment.CurrentManagedThreadId;
     }
 
     public virtual void Run()
@@ -47,14 +57,18 @@ public class Application : IDisposable
         {
             while (Functions.GetMessageW(out var msg, HWND.Null, 0, 0))
             {
-                if (msg.message == WM_HOSTQUIT)
+                if (msg.message == WM_APP_QUIT)
                     break;
 
                 Functions.TranslateMessage(msg);
                 Functions.DispatchMessageW(msg);
             }
         }
-        ShowFatalError(HWND.Null);
+
+        if (CanShowFatalError)
+        {
+            ShowFatalError(HWND.Null);
+        }
     }
 
     protected virtual void Dispose(bool disposing)
@@ -131,9 +145,10 @@ public class Application : IDisposable
     public static HMODULE ModuleHandle => Functions.GetModuleHandleW(PWSTR.Null);
     public static bool IsFatalErrorShowing { get; private set; }
     public static bool QuitOnLastWindowRemoved { get; set; } = true;
-    public static int MainThreadId { get; private set; }
-    public static bool IsRunningAsMainThread => MainThreadId == Environment.CurrentManagedThreadId;
-    public static void CheckRunningAsMainThread() { if (!IsRunningAsMainThread) throw new DirectNException("0002: This method must be called on the render thread."); }
+    public static bool CanShowFatalError { get; set; } = true;
+    public static int UIhreadId { get; private set; }
+    public static bool IsRunningAsUIThread => UIhreadId == Environment.CurrentManagedThreadId;
+    public static void ThrowIfNotRunningAsUIThread() { if (!IsRunningAsUIThread) throw new DirectNException("0002: This method must be called on the render thread."); }
 
     public static void Exit()
     {
@@ -154,7 +169,7 @@ public class Application : IDisposable
         _errors.Enqueue(new(error, methodName));
 
         // we don't use PostQuitMessage because it prevents any other windows from showing (like messagebox, taskdialog, etc.)
-        Functions.PostMessageW(HWND.Null, WM_HOSTQUIT, WPARAM.Null, LPARAM.Null);
+        Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
     }
 
     public static MESSAGEBOX_RESULT ShowFatalError(HWND hwnd, bool clearErrors = true)
@@ -234,7 +249,7 @@ public class Application : IDisposable
         if (text != null)
             return text;
 
-        return Assembly.GetEntryAssembly()?.GetName().Name ?? "Application";
+        return Assembly.GetEntryAssembly()?.GetName().Name ?? "DirectN Application";
     }
 
     public static void Trace(object? message, [CallerMemberName] string? methodName = null)
@@ -261,6 +276,4 @@ public class Application : IDisposable
             return Exception.ToString();
         }
     }
-
-    internal const uint WM_HOSTQUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
 }

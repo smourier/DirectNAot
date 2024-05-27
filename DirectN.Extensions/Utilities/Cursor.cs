@@ -5,7 +5,7 @@ public class Cursor : IEquatable<Cursor>
 {
     public Cursor(int id)
     {
-        Handle = Functions.LoadCursorA(HINSTANCE.Null, new PSTR { Value = id });
+        Handle = Functions.LoadCursorW(HINSTANCE.Null, new PWSTR { Value = id });
         Id = id;
     }
 

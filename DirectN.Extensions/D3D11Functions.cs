@@ -106,11 +106,8 @@ public static class D3D11Functions
         ArgumentNullException.ThrowIfNull(srcData);
         ArgumentNullException.ThrowIfNull(entrypoint);
         ArgumentNullException.ThrowIfNull(target);
-        using var p = new Pstr(sourceName);
-        using var pe = new Pstr(entrypoint);
-        using var pt = new Pstr(target);
         nint errorBlobUnk;
-        var hr = Functions.D3DCompile(srcData.AsPointer(), srcData.Length(), p, 0, null, pe, pt, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
+        var hr = Functions.D3DCompile(srcData.AsPointer(), srcData.Length(), PSTR.From(sourceName), 0, null, PSTR.From(entrypoint), PSTR.From(target), flags1, flags2, out var blob, (nint)(&errorBlobUnk));
         if (errorBlobUnk != 0)
         {
             using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);
@@ -131,11 +128,8 @@ public static class D3D11Functions
     {
         ArgumentNullException.ThrowIfNull(entrypoint);
         ArgumentNullException.ThrowIfNull(target);
-        using var p = new Pstr(sourceName);
-        using var pe = new Pstr(entrypoint);
-        using var pt = new Pstr(target);
         nint errorBlobUnk;
-        var hr = Functions.D3DCompile(srcData, srcDataSize, p, 0, null, pe, pt, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
+        var hr = Functions.D3DCompile(srcData, srcDataSize, PSTR.From(sourceName), 0, null, PSTR.From(entrypoint), PSTR.From(target), flags1, flags2, out var blob, (nint)(&errorBlobUnk));
         if (errorBlobUnk != 0)
         {
             using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);

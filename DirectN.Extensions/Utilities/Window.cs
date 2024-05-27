@@ -3,9 +3,12 @@
 [SupportedOSPlatform("windows6.0.6000")]
 public class Window : IDisposable, IEquatable<Window>
 {
+    private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;
     private nint _handle;
     private readonly WindowProc? _windowProc;
+    private ConcurrentQueue<Task>? _tasks = [];
     private readonly Lazy<Process?> _process;
+    private readonly Scheduler? _scheduler;
 
     public event EventHandler? HandleCreated;
     public event EventHandler? Moved;
@@ -16,7 +19,7 @@ public class Window : IDisposable, IEquatable<Window>
     public event EventHandler? FocusChanged;
     public event EventHandler<CancelEventArgs>? Closing;
 
-    private Window(nint handle)
+    protected Window(nint handle)
     {
         _handle = handle;
         DestroyOnDispose = false;
@@ -33,10 +36,11 @@ public class Window : IDisposable, IEquatable<Window>
         string? className = null
         )
     {
-        className ??= GetType().FullName!;
+        className ??= GetType().FullName + AssemblyUtilities.GetInformationalVersion();
         ArgumentNullException.ThrowIfNull(className);
         _process = new Lazy<Process?>(GetProcess);
         _windowProc = SafeWindowProc;
+        _scheduler = new Scheduler(this);
         RegisterClass(className, Marshal.GetFunctionPointerForDelegate(_windowProc));
         CreateWindow(title, style, extendedStyle, rect, parentHandle, menu, className);
         OnHandleCreated(this, EventArgs.Empty);
@@ -44,9 +48,12 @@ public class Window : IDisposable, IEquatable<Window>
     }
 
     public HWND Handle => new() { Value = _handle };
+    public TaskScheduler? TaskScheduler => _scheduler;
     public Process? Process => _process.Value;
+    public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
     protected virtual bool DestroyOnDispose { get; set; } = true;
+    public D2D_SIZE_U Dpi => DpiUtilities.GetDpiForWindow(Handle);
     public bool IsWindow => Functions.IsWindow(Handle);
     public bool IsEnabled => Functions.IsWindowEnabled(Handle);
     public bool IsForeground => Handle == Functions.GetForegroundWindow();
@@ -61,16 +68,26 @@ public class Window : IDisposable, IEquatable<Window>
     public bool HasFocus => Handle == Functions.GetFocus();
     public int ThreadId => (int)Functions.GetWindowThreadProcessId(Handle, 0);
     public unsafe int ProcessId { get { int processId; _ = Functions.GetWindowThreadProcessId(Handle, (nint)(&processId)); return processId; } }
-
-    public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
-    public HWND ParentHandle { get => Functions.GetParent(Handle); set => Functions.SetParent(Handle, value); }
     public Window? Parent => FromHandle(ParentHandle.Value);
     public HWND OwnerHandle => Functions.GetWindow(Handle, GET_WINDOW_CMD.GW_OWNER);
     public Window? Owner => FromHandle(OwnerHandle.Value);
     public RECT ClientRect { get { Functions.GetClientRect(Handle, out var rc); return rc; } }
+    public virtual HWND ParentHandle { get => Functions.GetParent(Handle); set => Functions.SetParent(Handle, value); }
     public virtual RECT WindowRect { get { Functions.GetWindowRect(Handle, out var rc); return rc; } set => Functions.SetWindowPos(Handle, HWND.Null, value.left, value.top, value.Width, value.Height, SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE | SET_WINDOW_POS_FLAGS.SWP_NOREDRAW | SET_WINDOW_POS_FLAGS.SWP_NOZORDER); }
     public virtual WINDOW_STYLE Style { get => (WINDOW_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE, (int)value); }
     public virtual WINDOW_EX_STYLE ExtendedStyle { get => (WINDOW_EX_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE, (int)value); }
+
+    public HICON BigIconHandle
+    {
+        get => new() { Value = Functions.SendMessageW(Handle, MessageDecoder.WM_GETICON, new WPARAM { Value = Constants.ICON_BIG }).Value };
+        set => Icon.Destroy(Functions.SendMessageW(Handle, MessageDecoder.WM_SETICON, new WPARAM { Value = Constants.ICON_BIG }, new LPARAM { Value = value.Value }).Value);
+    }
+
+    public HICON SmallIconHandle
+    {
+        get => new() { Value = Functions.SendMessageW(Handle, MessageDecoder.WM_GETICON, new WPARAM { Value = Constants.ICON_SMALL }).Value };
+        set => Icon.Destroy(Functions.SendMessageW(Handle, MessageDecoder.WM_SETICON, new WPARAM { Value = Constants.ICON_SMALL }, new LPARAM { Value = value.Value }).Value);
+    }
 
     protected string ClassName
     {
@@ -176,6 +193,8 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual bool BringToTop() => Functions.BringWindowToTop(Handle);
     public virtual bool Center() => WindowUtilities.Center(Handle, HWND.Null);
     public virtual bool Center(HWND alternateOwner) => WindowUtilities.Center(Handle, alternateOwner);
+    public virtual bool Validate(RECT? rectangle = null) => Functions.ValidateRect(Handle, rectangle.CopyToPointer());
+    public virtual bool Invalidate(RECT? rectangle = null, bool eraseBackground = true) => Functions.InvalidateRect(Handle, rectangle.CopyToPointer(), eraseBackground);
     public virtual bool SetForeground() => Functions.SetForegroundWindow(Handle);
     public virtual bool SetWindowPos(HWND hWndInsertAfter, int x, int y, int cx, int cy, SET_WINDOW_POS_FLAGS flags) => Functions.SetWindowPos(Handle, hWndInsertAfter, x, y, cx, cy, flags);
     public bool Hide() => Show(SHOW_WINDOW_CMD.SW_HIDE);
@@ -206,6 +225,21 @@ public class Window : IDisposable, IEquatable<Window>
         return str;
     }
 
+    public virtual Task RunTaskOnUIThread(Action action, bool startNew = false)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        if (_scheduler == null)
+            throw new DirectNException("0005: Cannot run or schedule a task on a non-owned window.");
+
+        if (!startNew && Application.IsRunningAsUIThread)
+        {
+            action();
+            return Task.CompletedTask;
+        }
+
+        return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, _scheduler);
+    }
+
     protected virtual void OnFocusChanged(object? sender, EventArgs e) => FocusChanged?.Invoke(sender, e);
     protected virtual void OnActivated(object? sender, EventArgs e) => Activated?.Invoke(sender, e);
     protected virtual void OnDeactivated(object? sender, EventArgs e) => Deactivated?.Invoke(sender, e);
@@ -216,6 +250,7 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
 
     protected virtual void RegisterClass(string className, nint windowProc) => RegisterWindowClass(className, windowProc);
+    protected virtual Icon? LoadCreationIcon() => Icon.LoadApplicationIcon();
 
     protected virtual void CreateWindow(
         string? text = null,
@@ -240,7 +275,13 @@ public class Window : IDisposable, IEquatable<Window>
             if (gle != 0)
                 throw new Win32Exception(gle);
 
-            throw new Exception("0004: Cannot create window.");
+            throw new DirectNException("0004: Cannot create window.");
+        }
+
+        var appIcon = LoadCreationIcon();
+        if (appIcon != null)
+        {
+            SmallIconHandle = appIcon.Handle;
         }
     }
 
@@ -345,6 +386,10 @@ public class Window : IDisposable, IEquatable<Window>
 
                 break;
 
+            case WM_PROCESS_TASKS:
+                ProcessTasks();
+                break;
+
             case MessageDecoder.WM_DESTROY:
                 DestroyOnDispose = false;
                 Dispose();
@@ -362,7 +407,7 @@ public class Window : IDisposable, IEquatable<Window>
             var handle = Interlocked.Exchange(ref _handle, 0);
             if (handle != 0)
             {
-                Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(HandlePropName));
+                Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(_handlePropName));
                 if (DestroyOnDispose)
                 {
                     Functions.DestroyWindow(new HWND { Value = handle });
@@ -384,7 +429,7 @@ public class Window : IDisposable, IEquatable<Window>
         var hwnd = new HWND { Value = handle };
         if (tryWindowType)
         {
-            var windowPtr = Functions.GetPropW(hwnd, PWSTR.From(HandlePropName));
+            var windowPtr = Functions.GetPropW(hwnd, PWSTR.From(_handlePropName));
             if (windowPtr.Value != 0)
             {
                 try
@@ -436,7 +481,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    private const string HandlePropName = "DirectNWindow";
+    private static readonly string _handlePropName = "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
     private static LRESULT StaticWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
 #if DEBUG
@@ -455,7 +500,7 @@ public class Window : IDisposable, IEquatable<Window>
             var gch = GCHandle.FromIntPtr(ptr);
             var w = ((Window)gch.Target!);
             w._handle = hwnd.Value;
-            Functions.SetPropW(hwnd, PWSTR.From(HandlePropName), new HANDLE { Value = ptr });
+            Functions.SetPropW(hwnd, PWSTR.From(_handlePropName), new HANDLE { Value = ptr });
             w.OnHandleCreated(w, EventArgs.Empty);
             return DefWindowdProc(hwnd, msg, wParam, lParam);
         }
@@ -517,6 +562,19 @@ public class Window : IDisposable, IEquatable<Window>
     public static bool operator ==(Window? left, Window? right) => left is not null && right is not null && left._handle == right._handle;
     public static bool operator !=(Window? left, Window? right) => left is null || right is null || left._handle != right._handle;
 
+    private void ProcessTasks()
+    {
+        var tasks = Interlocked.Exchange(ref _tasks, new());
+        if (tasks == null || tasks.IsEmpty || _scheduler == null)
+            return;
+
+        foreach (var task in tasks)
+        {
+            if (!_scheduler.TryExecuteTask(task))
+                throw new InvalidOperationException();
+        }
+    }
+
     private Process? GetProcess()
     {
         if (ProcessId <= 0)
@@ -531,4 +589,22 @@ public class Window : IDisposable, IEquatable<Window>
             return null;
         }
     }
+
+    private sealed class Scheduler(Window window) : TaskScheduler
+    {
+        protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued) => false;
+        protected override IEnumerable<Task> GetScheduledTasks() => window._tasks ?? Enumerable.Empty<Task>();
+        protected override void QueueTask(Task task)
+        {
+            ArgumentNullException.ThrowIfNull(task);
+            if (window._tasks == null || window._scheduler == null)
+                return;
+
+            window._tasks.Enqueue(task);
+            Functions.PostMessageW(window.Handle, WM_PROCESS_TASKS);
+        }
+
+        public new bool TryExecuteTask(Task task) => base.TryExecuteTask(task);
+    }
+
 }

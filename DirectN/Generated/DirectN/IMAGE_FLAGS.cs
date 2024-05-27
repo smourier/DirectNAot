@@ -1,0 +1,19 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum IMAGE_FLAGS : uint
+{
+    LR_CREATEDIBSECTION = 8192,
+    LR_DEFAULTCOLOR = 0,
+    LR_DEFAULTSIZE = 64,
+    LR_LOADFROMFILE = 16,
+    LR_LOADMAP3DCOLORS = 4096,
+    LR_LOADTRANSPARENT = 32,
+    LR_MONOCHROME = 1,
+    LR_SHARED = 32768,
+    LR_VGACOLOR = 128,
+    LR_COPYDELETEORG = 8,
+    LR_COPYFROMRESOURCE = 16384,
+    LR_COPYRETURNORG = 4,
+}

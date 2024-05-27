@@ -5658,6 +5658,13 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool InstallColorProfileW(PWSTR pMachineName, PWSTR pProfileName);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-invalidaterect
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool InvalidateRect(HWND hWnd, nint /* optional RECT* */ lpRect, [MarshalAs(UnmanagedType.U4)] bool bErase);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-ischild
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -5856,11 +5863,17 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint /* optional void* */ InBuffer, uint InLength, nint /* optional void* */ OutBuffer, uint OutLength, nint /* optional uint* */ BytesReturned);
     
-    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadcursora
-    [LibraryImport("USER32", SetLastError = true)]
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadcursorw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HCURSOR LoadCursorA(HINSTANCE hInstance, PSTR lpCursorName);
+    public static partial HCURSOR LoadCursorW(HINSTANCE hInstance, PWSTR lpCursorName);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadimagew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HANDLE LoadImageW(HINSTANCE hInst, PWSTR name, GDI_IMAGE_TYPE type, int cx, int cy, IMAGE_FLAGS fuLoad);
     
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryexw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
@@ -8961,6 +8974,13 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool UpdateICMRegKeyW(uint? reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-validaterect
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool ValidateRect(HWND hWnd, nint /* optional RECT* */ lpRect);
     
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantchangetype
     [LibraryImport("OLEAUT32")]

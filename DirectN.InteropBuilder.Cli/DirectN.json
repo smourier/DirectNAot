@@ -160,6 +160,7 @@
     "KillTimer",
     "InitPropVariantFromFileTime",
     "InitVariantFromFileTime",
+    "InvalidateRect",
     "IsChild",
     "IsHungAppWindow",
     "IsIconic",
@@ -169,7 +170,8 @@
     "IsWindow",
     "IsWindowVisible",
     "IsZoomed",
-    "LoadCursorA",
+    "LoadCursorW",
+    "LoadImageW",
     "LoadLibraryExW",
     "LoadLibraryW",
     "LoadStringW",
@@ -237,6 +239,7 @@
     "TrackMouseEvent",
     "TranslateMessage",
     "UnregisterClassW",
+    "ValidateRect",
     "VariantChangeType",
     "VariantClear",
     "VariantCopy",
@@ -245,6 +248,7 @@
     "WinRTPropertyValueToPropVariant",
     "WindowFromPoint",
     "WindowFromPhysicalPoint",
+    "IDI_APPLICATION",
     "SIZE_MINIMIZED"
   ]
 }

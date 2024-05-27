@@ -37,14 +37,14 @@
         public static IReadOnlyList<HWND> EnumerateTopLevelWindows()
         {
             var list = new List<HWND>();
-            _ = Functions.EnumWindows((h, l) => { list.Add(h); return true; }, IntPtr.Zero);
+            _ = Functions.EnumWindows((h, l) => { list.Add(h); return true; }, 0);
             return list.AsReadOnly();
         }
 
         public static IReadOnlyList<HWND> EnumerateChildWindows(HWND handle)
         {
             var list = new List<HWND>();
-            _ = Functions.EnumChildWindows(handle, (h, l) => { list.Add(h); return true; }, IntPtr.Zero);
+            _ = Functions.EnumChildWindows(handle, (h, l) => { list.Add(h); return true; }, 0);
             return list.AsReadOnly();
         }
 
@@ -78,7 +78,7 @@
             var list = new List<HWND>();
             foreach (var thread in threads)
             {
-                _ = Functions.EnumThreadWindows((uint)thread.Id, (h, l) => { list.Add(h); return true; }, IntPtr.Zero);
+                _ = Functions.EnumThreadWindows((uint)thread.Id, (h, l) => { list.Add(h); return true; }, 0);
             }
             return list.AsReadOnly();
         }

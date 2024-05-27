@@ -16853,6 +16853,8 @@ public static partial class Constants
     
     public const uint IDD_ACMFORMATCHOOSE_CMB_FORMATTAG = 101;
     
+    public static readonly PWSTR IDI_APPLICATION = new('\u7f00');
+    
     public const uint IDS_CAP_AUDIO_DROP_COMPERROR = 442;
     
     public const uint IDS_CAP_AUDIO_DROP_ERROR = 441;

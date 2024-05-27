@@ -82,7 +82,6 @@ public static class D3D12Functions
     public static void SetSDKVersion(uint version, string path, bool throwOnError = false)
     {
         using var conf = D3D12GetInterface<ID3D12SDKConfiguration>(Constants.CLSID_D3D12SDKConfiguration, throwOnError);
-        using var p = new Pstr(path);
-        conf?.Object.SetSDKVersion(version, p).ThrowOnError(throwOnError);
+        conf?.Object.SetSDKVersion(version, PSTR.From(path)).ThrowOnError(throwOnError);
     }
 }
