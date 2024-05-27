@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.InteropBuilder.Cli"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Extensions", "DirectN.Extensions\DirectN.Extensions.csproj", "{51A748B1-B9D3-4F14-891D-EA70CAEF6094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectN.Samples.HelloWorld", "Sample\DirectN.Samples.HelloWorld\DirectN.Samples.HelloWorld.csproj", "{5CCE8DF0-4651-4DCC-86B3-7031B4D95D28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.HelloWorld", "Samples\DirectN.Samples.HelloWorld\DirectN.Samples.HelloWorld.csproj", "{7E9F5D7E-DF35-4961-8E12-BB9561556799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{51A748B1-B9D3-4F14-891D-EA70CAEF6094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51A748B1-B9D3-4F14-891D-EA70CAEF6094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51A748B1-B9D3-4F14-891D-EA70CAEF6094}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CCE8DF0-4651-4DCC-86B3-7031B4D95D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CCE8DF0-4651-4DCC-86B3-7031B4D95D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CCE8DF0-4651-4DCC-86B3-7031B4D95D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CCE8DF0-4651-4DCC-86B3-7031B4D95D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

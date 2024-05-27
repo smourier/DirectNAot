@@ -60,6 +60,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetWindowCompositionAttribute(HWND hwnd, ref WINDOWCOMPOSITIONATTRIBDATA data);
 
+    [LibraryImport("user32")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static partial bool IsTopLevelWindow(HWND handle);
+
     [LibraryImport("DWriteCore")]
     [PreserveSig]
     public static partial HRESULT DWriteCoreCreateFactory(DWRITE_FACTORY_TYPE factoryType, in Guid iid, out nint factory);

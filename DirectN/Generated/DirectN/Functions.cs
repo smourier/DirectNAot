@@ -658,6 +658,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HDC BeginPaint(HWND hWnd, out PAINTSTRUCT lpPaint);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-bringwindowtotop
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool BringWindowToTop(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_hgetcolortransform
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -2743,6 +2750,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int EnumICMProfilesW(HDC hdc, ICMENUMPROCW proc, LPARAM param2);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumthreadwindows
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool EnumThreadWindows(uint dwThreadId, WNDENUMPROC lpfn, LPARAM lParam);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumwindows
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3042,6 +3056,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetErrorInfo(uint dwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorInfo>))] out IErrorInfo pperrinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getfocus
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND GetFocus();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getforegroundwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3285,6 +3305,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.1")]
     [PreserveSig]
     public static partial HRESULT GetProcessDpiAwareness(HANDLE hprocess, out PROCESS_DPI_AWARENESS value);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpropw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HANDLE GetPropW(HWND hWnd, PWSTR lpString);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getps2colorrenderingdictionary
     [LibraryImport("mscms", SetLastError = true)]
@@ -5658,6 +5684,20 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool IsErrorPropagationEnabled();
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-ishungappwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool IsHungAppWindow(HWND hwnd);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-isiconic
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool IsIconic(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-ismouseinpointerenabled
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -5672,12 +5712,26 @@ public static partial class Functions
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool IsValidDpiAwarenessContext(DPI_AWARENESS_CONTEXT value);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool IsWindow(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswindowenabled
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool IsWindowEnabled(HWND hWnd);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswindowvisible
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool IsWindowVisible(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iszoomed
     [LibraryImport("USER32", SetLastError = true)]
@@ -8045,6 +8099,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial WIN32_ERROR QueryDisplayConfig(QUERY_DISPLAY_CONFIG_FLAGS flags, ref uint numPathArrayElements, [MarshalUsing(CountElementName = nameof(numPathArrayElements))] out DISPLAYCONFIG_PATH_INFO[] pathArray, ref uint numModeInfoArrayElements, [MarshalUsing(CountElementName = nameof(numModeInfoArrayElements))] out DISPLAYCONFIG_MODE_INFO[] modeInfoArray, nint /* optional DISPLAYCONFIG_TOPOLOGY_ID* */ currentTopologyId);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-realgetwindowclassw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint RealGetWindowClassW(HWND hwnd, [MarshalUsing(CountElementName = nameof(cchClassNameMax))] PWSTR ptszClassName, uint cchClassNameMax);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerclassw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8069,6 +8129,12 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool ReleaseCapture();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-removepropw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HANDLE RemovePropW(HWND hWnd, PWSTR lpString);
     
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-restoremonitorfactorycolordefaults
     [LibraryImport("dxva2", SetLastError = true)]
@@ -8325,6 +8391,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial int SetAbortProc(HDC hdc, ABORTPROC proc);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setactivewindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND SetActiveWindow(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setcapture
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8411,6 +8483,12 @@ public static partial class Functions
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
     public static partial HRESULT SetErrorInfo(uint dwReserved, IErrorInfo? perrinfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setfocus
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HWND SetFocus(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setforegroundwindow
     [LibraryImport("USER32", SetLastError = true)]
@@ -8506,6 +8584,13 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT value);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setpropw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [return: MarshalAs(UnmanagedType.U4)]
+    public static partial bool SetPropW(HWND hWnd, PWSTR lpString, HANDLE hData);
     
     // https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-setrestrictederrorinfo
     [LibraryImport("api-ms-win-core-winrt-error-l1-1-0")]
@@ -8741,6 +8826,12 @@ public static partial class Functions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U4)]
     public static partial bool SwapBuffers(HDC param0);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-switchtothiswindow
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void SwitchToThisWindow(HWND hwnd, [MarshalAs(UnmanagedType.U4)] bool fUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-systemparametersinfofordpi
     [LibraryImport("USER32", SetLastError = true)]
@@ -9396,6 +9487,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT WICSerializeMetadataContent(in Guid guidContainerFormat, IWICMetadataWriter pIWriter, uint dwPersistOptions, IStream pIStream);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfromphysicalpoint
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial HWND WindowFromPhysicalPoint(POINT Point);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfrompoint
     [LibraryImport("USER32", SetLastError = true)]

@@ -741,7 +741,16 @@ public partial class TextHost : ITextHost2, IDisposable
     }
 
     [Conditional("DEBUG")]
-    private static void Trace(string? message = null, [CallerMemberName] string? methodName = null) => EventProvider.Default.WriteMessageEvent(methodName + ": " + message);
+    private static void Trace(string? message = null, [CallerMemberName] string? methodName = null)
+    {
+        if (!string.IsNullOrEmpty(methodName))
+        {
+            methodName += "|";
+        }
+
+        var name = Thread.CurrentThread.Name.Nullify() ?? Environment.CurrentManagedThreadId.ToString();
+        EventProvider.Default.WriteMessageEvent(name + "|" + methodName + message);
+    }
 
     ~TextHost() { Dispose(false); }
     public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
