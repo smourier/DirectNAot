@@ -5,7 +5,7 @@ internal static class Program
     static void Main()
     {
         using var app = new Application();
-        var win = new Window("Hello World");
+        using var win = new Window("Hello World");
         win.ResizeClient(800, 600);
         win.Center();
         win.Show();

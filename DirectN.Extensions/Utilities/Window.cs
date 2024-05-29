@@ -41,9 +41,8 @@ public class Window : IDisposable, IEquatable<Window>
         _process = new Lazy<Process?>(GetProcess);
         _windowProc = SafeWindowProc;
         _scheduler = new Scheduler(this);
-        RegisterClass(className, Marshal.GetFunctionPointerForDelegate(_windowProc));
+        RegisterClass(className, Marshal.GetFunctionPointerForDelegate(_windowProc), LoadCreationIcon());
         CreateWindow(title, style, extendedStyle, rect, parentHandle, menu, className);
-        OnHandleCreated(this, EventArgs.Empty);
         Application.AddWindow(this);
     }
 
@@ -249,7 +248,8 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e);
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
 
-    protected virtual void RegisterClass(string className, nint windowProc) => RegisterWindowClass(className, windowProc);
+    protected virtual void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon);
+
     protected virtual Icon? LoadCreationIcon() => Icon.LoadApplicationIcon();
 
     protected virtual void CreateWindow(
@@ -276,12 +276,6 @@ public class Window : IDisposable, IEquatable<Window>
                 throw new Win32Exception(gle);
 
             throw new DirectNException("0004: Cannot create window.");
-        }
-
-        var appIcon = LoadCreationIcon();
-        if (appIcon != null)
-        {
-            SmallIconHandle = appIcon.Handle;
         }
     }
 
@@ -481,12 +475,23 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
+#if DEBUG
+    private static bool TraceMessage(uint msg)
+    {
+        return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
+            msg != MessageDecoder.WM_NCHITTEST;
+    }
+#endif
+
     private static readonly string _handlePropName = "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
     private static LRESULT StaticWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
 #if DEBUG
-        var str = MessageDecoder.Decode(hwnd, msg, wParam, lParam);
-        Application.Trace(str);
+        if (TraceMessage(msg))
+        {
+            var str = MessageDecoder.Decode(hwnd, msg, wParam, lParam);
+            Application.Trace(str);
+        }
 #endif
 
         if (msg == MessageDecoder.WM_NCCREATE)
@@ -520,8 +525,8 @@ public class Window : IDisposable, IEquatable<Window>
         string className,
         nint windowProc,
         WNDCLASS_STYLES styles = WNDCLASS_STYLES.CS_HREDRAW | WNDCLASS_STYLES.CS_VREDRAW,
-        HICON? icon = null,
-        HCURSOR? cursor = null,
+        Icon? icon = null,
+        Cursor? cursor = null,
         HBRUSH? background = null,
         string? menuName = null,
         int classExtraBytesSize = 0,
@@ -538,14 +543,18 @@ public class Window : IDisposable, IEquatable<Window>
             lpfnWndProc = windowProc,
             hInstance = new HINSTANCE { Value = Application.ModuleHandle.Value },
             lpszClassName = PWSTR.From(className),
-            hIcon = icon ?? HICON.Null,
-            hCursor = cursor ?? HCURSOR.Null,
+            hIcon = icon?.Handle ?? HICON.Null,
+            hCursor = cursor?.Handle ?? Cursor.Arrow.Handle,
             lpszMenuName = PWSTR.From(menuName),
             cbClsExtra = classExtraBytesSize,
             cbWndExtra = windowExtraBytesSize
         };
 
-        if (!background.HasValue)
+        if (background.HasValue)
+        {
+            cls.hbrBackground = background.Value;
+        }
+        else
         {
             cls.hbrBackground = new HBRUSH { Value = (nint)SYS_COLOR_INDEX.COLOR_HIGHLIGHTTEXT + 1 }; // white
         }

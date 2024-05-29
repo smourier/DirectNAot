@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Extensions", "Direc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.HelloWorld", "Samples\DirectN.Samples.HelloWorld\DirectN.Samples.HelloWorld.csproj", "{7E9F5D7E-DF35-4961-8E12-BB9561556799}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.D2DHelloWorld", "Samples\DirectN.Samples.D2DHelloWorld\DirectN.Samples.D2DHelloWorld.csproj", "{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E9F5D7E-DF35-4961-8E12-BB9561556799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
