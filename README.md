@@ -41,7 +41,8 @@ The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/Di
  
  Here is the output (believe me, it rotates):
 
-[Sample](/Assets/minimald3d11_pt3_aot.png?raw=true)
+ ![Sample](/Assets/minimald3d11_pt3_aot.png?raw=true)
+
 Full credits go to d7Samurai: https://gist.github.com/d7samurai
 
 
