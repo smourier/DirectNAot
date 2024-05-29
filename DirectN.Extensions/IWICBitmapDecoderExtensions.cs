@@ -98,7 +98,7 @@ public static class IWICBitmapDecoderExtensions
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
         var array = colorContexts.UnwrapAsArray();
-        decoder.GetColorContexts(colorContexts.Length(), array, out _).ThrowOnError();
+        decoder.GetColorContexts(colorContexts.Length(), array!, out _).ThrowOnError();
         return colorContexts;
     }
 }

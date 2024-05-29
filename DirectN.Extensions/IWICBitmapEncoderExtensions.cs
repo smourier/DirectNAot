@@ -27,8 +27,7 @@ public static class IWICBitmapEncoderExtensions
     }
 
     public static void SetColorContexts(this IComObject<IWICBitmapEncoder> encoder, IEnumerable<IComObject<IWICColorContext>> contexts) => SetColorContexts(encoder?.Object!, contexts.Unwrap());
-    public static void SetColorContexts(this IComObject<IWICBitmapEncoder> encoder, IEnumerable<IWICColorContext> contexts) => SetColorContexts(encoder?.Object!, contexts);
-    public static void SetColorContexts(this IWICBitmapEncoder encoder, IEnumerable<IWICColorContext> contexts)
+    public static void SetColorContexts(this IWICBitmapEncoder encoder, IEnumerable<IWICColorContext?>? contexts)
     {
         ArgumentNullException.ThrowIfNull(encoder);
         var array = contexts?.ToArray();

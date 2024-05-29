@@ -154,7 +154,7 @@ public static class ID3D12CommandListExtensions
         list.ExecuteBundle(commandLists);
     }
 
-    public static void SetDescriptorHeaps(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<IComObject<ID3D12DescriptorHeap>> heaps) => SetDescriptorHeaps(list?.Object!, heaps.Unwrap());
+    public static void SetDescriptorHeaps(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<IComObject<ID3D12DescriptorHeap>> heaps) => SetDescriptorHeaps(list?.Object!, heaps.Unwrap()!);
     public static void SetDescriptorHeaps(this ID3D12GraphicsCommandList list, IEnumerable<ID3D12DescriptorHeap> heaps)
     {
         ArgumentNullException.ThrowIfNull(list);

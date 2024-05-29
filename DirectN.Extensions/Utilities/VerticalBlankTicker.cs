@@ -12,6 +12,7 @@ public sealed partial class VerticalBlankTicker : IDisposable
     public event EventHandler<VerticalBlankTickerErrorEventArgs>? WaitError;
 
     public string? DeviceName { get; private set; }
+    public long Ticks => _ticks;
     public bool IsRunning { get; private set; }
     public bool ThrowExceptions { get => _throw; set => _throw = value; }
     public int TickDivider { get => _tickDivider; set => _tickDivider = value.Clamp(1); }

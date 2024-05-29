@@ -43,9 +43,9 @@ public class TaskDialog
         config.Anonymous2.hFooterIcon = FooterIcon;
         try
         {
-            int button = 0;
-            int radioButton = 0;
-            int verificationFlagChecked = 0;
+            var button = 0;
+            var radioButton = 0;
+            var verificationFlagChecked = 0;
             Functions.TaskDialogIndirect(config, (nint)(&button), (nint)(&radioButton), (nint)(&verificationFlagChecked)).ThrowOnError();
             ResultButton = button;
             ResultRadioButton = radioButton;

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.HelloWorld"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.D2DHelloWorld", "Samples\DirectN.Samples.D2DHelloWorld\DirectN.Samples.D2DHelloWorld.csproj", "{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectN.Samples.MinimalD3D11", "Samples\DirectN.Samples.MinimalD3D11\DirectN.Samples.MinimalD3D11.csproj", "{01B91849-6035-4093-86E0-A86EA850CBF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C45ECA13-424C-437E-AA09-FF1BD4CC42DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B91849-6035-4093-86E0-A86EA850CBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B91849-6035-4093-86E0-A86EA850CBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B91849-6035-4093-86E0-A86EA850CBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B91849-6035-4093-86E0-A86EA850CBF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

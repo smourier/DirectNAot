@@ -48,8 +48,8 @@ public static class IDXGISwapChainExtensions
         swapChain.SetBackgroundColor(value);
     }
 
-    public static void Present(this IComObject<IDXGISwapChain> swapChain, uint syncInterval, uint flags) => Present(swapChain?.Object!, syncInterval, flags);
-    public static void Present(this IDXGISwapChain swapChain, uint syncInterval, uint flags)
+    public static void Present(this IComObject<IDXGISwapChain> swapChain, uint syncInterval, DXGI_PRESENT flags) => Present(swapChain?.Object!, syncInterval, flags);
+    public static void Present(this IDXGISwapChain swapChain, uint syncInterval, DXGI_PRESENT flags)
     {
         ArgumentNullException.ThrowIfNull(swapChain);
         swapChain.Present(syncInterval, flags);

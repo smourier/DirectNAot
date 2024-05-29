@@ -56,10 +56,10 @@ public static class ComExtensions
     }
 
     [return: NotNullIfNotNull(nameof(enumerable))]
-    public static IEnumerable<T>? Unwrap<T>(this IEnumerable<IComObject<T>>? enumerable) => enumerable?.Select(e => e.Object);
+    public static IEnumerable<T?>? Unwrap<T>(this IEnumerable<IComObject<T>?>? enumerable) => enumerable?.Select(e => e is null ? default : e.Object);
 
     [return: NotNullIfNotNull(nameof(enumerable))]
-    public static T[]? UnwrapAsArray<T>(this IEnumerable<IComObject<T>>? enumerable) => enumerable?.Select(e => e.Object)?.ToArray();
+    public static T?[]? UnwrapAsArray<T>(this IEnumerable<IComObject<T>?>? enumerable) => enumerable?.Select(e => e is null ? default : e.Object)?.ToArray();
 
     [return: NotNullIfNotNull(nameof(enumerable))]
     public static IEnumerable<IComObject<T>>? ToComObjects<T>(this IEnumerable<T>? enumerable) => enumerable?.Select(e => new ComObject<T>(e));

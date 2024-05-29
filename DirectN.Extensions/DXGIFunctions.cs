@@ -1,6 +1,5 @@
 ﻿namespace DirectN;
 
-[SupportedOSPlatform("windows6.1")]
 public static class DXGIFunctions
 {
     private static readonly Lazy<bool> _debugLayerAvailable = new(GetDebugLayerAvailable, true);
@@ -23,12 +22,12 @@ public static class DXGIFunctions
         }
     }
 
-    [SupportedOSPlatform("windows8.1")]
     public static void DXGIReportLiveObjects(DXGI_DEBUG_RLO_FLAGS flags = DXGI_DEBUG_RLO_FLAGS.DXGI_DEBUG_RLO_ALL) => DXGIReportLiveObjects(Constants.DXGI_DEBUG_ALL, flags);
-
-    [SupportedOSPlatform("windows8.0")]
     public static void DXGIReportLiveObjects(Guid apiid, DXGI_DEBUG_RLO_FLAGS flags = DXGI_DEBUG_RLO_FLAGS.DXGI_DEBUG_RLO_ALL)
     {
+        if (!OperatingSystem.IsWindowsVersionAtLeast(8, 0))
+            return;
+
         if (!IsDebugLayerAvailable)
             return;
 
@@ -40,8 +39,14 @@ public static class DXGIFunctions
         dbg.Object.ReportLiveObjects(apiid, flags);
     }
 
-    [SupportedOSPlatform("windows8.1")]
-    public static IComObject<IDXGIDebug>? DXGIGetDebugInterface() => DXGIGetDebugInterface<IDXGIDebug>();
+    public static IComObject<IDXGIDebug>? DXGIGetDebugInterface()
+    {
+        if (!OperatingSystem.IsWindowsVersionAtLeast(8, 0))
+            return null;
+
+        return DXGIGetDebugInterface<IDXGIDebug>();
+    }
+
     public static IComObject<T>? DXGIGetDebugInterface<T>()
     {
         Functions.DXGIGetDebugInterface(typeof(T).GUID, out var unk);
@@ -51,8 +56,13 @@ public static class DXGIFunctions
         return ComObject.FromPointer<T>(unk)!;
     }
 
-    [SupportedOSPlatform("windows8.1")]
-    public static IComObject<IDXGIDebug1>? DXGIGetDebugInterface1() => DXGIGetDebugInterface1<IDXGIDebug1>();
+    public static IComObject<IDXGIDebug1>? DXGIGetDebugInterface1()
+    {
+        if (!OperatingSystem.IsWindowsVersionAtLeast(8, 1))
+            return null;
+
+        return DXGIGetDebugInterface1<IDXGIDebug1>();
+    }
     public static IComObject<T>? DXGIGetDebugInterface1<T>()
     {
         Functions.DXGIGetDebugInterface(typeof(T).GUID, out var unk);
@@ -72,7 +82,10 @@ public static class DXGIFunctions
         return ComObject.FromPointer<T>(unk)!;
     }
 
+    [SupportedOSPlatform("windows6.1")]
     public static IComObject<IDXGIFactory1> CreateDXGIFactory1() => CreateDXGIFactory1<IDXGIFactory1>();
+
+    [SupportedOSPlatform("windows6.1")]
     public static IComObject<T> CreateDXGIFactory1<T>() where T : IDXGIFactory1
     {
         Functions.CreateDXGIFactory1(typeof(T).GUID, out var unk).ThrowOnError();

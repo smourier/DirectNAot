@@ -101,7 +101,7 @@ public static class D3D11Functions
         return new ComObject<ID3DBlob>(blob);
     }
 
-    public static unsafe IComObject<ID3DBlob> D3DCompile(byte[] srcData, string sourceName, string entrypoint, string target, uint flags1 = 0, uint flags2 = 0)
+    public static unsafe IComObject<ID3DBlob> D3DCompile(byte[] srcData, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0)
     {
         ArgumentNullException.ThrowIfNull(srcData);
         ArgumentNullException.ThrowIfNull(entrypoint);
@@ -122,9 +122,9 @@ public static class D3D11Functions
         return new ComObject<ID3DBlob>(blob);
     }
 
-    public static IComObject<ID3DBlob> D3DCompile(nint srcData, long srcDataSize, string sourceName, string entrypoint, string target, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, sourceName, entrypoint, target, flags1, flags2);
-    public static IComObject<ID3DBlob> D3DCompile(nint srcData, int srcDataSize, string sourceName, string entrypoint, string target, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, sourceName, entrypoint, target, flags1, flags2);
-    public static unsafe IComObject<ID3DBlob> D3DCompile(nint srcData, nuint srcDataSize, string sourceName, string entrypoint, string target, uint flags1 = 0, uint flags2 = 0)
+    public static IComObject<ID3DBlob> D3DCompile(nint srcData, long srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, entrypoint, target, sourceName, flags1, flags2);
+    public static IComObject<ID3DBlob> D3DCompile(nint srcData, int srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, entrypoint, target, sourceName, flags1, flags2);
+    public static unsafe IComObject<ID3DBlob> D3DCompile(nint srcData, nuint srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0)
     {
         ArgumentNullException.ThrowIfNull(entrypoint);
         ArgumentNullException.ThrowIfNull(target);

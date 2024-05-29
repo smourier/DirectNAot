@@ -34,7 +34,7 @@ public static class IWICBitmapFrameDecodeExtensions
 
         var colorContexts = WicImagingFactory.CreateColorContexts((int)count);
         var array = colorContexts.UnwrapAsArray();
-        frame.GetColorContexts(colorContexts.Length(), array, out _).ThrowOnError();
+        frame.GetColorContexts(colorContexts.Length(), array!, out _).ThrowOnError();
         return colorContexts;
     }
 }

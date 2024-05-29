@@ -394,7 +394,6 @@ public class Window : IDisposable, IEquatable<Window>
 
     protected virtual void Dispose(bool disposing)
     {
-        Application.Trace("handle:" + _handle);
         if (disposing)
         {
             Application.RemoveWindow(this);
@@ -479,7 +478,7 @@ public class Window : IDisposable, IEquatable<Window>
     private static bool TraceMessage(uint msg)
     {
         return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
-            msg != MessageDecoder.WM_NCHITTEST;
+            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT;
     }
 #endif
 
@@ -493,31 +492,32 @@ public class Window : IDisposable, IEquatable<Window>
             Application.Trace(str);
         }
 #endif
-
-        if (msg == MessageDecoder.WM_NCCREATE)
+        if (!Application.IsFatalErrorShowing)
         {
-            nint ptr;
-            unsafe
+            if (msg == MessageDecoder.WM_NCCREATE)
             {
-                ptr = *(nint*)lParam.Value; // first parameter of CREATESTRUCTW is lpCreateParams
+                nint ptr;
+                unsafe
+                {
+                    ptr = *(nint*)lParam.Value; // first parameter of CREATESTRUCTW is lpCreateParams
+                }
+
+                var gch = GCHandle.FromIntPtr(ptr);
+                var w = ((Window)gch.Target!);
+                w._handle = hwnd.Value;
+                Functions.SetPropW(hwnd, PWSTR.From(_handlePropName), new HANDLE { Value = ptr });
+                w.OnHandleCreated(w, EventArgs.Empty);
+                return DefWindowdProc(hwnd, msg, wParam, lParam);
             }
 
-            var gch = GCHandle.FromIntPtr(ptr);
-            var w = ((Window)gch.Target!);
-            w._handle = hwnd.Value;
-            Functions.SetPropW(hwnd, PWSTR.From(_handlePropName), new HANDLE { Value = ptr });
-            w.OnHandleCreated(w, EventArgs.Empty);
-            return DefWindowdProc(hwnd, msg, wParam, lParam);
+            var win = FromHandle(hwnd.Value);
+            if (win != null)
+            {
+                var result = win.WindowProc(hwnd, msg, wParam, lParam);
+                if (result.HasValue)
+                    return result.Value;
+            }
         }
-
-        var win = FromHandle(hwnd.Value);
-        if (win != null)
-        {
-            var result = win.WindowProc(hwnd, msg, wParam, lParam);
-            if (result.HasValue)
-                return result.Value;
-        }
-
         return DefWindowdProc(hwnd, msg, wParam, lParam);
     }
 

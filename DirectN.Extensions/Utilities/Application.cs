@@ -73,7 +73,7 @@ public class Application : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        Trace("windows count:" + _windows.Count);
+        //Trace("windows count:" + _windows.Count);
         if (!_disposedValue)
         {
             if (disposing)
@@ -84,6 +84,11 @@ public class Application : IDisposable
                 {
                     WindowRemoved?.Invoke(Current, new ValueEventArgs<Window>(kv.Key));
                     kv.Key.Dispose();
+                }
+
+                if (ReportLiveObjects)
+                {
+                    DXGIFunctions.DXGIReportLiveObjects();
                 }
             }
 
@@ -98,7 +103,7 @@ public class Application : IDisposable
 
     internal static void AddWindow(Window window)
     {
-        Trace("window:" + window);
+        //Trace("window:" + window);
         if (_windows.TryAdd(window, null))
         {
             // default is for new windows to be background (don't prevent to quit)
@@ -113,7 +118,7 @@ public class Application : IDisposable
 
     internal static void RemoveWindow(Window window)
     {
-        Trace("window:" + window);
+        //Trace("window:" + window);
         if (!_windows.TryRemove(window, out _))
             return;
 
@@ -147,6 +152,10 @@ public class Application : IDisposable
     public static bool QuitOnLastWindowRemoved { get; set; } = true;
     public static bool CanShowFatalError { get; set; } = true;
     public static int UIhreadId { get; private set; }
+    public static bool ReportLiveObjects { get; set; }
+#if DEBUG
+        = true;
+#endif
     public static bool IsRunningAsUIThread => UIhreadId == Environment.CurrentManagedThreadId;
     public static void ThrowIfNotRunningAsUIThread() { if (!IsRunningAsUIThread) throw new DirectNException("0002: This method must be called on the render thread."); }
 
@@ -180,7 +189,7 @@ public class Application : IDisposable
         if (IsFatalErrorShowing)
             return 0;
 
-        Trace("Hwnd:" + hwnd.Value + Environment.NewLine + string.Join(Environment.NewLine, _errors));
+        //Trace("Hwnd:" + hwnd.Value + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         var errors = _errors.ToArray();
         IsFatalErrorShowing = true;
         try

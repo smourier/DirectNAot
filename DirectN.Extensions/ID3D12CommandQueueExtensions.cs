@@ -2,7 +2,7 @@
 
 public static class ID3D12CommandQueueExtensions
 {
-    public static void ExecuteCommandLists(this IComObject<ID3D12CommandQueue> queue, IEnumerable<IComObject<ID3D12CommandList>> lists) => ExecuteCommandLists(queue?.Object!, lists.Unwrap());
+    public static void ExecuteCommandLists(this IComObject<ID3D12CommandQueue> queue, IEnumerable<IComObject<ID3D12CommandList>> lists) => ExecuteCommandLists(queue?.Object!, lists.Unwrap()!);
     public static void ExecuteCommandLists(this ID3D12CommandQueue queue, IEnumerable<ID3D12CommandList> lists)
     {
         ArgumentNullException.ThrowIfNull(queue);

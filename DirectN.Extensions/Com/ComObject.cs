@@ -70,6 +70,10 @@ public abstract class ComObject : IComObject
             return null;
 
         var instance = ComWrappers.GetOrCreateObjectForComInstance(unknown, flags);
+        if (flags == CreateObjectFlags.UniqueInstance)
+        {
+            Marshal.Release(unknown);
+        }
         if (instance == null || instance is not T t)
             return null;
 
@@ -129,14 +133,14 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstanceOfType<Ti>(object? obj, Action<nint> action)
+    public static void WithComInstanceOfType<T>(T? obj, Action<nint> action)
     {
         ArgumentNullException.ThrowIfNull(action);
         nint iface = 0;
         var unk = ToComInstance(obj);
         if (unk != 0)
         {
-            var iid = typeof(Ti).GUID;
+            var iid = typeof(T).GUID;
             _ = Marshal.QueryInterface(unk, ref iid, out iface);
         }
 
@@ -170,6 +174,89 @@ public abstract class ComObject : IComObject
         {
             Release(iface);
             Release(unk);
+        }
+    }
+
+    public static void WithComInstancesOfType<T>(T[]? array, Action<nint> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        if (array == null)
+        {
+            action(0);
+            return;
+        }
+
+        var pointers = new nint[array.Length];
+        for (var i = 0; i < array.Length; i++)
+        {
+            nint iface = 0;
+            var unk = ToComInstance(array[i]);
+            if (unk != 0)
+            {
+                var iid = typeof(T).GUID;
+                _ = Marshal.QueryInterface(unk, ref iid, out iface);
+                Marshal.Release(unk);
+            }
+            pointers[i] = iface;
+        }
+
+        try
+        {
+            unsafe
+            {
+                var arrayPointer = (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(pointers));
+                action(arrayPointer);
+            }
+        }
+        finally
+        {
+            foreach (var ptr in pointers)
+            {
+                if (ptr != 0)
+                {
+                    Marshal.Release(ptr);
+                }
+            }
+        }
+    }
+
+    public static T WithComInstancesOfType<T, Ti>(Ti[]? array, Func<nint, T> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        if (array == null)
+            return action(0);
+
+        var pointers = new nint[array.Length];
+        for (var i = 0; i < array.Length; i++)
+        {
+            nint iface = 0;
+            var unk = ToComInstance(array[i]);
+            if (unk != 0)
+            {
+                var iid = typeof(Ti).GUID;
+                _ = Marshal.QueryInterface(unk, ref iid, out iface);
+                Marshal.Release(unk);
+            }
+            pointers[i] = iface;
+        }
+
+        try
+        {
+            unsafe
+            {
+                var arrayPointer = (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(pointers));
+                return action(arrayPointer);
+            }
+        }
+        finally
+        {
+            foreach (var ptr in pointers)
+            {
+                if (ptr != 0)
+                {
+                    Marshal.Release(ptr);
+                }
+            }
         }
     }
 
@@ -228,7 +315,7 @@ public abstract class ComObject : IComObject
 public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
 {
     [AllowNull]
-    public new T Object => (T)(object?)base.Object!;
+    public new T Object => (T)(object)base.Object;
     public override Type InterfaceType => typeof(T);
 
     public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true) => CoCreate<T>(classId, ctx, outer, flags, throwOnError);

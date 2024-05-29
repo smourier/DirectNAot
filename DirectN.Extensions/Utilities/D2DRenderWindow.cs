@@ -33,9 +33,17 @@ public class D2DRenderWindow(
     protected override bool OnPaint(HDC hdc, PAINTSTRUCT ps) => RenderCore();
     protected override void OnHandleCreated(object? sender, EventArgs e)
     {
+        CreateRenderTarget();
+        base.OnHandleCreated(sender, e);
+    }
+
+    protected virtual void CreateRenderTarget()
+    {
+        var rt = RenderTarget;
+        RenderTarget = null;
+        rt?.Dispose();
         using var factory = D2D1Functions.D2D1CreateFactory(FactoryType, FactoryOptions);
         RenderTarget = factory.CreateHwndRenderTarget(new D2D1_HWND_RENDER_TARGET_PROPERTIES { hwnd = Handle });
-        base.OnHandleCreated(sender, e);
     }
 
     protected override bool OnResized()

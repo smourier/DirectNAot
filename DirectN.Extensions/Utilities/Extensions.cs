@@ -67,11 +67,39 @@ public static class Extensions
         return -1;
     }
 
+    public static byte[] LoadFromResource(this Assembly assembly, string name)
+    {
+        ArgumentNullException.ThrowIfNull(assembly);
+        ArgumentNullException.ThrowIfNull(name);
+        using var stream = assembly.GetManifestResourceStream(name);
+        if (stream == null)
+            throw new DirectNException($"0006: Stream '{name}' was not found in assembly {assembly.FullName}.");
+
+        using var ms = new MemoryStream();
+        stream.CopyTo(ms);
+        return ms.ToArray();
+    }
+
+    public static void CopyFromWithPad<T>(this Span<T?> array, T[]? source, int length)
+    {
+        for (var i = 0; i < length; i++)
+        {
+            if (source != null && i < source.Length)
+            {
+                array[i] = source[i];
+            }
+            else
+            {
+                array[i] = default;
+            }
+        }
+    }
+
     public static void CopyTo(this nint source, nint destination, int length) => Functions.CopyMemory(destination, source, length);
     public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);
 
-    public static unsafe nint CopyToPointer<T>(this T? structure) where T : struct
+    public static unsafe nint CopyToPointer<T>(this T? structure) where T : unmanaged
     {
         if (structure == null)
             return 0;
@@ -87,7 +115,7 @@ public static class Extensions
         return (uint)array.Length;
     }
 
-    public static unsafe nint AsPointer<T>(this T[]? array)
+    public static unsafe nint AsPointer<T>(this T[]? array) where T : unmanaged
     {
         if (array == null)
             return 0;
