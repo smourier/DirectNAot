@@ -33,3 +33,15 @@ The key points that drive how code is generated and built:
 * All `ComObject` instances are creating using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the use of non-unique instance int interop scenarios?)
 * Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. We want to remove this hack ASAP, but it's not sure if this bug will be only releasd with .NET 9 or before...
 * Doing interop is inherently unsafe but we want to keep a.NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result are quite different.
+
+# Direct3D11 minimal sample.
+The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
+
+ It's dependent on DirectN AOT, .NET 8 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
+ 
+ Here is the output (believe me, it rotates):
+
+[Sample](/Assets/minimald3d11_pt3_aot.png?raw=true)
+Full credits go to d7Samurai: https://gist.github.com/d7samurai
+
+
