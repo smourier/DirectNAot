@@ -7503,13 +7503,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutCacheDrumPatches(HMIDIOUT hmo, uint uPatch, [MarshalUsing(ConstantElementCount = 128)] in ushort[] pwkya, uint fuCache);
+    public static partial uint midiOutCacheDrumPatches(HMIDIOUT hmo, uint uPatch, [In][MarshalUsing(ConstantElementCount = 128)] ushort[] pwkya, uint fuCache);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutcachepatches
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutCachePatches(HMIDIOUT hmo, uint uBank, [MarshalUsing(ConstantElementCount = 128)] in ushort[] pwpa, uint fuCache);
+    public static partial uint midiOutCachePatches(HMIDIOUT hmo, uint uBank, [In][MarshalUsing(ConstantElementCount = 128)] ushort[] pwpa, uint fuCache);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutclose
     [LibraryImport("WINMM")]

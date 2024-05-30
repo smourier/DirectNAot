@@ -2,11 +2,22 @@
 
 public static class IDXGIAdapterExtensions
 {
-    [SupportedOSPlatform("windows8.0")]
-    public static IComObject<IDXGIFactory2> GetFactory2(this IComObject<IDXGIAdapter> adapter) => adapter.GetParent<IDXGIFactory2>();
+    public static IComObject<IDXGIFactory2>? GetFactory2(this IComObject<IDXGIAdapter> adapter)
+    {
+        if (!OperatingSystem.IsWindowsVersionAtLeast(8, 0))
+            return null;
 
-    [SupportedOSPlatform("windows6.1")]
-    public static IComObject<IDXGIFactory1> GetFactory1(this IComObject<IDXGIAdapter> adapter) => adapter.GetParent<IDXGIFactory1>();
+        return adapter.GetParent<IDXGIFactory2>();
+    }
+
+    public static IComObject<IDXGIFactory1>? GetFactory1(this IComObject<IDXGIAdapter> adapter)
+    {
+        if (!OperatingSystem.IsWindowsVersionAtLeast(6, 1))
+            return null;
+
+        return adapter.GetParent<IDXGIFactory1>();
+    }
+
     public static IComObject<IDXGIFactory> GetFactory(this IComObject<IDXGIAdapter> adapter) => adapter.GetParent<IDXGIFactory>();
     public static IComObject<T> GetParent<T>(this IComObject<IDXGIAdapter> adapter) => GetParent<T>(adapter?.Object!);
     public static IComObject<T> GetParent<T>(this IDXGIAdapter adapter) => IDXGIObjectExtensions.GetParent<T>(adapter);

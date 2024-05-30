@@ -182,15 +182,15 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(ID3D11RenderTargetView pRenderTargetView, [MarshalUsing(ConstantElementCount = 4)] in float[] ColorRGBA);
+    void ClearRenderTargetView(ID3D11RenderTargetView pRenderTargetView, [In][MarshalUsing(ConstantElementCount = 4)] float[] ColorRGBA);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-clearunorderedaccessviewuint
     [PreserveSig]
-    void ClearUnorderedAccessViewUint(ID3D11UnorderedAccessView pUnorderedAccessView, [MarshalUsing(ConstantElementCount = 4)] in uint[] Values);
+    void ClearUnorderedAccessViewUint(ID3D11UnorderedAccessView pUnorderedAccessView, [In][MarshalUsing(ConstantElementCount = 4)] uint[] Values);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-clearunorderedaccessviewfloat
     [PreserveSig]
-    void ClearUnorderedAccessViewFloat(ID3D11UnorderedAccessView pUnorderedAccessView, [MarshalUsing(ConstantElementCount = 4)] in float[] Values);
+    void ClearUnorderedAccessViewFloat(ID3D11UnorderedAccessView pUnorderedAccessView, [In][MarshalUsing(ConstantElementCount = 4)] float[] Values);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-cleardepthstencilview
     [PreserveSig]

@@ -29,7 +29,7 @@ public partial interface ID2D1DeviceContext2 : ID2D1DeviceContext1
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createlookuptable3d
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, [MarshalUsing(ConstantElementCount = 3)] in uint[] extents, nint /* byte array */ data, uint dataCount, [MarshalUsing(ConstantElementCount = 2)] in uint[] strides, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1LookupTable3D>))] out ID2D1LookupTable3D lookupTable);
+    HRESULT CreateLookupTable3D(D2D1_BUFFER_PRECISION precision, [In][MarshalUsing(ConstantElementCount = 3)] uint[] extents, nint /* byte array */ data, uint dataCount, [In][MarshalUsing(ConstantElementCount = 2)] uint[] strides, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1LookupTable3D>))] out ID2D1LookupTable3D lookupTable);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext2-createimagesourcefromdxgi
     [PreserveSig]

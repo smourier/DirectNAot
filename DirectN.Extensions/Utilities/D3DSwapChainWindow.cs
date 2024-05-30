@@ -19,21 +19,22 @@ public class D3DSwapChainWindow(
     private IComObject<IDXGISwapChain1>? _swapChain;
     private readonly VerticalBlankTicker _ticker = new();
 
-    protected virtual bool MultithreadProtected { get; set; } = true;
     protected VerticalBlankTicker Ticker => _ticker;
-    protected IComObject<ID3D11Device>? Device => _device;
-    protected IComObject<ID3D11DeviceContext>? DeviceContext => _deviceContext;
-    protected IComObject<IDXGISwapChain1>? SwapChain => _swapChain;
+    protected virtual bool MultithreadProtected { get; set; } = true;
+    protected virtual D3D11_CREATE_DEVICE_FLAG DeviceCreateFlags { get; set; }
+    protected virtual IComObject<ID3D11Device>? Device => _device;
+    protected virtual IComObject<ID3D11DeviceContext>? DeviceContext => _deviceContext;
+    protected virtual IComObject<IDXGISwapChain1>? SwapChain => _swapChain;
 
     // we handle background
     protected override void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon, background: new HBRUSH());
     protected override bool OnPaint(HDC hdc, PAINTSTRUCT ps) => RenderCore();
-    protected override void OnHandleCreated(object? sender, EventArgs e)
+    protected override void OnCreated(object? sender, EventArgs e)
     {
         CreateDeviceResources();
         _ticker.Tick += (s, e) => Invalidate();
         _ticker.Start();
-        base.OnHandleCreated(sender, e);
+        base.OnCreated(sender, e);
     }
 
     protected override bool OnResized()
@@ -46,9 +47,9 @@ public class D3DSwapChainWindow(
             if (!size.IsEmpty)
             {
                 DeviceContext?.Object.ClearState();
-                DisposeDeviceDependentResources();
+                DisposeSwapChainDependentResources();
                 swapChain.ResizeBuffers(0, (uint)size.cx, (uint)size.cy, DXGI_FORMAT.DXGI_FORMAT_UNKNOWN, 0);
-                CreateDeviceDependentResources(device, swapChain);
+                CreateSwapChainDependentResources(device, swapChain);
             }
         }
         OnResized(this, EventArgs.Empty);
@@ -68,6 +69,7 @@ public class D3DSwapChainWindow(
     protected override void Dispose(bool disposing)
     {
         _ticker?.Stop(1000);
+        DisposeSwapChainDependentResources();
         DisposeDeviceDependentResources();
         DisposeDeviceResources();
         base.Dispose(disposing);
@@ -75,17 +77,23 @@ public class D3DSwapChainWindow(
 
     protected virtual void CreateDeviceResources()
     {
+        DisposeSwapChainDependentResources();
         DisposeDeviceDependentResources();
         DisposeDeviceResources();
 
-        var dxgiFlags = (DXGI_CREATE_FACTORY_FLAGS)0;
-        var deviceFlags = (D3D11_CREATE_DEVICE_FLAG)0;
+        var deviceFlags = DeviceCreateFlags;
+
 #if DEBUG
-        dxgiFlags |= DXGI_CREATE_FACTORY_FLAGS.DXGI_CREATE_FACTORY_DEBUG;
+        // note: to see debug messages in Visual Studio, enable native debugging in .NET project
         deviceFlags |= D3D11_CREATE_DEVICE_FLAG.D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-        using var fac = DXGIFunctions.CreateDXGIFactory2(dxgiFlags);
+        if (!DXGIFunctions.IsDebugLayerAvailable && deviceFlags.HasFlag(D3D11_CREATE_DEVICE_FLAG.D3D11_CREATE_DEVICE_DEBUG))
+        {
+            deviceFlags &= ~D3D11_CREATE_DEVICE_FLAG.D3D11_CREATE_DEVICE_DEBUG;
+            Application.TraceWarning("Debug layer was unset, final flags:" + deviceFlags);
+        }
+
         _device = D3D11Functions.D3D11CreateDevice(null!, D3D_DRIVER_TYPE.D3D_DRIVER_TYPE_HARDWARE, deviceFlags, out _deviceContext);
         if (MultithreadProtected)
         {
@@ -93,19 +101,29 @@ public class D3DSwapChainWindow(
             mt?.Object.SetMultithreadProtected(true);
         }
 
-        var size = ClientRect.Size;
         var desc = new DXGI_SWAP_CHAIN_DESC1
         {
             Format = DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM,
             BufferUsage = DXGI_USAGE.DXGI_USAGE_RENDER_TARGET_OUTPUT,
             BufferCount = 2,
             SampleDesc = new DXGI_SAMPLE_DESC { Count = 1 },
-            SwapEffect = DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL,
-            Width = Math.Max(8, (uint)size.cx),
-            Height = Math.Max(8, (uint)size.cy),
+            SwapEffect = DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_DISCARD// DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL,
         };
 
+        var size = ClientRect.Size;
+        if (size.IsEmpty)
+        {
+            desc.Width = Math.Max(8, (uint)size.cx);
+            desc.Height = Math.Max(8, (uint)size.cy);
+        }
+
+        using var dxgiDevice = _device.As<IDXGIDevice>()!;
+        using var adapter = dxgiDevice.GetAdapter();
+        using var fac = adapter.GetFactory2()!;
         _swapChain = fac.CreateSwapChainForHwnd<IDXGISwapChain1>(_device, Handle, desc);
+
+        // provide non null references
+        CreateSwapChainDependentResources(_device, _swapChain);
         CreateDeviceDependentResources(_device, _swapChain);
     }
 
@@ -147,6 +165,16 @@ public class D3DSwapChainWindow(
     }
 
     protected virtual void DisposeDeviceDependentResources()
+    {
+    }
+
+    protected virtual void CreateSwapChainDependentResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        ArgumentNullException.ThrowIfNull(swapChain);
+    }
+
+    protected virtual void DisposeSwapChainDependentResources()
     {
     }
 

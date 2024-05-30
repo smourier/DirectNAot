@@ -31,10 +31,10 @@ public class D2DRenderWindow(
     // we handle background
     protected override void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon, background: new HBRUSH());
     protected override bool OnPaint(HDC hdc, PAINTSTRUCT ps) => RenderCore();
-    protected override void OnHandleCreated(object? sender, EventArgs e)
+    protected override void OnCreated(object? sender, EventArgs e)
     {
         CreateRenderTarget();
-        base.OnHandleCreated(sender, e);
+        base.OnCreated(sender, e);
     }
 
     protected virtual void CreateRenderTarget()
@@ -43,7 +43,7 @@ public class D2DRenderWindow(
         RenderTarget = null;
         rt?.Dispose();
         using var factory = D2D1Functions.D2D1CreateFactory(FactoryType, FactoryOptions);
-        RenderTarget = factory.CreateHwndRenderTarget(new D2D1_HWND_RENDER_TARGET_PROPERTIES { hwnd = Handle });
+        RenderTarget = factory.CreateHwndRenderTarget(new D2D1_HWND_RENDER_TARGET_PROPERTIES { hwnd = Handle, pixelSize = ClientRect.Size.ToD2D_SIZE_U() });
     }
 
     protected override bool OnResized()

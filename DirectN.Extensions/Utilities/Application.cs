@@ -73,7 +73,7 @@ public class Application : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        //Trace("windows count:" + _windows.Count);
+        //TraceInfo("windows count:" + _windows.Count);
         if (!_disposedValue)
         {
             if (disposing)
@@ -103,7 +103,7 @@ public class Application : IDisposable
 
     internal static void AddWindow(Window window)
     {
-        //Trace("window:" + window);
+        //TraceInfo("window:" + window);
         if (_windows.TryAdd(window, null))
         {
             // default is for new windows to be background (don't prevent to quit)
@@ -118,7 +118,7 @@ public class Application : IDisposable
 
     internal static void RemoveWindow(Window window)
     {
-        //Trace("window:" + window);
+        //TraceInfo("window:" + window);
         if (!_windows.TryRemove(window, out _))
             return;
 
@@ -151,6 +151,7 @@ public class Application : IDisposable
     public static bool IsFatalErrorShowing { get; private set; }
     public static bool QuitOnLastWindowRemoved { get; set; } = true;
     public static bool CanShowFatalError { get; set; } = true;
+    public static TraceLevel TraceLevel { get; set; } = TraceLevel.Verbose;
     public static int UIhreadId { get; private set; }
     public static bool ReportLiveObjects { get; set; }
 #if DEBUG
@@ -189,7 +190,7 @@ public class Application : IDisposable
         if (IsFatalErrorShowing)
             return 0;
 
-        //Trace("Hwnd:" + hwnd.Value + Environment.NewLine + string.Join(Environment.NewLine, _errors));
+        TraceError("Hwnd:" + hwnd.Value + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         var errors = _errors.ToArray();
         IsFatalErrorShowing = true;
         try
@@ -261,15 +262,39 @@ public class Application : IDisposable
         return Assembly.GetEntryAssembly()?.GetName().Name ?? "DirectN Application";
     }
 
-    public static void Trace(object? message, [CallerMemberName] string? methodName = null)
+    protected virtual internal bool TraceMessage(uint msg)
     {
+#if DEBUG
+        // remove super verbose messages
+        return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
+            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT;
+#else
+        return false;
+#endif
+    }
+
+    public static void TraceInfo(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Info, message, methodName);
+    public static void TraceWarning(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Warning, message, methodName);
+    public static void TraceVerbose(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Verbose, message, methodName);
+    public static void TraceError(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Error, message, methodName);
+    public static void Trace(TraceLevel level, object? message, [CallerMemberName] string? methodName = null)
+    {
+        if (level > TraceLevel)
+            return;
+
         if (!string.IsNullOrEmpty(methodName))
         {
             methodName += "|";
         }
 
+        string? slevel = null;
+        if (level == TraceLevel.Warning || level == TraceLevel.Error)
+        {
+            slevel = level.ToString() + "|";
+        }
+
         var name = Thread.CurrentThread.Name.Nullify() ?? Environment.CurrentManagedThreadId.ToString();
-        EventProvider.Default.WriteMessageEvent(name + "|" + methodName + message);
+        EventProvider.Default.WriteMessageEvent(name + "|" + methodName + slevel + message, (byte)level);
     }
 
     private sealed class Error(Exception exception, string? methodName)

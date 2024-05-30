@@ -165,15 +165,15 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, [MarshalUsing(ConstantElementCount = 4)] in float[] ColorRGBA, uint NumRects, nint /* optional RECT* */ pRects);
+    void ClearRenderTargetView(D3D12_CPU_DESCRIPTOR_HANDLE RenderTargetView, [In][MarshalUsing(ConstantElementCount = 4)] float[] ColorRGBA, uint NumRects, nint /* optional RECT* */ pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewuint
     [PreserveSig]
-    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in uint[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
+    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] uint[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewfloat
     [PreserveSig]
-    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [MarshalUsing(ConstantElementCount = 4)] in float[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
+    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] float[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-discardresource
     [PreserveSig]

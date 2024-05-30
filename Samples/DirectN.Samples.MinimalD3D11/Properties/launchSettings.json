@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DirectN.Samples.MinimalD3D11": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

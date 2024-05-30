@@ -4,10 +4,13 @@ public static class IDXGISwapChainExtensions
 {
     [SupportedOSPlatform("windows8.0")]
     public static DXGI_SWAP_CHAIN_DESC1 GetDesc1(this IComObject<IDXGISwapChain1> swapChain) => GetDesc1(swapChain?.Object!);
+
+    [SupportedOSPlatform("windows8.0")]
     public static DXGI_SWAP_CHAIN_DESC1 GetDesc1(this IDXGISwapChain1 swapChain)
     {
         ArgumentNullException.ThrowIfNull(swapChain);
-        return swapChain.GetDesc1();
+        swapChain.GetDesc1(out var value);
+        return value;
     }
 
     public static DXGI_SWAP_CHAIN_DESC GetDesc(this IComObject<IDXGISwapChain> swapChain) => GetDesc(swapChain?.Object!);

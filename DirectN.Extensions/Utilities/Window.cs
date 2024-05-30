@@ -4,6 +4,7 @@
 public class Window : IDisposable, IEquatable<Window>
 {
     private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;
+    private const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
     private nint _handle;
     private readonly WindowProc? _windowProc;
     private ConcurrentQueue<Task>? _tasks = [];
@@ -11,6 +12,7 @@ public class Window : IDisposable, IEquatable<Window>
     private readonly Scheduler? _scheduler;
 
     public event EventHandler? HandleCreated;
+    public event EventHandler? Created;
     public event EventHandler? Moved;
     public event EventHandler? Resized;
     public event EventHandler? Activated;
@@ -245,7 +247,8 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnResized(object? sender, EventArgs e) => Resized?.Invoke(sender, e);
     protected virtual void OnDestroyed(object? sender, EventArgs e) => Destroyed?.Invoke(sender, e);
     protected virtual void OnMoved(object? sender, EventArgs e) => Moved?.Invoke(sender, e);
-    protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e);
+    protected virtual void OnCreated(object? sender, EventArgs e) => Created?.Invoke(sender, e); // after window has been created
+    protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e); // inside window being created
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
 
     protected virtual void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon);
@@ -384,6 +387,10 @@ public class Window : IDisposable, IEquatable<Window>
                 ProcessTasks();
                 break;
 
+            case WM_WINDOW_CREATED:
+                OnCreated(this, EventArgs.Empty);
+                break;
+
             case MessageDecoder.WM_DESTROY:
                 DestroyOnDispose = false;
                 Dispose();
@@ -460,38 +467,37 @@ public class Window : IDisposable, IEquatable<Window>
 
     private static LRESULT SafeWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
-        if (Debugger.IsAttached)
-            return StaticWindowProc(hwnd, msg, wParam, lParam);
-
         try
         {
-            return StaticWindowProc(hwnd, msg, wParam, lParam);
+            if (Debugger.IsAttached)
+                return StaticWindowProc(hwnd, msg, wParam, lParam);
+
+            try
+            {
+                return StaticWindowProc(hwnd, msg, wParam, lParam);
+            }
+            catch (Exception e)
+            {
+                Application.AddError(e);
+                return LRESULT.Null;
+            }
         }
         catch (Exception e)
         {
-            Application.AddError(e);
-            return LRESULT.Null;
+            Application.TraceError(e);
+            throw;
         }
     }
-
-#if DEBUG
-    private static bool TraceMessage(uint msg)
-    {
-        return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
-            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT;
-    }
-#endif
 
     private static readonly string _handlePropName = "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
     private static LRESULT StaticWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
-#if DEBUG
-        if (TraceMessage(msg))
+        if (Application.Current.TraceMessage(msg))
         {
             var str = MessageDecoder.Decode(hwnd, msg, wParam, lParam);
-            Application.Trace(str);
+            Application.TraceVerbose(str);
         }
-#endif
+
         if (!Application.IsFatalErrorShowing)
         {
             if (msg == MessageDecoder.WM_NCCREATE)
@@ -507,6 +513,7 @@ public class Window : IDisposable, IEquatable<Window>
                 w._handle = hwnd.Value;
                 Functions.SetPropW(hwnd, PWSTR.From(_handlePropName), new HANDLE { Value = ptr });
                 w.OnHandleCreated(w, EventArgs.Empty);
+                Functions.PostMessageW(hwnd, WM_WINDOW_CREATED);
                 return DefWindowdProc(hwnd, msg, wParam, lParam);
             }
 

@@ -59,16 +59,16 @@ public static class D3D11Functions
         nint devicePtr;
         nint deviceContextPtr;
         Functions.D3D11CreateDevice(
-        adapter,
-        driverType,
-        HMODULE.Null,
-        flags,
-        featureLevels.AsPointer(),
-        featureLevels.Length(),
-        sdkVersion,
-        (nint)(&devicePtr),
-        0,
-        (nint)(&deviceContextPtr)).ThrowOnError();
+            adapter,
+            driverType,
+            HMODULE.Null,
+            flags,
+            featureLevels.AsPointer(),
+            featureLevels.Length(),
+            sdkVersion,
+            (nint)(&devicePtr),
+            0,
+            (nint)(&deviceContextPtr)).ThrowOnError();
         deviceContext = ComObject.FromPointer<ID3D11DeviceContext>(deviceContextPtr)!;
         return ComObject.FromPointer<ID3D11Device>(devicePtr)!;
     }

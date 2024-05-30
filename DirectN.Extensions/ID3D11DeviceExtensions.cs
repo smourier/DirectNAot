@@ -330,4 +330,26 @@ public static class ID3D11DeviceExtensions
         obj.GetImmediateContext(out var value);
         return value != null ? new ComObject<ID3D11DeviceContext>(value) : null;
     }
+
+    public static D3D_FEATURE_LEVEL GetFeatureLevel(this IComObject<ID3D11Device> obj) => GetFeatureLevel(obj?.Object!);
+    public static D3D_FEATURE_LEVEL GetFeatureLevel(this ID3D11Device obj)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        return obj.GetFeatureLevel();
+    }
+
+    public static D3D11_CREATE_DEVICE_FLAG GetCreationFlags(this IComObject<ID3D11Device> obj) => GetCreationFlags(obj?.Object!);
+    public static D3D11_CREATE_DEVICE_FLAG GetCreationFlags(this ID3D11Device obj)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        return (D3D11_CREATE_DEVICE_FLAG)obj.GetCreationFlags();
+    }
+
+    public static D3D11_FORMAT_SUPPORT CheckFormatSupport(this IComObject<ID3D11Device> obj, DXGI_FORMAT format) => CheckFormatSupport(obj?.Object!, format);
+    public static D3D11_FORMAT_SUPPORT CheckFormatSupport(this ID3D11Device obj, DXGI_FORMAT format)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        obj.CheckFormatSupport(format, out var support); // don't check error, just return 0 (no support)
+        return (D3D11_FORMAT_SUPPORT)support;
+    }
 }

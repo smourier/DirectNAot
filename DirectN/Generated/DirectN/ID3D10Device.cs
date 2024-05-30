@@ -95,7 +95,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetblendstate
     [PreserveSig]
-    void OMSetBlendState(ID3D10BlendState? pBlendState, [MarshalUsing(ConstantElementCount = 4)] in float[] BlendFactor, uint SampleMask);
+    void OMSetBlendState(ID3D10BlendState? pBlendState, [In][MarshalUsing(ConstantElementCount = 4)] float[] BlendFactor, uint SampleMask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetdepthstencilstate
     [PreserveSig]
@@ -135,7 +135,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(ID3D10RenderTargetView pRenderTargetView, [MarshalUsing(ConstantElementCount = 4)] in float[] ColorRGBA);
+    void ClearRenderTargetView(ID3D10RenderTargetView pRenderTargetView, [In][MarshalUsing(ConstantElementCount = 4)] float[] ColorRGBA);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-cleardepthstencilview
     [PreserveSig]

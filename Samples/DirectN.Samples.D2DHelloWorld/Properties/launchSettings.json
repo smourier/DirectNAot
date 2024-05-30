@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DirectN.Samples.D2DHelloWorld": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
