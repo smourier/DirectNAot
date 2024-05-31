@@ -151,6 +151,7 @@ public class Application : IDisposable
     public static bool IsFatalErrorShowing { get; private set; }
     public static bool QuitOnLastWindowRemoved { get; set; } = true;
     public static bool CanShowFatalError { get; set; } = true;
+    public static int MaximumNumberOfErrors { get; set; } = 3;
     public static TraceLevel TraceLevel { get; set; } = TraceLevel.Verbose;
     public static int UIhreadId { get; private set; }
     public static bool ReportLiveObjects { get; set; }
@@ -175,6 +176,11 @@ public class Application : IDisposable
         var ts = error.ToString();
         if (_errors.Any(e => e.ToString() == ts))
             return;
+
+        while (_errors.Count >= MaximumNumberOfErrors)
+        {
+            _errors.TryDequeue(out _);
+        }
 
         _errors.Enqueue(new(error, methodName));
 
@@ -264,10 +270,11 @@ public class Application : IDisposable
 
     protected virtual internal bool TraceMessage(uint msg)
     {
+        return false;
 #if DEBUG
         // remove super verbose messages
         return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
-            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT;
+            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT && msg != MessageDecoder.WM_GETICON;
 #else
         return false;
 #endif

@@ -314,7 +314,7 @@ public static class ID3D11DeviceContextExtensions
         });
     }
 
-    public static void OMSetRenderTarget(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11RenderTargetView> renderTargetView, IComObject<ID3D11DepthStencilView>? depthStencilView = null) => OMSetRenderTargets(context, [renderTargetView], depthStencilView);
+    public static void OMSetRenderTarget(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11RenderTargetView>? renderTargetView, IComObject<ID3D11DepthStencilView>? depthStencilView = null) => OMSetRenderTargets(context, [renderTargetView], depthStencilView);
     public static void OMSetRenderTargets(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11RenderTargetView>?[]? renderTargetViews, IComObject<ID3D11DepthStencilView>? depthStencilView = null) => OMSetRenderTargets(context?.Object!, renderTargetViews.UnwrapAsArray(), depthStencilView?.Object!);
     public static void OMSetRenderTargets(this ID3D11DeviceContext context, ID3D11RenderTargetView?[]? renderTargetViews, ID3D11DepthStencilView? depthStencilView = null)
     {
@@ -344,5 +344,19 @@ public static class ID3D11DeviceContextExtensions
     {
         ArgumentNullException.ThrowIfNull(context);
         context.DrawIndexed((uint)indexCount, (uint)startIndexLocation, baseVertexLocation);
+    }
+
+    public static void ClearState(this IComObject<ID3D11DeviceContext> context) => ClearState(context?.Object!);
+    public static void ClearState(this ID3D11DeviceContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.ClearState();
+    }
+
+    public static void Flush(this IComObject<ID3D11DeviceContext> context) => Flush(context?.Object!);
+    public static void Flush(this ID3D11DeviceContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.Flush();
     }
 }

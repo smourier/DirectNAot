@@ -46,10 +46,10 @@ public class D2DRenderWindow(
         RenderTarget = factory.CreateHwndRenderTarget(new D2D1_HWND_RENDER_TARGET_PROPERTIES { hwnd = Handle, pixelSize = ClientRect.Size.ToD2D_SIZE_U() });
     }
 
-    protected override bool OnResized()
+    protected override bool OnResized(WindowResizedType type, SIZE size)
     {
         RenderTarget?.Resize(ClientRect.Size.ToD2D_SIZE_U());
-        OnResized(this, EventArgs.Empty);
+        OnResized(type, size);
         return true;
     }
 

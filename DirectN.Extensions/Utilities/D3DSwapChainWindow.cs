@@ -37,22 +37,21 @@ public class D3DSwapChainWindow(
         base.OnCreated(sender, e);
     }
 
-    protected override bool OnResized()
+    protected override bool OnResized(WindowResizedType type, SIZE size)
     {
         var device = Device;
         var swapChain = SwapChain;
         if (device != null && swapChain != null)
         {
-            var size = ClientRect.Size;
             if (!size.IsEmpty)
             {
-                DeviceContext?.Object.ClearState();
                 DisposeSwapChainDependentResources();
-                swapChain.ResizeBuffers(0, (uint)size.cx, (uint)size.cy, DXGI_FORMAT.DXGI_FORMAT_UNKNOWN, 0);
+                //swapChain.ResizeBuffers(0, 0, 0, DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM, 0);
+                swapChain.ResizeBuffers(0, (uint)size.cx, (uint)size.cy, DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM, 0);
                 CreateSwapChainDependentResources(device, swapChain);
             }
         }
-        OnResized(this, EventArgs.Empty);
+        base.OnResized(type, size);
         return true;
     }
 
@@ -69,16 +68,12 @@ public class D3DSwapChainWindow(
     protected override void Dispose(bool disposing)
     {
         _ticker?.Stop(1000);
-        DisposeSwapChainDependentResources();
-        DisposeDeviceDependentResources();
         DisposeDeviceResources();
         base.Dispose(disposing);
     }
 
     protected virtual void CreateDeviceResources()
     {
-        DisposeSwapChainDependentResources();
-        DisposeDeviceDependentResources();
         DisposeDeviceResources();
 
         var deviceFlags = DeviceCreateFlags;
@@ -107,7 +102,8 @@ public class D3DSwapChainWindow(
             BufferUsage = DXGI_USAGE.DXGI_USAGE_RENDER_TARGET_OUTPUT,
             BufferCount = 2,
             SampleDesc = new DXGI_SAMPLE_DESC { Count = 1 },
-            SwapEffect = DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_DISCARD// DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL,
+            SwapEffect = DXGI_SWAP_EFFECT.DXGI_SWAP_EFFECT_FLIP_DISCARD,
+            Scaling = DXGI_SCALING.DXGI_SCALING_STRETCH,
         };
 
         var size = ClientRect.Size;
@@ -120,6 +116,7 @@ public class D3DSwapChainWindow(
         using var dxgiDevice = _device.As<IDXGIDevice>()!;
         using var adapter = dxgiDevice.GetAdapter();
         using var fac = adapter.GetFactory2()!;
+
         _swapChain = fac.CreateSwapChainForHwnd<IDXGISwapChain1>(_device, Handle, desc);
 
         // provide non null references
@@ -129,13 +126,24 @@ public class D3DSwapChainWindow(
 
     protected virtual void DisposeDeviceResources()
     {
-        Interlocked.Exchange(ref _swapChain, null)?.Dispose();
+        DisposeDeviceDependentResources();
+        DisposeSwapChainDependentResources();
+
         var dc = Interlocked.Exchange(ref _deviceContext, null);
         if (dc != null)
         {
-            dc.Object.ClearState();
+            dc.ClearState();
+            dc.Flush();
             dc.Dispose();
         };
+
+        var sc = Interlocked.Exchange(ref _swapChain, null);
+        if (sc != null)
+        {
+            sc.SetFullscreenState(false);
+            sc.Dispose();
+        }
+
         Interlocked.Exchange(ref _device, null)?.Dispose();
     }
 

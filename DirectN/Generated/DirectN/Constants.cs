@@ -29183,7 +29183,19 @@ public static partial class Constants
     
     public const uint SIZE_DVINFO = 32;
     
+    public const uint SIZE_MAXHIDE = 4;
+    
+    public const uint SIZE_MAXIMIZED = 2;
+    
+    public const uint SIZE_MAXSHOW = 3;
+    
     public const uint SIZE_MINIMIZED = 1;
+    
+    public const uint SIZE_OF_80387_REGISTERS = 80;
+    
+    public static readonly Guid Size_Property_GUID = new("2b5f761d-f885-4404-973f-9b1d98e36d8f");
+    
+    public const uint SIZE_RESTORED = 0;
     
     public const uint SND_ALIAS_START = 0;
     

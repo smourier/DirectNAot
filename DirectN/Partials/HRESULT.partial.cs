@@ -3,6 +3,7 @@
 public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
 {
     private static readonly ConcurrentDictionary<int, string?> _names = new();
+    public static Func<HRESULT, Exception, string?, bool>? OnError { get; set; }
 
     public HRESULT(int value)
     {
@@ -21,9 +22,9 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
     public readonly bool IsOk => Value == 0;
     public readonly bool IsFalse => Value == 1;
 
-    public readonly HRESULT ThrowOnError(bool throwOnError = true) => ThrowOnErrorExcept(null, throwOnError);
-    public readonly HRESULT ThrowOnErrorExcept(HRESULT exceptedValue, bool throwOnError = true) => ThrowOnErrorExcept([exceptedValue], throwOnError);
-    public readonly HRESULT ThrowOnErrorExcept(IEnumerable<HRESULT>? exceptedValues, bool throwOnError = true)
+    public readonly HRESULT ThrowOnError(bool throwOnError = true, [CallerMemberName] string? methodName = null) => ThrowOnErrorExcept(null, throwOnError, methodName);
+    public readonly HRESULT ThrowOnErrorExcept(HRESULT exceptedValue, bool throwOnError = true, [CallerMemberName] string? methodName = null) => ThrowOnErrorExcept([exceptedValue], throwOnError, methodName);
+    public readonly HRESULT ThrowOnErrorExcept(IEnumerable<HRESULT>? exceptedValues, bool throwOnError = true, [CallerMemberName] string? methodName = null)
     {
         if (!throwOnError)
             return Value;
@@ -33,7 +34,11 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
 
         var exception = GetException();
         if (exception != null)
-            throw exception;
+        {
+            var handler = OnError ?? throw exception;
+            if (handler.Invoke(this, exception, methodName))
+                throw exception;
+        }
 
         return Value;
     }

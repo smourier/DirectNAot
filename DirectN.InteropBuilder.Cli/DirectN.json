@@ -249,6 +249,6 @@
     "WindowFromPoint",
     "WindowFromPhysicalPoint",
     "IDI_APPLICATION",
-    "SIZE_MINIMIZED"
+    "SIZE_*"
   ]
 }

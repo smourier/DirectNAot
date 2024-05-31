@@ -13,12 +13,12 @@ public class Window : IDisposable, IEquatable<Window>
 
     public event EventHandler? HandleCreated;
     public event EventHandler? Created;
-    public event EventHandler? Moved;
-    public event EventHandler? Resized;
-    public event EventHandler? Activated;
-    public event EventHandler? Deactivated;
     public event EventHandler? Destroyed;
-    public event EventHandler? FocusChanged;
+    public event EventHandler<HandledEventArgs>? Moved;
+    public event EventHandler<ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>>? Resized;
+    public event EventHandler<HandledEventArgs>? Activated;
+    public event EventHandler<HandledEventArgs>? Deactivated;
+    public event EventHandler<HandledEventArgs>? FocusChanged;
     public event EventHandler<CancelEventArgs>? Closing;
 
     protected Window(nint handle)
@@ -202,6 +202,7 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual bool Show(SHOW_WINDOW_CMD command = SHOW_WINDOW_CMD.SW_SHOW) => Functions.ShowWindow(Handle, command);
     public virtual void Move(int x, int y) => Functions.SetWindowPos(Handle, HWND.Null, x, y, -1, -1, SET_WINDOW_POS_FLAGS.SWP_NOSIZE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     public virtual void Resize(int width, int height) => Functions.SetWindowPos(Handle, HWND.Null, 0, 0, width, height, SET_WINDOW_POS_FLAGS.SWP_NOMOVE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
+    public virtual void ResizeAndMove(int x, int y, int width, int height) => Functions.SetWindowPos(Handle, HWND.Null, x, y, width, height, SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     public virtual void ResizeClient(int width, int height)
     {
         var wr = WindowRect;
@@ -241,12 +242,12 @@ public class Window : IDisposable, IEquatable<Window>
         return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, _scheduler);
     }
 
-    protected virtual void OnFocusChanged(object? sender, EventArgs e) => FocusChanged?.Invoke(sender, e);
-    protected virtual void OnActivated(object? sender, EventArgs e) => Activated?.Invoke(sender, e);
-    protected virtual void OnDeactivated(object? sender, EventArgs e) => Deactivated?.Invoke(sender, e);
-    protected virtual void OnResized(object? sender, EventArgs e) => Resized?.Invoke(sender, e);
+    protected virtual void OnFocusChanged(object? sender, HandledEventArgs e) => FocusChanged?.Invoke(sender, e);
+    protected virtual void OnActivated(object? sender, HandledEventArgs e) => Activated?.Invoke(sender, e);
+    protected virtual void OnDeactivated(object? sender, HandledEventArgs e) => Deactivated?.Invoke(sender, e);
+    protected virtual void OnResized(object? sender, ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)> e) => Resized?.Invoke(sender, e);
     protected virtual void OnDestroyed(object? sender, EventArgs e) => Destroyed?.Invoke(sender, e);
-    protected virtual void OnMoved(object? sender, EventArgs e) => Moved?.Invoke(sender, e);
+    protected virtual void OnMoved(object? sender, HandledEventArgs e) => Moved?.Invoke(sender, e);
     protected virtual void OnCreated(object? sender, EventArgs e) => Created?.Invoke(sender, e); // after window has been created
     protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e); // inside window being created
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
@@ -287,21 +288,24 @@ public class Window : IDisposable, IEquatable<Window>
         return false;
     }
 
-    protected virtual bool OnResized()
+    protected virtual bool OnResized(WindowResizedType type, SIZE size)
     {
-        OnResized(this, EventArgs.Empty);
-        return false;
+        var e = new ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>((type, size));
+        OnResized(this, e);
+        return e.Cancel;
     }
 
     protected virtual bool OnMoved()
     {
-        OnMoved(this, EventArgs.Empty);
+        var e = new HandledEventArgs();
+        OnMoved(this, e);
         return false;
     }
 
     protected virtual bool OnFocusChanged()
     {
-        OnFocusChanged(this, EventArgs.Empty);
+        var e = new HandledEventArgs();
+        OnFocusChanged(this, e);
         return false;
     }
 
@@ -312,15 +316,16 @@ public class Window : IDisposable, IEquatable<Window>
 
     protected virtual bool OnActivated(bool activated)
     {
+        var e = new HandledEventArgs();
         if (activated)
         {
-            OnActivated(this, EventArgs.Empty);
+            OnActivated(this, e);
         }
         else
         {
-            OnDeactivated(this, EventArgs.Empty);
+            OnDeactivated(this, e);
         }
-        return false;
+        return e.Handled;
     }
 
     protected virtual LRESULT? WindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
@@ -368,11 +373,11 @@ public class Window : IDisposable, IEquatable<Window>
                 break;
 
             case MessageDecoder.WM_SIZE:
-                var sized = wParam.Value.ToUInt32();
-                if (sized == Constants.SIZE_MINIMIZED)
+                var sized = (WindowResizedType)wParam.Value.ToUInt64();
+                if (sized == WindowResizedType.Minimized)
                     break;
 
-                if (OnResized())
+                if (OnResized(sized, new SIZE(lParam.Value.LOWORD(), lParam.Value.HIWORD())))
                     return new();
 
                 break;
@@ -563,7 +568,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
         else
         {
-            cls.hbrBackground = new HBRUSH { Value = (nint)SYS_COLOR_INDEX.COLOR_HIGHLIGHTTEXT + 1 }; // white
+            cls.hbrBackground = new HBRUSH { Value = (nint)SYS_COLOR_INDEX.COLOR_WINDOW + 1 };
         }
 
         if (Functions.RegisterClassW(cls) == 0)

@@ -57,10 +57,13 @@ public static class IDXGIAdapterExtensions
 
     [SupportedOSPlatform("windows6.1")]
     public static DXGI_ADAPTER_DESC1 GetDesc1(this IComObject<IDXGIAdapter1> adapter) => GetDesc1(adapter?.Object!);
+
+    [SupportedOSPlatform("windows6.1")]
     public static DXGI_ADAPTER_DESC1 GetDesc1(this IDXGIAdapter1 adapter)
     {
         ArgumentNullException.ThrowIfNull(adapter);
-        return adapter.GetDesc1();
+        adapter.GetDesc1(out var desc).ThrowOnError();
+        return desc;
     }
 
     public static IEnumerable<IComObject<T>> EnumOutputs<T>(this IComObject<IDXGIAdapter> factory) where T : IDXGIOutput => EnumOutputs<T>(factory?.Object!);

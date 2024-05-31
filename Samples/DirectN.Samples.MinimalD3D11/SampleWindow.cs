@@ -4,7 +4,7 @@ using DirectN.Extensions.Utilities;
 namespace DirectN.Samples.MinimalD3D11
 {
     // this code is ported from https://gist.github.com/d7samurai/261c69490cce0620d0bfc93003cd1052
-    public class SampleWindow(string title) : D3DSwapChainWindow(title)
+    public class SampleWindow : D3DSwapChainWindow
     {
         private readonly unsafe uint _sizeOfConstants = (uint)sizeof(Constants);
         private const uint _shadowmapDepthSize = 2048;
@@ -22,17 +22,22 @@ namespace DirectN.Samples.MinimalD3D11
         private IComObject<ID3D11VertexShader>? _framebufferVS;
         private IComObject<ID3D11PixelShader>? _framebufferPS;
         private Constants _constants;
-        private bool _constantsInitialized;
         private D3D11_VIEWPORT _shadowmapVP;
         private D3D11_VIEWPORT _framebufferVP;
         private readonly float[] _framebufferClear = [0.025f, 0.025f, 0.025f, 1];
+        private SIZE _savedSize;
         private readonly byte[] _shaderBytes = Assembly.GetExecutingAssembly().LoadFromResource(typeof(SampleWindow).Namespace + ".shaders.hlsl");
 
-        private void InitializeConstants()
+        public SampleWindow(string title)
+            : base(title)
         {
-            // don't change constants if resized for example
-            if (_constantsInitialized)
-                return;
+            // init constants
+            _shadowmapVP = new D3D11_VIEWPORT
+            {
+                Width = _shadowmapDepthSize,
+                Height = _shadowmapDepthSize,
+                MaxDepth = 1
+            };
 
             _constants = new Constants
             {
@@ -43,21 +48,13 @@ namespace DirectN.Samples.MinimalD3D11
             };
 
             Extensions.Utilities.Extensions.CopyFromWithPad(
-                _constants.CameraProjection,
-                new float[] { 2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0 },
-                InlineArraySingle_16.Length);
-
-            Extensions.Utilities.Extensions.CopyFromWithPad(
                 _constants.LightProjection,
                 new float[] { 0.5f, 0, 0, 0, 0, 0.5f, 0, 0, 0, 0, 0.125f, 0, 0, 0, -0.125f, 1 },
                 InlineArraySingle_16.Length);
-
-            _constantsInitialized = true;
         }
 
-        protected override void CreateSwapChainDependentResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+        private void CreateSCResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
         {
-            base.CreateSwapChainDependentResources(device, swapChain);
             ArgumentNullException.ThrowIfNull(swapChain);
             using var framebufferTexture = swapChain.GetBuffer<ID3D11Texture2D>(0);
             if (framebufferTexture == null)
@@ -85,25 +82,22 @@ namespace DirectN.Samples.MinimalD3D11
                 MaxDepth = 1
             };
 
-            _shadowmapVP = new D3D11_VIEWPORT
-            {
-                Width = _shadowmapDepthSize,
-                Height = _shadowmapDepthSize,
-                MaxDepth = 1
-            };
+            Extensions.Utilities.Extensions.CopyFromWithPad(
+                _constants.CameraProjection,
+                new float[] { 2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0 },
+                InlineArraySingle_16.Length);
+
+            Application.TraceInfo("viewPort:" + _framebufferVP.Width + " x " + _framebufferVP.Height);
         }
 
-        // called on (swapchain) resize
-        protected override void DisposeSwapChainDependentResources()
+        private void DisposeSCResources()
         {
             Interlocked.Exchange(ref _framebufferRTV, null)?.Dispose();
             Interlocked.Exchange(ref _framebufferDSV, null)?.Dispose();
-            base.DisposeSwapChainDependentResources();
         }
 
-        protected override void CreateDeviceDependentResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+        private void CreateDVResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
         {
-            base.CreateDeviceDependentResources(device, swapChain);
             var shadowmapDepthDesc = new D3D11_TEXTURE2D_DESC
             {
                 Width = _shadowmapDepthSize,
@@ -198,11 +192,9 @@ namespace DirectN.Samples.MinimalD3D11
 
             using var shadowmapVSBlob = D3D11Functions.D3DCompile(_shaderBytes, "shadowmap_vs", "vs_5_0");
             _shadowmapVS = device.CreateVertexShader(shadowmapVSBlob);
-
-            InitializeConstants();
         }
 
-        protected override void DisposeDeviceDependentResources()
+        private void DisposeDVResources()
         {
             Interlocked.Exchange(ref _shadowmapDSV, null)?.Dispose();
             Interlocked.Exchange(ref _shadowmapVS, null)?.Dispose();
@@ -214,13 +206,36 @@ namespace DirectN.Samples.MinimalD3D11
             Interlocked.Exchange(ref _cullBackRS, null)?.Dispose();
             Interlocked.Exchange(ref _framebufferVS, null)?.Dispose();
             Interlocked.Exchange(ref _framebufferPS, null)?.Dispose();
+        }
+
+        // called on (swapchain) resize
+        protected override void DisposeSwapChainDependentResources()
+        {
+            DisposeSCResources();
+            base.DisposeSwapChainDependentResources();
+        }
+
+        protected override void CreateDeviceDependentResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+        {
+            base.CreateDeviceDependentResources(device, swapChain);
+            CreateDVResources(device, swapChain);
+        }
+
+        protected override void CreateSwapChainDependentResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+        {
+            base.CreateSwapChainDependentResources(device, swapChain);
+            CreateSCResources(device, swapChain);
+        }
+
+        protected override void DisposeDeviceDependentResources()
+        {
+            DisposeDVResources();
             base.DisposeDeviceDependentResources();
         }
 
         protected override void Render(IComObject<ID3D11DeviceContext> deviceContext, IComObject<IDXGISwapChain1> swapChain)
         {
-            ArgumentNullException.ThrowIfNull(deviceContext);
-            ArgumentNullException.ThrowIfNull(swapChain);
+            base.Render(deviceContext, swapChain);
             var shadowmapDSV = _shadowmapDSV;
             var shadowmapVS = _shadowmapVS;
             var shadowmapSRV = _shadowmapSRV;
@@ -284,6 +299,51 @@ namespace DirectN.Samples.MinimalD3D11
             deviceContext.PSSetShaderResources(1, [null]);
 
             swapChain.Present(1, 0);
+        }
+
+        protected override LRESULT? WindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
+        {
+            if (msg == MessageDecoder.WM_KEYUP)
+            {
+                var vk = (VIRTUAL_KEY)wParam.Value.ToUInt64();
+                switch (vk)
+                {
+                    case VIRTUAL_KEY.VK_ESCAPE:
+                        Dispose();
+                        return new();
+
+                    case VIRTUAL_KEY.VK_F11:
+                        var sw = SwapChain;
+                        if (sw != null)
+                        {
+                            if (sw.IsFullScreenState())
+                            {
+                                sw.SetFullscreenState(false);
+                                sw.ResizeTarget(new DXGI_MODE_DESC
+                                {
+                                    Width = (uint)_savedSize.cx,
+                                    Height = (uint)_savedSize.cy,
+                                });
+                            }
+                            else
+                            {
+                                _savedSize = WindowRect.Size;
+                                var monitor = GetMonitor(MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST)!;
+                                var bounds = monitor.Bounds;
+                                sw.ResizeTarget(new DXGI_MODE_DESC
+                                {
+                                    Width = (uint)bounds.Width,
+                                    Height = (uint)bounds.Height,
+                                });
+
+                                sw.SetFullscreenState(true);
+                            }
+                        }
+                        return new();
+
+                }
+            }
+            return base.WindowProc(hwnd, msg, wParam, lParam);
         }
 
         [StructLayout(LayoutKind.Sequential)]
