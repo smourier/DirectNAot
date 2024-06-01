@@ -6,6 +6,7 @@ public class Window : IDisposable, IEquatable<Window>
     private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;
     private const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
     private nint _handle;
+    private GCHandle _gcHandle;
     private readonly WindowProc? _windowProc;
     private ConcurrentQueue<Task>? _tasks = [];
     private readonly Lazy<Process?> _process;
@@ -270,8 +271,8 @@ public class Window : IDisposable, IEquatable<Window>
         ArgumentNullException.ThrowIfNull(className);
         text ??= Application.GetTitle();
         var rc = rect ?? new RECT(Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT);
-        var handle = GCHandle.Alloc(this);
-        var ptr = GCHandle.ToIntPtr(handle);
+        _gcHandle = GCHandle.Alloc(this);
+        var ptr = GCHandle.ToIntPtr(_gcHandle);
         var hwnd = Functions.CreateWindowExW(extendedStyle, PWSTR.From(className), PWSTR.From(text), style, rc.left, rc.top, rc.Width, rc.Height, parentHandle ?? HWND.Null, menu ?? HMENU.Null, HINSTANCE.Null, ptr);
         if (hwnd.Value == 0)
         {
@@ -413,6 +414,7 @@ public class Window : IDisposable, IEquatable<Window>
             if (handle != 0)
             {
                 Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(_handlePropName));
+                _gcHandle.Free();
                 if (DestroyOnDispose)
                 {
                     Functions.DestroyWindow(new HWND { Value = handle });
