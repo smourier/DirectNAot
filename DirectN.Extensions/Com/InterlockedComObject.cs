@@ -2,6 +2,11 @@
 
 public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject<T>>
 {
+    protected InterlockedComObject()
+        : this(null)
+    {
+    }
+
     protected InterlockedComObject(IComObject<T>? comObject)
         : base(comObject)
     {

@@ -1,7 +1,7 @@
 ﻿namespace DirectN.Utilities;
 
 [SupportedOSPlatform("windows8.1")]
-public class D3DSwapChainWindow(
+public class D3D11SwapChainWindow(
     string? title = null,
     WINDOW_STYLE style = WINDOW_STYLE.WS_POPUP | WINDOW_STYLE.WS_THICKFRAME | WINDOW_STYLE.WS_CAPTION | WINDOW_STYLE.WS_SYSMENU | WINDOW_STYLE.WS_MAXIMIZEBOX | WINDOW_STYLE.WS_MINIMIZEBOX,
     WINDOW_EX_STYLE extendedStyle = 0,

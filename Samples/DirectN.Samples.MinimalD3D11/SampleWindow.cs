@@ -4,7 +4,7 @@ using DirectN.Extensions.Utilities;
 namespace DirectN.Samples.MinimalD3D11
 {
     // this code is ported from https://gist.github.com/d7samurai/261c69490cce0620d0bfc93003cd1052
-    public class SampleWindow : D3DSwapChainWindow
+    public class SampleWindow : D3D11SwapChainWindow
     {
         private readonly unsafe uint _sizeOfConstants = (uint)sizeof(Constants);
         private const uint _shadowmapDepthSize = 2048;

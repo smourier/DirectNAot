@@ -165,4 +165,59 @@ public static class IDXGIFactoryExtensions
         factory.EnumAdapterByGpuPreference(index, preference, typeof(T).GUID, out var unk);
         return unk == 0 ? null : ComObject.FromPointer<T>(unk);
     }
+
+    [SupportedOSPlatform("windows6.1")]
+    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IComObject<IDXGIFactory1> factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED) => GetHardwareAdapter(factory?.Object!, preference);
+    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IDXGIFactory1 factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        IComObject<IDXGIAdapter1>? adapter = null;
+        if (factory is IDXGIFactory6 fac)
+        {
+#pragma warning disable CA1416 // Validate platform compatibility
+            uint index = 0;
+            do
+            {
+                adapter = fac.EnumAdapterByGpuPreference(index++, preference);
+                if (adapter == null)
+                    break;
+
+                var desc = adapter.GetDesc1();
+                var flags = (DXGI_ADAPTER_FLAG)desc.Flags;
+                if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
+                    continue;
+
+                var hr = D3D12Functions.D3D12CheckDeviceCreate(adapter, D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0);
+                if (hr == Constants.E_INVALIDARG)
+                    continue;
+
+                hr.ThrowOnError();
+            }
+            while (true);
+        }
+
+        if (adapter == null)
+        {
+            foreach (var a in factory.EnumAdapters1<IDXGIAdapter1>())
+            {
+                var desc = a.GetDesc1();
+                var flags = (DXGI_ADAPTER_FLAG)desc.Flags;
+                if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
+                    continue;
+
+                var hr = D3D12Functions.D3D12CheckDeviceCreate(a, D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0);
+                if (hr.IsSuccess)
+                {
+                    adapter = a;
+                    break;
+                }
+                if (hr == Constants.E_INVALIDARG)
+                    continue;
+
+                hr.ThrowOnError();
+            }
+        }
+#pragma warning restore CA1416 // Validate platform compatibility
+        return adapter;
+    }
 }
