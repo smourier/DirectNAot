@@ -63,41 +63,4 @@ public static class ComExtensions
 
     [return: NotNullIfNotNull(nameof(enumerable))]
     public static IEnumerable<IComObject<T>>? ToComObjects<T>(this IEnumerable<T>? enumerable) => enumerable?.Select(e => new ComObject<T>(e));
-
-    public static void WithAllocatedMemory(uint size, Action<nint> action)
-    {
-        ArgumentNullException.ThrowIfNull(action);
-        if (size == 0)
-        {
-            action(0);
-            return;
-        }
-
-        var ptr = Marshal.AllocCoTaskMem((int)size);
-        try
-        {
-            action(ptr);
-        }
-        finally
-        {
-            Marshal.FreeCoTaskMem(ptr);
-        }
-    }
-
-    public static T WithAllocatedMemory<T>(uint size, Func<nint, T> func)
-    {
-        ArgumentNullException.ThrowIfNull(func);
-        if (size == 0)
-            return func(0);
-
-        var ptr = Marshal.AllocCoTaskMem((int)size);
-        try
-        {
-            return func(ptr);
-        }
-        finally
-        {
-            Marshal.FreeCoTaskMem(ptr);
-        }
-    }
 }

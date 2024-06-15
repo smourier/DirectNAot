@@ -96,6 +96,24 @@ public abstract class ComObject : IComObject
         return unk;
     }
 
+    public static nint ToComInstanceOfType<T>(object? obj)
+    {
+        var unk = ToComInstance(obj);
+        if (unk == 0)
+            return 0;
+
+        var iid = typeof(T).GUID;
+        try
+        {
+            _ = Marshal.QueryInterface(unk, ref iid, out var iface);
+            return iface;
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
+
     public static void Release(System.Runtime.InteropServices.Marshalling.ComObject? obj) => ComExtensions.FinalRelease(obj);
     public static int Release(nint unk)
     {
@@ -177,7 +195,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstancesOfType<T>(T[]? array, Action<nint> action)
+    public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
@@ -186,18 +204,19 @@ public abstract class ComObject : IComObject
             return;
         }
 
-        var pointers = new nint[array.Length];
-        for (var i = 0; i < array.Length; i++)
+        var pointers = new nint[array.Count];
+        var i = 0;
+        foreach (var item in array)
         {
             nint iface = 0;
-            var unk = ToComInstance(array[i]);
+            var unk = ToComInstance(item);
             if (unk != 0)
             {
                 var iid = typeof(T).GUID;
                 _ = Marshal.QueryInterface(unk, ref iid, out iface);
                 Marshal.Release(unk);
             }
-            pointers[i] = iface;
+            pointers[i++] = iface;
         }
 
         try
@@ -220,24 +239,25 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstancesOfType<T, Ti>(Ti[]? array, Func<nint, T> action)
+    public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
             return action(0);
 
-        var pointers = new nint[array.Length];
-        for (var i = 0; i < array.Length; i++)
+        var pointers = new nint[array.Count];
+        var i = 0;
+        foreach (var item in array)
         {
             nint iface = 0;
-            var unk = ToComInstance(array[i]);
+            var unk = ToComInstance(item);
             if (unk != 0)
             {
                 var iid = typeof(Ti).GUID;
                 _ = Marshal.QueryInterface(unk, ref iid, out iface);
                 Marshal.Release(unk);
             }
-            pointers[i] = iface;
+            pointers[i++] = iface;
         }
 
         try

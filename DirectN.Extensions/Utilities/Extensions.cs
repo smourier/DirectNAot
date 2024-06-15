@@ -97,7 +97,9 @@ public static class Extensions
 
     public static void CopyTo(this nint source, nint destination, int length) => Functions.CopyMemory(destination, source, length);
     public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static void CopyTo(this nint source, nint destination, uint length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);
+    public static unsafe void CopyTo<T>(this T structure, nint destination) where T : unmanaged => Unsafe.CopyBlock((void*)destination, Unsafe.AsPointer(ref structure), (uint)sizeof(T));
 
     public static unsafe nint CopyToPointer<T>(this T? structure) where T : unmanaged
     {
@@ -107,12 +109,12 @@ public static class Extensions
         return (nint)Unsafe.AsPointer(ref (new T[] { structure.Value })[0]);
     }
 
-    public static unsafe uint Length<T>(this T[]? array)
+    public static unsafe uint Length<T>(this IReadOnlyCollection<T>? array)
     {
         if (array == null)
             return 0;
 
-        return (uint)array.Length;
+        return (uint)array.Count;
     }
 
     public static unsafe nint AsPointer<T>(this T[]? array) where T : unmanaged
@@ -121,6 +123,17 @@ public static class Extensions
             return 0;
 
         return (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(array));
+    }
+
+    public static unsafe void CopyTo<T>(this T[] array, nint destination) where T : unmanaged
+    {
+        ArgumentNullException.ThrowIfNull(array);
+        if (array.Length == 0)
+            return;
+
+        var source = Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(array));
+        var size = (uint)(sizeof(T) * array.Length);
+        Unsafe.CopyBlock((void*)destination, source, size);
     }
 
     public static byte[] IntPtrToBytes(this nint ptr)

@@ -5,7 +5,7 @@ public static class ID3D12ObjectExtensions
     public static void SetName(this IComObject<ID3D12Object> obj, string name) => SetName(obj?.Object!, name);
     public static void SetName(this ID3D12Object obj, string name)
     {
-        obj.SetName(name);
+        obj.SetName(PWSTR.From(name));
     }
 
     public static void SetPrivateData(this IComObject<ID3D12Object> obj, Guid guid, uint dataSize, nint data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
