@@ -6,7 +6,7 @@ public partial interface ISpTokenUI
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, nint punkObject, [MarshalAs(UnmanagedType.U4)] out bool pfSupported);
+    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, nint punkObject, out BOOL pfSupported);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

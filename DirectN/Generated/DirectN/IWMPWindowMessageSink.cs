@@ -6,5 +6,5 @@ public partial interface IWMPWindowMessageSink
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnWindowMessage(uint uMsg, WPARAM wparam, LPARAM lparam, ref LRESULT plRet, [MarshalAs(UnmanagedType.U4)] ref bool pfHandled);
+    HRESULT OnWindowMessage(uint uMsg, WPARAM wparam, LPARAM lparam, ref LRESULT plRet, ref BOOL pfHandled);
 }

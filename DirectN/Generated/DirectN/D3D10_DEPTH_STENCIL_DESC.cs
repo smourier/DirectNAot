@@ -5,13 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_DEPTH_STENCIL_DESC
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DepthEnable;
+    public BOOL DepthEnable;
     public D3D10_DEPTH_WRITE_MASK DepthWriteMask;
     public D3D10_COMPARISON_FUNC DepthFunc;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool StencilEnable;
+    public BOOL StencilEnable;
     public byte StencilReadMask;
     public byte StencilWriteMask;
     public D3D10_DEPTH_STENCILOP_DESC FrontFace;

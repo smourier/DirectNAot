@@ -25,8 +25,7 @@ public partial interface IDWriteFontFace
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-issymbolfont
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsSymbolFont();
+    BOOL IsSymbolFont();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getmetrics
     [PreserveSig]
@@ -39,7 +38,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getdesignglyphmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesignGlyphMetrics([In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] DWRITE_GLYPH_METRICS[] glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT GetDesignGlyphMetrics([In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] DWRITE_GLYPH_METRICS[] glyphMetrics, BOOL isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getglyphindices
     [PreserveSig]
@@ -49,7 +48,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-trygetfonttable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TryGetFontTable(uint openTypeTableTag, out nint tableData, out uint tableSize, out nint tableContext, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT TryGetFontTable(uint openTypeTableTag, out nint tableData, out uint tableSize, out nint tableContext, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-releasefonttable
     [PreserveSig]
@@ -58,7 +57,7 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getglyphrunoutline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGlyphRunOutline(float emSize, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, nint /* optional float* */ glyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET* */ glyphOffsets, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT GetGlyphRunOutline(float emSize, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, nint /* optional float* */ glyphAdvances, nint /* optional DWRITE_GLYPH_OFFSET* */ glyphOffsets, uint glyphCount, BOOL isSideways, BOOL isRightToLeft, ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontface-getrecommendedrenderingmode
     [PreserveSig]
@@ -73,5 +72,5 @@ public partial interface IDWriteFontFace
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontface-getgdicompatibleglyphmetrics
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] DWRITE_GLYPH_METRICS[] glyphMetrics, [MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT GetGdiCompatibleGlyphMetrics(float emSize, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, BOOL useGdiNatural, [In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [In][Out][MarshalUsing(CountElementName = nameof(glyphCount))] DWRITE_GLYPH_METRICS[] glyphMetrics, BOOL isSideways);
 }

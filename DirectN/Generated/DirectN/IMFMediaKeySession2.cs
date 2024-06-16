@@ -10,7 +10,7 @@ public partial interface IMFMediaKeySession2 : IMFMediaKeySession
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(BSTR bstrSessionId, [MarshalAs(UnmanagedType.U4)] out bool pfLoaded);
+    HRESULT Load(BSTR bstrSessionId, out BOOL pfLoaded);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

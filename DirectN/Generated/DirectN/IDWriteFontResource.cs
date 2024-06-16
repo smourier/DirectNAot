@@ -48,8 +48,7 @@ public partial interface IDWriteFontResource
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-hasvariations
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasVariations();
+    BOOL HasVariations();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontresource-createfontface
     [PreserveSig]

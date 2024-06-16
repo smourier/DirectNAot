@@ -9,7 +9,5 @@ public partial struct GETTEXTEX
     public GETTEXTEX_FLAGS flags;
     public uint codepage;
     public PSTR lpDefaultChar;
-    
-    [MarshalAs(UnmanagedType.U4)]
     public nint lpUsedDefChar;
 }

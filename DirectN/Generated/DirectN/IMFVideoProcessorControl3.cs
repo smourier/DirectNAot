@@ -10,7 +10,7 @@ public partial interface IMFVideoProcessorControl3 : IMFVideoProcessorControl2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableSphericalVideoProcessing([MarshalAs(UnmanagedType.U4)] bool fEnable, MFVideoSphericalFormat eFormat, MFVideoSphericalProjectionMode eProjectionMode);
+    HRESULT EnableSphericalVideoProcessing(BOOL fEnable, MFVideoSphericalFormat eFormat, MFVideoSphericalProjectionMode eProjectionMode);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

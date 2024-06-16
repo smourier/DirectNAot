@@ -6,8 +6,6 @@ namespace DirectN;
 public partial struct XAUDIO2_EFFECT_DESCRIPTOR
 {
     public nint pEffect;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InitialState;
+    public BOOL InitialState;
     public uint OutputChannels;
 }

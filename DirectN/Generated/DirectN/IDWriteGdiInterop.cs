@@ -14,7 +14,7 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfonttologfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConvertFontToLOGFONT(IDWriteFont font, out LOGFONTW logFont, [MarshalAs(UnmanagedType.U4)] out bool isSystemFont);
+    HRESULT ConvertFontToLOGFONT(IDWriteFont font, out LOGFONTW logFont, out BOOL isSystemFont);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfontfacetologfont
     [PreserveSig]

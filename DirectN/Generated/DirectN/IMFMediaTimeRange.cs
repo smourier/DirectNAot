@@ -22,8 +22,7 @@ public partial interface IMFMediaTimeRange
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediatimerange-containstime
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool ContainsTime(double time);
+    BOOL ContainsTime(double time);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediatimerange-addrange
     [PreserveSig]

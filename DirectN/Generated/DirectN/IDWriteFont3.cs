@@ -13,8 +13,7 @@ public partial interface IDWriteFont3 : IDWriteFont2
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-equals
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool Equals(IDWriteFont font);
+    BOOL Equals(IDWriteFont font);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-getfontfacereference
     [PreserveSig]
@@ -22,8 +21,7 @@ public partial interface IDWriteFont3 : IDWriteFont2
     HRESULT GetFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] out IDWriteFontFaceReference fontFaceReference);
     
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasCharacter(uint unicodeValue);
+    BOOL HasCharacter(uint unicodeValue);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefont3-getlocality
     [PreserveSig]

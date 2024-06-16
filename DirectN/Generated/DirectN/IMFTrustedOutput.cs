@@ -19,5 +19,5 @@ public partial interface IMFTrustedOutput
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftrustedoutput-isfinal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsFinal([MarshalAs(UnmanagedType.U4)] out bool pfIsFinal);
+    HRESULT IsFinal(out BOOL pfIsFinal);
 }

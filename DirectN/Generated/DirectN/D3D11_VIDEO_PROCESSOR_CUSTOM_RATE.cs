@@ -7,8 +7,6 @@ public partial struct D3D11_VIDEO_PROCESSOR_CUSTOM_RATE
 {
     public DXGI_RATIONAL CustomRate;
     public uint OutputFrames;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InputInterlaced;
+    public BOOL InputInterlaced;
     public uint InputFramesOrFields;
 }

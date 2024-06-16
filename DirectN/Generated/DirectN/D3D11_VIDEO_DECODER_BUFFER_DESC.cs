@@ -17,8 +17,6 @@ public partial struct D3D11_VIDEO_DECODER_BUFFER_DESC
     public uint ReservedBits;
     public nint pIV;
     public uint IVSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PartialEncryption;
+    public BOOL PartialEncryption;
     public D3D11_ENCRYPTED_BLOCK_INFO EncryptedBlockInfo;
 }

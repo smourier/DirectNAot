@@ -31,8 +31,7 @@ public partial interface IMFTimedTextTrack
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttrack-isinband
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsInBand();
+    BOOL IsInBand();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttrack-getinbandmetadatatrackdispatchtype
     [PreserveSig]
@@ -41,8 +40,7 @@ public partial interface IMFTimedTextTrack
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttrack-isactive
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsActive();
+    BOOL IsActive();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtexttrack-geterrorcode
     [PreserveSig]

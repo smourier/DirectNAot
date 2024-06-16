@@ -6,12 +6,8 @@ namespace DirectN;
 public partial struct MFNetCredentialManagerGetParam
 {
     public HRESULT hrOp;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fAllowLoggedOnUser;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fClearTextPackage;
+    public BOOL fAllowLoggedOnUser;
+    public BOOL fClearTextPackage;
     public PWSTR pszUrl;
     public PWSTR pszSite;
     public PWSTR pszRealm;

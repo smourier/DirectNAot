@@ -29,12 +29,12 @@ public partial interface IDTFilter
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilter-get_blockunrated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_BlockUnRated([MarshalAs(UnmanagedType.U4)] out bool pfBlockUnRatedShows);
+    HRESULT get_BlockUnRated(out BOOL pfBlockUnRatedShows);
     
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilter-put_blockunrated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_BlockUnRated([MarshalAs(UnmanagedType.U4)] bool fBlockUnRatedShows);
+    HRESULT put_BlockUnRated(BOOL fBlockUnRatedShows);
     
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilter-get_blockunrateddelay
     [PreserveSig]

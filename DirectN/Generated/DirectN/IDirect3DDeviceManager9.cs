@@ -29,12 +29,12 @@ public partial interface IDirect3DDeviceManager9
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-lockdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockDevice(HANDLE hDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] out IDirect3DDevice9 ppDevice, [MarshalAs(UnmanagedType.U4)] bool fBlock);
+    HRESULT LockDevice(HANDLE hDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] out IDirect3DDevice9 ppDevice, BOOL fBlock);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-unlockdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnlockDevice(HANDLE hDevice, [MarshalAs(UnmanagedType.U4)] bool fSaveState);
+    HRESULT UnlockDevice(HANDLE hDevice, BOOL fSaveState);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-getvideoservice
     [PreserveSig]

@@ -79,7 +79,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setpredication
     [PreserveSig]
-    void SetPredication(ID3D10Predicate? pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
+    void SetPredication(ID3D10Predicate? pPredicate, BOOL PredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshaderresources
     [PreserveSig]
@@ -207,7 +207,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-getpredication
     [PreserveSig]
-    void GetPredication(nint /* optional ID3D10Predicate* */ ppPredicate, nint /* optional bool* */ pPredicateValue);
+    void GetPredication(nint /* optional ID3D10Predicate* */ ppPredicate, nint /* optional BOOL* */ pPredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gsgetshaderresources
     [PreserveSig]

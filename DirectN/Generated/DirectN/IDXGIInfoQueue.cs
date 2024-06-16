@@ -141,39 +141,35 @@ public partial interface IDXGIInfoQueue
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-setbreakoncategory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnCategory(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_CATEGORY Category, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnCategory(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_CATEGORY Category, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-setbreakonseverity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnSeverity(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_SEVERITY Severity, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnSeverity(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_SEVERITY Severity, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-setbreakonid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnID(Guid Producer, int ID, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnID(Guid Producer, int ID, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getbreakoncategory
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnCategory(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_CATEGORY Category);
+    BOOL GetBreakOnCategory(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_CATEGORY Category);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getbreakonseverity
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnSeverity(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_SEVERITY Severity);
+    BOOL GetBreakOnSeverity(Guid Producer, DXGI_INFO_QUEUE_MESSAGE_SEVERITY Severity);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getbreakonid
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnID(Guid Producer, int ID);
+    BOOL GetBreakOnID(Guid Producer, int ID);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-setmutedebugoutput
     [PreserveSig]
-    void SetMuteDebugOutput(Guid Producer, [MarshalAs(UnmanagedType.U4)] bool bMute);
+    void SetMuteDebugOutput(Guid Producer, BOOL bMute);
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgiinfoqueue-getmutedebugoutput
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetMuteDebugOutput(Guid Producer);
+    BOOL GetMuteDebugOutput(Guid Producer);
 }

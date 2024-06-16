@@ -48,20 +48,20 @@ public partial interface ID3D10EffectScalarVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-setbool
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBool([MarshalAs(UnmanagedType.U4)] bool Value);
+    HRESULT SetBool(BOOL Value);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-getbool
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBool([MarshalAs(UnmanagedType.U4)] out bool pValue);
+    HRESULT GetBool(out BOOL pValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-setboolarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBoolArray([In][MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] bool[] pData, uint Offset, uint Count);
+    HRESULT SetBoolArray([In][MarshalUsing(CountElementName = nameof(Count))] BOOL[] pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectscalarvariable-getboolarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBoolArray([In][Out][MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U4)] bool[] pData, uint Offset, uint Count);
+    HRESULT GetBoolArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] BOOL[] pData, uint Offset, uint Count);
 }

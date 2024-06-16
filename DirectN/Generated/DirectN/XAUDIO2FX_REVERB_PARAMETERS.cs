@@ -28,7 +28,5 @@ public partial struct XAUDIO2FX_REVERB_PARAMETERS
     public float DecayTime;
     public float Density;
     public float RoomSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DisableLateField;
+    public BOOL DisableLateField;
 }

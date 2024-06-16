@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS5
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool SRVOnlyTiledResourceTier3;
+    public BOOL SRVOnlyTiledResourceTier3;
     public D3D12_RENDER_PASS_TIER RenderPassesTier;
     public D3D12_RAYTRACING_TIER RaytracingTier;
 }

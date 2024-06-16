@@ -29,7 +29,7 @@ public partial interface IOleClientSite
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleclientsite-onshowwindow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnShowWindow([MarshalAs(UnmanagedType.U4)] bool fShow);
+    HRESULT OnShowWindow(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleclientsite-requestnewobjectlayout
     [PreserveSig]

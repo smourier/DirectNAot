@@ -49,7 +49,7 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getissideways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsSideways([MarshalAs(UnmanagedType.U4)] out bool isSideways);
+    HRESULT GetIsSideways(out BOOL isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getdevicefontname
     [PreserveSig]

@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct ICONINFO
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fIcon;
+    public BOOL fIcon;
     public uint xHotspot;
     public uint yHotspot;
     public HBITMAP hbmMask;

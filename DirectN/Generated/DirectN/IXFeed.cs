@@ -106,11 +106,11 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DownloadEnclosuresAutomatically([MarshalAs(UnmanagedType.U4)] out bool pbDownloadEnclosuresAutomatically);
+    HRESULT DownloadEnclosuresAutomatically(out BOOL pbDownloadEnclosuresAutomatically);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDownloadEnclosuresAutomatically([MarshalAs(UnmanagedType.U4)] bool bDownloadEnclosuresAutomatically);
+    HRESULT SetDownloadEnclosuresAutomatically(BOOL bDownloadEnclosuresAutomatically);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -166,7 +166,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsList([MarshalAs(UnmanagedType.U4)] out bool pbIsList);
+    HRESULT IsList(out BOOL pbIsList);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

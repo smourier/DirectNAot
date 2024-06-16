@@ -6,7 +6,7 @@ public partial interface IKsDataTypeHandler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsCompleteIoOperation(IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation, [MarshalAs(UnmanagedType.U4)] bool Cancelled);
+    HRESULT KsCompleteIoOperation(IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation, BOOL Cancelled);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

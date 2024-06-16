@@ -9,10 +9,10 @@ public partial interface IAudioLfxControl
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-iaudiolfxcontrol-setlocaleffectsstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLocalEffectsState([MarshalAs(UnmanagedType.U4)] bool bEnabled);
+    HRESULT SetLocalEffectsState(BOOL bEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-iaudiolfxcontrol-getlocaleffectsstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocalEffectsState([MarshalAs(UnmanagedType.U4)] out bool pbEnabled);
+    HRESULT GetLocalEffectsState(out BOOL pbEnabled);
 }

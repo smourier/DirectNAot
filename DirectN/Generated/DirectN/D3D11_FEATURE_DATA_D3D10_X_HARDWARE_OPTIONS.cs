@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D10_X_HARDWARE_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ComputeShaders_Plus_RawAndStructuredBuffers_Via_Shader_4_x;
+    public BOOL ComputeShaders_Plus_RawAndStructuredBuffers_Via_Shader_4_x;
 }

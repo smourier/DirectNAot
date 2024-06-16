@@ -31,7 +31,7 @@ public partial interface IXAudio2Voice
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-geteffectstate
     [PreserveSig]
-    void GetEffectState(uint EffectIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled);
+    void GetEffectState(uint EffectIndex, out BOOL pEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-seteffectparameters
     [PreserveSig]

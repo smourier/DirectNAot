@@ -24,7 +24,7 @@ public partial interface IXpsOMGeometryFigure
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-getsegmentstrokes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSegmentStrokes(ref uint segmentCount, [MarshalAs(UnmanagedType.U4)] ref bool segmentStrokes);
+    HRESULT GetSegmentStrokes(ref uint segmentCount, ref BOOL segmentStrokes);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-setsegments
     [PreserveSig]
@@ -44,22 +44,22 @@ public partial interface IXpsOMGeometryFigure
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-getisclosed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsClosed([MarshalAs(UnmanagedType.U4)] out bool isClosed);
+    HRESULT GetIsClosed(out BOOL isClosed);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-setisclosed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsClosed([MarshalAs(UnmanagedType.U4)] bool isClosed);
+    HRESULT SetIsClosed(BOOL isClosed);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-getisfilled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsFilled([MarshalAs(UnmanagedType.U4)] out bool isFilled);
+    HRESULT GetIsFilled(out BOOL isFilled);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-setisfilled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsFilled([MarshalAs(UnmanagedType.U4)] bool isFilled);
+    HRESULT SetIsFilled(BOOL isFilled);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigure-getsegmentcount
     [PreserveSig]

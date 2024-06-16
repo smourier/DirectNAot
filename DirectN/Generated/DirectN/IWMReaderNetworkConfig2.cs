@@ -8,22 +8,22 @@ public partial interface IWMReaderNetworkConfig2 : IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getenablecontentcaching
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableContentCaching([MarshalAs(UnmanagedType.U4)] out bool pfEnableContentCaching);
+    HRESULT GetEnableContentCaching(out BOOL pfEnableContentCaching);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-setenablecontentcaching
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableContentCaching([MarshalAs(UnmanagedType.U4)] bool fEnableContentCaching);
+    HRESULT SetEnableContentCaching(BOOL fEnableContentCaching);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getenablefastcache
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableFastCache([MarshalAs(UnmanagedType.U4)] out bool pfEnableFastCache);
+    HRESULT GetEnableFastCache(out BOOL pfEnableFastCache);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-setenablefastcache
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableFastCache([MarshalAs(UnmanagedType.U4)] bool fEnableFastCache);
+    HRESULT SetEnableFastCache(BOOL fEnableFastCache);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getacceleratedstreamingduration
     [PreserveSig]
@@ -48,22 +48,22 @@ public partial interface IWMReaderNetworkConfig2 : IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getenableresends
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableResends([MarshalAs(UnmanagedType.U4)] out bool pfEnableResends);
+    HRESULT GetEnableResends(out BOOL pfEnableResends);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-setenableresends
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableResends([MarshalAs(UnmanagedType.U4)] bool fEnableResends);
+    HRESULT SetEnableResends(BOOL fEnableResends);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getenablethinning
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableThinning([MarshalAs(UnmanagedType.U4)] out bool pfEnableThinning);
+    HRESULT GetEnableThinning(out BOOL pfEnableThinning);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-setenablethinning
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableThinning([MarshalAs(UnmanagedType.U4)] bool fEnableThinning);
+    HRESULT SetEnableThinning(BOOL fEnableThinning);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig2-getmaxnetpacketsize
     [PreserveSig]

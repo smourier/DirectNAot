@@ -229,6 +229,5 @@ public partial interface ID2D1RenderTarget : ID2D1Resource
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1rendertarget-issupported(constd2d1_render_target_properties_)
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsSupported(in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties);
+    BOOL IsSupported(in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties);
 }

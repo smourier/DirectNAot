@@ -14,7 +14,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInput(nint pUnkInput, [MarshalAs(UnmanagedType.U4)] bool fAllowFormatChanges);
+    HRESULT SetInput(nint pUnkInput, BOOL fAllowFormatChanges);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -58,7 +58,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, [MarshalAs(UnmanagedType.U4)] ref bool pfSupported);
+    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, ref BOOL pfSupported);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -14,7 +14,7 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getbaseline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBaseline(IDWriteFontFace fontFace, DWRITE_BASELINE baseline, [MarshalAs(UnmanagedType.U4)] bool isVertical, [MarshalAs(UnmanagedType.U4)] bool isSimulationAllowed, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR localeName, out int baselineCoordinate, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT GetBaseline(IDWriteFontFace fontFace, DWRITE_BASELINE baseline, BOOL isVertical, BOOL isSimulationAllowed, DWRITE_SCRIPT_ANALYSIS scriptAnalysis, PWSTR localeName, out int baselineCoordinate, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-analyzeverticalglyphorientation
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getglyphorientationtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGlyphOrientationTransform(DWRITE_GLYPH_ORIENTATION_ANGLE glyphOrientationAngle, [MarshalAs(UnmanagedType.U4)] bool isSideways, out DWRITE_MATRIX transform);
+    HRESULT GetGlyphOrientationTransform(DWRITE_GLYPH_ORIENTATION_ANGLE glyphOrientationAngle, BOOL isSideways, out DWRITE_MATRIX transform);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getscriptproperties
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IDWriteTextAnalyzer1 : IDWriteTextAnalyzer
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-gettextcomplexity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTextComplexity([MarshalUsing(CountElementName = nameof(textLength))] PWSTR textString, uint textLength, IDWriteFontFace fontFace, [MarshalAs(UnmanagedType.U4)] out bool isTextSimple, ref uint textLengthRead, nint /* optional ushort* */ glyphIndices);
+    HRESULT GetTextComplexity([MarshalUsing(CountElementName = nameof(textLength))] PWSTR textString, uint textLength, IDWriteFontFace fontFace, out BOOL isTextSimple, ref uint textLengthRead, nint /* optional ushort* */ glyphIndices);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritetextanalyzer1-getjustificationopportunities
     [PreserveSig]

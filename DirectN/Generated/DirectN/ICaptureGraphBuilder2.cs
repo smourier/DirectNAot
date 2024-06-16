@@ -49,5 +49,5 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findpin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindPin(nint pSource, PIN_DIRECTION pindir, nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalAs(UnmanagedType.U4)] bool fUnconnected, int num, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppPin);
+    HRESULT FindPin(nint pSource, PIN_DIRECTION pindir, nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, BOOL fUnconnected, int num, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppPin);
 }

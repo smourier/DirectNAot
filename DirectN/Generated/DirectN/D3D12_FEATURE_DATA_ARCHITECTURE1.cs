@@ -6,16 +6,8 @@ namespace DirectN;
 public partial struct D3D12_FEATURE_DATA_ARCHITECTURE1
 {
     public uint NodeIndex;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool TileBasedRenderer;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UMA;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool CacheCoherentUMA;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsolatedMMU;
+    public BOOL TileBasedRenderer;
+    public BOOL UMA;
+    public BOOL CacheCoherentUMA;
+    public BOOL IsolatedMMU;
 }

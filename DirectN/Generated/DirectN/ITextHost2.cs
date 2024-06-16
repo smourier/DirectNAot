@@ -7,8 +7,7 @@ public partial interface ITextHost2 : ITextHost
 {
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txisdoubleclickpending
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxIsDoubleClickPending();
+    BOOL TxIsDoubleClickPending();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txgetwindow
     [PreserveSig]
@@ -31,7 +30,7 @@ public partial interface ITextHost2 : ITextHost
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txsetcursor2
     [PreserveSig]
-    HCURSOR TxSetCursor2(HCURSOR hcur, [MarshalAs(UnmanagedType.U4)] bool bText);
+    HCURSOR TxSetCursor2(HCURSOR hcur, BOOL bText);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txfreetextservicesnotification
     [PreserveSig]
@@ -50,7 +49,7 @@ public partial interface ITextHost2 : ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txshowdropcaret
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxShowDropCaret([MarshalAs(UnmanagedType.U4)] bool fShow, HDC hdc, ref RECT prc);
+    HRESULT TxShowDropCaret(BOOL fShow, HDC hdc, ref RECT prc);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txdestroycaret
     [PreserveSig]

@@ -14,7 +14,7 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-getddrawobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDDrawObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] out IDirectDraw ppDDrawObject, [MarshalAs(UnmanagedType.U4)] out bool pbUsingExternal);
+    HRESULT GetDDrawObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] out IDirectDraw ppDDrawObject, out BOOL pbUsingExternal);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setddrawsurface
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-getddrawsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDDrawSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface ppDDrawSurface, [MarshalAs(UnmanagedType.U4)] out bool pbUsingExternal);
+    HRESULT GetDDrawSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface ppDDrawSurface, out BOOL pbUsingExternal);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setdrawparameters
     [PreserveSig]

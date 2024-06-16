@@ -38,5 +38,5 @@ public partial interface IDCompositionTurbulenceEffect : IDCompositionFilterEffe
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionturbulenceeffect-setstitchable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStitchable([MarshalAs(UnmanagedType.U4)] bool stitchable);
+    HRESULT SetStitchable(BOOL stitchable);
 }

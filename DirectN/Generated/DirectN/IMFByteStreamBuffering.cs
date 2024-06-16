@@ -14,7 +14,7 @@ public partial interface IMFByteStreamBuffering
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreambuffering-enablebuffering
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableBuffering([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableBuffering(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreambuffering-stopbuffering
     [PreserveSig]

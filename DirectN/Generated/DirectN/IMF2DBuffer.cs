@@ -24,7 +24,7 @@ public partial interface IMF2DBuffer
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imf2dbuffer-iscontiguousformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsContiguousFormat([MarshalAs(UnmanagedType.U4)] out bool pfIsContiguous);
+    HRESULT IsContiguousFormat(out BOOL pfIsContiguous);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imf2dbuffer-getcontiguouslength
     [PreserveSig]

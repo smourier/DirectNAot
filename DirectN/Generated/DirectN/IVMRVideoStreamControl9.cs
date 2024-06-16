@@ -9,10 +9,10 @@ public partial interface IVMRVideoStreamControl9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrvideostreamcontrol9-setstreamactivestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamActiveState([MarshalAs(UnmanagedType.U4)] bool fActive);
+    HRESULT SetStreamActiveState(BOOL fActive);
     
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrvideostreamcontrol9-getstreamactivestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamActiveState([MarshalAs(UnmanagedType.U4)] out bool lpfActive);
+    HRESULT GetStreamActiveState(out BOOL lpfActive);
 }

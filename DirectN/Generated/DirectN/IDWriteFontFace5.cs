@@ -16,8 +16,7 @@ public partial interface IDWriteFontFace5 : IDWriteFontFace4
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface5-hasvariations
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasVariations();
+    BOOL HasVariations();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface5-getfontresource
     [PreserveSig]
@@ -26,6 +25,5 @@ public partial interface IDWriteFontFace5 : IDWriteFontFace4
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface5-equals
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool Equals(IDWriteFontFace fontFace);
+    BOOL Equals(IDWriteFontFace fontFace);
 }

@@ -10,7 +10,5 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_INTRA_REFRESH_MODE
     public D3D12_VIDEO_ENCODER_PROFILE_DESC Profile;
     public D3D12_VIDEO_ENCODER_LEVEL_SETTING Level;
     public D3D12_VIDEO_ENCODER_INTRA_REFRESH_MODE IntraRefreshMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
 }

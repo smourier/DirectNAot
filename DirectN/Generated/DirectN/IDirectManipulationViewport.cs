@@ -59,7 +59,7 @@ public partial interface IDirectManipulationViewport
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-zoomtorect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ZoomToRect(float left, float top, float right, float bottom, [MarshalAs(UnmanagedType.U4)] bool animate);
+    HRESULT ZoomToRect(float left, float top, float right, float bottom, BOOL animate);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationviewport-setviewporttransform
     [PreserveSig]

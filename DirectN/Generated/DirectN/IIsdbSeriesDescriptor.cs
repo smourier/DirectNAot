@@ -34,7 +34,7 @@ public partial interface IIsdbSeriesDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbseriesdescriptor-getexpiredate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetExpireDate([MarshalAs(UnmanagedType.U4)] out bool pfValid, out MPEG_DATE_AND_TIME pmdtVal);
+    HRESULT GetExpireDate(out BOOL pfValid, out MPEG_DATE_AND_TIME pmdtVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbseriesdescriptor-getepisodenumber
     [PreserveSig]

@@ -29,7 +29,7 @@ public partial interface IDataObject
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-idataobject-setdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetData(in FORMATETC pformatetc, in STGMEDIUM pmedium, [MarshalAs(UnmanagedType.U4)] bool fRelease);
+    HRESULT SetData(in FORMATETC pformatetc, in STGMEDIUM pmedium, BOOL fRelease);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-idataobject-enumformatetc
     [PreserveSig]

@@ -5,13 +5,7 @@ namespace DirectN;
 public partial struct D3D12_FEATURE_DATA_VIDEO_FEATURE_AREA_SUPPORT
 {
     public uint NodeIndex;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool VideoDecodeSupport;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool VideoProcessSupport;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool VideoEncodeSupport;
+    public BOOL VideoDecodeSupport;
+    public BOOL VideoProcessSupport;
+    public BOOL VideoEncodeSupport;
 }

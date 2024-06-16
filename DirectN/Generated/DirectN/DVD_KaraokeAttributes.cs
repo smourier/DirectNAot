@@ -6,12 +6,8 @@ namespace DirectN;
 public partial struct DVD_KaraokeAttributes
 {
     public byte bVersion;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMasterOfCeremoniesInGuideVocal1;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fDuet;
+    public BOOL fMasterOfCeremoniesInGuideVocal1;
+    public BOOL fDuet;
     public DVD_KARAOKE_ASSIGNMENT ChannelAssignment;
     public InlineArrayUInt16_8 wChannelContents;
 }

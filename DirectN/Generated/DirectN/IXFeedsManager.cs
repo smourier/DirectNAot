@@ -10,11 +10,11 @@ public partial interface IXFeedsManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSubscribed(PWSTR pszUrl, [MarshalAs(UnmanagedType.U4)] out bool pbSubscribed);
+    HRESULT IsSubscribed(PWSTR pszUrl, out BOOL pbSubscribed);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsFeed(PWSTR pszPath, [MarshalAs(UnmanagedType.U4)] out bool pbFeedExists);
+    HRESULT ExistsFeed(PWSTR pszPath, out BOOL pbFeedExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface IXFeedsManager
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsFolder(PWSTR pszPath, [MarshalAs(UnmanagedType.U4)] out bool pbFolderExists);
+    HRESULT ExistsFolder(PWSTR pszPath, out BOOL pbFolderExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

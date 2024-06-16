@@ -44,25 +44,25 @@ public partial interface IWICBitmapCodecInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-doessupportanimation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportAnimation([MarshalAs(UnmanagedType.U4)] out bool pfSupportAnimation);
+    HRESULT DoesSupportAnimation(out BOOL pfSupportAnimation);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-doessupportchromakey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportChromakey([MarshalAs(UnmanagedType.U4)] out bool pfSupportChromakey);
+    HRESULT DoesSupportChromakey(out BOOL pfSupportChromakey);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-doessupportlossless
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportLossless([MarshalAs(UnmanagedType.U4)] out bool pfSupportLossless);
+    HRESULT DoesSupportLossless(out BOOL pfSupportLossless);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-doessupportmultiframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportMultiframe([MarshalAs(UnmanagedType.U4)] out bool pfSupportMultiframe);
+    HRESULT DoesSupportMultiframe(out BOOL pfSupportMultiframe);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapcodecinfo-matchesmimetype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MatchesMimeType(PWSTR wzMimeType, [MarshalAs(UnmanagedType.U4)] out bool pfMatches);
+    HRESULT MatchesMimeType(PWSTR wzMimeType, out BOOL pfMatches);
 }

@@ -14,20 +14,20 @@ public partial interface IOleInPlaceActiveObject : IOleWindow
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-onframewindowactivate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnFrameWindowActivate([MarshalAs(UnmanagedType.U4)] bool fActivate);
+    HRESULT OnFrameWindowActivate(BOOL fActivate);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-ondocwindowactivate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDocWindowActivate([MarshalAs(UnmanagedType.U4)] bool fActivate);
+    HRESULT OnDocWindowActivate(BOOL fActivate);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-resizeborder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ResizeBorder(in RECT prcBorder, IOleInPlaceUIWindow pUIWindow, [MarshalAs(UnmanagedType.U4)] bool fFrameWindow);
+    HRESULT ResizeBorder(in RECT prcBorder, IOleInPlaceUIWindow pUIWindow, BOOL fFrameWindow);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-enablemodeless
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableModeless([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableModeless(BOOL fEnable);
 }

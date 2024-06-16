@@ -7,17 +7,11 @@ public partial struct AUDIO_MICROPHONE_BOOST_NOTIFICATION
 {
     public nint endpoint;
     public Guid eventContext;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool microphoneBoostEnabled;
+    public BOOL microphoneBoostEnabled;
     public float levelInDb;
     public float levelMinInDb;
     public float levelMaxInDb;
     public float levelStepInDb;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool muteSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool mute;
+    public BOOL muteSupported;
+    public BOOL mute;
 }

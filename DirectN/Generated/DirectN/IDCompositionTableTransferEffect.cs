@@ -28,27 +28,27 @@ public partial interface IDCompositionTableTransferEffect : IDCompositionFilterE
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setreddisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedDisable([MarshalAs(UnmanagedType.U4)] bool redDisable);
+    HRESULT SetRedDisable(BOOL redDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setgreendisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGreenDisable([MarshalAs(UnmanagedType.U4)] bool greenDisable);
+    HRESULT SetGreenDisable(BOOL greenDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setbluedisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBlueDisable([MarshalAs(UnmanagedType.U4)] bool blueDisable);
+    HRESULT SetBlueDisable(BOOL blueDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setalphadisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAlphaDisable([MarshalAs(UnmanagedType.U4)] bool alphaDisable);
+    HRESULT SetAlphaDisable(BOOL alphaDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setclampoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clampOutput);
+    HRESULT SetClampOutput(BOOL clampOutput);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiontabletransfereffect-setredtablevalue(uint_idcompositionanimation)
     [PreserveSig]

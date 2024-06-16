@@ -23,7 +23,7 @@ public partial interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-isusingfastcache
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUsingFastCache([MarshalAs(UnmanagedType.U4)] out bool pfUsingFastCache);
+    HRESULT IsUsingFastCache(out BOOL pfUsingFastCache);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-addlogparam
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-cansavefileas
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanSaveFileAs([MarshalAs(UnmanagedType.U4)] out bool pfCanSave);
+    HRESULT CanSaveFileAs(out BOOL pfCanSave);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced4-cancelsavefileas
     [PreserveSig]

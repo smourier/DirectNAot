@@ -26,7 +26,7 @@ public partial interface IFileIo
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEndOfStream([MarshalAs(UnmanagedType.U4)] ref bool pbEndOfStream);
+    HRESULT IsEndOfStream(ref BOOL pbEndOfStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

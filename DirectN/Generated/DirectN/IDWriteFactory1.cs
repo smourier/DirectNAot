@@ -9,7 +9,7 @@ public partial interface IDWriteFactory1 : IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefactory1-geteudcfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEudcFontCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection, [MarshalAs(UnmanagedType.U4)] bool checkForUpdates);
+    HRESULT GetEudcFontCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection, BOOL checkForUpdates);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefactory1-createcustomrenderingparams
     [PreserveSig]

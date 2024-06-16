@@ -9,10 +9,10 @@ public partial interface IMFRateControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfratecontrol-setrate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRate([MarshalAs(UnmanagedType.U4)] bool fThin, float flRate);
+    HRESULT SetRate(BOOL fThin, float flRate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfratecontrol-getrate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRate([MarshalAs(UnmanagedType.U4)] ref bool pfThin, ref float pflRate);
+    HRESULT GetRate(ref BOOL pfThin, ref float pflRate);
 }

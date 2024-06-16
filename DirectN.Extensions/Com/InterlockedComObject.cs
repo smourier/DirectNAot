@@ -1,6 +1,6 @@
 ﻿namespace DirectN.Extensions.Com;
 
-public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject<T>>
+public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject<T>>, IComObject, IComObject<T>
 {
     protected InterlockedComObject()
         : this(null)
@@ -27,4 +27,9 @@ public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject
             return comObject.Object;
         }
     }
+
+    bool IComObject.IsDisposed => Disposable.IsDisposed;
+    System.Runtime.InteropServices.Marshalling.ComObject IComObject.Object => (System.Runtime.InteropServices.Marshalling.ComObject)(object)Disposable.Object!;
+    T IComObject<T>.Object => Disposable.Object;
+    Type IComObject.InterfaceType => typeof(T);
 }

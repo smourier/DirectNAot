@@ -34,7 +34,7 @@ public partial interface IAMPluginControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamplugincontrol-setdisabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDisabled(in Guid clsid, [MarshalAs(UnmanagedType.U4)] bool disabled);
+    HRESULT SetDisabled(in Guid clsid, BOOL disabled);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamplugincontrol-islegacydisabled
     [PreserveSig]

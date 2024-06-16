@@ -14,7 +14,7 @@ public partial interface IMFPresentationDescriptor : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationdescriptor-getstreamdescriptorbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamDescriptorByIndex(uint dwIndex, [MarshalAs(UnmanagedType.U4)] out bool pfSelected, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamDescriptor>))] out IMFStreamDescriptor ppDescriptor);
+    HRESULT GetStreamDescriptorByIndex(uint dwIndex, out BOOL pfSelected, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamDescriptor>))] out IMFStreamDescriptor ppDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationdescriptor-selectstream
     [PreserveSig]

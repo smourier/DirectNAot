@@ -5,7 +5,5 @@ namespace DirectN;
 public partial struct GROUPTYPINGCHANGE
 {
     public NMHDR nmhdr;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fGroupTyping;
+    public BOOL fGroupTyping;
 }

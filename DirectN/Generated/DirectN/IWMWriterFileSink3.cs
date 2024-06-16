@@ -8,17 +8,17 @@ public partial interface IWMWriterFileSink3 : IWMWriterFileSink2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-setautoindexing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAutoIndexing([MarshalAs(UnmanagedType.U4)] bool fDoAutoIndexing);
+    HRESULT SetAutoIndexing(BOOL fDoAutoIndexing);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-getautoindexing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAutoIndexing([MarshalAs(UnmanagedType.U4)] out bool pfAutoIndexing);
+    HRESULT GetAutoIndexing(out BOOL pfAutoIndexing);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-setcontrolstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetControlStream(ushort wStreamNumber, [MarshalAs(UnmanagedType.U4)] bool fShouldControlStartAndStop);
+    HRESULT SetControlStream(ushort wStreamNumber, BOOL fShouldControlStartAndStop);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-getmode
     [PreserveSig]
@@ -33,12 +33,12 @@ public partial interface IWMWriterFileSink3 : IWMWriterFileSink2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-setunbufferedio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUnbufferedIO([MarshalAs(UnmanagedType.U4)] bool fUnbufferedIO, [MarshalAs(UnmanagedType.U4)] bool fRestrictMemUsage);
+    HRESULT SetUnbufferedIO(BOOL fUnbufferedIO, BOOL fRestrictMemUsage);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-getunbufferedio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnbufferedIO([MarshalAs(UnmanagedType.U4)] out bool pfUnbufferedIO);
+    HRESULT GetUnbufferedIO(out BOOL pfUnbufferedIO);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink3-completeoperations
     [PreserveSig]

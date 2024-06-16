@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct AudioClientProperties
 {
     public uint cbSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bIsOffload;
+    public BOOL bIsOffload;
     public AUDIO_STREAM_CATEGORY eCategory;
     public AUDCLNT_STREAMOPTIONS Options;
 }

@@ -12,7 +12,5 @@ public partial struct APOInitSystemEffects3
     public uint nSoftwareIoDeviceInCollection;
     public uint nSoftwareIoConnectorIndex;
     public Guid AudioProcessingMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InitializeForDiscoveryOnly;
+    public BOOL InitializeForDiscoveryOnly;
 }

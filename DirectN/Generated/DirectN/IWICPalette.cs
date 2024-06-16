@@ -9,7 +9,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializepredefined
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializePredefined(WICBitmapPaletteType ePaletteType, [MarshalAs(UnmanagedType.U4)] bool fAddTransparentColor);
+    HRESULT InitializePredefined(WICBitmapPaletteType ePaletteType, BOOL fAddTransparentColor);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializecustom
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializefrombitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeFromBitmap(IWICBitmapSource pISurface, uint cCount, [MarshalAs(UnmanagedType.U4)] bool fAddTransparentColor);
+    HRESULT InitializeFromBitmap(IWICBitmapSource pISurface, uint cCount, BOOL fAddTransparentColor);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-initializefrompalette
     [PreserveSig]
@@ -44,15 +44,15 @@ public partial interface IWICPalette
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-isblackwhite
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsBlackWhite([MarshalAs(UnmanagedType.U4)] out bool pfIsBlackWhite);
+    HRESULT IsBlackWhite(out BOOL pfIsBlackWhite);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-isgrayscale
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsGrayscale([MarshalAs(UnmanagedType.U4)] out bool pfIsGrayscale);
+    HRESULT IsGrayscale(out BOOL pfIsGrayscale);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpalette-hasalpha
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasAlpha([MarshalAs(UnmanagedType.U4)] out bool pfHasAlpha);
+    HRESULT HasAlpha(out BOOL pfHasAlpha);
 }

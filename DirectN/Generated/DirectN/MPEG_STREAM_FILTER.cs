@@ -6,9 +6,7 @@ public partial struct MPEG_STREAM_FILTER
 {
     public ushort wPidValue;
     public uint dwFilterSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fCrcEnabled;
+    public BOOL fCrcEnabled;
     public InlineArrayByte_16 rgchFilter;
     public InlineArrayByte_16 rgchMask;
 }

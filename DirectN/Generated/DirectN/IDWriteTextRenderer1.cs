@@ -24,5 +24,5 @@ public partial interface IDWriteTextRenderer1 : IDWriteTextRenderer
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextrenderer1-drawinlineobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawInlineObject(nint /* optional void* */ clientDrawingContext, float originX, float originY, DWRITE_GLYPH_ORIENTATION_ANGLE orientationAngle, IDWriteInlineObject inlineObject, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
+    HRESULT DrawInlineObject(nint /* optional void* */ clientDrawingContext, float originX, float originY, DWRITE_GLYPH_ORIENTATION_ANGLE orientationAngle, IDWriteInlineObject inlineObject, BOOL isSideways, BOOL isRightToLeft, nint clientDrawingEffect);
 }

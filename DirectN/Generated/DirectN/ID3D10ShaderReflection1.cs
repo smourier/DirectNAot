@@ -64,10 +64,10 @@ public partial interface ID3D10ShaderReflection1
     // https://learn.microsoft.com/windows/win32/api/d3d10_1shader/nf-d3d10_1shader-id3d10shaderreflection1-islevel9shader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsLevel9Shader([MarshalAs(UnmanagedType.U4)] out bool pbLevel9Shader);
+    HRESULT IsLevel9Shader(out BOOL pbLevel9Shader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1shader/nf-d3d10_1shader-id3d10shaderreflection1-issamplefrequencyshader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSampleFrequencyShader([MarshalAs(UnmanagedType.U4)] out bool pbSampleFrequency);
+    HRESULT IsSampleFrequencyShader(out BOOL pbSampleFrequency);
 }

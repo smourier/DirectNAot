@@ -9,5 +9,5 @@ public partial interface IMFDLNASinkInit
     // https://learn.microsoft.com/windows/win32/api/mfmp2dlna/nf-mfmp2dlna-imfdlnasinkinit-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IMFByteStream pByteStream, [MarshalAs(UnmanagedType.U4)] bool fPal);
+    HRESULT Initialize(IMFByteStream pByteStream, BOOL fPal);
 }

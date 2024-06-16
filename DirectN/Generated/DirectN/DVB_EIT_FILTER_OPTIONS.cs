@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct DVB_EIT_FILTER_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fSpecifySegment;
+    public BOOL fSpecifySegment;
     public byte bSegment;
 }

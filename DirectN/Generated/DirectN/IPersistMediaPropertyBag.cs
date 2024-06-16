@@ -19,5 +19,5 @@ public partial interface IPersistMediaPropertyBag : IPersist
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipersistmediapropertybag-save
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Save(IMediaPropertyBag pPropBag, [MarshalAs(UnmanagedType.U4)] bool fClearDirty, [MarshalAs(UnmanagedType.U4)] bool fSaveAllProperties);
+    HRESULT Save(IMediaPropertyBag pPropBag, BOOL fClearDirty, BOOL fSaveAllProperties);
 }

@@ -12,10 +12,6 @@ public partial struct D3D10_SHADER_DEBUG_OUTPUTVAR
     public int iValueMax;
     public float fValueMin;
     public float fValueMax;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bNaNPossible;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bInfPossible;
+    public BOOL bNaNPossible;
+    public BOOL bInfPossible;
 }

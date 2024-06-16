@@ -9,7 +9,5 @@ public partial struct DXVA2TraceVideoProcessBltData
     public ulong pRenderTarget;
     public ulong TargetFrameTime;
     public RECT TargetRect;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enter;
+    public BOOL Enter;
 }

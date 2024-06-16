@@ -14,5 +14,5 @@ public partial interface IWICFormatConverter : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicformatconverter-canconvert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanConvert(in Guid srcPixelFormat, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
+    HRESULT CanConvert(in Guid srcPixelFormat, in Guid dstPixelFormat, out BOOL pfCanConvert);
 }

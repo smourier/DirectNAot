@@ -9,7 +9,7 @@ public partial interface IMFMediaEngineSupportsSourceTransfer
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesupportssourcetransfer-shouldtransfersource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ShouldTransferSource([MarshalAs(UnmanagedType.U4)] out bool pfShouldTransfer);
+    HRESULT ShouldTransferSource(out BOOL pfShouldTransfer);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginesupportssourcetransfer-detachmediasource
     [PreserveSig]

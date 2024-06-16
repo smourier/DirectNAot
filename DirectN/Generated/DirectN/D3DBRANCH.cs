@@ -6,8 +6,6 @@ public partial struct D3DBRANCH
 {
     public uint dwMask;
     public uint dwValue;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bNegate;
+    public BOOL bNegate;
     public uint dwOffset;
 }

@@ -19,5 +19,5 @@ public partial interface IStreamBufferRecordControl
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferrecordcontrol-getrecordingstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordingStatus(out HRESULT phResult, [MarshalAs(UnmanagedType.U4)] out bool pbStarted, [MarshalAs(UnmanagedType.U4)] out bool pbStopped);
+    HRESULT GetRecordingStatus(out HRESULT phResult, out BOOL pbStarted, out BOOL pbStopped);
 }

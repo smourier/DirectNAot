@@ -14,7 +14,7 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RecognizeStream(in Guid rguidFmtId, in WAVEFORMATEX pWaveFormatEx, HANDLE hRequestSync, HANDLE hDataAvailable, HANDLE hExit, [MarshalAs(UnmanagedType.U4)] bool fNewAudioStream, [MarshalAs(UnmanagedType.U4)] bool fRealTimeAudio, ISpObjectToken pAudioObjectToken);
+    HRESULT RecognizeStream(in Guid rguidFmtId, in WAVEFORMATEX pWaveFormatEx, HANDLE hRequestSync, HANDLE hDataAvailable, HANDLE hExit, BOOL fNewAudioStream, BOOL fRealTimeAudio, ISpObjectToken pAudioObjectToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

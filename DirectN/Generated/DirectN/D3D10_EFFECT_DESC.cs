@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_EFFECT_DESC
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsChildEffect;
+    public BOOL IsChildEffect;
     public uint ConstantBuffers;
     public uint SharedConstantBuffers;
     public uint GlobalVariables;

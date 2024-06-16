@@ -18,7 +18,5 @@ public partial struct DWRITE_FONT_METRICS1
     public short superscriptPositionY;
     public short superscriptSizeX;
     public short superscriptSizeY;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool hasTypographicMetrics;
+    public BOOL hasTypographicMetrics;
 }

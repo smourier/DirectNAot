@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_VIDEO_PROCESSOR_STREAM_BEHAVIOR_HINT
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public uint Width;
     public uint Height;
     public DXGI_FORMAT Format;

@@ -35,8 +35,7 @@ public partial interface ID3D11DeviceContext2 : ID3D11DeviceContext1
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_2/nf-d3d11_2-id3d11devicecontext2-isannotationenabled
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsAnnotationEnabled();
+    BOOL IsAnnotationEnabled();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_2/nf-d3d11_2-id3d11devicecontext2-setmarkerint
     [PreserveSig]

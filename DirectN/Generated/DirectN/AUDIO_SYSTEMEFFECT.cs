@@ -6,8 +6,6 @@ namespace DirectN;
 public partial struct AUDIO_SYSTEMEFFECT
 {
     public Guid id;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool canSetState;
+    public BOOL canSetState;
     public AUDIO_SYSTEMEFFECT_STATE state;
 }

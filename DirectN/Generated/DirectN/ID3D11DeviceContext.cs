@@ -102,7 +102,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-setpredication
     [PreserveSig]
-    void SetPredication(ID3D11Predicate? pPredicate, [MarshalAs(UnmanagedType.U4)] bool PredicateValue);
+    void SetPredication(ID3D11Predicate? pPredicate, BOOL PredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-gssetshaderresources
     [PreserveSig]
@@ -214,7 +214,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-executecommandlist
     [PreserveSig]
-    void ExecuteCommandList(ID3D11CommandList pCommandList, [MarshalAs(UnmanagedType.U4)] bool RestoreContextState);
+    void ExecuteCommandList(ID3D11CommandList pCommandList, BOOL RestoreContextState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-hssetshaderresources
     [PreserveSig]
@@ -326,7 +326,7 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-getpredication
     [PreserveSig]
-    void GetPredication(nint /* optional ID3D11Predicate* */ ppPredicate, nint /* optional bool* */ pPredicateValue);
+    void GetPredication(nint /* optional ID3D11Predicate* */ ppPredicate, nint /* optional BOOL* */ pPredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-gsgetshaderresources
     [PreserveSig]
@@ -439,5 +439,5 @@ public partial interface ID3D11DeviceContext : ID3D11DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-finishcommandlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FinishCommandList([MarshalAs(UnmanagedType.U4)] bool RestoreDeferredContextState, nint /* optional ID3D11CommandList* */ ppCommandList);
+    HRESULT FinishCommandList(BOOL RestoreDeferredContextState, nint /* optional ID3D11CommandList* */ ppCommandList);
 }

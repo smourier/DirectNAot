@@ -10,9 +10,7 @@ public partial struct DVD_AudioAttributes
     public DVD_AUDIO_FORMAT AudioFormat;
     public uint Language;
     public DVD_AUDIO_LANG_EXT LanguageExtension;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fHasMultichannelInfo;
+    public BOOL fHasMultichannelInfo;
     public uint dwFrequency;
     public byte bQuantization;
     public byte bNumberOfChannels;

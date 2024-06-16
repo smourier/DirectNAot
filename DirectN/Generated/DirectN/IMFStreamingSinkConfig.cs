@@ -9,5 +9,5 @@ public partial interface IMFStreamingSinkConfig
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamingsinkconfig-startstreaming
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartStreaming([MarshalAs(UnmanagedType.U4)] bool fSeekOffsetIsByteOffset, ulong qwSeekOffset);
+    HRESULT StartStreaming(BOOL fSeekOffsetIsByteOffset, ulong qwSeekOffset);
 }

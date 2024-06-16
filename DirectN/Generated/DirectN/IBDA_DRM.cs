@@ -14,5 +14,5 @@ public partial interface IBDA_DRM
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_drm-performdrmpairing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PerformDRMPairing([MarshalAs(UnmanagedType.U4)] bool fSync);
+    HRESULT PerformDRMPairing(BOOL fSync);
 }

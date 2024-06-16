@@ -67,8 +67,7 @@ public partial interface IRecordInfo
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-ismatchingtype
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsMatchingType(IRecordInfo pRecordInfo);
+    BOOL IsMatchingType(IRecordInfo pRecordInfo);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-irecordinfo-recordcreate
     [PreserveSig]

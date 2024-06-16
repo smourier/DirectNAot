@@ -18,5 +18,5 @@ public partial interface ICloneViewHelper
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Commit([MarshalAs(UnmanagedType.U4)] bool fFinalCall);
+    HRESULT Commit(BOOL fFinalCall);
 }

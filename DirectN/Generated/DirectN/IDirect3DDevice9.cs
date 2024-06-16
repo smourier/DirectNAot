@@ -50,8 +50,7 @@ public partial interface IDirect3DDevice9
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-showcursor
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool ShowCursor([MarshalAs(UnmanagedType.U4)] bool bShow);
+    BOOL ShowCursor(BOOL bShow);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createadditionalswapchain
     [PreserveSig]
@@ -90,7 +89,7 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setdialogboxmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDialogBoxMode([MarshalAs(UnmanagedType.U4)] bool bEnableDialogs);
+    HRESULT SetDialogBoxMode(BOOL bEnableDialogs);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setgammaramp
     [PreserveSig]
@@ -128,12 +127,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createrendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTarget(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Lockable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
+    HRESULT CreateRenderTarget(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, BOOL Lockable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-createdepthstencilsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilSurface(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, [MarshalAs(UnmanagedType.U4)] bool Discard, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
+    HRESULT CreateDepthStencilSurface(uint Width, uint Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, uint MultisampleQuality, BOOL Discard, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] out IDirect3DSurface9 ppSurface, ref HANDLE pSharedHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-updatesurface
     [PreserveSig]
@@ -253,12 +252,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-lightenable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LightEnable(uint Index, [MarshalAs(UnmanagedType.U4)] bool Enable);
+    HRESULT LightEnable(uint Index, BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getlightenable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLightEnable(uint Index, [MarshalAs(UnmanagedType.U4)] ref bool pEnable);
+    HRESULT GetLightEnable(uint Index, ref BOOL pEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setclipplane
     [PreserveSig]
@@ -373,12 +372,11 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setsoftwarevertexprocessing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSoftwareVertexProcessing([MarshalAs(UnmanagedType.U4)] bool bSoftware);
+    HRESULT SetSoftwareVertexProcessing(BOOL bSoftware);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getsoftwarevertexprocessing
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetSoftwareVertexProcessing();
+    BOOL GetSoftwareVertexProcessing();
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setnpatchmode
     [PreserveSig]
@@ -477,12 +475,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setvertexshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVertexShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] in bool pConstantData, uint BoolCount);
+    HRESULT SetVertexShaderConstantB(uint StartRegister, in BOOL pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getvertexshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVertexShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] ref bool pConstantData, uint BoolCount);
+    HRESULT GetVertexShaderConstantB(uint StartRegister, ref BOOL pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setstreamsource
     [PreserveSig]
@@ -552,12 +550,12 @@ public partial interface IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-setpixelshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPixelShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] in bool pConstantData, uint BoolCount);
+    HRESULT SetPixelShaderConstantB(uint StartRegister, in BOOL pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-getpixelshaderconstantb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPixelShaderConstantB(uint StartRegister, [MarshalAs(UnmanagedType.U4)] ref bool pConstantData, uint BoolCount);
+    HRESULT GetPixelShaderConstantB(uint StartRegister, ref BOOL pConstantData, uint BoolCount);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9-drawrectpatch
     [PreserveSig]

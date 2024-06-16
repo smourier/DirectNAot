@@ -54,7 +54,7 @@ public partial interface IDirectMusicPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate([MarshalAs(UnmanagedType.U4)] bool fActive);
+    HRESULT Activate(BOOL fActive);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_STREAM_STATE_PRIVATE_IVTC_DATA
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public uint ITelecineFlags;
     public uint Frames;
     public uint InputField;

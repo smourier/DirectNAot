@@ -29,10 +29,10 @@ public partial interface IESFileExpiryDateEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesfileexpirydateevent-isentitlementtokenpresent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEntitlementTokenPresent([MarshalAs(UnmanagedType.U4)] out bool pfEntTokenPresent);
+    HRESULT IsEntitlementTokenPresent(out BOOL pfEntTokenPresent);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesfileexpirydateevent-doesexpireafterfirstuse
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesExpireAfterFirstUse([MarshalAs(UnmanagedType.U4)] out bool pfExpireAfterFirstUse);
+    HRESULT DoesExpireAfterFirstUse(out BOOL pfExpireAfterFirstUse);
 }

@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_MARKER_SUPPORT
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Profile;
+    public BOOL Profile;
 }

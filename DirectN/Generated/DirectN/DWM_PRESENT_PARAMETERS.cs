@@ -6,14 +6,10 @@ namespace DirectN;
 public partial struct DWM_PRESENT_PARAMETERS
 {
     public uint cbSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fQueue;
+    public BOOL fQueue;
     public ulong cRefreshStart;
     public uint cBuffer;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fUseSourceRate;
+    public BOOL fUseSourceRate;
     public UNSIGNED_RATIO rateSource;
     public uint cRefreshesPerFrame;
     public DWM_SOURCE_FRAME_SAMPLING eSampling;

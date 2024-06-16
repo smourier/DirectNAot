@@ -29,7 +29,7 @@ public partial interface IResourceManager
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-notifyrelease
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyRelease(int idResource, IResourceConsumer pConsumer, [MarshalAs(UnmanagedType.U4)] bool bStillWant);
+    HRESULT NotifyRelease(int idResource, IResourceConsumer pConsumer, BOOL bStillWant);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-cancelrequest
     [PreserveSig]

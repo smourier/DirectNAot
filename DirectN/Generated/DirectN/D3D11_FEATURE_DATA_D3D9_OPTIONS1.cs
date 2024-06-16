@@ -5,15 +5,8 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D9_OPTIONS1
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool FullNonPow2TextureSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DepthAsTextureWithLessEqualComparisonFilterSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool SimpleInstancingSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool TextureCubeFaceRenderTargetWithNonCubeDepthStencilSupported;
+    public BOOL FullNonPow2TextureSupported;
+    public BOOL DepthAsTextureWithLessEqualComparisonFilterSupported;
+    public BOOL SimpleInstancingSupported;
+    public BOOL TextureCubeFaceRenderTargetWithNonCubeDepthStencilSupported;
 }

@@ -9,25 +9,25 @@ public partial interface IMFNetCredential
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-setuser
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUser(nint /* byte array */ pbData, uint cbData, [MarshalAs(UnmanagedType.U4)] bool fDataIsEncrypted);
+    HRESULT SetUser(nint /* byte array */ pbData, uint cbData, BOOL fDataIsEncrypted);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-setpassword
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPassword(nint /* byte array */ pbData, uint cbData, [MarshalAs(UnmanagedType.U4)] bool fDataIsEncrypted);
+    HRESULT SetPassword(nint /* byte array */ pbData, uint cbData, BOOL fDataIsEncrypted);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-getuser
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUser(nint /* optional byte* */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
+    HRESULT GetUser(nint /* optional byte* */ pbData, ref uint pcbData, BOOL fEncryptData);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-getpassword
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPassword(nint /* optional byte* */ pbData, ref uint pcbData, [MarshalAs(UnmanagedType.U4)] bool fEncryptData);
+    HRESULT GetPassword(nint /* optional byte* */ pbData, ref uint pcbData, BOOL fEncryptData);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredential-loggedonuser
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoggedOnUser([MarshalAs(UnmanagedType.U4)] out bool pfLoggedOnUser);
+    HRESULT LoggedOnUser(out BOOL pfLoggedOnUser);
 }

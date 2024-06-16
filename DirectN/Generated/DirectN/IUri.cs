@@ -18,7 +18,7 @@ public partial interface IUri
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasProperty(Uri_PROPERTY uriProp, [MarshalAs(UnmanagedType.U4)] out bool pfHasProperty);
+    HRESULT HasProperty(Uri_PROPERTY uriProp, out BOOL pfHasProperty);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -102,5 +102,5 @@ public partial interface IUri
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(IUri pUri, [MarshalAs(UnmanagedType.U4)] out bool pfEqual);
+    HRESULT IsEqual(IUri pUri, out BOOL pfEqual);
 }

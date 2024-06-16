@@ -8,8 +8,6 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPO
     public uint NodeIndex;
     public D3D12_VIDEO_ENCODER_CODEC Codec;
     public D3D12_VIDEO_ENCODER_PROFILE_DESC Profile;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
     public D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT CodecSupportLimits;
 }

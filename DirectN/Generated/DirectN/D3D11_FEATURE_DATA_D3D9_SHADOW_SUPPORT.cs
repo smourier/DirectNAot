@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool SupportsDepthAsTextureWithLessEqualComparisonFilter;
+    public BOOL SupportsDepthAsTextureWithLessEqualComparisonFilter;
 }

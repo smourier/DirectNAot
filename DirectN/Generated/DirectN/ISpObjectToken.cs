@@ -6,7 +6,7 @@ public partial interface ISpObjectToken : ISpDataKey
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetId(PWSTR pszCategoryId, PWSTR pszTokenId, [MarshalAs(UnmanagedType.U4)] bool fCreateIfNotExist);
+    HRESULT SetId(PWSTR pszCategoryId, PWSTR pszTokenId, BOOL fCreateIfNotExist);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -26,7 +26,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveStorageFileName(in Guid clsidCaller, PWSTR pszKeyName, [MarshalAs(UnmanagedType.U4)] bool fDeleteFile);
+    HRESULT RemoveStorageFileName(in Guid clsidCaller, PWSTR pszKeyName, BOOL fDeleteFile);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, nint punkObject, [MarshalAs(UnmanagedType.U4)] ref bool pfSupported);
+    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, nint punkObject, ref BOOL pfSupported);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -42,5 +42,5 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MatchesAttributes(PWSTR pszAttributes, [MarshalAs(UnmanagedType.U4)] ref bool pfMatches);
+    HRESULT MatchesAttributes(PWSTR pszAttributes, ref BOOL pfMatches);
 }

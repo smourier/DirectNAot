@@ -6,18 +6,10 @@ namespace DirectN;
 public partial struct REGFILTERPINS
 {
     public PWSTR strName;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bRendered;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bOutput;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bZero;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bMany;
+    public BOOL bRendered;
+    public BOOL bOutput;
+    public BOOL bZero;
+    public BOOL bMany;
     public nint clsConnectsToFilter;
     public PWSTR strConnectsToPin;
     public uint nMediaTypes;

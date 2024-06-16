@@ -44,7 +44,7 @@ public partial interface IAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-getbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBuffer(uint dwTypeIndex, uint dwBufferIndex, [MarshalAs(UnmanagedType.U4)] bool bReadOnly, out nint ppBuffer, out int lpStride);
+    HRESULT GetBuffer(uint dwTypeIndex, uint dwBufferIndex, BOOL bReadOnly, out nint ppBuffer, out int lpStride);
     
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-releasebuffer
     [PreserveSig]

@@ -8,10 +8,6 @@ public partial struct DDHAL_SETMODEDATA
     public uint dwModeIndex;
     public HRESULT ddRVal;
     public nint SetMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool inexcl;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool useRefreshRate;
+    public BOOL inexcl;
+    public BOOL useRefreshRate;
 }

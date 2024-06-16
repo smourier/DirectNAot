@@ -131,39 +131,35 @@ public partial interface ID3D11InfoQueue
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-setbreakoncategory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnCategory(D3D11_MESSAGE_CATEGORY Category, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnCategory(D3D11_MESSAGE_CATEGORY Category, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-setbreakonseverity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnSeverity(D3D11_MESSAGE_SEVERITY Severity, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnSeverity(D3D11_MESSAGE_SEVERITY Severity, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-setbreakonid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBreakOnID(D3D11_MESSAGE_ID ID, [MarshalAs(UnmanagedType.U4)] bool bEnable);
+    HRESULT SetBreakOnID(D3D11_MESSAGE_ID ID, BOOL bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getbreakoncategory
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnCategory(D3D11_MESSAGE_CATEGORY Category);
+    BOOL GetBreakOnCategory(D3D11_MESSAGE_CATEGORY Category);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getbreakonseverity
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnSeverity(D3D11_MESSAGE_SEVERITY Severity);
+    BOOL GetBreakOnSeverity(D3D11_MESSAGE_SEVERITY Severity);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getbreakonid
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetBreakOnID(D3D11_MESSAGE_ID ID);
+    BOOL GetBreakOnID(D3D11_MESSAGE_ID ID);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-setmutedebugoutput
     [PreserveSig]
-    void SetMuteDebugOutput([MarshalAs(UnmanagedType.U4)] bool bMute);
+    void SetMuteDebugOutput(BOOL bMute);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11sdklayers/nf-d3d11sdklayers-id3d11infoqueue-getmutedebugoutput
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetMuteDebugOutput();
+    BOOL GetMuteDebugOutput();
 }

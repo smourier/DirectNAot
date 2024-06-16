@@ -19,7 +19,7 @@ public partial interface IMFDXGIDeviceManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgidevicemanager-lockdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockDevice(HANDLE hDevice, in Guid riid, out nint ppUnkDevice, [MarshalAs(UnmanagedType.U4)] bool fBlock);
+    HRESULT LockDevice(HANDLE hDevice, in Guid riid, out nint ppUnkDevice, BOOL fBlock);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgidevicemanager-opendevicehandle
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IMFDXGIDeviceManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgidevicemanager-unlockdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnlockDevice(HANDLE hDevice, [MarshalAs(UnmanagedType.U4)] bool fSaveState);
+    HRESULT UnlockDevice(HANDLE hDevice, BOOL fSaveState);
 }

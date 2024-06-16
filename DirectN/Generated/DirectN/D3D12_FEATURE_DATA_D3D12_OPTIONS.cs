@@ -5,34 +5,19 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DoublePrecisionFloatShaderOps;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool OutputMergerLogicOp;
+    public BOOL DoublePrecisionFloatShaderOps;
+    public BOOL OutputMergerLogicOp;
     public D3D12_SHADER_MIN_PRECISION_SUPPORT MinPrecisionSupport;
     public D3D12_TILED_RESOURCES_TIER TiledResourcesTier;
     public D3D12_RESOURCE_BINDING_TIER ResourceBindingTier;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PSSpecifiedStencilRefSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool TypedUAVLoadAdditionalFormats;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ROVsSupported;
+    public BOOL PSSpecifiedStencilRefSupported;
+    public BOOL TypedUAVLoadAdditionalFormats;
+    public BOOL ROVsSupported;
     public D3D12_CONSERVATIVE_RASTERIZATION_TIER ConservativeRasterizationTier;
     public uint MaxGPUVirtualAddressBitsPerResource;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool StandardSwizzle64KBSupported;
+    public BOOL StandardSwizzle64KBSupported;
     public D3D12_CROSS_NODE_SHARING_TIER CrossNodeSharingTier;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool CrossAdapterRowMajorTextureSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool VPAndRTArrayIndexFromAnyShaderFeedingRasterizerSupportedWithoutGSEmulation;
+    public BOOL CrossAdapterRowMajorTextureSupported;
+    public BOOL VPAndRTArrayIndexFromAnyShaderFeedingRasterizerSupportedWithoutGSEmulation;
     public D3D12_RESOURCE_HEAP_TIER ResourceHeapTier;
 }

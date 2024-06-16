@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct D3D10_EFFECT_SHADER_DESC
 {
     public nint pInputSignature;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsInline;
+    public BOOL IsInline;
     public nint pBytecode;
     public uint BytecodeLength;
     public PSTR SODecl;

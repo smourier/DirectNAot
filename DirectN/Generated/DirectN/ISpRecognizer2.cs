@@ -10,7 +10,7 @@ public partial interface ISpRecognizer2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTrainingState([MarshalAs(UnmanagedType.U4)] bool fDoingTraining, [MarshalAs(UnmanagedType.U4)] bool fAdaptFromTrainingData);
+    HRESULT SetTrainingState(BOOL fDoingTraining, BOOL fAdaptFromTrainingData);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

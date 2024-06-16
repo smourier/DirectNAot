@@ -157,7 +157,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumRenderTargetDescriptors, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE* */ pRenderTargetDescriptors, [MarshalAs(UnmanagedType.U4)] bool RTsSingleHandleToDescriptorRange, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE* */ pDepthStencilDescriptor);
+    void OMSetRenderTargets(uint NumRenderTargetDescriptors, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE* */ pRenderTargetDescriptors, BOOL RTsSingleHandleToDescriptorRange, nint /* optional D3D12_CPU_DESCRIPTOR_HANDLE* */ pDepthStencilDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-cleardepthstencilview
     [PreserveSig]

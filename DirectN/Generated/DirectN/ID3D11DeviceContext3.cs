@@ -11,9 +11,9 @@ public partial interface ID3D11DeviceContext3 : ID3D11DeviceContext2
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11devicecontext3-sethardwareprotectionstate
     [PreserveSig]
-    void SetHardwareProtectionState([MarshalAs(UnmanagedType.U4)] bool HwProtectionEnable);
+    void SetHardwareProtectionState(BOOL HwProtectionEnable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11devicecontext3-gethardwareprotectionstate
     [PreserveSig]
-    void GetHardwareProtectionState([MarshalAs(UnmanagedType.U4)] out bool pHwProtectionEnable);
+    void GetHardwareProtectionState(out BOOL pHwProtectionEnable);
 }

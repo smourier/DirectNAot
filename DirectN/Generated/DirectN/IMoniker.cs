@@ -24,12 +24,12 @@ public partial interface IMoniker : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-composewith
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ComposeWith(IMoniker pmkRight, [MarshalAs(UnmanagedType.U4)] bool fOnlyIfNotGeneric, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkComposite);
+    HRESULT ComposeWith(IMoniker pmkRight, BOOL fOnlyIfNotGeneric, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkComposite);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-enum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Enum([MarshalAs(UnmanagedType.U4)] bool fForward, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppenumMoniker);
+    HRESULT Enum(BOOL fForward, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppenumMoniker);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-imoniker-isequal
     [PreserveSig]

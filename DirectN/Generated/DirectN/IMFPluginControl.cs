@@ -34,5 +34,5 @@ public partial interface IMFPluginControl
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfplugincontrol-setdisabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDisabled(uint pluginType, in Guid clsid, [MarshalAs(UnmanagedType.U4)] bool disabled);
+    HRESULT SetDisabled(uint pluginType, in Guid clsid, BOOL disabled);
 }

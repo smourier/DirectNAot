@@ -9,12 +9,8 @@ public partial struct KSJACK_SINK_INFORMATION
     public ushort ManufacturerId;
     public ushort ProductId;
     public ushort AudioLatency;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool HDCPCapable;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AICapable;
+    public BOOL HDCPCapable;
+    public BOOL AICapable;
     public byte SinkDescriptionLength;
     public InlineArraySystemChar_32 SinkDescription;
     public LUID PortId;

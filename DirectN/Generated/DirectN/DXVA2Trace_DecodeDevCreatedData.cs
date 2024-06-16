@@ -10,7 +10,5 @@ public partial struct DXVA2Trace_DecodeDevCreatedData
     public Guid DeviceGuid;
     public uint Width;
     public uint Height;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enter;
+    public BOOL Enter;
 }

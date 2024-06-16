@@ -13,36 +13,20 @@ public partial struct MPEG2_FILTER2
         {
             public byte bVersionNumber;
             public ushort wFilterSize;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fUseRawFilteringBits;
+            public BOOL fUseRawFilteringBits;
             public InlineArrayByte_16 Filter;
             public InlineArrayByte_16 Mask;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifyTableIdExtension;
+            public BOOL fSpecifyTableIdExtension;
             public ushort TableIdExtension;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifyVersion;
+            public BOOL fSpecifyVersion;
             public byte Version;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifySectionNumber;
+            public BOOL fSpecifySectionNumber;
             public byte SectionNumber;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifyCurrentNext;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fNext;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifyDsmccOptions;
+            public BOOL fSpecifyCurrentNext;
+            public BOOL fNext;
+            public BOOL fSpecifyDsmccOptions;
             public DSMCC_FILTER_OPTIONS Dsmcc;
-            
-            [MarshalAs(UnmanagedType.U4)]
-            public bool fSpecifyAtscOptions;
+            public BOOL fSpecifyAtscOptions;
             public ATSC_FILTER_OPTIONS Atsc;
         }
         
@@ -54,8 +38,6 @@ public partial struct MPEG2_FILTER2
     }
     
     public _Anonymous_e__Union Anonymous;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fSpecifyDvbEitOptions;
+    public BOOL fSpecifyDvbEitOptions;
     public DVB_EIT_FILTER_OPTIONS DvbEit;
 }

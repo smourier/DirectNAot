@@ -10,7 +10,5 @@ public partial struct DWRITE_LINE_METRICS
     public uint newlineLength;
     public float height;
     public float baseline;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool isTrimmed;
+    public BOOL isTrimmed;
 }

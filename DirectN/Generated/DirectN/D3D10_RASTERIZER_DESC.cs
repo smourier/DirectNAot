@@ -7,22 +7,12 @@ public partial struct D3D10_RASTERIZER_DESC
 {
     public D3D10_FILL_MODE FillMode;
     public D3D10_CULL_MODE CullMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool FrontCounterClockwise;
+    public BOOL FrontCounterClockwise;
     public int DepthBias;
     public float DepthBiasClamp;
     public float SlopeScaledDepthBias;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DepthClipEnable;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ScissorEnable;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MultisampleEnable;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AntialiasedLineEnable;
+    public BOOL DepthClipEnable;
+    public BOOL ScissorEnable;
+    public BOOL MultisampleEnable;
+    public BOOL AntialiasedLineEnable;
 }

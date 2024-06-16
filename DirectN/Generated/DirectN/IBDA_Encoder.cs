@@ -29,5 +29,5 @@ public partial interface IBDA_Encoder
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_encoder-getstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetState(out uint AudioBitrateMax, out uint AudioBitrateMin, out uint AudioBitrateMode, out uint AudioBitrateStepping, out uint AudioBitrate, out uint AudioMethodID, out uint AvailableAudioPrograms, out uint AudioProgram, out uint VideoBitrateMax, out uint VideoBitrateMin, out uint VideoBitrateMode, out uint VideoBitrate, out uint VideoBitrateStepping, out uint VideoMethodID, out uint SignalSourceID, out ulong SignalFormat, [MarshalAs(UnmanagedType.U4)] out bool SignalLock, out int SignalLevel, out uint SignalToNoiseRatio);
+    HRESULT GetState(out uint AudioBitrateMax, out uint AudioBitrateMin, out uint AudioBitrateMode, out uint AudioBitrateStepping, out uint AudioBitrate, out uint AudioMethodID, out uint AvailableAudioPrograms, out uint AudioProgram, out uint VideoBitrateMax, out uint VideoBitrateMin, out uint VideoBitrateMode, out uint VideoBitrate, out uint VideoBitrateStepping, out uint VideoMethodID, out uint SignalSourceID, out ulong SignalFormat, out BOOL SignalLock, out int SignalLevel, out uint SignalToNoiseRatio);
 }

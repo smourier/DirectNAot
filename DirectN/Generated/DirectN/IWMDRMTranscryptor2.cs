@@ -6,11 +6,11 @@ public partial interface IWMDRMTranscryptor2 : IWMDRMTranscryptor
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SeekEx(ulong cnsStartTime, ulong cnsDuration, float flRate, [MarshalAs(UnmanagedType.U4)] bool fIncludeFileHeader);
+    HRESULT SeekEx(ulong cnsStartTime, ulong cnsDuration, float flRate, BOOL fIncludeFileHeader);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ZeroAdjustTimestamps([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT ZeroAdjustTimestamps(BOOL fEnable);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

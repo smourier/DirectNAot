@@ -5,14 +5,9 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS3
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool CopyQueueTimestampQueriesSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool CastingFullyTypedFormatSupported;
+    public BOOL CopyQueueTimestampQueriesSupported;
+    public BOOL CastingFullyTypedFormatSupported;
     public D3D12_COMMAND_LIST_SUPPORT_FLAGS WriteBufferImmediateSupportFlags;
     public D3D12_VIEW_INSTANCING_TIER ViewInstancingTier;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool BarycentricsSupported;
+    public BOOL BarycentricsSupported;
 }

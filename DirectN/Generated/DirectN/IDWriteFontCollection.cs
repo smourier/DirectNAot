@@ -18,7 +18,7 @@ public partial interface IDWriteFontCollection
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-findfamilyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFamilyName(PWSTR familyName, out uint index, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT FindFamilyName(PWSTR familyName, out uint index, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefontcollection-getfontfromfontface
     [PreserveSig]

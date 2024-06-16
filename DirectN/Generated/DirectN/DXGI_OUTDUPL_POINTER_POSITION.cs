@@ -6,7 +6,5 @@ namespace DirectN;
 public partial struct DXGI_OUTDUPL_POINTER_POSITION
 {
     public POINT Position;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Visible;
+    public BOOL Visible;
 }

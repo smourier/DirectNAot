@@ -5,9 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct PSFEATURE_OUTPUT
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bPageIndependent;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bSetPageDevice;
+    public BOOL bPageIndependent;
+    public BOOL bSetPageDevice;
 }

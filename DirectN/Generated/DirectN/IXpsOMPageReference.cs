@@ -29,7 +29,7 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-ispageloaded
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsPageLoaded([MarshalAs(UnmanagedType.U4)] out bool isPageLoaded);
+    HRESULT IsPageLoaded(out BOOL isPageLoaded);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-getadvisorypagedimensions
     [PreserveSig]
@@ -84,7 +84,7 @@ public partial interface IXpsOMPageReference
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-hasrestrictedfonts
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasRestrictedFonts([MarshalAs(UnmanagedType.U4)] out bool restrictedFonts);
+    HRESULT HasRestrictedFonts(out BOOL restrictedFonts);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompagereference-clone
     [PreserveSig]

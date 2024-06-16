@@ -13,12 +13,12 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setreceivepostviewsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReceivePostViewSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] bool fReceivePostViewSamples);
+    HRESULT SetReceivePostViewSamples(ushort wStreamNum, BOOL fReceivePostViewSamples);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getreceivepostviewsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReceivePostViewSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] out bool pfReceivePostViewSamples);
+    HRESULT GetReceivePostViewSamples(ushort wStreamNum, out BOOL pfReceivePostViewSamples);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getpostviewprops
     [PreserveSig]
@@ -43,10 +43,10 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setallocateforpostview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocateForPostView(ushort wStreamNumber, [MarshalAs(UnmanagedType.U4)] bool fAllocate);
+    HRESULT SetAllocateForPostView(ushort wStreamNumber, BOOL fAllocate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getallocateforpostview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllocateForPostView(ushort wStreamNumber, [MarshalAs(UnmanagedType.U4)] out bool pfAllocate);
+    HRESULT GetAllocateForPostView(ushort wStreamNumber, out BOOL pfAllocate);
 }

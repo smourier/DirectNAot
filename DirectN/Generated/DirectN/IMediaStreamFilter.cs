@@ -23,7 +23,7 @@ public partial interface IMediaStreamFilter : IBaseFilter
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-supportseeking
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SupportSeeking([MarshalAs(UnmanagedType.U4)] bool bRenderer);
+    HRESULT SupportSeeking(BOOL bRenderer);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-referencetimetostreamtime
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IMediaStreamFilter : IBaseFilter
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-flush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Flush([MarshalAs(UnmanagedType.U4)] bool bCancelEOS);
+    HRESULT Flush(BOOL bCancelEOS);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-endofstream
     [PreserveSig]

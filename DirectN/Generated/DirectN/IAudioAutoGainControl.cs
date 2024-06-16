@@ -9,10 +9,10 @@ public partial interface IAudioAutoGainControl
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudioautogaincontrol-getenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnabled([MarshalAs(UnmanagedType.U4)] out bool pbEnabled);
+    HRESULT GetEnabled(out BOOL pbEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iaudioautogaincontrol-setenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnabled([MarshalAs(UnmanagedType.U4)] bool bEnable, nint /* optional Guid* */ pguidEventContext);
+    HRESULT SetEnabled(BOOL bEnable, nint /* optional Guid* */ pguidEventContext);
 }

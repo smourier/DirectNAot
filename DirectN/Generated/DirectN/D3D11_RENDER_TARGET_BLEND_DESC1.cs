@@ -5,11 +5,8 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_RENDER_TARGET_BLEND_DESC1
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool BlendEnable;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool LogicOpEnable;
+    public BOOL BlendEnable;
+    public BOOL LogicOpEnable;
     public D3D11_BLEND SrcBlend;
     public D3D11_BLEND DestBlend;
     public D3D11_BLEND_OP BlendOp;

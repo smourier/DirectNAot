@@ -29,5 +29,5 @@ public partial interface IAMCrossbar
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamcrossbar-get_crossbarpininfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_CrossbarPinInfo([MarshalAs(UnmanagedType.U4)] bool IsInputPin, int PinIndex, out int PinIndexRelated, out int PhysicalType);
+    HRESULT get_CrossbarPinInfo(BOOL IsInputPin, int PinIndex, out int PinIndexRelated, out int PhysicalType);
 }

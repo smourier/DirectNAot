@@ -14,7 +14,7 @@ public partial interface IMFNetCredentialCache
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialcache-setgood
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGood(IMFNetCredential pCred, [MarshalAs(UnmanagedType.U4)] bool fGood);
+    HRESULT SetGood(IMFNetCredential pCred, BOOL fGood);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialcache-setuseroptions
     [PreserveSig]

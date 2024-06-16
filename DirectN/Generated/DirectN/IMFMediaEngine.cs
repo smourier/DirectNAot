@@ -65,8 +65,7 @@ public partial interface IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-isseeking
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsSeeking();
+    BOOL IsSeeking();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getcurrenttime
     [PreserveSig]
@@ -87,8 +86,7 @@ public partial interface IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-ispaused
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsPaused();
+    BOOL IsPaused();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getdefaultplaybackrate
     [PreserveSig]
@@ -120,28 +118,25 @@ public partial interface IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-isended
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsEnded();
+    BOOL IsEnded();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getautoplay
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetAutoPlay();
+    BOOL GetAutoPlay();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-setautoplay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAutoPlay([MarshalAs(UnmanagedType.U4)] bool AutoPlay);
+    HRESULT SetAutoPlay(BOOL AutoPlay);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getloop
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetLoop();
+    BOOL GetLoop();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-setloop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLoop([MarshalAs(UnmanagedType.U4)] bool Loop);
+    HRESULT SetLoop(BOOL Loop);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-play
     [PreserveSig]
@@ -155,13 +150,12 @@ public partial interface IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getmuted
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetMuted();
+    BOOL GetMuted();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-setmuted
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMuted([MarshalAs(UnmanagedType.U4)] bool Muted);
+    HRESULT SetMuted(BOOL Muted);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getvolume
     [PreserveSig]
@@ -174,13 +168,11 @@ public partial interface IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-hasvideo
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasVideo();
+    BOOL HasVideo();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-hasaudio
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasAudio();
+    BOOL HasAudio();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-getnativevideosize
     [PreserveSig]

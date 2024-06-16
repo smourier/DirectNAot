@@ -28,7 +28,7 @@ public partial interface IPhotoProgressDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-showcheckbox
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ShowCheckbox(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, [MarshalAs(UnmanagedType.U4)] bool fShow);
+    HRESULT ShowCheckbox(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-setcheckboxtext
     [PreserveSig]
@@ -37,7 +37,7 @@ public partial interface IPhotoProgressDialog
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCheckboxCheck(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, [MarshalAs(UnmanagedType.U4)] bool fChecked);
+    HRESULT SetCheckboxCheck(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, BOOL fChecked);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-setcheckboxtooltip
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface IPhotoProgressDialog
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-ischeckboxchecked
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsCheckboxChecked(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, [MarshalAs(UnmanagedType.U4)] out bool pfChecked);
+    HRESULT IsCheckboxChecked(PROGRESS_DIALOG_CHECKBOX_ID nCheckboxId, out BOOL pfChecked);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-setcaption
     [PreserveSig]
@@ -79,12 +79,12 @@ public partial interface IPhotoProgressDialog
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ShowActionLink([MarshalAs(UnmanagedType.U4)] bool fShow);
+    HRESULT ShowActionLink(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-iscancelled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsCancelled([MarshalAs(UnmanagedType.U4)] out bool pfCancelled);
+    HRESULT IsCancelled(out BOOL pfCancelled);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoprogressdialog-getuserinput
     [PreserveSig]

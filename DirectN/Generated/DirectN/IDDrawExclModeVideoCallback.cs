@@ -9,7 +9,7 @@ public partial interface IDDrawExclModeVideoCallback
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideocallback-onupdateoverlay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnUpdateOverlay([MarshalAs(UnmanagedType.U4)] bool bBefore, uint dwFlags, [MarshalAs(UnmanagedType.U4)] bool bOldVisible, in RECT prcOldSrc, in RECT prcOldDest, [MarshalAs(UnmanagedType.U4)] bool bNewVisible, in RECT prcNewSrc, in RECT prcNewDest);
+    HRESULT OnUpdateOverlay(BOOL bBefore, uint dwFlags, BOOL bOldVisible, in RECT prcOldSrc, in RECT prcOldDest, BOOL bNewVisible, in RECT prcNewSrc, in RECT prcNewDest);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideocallback-onupdatecolorkey
     [PreserveSig]

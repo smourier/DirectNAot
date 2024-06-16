@@ -14,7 +14,7 @@ public partial interface IMFTimedTextStyle2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsTextCombined([MarshalAs(UnmanagedType.U4)] out bool value);
+    HRESULT IsTextCombined(out BOOL value);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

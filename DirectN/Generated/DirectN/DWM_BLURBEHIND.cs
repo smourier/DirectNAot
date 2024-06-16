@@ -6,11 +6,7 @@ namespace DirectN;
 public partial struct DWM_BLURBEHIND
 {
     public uint dwFlags;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fEnable;
+    public BOOL fEnable;
     public HRGN hRgnBlur;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fTransitionOnMaximized;
+    public BOOL fTransitionOnMaximized;
 }

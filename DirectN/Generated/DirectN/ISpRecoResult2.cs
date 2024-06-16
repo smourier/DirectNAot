@@ -14,5 +14,5 @@ public partial interface ISpRecoResult2 : ISpRecoResult
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTextFeedback(PWSTR pszFeedback, [MarshalAs(UnmanagedType.U4)] bool fSuccessful);
+    HRESULT SetTextFeedback(PWSTR pszFeedback, BOOL fSuccessful);
 }

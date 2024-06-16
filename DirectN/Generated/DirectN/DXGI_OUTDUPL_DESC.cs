@@ -7,7 +7,5 @@ public partial struct DXGI_OUTDUPL_DESC
 {
     public DXGI_MODE_DESC ModeDesc;
     public DXGI_MODE_ROTATION Rotation;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DesktopImageInSystemMemory;
+    public BOOL DesktopImageInSystemMemory;
 }

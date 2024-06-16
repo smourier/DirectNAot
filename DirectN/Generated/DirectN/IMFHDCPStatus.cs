@@ -6,7 +6,7 @@ public partial interface IMFHDCPStatus
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Query(ref MF_HDCP_STATUS pStatus, [MarshalAs(UnmanagedType.U4)] ref bool pfStatus);
+    HRESULT Query(ref MF_HDCP_STATUS pStatus, ref BOOL pfStatus);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

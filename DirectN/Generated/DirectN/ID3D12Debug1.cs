@@ -11,9 +11,9 @@ public partial interface ID3D12Debug1
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug1-setenablegpubasedvalidation
     [PreserveSig]
-    void SetEnableGPUBasedValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableGPUBasedValidation(BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug1-setenablesynchronizedcommandqueuevalidation
     [PreserveSig]
-    void SetEnableSynchronizedCommandQueueValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableSynchronizedCommandQueueValidation(BOOL Enable);
 }

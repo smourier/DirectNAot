@@ -14,7 +14,7 @@ public partial interface IDTFilter3 : IDTFilter2
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilter3-licensehasexpirationdate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LicenseHasExpirationDate([MarshalAs(UnmanagedType.U4)] out bool pfLicenseHasExpirationDate);
+    HRESULT LicenseHasExpirationDate(out BOOL pfLicenseHasExpirationDate);
     
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilter3-setrights
     [PreserveSig]

@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct D3D12_VIDEO_ENCODER_REFERENCE_PICTURE_DESCRIPTOR_H264
 {
     public uint ReconstructedPictureResourceIndex;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsLongTermReference;
+    public BOOL IsLongTermReference;
     public uint LongTermPictureIdx;
     public uint PictureOrderCountNumber;
     public uint FrameDecodingOrderNumber;

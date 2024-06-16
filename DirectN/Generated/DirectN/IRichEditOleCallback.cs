@@ -19,7 +19,7 @@ public partial interface IRichEditOleCallback
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-showcontainerui
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ShowContainerUI([MarshalAs(UnmanagedType.U4)] bool fShow);
+    HRESULT ShowContainerUI(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-queryinsertobject
     [PreserveSig]
@@ -34,12 +34,12 @@ public partial interface IRichEditOleCallback
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-queryacceptdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryAcceptData(IDataObject lpdataobj, ref ushort lpcfFormat, RECO_FLAGS reco, [MarshalAs(UnmanagedType.U4)] bool fReally, HGLOBAL hMetaPict);
+    HRESULT QueryAcceptData(IDataObject lpdataobj, ref ushort lpcfFormat, RECO_FLAGS reco, BOOL fReally, HGLOBAL hMetaPict);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-contextsensitivehelp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ContextSensitiveHelp([MarshalAs(UnmanagedType.U4)] bool fEnterMode);
+    HRESULT ContextSensitiveHelp(BOOL fEnterMode);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-getclipboarddata
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IRichEditOleCallback
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-getdragdropeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDragDropEffect([MarshalAs(UnmanagedType.U4)] bool fDrag, MODIFIERKEYS_FLAGS grfKeyState, ref DROPEFFECT pdwEffect);
+    HRESULT GetDragDropEffect(BOOL fDrag, MODIFIERKEYS_FLAGS grfKeyState, ref DROPEFFECT pdwEffect);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-getcontextmenu
     [PreserveSig]

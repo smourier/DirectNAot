@@ -6,7 +6,7 @@ public partial interface ICompositorDesktopInterop
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDesktopWindowTarget(HWND hwndTarget, [MarshalAs(UnmanagedType.U4)] bool isTopmost, out nint /* object */ result);
+    HRESULT CreateDesktopWindowTarget(HWND hwndTarget, BOOL isTopmost, out nint /* object */ result);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct BlackInformation
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fBlackOnly;
+    public BOOL fBlackOnly;
     public float blackWeight;
 }

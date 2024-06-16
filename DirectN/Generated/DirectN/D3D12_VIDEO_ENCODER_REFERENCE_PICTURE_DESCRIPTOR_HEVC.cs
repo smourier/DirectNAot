@@ -6,12 +6,8 @@ namespace DirectN;
 public partial struct D3D12_VIDEO_ENCODER_REFERENCE_PICTURE_DESCRIPTOR_HEVC
 {
     public uint ReconstructedPictureResourceIndex;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsRefUsedByCurrentPic;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsLongTermReference;
+    public BOOL IsRefUsedByCurrentPic;
+    public BOOL IsLongTermReference;
     public uint PictureOrderCountNumber;
     public uint TemporalLayerIndex;
 }

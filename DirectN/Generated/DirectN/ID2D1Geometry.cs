@@ -19,12 +19,12 @@ public partial interface ID2D1Geometry : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-strokecontainspoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StrokeContainsPoint(D2D_POINT_2F point, float strokeWidth, ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalAs(UnmanagedType.U4)] out bool contains);
+    HRESULT StrokeContainsPoint(D2D_POINT_2F point, float strokeWidth, ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out BOOL contains);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-fillcontainspoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FillContainsPoint(D2D_POINT_2F point, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalAs(UnmanagedType.U4)] out bool contains);
+    HRESULT FillContainsPoint(D2D_POINT_2F point, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out BOOL contains);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-comparewithgeometry
     [PreserveSig]

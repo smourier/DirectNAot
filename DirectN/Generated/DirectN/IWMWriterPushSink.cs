@@ -8,7 +8,7 @@ public partial interface IWMWriterPushSink : IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpushsink-connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Connect(PWSTR pwszURL, PWSTR pwszTemplateURL, [MarshalAs(UnmanagedType.U4)] bool fAutoDestroy);
+    HRESULT Connect(PWSTR pwszURL, PWSTR pwszTemplateURL, BOOL fAutoDestroy);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpushsink-disconnect
     [PreserveSig]

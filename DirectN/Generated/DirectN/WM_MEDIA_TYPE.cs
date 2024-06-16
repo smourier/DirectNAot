@@ -7,12 +7,8 @@ public partial struct WM_MEDIA_TYPE
 {
     public Guid majortype;
     public Guid subtype;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bFixedSizeSamples;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bTemporalCompression;
+    public BOOL bFixedSizeSamples;
+    public BOOL bTemporalCompression;
     public uint lSampleSize;
     public Guid formattype;
     public nint pUnk;

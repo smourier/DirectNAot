@@ -9,7 +9,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-getsystemfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSystemFontCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection, [MarshalAs(UnmanagedType.U4)] bool checkForUpdates);
+    HRESULT GetSystemFontCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection, BOOL checkForUpdates);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createcustomfontcollection
     [PreserveSig]
@@ -89,7 +89,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-creategdicompatibletextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGdiCompatibleTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool useGdiNatural, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
+    HRESULT CreateGdiCompatibleTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, BOOL useGdiNatural, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createellipsistrimmingsign
     [PreserveSig]
@@ -104,7 +104,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createnumbersubstitution
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNumberSubstitution(DWRITE_NUMBER_SUBSTITUTION_METHOD substitutionMethod, PWSTR localeName, [MarshalAs(UnmanagedType.U4)] bool ignoreUserOverride, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteNumberSubstitution>))] out IDWriteNumberSubstitution numberSubstitution);
+    HRESULT CreateNumberSubstitution(DWRITE_NUMBER_SUBSTITUTION_METHOD substitutionMethod, PWSTR localeName, BOOL ignoreUserOverride, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteNumberSubstitution>))] out IDWriteNumberSubstitution numberSubstitution);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createglyphrunanalysis
     [PreserveSig]

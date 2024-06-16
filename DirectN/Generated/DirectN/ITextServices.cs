@@ -18,12 +18,12 @@ public partial interface ITextServices
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itextservices-txgethscroll
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetHScroll(ref int plMin, ref int plMax, ref int plPos, ref int plPage, [MarshalAs(UnmanagedType.U4)] ref bool pfEnabled);
+    HRESULT TxGetHScroll(ref int plMin, ref int plMax, ref int plPos, ref int plPage, ref BOOL pfEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itextservices-txgetvscroll
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetVScroll(ref int plMin, ref int plMax, ref int plPos, ref int plPage, [MarshalAs(UnmanagedType.U4)] ref bool pfEnabled);
+    HRESULT TxGetVScroll(ref int plMin, ref int plMax, ref int plPos, ref int plPage, ref BOOL pfEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itextservices-ontxsetcursor
     [PreserveSig]

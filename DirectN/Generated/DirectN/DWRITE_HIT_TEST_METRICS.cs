@@ -12,10 +12,6 @@ public partial struct DWRITE_HIT_TEST_METRICS
     public float width;
     public float height;
     public uint bidiLevel;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool isText;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool isTrimmed;
+    public BOOL isText;
+    public BOOL isTrimmed;
 }

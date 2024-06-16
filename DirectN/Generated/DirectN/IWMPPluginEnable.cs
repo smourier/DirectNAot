@@ -8,10 +8,10 @@ public partial interface IWMPPluginEnable
     // https://learn.microsoft.com/windows/win32/api/wmpservices/nf-wmpservices-iwmppluginenable-setenable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnable([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT SetEnable(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/wmpservices/nf-wmpservices-iwmppluginenable-getenable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnable([MarshalAs(UnmanagedType.U4)] ref bool pfEnable);
+    HRESULT GetEnable(ref BOOL pfEnable);
 }

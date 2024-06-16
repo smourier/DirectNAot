@@ -29,15 +29,15 @@ public partial interface IWICMetadataHandlerInfo : IWICComponentInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-doesrequirefullstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesRequireFullStream([MarshalAs(UnmanagedType.U4)] out bool pfRequiresFullStream);
+    HRESULT DoesRequireFullStream(out BOOL pfRequiresFullStream);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-doessupportpadding
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportPadding([MarshalAs(UnmanagedType.U4)] out bool pfSupportsPadding);
+    HRESULT DoesSupportPadding(out BOOL pfSupportsPadding);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatahandlerinfo-doesrequirefixedsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesRequireFixedSize([MarshalAs(UnmanagedType.U4)] out bool pfFixedSize);
+    HRESULT DoesRequireFixedSize(out BOOL pfFixedSize);
 }

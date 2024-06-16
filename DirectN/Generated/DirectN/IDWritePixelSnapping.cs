@@ -8,7 +8,7 @@ public partial interface IDWritePixelSnapping
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsPixelSnappingDisabled(nint /* optional void* */ clientDrawingContext, [MarshalAs(UnmanagedType.U4)] out bool isDisabled);
+    HRESULT IsPixelSnappingDisabled(nint /* optional void* */ clientDrawingContext, out BOOL isDisabled);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritepixelsnapping-getcurrenttransform
     [PreserveSig]

@@ -9,22 +9,22 @@ public partial interface IAMAudioInputMixer
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-put_enable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Enable([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT put_Enable(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-get_enable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Enable([MarshalAs(UnmanagedType.U4)] out bool pfEnable);
+    HRESULT get_Enable(out BOOL pfEnable);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-put_mono
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Mono([MarshalAs(UnmanagedType.U4)] bool fMono);
+    HRESULT put_Mono(BOOL fMono);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-get_mono
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Mono([MarshalAs(UnmanagedType.U4)] out bool pfMono);
+    HRESULT get_Mono(out BOOL pfMono);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-put_mixlevel
     [PreserveSig]
@@ -49,12 +49,12 @@ public partial interface IAMAudioInputMixer
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-put_loudness
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Loudness([MarshalAs(UnmanagedType.U4)] bool fLoudness);
+    HRESULT put_Loudness(BOOL fLoudness);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-get_loudness
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Loudness([MarshalAs(UnmanagedType.U4)] out bool pfLoudness);
+    HRESULT get_Loudness(out BOOL pfLoudness);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamaudioinputmixer-put_treble
     [PreserveSig]

@@ -19,7 +19,7 @@ public partial interface IPersistStream : IPersist
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersiststream-save
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Save(IStream pStm, [MarshalAs(UnmanagedType.U4)] bool fClearDirty);
+    HRESULT Save(IStream pStm, BOOL fClearDirty);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersiststream-getsizemax
     [PreserveSig]

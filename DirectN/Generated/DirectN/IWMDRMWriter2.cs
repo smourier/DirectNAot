@@ -9,5 +9,5 @@ public partial interface IWMDRMWriter2 : IWMDRMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmwriter2-setwmdrmnetencryption
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWMDRMNetEncryption([MarshalAs(UnmanagedType.U4)] bool fSamplesEncrypted, nint /* byte array */ pbKeyID, uint cbKeyID);
+    HRESULT SetWMDRMNetEncryption(BOOL fSamplesEncrypted, nint /* byte array */ pbKeyID, uint cbKeyID);
 }

@@ -5,16 +5,9 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_MUA_MixingInfo
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMixTo0;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMixTo1;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMix0InPhase;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMix1InPhase;
+    public BOOL fMixTo0;
+    public BOOL fMixTo1;
+    public BOOL fMix0InPhase;
+    public BOOL fMix1InPhase;
     public uint dwSpeakerPosition;
 }

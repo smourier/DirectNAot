@@ -6,13 +6,7 @@ namespace DirectN;
 public partial struct D3D11_FEATURE_DATA_D3D11_OPTIONS1
 {
     public D3D11_TILED_RESOURCES_TIER TiledResourcesTier;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MinMaxFiltering;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ClearViewAlsoSupportsDepthOnlyFormats;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MapOnDefaultBuffers;
+    public BOOL MinMaxFiltering;
+    public BOOL ClearViewAlsoSupportsDepthOnlyFormats;
+    public BOOL MapOnDefaultBuffers;
 }

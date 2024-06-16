@@ -5,23 +5,12 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D11_OPTIONS2
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PSSpecifiedStencilRefSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool TypedUAVLoadAdditionalFormats;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ROVsSupported;
+    public BOOL PSSpecifiedStencilRefSupported;
+    public BOOL TypedUAVLoadAdditionalFormats;
+    public BOOL ROVsSupported;
     public D3D11_CONSERVATIVE_RASTERIZATION_TIER ConservativeRasterizationTier;
     public D3D11_TILED_RESOURCES_TIER TiledResourcesTier;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MapOnDefaultTextures;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool StandardSwizzle;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UnifiedMemoryArchitecture;
+    public BOOL MapOnDefaultTextures;
+    public BOOL StandardSwizzle;
+    public BOOL UnifiedMemoryArchitecture;
 }

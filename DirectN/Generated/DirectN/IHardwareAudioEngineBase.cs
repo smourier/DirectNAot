@@ -14,7 +14,7 @@ public partial interface IHardwareAudioEngineBase
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-ihardwareaudioenginebase-getengineformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEngineFormat(IMMDevice pDevice, [MarshalAs(UnmanagedType.U4)] bool _bRequestDeviceFormat, ref WAVEFORMATEX _ppwfxFormat);
+    HRESULT GetEngineFormat(IMMDevice pDevice, BOOL _bRequestDeviceFormat, ref WAVEFORMATEX _ppwfxFormat);
     
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-ihardwareaudioenginebase-setenginedeviceformat
     [PreserveSig]
@@ -24,10 +24,10 @@ public partial interface IHardwareAudioEngineBase
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-ihardwareaudioenginebase-setgfxstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGfxState(IMMDevice pDevice, [MarshalAs(UnmanagedType.U4)] bool _bEnable);
+    HRESULT SetGfxState(IMMDevice pDevice, BOOL _bEnable);
     
     // https://learn.microsoft.com/windows/win32/api/audioengineendpoint/nf-audioengineendpoint-ihardwareaudioenginebase-getgfxstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGfxState(IMMDevice pDevice, [MarshalAs(UnmanagedType.U4)] out bool _pbEnable);
+    HRESULT GetGfxState(IMMDevice pDevice, out BOOL _pbEnable);
 }

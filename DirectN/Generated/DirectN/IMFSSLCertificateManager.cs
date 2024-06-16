@@ -24,10 +24,10 @@ public partial interface IMFSSLCertificateManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsslcertificatemanager-getcertificatepolicy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCertificatePolicy(PWSTR pszURL, [MarshalAs(UnmanagedType.U4)] out bool pfOverrideAutomaticCheck, [MarshalAs(UnmanagedType.U4)] out bool pfClientCertificateAvailable);
+    HRESULT GetCertificatePolicy(PWSTR pszURL, out BOOL pfOverrideAutomaticCheck, out BOOL pfClientCertificateAvailable);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsslcertificatemanager-onservercertificate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnServerCertificate(PWSTR pszURL, nint /* byte array */ pbData, uint cbData, [MarshalAs(UnmanagedType.U4)] out bool pfIsGood);
+    HRESULT OnServerCertificate(PWSTR pszURL, nint /* byte array */ pbData, uint cbData, out BOOL pfIsGood);
 }

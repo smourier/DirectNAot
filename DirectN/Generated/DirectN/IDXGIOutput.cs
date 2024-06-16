@@ -28,7 +28,7 @@ public partial interface IDXGIOutput : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgioutput-takeownership
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TakeOwnership(nint pDevice, [MarshalAs(UnmanagedType.U4)] bool Exclusive);
+    HRESULT TakeOwnership(nint pDevice, BOOL Exclusive);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgioutput-releaseownership
     [PreserveSig]

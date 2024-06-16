@@ -11,7 +11,5 @@ public partial struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM_DESC
     public uint AlphaFillModeSourceStreamIndex;
     public InlineArraySingle_4 BackgroundColor;
     public DXGI_RATIONAL FrameRate;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool EnableStereo;
+    public BOOL EnableStereo;
 }

@@ -11,9 +11,7 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_PROCESS_REFERENCE_INFO
     public D3D12_VIDEO_PROCESS_FEATURE_FLAGS FeatureSupport;
     public DXGI_RATIONAL InputFrameRate;
     public DXGI_RATIONAL OutputFrameRate;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool EnableAutoProcessing;
+    public BOOL EnableAutoProcessing;
     public uint PastFrames;
     public uint FutureFrames;
 }

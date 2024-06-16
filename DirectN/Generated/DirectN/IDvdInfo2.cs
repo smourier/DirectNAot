@@ -39,7 +39,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getcurrentsubpicture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentSubpicture(out uint pulStreamsAvailable, out uint pulCurrentStream, [MarshalAs(UnmanagedType.U4)] out bool pbIsDisabled);
+    HRESULT GetCurrentSubpicture(out uint pulStreamsAvailable, out uint pulCurrentStream, out BOOL pbIsDisabled);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getcurrentuops
     [PreserveSig]
@@ -144,7 +144,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-isaudiostreamenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsAudioStreamEnabled(uint ulStreamNum, [MarshalAs(UnmanagedType.U4)] out bool pbEnabled);
+    HRESULT IsAudioStreamEnabled(uint ulStreamNum, out BOOL pbEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getdiscid
     [PreserveSig]
@@ -199,5 +199,5 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-issubpicturestreamenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSubpictureStreamEnabled(uint ulStreamNum, [MarshalAs(UnmanagedType.U4)] out bool pbEnabled);
+    HRESULT IsSubpictureStreamEnabled(uint ulStreamNum, out BOOL pbEnabled);
 }

@@ -9,7 +9,7 @@ public partial interface IDWriteColorGlyphRunEnumerator
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritecolorglyphrunenumerator-movenext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveNext([MarshalAs(UnmanagedType.U4)] out bool hasRun);
+    HRESULT MoveNext(out BOOL hasRun);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritecolorglyphrunenumerator-getcurrentrun
     [PreserveSig]

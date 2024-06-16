@@ -19,10 +19,10 @@ public partial interface IMFSimpleAudioVolume
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsimpleaudiovolume-setmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool bMute);
+    HRESULT SetMute(BOOL bMute);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsimpleaudiovolume-getmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMute([MarshalAs(UnmanagedType.U4)] out bool pbMute);
+    HRESULT GetMute(out BOOL pbMute);
 }

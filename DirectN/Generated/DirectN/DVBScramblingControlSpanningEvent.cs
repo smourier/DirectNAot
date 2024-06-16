@@ -5,7 +5,5 @@ namespace DirectN;
 public partial struct DVBScramblingControlSpanningEvent
 {
     public uint ulPID;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fScrambled;
+    public BOOL fScrambled;
 }

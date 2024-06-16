@@ -19,5 +19,5 @@ public partial interface IOpcPartUri : IOpcUri
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcparturi-isrelationshipsparturi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRelationshipsPartUri([MarshalAs(UnmanagedType.U4)] out bool isRelationshipUri);
+    HRESULT IsRelationshipsPartUri(out BOOL isRelationshipUri);
 }

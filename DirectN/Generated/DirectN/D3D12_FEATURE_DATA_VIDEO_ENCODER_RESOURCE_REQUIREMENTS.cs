@@ -10,9 +10,7 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_RESOURCE_REQUIREMENTS
     public D3D12_VIDEO_ENCODER_PROFILE_DESC Profile;
     public DXGI_FORMAT InputFormat;
     public D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC PictureTargetResolution;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
     public uint CompressedBitstreamBufferAccessAlignment;
     public uint EncoderMetadataBufferAccessAlignment;
     public uint MaxEncoderOutputMetadataBufferSize;

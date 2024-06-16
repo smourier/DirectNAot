@@ -73,8 +73,7 @@ public partial interface IDxcPdbUtils
     HRESULT GetName(out BSTR pResult);
     
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsFullPDB();
+    BOOL IsFullPDB();
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -14,8 +14,7 @@ public partial struct KSAUDIO_MIX_CAPS
         public int Resolution;
     }
     
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Mute;
+    public BOOL Mute;
     public int Minimum;
     public int Maximum;
     public _Anonymous_e__Union Anonymous;

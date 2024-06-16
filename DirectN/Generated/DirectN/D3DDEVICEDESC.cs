@@ -9,9 +9,7 @@ public partial struct D3DDEVICEDESC
     public uint dcmColorModel;
     public uint dwDevCaps;
     public D3DTRANSFORMCAPS dtcTransformCaps;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bClipping;
+    public BOOL bClipping;
     public D3DLIGHTINGCAPS dlcLightingCaps;
     public D3DPRIMCAPS dpcLineCaps;
     public D3DPRIMCAPS dpcTriCaps;

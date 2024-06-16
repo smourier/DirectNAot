@@ -9,5 +9,5 @@ public partial interface IMFMediaEngineOPMInfo
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineopminfo-getopminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOPMInfo(out MF_MEDIA_ENGINE_OPM_STATUS pStatus, [MarshalAs(UnmanagedType.U4)] out bool pConstricted);
+    HRESULT GetOPMInfo(out MF_MEDIA_ENGINE_OPM_STATUS pStatus, out BOOL pConstricted);
 }

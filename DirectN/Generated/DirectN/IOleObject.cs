@@ -39,7 +39,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-initfromdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitFromData(IDataObject pDataObject, [MarshalAs(UnmanagedType.U4)] bool fCreation, uint dwReserved);
+    HRESULT InitFromData(IDataObject pDataObject, BOOL fCreation, uint dwReserved);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-getclipboarddata
     [PreserveSig]

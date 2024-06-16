@@ -29,7 +29,7 @@ public partial interface IConnector
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-isconnected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsConnected([MarshalAs(UnmanagedType.U4)] out bool pbConnected);
+    HRESULT IsConnected(out BOOL pbConnected);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-getconnectedto
     [PreserveSig]

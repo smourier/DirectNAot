@@ -13,7 +13,7 @@ public partial interface IDCompositionArithmeticCompositeEffect : IDCompositionF
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setclampoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clampoutput);
+    HRESULT SetClampOutput(BOOL clampoutput);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionarithmeticcompositeeffect-setcoefficient1(float)
     [PreserveSig]

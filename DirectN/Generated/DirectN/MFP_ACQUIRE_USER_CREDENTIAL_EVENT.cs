@@ -7,9 +7,7 @@ public partial struct MFP_ACQUIRE_USER_CREDENTIAL_EVENT
 {
     public MFP_EVENT_HEADER header;
     public nuint dwUserData;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fProceedWithAuthentication;
+    public BOOL fProceedWithAuthentication;
     public HRESULT hrAuthenticationStatus;
     public PWSTR pwszURL;
     public PWSTR pwszSite;

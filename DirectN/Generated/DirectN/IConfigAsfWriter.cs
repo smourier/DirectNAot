@@ -39,10 +39,10 @@ public partial interface IConfigAsfWriter
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-setindexmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIndexMode([MarshalAs(UnmanagedType.U4)] bool bIndexFile);
+    HRESULT SetIndexMode(BOOL bIndexFile);
     
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-getindexmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIndexMode([MarshalAs(UnmanagedType.U4)] out bool pbIndexFile);
+    HRESULT GetIndexMode(out BOOL pbIndexFile);
 }

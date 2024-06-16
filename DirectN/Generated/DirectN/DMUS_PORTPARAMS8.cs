@@ -11,8 +11,6 @@ public partial struct DMUS_PORTPARAMS8
     public uint dwAudioChannels;
     public uint dwSampleRate;
     public uint dwEffectFlags;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fShare;
+    public BOOL fShare;
     public uint dwFeatures;
 }

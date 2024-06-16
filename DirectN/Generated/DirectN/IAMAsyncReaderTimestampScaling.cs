@@ -9,10 +9,10 @@ public partial interface IAMAsyncReaderTimestampScaling
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamasyncreadertimestampscaling-gettimestampmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTimestampMode([MarshalAs(UnmanagedType.U4)] out bool pfRaw);
+    HRESULT GetTimestampMode(out BOOL pfRaw);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamasyncreadertimestampscaling-settimestampmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTimestampMode([MarshalAs(UnmanagedType.U4)] bool fRaw);
+    HRESULT SetTimestampMode(BOOL fRaw);
 }

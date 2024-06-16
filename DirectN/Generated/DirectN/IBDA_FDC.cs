@@ -9,7 +9,7 @@ public partial interface IBDA_FDC
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_fdc-getstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStatus(out uint CurrentBitrate, [MarshalAs(UnmanagedType.U4)] out bool CarrierLock, out uint CurrentFrequency, [MarshalAs(UnmanagedType.U4)] out bool CurrentSpectrumInversion, out BSTR CurrentPIDList, out BSTR CurrentTIDList, [MarshalAs(UnmanagedType.U4)] out bool Overflow);
+    HRESULT GetStatus(out uint CurrentBitrate, out BOOL CarrierLock, out uint CurrentFrequency, out BOOL CurrentSpectrumInversion, out BSTR CurrentPIDList, out BSTR CurrentTIDList, out BOOL Overflow);
     
     // https://learn.microsoft.com/windows/win32/api/bdaiface/nf-bdaiface-ibda_fdc-requesttables
     [PreserveSig]

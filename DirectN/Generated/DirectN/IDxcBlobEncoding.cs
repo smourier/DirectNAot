@@ -6,5 +6,5 @@ public partial interface IDxcBlobEncoding : IDxcBlob
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEncoding([MarshalAs(UnmanagedType.U4)] out bool pKnown, out DXC_CP pCodePage);
+    HRESULT GetEncoding(out BOOL pKnown, out DXC_CP pCodePage);
 }

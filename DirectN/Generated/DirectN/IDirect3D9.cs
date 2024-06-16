@@ -36,7 +36,7 @@ public partial interface IDirect3D9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-checkdevicetype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckDeviceType(uint Adapter, D3DDEVTYPE DevType, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, [MarshalAs(UnmanagedType.U4)] bool bWindowed);
+    HRESULT CheckDeviceType(uint Adapter, D3DDEVTYPE DevType, D3DFORMAT AdapterFormat, D3DFORMAT BackBufferFormat, BOOL bWindowed);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-checkdeviceformat
     [PreserveSig]
@@ -46,7 +46,7 @@ public partial interface IDirect3D9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-checkdevicemultisampletype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckDeviceMultiSampleType(uint Adapter, D3DDEVTYPE DeviceType, D3DFORMAT SurfaceFormat, [MarshalAs(UnmanagedType.U4)] bool Windowed, D3DMULTISAMPLE_TYPE MultiSampleType, ref uint pQualityLevels);
+    HRESULT CheckDeviceMultiSampleType(uint Adapter, D3DDEVTYPE DeviceType, D3DFORMAT SurfaceFormat, BOOL Windowed, D3DMULTISAMPLE_TYPE MultiSampleType, ref uint pQualityLevels);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-checkdepthstencilmatch
     [PreserveSig]

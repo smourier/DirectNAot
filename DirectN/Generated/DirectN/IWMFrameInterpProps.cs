@@ -14,7 +14,7 @@ public partial interface IWMFrameInterpProps
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFrameInterpEnabled([MarshalAs(UnmanagedType.U4)] bool bFIEnabled);
+    HRESULT SetFrameInterpEnabled(BOOL bFIEnabled);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

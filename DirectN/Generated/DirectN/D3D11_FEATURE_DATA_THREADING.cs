@@ -5,9 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_THREADING
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DriverConcurrentCreates;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DriverCommandLists;
+    public BOOL DriverConcurrentCreates;
+    public BOOL DriverCommandLists;
 }

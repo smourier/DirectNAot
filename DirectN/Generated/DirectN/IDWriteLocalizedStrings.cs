@@ -13,7 +13,7 @@ public partial interface IDWriteLocalizedStrings
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritelocalizedstrings-findlocalename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindLocaleName(PWSTR localeName, out uint index, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT FindLocaleName(PWSTR localeName, out uint index, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritelocalizedstrings-getlocalenamelength
     [PreserveSig]

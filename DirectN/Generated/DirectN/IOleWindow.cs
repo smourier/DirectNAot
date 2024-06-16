@@ -14,5 +14,5 @@ public partial interface IOleWindow
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-iolewindow-contextsensitivehelp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ContextSensitiveHelp([MarshalAs(UnmanagedType.U4)] bool fEnterMode);
+    HRESULT ContextSensitiveHelp(BOOL fEnterMode);
 }

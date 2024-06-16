@@ -62,7 +62,7 @@ public partial interface IDirectDraw
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVerticalBlankStatus([MarshalAs(UnmanagedType.U4)] ref bool param0);
+    HRESULT GetVerticalBlankStatus(ref BOOL param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

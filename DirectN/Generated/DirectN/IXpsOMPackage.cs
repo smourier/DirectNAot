@@ -49,10 +49,10 @@ public partial interface IXpsOMPackage
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-writetofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteToFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, [MarshalAs(UnmanagedType.U4)] bool optimizeMarkupSize);
+    HRESULT WriteToFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, BOOL optimizeMarkupSize);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackage-writetostream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteToStream(ISequentialStream stream, [MarshalAs(UnmanagedType.U4)] bool optimizeMarkupSize);
+    HRESULT WriteToStream(ISequentialStream stream, BOOL optimizeMarkupSize);
 }

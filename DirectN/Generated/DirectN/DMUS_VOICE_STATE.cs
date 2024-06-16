@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DMUS_VOICE_STATE
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bExists;
+    public BOOL bExists;
     public ulong spPosition;
 }

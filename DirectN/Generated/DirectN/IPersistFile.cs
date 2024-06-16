@@ -19,7 +19,7 @@ public partial interface IPersistFile : IPersist
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersistfile-save
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Save(PWSTR pszFileName, [MarshalAs(UnmanagedType.U4)] bool fRemember);
+    HRESULT Save(PWSTR pszFileName, BOOL fRemember);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersistfile-savecompleted
     [PreserveSig]

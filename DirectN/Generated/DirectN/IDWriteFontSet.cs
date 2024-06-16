@@ -18,12 +18,12 @@ public partial interface IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-findfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFontFaceReference(IDWriteFontFaceReference fontFaceReference, out uint listIndex, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT FindFontFaceReference(IDWriteFontFaceReference fontFaceReference, out uint listIndex, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-findfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFontFace(IDWriteFontFace fontFace, out uint listIndex, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT FindFontFace(IDWriteFontFace fontFace, out uint listIndex, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-getpropertyvalues(dwrite_font_property_id_wcharconst_idwritestringlist)
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-getpropertyvalues(dwrite_font_property_id_wcharconst_idwritestringlist)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropertyValues(uint listIndex, DWRITE_FONT_PROPERTY_ID propertyId, [MarshalAs(UnmanagedType.U4)] out bool exists, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings values);
+    HRESULT GetPropertyValues(uint listIndex, DWRITE_FONT_PROPERTY_ID propertyId, out BOOL exists, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings values);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-getpropertyoccurrencecount
     [PreserveSig]

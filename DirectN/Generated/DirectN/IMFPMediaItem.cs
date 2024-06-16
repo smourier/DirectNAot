@@ -44,17 +44,17 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-hasvideo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasVideo(nint /* optional bool* */ pfHasVideo, nint /* optional bool* */ pfSelected);
+    HRESULT HasVideo(nint /* optional BOOL* */ pfHasVideo, nint /* optional BOOL* */ pfSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-hasaudio
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasAudio(nint /* optional bool* */ pfHasAudio, nint /* optional bool* */ pfSelected);
+    HRESULT HasAudio(nint /* optional BOOL* */ pfHasAudio, nint /* optional BOOL* */ pfSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-isprotected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsProtected([MarshalAs(UnmanagedType.U4)] out bool pfProtected);
+    HRESULT IsProtected(out BOOL pfProtected);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getduration
     [PreserveSig]
@@ -69,12 +69,12 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pfEnabled);
+    HRESULT GetStreamSelection(uint dwStreamIndex, out BOOL pfEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-setstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] bool fEnabled);
+    HRESULT SetStreamSelection(uint dwStreamIndex, BOOL fEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getstreamattribute
     [PreserveSig]

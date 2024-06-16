@@ -18,12 +18,12 @@ public partial interface IDWriteFactory6 : IDWriteFactory5
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-getsystemfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSystemFontSet([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet1>))] out IDWriteFontSet1 fontSet);
+    HRESULT GetSystemFontSet(BOOL includeDownloadableFonts, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet1>))] out IDWriteFontSet1 fontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-getsystemfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSystemFontCollection([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection2>))] out IDWriteFontCollection2 fontCollection);
+    HRESULT GetSystemFontCollection(BOOL includeDownloadableFonts, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection2>))] out IDWriteFontCollection2 fontCollection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createfontcollectionfromfontset
     [PreserveSig]

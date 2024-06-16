@@ -6,10 +6,6 @@ namespace DirectN;
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS12
 {
     public D3D12_TRI_STATE MSPrimitivesPipelineStatisticIncludesCulledPrimitives;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool EnhancedBarriersSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool RelaxedFormatCastingSupported;
+    public BOOL EnhancedBarriersSupported;
+    public BOOL RelaxedFormatCastingSupported;
 }

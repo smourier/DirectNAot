@@ -15,9 +15,7 @@ public partial struct DD_BLTDATA
     public DDBLTFX bltFX;
     public HRESULT ddRVal;
     public nint Blt;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsClipped;
+    public BOOL IsClipped;
     public RECTL rOrigDest;
     public RECTL rOrigSrc;
     public uint dwRectCnt;

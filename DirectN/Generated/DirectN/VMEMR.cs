@@ -18,7 +18,5 @@ public partial struct VMEMR
     public uint cy;
     public uint flags;
     public nuint pBits;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bDiscardable;
+    public BOOL bDiscardable;
 }

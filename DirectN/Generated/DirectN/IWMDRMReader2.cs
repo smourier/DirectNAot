@@ -9,7 +9,7 @@ public partial interface IWMDRMReader2 : IWMDRMReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader2-setevaluateoutputlevellicenses
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEvaluateOutputLevelLicenses([MarshalAs(UnmanagedType.U4)] bool fEvaluate);
+    HRESULT SetEvaluateOutputLevelLicenses(BOOL fEvaluate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmreader2-getplayoutputlevels
     [PreserveSig]

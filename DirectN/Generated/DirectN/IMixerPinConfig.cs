@@ -59,10 +59,10 @@ public partial interface IMixerPinConfig
     // https://learn.microsoft.com/windows/win32/api/mpconfig/nf-mpconfig-imixerpinconfig-setstreamtransparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamTransparent([MarshalAs(UnmanagedType.U4)] bool bStreamTransparent);
+    HRESULT SetStreamTransparent(BOOL bStreamTransparent);
     
     // https://learn.microsoft.com/windows/win32/api/mpconfig/nf-mpconfig-imixerpinconfig-getstreamtransparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamTransparent([MarshalAs(UnmanagedType.U4)] ref bool pbStreamTransparent);
+    HRESULT GetStreamTransparent(ref BOOL pbStreamTransparent);
 }

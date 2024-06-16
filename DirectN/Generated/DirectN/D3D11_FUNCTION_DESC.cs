@@ -35,13 +35,7 @@ public partial struct D3D11_FUNCTION_DESC
     public ulong RequiredFeatureFlags;
     public PSTR Name;
     public int FunctionParameterCount;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool HasReturn;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Has10Level9VertexShader;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Has10Level9PixelShader;
+    public BOOL HasReturn;
+    public BOOL Has10Level9VertexShader;
+    public BOOL Has10Level9PixelShader;
 }

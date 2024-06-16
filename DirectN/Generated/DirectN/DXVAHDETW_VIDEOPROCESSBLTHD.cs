@@ -11,7 +11,5 @@ public partial struct DXVAHDETW_VIDEOPROCESSBLTHD
     public uint ColorSpace;
     public uint OutputFrame;
     public uint StreamCount;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enter;
+    public BOOL Enter;
 }

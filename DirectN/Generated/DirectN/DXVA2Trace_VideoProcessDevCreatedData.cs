@@ -11,7 +11,5 @@ public partial struct DXVA2Trace_VideoProcessDevCreatedData
     public uint RTFourCC;
     public uint Width;
     public uint Height;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enter;
+    public BOOL Enter;
 }

@@ -7,7 +7,5 @@ public partial struct SECURITY_ATTRIBUTES
 {
     public uint nLength;
     public nint lpSecurityDescriptor;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bInheritHandle;
+    public BOOL bInheritHandle;
 }

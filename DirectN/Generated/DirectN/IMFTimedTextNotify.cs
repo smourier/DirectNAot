@@ -16,7 +16,7 @@ public partial interface IMFTimedTextNotify
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextnotify-trackselected
     [PreserveSig]
-    void TrackSelected(uint trackId, [MarshalAs(UnmanagedType.U4)] bool selected);
+    void TrackSelected(uint trackId, BOOL selected);
     
     [PreserveSig]
     void TrackReadyStateChanged(uint trackId);

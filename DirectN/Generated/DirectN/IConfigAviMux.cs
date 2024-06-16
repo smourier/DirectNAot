@@ -19,10 +19,10 @@ public partial interface IConfigAviMux
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iconfigavimux-setoutputcompatibilityindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputCompatibilityIndex([MarshalAs(UnmanagedType.U4)] bool fOldIndex);
+    HRESULT SetOutputCompatibilityIndex(BOOL fOldIndex);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iconfigavimux-getoutputcompatibilityindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetOutputCompatibilityIndex([MarshalAs(UnmanagedType.U4)] out bool pfOldIndex);
+    HRESULT GetOutputCompatibilityIndex(out BOOL pfOldIndex);
 }

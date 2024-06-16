@@ -8,5 +8,5 @@ public partial interface IDesktopWindowXamlSourceNative2 : IDesktopWindowXamlSou
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.desktopwindowxamlsource/nf-windows-ui-xaml-hosting-desktopwindowxamlsource-idesktopwindowxamlsourcenative2-pretranslatemessage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PreTranslateMessage(in MSG message, [MarshalAs(UnmanagedType.U4)] ref bool result);
+    HRESULT PreTranslateMessage(in MSG message, ref BOOL result);
 }

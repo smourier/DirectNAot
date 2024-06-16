@@ -160,7 +160,7 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-setstablepowerstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStablePowerState([MarshalAs(UnmanagedType.U4)] bool Enable);
+    HRESULT SetStablePowerState(BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createcommandsignature
     [PreserveSig]

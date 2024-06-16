@@ -7,11 +7,11 @@ public partial interface ID3D12Debug3 : ID3D12Debug
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug3-setenablegpubasedvalidation
     [PreserveSig]
-    void SetEnableGPUBasedValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableGPUBasedValidation(BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug3-setenablesynchronizedcommandqueuevalidation
     [PreserveSig]
-    void SetEnableSynchronizedCommandQueueValidation([MarshalAs(UnmanagedType.U4)] bool Enable);
+    void SetEnableSynchronizedCommandQueueValidation(BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debug3-setgpubasedvalidationflags
     [PreserveSig]

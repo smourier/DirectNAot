@@ -7,8 +7,6 @@ public partial struct DXVAHD_CUSTOM_RATE_DATA
 {
     public DXVAHD_RATIONAL CustomRate;
     public uint OutputFrames;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InputInterlaced;
+    public BOOL InputInterlaced;
     public uint InputFramesOrFields;
 }

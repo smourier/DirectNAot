@@ -33,12 +33,12 @@ public partial interface IWMWriterAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-setlivesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLiveSource([MarshalAs(UnmanagedType.U4)] bool fIsLiveSource);
+    HRESULT SetLiveSource(BOOL fIsLiveSource);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-isrealtime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRealTime([MarshalAs(UnmanagedType.U4)] out bool pfRealTime);
+    HRESULT IsRealTime(out BOOL pfRealTime);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-getwritertime
     [PreserveSig]

@@ -10,7 +10,7 @@ public partial interface ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRule(PWSTR pszRuleName, uint dwRuleId, uint dwAttributes, [MarshalAs(UnmanagedType.U4)] bool fCreateIfNotExist, ref SPSTATEHANDLE phInitialState);
+    HRESULT GetRule(PWSTR pszRuleName, uint dwRuleId, uint dwAttributes, BOOL fCreateIfNotExist, ref SPSTATEHANDLE phInitialState);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

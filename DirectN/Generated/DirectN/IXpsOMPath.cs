@@ -54,12 +54,12 @@ public partial interface IXpsOMPath : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getsnapstopixels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSnapsToPixels([MarshalAs(UnmanagedType.U4)] out bool snapsToPixels);
+    HRESULT GetSnapsToPixels(out BOOL snapsToPixels);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-setsnapstopixels
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSnapsToPixels([MarshalAs(UnmanagedType.U4)] bool snapsToPixels);
+    HRESULT SetSnapsToPixels(BOOL snapsToPixels);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompath-getstrokebrush
     [PreserveSig]

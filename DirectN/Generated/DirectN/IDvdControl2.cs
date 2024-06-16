@@ -104,7 +104,7 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-pause
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Pause([MarshalAs(UnmanagedType.U4)] bool bState);
+    HRESULT Pause(BOOL bState);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectaudiostream
     [PreserveSig]
@@ -119,7 +119,7 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setsubpicturestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSubpictureState([MarshalAs(UnmanagedType.U4)] bool bState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
+    HRESULT SetSubpictureState(BOOL bState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-selectangle
     [PreserveSig]
@@ -169,12 +169,12 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-acceptparentallevelchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AcceptParentalLevelChange([MarshalAs(UnmanagedType.U4)] bool bAccept);
+    HRESULT AcceptParentalLevelChange(BOOL bAccept);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setoption
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOption(DVD_OPTION_FLAG flag, [MarshalAs(UnmanagedType.U4)] bool fState);
+    HRESULT SetOption(DVD_OPTION_FLAG flag, BOOL fState);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setstate
     [PreserveSig]

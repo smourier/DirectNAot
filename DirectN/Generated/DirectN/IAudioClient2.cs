@@ -9,7 +9,7 @@ public partial interface IAudioClient2 : IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient2-isoffloadcapable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsOffloadCapable(AUDIO_STREAM_CATEGORY Category, [MarshalAs(UnmanagedType.U4)] out bool pbOffloadCapable);
+    HRESULT IsOffloadCapable(AUDIO_STREAM_CATEGORY Category, out BOOL pbOffloadCapable);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient2-setclientproperties
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IAudioClient2 : IAudioClient
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioclient2-getbuffersizelimits
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBufferSizeLimits(in WAVEFORMATEX pFormat, [MarshalAs(UnmanagedType.U4)] bool bEventDriven, out long phnsMinBufferDuration, out long phnsMaxBufferDuration);
+    HRESULT GetBufferSizeLimits(in WAVEFORMATEX pFormat, BOOL bEventDriven, out long phnsMinBufferDuration, out long phnsMaxBufferDuration);
 }

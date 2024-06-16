@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool WNDENUMPROC(HWND param0, LPARAM param1);
+public delegate BOOL WNDENUMPROC(HWND param0, LPARAM param1);

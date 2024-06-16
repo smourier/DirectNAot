@@ -10,7 +10,7 @@ public partial interface ISpThreadControl : ISpNotifySink
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WaitForThreadDone([MarshalAs(UnmanagedType.U4)] bool fForceStop, out HRESULT phrThreadResult, uint msTimeOut);
+    HRESULT WaitForThreadDone(BOOL fForceStop, out HRESULT phrThreadResult, uint msTimeOut);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

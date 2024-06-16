@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_BLT_STATE_TARGET_RECT_DATA
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public RECT TargetRect;
 }

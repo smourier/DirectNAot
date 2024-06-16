@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct AUDIO_VOLUME_NOTIFICATION_DATA
 {
     public Guid guidEventContext;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bMuted;
+    public BOOL bMuted;
     public float fMasterVolume;
     public uint nChannels;
     public InlineArraySingle_1 afChannelVolumes; // variable-length array placeholder

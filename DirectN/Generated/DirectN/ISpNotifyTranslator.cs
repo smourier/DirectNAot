@@ -18,7 +18,7 @@ public partial interface ISpNotifyTranslator : ISpNotifySink
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitWin32Event(HANDLE hEvent, [MarshalAs(UnmanagedType.U4)] bool fCloseHandleOnRelease);
+    HRESULT InitWin32Event(HANDLE hEvent, BOOL fCloseHandleOnRelease);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool PFN_DrvEndDoc(nint pso, uint fl);
+public delegate BOOL PFN_DrvEndDoc(nint pso, uint fl);

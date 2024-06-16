@@ -7,7 +7,5 @@ public partial struct DXVA2Trace_DecodeDevGetBufferData
     public EVENT_TRACE_HEADER wmiHeader;
     public ulong pObject;
     public uint BufferType;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enter;
+    public BOOL Enter;
 }

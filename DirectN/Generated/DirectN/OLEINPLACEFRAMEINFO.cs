@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct OLEINPLACEFRAMEINFO
 {
     public uint cb;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMDIApp;
+    public BOOL fMDIApp;
     public HWND hwndFrame;
     public HACCEL haccel;
     public uint cAccelEntries;

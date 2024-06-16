@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_BLEND_DESC
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AlphaToCoverageEnable;
+    public BOOL AlphaToCoverageEnable;
     public InlineArrayBOOL_8 BlendEnable;
     public D3D10_BLEND SrcBlend;
     public D3D10_BLEND DestBlend;

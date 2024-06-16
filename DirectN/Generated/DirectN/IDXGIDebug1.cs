@@ -16,6 +16,5 @@ public partial interface IDXGIDebug1 : IDXGIDebug
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug1-isleaktrackingenabledforthread
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsLeakTrackingEnabledForThread();
+    BOOL IsLeakTrackingEnabledForThread();
 }

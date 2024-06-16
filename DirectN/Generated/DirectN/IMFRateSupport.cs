@@ -9,15 +9,15 @@ public partial interface IMFRateSupport
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfratesupport-getslowestrate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSlowestRate(MFRATE_DIRECTION eDirection, [MarshalAs(UnmanagedType.U4)] bool fThin, out float pflRate);
+    HRESULT GetSlowestRate(MFRATE_DIRECTION eDirection, BOOL fThin, out float pflRate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfratesupport-getfastestrate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFastestRate(MFRATE_DIRECTION eDirection, [MarshalAs(UnmanagedType.U4)] bool fThin, out float pflRate);
+    HRESULT GetFastestRate(MFRATE_DIRECTION eDirection, BOOL fThin, out float pflRate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfratesupport-isratesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRateSupported([MarshalAs(UnmanagedType.U4)] bool fThin, float flRate, ref float pflNearestSupportedRate);
+    HRESULT IsRateSupported(BOOL fThin, float flRate, ref float pflNearestSupportedRate);
 }

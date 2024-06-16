@@ -5,19 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS9
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MeshShaderPipelineStatsSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MeshShaderSupportsFullRangeRenderTargetArrayIndex;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AtomicInt64OnTypedResourceSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AtomicInt64OnGroupSharedSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DerivativesInMeshAndAmplificationShadersSupported;
+    public BOOL MeshShaderPipelineStatsSupported;
+    public BOOL MeshShaderSupportsFullRangeRenderTargetArrayIndex;
+    public BOOL AtomicInt64OnTypedResourceSupported;
+    public BOOL AtomicInt64OnGroupSharedSupported;
+    public BOOL DerivativesInMeshAndAmplificationShadersSupported;
     public D3D12_WAVE_MMA_TIER WaveMMATier;
 }

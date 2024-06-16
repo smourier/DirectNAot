@@ -8,8 +8,7 @@ public partial interface IMFSourceBuffer
 {
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-getupdating
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetUpdating();
+    BOOL GetUpdating();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebuffer-getbuffered
     [PreserveSig]

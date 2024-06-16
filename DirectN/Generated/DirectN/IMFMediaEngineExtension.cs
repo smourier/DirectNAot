@@ -9,7 +9,7 @@ public partial interface IMFMediaEngineExtension
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineextension-canplaytype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanPlayType([MarshalAs(UnmanagedType.U4)] bool AudioOnly, BSTR MimeType, out MF_MEDIA_ENGINE_CANPLAY pAnswer);
+    HRESULT CanPlayType(BOOL AudioOnly, BSTR MimeType, out MF_MEDIA_ENGINE_CANPLAY pAnswer);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineextension-begincreateobject
     [PreserveSig]

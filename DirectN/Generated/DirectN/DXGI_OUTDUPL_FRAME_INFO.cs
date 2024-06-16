@@ -8,12 +8,8 @@ public partial struct DXGI_OUTDUPL_FRAME_INFO
     public long LastPresentTime;
     public long LastMouseUpdateTime;
     public uint AccumulatedFrames;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool RectsCoalesced;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ProtectedContentMaskedOut;
+    public BOOL RectsCoalesced;
+    public BOOL ProtectedContentMaskedOut;
     public DXGI_OUTDUPL_POINTER_POSITION PointerPosition;
     public uint TotalMetadataBufferSize;
     public uint PointerShapeBufferSize;

@@ -24,5 +24,5 @@ public partial interface IDWriteTextRenderer : IDWritePixelSnapping
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextrenderer-drawinlineobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawInlineObject(nint /* optional void* */ clientDrawingContext, float originX, float originY, IDWriteInlineObject inlineObject, [MarshalAs(UnmanagedType.U4)] bool isSideways, [MarshalAs(UnmanagedType.U4)] bool isRightToLeft, nint clientDrawingEffect);
+    HRESULT DrawInlineObject(nint /* optional void* */ clientDrawingContext, float originX, float originY, IDWriteInlineObject inlineObject, BOOL isSideways, BOOL isRightToLeft, nint clientDrawingEffect);
 }

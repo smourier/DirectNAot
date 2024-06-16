@@ -24,7 +24,7 @@ public partial interface IMFContentEnabler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentenabler-isautomaticsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsAutomaticSupported([MarshalAs(UnmanagedType.U4)] out bool pfAutomatic);
+    HRESULT IsAutomaticSupported(out BOOL pfAutomatic);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentenabler-automaticenable
     [PreserveSig]

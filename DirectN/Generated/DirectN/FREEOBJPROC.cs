@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool FREEOBJPROC(nint pDriverObj);
+public delegate BOOL FREEOBJPROC(nint pDriverObj);

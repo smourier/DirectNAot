@@ -68,62 +68,62 @@ public partial interface IWMReaderNetworkConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getproxybypassforlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProxyBypassForLocal(PWSTR pwszProtocol, [MarshalAs(UnmanagedType.U4)] out bool pfBypassForLocal);
+    HRESULT GetProxyBypassForLocal(PWSTR pwszProtocol, out BOOL pfBypassForLocal);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setproxybypassforlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetProxyBypassForLocal(PWSTR pwszProtocol, [MarshalAs(UnmanagedType.U4)] bool fBypassForLocal);
+    HRESULT SetProxyBypassForLocal(PWSTR pwszProtocol, BOOL fBypassForLocal);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getforcererunautoproxydetection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetForceRerunAutoProxyDetection([MarshalAs(UnmanagedType.U4)] out bool pfForceRerunDetection);
+    HRESULT GetForceRerunAutoProxyDetection(out BOOL pfForceRerunDetection);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setforcererunautoproxydetection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetForceRerunAutoProxyDetection([MarshalAs(UnmanagedType.U4)] bool fForceRerunDetection);
+    HRESULT SetForceRerunAutoProxyDetection(BOOL fForceRerunDetection);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getenablemulticast
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableMulticast([MarshalAs(UnmanagedType.U4)] out bool pfEnableMulticast);
+    HRESULT GetEnableMulticast(out BOOL pfEnableMulticast);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setenablemulticast
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableMulticast([MarshalAs(UnmanagedType.U4)] bool fEnableMulticast);
+    HRESULT SetEnableMulticast(BOOL fEnableMulticast);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getenablehttp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableHTTP([MarshalAs(UnmanagedType.U4)] out bool pfEnableHTTP);
+    HRESULT GetEnableHTTP(out BOOL pfEnableHTTP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setenablehttp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableHTTP([MarshalAs(UnmanagedType.U4)] bool fEnableHTTP);
+    HRESULT SetEnableHTTP(BOOL fEnableHTTP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getenableudp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableUDP([MarshalAs(UnmanagedType.U4)] out bool pfEnableUDP);
+    HRESULT GetEnableUDP(out BOOL pfEnableUDP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setenableudp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableUDP([MarshalAs(UnmanagedType.U4)] bool fEnableUDP);
+    HRESULT SetEnableUDP(BOOL fEnableUDP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-getenabletcp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEnableTCP([MarshalAs(UnmanagedType.U4)] out bool pfEnableTCP);
+    HRESULT GetEnableTCP(out BOOL pfEnableTCP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-setenabletcp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEnableTCP([MarshalAs(UnmanagedType.U4)] bool fEnableTCP);
+    HRESULT SetEnableTCP(BOOL fEnableTCP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadernetworkconfig-resetprotocolrollover
     [PreserveSig]

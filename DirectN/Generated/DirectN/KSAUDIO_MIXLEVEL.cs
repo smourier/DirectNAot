@@ -4,7 +4,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct KSAUDIO_MIXLEVEL
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Mute;
+    public BOOL Mute;
     public int Level;
 }

@@ -10,5 +10,5 @@ public partial interface IInternetSecurityMgrSite
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableModeless([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableModeless(BOOL fEnable);
 }

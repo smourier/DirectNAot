@@ -63,12 +63,12 @@ public partial interface IWMReaderAdvanced2 : IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-setlogclientid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLogClientID([MarshalAs(UnmanagedType.U4)] bool fLogClientID);
+    HRESULT SetLogClientID(BOOL fLogClientID);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-getlogclientid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLogClientID([MarshalAs(UnmanagedType.U4)] out bool pfLogClientID);
+    HRESULT GetLogClientID(out BOOL pfLogClientID);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-stopbuffering
     [PreserveSig]

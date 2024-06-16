@@ -9,7 +9,5 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_INPUT_FORMAT
     public D3D12_VIDEO_ENCODER_CODEC Codec;
     public D3D12_VIDEO_ENCODER_PROFILE_DESC Profile;
     public DXGI_FORMAT Format;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
 }

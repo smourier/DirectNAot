@@ -8,12 +8,12 @@ public partial interface IWMDMLogger
     // https://learn.microsoft.com/windows/win32/api/wmdmlog/nf-wmdmlog-iwmdmlogger-isenabled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEnabled([MarshalAs(UnmanagedType.U4)] out bool pfEnabled);
+    HRESULT IsEnabled(out BOOL pfEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/wmdmlog/nf-wmdmlog-iwmdmlogger-enable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Enable([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT Enable(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/wmdmlog/nf-wmdmlog-iwmdmlogger-getlogfilename
     [PreserveSig]

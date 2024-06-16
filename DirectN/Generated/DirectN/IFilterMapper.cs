@@ -18,7 +18,7 @@ public partial interface IFilterMapper
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper-registerpin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterPin(Guid Filter, PWSTR Name, [MarshalAs(UnmanagedType.U4)] bool bRendered, [MarshalAs(UnmanagedType.U4)] bool bOutput, [MarshalAs(UnmanagedType.U4)] bool bZero, [MarshalAs(UnmanagedType.U4)] bool bMany, Guid ConnectsToFilter, PWSTR ConnectsToPin);
+    HRESULT RegisterPin(Guid Filter, PWSTR Name, BOOL bRendered, BOOL bOutput, BOOL bZero, BOOL bMany, Guid ConnectsToFilter, PWSTR ConnectsToPin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper-registerpintype
     [PreserveSig]
@@ -43,5 +43,5 @@ public partial interface IFilterMapper
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper-enummatchingfilters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMatchingFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumRegFilters>))] out IEnumRegFilters ppEnum, uint dwMerit, [MarshalAs(UnmanagedType.U4)] bool bInputNeeded, Guid clsInMaj, Guid clsInSub, [MarshalAs(UnmanagedType.U4)] bool bRender, [MarshalAs(UnmanagedType.U4)] bool bOututNeeded, Guid clsOutMaj, Guid clsOutSub);
+    HRESULT EnumMatchingFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumRegFilters>))] out IEnumRegFilters ppEnum, uint dwMerit, BOOL bInputNeeded, Guid clsInMaj, Guid clsInSub, BOOL bRender, BOOL bOututNeeded, Guid clsOutMaj, Guid clsOutSub);
 }

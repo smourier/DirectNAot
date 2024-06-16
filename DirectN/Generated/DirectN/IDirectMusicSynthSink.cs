@@ -23,7 +23,7 @@ public partial interface IDirectMusicSynthSink
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-activate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT Activate(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-sampletoreftime
     [PreserveSig]

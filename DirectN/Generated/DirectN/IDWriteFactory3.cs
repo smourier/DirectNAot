@@ -44,7 +44,7 @@ public partial interface IDWriteFactory3 : IDWriteFactory2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-getsystemfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSystemFontCollection([MarshalAs(UnmanagedType.U4)] bool includeDownloadableFonts, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection1>))] out IDWriteFontCollection1 fontCollection, [MarshalAs(UnmanagedType.U4)] bool checkForUpdates);
+    HRESULT GetSystemFontCollection(BOOL includeDownloadableFonts, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection1>))] out IDWriteFontCollection1 fontCollection, BOOL checkForUpdates);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory3-getfontdownloadqueue
     [PreserveSig]

@@ -37,11 +37,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputtargetrect
     [PreserveSig]
-    void VideoProcessorSetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional RECT* */ pRect);
+    void VideoProcessorSetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, BOOL Enable, nint /* optional RECT* */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputbackgroundcolor
     [PreserveSig]
-    void VideoProcessorSetOutputBackgroundColor(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool YCbCr, in D3D11_VIDEO_COLOR pColor);
+    void VideoProcessorSetOutputBackgroundColor(ID3D11VideoProcessor pVideoProcessor, BOOL YCbCr, in D3D11_VIDEO_COLOR pColor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputcolorspace
     [PreserveSig]
@@ -53,11 +53,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputconstriction
     [PreserveSig]
-    void VideoProcessorSetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable, SIZE Size);
+    void VideoProcessorSetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, BOOL Enable, SIZE Size);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputstereomode
     [PreserveSig]
-    void VideoProcessorSetOutputStereoMode(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool Enable);
+    void VideoProcessorSetOutputStereoMode(ID3D11VideoProcessor pVideoProcessor, BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetoutputextension
     [PreserveSig]
@@ -65,11 +65,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputtargetrect
     [PreserveSig]
-    void VideoProcessorGetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] out bool Enabled, out RECT pRect);
+    void VideoProcessorGetOutputTargetRect(ID3D11VideoProcessor pVideoProcessor, out BOOL Enabled, out RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputbackgroundcolor
     [PreserveSig]
-    void VideoProcessorGetOutputBackgroundColor(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] out bool pYCbCr, out D3D11_VIDEO_COLOR pColor);
+    void VideoProcessorGetOutputBackgroundColor(ID3D11VideoProcessor pVideoProcessor, out BOOL pYCbCr, out D3D11_VIDEO_COLOR pColor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputcolorspace
     [PreserveSig]
@@ -81,11 +81,11 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputconstriction
     [PreserveSig]
-    void VideoProcessorGetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out SIZE pSize);
+    void VideoProcessorGetOutputConstriction(ID3D11VideoProcessor pVideoProcessor, out BOOL pEnabled, out SIZE pSize);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputstereomode
     [PreserveSig]
-    void VideoProcessorGetOutputStereoMode(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] out bool pEnabled);
+    void VideoProcessorGetOutputStereoMode(ID3D11VideoProcessor pVideoProcessor, out BOOL pEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetoutputextension
     [PreserveSig]
@@ -101,19 +101,19 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamoutputrate
     [PreserveSig]
-    void VideoProcessorSetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_OUTPUT_RATE OutputRate, [MarshalAs(UnmanagedType.U4)] bool RepeatFrame, nint /* optional DXGI_RATIONAL* */ pCustomRate);
+    void VideoProcessorSetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_OUTPUT_RATE OutputRate, BOOL RepeatFrame, nint /* optional DXGI_RATIONAL* */ pCustomRate);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamsourcerect
     [PreserveSig]
-    void VideoProcessorSetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional RECT* */ pRect);
+    void VideoProcessorSetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, nint /* optional RECT* */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamdestrect
     [PreserveSig]
-    void VideoProcessorSetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional RECT* */ pRect);
+    void VideoProcessorSetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, nint /* optional RECT* */ pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamalpha
     [PreserveSig]
-    void VideoProcessorSetStreamAlpha(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, float Alpha);
+    void VideoProcessorSetStreamAlpha(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, float Alpha);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreampalette
     [PreserveSig]
@@ -121,23 +121,23 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreampixelaspectratio
     [PreserveSig]
-    void VideoProcessorSetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, nint /* optional DXGI_RATIONAL* */ pSourceAspectRatio, nint /* optional DXGI_RATIONAL* */ pDestinationAspectRatio);
+    void VideoProcessorSetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, nint /* optional DXGI_RATIONAL* */ pSourceAspectRatio, nint /* optional DXGI_RATIONAL* */ pDestinationAspectRatio);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamlumakey
     [PreserveSig]
-    void VideoProcessorSetStreamLumaKey(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, float Lower, float Upper);
+    void VideoProcessorSetStreamLumaKey(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, float Lower, float Upper);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamstereoformat
     [PreserveSig]
-    void VideoProcessorSetStreamStereoFormat(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, D3D11_VIDEO_PROCESSOR_STEREO_FORMAT Format, [MarshalAs(UnmanagedType.U4)] bool LeftViewFrame0, [MarshalAs(UnmanagedType.U4)] bool BaseViewFrame0, D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE FlipMode, int MonoOffset);
+    void VideoProcessorSetStreamStereoFormat(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, D3D11_VIDEO_PROCESSOR_STEREO_FORMAT Format, BOOL LeftViewFrame0, BOOL BaseViewFrame0, D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE FlipMode, int MonoOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamautoprocessingmode
     [PreserveSig]
-    void VideoProcessorSetStreamAutoProcessingMode(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable);
+    void VideoProcessorSetStreamAutoProcessingMode(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamfilter
     [PreserveSig]
-    void VideoProcessorSetStreamFilter(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_FILTER Filter, [MarshalAs(UnmanagedType.U4)] bool Enable, int Level);
+    void VideoProcessorSetStreamFilter(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_FILTER Filter, BOOL Enable, int Level);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamextension
     [PreserveSig]
@@ -153,19 +153,19 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamoutputrate
     [PreserveSig]
-    void VideoProcessorGetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out D3D11_VIDEO_PROCESSOR_OUTPUT_RATE pOutputRate, [MarshalAs(UnmanagedType.U4)] out bool pRepeatFrame, out DXGI_RATIONAL pCustomRate);
+    void VideoProcessorGetStreamOutputRate(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out D3D11_VIDEO_PROCESSOR_OUTPUT_RATE pOutputRate, out BOOL pRepeatFrame, out DXGI_RATIONAL pCustomRate);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamsourcerect
     [PreserveSig]
-    void VideoProcessorGetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out RECT pRect);
+    void VideoProcessorGetStreamSourceRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled, out RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamdestrect
     [PreserveSig]
-    void VideoProcessorGetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out RECT pRect);
+    void VideoProcessorGetStreamDestRect(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled, out RECT pRect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamalpha
     [PreserveSig]
-    void VideoProcessorGetStreamAlpha(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out float pAlpha);
+    void VideoProcessorGetStreamAlpha(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled, out float pAlpha);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreampalette
     [PreserveSig]
@@ -173,23 +173,23 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreampixelaspectratio
     [PreserveSig]
-    void VideoProcessorGetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out DXGI_RATIONAL pSourceAspectRatio, out DXGI_RATIONAL pDestinationAspectRatio);
+    void VideoProcessorGetStreamPixelAspectRatio(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled, out DXGI_RATIONAL pSourceAspectRatio, out DXGI_RATIONAL pDestinationAspectRatio);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamlumakey
     [PreserveSig]
-    void VideoProcessorGetStreamLumaKey(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out float pLower, out float pUpper);
+    void VideoProcessorGetStreamLumaKey(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled, out float pLower, out float pUpper);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamstereoformat
     [PreserveSig]
-    void VideoProcessorGetStreamStereoFormat(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnable, out D3D11_VIDEO_PROCESSOR_STEREO_FORMAT pFormat, [MarshalAs(UnmanagedType.U4)] out bool pLeftViewFrame0, [MarshalAs(UnmanagedType.U4)] out bool pBaseViewFrame0, out D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE pFlipMode, out int MonoOffset);
+    void VideoProcessorGetStreamStereoFormat(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnable, out D3D11_VIDEO_PROCESSOR_STEREO_FORMAT pFormat, out BOOL pLeftViewFrame0, out BOOL pBaseViewFrame0, out D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE pFlipMode, out int MonoOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamautoprocessingmode
     [PreserveSig]
-    void VideoProcessorGetStreamAutoProcessingMode(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled);
+    void VideoProcessorGetStreamAutoProcessingMode(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamfilter
     [PreserveSig]
-    void VideoProcessorGetStreamFilter(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_FILTER Filter, [MarshalAs(UnmanagedType.U4)] out bool pEnabled, out int pLevel);
+    void VideoProcessorGetStreamFilter(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, D3D11_VIDEO_PROCESSOR_FILTER Filter, out BOOL pEnabled, out int pLevel);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamextension
     [PreserveSig]
@@ -243,9 +243,9 @@ public partial interface ID3D11VideoContext : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorsetstreamrotation
     [PreserveSig]
-    void VideoProcessorSetStreamRotation(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, D3D11_VIDEO_PROCESSOR_ROTATION Rotation);
+    void VideoProcessorSetStreamRotation(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, D3D11_VIDEO_PROCESSOR_ROTATION Rotation);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videocontext-videoprocessorgetstreamrotation
     [PreserveSig]
-    void VideoProcessorGetStreamRotation(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnable, out D3D11_VIDEO_PROCESSOR_ROTATION pRotation);
+    void VideoProcessorGetStreamRotation(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnable, out D3D11_VIDEO_PROCESSOR_ROTATION pRotation);
 }

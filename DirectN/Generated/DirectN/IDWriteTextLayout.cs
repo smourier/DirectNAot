@@ -49,12 +49,12 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-setunderline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUnderline([MarshalAs(UnmanagedType.U4)] bool hasUnderline, DWRITE_TEXT_RANGE textRange);
+    HRESULT SetUnderline(BOOL hasUnderline, DWRITE_TEXT_RANGE textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-setstrikethrough
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStrikethrough([MarshalAs(UnmanagedType.U4)] bool hasStrikethrough, DWRITE_TEXT_RANGE textRange);
+    HRESULT SetStrikethrough(BOOL hasStrikethrough, DWRITE_TEXT_RANGE textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-setdrawingeffect
     [PreserveSig]
@@ -122,12 +122,12 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getunderline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnderline(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasUnderline, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetUnderline(uint currentPosition, out BOOL hasUnderline, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getstrikethrough
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStrikethrough(uint currentPosition, [MarshalAs(UnmanagedType.U4)] out bool hasStrikethrough, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetStrikethrough(uint currentPosition, out BOOL hasStrikethrough, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getdrawingeffect
     [PreserveSig]
@@ -187,12 +187,12 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-hittestpoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HitTestPoint(float pointX, float pointY, [MarshalAs(UnmanagedType.U4)] out bool isTrailingHit, [MarshalAs(UnmanagedType.U4)] out bool isInside, out DWRITE_HIT_TEST_METRICS hitTestMetrics);
+    HRESULT HitTestPoint(float pointX, float pointY, out BOOL isTrailingHit, out BOOL isInside, out DWRITE_HIT_TEST_METRICS hitTestMetrics);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-hittesttextposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HitTestTextPosition(uint textPosition, [MarshalAs(UnmanagedType.U4)] bool isTrailingHit, out float pointX, out float pointY, out DWRITE_HIT_TEST_METRICS hitTestMetrics);
+    HRESULT HitTestTextPosition(uint textPosition, BOOL isTrailingHit, out float pointX, out float pointY, out DWRITE_HIT_TEST_METRICS hitTestMetrics);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-hittesttextrange
     [PreserveSig]

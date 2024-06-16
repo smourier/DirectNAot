@@ -14,7 +14,7 @@ public partial interface IAMStreamControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamcontrol-stopat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StopAt(nint /* optional long* */ ptStop, [MarshalAs(UnmanagedType.U4)] bool bSendExtra, uint dwCookie);
+    HRESULT StopAt(nint /* optional long* */ ptStop, BOOL bSendExtra, uint dwCookie);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamstreamcontrol-getinfo
     [PreserveSig]

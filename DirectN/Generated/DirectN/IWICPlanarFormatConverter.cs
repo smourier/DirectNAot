@@ -14,5 +14,5 @@ public partial interface IWICPlanarFormatConverter : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarformatconverter-canconvert
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanConvert([In][MarshalUsing(CountElementName = nameof(cSrcPlanes))] Guid[] pSrcPixelFormats, uint cSrcPlanes, in Guid dstPixelFormat, [MarshalAs(UnmanagedType.U4)] out bool pfCanConvert);
+    HRESULT CanConvert([In][MarshalUsing(CountElementName = nameof(cSrcPlanes))] Guid[] pSrcPixelFormats, uint cSrcPlanes, in Guid dstPixelFormat, out BOOL pfCanConvert);
 }

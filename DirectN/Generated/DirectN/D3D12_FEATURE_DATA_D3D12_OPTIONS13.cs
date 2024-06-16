@@ -5,21 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS13
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UnrestrictedBufferTextureCopyPitchSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UnrestrictedVertexElementAlignmentSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InvertedViewportHeightFlipsYSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InvertedViewportDepthFlipsZSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool TextureCopyBetweenDimensionsSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AlphaBlendFactorSupported;
+    public BOOL UnrestrictedBufferTextureCopyPitchSupported;
+    public BOOL UnrestrictedVertexElementAlignmentSupported;
+    public BOOL InvertedViewportHeightFlipsYSupported;
+    public BOOL InvertedViewportDepthFlipsZSupported;
+    public BOOL TextureCopyBetweenDimensionsSupported;
+    public BOOL AlphaBlendFactorSupported;
 }

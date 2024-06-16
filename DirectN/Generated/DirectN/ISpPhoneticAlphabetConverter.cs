@@ -22,5 +22,5 @@ public partial interface ISpPhoneticAlphabetConverter
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMaxConvertLength(uint cSrcLength, [MarshalAs(UnmanagedType.U4)] bool bSAPI2UPS, out uint pcMaxDestLength);
+    HRESULT GetMaxConvertLength(uint cSrcLength, BOOL bSAPI2UPS, out uint pcMaxDestLength);
 }

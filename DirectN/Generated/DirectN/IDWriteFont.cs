@@ -25,8 +25,7 @@ public partial interface IDWriteFont
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-issymbolfont
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsSymbolFont();
+    BOOL IsSymbolFont();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-getfacenames
     [PreserveSig]
@@ -36,7 +35,7 @@ public partial interface IDWriteFont
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-getinformationalstrings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInformationalStrings(DWRITE_INFORMATIONAL_STRING_ID informationalStringID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings informationalStrings, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT GetInformationalStrings(DWRITE_INFORMATIONAL_STRING_ID informationalStringID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings informationalStrings, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-getsimulations
     [PreserveSig]
@@ -49,7 +48,7 @@ public partial interface IDWriteFont
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-hascharacter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasCharacter(uint unicodeValue, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT HasCharacter(uint unicodeValue, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefont-createfontface
     [PreserveSig]

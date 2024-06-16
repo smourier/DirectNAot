@@ -11,7 +11,5 @@ public partial struct DXGI_MODE_DESC1
     public DXGI_FORMAT Format;
     public DXGI_MODE_SCANLINE_ORDER ScanlineOrdering;
     public DXGI_MODE_SCALING Scaling;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Stereo;
+    public BOOL Stereo;
 }

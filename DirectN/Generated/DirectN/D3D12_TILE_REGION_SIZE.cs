@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct D3D12_TILE_REGION_SIZE
 {
     public uint NumTiles;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UseBox;
+    public BOOL UseBox;
     public uint Width;
     public ushort Height;
     public ushort Depth;

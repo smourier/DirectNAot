@@ -31,7 +31,5 @@ public partial struct WMT_VIDEOIMAGE_SAMPLE2
     public float fEffectPara2;
     public float fEffectPara3;
     public float fEffectPara4;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bKeepPrevImage;
+    public BOOL bKeepPrevImage;
 }

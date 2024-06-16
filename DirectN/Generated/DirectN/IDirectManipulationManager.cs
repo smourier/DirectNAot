@@ -24,7 +24,7 @@ public partial interface IDirectManipulationManager
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager-processinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessInput(in MSG message, [MarshalAs(UnmanagedType.U4)] out bool handled);
+    HRESULT ProcessInput(in MSG message, out BOOL handled);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager-getupdatemanager
     [PreserveSig]

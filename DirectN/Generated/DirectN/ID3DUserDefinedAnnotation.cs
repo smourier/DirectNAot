@@ -20,6 +20,5 @@ public partial interface ID3DUserDefinedAnnotation
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3duserdefinedannotation-getstatus
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetStatus();
+    BOOL GetStatus();
 }

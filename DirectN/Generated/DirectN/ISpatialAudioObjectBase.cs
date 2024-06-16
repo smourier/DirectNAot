@@ -19,7 +19,7 @@ public partial interface ISpatialAudioObjectBase
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioobjectbase-isactive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsActive([MarshalAs(UnmanagedType.U4)] out bool isActive);
+    HRESULT IsActive(out BOOL isActive);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioobjectbase-getaudioobjecttype
     [PreserveSig]

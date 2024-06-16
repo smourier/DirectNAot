@@ -38,12 +38,12 @@ public partial interface IDVB_SDT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecordeitscheduleflag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordEITScheduleFlag(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordEITScheduleFlag(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecordeitpresentfollowingflag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordEITPresentFollowingFlag(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordEITPresentFollowingFlag(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecordrunningstatus
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IDVB_SDT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecordfreecamode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordFreeCAMode(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordFreeCAMode(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_sdt-getrecordcountofdescriptors
     [PreserveSig]

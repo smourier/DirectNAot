@@ -33,8 +33,7 @@ public partial interface IDXGISwapChain1 : IDXGISwapChain
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-istemporarymonosupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsTemporaryMonoSupported();
+    BOOL IsTemporaryMonoSupported();
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-getrestricttooutput
     [PreserveSig]

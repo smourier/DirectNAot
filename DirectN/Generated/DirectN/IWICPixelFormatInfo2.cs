@@ -9,7 +9,7 @@ public partial interface IWICPixelFormatInfo2 : IWICPixelFormatInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo2-supportstransparency
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SupportsTransparency([MarshalAs(UnmanagedType.U4)] out bool pfSupportsTransparency);
+    HRESULT SupportsTransparency(out BOOL pfSupportsTransparency);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicpixelformatinfo2-getnumericrepresentation
     [PreserveSig]

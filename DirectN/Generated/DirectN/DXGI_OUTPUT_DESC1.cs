@@ -7,9 +7,7 @@ public partial struct DXGI_OUTPUT_DESC1
 {
     public InlineArraySystemChar_32 DeviceName;
     public RECT DesktopCoordinates;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AttachedToDesktop;
+    public BOOL AttachedToDesktop;
     public DXGI_MODE_ROTATION Rotation;
     public HMONITOR Monitor;
     public uint BitsPerColor;

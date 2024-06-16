@@ -8,7 +8,5 @@ public partial struct DWRITE_INLINE_OBJECT_METRICS
     public float width;
     public float height;
     public float baseline;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool supportsSideways;
+    public BOOL supportsSideways;
 }

@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DDSETSTATEOUTINFO
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bSoftwareAutoflip;
+    public BOOL bSoftwareAutoflip;
     public uint dwSurfaceIndex;
     public uint dwVBISurfaceIndex;
 }

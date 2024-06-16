@@ -79,10 +79,10 @@ public partial interface IMFVideoDisplayControl
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-setfullscreen
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFullscreen([MarshalAs(UnmanagedType.U4)] bool fFullscreen);
+    HRESULT SetFullscreen(BOOL fFullscreen);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imfvideodisplaycontrol-getfullscreen
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFullscreen([MarshalAs(UnmanagedType.U4)] out bool pfFullscreen);
+    HRESULT GetFullscreen(out BOOL pfFullscreen);
 }

@@ -34,7 +34,7 @@ public partial interface IMFByteStream
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-isendofstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEndOfStream([MarshalAs(UnmanagedType.U4)] out bool pfEndOfStream);
+    HRESULT IsEndOfStream(out BOOL pfEndOfStream);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-read
     [PreserveSig]

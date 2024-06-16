@@ -39,12 +39,12 @@ public partial interface IMFASFIndexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-getindexstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIndexStatus(in ASF_INDEX_IDENTIFIER pIndexIdentifier, [MarshalAs(UnmanagedType.U4)] out bool pfIsIndexed, nint /* byte array */ pbIndexDescriptor, ref uint pcbIndexDescriptor);
+    HRESULT GetIndexStatus(in ASF_INDEX_IDENTIFIER pIndexIdentifier, out BOOL pfIsIndexed, nint /* byte array */ pbIndexDescriptor, ref uint pcbIndexDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-setindexstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIndexStatus(nint /* byte array */ pbIndexDescriptor, uint cbIndexDescriptor, [MarshalAs(UnmanagedType.U4)] bool fGenerateIndex);
+    HRESULT SetIndexStatus(nint /* byte array */ pbIndexDescriptor, uint cbIndexDescriptor, BOOL fGenerateIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-getseekpositionforvalue
     [PreserveSig]

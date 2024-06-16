@@ -24,5 +24,5 @@ public partial interface IFilterMapper2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltermapper2-enummatchingfilters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumMatchingFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppEnum, uint dwFlags, [MarshalAs(UnmanagedType.U4)] bool bExactMatch, uint dwMerit, [MarshalAs(UnmanagedType.U4)] bool bInputNeeded, uint cInputTypes, nint /* optional Guid* */ pInputTypes, nint /* optional REGPINMEDIUM* */ pMedIn, nint /* optional Guid* */ pPinCategoryIn, [MarshalAs(UnmanagedType.U4)] bool bRender, [MarshalAs(UnmanagedType.U4)] bool bOutputNeeded, uint cOutputTypes, nint /* optional Guid* */ pOutputTypes, nint /* optional REGPINMEDIUM* */ pMedOut, nint /* optional Guid* */ pPinCategoryOut);
+    HRESULT EnumMatchingFilters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumMoniker>))] out IEnumMoniker ppEnum, uint dwFlags, BOOL bExactMatch, uint dwMerit, BOOL bInputNeeded, uint cInputTypes, nint /* optional Guid* */ pInputTypes, nint /* optional REGPINMEDIUM* */ pMedIn, nint /* optional Guid* */ pPinCategoryIn, BOOL bRender, BOOL bOutputNeeded, uint cOutputTypes, nint /* optional Guid* */ pOutputTypes, nint /* optional REGPINMEDIUM* */ pMedOut, nint /* optional Guid* */ pPinCategoryOut);
 }

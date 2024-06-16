@@ -44,8 +44,7 @@ public partial interface IMFMediaSourceExtension
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-istypesupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsTypeSupported(BSTR type);
+    BOOL IsTypeSupported(BSTR type);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-getsourcebuffer
     [PreserveSig]

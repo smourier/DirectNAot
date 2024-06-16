@@ -48,7 +48,7 @@ public static partial class TextServicesFunctions
     {
         nint unk = 0;
         // for some reason (internal to riched?), we can't pass the object itself, we must use a pointer
-        ComObject.WithComInstanceOfType((ITextHost2)host, pp =>
+        ComObject.WithComInstanceOfType<ITextHost2>(host, pp =>
         {
             if (generator == TextServicesGenerator.Office)
             {

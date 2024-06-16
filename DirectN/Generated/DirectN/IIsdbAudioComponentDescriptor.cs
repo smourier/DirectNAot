@@ -44,12 +44,12 @@ public partial interface IIsdbAudioComponentDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbaudiocomponentdescriptor-getesmultilingualflag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetESMultiLingualFlag([MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetESMultiLingualFlag(out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbaudiocomponentdescriptor-getmaincomponentflag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMainComponentFlag([MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetMainComponentFlag(out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbaudiocomponentdescriptor-getqualityindicator
     [PreserveSig]

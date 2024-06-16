@@ -32,13 +32,12 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-isplaybackratesupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsPlaybackRateSupported(double rate);
+    BOOL IsPlaybackRateSupported(double rate);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-framestep
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FrameStep([MarshalAs(UnmanagedType.U4)] bool Forward);
+    HRESULT FrameStep(BOOL Forward);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getresourcecharacteristics
     [PreserveSig]
@@ -63,12 +62,12 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnabled);
+    HRESULT GetStreamSelection(uint dwStreamIndex, out BOOL pEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-setstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enabled);
+    HRESULT SetStreamSelection(uint dwStreamIndex, BOOL Enabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-applystreamselections
     [PreserveSig]
@@ -78,17 +77,17 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-isprotected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsProtected([MarshalAs(UnmanagedType.U4)] out bool pProtected);
+    HRESULT IsProtected(out BOOL pProtected);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-insertvideoeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertVideoEffect(nint pEffect, [MarshalAs(UnmanagedType.U4)] bool fOptional);
+    HRESULT InsertVideoEffect(nint pEffect, BOOL fOptional);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-insertaudioeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertAudioEffect(nint pEffect, [MarshalAs(UnmanagedType.U4)] bool fOptional);
+    HRESULT InsertAudioEffect(nint pEffect, BOOL fOptional);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-removealleffects
     [PreserveSig]
@@ -112,8 +111,7 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-isstereo3d
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsStereo3D();
+    BOOL IsStereo3D();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getstereo3dframepackingmode
     [PreserveSig]
@@ -138,7 +136,7 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-enablewindowlessswapchainmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableWindowlessSwapchainMode([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableWindowlessSwapchainMode(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getvideoswapchainhandle
     [PreserveSig]
@@ -148,7 +146,7 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-enablehorizontalmirrormode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableHorizontalMirrorMode([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableHorizontalMirrorMode(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getaudiostreamcategory
     [PreserveSig]
@@ -173,12 +171,12 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-getrealtimemode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRealTimeMode([MarshalAs(UnmanagedType.U4)] out bool pfEnabled);
+    HRESULT GetRealTimeMode(out BOOL pfEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-setrealtimemode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRealTimeMode([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT SetRealTimeMode(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-setcurrenttimeex
     [PreserveSig]
@@ -188,5 +186,5 @@ public partial interface IMFMediaEngineEx : IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineex-enabletimeupdatetimer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableTimeUpdateTimer([MarshalAs(UnmanagedType.U4)] bool fEnableTimer);
+    HRESULT EnableTimeUpdateTimer(BOOL fEnableTimer);
 }

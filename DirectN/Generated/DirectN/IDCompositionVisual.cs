@@ -74,7 +74,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-addvisual
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddVisual(IDCompositionVisual visual, [MarshalAs(UnmanagedType.U4)] bool insertAbove, IDCompositionVisual? referenceVisual);
+    HRESULT AddVisual(IDCompositionVisual visual, BOOL insertAbove, IDCompositionVisual? referenceVisual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-removevisual
     [PreserveSig]

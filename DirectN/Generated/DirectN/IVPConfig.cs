@@ -9,7 +9,7 @@ public partial interface IVPConfig : IVPBaseConfig
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpconfig-isvpdecimationallowed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsVPDecimationAllowed([MarshalAs(UnmanagedType.U4)] ref bool pbIsDecimationAllowed);
+    HRESULT IsVPDecimationAllowed(ref BOOL pbIsDecimationAllowed);
     
     // https://learn.microsoft.com/windows/win32/api/vpconfig/nf-vpconfig-ivpconfig-setscalingfactors
     [PreserveSig]

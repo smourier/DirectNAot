@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D11_OPTIONS4
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ExtendedNV12SharedTextureSupported;
+    public BOOL ExtendedNV12SharedTextureSupported;
 }

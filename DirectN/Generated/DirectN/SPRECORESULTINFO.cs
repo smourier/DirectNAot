@@ -6,12 +6,8 @@ public partial struct SPRECORESULTINFO
 {
     public uint cbSize;
     public SPRESULTTYPE eResultType;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fHypothesis;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fProprietaryAutoPause;
+    public BOOL fHypothesis;
+    public BOOL fProprietaryAutoPause;
     public ulong ullStreamPosStart;
     public ulong ullStreamPosEnd;
     public SPGRAMMARHANDLE hGrammar;

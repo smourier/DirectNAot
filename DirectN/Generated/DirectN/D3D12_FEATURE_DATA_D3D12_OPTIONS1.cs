@@ -5,15 +5,10 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS1
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool WaveOps;
+    public BOOL WaveOps;
     public uint WaveLaneCountMin;
     public uint WaveLaneCountMax;
     public uint TotalLaneCount;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ExpandedComputeResourceStates;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Int64ShaderOps;
+    public BOOL ExpandedComputeResourceStates;
+    public BOOL Int64ShaderOps;
 }

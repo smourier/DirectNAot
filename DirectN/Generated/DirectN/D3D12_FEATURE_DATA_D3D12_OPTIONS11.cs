@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS11
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AtomicInt64OnDescriptorHeapResourceSupported;
+    public BOOL AtomicInt64OnDescriptorHeapResourceSupported;
 }

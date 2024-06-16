@@ -6,5 +6,5 @@ public partial interface ISpRegDataKey : ISpDataKey
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetKey(HKEY hkey, [MarshalAs(UnmanagedType.U4)] bool fReadOnly);
+    HRESULT SetKey(HKEY hkey, BOOL fReadOnly);
 }

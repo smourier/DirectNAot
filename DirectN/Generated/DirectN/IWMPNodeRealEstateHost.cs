@@ -10,5 +10,5 @@ public partial interface IWMPNodeRealEstateHost
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnFullScreenTransition([MarshalAs(UnmanagedType.U4)] bool fFullScreen);
+    HRESULT OnFullScreenTransition(BOOL fFullScreen);
 }

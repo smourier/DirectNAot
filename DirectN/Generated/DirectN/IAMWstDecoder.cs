@@ -49,12 +49,12 @@ public partial interface IAMWstDecoder
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-getredrawalways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRedrawAlways([MarshalAs(UnmanagedType.U4)] ref bool lpbOption);
+    HRESULT GetRedrawAlways(ref BOOL lpbOption);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-setredrawalways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedrawAlways([MarshalAs(UnmanagedType.U4)] bool bOption);
+    HRESULT SetRedrawAlways(BOOL bOption);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-getdrawbackgroundmode
     [PreserveSig]
@@ -69,22 +69,22 @@ public partial interface IAMWstDecoder
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-setanswermode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAnswerMode([MarshalAs(UnmanagedType.U4)] bool bAnswer);
+    HRESULT SetAnswerMode(BOOL bAnswer);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-getanswermode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAnswerMode([MarshalAs(UnmanagedType.U4)] ref bool pbAnswer);
+    HRESULT GetAnswerMode(ref BOOL pbAnswer);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-setholdpage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetHoldPage([MarshalAs(UnmanagedType.U4)] bool bHoldPage);
+    HRESULT SetHoldPage(BOOL bHoldPage);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-getholdpage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHoldPage([MarshalAs(UnmanagedType.U4)] ref bool pbHoldPage);
+    HRESULT GetHoldPage(ref BOOL pbHoldPage);
     
     // https://learn.microsoft.com/windows/win32/api/iwstdec/nf-iwstdec-iamwstdecoder-getcurrentpage
     [PreserveSig]

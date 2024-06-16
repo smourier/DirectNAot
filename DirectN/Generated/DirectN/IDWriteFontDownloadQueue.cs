@@ -18,8 +18,7 @@ public partial interface IDWriteFontDownloadQueue
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-isempty
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsEmpty();
+    BOOL IsEmpty();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-begindownload
     [PreserveSig]

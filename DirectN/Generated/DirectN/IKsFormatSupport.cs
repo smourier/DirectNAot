@@ -9,7 +9,7 @@ public partial interface IKsFormatSupport
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iksformatsupport-isformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsFormatSupported(ref KSDATAFORMAT pKsFormat, uint cbFormat, [MarshalAs(UnmanagedType.U4)] out bool pbSupported);
+    HRESULT IsFormatSupported(ref KSDATAFORMAT pKsFormat, uint cbFormat, out BOOL pbSupported);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iksformatsupport-getdevicepreferredformat
     [PreserveSig]

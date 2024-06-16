@@ -40,35 +40,32 @@ public partial interface IDWriteFontFace3 : IDWriteFontFace2
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-getinformationalstrings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInformationalStrings(DWRITE_INFORMATIONAL_STRING_ID informationalStringID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings informationalStrings, [MarshalAs(UnmanagedType.U4)] out bool exists);
+    HRESULT GetInformationalStrings(DWRITE_INFORMATIONAL_STRING_ID informationalStringID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteLocalizedStrings>))] out IDWriteLocalizedStrings informationalStrings, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-hascharacter
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasCharacter(uint unicodeValue);
+    BOOL HasCharacter(uint unicodeValue);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-getrecommendedrenderingmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecommendedRenderingMode(float fontEmSize, float dpiX, float dpiY, nint /* optional DWRITE_MATRIX* */ transform, [MarshalAs(UnmanagedType.U4)] bool isSideways, DWRITE_OUTLINE_THRESHOLD outlineThreshold, DWRITE_MEASURING_MODE measuringMode, IDWriteRenderingParams? renderingParams, out DWRITE_RENDERING_MODE1 renderingMode, out DWRITE_GRID_FIT_MODE gridFitMode);
+    HRESULT GetRecommendedRenderingMode(float fontEmSize, float dpiX, float dpiY, nint /* optional DWRITE_MATRIX* */ transform, BOOL isSideways, DWRITE_OUTLINE_THRESHOLD outlineThreshold, DWRITE_MEASURING_MODE measuringMode, IDWriteRenderingParams? renderingParams, out DWRITE_RENDERING_MODE1 renderingMode, out DWRITE_GRID_FIT_MODE gridFitMode);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-ischaracterlocal
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsCharacterLocal(uint unicodeValue);
+    BOOL IsCharacterLocal(uint unicodeValue);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-isglyphlocal
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsGlyphLocal(ushort glyphId);
+    BOOL IsGlyphLocal(ushort glyphId);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-arecharacterslocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AreCharactersLocal([MarshalUsing(CountElementName = nameof(characterCount))] PWSTR characters, uint characterCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
+    HRESULT AreCharactersLocal([MarshalUsing(CountElementName = nameof(characterCount))] PWSTR characters, uint characterCount, BOOL enqueueIfNotLocal, out BOOL isLocal);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontface3-areglyphslocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AreGlyphsLocal([In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, [MarshalAs(UnmanagedType.U4)] bool enqueueIfNotLocal, [MarshalAs(UnmanagedType.U4)] out bool isLocal);
+    HRESULT AreGlyphsLocal([In][MarshalUsing(CountElementName = nameof(glyphCount))] ushort[] glyphIndices, uint glyphCount, BOOL enqueueIfNotLocal, out BOOL isLocal);
 }

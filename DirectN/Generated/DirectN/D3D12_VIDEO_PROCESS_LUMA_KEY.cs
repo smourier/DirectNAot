@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_PROCESS_LUMA_KEY
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public float Lower;
     public float Upper;
 }

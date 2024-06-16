@@ -19,7 +19,7 @@ public partial interface IIsdbDownloadContentDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbdownloadcontentdescriptor-getflags
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFlags([MarshalAs(UnmanagedType.U4)] out bool pfReboot, [MarshalAs(UnmanagedType.U4)] out bool pfAddOn, [MarshalAs(UnmanagedType.U4)] out bool pfCompatibility, [MarshalAs(UnmanagedType.U4)] out bool pfModuleInfo, [MarshalAs(UnmanagedType.U4)] out bool pfTextInfo);
+    HRESULT GetFlags(out BOOL pfReboot, out BOOL pfAddOn, out BOOL pfCompatibility, out BOOL pfModuleInfo, out BOOL pfTextInfo);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-iisdbdownloadcontentdescriptor-getcomponentsize
     [PreserveSig]

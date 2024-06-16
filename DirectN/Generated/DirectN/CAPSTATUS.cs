@@ -7,33 +7,19 @@ public partial struct CAPSTATUS
 {
     public uint uiImageWidth;
     public uint uiImageHeight;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fLiveWindow;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fOverlayWindow;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fScale;
+    public BOOL fLiveWindow;
+    public BOOL fOverlayWindow;
+    public BOOL fScale;
     public POINT ptScroll;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fUsingDefaultPalette;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fAudioHardware;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fCapFileExists;
+    public BOOL fUsingDefaultPalette;
+    public BOOL fAudioHardware;
+    public BOOL fCapFileExists;
     public uint dwCurrentVideoFrame;
     public uint dwCurrentVideoFramesDropped;
     public uint dwCurrentWaveSamples;
     public uint dwCurrentTimeElapsedMS;
     public HPALETTE hPalCurrent;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fCapturingNow;
+    public BOOL fCapturingNow;
     public uint dwReturn;
     public uint wNumVideoAllocated;
     public uint wNumAudioAllocated;

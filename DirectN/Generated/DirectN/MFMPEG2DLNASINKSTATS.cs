@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct MFMPEG2DLNASINKSTATS
 {
     public ulong cBytesWritten;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fPAL;
+    public BOOL fPAL;
     public uint fccVideo;
     public uint dwVideoWidth;
     public uint dwVideoHeight;

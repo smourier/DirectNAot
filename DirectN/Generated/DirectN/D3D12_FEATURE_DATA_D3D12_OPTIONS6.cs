@@ -5,14 +5,9 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS6
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AdditionalShadingRatesSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PerPrimitiveShadingRateSupportedWithViewportIndexing;
+    public BOOL AdditionalShadingRatesSupported;
+    public BOOL PerPrimitiveShadingRateSupportedWithViewportIndexing;
     public D3D12_VARIABLE_SHADING_RATE_TIER VariableShadingRateTier;
     public uint ShadingRateImageTileSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool BackgroundProcessingSupported;
+    public BOOL BackgroundProcessingSupported;
 }

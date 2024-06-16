@@ -91,7 +91,7 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
             return _factory.CreateCustomFontFileReference(stream.Key, stream.KeySize, _loader, out fontFile);
         }
 
-        public HRESULT MoveNext(out bool hasCurrentFile)
+        public HRESULT MoveNext(out BOOL hasCurrentFile)
         {
             try
             {

@@ -47,7 +47,7 @@ public partial interface IRichEditOle
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-setlinkavailable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLinkAvailable(int iob, [MarshalAs(UnmanagedType.U4)] bool fAvailable);
+    HRESULT SetLinkAvailable(int iob, BOOL fAvailable);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-setdvaspect
     [PreserveSig]
@@ -72,7 +72,7 @@ public partial interface IRichEditOle
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-contextsensitivehelp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ContextSensitiveHelp([MarshalAs(UnmanagedType.U4)] bool fEnterMode);
+    HRESULT ContextSensitiveHelp(BOOL fEnterMode);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-getclipboarddata
     [PreserveSig]

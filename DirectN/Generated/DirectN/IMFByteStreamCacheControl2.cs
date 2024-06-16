@@ -19,5 +19,5 @@ public partial interface IMFByteStreamCacheControl2 : IMFByteStreamCacheControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamcachecontrol2-isbackgroundtransferactive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsBackgroundTransferActive([MarshalAs(UnmanagedType.U4)] out bool pfActive);
+    HRESULT IsBackgroundTransferActive(out BOOL pfActive);
 }

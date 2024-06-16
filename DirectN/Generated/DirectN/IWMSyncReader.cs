@@ -43,12 +43,12 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-setreadstreamsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReadStreamSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] bool fCompressed);
+    HRESULT SetReadStreamSamples(ushort wStreamNum, BOOL fCompressed);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getreadstreamsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReadStreamSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] out bool pfCompressed);
+    HRESULT GetReadStreamSamples(ushort wStreamNum, out BOOL pfCompressed);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getoutputsetting
     [PreserveSig]

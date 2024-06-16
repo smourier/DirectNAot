@@ -38,7 +38,7 @@ public partial interface IAtscPsipParser
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatscpsipparser-getvct
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVCT(byte tableId, [MarshalAs(UnmanagedType.U4)] bool fGetNextTable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IATSC_VCT>))] out IATSC_VCT ppVCT);
+    HRESULT GetVCT(byte tableId, BOOL fGetNextTable, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IATSC_VCT>))] out IATSC_VCT ppVCT);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatscpsipparser-geteit
     [PreserveSig]

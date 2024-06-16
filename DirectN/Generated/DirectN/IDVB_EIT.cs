@@ -68,7 +68,7 @@ public partial interface IDVB_EIT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_eit-getrecordfreecamode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordFreeCAMode(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordFreeCAMode(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_eit-getrecordcountofdescriptors
     [PreserveSig]

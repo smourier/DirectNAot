@@ -14,7 +14,7 @@ public partial interface IAMGraphStreams
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphstreams-syncusingstreamoffset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SyncUsingStreamOffset([MarshalAs(UnmanagedType.U4)] bool bUseStreamOffset);
+    HRESULT SyncUsingStreamOffset(BOOL bUseStreamOffset);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphstreams-setmaxgraphlatency
     [PreserveSig]

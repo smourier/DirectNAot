@@ -22,9 +22,9 @@ public partial interface IDvbServiceAttributeDescriptor
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordNumericSelectionFlag(byte bRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordNumericSelectionFlag(byte bRecordIndex, out BOOL pfVal);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordVisibleServiceFlag(byte bRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordVisibleServiceFlag(byte bRecordIndex, out BOOL pfVal);
 }

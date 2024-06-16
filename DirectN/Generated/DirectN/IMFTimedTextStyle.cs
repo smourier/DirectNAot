@@ -13,8 +13,7 @@ public partial interface IMFTimedTextStyle
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-isexternal
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsExternal();
+    BOOL IsExternal();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-getfontfamily
     [PreserveSig]
@@ -39,7 +38,7 @@ public partial interface IMFTimedTextStyle
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-getshowbackgroundalways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetShowBackgroundAlways([MarshalAs(UnmanagedType.U4)] out bool showBackgroundAlways);
+    HRESULT GetShowBackgroundAlways(out BOOL showBackgroundAlways);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-getfontstyle
     [PreserveSig]
@@ -49,12 +48,12 @@ public partial interface IMFTimedTextStyle
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-getbold
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBold([MarshalAs(UnmanagedType.U4)] out bool bold);
+    HRESULT GetBold(out BOOL bold);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-getrighttoleft
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRightToLeft([MarshalAs(UnmanagedType.U4)] out bool rightToLeft);
+    HRESULT GetRightToLeft(out BOOL rightToLeft);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextstyle-gettextalignment
     [PreserveSig]

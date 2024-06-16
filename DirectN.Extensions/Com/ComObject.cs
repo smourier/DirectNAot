@@ -89,10 +89,10 @@ public abstract class ComObject : IComObject
         if (unwrapped == null)
             return 0;
 
-        if (unwrapped is nint ptr)
-            return ptr;
+        if (unwrapped is nint unk)
+            return unk;
 
-        ComWrappers.TryGetComInstance(obj, out var unk);
+        ComWrappers.TryGetComInstance(unwrapped, out unk);
         return unk;
     }
 
@@ -105,7 +105,7 @@ public abstract class ComObject : IComObject
         var iid = typeof(T).GUID;
         try
         {
-            _ = Marshal.QueryInterface(unk, ref iid, out var iface);
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out var iface));
             return iface;
         }
         finally
@@ -151,7 +151,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstanceOfType<T>(T? obj, Action<nint> action)
+    public static void WithComInstanceOfType<T>(object? obj, Action<nint> action)
     {
         ArgumentNullException.ThrowIfNull(action);
         nint iface = 0;
@@ -159,7 +159,7 @@ public abstract class ComObject : IComObject
         if (unk != 0)
         {
             var iid = typeof(T).GUID;
-            _ = Marshal.QueryInterface(unk, ref iid, out iface);
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out iface));
         }
 
         try
@@ -181,7 +181,7 @@ public abstract class ComObject : IComObject
         if (unk != 0)
         {
             var iid = typeof(Ti).GUID;
-            _ = Marshal.QueryInterface(unk, ref iid, out iface);
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out iface));
         }
 
         try
@@ -213,8 +213,9 @@ public abstract class ComObject : IComObject
             if (unk != 0)
             {
                 var iid = typeof(T).GUID;
-                _ = Marshal.QueryInterface(unk, ref iid, out iface);
+                var hr = Marshal.QueryInterface(unk, ref iid, out iface);
                 Marshal.Release(unk);
+                Marshal.ThrowExceptionForHR(hr);
             }
             pointers[i++] = iface;
         }
@@ -254,8 +255,9 @@ public abstract class ComObject : IComObject
             if (unk != 0)
             {
                 var iid = typeof(Ti).GUID;
-                _ = Marshal.QueryInterface(unk, ref iid, out iface);
+                var hr = Marshal.QueryInterface(unk, ref iid, out iface);
                 Marshal.Release(unk);
+                Marshal.ThrowExceptionForHR(hr);
             }
             pointers[i++] = iface;
         }

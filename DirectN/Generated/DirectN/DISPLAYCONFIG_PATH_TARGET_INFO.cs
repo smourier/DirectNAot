@@ -29,8 +29,6 @@ public partial struct DISPLAYCONFIG_PATH_TARGET_INFO
     public DISPLAYCONFIG_SCALING scaling;
     public DISPLAYCONFIG_RATIONAL refreshRate;
     public DISPLAYCONFIG_SCANLINE_ORDERING scanLineOrdering;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool targetAvailable;
+    public BOOL targetAvailable;
     public uint statusFlags;
 }

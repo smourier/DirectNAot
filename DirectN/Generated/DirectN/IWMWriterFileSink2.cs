@@ -18,7 +18,7 @@ public partial interface IWMWriterFileSink2 : IWMWriterFileSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink2-isstopped
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsStopped([MarshalAs(UnmanagedType.U4)] out bool pfStopped);
+    HRESULT IsStopped(out BOOL pfStopped);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink2-getfileduration
     [PreserveSig]
@@ -38,5 +38,5 @@ public partial interface IWMWriterFileSink2 : IWMWriterFileSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterfilesink2-isclosed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsClosed([MarshalAs(UnmanagedType.U4)] out bool pfClosed);
+    HRESULT IsClosed(out BOOL pfClosed);
 }

@@ -19,7 +19,7 @@ public partial interface IVMRImageCompositor
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-setstreammediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamMediaType(uint dwStrmID, in AM_MEDIA_TYPE pmt, [MarshalAs(UnmanagedType.U4)] bool fTexture);
+    HRESULT SetStreamMediaType(uint dwStrmID, in AM_MEDIA_TYPE pmt, BOOL fTexture);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-compositeimage
     [PreserveSig]

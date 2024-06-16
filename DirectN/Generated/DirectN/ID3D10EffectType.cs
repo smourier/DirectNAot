@@ -7,8 +7,7 @@ public partial interface ID3D10EffectType
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effecttype-isvalid
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsValid();
+    BOOL IsValid();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effecttype-getdesc
     [PreserveSig]

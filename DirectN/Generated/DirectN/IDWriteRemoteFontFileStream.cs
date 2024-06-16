@@ -13,7 +13,7 @@ public partial interface IDWriteRemoteFontFileStream : IDWriteFontFileStream
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-getfilefragmentlocality
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFileFragmentLocality(ulong fileOffset, ulong fragmentSize, [MarshalAs(UnmanagedType.U4)] out bool isLocal, ref ulong partialSize);
+    HRESULT GetFileFragmentLocality(ulong fileOffset, ulong fragmentSize, out BOOL isLocal, ref ulong partialSize);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfilestream-getlocality
     [PreserveSig]

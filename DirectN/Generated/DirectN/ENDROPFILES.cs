@@ -8,7 +8,5 @@ public partial struct ENDROPFILES
     public NMHDR nmhdr;
     public HANDLE hDrop;
     public int cp;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fProtected;
+    public BOOL fProtected;
 }

@@ -29,7 +29,7 @@ public partial interface IOleInPlaceFrame : IOleInPlaceUIWindow
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceframe-enablemodeless
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableModeless([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT EnableModeless(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceframe-translateaccelerator
     [PreserveSig]

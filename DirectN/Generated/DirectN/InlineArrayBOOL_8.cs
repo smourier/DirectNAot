@@ -6,5 +6,5 @@ public partial struct InlineArrayBOOL_8
 {
     public const int Length = 8;
     
-    public bool Data;
+    public BOOL Data;
 }

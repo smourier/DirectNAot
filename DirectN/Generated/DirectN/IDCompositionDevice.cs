@@ -24,7 +24,7 @@ public partial interface IDCompositionDevice
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createtargetforhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTargetForHwnd(HWND hwnd, [MarshalAs(UnmanagedType.U4)] bool topmost, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionTarget>))] out IDCompositionTarget target);
+    HRESULT CreateTargetForHwnd(HWND hwnd, BOOL topmost, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionTarget>))] out IDCompositionTarget target);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createvisual
     [PreserveSig]
@@ -124,5 +124,5 @@ public partial interface IDCompositionDevice
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-checkdevicestate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckDeviceState([MarshalAs(UnmanagedType.U4)] out bool pfValid);
+    HRESULT CheckDeviceState(out BOOL pfValid);
 }

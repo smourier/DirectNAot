@@ -10,11 +10,11 @@ public partial interface IAudioAmbisonicsControl
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetHeadTracking([MarshalAs(UnmanagedType.U4)] bool bEnableHeadTracking);
+    HRESULT SetHeadTracking(BOOL bEnableHeadTracking);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHeadTracking([MarshalAs(UnmanagedType.U4)] out bool pbEnableHeadTracking);
+    HRESULT GetHeadTracking(out BOOL pbEnableHeadTracking);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

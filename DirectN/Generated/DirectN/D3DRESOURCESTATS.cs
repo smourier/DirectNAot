@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DRESOURCESTATS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bThrashing;
+    public BOOL bThrashing;
     public uint ApproxBytesDownloaded;
     public uint NumEvicts;
     public uint NumVidCreates;

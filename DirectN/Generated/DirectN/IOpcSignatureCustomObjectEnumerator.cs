@@ -9,12 +9,12 @@ public partial interface IOpcSignatureCustomObjectEnumerator
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectenumerator-movenext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveNext([MarshalAs(UnmanagedType.U4)] out bool hasNext);
+    HRESULT MoveNext(out BOOL hasNext);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectenumerator-moveprevious
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MovePrevious([MarshalAs(UnmanagedType.U4)] out bool hasPrevious);
+    HRESULT MovePrevious(out BOOL hasPrevious);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectenumerator-getcurrent
     [PreserveSig]

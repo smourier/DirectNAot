@@ -104,12 +104,12 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getishyperlinktarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsHyperlinkTarget([MarshalAs(UnmanagedType.U4)] out bool isHyperlink);
+    HRESULT GetIsHyperlinkTarget(out BOOL isHyperlink);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-setishyperlinktarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsHyperlinkTarget([MarshalAs(UnmanagedType.U4)] bool isHyperlink);
+    HRESULT SetIsHyperlinkTarget(BOOL isHyperlink);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-gethyperlinknavigateuri
     [PreserveSig]

@@ -22,16 +22,10 @@ public partial struct D3D11_TRACE_STATS
     public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMask;
     public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMaskDepth;
     public InlineArrayUInt64_4 PixelCoverageMaskAfterA2CSampleMaskDepthStencil;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PSOutputsDepth;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PSOutputsMask;
+    public BOOL PSOutputsDepth;
+    public BOOL PSOutputsMask;
     public D3D11_TRACE_GS_INPUT_PRIMITIVE GSInputPrimitive;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool GSInputsPrimitiveID;
+    public BOOL GSInputsPrimitiveID;
     public InlineArrayByte_32 HSOutputPatchConstantMask;
     public InlineArrayByte_32 DSInputPatchConstantMask;
 }

@@ -12,7 +12,5 @@ public partial struct D3D11_CLASS_INSTANCE_DESC
     public uint BaseConstantBufferOffset;
     public uint BaseTexture;
     public uint BaseSampler;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Created;
+    public BOOL Created;
 }

@@ -64,12 +64,12 @@ public partial interface IAudioEndpointVolume
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-setmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool bMute, in Guid pguidEventContext);
+    HRESULT SetMute(BOOL bMute, in Guid pguidEventContext);
     
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-getmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMute([MarshalAs(UnmanagedType.U4)] out bool pbMute);
+    HRESULT GetMute(out BOOL pbMute);
     
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-getvolumestepinfo
     [PreserveSig]

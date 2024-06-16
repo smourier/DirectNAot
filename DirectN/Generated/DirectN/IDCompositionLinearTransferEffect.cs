@@ -28,7 +28,7 @@ public partial interface IDCompositionLinearTransferEffect : IDCompositionFilter
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setreddisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedDisable([MarshalAs(UnmanagedType.U4)] bool redDisable);
+    HRESULT SetRedDisable(BOOL redDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setgreenyintercept(idcompositionanimation)
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IDCompositionLinearTransferEffect : IDCompositionFilter
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setgreendisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGreenDisable([MarshalAs(UnmanagedType.U4)] bool greenDisable);
+    HRESULT SetGreenDisable(BOOL greenDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setblueyintercept(idcompositionanimation)
     [PreserveSig]
@@ -78,7 +78,7 @@ public partial interface IDCompositionLinearTransferEffect : IDCompositionFilter
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setbluedisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBlueDisable([MarshalAs(UnmanagedType.U4)] bool blueDisable);
+    HRESULT SetBlueDisable(BOOL blueDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setalphayintercept(float)
     [PreserveSig]
@@ -103,10 +103,10 @@ public partial interface IDCompositionLinearTransferEffect : IDCompositionFilter
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setalphadisable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAlphaDisable([MarshalAs(UnmanagedType.U4)] bool alphaDisable);
+    HRESULT SetAlphaDisable(BOOL alphaDisable);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionlineartransfereffect-setclampoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clampOutput);
+    HRESULT SetClampOutput(BOOL clampOutput);
 }

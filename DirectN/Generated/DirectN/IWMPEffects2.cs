@@ -33,5 +33,5 @@ public partial interface IWMPEffects2 : IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects2-renderwindowed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderWindowed(ref TimedLevel pData, [MarshalAs(UnmanagedType.U4)] bool fRequiredRender);
+    HRESULT RenderWindowed(ref TimedLevel pData, BOOL fRequiredRender);
 }

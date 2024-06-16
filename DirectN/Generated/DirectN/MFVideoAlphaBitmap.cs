@@ -15,8 +15,7 @@ public partial struct MFVideoAlphaBitmap
         public nint pDDS;
     }
     
-    [MarshalAs(UnmanagedType.U4)]
-    public bool GetBitmapFromDC;
+    public BOOL GetBitmapFromDC;
     public _bitmap_e__Union bitmap;
     public MFVideoAlphaBitmapParams @params;
 }

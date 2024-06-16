@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public partial struct ATSC_FILTER_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fSpecifyEtmId;
+    public BOOL fSpecifyEtmId;
     public uint EtmId;
 }

@@ -28,5 +28,5 @@ public partial interface IDCompositionColorMatrixEffect : IDCompositionFilterEff
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioncolormatrixeffect-setclampoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClampOutput([MarshalAs(UnmanagedType.U4)] bool clamp);
+    HRESULT SetClampOutput(BOOL clamp);
 }

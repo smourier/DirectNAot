@@ -43,27 +43,27 @@ public partial interface IWMRegisteredDevice
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-approve
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Approve([MarshalAs(UnmanagedType.U4)] bool fApprove);
+    HRESULT Approve(BOOL fApprove);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-isvalid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsValid([MarshalAs(UnmanagedType.U4)] out bool pfValid);
+    HRESULT IsValid(out BOOL pfValid);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-isapproved
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsApproved([MarshalAs(UnmanagedType.U4)] out bool pfApproved);
+    HRESULT IsApproved(out BOOL pfApproved);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-iswmdrmcompliant
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsWmdrmCompliant([MarshalAs(UnmanagedType.U4)] out bool pfCompliant);
+    HRESULT IsWmdrmCompliant(out BOOL pfCompliant);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-isopened
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsOpened([MarshalAs(UnmanagedType.U4)] out bool pfOpened);
+    HRESULT IsOpened(out BOOL pfOpened);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistereddevice-open
     [PreserveSig]

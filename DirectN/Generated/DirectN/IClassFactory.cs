@@ -14,5 +14,5 @@ public partial interface IClassFactory
     // https://learn.microsoft.com/windows/win32/api/unknwn/nf-unknwn-iclassfactory-lockserver
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockServer([MarshalAs(UnmanagedType.U4)] bool fLock);
+    HRESULT LockServer(BOOL fLock);
 }

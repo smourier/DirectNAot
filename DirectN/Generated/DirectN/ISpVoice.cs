@@ -6,7 +6,7 @@ public partial interface ISpVoice : ISpEventSource
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutput(nint pUnkOutput, [MarshalAs(UnmanagedType.U4)] bool fAllowFormatChanges);
+    HRESULT SetOutput(nint pUnkOutput, BOOL fAllowFormatChanges);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -97,7 +97,7 @@ public partial interface ISpVoice : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, [MarshalAs(UnmanagedType.U4)] ref bool pfSupported);
+    HRESULT IsUISupported(PWSTR pszTypeOfUI, nint pvExtraData, uint cbExtraData, ref BOOL pfSupported);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_DECODE_CONVERSION_ARGUMENTS1
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public nint pReferenceTexture2D;
     public uint ReferenceSubresource;
     public DXGI_COLOR_SPACE_TYPE OutputColorSpace;

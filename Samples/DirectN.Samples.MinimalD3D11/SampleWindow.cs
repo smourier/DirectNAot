@@ -96,7 +96,9 @@ namespace DirectN.Samples.MinimalD3D11
             Interlocked.Exchange(ref _framebufferDSV, null)?.Dispose();
         }
 
+#pragma warning disable IDE0060 // Remove unused parameter
         private void CreateDVResources(IComObject<ID3D11Device> device, IComObject<IDXGISwapChain1> swapChain)
+#pragma warning restore IDE0060 // Remove unused parameter
         {
             var shadowmapDepthDesc = new D3D11_TEXTURE2D_DESC
             {

@@ -29,12 +29,12 @@ public partial interface IMFCapturePreviewSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-getmirrorstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMirrorState([MarshalAs(UnmanagedType.U4)] out bool pfMirrorState);
+    HRESULT GetMirrorState(out BOOL pfMirrorState);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-setmirrorstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMirrorState([MarshalAs(UnmanagedType.U4)] bool fMirrorState);
+    HRESULT SetMirrorState(BOOL fMirrorState);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-getrotation
     [PreserveSig]

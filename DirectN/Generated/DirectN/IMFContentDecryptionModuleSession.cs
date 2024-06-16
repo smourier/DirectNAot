@@ -24,7 +24,7 @@ public partial interface IMFContentDecryptionModuleSession
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulesession-load
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(PWSTR sessionId, [MarshalAs(UnmanagedType.U4)] out bool loaded);
+    HRESULT Load(PWSTR sessionId, out BOOL loaded);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulesession-generaterequest
     [PreserveSig]

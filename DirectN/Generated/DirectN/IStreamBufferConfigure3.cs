@@ -9,12 +9,12 @@ public partial interface IStreamBufferConfigure3 : IStreamBufferConfigure2
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferconfigure3-setstartrecconfig
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStartRecConfig([MarshalAs(UnmanagedType.U4)] bool fStartStopsCur);
+    HRESULT SetStartRecConfig(BOOL fStartStopsCur);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferconfigure3-getstartrecconfig
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStartRecConfig([MarshalAs(UnmanagedType.U4)] out bool pfStartStopsCur);
+    HRESULT GetStartRecConfig(out BOOL pfStartStopsCur);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferconfigure3-setnamespace
     [PreserveSig]

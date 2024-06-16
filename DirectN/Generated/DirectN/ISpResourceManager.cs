@@ -10,5 +10,5 @@ public partial interface ISpResourceManager : IServiceProvider
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject(in Guid guidServiceId, in Guid ObjectCLSID, in Guid ObjectIID, [MarshalAs(UnmanagedType.U4)] bool fReleaseWhenLastExternalRefReleased, out nint ppObject);
+    HRESULT GetObject(in Guid guidServiceId, in Guid ObjectCLSID, in Guid ObjectIID, BOOL fReleaseWhenLastExternalRefReleased, out nint ppObject);
 }

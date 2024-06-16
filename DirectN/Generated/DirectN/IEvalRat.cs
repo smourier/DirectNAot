@@ -19,12 +19,12 @@ public partial interface IEvalRat : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tvratings/nf-tvratings-ievalrat-get_blockunrated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_BlockUnRated([MarshalAs(UnmanagedType.U4)] out bool pfBlockUnRatedShows);
+    HRESULT get_BlockUnRated(out BOOL pfBlockUnRatedShows);
     
     // https://learn.microsoft.com/windows/win32/api/tvratings/nf-tvratings-ievalrat-put_blockunrated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_BlockUnRated([MarshalAs(UnmanagedType.U4)] bool fBlockUnRatedShows);
+    HRESULT put_BlockUnRated(BOOL fBlockUnRatedShows);
     
     // https://learn.microsoft.com/windows/win32/api/tvratings/nf-tvratings-ievalrat-mostrestrictiverating
     [PreserveSig]

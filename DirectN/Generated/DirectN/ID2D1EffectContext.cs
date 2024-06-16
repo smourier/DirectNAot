@@ -62,8 +62,7 @@ public partial interface ID2D1EffectContext
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-isshaderloaded
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsShaderLoaded(in Guid shaderId);
+    BOOL IsShaderLoaded(in Guid shaderId);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createresourcetexture
     [PreserveSig]
@@ -107,6 +106,5 @@ public partial interface ID2D1EffectContext
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-isbufferprecisionsupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsBufferPrecisionSupported(D2D1_BUFFER_PRECISION bufferPrecision);
+    BOOL IsBufferPrecisionSupported(D2D1_BUFFER_PRECISION bufferPrecision);
 }

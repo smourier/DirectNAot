@@ -8,7 +8,5 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_RATE_CONTROL_MODE
     public uint NodeIndex;
     public D3D12_VIDEO_ENCODER_CODEC Codec;
     public D3D12_VIDEO_ENCODER_RATE_CONTROL_MODE RateControlMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
 }

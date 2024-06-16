@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool LPBMCALLBACKFN(uint param0, uint param1, LPARAM param2);
+public delegate BOOL LPBMCALLBACKFN(uint param0, uint param1, LPARAM param2);

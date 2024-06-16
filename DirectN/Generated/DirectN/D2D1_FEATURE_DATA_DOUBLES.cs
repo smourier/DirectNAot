@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D2D1_FEATURE_DATA_DOUBLES
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool doublePrecisionFloatShaderOps;
+    public BOOL doublePrecisionFloatShaderOps;
 }

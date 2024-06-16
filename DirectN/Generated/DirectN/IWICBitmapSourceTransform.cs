@@ -24,5 +24,5 @@ public partial interface IWICBitmapSourceTransform
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapsourcetransform-doessupporttransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportTransform(WICBitmapTransformOptions dstTransform, [MarshalAs(UnmanagedType.U4)] out bool pfIsSupported);
+    HRESULT DoesSupportTransform(WICBitmapTransformOptions dstTransform, out BOOL pfIsSupported);
 }

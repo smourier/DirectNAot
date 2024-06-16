@@ -9,12 +9,12 @@ public partial interface IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-getstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pfSelected);
+    HRESULT GetStreamSelection(uint dwStreamIndex, out BOOL pfSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-setstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamSelection(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] bool fSelected);
+    HRESULT SetStreamSelection(uint dwStreamIndex, BOOL fSelected);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-getnativemediatype
     [PreserveSig]

@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct DD_MAPMEMORYDATA
 {
     public nint lpDD;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bMap;
+    public BOOL bMap;
     public HANDLE hProcess;
     public nuint fpProcess;
     public HRESULT ddRVal;

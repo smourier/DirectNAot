@@ -15,51 +15,43 @@ public partial interface ITextHost
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowscrollbar
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxShowScrollBar(int fnBar, [MarshalAs(UnmanagedType.U4)] bool fShow);
+    BOOL TxShowScrollBar(int fnBar, BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txenablescrollbar
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
+    BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollrange
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, [MarshalAs(UnmanagedType.U4)] bool fRedraw);
+    BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollpos
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxSetScrollPos(int fnBar, int nPos, [MarshalAs(UnmanagedType.U4)] bool fRedraw);
+    BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txinvalidaterect
     [PreserveSig]
-    void TxInvalidateRect(ref RECT prc, [MarshalAs(UnmanagedType.U4)] bool fMode);
+    void TxInvalidateRect(ref RECT prc, BOOL fMode);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txviewchange
     [PreserveSig]
-    void TxViewChange([MarshalAs(UnmanagedType.U4)] bool fUpdate);
+    void TxViewChange(BOOL fUpdate);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txcreatecaret
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
+    BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowcaret
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxShowCaret([MarshalAs(UnmanagedType.U4)] bool fShow);
+    BOOL TxShowCaret(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcaretpos
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxSetCaretPos(int x, int y);
+    BOOL TxSetCaretPos(int x, int y);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsettimer
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxSetTimer(uint idTimer, uint uTimeout);
+    BOOL TxSetTimer(uint idTimer, uint uTimeout);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txkilltimer
     [PreserveSig]
@@ -71,7 +63,7 @@ public partial interface ITextHost
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcapture
     [PreserveSig]
-    void TxSetCapture([MarshalAs(UnmanagedType.U4)] bool fCapture);
+    void TxSetCapture(BOOL fCapture);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetfocus
     [PreserveSig]
@@ -79,17 +71,15 @@ public partial interface ITextHost
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcursor
     [PreserveSig]
-    void TxSetCursor(HCURSOR hcur, [MarshalAs(UnmanagedType.U4)] bool fText);
+    void TxSetCursor(HCURSOR hcur, BOOL fText);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txscreentoclient
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxScreenToClient(ref POINT lppt);
+    BOOL TxScreenToClient(ref POINT lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txclienttoscreen
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool TxClientToScreen(ref POINT lppt);
+    BOOL TxClientToScreen(ref POINT lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txactivate
     [PreserveSig]

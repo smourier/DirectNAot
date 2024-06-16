@@ -9,5 +9,5 @@ public partial interface IInkD2DRenderer
     // https://learn.microsoft.com/windows/win32/api/inkrenderer/nf-inkrenderer-iinkd2drenderer-draw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Draw(nint pD2D1DeviceContext, nint pInkStrokeIterable, [MarshalAs(UnmanagedType.U4)] bool fHighContrast);
+    HRESULT Draw(nint pD2D1DeviceContext, nint pInkStrokeIterable, BOOL fHighContrast);
 }

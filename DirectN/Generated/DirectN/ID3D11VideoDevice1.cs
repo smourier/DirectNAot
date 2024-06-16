@@ -19,7 +19,7 @@ public partial interface ID3D11VideoDevice1 : ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videodevice1-checkvideodecoderdownsampling
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckVideoDecoderDownsampling(in D3D11_VIDEO_DECODER_DESC pInputDesc, DXGI_COLOR_SPACE_TYPE InputColorSpace, in D3D11_VIDEO_DECODER_CONFIG pInputConfig, in DXGI_RATIONAL pFrameRate, in D3D11_VIDEO_SAMPLE_DESC pOutputDesc, [MarshalAs(UnmanagedType.U4)] out bool pSupported, [MarshalAs(UnmanagedType.U4)] out bool pRealTimeHint);
+    HRESULT CheckVideoDecoderDownsampling(in D3D11_VIDEO_DECODER_DESC pInputDesc, DXGI_COLOR_SPACE_TYPE InputColorSpace, in D3D11_VIDEO_DECODER_CONFIG pInputConfig, in DXGI_RATIONAL pFrameRate, in D3D11_VIDEO_SAMPLE_DESC pOutputDesc, out BOOL pSupported, out BOOL pRealTimeHint);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videodevice1-recommendvideodecoderdownsampleparameters
     [PreserveSig]

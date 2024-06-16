@@ -11,8 +11,6 @@ public partial struct DWRITE_GLYPH_RUN
     public nint glyphIndices;
     public nint glyphAdvances;
     public nint glyphOffsets;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool isSideways;
+    public BOOL isSideways;
     public uint bidiLevel;
 }

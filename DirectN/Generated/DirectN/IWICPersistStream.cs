@@ -14,5 +14,5 @@ public partial interface IWICPersistStream : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicpersiststream-saveex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveEx(IStream pIStream, uint dwPersistOptions, [MarshalAs(UnmanagedType.U4)] bool fClearDirty);
+    HRESULT SaveEx(IStream pIStream, uint dwPersistOptions, BOOL fClearDirty);
 }

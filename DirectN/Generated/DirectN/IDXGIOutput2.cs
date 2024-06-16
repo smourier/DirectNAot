@@ -8,6 +8,5 @@ public partial interface IDXGIOutput2 : IDXGIOutput1
 {
     // https://learn.microsoft.com/windows/win32/api/dxgi1_3/nf-dxgi1_3-idxgioutput2-supportsoverlays
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool SupportsOverlays();
+    BOOL SupportsOverlays();
 }

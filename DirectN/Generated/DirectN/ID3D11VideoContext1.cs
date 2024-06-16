@@ -37,7 +37,7 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorsetoutputshaderusage
     [PreserveSig]
-    void VideoProcessorSetOutputShaderUsage(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] bool ShaderUsage);
+    void VideoProcessorSetOutputShaderUsage(ID3D11VideoProcessor pVideoProcessor, BOOL ShaderUsage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetoutputcolorspace1
     [PreserveSig]
@@ -45,7 +45,7 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetoutputshaderusage
     [PreserveSig]
-    void VideoProcessorGetOutputShaderUsage(ID3D11VideoProcessor pVideoProcessor, [MarshalAs(UnmanagedType.U4)] out bool pShaderUsage);
+    void VideoProcessorGetOutputShaderUsage(ID3D11VideoProcessor pVideoProcessor, out BOOL pShaderUsage);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorsetstreamcolorspace1
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorsetstreammirror
     [PreserveSig]
-    void VideoProcessorSetStreamMirror(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] bool Enable, [MarshalAs(UnmanagedType.U4)] bool FlipHorizontal, [MarshalAs(UnmanagedType.U4)] bool FlipVertical);
+    void VideoProcessorSetStreamMirror(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, BOOL Enable, BOOL FlipHorizontal, BOOL FlipVertical);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetstreamcolorspace1
     [PreserveSig]
@@ -61,7 +61,7 @@ public partial interface ID3D11VideoContext1 : ID3D11VideoContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetstreammirror
     [PreserveSig]
-    void VideoProcessorGetStreamMirror(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pEnable, [MarshalAs(UnmanagedType.U4)] out bool pFlipHorizontal, [MarshalAs(UnmanagedType.U4)] out bool pFlipVertical);
+    void VideoProcessorGetStreamMirror(ID3D11VideoProcessor pVideoProcessor, uint StreamIndex, out BOOL pEnable, out BOOL pFlipHorizontal, out BOOL pFlipVertical);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11videocontext1-videoprocessorgetbehaviorhints
     [PreserveSig]

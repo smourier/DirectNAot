@@ -39,10 +39,10 @@ public partial interface IAMDirectSound
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-setfocuswindow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFocusWindow(HWND param0, [MarshalAs(UnmanagedType.U4)] bool param1);
+    HRESULT SetFocusWindow(HWND param0, BOOL param1);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-getfocuswindow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFocusWindow(ref HWND param0, [MarshalAs(UnmanagedType.U4)] ref bool param1);
+    HRESULT GetFocusWindow(ref HWND param0, ref BOOL param1);
 }

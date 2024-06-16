@@ -5,9 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_D3D12_OPTIONS10
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool VariableRateShadingSumCombinerSupported;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MeshShaderPerPrimitiveShadingRateSupported;
+    public BOOL VariableRateShadingSumCombinerSupported;
+    public BOOL MeshShaderPerPrimitiveShadingRateSupported;
 }

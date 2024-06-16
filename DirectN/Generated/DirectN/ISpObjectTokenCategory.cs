@@ -6,7 +6,7 @@ public partial interface ISpObjectTokenCategory : ISpDataKey
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetId(PWSTR pszCategoryId, [MarshalAs(UnmanagedType.U4)] bool fCreateIfNotExist);
+    HRESULT SetId(PWSTR pszCategoryId, BOOL fCreateIfNotExist);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

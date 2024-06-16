@@ -6,7 +6,5 @@ namespace DirectN;
 public partial struct D3D11_QUERY_DATA_TIMESTAMP_DISJOINT
 {
     public ulong Frequency;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Disjoint;
+    public BOOL Disjoint;
 }

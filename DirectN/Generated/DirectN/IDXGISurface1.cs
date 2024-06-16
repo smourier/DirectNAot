@@ -9,7 +9,7 @@ public partial interface IDXGISurface1 : IDXGISurface
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgisurface1-getdc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDC([MarshalAs(UnmanagedType.U4)] bool Discard, out HDC phdc);
+    HRESULT GetDC(BOOL Discard, out HDC phdc);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgisurface1-releasedc
     [PreserveSig]

@@ -42,7 +42,7 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-isname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsName(ref PWSTR szNameBuf, uint lHashVal, [MarshalAs(UnmanagedType.U4)] out bool pfName);
+    HRESULT IsName(ref PWSTR szNameBuf, uint lHashVal, out BOOL pfName);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-findname
     [PreserveSig]

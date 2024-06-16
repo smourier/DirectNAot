@@ -38,7 +38,7 @@ public partial interface IDvdInfo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getcurrentsubpicture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentSubpicture(out uint pulStreamsAvailable, out uint pulCurrentStream, [MarshalAs(UnmanagedType.U4)] out bool pIsDisabled);
+    HRESULT GetCurrentSubpicture(out uint pulStreamsAvailable, out uint pulCurrentStream, out BOOL pIsDisabled);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo-getcurrentuops
     [PreserveSig]

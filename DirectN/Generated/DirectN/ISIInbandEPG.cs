@@ -14,5 +14,5 @@ public partial interface ISIInbandEPG
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSIEPGScanRunning([MarshalAs(UnmanagedType.U4)] out bool bRunning);
+    HRESULT IsSIEPGScanRunning(out BOOL bRunning);
 }

@@ -70,8 +70,7 @@ public partial interface ID3D11ShaderReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-issamplefrequencyshader
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsSampleFrequencyShader();
+    BOOL IsSampleFrequencyShader();
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getnuminterfaceslots
     [PreserveSig]

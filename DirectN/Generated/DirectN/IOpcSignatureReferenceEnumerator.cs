@@ -9,12 +9,12 @@ public partial interface IOpcSignatureReferenceEnumerator
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceenumerator-movenext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveNext([MarshalAs(UnmanagedType.U4)] out bool hasNext);
+    HRESULT MoveNext(out BOOL hasNext);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceenumerator-moveprevious
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MovePrevious([MarshalAs(UnmanagedType.U4)] out bool hasPrevious);
+    HRESULT MovePrevious(out BOOL hasPrevious);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturereferenceenumerator-getcurrent
     [PreserveSig]

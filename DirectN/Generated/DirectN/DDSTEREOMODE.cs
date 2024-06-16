@@ -9,7 +9,5 @@ public partial struct DDSTEREOMODE
     public uint dwWidth;
     public uint dwBpp;
     public uint dwRefreshRate;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bSupported;
+    public BOOL bSupported;
 }

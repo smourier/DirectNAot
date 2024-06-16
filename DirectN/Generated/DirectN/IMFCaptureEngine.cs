@@ -29,7 +29,7 @@ public partial interface IMFCaptureEngine
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-stoprecord
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StopRecord([MarshalAs(UnmanagedType.U4)] bool bFinalize, [MarshalAs(UnmanagedType.U4)] bool bFlushUnprocessedSamples);
+    HRESULT StopRecord(BOOL bFinalize, BOOL bFlushUnprocessedSamples);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengine-takephoto
     [PreserveSig]

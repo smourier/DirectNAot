@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct PERBANDINFO
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bRepeatThisBand;
+    public BOOL bRepeatThisBand;
     public SIZE szlBand;
     public uint ulHorzRes;
     public uint ulVertRes;

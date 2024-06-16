@@ -13,5 +13,5 @@ public partial interface IDVB_DIT
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvb_dit-gettransitionflag
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransitionFlag([MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetTransitionFlag(out BOOL pfVal);
 }

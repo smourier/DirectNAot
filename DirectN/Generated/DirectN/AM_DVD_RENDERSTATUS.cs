@@ -6,18 +6,10 @@ namespace DirectN;
 public partial struct AM_DVD_RENDERSTATUS
 {
     public HRESULT hrVPEStatus;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bDvdVolInvalid;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bDvdVolUnknown;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bNoLine21In;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bNoLine21Out;
+    public BOOL bDvdVolInvalid;
+    public BOOL bDvdVolUnknown;
+    public BOOL bNoLine21In;
+    public BOOL bNoLine21Out;
     public int iNumStreams;
     public int iNumStreamsFailed;
     public uint dwFailedStreamsFlag;

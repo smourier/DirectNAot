@@ -28,7 +28,7 @@ public partial interface IPhotoAcquireSettings
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresettings-setsequencezeropadding
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSequenceZeroPadding([MarshalAs(UnmanagedType.U4)] bool fZeroPad);
+    HRESULT SetSequenceZeroPadding(BOOL fZeroPad);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresettings-setgrouptag
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IPhotoAcquireSettings
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresettings-getsequencezeropadding
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSequenceZeroPadding([MarshalAs(UnmanagedType.U4)] out bool pfZeroPad);
+    HRESULT GetSequenceZeroPadding(out BOOL pfZeroPad);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresettings-getgrouptag
     [PreserveSig]

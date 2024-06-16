@@ -6,9 +6,7 @@ public partial struct DDHAL_GETVPORTFIELDDATA
 {
     public nint lpDD;
     public nint lpVideoPort;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bField;
+    public BOOL bField;
     public HRESULT ddRVal;
     public nint GetVideoPortField;
 }

@@ -17,8 +17,7 @@ public partial interface IDWriteFontFaceReference
     HRESULT CreateFontFaceWithSimulations(DWRITE_FONT_SIMULATIONS fontFaceSimulationFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace3>))] out IDWriteFontFace3 fontFace);
     
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool Equals(IDWriteFontFaceReference fontFaceReference);
+    BOOL Equals(IDWriteFontFaceReference fontFaceReference);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-getfontfaceindex
     [PreserveSig]

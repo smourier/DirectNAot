@@ -6,8 +6,6 @@ namespace DirectN;
 public partial struct CERT_EXTENSION
 {
     public PSTR pszObjId;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fCritical;
+    public BOOL fCritical;
     public CRYPT_INTEGER_BLOB Value;
 }

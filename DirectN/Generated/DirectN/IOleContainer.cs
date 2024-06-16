@@ -14,5 +14,5 @@ public partial interface IOleContainer : IParseDisplayName
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-iolecontainer-lockcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LockContainer([MarshalAs(UnmanagedType.U4)] bool fLock);
+    HRESULT LockContainer(BOOL fLock);
 }

@@ -14,7 +14,7 @@ public partial interface ISpPhrase
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetText(uint ulStart, uint ulCount, [MarshalAs(UnmanagedType.U4)] bool fUseTextReplacements, out PWSTR ppszCoMemText, nint /* optional byte* */ pbDisplayAttributes);
+    HRESULT GetText(uint ulStart, uint ulCount, BOOL fUseTextReplacements, out PWSTR ppszCoMemText, nint /* optional byte* */ pbDisplayAttributes);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

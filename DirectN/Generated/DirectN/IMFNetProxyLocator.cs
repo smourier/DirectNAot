@@ -9,7 +9,7 @@ public partial interface IMFNetProxyLocator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocator-findfirstproxy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFirstProxy(PWSTR pszHost, PWSTR pszUrl, [MarshalAs(UnmanagedType.U4)] bool fReserved);
+    HRESULT FindFirstProxy(PWSTR pszHost, PWSTR pszUrl, BOOL fReserved);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetproxylocator-findnextproxy
     [PreserveSig]

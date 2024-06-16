@@ -11,7 +11,5 @@ public partial struct D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERS
     public nint pSubresourceParameters;
     public DXGI_FORMAT Format;
     public D3D12_RESOLVE_MODE ResolveMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool PreserveResolveSource;
+    public BOOL PreserveResolveSource;
 }

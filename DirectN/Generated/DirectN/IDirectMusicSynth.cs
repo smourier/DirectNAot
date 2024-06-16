@@ -23,7 +23,7 @@ public partial interface IDirectMusicSynth
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynth-download
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Download(ref HANDLE phDownload, nint pvData, [MarshalAs(UnmanagedType.U4)] ref bool pbFree);
+    HRESULT Download(ref HANDLE phDownload, nint pvData, ref BOOL pbFree);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynth-unload
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IDirectMusicSynth
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynth-activate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate([MarshalAs(UnmanagedType.U4)] bool fEnable);
+    HRESULT Activate(BOOL fEnable);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynth-setsynthsink
     [PreserveSig]

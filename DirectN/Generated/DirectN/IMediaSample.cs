@@ -33,7 +33,7 @@ public partial interface IMediaSample
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-setsyncpoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSyncPoint([MarshalAs(UnmanagedType.U4)] bool bIsSyncPoint);
+    HRESULT SetSyncPoint(BOOL bIsSyncPoint);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-ispreroll
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IMediaSample
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-setpreroll
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPreroll([MarshalAs(UnmanagedType.U4)] bool bIsPreroll);
+    HRESULT SetPreroll(BOOL bIsPreroll);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-getactualdatalength
     [PreserveSig]
@@ -72,7 +72,7 @@ public partial interface IMediaSample
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-setdiscontinuity
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDiscontinuity([MarshalAs(UnmanagedType.U4)] bool bDiscontinuity);
+    HRESULT SetDiscontinuity(BOOL bDiscontinuity);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample-getmediatime
     [PreserveSig]

@@ -8,7 +8,5 @@ public partial struct DXVAHDETW_VIDEOPROCESSSTREAMSTATE
     public uint StreamNumber;
     public DXVAHD_STREAM_STATE State;
     public uint DataSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool SetState;
+    public BOOL SetState;
 }

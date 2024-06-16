@@ -18,17 +18,17 @@ public partial interface IWMPNodeRealEstate
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetWindowless([MarshalAs(UnmanagedType.U4)] bool fWindowless);
+    HRESULT SetWindowless(BOOL fWindowless);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWindowless([MarshalAs(UnmanagedType.U4)] ref bool pfWindowless);
+    HRESULT GetWindowless(ref BOOL pfWindowless);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFullScreen([MarshalAs(UnmanagedType.U4)] bool fFullScreen);
+    HRESULT SetFullScreen(BOOL fFullScreen);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFullScreen([MarshalAs(UnmanagedType.U4)] ref bool pfFullScreen);
+    HRESULT GetFullScreen(ref BOOL pfFullScreen);
 }

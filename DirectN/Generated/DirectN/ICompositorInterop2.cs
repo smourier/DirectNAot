@@ -6,7 +6,7 @@ public partial interface ICompositorInterop2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CheckCompositionTextureSupport(nint renderingDevice, [MarshalAs(UnmanagedType.U4)] out bool supportsCompositionTextures);
+    HRESULT CheckCompositionTextureSupport(nint renderingDevice, out BOOL supportsCompositionTextures);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

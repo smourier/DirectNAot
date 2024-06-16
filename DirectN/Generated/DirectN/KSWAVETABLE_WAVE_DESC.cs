@@ -6,12 +6,8 @@ public partial struct KSWAVETABLE_WAVE_DESC
 {
     public KSIDENTIFIER Identifier;
     public uint Size;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Looped;
+    public BOOL Looped;
     public uint LoopPoint;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InROM;
+    public BOOL InROM;
     public KSDATAFORMAT Format;
 }

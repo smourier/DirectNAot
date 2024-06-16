@@ -44,7 +44,7 @@ public partial interface IMFTimedTextRegion
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextregion-getclipoverflow
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetClipOverflow([MarshalAs(UnmanagedType.U4)] out bool clipOverflow);
+    HRESULT GetClipOverflow(out BOOL clipOverflow);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextregion-getpadding
     [PreserveSig]
@@ -54,7 +54,7 @@ public partial interface IMFTimedTextRegion
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextregion-getwrap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWrap([MarshalAs(UnmanagedType.U4)] out bool wrap);
+    HRESULT GetWrap(out BOOL wrap);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtextregion-getzindex
     [PreserveSig]

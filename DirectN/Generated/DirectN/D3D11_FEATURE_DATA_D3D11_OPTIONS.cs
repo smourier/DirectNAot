@@ -5,45 +5,18 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D11_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool OutputMergerLogicOp;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool UAVOnlyRenderingForcedSampleCount;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool DiscardAPIsSeenByDriver;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool FlagsForUpdateAndCopySeenByDriver;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ClearView;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool CopyWithOverlap;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ConstantBufferPartialUpdate;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ConstantBufferOffsetting;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MapNoOverwriteOnDynamicConstantBuffer;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MapNoOverwriteOnDynamicBufferSRV;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool MultisampleRTVWithForcedSampleCountOne;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool SAD4ShaderInstructions;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ExtendedDoublesShaderInstructions;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool ExtendedResourceSharing;
+    public BOOL OutputMergerLogicOp;
+    public BOOL UAVOnlyRenderingForcedSampleCount;
+    public BOOL DiscardAPIsSeenByDriver;
+    public BOOL FlagsForUpdateAndCopySeenByDriver;
+    public BOOL ClearView;
+    public BOOL CopyWithOverlap;
+    public BOOL ConstantBufferPartialUpdate;
+    public BOOL ConstantBufferOffsetting;
+    public BOOL MapNoOverwriteOnDynamicConstantBuffer;
+    public BOOL MapNoOverwriteOnDynamicBufferSRV;
+    public BOOL MultisampleRTVWithForcedSampleCountOne;
+    public BOOL SAD4ShaderInstructions;
+    public BOOL ExtendedDoublesShaderInstructions;
+    public BOOL ExtendedResourceSharing;
 }

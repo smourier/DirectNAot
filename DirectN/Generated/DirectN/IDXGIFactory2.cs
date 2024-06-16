@@ -8,8 +8,7 @@ public partial interface IDXGIFactory2 : IDXGIFactory1
 {
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-iswindowedstereoenabled
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsWindowedStereoEnabled();
+    BOOL IsWindowedStereoEnabled();
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforhwnd
     [PreserveSig]

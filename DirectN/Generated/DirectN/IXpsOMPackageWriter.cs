@@ -29,5 +29,5 @@ public partial interface IXpsOMPackageWriter
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackagewriter-isclosed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsClosed([MarshalAs(UnmanagedType.U4)] out bool isClosed);
+    HRESULT IsClosed(out BOOL isClosed);
 }

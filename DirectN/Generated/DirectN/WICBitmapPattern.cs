@@ -9,7 +9,5 @@ public partial struct WICBitmapPattern
     public uint Length;
     public nint Pattern;
     public nint Mask;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool EndOfStream;
+    public BOOL EndOfStream;
 }

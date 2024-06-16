@@ -14,7 +14,7 @@ public partial interface ISpSREngine2 : ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGrammarPrefix(nint pvEngineGrammar, PWSTR pszPrefix, [MarshalAs(UnmanagedType.U4)] bool fIsPrefixRequired);
+    HRESULT SetGrammarPrefix(nint pvEngineGrammar, PWSTR pszPrefix, BOOL fIsPrefixRequired);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface ISpSREngine2 : ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTrainingState([MarshalAs(UnmanagedType.U4)] bool fDoingTraining, [MarshalAs(UnmanagedType.U4)] bool fAdaptFromTrainingData);
+    HRESULT SetTrainingState(BOOL fDoingTraining, BOOL fAdaptFromTrainingData);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -54,12 +54,12 @@ public partial interface IAMLine21Decoder
     // https://learn.microsoft.com/windows/win32/api/il21dec/nf-il21dec-iamline21decoder-getredrawalways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRedrawAlways([MarshalAs(UnmanagedType.U4)] ref bool lpbOption);
+    HRESULT GetRedrawAlways(ref BOOL lpbOption);
     
     // https://learn.microsoft.com/windows/win32/api/il21dec/nf-il21dec-iamline21decoder-setredrawalways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRedrawAlways([MarshalAs(UnmanagedType.U4)] bool bOption);
+    HRESULT SetRedrawAlways(BOOL bOption);
     
     // https://learn.microsoft.com/windows/win32/api/il21dec/nf-il21dec-iamline21decoder-getdrawbackgroundmode
     [PreserveSig]

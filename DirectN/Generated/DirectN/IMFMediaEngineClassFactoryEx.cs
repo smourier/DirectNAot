@@ -19,5 +19,5 @@ public partial interface IMFMediaEngineClassFactoryEx : IMFMediaEngineClassFacto
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactoryex-istypesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsTypeSupported(BSTR type, BSTR keySystem, [MarshalAs(UnmanagedType.U4)] out bool isSupported);
+    HRESULT IsTypeSupported(BSTR type, BSTR keySystem, out BOOL isSupported);
 }

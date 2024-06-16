@@ -133,7 +133,7 @@ public partial interface IDvdControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol-subpicturestreamchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SubpictureStreamChange(uint ulSubPicture, [MarshalAs(UnmanagedType.U4)] bool bDisplay);
+    HRESULT SubpictureStreamChange(uint ulSubPicture, BOOL bDisplay);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol-anglechange
     [PreserveSig]

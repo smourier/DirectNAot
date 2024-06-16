@@ -6,9 +6,9 @@ public partial interface ISpPhoneticAlphabetSelection
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsAlphabetUPS([MarshalAs(UnmanagedType.U4)] out bool pfIsUPS);
+    HRESULT IsAlphabetUPS(out BOOL pfIsUPS);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAlphabetToUPS([MarshalAs(UnmanagedType.U4)] bool fForceUPS);
+    HRESULT SetAlphabetToUPS(BOOL fForceUPS);
 }

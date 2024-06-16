@@ -5,9 +5,7 @@ namespace DirectN;
 public partial struct DDVIDEOPORTSTATUS
 {
     public uint dwSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool bInUse;
+    public BOOL bInUse;
     public uint dwFlags;
     public uint dwReserved1;
     public DDVIDEOPORTCONNECT VideoPortType;

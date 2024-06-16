@@ -8,7 +8,7 @@ public partial interface ID3D10EffectVectorVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setboolvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
+    HRESULT SetBoolVector(ref BOOL pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setintvector
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface ID3D10EffectVectorVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getboolvector
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBoolVector([MarshalAs(UnmanagedType.U4)] ref bool pData);
+    HRESULT GetBoolVector(ref BOOL pData);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getintvector
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface ID3D10EffectVectorVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setboolvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
+    HRESULT SetBoolVectorArray(ref BOOL pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-setintvectorarray
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface ID3D10EffectVectorVariable : ID3D10EffectVariable
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getboolvectorarray
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBoolVectorArray([MarshalAs(UnmanagedType.U4)] ref bool pData, uint Offset, uint Count);
+    HRESULT GetBoolVectorArray(ref BOOL pData, uint Offset, uint Count);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvectorvariable-getintvectorarray
     [PreserveSig]

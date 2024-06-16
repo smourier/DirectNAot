@@ -14,7 +14,7 @@ public partial interface IMemInputPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-notifyallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyAllocator(IMemAllocator pAllocator, [MarshalAs(UnmanagedType.U4)] bool bReadOnly);
+    HRESULT NotifyAllocator(IMemAllocator pAllocator, BOOL bReadOnly);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imeminputpin-getallocatorrequirements
     [PreserveSig]

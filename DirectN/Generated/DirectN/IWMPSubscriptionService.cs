@@ -8,17 +8,17 @@ public partial interface IWMPSubscriptionService
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowplay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowPlay(HWND hwnd, IWMPMedia pMedia, [MarshalAs(UnmanagedType.U4)] ref bool pfAllowPlay);
+    HRESULT allowPlay(HWND hwnd, IWMPMedia pMedia, ref BOOL pfAllowPlay);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowcdburn
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowCDBurn(HWND hwnd, IWMPPlaylist pPlaylist, [MarshalAs(UnmanagedType.U4)] ref bool pfAllowBurn);
+    HRESULT allowCDBurn(HWND hwnd, IWMPPlaylist pPlaylist, ref BOOL pfAllowBurn);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowpdatransfer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowPDATransfer(HWND hwnd, IWMPPlaylist pPlaylist, [MarshalAs(UnmanagedType.U4)] ref bool pfAllowTransfer);
+    HRESULT allowPDATransfer(HWND hwnd, IWMPPlaylist pPlaylist, ref BOOL pfAllowTransfer);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-startbackgroundprocessing
     [PreserveSig]

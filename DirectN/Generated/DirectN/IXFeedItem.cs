@@ -42,11 +42,11 @@ public partial interface IXFeedItem
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRead([MarshalAs(UnmanagedType.U4)] out bool pbIsRead);
+    HRESULT IsRead(out BOOL pbIsRead);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsRead([MarshalAs(UnmanagedType.U4)] bool bIsRead);
+    HRESULT SetIsRead(BOOL bIsRead);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

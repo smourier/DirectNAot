@@ -8,8 +8,7 @@ public partial interface IMFContentDecryptionModuleFactory
 {
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulefactory-istypesupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsTypeSupported(PWSTR keySystem, PWSTR contentType);
+    BOOL IsTypeSupported(PWSTR keySystem, PWSTR contentType);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodulefactory-createcontentdecryptionmoduleaccess
     [PreserveSig]

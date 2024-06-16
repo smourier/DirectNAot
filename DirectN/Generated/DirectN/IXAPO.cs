@@ -40,7 +40,7 @@ public partial interface IXAPO
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-process
     [PreserveSig]
-    void Process(uint InputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS* */ pInputProcessParameters, uint OutputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS* */ pOutputProcessParameters, [MarshalAs(UnmanagedType.U4)] bool IsEnabled);
+    void Process(uint InputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS* */ pInputProcessParameters, uint OutputProcessParameterCount, nint /* optional XAPO_PROCESS_BUFFER_PARAMETERS* */ pOutputProcessParameters, BOOL IsEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/xapo/nf-xapo-ixapo-calcinputframes
     [PreserveSig]

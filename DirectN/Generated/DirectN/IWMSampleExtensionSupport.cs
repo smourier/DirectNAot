@@ -9,5 +9,5 @@ public partial interface IWMSampleExtensionSupport
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-iwmsampleextensionsupport-setusesampleextensions
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUseSampleExtensions([MarshalAs(UnmanagedType.U4)] bool fUseExtensions);
+    HRESULT SetUseSampleExtensions(BOOL fUseExtensions);
 }

@@ -6,7 +6,5 @@ namespace DirectN;
 public partial struct WM_STREAM_PRIORITY_RECORD
 {
     public ushort wStreamNumber;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMandatory;
+    public BOOL fMandatory;
 }

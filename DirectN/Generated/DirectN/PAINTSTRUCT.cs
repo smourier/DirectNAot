@@ -6,15 +6,9 @@ namespace DirectN;
 public partial struct PAINTSTRUCT
 {
     public HDC hdc;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fErase;
+    public BOOL fErase;
     public RECT rcPaint;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fRestore;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fIncUpdate;
+    public BOOL fRestore;
+    public BOOL fIncUpdate;
     public InlineArrayByte_32 rgbReserved;
 }

@@ -18,5 +18,5 @@ public partial interface IMFNetCrossOriginSupport
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsSameOrigin(PWSTR wszURL, [MarshalAs(UnmanagedType.U4)] out bool pfIsSameOrigin);
+    HRESULT IsSameOrigin(PWSTR wszURL, out BOOL pfIsSameOrigin);
 }

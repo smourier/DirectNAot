@@ -7,8 +7,7 @@ public partial interface IMFMediaEngineWebSupport
 {
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginewebsupport-shoulddelaytheloadevent
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool ShouldDelayTheLoadEvent();
+    BOOL ShouldDelayTheLoadEvent();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaenginewebsupport-connectwebaudio
     [PreserveSig]

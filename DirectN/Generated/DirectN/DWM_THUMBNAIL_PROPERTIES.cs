@@ -9,10 +9,6 @@ public partial struct DWM_THUMBNAIL_PROPERTIES
     public RECT rcDestination;
     public RECT rcSource;
     public byte opacity;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fVisible;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fSourceClientAreaOnly;
+    public BOOL fVisible;
+    public BOOL fSourceClientAreaOnly;
 }

@@ -15,11 +15,9 @@ public partial interface ID3D11Multithread
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_4/nf-d3d11_4-id3d11multithread-setmultithreadprotected
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool SetMultithreadProtected([MarshalAs(UnmanagedType.U4)] bool bMTProtect);
+    BOOL SetMultithreadProtected(BOOL bMTProtect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_4/nf-d3d11_4-id3d11multithread-getmultithreadprotected
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetMultithreadProtected();
+    BOOL GetMultithreadProtected();
 }

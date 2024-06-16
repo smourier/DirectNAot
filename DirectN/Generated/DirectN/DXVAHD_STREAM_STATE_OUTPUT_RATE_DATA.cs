@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_STREAM_STATE_OUTPUT_RATE_DATA
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool RepeatFrame;
+    public BOOL RepeatFrame;
     public DXVAHD_OUTPUT_RATE OutputRate;
     public DXVAHD_RATIONAL CustomRate;
 }

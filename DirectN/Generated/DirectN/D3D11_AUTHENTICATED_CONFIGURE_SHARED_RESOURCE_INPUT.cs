@@ -8,7 +8,5 @@ public partial struct D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT
     public D3D11_AUTHENTICATED_CONFIGURE_INPUT Parameters;
     public D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE ProcessType;
     public HANDLE ProcessHandle;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AllowAccess;
+    public BOOL AllowAccess;
 }

@@ -9,7 +9,7 @@ public partial interface IWICJpegFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicjpegframedecode-doessupportindexing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoesSupportIndexing([MarshalAs(UnmanagedType.U4)] out bool pfIndexingSupported);
+    HRESULT DoesSupportIndexing(out BOOL pfIndexingSupported);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicjpegframedecode-setindexing
     [PreserveSig]

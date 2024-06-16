@@ -7,8 +7,7 @@ public partial interface ID3D12DebugCommandList
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debugcommandlist-assertresourcestate
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool AssertResourceState(ID3D12Resource pResource, uint Subresource, uint State);
+    BOOL AssertResourceState(ID3D12Resource pResource, uint Subresource, uint State);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12debugcommandlist-setfeaturemask
     [PreserveSig]

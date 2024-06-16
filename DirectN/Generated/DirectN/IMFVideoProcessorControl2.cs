@@ -14,7 +14,7 @@ public partial interface IMFVideoProcessorControl2 : IMFVideoProcessorControl
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol2-enablehardwareeffects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableHardwareEffects([MarshalAs(UnmanagedType.U4)] bool fEnabled);
+    HRESULT EnableHardwareEffects(BOOL fEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideoprocessorcontrol2-getsupportedhardwareeffects
     [PreserveSig]

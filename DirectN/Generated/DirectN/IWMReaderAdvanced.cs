@@ -8,12 +8,12 @@ public partial interface IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setuserprovidedclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUserProvidedClock([MarshalAs(UnmanagedType.U4)] bool fUserClock);
+    HRESULT SetUserProvidedClock(BOOL fUserClock);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getuserprovidedclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUserProvidedClock([MarshalAs(UnmanagedType.U4)] out bool pfUserClock);
+    HRESULT GetUserProvidedClock(out BOOL pfUserClock);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-delivertime
     [PreserveSig]
@@ -23,12 +23,12 @@ public partial interface IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setmanualstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetManualStreamSelection([MarshalAs(UnmanagedType.U4)] bool fSelection);
+    HRESULT SetManualStreamSelection(BOOL fSelection);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getmanualstreamselection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetManualStreamSelection([MarshalAs(UnmanagedType.U4)] out bool pfSelection);
+    HRESULT GetManualStreamSelection(out BOOL pfSelection);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setstreamsselected
     [PreserveSig]
@@ -43,42 +43,42 @@ public partial interface IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setreceiveselectioncallbacks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReceiveSelectionCallbacks([MarshalAs(UnmanagedType.U4)] bool fGetCallbacks);
+    HRESULT SetReceiveSelectionCallbacks(BOOL fGetCallbacks);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getreceiveselectioncallbacks
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReceiveSelectionCallbacks([MarshalAs(UnmanagedType.U4)] out bool pfGetCallbacks);
+    HRESULT GetReceiveSelectionCallbacks(out BOOL pfGetCallbacks);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setreceivestreamsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReceiveStreamSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] bool fReceiveStreamSamples);
+    HRESULT SetReceiveStreamSamples(ushort wStreamNum, BOOL fReceiveStreamSamples);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getreceivestreamsamples
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReceiveStreamSamples(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] out bool pfReceiveStreamSamples);
+    HRESULT GetReceiveStreamSamples(ushort wStreamNum, out BOOL pfReceiveStreamSamples);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setallocateforoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocateForOutput(uint dwOutputNum, [MarshalAs(UnmanagedType.U4)] bool fAllocate);
+    HRESULT SetAllocateForOutput(uint dwOutputNum, BOOL fAllocate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getallocateforoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllocateForOutput(uint dwOutputNum, [MarshalAs(UnmanagedType.U4)] out bool pfAllocate);
+    HRESULT GetAllocateForOutput(uint dwOutputNum, out BOOL pfAllocate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-setallocateforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocateForStream(ushort wStreamNum, [MarshalAs(UnmanagedType.U4)] bool fAllocate);
+    HRESULT SetAllocateForStream(ushort wStreamNum, BOOL fAllocate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getallocateforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllocateForStream(ushort dwSreamNum, [MarshalAs(UnmanagedType.U4)] out bool pfAllocate);
+    HRESULT GetAllocateForStream(ushort dwSreamNum, out BOOL pfAllocate);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced-getstatistics
     [PreserveSig]

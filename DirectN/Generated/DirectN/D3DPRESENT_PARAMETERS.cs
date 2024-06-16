@@ -13,12 +13,8 @@ public partial struct D3DPRESENT_PARAMETERS
     public uint MultiSampleQuality;
     public D3DSWAPEFFECT SwapEffect;
     public HWND hDeviceWindow;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Windowed;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool EnableAutoDepthStencil;
+    public BOOL Windowed;
+    public BOOL EnableAutoDepthStencil;
     public D3DFORMAT AutoDepthStencilFormat;
     public uint Flags;
     public uint FullScreen_RefreshRateInHz;

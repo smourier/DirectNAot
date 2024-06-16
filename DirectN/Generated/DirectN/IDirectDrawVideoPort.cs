@@ -26,7 +26,7 @@ public partial interface IDirectDrawVideoPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFieldPolarity([MarshalAs(UnmanagedType.U4)] ref bool param0);
+    HRESULT GetFieldPolarity(ref BOOL param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -19,7 +19,7 @@ public partial interface IMFSensorProfile
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofile-ismediatypesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsMediaTypeSupported(uint StreamId, IMFMediaType pMediaType, [MarshalAs(UnmanagedType.U4)] out bool pfSupported);
+    HRESULT IsMediaTypeSupported(uint StreamId, IMFMediaType pMediaType, out BOOL pfSupported);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofile-addblockedcontrol
     [PreserveSig]

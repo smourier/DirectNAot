@@ -9,5 +9,5 @@ public partial interface IDVRGB219
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvrgb219-setrgb219
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRGB219([MarshalAs(UnmanagedType.U4)] bool bState);
+    HRESULT SetRGB219(BOOL bState);
 }

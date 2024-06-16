@@ -64,12 +64,12 @@ public partial interface IMFCaptureSource
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesource-getmirrorstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMirrorState(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] out bool pfMirrorState);
+    HRESULT GetMirrorState(uint dwStreamIndex, out BOOL pfMirrorState);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesource-setmirrorstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMirrorState(uint dwStreamIndex, [MarshalAs(UnmanagedType.U4)] bool fMirrorState);
+    HRESULT SetMirrorState(uint dwStreamIndex, BOOL fMirrorState);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesource-getstreamindexfromfriendlyname
     [PreserveSig]

@@ -14,7 +14,7 @@ public partial interface IMFSensorProcessActivity
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprocessactivity-getstreamingstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamingState([MarshalAs(UnmanagedType.U4)] out bool pfStreaming);
+    HRESULT GetStreamingState(out BOOL pfStreaming);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprocessactivity-getstreamingmode
     [PreserveSig]

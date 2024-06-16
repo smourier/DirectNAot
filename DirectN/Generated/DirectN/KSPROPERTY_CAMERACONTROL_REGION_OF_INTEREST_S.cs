@@ -15,14 +15,8 @@ public partial struct KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_S
     }
     
     public RECT FocusRect;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AutoFocusLock;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AutoExposureLock;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AutoWhitebalanceLock;
+    public BOOL AutoFocusLock;
+    public BOOL AutoExposureLock;
+    public BOOL AutoWhitebalanceLock;
     public _Anonymous_e__Union Anonymous;
 }

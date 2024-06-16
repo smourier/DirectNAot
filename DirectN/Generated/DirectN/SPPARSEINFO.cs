@@ -13,7 +13,5 @@ public partial struct SPPARSEINFO
     public Guid SREngineID;
     public uint ulSREnginePrivateDataSize;
     public nint pSREnginePrivateData;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fHypothesis;
+    public BOOL fHypothesis;
 }

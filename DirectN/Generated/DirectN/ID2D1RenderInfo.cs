@@ -18,7 +18,7 @@ public partial interface ID2D1RenderInfo
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1renderinfo-setcached
     [PreserveSig]
-    void SetCached([MarshalAs(UnmanagedType.U4)] bool isCached);
+    void SetCached(BOOL isCached);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1renderinfo-setinstructioncounthint
     [PreserveSig]

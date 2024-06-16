@@ -54,7 +54,7 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getsupportedrates
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSupportedRates([MarshalAs(UnmanagedType.U4)] bool fForwardDirection, out float pflSlowestRate, out float pflFastestRate);
+    HRESULT GetSupportedRates(BOOL fForwardDirection, out float pflSlowestRate, out float pflFastestRate);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getstate
     [PreserveSig]
@@ -64,12 +64,12 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-createmediaitemfromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaItemFromURL(PWSTR pwszURL, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
+    HRESULT CreateMediaItemFromURL(PWSTR pwszURL, BOOL fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-createmediaitemfromobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateMediaItemFromObject(nint pIUnknownObj, [MarshalAs(UnmanagedType.U4)] bool fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
+    HRESULT CreateMediaItemFromObject(nint pIUnknownObj, BOOL fSync, nuint dwUserData, nint /* optional IMFPMediaItem* */ ppMediaItem);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-setmediaitem
     [PreserveSig]
@@ -109,12 +109,12 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMute([MarshalAs(UnmanagedType.U4)] out bool pfMute);
+    HRESULT GetMute(out BOOL pfMute);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-setmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool fMute);
+    HRESULT SetMute(BOOL fMute);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-getnativevideosize
     [PreserveSig]
@@ -169,7 +169,7 @@ public partial interface IMFPMediaPlayer
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-inserteffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertEffect(nint pEffect, [MarshalAs(UnmanagedType.U4)] bool fOptional);
+    HRESULT InsertEffect(nint pEffect, BOOL fOptional);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaplayer-removeeffect
     [PreserveSig]

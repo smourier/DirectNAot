@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool AMGETERRORTEXTPROCW(HRESULT param0, PWSTR param1, uint param2);
+public delegate BOOL AMGETERRORTEXTPROCW(HRESULT param0, PWSTR param1, uint param2);

@@ -11,7 +11,5 @@ public partial struct KSJACK_DESCRIPTION
     public EPcxGeoLocation GeoLocation;
     public EPcxGenLocation GenLocation;
     public EPxcPortConnection PortConnection;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsConnected;
+    public BOOL IsConnected;
 }

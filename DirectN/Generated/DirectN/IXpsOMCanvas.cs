@@ -14,12 +14,12 @@ public partial interface IXpsOMCanvas : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-getusealiasededgemode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUseAliasedEdgeMode([MarshalAs(UnmanagedType.U4)] out bool useAliasedEdgeMode);
+    HRESULT GetUseAliasedEdgeMode(out BOOL useAliasedEdgeMode);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-setusealiasededgemode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUseAliasedEdgeMode([MarshalAs(UnmanagedType.U4)] bool useAliasedEdgeMode);
+    HRESULT SetUseAliasedEdgeMode(BOOL useAliasedEdgeMode);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-getaccessibilityshortdescription
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface ISpStreamFormatConverter : ISpStreamFormat
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBaseStream(ISpStreamFormat? pStream, [MarshalAs(UnmanagedType.U4)] bool fSetFormatToBaseStreamFormat, [MarshalAs(UnmanagedType.U4)] bool fWriteToBaseStream);
+    HRESULT SetBaseStream(ISpStreamFormat? pStream, BOOL fSetFormatToBaseStreamFormat, BOOL fWriteToBaseStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

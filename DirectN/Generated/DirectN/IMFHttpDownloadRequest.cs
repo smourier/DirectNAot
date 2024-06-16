@@ -54,7 +54,7 @@ public partial interface IMFHttpDownloadRequest
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-hasnullsourceorigin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT HasNullSourceOrigin([MarshalAs(UnmanagedType.U4)] out bool pfNullSourceOrigin);
+    HRESULT HasNullSourceOrigin(out BOOL pfNullSourceOrigin);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-gettimeseekresult
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface IMFHttpDownloadRequest
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-getatendofpayload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAtEndOfPayload([MarshalAs(UnmanagedType.U4)] out bool pfAtEndOfPayload);
+    HRESULT GetAtEndOfPayload(out BOOL pfAtEndOfPayload);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-gettotallength
     [PreserveSig]

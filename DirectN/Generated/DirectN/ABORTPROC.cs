@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool ABORTPROC(HDC param0, int param1);
+public delegate BOOL ABORTPROC(HDC param0, int param1);

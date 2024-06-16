@@ -5,6 +5,5 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_FEATURE_DATA_D3D9_OPTIONS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool FullNonPow2TextureSupport;
+    public BOOL FullNonPow2TextureSupport;
 }

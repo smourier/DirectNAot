@@ -10,7 +10,5 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MO
     public D3D12_VIDEO_ENCODER_PROFILE_DESC Profile;
     public D3D12_VIDEO_ENCODER_LEVEL_SETTING Level;
     public D3D12_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MODE SubregionMode;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
 }

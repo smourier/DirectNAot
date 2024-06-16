@@ -22,11 +22,11 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsFeed(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] in bool pbFeedExists);
+    HRESULT ExistsFeed(PWSTR pszName, in BOOL pbFeedExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ExistsSubfolder(PWSTR pszName, [MarshalAs(UnmanagedType.U4)] in bool pbSubfolderExists);
+    HRESULT ExistsSubfolder(PWSTR pszName, in BOOL pbSubfolderExists);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -62,7 +62,7 @@ public partial interface IXFeedFolder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRoot([MarshalAs(UnmanagedType.U4)] out bool pbIsRootFeedFolder);
+    HRESULT IsRoot(out BOOL pbIsRootFeedFolder);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -2,5 +2,4 @@
 namespace DirectN;
 
 [UnmanagedFunctionPointer(CallingConvention.Winapi)]
-[return: MarshalAs(UnmanagedType.U4)]
-public delegate bool PFN_DrvUnloadFontFile(nuint param0);
+public delegate BOOL PFN_DrvUnloadFontFile(nuint param0);

@@ -29,5 +29,5 @@ public partial interface IETFilter
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-ietfilter-setrecordingon
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRecordingOn([MarshalAs(UnmanagedType.U4)] bool fRecState);
+    HRESULT SetRecordingOn(BOOL fRecState);
 }

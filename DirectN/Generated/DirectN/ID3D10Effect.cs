@@ -7,13 +7,11 @@ public partial interface ID3D10Effect
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-isvalid
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsValid();
+    BOOL IsValid();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-ispool
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsPool();
+    BOOL IsPool();
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getdevice
     [PreserveSig]
@@ -60,6 +58,5 @@ public partial interface ID3D10Effect
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-isoptimized
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsOptimized();
+    BOOL IsOptimized();
 }

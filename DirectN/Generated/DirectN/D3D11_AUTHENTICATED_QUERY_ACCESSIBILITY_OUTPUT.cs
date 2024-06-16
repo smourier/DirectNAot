@@ -7,10 +7,6 @@ public partial struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_OUTPUT
 {
     public D3D11_AUTHENTICATED_QUERY_OUTPUT Output;
     public D3D11_BUS_TYPE BusType;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AccessibleInContiguousBlocks;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool AccessibleInNonContiguousBlocks;
+    public BOOL AccessibleInContiguousBlocks;
+    public BOOL AccessibleInNonContiguousBlocks;
 }

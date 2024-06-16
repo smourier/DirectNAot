@@ -30,7 +30,7 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         get
         {
             var pointer = _pointer;
-            ObjectDisposedException.ThrowIf(pointer == 0, this);
+            ObjectDisposedException.ThrowIf(pointer == 0 && Size != 0, this);
             return pointer!;
         }
     }
@@ -44,7 +44,6 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         if (pointer != 0)
         {
             Marshal.FreeCoTaskMem(pointer);
-            Size = 0;
         }
     }
 

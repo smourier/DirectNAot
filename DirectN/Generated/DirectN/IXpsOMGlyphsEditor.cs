@@ -79,12 +79,12 @@ public partial interface IXpsOMGlyphsEditor
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphseditor-getissideways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsSideways([MarshalAs(UnmanagedType.U4)] out bool isSideways);
+    HRESULT GetIsSideways(out BOOL isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphseditor-setissideways
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsSideways([MarshalAs(UnmanagedType.U4)] bool isSideways);
+    HRESULT SetIsSideways(BOOL isSideways);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphseditor-getdevicefontname
     [PreserveSig]

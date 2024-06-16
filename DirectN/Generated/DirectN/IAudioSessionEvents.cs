@@ -19,7 +19,7 @@ public partial interface IAudioSessionEvents
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionevents-onsimplevolumechanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSimpleVolumeChanged(float NewVolume, [MarshalAs(UnmanagedType.U4)] bool NewMute, in Guid EventContext);
+    HRESULT OnSimpleVolumeChanged(float NewVolume, BOOL NewMute, in Guid EventContext);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionevents-onchannelvolumechanged
     [PreserveSig]

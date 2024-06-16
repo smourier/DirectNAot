@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3DRASTER_STATUS
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InVBlank;
+    public BOOL InVBlank;
     public uint ScanLine;
 }

@@ -69,12 +69,12 @@ public partial interface IXpsOMPage : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompage-getishyperlinktarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsHyperlinkTarget([MarshalAs(UnmanagedType.U4)] out bool isHyperlinkTarget);
+    HRESULT GetIsHyperlinkTarget(out BOOL isHyperlinkTarget);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompage-setishyperlinktarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetIsHyperlinkTarget([MarshalAs(UnmanagedType.U4)] bool isHyperlinkTarget);
+    HRESULT SetIsHyperlinkTarget(BOOL isHyperlinkTarget);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompage-getdictionary
     [PreserveSig]
@@ -104,7 +104,7 @@ public partial interface IXpsOMPage : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompage-write
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Write(ISequentialStream stream, [MarshalAs(UnmanagedType.U4)] bool optimizeMarkupSize);
+    HRESULT Write(ISequentialStream stream, BOOL optimizeMarkupSize);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompage-generateunusedlookupkey
     [PreserveSig]

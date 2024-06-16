@@ -8,7 +8,7 @@ public partial interface IAudioMediaType
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-iscompressedformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsCompressedFormat([MarshalAs(UnmanagedType.U4)] out bool pfCompressed);
+    HRESULT IsCompressedFormat(out BOOL pfCompressed);
     
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-isequal
     [PreserveSig]

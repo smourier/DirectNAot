@@ -10,7 +10,5 @@ public partial struct DD_SETPALETTEDATA
     public nint lpDDPalette;
     public HRESULT ddRVal;
     public nint SetPalette;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Attach;
+    public BOOL Attach;
 }

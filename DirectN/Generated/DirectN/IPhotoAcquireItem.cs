@@ -33,7 +33,7 @@ public partial interface IPhotoAcquireItem
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-candelete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanDelete([MarshalAs(UnmanagedType.U4)] out bool pfCanDelete);
+    HRESULT CanDelete(out BOOL pfCanDelete);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireitem-delete
     [PreserveSig]

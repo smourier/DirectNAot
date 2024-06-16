@@ -19,10 +19,10 @@ public partial interface ISimpleAudioVolume
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-isimpleaudiovolume-setmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMute([MarshalAs(UnmanagedType.U4)] bool bMute, in Guid EventContext);
+    HRESULT SetMute(BOOL bMute, in Guid EventContext);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-isimpleaudiovolume-getmute
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMute([MarshalAs(UnmanagedType.U4)] out bool pbMute);
+    HRESULT GetMute(out BOOL pbMute);
 }

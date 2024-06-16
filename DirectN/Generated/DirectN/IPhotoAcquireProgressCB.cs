@@ -8,7 +8,7 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-cancelled
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Cancelled([MarshalAs(UnmanagedType.U4)] out bool pfCancelled);
+    HRESULT Cancelled(out BOOL pfCancelled);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-startenumeration
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-updatetransferpercent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateTransferPercent([MarshalAs(UnmanagedType.U4)] bool fOverall, uint nPercent);
+    HRESULT UpdateTransferPercent(BOOL fOverall, uint nPercent);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-enditemtransfer
     [PreserveSig]
@@ -88,7 +88,7 @@ public partial interface IPhotoAcquireProgressCB
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-getdeleteafteracquire
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDeleteAfterAcquire([MarshalAs(UnmanagedType.U4)] out bool pfDeleteAfterAcquire);
+    HRESULT GetDeleteAfterAcquire(out BOOL pfDeleteAfterAcquire);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireprogresscb-erroradvise
     [PreserveSig]

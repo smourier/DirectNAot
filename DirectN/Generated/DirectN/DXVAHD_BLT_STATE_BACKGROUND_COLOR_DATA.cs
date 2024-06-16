@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_BLT_STATE_BACKGROUND_COLOR_DATA
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool YCbCr;
+    public BOOL YCbCr;
     public DXVAHD_COLOR BackgroundColor;
 }

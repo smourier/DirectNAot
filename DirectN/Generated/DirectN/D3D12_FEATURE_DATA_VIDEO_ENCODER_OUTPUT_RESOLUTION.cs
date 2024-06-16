@@ -8,9 +8,7 @@ public partial struct D3D12_FEATURE_DATA_VIDEO_ENCODER_OUTPUT_RESOLUTION
     public uint NodeIndex;
     public D3D12_VIDEO_ENCODER_CODEC Codec;
     public uint ResolutionRatiosCount;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool IsSupported;
+    public BOOL IsSupported;
     public D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC MinResolutionSupported;
     public D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC MaxResolutionSupported;
     public uint ResolutionWidthMultipleRequirement;

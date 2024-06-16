@@ -8,10 +8,10 @@ public partial interface IWMPRenderConfig
     // https://learn.microsoft.com/windows/win32/api/wmprealestate/nf-wmprealestate-iwmprenderconfig-put_inproconly
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_inProcOnly([MarshalAs(UnmanagedType.U4)] bool fInProc);
+    HRESULT put_inProcOnly(BOOL fInProc);
     
     // https://learn.microsoft.com/windows/win32/api/wmprealestate/nf-wmprealestate-iwmprenderconfig-get_inproconly
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_inProcOnly([MarshalAs(UnmanagedType.U4)] ref bool pfInProc);
+    HRESULT get_inProcOnly(ref BOOL pfInProc);
 }

@@ -6,9 +6,7 @@ namespace DirectN;
 public partial struct D3D11_TRACE_STEP
 {
     public uint ID;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool InstructionActive;
+    public BOOL InstructionActive;
     public byte NumRegistersWritten;
     public byte NumRegistersRead;
     public ushort MiscOperations;

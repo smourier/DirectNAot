@@ -8,6 +8,5 @@ public partial interface IDWriteFont2 : IDWriteFont1
 {
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefont2-iscolorfont
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsColorFont();
+    BOOL IsColorFont();
 }

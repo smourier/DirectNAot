@@ -6,7 +6,7 @@ public partial interface IPTFilterLicenseRenewal
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenewLicenses(PWSTR wszFileName, PWSTR wszExpiredKid, uint dwCallersId, [MarshalAs(UnmanagedType.U4)] bool bHighPriority);
+    HRESULT RenewLicenses(PWSTR wszFileName, PWSTR wszExpiredKid, uint dwCallersId, BOOL bHighPriority);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

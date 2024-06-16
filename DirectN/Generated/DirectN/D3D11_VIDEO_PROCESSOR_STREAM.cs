@@ -5,8 +5,7 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_VIDEO_PROCESSOR_STREAM
 {
-    [MarshalAs(UnmanagedType.U4)]
-    public bool Enable;
+    public BOOL Enable;
     public uint OutputIndex;
     public uint InputFrameOrField;
     public uint PastFrames;

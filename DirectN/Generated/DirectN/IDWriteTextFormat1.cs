@@ -18,12 +18,11 @@ public partial interface IDWriteTextFormat1 : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setlastlinewrapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLastLineWrapping([MarshalAs(UnmanagedType.U4)] bool isLastLineWrappingEnabled);
+    HRESULT SetLastLineWrapping(BOOL isLastLineWrappingEnabled);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-getlastlinewrapping
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool GetLastLineWrapping();
+    BOOL GetLastLineWrapping();
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritetextformat1-setopticalalignment
     [PreserveSig]

@@ -78,7 +78,7 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-getverticalblankstatus
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVerticalBlankStatus([MarshalAs(UnmanagedType.U4)] ref bool param0);
+    HRESULT GetVerticalBlankStatus(ref BOOL param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-initialize
     [PreserveSig]

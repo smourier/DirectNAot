@@ -13,7 +13,7 @@ public partial interface IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-isrealtime
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRealTime([MarshalAs(UnmanagedType.U4)] out bool pfRealTime);
+    HRESULT IsRealTime(out BOOL pfRealTime);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-allocatedataunit
     [PreserveSig]

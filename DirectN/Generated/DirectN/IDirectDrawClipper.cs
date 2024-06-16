@@ -23,7 +23,7 @@ public partial interface IDirectDrawClipper
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-iscliplistchanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsClipListChanged([MarshalAs(UnmanagedType.U4)] ref bool param0);
+    HRESULT IsClipListChanged(ref BOOL param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawclipper-setcliplist
     [PreserveSig]

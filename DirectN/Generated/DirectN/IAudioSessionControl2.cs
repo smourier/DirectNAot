@@ -29,5 +29,5 @@ public partial interface IAudioSessionControl2 : IAudioSessionControl
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessioncontrol2-setduckingpreference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDuckingPreference([MarshalAs(UnmanagedType.U4)] bool optOut);
+    HRESULT SetDuckingPreference(BOOL optOut);
 }

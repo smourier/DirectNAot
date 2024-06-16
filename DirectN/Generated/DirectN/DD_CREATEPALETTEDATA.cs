@@ -10,7 +10,5 @@ public partial struct DD_CREATEPALETTEDATA
     public nint lpColorTable;
     public HRESULT ddRVal;
     public nint CreatePalette;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool is_excl;
+    public BOOL is_excl;
 }

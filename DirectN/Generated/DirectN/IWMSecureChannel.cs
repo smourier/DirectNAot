@@ -24,7 +24,7 @@ public partial interface IWMSecureChannel : IWMAuthorizer
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_isconnected
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WMSC_IsConnected([MarshalAs(UnmanagedType.U4)] out bool pfIsConnected);
+    HRESULT WMSC_IsConnected(out BOOL pfIsConnected);
     
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_disconnect
     [PreserveSig]

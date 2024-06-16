@@ -39,5 +39,5 @@ public partial interface IDeviceTopology
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-idevicetopology-getsignalpath
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSignalPath(IPart pIPartFrom, IPart pIPartTo, [MarshalAs(UnmanagedType.U4)] bool bRejectMixedPaths, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPartsList>))] out IPartsList ppParts);
+    HRESULT GetSignalPath(IPart pIPartFrom, IPart pIPartTo, BOOL bRejectMixedPaths, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPartsList>))] out IPartsList ppParts);
 }

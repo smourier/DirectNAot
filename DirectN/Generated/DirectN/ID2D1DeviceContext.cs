@@ -63,13 +63,11 @@ public partial interface ID2D1DeviceContext : ID2D1RenderTarget
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-isdxgiformatsupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsDxgiFormatSupported(DXGI_FORMAT format);
+    BOOL IsDxgiFormatSupported(DXGI_FORMAT format);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-isbufferprecisionsupported
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool IsBufferPrecisionSupported(D2D1_BUFFER_PRECISION bufferPrecision);
+    BOOL IsBufferPrecisionSupported(D2D1_BUFFER_PRECISION bufferPrecision);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1devicecontext-getimagelocalbounds
     [PreserveSig]

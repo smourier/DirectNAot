@@ -73,27 +73,27 @@ public partial interface IATSC_VCT
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordisaccesscontrolledbitset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordIsAccessControlledBitSet(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordIsAccessControlledBitSet(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordishiddenbitset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordIsHiddenBitSet(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordIsHiddenBitSet(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordispathselectbitset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordIsPathSelectBitSet(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordIsPathSelectBitSet(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordisoutofbandbitset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordIsOutOfBandBitSet(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordIsOutOfBandBitSet(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordishideguidebitset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRecordIsHideGuideBitSet(uint dwRecordIndex, [MarshalAs(UnmanagedType.U4)] out bool pfVal);
+    HRESULT GetRecordIsHideGuideBitSet(uint dwRecordIndex, out BOOL pfVal);
     
     // https://learn.microsoft.com/windows/win32/api/atscpsipparser/nf-atscpsipparser-iatsc_vct-getrecordservicetype
     [PreserveSig]

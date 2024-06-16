@@ -44,5 +44,5 @@ public partial interface IDCompositionVisual3 : IDCompositionVisualDebug
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual3-setvisible
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVisible([MarshalAs(UnmanagedType.U4)] bool visible);
+    HRESULT SetVisible(BOOL visible);
 }

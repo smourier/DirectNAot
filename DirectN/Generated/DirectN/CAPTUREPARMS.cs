@@ -6,49 +6,27 @@ namespace DirectN;
 public partial struct CAPTUREPARMS
 {
     public uint dwRequestMicroSecPerFrame;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMakeUserHitOKToCapture;
+    public BOOL fMakeUserHitOKToCapture;
     public uint wPercentDropForError;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fYield;
+    public BOOL fYield;
     public uint dwIndexSize;
     public uint wChunkGranularity;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fUsingDOSMemory;
+    public BOOL fUsingDOSMemory;
     public uint wNumVideoRequested;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fCaptureAudio;
+    public BOOL fCaptureAudio;
     public uint wNumAudioRequested;
     public uint vKeyAbort;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fAbortLeftMouse;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fAbortRightMouse;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fLimitEnabled;
+    public BOOL fAbortLeftMouse;
+    public BOOL fAbortRightMouse;
+    public BOOL fLimitEnabled;
     public uint wTimeLimit;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fMCIControl;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fStepMCIDevice;
+    public BOOL fMCIControl;
+    public BOOL fStepMCIDevice;
     public uint dwMCIStartTime;
     public uint dwMCIStopTime;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fStepCaptureAt2x;
+    public BOOL fStepCaptureAt2x;
     public uint wStepCaptureAverageFrames;
     public uint dwAudioBufferSize;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool fDisableWriteCache;
+    public BOOL fDisableWriteCache;
     public uint AVStreamMaster;
 }

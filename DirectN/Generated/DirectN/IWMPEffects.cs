@@ -53,7 +53,7 @@ public partial interface IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-gofullscreen
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GoFullscreen([MarshalAs(UnmanagedType.U4)] bool fFullScreen);
+    HRESULT GoFullscreen(BOOL fFullScreen);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-renderfullscreen
     [PreserveSig]

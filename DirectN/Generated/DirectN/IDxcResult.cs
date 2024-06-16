@@ -5,8 +5,7 @@ namespace DirectN;
 public partial interface IDxcResult : IDxcOperationResult
 {
     [PreserveSig]
-    [return: MarshalAs(UnmanagedType.U4)]
-    bool HasOutput(DXC_OUT_KIND dxcOutKind);
+    BOOL HasOutput(DXC_OUT_KIND dxcOutKind);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

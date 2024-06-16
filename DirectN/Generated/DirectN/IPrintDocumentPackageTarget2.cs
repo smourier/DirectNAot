@@ -6,7 +6,7 @@ public partial interface IPrintDocumentPackageTarget2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIsTargetIppPrinter([MarshalAs(UnmanagedType.U4)] out bool isIppPrinter);
+    HRESULT GetIsTargetIppPrinter(out BOOL isIppPrinter);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

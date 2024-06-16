@@ -9,7 +9,7 @@ public partial interface IMFByteStreamTimeSeek
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamtimeseek-istimeseeksupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsTimeSeekSupported([MarshalAs(UnmanagedType.U4)] out bool pfTimeSeekIsSupported);
+    HRESULT IsTimeSeekSupported(out BOOL pfTimeSeekIsSupported);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfbytestreamtimeseek-timeseek
     [PreserveSig]

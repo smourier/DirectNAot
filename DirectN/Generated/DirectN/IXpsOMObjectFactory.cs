@@ -14,12 +14,12 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagefromfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageFromFile(PWSTR filename, [MarshalAs(UnmanagedType.U4)] bool reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
+    HRESULT CreatePackageFromFile(PWSTR filename, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagefromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageFromStream(IStream stream, [MarshalAs(UnmanagedType.U4)] bool reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
+    HRESULT CreatePackageFromStream(IStream stream, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createstoryfragmentsresource
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpagefromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePageFromStream(IStream pageMarkupStream, IOpcPartUri partUri, IXpsOMPartResources resources, [MarshalAs(UnmanagedType.U4)] bool reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
+    HRESULT CreatePageFromStream(IStream pageMarkupStream, IOpcPartUri partUri, IXpsOMPartResources resources, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createcanvas
     [PreserveSig]
@@ -139,7 +139,7 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontResource(IStream acquiredStream, XPS_FONT_EMBEDDING fontEmbedding, IOpcPartUri partUri, [MarshalAs(UnmanagedType.U4)] bool isObfSourceStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource fontResource);
+    HRESULT CreateFontResource(IStream acquiredStream, XPS_FONT_EMBEDDING fontEmbedding, IOpcPartUri partUri, BOOL isObfSourceStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-creategradientstop
     [PreserveSig]
@@ -174,12 +174,12 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagewriteronfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageWriterOnFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, [MarshalAs(UnmanagedType.U4)] bool optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
+    HRESULT CreatePackageWriterOnFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagewriteronstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageWriterOnStream(ISequentialStream outputStream, [MarshalAs(UnmanagedType.U4)] bool optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
+    HRESULT CreatePackageWriterOnStream(ISequentialStream outputStream, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createparturi
     [PreserveSig]

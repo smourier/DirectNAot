@@ -8,7 +8,7 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(nint pSharedNamespace, nint pNamespaceNode, INSNetSourceCreator pNetSourceCreator, [MarshalAs(UnmanagedType.U4)] bool fEmbeddedInServer);
+    HRESULT Initialize(nint pSharedNamespace, nint pNamespaceNode, INSNetSourceCreator pNetSourceCreator, BOOL fEmbeddedInServer);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]
@@ -18,12 +18,12 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-setcredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCredentials(BSTR bstrRealm, BSTR bstrName, BSTR bstrPassword, [MarshalAs(UnmanagedType.U4)] bool fPersist, [MarshalAs(UnmanagedType.U4)] bool fConfirmedGood);
+    HRESULT SetCredentials(BSTR bstrRealm, BSTR bstrName, BSTR bstrPassword, BOOL fPersist, BOOL fConfirmedGood);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-getcredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCredentials(BSTR bstrRealm, out BSTR pbstrName, out BSTR pbstrPassword, [MarshalAs(UnmanagedType.U4)] out bool pfConfirmedGood);
+    HRESULT GetCredentials(BSTR bstrRealm, out BSTR pbstrName, out BSTR pbstrPassword, out BOOL pfConfirmedGood);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-deletecredentials
     [PreserveSig]
@@ -43,7 +43,7 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-findproxyforurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindProxyForURL(BSTR bstrProtocol, BSTR bstrHost, [MarshalAs(UnmanagedType.U4)] out bool pfProxyEnabled, out BSTR pbstrProxyServer, out uint pdwProxyPort, ref uint pdwProxyContext);
+    HRESULT FindProxyForURL(BSTR bstrProtocol, BSTR bstrHost, out BOOL pfProxyEnabled, out BSTR pbstrProxyServer, out uint pdwProxyPort, ref uint pdwProxyContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource-registerproxyfailure
     [PreserveSig]
@@ -58,5 +58,5 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsUsingIE(uint dwProxyContext, [MarshalAs(UnmanagedType.U4)] out bool pfIsUsingIE);
+    HRESULT IsUsingIE(uint dwProxyContext, out BOOL pfIsUsingIE);
 }

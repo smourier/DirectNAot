@@ -7,16 +7,8 @@ public partial struct XAUDIO2_DEBUG_CONFIGURATION
 {
     public uint TraceMask;
     public uint BreakMask;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool LogThreadID;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool LogFileline;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool LogFunctionName;
-    
-    [MarshalAs(UnmanagedType.U4)]
-    public bool LogTiming;
+    public BOOL LogThreadID;
+    public BOOL LogFileline;
+    public BOOL LogFunctionName;
+    public BOOL LogTiming;
 }

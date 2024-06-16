@@ -19,12 +19,12 @@ public partial interface IESLicenseRenewalResultEvent : IESEvent
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieslicenserenewalresultevent-isrenewalsuccessful
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsRenewalSuccessful([MarshalAs(UnmanagedType.U4)] out bool pfRenewalSuccessful);
+    HRESULT IsRenewalSuccessful(out BOOL pfRenewalSuccessful);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieslicenserenewalresultevent-ischeckentitlementcallrequired
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsCheckEntitlementCallRequired([MarshalAs(UnmanagedType.U4)] out bool pfCheckEntTokenCallNeeded);
+    HRESULT IsCheckEntitlementCallRequired(out BOOL pfCheckEntTokenCallNeeded);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieslicenserenewalresultevent-getdescrambledstatus
     [PreserveSig]
