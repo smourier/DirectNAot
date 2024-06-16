@@ -196,7 +196,7 @@ public class Application : IDisposable
         if (IsFatalErrorShowing)
             return 0;
 
-        TraceError("Hwnd:" + hwnd.Value + Environment.NewLine + string.Join(Environment.NewLine, _errors));
+        TraceError("Hwnd:" + hwnd.Value.ToHex() + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         var errors = _errors.ToArray();
         IsFatalErrorShowing = true;
         try
@@ -280,11 +280,11 @@ public class Application : IDisposable
 #endif
     }
 
-    public static void TraceInfo(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Info, message, methodName);
-    public static void TraceWarning(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Warning, message, methodName);
-    public static void TraceVerbose(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Verbose, message, methodName);
-    public static void TraceError(object? message, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Error, message, methodName);
-    public static void Trace(TraceLevel level, object? message, [CallerMemberName] string? methodName = null)
+    public static void TraceInfo(object? message = null, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Info, message, methodName);
+    public static void TraceWarning(object? message = null, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Warning, message, methodName);
+    public static void TraceVerbose(object? message = null, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Verbose, message, methodName);
+    public static void TraceError(object? message = null, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Error, message, methodName);
+    public static void Trace(TraceLevel level, object? message = null, [CallerMemberName] string? methodName = null)
     {
         if (level > TraceLevel)
             return;

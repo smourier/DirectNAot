@@ -49,6 +49,9 @@ public static class ComExtensions
         if (comObject == null)
             return null;
 
+        if (comObject is IComObject<T> co)
+            return co;
+
         if (comObject.Object is T t)
             return new ComObject<T>(t, releaseOnDispose);
 

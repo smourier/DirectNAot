@@ -16,10 +16,10 @@ public static class ID3D12FenceExtensions
         fence.Signal(value).ThrowOnError();
     }
 
-    public static void SetEventOnCompletion(this IComObject<ID3D12Fence> fence, ulong value, nint @event) => SetEventOnCompletion(fence?.Object!, value, @event);
-    public static void SetEventOnCompletion(this ID3D12Fence fence, ulong value, nint @event)
+    public static void SetEventOnCompletion(this IComObject<ID3D12Fence> fence, ulong value, HANDLE @event) => SetEventOnCompletion(fence?.Object!, value, @event);
+    public static void SetEventOnCompletion(this ID3D12Fence fence, ulong value, HANDLE @event)
     {
         ArgumentNullException.ThrowIfNull(fence);
-        fence.SetEventOnCompletion(value, @event);
+        fence.SetEventOnCompletion(value, @event).ThrowOnError();
     }
 }

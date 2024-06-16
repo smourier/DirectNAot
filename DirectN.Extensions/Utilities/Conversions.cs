@@ -47,6 +47,30 @@ public static class Conversions
     public static DateTime ToDateTime(this FILETIME ft) => DateTime.FromFileTime(ToFileTime(ft));
     public static DateTime ToDateTimeUtc(this FILETIME ft) => DateTime.FromFileTimeUtc(ToFileTime(ft));
 
+    public static string ToHex(this byte value) => $"0x{value:X2}";
+    public static string ToHex(this sbyte value) => $"0x{value:X2}";
+    public static string ToHex(this ushort value) => $"0x{value:X4}";
+    public static string ToHex(this short value) => $"0x{value:X4}";
+    public static string ToHex(this uint value) => $"0x{value:X8}";
+    public static string ToHex(this int value) => $"0x{value:X8}";
+    public static string ToHex(this ulong value) => $"0x{value:X16}";
+    public static string ToHex(this long value) => $"0x{value:X16}";
+    public static string ToHex(this nint value)
+    {
+        if (IntPtr.Size == 4)
+            return value.ToInt32().ToHex();
+
+        return value.ToInt64().ToHex();
+    }
+
+    public static string ToHex(this nuint value)
+    {
+        if (IntPtr.Size == 4)
+            return value.ToUInt32().ToHex();
+
+        return value.ToUInt64().ToHex();
+    }
+
     public static string ToHexa(this byte[] bytes, bool addEllipsis = false) => bytes != null ? ToHexa(bytes, 0, bytes.Length, addEllipsis) : "0x";
     public static string ToHexa(this byte[] bytes, int count, bool addEllipsis = false) => ToHexa(bytes, 0, count, addEllipsis);
     public static string ToHexa(this byte[] bytes, int offset, int count, bool addEllipsis = false)

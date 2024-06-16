@@ -49,7 +49,6 @@ public class D2DRenderWindow(
     protected override bool OnResized(WindowResizedType type, SIZE size)
     {
         RenderTarget?.Resize(ClientRect.Size.ToD2D_SIZE_U());
-        OnResized(type, size);
         return true;
     }
 

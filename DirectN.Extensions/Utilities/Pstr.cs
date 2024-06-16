@@ -43,7 +43,7 @@ public class Pstr : IDisposable
         }
 
         encoding ??= Encoding.Default;
-        var bytes = encoding.GetBytes(value);
+        var bytes = encoding.GetBytes(value + "\0");
         Value = Marshal.AllocCoTaskMem(bytes.Length);
         Marshal.Copy(bytes, 0, Value, bytes.Length);
     }
