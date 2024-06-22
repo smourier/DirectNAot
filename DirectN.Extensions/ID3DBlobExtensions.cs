@@ -46,6 +46,38 @@ public static class ID3DBlobExtensions
         return str;
     }
 
+    public static string? GetUTF8StringFromBlob(this IComObject<ID3DBlob>? blob) => GetUTF8StringFromBlob(blob?.Object!);
+    public static string? GetUTF8StringFromBlob(this ID3DBlob? blob)
+    {
+        string? str = null;
+        if (blob != null)
+        {
+            var ptr = blob.GetBufferPointer();
+            var len = blob.GetBufferSize();
+            if (ptr != 0 && len > 0)
+            {
+                str = Marshal.PtrToStringUTF8(ptr, (int)len).Nullify();
+            }
+        }
+        return str;
+    }
+
+    public static string? GetUnicodeStringFromBlob(this IComObject<ID3DBlob>? blob) => GetUnicodeStringFromBlob(blob?.Object!);
+    public static string? GetUnicodeStringFromBlob(this ID3DBlob? blob)
+    {
+        string? str = null;
+        if (blob != null)
+        {
+            var ptr = blob.GetBufferPointer();
+            var len = blob.GetBufferSize();
+            if (ptr != 0 && len > 0)
+            {
+                str = Marshal.PtrToStringUni(ptr, (int)len).Nullify();
+            }
+        }
+        return str;
+    }
+
     public static D3D12_SHADER_BYTECODE ToD3D12_SHADER_BYTECODE(this IComObject<ID3DBlob>? blob) => ToD3D12_SHADER_BYTECODE(blob?.Object!);
     public static D3D12_SHADER_BYTECODE ToD3D12_SHADER_BYTECODE(this ID3DBlob? blob)
     {
