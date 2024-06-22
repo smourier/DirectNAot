@@ -660,7 +660,7 @@ public static partial class Functions
     public static partial BOOL BringWindowToTop(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_hgetcolortransform
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE BRUSHOBJ_hGetColorTransform(ref BRUSHOBJ pbo);
@@ -690,13 +690,13 @@ public static partial class Functions
     public static partial int CapabilitiesRequestAndCapabilitiesReply(HANDLE hMonitor, [MarshalUsing(CountElementName = nameof(dwCapabilitiesStringLengthInCharacters))] PSTR pszASCIICapabilitiesString, uint dwCapabilitiesStringLengthInCharacters);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindowa
-    [LibraryImport("AVICAP32", SetLastError = true)]
+    [LibraryImport("AVICAP32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND capCreateCaptureWindowA(PSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND hwndParent, int nID);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindoww
-    [LibraryImport("AVICAP32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("AVICAP32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND capCreateCaptureWindowW(PWSTR lpszWindowName, uint dwStyle, int x, int y, int nWidth, int nHeight, HWND hwndParent, int nID);
@@ -981,13 +981,13 @@ public static partial class Functions
     public static partial BOOL CreateCaret(HWND hWnd, HBITMAP hBitmap, int nWidth, int nHeight);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createcolorspacea
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCOLORSPACE CreateColorSpaceA(in LOGCOLORSPACEA lplcs);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createcolorspacew
-    [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCOLORSPACE CreateColorSpaceW(in LOGCOLORSPACEW lplcs);
@@ -1953,7 +1953,7 @@ public static partial class Functions
     public static partial nint DrawDibGetBuffer(nint hdd, out BITMAPINFOHEADER lpbi, uint dwSize, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibgetpalette
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HPALETTE DrawDibGetPalette(nint hdd);
@@ -2007,7 +2007,7 @@ public static partial class Functions
     public static partial BOOL DriverCallback(nuint dwCallback, uint dwFlags, HDRVR hDevice, uint dwMsg, nuint dwUser, nuint dwParam1, nuint dwParam2);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-drvgetmodulehandle
-    [LibraryImport("WINMM", SetLastError = true)]
+    [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMODULE DrvGetModuleHandle(HDRVR hDriver);
@@ -2379,7 +2379,7 @@ public static partial class Functions
     public static partial BOOL EngCopyBits(ref SURFOBJ psoDest, ref SURFOBJ psoSrc, ref CLIPOBJ pco, ref XLATEOBJ pxlo, ref RECTL prclDest, ref POINTL pptlSrc);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatebitmap
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HBITMAP EngCreateBitmap(SIZE sizl, int lWidth, uint iFormat, uint fl, nint pvBits);
@@ -2391,25 +2391,25 @@ public static partial class Functions
     public static partial nint EngCreateClip();
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatedevicebitmap
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HBITMAP EngCreateDeviceBitmap(DHSURF dhsurf, SIZE sizl, uint iFormatCompat);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatedevicesurface
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HSURF EngCreateDeviceSurface(DHSURF dhsurf, SIZE sizl, uint iFormatCompat);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatepalette
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HPALETTE EngCreatePalette(uint iMode, uint cColors, ref uint pulColors, uint flRed, uint flGreen, uint flBlue);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatesemaphore
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HSEMAPHORE EngCreateSemaphore();
@@ -2499,7 +2499,7 @@ public static partial class Functions
     public static partial BOOL EngLineTo(ref SURFOBJ pso, ref CLIPOBJ pco, ref BRUSHOBJ pbo, int x1, int y1, int x2, int y2, ref RECTL prclBounds, uint mix);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engloadmodule
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE EngLoadModule(PWSTR pwsz);
@@ -2681,7 +2681,7 @@ public static partial class Functions
     public static partial int ExtEscape(HDC hdc, int iEscape, int cjInput, PSTR lpInData, int cjOutput, PSTR lpOutData);
     
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatediconw
-    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HICON ExtractAssociatedIconW(HINSTANCE hInst, [MarshalUsing(ConstantElementCount = 128)] PWSTR pszIconPath, ref ushort piIcon);
@@ -2741,7 +2741,7 @@ public static partial class Functions
     public static partial BOOL FreeLibrary(HMODULE hLibModule);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getactivewindow
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND GetActiveWindow();
@@ -2829,13 +2829,13 @@ public static partial class Functions
     public static partial BOOL GetColorProfileHeader(nint hProfile, out PROFILEHEADER pHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getcolorspace
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCOLORSPACE GetColorSpace(HDC hdc);
     
     // https://learn.microsoft.com/windows/console/getconsolewindow
-    [LibraryImport("KERNEL32", SetLastError = true)]
+    [LibraryImport("KERNEL32")]
     [PreserveSig]
     public static partial HWND GetConsoleWindow();
     
@@ -2845,7 +2845,7 @@ public static partial class Functions
     public static partial BOOL GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcursor
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCURSOR GetCursor();
@@ -2857,7 +2857,7 @@ public static partial class Functions
     public static partial BOOL GetCursorPos(out POINT lpPoint);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdesktopwindow
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND GetDesktopWindow();
@@ -2901,7 +2901,7 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint GetDoubleClickTime();
     
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [PreserveSig]
     public static partial DPI_AWARENESS_CONTEXT GetDpiAwarenessContextForProcess(HANDLE hProcess);
     
@@ -2930,7 +2930,7 @@ public static partial class Functions
     public static partial uint GetDpiFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT value);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-getdrivermodulehandle
-    [LibraryImport("WINMM", SetLastError = true)]
+    [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMODULE GetDriverModuleHandle(HDRVR hDriver);
@@ -2947,13 +2947,13 @@ public static partial class Functions
     public static partial HRESULT GetErrorInfo(uint dwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorInfo>))] out IErrorInfo pperrinfo);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getfocus
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND GetFocus();
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getforegroundwindow
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND GetForegroundWindow();
@@ -3180,7 +3180,7 @@ public static partial class Functions
     public static partial HRESULT GetProcessDpiAwareness(HANDLE hprocess, out PROCESS_DPI_AWARENESS value);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpropw
-    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE GetPropW(HWND hWnd, PWSTR lpString);
@@ -3225,7 +3225,7 @@ public static partial class Functions
     public static partial HRESULT GetScaleFactorForMonitor(HMONITOR hMon, out DEVICE_SCALE_FACTOR pScale);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getshellwindow
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND GetShellWindow();
@@ -3241,7 +3241,7 @@ public static partial class Functions
     public static partial BOOL GetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwSCS, PWSTR pBuffer, ref uint pcbSize);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getstockobject
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HGDIOBJ GetStockObject(GET_STOCK_OBJECT_FLAGS i);
@@ -3283,7 +3283,7 @@ public static partial class Functions
     public static partial COLORREF GetThemeSysColor(HTHEME hTheme, int iColorId);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getthreaddpiawarenesscontext
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows10.0.14393")]
     [PreserveSig]
     public static partial DPI_AWARENESS_CONTEXT GetThreadDpiAwarenessContext();
@@ -3325,7 +3325,7 @@ public static partial class Functions
     public static partial BOOL GetWindowDisplayAffinity(HWND hWnd, out uint pdwAffinity);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowdpiawarenesscontext
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows10.0.14393")]
     [PreserveSig]
     public static partial DPI_AWARENESS_CONTEXT GetWindowDpiAwarenessContext(HWND hwnd);
@@ -5410,7 +5410,7 @@ public static partial class Functions
     public static partial uint ICDrawBegin(HIC hic, uint dwFlags, HPALETTE hpal, HWND hwnd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, in BITMAPINFOHEADER lpbi, int xSrc, int ySrc, int dxSrc, int dySrc, uint dwRate, uint dwScale);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icgetdisplayformat
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HIC ICGetDisplayFormat(HIC hic, in BITMAPINFOHEADER lpbiIn, out BITMAPINFOHEADER lpbiOut, int BitDepth, int dx, int dy);
@@ -5422,13 +5422,13 @@ public static partial class Functions
     public static partial LRESULT ICGetInfo(HIC hic, nint picinfo, uint cb);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagecompress
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE ICImageCompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO* */ lpbiOut, int lQuality, nint /* optional int* */ plSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagedecompress
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE ICImageDecompress(HIC hic, uint uiFlags, in BITMAPINFO lpbiIn, nint lpBits, nint /* optional BITMAPINFO* */ lpbiOut);
@@ -5446,19 +5446,19 @@ public static partial class Functions
     public static partial BOOL ICInstall(uint fccType, uint fccHandler, LPARAM lParam, PSTR szDesc, uint wFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iclocate
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HIC ICLocate(uint fccType, uint fccHandler, in BITMAPINFOHEADER lpbiIn, nint /* optional BITMAPINFOHEADER* */ lpbiOut, ushort wFlags);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icopen
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HIC ICOpen(uint fccType, uint fccHandler, uint wMode);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icopenfunction
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HIC ICOpenFunction(uint fccType, uint fccHandler, uint wMode, nint lpfnHandler);
@@ -5766,7 +5766,7 @@ public static partial class Functions
     [PreserveSig]
     public static partial BOOL mciFreeCommandResource(uint wTable);
     
-    [LibraryImport("WINMM", SetLastError = true)]
+    [LibraryImport("WINMM")]
     [PreserveSig]
     public static partial HTASK mciGetCreatorTask(uint mciId);
     
@@ -5831,13 +5831,13 @@ public static partial class Functions
     public static partial BOOL mciSetYieldProc(uint mciId, YIELDPROC? fpYieldProc, uint dwYieldData);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndcreatea
-    [LibraryImport("MSVFW32", SetLastError = true)]
+    [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND MCIWndCreateA(HWND hwndParent, HINSTANCE hInstance, uint dwStyle, PSTR szFile);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndcreatew
-    [LibraryImport("MSVFW32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("MSVFW32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND MCIWndCreateW(HWND hwndParent, HINSTANCE hInstance, uint dwStyle, PWSTR szFile);
@@ -7636,13 +7636,13 @@ public static partial class Functions
     public static partial LPMMIOPROC mmioInstallIOProcW(uint fccIOProc, LPMMIOPROC? pIOProc, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopena
-    [LibraryImport("WINMM", SetLastError = true)]
+    [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMMIO mmioOpenA([MarshalUsing(ConstantElementCount = 128)] PSTR pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopenw
-    [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMMIO mmioOpenW([MarshalUsing(ConstantElementCount = 128)] PWSTR pszFileName, nint /* optional MMIOINFO* */ pmmioinfo, uint fdwOpen);
@@ -7758,13 +7758,13 @@ public static partial class Functions
     public static partial HRESULT MoInitMediaType(ref DMO_MEDIA_TYPE pmt, uint cbFormat);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-monitorfrompoint
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMONITOR MonitorFromPoint(POINT pt, MONITOR_FROM_FLAGS dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-monitorfromwindow
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HMONITOR MonitorFromWindow(HWND hwnd, MONITOR_FROM_FLAGS dwFlags);
@@ -7780,7 +7780,7 @@ public static partial class Functions
     public static partial nint OpenColorProfileW(in PROFILE pProfile, uint dwDesiredAccess, uint dwShareMode, uint dwCreationMode);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-opendriver
-    [LibraryImport("WINMM", SetLastError = true)]
+    [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HDRVR OpenDriver(PWSTR szDriverName, PWSTR szSectionName, LPARAM lParam2);
@@ -8225,7 +8225,7 @@ public static partial class Functions
     public static partial HWND SetActiveWindow(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setcapture
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND SetCapture(HWND hWnd);
@@ -8257,13 +8257,13 @@ public static partial class Functions
     public static partial BOOL SetColorProfileHeader(nint hProfile, in PROFILEHEADER pHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setcolorspace
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCOLORSPACE SetColorSpace(HDC hdc, HCOLORSPACE hcs);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setcursor
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HCURSOR SetCursor(HCURSOR hCursor);
@@ -8421,7 +8421,7 @@ public static partial class Functions
     public static partial BOOL SetStandardColorSpaceProfileW(PWSTR pMachineName, uint dwProfileID, PWSTR pProfileName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setthreaddpiawarenesscontext
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows10.0.14393")]
     [PreserveSig]
     public static partial DPI_AWARENESS_CONTEXT SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT dpiContext);
@@ -9121,7 +9121,7 @@ public static partial class Functions
     public static partial BOOL wglDescribeLayerPlane(HDC param0, int param1, int param2, uint param3, ref LAYERPLANEDESCRIPTOR param4);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-wglgetcurrentcontext
-    [LibraryImport("OPENGL32", SetLastError = true)]
+    [LibraryImport("OPENGL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HGLRC wglGetCurrentContext();
@@ -9253,13 +9253,13 @@ public static partial class Functions
     public static partial HRESULT WICSerializeMetadataContent(in Guid guidContainerFormat, IWICMetadataWriter pIWriter, uint dwPersistOptions, IStream pIStream);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfromphysicalpoint
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     public static partial HWND WindowFromPhysicalPoint(POINT Point);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfrompoint
-    [LibraryImport("USER32", SetLastError = true)]
+    [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HWND WindowFromPoint(POINT Point);
@@ -9479,7 +9479,7 @@ public static partial class Functions
     public static partial uint XLATEOBJ_cGetPalette(ref XLATEOBJ pxlo, uint iPal, uint cPal, ref uint pPal);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xlateobj_hgetcolortransform
-    [LibraryImport("GDI32", SetLastError = true)]
+    [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HANDLE XLATEOBJ_hGetColorTransform(ref XLATEOBJ pxlo);

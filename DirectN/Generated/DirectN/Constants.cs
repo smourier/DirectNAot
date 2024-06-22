@@ -5451,7 +5451,7 @@ public static partial class Constants
     
     public const uint D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 16;
     
-    public const uint D3D12_PREVIEW_SDK_VERSION = 713;
+    public const uint D3D12_PREVIEW_SDK_VERSION = 714;
     
     public static readonly Guid D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED = new("62b0084e-c70e-4daa-a109-30ff8d5a0482");
     
@@ -5587,7 +5587,7 @@ public static partial class Constants
     
     public const uint D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT = 2;
     
-    public const uint D3D12_SDK_VERSION = 613;
+    public const uint D3D12_SDK_VERSION = 614;
     
     public const uint D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES = 4096;
     
