@@ -3,41 +3,24 @@
 public class DxcResult(IComObject<IDxcResult> result) : DxcResult<IDxcResult>(result) { }
 public class DxcResult<T> : InterlockedComObject<T> where T : IDxcResult
 {
-    private readonly List<DxcResultOutput> _outputs = [];
+    private readonly DXC_OUT_KIND[] _outputKinds;
 
     public DxcResult(IComObject<T> result)
         : base(result)
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        var count = result.Object.GetNumOutputs();
-        for (uint i = 0; i < count; i++)
+        OutputCount = result.Object.GetNumOutputs();
+        _outputKinds = new DXC_OUT_KIND[OutputCount];
+        for (uint i = 0; i < OutputCount; i++)
         {
-            var type = result.Object.GetOutputByIndex(i);
-            if (type == DXC_OUT_KIND.DXC_OUT_NONE)
-                continue;
-
-            var output = new DxcResultOutput(type);
-            result.Object.GetOutput(type, typeof(IDxcBlob).GUID, out var ppv, out var name);
-            if (ppv != 0)
-            {
-                output.Blob = new DxcBlob(DirectN.Extensions.Com.ComObject.FromPointer<IDxcBlob>(ppv)!);
-                var t = output.Blob.Text;
-                Marshal.Release(ppv);
-            }
-
-            if (name != null)
-            {
-                output.Name = ((ID3DBlob)name).GetUnicodeStringFromBlob();
-            }
-            _outputs.Add(output);
+            _outputKinds[i] = result.Object.GetOutputByIndex(i);
         }
 
         PrimaryOutput = result.Object.PrimaryOutput();
         if (result.Object.GetErrorBuffer(out var encoding).IsSuccess)
         {
-            using var blob = new ComObject<IDxcBlob>(encoding);
-            using var errorBlob = new DxcBlob(blob);
+            using var errorBlob = new DxcBlob(new ComObject<IDxcBlob>(encoding));
             Error = errorBlob.Text;
         }
 
@@ -55,7 +38,25 @@ public class DxcResult<T> : InterlockedComObject<T> where T : IDxcResult
     public DxcBlob? Result { get; }
     public HRESULT Status { get; }
     public string? Error { get; private set; }
-    public IReadOnlyList<DxcResultOutput> Outputs => _outputs.AsReadOnly();
+    public uint OutputCount { get; }
+
+    public IReadOnlyList<DXC_OUT_KIND> OutputKinds => _outputKinds;
+    public virtual DxcResultOutput GetOutput(DXC_OUT_KIND kind)
+    {
+        var output = new DxcResultOutput(kind);
+        ComObject.Object.GetOutput(kind, typeof(IDxcBlob).GUID, out var ppv, out var name);
+        if (ppv != 0)
+        {
+            output.Blob = new DxcBlob(Extensions.Com.ComObject.FromPointer<IDxcBlob>(ppv)!);
+        }
+
+        if (name != null)
+        {
+            output.Name = ((ID3DBlob)name).GetUnicodeStringFromBlob();
+            name.FinalRelease();
+        }
+        return output;
+    }
 
     public virtual void ThrowOnError()
     {
