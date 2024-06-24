@@ -168,9 +168,12 @@ public static class IDXGIFactoryExtensions
 
     [SupportedOSPlatform("windows6.1")]
     public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IComObject<IDXGIFactory1> factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED) => GetHardwareAdapter(factory?.Object!, preference);
+
+    [SupportedOSPlatform("windows6.1")]
     public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IDXGIFactory1 factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED)
     {
         ArgumentNullException.ThrowIfNull(factory);
+        var list = new List<IComObject<IDXGIAdapter1>>();
         IComObject<IDXGIAdapter1>? adapter = null;
         if (factory is IDXGIFactory6 fac)
         {
@@ -182,6 +185,7 @@ public static class IDXGIFactoryExtensions
                 if (adapter == null)
                     break;
 
+                list.Add(adapter);
                 var desc = adapter.GetDesc1();
                 var flags = (DXGI_ADAPTER_FLAG)desc.Flags;
                 if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
@@ -200,6 +204,7 @@ public static class IDXGIFactoryExtensions
         {
             foreach (var a in factory.EnumAdapters1<IDXGIAdapter1>())
             {
+                list.Add(a);
                 var desc = a.GetDesc1();
                 var flags = (DXGI_ADAPTER_FLAG)desc.Flags;
                 if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
@@ -218,6 +223,14 @@ public static class IDXGIFactoryExtensions
             }
         }
 #pragma warning restore CA1416 // Validate platform compatibility
+        foreach (var ad in list)
+        {
+            if (ad == adapter)
+                continue;
+
+            ad.Dispose();
+        }
+
         return adapter;
     }
 }
