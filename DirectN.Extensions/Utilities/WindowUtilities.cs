@@ -34,6 +34,9 @@
             return info;
         }
 
+        public static POINT GetCursorPosition() { Functions.GetCursorPos(out var pt); return pt; }
+        public static char VirtualKeyToCharacter(VIRTUAL_KEY vk) => (char)Functions.MapVirtualKeyW((uint)vk, MAP_VIRTUAL_KEY_TYPE.MAPVK_VK_TO_CHAR);
+        public static bool IsKeyPressed(VIRTUAL_KEY vk, bool async = true) => (async ? Functions.GetAsyncKeyState((int)vk) : Functions.GetKeyState((int)vk)) < 0;
         public static IReadOnlyList<HWND> EnumerateTopLevelWindows()
         {
             var list = new List<HWND>();

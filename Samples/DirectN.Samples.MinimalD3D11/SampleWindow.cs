@@ -86,8 +86,6 @@ namespace DirectN.Samples.MinimalD3D11
                 _constants.CameraProjection,
                 new float[] { 2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0 },
                 InlineArraySingle_16.Length);
-
-            Application.TraceInfo("viewPort:" + _framebufferVP.Width + " x " + _framebufferVP.Height);
         }
 
         private void DisposeSCResources()
