@@ -99,6 +99,7 @@ public static class Extensions
     public static void CopyTo(this nint source, nint destination, long length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, uint length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyTo(this nint source, nint destination, nint length) => Functions.CopyMemory(destination, source, length);
+    public static void CopyTo(this nint source, nint destination, ulong length) => Functions.CopyMemory(destination, source, (nint)length);
     public static unsafe void CopyTo<T>(this T structure, nint destination) where T : unmanaged => Unsafe.CopyBlock((void*)destination, Unsafe.AsPointer(ref structure), (uint)sizeof(T));
 
     public static unsafe nint CopyToPointer<T>(this T? structure) where T : unmanaged

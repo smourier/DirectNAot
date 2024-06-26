@@ -100,7 +100,7 @@ public class Dxc
         ArgumentNullException.ThrowIfNull(target);
 
         assembly ??= Assembly.GetEntryAssembly()!;
-        using var stream = assembly.GetManifestResourceStream(resourceName) ?? throw new ArgumentException(null, nameof(resourceName));
+        using var stream = assembly.GetManifestResourceStream(resourceName) ?? throw new ArgumentException($"Cannot find resource named '{resourceName}' in assembly '{assembly.FullName}'.", nameof(resourceName));
         using var reader = new StreamReader(stream, Encoding.UTF8, true);
         reader.Peek();
         var encoding = reader.CurrentEncoding;
