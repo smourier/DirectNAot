@@ -3,6 +3,8 @@
     // note this class considers dpix = dpiy
     public static class DpiUtilities
     {
+        public const int USER_DEFAULT_SCREEN_DPI = 96;
+
         public static int TextScaleFactor => _textScaleFactor.Value;
         private static readonly Lazy<int> _textScaleFactor = new(() =>
         {
@@ -51,7 +53,7 @@
         public static D2D_SIZE_U GetDpiForMonitor(HMONITOR monitor, MONITOR_DPI_TYPE type = MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI)
         {
             if (monitor.Value == 0)
-                return new D2D_SIZE_U(96, 96);
+                return new D2D_SIZE_U(USER_DEFAULT_SCREEN_DPI, USER_DEFAULT_SCREEN_DPI);
 
             var module = Functions.LoadLibraryW(PWSTR.From("shcore.dll"));
             try
@@ -88,7 +90,7 @@
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
                 return Functions.GetDpiFromDpiAwarenessContext(value);
 
-            return 96;
+            return USER_DEFAULT_SCREEN_DPI;
         }
 
         public static uint GetWindowDpi(HWND hwnd) => GetDpiFromDpiAwarenessContext(GetWindowDpiAwarenessContext(hwnd));
@@ -101,24 +103,70 @@
             return DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_INVALID;
         }
 
+        public static DPI_AWARENESS_CONTEXT GetDpiAwarenessContextForCurrentProcess() => GetDpiAwarenessContextForProcess(HANDLE.Null);
+        public static DPI_AWARENESS_CONTEXT GetDpiAwarenessContextForProcess(HANDLE processHandle)
+        {
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
+                return Functions.GetDpiAwarenessContextForProcess(processHandle);
+
+            return DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_INVALID;
+        }
+
+        public static DPI_AWARENESS_CONTEXT GetThreadDpiAwarenessContext()
+        {
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
+                return Functions.GetThreadDpiAwarenessContext();
+
+            return DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_INVALID;
+        }
+
+        public static string GetDpiAwarenessDescription(DPI_AWARENESS_CONTEXT awareness)
+        {
+            if (awareness.Value == 0)
+                return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE);
+
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
+            {
+                if (Functions.AreDpiAwarenessContextsEqual(awareness, DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_UNAWARE))
+                    return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_UNAWARE);
+
+                if (Functions.AreDpiAwarenessContextsEqual(awareness, DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_SYSTEM_AWARE))
+                    return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_SYSTEM_AWARE);
+
+                if (Functions.AreDpiAwarenessContextsEqual(awareness, DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE))
+                    return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE);
+
+                if (Functions.AreDpiAwarenessContextsEqual(awareness, DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2))
+                    return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+
+                if (Functions.AreDpiAwarenessContextsEqual(awareness, DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_UNAWARE_GDISCALED))
+                    return nameof(DPI_AWARENESS_CONTEXT.DPI_AWARENESS_CONTEXT_UNAWARE_GDISCALED);
+            }
+
+            if (IntPtr.Size == 4)
+                return "0x" + awareness.Value.ToString("X8");
+
+            return "0x" + awareness.Value.ToString("X16");
+        }
+
         [SupportedOSPlatform("windows6.1")]
         public static int AdjustForWindowDpi(int value, HWND handle)
         {
             var dpi = GetDpiForWindow(handle);
-            if (dpi.width == 96)
+            if (dpi.width == USER_DEFAULT_SCREEN_DPI)
                 return value;
 
-            return (int)(value * dpi.width / 96);
+            return (int)(value * dpi.width / USER_DEFAULT_SCREEN_DPI);
         }
 
         [SupportedOSPlatform("windows6.1")]
         public static float AdjustForWindowDpi(float value, HWND handle)
         {
             var dpi = GetDpiForWindow(handle);
-            if (dpi.width == 96)
+            if (dpi.width == USER_DEFAULT_SCREEN_DPI)
                 return value;
 
-            return value * dpi.width / 96;
+            return value * dpi.width / USER_DEFAULT_SCREEN_DPI;
         }
 
         private delegate int GetDpiForWindowFn(nint hwnd);
