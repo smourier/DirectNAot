@@ -2,93 +2,132 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xaudio2/nn-xaudio2-ixaudio2voice
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
-public partial interface IXAudio2Voice
+public partial struct IXAudio2Voice
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getvoicedetails
-    [PreserveSig]
-    void GetVoiceDetails(out XAUDIO2_VOICE_DETAILS pVoiceDetails);
+    public unsafe void GetVoiceDetails(ref XAUDIO2_VOICE_DETAILS pVoiceDetails)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,XAUDIO2_VOICE_DETAILS*, void>)(((void**)VTablePtr)[0]))((IXAudio2Voice*)VTablePtr, (XAUDIO2_VOICE_DETAILS*)Unsafe.AsPointer(ref pVoiceDetails));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputvoices
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputVoices(nint /* optional XAUDIO2_VOICE_SENDS* */ pSendList);
+    public unsafe HRESULT SetOutputVoices(nint /* optional XAUDIO2_VOICE_SENDS* */ pSendList)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,nint, HRESULT>)(((void**)VTablePtr)[1]))((IXAudio2Voice*)VTablePtr, pSendList);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-seteffectchain
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffectChain(nint /* optional XAUDIO2_EFFECT_CHAIN* */ pEffectChain);
+    public unsafe HRESULT SetEffectChain(nint /* optional XAUDIO2_EFFECT_CHAIN* */ pEffectChain)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,nint, HRESULT>)(((void**)VTablePtr)[2]))((IXAudio2Voice*)VTablePtr, pEffectChain);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-enableeffect
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnableEffect(uint EffectIndex, uint OperationSet);
+    public unsafe HRESULT EnableEffect(uint EffectIndex, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,uint, HRESULT>)(((void**)VTablePtr)[3]))((IXAudio2Voice*)VTablePtr, EffectIndex, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-disableeffect
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DisableEffect(uint EffectIndex, uint OperationSet);
+    public unsafe HRESULT DisableEffect(uint EffectIndex, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,uint, HRESULT>)(((void**)VTablePtr)[4]))((IXAudio2Voice*)VTablePtr, EffectIndex, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-geteffectstate
-    [PreserveSig]
-    void GetEffectState(uint EffectIndex, out BOOL pEnabled);
+    public unsafe void GetEffectState(uint EffectIndex, ref BOOL pEnabled)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,BOOL*, void>)(((void**)VTablePtr)[5]))((IXAudio2Voice*)VTablePtr, EffectIndex, (BOOL*)Unsafe.AsPointer(ref pEnabled));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-seteffectparameters
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffectParameters(uint EffectIndex, nint pParameters, uint ParametersByteSize, uint OperationSet);
+    public unsafe HRESULT SetEffectParameters(uint EffectIndex, nint pParameters, uint ParametersByteSize, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,nint,uint,uint, HRESULT>)(((void**)VTablePtr)[6]))((IXAudio2Voice*)VTablePtr, EffectIndex, pParameters, ParametersByteSize, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-geteffectparameters
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEffectParameters(uint EffectIndex, nint pParameters, uint ParametersByteSize);
+    public unsafe HRESULT GetEffectParameters(uint EffectIndex, nint pParameters, uint ParametersByteSize)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,nint,uint, HRESULT>)(((void**)VTablePtr)[7]))((IXAudio2Voice*)VTablePtr, EffectIndex, pParameters, ParametersByteSize);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setfilterparameters
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFilterParameters(in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet);
+    public unsafe HRESULT SetFilterParameters(in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,XAUDIO2_FILTER_PARAMETERS,uint, HRESULT>)(((void**)VTablePtr)[8]))((IXAudio2Voice*)VTablePtr, pParameters, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getfilterparameters
-    [PreserveSig]
-    void GetFilterParameters(out XAUDIO2_FILTER_PARAMETERS pParameters);
+    public unsafe void GetFilterParameters(ref XAUDIO2_FILTER_PARAMETERS pParameters)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,XAUDIO2_FILTER_PARAMETERS*, void>)(((void**)VTablePtr)[9]))((IXAudio2Voice*)VTablePtr, (XAUDIO2_FILTER_PARAMETERS*)Unsafe.AsPointer(ref pParameters));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputfilterparameters
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet);
+    public unsafe HRESULT SetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,IXAudio2Voice?,XAUDIO2_FILTER_PARAMETERS,uint, HRESULT>)(((void**)VTablePtr)[10]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, pParameters, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputfilterparameters
-    [PreserveSig]
-    void GetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, out XAUDIO2_FILTER_PARAMETERS pParameters);
+    public unsafe void GetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, ref XAUDIO2_FILTER_PARAMETERS pParameters)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,IXAudio2Voice?,XAUDIO2_FILTER_PARAMETERS*, void>)(((void**)VTablePtr)[11]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, (XAUDIO2_FILTER_PARAMETERS*)Unsafe.AsPointer(ref pParameters));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setvolume
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVolume(float Volume, uint OperationSet);
+    public unsafe HRESULT SetVolume(float Volume, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,float,uint, HRESULT>)(((void**)VTablePtr)[12]))((IXAudio2Voice*)VTablePtr, Volume, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getvolume
-    [PreserveSig]
-    void GetVolume(out float pVolume);
+    public unsafe void GetVolume(ref float pVolume)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,float*, void>)(((void**)VTablePtr)[13]))((IXAudio2Voice*)VTablePtr, (float*)Unsafe.AsPointer(ref pVolume));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setchannelvolumes
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetChannelVolumes(uint Channels, [In][MarshalUsing(CountElementName = nameof(Channels))] float[] pVolumes, uint OperationSet);
+    public unsafe HRESULT SetChannelVolumes(uint Channels, [In][MarshalUsing(CountElementName = nameof(Channels))] float[] pVolumes, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,float[],uint, HRESULT>)(((void**)VTablePtr)[14]))((IXAudio2Voice*)VTablePtr, Channels, pVolumes, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getchannelvolumes
-    [PreserveSig]
-    void GetChannelVolumes(uint Channels, [In][Out][MarshalUsing(CountElementName = nameof(Channels))] float[] pVolumes);
+    public unsafe void GetChannelVolumes(uint Channels, [In][Out][MarshalUsing(CountElementName = nameof(Channels))] float[] pVolumes)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,uint,float[], void>)(((void**)VTablePtr)[15]))((IXAudio2Voice*)VTablePtr, Channels, pVolumes);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputmatrix
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet);
+    public unsafe HRESULT SetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet)
+    {
+        return ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,IXAudio2Voice?,uint,uint,float,uint, HRESULT>)(((void**)VTablePtr)[16]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, pLevelMatrix, OperationSet);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputmatrix
-    [PreserveSig]
-    void GetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, out float pLevelMatrix);
+    public unsafe void GetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, ref float pLevelMatrix)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*,IXAudio2Voice?,uint,uint,float*, void>)(((void**)VTablePtr)[17]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, (float*)Unsafe.AsPointer(ref pLevelMatrix));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-destroyvoice
-    [PreserveSig]
-    void DestroyVoice();
+    public unsafe void DestroyVoice()
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2Voice*, void>)(((void**)VTablePtr)[18]))((IXAudio2Voice*)VTablePtr);
+    }
 }

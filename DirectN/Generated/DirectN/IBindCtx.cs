@@ -44,7 +44,7 @@ public partial interface IBindCtx
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-getobjectparam
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObjectParam(PWSTR pszKey, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunk);
+    HRESULT GetObjectParam(PWSTR pszKey, out nint ppunk);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ibindctx-enumobjectparam
     [PreserveSig]

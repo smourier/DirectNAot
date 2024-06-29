@@ -44,12 +44,12 @@ public partial interface IDCompositionDevice
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createsurfacefromhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurfaceFromHandle(HANDLE handle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint surface);
+    HRESULT CreateSurfaceFromHandle(HANDLE handle, out nint surface);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createsurfacefromhwnd
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurfaceFromHwnd(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint surface);
+    HRESULT CreateSurfaceFromHwnd(HWND hwnd, out nint surface);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiondevice-createtranslatetransform
     [PreserveSig]

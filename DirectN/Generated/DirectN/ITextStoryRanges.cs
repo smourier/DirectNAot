@@ -9,7 +9,7 @@ public partial interface ITextStoryRanges : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstoryranges-_newenum
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT _NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunkEnum);
+    HRESULT _NewEnum(out nint ppunkEnum);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstoryranges-item
     [PreserveSig]

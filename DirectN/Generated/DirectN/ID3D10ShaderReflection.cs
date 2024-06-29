@@ -12,11 +12,11 @@ public partial interface ID3D10ShaderReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflection-getconstantbufferbyindex
     [PreserveSig]
-    ID3D10ShaderReflectionConstantBuffer GetConstantBufferByIndex(uint Index);
+    nint GetConstantBufferByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflection-getconstantbufferbyname
     [PreserveSig]
-    ID3D10ShaderReflectionConstantBuffer GetConstantBufferByName(PSTR Name);
+    nint GetConstantBufferByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflection-getresourcebindingdesc
     [PreserveSig]

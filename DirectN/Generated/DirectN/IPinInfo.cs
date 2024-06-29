@@ -6,7 +6,7 @@ public partial interface IPinInfo : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Pin([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_Pin(out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -2,54 +2,77 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12shader/nn-d3d12shader-id3d12shaderreflectiontype
-[GeneratedComInterface, Guid("e913c351-783d-48ca-a1d1-4f306284ad56")]
-public partial interface ID3D12ShaderReflectionType
+public partial struct ID3D12ShaderReflectionType
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesc(out D3D12_SHADER_TYPE_DESC pDesc);
+    public unsafe HRESULT GetDesc(ref D3D12_SHADER_TYPE_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,D3D12_SHADER_TYPE_DESC*, HRESULT>)(((void**)VTablePtr)[0]))((ID3D12ShaderReflectionType*)VTablePtr, (D3D12_SHADER_TYPE_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getmembertypebyindex
-    [PreserveSig]
-    ID3D12ShaderReflectionType GetMemberTypeByIndex(uint Index);
+    public unsafe nint GetMemberTypeByIndex(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,uint, nint>)(((void**)VTablePtr)[1]))((ID3D12ShaderReflectionType*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getmembertypebyname
-    [PreserveSig]
-    ID3D12ShaderReflectionType GetMemberTypeByName(PSTR Name);
+    public unsafe nint GetMemberTypeByName(PSTR Name)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,PSTR, nint>)(((void**)VTablePtr)[2]))((ID3D12ShaderReflectionType*)VTablePtr, Name);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getmembertypename
-    [PreserveSig]
-    PSTR GetMemberTypeName(uint Index);
+    public unsafe PSTR GetMemberTypeName(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,uint, PSTR>)(((void**)VTablePtr)[3]))((ID3D12ShaderReflectionType*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-isequal
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(ID3D12ShaderReflectionType pType);
+    public unsafe HRESULT IsEqual(ID3D12ShaderReflectionType pType)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,ID3D12ShaderReflectionType, HRESULT>)(((void**)VTablePtr)[4]))((ID3D12ShaderReflectionType*)VTablePtr, pType);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getsubtype
-    [PreserveSig]
-    ID3D12ShaderReflectionType GetSubType();
+    public unsafe nint GetSubType()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*, nint>)(((void**)VTablePtr)[5]))((ID3D12ShaderReflectionType*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getbaseclass
-    [PreserveSig]
-    ID3D12ShaderReflectionType GetBaseClass();
+    public unsafe nint GetBaseClass()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*, nint>)(((void**)VTablePtr)[6]))((ID3D12ShaderReflectionType*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getnuminterfaces
-    [PreserveSig]
-    uint GetNumInterfaces();
+    public unsafe uint GetNumInterfaces()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*, uint>)(((void**)VTablePtr)[7]))((ID3D12ShaderReflectionType*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-getinterfacebyindex
-    [PreserveSig]
-    ID3D12ShaderReflectionType GetInterfaceByIndex(uint uIndex);
+    public unsafe nint GetInterfaceByIndex(uint uIndex)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,uint, nint>)(((void**)VTablePtr)[8]))((ID3D12ShaderReflectionType*)VTablePtr, uIndex);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-isoftype
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsOfType(ID3D12ShaderReflectionType pType);
+    public unsafe HRESULT IsOfType(ID3D12ShaderReflectionType pType)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,ID3D12ShaderReflectionType, HRESULT>)(((void**)VTablePtr)[9]))((ID3D12ShaderReflectionType*)VTablePtr, pType);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectiontype-implementsinterface
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ImplementsInterface(ID3D12ShaderReflectionType pBase);
+    public unsafe HRESULT ImplementsInterface(ID3D12ShaderReflectionType pBase)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D12ShaderReflectionType*,ID3D12ShaderReflectionType, HRESULT>)(((void**)VTablePtr)[10]))((ID3D12ShaderReflectionType*)VTablePtr, pBase);
+    }
 }

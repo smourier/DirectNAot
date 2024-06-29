@@ -259,5 +259,5 @@ public partial interface ITextRange : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-getembeddedobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetEmbeddedObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT GetEmbeddedObject(out nint ppObject);
 }

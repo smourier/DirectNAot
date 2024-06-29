@@ -104,7 +104,7 @@ public partial interface ITextDocument2 : ITextDocument
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-getcallmanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCallManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppVoid);
+    HRESULT GetCallManager(out nint ppVoid);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-getclientrect
     [PreserveSig]

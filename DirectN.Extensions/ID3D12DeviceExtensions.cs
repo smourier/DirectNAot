@@ -159,4 +159,11 @@ public static class ID3D12DeviceExtensions
         ArgumentNullException.ThrowIfNull(device);
         device.CreateUnorderedAccessView(resource, counterResource, desc.CopyToPointer(), handle);
     }
+
+    public static HRESULT CheckFeatureSupport<T>(this IComObject<ID3D12Device> device, D3D12_FEATURE feature, ref T value) where T : unmanaged => CheckFeatureSupport(device.Object!, feature, ref value);
+    public unsafe static HRESULT CheckFeatureSupport<T>(this ID3D12Device device, D3D12_FEATURE feature, ref T value) where T : unmanaged
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        return device.CheckFeatureSupport(feature, (nint)Unsafe.AsPointer(ref value), (uint)sizeof(T));
+    }
 }

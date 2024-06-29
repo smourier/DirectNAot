@@ -2,109 +2,160 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectvariable
-[GeneratedComInterface, Guid("ae897105-00e6-45bf-bb8e-281dd6db8e1b")]
-public partial interface ID3D10EffectVariable
+public partial struct ID3D10EffectVariable
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-isvalid
-    [PreserveSig]
-    BOOL IsValid();
+    public unsafe BOOL IsValid()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, BOOL>)(((void**)VTablePtr)[0]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-gettype
-    [PreserveSig]
-    ID3D10EffectType GetType();
+    public unsafe new nint GetType()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[1]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesc(out D3D10_EFFECT_VARIABLE_DESC pDesc);
+    public unsafe HRESULT GetDesc(ref D3D10_EFFECT_VARIABLE_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,D3D10_EFFECT_VARIABLE_DESC*, HRESULT>)(((void**)VTablePtr)[2]))((ID3D10EffectVariable*)VTablePtr, (D3D10_EFFECT_VARIABLE_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getannotationbyindex
-    [PreserveSig]
-    ID3D10EffectVariable GetAnnotationByIndex(uint Index);
+    public unsafe nint GetAnnotationByIndex(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,uint, nint>)(((void**)VTablePtr)[3]))((ID3D10EffectVariable*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getannotationbyname
-    [PreserveSig]
-    ID3D10EffectVariable GetAnnotationByName(PSTR Name);
+    public unsafe nint GetAnnotationByName(PSTR Name)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,PSTR, nint>)(((void**)VTablePtr)[4]))((ID3D10EffectVariable*)VTablePtr, Name);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getmemberbyindex
-    [PreserveSig]
-    ID3D10EffectVariable GetMemberByIndex(uint Index);
+    public unsafe nint GetMemberByIndex(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,uint, nint>)(((void**)VTablePtr)[5]))((ID3D10EffectVariable*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getmemberbyname
-    [PreserveSig]
-    ID3D10EffectVariable GetMemberByName(PSTR Name);
+    public unsafe nint GetMemberByName(PSTR Name)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,PSTR, nint>)(((void**)VTablePtr)[6]))((ID3D10EffectVariable*)VTablePtr, Name);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getmemberbysemantic
-    [PreserveSig]
-    ID3D10EffectVariable GetMemberBySemantic(PSTR Semantic);
+    public unsafe nint GetMemberBySemantic(PSTR Semantic)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,PSTR, nint>)(((void**)VTablePtr)[7]))((ID3D10EffectVariable*)VTablePtr, Semantic);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getelement
-    [PreserveSig]
-    ID3D10EffectVariable GetElement(uint Index);
+    public unsafe nint GetElement(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,uint, nint>)(((void**)VTablePtr)[8]))((ID3D10EffectVariable*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getparentconstantbuffer
-    [PreserveSig]
-    ID3D10EffectConstantBuffer GetParentConstantBuffer();
+    public unsafe nint GetParentConstantBuffer()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[9]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asscalar
-    [PreserveSig]
-    ID3D10EffectScalarVariable AsScalar();
+    public unsafe nint AsScalar()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[10]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asvector
-    [PreserveSig]
-    ID3D10EffectVectorVariable AsVector();
+    public unsafe nint AsVector()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[11]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asmatrix
-    [PreserveSig]
-    ID3D10EffectMatrixVariable AsMatrix();
+    public unsafe nint AsMatrix()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[12]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asstring
-    [PreserveSig]
-    ID3D10EffectStringVariable AsString();
+    public unsafe nint AsString()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[13]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asshaderresource
-    [PreserveSig]
-    ID3D10EffectShaderResourceVariable AsShaderResource();
+    public unsafe nint AsShaderResource()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[14]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asrendertargetview
-    [PreserveSig]
-    ID3D10EffectRenderTargetViewVariable AsRenderTargetView();
+    public unsafe nint AsRenderTargetView()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[15]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asdepthstencilview
-    [PreserveSig]
-    ID3D10EffectDepthStencilViewVariable AsDepthStencilView();
+    public unsafe nint AsDepthStencilView()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[16]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asconstantbuffer
-    [PreserveSig]
-    ID3D10EffectConstantBuffer AsConstantBuffer();
+    public unsafe nint AsConstantBuffer()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[17]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asshader
-    [PreserveSig]
-    ID3D10EffectShaderVariable AsShader();
+    public unsafe nint AsShader()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[18]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asblend
-    [PreserveSig]
-    ID3D10EffectBlendVariable AsBlend();
+    public unsafe nint AsBlend()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[19]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asdepthstencil
-    [PreserveSig]
-    ID3D10EffectDepthStencilVariable AsDepthStencil();
+    public unsafe nint AsDepthStencil()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[20]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-asrasterizer
-    [PreserveSig]
-    ID3D10EffectRasterizerVariable AsRasterizer();
+    public unsafe nint AsRasterizer()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[21]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-assampler
-    [PreserveSig]
-    ID3D10EffectSamplerVariable AsSampler();
+    public unsafe nint AsSampler()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*, nint>)(((void**)VTablePtr)[22]))((ID3D10EffectVariable*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-setrawvalue
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRawValue(nint pData, uint Offset, uint ByteCount);
+    public unsafe HRESULT SetRawValue(nint pData, uint Offset, uint ByteCount)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,nint,uint,uint, HRESULT>)(((void**)VTablePtr)[23]))((ID3D10EffectVariable*)VTablePtr, pData, Offset, ByteCount);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectvariable-getrawvalue
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRawValue(nint pData, uint Offset, uint ByteCount);
+    public unsafe HRESULT GetRawValue(nint pData, uint Offset, uint ByteCount)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectVariable*,nint,uint,uint, HRESULT>)(((void**)VTablePtr)[24]))((ID3D10EffectVariable*)VTablePtr, pData, Offset, ByteCount);
+    }
 }

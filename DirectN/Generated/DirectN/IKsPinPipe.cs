@@ -13,9 +13,11 @@ public partial interface IKsPinPipe
     HRESULT KsSetPinFramingCache(in KSALLOCATOR_FRAMING_EX FramingEx, in FRAMING_PROP FramingProp, FRAMING_CACHE_OPS Option);
     
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))]
     IPin KsGetConnectedPin();
     
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsAllocatorEx>))]
     IKsAllocatorEx KsGetPipe(KSPEEKOPERATION Operation);
     
     [PreserveSig]

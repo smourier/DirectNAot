@@ -9,7 +9,7 @@ public partial interface IMSVidVideoRenderer2 : IMSVidVideoRenderer
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer2-get_allocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Allocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint AllocPresent);
+    HRESULT get_Allocator(out nint AllocPresent);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer2-get__allocator
     [PreserveSig]

@@ -7,5 +7,6 @@ public partial interface ID3D10EffectPool
 {
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpool-aseffect
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Effect>))]
     ID3D10Effect AsEffect();
 }

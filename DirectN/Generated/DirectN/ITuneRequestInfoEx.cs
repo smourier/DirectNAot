@@ -6,5 +6,5 @@ public partial interface ITuneRequestInfoEx : ITuneRequestInfo
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateComponentListEx(ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppCurPMT);
+    HRESULT CreateComponentListEx(ITuneRequest CurrentRequest, out nint ppCurPMT);
 }

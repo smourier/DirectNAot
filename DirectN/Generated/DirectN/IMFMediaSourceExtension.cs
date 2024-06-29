@@ -8,10 +8,12 @@ public partial interface IMFMediaSourceExtension
 {
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-getsourcebuffers
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBufferList>))]
     IMFSourceBufferList GetSourceBuffers();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-getactivesourcebuffers
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBufferList>))]
     IMFSourceBufferList GetActiveSourceBuffers();
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-getreadystate
@@ -48,5 +50,6 @@ public partial interface IMFMediaSourceExtension
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-getsourcebuffer
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBuffer>))]
     IMFSourceBuffer GetSourceBuffer(uint dwStreamIndex);
 }

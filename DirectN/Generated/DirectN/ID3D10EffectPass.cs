@@ -2,48 +2,67 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectpass
-[GeneratedComInterface, Guid("5cfbeb89-1a06-46e0-b282-e3f9bfa36a54")]
-public partial interface ID3D10EffectPass
+public partial struct ID3D10EffectPass
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-isvalid
-    [PreserveSig]
-    BOOL IsValid();
+    public unsafe BOOL IsValid()
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*, BOOL>)(((void**)VTablePtr)[0]))((ID3D10EffectPass*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesc(ref D3D10_PASS_DESC pDesc);
+    public unsafe HRESULT GetDesc(ref D3D10_PASS_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,D3D10_PASS_DESC*, HRESULT>)(((void**)VTablePtr)[1]))((ID3D10EffectPass*)VTablePtr, (D3D10_PASS_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getvertexshaderdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVertexShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc);
+    public unsafe HRESULT GetVertexShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,D3D10_PASS_SHADER_DESC*, HRESULT>)(((void**)VTablePtr)[2]))((ID3D10EffectPass*)VTablePtr, (D3D10_PASS_SHADER_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getgeometryshaderdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetGeometryShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc);
+    public unsafe HRESULT GetGeometryShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,D3D10_PASS_SHADER_DESC*, HRESULT>)(((void**)VTablePtr)[3]))((ID3D10EffectPass*)VTablePtr, (D3D10_PASS_SHADER_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getpixelshaderdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPixelShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc);
+    public unsafe HRESULT GetPixelShaderDesc(ref D3D10_PASS_SHADER_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,D3D10_PASS_SHADER_DESC*, HRESULT>)(((void**)VTablePtr)[4]))((ID3D10EffectPass*)VTablePtr, (D3D10_PASS_SHADER_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getannotationbyindex
-    [PreserveSig]
-    ID3D10EffectVariable GetAnnotationByIndex(uint Index);
+    public unsafe nint GetAnnotationByIndex(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,uint, nint>)(((void**)VTablePtr)[5]))((ID3D10EffectPass*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-getannotationbyname
-    [PreserveSig]
-    ID3D10EffectVariable GetAnnotationByName(PSTR Name);
+    public unsafe nint GetAnnotationByName(PSTR Name)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,PSTR, nint>)(((void**)VTablePtr)[6]))((ID3D10EffectPass*)VTablePtr, Name);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-apply
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Apply(uint Flags);
+    public unsafe HRESULT Apply(uint Flags)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,uint, HRESULT>)(((void**)VTablePtr)[7]))((ID3D10EffectPass*)VTablePtr, Flags);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectpass-computestateblockmask
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ComputeStateBlockMask(out D3D10_STATE_BLOCK_MASK pStateBlockMask);
+    public unsafe HRESULT ComputeStateBlockMask(ref D3D10_STATE_BLOCK_MASK pStateBlockMask)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D10EffectPass*,D3D10_STATE_BLOCK_MASK*, HRESULT>)(((void**)VTablePtr)[8]))((ID3D10EffectPass*)VTablePtr, (D3D10_STATE_BLOCK_MASK*)Unsafe.AsPointer(ref pStateBlockMask));
+    }
 }

@@ -34,5 +34,5 @@ public partial interface IMSVidStreamBufferSink : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersink-get_sbesink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SBESink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint sbeConfig);
+    HRESULT get_SBESink(out nint sbeConfig);
 }

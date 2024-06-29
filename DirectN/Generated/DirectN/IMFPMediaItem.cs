@@ -19,7 +19,7 @@ public partial interface IMFPMediaItem
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppIUnknown);
+    HRESULT GetObject(out nint ppIUnknown);
     
     // https://learn.microsoft.com/windows/win32/api/mfplay/nf-mfplay-imfpmediaitem-getuserdata
     [PreserveSig]

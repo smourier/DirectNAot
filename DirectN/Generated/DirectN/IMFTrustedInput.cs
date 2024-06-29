@@ -9,5 +9,5 @@ public partial interface IMFTrustedInput
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftrustedinput-getinputtrustauthority
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetInputTrustAuthority(uint dwStreamID, in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunkObject);
+    HRESULT GetInputTrustAuthority(uint dwStreamID, in Guid riid, out nint ppunkObject);
 }

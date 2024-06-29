@@ -6,7 +6,7 @@ public partial interface IMSVidGraphSegment : IPersist
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Init([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pInit);
+    HRESULT get_Init(out nint pInit);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

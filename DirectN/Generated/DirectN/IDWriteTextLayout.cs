@@ -132,7 +132,7 @@ public partial interface IDWriteTextLayout : IDWriteTextFormat
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getdrawingeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDrawingEffect(uint currentPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint drawingEffect, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
+    HRESULT GetDrawingEffect(uint currentPosition, out nint drawingEffect, nint /* optional DWRITE_TEXT_RANGE* */ textRange);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextlayout-getinlineobject
     [PreserveSig]

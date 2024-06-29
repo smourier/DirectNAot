@@ -14,5 +14,5 @@ public partial interface ISpeechPhraseReplacements : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__NewEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint EnumVARIANT);
+    HRESULT get__NewEnum(out nint EnumVARIANT);
 }

@@ -18,7 +18,7 @@ public partial interface IFilterInfo : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Filter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_Filter(out nint ppUnk);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

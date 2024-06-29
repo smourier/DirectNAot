@@ -25,31 +25,31 @@ public partial interface ID3D10Effect
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getconstantbufferbyindex
     [PreserveSig]
-    ID3D10EffectConstantBuffer GetConstantBufferByIndex(uint Index);
+    nint GetConstantBufferByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getconstantbufferbyname
     [PreserveSig]
-    ID3D10EffectConstantBuffer GetConstantBufferByName(PSTR Name);
+    nint GetConstantBufferByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getvariablebyindex
     [PreserveSig]
-    ID3D10EffectVariable GetVariableByIndex(uint Index);
+    nint GetVariableByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getvariablebyname
     [PreserveSig]
-    ID3D10EffectVariable GetVariableByName(PSTR Name);
+    nint GetVariableByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-getvariablebysemantic
     [PreserveSig]
-    ID3D10EffectVariable GetVariableBySemantic(PSTR Semantic);
+    nint GetVariableBySemantic(PSTR Semantic);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-gettechniquebyindex
     [PreserveSig]
-    ID3D10EffectTechnique GetTechniqueByIndex(uint Index);
+    nint GetTechniqueByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-gettechniquebyname
     [PreserveSig]
-    ID3D10EffectTechnique GetTechniqueByName(PSTR Name);
+    nint GetTechniqueByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effect-optimize
     [PreserveSig]

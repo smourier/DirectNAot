@@ -555,6 +555,7 @@ public static partial class Functions
     [LibraryImport("AVIFIL32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGetFrame>))]
     public static partial IGetFrame AVIStreamGetFrameOpen(IAVIStream pavi, nint /* optional BITMAPINFOHEADER* */ lpbiWanted);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreaminfoa
@@ -952,11 +953,11 @@ public static partial class Functions
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
-    public static partial HRESULT CreateAudioReverb([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppApo);
+    public static partial HRESULT CreateAudioReverb(out nint ppApo);
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
-    public static partial HRESULT CreateAudioVolumeMeter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppApo);
+    public static partial HRESULT CreateAudioVolumeMeter(out nint ppApo);
     
     [LibraryImport("Windows.Media.MediaControl")]
     [PreserveSig]
@@ -1069,7 +1070,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/xapofx/nf-xapofx-createfx
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
-    public static partial HRESULT CreateFX(in Guid clsid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint pEffect, nint /* optional void* */ pInitDat, uint InitDataByteSize);
+    public static partial HRESULT CreateFX(in Guid clsid, out nint pEffect, nint /* optional void* */ pInitDat, uint InitDataByteSize);
     
     // https://learn.microsoft.com/windows/win32/api/hrtfapoapi/nf-hrtfapoapi-createhrtfapo
     [LibraryImport("HrtfApo")]
@@ -1776,6 +1777,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-direct3dcreate9
     [LibraryImport("d3d9")]
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3D9>))]
     public static partial IDirect3D9 Direct3DCreate9(uint SDKVersion);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-direct3dcreate9ex
@@ -1785,6 +1787,7 @@ public static partial class Functions
     
     [LibraryImport("d3d9")]
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3D9>))]
     public static partial IDirect3D9 Direct3DCreate9On12(uint SDKVersion, ref D3D9ON12_ARGS pOverrideList, uint NumOverrideEntries);
     
     [LibraryImport("d3d9")]
@@ -5028,17 +5031,17 @@ public static partial class Functions
     public static partial void gluLookAt(double eyex, double eyey, double eyez, double centerx, double centery, double centerz, double upx, double upy, double upz);
     
     // https://learn.microsoft.com/windows/win32/OpenGL/glunewnurbsrenderer
-    [LibraryImport("GLU32", SetLastError = true)]
+    [LibraryImport("GLU32")]
     [PreserveSig]
     public static partial nint gluNewNurbsRenderer();
     
     // https://learn.microsoft.com/windows/win32/OpenGL/glunewquadric
-    [LibraryImport("GLU32", SetLastError = true)]
+    [LibraryImport("GLU32")]
     [PreserveSig]
     public static partial nint gluNewQuadric();
     
     // https://learn.microsoft.com/windows/win32/OpenGL/glunewtess
-    [LibraryImport("GLU32", SetLastError = true)]
+    [LibraryImport("GLU32")]
     [PreserveSig]
     public static partial nint gluNewTess();
     
@@ -5888,7 +5891,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFBeginCreateFile(MF_FILE_ACCESSMODE AccessMode, MF_FILE_OPENMODE OpenMode, MF_FILE_FLAGS fFlags, PWSTR pwszFilePath, IMFAsyncCallback pCallback, nint pState, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppCancelCookie);
+    public static partial HRESULT MFBeginCreateFile(MF_FILE_ACCESSMODE AccessMode, MF_FILE_OPENMODE OpenMode, MF_FILE_FLAGS fFlags, PWSTR pwszFilePath, IMFAsyncCallback pCallback, nint pState, out nint ppCancelCookie);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfbeginregisterworkqueuewithmmcss
     [LibraryImport("MFPlat")]
@@ -8494,6 +8497,7 @@ public static partial class Functions
     [LibraryImport("SHLWAPI")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))]
     public static partial IStream SHCreateMemStream(nint /* optional byte* */ pInit, uint cbInit);
     
     // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-shcreatestreamonfilew

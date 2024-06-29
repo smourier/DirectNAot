@@ -8,7 +8,7 @@ public partial interface IWMSInternalAdminNetSource3 : IWMSInternalAdminNetSourc
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource3
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNetSourceCreator2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppNetSourceCreator);
+    HRESULT GetNetSourceCreator2(out nint ppNetSourceCreator);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nf-wmsinternaladminnetsource-iwmsinternaladminnetsource3-findproxyforurlex2
     [PreserveSig]

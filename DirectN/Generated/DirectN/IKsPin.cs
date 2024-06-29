@@ -35,6 +35,7 @@ public partial interface IKsPin
     HRESULT KsMediaSamplesCompleted(in KSSTREAM_SEGMENT StreamSegment);
     
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))]
     IMemAllocator KsPeekAllocator(KSPEEKOPERATION Operation);
     
     [PreserveSig]

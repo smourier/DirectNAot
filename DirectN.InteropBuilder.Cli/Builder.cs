@@ -17,7 +17,6 @@ namespace DirectN.InteropBuilder.Cli
             ArgumentNullException.ThrowIfNull(language);
 
             configuration.OutputDirectoryPath = Path.GetFullPath(Path.Combine(Win32Metadata.SolutionDir, ProjectName, "Generated"));
-            configuration.ExtensionsOutputDirectoryPath = Path.GetFullPath(Path.Combine(Win32Metadata.SolutionDir, ExtensionsProjectName, "Extensions"));
             var context = new DirectNBuilderContext(configuration, language);
             context.ImplicitNamespaces.Add(Namespace);
             return context;

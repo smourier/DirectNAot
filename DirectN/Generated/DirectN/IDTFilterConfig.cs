@@ -9,5 +9,5 @@ public partial interface IDTFilterConfig
     // https://learn.microsoft.com/windows/win32/api/encdec/nf-encdec-idtfilterconfig-getsecurechannelobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSecureChannelObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkDRMSecureChannel);
+    HRESULT GetSecureChannelObject(out nint ppUnkDRMSecureChannel);
 }

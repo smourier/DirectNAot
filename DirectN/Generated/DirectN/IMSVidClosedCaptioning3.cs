@@ -8,5 +8,5 @@ public partial interface IMSVidClosedCaptioning3 : IMSVidClosedCaptioning2
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidclosedcaptioning3-get_teletextfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_TeleTextFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint punkTTFilter);
+    HRESULT get_TeleTextFilter(out nint punkTTFilter);
 }

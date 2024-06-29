@@ -9,7 +9,7 @@ public partial interface ITextPara2 : ITextPara
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-getborders
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetBorders([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppBorders);
+    HRESULT GetBorders(out nint ppBorders);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-getduplicate2
     [PreserveSig]

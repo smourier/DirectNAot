@@ -9,5 +9,5 @@ public partial interface IPersistTuneXmlUtility
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ipersisttunexmlutility-deserialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Deserialize(VARIANT varValue, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT Deserialize(VARIANT varValue, out nint ppObject);
 }

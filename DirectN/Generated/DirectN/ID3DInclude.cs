@@ -2,16 +2,21 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3dcommon/nn-d3dcommon-id3dinclude
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
-public partial interface ID3DInclude
+public partial struct ID3DInclude
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/d3dcommon/nf-d3dcommon-id3dinclude-open
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Open(D3D_INCLUDE_TYPE IncludeType, PSTR pFileName, nint pParentData, out nint ppData, ref uint pBytes);
+    public unsafe HRESULT Open(D3D_INCLUDE_TYPE IncludeType, PSTR pFileName, nint pParentData, ref nint ppData, ref uint pBytes)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3DInclude*,D3D_INCLUDE_TYPE,PSTR,nint,nint*,uint*, HRESULT>)(((void**)VTablePtr)[0]))((ID3DInclude*)VTablePtr, IncludeType, pFileName, pParentData, (nint*)Unsafe.AsPointer(ref ppData), (uint*)Unsafe.AsPointer(ref pBytes));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3dcommon/nf-d3dcommon-id3dinclude-close
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Close(nint pData);
+    public unsafe HRESULT Close(nint pData)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3DInclude*,nint, HRESULT>)(((void**)VTablePtr)[1]))((ID3DInclude*)VTablePtr, pData);
+    }
 }

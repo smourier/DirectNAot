@@ -9,12 +9,12 @@ public partial interface IMFSourceResolver
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-createobjectfromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateObjectFromURL(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, out MF_OBJECT_TYPE pObjectType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT CreateObjectFromURL(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-createobjectfrombytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateObjectFromByteStream(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, out MF_OBJECT_TYPE pObjectType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT CreateObjectFromByteStream(IMFByteStream pByteStream, PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-begincreateobjectfromurl
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFSourceResolver
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-endcreateobjectfromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndCreateObjectFromURL(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT EndCreateObjectFromURL(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-begincreateobjectfrombytestream
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IMFSourceResolver
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-endcreateobjectfrombytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndCreateObjectFromByteStream(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT EndCreateObjectFromByteStream(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceresolver-cancelobjectcreation
     [PreserveSig]

@@ -13,11 +13,11 @@ public partial interface ID3D11ShaderReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getconstantbufferbyindex
     [PreserveSig]
-    ID3D11ShaderReflectionConstantBuffer GetConstantBufferByIndex(uint Index);
+    nint GetConstantBufferByIndex(uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getconstantbufferbyname
     [PreserveSig]
-    ID3D11ShaderReflectionConstantBuffer GetConstantBufferByName(PSTR Name);
+    nint GetConstantBufferByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getresourcebindingdesc
     [PreserveSig]
@@ -41,7 +41,7 @@ public partial interface ID3D11ShaderReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getvariablebyname
     [PreserveSig]
-    ID3D11ShaderReflectionVariable GetVariableByName(PSTR Name);
+    nint GetVariableByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflection-getresourcebindingdescbyname
     [PreserveSig]

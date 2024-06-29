@@ -12,5 +12,5 @@ public partial interface ID3D12LibraryReflection
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12libraryreflection-getfunctionbyindex
     [PreserveSig]
-    ID3D12FunctionReflection GetFunctionByIndex(int FunctionIndex);
+    nint GetFunctionByIndex(int FunctionIndex);
 }

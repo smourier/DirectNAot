@@ -1,10 +1,13 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
-public partial interface ISpTask
+public partial struct ISpTask
 {
-    [PreserveSig]
+    public nint VTablePtr;
+    
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Execute(nint pvTaskData, in int pfContinueProcessing);
+    public unsafe HRESULT Execute(nint pvTaskData, in int pfContinueProcessing)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ISpTask*,nint,int, HRESULT>)(((void**)VTablePtr)[0]))((ISpTask*)VTablePtr, pvTaskData, pfContinueProcessing);
+    }
 }

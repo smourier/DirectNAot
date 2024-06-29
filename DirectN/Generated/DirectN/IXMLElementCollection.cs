@@ -16,7 +16,7 @@ public partial interface IXMLElementCollection : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get__newEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get__newEnum(out nint ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/msxml/nf-msxml-ixmlelementcollection-item
     [PreserveSig]

@@ -1,10 +1,13 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
-public partial interface ISpNotifyCallback
+public partial struct ISpNotifyCallback
 {
-    [PreserveSig]
+    public nint VTablePtr;
+    
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyCallback(WPARAM wParam, LPARAM lParam);
+    public unsafe HRESULT NotifyCallback(WPARAM wParam, LPARAM lParam)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ISpNotifyCallback*,WPARAM,LPARAM, HRESULT>)(((void**)VTablePtr)[0]))((ISpNotifyCallback*)VTablePtr, wParam, lParam);
+    }
 }

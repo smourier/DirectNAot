@@ -19,7 +19,7 @@ public partial interface ITextStory
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstory-getdisplay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDisplay([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppDisplay);
+    HRESULT GetDisplay(out nint ppDisplay);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstory-getindex
     [PreserveSig]

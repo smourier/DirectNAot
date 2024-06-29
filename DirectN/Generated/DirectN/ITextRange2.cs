@@ -14,12 +14,12 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getcells
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCells([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppCells);
+    HRESULT GetCells(out nint ppCells);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getcolumn
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetColumn([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppColumn);
+    HRESULT GetColumn(out nint ppColumn);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getcount
     [PreserveSig]
@@ -84,7 +84,7 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-gettable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTable([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppTable);
+    HRESULT GetTable(out nint ppTable);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-geturl
     [PreserveSig]

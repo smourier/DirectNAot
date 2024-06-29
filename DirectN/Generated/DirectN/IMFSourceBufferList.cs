@@ -12,5 +12,6 @@ public partial interface IMFSourceBufferList
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfsourcebufferlist-getsourcebuffer
     [PreserveSig]
+    [return: MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBuffer>))]
     IMFSourceBuffer GetSourceBuffer(uint index);
 }

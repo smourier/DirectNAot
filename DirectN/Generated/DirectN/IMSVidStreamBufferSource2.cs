@@ -13,20 +13,20 @@ public partial interface IMSVidStreamBufferSource2 : IMSVidStreamBufferSource
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource2-get_audiocounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AudioCounter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_AudioCounter(out nint ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource2-get_videocounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_VideoCounter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_VideoCounter(out nint ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource2-get_cccounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_CCCounter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_CCCounter(out nint ppUnk);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidstreambuffersource2-get_wstcounter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_WSTCounter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnk);
+    HRESULT get_WSTCounter(out nint ppUnk);
 }

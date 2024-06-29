@@ -14,7 +14,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppObject);
+    HRESULT GetObject(out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getnodetype
     [PreserveSig]

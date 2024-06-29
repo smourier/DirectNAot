@@ -9,7 +9,7 @@ public partial interface IMFTimer
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimer-settimer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTimer(uint dwFlags, long llClockTime, IMFAsyncCallback pCallback, nint punkState, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunkKey);
+    HRESULT SetTimer(uint dwFlags, long llClockTime, IMFAsyncCallback pCallback, nint punkState, out nint ppunkKey);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimer-canceltimer
     [PreserveSig]

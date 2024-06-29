@@ -10,10 +10,10 @@ public partial interface ID3D10ShaderReflection1
     HRESULT GetDesc(out D3D10_SHADER_DESC pDesc);
     
     [PreserveSig]
-    ID3D10ShaderReflectionConstantBuffer GetConstantBufferByIndex(uint Index);
+    nint GetConstantBufferByIndex(uint Index);
     
     [PreserveSig]
-    ID3D10ShaderReflectionConstantBuffer GetConstantBufferByName(PSTR Name);
+    nint GetConstantBufferByName(PSTR Name);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -29,7 +29,7 @@ public partial interface ID3D10ShaderReflection1
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1shader/nf-d3d10_1shader-id3d10shaderreflection1-getvariablebyname
     [PreserveSig]
-    ID3D10ShaderReflectionVariable GetVariableByName(PSTR Name);
+    nint GetVariableByName(PSTR Name);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10_1shader/nf-d3d10_1shader-id3d10shaderreflection1-getresourcebindingdescbyname
     [PreserveSig]

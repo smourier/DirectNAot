@@ -6,7 +6,7 @@ public partial interface ISpeechCustomStream : ISpeechBaseStream
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_BaseStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppUnkStream);
+    HRESULT get_BaseStream(out nint ppUnkStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

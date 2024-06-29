@@ -24,7 +24,7 @@ public partial interface IRunningObjectTable
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-irunningobjecttable-getobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObject(IMoniker pmkObjectName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppunkObject);
+    HRESULT GetObject(IMoniker pmkObjectName, out nint ppunkObject);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-irunningobjecttable-notechangetime
     [PreserveSig]

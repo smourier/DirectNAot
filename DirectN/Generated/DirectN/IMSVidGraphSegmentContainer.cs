@@ -37,7 +37,7 @@ public partial interface IMSVidGraphSegmentContainer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ParentContainer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppContainer);
+    HRESULT get_ParentContainer(out nint ppContainer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

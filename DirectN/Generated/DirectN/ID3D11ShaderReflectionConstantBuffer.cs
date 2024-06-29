@@ -2,19 +2,26 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11shader/nn-d3d11shader-id3d11shaderreflectionconstantbuffer
-[GeneratedComInterface, Guid("eb62d63d-93dd-4318-8ae8-c6f83ad371b8")]
-public partial interface ID3D11ShaderReflectionConstantBuffer
+public partial struct ID3D11ShaderReflectionConstantBuffer
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionconstantbuffer-getdesc
-    [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDesc(ref D3D11_SHADER_BUFFER_DESC pDesc);
+    public unsafe HRESULT GetDesc(ref D3D11_SHADER_BUFFER_DESC pDesc)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D11ShaderReflectionConstantBuffer*,D3D11_SHADER_BUFFER_DESC*, HRESULT>)(((void**)VTablePtr)[0]))((ID3D11ShaderReflectionConstantBuffer*)VTablePtr, (D3D11_SHADER_BUFFER_DESC*)Unsafe.AsPointer(ref pDesc));
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionconstantbuffer-getvariablebyindex
-    [PreserveSig]
-    ID3D11ShaderReflectionVariable GetVariableByIndex(uint Index);
+    public unsafe nint GetVariableByIndex(uint Index)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D11ShaderReflectionConstantBuffer*,uint, nint>)(((void**)VTablePtr)[1]))((ID3D11ShaderReflectionConstantBuffer*)VTablePtr, Index);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11shaderreflectionconstantbuffer-getvariablebyname
-    [PreserveSig]
-    ID3D11ShaderReflectionVariable GetVariableByName(PSTR Name);
+    public unsafe nint GetVariableByName(PSTR Name)
+    {
+        return ((delegate* unmanaged[MemberFunction]<ID3D11ShaderReflectionConstantBuffer*,PSTR, nint>)(((void**)VTablePtr)[2]))((ID3D11ShaderReflectionConstantBuffer*)VTablePtr, Name);
+    }
 }

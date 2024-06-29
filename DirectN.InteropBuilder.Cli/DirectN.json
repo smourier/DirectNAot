@@ -7,10 +7,7 @@
     // unified namespace configuration
     "Unified": {
       "Namespace": "DirectN"
-    },
-    "InterfaceExtensions": [
-      //"IWic*"
-    ]
+    }
   },
   // per-generator configuration
   "Generator": {

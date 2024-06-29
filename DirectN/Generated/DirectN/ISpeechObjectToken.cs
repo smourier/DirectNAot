@@ -30,7 +30,7 @@ public partial interface ISpeechObjectToken : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(nint pUnkOuter, SpeechTokenContext ClsContext, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint Object);
+    HRESULT CreateInstance(nint pUnkOuter, SpeechTokenContext ClsContext, out nint Object);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

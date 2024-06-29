@@ -2,18 +2,25 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xaudio2/nn-xaudio2-ixaudio2enginecallback
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
-public partial interface IXAudio2EngineCallback
+public partial struct IXAudio2EngineCallback
 {
+    public nint VTablePtr;
+    
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2enginecallback-onprocessingpassstart
-    [PreserveSig]
-    void OnProcessingPassStart();
+    public unsafe void OnProcessingPassStart()
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2EngineCallback*, void>)(((void**)VTablePtr)[0]))((IXAudio2EngineCallback*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2enginecallback-onprocessingpassend
-    [PreserveSig]
-    void OnProcessingPassEnd();
+    public unsafe void OnProcessingPassEnd()
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2EngineCallback*, void>)(((void**)VTablePtr)[1]))((IXAudio2EngineCallback*)VTablePtr);
+    }
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2enginecallback-oncriticalerror
-    [PreserveSig]
-    void OnCriticalError(HRESULT Error);
+    public unsafe void OnCriticalError(HRESULT Error)
+    {
+        ((delegate* unmanaged[MemberFunction]<IXAudio2EngineCallback*,HRESULT, void>)(((void**)VTablePtr)[2]))((IXAudio2EngineCallback*)VTablePtr, Error);
+    }
 }

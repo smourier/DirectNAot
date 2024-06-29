@@ -94,7 +94,7 @@ public partial interface ITextDocument2Old : ITextDocument
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCallManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppVoid);
+    HRESULT GetCallManager(out nint ppVoid);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

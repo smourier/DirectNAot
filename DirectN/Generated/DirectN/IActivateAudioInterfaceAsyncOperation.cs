@@ -9,5 +9,5 @@ public partial interface IActivateAudioInterfaceAsyncOperation
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iactivateaudiointerfaceasyncoperation-getactivateresult
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetActivateResult(out HRESULT activateResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint activatedInterface);
+    HRESULT GetActivateResult(out HRESULT activateResult, out nint activatedInterface);
 }

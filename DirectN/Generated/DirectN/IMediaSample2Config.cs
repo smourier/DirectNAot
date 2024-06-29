@@ -9,5 +9,5 @@ public partial interface IMediaSample2Config
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imediasample2config-getsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<nint>))] out nint ppDirect3DSurface9);
+    HRESULT GetSurface(out nint ppDirect3DSurface9);
 }
