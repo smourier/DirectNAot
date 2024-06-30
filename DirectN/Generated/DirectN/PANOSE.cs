@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-panose
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PANOSE
 {
     public PAN_FAMILY_TYPE bFamilyType;

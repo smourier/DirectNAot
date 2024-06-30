@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-pin_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PIN_INFO
 {
     public nint pFilter;

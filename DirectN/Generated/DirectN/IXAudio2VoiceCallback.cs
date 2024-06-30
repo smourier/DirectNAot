@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/xaudio2/nn-xaudio2-ixaudio2voicecallback
 public partial struct IXAudio2VoiceCallback
 {
+    public static readonly IXAudio2VoiceCallback Null = new();
+    
     public nint VTablePtr;
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voicecallback-onvoiceprocessingpassstart

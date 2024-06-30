@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-quality
-[StructLayout(LayoutKind.Sequential)]
 public partial struct Quality
 {
     public QualityMessageType Type;

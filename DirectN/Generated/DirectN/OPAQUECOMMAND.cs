@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/opaquecommand
-[StructLayout(LayoutKind.Sequential)]
 public partial struct OPAQUECOMMAND
 {
     public Guid guidCommand;

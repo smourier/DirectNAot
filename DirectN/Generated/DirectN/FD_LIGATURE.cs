@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct FD_LIGATURE
 {
     public uint culThis;

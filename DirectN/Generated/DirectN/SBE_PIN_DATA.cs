@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-sbe_pin_data
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SBE_PIN_DATA
 {
     public ulong cDataBytes;

@@ -4,14 +4,12 @@ namespace DirectN;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct KSPROPERTY_BOUNDS_LONGLONG
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _Anonymous1_e__Struct
     {
         public long SignedMinimum;
         public long SignedMaximum;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct _Anonymous2_e__Struct
     {
         public ulong UnsignedMinimum;

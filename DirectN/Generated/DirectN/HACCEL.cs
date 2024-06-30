@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HACCEL : IEquatable<HACCEL>
 {
     public static readonly HACCEL Null = new();

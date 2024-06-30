@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_motioncompcallbacks
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DD_MOTIONCOMPCALLBACKS
 {
     public uint dwSize;

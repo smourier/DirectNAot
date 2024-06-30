@@ -2,20 +2,17 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regfilter2
-[StructLayout(LayoutKind.Sequential)]
 public partial struct REGFILTER2
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous1_e__Struct
         {
             public uint cPins;
             public nint rgPins;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous2_e__Struct
         {
             public uint cPins2;

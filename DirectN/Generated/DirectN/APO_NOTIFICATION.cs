@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-apo_notification
-[StructLayout(LayoutKind.Sequential)]
 public partial struct APO_NOTIFICATION
 {
     [StructLayout(LayoutKind.Explicit)]

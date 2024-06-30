@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HSURF : IEquatable<HSURF>
 {
     public static readonly HSURF Null = new();

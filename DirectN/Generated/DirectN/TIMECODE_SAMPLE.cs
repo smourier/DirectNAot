@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-timecode_sample
-[StructLayout(LayoutKind.Sequential)]
 public partial struct TIMECODE_SAMPLE
 {
     public long qwTick;

@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_output_color_space_data
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_BLT_STATE_OUTPUT_COLOR_SPACE_DATA
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public uint _bitfield;

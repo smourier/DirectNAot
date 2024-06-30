@@ -1,20 +1,17 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSEVENTDATA
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _EventHandle_e__Struct
         {
             public HANDLE Event;
             public InlineArrayUIntPtr_2 Reserved;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _SemaphoreHandle_e__Struct
         {
             public HANDLE Semaphore;
@@ -22,7 +19,6 @@ public partial struct KSEVENTDATA
             public int Adjustment;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Alignment_e__Struct
         {
             public nint Unused;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HWAVEOUT : IEquatable<HWAVEOUT>
 {
     public static readonly HWAVEOUT Null = new();

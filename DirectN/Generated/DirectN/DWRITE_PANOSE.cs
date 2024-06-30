@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct DWRITE_PANOSE
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _decorative_e__Struct
     {
         public byte familyKind;
@@ -20,7 +19,6 @@ public partial struct DWRITE_PANOSE
         public byte characterRange;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct _script_e__Struct
     {
         public byte familyKind;
@@ -35,7 +33,6 @@ public partial struct DWRITE_PANOSE
         public byte xAscent;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct _symbol_e__Struct
     {
         public byte familyKind;
@@ -50,7 +47,6 @@ public partial struct DWRITE_PANOSE
         public byte aspectRatio211;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct _text_e__Struct
     {
         public byte familyKind;

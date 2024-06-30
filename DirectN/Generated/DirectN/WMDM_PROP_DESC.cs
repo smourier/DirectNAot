@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/wmdm-prop-desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WMDM_PROP_DESC
 {
     [StructLayout(LayoutKind.Explicit)]

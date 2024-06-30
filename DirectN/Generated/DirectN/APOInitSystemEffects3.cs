@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-apoinitsystemeffects3
-[StructLayout(LayoutKind.Sequential)]
 public partial struct APOInitSystemEffects3
 {
     public APOInitBaseStruct APOInit;

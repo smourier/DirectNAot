@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfmp2dlna/ns-mfmp2dlna-mfmpeg2dlnasinkstats
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFMPEG2DLNASINKSTATS
 {
     public ulong cBytesWritten;

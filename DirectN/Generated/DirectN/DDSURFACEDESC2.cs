@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddsurfacedesc2
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDSURFACEDESC2
 {
     [StructLayout(LayoutKind.Explicit)]

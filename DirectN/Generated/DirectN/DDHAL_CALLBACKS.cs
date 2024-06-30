@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDHAL_CALLBACKS
 {
     public DDHAL_DDCALLBACKS cbDDCallbacks;

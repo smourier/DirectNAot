@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_ROOT_SIGNATURE_DESC2
 {
     public uint NumParameters;

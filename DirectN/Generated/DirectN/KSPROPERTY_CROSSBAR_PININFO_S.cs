@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSPROPERTY_CROSSBAR_PININFO_S
 {
     public KSIDENTIFIER Property;

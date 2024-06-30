@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/console/char-info-str
-[StructLayout(LayoutKind.Sequential)]
 public partial struct CHAR_INFO
 {
     [StructLayout(LayoutKind.Explicit)]

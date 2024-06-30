@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-colorinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct COLORINFO
 {
     public CIECHROMA Red;

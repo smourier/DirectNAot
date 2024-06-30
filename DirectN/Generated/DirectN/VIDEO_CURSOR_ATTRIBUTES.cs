@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_CURSOR_ATTRIBUTES
 {
     public ushort Width;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicrawcapabilitiesinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WICRawCapabilitiesInfo
 {
     public uint cbSize;

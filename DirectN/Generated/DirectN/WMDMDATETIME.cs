@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WMDM/wmdmdatetime
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WMDMDATETIME
 {
     public ushort wYear;

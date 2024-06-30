@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_moresurfacecaps
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DD_MORESURFACECAPS
 {
     [InlineArray(InlineArrayNTExtendedHeapRestrictions_1.Length)]
@@ -13,7 +12,6 @@ public partial struct DD_MORESURFACECAPS
         public NTExtendedHeapRestrictions Data;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct NTExtendedHeapRestrictions
     {
         public DDSCAPSEX ddsCapsEx;

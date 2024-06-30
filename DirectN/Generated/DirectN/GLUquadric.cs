@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct GLUquadric : IEquatable<GLUquadric>
 {
     public static readonly GLUquadric Null = new();

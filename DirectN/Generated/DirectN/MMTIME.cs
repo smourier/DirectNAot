@@ -7,7 +7,6 @@ public partial struct MMTIME
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct _u_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _smpte_e__Struct
         {
             public byte hour;

@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct D3D11_AUTHENTICATED_PROTECTION_FLAGS
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _Flags_e__Struct
     {
         public uint _bitfield;

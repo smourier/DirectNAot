@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/hstring/ns-hstring-hstring_header
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HSTRING_HEADER
 {
     public uint flags;

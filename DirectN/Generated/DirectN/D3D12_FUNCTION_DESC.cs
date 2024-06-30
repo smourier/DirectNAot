@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12shader/ns-d3d12shader-d3d12_function_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FUNCTION_DESC
 {
     public uint Version;

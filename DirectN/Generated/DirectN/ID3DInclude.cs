@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3dcommon/nn-d3dcommon-id3dinclude
 public partial struct ID3DInclude
 {
+    public static readonly ID3DInclude Null = new();
+    
     public nint VTablePtr;
     
     // https://learn.microsoft.com/windows/win32/api/d3dcommon/nf-d3dcommon-id3dinclude-open

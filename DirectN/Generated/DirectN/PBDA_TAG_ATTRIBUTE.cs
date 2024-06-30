@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PBDA_TAG_ATTRIBUTE
 {
     public Guid TableUUId;

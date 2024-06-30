@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/ns-d3d12sdklayers-d3d12_message
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_MESSAGE
 {
     public D3D12_MESSAGE_CATEGORY Category;

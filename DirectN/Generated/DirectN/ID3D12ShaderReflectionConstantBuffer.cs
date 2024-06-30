@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d12shader/nn-d3d12shader-id3d12shaderreflectionconstantbuffer
 public partial struct ID3D12ShaderReflectionConstantBuffer
 {
+    public static readonly ID3D12ShaderReflectionConstantBuffer Null = new();
+    
     public nint VTablePtr;
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12shaderreflectionconstantbuffer-getdesc

@@ -4,7 +4,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct KSDATAFORMAT
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _Anonymous_e__Struct
     {
         public uint FormatSize;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/medfound/d3dauthenticatedchannel-configure-input
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DAUTHENTICATEDCHANNEL_CONFIGURE_INPUT
 {
     public D3D_OMAC omac;

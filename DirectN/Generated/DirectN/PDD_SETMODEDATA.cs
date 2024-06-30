@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PDD_SETMODEDATA : IEquatable<PDD_SETMODEDATA>
 {
     public static readonly PDD_SETMODEDATA Null = new();

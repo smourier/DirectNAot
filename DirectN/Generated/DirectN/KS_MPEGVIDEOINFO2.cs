@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_MPEGVIDEOINFO2
 {
     public KS_VIDEOINFOHEADER2 hdr;

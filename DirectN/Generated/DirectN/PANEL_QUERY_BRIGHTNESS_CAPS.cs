@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PANEL_QUERY_BRIGHTNESS_CAPS
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public uint _bitfield;

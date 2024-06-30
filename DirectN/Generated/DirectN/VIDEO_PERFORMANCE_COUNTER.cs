@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_PERFORMANCE_COUNTER
 {
     public InlineArrayUInt64_10 NbOfAllocationEvicted;

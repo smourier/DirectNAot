@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct COLORSPACE_TRANSFORM_TARGET_CAPS
 {
     public COLORSPACE_TRANSFORM_TARGET_CAPS_VERSION Version;

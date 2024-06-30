@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d12shader/nn-d3d12shader-id3d12functionreflection
 public partial struct ID3D12FunctionReflection
 {
+    public static readonly ID3D12FunctionReflection Null = new();
+    
     public nint VTablePtr;
     
     // https://learn.microsoft.com/windows/win32/api/d3d12shader/nf-d3d12shader-id3d12functionreflection-getdesc

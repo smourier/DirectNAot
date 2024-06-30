@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_video_signal_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DISPLAYCONFIG_VIDEO_SIGNAL_INFO
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _AdditionalSignalInfo_e__Struct
         {
             public uint _bitfield;

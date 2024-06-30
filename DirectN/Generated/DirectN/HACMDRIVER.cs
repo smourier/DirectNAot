@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HACMDRIVER : IEquatable<HACMDRIVER>
 {
     public static readonly HACMDRIVER Null = new();

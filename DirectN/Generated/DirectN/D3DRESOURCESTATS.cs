@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3dresourcestats
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DRESOURCESTATS
 {
     public BOOL bThrashing;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct COLORSPACE_TRANSFORM_MATRIX_V2
 {
     public COLORSPACE_TRANSFORM_STAGE_CONTROL StageControlLookupTable1DDegamma;

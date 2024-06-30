@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_vpdevcaps
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_VPDEVCAPS
 {
     public DXVAHD_DEVICE_TYPE DeviceType;

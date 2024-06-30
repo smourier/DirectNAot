@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_path_target_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DISPLAYCONFIG_PATH_TARGET_INFO
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public uint _bitfield;

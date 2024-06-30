@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct GLUnurbs : IEquatable<GLUnurbs>
 {
     public static readonly GLUnurbs Null = new();

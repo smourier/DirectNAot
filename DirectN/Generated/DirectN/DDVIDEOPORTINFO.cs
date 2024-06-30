@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDVIDEOPORTINFO
 {
     public uint dwSize;

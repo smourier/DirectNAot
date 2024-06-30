@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d10shader/nn-d3d10shader-id3d10shaderreflectionvariable
 public partial struct ID3D10ShaderReflectionVariable
 {
+    public static readonly ID3D10ShaderReflectionVariable Null = new();
+    
     public nint VTablePtr;
     
     // https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-id3d10shaderreflectionvariable-getdesc

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSNODEPROPERTY_AUDIO_DEV_SPECIFIC
 {
     public KSNODEPROPERTY NodeProperty;

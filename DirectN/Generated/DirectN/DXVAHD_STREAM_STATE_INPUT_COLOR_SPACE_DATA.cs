@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_input_color_space_data
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVAHD_STREAM_STATE_INPUT_COLOR_SPACE_DATA
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public uint _bitfield;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-profileheader
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PROFILEHEADER
 {
     public uint phSize;

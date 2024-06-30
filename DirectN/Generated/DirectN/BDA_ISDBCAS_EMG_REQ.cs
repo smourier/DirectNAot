@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct BDA_ISDBCAS_EMG_REQ
 {
     public byte bCLA;

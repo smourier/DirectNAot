@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_menuattributes
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_MenuAttributes
 {
     public InlineArrayBOOL_8 fCompatibleRegion;

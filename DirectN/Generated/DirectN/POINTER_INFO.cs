@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct POINTER_INFO
 {
     public POINTER_INPUT_TYPE pointerType;

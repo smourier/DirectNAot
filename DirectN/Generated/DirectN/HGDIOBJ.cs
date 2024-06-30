@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HGDIOBJ : IEquatable<HGDIOBJ>
 {
     public static readonly HGDIOBJ Null = new();

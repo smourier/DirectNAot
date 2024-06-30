@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_BROADCASTING_LAUNCH_OVERRIDES
 {
     public nint pLocalRootArgumentsTableIndex;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HVIDEO : IEquatable<HVIDEO>
 {
     public static readonly HVIDEO Null = new();

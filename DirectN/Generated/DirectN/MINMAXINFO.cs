@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-minmaxinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MINMAXINFO
 {
     public POINT ptReserved;

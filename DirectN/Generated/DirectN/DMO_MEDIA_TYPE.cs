@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mediaobj/ns-mediaobj-dmo_media_type
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DMO_MEDIA_TYPE
 {
     public Guid majortype;

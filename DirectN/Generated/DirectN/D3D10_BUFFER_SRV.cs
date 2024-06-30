@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10/ns-d3d10-d3d10_buffer_srv
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_BUFFER_SRV
 {
     [StructLayout(LayoutKind.Explicit)]

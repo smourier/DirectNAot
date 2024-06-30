@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_versioned_root_signature_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VERSIONED_ROOT_SIGNATURE_DESC
 {
     [StructLayout(LayoutKind.Explicit)]

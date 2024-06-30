@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-gdiinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct GDIINFO
 {
     public uint ulVersion;

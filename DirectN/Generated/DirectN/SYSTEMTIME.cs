@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-systemtime
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SYSTEMTIME
 {
     public ushort wYear;

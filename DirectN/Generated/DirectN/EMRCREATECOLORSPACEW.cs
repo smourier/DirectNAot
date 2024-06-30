@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-emrcreatecolorspacew
-[StructLayout(LayoutKind.Sequential)]
 public partial struct EMRCREATECOLORSPACEW
 {
     public EMR emr;

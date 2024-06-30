@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mftransform/ns-mftransform-mft_input_stream_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFT_INPUT_STREAM_INFO
 {
     public long hnsMaxLatency;

@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Explicit)]
 public partial struct TIMECODE
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _Anonymous_e__Struct
     {
         public ushort wFrameRate;

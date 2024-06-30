@@ -2,19 +2,16 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-variant
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VARIANT
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             [StructLayout(LayoutKind.Explicit)]
             public struct _Anonymous_e__Union
             {
-                [StructLayout(LayoutKind.Sequential)]
                 public struct _Anonymous_e__Struct
                 {
                     public nint pvRecord;

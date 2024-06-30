@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HCOLORSPACE : IEquatable<HCOLORSPACE>
 {
     public static readonly HCOLORSPACE Null = new();

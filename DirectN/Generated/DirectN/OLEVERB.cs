@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/oleidl/ns-oleidl-oleverb
-[StructLayout(LayoutKind.Sequential)]
 public partial struct OLEVERB
 {
     public OLEIVERB lVerb;

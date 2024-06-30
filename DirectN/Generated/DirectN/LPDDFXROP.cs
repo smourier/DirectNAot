@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct LPDDFXROP : IEquatable<LPDDFXROP>
 {
     public static readonly LPDDFXROP Null = new();

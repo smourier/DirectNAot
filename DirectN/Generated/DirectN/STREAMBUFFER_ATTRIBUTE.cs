@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-streambuffer_attribute
-[StructLayout(LayoutKind.Sequential)]
 public partial struct STREAMBUFFER_ATTRIBUTE
 {
     public PWSTR pszName;

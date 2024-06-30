@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVAudInfo
 {
     public InlineArrayByte_2 bAudStyle;

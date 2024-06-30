@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_videoprocessbltparams
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVA2_VideoProcessBltParams
 {
     public long TargetFrame;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HDEV : IEquatable<HDEV>
 {
     public static readonly HDEV Null = new();

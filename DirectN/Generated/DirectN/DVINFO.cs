@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVINFO
 {
     public uint dwDVAAuxSrc;

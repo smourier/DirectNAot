@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HBRUSH : IEquatable<HBRUSH>
 {
     public static readonly HBRUSH Null = new();

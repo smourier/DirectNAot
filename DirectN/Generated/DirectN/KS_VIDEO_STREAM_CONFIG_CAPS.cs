@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_VIDEO_STREAM_CONFIG_CAPS
 {
     public Guid guid;

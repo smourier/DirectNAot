@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddpixelformat
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDPIXELFORMAT
 {
     [StructLayout(LayoutKind.Explicit)]
@@ -55,7 +54,6 @@ public partial struct DDPIXELFORMAT
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous3_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _MultiSampleCaps_e__Struct
         {
             public ushort wFlipMSTypes;

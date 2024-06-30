@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PSID : IEquatable<PSID>
 {
     public static readonly PSID Null = new();

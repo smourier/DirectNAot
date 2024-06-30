@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/devicetopology/ns-devicetopology-ksjack_sink_information
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSJACK_SINK_INFORMATION
 {
     public KSJACK_SINK_CONNECTIONTYPE ConnType;

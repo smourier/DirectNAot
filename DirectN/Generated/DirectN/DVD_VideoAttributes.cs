@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_videoattributes
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_VideoAttributes
 {
     public BOOL fPanscanPermitted;

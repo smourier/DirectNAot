@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DMATERIAL7
 {
     [StructLayout(LayoutKind.Explicit)]

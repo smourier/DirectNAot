@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SPTRANSITIONID : IEquatable<SPTRANSITIONID>
 {
     public static readonly SPTRANSITIONID Null = new();

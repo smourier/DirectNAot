@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfinputtrustauthority_access_params
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFINPUTTRUSTAUTHORITY_ACCESS_PARAMS
 {
     public uint dwSize;

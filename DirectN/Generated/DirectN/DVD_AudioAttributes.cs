@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_audioattributes
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVD_AudioAttributes
 {
     public DVD_AUDIO_APPMODE AppMode;

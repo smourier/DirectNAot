@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSPROPERTY_EXTXPORT_NODE_S
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _u_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Timecode_e__Struct
         {
             public byte frame;
@@ -16,7 +14,6 @@ public partial struct KSPROPERTY_EXTXPORT_NODE_S
             public byte hour;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _RawAVC_e__Struct
         {
             public uint PayloadSize;

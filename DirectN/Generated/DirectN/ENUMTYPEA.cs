@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-enumtypea
-[StructLayout(LayoutKind.Sequential)]
 public partial struct ENUMTYPEA
 {
     public uint dwSize;

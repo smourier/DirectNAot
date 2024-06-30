@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HCURSOR : IEquatable<HCURSOR>
 {
     public static readonly HCURSOR Null = new();

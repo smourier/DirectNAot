@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/ns-d3d10effect-d3d10_state_block_mask
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_STATE_BLOCK_MASK
 {
     public byte VS;

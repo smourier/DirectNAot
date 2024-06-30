@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectmatrixvariable
 public partial struct ID3D10EffectMatrixVariable
 {
+    public static readonly ID3D10EffectMatrixVariable Null = new();
+    
     public nint VTablePtr;
     
     // ID3D10EffectVariable methods

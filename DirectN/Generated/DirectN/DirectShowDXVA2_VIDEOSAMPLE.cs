@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DirectShowDXVA2_VIDEOSAMPLE
 {
     public long Start;

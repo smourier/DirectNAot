@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_DVDCOPY_BUSKEY
 {
     public InlineArrayByte_5 BusKey;

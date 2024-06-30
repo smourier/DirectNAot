@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/ns-wmcodecdsp-aecqualitymetrics_struct
-[StructLayout(LayoutKind.Sequential)]
 public partial struct AecQualityMetrics_Struct
 {
     public long i64Timestamp;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_1/ns-d2d1_1-d2d1_image_brush_properties
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D2D1_IMAGE_BRUSH_PROPERTIES
 {
     public D2D_RECT_F sourceRectangle;

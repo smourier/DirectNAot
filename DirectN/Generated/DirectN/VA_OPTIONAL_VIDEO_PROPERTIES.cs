@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VA_OPTIONAL_VIDEO_PROPERTIES
 {
     public ushort dwPictureHeight;

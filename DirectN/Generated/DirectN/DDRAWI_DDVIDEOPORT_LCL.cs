@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDRAWI_DDVIDEOPORT_LCL
 {
     public nint lpDD;

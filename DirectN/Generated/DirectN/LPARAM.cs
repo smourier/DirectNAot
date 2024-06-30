@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct LPARAM : IEquatable<LPARAM>
 {
     public static readonly LPARAM Null = new();

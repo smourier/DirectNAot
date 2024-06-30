@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrvideodesc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VMRVideoDesc
 {
     public uint dwSize;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_DATAFORMAT_H264VIDEOINFO
 {
     public KSDATAFORMAT DataFormat;

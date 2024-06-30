@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct ChannelInfo
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _DVB_e__Struct
         {
             public int lONID;
@@ -15,13 +13,11 @@ public partial struct ChannelInfo
             public int lSID;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _DC_e__Struct
         {
             public int lProgNumber;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _ATSC_e__Struct
         {
             public int lProgNumber;

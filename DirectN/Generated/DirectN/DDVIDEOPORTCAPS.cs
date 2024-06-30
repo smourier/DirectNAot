@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportcaps
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDVIDEOPORTCAPS
 {
     public uint dwSize;

@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectscalarvariable
 public partial struct ID3D10EffectScalarVariable
 {
+    public static readonly ID3D10EffectScalarVariable Null = new();
+    
     public nint VTablePtr;
     
     // ID3D10EffectVariable methods

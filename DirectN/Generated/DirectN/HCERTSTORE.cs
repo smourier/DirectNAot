@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HCERTSTORE : IEquatable<HCERTSTORE>
 {
     public static readonly HCERTSTORE Null = new();

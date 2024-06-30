@@ -3,6 +3,8 @@ namespace DirectN;
 
 public partial struct ISpThreadTask
 {
+    public static readonly ISpThreadTask Null = new();
+    
     public nint VTablePtr;
     
     [return: MarshalAs(UnmanagedType.Error)]

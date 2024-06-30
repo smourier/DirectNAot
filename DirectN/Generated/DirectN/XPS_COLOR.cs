@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/ns-xpsobjectmodel-xps_color
-[StructLayout(LayoutKind.Sequential)]
 public partial struct XPS_COLOR
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct XPS_COLOR_VALUE
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _sRGB_e__Struct
         {
             public byte alpha;
@@ -17,7 +15,6 @@ public partial struct XPS_COLOR
             public byte blue;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _scRGB_e__Struct
         {
             public float alpha;
@@ -26,7 +23,6 @@ public partial struct XPS_COLOR
             public float blue;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _context_e__Struct
         {
             public byte channelCount;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3ddisplaymode
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DDISPLAYMODE
 {
     public uint Width;

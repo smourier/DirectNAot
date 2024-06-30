@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSM_BDA_CAS_ENTITLEMENTTOKEN
 {
     public KSM_NODE NodeMethod;

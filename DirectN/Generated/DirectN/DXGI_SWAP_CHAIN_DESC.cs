@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_swap_chain_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_SWAP_CHAIN_DESC
 {
     public DXGI_MODE_DESC BufferDesc;

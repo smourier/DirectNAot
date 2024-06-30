@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSPROPERTY_VIDEOCOMPRESSION_GETINFO_S
 {
     public KSIDENTIFIER Property;

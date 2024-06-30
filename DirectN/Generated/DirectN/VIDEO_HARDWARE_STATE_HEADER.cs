@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_HARDWARE_STATE_HEADER
 {
     public uint Length;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_WIN32K_CALLBACKS
 {
     public nint PhysDisp;

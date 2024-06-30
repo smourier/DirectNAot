@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_BDA_FRAME_INFO
 {
     public uint ExtendedHeaderSize;

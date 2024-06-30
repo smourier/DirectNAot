@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace_header
-[StructLayout(LayoutKind.Sequential)]
 public partial struct EVENT_TRACE_HEADER
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous1_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public byte HeaderType;
@@ -25,7 +23,6 @@ public partial struct EVENT_TRACE_HEADER
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous2_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Class_e__Struct
         {
             public byte Type;
@@ -53,14 +50,12 @@ public partial struct EVENT_TRACE_HEADER
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous4_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous1_e__Struct
         {
             public uint KernelTime;
             public uint UserTime;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous2_e__Struct
         {
             public uint ClientContext;

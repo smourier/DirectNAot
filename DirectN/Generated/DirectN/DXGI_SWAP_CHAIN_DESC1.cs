@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_swap_chain_desc1
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_SWAP_CHAIN_DESC1
 {
     public uint Width;

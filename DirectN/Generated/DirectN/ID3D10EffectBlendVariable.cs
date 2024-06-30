@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d10effect/nn-d3d10effect-id3d10effectblendvariable
 public partial struct ID3D10EffectBlendVariable
 {
+    public static readonly ID3D10EffectBlendVariable Null = new();
+    
     public nint VTablePtr;
     
     // ID3D10EffectVariable methods

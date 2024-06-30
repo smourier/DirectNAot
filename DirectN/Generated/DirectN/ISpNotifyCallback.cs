@@ -3,6 +3,8 @@ namespace DirectN;
 
 public partial struct ISpNotifyCallback
 {
+    public static readonly ISpNotifyCallback Null = new();
+    
     public nint VTablePtr;
     
     [return: MarshalAs(UnmanagedType.Error)]

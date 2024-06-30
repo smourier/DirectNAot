@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDRAWI_DDMOTIONCOMP_INT
 {
     public nint lpVtbl;

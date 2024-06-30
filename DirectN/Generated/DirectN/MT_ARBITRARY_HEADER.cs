@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mt_arbitrary_header
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MT_ARBITRARY_HEADER
 {
     public Guid majortype;

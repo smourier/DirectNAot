@@ -1,26 +1,22 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DWRITE_PAINT_ELEMENT
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct PAINT_UNION
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_LAYERS
         {
             public uint childCount;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_SOLID_GLYPH
         {
             public uint glyphIndex;
             public DWRITE_PAINT_COLOR color;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_LINEAR_GRADIENT
         {
             public uint extendMode;
@@ -33,7 +29,6 @@ public partial struct DWRITE_PAINT_ELEMENT
             public float y2;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_RADIAL_GRADIENT
         {
             public uint extendMode;
@@ -46,7 +41,6 @@ public partial struct DWRITE_PAINT_ELEMENT
             public float radius1;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_SWEEP_GRADIENT
         {
             public uint extendMode;
@@ -57,20 +51,17 @@ public partial struct DWRITE_PAINT_ELEMENT
             public float endAngle;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_GLYPH
         {
             public uint glyphIndex;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_COLOR_GLYPH
         {
             public uint glyphIndex;
             public D2D_RECT_F clipBox;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct PAINT_COMPOSITE
         {
             public DWRITE_COLOR_COMPOSITE_MODE mode;

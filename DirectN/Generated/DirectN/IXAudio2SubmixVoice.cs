@@ -4,6 +4,8 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/xaudio2/nn-xaudio2-ixaudio2submixvoice
 public partial struct IXAudio2SubmixVoice
 {
+    public static readonly IXAudio2SubmixVoice Null = new();
+    
     public nint VTablePtr;
     
     // IXAudio2Voice methods
@@ -56,12 +58,12 @@ public partial struct IXAudio2SubmixVoice
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputfilterparameters
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet) =>
-        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice?,XAUDIO2_FILTER_PARAMETERS,uint, HRESULT>)(((void**)*((void**)VTablePtr))[10]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, pParameters, OperationSet);
+    public readonly unsafe HRESULT SetOutputFilterParameters(IXAudio2Voice pDestinationVoice, in XAUDIO2_FILTER_PARAMETERS pParameters, uint OperationSet) =>
+        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice,XAUDIO2_FILTER_PARAMETERS,uint, HRESULT>)(((void**)*((void**)VTablePtr))[10]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, pParameters, OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputfilterparameters
-    public readonly unsafe void GetOutputFilterParameters(IXAudio2Voice? pDestinationVoice, ref XAUDIO2_FILTER_PARAMETERS pParameters) =>
-        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice?,XAUDIO2_FILTER_PARAMETERS*, void>)(((void**)*((void**)VTablePtr))[11]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, (XAUDIO2_FILTER_PARAMETERS*)Unsafe.AsPointer(ref pParameters));
+    public readonly unsafe void GetOutputFilterParameters(IXAudio2Voice pDestinationVoice, ref XAUDIO2_FILTER_PARAMETERS pParameters) =>
+        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice,XAUDIO2_FILTER_PARAMETERS*, void>)(((void**)*((void**)VTablePtr))[11]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, (XAUDIO2_FILTER_PARAMETERS*)Unsafe.AsPointer(ref pParameters));
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setvolume
     [return: MarshalAs(UnmanagedType.Error)]
@@ -83,12 +85,12 @@ public partial struct IXAudio2SubmixVoice
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-setoutputmatrix
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet) =>
-        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice?,uint,uint,float,uint, HRESULT>)(((void**)*((void**)VTablePtr))[16]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, pLevelMatrix, OperationSet);
+    public readonly unsafe HRESULT SetOutputMatrix(IXAudio2Voice pDestinationVoice, uint SourceChannels, uint DestinationChannels, in float pLevelMatrix, uint OperationSet) =>
+        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice,uint,uint,float,uint, HRESULT>)(((void**)*((void**)VTablePtr))[16]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, pLevelMatrix, OperationSet);
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-getoutputmatrix
-    public readonly unsafe void GetOutputMatrix(IXAudio2Voice? pDestinationVoice, uint SourceChannels, uint DestinationChannels, ref float pLevelMatrix) =>
-        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice?,uint,uint,float*, void>)(((void**)*((void**)VTablePtr))[17]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, (float*)Unsafe.AsPointer(ref pLevelMatrix));
+    public readonly unsafe void GetOutputMatrix(IXAudio2Voice pDestinationVoice, uint SourceChannels, uint DestinationChannels, ref float pLevelMatrix) =>
+        ((delegate* unmanaged<IXAudio2Voice*,IXAudio2Voice,uint,uint,float*, void>)(((void**)*((void**)VTablePtr))[17]))((IXAudio2Voice*)VTablePtr, pDestinationVoice, SourceChannels, DestinationChannels, (float*)Unsafe.AsPointer(ref pLevelMatrix));
     
     // https://learn.microsoft.com/windows/win32/api/xaudio2/nf-xaudio2-ixaudio2voice-destroyvoice
     public readonly unsafe void DestroyVoice() =>

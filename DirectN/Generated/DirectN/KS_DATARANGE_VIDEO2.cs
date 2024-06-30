@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_DATARANGE_VIDEO2
 {
     public KSDATAFORMAT DataRange;

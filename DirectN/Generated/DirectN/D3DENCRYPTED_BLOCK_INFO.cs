@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/medfound/d3dencrypted-block-info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DENCRYPTED_BLOCK_INFO
 {
     public uint NumEncryptedBytesAtBeginning;

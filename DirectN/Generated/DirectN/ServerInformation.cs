@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/combaseapi/ns-combaseapi-serverinformation
-[StructLayout(LayoutKind.Sequential)]
 public partial struct ServerInformation
 {
     public uint dwServerPid;

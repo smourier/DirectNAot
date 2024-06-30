@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATA
 {
     public Guid DeviceId;

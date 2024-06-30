@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/objidl/ns-objidl-dvtargetdevice
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVTARGETDEVICE
 {
     public uint tdSize;

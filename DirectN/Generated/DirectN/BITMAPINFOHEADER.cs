@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader
-[StructLayout(LayoutKind.Sequential)]
 public partial struct BITMAPINFOHEADER
 {
     public uint biSize;

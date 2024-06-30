@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_QUERY_DATA_PIPELINE_STATISTICS1
 {
     public ulong IAVertices;

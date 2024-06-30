@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-clipobj
-[StructLayout(LayoutKind.Sequential)]
 public partial struct CLIPOBJ
 {
     public uint iUniq;

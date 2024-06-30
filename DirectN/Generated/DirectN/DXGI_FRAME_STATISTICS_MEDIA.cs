@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_3/ns-dxgi1_3-dxgi_frame_statistics_media
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_FRAME_STATISTICS_MEDIA
 {
     public uint PresentCount;

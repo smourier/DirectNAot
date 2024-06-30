@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFCameraIntrinsic_DistortionModelArcTan
 {
     public float Radial_k0;

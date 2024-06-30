@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-dxapi_interface
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXAPI_INTERFACE
 {
     public ushort Size;

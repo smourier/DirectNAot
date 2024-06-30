@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_surface_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXGI_SURFACE_DESC
 {
     public uint Width;

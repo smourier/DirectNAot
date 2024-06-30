@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_VIDEO_ENCODER_CODEC_AV1_PICTURE_CONTROL_SUPPORT
 {
     public D3D12_VIDEO_ENCODER_AV1_COMP_PREDICTION_TYPE PredictionMode;

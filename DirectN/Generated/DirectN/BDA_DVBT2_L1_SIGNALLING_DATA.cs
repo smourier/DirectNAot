@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct BDA_DVBT2_L1_SIGNALLING_DATA
 {
     public byte L1Pre_TYPE;

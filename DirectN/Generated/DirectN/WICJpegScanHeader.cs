@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicjpegscanheader
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WICJpegScanHeader
 {
     public uint cComponents;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-eng_time_fields
-[StructLayout(LayoutKind.Sequential)]
 public partial struct ENG_TIME_FIELDS
 {
     public ushort usYear;

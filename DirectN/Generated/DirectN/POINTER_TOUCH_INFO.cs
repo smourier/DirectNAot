@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_touch_info
-[StructLayout(LayoutKind.Sequential)]
 public partial struct POINTER_TOUCH_INFO
 {
     public POINTER_INFO pointerInfo;

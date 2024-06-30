@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct TRANSPORT_PROPERTIES
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Fields_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Others
         {
             public long _bitfield;

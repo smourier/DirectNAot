@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_matrix
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DWRITE_MATRIX
 {
     public float m11;

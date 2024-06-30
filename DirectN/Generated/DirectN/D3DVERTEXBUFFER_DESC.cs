@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3dvertexbuffer-desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DVERTEXBUFFER_DESC
 {
     public D3DFORMAT Format;

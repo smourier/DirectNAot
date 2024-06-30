@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KS_FRAME_INFO
 {
     [StructLayout(LayoutKind.Explicit)]
@@ -17,7 +16,6 @@ public partial struct KS_FRAME_INFO
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous2_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public uint Reserved3;

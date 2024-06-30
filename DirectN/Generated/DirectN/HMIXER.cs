@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HMIXER : IEquatable<HMIXER>
 {
     public static readonly HMIXER Null = new();

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d9/d3dlight9
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DLIGHT9
 {
     public D3DLIGHTTYPE Type;

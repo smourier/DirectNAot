@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/richedit/ns-richedit-charformat2w
-[StructLayout(LayoutKind.Sequential)]
 public partial struct CHARFORMAT2W
 {
     [StructLayout(LayoutKind.Explicit)]

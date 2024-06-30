@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WinRT/hstring
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HSTRING : IEquatable<HSTRING>
 {
     public static readonly HSTRING Null = new();

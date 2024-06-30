@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSCAMERA_MAXVIDEOFPS_FORPHOTORES
 {
     public uint PhotoResWidth;

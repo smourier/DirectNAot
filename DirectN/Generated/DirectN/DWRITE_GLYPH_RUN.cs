@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_glyph_run
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DWRITE_GLYPH_RUN
 {
     public nint fontFace;

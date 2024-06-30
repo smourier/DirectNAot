@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct TUNER_ANALOG_CAPS_S
 {
     public uint Mode;

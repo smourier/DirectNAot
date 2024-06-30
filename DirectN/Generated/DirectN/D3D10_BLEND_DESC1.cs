@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10_1/ns-d3d10_1-d3d10_blend_desc1
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_BLEND_DESC1
 {
     public BOOL AlphaToCoverageEnable;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfreadwrite/ns-mfreadwrite-mf_sink_writer_statistics
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MF_SINK_WRITER_STATISTICS
 {
     public uint cb;

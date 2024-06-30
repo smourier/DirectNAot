@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_RASTERIZER_DESC2
 {
     public D3D12_FILL_MODE FillMode;

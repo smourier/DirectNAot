@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mediaobj/ns-mediaobj-dmo_output_data_buffer
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DMO_OUTPUT_DATA_BUFFER
 {
     public nint pBuffer;

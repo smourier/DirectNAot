@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MIPI_DSI_CAPS
 {
     public byte DSITypeMajor;

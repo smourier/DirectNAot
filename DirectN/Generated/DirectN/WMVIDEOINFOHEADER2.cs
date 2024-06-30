@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmvideoinfoheader2
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WMVIDEOINFOHEADER2
 {
     public RECT rcSource;

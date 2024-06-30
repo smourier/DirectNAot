@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSWAVETABLE_WAVE_DESC
 {
     public KSIDENTIFIER Identifier;

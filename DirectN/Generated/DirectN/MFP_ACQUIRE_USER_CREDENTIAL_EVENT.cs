@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_acquire_user_credential_event
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFP_ACQUIRE_USER_CREDENTIAL_EVENT
 {
     public MFP_EVENT_HEADER header;

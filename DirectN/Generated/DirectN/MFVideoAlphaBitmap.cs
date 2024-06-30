@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/evr9/ns-evr9-mfvideoalphabitmap
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MFVideoAlphaBitmap
 {
     [StructLayout(LayoutKind.Explicit)]

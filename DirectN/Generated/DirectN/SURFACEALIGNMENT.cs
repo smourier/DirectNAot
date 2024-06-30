@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dmemmgr/ns-dmemmgr-surfacealignment
-[StructLayout(LayoutKind.Sequential)]
 public partial struct SURFACEALIGNMENT
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Linear_e__Struct
         {
             public uint dwStartAlignment;
@@ -17,7 +15,6 @@ public partial struct SURFACEALIGNMENT
             public uint dwReserved2;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Rectangular_e__Struct
         {
             public uint dwXAlignment;

@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVA2TraceVideoProcessBltData
 {
     public EVENT_TRACE_HEADER wmiHeader;

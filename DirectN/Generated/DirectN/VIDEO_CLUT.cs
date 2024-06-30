@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEO_CLUT
 {
     [InlineArray(InlineArray_Anonymous_e__Union_1.Length)]

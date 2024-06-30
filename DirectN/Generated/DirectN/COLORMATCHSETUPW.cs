@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-colormatchsetupw
-[StructLayout(LayoutKind.Sequential)]
 public partial struct COLORMATCHSETUPW
 {
     public uint dwSize;

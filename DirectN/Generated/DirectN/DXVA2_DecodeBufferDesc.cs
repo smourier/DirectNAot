@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_decodebufferdesc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVA2_DecodeBufferDesc
 {
     public uint CompressedBufferType;

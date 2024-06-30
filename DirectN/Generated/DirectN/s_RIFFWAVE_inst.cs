@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct s_RIFFWAVE_inst
 {
     public byte bUnshiftedNote;

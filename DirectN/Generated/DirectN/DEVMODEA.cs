@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-devmodea
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DEVMODEA
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous1_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous1_e__Struct
         {
             public short dmOrientation;
@@ -21,7 +19,6 @@ public partial struct DEVMODEA
             public short dmPrintQuality;
         }
         
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous2_e__Struct
         {
             public POINTL dmPosition;

@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-dvr_stream_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DVR_STREAM_DESC
 {
     public uint Version;

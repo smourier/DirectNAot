@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HGLRC : IEquatable<HGLRC>
 {
     public static readonly HGLRC Null = new();

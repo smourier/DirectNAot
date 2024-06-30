@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/ns-wmcodecdsp-toc_descriptor
-[StructLayout(LayoutKind.Sequential)]
 public partial struct TOC_DESCRIPTOR
 {
     public Guid guidID;

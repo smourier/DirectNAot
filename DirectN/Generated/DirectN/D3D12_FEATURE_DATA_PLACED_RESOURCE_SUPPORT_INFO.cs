@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D12_FEATURE_DATA_PLACED_RESOURCE_SUPPORT_INFO
 {
     public DXGI_FORMAT Format;

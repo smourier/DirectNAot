@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11/ns-d3d11-d3d11_texture2d_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D11_TEXTURE2D_DESC
 {
     public uint Width;

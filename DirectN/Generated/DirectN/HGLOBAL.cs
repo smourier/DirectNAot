@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HGLOBAL : IEquatable<HGLOBAL>
 {
     public static readonly HGLOBAL Null = new();

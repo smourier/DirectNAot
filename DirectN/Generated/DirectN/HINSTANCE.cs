@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HINSTANCE : IEquatable<HINSTANCE>
 {
     public static readonly HINSTANCE Null = new();

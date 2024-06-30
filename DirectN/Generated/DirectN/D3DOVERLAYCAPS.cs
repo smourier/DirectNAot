@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d9caps/ns-d3d9caps-d3doverlaycaps
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DOVERLAYCAPS
 {
     public uint Caps;

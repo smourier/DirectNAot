@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_play_opl
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DRM_PLAY_OPL
 {
     public DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS minOPL;

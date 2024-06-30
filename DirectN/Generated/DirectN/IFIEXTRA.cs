@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-ifiextra
-[StructLayout(LayoutKind.Sequential)]
 public partial struct IFIEXTRA
 {
     public uint ulIdentifier;

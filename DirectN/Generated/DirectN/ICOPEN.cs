@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icopen
-[StructLayout(LayoutKind.Sequential)]
 public partial struct ICOPEN
 {
     public uint dwSize;

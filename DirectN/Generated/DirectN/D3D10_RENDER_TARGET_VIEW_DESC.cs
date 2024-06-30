@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10/ns-d3d10-d3d10_render_target_view_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3D10_RENDER_TARGET_VIEW_DESC
 {
     [StructLayout(LayoutKind.Explicit)]

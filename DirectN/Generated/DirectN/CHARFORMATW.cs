@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/richedit/ns-richedit-charformatw
-[StructLayout(LayoutKind.Sequential)]
 public partial struct CHARFORMATW
 {
     public uint cbSize;

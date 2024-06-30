@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mt_custom_video_primaries
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MT_CUSTOM_VIDEO_PRIMARIES
 {
     public float fRx;

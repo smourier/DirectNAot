@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d2d1_3/ns-d2d1_3-d2d1_gradient_mesh_patch
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D2D1_GRADIENT_MESH_PATCH
 {
     public D2D_POINT_2F point00;

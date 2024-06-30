@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/bdaiface_enums/ns-bdaiface_enums-ealocationcodetype
-[StructLayout(LayoutKind.Sequential)]
 public partial struct EALocationCodeType
 {
     public LocationCodeSchemeType LocationCodeScheme;

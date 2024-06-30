@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSAUDIO_MIC_ARRAY_GEOMETRY
 {
     public ushort usVersion;

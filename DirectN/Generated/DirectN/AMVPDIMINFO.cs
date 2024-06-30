@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/vptype/ns-vptype-amvpdiminfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct AMVPDIMINFO
 {
     public uint dwFieldWidth;

@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct KSAUDIOMODULE_NOTIFICATION
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _ProviderId_e__Struct
         {
             public Guid DeviceId;

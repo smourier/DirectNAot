@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DVERTEX
 {
     [StructLayout(LayoutKind.Explicit)]

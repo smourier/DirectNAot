@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3dcsx/ns-d3dcsx-d3dx11_fft_desc
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DX11_FFT_DESC
 {
     public uint NumDimensions;

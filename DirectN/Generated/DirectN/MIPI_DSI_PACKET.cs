@@ -1,13 +1,11 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct MIPI_DSI_PACKET
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous1_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public byte _bitfield;
@@ -23,7 +21,6 @@ public partial struct MIPI_DSI_PACKET
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous2_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public byte Data0;

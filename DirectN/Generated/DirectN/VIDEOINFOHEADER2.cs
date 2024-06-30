@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-videoinfoheader2
-[StructLayout(LayoutKind.Sequential)]
 public partial struct VIDEOINFOHEADER2
 {
     [StructLayout(LayoutKind.Explicit)]

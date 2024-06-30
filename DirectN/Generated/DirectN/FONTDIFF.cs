@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontdiff
-[StructLayout(LayoutKind.Sequential)]
 public partial struct FONTDIFF
 {
     public byte jReserved1;

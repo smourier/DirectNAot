@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wndclassw
-[StructLayout(LayoutKind.Sequential)]
 public partial struct WNDCLASSW
 {
     public WNDCLASS_STYLES style;

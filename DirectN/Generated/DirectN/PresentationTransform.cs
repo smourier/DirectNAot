@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentationtypes/ns-presentationtypes-presentationtransform
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PresentationTransform
 {
     public float M11;

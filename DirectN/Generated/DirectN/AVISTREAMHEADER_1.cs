@@ -5,7 +5,6 @@ namespace DirectN;
 [StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVISTREAMHEADER
 {
-    [StructLayout(LayoutKind.Sequential)]
     public struct _rcFrame_e__Struct
     {
         public short left;

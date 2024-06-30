@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-coloradjustment
-[StructLayout(LayoutKind.Sequential)]
 public partial struct COLORADJUSTMENT
 {
     public ushort caSize;

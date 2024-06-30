@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/direct3d10/d3d10-d3dmatrix
-[StructLayout(LayoutKind.Sequential)]
 public partial struct D3DMATRIX
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             public float _11;

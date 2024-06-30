@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_configpicturedecode
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DXVA2_ConfigPictureDecode
 {
     public Guid guidConfigBitstreamEncryption;

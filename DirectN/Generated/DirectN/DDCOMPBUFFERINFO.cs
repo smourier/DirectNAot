@@ -2,7 +2,6 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-ddcompbufferinfo
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDCOMPBUFFERINFO
 {
     public uint dwSize;

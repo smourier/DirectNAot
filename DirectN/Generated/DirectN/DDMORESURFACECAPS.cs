@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct DDMORESURFACECAPS
 {
     [InlineArray(InlineArrayExtendedHeapRestrictions_1.Length)]
@@ -12,7 +11,6 @@ public partial struct DDMORESURFACECAPS
         public ExtendedHeapRestrictions Data;
     }
     
-    [StructLayout(LayoutKind.Sequential)]
     public struct ExtendedHeapRestrictions
     {
         public DDSCAPSEX ddsCapsEx;

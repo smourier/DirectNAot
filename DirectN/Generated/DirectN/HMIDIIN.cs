@@ -1,7 +1,6 @@
 ﻿#nullable enable
 namespace DirectN;
 
-[StructLayout(LayoutKind.Sequential)]
 public partial struct HMIDIIN : IEquatable<HMIDIIN>
 {
     public static readonly HMIDIIN Null = new();

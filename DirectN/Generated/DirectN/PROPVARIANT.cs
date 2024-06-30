@@ -2,13 +2,11 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/propidlbase/ns-propidlbase-propvariant
-[StructLayout(LayoutKind.Sequential)]
 public partial struct PROPVARIANT
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct _Anonymous_e__Union
     {
-        [StructLayout(LayoutKind.Sequential)]
         public struct _Anonymous_e__Struct
         {
             [StructLayout(LayoutKind.Explicit)]
