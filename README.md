@@ -26,13 +26,13 @@ The key points that drive how code is generated and built:
     * XPS
     * others (dependencies, etc)
 * Modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
-* How it works and how it's made is completely driven by strong .NET 8 ComWrapper source generator, and AOT requirements.
+* How it works and how it's made is completely driven by .NET 8 ComWrapper source generator and AOT requirements.
 * Both DirectN and DirectN.Extensions are AOT-friendly.
-* `unsafe` usage is limited.
-* Raw pointers usage is not exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object`  as out parameter type for untyped (`void**`) COM interfaces has been considered but it's been replaced it by `nint` which is really universal (also for authoring scenarios).
-* All `ComObject` instances are creating using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the use of non-unique instance int interop scenarios?)
+* `unsafe` usage is as limited as possible.
+* Raw pointers usage is not exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal (including for authoring scenarios).
+* All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the use of non-unique instances in interop scenarios?)
 * Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. We want to remove this hack ASAP, but it's not sure if this bug will be only releasd with .NET 9 or before...
-* Doing interop is inherently unsafe but we want to keep a.NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result are quite different.
+* Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result are quite different.
 
 # Direct3D11 minimal sample.
 The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
