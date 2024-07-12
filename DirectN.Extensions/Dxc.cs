@@ -56,7 +56,7 @@ public class Dxc
         return CreateCompilerArguments(args);
     }
 
-    public static DxcResult<IDxcResult> Compile(string source, string entrypoint, string target, string? sourceName = null, params string[] arguments) => Compile<IDxcResult>(source, entrypoint, target, sourceName, arguments);
+    public static DxcResult Compile(string source, string entrypoint, string target, string? sourceName = null, params string[] arguments) => new(Compile<IDxcResult>(source, entrypoint, target, sourceName, arguments));
     public static DxcResult<T> Compile<T>(string source, string entrypoint, string target, string? sourceName = null, params string[] arguments) where T : IDxcResult
     {
         ArgumentNullException.ThrowIfNull(source);
@@ -68,6 +68,7 @@ public class Dxc
         return Compile<T>(bytes, Encoding.UTF8, args.Object);
     }
 
+    public static DxcResult Compile(byte[] bytes, Encoding encoding, string entrypoint, string target, string? sourceName = null, params string[] arguments) => new(Compile<IDxcResult>(bytes, encoding, entrypoint, target, sourceName, arguments));
     public static DxcResult<T> Compile<T>(byte[] bytes, Encoding encoding, string entrypoint, string target, string? sourceName = null, params string[] arguments) where T : IDxcResult
     {
         ArgumentNullException.ThrowIfNull(bytes);
@@ -92,7 +93,7 @@ public class Dxc
         return new DxcResult<T>(ComObject.FromPointer<T>(ppv)!);
     }
 
-    public static DxcResult<IDxcResult> CompileFromResource(string resourceName, string entrypoint, string target, Assembly? assembly = null, params string[] arguments) => CompileFromResource<IDxcResult>(resourceName, entrypoint, target, assembly, arguments);
+    public static DxcResult CompileFromResource(string resourceName, string entrypoint, string target, Assembly? assembly = null, params string[] arguments) => new(CompileFromResource<IDxcResult>(resourceName, entrypoint, target, assembly, arguments));
     public static DxcResult<T> CompileFromResource<T>(string resourceName, string entrypoint, string target, Assembly? assembly = null, params string[] arguments) where T : IDxcResult
     {
         ArgumentNullException.ThrowIfNull(resourceName);
