@@ -2,6 +2,7 @@
 
 public class ComMemory : IEquatable<ComMemory>, IDisposable
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private nint _pointer;
 
     public ComMemory(int size)
@@ -24,7 +25,10 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
     }
 
     public uint Size { get; protected set; }
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     protected nint RawPointer => _pointer;
+
     public nint Pointer
     {
         get

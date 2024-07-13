@@ -2,10 +2,14 @@
 
 public abstract class InterlockedComReference(nint reference) : IDisposable
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private nint _reference = reference;
 
     public bool IsDisposed => _reference == 0;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     protected nint RawReference => _reference;
+
     public nint Reference
     {
         get

@@ -14,8 +14,13 @@ public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject
             throw new ArgumentException("Object is disposed.", nameof(comObject));
     }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public IComObject<T> ComObject => Disposable;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public T NativeObject => Disposable.Object;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     protected T? RawNativeObject
     {
         get
@@ -28,8 +33,15 @@ public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject
         }
     }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     bool IComObject.IsDisposed => Disposable.IsDisposed;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     System.Runtime.InteropServices.Marshalling.ComObject IComObject.Object => (System.Runtime.InteropServices.Marshalling.ComObject)(object)Disposable.Object!;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     T IComObject<T>.Object => Disposable.Object;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     Type IComObject.InterfaceType => typeof(T);
 }

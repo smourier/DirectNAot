@@ -7,8 +7,8 @@ public abstract class ComObject : IComObject
 {
     public static ComWrappers ComWrappers { get; } = new StrategyBasedComWrappers();
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private System.Runtime.InteropServices.Marshalling.ComObject? _comObject;
-    private readonly bool _releaseOnDispose;
 
     public ComObject(object? comObject, bool releaseOnDispose = true)
     {
@@ -17,10 +17,11 @@ public abstract class ComObject : IComObject
             throw new ArgumentException(null, nameof(comObject));
 
         _comObject = co;
-        _releaseOnDispose = releaseOnDispose;
+        ReleaseOnDispose = releaseOnDispose;
     }
 
     public abstract Type InterfaceType { get; }
+    public bool ReleaseOnDispose { get; }
     public bool IsDisposed => _comObject == null;
 
     [AllowNull]
@@ -324,7 +325,7 @@ public abstract class ComObject : IComObject
 
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing && _releaseOnDispose)
+        if (disposing && ReleaseOnDispose)
         {
             ComExtensions.FinalRelease(Interlocked.Exchange(ref _comObject, null));
         }
@@ -337,6 +338,7 @@ public abstract class ComObject : IComObject
 public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
 {
     [AllowNull]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public new T Object => (T)(object)base.Object;
     public override Type InterfaceType => typeof(T);
 

@@ -2,10 +2,14 @@
 
 public abstract class InterlockedDisposable<T>(T? disposable) : IDisposable where T : class, IDisposable
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private T? _disposable = disposable;
 
     public bool IsDisposed => _disposable == null;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     protected T? RawDisposable => _disposable;
+
     public T Disposable
     {
         get

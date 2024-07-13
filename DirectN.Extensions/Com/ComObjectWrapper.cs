@@ -2,6 +2,7 @@
 
 public sealed class ComObjectWrapper<T> : IComObject, IDisposable
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly IComObject<T> _cot;
 
     public ComObjectWrapper(object obj)
@@ -39,10 +40,17 @@ public sealed class ComObjectWrapper<T> : IComObject, IDisposable
     }
 
     public T Object => _cot.Object;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public IComObject<T> ComObject => _cot;
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     bool IComObject.IsDisposed => _cot.IsDisposed;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     System.Runtime.InteropServices.Marshalling.ComObject IComObject.Object => (Object as System.Runtime.InteropServices.Marshalling.ComObject)!;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     Type IComObject.InterfaceType => typeof(T);
 
     public void Dispose()
