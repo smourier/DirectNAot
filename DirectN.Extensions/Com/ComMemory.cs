@@ -39,6 +39,34 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         }
     }
 
+    public virtual void CopyTo(nint target, uint size = uint.MaxValue)
+    {
+        ArgumentNullException.ThrowIfNull(target);
+        if (size == uint.MaxValue)
+        {
+            size = Size;
+        }
+        if (size == 0)
+            return;
+
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - size);
+        Pointer.CopyTo(target, size);
+    }
+
+    public virtual void CopyFrom(nint source, uint size = uint.MaxValue)
+    {
+        ArgumentNullException.ThrowIfNull(source);
+        if (size == uint.MaxValue)
+        {
+            size = Size;
+        }
+        if (size == 0)
+            return;
+
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - size);
+        source.CopyTo(Pointer, size);
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (!disposing)
@@ -58,6 +86,27 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
 
     ~ComMemory() { Dispose(false); }
     public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
+
+    public static unsafe ComMemory From<T>(T item) where T : unmanaged
+    {
+        var mem = new ComMemory(sizeof(T));
+        mem.CopyFrom((nint)Unsafe.AsPointer(ref item));
+        return mem;
+    }
+
+    public static unsafe ComMemory FromEnumerable<T>(IEnumerable<T> items) where T : unmanaged
+    {
+        if (items == null)
+            return new ComMemory(0);
+
+        var array = items.ToArray();
+        if (array == null)
+            return new ComMemory(0);
+
+        var mem = new ComMemory(array.Length * sizeof(T));
+        mem.CopyFrom(array.AsPointer());
+        return mem;
+    }
 
     public static void WithAllocatedMemory(uint size, Action<nint> action)
     {
