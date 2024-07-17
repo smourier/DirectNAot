@@ -2,6 +2,35 @@
 
 public static partial class Constants
 {
+    public const float XM_PI = 3.141592654f;
+    public const float XM_2PI = 6.283185307f;
+    public const float XM_1DIVPI = 0.318309886f;
+    public const float XM_1DIV2PI = 0.159154943f;
+    public const float XM_PIDIV2 = 1.570796327f;
+    public const float XM_PIDIV4 = 0.785398163f;
+
+    public const uint XM_SELECT_0 = 0x00000000;
+    public const uint XM_SELECT_1 = 0xFFFFFFFF;
+
+    public const uint XM_PERMUTE_0X = 0;
+    public const uint XM_PERMUTE_0Y = 1;
+    public const uint XM_PERMUTE_0Z = 2;
+    public const uint XM_PERMUTE_0W = 3;
+    public const uint XM_PERMUTE_1X = 4;
+    public const uint XM_PERMUTE_1Y = 5;
+    public const uint XM_PERMUTE_1Z = 6;
+    public const uint XM_PERMUTE_1W = 7;
+
+    public const uint XM_SWIZZLE_X = 0;
+    public const uint XM_SWIZZLE_Y = 1;
+    public const uint XM_SWIZZLE_Z = 2;
+    public const uint XM_SWIZZLE_W = 3;
+
+    public const uint XM_CRMASK_CR6 = 0x000000F0;
+    public const uint XM_CRMASK_CR6TRUE = 0x00000080;
+    public const uint XM_CRMASK_CR6FALSE = 0x00000020;
+    public const uint XM_CRMASK_CR6BOUNDS = XM_CRMASK_CR6FALSE;
+
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_OK = 0;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_FALSE = 1;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_FAIL = unchecked((int)0x80004005);
