@@ -118,8 +118,8 @@ public static class ID3D12DeviceExtensions
         return ComObject.FromPointer<T>(unk)!;
     }
 
-    public static void CreateRenderTargetView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource> resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateRenderTargetView(device?.Object!, resource?.Object!, desc, handle);
-    public static void CreateRenderTargetView(this ID3D12Device device, ID3D12Resource resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
+    public static void CreateRenderTargetView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateRenderTargetView(device?.Object!, resource?.Object!, desc, handle);
+    public static void CreateRenderTargetView(this ID3D12Device device, ID3D12Resource? resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
         device.CreateRenderTargetView(resource, desc.CopyToPointer(), handle);
@@ -139,22 +139,22 @@ public static class ID3D12DeviceExtensions
         device.CreateSampler(desc, handle);
     }
 
-    public static void CreateShaderResourceView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource> resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateShaderResourceView(device?.Object!, resource?.Object!, desc, handle);
-    public static void CreateShaderResourceView(this ID3D12Device device, ID3D12Resource resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
+    public static void CreateShaderResourceView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, D3D12_SHADER_RESOURCE_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateShaderResourceView(device?.Object!, resource?.Object!, desc, handle);
+    public static void CreateShaderResourceView(this ID3D12Device device, ID3D12Resource? resource, D3D12_SHADER_RESOURCE_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
         device.CreateShaderResourceView(resource, desc.CopyToPointer(), handle);
     }
 
-    public static void CreateDepthStencilView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource> resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateDepthStencilView(device?.Object!, resource?.Object!, desc, handle);
-    public static void CreateDepthStencilView(this ID3D12Device device, ID3D12Resource resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
+    public static void CreateDepthStencilView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, D3D12_DEPTH_STENCIL_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateDepthStencilView(device?.Object!, resource?.Object!, desc, handle);
+    public static void CreateDepthStencilView(this ID3D12Device device, ID3D12Resource? resource, D3D12_DEPTH_STENCIL_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
         device.CreateDepthStencilView(resource, desc.CopyToPointer(), handle);
     }
 
-    public static void CreateUnorderedAccessView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource> resource, IComObject<ID3D12Resource> counterResource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateUnorderedAccessView(device?.Object!, resource?.Object!, counterResource?.Object!, desc, handle);
-    public static void CreateUnorderedAccessView(this ID3D12Device device, ID3D12Resource resource, ID3D12Resource counterResource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
+    public static void CreateUnorderedAccessView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, IComObject<ID3D12Resource>? counterResource, D3D12_UNORDERED_ACCESS_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateUnorderedAccessView(device?.Object!, resource?.Object!, counterResource?.Object!, desc, handle);
+    public static void CreateUnorderedAccessView(this ID3D12Device device, ID3D12Resource? resource, ID3D12Resource? counterResource, D3D12_UNORDERED_ACCESS_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
         device.CreateUnorderedAccessView(resource, counterResource, desc.CopyToPointer(), handle);

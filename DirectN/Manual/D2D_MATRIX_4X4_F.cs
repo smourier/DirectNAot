@@ -313,4 +313,42 @@ public partial struct D2D_MATRIX_4X4_F(
                 0, 0, zn * zf / (zn - zf), 0);
 
     public static D2D_MATRIX_4X4_F operator *(D2D_MATRIX_4X4_F left, D2D_MATRIX_4X4_F right) => Multiply(left, right);
+
+    public static implicit operator D2D_MATRIX_4X4_F(Matrix4x4 mx) => new(
+        mx.M11,
+        mx.M12,
+        mx.M13,
+        mx.M14,
+        mx.M21,
+        mx.M22,
+        mx.M23,
+        mx.M24,
+        mx.M31,
+        mx.M32,
+        mx.M33,
+        mx.M34,
+        mx.M41,
+        mx.M42,
+        mx.M43,
+        mx.M44
+    );
+
+    public static implicit operator Matrix4x4(D2D_MATRIX_4X4_F mx) => new(
+        mx._11,
+        mx._12,
+        mx._13,
+        mx._14,
+        mx._21,
+        mx._22,
+        mx._23,
+        mx._24,
+        mx._31,
+        mx._32,
+        mx._33,
+        mx._34,
+        mx._41,
+        mx._42,
+        mx._43,
+        mx._44
+    );
 }

@@ -136,4 +136,22 @@ public partial struct D2D_MATRIX_3X2_F(
 
     public static D2D_MATRIX_3X2_F operator *(D2D_MATRIX_3X2_F left, D2D_MATRIX_3X2_F right) => Multiply(left, right);
     public static D2D_MATRIX_3X2_F operator /(D2D_MATRIX_3X2_F left, D2D_MATRIX_3X2_F right) => Divide(left, right);
+
+    public static implicit operator D2D_MATRIX_3X2_F(Matrix3x2 mx) => new(
+        mx.M11,
+        mx.M12,
+        mx.M21,
+        mx.M22,
+        mx.M31,
+        mx.M32
+    );
+
+    public static implicit operator Matrix3x2(D2D_MATRIX_3X2_F mx) => new(
+        mx._11,
+        mx._12,
+        mx._21,
+        mx._22,
+        mx._31,
+        mx._32
+    );
 }

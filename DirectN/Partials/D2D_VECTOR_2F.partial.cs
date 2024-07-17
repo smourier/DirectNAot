@@ -39,4 +39,6 @@ public partial struct D2D_VECTOR_2F : IEquatable<D2D_VECTOR_2F>
     public readonly Vector2 ToVector2() => new(x, y);
     public readonly Vector3 ToVector3() => new(x, y, 0);
     public static D2D_VECTOR_2F From(Vector2 value) => new(value.X, value.Y);
+    public static implicit operator D2D_VECTOR_2F(Vector2 vc) => new(vc.X, vc.Y);
+    public static implicit operator Vector2(D2D_VECTOR_2F vc) => new(vc.x, vc.y);
 }

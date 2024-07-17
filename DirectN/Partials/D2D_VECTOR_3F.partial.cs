@@ -39,4 +39,6 @@ public partial struct D2D_VECTOR_3F : IEquatable<D2D_VECTOR_3F>
     public static D2D_VECTOR_3F operator /(D2D_VECTOR_3F left, D2D_VECTOR_3F right) => new(left.x / right.x, left.y / right.y, left.z / right.z);
     public readonly Vector3 ToVector3() => new(x, y, z);
     public static D2D_VECTOR_3F From(Vector3 value) => new(value.X, value.Y, value.Z);
+    public static implicit operator D2D_VECTOR_3F(Vector3 vc) => new(vc.X, vc.Y, vc.Z);
+    public static implicit operator Vector3(D2D_VECTOR_3F vc) => new(vc.x, vc.y, vc.z);
 }
