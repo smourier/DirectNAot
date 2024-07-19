@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions.Utilities;
 
 public class DxcResultOutput(DXC_OUT_KIND kind)
 {

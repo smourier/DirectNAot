@@ -1,4 +1,4 @@
-﻿namespace DirectN.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 [SupportedOSPlatform("windows6.0.6000")]
 public class Window : IDisposable, IEquatable<Window>
@@ -186,7 +186,7 @@ public class Window : IDisposable, IEquatable<Window>
             return list;
         }
     }
-    public Extensions.Utilities.Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Extensions.Utilities.Monitor.FromWindow(Handle, flags);
+    public Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Monitor.FromWindow(Handle, flags);
     public POINT ScreenToClient(POINT point) { Functions.ScreenToClient(Handle, ref point); return point; }
     public POINT ClientToScreen(POINT point) { Functions.ClientToScreen(Handle, ref point); return point; }
     public virtual HWND SetActive() => Functions.SetActiveWindow(Handle);

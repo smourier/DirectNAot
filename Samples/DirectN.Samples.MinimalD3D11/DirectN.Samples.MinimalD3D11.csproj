@@ -36,7 +36,9 @@
 
 	<ItemGroup>
 		<Using Include="DirectN" />
-		<Using Include="DirectN.Utilities" />
+		<Using Include="DirectN.Extensions" />
+		<Using Include="DirectN.Extensions.Com" />
+		<Using Include="DirectN.Extensions.Utilities" />
 		<Using Include="System.Collections.Concurrent" />
 		<Using Include="System.ComponentModel" />
 		<Using Include="System.Diagnostics.CodeAnalysis" />

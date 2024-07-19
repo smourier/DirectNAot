@@ -1,4 +1,4 @@
-﻿namespace DirectN.Com;
+﻿namespace DirectN.Extensions.Com;
 
 public abstract class InterlockedComReference(nint reference) : IDisposable
 {

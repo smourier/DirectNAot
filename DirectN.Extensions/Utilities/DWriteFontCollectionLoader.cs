@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
 
-namespace DirectN;
+namespace DirectN.Extensions.Utilities;
 
 [SupportedOSPlatform("windows6.1")]
 [GeneratedComClass]

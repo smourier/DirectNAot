@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions;
 
 public static class D3D11Functions
 {

@@ -1,4 +1,4 @@
-﻿namespace DirectN.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 [SupportedOSPlatform("windows8.1")]
 public class D3D11SwapChainWindow(

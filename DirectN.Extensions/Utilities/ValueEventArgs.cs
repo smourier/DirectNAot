@@ -1,4 +1,4 @@
-﻿namespace DirectN.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 public class ValueEventArgs(object? value, bool isValueReadOnly = true, bool isCancellable = false) : CancelEventArgs
 {

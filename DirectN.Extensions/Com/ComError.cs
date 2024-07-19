@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions.Com;
 
 public static class ComError
 {

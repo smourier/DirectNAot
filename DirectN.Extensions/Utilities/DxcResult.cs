@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions.Utilities;
 
 public class DxcResult(IComObject<IDxcResult> result) : DxcResult<IDxcResult>(result) { }
 public class DxcResult<T> : InterlockedComObject<T> where T : IDxcResult
@@ -47,7 +47,7 @@ public class DxcResult<T> : InterlockedComObject<T> where T : IDxcResult
         ComObject.Object.GetOutput(kind, typeof(IDxcBlob).GUID, out var ppv, out var name);
         if (ppv != 0)
         {
-            output.Blob = new DxcBlob(Extensions.Com.ComObject.FromPointer<IDxcBlob>(ppv)!);
+            output.Blob = new DxcBlob(Com.ComObject.FromPointer<IDxcBlob>(ppv)!);
         }
 
         if (name != null)

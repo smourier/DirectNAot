@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions;
 
 [SupportedOSPlatform("windows6.0.6000")]
 public static class IMF2DBufferExtensions

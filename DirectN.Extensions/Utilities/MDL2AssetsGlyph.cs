@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DirectN;
+namespace DirectN.Extensions.Utilities;
 
 /// <summary>
 /// MDL2Glyph Enums.

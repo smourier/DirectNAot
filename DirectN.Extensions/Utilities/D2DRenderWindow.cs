@@ -1,4 +1,4 @@
-﻿namespace DirectN.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 [SupportedOSPlatform("windows6.1")]
 public class D2DRenderWindow(

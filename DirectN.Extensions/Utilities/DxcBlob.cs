@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions.Utilities;
 
 public class DxcBlob(IComObject<IDxcBlob> blob) : InterlockedComObject<IDxcBlob>(blob)
 {

@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions;
 
 [SupportedOSPlatform("windows6.1")]
 public static class D2D1Functions

@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions;
 
 [SupportedOSPlatform("windows8.0")]
 public static class ICompositionDrawingSurfaceInteropExtensions

@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
-using DirectN.Utilities;
 
 namespace DirectN.Extensions.Com;
 

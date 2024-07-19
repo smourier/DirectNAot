@@ -1,4 +1,4 @@
-﻿namespace DirectN;
+﻿namespace DirectN.Extensions.Utilities;
 
 public enum TextServicesGenerator
 {

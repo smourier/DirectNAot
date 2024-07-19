@@ -1,8 +1,7 @@
-﻿namespace DirectN.Utilities
+﻿namespace DirectN.Extensions.Utilities;
+
+public interface IWithProperties
 {
-    public interface IWithProperties
-    {
-        ConcurrentDictionary<string, object?> Properties { get; }
-        void OnPropertyChanged(string propertyName);
-    }
+    ConcurrentDictionary<string, object?> Properties { get; }
+    void OnPropertyChanged(string propertyName);
 }

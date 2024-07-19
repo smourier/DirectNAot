@@ -95,6 +95,14 @@ public static class Extensions
         }
     }
 
+    public static void CopyFrom(this nint destination, nint source, int length) => Functions.CopyMemory(destination, source, length);
+    public static void CopyFrom(this nint destination, nint source, long length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static void CopyFrom(this nint destination, nint source, uint length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static void CopyFrom(this nint destination, nint source, nint length) => Functions.CopyMemory(destination, source, length);
+    public static void CopyFrom(this nint destination, nint source, ulong length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static void CopyFrom(this nint destination, nint source, nuint length) => Functions.CopyMemory(destination, source, (nint)length);
+    public static unsafe void CopyFrom<T>(this T structure, nint source) where T : unmanaged => Unsafe.CopyBlock(Unsafe.AsPointer(ref structure), (void*)source, (uint)sizeof(T));
+
     public static void Zero(this nint destination, int length) => Functions.ZeroMemory(destination, length);
     public static void Zero(this nint destination, long length) => Functions.ZeroMemory(destination, (nint)length);
     public static void Zero(this nint destination, uint length) => Functions.ZeroMemory(destination, (nint)length);
