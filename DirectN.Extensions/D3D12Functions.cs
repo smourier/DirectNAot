@@ -32,10 +32,26 @@ public static class D3D12Functions
         return ComObject.FromPointer<T>(unk);
     }
 
-    public static unsafe IComObject<ID3DBlob> D3D12SerializeRootSignature(D3D12_ROOT_SIGNATURE_DESC rootSignature, D3D_ROOT_SIGNATURE_VERSION version = D3D_ROOT_SIGNATURE_VERSION.D3D_ROOT_SIGNATURE_VERSION_1)
+    public static unsafe IComObject<ID3DBlob> D3D12SerializeRootSignature(D3D12_ROOT_SIGNATURE_DESC rootSignature)
     {
         nint errorBlobUnk;
-        var hr = Functions.D3D12SerializeRootSignature(rootSignature, version, out var blob, (nint)(&errorBlobUnk));
+        var hr = Functions.D3D12SerializeRootSignature(rootSignature, D3D_ROOT_SIGNATURE_VERSION.D3D_ROOT_SIGNATURE_VERSION_1, out var blob, (nint)(&errorBlobUnk));
+        if (errorBlobUnk != 0)
+        {
+            using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);
+            var str = errorBlob.GetAnsiStringFromBlob();
+            if (str != null)
+                throw new Win32Exception(hr.Value, str);
+
+            throw new Win32Exception(hr.Value);
+        }
+        return new ComObject<ID3DBlob>(blob);
+    }
+
+    public static unsafe IComObject<ID3DBlob> D3D12SerializeRootSignature(D3D12_ROOT_SIGNATURE_DESC1 rootSignature)
+    {
+        nint errorBlobUnk;
+        var hr = Functions.D3D12SerializeRootSignature(rootSignature, D3D_ROOT_SIGNATURE_VERSION.D3D_ROOT_SIGNATURE_VERSION_1_1, out var blob, (nint)(&errorBlobUnk));
         if (errorBlobUnk != 0)
         {
             using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);

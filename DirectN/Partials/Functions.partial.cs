@@ -75,6 +75,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT DXGIGetDebugInterface(in Guid riid, out nint ppDebug);
 
+    // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12serializerootsignature
+    [LibraryImport("d3d12")]
+    [PreserveSig]
+    public static partial HRESULT D3D12SerializeRootSignature(in D3D12_ROOT_SIGNATURE_DESC1 pRootSignature, D3D_ROOT_SIGNATURE_VERSION Version, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DBlob>))] out ID3DBlob ppBlob, nint /* optional ID3DBlob* */ ppErrorBlob);
+
     [SupportedOSPlatform("windows5.0")]
     public static LRESULT SendMessageW(HWND hWnd, uint Msg, WPARAM wParam) => SendMessageW(hWnd, Msg, wParam, LPARAM.Null);
 
