@@ -9,9 +9,9 @@ This is a work in progress although it's been stabilizing lately. If you want to
 
 So, DirectN has now been split into two projects: the interop code in one project, and the utilities, add-ons and extensions code in another project.
 
-You don't have to use the extensions, but it's strongly recommend to use it.
+You don't have to use the extensions, but it's easier to use it.
 
-The reason Extensions is separated from DirectN is more an engineering reason. Roslyn/.NET source generators at work here tend to choke on ~10000 source-generated classes, so the DirectN project is just very difficult to work with in Visual Studio.
+The reason Extensions is separated from DirectN is more an engineering reason. The Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes, so the DirectN project is just very difficult to work directly with in Visual Studio. A nuget package will be produced when the project is definitely stable.
 
 The key points that drive how code is generated and built:
 * Although Win32InteropBuilder is totally generic, the goal for **DirectN** is still to create built-in interop code for modern media & graphics technologies only:
@@ -30,9 +30,9 @@ The key points that drive how code is generated and built:
 * Both DirectN and DirectN.Extensions are AOT-friendly.
 * `unsafe` usage is as limited as possible.
 * Raw pointers usage is not exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal (including for authoring scenarios).
-* All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the use of non-unique instances in interop scenarios?)
+* All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the serious use of non-unique instances in interop scenarios anyway?)
 * Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. We want to remove this hack ASAP, but it's not sure if this bug will be only releasd with .NET 9 or before...
-* Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result are quite different.
+* Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different.
 
 # Direct3D11 minimal sample.
 The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
