@@ -208,7 +208,7 @@ public class Window : IDisposable, IEquatable<Window>
     {
         var wr = WindowRect;
         var cr = ClientRect;
-        Resize(width - (wr.Width - cr.Width), height - (wr.Height - cr.Height));
+        Resize(width + (wr.Width - cr.Width), height + (wr.Height - cr.Height));
     }
 
     public override string ToString()
