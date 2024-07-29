@@ -186,6 +186,9 @@ public class Window : IDisposable, IEquatable<Window>
             return list;
         }
     }
+
+    protected virtual internal bool ShowingFatalError() => true;
+
     public Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Monitor.FromWindow(Handle, flags);
     public POINT ScreenToClient(POINT point) { Functions.ScreenToClient(Handle, ref point); return point; }
     public POINT ClientToScreen(POINT point) { Functions.ClientToScreen(Handle, ref point); return point; }

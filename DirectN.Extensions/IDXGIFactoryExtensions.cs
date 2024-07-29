@@ -167,10 +167,17 @@ public static class IDXGIFactoryExtensions
     }
 
     [SupportedOSPlatform("windows6.1")]
-    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IComObject<IDXGIFactory1> factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED) => GetHardwareAdapter(factory?.Object!, preference);
+    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(
+        this IComObject<IDXGIFactory1> factory,
+        DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED,
+        D3D_FEATURE_LEVEL testCreateLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0
+        ) => GetHardwareAdapter(factory?.Object!, preference, testCreateLevel);
 
     [SupportedOSPlatform("windows6.1")]
-    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(this IDXGIFactory1 factory, DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED)
+    public static IComObject<IDXGIAdapter1>? GetHardwareAdapter(
+        this IDXGIFactory1 factory,
+        DXGI_GPU_PREFERENCE preference = DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_UNSPECIFIED,
+        D3D_FEATURE_LEVEL testCreateLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0)
     {
         ArgumentNullException.ThrowIfNull(factory);
         var list = new List<IComObject<IDXGIAdapter1>>();
@@ -191,7 +198,7 @@ public static class IDXGIFactoryExtensions
                 if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
                     continue;
 
-                var hr = D3D12Functions.D3D12CheckDeviceCreate(adapter, D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0);
+                var hr = D3D12Functions.D3D12CheckDeviceCreate(adapter, testCreateLevel);
                 if (hr == Constants.E_INVALIDARG)
                     continue;
 
@@ -210,7 +217,7 @@ public static class IDXGIFactoryExtensions
                 if (flags.HasFlag(DXGI_ADAPTER_FLAG.DXGI_ADAPTER_FLAG_SOFTWARE))
                     continue;
 
-                var hr = D3D12Functions.D3D12CheckDeviceCreate(a, D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0);
+                var hr = D3D12Functions.D3D12CheckDeviceCreate(a, testCreateLevel);
                 if (hr.IsSuccess)
                 {
                     adapter = a;

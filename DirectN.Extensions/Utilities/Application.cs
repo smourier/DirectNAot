@@ -199,6 +199,16 @@ public class Application : IDisposable
 
         TraceError("Hwnd:" + hwnd.Value.ToHex() + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         var errors = _errors.ToArray();
+        if (errors.Length == 0)
+            return 0;
+
+        var windows = _windows.ToArray();
+        foreach (var kv in windows)
+        {
+            if (!kv.Key.ShowingFatalError())
+                return 0;
+        }
+
         IsFatalErrorShowing = true;
         try
         {

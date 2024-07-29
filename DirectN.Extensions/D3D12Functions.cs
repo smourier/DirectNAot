@@ -2,15 +2,15 @@
 
 public static class D3D12Functions
 {
-    public static IComObject<ID3D12Device> D3D12CreateDevice(IComObject<object> adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0) => D3D12CreateDevice<ID3D12Device>(adapter?.Object!, minimumFeatureLevel);
-    public static IComObject<T> D3D12CreateDevice<T>(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0) where T : ID3D12Device => ComObject.WithComInstance(adapter, ptr =>
+    public static IComObject<ID3D12Device> D3D12CreateDevice(IComObject<object> adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_12_0) => D3D12CreateDevice<ID3D12Device>(adapter?.Object!, minimumFeatureLevel);
+    public static IComObject<T> D3D12CreateDevice<T>(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_12_0) where T : ID3D12Device => ComObject.WithComInstance(adapter, ptr =>
     {
         Functions.D3D12CreateDevice(ptr, minimumFeatureLevel, typeof(T).GUID, out var unk).ThrowOnError();
         return ComObject.FromPointer<T>(unk)!;
     });
 
-    public static HRESULT D3D12CheckDeviceCreate(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0) => D3D12CheckDeviceCreate<ID3D12Device>(adapter, minimumFeatureLevel);
-    public static HRESULT D3D12CheckDeviceCreate<T>(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_11_0) where T : ID3D12Device => ComObject.WithComInstance(adapter, ptr =>
+    public static HRESULT D3D12CheckDeviceCreate(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_12_0) => D3D12CheckDeviceCreate<ID3D12Device>(adapter, minimumFeatureLevel);
+    public static HRESULT D3D12CheckDeviceCreate<T>(object adapter, D3D_FEATURE_LEVEL minimumFeatureLevel = D3D_FEATURE_LEVEL.D3D_FEATURE_LEVEL_12_0) where T : ID3D12Device => ComObject.WithComInstance(adapter, ptr =>
     {
         var hr = Functions.D3D12CreateDevice(ptr, minimumFeatureLevel, typeof(T).GUID, out var unk);
         if (unk != 0)
