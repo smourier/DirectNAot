@@ -15,9 +15,11 @@ public partial interface ID3D10Multithread
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-setmultithreadprotected
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL SetMultithreadProtected(BOOL bMTProtect);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10multithread-getmultithreadprotected
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL GetMultithreadProtected();
 }

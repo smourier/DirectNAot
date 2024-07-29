@@ -21,5 +21,6 @@ public partial interface IDWriteFont1 : IDWriteFont
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_1/nf-dwrite_1-idwritefont1-ismonospacedfont
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL IsMonospacedFont();
 }

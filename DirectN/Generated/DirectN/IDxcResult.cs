@@ -5,6 +5,7 @@ namespace DirectN;
 public partial interface IDxcResult : IDxcOperationResult
 {
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL HasOutput(DXC_OUT_KIND dxcOutKind);
     
     [PreserveSig]

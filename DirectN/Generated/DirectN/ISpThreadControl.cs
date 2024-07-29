@@ -17,20 +17,25 @@ public partial interface ISpThreadControl : ISpNotifySink
     HRESULT TerminateThread();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE ThreadHandle();
     
     [PreserveSig]
     uint ThreadId();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE NotifyEvent();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HWND WindowHandle();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE ThreadCompleteEvent();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE ExitThreadEvent();
 }

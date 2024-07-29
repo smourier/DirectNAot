@@ -23,9 +23,36 @@ namespace DirectN.InteropBuilder.Cli
             return base.GetConstantValue(type, constant);
         }
 
+        public override bool GeneratesEquatable(BuilderType type)
+        {
+            ArgumentNullException.ThrowIfNull(type);
+            if (type.FullName == FullName.PWSTR)
+                return false;
+
+            if (type.FullName == FullName.PSTR)
+                return false;
+
+            return base.GeneratesEquatable(type);
+        }
+
+        public override bool GeneratesToString(BuilderType type)
+        {
+            ArgumentNullException.ThrowIfNull(type);
+            if (type.FullName == HSTRING)
+                return false;
+
+            if (type.FullName == FullName.BOOL)
+                return false;
+
+            if (type.FullName == FullName.HRESULT)
+                return false;
+
+            return base.GeneratesToString(type);
+        }
+
         public override string GetValueAsString(BuilderType type, object? value, string defaultValueAsString)
         {
-            if (type.FullName == FullName.PWSTR)
+            if (type.FullName == FullName.PWSTR || type.FullName == FullName.PSTR)
                 return $"new({defaultValueAsString})";
 
             return base.GetValueAsString(type, value, defaultValueAsString);
@@ -33,6 +60,7 @@ namespace DirectN.InteropBuilder.Cli
 
         // types used to define constants
         public static FullName DEVPROPKEY { get; } = new("Windows.Win32.Devices.Properties.DEVPROPKEY");
+        public static FullName HSTRING { get; } = new("Windows.Win32.System.WinRT.HSTRING");
 
         public static (Guid fmtid, uint pid) ParsePropertyKey(string pk)
         {

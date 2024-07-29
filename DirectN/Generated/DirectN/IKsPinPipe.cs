@@ -39,8 +39,10 @@ public partial interface IKsPinPipe
     HRESULT KsSetPinBusCache(Guid Bus);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     PWSTR KsGetPinName();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     PWSTR KsGetFilterName();
 }

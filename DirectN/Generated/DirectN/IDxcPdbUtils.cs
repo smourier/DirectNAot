@@ -73,6 +73,7 @@ public partial interface IDxcPdbUtils
     HRESULT GetName(out BSTR pResult);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL IsFullPDB();
     
     [PreserveSig]

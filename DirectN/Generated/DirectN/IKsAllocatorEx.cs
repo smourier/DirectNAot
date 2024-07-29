@@ -14,5 +14,6 @@ public partial interface IKsAllocatorEx : IKsAllocator
     void KsSetAllocatorHandle(HANDLE AllocatorHandle);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE KsCreateAllocatorAndGetHandle(IKsPin KsPin);
 }

@@ -26,15 +26,7 @@ public partial struct SPTRANSITIONENTRY
         
         public struct _Anonymous3_e__Struct
         {
-            public static readonly _Anonymous3_e__Struct Null = new();
-            
             public nint pvGrammarCookie;
-            
-            public override readonly bool Equals(object? obj) => obj is _Anonymous3_e__Struct value && Equals(value);
-            public readonly bool Equals(_Anonymous3_e__Struct other) => other.pvGrammarCookie == pvGrammarCookie;
-            public override readonly int GetHashCode() => pvGrammarCookie.GetHashCode();
-            public static bool operator ==(_Anonymous3_e__Struct left, _Anonymous3_e__Struct right) => left.Equals(right);
-            public static bool operator !=(_Anonymous3_e__Struct left, _Anonymous3_e__Struct right) => !left.Equals(right);
         }
         
         [FieldOffset(0)]

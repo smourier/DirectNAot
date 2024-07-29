@@ -8,6 +8,7 @@ public partial interface ID3D12WorkGraphProperties
     uint GetNumWorkGraphs();
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     PWSTR GetProgramName(uint WorkGraphIndex);
     
     [PreserveSig]

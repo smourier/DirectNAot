@@ -414,7 +414,11 @@ public class Window : IDisposable, IEquatable<Window>
             if (handle != 0)
             {
                 Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(_handlePropName));
-                _gcHandle.Free();
+                if (_gcHandle.IsAllocated)
+                {
+                    _gcHandle.Free();
+                }
+
                 if (DestroyOnDispose)
                 {
                     Functions.DestroyWindow(new HWND { Value = handle });

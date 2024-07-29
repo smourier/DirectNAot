@@ -93,6 +93,7 @@ public partial interface ISpVoice : ISpEventSource
     HRESULT GetSyncSpeakTimeout(ref uint pmsTimeout);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE SpeakCompleteEvent();
     
     [PreserveSig]

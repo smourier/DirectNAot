@@ -25,5 +25,6 @@ public partial interface ISpNotifyTranslator : ISpNotifySink
     HRESULT Wait(uint dwMilliseconds);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE GetEventHandle();
 }

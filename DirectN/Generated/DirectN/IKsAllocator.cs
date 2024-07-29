@@ -5,6 +5,7 @@ namespace DirectN;
 public partial interface IKsAllocator
 {
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE KsGetAllocatorHandle();
     
     [PreserveSig]

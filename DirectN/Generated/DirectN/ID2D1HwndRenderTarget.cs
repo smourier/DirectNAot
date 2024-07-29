@@ -17,5 +17,6 @@ public partial interface ID2D1HwndRenderTarget : ID2D1RenderTarget
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1hwndrendertarget-gethwnd
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HWND GetHwnd();
 }

@@ -173,6 +173,7 @@ public class Application : IDisposable
         if (error == null)
             return;
 
+        TraceError(error);
         var ts = error.ToString();
         if (_errors.Any(e => e.ToString() == ts))
             return;

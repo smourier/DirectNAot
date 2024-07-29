@@ -29,5 +29,6 @@ public partial interface ISpNotifySource
     HRESULT WaitForNotifyEvent(uint dwMilliseconds);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE GetNotifyEventHandle();
 }

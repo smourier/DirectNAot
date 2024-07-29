@@ -29,6 +29,7 @@ public partial interface ISpAudio : ISpStreamFormat
     HRESULT GetDefaultFormat(ref Guid pFormatId, ref WAVEFORMATEX ppCoMemWaveFormatEx);
     
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE EventHandle();
     
     [PreserveSig]

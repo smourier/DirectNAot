@@ -13,5 +13,6 @@ public partial interface IDXGIFactory1 : IDXGIFactory
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgifactory1-iscurrent
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL IsCurrent();
 }

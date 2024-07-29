@@ -104,11 +104,11 @@ public static class IDXGISwapChainExtensions
         return ComObject.FromPointer<T>(unk)!;
     }
 
-    public static void ResizeBuffers(this IComObject<IDXGISwapChain> swapChain, uint bufferCount, uint width, uint height, DXGI_FORMAT newFormat, uint swapChainFlags) => ResizeBuffers(swapChain?.Object!, bufferCount, width, height, newFormat, swapChainFlags);
-    public static void ResizeBuffers(this IDXGISwapChain swapChain, uint bufferCount, uint width, uint height, DXGI_FORMAT newFormat, uint swapChainFlags)
+    public static void ResizeBuffers(this IComObject<IDXGISwapChain> swapChain, uint bufferCount, uint width, uint height, DXGI_FORMAT newFormat, DXGI_SWAP_CHAIN_FLAG swapChainFlags) => ResizeBuffers(swapChain?.Object!, bufferCount, width, height, newFormat, swapChainFlags);
+    public static void ResizeBuffers(this IDXGISwapChain swapChain, uint bufferCount, uint width, uint height, DXGI_FORMAT newFormat, DXGI_SWAP_CHAIN_FLAG swapChainFlags)
     {
         ArgumentNullException.ThrowIfNull(swapChain);
-        swapChain.ResizeBuffers(bufferCount, width, height, newFormat, swapChainFlags).ThrowOnError();
+        swapChain.ResizeBuffers(bufferCount, width, height, newFormat, (uint)swapChainFlags).ThrowOnError();
     }
 
     public static void ResizeTarget(this IComObject<IDXGISwapChain> swapChain, DXGI_MODE_DESC newTargetParameters) => ResizeTarget(swapChain?.Object!, newTargetParameters);

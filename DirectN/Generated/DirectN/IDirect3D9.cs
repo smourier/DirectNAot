@@ -65,6 +65,7 @@ public partial interface IDirect3D9
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-getadaptermonitor
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HMONITOR GetAdapterMonitor(uint Adapter);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3d9-createdevice

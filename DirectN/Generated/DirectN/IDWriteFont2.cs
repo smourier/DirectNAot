@@ -8,5 +8,6 @@ public partial interface IDWriteFont2 : IDWriteFont1
 {
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefont2-iscolorfont
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL IsColorFont();
 }

@@ -5,6 +5,7 @@ namespace DirectN;
 public partial interface IDxcBlobUtf8 : IDxcBlobEncoding
 {
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     PSTR GetStringPointer();
     
     [PreserveSig]

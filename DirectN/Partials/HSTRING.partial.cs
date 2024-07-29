@@ -3,11 +3,6 @@
 [SupportedOSPlatform("windows8.0")]
 public partial struct HSTRING
 {
-    public HSTRING(nint value)
-    {
-        Value = value;
-    }
-
     public HSTRING(string? value)
     {
         if (value == null)

@@ -7,5 +7,6 @@ public partial interface IDWriteFontCollection3 : IDWriteFontCollection2
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontcollection3-getexpirationevent
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE GetExpirationEvent();
 }

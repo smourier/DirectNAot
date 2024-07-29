@@ -5,5 +5,6 @@ namespace DirectN;
 public partial interface IKsObject
 {
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     HANDLE KsGetObjectHandle();
 }

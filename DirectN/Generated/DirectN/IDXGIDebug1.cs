@@ -16,5 +16,6 @@ public partial interface IDXGIDebug1 : IDXGIDebug
     
     // https://learn.microsoft.com/windows/win32/api/dxgidebug/nf-dxgidebug-idxgidebug1-isleaktrackingenabledforthread
     [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     BOOL IsLeakTrackingEnabledForThread();
 }
