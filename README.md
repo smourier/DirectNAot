@@ -11,10 +11,12 @@ So, DirectN has now been split into two projects: the interop code in one projec
 
 You don't have to use the extensions, but it's easier to use it.
 
-The reason Extensions is separated from DirectN is more an engineering reason. The Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes, so the DirectN project is just very difficult to work directly with in Visual Studio. A nuget package will be produced when the project is definitely stable.
+The reason Extensions is separated from DirectN is more an engineering reason. The new COM Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes (since COM interop is not builtin in CLR anymore), so the DirectN project is just very difficult to work directly with in Visual Studio.
+
+**Nuget packages** will be provided when the project is a bit more stable.
 
 The key points that drive how code is generated and built:
-* Although Win32InteropBuilder is totally generic, the goal for **DirectN** is still to create built-in interop code for modern media & graphics technologies only:
+* Although Win32InteropBuilder is totally generic, the goal for **DirectN** is still to create built-in interop code for modern media & graphics Windows (cross-platform is *not* a target) technologies only:
     * DirectX (9 => 12)
     * Direct2D
     * DXGI
@@ -26,12 +28,12 @@ The key points that drive how code is generated and built:
     * XPS
     * others (dependencies, etc)
 * Modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
-* How it works and how it's made is completely driven by .NET 8 ComWrapper source generator and AOT requirements.
+* How it works and how it's made is, at its root, completely driven by .NET 8 ComWrapper source generator and AOT requirements.
 * Both DirectN and DirectN.Extensions are AOT-friendly.
 * `unsafe` usage is as limited as possible.
-* Raw pointers usage is not exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal (including for authoring scenarios).
+* Raw pointers (like `ISomething*`) usage is not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal, including for authoring (aka implementing COM interfaces in .NET) scenarios.
 * All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the serious use of non-unique instances in interop scenarios anyway?)
-* Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. We want to remove this hack ASAP, but it's not sure if this bug will be only releasd with .NET 9 or before...
+* Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. We want to remove this hack ASAP, but it's not sure if this bug will be only released with .NET 9 or before...
 * Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different.
 
 # Direct3D11 minimal sample.
