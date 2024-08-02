@@ -268,6 +268,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT ActivateAudioInterfaceAsync(PWSTR deviceInterfacePath, in Guid riid, nint /* optional PROPVARIANT* */ activationParams, IActivateAudioInterfaceCompletionHandler completionHandler, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IActivateAudioInterfaceAsyncOperation>))] out IActivateAudioInterfaceAsyncOperation activationOperation);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial nint AddDllDirectory(PWSTR NewDirectory);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-adjustwindowrectex
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8230,6 +8236,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ReleaseCapture();
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-removedlldirectory
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL RemoveDllDirectory(nint Cookie);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-removepropw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8552,6 +8565,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HCURSOR SetCursor(HCURSOR hCursor);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-setdefaultdlldirectories
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetDefaultDllDirectories(LOAD_LIBRARY_FLAGS DirectoryFlags);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setdevicegammaramp
     [LibraryImport("GDI32", SetLastError = true)]

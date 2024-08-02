@@ -60,6 +60,7 @@
   ],
   // members (method, fields) we want to include or exclude
   "MemberInputs": [
+    "AddDllDirectory",
     "AdjustWindowRectEx",
     "AdjustWindowRectExForDpi",
     "AreDpiAwarenessContextsEqual",
@@ -193,6 +194,7 @@
     "RealGetWindowClassW",
     "RegisterClassW",
     "ReleaseCapture",
+    "RemoveDllDirectory",
     "RemovePropW",
     "SafeArrayAccessData",
     "SafeArrayCreate",
@@ -206,6 +208,7 @@
     "SetCapture",
     "SetCaretPos",
     "SetCursor",
+    "SetDefaultDllDirectories",
     "SetErrorInfo",
     "SetFocus",
     "SetForegroundWindow",
