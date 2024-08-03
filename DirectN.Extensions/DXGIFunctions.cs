@@ -2,6 +2,10 @@
 
 public static class DXGIFunctions
 {
+    // https://learn.microsoft.com/en-us/windows/win32/direct3ddxgi/d3d10-graphics-programming-guide-dxgi#new-info-about-enumerating-adapters-for-windows-8
+    public const int WarpVendorId = 0x1414;
+    public const int WarpDeviceId = 0x8c;
+
     private static readonly Lazy<bool> _debugLayerAvailable = new(GetDebugLayerAvailable, true);
     public static bool IsDebugLayerAvailable => _debugLayerAvailable.Value;
 
