@@ -2,15 +2,11 @@
 
 public static class ID3D12ObjectExtensions
 {
-    public static void SetName(this IComObject<ID3D12Object> obj, [CallerArgumentExpression(nameof(obj))] string? name = null) => SetName(obj?.Object!, name);
-    public static void SetName(this ID3D12Object obj, [CallerArgumentExpression(nameof(obj))] string? name = null)
-    {
-        ArgumentNullException.ThrowIfNull(obj);
-        obj.SetName(PWSTR.From(name));
-    }
+    public static void SetName(this IComObject<ID3D12Object>? obj, [CallerArgumentExpression(nameof(obj))] string? name = null) => SetName(obj?.Object, name);
+    public static void SetName(this ID3D12Object? obj, [CallerArgumentExpression(nameof(obj))] string? name = null) => obj?.SetName(PWSTR.From(name));
 
-    public static string? GetName(this IComObject<ID3D12Object> obj) => GetName(obj?.Object!);
-    public static string? GetName(this ID3D12Object obj) => GetPrivateStringW(obj, Constants.WKPDID_D3DDebugObjectNameW).Nullify() ?? GetPrivateStringA(obj, Constants.WKPDID_D3DDebugObjectName).Nullify() ?? GetPrivateStringW(obj, Constants.WKPDID_D3DAutoDebugObjectNameW).Nullify();
+    public static string? GetName(this IComObject<ID3D12Object>? obj) => GetName(obj?.Object);
+    public static string? GetName(this ID3D12Object? obj) => GetPrivateStringW(obj, Constants.WKPDID_D3DDebugObjectNameW).Nullify() ?? GetPrivateStringA(obj, Constants.WKPDID_D3DDebugObjectName).Nullify() ?? GetPrivateStringW(obj, Constants.WKPDID_D3DAutoDebugObjectNameW).Nullify();
 
     public static void SetPrivateData(this IComObject<ID3D12Object> obj, Guid guid, uint dataSize, nint data) => SetPrivateData(obj?.Object!, guid, dataSize, data);
     public static void SetPrivateData(this ID3D12Object obj, Guid guid, uint dataSize, nint data)
@@ -19,10 +15,12 @@ public static class ID3D12ObjectExtensions
         obj.SetPrivateData(guid, dataSize, data).ThrowOnError();
     }
 
-    public static string? GetPrivateStringW(this IComObject<ID3D12Object> obj, Guid guid) => GetPrivateStringW(obj?.Object!, guid);
-    public static string? GetPrivateStringW(this ID3D12Object obj, Guid guid)
+    public static string? GetPrivateStringW(this IComObject<ID3D12Object>? obj, Guid guid) => GetPrivateStringW(obj?.Object, guid);
+    public static string? GetPrivateStringW(this ID3D12Object? obj, Guid guid)
     {
-        ArgumentNullException.ThrowIfNull(obj);
+        if (obj == null)
+            return null;
+
         uint size = 0;
         if (obj.GetPrivateData(guid, ref size, 0).IsError)
             return null;
@@ -35,10 +33,12 @@ public static class ID3D12ObjectExtensions
         return p.ToString();
     }
 
-    public static string? GetPrivateStringA(this IComObject<ID3D12Object> obj, Guid guid) => GetPrivateStringA(obj?.Object!, guid);
-    public static string? GetPrivateStringA(this ID3D12Object obj, Guid guid)
+    public static string? GetPrivateStringA(this IComObject<ID3D12Object>? obj, Guid guid) => GetPrivateStringA(obj?.Object, guid);
+    public static string? GetPrivateStringA(this ID3D12Object? obj, Guid guid)
     {
-        ArgumentNullException.ThrowIfNull(obj);
+        if (obj == null)
+            return null;
+
         uint size = 0;
         if (obj.GetPrivateData(guid, ref size, 0).IsError)
             return null;

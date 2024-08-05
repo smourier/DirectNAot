@@ -130,6 +130,8 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         using var mem = new ComMemory(size);
         return func(mem.Pointer);
     }
+
+    public System.IO.UnmanagedMemoryStream ToUnmanagedMemoryStream(FileAccess access = FileAccess.ReadWrite, bool owned = false) => new(new IntPtrBuffer(this, owned), 0, Size, access);
 }
 
 public class ComMemory<T> : ComMemory where T : unmanaged

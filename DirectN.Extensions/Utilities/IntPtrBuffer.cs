@@ -10,13 +10,22 @@ public sealed class IntPtrBuffer : SafeBuffer
         Initialize((ulong)byteLength);
     }
 
+    public IntPtrBuffer(ComMemory memory, bool owned = false)
+        : base(owned)
+    {
+        ArgumentNullException.ThrowIfNull(memory);
+        handle = memory.Pointer;
+        Owned = owned;
+        Initialize(memory.Size);
+    }
+
     public IntPtrBuffer(int byteLength)
         : base(true)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(byteLength);
         if (byteLength > 0)
         {
-            handle = Marshal.AllocHGlobal(byteLength);
+            handle = Marshal.AllocCoTaskMem(byteLength);
             if (handle == 0)
                 throw new OutOfMemoryException();
         }
@@ -30,7 +39,7 @@ public sealed class IntPtrBuffer : SafeBuffer
     {
         if (byteLength > 0)
         {
-            handle = Marshal.AllocHGlobal((int)byteLength);
+            handle = Marshal.AllocCoTaskMem((int)byteLength);
             if (handle == 0)
                 throw new OutOfMemoryException();
         }
@@ -43,11 +52,14 @@ public sealed class IntPtrBuffer : SafeBuffer
 
     protected override bool ReleaseHandle()
     {
-        if (!Owned || handle == 0)
+        if (!Owned)
             return true;
 
-        Marshal.FreeHGlobal(handle);
-        handle = 0;
+        var h = Interlocked.Exchange(ref handle, 0);
+        if (h != 0)
+        {
+            Marshal.FreeCoTaskMem(h);
+        }
         return true;
     }
 
