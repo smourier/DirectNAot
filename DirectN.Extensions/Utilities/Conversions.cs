@@ -85,7 +85,7 @@ public static class Conversions
             throw new ArgumentException(null, nameof(count));
 
         if (offset >= bytes.Length)
-            throw new ArgumentException(null, nameof(offset));
+            return "0x";
 
         count = Math.Min(count, bytes.Length - offset);
         var sb = new StringBuilder(count * 2);

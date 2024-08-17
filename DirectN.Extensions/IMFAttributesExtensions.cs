@@ -10,7 +10,7 @@ public static class IMFAttributesExtensions
             return "<null>";
 
         separator ??= " | ";
-        return string.Join(separator, Enumerate(input).Select(kv => kv.Key + "=" + TraceValue(input, kv.Key)));
+        return string.Join(separator, Enumerate(input).Select(kv => kv.Key.ToString("B") + "=" + TraceValue(input, kv.Key)));
     }
 
     public static string TraceValue(this IComObject<IMFAttributes> input, Guid key) => TraceValue(input?.Object!, key);
@@ -20,6 +20,9 @@ public static class IMFAttributesExtensions
         var value = GetValue(input, key);
         if (value == null)
             return "<null>";
+
+        if (value is Guid guid)
+            return guid.ToString("B");
 
         if (value is byte[] bytes)
             return Conversions.ToHexa(bytes, 64);
