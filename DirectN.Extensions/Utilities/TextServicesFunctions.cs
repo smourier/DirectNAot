@@ -46,10 +46,9 @@ public static partial class TextServicesFunctions
 
     private static IComObject<T>? CreateTextServices<T>(ITextHost host, TextServicesGenerator generator)
     {
-        nint unk = 0;
-        // for some reason (internal to riched?), we can't pass the object itself, we must use a pointer
-        ComObject.WithComInstanceOfType<ITextHost2>(host, pp =>
+        return ComObject.WithComInstanceOfType<IComObject<T>, ITextHost2>(host, pp =>
         {
+            nint unk;
             if (generator == TextServicesGenerator.Office)
             {
                 // don't check error
@@ -59,8 +58,8 @@ public static partial class TextServicesFunctions
             {
                 CreateTextServices(0, pp, out unk).ThrowOnError();
             }
-        });
-        return ComObject.FromPointer<T>(unk);
+            return ComObject.FromPointer<T>(unk)!;
+        }, true);
     }
 
     public static TextServicesGenerator GetGenerator(object? services)
@@ -72,7 +71,6 @@ public static partial class TextServicesFunctions
         {
             return ComObject.WithComInstance(services, ptr =>
             {
-
                 var firstMethodPointer = Marshal.ReadIntPtr(ptr);
                 if (firstMethodPointer == 0)
                     return TextServicesGenerator.Default;

@@ -80,6 +80,36 @@ public abstract class ComObject : IComObject
         return new ComObject<T>(t);
     }
 
+    public static nint GetOrCreateComInstance(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        var unwrapped = Unwrap(obj);
+        if (unwrapped == null)
+            throw new ArgumentException(null, nameof(obj));
+
+        ComWrappers.TryGetComInstance(unwrapped, out var unk);
+        if (unk != 0)
+            return unk;
+
+        return ComWrappers.GetOrCreateComInterfaceForObject(unwrapped, flags);
+    }
+
+    public static nint GetOrCreateComInstance<T>(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        var unk = GetOrCreateComInstance(obj, flags);
+        var iid = typeof(T).GUID;
+        try
+        {
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out var iface));
+            return iface;
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
+
     public static nint ToComInstance(object? obj)
     {
         if (obj == null)
@@ -123,10 +153,15 @@ public abstract class ComObject : IComObject
         return Marshal.Release(unk);
     }
 
-    public static void WithComInstance(object? obj, Action<nint> action)
+    public static void WithComInstance(object? obj, Action<nint> action, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         var unk = ToComInstance(obj);
+        if (unk == 0 && createIfNeeded)
+        {
+            unk = GetOrCreateComInstance(obj!);
+        }
+
         try
         {
             action(unk);
@@ -137,10 +172,15 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstance<T>(object? obj, Func<nint, T> func)
+    public static T WithComInstance<T>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(func);
         var unk = ToComInstance(obj);
+        if (unk == 0 && createIfNeeded)
+        {
+            unk = GetOrCreateComInstance(obj!);
+        }
+
         try
         {
             return func(unk);
@@ -151,11 +191,16 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstanceOfType<T>(object? obj, Action<nint> action)
+    public static void WithComInstanceOfType<T>(object? obj, Action<nint> action, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         nint iface = 0;
         var unk = ToComInstance(obj);
+        if (unk == 0 && createIfNeeded)
+        {
+            unk = GetOrCreateComInstance(obj!);
+        }
+
         if (unk != 0)
         {
             var iid = typeof(T).GUID;
@@ -173,11 +218,16 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func)
+    public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(func);
         nint iface = 0;
         var unk = ToComInstance(obj);
+        if (unk == 0 && createIfNeeded)
+        {
+            unk = GetOrCreateComInstance(obj!);
+        }
+
         if (unk != 0)
         {
             var iid = typeof(Ti).GUID;
@@ -195,7 +245,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action)
+    public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
@@ -210,6 +260,11 @@ public abstract class ComObject : IComObject
         {
             nint iface = 0;
             var unk = ToComInstance(item);
+            if (unk == 0 && createIfNeeded)
+            {
+                unk = GetOrCreateComInstance(item!);
+            }
+
             if (unk != 0)
             {
                 var iid = typeof(T).GUID;
@@ -240,7 +295,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action)
+    public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action, bool createIfNeeded = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
@@ -252,6 +307,11 @@ public abstract class ComObject : IComObject
         {
             nint iface = 0;
             var unk = ToComInstance(item);
+            if (unk == 0 && createIfNeeded)
+            {
+                unk = GetOrCreateComInstance(item!);
+            }
+
             if (unk != 0)
             {
                 var iid = typeof(Ti).GUID;

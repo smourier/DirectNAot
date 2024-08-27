@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/textserv/nl-textserv-itextservices2
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
+[GeneratedComInterface, Guid("8d33f741-cf58-11ce-a89d-00aa006cadc5")]
 public partial interface ITextServices2 : ITextServices
 {
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itextservices2-txgetnaturalsize2

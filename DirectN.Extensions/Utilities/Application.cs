@@ -282,13 +282,13 @@ public class Application : IDisposable
     protected virtual internal bool TraceMessage(uint msg)
     {
         return false;
-#if DEBUG
-        // remove super verbose messages
-        return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
-            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT && msg != MessageDecoder.WM_GETICON;
-#else
-        return false;
-#endif
+        //#if DEBUG
+        //        // remove super verbose messages
+        //        return msg != MessageDecoder.WM_SETCURSOR && msg != MessageDecoder.WM_NCMOUSEMOVE && msg != MessageDecoder.WM_MOUSEMOVE &&
+        //            msg != MessageDecoder.WM_NCHITTEST && msg != MessageDecoder.WM_ERASEBKGND && msg != MessageDecoder.WM_PAINT && msg != MessageDecoder.WM_GETICON;
+        //#else
+        //        return false;
+        //#endif
     }
 
     public static void TraceInfo(object? message = null, [CallerMemberName] string? methodName = null) => Trace(TraceLevel.Info, message, methodName);

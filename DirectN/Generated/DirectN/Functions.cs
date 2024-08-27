@@ -3004,6 +3004,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentprocess
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE GetCurrentProcess();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcursor
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -3268,6 +3275,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetNamedProfileInfo(nint hProfile, ref NAMED_PROFILE_INFO pNamedProfileInfo);
     
+    // https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getnativesysteminfo
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial void GetNativeSystemInfo(out SYSTEM_INFO lpSystemInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getnumberofphysicalmonitorsfromhmonitor
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -3505,6 +3518,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     public static partial int GetTimingReport(HANDLE hMonitor, out MC_TIMING_REPORT pmtrMonitorTimingReport);
+    
+    // https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-gettokeninformation
+    [LibraryImport("ADVAPI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetTokenInformation(HANDLE TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, nint /* optional void* */ TokenInformation, uint TokenInformationLength, out uint ReturnLength);
     
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getvcpfeatureandvcpfeaturereply
     [LibraryImport("dxva2", SetLastError = true)]
@@ -8043,6 +8063,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HDRVR OpenDriver(PWSTR szDriverName, PWSTR szSectionName, LPARAM lParam2);
+    
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocesstoken
+    [LibraryImport("ADVAPI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL OpenProcessToken(HANDLE ProcessHandle, TOKEN_ACCESS_MASK DesiredAccess, out HANDLE TokenHandle);
     
     // https://learn.microsoft.com/windows/win32/api/uxtheme/nf-uxtheme-openthemedata
     [LibraryImport("UXTHEME", SetLastError = true)]
