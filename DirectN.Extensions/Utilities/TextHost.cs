@@ -4,7 +4,7 @@ namespace DirectN.Extensions.Utilities;
 
 [SupportedOSPlatform("windows8.0")]
 [GeneratedComClass]
-public partial class TextHost : ITextHost2, IDisposable
+public unsafe partial class TextHost : ITextHost2, IDisposable
 {
     private bool _disposedValue;
     private RECT _rect;
@@ -322,13 +322,13 @@ public partial class TextHost : ITextHost2, IDisposable
         }
     }
 
-    public virtual HRESULT OnTxCharFormatChange(ref CHARFORMAT2W pCF)
+    public virtual HRESULT OnTxCharFormatChange(in CHARFORMATW pCF)
     {
         Trace("pCF: " + pCF);
         return Constants.S_OK;
     }
 
-    public virtual HRESULT OnTxParaFormatChange(ref PARAFORMAT2 pPF)
+    public virtual HRESULT OnTxParaFormatChange(in PARAFORMAT pPF)
     {
         Trace("pPF: " + pPF);
         return Constants.S_OK;
@@ -340,19 +340,19 @@ public partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual bool TxClientToScreen(ref POINT lppt)
+    public virtual BOOL TxClientToScreen(nint lppt)
     {
         Trace("lppt: " + lppt);
         return false;
     }
 
-    public virtual bool TxScreenToClient(ref POINT lppt)
+    public virtual BOOL TxScreenToClient(nint lppt)
     {
         Trace("lppt: " + lppt);
         return false;
     }
 
-    public virtual bool TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
+    public virtual BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
     {
         Trace("hbmp: " + hbmp + " xWidth: " + xWidth + " yHeight: " + yHeight);
         return false;
@@ -370,7 +370,7 @@ public partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual bool TxEnableScrollBar(SB fuSBFlags, ESB fuArrowflags)
+    public virtual BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags)
     {
         Trace("fuSBFlags: " + fuSBFlags + " fuArrowflags: " + fuArrowflags);
         return true;
@@ -381,21 +381,27 @@ public partial class TextHost : ITextHost2, IDisposable
         Trace();
     }
 
-    public virtual HRESULT TxGetAcceleratorPos(out int pcp)
+    public virtual HRESULT TxGetAcceleratorPos(nint pcp)
     {
-        pcp = -1;
         Trace("pcp: " + pcp);
+        if (pcp == 0)
+            return Constants.E_INVALIDARG;
+
+        *(int*)pcp = -1;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetBackStyle(out TXTBACKSTYLE pstyle)
+    public virtual HRESULT TxGetBackStyle(nint pstyle)
     {
-        pstyle = TXTBACKSTYLE.TXTBACK_TRANSPARENT;
         Trace("pstyle: " + pstyle);
+        if (pstyle == 0)
+            return Constants.E_INVALIDARG;
+
+        *(TXTBACKSTYLE*)pstyle = TXTBACKSTYLE.TXTBACK_TRANSPARENT;
         return Constants.S_OK;
     }
 
-    public unsafe virtual HRESULT TxGetCharFormat(out nint ppCF)
+    public unsafe virtual HRESULT TxGetCharFormat(nint ppCF)
     {
         if (_charFormat == null)
         {
@@ -436,7 +442,7 @@ public partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public unsafe virtual HRESULT TxGetParaFormat(out nint ppPF)
+    public unsafe virtual HRESULT TxGetParaFormat(nint ppPF)
     {
         if (_paraFormat == null)
         {
@@ -454,10 +460,13 @@ public partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetClientRect(ref RECT prc)
+    public virtual HRESULT TxGetClientRect(nint prc)
     {
-        prc = _rect;
         Trace("prc: " + prc);
+        if (prc == 0)
+            return Constants.E_INVALIDARG;
+
+        *(RECT*)prc = _rect;
         return Constants.S_OK;
     }
 
@@ -473,42 +482,58 @@ public partial class TextHost : ITextHost2, IDisposable
         return 1;
     }
 
-    public virtual HRESULT TxGetEastAsianFlags(out ES pFlags)
+    public virtual HRESULT TxGetEastAsianFlags(nint pFlags)
     {
-        pFlags = ES.ES_NOIME;
         Trace("pFlags: " + pFlags);
+        if (pFlags == 0)
+            return Constants.E_INVALIDARG;
+
+        *(ES*)pFlags = ES.ES_NOIME;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetEditStyle(TXES dwItem, out TXES pdwData)
+    public virtual HRESULT TxGetEditStyle(uint dwItem, nint pdwData)
     {
-        pdwData = TXES.TXES_ISDIALOG;
-        Trace("dwItem: " + dwItem + " pdwData: " + pdwData);
+        var item = (TXES)dwItem;
+        Trace("dwItem: " + item + " pdwData: " + pdwData);
+        if (pdwData == 0)
+            return Constants.E_INVALIDARG;
+
+        *(TXES*)pdwData = TXES.TXES_ISDIALOG;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetExtent(out SIZE lpExtent)
+    public virtual HRESULT TxGetExtent(nint lpExtent)
     {
-        lpExtent = new SIZE();
+        Trace("lpExtent: " + lpExtent);
+        if (lpExtent == 0)
+            return Constants.E_INVALIDARG;
+
+        *(SIZE*)lpExtent = new SIZE();
         //lpExtent.width = 400;
         //lpExtent.height = 400;
         //lpExtent = lpExtent.PixelToHiMetric();
-        Trace("lpExtent: " + lpExtent);
         //return Constants.S_OK;
         return Constants.E_NOTIMPL;
     }
 
-    public virtual HRESULT TxGetHorzExtent(out int plHorzExtent)
+    public virtual HRESULT TxGetHorzExtent(nint plHorzExtent)
     {
-        plHorzExtent = 0;
         Trace("plHorzExtent: " + plHorzExtent);
+        if (plHorzExtent == 0)
+            return Constants.E_INVALIDARG;
+
+        *(int*)plHorzExtent = 0;
         return Constants.E_NOTIMPL;
     }
 
-    public virtual HRESULT TxGetMaxLength(ref int plength)
+    public virtual HRESULT TxGetMaxLength(nint plength)
     {
-        plength = -1;
         Trace("plength: " + plength);
+        if (plength == 0)
+            return Constants.E_INVALIDARG;
+
+        *(int*)plength = -1;
         return Constants.S_OK;
     }
 
@@ -518,59 +543,70 @@ public partial class TextHost : ITextHost2, IDisposable
         return HPALETTE.Null;
     }
 
-    public virtual HRESULT TxGetPasswordChar(ref char pch)
+    public virtual HRESULT TxGetPasswordChar(out sbyte pch)
     {
-        Trace("pch: " + pch);
+        pch = 0;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetPropertyBits(TXTBIT dwMask, ref TXTBIT pdwBits)
+    public virtual HRESULT TxGetPropertyBits(uint dwMask, nint pdwBits)
     {
+        var mask = (TXTBIT)dwMask;
+        Trace("dwMask: " + mask + " pdwBits: " + pdwBits);
+        if (pdwBits == 0)
+            return Constants.E_INVALIDARG;
+
         //pdwBits = dwMask;
         //pdwBits &= ~TXTBIT.TXTBIT_VERTICAL;
         //pdwBits &= ~TXTBIT.TXTBIT_ALLOWBEEP;
         //pdwBits &= ~TXTBIT.TXTBIT_USEPASSWORD;
         //pdwBits &= ~TXTBIT.TXTBIT_READONLY;
 
-        pdwBits = TXTBIT.TXTBIT_RICHTEXT | TXTBIT.TXTBIT_D2DDWRITE;
+        var bits = TXTBIT.TXTBIT_RICHTEXT | TXTBIT.TXTBIT_D2DDWRITE;
         if (_options.HasFlag(TextHostOptions.WordWrap))
         {
-            pdwBits |= TXTBIT.TXTBIT_WORDWRAP;
+            bits |= TXTBIT.TXTBIT_WORDWRAP;
         }
 
         if (_options.HasFlag(TextHostOptions.Vertical))
         {
-            pdwBits |= TXTBIT.TXTBIT_VERTICAL;
+            bits |= TXTBIT.TXTBIT_VERTICAL;
         }
 
         if (_options.HasFlag(TextHostOptions.ReadOnly))
         {
-            pdwBits |= TXTBIT.TXTBIT_READONLY;
+            bits |= TXTBIT.TXTBIT_READONLY;
         }
 
         if (_options.HasFlag(TextHostOptions.Multiline))
         {
-            pdwBits |= TXTBIT.TXTBIT_MULTILINE;
+            bits |= TXTBIT.TXTBIT_MULTILINE;
         }
 
-        pdwBits &= dwMask;
+        bits &= mask;
         //pdwBits |= TXTBIT.TXTBIT_UNDOCUMENTED2;
-        Trace("dwMask: " + dwMask + " pdwBits: " + pdwBits);
+        *(TXTBIT*)pdwBits = bits;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetScrollBars(out SBOUT pdwScrollBar)
+    public virtual HRESULT TxGetScrollBars(nint pdwScrollBar)
     {
-        //pdwScrollBar = SBOUT.WS_VSCROLL | SBOUT.WS_HSCROLL;
-        pdwScrollBar = 0;
         Trace("pdwScrollBar: " + pdwScrollBar);
+        if (pdwScrollBar == 0)
+            return Constants.E_INVALIDARG;
+
+        //pdwScrollBar = SBOUT.WS_VSCROLL | SBOUT.WS_HSCROLL;
+        *(SBOUT*)pdwScrollBar = 0;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetSelectionBarWidth(ref int lSelBarWidth)
+    public virtual HRESULT TxGetSelectionBarWidth(nint lSelBarWidth)
     {
-        lSelBarWidth = 0;
         Trace("lSelBarWidth: " + lSelBarWidth);
+        if (lSelBarWidth == 0)
+            return Constants.E_INVALIDARG;
+
+        *(int*)lSelBarWidth = 0;
         return Constants.S_OK;
     }
 
@@ -584,83 +620,97 @@ public partial class TextHost : ITextHost2, IDisposable
         return new COLORREF { Value = color };
     }
 
-    public virtual HRESULT TxGetViewInset(ref RECT prc)
+    public virtual HRESULT TxGetViewInset(nint prc)
     {
         Trace("prc: " + prc);
-        prc.left = 0;
-        prc.top = 0;
-        prc.right = 0;
-        prc.bottom = 0;
-        prc = prc.PixelToHiMetric();
-        Trace("prc: " + prc);
+        if (prc == 0)
+            return Constants.E_INVALIDARG;
+
+        RECT rc;
+        rc.left = 0;
+        rc.top = 0;
+        rc.right = 0;
+        rc.bottom = 0;
+        rc = rc.PixelToHiMetric();
+        *(RECT*)prc = rc;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetWindow(out HWND phwnd)
+    public virtual HRESULT TxGetWindow(nint phwnd)
     {
-        phwnd.Value = 0;
         Trace("phwnd: " + phwnd);
+        if (phwnd == 0)
+            return Constants.E_INVALIDARG;
+
+        *(nint*)phwnd = 0;
         return Constants.S_OK;
     }
 
-    public virtual HRESULT TxGetWindowStyles(out WINDOW_STYLE pdwStyle, out WINDOW_EX_STYLE pdwExStyle)
+    public virtual HRESULT TxGetWindowStyles(nint pdwStyle, nint pdwExStyle)
     {
-        pdwStyle = 0;
-        pdwExStyle = 0;
         Trace("pdwStyle: " + pdwStyle + " pdwExStyle: " + pdwExStyle);
+        if (pdwStyle != 0)
+        {
+            *(WINDOW_STYLE*)pdwStyle = 0;
+        }
+
+        if (pdwExStyle != 0)
+        {
+            *(WINDOW_STYLE*)pdwExStyle = 0;
+        }
         return Constants.S_OK;
     }
 
-    public virtual int TxImmGetContext()
+    public virtual HIMC TxImmGetContext()
     {
         Trace();
         return 0;
     }
 
-    public virtual void TxImmReleaseContext(int himc)
+    public virtual void TxImmReleaseContext(HIMC himc)
     {
         Trace();
     }
 
-    public virtual void TxInvalidateRect(nint prc, bool fMode)
+    public virtual void TxInvalidateRect(nint prc, BOOL fMode)
     {
         Trace("prc: " + prc + " fMode: " + fMode);
     }
 
-    public virtual bool TxIsDoubleClickPending()
+    public virtual BOOL TxIsDoubleClickPending()
     {
         Trace();
         return false;
     }
 
-    public virtual HRESULT TxNotify(int iNotify, nint pv)
+    public virtual HRESULT TxNotify(uint iNotify, nint pv)
     {
         Trace("iNotify: " + iNotify + " pv: " + pv);
         return Constants.S_OK;
     }
 
-    public virtual void TxScrollWindowEx(int dx, int dy, nint lprcScroll, nint lprcClip, nint hrgnUpdate, nint lprcUpdate, TSW fuScroll)
+    public virtual void TxScrollWindowEx(int dx, int dy, nint lprcScroll, nint lprcClip, HRGN hrgnUpdate, nint lprcUpdate, SCROLL_WINDOW_FLAGS fuScroll)
     {
         Trace("dx: " + dx + " dy: " + dy + " lprcScroll: " + lprcScroll + " lprcClip: " + lprcClip + " hrgnUpdate: " + hrgnUpdate + " lprcUpdate: " + lprcUpdate + " fuScroll: " + fuScroll);
     }
 
-    public virtual void TxSetCapture(bool fCapture)
+    public virtual void TxSetCapture(BOOL fCapture)
     {
         Trace("fCapture: " + fCapture);
     }
 
-    public virtual bool TxSetCaretPos(int x, int y)
+    public virtual BOOL TxSetCaretPos(int x, int y)
     {
         Trace("x: " + x + " y: " + y);
         return true;
     }
 
-    public virtual void TxSetCursor(HCURSOR hcur, bool fText)
+    public virtual void TxSetCursor(HCURSOR hcur, BOOL fText)
     {
         Trace("hcur: " + hcur + " fText: " + fText);
     }
 
-    public virtual HCURSOR TxSetCursor2(HCURSOR hcur, bool bText)
+    public virtual HCURSOR TxSetCursor2(HCURSOR hcur, BOOL bText)
     {
         Trace("hcur: " + hcur + " bText: " + bText);
         return HCURSOR.Null;
@@ -677,48 +727,49 @@ public partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual bool TxSetScrollPos(int fnBar, int nPos, bool fRedraw)
+    public virtual BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nPos: " + nPos + " fRedraw: " + fRedraw);
         return true;
     }
 
-    public virtual bool TxSetScrollRange(SB fnBar, int nMinPos, int nMaxPos, bool fRedraw)
+    public virtual BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nMinPos: " + nMinPos + " nMaxPos: " + nMaxPos + " fRedraw: " + fRedraw);
         return true;
     }
 
-    public virtual void TxKillTimer(int idTimer)
+    public virtual void TxKillTimer(uint idTimer)
     {
         Trace("idTimer: " + idTimer);
     }
 
-    public virtual bool TxSetTimer(int idTimer, int uTimeout)
+    public virtual BOOL TxSetTimer(uint idTimer, uint uTimeout)
     {
         Trace("idTimer: " + idTimer + " uTimeout: " + uTimeout);
         return true;
     }
 
-    public virtual bool TxShowCaret(bool fShow)
+    public virtual BOOL TxShowCaret(BOOL fShow)
     {
         Trace("fShow: " + fShow);
         return true;
     }
 
-    public virtual HRESULT TxShowDropCaret(bool fShow, HDC hdc, nint prc)
+    public virtual HRESULT TxShowDropCaret(BOOL fShow, HDC hdc, nint prc)
     {
         Trace("fShow: " + fShow + " hdc: " + hdc + " prc: " + prc);
         return Constants.S_OK;
     }
 
-    public virtual bool TxShowScrollBar(SB fnBar, bool fShow)
+    public virtual BOOL TxShowScrollBar(int fnBar, BOOL fShow)
     {
-        Trace("fnBar: " + fnBar + " fShow: " + fShow);
+        var bar = (SCROLLBAR_CONSTANTS)fnBar;
+        Trace("fnBar: " + bar + " fShow: " + fShow);
         return fShow;
     }
 
-    public virtual void TxViewChange(bool fUpdate)
+    public virtual void TxViewChange(BOOL fUpdate)
     {
         Trace("fUpdate: " + fUpdate);
     }

@@ -6,6 +6,13 @@ namespace DirectN.InteropBuilder.Cli
     {
         public const string GdiPlusNamespace = "Windows.Win32.Graphics.GdiPlus";
         public const string Direct2DNamespace = "Windows.Win32.Graphics.Direct2D";
+        public const string RichEditNamespace = "Windows.Win32.UI.Controls.RichEdit";
+
+        public static FullName ITextHost { get; } = new(RichEditNamespace + ".ITextHost");
+        public static FullName ITextHost2 { get; } = new(RichEditNamespace + ".ITextHost2");
+        public static FullName ITextServices { get; } = new(RichEditNamespace + ".ITextServices");
+        public static FullName ITextServices2 { get; } = new(RichEditNamespace + ".ITextServices2");
+        public static FullName IRicheditUiaOverrides { get; } = new(RichEditNamespace + ".IRicheditUiaOverrides");
 
         public static FullName POINT { get; } = new(FullName.FoundationNamespace + ".POINT");
         public static FullName POINTL { get; } = new(FullName.FoundationNamespace + ".POINTL");

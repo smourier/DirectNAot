@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/textserv/nl-textserv-itexthost
-[GeneratedComInterface, Guid("00000000-0000-0000-0000-000000000000")]
+[GeneratedComInterface, Guid("c5bdd8d0-d26e-11ce-a89e-00aa006cadc5")]
 public partial interface ITextHost
 {
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetdc
@@ -38,7 +38,7 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txinvalidaterect
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    void TxInvalidateRect(ref RECT prc, BOOL fMode);
+    void TxInvalidateRect(nint /* optional RECT* */ prc, BOOL fMode);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txviewchange
     [PreserveSig]
@@ -73,7 +73,7 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txscrollwindowex
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    void TxScrollWindowEx(int dx, int dy, ref RECT lprcScroll, ref RECT lprcClip, HRGN hrgnUpdate, ref RECT lprcUpdate, SCROLL_WINDOW_FLAGS fuScroll);
+    void TxScrollWindowEx(int dx, int dy, nint /* optional RECT* */ lprcScroll, nint /* optional RECT* */ lprcClip, HRGN hrgnUpdate, nint /* optional RECT* */ lprcUpdate, SCROLL_WINDOW_FLAGS fuScroll);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcapture
     [PreserveSig]
@@ -93,18 +93,18 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txscreentoclient
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxScreenToClient(ref POINT lppt);
+    BOOL TxScreenToClient(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txclienttoscreen
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxClientToScreen(ref POINT lppt);
+    BOOL TxClientToScreen(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txactivate
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxActivate(ref int plOldState);
+    HRESULT TxActivate(nint /* optional int* */ plOldState);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txdeactivate
     [PreserveSig]
@@ -116,25 +116,25 @@ public partial interface ITextHost
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetClientRect(ref RECT prc);
+    HRESULT TxGetClientRect(nint /* optional RECT* */ prc);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetviewinset
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetViewInset(ref RECT prc);
+    HRESULT TxGetViewInset(nint /* optional RECT* */ prc);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetcharformat
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetCharFormat(in CHARFORMATW ppCF);
+    HRESULT TxGetCharFormat(nint /* optional CHARFORMATW** */ ppCF);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetparaformat
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetParaFormat(in PARAFORMAT ppPF);
+    HRESULT TxGetParaFormat(nint /* optional PARAFORMAT** */ ppPF);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetsyscolor
     [PreserveSig]
@@ -145,19 +145,19 @@ public partial interface ITextHost
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetBackStyle(ref TXTBACKSTYLE pstyle);
+    HRESULT TxGetBackStyle(nint /* optional TXTBACKSTYLE* */ pstyle);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetmaxlength
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetMaxLength(ref uint plength);
+    HRESULT TxGetMaxLength(nint /* optional uint* */ plength);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetscrollbars
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetScrollBars(ref uint pdwScrollBar);
+    HRESULT TxGetScrollBars(nint /* optional uint* */ pdwScrollBar);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetpasswordchar
     [PreserveSig]
@@ -169,13 +169,13 @@ public partial interface ITextHost
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetAcceleratorPos(ref int pcp);
+    HRESULT TxGetAcceleratorPos(nint /* optional int* */ pcp);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetextent
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetExtent(ref SIZE lpExtent);
+    HRESULT TxGetExtent(nint /* optional SIZE* */ lpExtent);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-ontxcharformatchange
     [PreserveSig]
@@ -193,13 +193,13 @@ public partial interface ITextHost
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetPropertyBits(uint dwMask, ref uint pdwBits);
+    HRESULT TxGetPropertyBits(uint dwMask, nint /* optional uint* */ pdwBits);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txnotify
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxNotify(uint iNotify, nint pv);
+    HRESULT TxNotify(uint iNotify, nint /* optional void* */ pv);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-tximmgetcontext
     [PreserveSig]
@@ -215,5 +215,5 @@ public partial interface ITextHost
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetSelectionBarWidth(ref int lSelBarWidth);
+    HRESULT TxGetSelectionBarWidth(nint /* optional int* */ lSelBarWidth);
 }

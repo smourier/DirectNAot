@@ -20,12 +20,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Generated\DirectN\ITextHost.cs" />
-	  <Compile Remove="Generated\DirectN\ITextHost2.cs" />
-	  <Compile Remove="Generated\DirectN\tomConstants.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Using Include="DirectN" />
 		<Using Include="System.Collections.Concurrent" />
 		<Using Include="System.ComponentModel" />

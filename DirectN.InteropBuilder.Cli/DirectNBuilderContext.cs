@@ -35,6 +35,30 @@ namespace DirectN.InteropBuilder.Cli
             return base.GeneratesEquatable(type);
         }
 
+        public override Guid? GetTypeGuid(FullName typeFullName)
+        {
+            var guid = base.GetTypeGuid(typeFullName);
+            if (guid.HasValue)
+                return guid;
+
+            if (typeFullName == TypeMappings.IRicheditUiaOverrides)
+                return new Guid("f2fb5cc0-b5a9-437f-9ba2-47632082269f");
+
+            if (typeFullName == TypeMappings.ITextServices)
+                return new Guid("8d33f740-cf58-11ce-a89d-00aa006cadc5");
+
+            if (typeFullName == TypeMappings.ITextServices2)
+                return new Guid("8d33f741-cf58-11ce-a89d-00aa006cadc5");
+
+            if (typeFullName == TypeMappings.ITextHost)
+                return new Guid("c5bdd8d0-d26e-11ce-a89e-00aa006cadc5");
+
+            if (typeFullName == TypeMappings.ITextHost2)
+                return new Guid("13e670f5-1a5a-11cf-abeb-00aa00b65ea1");
+
+            return null;
+        }
+
         public override bool GeneratesToString(BuilderType type)
         {
             ArgumentNullException.ThrowIfNull(type);

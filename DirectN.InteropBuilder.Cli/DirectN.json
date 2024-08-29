@@ -46,6 +46,7 @@
     "IPrintPreviewDxgiPackageTarget",
     "IConnectionPointContainer",
     "IDispatch",
+    "ITextHost2",
     "STGC",
     "STGTY",
     "MONITORINFOEXW",
