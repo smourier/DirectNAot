@@ -8230,7 +8230,7 @@ public static partial class Functions
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows6.1")]
     [PreserveSig]
-    public static partial WIN32_ERROR QueryDisplayConfig(QUERY_DISPLAY_CONFIG_FLAGS flags, ref uint numPathArrayElements, [MarshalUsing(CountElementName = nameof(numPathArrayElements))] out DISPLAYCONFIG_PATH_INFO[] pathArray, ref uint numModeInfoArrayElements, [MarshalUsing(CountElementName = nameof(numModeInfoArrayElements))] out DISPLAYCONFIG_MODE_INFO[] modeInfoArray, nint /* optional DISPLAYCONFIG_TOPOLOGY_ID* */ currentTopologyId);
+    public static partial WIN32_ERROR QueryDisplayConfig(QUERY_DISPLAY_CONFIG_FLAGS flags, ref uint numPathArrayElements, [In][Out][MarshalUsing(CountElementName = nameof(numPathArrayElements))] DISPLAYCONFIG_PATH_INFO[] pathArray, ref uint numModeInfoArrayElements, [In][Out][MarshalUsing(CountElementName = nameof(numModeInfoArrayElements))] DISPLAYCONFIG_MODE_INFO[] modeInfoArray, nint /* optional DISPLAYCONFIG_TOPOLOGY_ID* */ currentTopologyId);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-realgetwindowclassw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]

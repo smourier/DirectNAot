@@ -8,7 +8,7 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetdc
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    HDC TxGetDC();
+    nint TxGetDC();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txreleasedc
     [PreserveSig]
@@ -18,22 +18,22 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowscrollbar
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxShowScrollBar(int fnBar, BOOL fShow);
+    int TxShowScrollBar(int fnBar, BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txenablescrollbar
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
+    int TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollrange
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw);
+    int TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollpos
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw);
+    int TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txinvalidaterect
     [PreserveSig]
@@ -48,22 +48,22 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txcreatecaret
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
+    int TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowcaret
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxShowCaret(BOOL fShow);
+    int TxShowCaret(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcaretpos
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetCaretPos(int x, int y);
+    int TxSetCaretPos(int x, int y);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsettimer
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetTimer(uint idTimer, uint uTimeout);
+    int TxSetTimer(uint idTimer, uint uTimeout);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txkilltimer
     [PreserveSig]
@@ -93,12 +93,12 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txscreentoclient
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxScreenToClient(nint /* optional POINT* */ lppt);
+    int TxScreenToClient(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txclienttoscreen
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxClientToScreen(nint /* optional POINT* */ lppt);
+    int TxClientToScreen(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txactivate
     [PreserveSig]
@@ -139,7 +139,7 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetsyscolor
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    COLORREF TxGetSysColor(SYS_COLOR_INDEX nIndex);
+    uint TxGetSysColor(SYS_COLOR_INDEX nIndex);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txgetbackstyle
     [PreserveSig]
@@ -204,7 +204,7 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-tximmgetcontext
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    HIMC TxImmGetContext();
+    nint TxImmGetContext();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-tximmreleasecontext
     [PreserveSig]

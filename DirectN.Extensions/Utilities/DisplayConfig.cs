@@ -9,7 +9,9 @@ public static class DisplayConfig
         if (err != 0)
             throw new Win32Exception((int)err);
 
-        err = Functions.QueryDisplayConfig(flags, ref pathCount, out var paths, ref modeCount, out _, 0);
+        var paths = new DISPLAYCONFIG_PATH_INFO[pathCount];
+        var modes = new DISPLAYCONFIG_MODE_INFO[modeCount];
+        err = Functions.QueryDisplayConfig(flags, ref pathCount, paths, ref modeCount, modes, 0);
         if (err != 0)
             throw new Win32Exception((int)err);
 
@@ -99,7 +101,9 @@ public static class DisplayConfig
         if (err != 0)
             throw new Win32Exception((int)err);
 
-        err = Functions.QueryDisplayConfig(flags, ref pathCount, out var paths, ref modeCount, out var modes, 0);
+        var paths = new DISPLAYCONFIG_PATH_INFO[pathCount];
+        var modes = new DISPLAYCONFIG_MODE_INFO[modeCount];
+        err = Functions.QueryDisplayConfig(flags, ref pathCount, paths, ref modeCount, modes, 0);
         if (err != 0)
             throw new Win32Exception((int)err);
 

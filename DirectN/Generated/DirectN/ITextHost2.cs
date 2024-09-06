@@ -8,7 +8,7 @@ public partial interface ITextHost2 : ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txisdoubleclickpending
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxIsDoubleClickPending();
+    int TxIsDoubleClickPending();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txgetwindow
     [PreserveSig]
@@ -25,7 +25,7 @@ public partial interface ITextHost2 : ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txgetpalette
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    HPALETTE TxGetPalette();
+    nint TxGetPalette();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txgeteastasianflags
     [PreserveSig]
@@ -36,7 +36,7 @@ public partial interface ITextHost2 : ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txsetcursor2
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    HCURSOR TxSetCursor2(HCURSOR hcur, BOOL bText);
+    nint TxSetCursor2(HCURSOR hcur, BOOL bText);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txfreetextservicesnotification
     [PreserveSig]

@@ -7,6 +7,8 @@ namespace DirectN.Extensions.Utilities;
 public unsafe partial class TextHost : ITextHost2, IDisposable
 {
     private bool _disposedValue;
+    private bool _showCaret;
+    private POINT _caretPos;
     private RECT _rect;
     private string? _faceName;
     private int _height;
@@ -65,8 +67,8 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
         set
         {
-            using var b = new Bstr(Text);
-            WithWholeRange(rng => rng.SetText2(0, b));
+            using var b = new Bstr(value);
+            WithWholeRange(rng => rng.SetText2(0, b)).ThrowOnError();
         }
     }
 
@@ -89,8 +91,8 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
         set
         {
-            using var b = new Bstr(RtfText);
-            WithWholeRange(rng => rng.SetText2((int)tomConstants.tomConvertRTF, b));
+            using var b = new Bstr(value);
+            WithWholeRange(rng => rng.SetText2((int)tomConstants.tomConvertRTF, b)).ThrowOnError();
         }
     }
 
@@ -115,16 +117,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         {
             // https://devblogs.microsoft.com/math-in-office/richedit-html-support/
             // note this doesn't seem to work right now...
-            using var b = new Bstr(HtmlText);
-            WithWholeRange(rng => rng.SetText2((int)tomConstants.tomConvertHtml, b));
+            using var b = new Bstr(value);
+            WithWholeRange(rng => rng.SetText2((int)tomConstants.tomConvertHtml, b)).ThrowOnError();
         }
     }
-
-    //private void WithWholeRange(Action<ITextRange2> action)
-    //{
-    //    using var range = GetWholeRange();
-    //    action(range.Object);
-    //}
 
     private T WithWholeRange<T>(Func<ITextRange2, T> func)
     {
@@ -137,6 +133,30 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Document.Object.Range2(0, 0, out var range).ThrowOnError();
         range.MoveEnd((int)tomConstants.tomStory, 1, out _).ThrowOnError();
         return new ComObject<ITextRange2>(range);
+    }
+
+    public virtual POINT CaretPos
+    {
+        get => _caretPos;
+        protected set
+        {
+            if (_caretPos == value)
+                return;
+
+            _caretPos = value;
+        }
+    }
+
+    public virtual bool ShowCaret
+    {
+        get => _showCaret;
+        protected set
+        {
+            if (_showCaret == value)
+                return;
+
+            _showCaret = value;
+        }
     }
 
     public virtual TextHostOptions Options
@@ -291,7 +311,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     protected virtual SIZE TxGetNaturalSize2(TXTNATURALSIZE mode, int width, int height, SIZE? extent, out int ascent)
     {
         // for some reason, -1, -1 avoids the himetric mumbo jumbo computation...
-        extent ??= new SIZE { cx = int.MaxValue, cy = int.MaxValue };
+        extent ??= new SIZE { cx = -1, cy = -1 };
         var ext = extent.Value;
         unsafe
         {
@@ -340,22 +360,22 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual BOOL TxClientToScreen(nint lppt)
+    public virtual int TxClientToScreen(nint lppt)
     {
         Trace("lppt: " + lppt);
-        return false;
+        return 0;
     }
 
-    public virtual BOOL TxScreenToClient(nint lppt)
+    public virtual int TxScreenToClient(nint lppt)
     {
         Trace("lppt: " + lppt);
-        return false;
+        return 0;
     }
 
-    public virtual BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
+    public virtual int TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
     {
         Trace("hbmp: " + hbmp + " xWidth: " + xWidth + " yHeight: " + yHeight);
-        return false;
+        return 0;
     }
 
     public virtual HRESULT TxDeactivate(int lNewState)
@@ -370,10 +390,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags)
+    public virtual int TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags)
     {
         Trace("fuSBFlags: " + fuSBFlags + " fuArrowflags: " + fuArrowflags);
-        return true;
+        return 1;
     }
 
     public virtual void TxFreeTextServicesNotification()
@@ -467,13 +487,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             return Constants.E_INVALIDARG;
 
         *(RECT*)prc = _rect;
+        Trace("rc: " + _rect);
         return Constants.S_OK;
     }
 
-    public virtual HDC TxGetDC()
+    public virtual nint TxGetDC()
     {
         Trace();
-        return HDC.Null;
+        return 0;
     }
 
     public virtual int TxReleaseDC(HDC hdc)
@@ -537,10 +558,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual HPALETTE TxGetPalette()
+    public virtual nint TxGetPalette()
     {
         Trace();
-        return HPALETTE.Null;
+        return 0;
     }
 
     public virtual HRESULT TxGetPasswordChar(out sbyte pch)
@@ -610,14 +631,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual COLORREF TxGetSysColor(SYS_COLOR_INDEX nIndex)
+    public virtual uint TxGetSysColor(SYS_COLOR_INDEX nIndex)
     {
         //if (nIndex == COLOR.COLOR_WINDOW)
         //    return 0xF03050;
 
         var color = Functions.GetSysColor(nIndex);
         Trace("nIndex: " + nIndex + " color:#" + color.ToString("X8"));
-        return new COLORREF { Value = color };
+        return color;
     }
 
     public virtual HRESULT TxGetViewInset(nint prc)
@@ -656,12 +677,12 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
         if (pdwExStyle != 0)
         {
-            *(WINDOW_STYLE*)pdwExStyle = 0;
+            *(WINDOW_EX_STYLE*)pdwExStyle = 0;
         }
         return Constants.S_OK;
     }
 
-    public virtual HIMC TxImmGetContext()
+    public virtual nint TxImmGetContext()
     {
         Trace();
         return 0;
@@ -677,10 +698,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("prc: " + prc + " fMode: " + fMode);
     }
 
-    public virtual BOOL TxIsDoubleClickPending()
+    public virtual int TxIsDoubleClickPending()
     {
         Trace();
-        return false;
+        return 0;
     }
 
     public virtual HRESULT TxNotify(uint iNotify, nint pv)
@@ -699,21 +720,18 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("fCapture: " + fCapture);
     }
 
-    public virtual BOOL TxSetCaretPos(int x, int y)
+    public virtual int TxSetCaretPos(int x, int y)
     {
         Trace("x: " + x + " y: " + y);
-        return true;
+        CaretPos = new POINT(x, y);
+        return 1;
     }
 
-    public virtual void TxSetCursor(HCURSOR hcur, BOOL fText)
-    {
-        Trace("hcur: " + hcur + " fText: " + fText);
-    }
-
-    public virtual HCURSOR TxSetCursor2(HCURSOR hcur, BOOL bText)
+    public virtual void TxSetCursor(HCURSOR hcur, BOOL fText) => TxSetCursor2(hcur, fText);
+    public virtual nint TxSetCursor2(HCURSOR hcur, BOOL bText)
     {
         Trace("hcur: " + hcur + " bText: " + bText);
-        return HCURSOR.Null;
+        return 0;
     }
 
     public virtual void TxSetFocus()
@@ -727,16 +745,16 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw)
+    public virtual int TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nPos: " + nPos + " fRedraw: " + fRedraw);
-        return true;
+        return 1;
     }
 
-    public virtual BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw)
+    public virtual int TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nMinPos: " + nMinPos + " nMaxPos: " + nMaxPos + " fRedraw: " + fRedraw);
-        return true;
+        return 1;
     }
 
     public virtual void TxKillTimer(uint idTimer)
@@ -744,16 +762,17 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("idTimer: " + idTimer);
     }
 
-    public virtual BOOL TxSetTimer(uint idTimer, uint uTimeout)
+    public virtual int TxSetTimer(uint idTimer, uint uTimeout)
     {
         Trace("idTimer: " + idTimer + " uTimeout: " + uTimeout);
-        return true;
+        return 1;
     }
 
-    public virtual BOOL TxShowCaret(BOOL fShow)
+    public virtual int TxShowCaret(BOOL fShow)
     {
         Trace("fShow: " + fShow);
-        return true;
+        _showCaret = fShow;
+        return 1;
     }
 
     public virtual HRESULT TxShowDropCaret(BOOL fShow, HDC hdc, nint prc)
@@ -762,7 +781,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual BOOL TxShowScrollBar(int fnBar, BOOL fShow)
+    public virtual int TxShowScrollBar(int fnBar, BOOL fShow)
     {
         var bar = (SCROLLBAR_CONSTANTS)fnBar;
         Trace("fnBar: " + bar + " fShow: " + fShow);
