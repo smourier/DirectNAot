@@ -91,6 +91,7 @@
     "EnumChildWindows",
     "EnumDisplayDevicesW",
     "EnumDisplayMonitors",
+    "EnumDisplaySettingsW",
     "EnumDisplaySettingsExW",
     "EnumThreadWindows",
     "EnumWindows",

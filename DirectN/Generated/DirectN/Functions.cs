@@ -2787,6 +2787,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL EnumDisplaySettingsExW(PWSTR lpszDeviceName, ENUM_DISPLAY_SETTINGS_MODE iModeNum, ref DEVMODEW lpDevMode, ENUM_DISPLAY_SETTINGS_FLAGS dwFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnumDisplaySettingsW(PWSTR lpszDeviceName, ENUM_DISPLAY_SETTINGS_MODE iModeNum, ref DEVMODEW lpDevMode);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enumicmprofilesa
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]

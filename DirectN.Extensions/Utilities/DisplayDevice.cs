@@ -61,7 +61,7 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
         get
         {
             var mode = new DEVMODEW();
-            Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref mode, 0);
+            Functions.EnumDisplaySettingsW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref mode);
             return mode;
         }
     }
@@ -71,7 +71,7 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
         get
         {
             var mode = new DEVMODEW();
-            Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_REGISTRY_SETTINGS, ref mode, 0);
+            Functions.EnumDisplaySettingsW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_REGISTRY_SETTINGS, ref mode);
             return mode;
         }
     }
@@ -85,5 +85,4 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
             yield return mode;
         }
     }
-
 }

@@ -1,4 +1,4 @@
-﻿namespace DirectN.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 public static class SystemUtilities
 {
