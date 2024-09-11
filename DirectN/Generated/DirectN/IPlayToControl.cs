@@ -9,7 +9,7 @@ public partial interface IPlayToControl
     // https://learn.microsoft.com/windows/win32/api/mfsharingengine/nf-mfsharingengine-iplaytocontrol-connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Connect(IMFSharingEngineClassFactory pFactory);
+    HRESULT Connect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSharingEngineClassFactory>))] IMFSharingEngineClassFactory pFactory);
     
     // https://learn.microsoft.com/windows/win32/api/mfsharingengine/nf-mfsharingengine-iplaytocontrol-disconnect
     [PreserveSig]

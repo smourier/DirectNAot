@@ -6,7 +6,7 @@ public partial interface IDirectDrawVideoPort
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Flip(IDirectDrawSurface param0, uint param1);
+    HRESULT Flip([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] IDirectDrawSurface param0, uint param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -42,7 +42,7 @@ public partial interface IDirectDrawVideoPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTargetSurface(IDirectDrawSurface param0, uint param1);
+    HRESULT SetTargetSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] IDirectDrawSurface param0, uint param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

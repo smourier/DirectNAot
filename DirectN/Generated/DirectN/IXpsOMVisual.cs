@@ -19,7 +19,7 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-settransformlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransformLocal(IXpsOMMatrixTransform matrixTransform);
+    HRESULT SetTransformLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMMatrixTransform>))] IXpsOMMatrixTransform matrixTransform);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-gettransformlookup
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-setclipgeometrylocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClipGeometryLocal(IXpsOMGeometry clipGeometry);
+    HRESULT SetClipGeometryLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometry>))] IXpsOMGeometry clipGeometry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getclipgeometrylookup
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-setopacitymaskbrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOpacityMaskBrushLocal(IXpsOMBrush opacityMaskBrush);
+    HRESULT SetOpacityMaskBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] IXpsOMBrush opacityMaskBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getopacitymaskbrushlookup
     [PreserveSig]
@@ -119,7 +119,7 @@ public partial interface IXpsOMVisual : IXpsOMShareable
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-sethyperlinknavigateuri
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetHyperlinkNavigateUri(IUri hyperlinkUri);
+    HRESULT SetHyperlinkNavigateUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IUri>))] IUri hyperlinkUri);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisual-getlanguage
     [PreserveSig]

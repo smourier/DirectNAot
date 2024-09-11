@@ -129,7 +129,7 @@ public partial interface IWICDevelopRaw : IWICBitmapFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-setdestinationcolorcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDestinationColorContext(IWICColorContext pColorContext);
+    HRESULT SetDestinationColorContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICColorContext>))] IWICColorContext pColorContext);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-settonecurve
     [PreserveSig]
@@ -164,5 +164,5 @@ public partial interface IWICDevelopRaw : IWICBitmapFrameDecode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicdevelopraw-setnotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNotificationCallback(IWICDevelopRawNotificationCallback pCallback);
+    HRESULT SetNotificationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICDevelopRawNotificationCallback>))] IWICDevelopRawNotificationCallback pCallback);
 }

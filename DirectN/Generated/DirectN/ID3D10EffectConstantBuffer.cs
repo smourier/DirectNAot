@@ -115,7 +115,7 @@ public partial struct ID3D10EffectConstantBuffer
     // ID3D10EffectConstantBuffer methods
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-setconstantbuffer
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetConstantBuffer(ID3D10Buffer? pConstantBuffer) =>
+    public readonly unsafe HRESULT SetConstantBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Buffer?>))] ID3D10Buffer? pConstantBuffer) =>
         ((delegate* unmanaged<ID3D10EffectConstantBuffer*,ID3D10Buffer?, HRESULT>)(((void**)*((void**)VTablePtr))[25]))((ID3D10EffectConstantBuffer*)VTablePtr, pConstantBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-getconstantbuffer
@@ -125,7 +125,7 @@ public partial struct ID3D10EffectConstantBuffer
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-settexturebuffer
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetTextureBuffer(ID3D10ShaderResourceView? pTextureBuffer) =>
+    public readonly unsafe HRESULT SetTextureBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10ShaderResourceView?>))] ID3D10ShaderResourceView? pTextureBuffer) =>
         ((delegate* unmanaged<ID3D10EffectConstantBuffer*,ID3D10ShaderResourceView?, HRESULT>)(((void**)*((void**)VTablePtr))[27]))((ID3D10EffectConstantBuffer*)VTablePtr, pTextureBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectconstantbuffer-gettexturebuffer

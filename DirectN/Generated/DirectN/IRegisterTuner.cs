@@ -8,7 +8,7 @@ public partial interface IRegisterTuner
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iregistertuner-register
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Register(ITuner pTuner, IGraphBuilder pGraph);
+    HRESULT Register([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuner>))] ITuner pTuner, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iregistertuner-unregister
     [PreserveSig]

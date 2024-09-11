@@ -9,7 +9,7 @@ public partial interface IVMRImagePresenterExclModeConfig : IVMRImagePresenterCo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagepresenterexclmodeconfig-setxlcmodeddobjandprimarysurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetXlcModeDDObjAndPrimarySurface(IDirectDraw7 lpDDObj, IDirectDrawSurface7 lpPrimarySurf);
+    HRESULT SetXlcModeDDObjAndPrimarySurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw7>))] IDirectDraw7 lpDDObj, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 lpPrimarySurf);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagepresenterexclmodeconfig-getxlcmodeddobjandprimarysurface
     [PreserveSig]

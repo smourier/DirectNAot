@@ -19,7 +19,7 @@ public partial interface IStream : ISequentialStream
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-copyto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyTo(IStream pstm, ulong cb, nint /* optional ulong* */ pcbRead, nint /* optional ulong* */ pcbWritten);
+    HRESULT CopyTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pstm, ulong cb, nint /* optional ulong* */ pcbRead, nint /* optional ulong* */ pcbWritten);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istream-commit
     [PreserveSig]

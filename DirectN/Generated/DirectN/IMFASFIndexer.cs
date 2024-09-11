@@ -19,12 +19,12 @@ public partial interface IMFASFIndexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IMFASFContentInfo pIContentInfo);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-getindexposition
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIndexPosition(IMFASFContentInfo pIContentInfo, out ulong pcbIndexOffset);
+    HRESULT GetIndexPosition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo, out ulong pcbIndexOffset);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-setindexbytestreams
     [PreserveSig]
@@ -54,12 +54,12 @@ public partial interface IMFASFIndexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-generateindexentries
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateIndexEntries(IMFSample pIASFPacketSample);
+    HRESULT GenerateIndexEntries([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pIASFPacketSample);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-commitindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CommitIndex(IMFASFContentInfo pIContentInfo);
+    HRESULT CommitIndex([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-getindexwritespace
     [PreserveSig]
@@ -69,5 +69,5 @@ public partial interface IMFASFIndexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfindexer-getcompletedindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCompletedIndex(IMFMediaBuffer pIIndexBuffer, ulong cbOffsetWithinIndex);
+    HRESULT GetCompletedIndex([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pIIndexBuffer, ulong cbOffsetWithinIndex);
 }

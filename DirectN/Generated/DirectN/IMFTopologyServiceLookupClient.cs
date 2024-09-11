@@ -9,7 +9,7 @@ public partial interface IMFTopologyServiceLookupClient
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imftopologyservicelookupclient-initservicepointers
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitServicePointers(IMFTopologyServiceLookup pLookup);
+    HRESULT InitServicePointers([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyServiceLookup>))] IMFTopologyServiceLookup pLookup);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nf-evr-imftopologyservicelookupclient-releaseservicepointers
     [PreserveSig]

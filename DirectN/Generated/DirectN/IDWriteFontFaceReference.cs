@@ -18,7 +18,7 @@ public partial interface IDWriteFontFaceReference
     
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
-    BOOL Equals(IDWriteFontFaceReference fontFaceReference);
+    BOOL Equals([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] IDWriteFontFaceReference fontFaceReference);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontfacereference-getfontfaceindex
     [PreserveSig]

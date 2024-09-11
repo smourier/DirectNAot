@@ -19,7 +19,7 @@ public partial interface IMFMediaEngine
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-setsourceelements
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSourceElements(IMFMediaEngineSrcElements pSrcElements);
+    HRESULT SetSourceElements([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEngineSrcElements>))] IMFMediaEngineSrcElements pSrcElements);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengine-setsource
     [PreserveSig]

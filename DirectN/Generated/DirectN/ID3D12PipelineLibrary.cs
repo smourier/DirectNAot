@@ -8,7 +8,7 @@ public partial interface ID3D12PipelineLibrary : ID3D12DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinelibrary-storepipeline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StorePipeline(PWSTR pName, ID3D12PipelineState pPipeline);
+    HRESULT StorePipeline(PWSTR pName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12PipelineState>))] ID3D12PipelineState pPipeline);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12pipelinelibrary-loadgraphicspipeline
     [PreserveSig]

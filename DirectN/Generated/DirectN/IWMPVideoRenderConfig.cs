@@ -8,5 +8,5 @@ public partial interface IWMPVideoRenderConfig
     // https://learn.microsoft.com/windows/win32/api/wmprealestate/nf-wmprealestate-iwmpvideorenderconfig-put_presenteractivate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_presenterActivate(IMFActivate pActivate);
+    HRESULT put_presenterActivate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFActivate>))] IMFActivate pActivate);
 }

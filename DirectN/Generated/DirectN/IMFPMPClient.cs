@@ -9,5 +9,5 @@ public partial interface IMFPMPClient
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpmpclient-setpmphost
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPMPHost(IMFPMPHost pPMPHost);
+    HRESULT SetPMPHost([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPMPHost>))] IMFPMPHost pPMPHost);
 }

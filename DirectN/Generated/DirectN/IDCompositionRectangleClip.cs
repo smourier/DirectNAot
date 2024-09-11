@@ -9,7 +9,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setleft(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetLeft(IDCompositionAnimation animation);
+    HRESULT SetLeft([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setleft(float)
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-settop(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTop(IDCompositionAnimation animation);
+    HRESULT SetTop([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-settop(float)
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setright(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRight(IDCompositionAnimation animation);
+    HRESULT SetRight([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setright(idcompositionanimation)
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setbottom(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBottom(IDCompositionAnimation animation);
+    HRESULT SetBottom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionrectangleclip-setbottom(float)
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settopleftradiusx
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopLeftRadiusX(IDCompositionAnimation animation);
+    HRESULT SetTopLeftRadiusX([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settopleftradiusx
     [PreserveSig]
@@ -59,7 +59,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settopleftradiusy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopLeftRadiusY(IDCompositionAnimation animation);
+    HRESULT SetTopLeftRadiusY([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settopleftradiusy
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settoprightradiusx
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopRightRadiusX(IDCompositionAnimation animation);
+    HRESULT SetTopRightRadiusX([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settoprightradiusx
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settoprightradiusy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopRightRadiusY(IDCompositionAnimation animation);
+    HRESULT SetTopRightRadiusY([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-settoprightradiusy
     [PreserveSig]
@@ -89,7 +89,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomleftradiusx
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBottomLeftRadiusX(IDCompositionAnimation animation);
+    HRESULT SetBottomLeftRadiusX([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomleftradiusx
     [PreserveSig]
@@ -99,7 +99,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomleftradiusy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBottomLeftRadiusY(IDCompositionAnimation animation);
+    HRESULT SetBottomLeftRadiusY([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomleftradiusy
     [PreserveSig]
@@ -109,7 +109,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomrightradiusx
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBottomRightRadiusX(IDCompositionAnimation animation);
+    HRESULT SetBottomRightRadiusX([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomrightradiusx
     [PreserveSig]
@@ -119,7 +119,7 @@ public partial interface IDCompositionRectangleClip : IDCompositionClip
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomrightradiusy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBottomRightRadiusY(IDCompositionAnimation animation);
+    HRESULT SetBottomRightRadiusY([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/directcomp/idcompositionrectangleclip-setbottomrightradiusy
     [PreserveSig]

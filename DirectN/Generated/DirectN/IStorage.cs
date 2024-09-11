@@ -24,17 +24,17 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-openstorage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenStorage(PWSTR pwcsName, IStorage pstgPriority, STGM grfMode, in ushort snbExclude, uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] out IStorage ppstg);
+    HRESULT OpenStorage(PWSTR pwcsName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] IStorage pstgPriority, STGM grfMode, in ushort snbExclude, uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] out IStorage ppstg);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-copyto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyTo(uint ciidExclude, nint /* optional Guid* */ rgiidExclude, nint /* optional ushort** */ snbExclude, IStorage pstgDest);
+    HRESULT CopyTo(uint ciidExclude, nint /* optional Guid* */ rgiidExclude, nint /* optional ushort** */ snbExclude, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] IStorage pstgDest);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-moveelementto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MoveElementTo(PWSTR pwcsName, IStorage pstgDest, PWSTR pwcsNewName, uint grfFlags);
+    HRESULT MoveElementTo(PWSTR pwcsName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] IStorage pstgDest, PWSTR pwcsNewName, uint grfFlags);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-commit
     [PreserveSig]

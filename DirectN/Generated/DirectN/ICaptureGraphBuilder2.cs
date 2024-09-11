@@ -9,7 +9,7 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-setfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFiltergraph(IGraphBuilder pfg);
+    HRESULT SetFiltergraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pfg);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-getfiltergraph
     [PreserveSig]
@@ -24,17 +24,17 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindInterface(nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, IBaseFilter pf, in Guid riid, out nint ppint);
+    HRESULT FindInterface(nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pf, in Guid riid, out nint ppint);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-renderstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RenderStream(nint /* optional Guid* */ pCategory, in Guid pType, nint pSource, IBaseFilter pfCompressor, IBaseFilter pfRenderer);
+    HRESULT RenderStream(nint /* optional Guid* */ pCategory, in Guid pType, nint pSource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pfCompressor, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pfRenderer);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-controlstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ControlStream(in Guid pCategory, in Guid pType, IBaseFilter pFilter, nint /* optional long* */ pstart, nint /* optional long* */ pstop, ushort wStartCookie, ushort wStopCookie);
+    HRESULT ControlStream(in Guid pCategory, in Guid pType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter, nint /* optional long* */ pstart, nint /* optional long* */ pstop, ushort wStartCookie, ushort wStopCookie);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-alloccapfile
     [PreserveSig]
@@ -44,7 +44,7 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-copycapturefile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyCaptureFile(PWSTR lpwstrOld, PWSTR lpwstrNew, int fAllowEscAbort, IAMCopyCaptureFileProgress pCallback);
+    HRESULT CopyCaptureFile(PWSTR lpwstrOld, PWSTR lpwstrNew, int fAllowEscAbort, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMCopyCaptureFileProgress>))] IAMCopyCaptureFileProgress pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findpin
     [PreserveSig]

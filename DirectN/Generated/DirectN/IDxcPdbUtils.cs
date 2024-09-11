@@ -6,7 +6,7 @@ public partial interface IDxcPdbUtils
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IDxcBlob pPdbOrDxil);
+    HRESULT Load([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pPdbOrDxil);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -86,7 +86,7 @@ public partial interface IDxcPdbUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCompiler(IDxcCompiler3 pCompiler);
+    HRESULT SetCompiler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcCompiler3>))] IDxcCompiler3 pCompiler);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -9,5 +9,5 @@ public partial interface IPlayToSourceClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfsharingengine/nf-mfsharingengine-iplaytosourceclassfactory-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(uint dwFlags, IPlayToControl pControl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInspectable>))] out IInspectable ppSource);
+    HRESULT CreateInstance(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPlayToControl>))] IPlayToControl pControl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInspectable>))] out IInspectable ppSource);
 }

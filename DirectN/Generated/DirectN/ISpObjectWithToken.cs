@@ -6,7 +6,7 @@ public partial interface ISpObjectWithToken
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetObjectToken(ISpObjectToken? pToken);
+    HRESULT SetObjectToken([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken?>))] ISpObjectToken? pToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

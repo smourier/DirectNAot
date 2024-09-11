@@ -18,7 +18,7 @@ public partial interface IDXGISwapChain : IDXGIDeviceSubObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-setfullscreenstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFullscreenState(BOOL Fullscreen, IDXGIOutput? pTarget);
+    HRESULT SetFullscreenState(BOOL Fullscreen, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIOutput?>))] IDXGIOutput? pTarget);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-getfullscreenstate
     [PreserveSig]

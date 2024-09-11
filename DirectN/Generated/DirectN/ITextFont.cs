@@ -14,7 +14,7 @@ public partial interface ITextFont : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont-setduplicate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDuplicate(ITextFont? pFont);
+    HRESULT SetDuplicate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont?>))] ITextFont? pFont);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont-canchange
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface ITextFont : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(ITextFont? pFont, out int pValue);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont?>))] ITextFont? pFont, out int pValue);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont-reset
     [PreserveSig]

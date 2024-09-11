@@ -6,7 +6,7 @@ public partial interface IGuideDataLoader
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Init(IGuideData pGuideStore);
+    HRESULT Init([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGuideData>))] IGuideData pGuideStore);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

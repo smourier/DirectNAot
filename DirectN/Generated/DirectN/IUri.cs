@@ -102,5 +102,5 @@ public partial interface IUri
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(IUri pUri, out BOOL pfEqual);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IUri>))] IUri pUri, out BOOL pfEqual);
 }

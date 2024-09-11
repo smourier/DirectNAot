@@ -9,7 +9,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-setclientsite
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClientSite(IOleClientSite pClientSite);
+    HRESULT SetClientSite([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleClientSite>))] IOleClientSite pClientSite);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-getclientsite
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-setmoniker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMoniker(uint dwWhichMoniker, IMoniker pmk);
+    HRESULT SetMoniker(uint dwWhichMoniker, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pmk);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-getmoniker
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-initfromdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitFromData(IDataObject pDataObject, BOOL fCreation, uint dwReserved);
+    HRESULT InitFromData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObject, BOOL fCreation, uint dwReserved);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-getclipboarddata
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-doverb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoVerb(int iVerb, in MSG lpmsg, IOleClientSite pActiveSite, int lindex, HWND hwndParent, in RECT lprcPosRect);
+    HRESULT DoVerb(int iVerb, in MSG lpmsg, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleClientSite>))] IOleClientSite pActiveSite, int lindex, HWND hwndParent, in RECT lprcPosRect);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-enumverbs
     [PreserveSig]
@@ -89,7 +89,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-advise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Advise(IAdviseSink pAdvSink, out uint pdwConnection);
+    HRESULT Advise([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAdviseSink>))] IAdviseSink pAdvSink, out uint pdwConnection);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-unadvise
     [PreserveSig]

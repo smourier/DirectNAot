@@ -6,5 +6,5 @@ public partial interface IMFMediaSource2 : IMFMediaSourceEx
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMediaType(uint dwStreamID, IMFMediaType pMediaType);
+    HRESULT SetMediaType(uint dwStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType);
 }

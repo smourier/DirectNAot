@@ -19,32 +19,32 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagefromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageFromStream(IStream stream, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
+    HRESULT CreatePackageFromStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream stream, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackage>))] out IXpsOMPackage package);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createstoryfragmentsresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStoryFragmentsResource(IStream acquiredStream, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMStoryFragmentsResource>))] out IXpsOMStoryFragmentsResource storyFragmentsResource);
+    HRESULT CreateStoryFragmentsResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMStoryFragmentsResource>))] out IXpsOMStoryFragmentsResource storyFragmentsResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createdocumentstructureresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDocumentStructureResource(IStream acquiredStream, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentStructureResource>))] out IXpsOMDocumentStructureResource documentStructureResource);
+    HRESULT CreateDocumentStructureResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentStructureResource>))] out IXpsOMDocumentStructureResource documentStructureResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createsignatureblockresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSignatureBlockResource(IStream acquiredStream, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResource>))] out IXpsOMSignatureBlockResource signatureBlockResource);
+    HRESULT CreateSignatureBlockResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResource>))] out IXpsOMSignatureBlockResource signatureBlockResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createremotedictionaryresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRemoteDictionaryResource(IXpsOMDictionary dictionary, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResource>))] out IXpsOMRemoteDictionaryResource remoteDictionaryResource);
+    HRESULT CreateRemoteDictionaryResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDictionary>))] IXpsOMDictionary dictionary, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResource>))] out IXpsOMRemoteDictionaryResource remoteDictionaryResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createremotedictionaryresourcefromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRemoteDictionaryResourceFromStream(IStream dictionaryMarkupStream, IOpcPartUri dictionaryPartUri, IXpsOMPartResources resources, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResource>))] out IXpsOMRemoteDictionaryResource dictionaryResource);
+    HRESULT CreateRemoteDictionaryResourceFromStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream dictionaryMarkupStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri dictionaryPartUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPartResources>))] IXpsOMPartResources resources, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResource>))] out IXpsOMRemoteDictionaryResource dictionaryResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpartresources
     [PreserveSig]
@@ -54,12 +54,12 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createdocumentsequence
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDocumentSequence(IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentSequence>))] out IXpsOMDocumentSequence documentSequence);
+    HRESULT CreateDocumentSequence([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentSequence>))] out IXpsOMDocumentSequence documentSequence);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createdocument
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDocument(IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocument>))] out IXpsOMDocument document);
+    HRESULT CreateDocument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocument>))] out IXpsOMDocument document);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpagereference
     [PreserveSig]
@@ -69,12 +69,12 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePage(in XPS_SIZE pageDimensions, PWSTR language, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
+    HRESULT CreatePage(in XPS_SIZE pageDimensions, PWSTR language, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpagefromstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePageFromStream(IStream pageMarkupStream, IOpcPartUri partUri, IXpsOMPartResources resources, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
+    HRESULT CreatePageFromStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pageMarkupStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPartResources>))] IXpsOMPartResources resources, BOOL reuseObjects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] out IXpsOMPage page);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createcanvas
     [PreserveSig]
@@ -84,7 +84,7 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createglyphs
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGlyphs(IXpsOMFontResource fontResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGlyphs>))] out IXpsOMGlyphs glyphs);
+    HRESULT CreateGlyphs([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] IXpsOMFontResource fontResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGlyphs>))] out IXpsOMGlyphs glyphs);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpath
     [PreserveSig]
@@ -109,17 +109,17 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createsolidcolorbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSolidColorBrush(in XPS_COLOR color, IXpsOMColorProfileResource colorProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSolidColorBrush>))] out IXpsOMSolidColorBrush solidColorBrush);
+    HRESULT CreateSolidColorBrush(in XPS_COLOR color, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] IXpsOMColorProfileResource colorProfile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSolidColorBrush>))] out IXpsOMSolidColorBrush solidColorBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createcolorprofileresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateColorProfileResource(IStream acquiredStream, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] out IXpsOMColorProfileResource colorProfileResource);
+    HRESULT CreateColorProfileResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] out IXpsOMColorProfileResource colorProfileResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createimagebrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageBrush(IXpsOMImageResource image, in XPS_RECT viewBox, in XPS_RECT viewPort, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageBrush>))] out IXpsOMImageBrush imageBrush);
+    HRESULT CreateImageBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] IXpsOMImageResource image, in XPS_RECT viewBox, in XPS_RECT viewPort, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageBrush>))] out IXpsOMImageBrush imageBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createvisualbrush
     [PreserveSig]
@@ -129,37 +129,37 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createimageresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageResource(IStream acquiredStream, XPS_IMAGE_TYPE contentType, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] out IXpsOMImageResource imageResource);
+    HRESULT CreateImageResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, XPS_IMAGE_TYPE contentType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] out IXpsOMImageResource imageResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createprintticketresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePrintTicketResource(IStream acquiredStream, IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] out IXpsOMPrintTicketResource printTicketResource);
+    HRESULT CreatePrintTicketResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] out IXpsOMPrintTicketResource printTicketResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontResource(IStream acquiredStream, XPS_FONT_EMBEDDING fontEmbedding, IOpcPartUri partUri, BOOL isObfSourceStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource fontResource);
+    HRESULT CreateFontResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream acquiredStream, XPS_FONT_EMBEDDING fontEmbedding, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, BOOL isObfSourceStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] out IXpsOMFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-creategradientstop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGradientStop(in XPS_COLOR color, IXpsOMColorProfileResource colorProfile, float offset, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] out IXpsOMGradientStop gradientStop);
+    HRESULT CreateGradientStop(in XPS_COLOR color, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] IXpsOMColorProfileResource colorProfile, float offset, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] out IXpsOMGradientStop gradientStop);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createlineargradientbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateLinearGradientBrush(IXpsOMGradientStop gradStop1, IXpsOMGradientStop gradStop2, in XPS_POINT startPoint, in XPS_POINT endPoint, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMLinearGradientBrush>))] out IXpsOMLinearGradientBrush linearGradientBrush);
+    HRESULT CreateLinearGradientBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop gradStop1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop gradStop2, in XPS_POINT startPoint, in XPS_POINT endPoint, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMLinearGradientBrush>))] out IXpsOMLinearGradientBrush linearGradientBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createradialgradientbrush
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRadialGradientBrush(IXpsOMGradientStop gradStop1, IXpsOMGradientStop gradStop2, in XPS_POINT centerPoint, in XPS_POINT gradientOrigin, in XPS_SIZE radiiSizes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRadialGradientBrush>))] out IXpsOMRadialGradientBrush radialGradientBrush);
+    HRESULT CreateRadialGradientBrush([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop gradStop1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop gradStop2, in XPS_POINT centerPoint, in XPS_POINT gradientOrigin, in XPS_SIZE radiiSizes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRadialGradientBrush>))] out IXpsOMRadialGradientBrush radialGradientBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createcoreproperties
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCoreProperties(IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMCoreProperties>))] out IXpsOMCoreProperties coreProperties);
+    HRESULT CreateCoreProperties([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMCoreProperties>))] out IXpsOMCoreProperties coreProperties);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createdictionary
     [PreserveSig]
@@ -174,12 +174,12 @@ public partial interface IXpsOMObjectFactory
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagewriteronfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageWriterOnFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
+    HRESULT CreatePackageWriterOnFile(PWSTR fileName, in SECURITY_ATTRIBUTES securityAttributes, uint flagsAndAttributes, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri documentSequencePartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMCoreProperties>))] IXpsOMCoreProperties coreProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] IXpsOMImageResource packageThumbnail, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] IXpsOMPrintTicketResource documentSequencePrintTicket, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createpackagewriteronstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePackageWriterOnStream(ISequentialStream outputStream, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, IOpcPartUri documentSequencePartName, IXpsOMCoreProperties coreProperties, IXpsOMImageResource packageThumbnail, IXpsOMPrintTicketResource documentSequencePrintTicket, IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
+    HRESULT CreatePackageWriterOnStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISequentialStream>))] ISequentialStream outputStream, BOOL optimizeMarkupSize, XPS_INTERLEAVING interleaving, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri documentSequencePartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMCoreProperties>))] IXpsOMCoreProperties coreProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] IXpsOMImageResource packageThumbnail, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] IXpsOMPrintTicketResource documentSequencePrintTicket, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri discardControlPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPackageWriter>))] out IXpsOMPackageWriter packageWriter);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomobjectfactory-createparturi
     [PreserveSig]

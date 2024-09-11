@@ -9,5 +9,5 @@ public partial interface IMFSharingEngineClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfsharingengine/nf-mfsharingengine-imfsharingengineclassfactory-createinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(uint dwFlags, IMFAttributes? pAttr, out nint ppEngine);
+    HRESULT CreateInstance(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pAttr, out nint ppEngine);
 }

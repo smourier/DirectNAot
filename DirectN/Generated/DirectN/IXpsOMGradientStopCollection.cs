@@ -19,7 +19,7 @@ public partial interface IXpsOMGradientStopCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstopcollection-insertat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertAt(uint index, IXpsOMGradientStop stop);
+    HRESULT InsertAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop stop);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstopcollection-removeat
     [PreserveSig]
@@ -29,10 +29,10 @@ public partial interface IXpsOMGradientStopCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstopcollection-setat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAt(uint index, IXpsOMGradientStop stop);
+    HRESULT SetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop stop);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstopcollection-append
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Append(IXpsOMGradientStop stop);
+    HRESULT Append([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGradientStop>))] IXpsOMGradientStop stop);
 }

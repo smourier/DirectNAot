@@ -29,7 +29,7 @@ public partial interface IXpsOMGradientStop
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstop-setcolor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetColor(in XPS_COLOR color, IXpsOMColorProfileResource colorProfile);
+    HRESULT SetColor(in XPS_COLOR color, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] IXpsOMColorProfileResource colorProfile);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgradientstop-clone
     [PreserveSig]

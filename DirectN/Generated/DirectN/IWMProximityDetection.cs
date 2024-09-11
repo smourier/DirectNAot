@@ -9,5 +9,5 @@ public partial interface IWMProximityDetection
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmproximitydetection-startdetection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartDetection(nint /* byte array */ pbRegistrationMsg, uint cbRegistrationMsg, nint /* byte array */ pbLocalAddress, uint cbLocalAddress, uint dwExtraPortsAllowed, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppRegistrationResponseMsg, IWMStatusCallback pCallback, nint pvContext);
+    HRESULT StartDetection(nint /* byte array */ pbRegistrationMsg, uint cbRegistrationMsg, nint /* byte array */ pbLocalAddress, uint cbLocalAddress, uint dwExtraPortsAllowed, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] out INSSBuffer ppRegistrationResponseMsg, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback, nint pvContext);
 }

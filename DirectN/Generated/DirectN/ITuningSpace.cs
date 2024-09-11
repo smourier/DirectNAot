@@ -74,7 +74,7 @@ public partial interface ITuningSpace : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-put_defaultpreferredcomponenttypes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_DefaultPreferredComponentTypes(IComponentTypes NewComponentTypes);
+    HRESULT put_DefaultPreferredComponentTypes([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentTypes>))] IComponentTypes NewComponentTypes);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-get_frequencymapping
     [PreserveSig]
@@ -94,7 +94,7 @@ public partial interface ITuningSpace : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-put_defaultlocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_DefaultLocator(ILocator LocatorVal);
+    HRESULT put_DefaultLocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ILocator>))] ILocator LocatorVal);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ituningspace-clone
     [PreserveSig]

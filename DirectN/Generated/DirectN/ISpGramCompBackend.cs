@@ -6,7 +6,7 @@ public partial interface ISpGramCompBackend : ISpGrammarBuilder
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSaveObjects(IStream pStream, ISpErrorLog pErrorLog);
+    HRESULT SetSaveObjects([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpErrorLog>))] ISpErrorLog pErrorLog);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

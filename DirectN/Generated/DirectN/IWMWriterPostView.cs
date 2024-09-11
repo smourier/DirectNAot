@@ -8,7 +8,7 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setpostviewcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPostViewCallback(IWMWriterPostViewCallback pCallback, nint pvContext);
+    HRESULT SetPostViewCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMWriterPostViewCallback>))] IWMWriterPostViewCallback pCallback, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setreceivepostviewsamples
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IWMWriterPostView
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-setpostviewprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPostViewProps(ushort wStreamNumber, IWMMediaProps pOutput);
+    HRESULT SetPostViewProps(ushort wStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMMediaProps>))] IWMMediaProps pOutput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpostview-getpostviewformatcount
     [PreserveSig]

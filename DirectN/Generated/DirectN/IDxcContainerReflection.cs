@@ -6,7 +6,7 @@ public partial interface IDxcContainerReflection
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IDxcBlob pContainer);
+    HRESULT Load([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pContainer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -14,7 +14,7 @@ public partial interface IWICBitmapDecoderInfo : IWICBitmapCodecInfo
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-matchespattern
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MatchesPattern(IStream pIStream, out BOOL pfMatches);
+    HRESULT MatchesPattern([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, out BOOL pfMatches);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoderinfo-createinstance
     [PreserveSig]

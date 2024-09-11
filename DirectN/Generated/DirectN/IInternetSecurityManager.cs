@@ -6,7 +6,7 @@ public partial interface IInternetSecurityManager
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSecuritySite(IInternetSecurityMgrSite pSite);
+    HRESULT SetSecuritySite([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInternetSecurityMgrSite>))] IInternetSecurityMgrSite pSite);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

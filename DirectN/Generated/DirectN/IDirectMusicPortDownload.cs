@@ -22,9 +22,9 @@ public partial interface IDirectMusicPortDownload
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Download(IDirectMusicDownload pIDMDownload);
+    HRESULT Download([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownload>))] IDirectMusicDownload pIDMDownload);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Unload(IDirectMusicDownload pIDMDownload);
+    HRESULT Unload([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownload>))] IDirectMusicDownload pIDMDownload);
 }

@@ -115,7 +115,7 @@ public partial struct ID3D10EffectRenderTargetViewVariable
     // ID3D10EffectRenderTargetViewVariable methods
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-setrendertarget
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetRenderTarget(ID3D10RenderTargetView? pResource) =>
+    public readonly unsafe HRESULT SetRenderTarget([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10RenderTargetView?>))] ID3D10RenderTargetView? pResource) =>
         ((delegate* unmanaged<ID3D10EffectRenderTargetViewVariable*,ID3D10RenderTargetView?, HRESULT>)(((void**)*((void**)VTablePtr))[25]))((ID3D10EffectRenderTargetViewVariable*)VTablePtr, pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-getrendertarget

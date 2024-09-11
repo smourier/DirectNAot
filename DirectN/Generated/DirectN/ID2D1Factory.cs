@@ -38,7 +38,7 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createtransformedgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransformedGeometry(ID2D1Geometry sourceGeometry, in D2D_MATRIX_3X2_F transform, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformedGeometry>))] out ID2D1TransformedGeometry transformedGeometry);
+    HRESULT CreateTransformedGeometry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Geometry>))] ID2D1Geometry sourceGeometry, in D2D_MATRIX_3X2_F transform, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformedGeometry>))] out ID2D1TransformedGeometry transformedGeometry);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1factory-createpathgeometry
     [PreserveSig]
@@ -53,12 +53,12 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createdrawingstateblock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION* */ drawingStateDescription, IDWriteRenderingParams? textRenderingParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1DrawingStateBlock>))] out ID2D1DrawingStateBlock drawingStateBlock);
+    HRESULT CreateDrawingStateBlock(nint /* optional D2D1_DRAWING_STATE_DESCRIPTION* */ drawingStateDescription, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteRenderingParams?>))] IDWriteRenderingParams? textRenderingParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1DrawingStateBlock>))] out ID2D1DrawingStateBlock drawingStateBlock);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createwicbitmaprendertarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateWicBitmapRenderTarget(IWICBitmap target, in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1RenderTarget>))] out ID2D1RenderTarget renderTarget);
+    HRESULT CreateWicBitmapRenderTarget([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmap>))] IWICBitmap target, in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1RenderTarget>))] out ID2D1RenderTarget renderTarget);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1factory-createhwndrendertarget
     [PreserveSig]
@@ -68,7 +68,7 @@ public partial interface ID2D1Factory
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1factory-createdxgisurfacerendertarget(idxgisurface_constd2d1_render_target_properties__id2d1rendertarget)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDxgiSurfaceRenderTarget(IDXGISurface dxgiSurface, in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1RenderTarget>))] out ID2D1RenderTarget renderTarget);
+    HRESULT CreateDxgiSurfaceRenderTarget([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISurface>))] IDXGISurface dxgiSurface, in D2D1_RENDER_TARGET_PROPERTIES renderTargetProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1RenderTarget>))] out ID2D1RenderTarget renderTarget);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1factory-createdcrendertarget
     [PreserveSig]

@@ -29,5 +29,5 @@ public partial interface ITuneRequest : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-itunerequest-put_locator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Locator(ILocator Locator);
+    HRESULT put_Locator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ILocator>))] ILocator Locator);
 }

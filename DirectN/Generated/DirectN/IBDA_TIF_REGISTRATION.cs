@@ -8,7 +8,7 @@ public partial interface IBDA_TIF_REGISTRATION
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ibda_tif_registration-registertifex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterTIFEx(IPin pTIFInputPin, ref uint ppvRegistrationContext, ref nint ppMpeg2DataControl);
+    HRESULT RegisterTIFEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pTIFInputPin, ref uint ppvRegistrationContext, ref nint ppMpeg2DataControl);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-ibda_tif_registration-unregistertif
     [PreserveSig]

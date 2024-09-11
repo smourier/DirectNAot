@@ -8,7 +8,7 @@ public partial interface IPropertyBag
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ipropertybag-read
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(PWSTR pszPropName, ref VARIANT pVar, IErrorLog pErrorLog);
+    HRESULT Read(PWSTR pszPropName, ref VARIANT pVar, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorLog>))] IErrorLog pErrorLog);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-ipropertybag-write
     [PreserveSig]

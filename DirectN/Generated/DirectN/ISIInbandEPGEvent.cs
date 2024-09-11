@@ -6,5 +6,5 @@ public partial interface ISIInbandEPGEvent
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SIObjectEvent(IDVB_EIT2 pIDVB_EIT, uint dwTable_ID, uint dwService_ID);
+    HRESULT SIObjectEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDVB_EIT2>))] IDVB_EIT2 pIDVB_EIT, uint dwTable_ID, uint dwService_ID);
 }

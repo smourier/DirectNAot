@@ -8,5 +8,5 @@ public partial interface ID3D12LifetimeTracker : ID3D12DeviceChild
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12lifetimetracker-destroyownedobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DestroyOwnedObject(ID3D12DeviceChild pObject);
+    HRESULT DestroyOwnedObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12DeviceChild>))] ID3D12DeviceChild pObject);
 }

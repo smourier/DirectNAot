@@ -22,7 +22,7 @@ public partial interface IMSVidGraphSegment : IPersist
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Container(IMSVidGraphSegmentContainer pCtl);
+    HRESULT put_Container([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegmentContainer>))] IMSVidGraphSegmentContainer pCtl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

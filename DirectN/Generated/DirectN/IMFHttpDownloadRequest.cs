@@ -14,32 +14,32 @@ public partial interface IMFHttpDownloadRequest
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-beginsendrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginSendRequest(nint /* optional byte* */ pbPayload, uint cbPayload, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginSendRequest(nint /* optional byte* */ pbPayload, uint cbPayload, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-endsendrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndSendRequest(IMFAsyncResult pResult);
+    HRESULT EndSendRequest([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-beginreceiveresponse
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginReceiveResponse(IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginReceiveResponse([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-endreceiveresponse
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndReceiveResponse(IMFAsyncResult pResult);
+    HRESULT EndReceiveResponse([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-beginreadpayload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginReadPayload(nint /* byte array */ pb, uint cb, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginReadPayload(nint /* byte array */ pb, uint cb, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-endreadpayload
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndReadPayload(IMFAsyncResult pResult, out ulong pqwOffset, out uint pcbRead);
+    HRESULT EndReadPayload([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out ulong pqwOffset, out uint pcbRead);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfhttpdownloadrequest-queryheader
     [PreserveSig]

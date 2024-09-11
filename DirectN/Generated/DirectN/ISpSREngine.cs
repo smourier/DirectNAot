@@ -6,7 +6,7 @@ public partial interface ISpSREngine
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSite(ISpSREngineSite pSite);
+    HRESULT SetSite([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpSREngineSite>))] ISpSREngineSite pSite);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,11 +14,11 @@ public partial interface ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RecognizeStream(in Guid rguidFmtId, in WAVEFORMATEX pWaveFormatEx, HANDLE hRequestSync, HANDLE hDataAvailable, HANDLE hExit, BOOL fNewAudioStream, BOOL fRealTimeAudio, ISpObjectToken pAudioObjectToken);
+    HRESULT RecognizeStream(in Guid rguidFmtId, in WAVEFORMATEX pWaveFormatEx, HANDLE hRequestSync, HANDLE hDataAvailable, HANDLE hExit, BOOL fNewAudioStream, BOOL fRealTimeAudio, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] ISpObjectToken pAudioObjectToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRecoProfile(ISpObjectToken pProfile);
+    HRESULT SetRecoProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] ISpObjectToken pProfile);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

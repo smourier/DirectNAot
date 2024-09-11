@@ -9,12 +9,12 @@ public partial interface IAudioEndpointVolume
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-registercontrolchangenotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterControlChangeNotify(IAudioEndpointVolumeCallback pNotify);
+    HRESULT RegisterControlChangeNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioEndpointVolumeCallback>))] IAudioEndpointVolumeCallback pNotify);
     
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-unregistercontrolchangenotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterControlChangeNotify(IAudioEndpointVolumeCallback pNotify);
+    HRESULT UnregisterControlChangeNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioEndpointVolumeCallback>))] IAudioEndpointVolumeCallback pNotify);
     
     // https://learn.microsoft.com/windows/win32/api/endpointvolume/nf-endpointvolume-iaudioendpointvolume-getchannelcount
     [PreserveSig]

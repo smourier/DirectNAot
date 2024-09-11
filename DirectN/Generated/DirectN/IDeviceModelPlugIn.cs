@@ -33,7 +33,7 @@ public partial interface IDeviceModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-settransformdevicemodelinfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransformDeviceModelInfo(uint iModelPosition, IDeviceModelPlugIn pIDeviceModelOther);
+    HRESULT SetTransformDeviceModelInfo(uint iModelPosition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeviceModelPlugIn>))] IDeviceModelPlugIn pIDeviceModelOther);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-idevicemodelplugin-getprimarysamples
     [PreserveSig]

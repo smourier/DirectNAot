@@ -129,7 +129,7 @@ public partial interface IMSVidCtl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-put_inputactive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_InputActive(IMSVidInputDevice pVal);
+    HRESULT put_InputActive([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidInputDevice>))] IMSVidInputDevice pVal);
     
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-get_outputsactive
     [PreserveSig]
@@ -139,7 +139,7 @@ public partial interface IMSVidCtl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-put_outputsactive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_OutputsActive(IMSVidOutputDevices pVal);
+    HRESULT put_OutputsActive([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidOutputDevices>))] IMSVidOutputDevices pVal);
     
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-get_videorendereractive
     [PreserveSig]
@@ -149,7 +149,7 @@ public partial interface IMSVidCtl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-put_videorendereractive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_VideoRendererActive(IMSVidVideoRenderer pVal);
+    HRESULT put_VideoRendererActive([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidVideoRenderer>))] IMSVidVideoRenderer pVal);
     
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-get_audiorendereractive
     [PreserveSig]
@@ -159,7 +159,7 @@ public partial interface IMSVidCtl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-put_audiorendereractive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_AudioRendererActive(IMSVidAudioRenderer pVal);
+    HRESULT put_AudioRendererActive([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidAudioRenderer>))] IMSVidAudioRenderer pVal);
     
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-get_featuresactive
     [PreserveSig]
@@ -169,7 +169,7 @@ public partial interface IMSVidCtl : IDispatch
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-put_featuresactive
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_FeaturesActive(IMSVidFeatures pVal);
+    HRESULT put_FeaturesActive([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidFeatures>))] IMSVidFeatures pVal);
     
     // https://learn.microsoft.com/windows/win32/api/msvidctl/nf-msvidctl-imsvidctl-get_state
     [PreserveSig]

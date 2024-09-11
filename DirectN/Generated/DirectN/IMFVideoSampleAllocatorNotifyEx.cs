@@ -9,5 +9,5 @@ public partial interface IMFVideoSampleAllocatorNotifyEx : IMFVideoSampleAllocat
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocatornotifyex-notifyprune
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyPrune(IMFSample __MIDL__IMFVideoSampleAllocatorNotifyEx0000);
+    HRESULT NotifyPrune([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample __MIDL__IMFVideoSampleAllocatorNotifyEx0000);
 }

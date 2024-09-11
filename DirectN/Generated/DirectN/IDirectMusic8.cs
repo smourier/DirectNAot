@@ -6,5 +6,5 @@ public partial interface IDirectMusic8 : IDirectMusic
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetExternalMasterClock(IReferenceClock pClock);
+    HRESULT SetExternalMasterClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] IReferenceClock pClock);
 }

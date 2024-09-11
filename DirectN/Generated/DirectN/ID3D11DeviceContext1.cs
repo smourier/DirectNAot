@@ -8,19 +8,19 @@ public partial interface ID3D11DeviceContext1 : ID3D11DeviceContext
 {
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-copysubresourceregion1
     [PreserveSig]
-    void CopySubresourceRegion1(ID3D11Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, ID3D11Resource pSrcResource, uint SrcSubresource, nint /* optional D3D11_BOX* */ pSrcBox, uint CopyFlags);
+    void CopySubresourceRegion1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pSrcResource, uint SrcSubresource, nint /* optional D3D11_BOX* */ pSrcBox, uint CopyFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-updatesubresource1
     [PreserveSig]
-    void UpdateSubresource1(ID3D11Resource pDstResource, uint DstSubresource, nint /* optional D3D11_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch, uint CopyFlags);
+    void UpdateSubresource1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pDstResource, uint DstSubresource, nint /* optional D3D11_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch, uint CopyFlags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-discardresource
     [PreserveSig]
-    void DiscardResource(ID3D11Resource pResource);
+    void DiscardResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-discardview
     [PreserveSig]
-    void DiscardView(ID3D11View pResourceView);
+    void DiscardView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11View>))] ID3D11View pResourceView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-vssetconstantbuffers1
     [PreserveSig]
@@ -72,13 +72,13 @@ public partial interface ID3D11DeviceContext1 : ID3D11DeviceContext
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-swapdevicecontextstate
     [PreserveSig]
-    void SwapDeviceContextState(ID3DDeviceContextState pState, nint /* optional ID3DDeviceContextState* */ ppPreviousState);
+    void SwapDeviceContextState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DDeviceContextState>))] ID3DDeviceContextState pState, nint /* optional ID3DDeviceContextState* */ ppPreviousState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-clearview
     [PreserveSig]
-    void ClearView(ID3D11View pView, [In][MarshalUsing(ConstantElementCount = 4)] float[] Color, nint /* optional RECT* */ pRect, uint NumRects);
+    void ClearView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11View>))] ID3D11View pView, [In][MarshalUsing(ConstantElementCount = 4)] float[] Color, nint /* optional RECT* */ pRect, uint NumRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_1/nf-d3d11_1-id3d11devicecontext1-discardview1
     [PreserveSig]
-    void DiscardView1(ID3D11View pResourceView, nint /* optional RECT* */ pRects, uint NumRects);
+    void DiscardView1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11View>))] ID3D11View pResourceView, nint /* optional RECT* */ pRects, uint NumRects);
 }

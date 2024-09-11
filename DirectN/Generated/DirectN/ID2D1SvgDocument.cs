@@ -17,7 +17,7 @@ public partial interface ID2D1SvgDocument : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-setroot
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRoot(ID2D1SvgElement? root);
+    HRESULT SetRoot([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement?>))] ID2D1SvgElement? root);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-getroot
     [PreserveSig]
@@ -31,12 +31,12 @@ public partial interface ID2D1SvgDocument : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-serialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Serialize(IStream outputXmlStream, ID2D1SvgElement? subtree);
+    HRESULT Serialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream outputXmlStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement?>))] ID2D1SvgElement? subtree);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1svg/nf-d2d1svg-id2d1svgdocument-deserialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Deserialize(IStream inputXmlStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement subtree);
+    HRESULT Deserialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream inputXmlStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgElement>))] out ID2D1SvgElement subtree);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1svgdocument-createpaint-overload
     [PreserveSig]

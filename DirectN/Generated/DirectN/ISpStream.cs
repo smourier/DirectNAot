@@ -6,7 +6,7 @@ public partial interface ISpStream : ISpStreamFormat
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBaseStream(IStream pStream, in Guid rguidFormat, in WAVEFORMATEX pWaveFormatEx);
+    HRESULT SetBaseStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, in Guid rguidFormat, in WAVEFORMATEX pWaveFormatEx);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

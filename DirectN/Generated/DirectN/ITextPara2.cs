@@ -19,7 +19,7 @@ public partial interface ITextPara2 : ITextPara
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-setduplicate2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDuplicate2(ITextPara2? pPara);
+    HRESULT SetDuplicate2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara2?>))] ITextPara2? pPara);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-getfontalignment
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface ITextPara2 : ITextPara
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-isequal2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual2(ITextPara2? pPara, out int pB);
+    HRESULT IsEqual2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara2?>))] ITextPara2? pPara, out int pB);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara2-seteffects
     [PreserveSig]

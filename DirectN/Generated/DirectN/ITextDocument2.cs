@@ -29,7 +29,7 @@ public partial interface ITextDocument2 : ITextDocument
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-setdocumentfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDocumentFont(ITextFont2? pFont);
+    HRESULT SetDocumentFont([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont2?>))] ITextFont2? pFont);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-getdocumentpara
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface ITextDocument2 : ITextDocument
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-setdocumentpara
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDocumentPara(ITextPara2? pPara);
+    HRESULT SetDocumentPara([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara2?>))] ITextPara2? pPara);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-geteastasianflags
     [PreserveSig]
@@ -209,7 +209,7 @@ public partial interface ITextDocument2 : ITextDocument
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-setactivestory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetActiveStory(ITextStory? pStory);
+    HRESULT SetActiveStory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextStory?>))] ITextStory? pStory);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextdocument2-getmainstory
     [PreserveSig]

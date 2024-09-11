@@ -24,17 +24,17 @@ public partial interface IDirect3DCryptoSession9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcryptosession9-encryptionblt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EncryptionBlt(IDirect3DSurface9 pSrcSurface, IDirect3DSurface9 pDstSurface, uint DstSurfaceSize, nint pIV);
+    HRESULT EncryptionBlt([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pSrcSurface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pDstSurface, uint DstSurfaceSize, nint pIV);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcryptosession9-decryptionblt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DecryptionBlt(IDirect3DSurface9 pSrcSurface, IDirect3DSurface9 pDstSurface, uint SrcSurfaceSize, ref D3DENCRYPTED_BLOCK_INFO pEncryptedBlockInfo, nint pContentKey, nint pIV);
+    HRESULT DecryptionBlt([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pSrcSurface, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pDstSurface, uint SrcSurfaceSize, ref D3DENCRYPTED_BLOCK_INFO pEncryptedBlockInfo, nint pContentKey, nint pIV);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcryptosession9-getsurfacepitch
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSurfacePitch(IDirect3DSurface9 pSrcSurface, ref uint pSurfacePitch);
+    HRESULT GetSurfacePitch([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pSrcSurface, ref uint pSurfacePitch);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dcryptosession9-startsessionkeyrefresh
     [PreserveSig]

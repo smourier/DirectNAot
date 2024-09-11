@@ -19,7 +19,7 @@ public partial interface IConnector
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-connectto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectTo(IConnector pConnectTo);
+    HRESULT ConnectTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IConnector>))] IConnector pConnectTo);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-iconnector-disconnect
     [PreserveSig]

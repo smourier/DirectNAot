@@ -9,7 +9,7 @@ public partial interface IDirect3DDeviceManager9
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-resetdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ResetDevice(IDirect3DDevice9 pDevice, uint resetToken);
+    HRESULT ResetDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] IDirect3DDevice9 pDevice, uint resetToken);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-opendevicehandle
     [PreserveSig]

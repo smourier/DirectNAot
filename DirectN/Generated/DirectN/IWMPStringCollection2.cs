@@ -8,7 +8,7 @@ public partial interface IWMPStringCollection2 : IWMPStringCollection
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpstringcollection2-isidentical
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isIdentical(IWMPStringCollection2 pIWMPStringCollection2, ref VARIANT_BOOL pvbool);
+    HRESULT isIdentical([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPStringCollection2>))] IWMPStringCollection2 pIWMPStringCollection2, ref VARIANT_BOOL pvbool);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpstringcollection2-getiteminfo
     [PreserveSig]

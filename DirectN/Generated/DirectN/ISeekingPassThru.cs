@@ -9,5 +9,5 @@ public partial interface ISeekingPassThru
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iseekingpassthru-init
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Init(BOOL bSupportRendering, IPin pPin);
+    HRESULT Init(BOOL bSupportRendering, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin);
 }

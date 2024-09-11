@@ -6,5 +6,5 @@ public partial interface ISpGrammarCompiler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompileStream(IStream pSource, IStream pDest, IStream? pHeader, nint pReserved, ISpErrorLog? pErrorLog, uint dwFlags);
+    HRESULT CompileStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pSource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pDest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream?>))] IStream? pHeader, nint pReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpErrorLog?>))] ISpErrorLog? pErrorLog, uint dwFlags);
 }

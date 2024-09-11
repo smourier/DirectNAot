@@ -9,7 +9,7 @@ public partial interface IMFPresentationClock : IMFClock
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationclock-settimesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTimeSource(IMFPresentationTimeSource pTimeSource);
+    HRESULT SetTimeSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationTimeSource>))] IMFPresentationTimeSource pTimeSource);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationclock-gettimesource
     [PreserveSig]
@@ -24,12 +24,12 @@ public partial interface IMFPresentationClock : IMFClock
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationclock-addclockstatesink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddClockStateSink(IMFClockStateSink pStateSink);
+    HRESULT AddClockStateSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFClockStateSink>))] IMFClockStateSink pStateSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationclock-removeclockstatesink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveClockStateSink(IMFClockStateSink pStateSink);
+    HRESULT RemoveClockStateSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFClockStateSink>))] IMFClockStateSink pStateSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpresentationclock-start
     [PreserveSig]

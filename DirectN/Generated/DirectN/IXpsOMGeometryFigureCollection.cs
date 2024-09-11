@@ -19,7 +19,7 @@ public partial interface IXpsOMGeometryFigureCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-insertat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertAt(uint index, IXpsOMGeometryFigure geometryFigure);
+    HRESULT InsertAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometryFigure>))] IXpsOMGeometryFigure geometryFigure);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-removeat
     [PreserveSig]
@@ -29,10 +29,10 @@ public partial interface IXpsOMGeometryFigureCollection
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-setat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAt(uint index, IXpsOMGeometryFigure geometryFigure);
+    HRESULT SetAt(uint index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometryFigure>))] IXpsOMGeometryFigure geometryFigure);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomgeometryfigurecollection-append
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Append(IXpsOMGeometryFigure geometryFigure);
+    HRESULT Append([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMGeometryFigure>))] IXpsOMGeometryFigure geometryFigure);
 }

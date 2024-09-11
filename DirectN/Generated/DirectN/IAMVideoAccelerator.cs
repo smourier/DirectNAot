@@ -64,5 +64,5 @@ public partial interface IAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/videoacc/nf-videoacc-iamvideoaccelerator-displayframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DisplayFrame(uint dwFlipToIndex, IMediaSample pMediaSample);
+    HRESULT DisplayFrame(uint dwFlipToIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample pMediaSample);
 }

@@ -9,5 +9,5 @@ public partial interface IWICBitmapClipper : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapclipper-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IWICBitmapSource pISource, in WICRect prc);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] IWICBitmapSource pISource, in WICRect prc);
 }

@@ -8,10 +8,10 @@ public partial interface IWMRegisterCallback
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistercallback-advise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Advise(IWMStatusCallback pCallback, nint pvContext);
+    HRESULT Advise([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmregistercallback-unadvise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Unadvise(IWMStatusCallback pCallback, nint pvContext);
+    HRESULT Unadvise([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback, nint pvContext);
 }

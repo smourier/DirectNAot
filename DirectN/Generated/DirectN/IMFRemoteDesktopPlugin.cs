@@ -9,5 +9,5 @@ public partial interface IMFRemoteDesktopPlugin
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfremotedesktopplugin-updatetopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateTopology(IMFTopology pTopology);
+    HRESULT UpdateTopology([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
 }

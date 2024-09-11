@@ -14,7 +14,7 @@ public partial interface IXpsOMImageBrush : IXpsOMTileBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomimagebrush-setimageresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetImageResource(IXpsOMImageResource imageResource);
+    HRESULT SetImageResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] IXpsOMImageResource imageResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomimagebrush-getcolorprofileresource
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IXpsOMImageBrush : IXpsOMTileBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomimagebrush-setcolorprofileresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetColorProfileResource(IXpsOMColorProfileResource colorProfileResource);
+    HRESULT SetColorProfileResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMColorProfileResource>))] IXpsOMColorProfileResource colorProfileResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomimagebrush-clone
     [PreserveSig]

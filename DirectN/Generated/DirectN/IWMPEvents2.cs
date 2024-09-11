@@ -7,25 +7,25 @@ public partial interface IWMPEvents2 : IWMPEvents
 {
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-deviceconnect
     [PreserveSig]
-    void DeviceConnect(IWMPSyncDevice pDevice);
+    void DeviceConnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-devicedisconnect
     [PreserveSig]
-    void DeviceDisconnect(IWMPSyncDevice pDevice);
+    void DeviceDisconnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-devicestatuschange
     [PreserveSig]
-    void DeviceStatusChange(IWMPSyncDevice pDevice, WMPDeviceStatus NewStatus);
+    void DeviceStatusChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, WMPDeviceStatus NewStatus);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-devicesyncstatechange
     [PreserveSig]
-    void DeviceSyncStateChange(IWMPSyncDevice pDevice, WMPSyncState NewState);
+    void DeviceSyncStateChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, WMPSyncState NewState);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-devicesyncerror
     [PreserveSig]
-    void DeviceSyncError(IWMPSyncDevice pDevice, IDispatch pMedia);
+    void DeviceSyncError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents2-createpartnershipcomplete
     [PreserveSig]
-    void CreatePartnershipComplete(IWMPSyncDevice pDevice, HRESULT hrResult);
+    void CreatePartnershipComplete([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, HRESULT hrResult);
 }

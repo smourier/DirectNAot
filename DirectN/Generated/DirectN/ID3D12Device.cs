@@ -32,7 +32,7 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createcommandlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCommandList(uint nodeMask, D3D12_COMMAND_LIST_TYPE type, ID3D12CommandAllocator pCommandAllocator, ID3D12PipelineState? pInitialState, in Guid riid, out nint /* void */ ppCommandList);
+    HRESULT CreateCommandList(uint nodeMask, D3D12_COMMAND_LIST_TYPE type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12CommandAllocator>))] ID3D12CommandAllocator pCommandAllocator, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12PipelineState?>))] ID3D12PipelineState? pInitialState, in Guid riid, out nint /* void */ ppCommandList);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-checkfeaturesupport
     [PreserveSig]
@@ -59,19 +59,19 @@ public partial interface ID3D12Device : ID3D12Object
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createshaderresourceview
     [PreserveSig]
-    void CreateShaderResourceView(ID3D12Resource? pResource, nint /* optional D3D12_SHADER_RESOURCE_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
+    void CreateShaderResourceView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pResource, nint /* optional D3D12_SHADER_RESOURCE_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createunorderedaccessview
     [PreserveSig]
-    void CreateUnorderedAccessView(ID3D12Resource? pResource, ID3D12Resource? pCounterResource, nint /* optional D3D12_UNORDERED_ACCESS_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
+    void CreateUnorderedAccessView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pCounterResource, nint /* optional D3D12_UNORDERED_ACCESS_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createrendertargetview
     [PreserveSig]
-    void CreateRenderTargetView(ID3D12Resource? pResource, nint /* optional D3D12_RENDER_TARGET_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
+    void CreateRenderTargetView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pResource, nint /* optional D3D12_RENDER_TARGET_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createdepthstencilview
     [PreserveSig]
-    void CreateDepthStencilView(ID3D12Resource? pResource, nint /* optional D3D12_DEPTH_STENCIL_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
+    void CreateDepthStencilView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pResource, nint /* optional D3D12_DEPTH_STENCIL_VIEW_DESC* */ pDesc, D3D12_CPU_DESCRIPTOR_HANDLE DestDescriptor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createsampler
     [PreserveSig]
@@ -106,7 +106,7 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createplacedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePlacedResource(ID3D12Heap pHeap, ulong HeapOffset, in D3D12_RESOURCE_DESC pDesc, D3D12_RESOURCE_STATES InitialState, nint /* optional D3D12_CLEAR_VALUE* */ pOptimizedClearValue, in Guid riid, out nint /* void */ ppvResource);
+    HRESULT CreatePlacedResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Heap>))] ID3D12Heap pHeap, ulong HeapOffset, in D3D12_RESOURCE_DESC pDesc, D3D12_RESOURCE_STATES InitialState, nint /* optional D3D12_CLEAR_VALUE* */ pOptimizedClearValue, in Guid riid, out nint /* void */ ppvResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createreservedresource
     [PreserveSig]
@@ -116,7 +116,7 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createsharedhandle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSharedHandle(ID3D12DeviceChild pObject, nint /* optional SECURITY_ATTRIBUTES* */ pAttributes, uint Access, PWSTR Name, out HANDLE pHandle);
+    HRESULT CreateSharedHandle([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12DeviceChild>))] ID3D12DeviceChild pObject, nint /* optional SECURITY_ATTRIBUTES* */ pAttributes, uint Access, PWSTR Name, out HANDLE pHandle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-opensharedhandle
     [PreserveSig]
@@ -165,11 +165,11 @@ public partial interface ID3D12Device : ID3D12Object
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-createcommandsignature
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCommandSignature(in D3D12_COMMAND_SIGNATURE_DESC pDesc, ID3D12RootSignature? pRootSignature, in Guid riid, out nint /* void */ ppvCommandSignature);
+    HRESULT CreateCommandSignature(in D3D12_COMMAND_SIGNATURE_DESC pDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12RootSignature?>))] ID3D12RootSignature? pRootSignature, in Guid riid, out nint /* void */ ppvCommandSignature);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-getresourcetiling
     [PreserveSig]
-    void GetResourceTiling(ID3D12Resource pTiledResource, nint /* optional uint* */ pNumTilesForEntireResource, nint /* optional D3D12_PACKED_MIP_INFO* */ pPackedMipDesc, nint /* optional D3D12_TILE_SHAPE* */ pStandardTileShapeForNonPackedMips, nint /* optional uint* */ pNumSubresourceTilings, uint FirstSubresourceTilingToGet, [MarshalUsing(CountElementName = nameof(pNumSubresourceTilings))] out D3D12_SUBRESOURCE_TILING[] pSubresourceTilingsForNonPackedMips);
+    void GetResourceTiling([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pTiledResource, nint /* optional uint* */ pNumTilesForEntireResource, nint /* optional D3D12_PACKED_MIP_INFO* */ pPackedMipDesc, nint /* optional D3D12_TILE_SHAPE* */ pStandardTileShapeForNonPackedMips, nint /* optional uint* */ pNumSubresourceTilings, uint FirstSubresourceTilingToGet, [MarshalUsing(CountElementName = nameof(pNumSubresourceTilings))] out D3D12_SUBRESOURCE_TILING[] pSubresourceTilingsForNonPackedMips);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device-getadapterluid
     [PreserveSig]

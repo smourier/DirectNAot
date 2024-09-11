@@ -24,7 +24,7 @@ public partial interface IMSVidAudioRendererDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidaudiorendererdevices-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IMSVidAudioRenderer pDB);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidAudioRenderer>))] IMSVidAudioRenderer pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidaudiorendererdevices-remove
     [PreserveSig]

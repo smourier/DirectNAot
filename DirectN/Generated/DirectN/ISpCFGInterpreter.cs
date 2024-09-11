@@ -10,5 +10,5 @@ public partial interface ISpCFGInterpreter
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Interpret(ISpPhraseBuilder pPhrase, uint ulFirstElement, uint ulCountOfElements, ISpCFGInterpreterSite pSite);
+    HRESULT Interpret([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhraseBuilder>))] ISpPhraseBuilder pPhrase, uint ulFirstElement, uint ulCountOfElements, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpCFGInterpreterSite>))] ISpCFGInterpreterSite pSite);
 }

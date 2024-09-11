@@ -14,7 +14,7 @@ public partial interface IMSVidEVR : IMSVidVideoRenderer
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidevr-put_presenter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Presenter(IMFVideoPresenter pAllocPresent);
+    HRESULT put_Presenter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFVideoPresenter>))] IMFVideoPresenter pAllocPresent);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidevr-put_suppresseffects
     [PreserveSig]

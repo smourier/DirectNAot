@@ -22,7 +22,7 @@ public partial interface IKsPinPipe
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsSetPipe(IKsAllocatorEx KsAllocator);
+    HRESULT KsSetPipe([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsAllocatorEx>))] IKsAllocatorEx KsAllocator);
     
     [PreserveSig]
     uint KsGetPipeAllocatorFlag();

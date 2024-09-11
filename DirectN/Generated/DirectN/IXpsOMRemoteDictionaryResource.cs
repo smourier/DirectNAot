@@ -14,5 +14,5 @@ public partial interface IXpsOMRemoteDictionaryResource : IXpsOMResource
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomremotedictionaryresource-setdictionary
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDictionary(IXpsOMDictionary dictionary);
+    HRESULT SetDictionary([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDictionary>))] IXpsOMDictionary dictionary);
 }

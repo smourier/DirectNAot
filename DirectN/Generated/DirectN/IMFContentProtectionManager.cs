@@ -9,10 +9,10 @@ public partial interface IMFContentProtectionManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentprotectionmanager-beginenablecontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginEnableContent(IMFActivate pEnablerActivate, IMFTopology pTopo, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginEnableContent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFActivate>))] IMFActivate pEnablerActivate, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopo, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcontentprotectionmanager-endenablecontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndEnableContent(IMFAsyncResult pResult);
+    HRESULT EndEnableContent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
 }

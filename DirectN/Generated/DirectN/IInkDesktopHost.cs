@@ -9,7 +9,7 @@ public partial interface IInkDesktopHost
     // https://learn.microsoft.com/windows/win32/api/inkpresenterdesktop/nf-inkpresenterdesktop-iinkdesktophost-queueworkitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueueWorkItem(IInkHostWorkItem workItem);
+    HRESULT QueueWorkItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInkHostWorkItem>))] IInkHostWorkItem workItem);
     
     // https://learn.microsoft.com/windows/win32/api/inkpresenterdesktop/nf-inkpresenterdesktop-iinkdesktophost-createinkpresenter
     [PreserveSig]

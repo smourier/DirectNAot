@@ -15,5 +15,5 @@ public partial interface ITextServices2 : ITextServices
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxDrawD2D(ID2D1RenderTarget pRenderTarget, ref RECTL lprcBounds, ref RECT lprcUpdate, int lViewId);
+    HRESULT TxDrawD2D([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1RenderTarget>))] ID2D1RenderTarget pRenderTarget, ref RECTL lprcBounds, ref RECT lprcUpdate, int lViewId);
 }

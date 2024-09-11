@@ -8,7 +8,7 @@ public partial interface IWMReaderCallbackAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadercallbackadvanced-onstreamsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnStreamSample(ushort wStreamNum, ulong cnsSampleTime, ulong cnsSampleDuration, uint dwFlags, INSSBuffer pSample, nint pvContext);
+    HRESULT OnStreamSample(ushort wStreamNum, ulong cnsSampleTime, ulong cnsSampleDuration, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pSample, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadercallbackadvanced-ontime
     [PreserveSig]

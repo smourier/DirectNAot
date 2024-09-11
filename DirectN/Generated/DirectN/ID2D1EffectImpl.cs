@@ -9,7 +9,7 @@ public partial interface ID2D1EffectImpl
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(ID2D1EffectContext effectContext, ID2D1TransformGraph transformGraph);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1EffectContext>))] ID2D1EffectContext effectContext, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformGraph>))] ID2D1TransformGraph transformGraph);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-prepareforrender
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface ID2D1EffectImpl
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectimpl-setgraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGraph(ID2D1TransformGraph transformGraph);
+    HRESULT SetGraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformGraph>))] ID2D1TransformGraph transformGraph);
 }

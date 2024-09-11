@@ -10,5 +10,5 @@ public partial interface IGeometrySource2DInterop
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TryGetGeometryUsingFactory(ID2D1Factory factory, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Geometry>))] out ID2D1Geometry value);
+    HRESULT TryGetGeometryUsingFactory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Factory>))] ID2D1Factory factory, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Geometry>))] out ID2D1Geometry value);
 }

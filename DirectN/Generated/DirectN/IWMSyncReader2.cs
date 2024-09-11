@@ -18,7 +18,7 @@ public partial interface IWMSyncReader2 : IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader2-setallocateforoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocateForOutput(uint dwOutputNum, IWMReaderAllocatorEx pAllocator);
+    HRESULT SetAllocateForOutput(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMReaderAllocatorEx>))] IWMReaderAllocatorEx pAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader2-getallocateforoutput
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IWMSyncReader2 : IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader2-setallocateforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocateForStream(ushort wStreamNum, IWMReaderAllocatorEx pAllocator);
+    HRESULT SetAllocateForStream(ushort wStreamNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMReaderAllocatorEx>))] IWMReaderAllocatorEx pAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader2-getallocateforstream
     [PreserveSig]

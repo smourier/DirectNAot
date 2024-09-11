@@ -19,5 +19,5 @@ public partial interface ID2D1ComputeInfo : ID2D1RenderInfo
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1computeinfo-setresourcetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetResourceTexture(uint textureIndex, ID2D1ResourceTexture resourceTexture);
+    HRESULT SetResourceTexture(uint textureIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ResourceTexture>))] ID2D1ResourceTexture resourceTexture);
 }

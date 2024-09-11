@@ -9,12 +9,12 @@ public partial interface IMFSampleOutputStream
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsampleoutputstream-beginwritesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginWriteSample(IMFSample pSample, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginWriteSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsampleoutputstream-endwritesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndWriteSample(IMFAsyncResult pResult);
+    HRESULT EndWriteSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

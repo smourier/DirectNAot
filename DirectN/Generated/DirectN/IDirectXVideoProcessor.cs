@@ -34,5 +34,5 @@ public partial interface IDirectXVideoProcessor
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideoprocessor-videoprocessblt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT VideoProcessBlt(IDirect3DSurface9 pRenderTarget, in DXVA2_VideoProcessBltParams pBltParams, [In][MarshalUsing(CountElementName = nameof(NumSamples))] MediaFoundationDXVA2_VideoSample[] pSamples, uint NumSamples, nint /* optional HANDLE* */ pHandleComplete);
+    HRESULT VideoProcessBlt([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pRenderTarget, in DXVA2_VideoProcessBltParams pBltParams, [In][MarshalUsing(CountElementName = nameof(NumSamples))] MediaFoundationDXVA2_VideoSample[] pSamples, uint NumSamples, nint /* optional HANDLE* */ pHandleComplete);
 }

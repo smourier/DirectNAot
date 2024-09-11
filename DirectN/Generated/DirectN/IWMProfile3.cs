@@ -28,12 +28,12 @@ public partial interface IWMProfile3 : IWMProfile2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-removebandwidthsharing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveBandwidthSharing(IWMBandwidthSharing pBS);
+    HRESULT RemoveBandwidthSharing([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMBandwidthSharing>))] IWMBandwidthSharing pBS);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-addbandwidthsharing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddBandwidthSharing(IWMBandwidthSharing pBS);
+    HRESULT AddBandwidthSharing([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMBandwidthSharing>))] IWMBandwidthSharing pBS);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-createnewbandwidthsharing
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IWMProfile3 : IWMProfile2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-setstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamPrioritization(IWMStreamPrioritization pSP);
+    HRESULT SetStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStreamPrioritization>))] IWMStreamPrioritization pSP);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile3-removestreamprioritization
     [PreserveSig]

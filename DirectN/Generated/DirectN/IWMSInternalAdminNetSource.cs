@@ -8,7 +8,7 @@ public partial interface IWMSInternalAdminNetSource
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(nint pSharedNamespace, nint pNamespaceNode, INSNetSourceCreator pNetSourceCreator, BOOL fEmbeddedInServer);
+    HRESULT Initialize(nint pSharedNamespace, nint pNamespaceNode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSNetSourceCreator>))] INSNetSourceCreator pNetSourceCreator, BOOL fEmbeddedInServer);
     
     // https://learn.microsoft.com/windows/win32/api/wmsinternaladminnetsource/nn-wmsinternaladminnetsource-iwmsinternaladminnetsource
     [PreserveSig]

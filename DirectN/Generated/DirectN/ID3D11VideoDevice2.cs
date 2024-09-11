@@ -12,5 +12,5 @@ public partial interface ID3D11VideoDevice2 : ID3D11VideoDevice1
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NegotiateCryptoSessionKeyExchangeMT(ID3D11CryptoSession pCryptoSession, D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS flags, uint DataSize, nint pData);
+    HRESULT NegotiateCryptoSessionKeyExchangeMT([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11CryptoSession>))] ID3D11CryptoSession pCryptoSession, D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS flags, uint DataSize, nint pData);
 }

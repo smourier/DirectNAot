@@ -19,7 +19,7 @@ public partial interface IDXGIOutput1 : IDXGIOutput
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutput1-getdisplaysurfacedata1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDisplaySurfaceData1(IDXGIResource pDestination);
+    HRESULT GetDisplaySurfaceData1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIResource>))] IDXGIResource pDestination);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgioutput1-duplicateoutput
     [PreserveSig]

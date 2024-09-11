@@ -9,5 +9,5 @@ public partial interface IESEvents
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-iesevents-oneseventreceived
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnESEventReceived(Guid guidEventType, IESEvent pESEvent);
+    HRESULT OnESEventReceived(Guid guidEventType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IESEvent>))] IESEvent pESEvent);
 }

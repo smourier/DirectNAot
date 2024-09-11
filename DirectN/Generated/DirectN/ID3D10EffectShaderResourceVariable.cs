@@ -115,7 +115,7 @@ public partial struct ID3D10EffectShaderResourceVariable
     // ID3D10EffectShaderResourceVariable methods
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-setresource
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT SetResource(ID3D10ShaderResourceView? pResource) =>
+    public readonly unsafe HRESULT SetResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10ShaderResourceView?>))] ID3D10ShaderResourceView? pResource) =>
         ((delegate* unmanaged<ID3D10EffectShaderResourceVariable*,ID3D10ShaderResourceView?, HRESULT>)(((void**)*((void**)VTablePtr))[25]))((ID3D10EffectShaderResourceVariable*)VTablePtr, pResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-getresource

@@ -6,5 +6,5 @@ public partial interface ISpObjectTokenInit : ISpObjectToken
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitFromDataKey(PWSTR pszCategoryId, PWSTR pszTokenId, ISpDataKey? pDataKey);
+    HRESULT InitFromDataKey(PWSTR pszCategoryId, PWSTR pszTokenId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpDataKey?>))] ISpDataKey? pDataKey);
 }

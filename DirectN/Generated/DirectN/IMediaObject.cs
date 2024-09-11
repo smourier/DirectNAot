@@ -98,7 +98,7 @@ public partial interface IMediaObject
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-processinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessInput(uint dwInputStreamIndex, IMediaBuffer pBuffer, uint dwFlags, long rtTimestamp, long rtTimelength);
+    HRESULT ProcessInput(uint dwInputStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaBuffer>))] IMediaBuffer pBuffer, uint dwFlags, long rtTimestamp, long rtTimelength);
     
     // https://learn.microsoft.com/windows/win32/api/mediaobj/nf-mediaobj-imediaobject-processoutput
     [PreserveSig]

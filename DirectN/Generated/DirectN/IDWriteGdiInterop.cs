@@ -14,12 +14,12 @@ public partial interface IDWriteGdiInterop
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfonttologfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConvertFontToLOGFONT(IDWriteFont font, out LOGFONTW logFont, out BOOL isSystemFont);
+    HRESULT ConvertFontToLOGFONT([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFont>))] IDWriteFont font, out LOGFONTW logFont, out BOOL isSystemFont);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-convertfontfacetologfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConvertFontFaceToLOGFONT(IDWriteFontFace font, out LOGFONTW logFont);
+    HRESULT ConvertFontFaceToLOGFONT([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace>))] IDWriteFontFace font, out LOGFONTW logFont);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritegdiinterop-createfontfacefromhdc
     [PreserveSig]

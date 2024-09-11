@@ -122,7 +122,7 @@ public partial interface IXFeed
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Merge(IStream pStream, PWSTR pszUrl);
+    HRESULT Merge([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, PWSTR pszUrl);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

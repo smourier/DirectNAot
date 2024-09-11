@@ -8,7 +8,7 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_isidentical
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_isIdentical(IWMPMedia pIWMPMedia, ref VARIANT_BOOL pvbool);
+    HRESULT get_isIdentical([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia, ref VARIANT_BOOL pvbool);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_sourceurl
     [PreserveSig]
@@ -88,7 +88,7 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-ismemberof
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isMemberOf(IWMPPlaylist pPlaylist, ref VARIANT_BOOL pvarfIsMemberOf);
+    HRESULT isMemberOf([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pPlaylist, ref VARIANT_BOOL pvarfIsMemberOf);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-isreadonlyitem
     [PreserveSig]

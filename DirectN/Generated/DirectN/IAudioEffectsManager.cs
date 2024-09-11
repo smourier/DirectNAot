@@ -8,12 +8,12 @@ public partial interface IAudioEffectsManager
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioeffectsmanager-registeraudioeffectschangednotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterAudioEffectsChangedNotificationCallback(IAudioEffectsChangedNotificationClient client);
+    HRESULT RegisterAudioEffectsChangedNotificationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioEffectsChangedNotificationClient>))] IAudioEffectsChangedNotificationClient client);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioeffectsmanager-unregisteraudioeffectschangednotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterAudioEffectsChangedNotificationCallback(IAudioEffectsChangedNotificationClient client);
+    HRESULT UnregisterAudioEffectsChangedNotificationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioEffectsChangedNotificationClient>))] IAudioEffectsChangedNotificationClient client);
     
     // https://learn.microsoft.com/windows/win32/api/audioclient/nf-audioclient-iaudioeffectsmanager-getaudioeffects
     [PreserveSig]

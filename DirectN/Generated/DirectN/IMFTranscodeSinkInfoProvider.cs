@@ -14,12 +14,12 @@ public partial interface IMFTranscodeSinkInfoProvider
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodesinkinfoprovider-setoutputbytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputByteStream(IMFActivate pByteStreamActivate);
+    HRESULT SetOutputByteStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFActivate>))] IMFActivate pByteStreamActivate);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodesinkinfoprovider-setprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetProfile(IMFTranscodeProfile pProfile);
+    HRESULT SetProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTranscodeProfile>))] IMFTranscodeProfile pProfile);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftranscodesinkinfoprovider-getsinkinfo
     [PreserveSig]

@@ -24,7 +24,7 @@ public partial interface IMFCapturePreviewSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-setsamplecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSampleCallback(uint dwStreamSinkIndex, IMFCaptureEngineOnSampleCallback pCallback);
+    HRESULT SetSampleCallback(uint dwStreamSinkIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCaptureEngineOnSampleCallback>))] IMFCaptureEngineOnSampleCallback pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-getmirrorstate
     [PreserveSig]
@@ -49,5 +49,5 @@ public partial interface IMFCapturePreviewSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturepreviewsink-setcustomsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCustomSink(IMFMediaSink pMediaSink);
+    HRESULT SetCustomSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSink>))] IMFMediaSink pMediaSink);
 }

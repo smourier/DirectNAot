@@ -34,7 +34,7 @@ public partial interface IDirectSoundBuffer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IDirectSound pDirectSound, in DSBUFFERDESC pcDSBufferDesc);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] IDirectSound pDirectSound, in DSBUFFERDESC pcDSBufferDesc);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -28,7 +28,7 @@ public partial interface IWMPPlugin
     // https://learn.microsoft.com/windows/win32/api/wmpservices/nf-wmpservices-iwmpplugin-advisewmpservices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AdviseWMPServices(IWMPServices pWMPServices);
+    HRESULT AdviseWMPServices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPServices>))] IWMPServices pWMPServices);
     
     // https://learn.microsoft.com/windows/win32/api/wmpservices/nf-wmpservices-iwmpplugin-unadvisewmpservices
     [PreserveSig]

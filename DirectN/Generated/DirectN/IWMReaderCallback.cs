@@ -8,5 +8,5 @@ public partial interface IWMReaderCallback : IWMStatusCallback
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadercallback-onsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSample(uint dwOutputNum, ulong cnsSampleTime, ulong cnsSampleDuration, uint dwFlags, INSSBuffer pSample, nint pvContext);
+    HRESULT OnSample(uint dwOutputNum, ulong cnsSampleTime, ulong cnsSampleDuration, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pSample, nint pvContext);
 }

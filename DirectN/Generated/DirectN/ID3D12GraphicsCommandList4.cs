@@ -15,11 +15,11 @@ public partial interface ID3D12GraphicsCommandList4 : ID3D12GraphicsCommandList3
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-initializemetacommand
     [PreserveSig]
-    void InitializeMetaCommand(ID3D12MetaCommand pMetaCommand, nint /* optional void* */ pInitializationParametersData, nuint InitializationParametersDataSizeInBytes);
+    void InitializeMetaCommand([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12MetaCommand>))] ID3D12MetaCommand pMetaCommand, nint /* optional void* */ pInitializationParametersData, nuint InitializationParametersDataSizeInBytes);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-executemetacommand
     [PreserveSig]
-    void ExecuteMetaCommand(ID3D12MetaCommand pMetaCommand, nint /* optional void* */ pExecutionParametersData, nuint ExecutionParametersDataSizeInBytes);
+    void ExecuteMetaCommand([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12MetaCommand>))] ID3D12MetaCommand pMetaCommand, nint /* optional void* */ pExecutionParametersData, nuint ExecutionParametersDataSizeInBytes);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-buildraytracingaccelerationstructure
     [PreserveSig]
@@ -35,7 +35,7 @@ public partial interface ID3D12GraphicsCommandList4 : ID3D12GraphicsCommandList3
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-setpipelinestate1
     [PreserveSig]
-    void SetPipelineState1(ID3D12StateObject pStateObject);
+    void SetPipelineState1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12StateObject>))] ID3D12StateObject pStateObject);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist4-dispatchrays
     [PreserveSig]

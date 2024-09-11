@@ -8,7 +8,7 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-setcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCallback(IWMPContentPartnerCallback? pCallback);
+    HRESULT SetCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentPartnerCallback?>))] IWMPContentPartnerCallback? pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-notify
     [PreserveSig]
@@ -38,12 +38,12 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-canbuysilent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CanBuySilent(IWMPContentContainerList? pInfo, out BSTR pbstrTotalPrice, out VARIANT_BOOL pSilentOK);
+    HRESULT CanBuySilent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainerList?>))] IWMPContentContainerList? pInfo, out BSTR pbstrTotalPrice, out VARIANT_BOOL pSilentOK);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-buy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Buy(IWMPContentContainerList? pInfo, uint cookie);
+    HRESULT Buy([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainerList?>))] IWMPContentContainerList? pInfo, uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-getstreamingurl
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-download
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Download(IWMPContentContainerList? pInfo, uint cookie);
+    HRESULT Download([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainerList?>))] IWMPContentContainerList? pInfo, uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-downloadtrackcomplete
     [PreserveSig]
@@ -113,7 +113,7 @@ public partial interface IWMPContentPartner
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-comparecontainerlistprices
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompareContainerListPrices(IWMPContentContainerList? pListBase, IWMPContentContainerList? pListCompare, out int pResult);
+    HRESULT CompareContainerListPrices([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainerList?>))] IWMPContentContainerList? pListBase, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPContentContainerList?>))] IWMPContentContainerList? pListCompare, out int pResult);
     
     // https://learn.microsoft.com/windows/win32/api/contentpartner/nf-contentpartner-iwmpcontentpartner-verifypermission
     [PreserveSig]

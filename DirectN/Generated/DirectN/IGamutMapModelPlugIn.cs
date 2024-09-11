@@ -8,7 +8,7 @@ public partial interface IGamutMapModelPlugIn
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-igamutmapmodelplugin-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(BSTR bstrXml, IDeviceModelPlugIn pSrcPlugIn, IDeviceModelPlugIn pDestPlugIn, in GamutBoundaryDescription pSrcGBD, in GamutBoundaryDescription pDestGBD);
+    HRESULT Initialize(BSTR bstrXml, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeviceModelPlugIn>))] IDeviceModelPlugIn pSrcPlugIn, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDeviceModelPlugIn>))] IDeviceModelPlugIn pDestPlugIn, in GamutBoundaryDescription pSrcGBD, in GamutBoundaryDescription pDestGBD);
     
     // https://learn.microsoft.com/windows/win32/api/wcsplugin/nf-wcsplugin-igamutmapmodelplugin-sourcetodestinationappearancecolors
     [PreserveSig]

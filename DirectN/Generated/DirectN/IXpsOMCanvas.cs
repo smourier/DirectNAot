@@ -54,7 +54,7 @@ public partial interface IXpsOMCanvas : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-setdictionarylocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDictionaryLocal(IXpsOMDictionary resourceDictionary);
+    HRESULT SetDictionaryLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDictionary>))] IXpsOMDictionary resourceDictionary);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-getdictionaryresource
     [PreserveSig]
@@ -64,7 +64,7 @@ public partial interface IXpsOMCanvas : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-setdictionaryresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDictionaryResource(IXpsOMRemoteDictionaryResource remoteDictionaryResource);
+    HRESULT SetDictionaryResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMRemoteDictionaryResource>))] IXpsOMRemoteDictionaryResource remoteDictionaryResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomcanvas-clone
     [PreserveSig]

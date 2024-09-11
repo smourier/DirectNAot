@@ -18,7 +18,7 @@ public partial interface IReferenceTracker
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetracker-findtrackertargets
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindTrackerTargets(IFindReferenceTargetsCallback callback);
+    HRESULT FindTrackerTargets([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFindReferenceTargetsCallback>))] IFindReferenceTargetsCallback callback);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetracker-getreferencetrackermanager
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface ISpeechRecognizer : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_Recognizer(ISpeechObjectToken? Recognizer);
+    HRESULT putref_Recognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken?>))] ISpeechObjectToken? Recognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,7 +22,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_AudioInput(ISpeechObjectToken? AudioInput);
+    HRESULT putref_AudioInput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken?>))] ISpeechObjectToken? AudioInput);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -30,7 +30,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_AudioInputStream(ISpeechBaseStream? AudioInputStream);
+    HRESULT putref_AudioInputStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechBaseStream?>))] ISpeechBaseStream? AudioInputStream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -54,7 +54,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_Profile(ISpeechObjectToken? Profile);
+    HRESULT putref_Profile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechObjectToken?>))] ISpeechObjectToken? Profile);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -24,22 +24,22 @@ public partial interface IXpsOMDictionary
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getbykey
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetByKey(PWSTR key, IXpsOMShareable beforeEntry, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] out IXpsOMShareable entry);
+    HRESULT GetByKey(PWSTR key, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] IXpsOMShareable beforeEntry, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] out IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-getindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetIndex(IXpsOMShareable entry, out uint index);
+    HRESULT GetIndex([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] IXpsOMShareable entry, out uint index);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-append
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Append(PWSTR key, IXpsOMShareable entry);
+    HRESULT Append(PWSTR key, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-insertat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertAt(uint index, PWSTR key, IXpsOMShareable entry);
+    HRESULT InsertAt(uint index, PWSTR key, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-removeat
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IXpsOMDictionary
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-setat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAt(uint index, PWSTR key, IXpsOMShareable entry);
+    HRESULT SetAt(uint index, PWSTR key, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMShareable>))] IXpsOMShareable entry);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdictionary-clone
     [PreserveSig]

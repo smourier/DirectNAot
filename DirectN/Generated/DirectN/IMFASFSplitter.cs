@@ -9,7 +9,7 @@ public partial interface IMFASFSplitter
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IMFASFContentInfo pIContentInfo);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-setflags
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IMFASFSplitter
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-parsedata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ParseData(IMFMediaBuffer pIBuffer, uint cbBufferOffset, uint cbLength);
+    HRESULT ParseData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pIBuffer, uint cbBufferOffset, uint cbLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfsplitter-getnextsample
     [PreserveSig]

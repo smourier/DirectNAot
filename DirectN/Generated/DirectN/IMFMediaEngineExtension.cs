@@ -14,7 +14,7 @@ public partial interface IMFMediaEngineExtension
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineextension-begincreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObject(BSTR bstrURL, IMFByteStream? pByteStream, MF_OBJECT_TYPE type, out nint ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObject(BSTR bstrURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream?>))] IMFByteStream? pByteStream, MF_OBJECT_TYPE type, out nint ppIUnknownCancelCookie, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineextension-cancelobjectcreation
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface IMFMediaEngineExtension
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineextension-endcreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndCreateObject(IMFAsyncResult pResult, out nint ppObject);
+    HRESULT EndCreateObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out nint ppObject);
 }

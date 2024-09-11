@@ -22,7 +22,7 @@ public partial interface IDirectSoundCaptureBuffer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IDirectSoundCapture pDirectSoundCapture, in DSCBUFFERDESC pcDSCBufferDesc);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundCapture>))] IDirectSoundCapture pDirectSoundCapture, in DSCBUFFERDESC pcDSCBufferDesc);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

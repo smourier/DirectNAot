@@ -39,7 +39,7 @@ public partial interface IDataObject
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-idataobject-dadvise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DAdvise(in FORMATETC pformatetc, uint advf, IAdviseSink pAdvSink, out uint pdwConnection);
+    HRESULT DAdvise(in FORMATETC pformatetc, uint advf, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAdviseSink>))] IAdviseSink pAdvSink, out uint pdwConnection);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-idataobject-dunadvise
     [PreserveSig]

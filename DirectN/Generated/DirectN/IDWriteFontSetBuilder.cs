@@ -8,17 +8,17 @@ public partial interface IDWriteFontSetBuilder
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-addfontfacereference(idwritefontfacereference)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFontFaceReference(IDWriteFontFaceReference fontFaceReference, [In][MarshalUsing(CountElementName = nameof(propertyCount))] DWRITE_FONT_PROPERTY[] properties, uint propertyCount);
+    HRESULT AddFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] IDWriteFontFaceReference fontFaceReference, [In][MarshalUsing(CountElementName = nameof(propertyCount))] DWRITE_FONT_PROPERTY[] properties, uint propertyCount);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-addfontfacereference(idwritefontfacereference)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFontFaceReference(IDWriteFontFaceReference fontFaceReference);
+    HRESULT AddFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] IDWriteFontFaceReference fontFaceReference);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-addfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFontSet(IDWriteFontSet fontSet);
+    HRESULT AddFontSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet>))] IDWriteFontSet fontSet);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontsetbuilder-createfontset
     [PreserveSig]

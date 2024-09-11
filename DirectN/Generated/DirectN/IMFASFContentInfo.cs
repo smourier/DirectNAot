@@ -9,17 +9,17 @@ public partial interface IMFASFContentInfo
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-getheadersize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHeaderSize(IMFMediaBuffer pIStartOfContent, out ulong cbHeaderSize);
+    HRESULT GetHeaderSize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pIStartOfContent, out ulong cbHeaderSize);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-parseheader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ParseHeader(IMFMediaBuffer pIHeaderBuffer, ulong cbOffsetWithinHeader);
+    HRESULT ParseHeader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pIHeaderBuffer, ulong cbOffsetWithinHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-generateheader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateHeader(IMFMediaBuffer pIHeader, out uint pcbHeader);
+    HRESULT GenerateHeader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pIHeader, out uint pcbHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-getprofile
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IMFASFContentInfo
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-setprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetProfile(IMFASFProfile pIProfile);
+    HRESULT SetProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFProfile>))] IMFASFProfile pIProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfcontentinfo-generatepresentationdescriptor
     [PreserveSig]

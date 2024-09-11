@@ -29,7 +29,7 @@ public partial interface IDirectXVideoDecoder
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-beginframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginFrame(IDirect3DSurface9 pRenderTarget, nint /* optional void* */ pvPVPData);
+    HRESULT BeginFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pRenderTarget, nint /* optional void* */ pvPVPData);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-endframe
     [PreserveSig]

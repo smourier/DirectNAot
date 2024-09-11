@@ -13,10 +13,10 @@ public partial interface ID3DX11Scan
     // https://learn.microsoft.com/windows/win32/api/d3dcsx/nf-d3dcsx-id3dx11scan-scan
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Scan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, ID3D11UnorderedAccessView pSrc, ID3D11UnorderedAccessView pDst);
+    HRESULT Scan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pSrc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pDst);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcsx/nf-d3dcsx-id3dx11scan-multiscan
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Multiscan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, uint ElementScanPitch, uint ScanCount, ID3D11UnorderedAccessView pSrc, ID3D11UnorderedAccessView pDst);
+    HRESULT Multiscan(D3DX11_SCAN_DATA_TYPE ElementType, D3DX11_SCAN_OPCODE OpCode, uint ElementScanSize, uint ElementScanPitch, uint ScanCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pSrc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pDst);
 }

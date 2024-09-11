@@ -9,5 +9,5 @@ public partial interface IMFSensorActivitiesReportCallback
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensoractivitiesreportcallback-onactivitiesreport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnActivitiesReport(IMFSensorActivitiesReport sensorActivitiesReport);
+    HRESULT OnActivitiesReport([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorActivitiesReport>))] IMFSensorActivitiesReport sensorActivitiesReport);
 }

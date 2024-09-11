@@ -7,5 +7,5 @@ public partial interface IFindReferenceTargetsCallback
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FoundTrackerTarget(IReferenceTrackerTarget target);
+    HRESULT FoundTrackerTarget([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceTrackerTarget>))] IReferenceTrackerTarget target);
 }

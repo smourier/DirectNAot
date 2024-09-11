@@ -9,5 +9,5 @@ public partial interface IAMFilterGraphCallback
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamfiltergraphcallback-unabletorender
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnableToRender(IPin pPin);
+    HRESULT UnableToRender([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin);
 }

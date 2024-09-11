@@ -24,17 +24,17 @@ public partial interface IAMDirectSound
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-releasedirectsoundinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReleaseDirectSoundInterface(IDirectSound lpds);
+    HRESULT ReleaseDirectSoundInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] IDirectSound lpds);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-releaseprimarybufferinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReleasePrimaryBufferInterface(IDirectSoundBuffer lpdsb);
+    HRESULT ReleasePrimaryBufferInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] IDirectSoundBuffer lpdsb);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-releasesecondarybufferinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReleaseSecondaryBufferInterface(IDirectSoundBuffer lpdsb);
+    HRESULT ReleaseSecondaryBufferInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] IDirectSoundBuffer lpdsb);
     
     // https://learn.microsoft.com/windows/win32/api/amaudio/nf-amaudio-iamdirectsound-setfocuswindow
     [PreserveSig]

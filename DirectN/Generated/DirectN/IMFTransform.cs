@@ -69,12 +69,12 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-setinputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputType(uint dwInputStreamID, IMFMediaType pType, uint dwFlags);
+    HRESULT SetInputType(uint dwInputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pType, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-setoutputtype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputType(uint dwOutputStreamID, IMFMediaType pType, uint dwFlags);
+    HRESULT SetOutputType(uint dwOutputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pType, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-getinputcurrenttype
     [PreserveSig]
@@ -104,7 +104,7 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-processevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessEvent(uint dwInputStreamID, IMFMediaEvent pEvent);
+    HRESULT ProcessEvent(uint dwInputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-processmessage
     [PreserveSig]
@@ -114,7 +114,7 @@ public partial interface IMFTransform
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-processinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessInput(uint dwInputStreamID, IMFSample pSample, uint dwFlags);
+    HRESULT ProcessInput(uint dwInputStreamID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imftransform-processoutput
     [PreserveSig]

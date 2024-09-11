@@ -31,10 +31,10 @@ public partial interface ID3DX11FFT
     // https://learn.microsoft.com/windows/win32/api/d3dcsx/nf-d3dcsx-id3dx11fft-forwardtransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ForwardTransform(ID3D11UnorderedAccessView pInputBuffer, ref ID3D11UnorderedAccessView ppOutputBuffer);
+    HRESULT ForwardTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pInputBuffer, ref ID3D11UnorderedAccessView ppOutputBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcsx/nf-d3dcsx-id3dx11fft-inversetransform
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InverseTransform(ID3D11UnorderedAccessView pInputBuffer, ref ID3D11UnorderedAccessView ppOutputBuffer);
+    HRESULT InverseTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11UnorderedAccessView>))] ID3D11UnorderedAccessView pInputBuffer, ref ID3D11UnorderedAccessView ppOutputBuffer);
 }

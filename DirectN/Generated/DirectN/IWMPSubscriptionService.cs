@@ -8,17 +8,17 @@ public partial interface IWMPSubscriptionService
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowplay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowPlay(HWND hwnd, IWMPMedia pMedia, ref BOOL pfAllowPlay);
+    HRESULT allowPlay(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pMedia, ref BOOL pfAllowPlay);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowcdburn
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowCDBurn(HWND hwnd, IWMPPlaylist pPlaylist, ref BOOL pfAllowBurn);
+    HRESULT allowCDBurn(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pPlaylist, ref BOOL pfAllowBurn);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-allowpdatransfer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT allowPDATransfer(HWND hwnd, IWMPPlaylist pPlaylist, ref BOOL pfAllowTransfer);
+    HRESULT allowPDATransfer(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pPlaylist, ref BOOL pfAllowTransfer);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice-startbackgroundprocessing
     [PreserveSig]

@@ -8,35 +8,35 @@ public partial interface ITuneRequestInfo
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getlocatordata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocatorData(ITuneRequest Request);
+    HRESULT GetLocatorData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest Request);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getcomponentdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetComponentData(ITuneRequest CurrentRequest);
+    HRESULT GetComponentData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-createcomponentlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateComponentList(ITuneRequest CurrentRequest);
+    HRESULT CreateComponentList([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getnextprogram
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextProgram(ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
+    HRESULT GetNextProgram([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getpreviousprogram
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPreviousProgram(ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
+    HRESULT GetPreviousProgram([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getnextlocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextLocator(ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
+    HRESULT GetNextLocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-itunerequestinfo-getpreviouslocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPreviousLocator(ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
+    HRESULT GetPreviousLocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest CurrentRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] out ITuneRequest TuneRequest);
 }

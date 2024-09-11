@@ -8,7 +8,7 @@ public partial interface IMpeg2Stream
     // https://learn.microsoft.com/windows/win32/api/mpeg2data/nf-mpeg2data-impeg2stream-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(MPEG_REQUEST_TYPE requestType, IMpeg2Data pMpeg2Data, in MPEG_CONTEXT pContext, ushort pid, byte tid, in MPEG2_FILTER pFilter, HANDLE hDataReadyEvent);
+    HRESULT Initialize(MPEG_REQUEST_TYPE requestType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMpeg2Data>))] IMpeg2Data pMpeg2Data, in MPEG_CONTEXT pContext, ushort pid, byte tid, in MPEG2_FILTER pFilter, HANDLE hDataReadyEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mpeg2data/nf-mpeg2data-impeg2stream-supplydatabuffer
     [PreserveSig]

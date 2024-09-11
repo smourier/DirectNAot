@@ -9,7 +9,7 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setddrawobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDDrawObject(IDirectDraw pDDrawObject);
+    HRESULT SetDDrawObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw pDDrawObject);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-getddrawobject
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setddrawsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDDrawSurface(IDirectDrawSurface pDDrawSurface);
+    HRESULT SetDDrawSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] IDirectDrawSurface pDDrawSurface);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-getddrawsurface
     [PreserveSig]
@@ -39,5 +39,5 @@ public partial interface IDDrawExclModeVideo
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iddrawexclmodevideo-setcallbackinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCallbackInterface(IDDrawExclModeVideoCallback pCallback, uint dwFlags);
+    HRESULT SetCallbackInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDDrawExclModeVideoCallback>))] IDDrawExclModeVideoCallback pCallback, uint dwFlags);
 }

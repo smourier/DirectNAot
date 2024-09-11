@@ -13,12 +13,12 @@ public partial interface IWMPMediaCollection2 : IWMPMediaCollection
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getplaylistbyquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getPlaylistByQuery(IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPlaylist);
+    HRESULT getPlaylistByQuery([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPQuery>))] IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getstringcollectionbyquery
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getStringCollectionByQuery(BSTR bstrAttribute, IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPStringCollection>))] out IWMPStringCollection ppStringCollection);
+    HRESULT getStringCollectionByQuery(BSTR bstrAttribute, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPQuery>))] IWMPQuery pQuery, BSTR bstrMediaType, BSTR bstrSortAttribute, VARIANT_BOOL fSortAscending, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPStringCollection>))] out IWMPStringCollection ppStringCollection);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection2-getbyattributeandmediatype
     [PreserveSig]

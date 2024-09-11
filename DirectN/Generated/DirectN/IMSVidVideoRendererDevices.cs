@@ -24,7 +24,7 @@ public partial interface IMSVidVideoRendererDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorendererdevices-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IMSVidVideoRenderer pDB);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidVideoRenderer>))] IMSVidVideoRenderer pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorendererdevices-remove
     [PreserveSig]

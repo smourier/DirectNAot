@@ -8,7 +8,7 @@ public partial interface ISCPSession
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsession-beginsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginSession(IMDSPDevice? pIDevice, nint /* byte array */ pCtx, uint dwSizeCtx);
+    HRESULT BeginSession([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPDevice?>))] IMDSPDevice? pIDevice, nint /* byte array */ pCtx, uint dwSizeCtx);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iscpsession-endsession
     [PreserveSig]

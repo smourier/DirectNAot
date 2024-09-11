@@ -23,7 +23,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createtransformnodefromeffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTransformNodeFromEffect(ID2D1Effect effect, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformNode>))] out ID2D1TransformNode transformNode);
+    HRESULT CreateTransformNodeFromEffect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Effect>))] ID2D1Effect effect, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TransformNode>))] out ID2D1TransformNode transformNode);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createblendtransform
     [PreserveSig]
@@ -98,7 +98,7 @@ public partial interface ID2D1EffectContext
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-createcolorcontextfromwiccolorcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateColorContextFromWicColorContext(IWICColorContext wicColorContext, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ColorContext>))] out ID2D1ColorContext colorContext);
+    HRESULT CreateColorContextFromWicColorContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICColorContext>))] IWICColorContext wicColorContext, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ColorContext>))] out ID2D1ColorContext colorContext);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1effectcontext-checkfeaturesupport
     [PreserveSig]

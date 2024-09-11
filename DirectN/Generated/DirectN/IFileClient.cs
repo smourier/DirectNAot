@@ -10,9 +10,9 @@ public partial interface IFileClient
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Write(IFileIo pFio);
+    HRESULT Write([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFileIo>))] IFileIo pFio);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(IFileIo pFio);
+    HRESULT Read([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFileIo>))] IFileIo pFio);
 }

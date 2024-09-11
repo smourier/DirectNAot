@@ -14,7 +14,7 @@ public partial interface IOpcSignatureCustomObjectSet
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectset-delete
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Delete(IOpcSignatureCustomObject customObject);
+    HRESULT Delete([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcSignatureCustomObject>))] IOpcSignatureCustomObject customObject);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcsignaturecustomobjectset-getenumerator
     [PreserveSig]

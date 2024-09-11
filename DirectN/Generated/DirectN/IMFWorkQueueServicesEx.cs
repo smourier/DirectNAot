@@ -14,7 +14,7 @@ public partial interface IMFWorkQueueServicesEx : IMFWorkQueueServices
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservicesex-beginregisterplatformworkqueuewithmmcssex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginRegisterPlatformWorkQueueWithMMCSSEx(uint dwPlatformWorkQueue, PWSTR wszClass, uint dwTaskId, int lPriority, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginRegisterPlatformWorkQueueWithMMCSSEx(uint dwPlatformWorkQueue, PWSTR wszClass, uint dwTaskId, int lPriority, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservicesex-getplatformworkqueuemmcsspriority
     [PreserveSig]

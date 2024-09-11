@@ -9,5 +9,5 @@ public partial interface IMFDeviceTransformCallback
     // https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-imfdevicetransformcallback-onbuffersent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnBufferSent(IMFAttributes pCallbackAttributes, uint pinId);
+    HRESULT OnBufferSent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pCallbackAttributes, uint pinId);
 }

@@ -8,5 +8,5 @@ public partial interface IMSVidTunerEvent : IMSVidInputDeviceEvent
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtunerevent-tunechanged
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TuneChanged(IMSVidTuner lpd);
+    HRESULT TuneChanged([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidTuner>))] IMSVidTuner lpd);
 }

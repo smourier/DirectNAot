@@ -9,17 +9,17 @@ public partial interface IGraphConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-reconnect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reconnect(IPin pOutputPin, IPin pInputPin, in AM_MEDIA_TYPE pmtFirstConnection, IBaseFilter pUsingFilter, HANDLE hAbortEvent, uint dwFlags);
+    HRESULT Reconnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pOutputPin, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pInputPin, in AM_MEDIA_TYPE pmtFirstConnection, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pUsingFilter, HANDLE hAbortEvent, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-reconfigure
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reconfigure(IGraphConfigCallback pCallback, nint pvContext, uint dwFlags, HANDLE hAbortEvent);
+    HRESULT Reconfigure([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphConfigCallback>))] IGraphConfigCallback pCallback, nint pvContext, uint dwFlags, HANDLE hAbortEvent);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-addfiltertocache
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFilterToCache(IBaseFilter pFilter);
+    HRESULT AddFilterToCache([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-enumcachefilter
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IGraphConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-removefilterfromcache
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveFilterFromCache(IBaseFilter pFilter);
+    HRESULT RemoveFilterFromCache([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-getstarttime
     [PreserveSig]
@@ -39,20 +39,20 @@ public partial interface IGraphConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-pushthroughdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PushThroughData(IPin pOutputPin, IPinConnection pConnection, HANDLE hEventAbort);
+    HRESULT PushThroughData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pOutputPin, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPinConnection>))] IPinConnection pConnection, HANDLE hEventAbort);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-setfilterflags
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFilterFlags(IBaseFilter pFilter, uint dwFlags);
+    HRESULT SetFilterFlags([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-getfilterflags
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFilterFlags(IBaseFilter pFilter, out uint pdwFlags);
+    HRESULT GetFilterFlags([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter, out uint pdwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphconfig-removefilterex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveFilterEx(IBaseFilter pFilter, uint Flags);
+    HRESULT RemoveFilterEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter, uint Flags);
 }

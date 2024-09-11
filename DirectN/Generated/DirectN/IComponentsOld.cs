@@ -22,7 +22,7 @@ public partial interface IComponentsOld : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IComponent Component, out VARIANT NewIndex);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] IComponent Component, out VARIANT NewIndex);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

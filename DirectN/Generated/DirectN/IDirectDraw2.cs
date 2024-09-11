@@ -22,7 +22,7 @@ public partial interface IDirectDraw2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSurface(IDirectDrawSurface param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface param1);
+    HRESULT DuplicateSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] IDirectDrawSurface param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] out IDirectDrawSurface param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

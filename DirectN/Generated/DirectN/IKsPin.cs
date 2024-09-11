@@ -28,7 +28,7 @@ public partial interface IKsPin
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsDeliver(IMediaSample Sample, uint Flags);
+    HRESULT KsDeliver([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample Sample, uint Flags);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -40,7 +40,7 @@ public partial interface IKsPin
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsReceiveAllocator(IMemAllocator? MemAllocator);
+    HRESULT KsReceiveAllocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator?>))] IMemAllocator? MemAllocator);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

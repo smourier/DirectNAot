@@ -19,12 +19,12 @@ public partial interface ITocEntryList
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentrylist-addentry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntry(ITocEntry pEntry, ref uint pdwEntryIndex);
+    HRESULT AddEntry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocEntry>))] ITocEntry pEntry, ref uint pdwEntryIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentrylist-addentrybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntryByIndex(uint dwEntryIndex, ITocEntry pEntry);
+    HRESULT AddEntryByIndex(uint dwEntryIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocEntry>))] ITocEntry pEntry);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocentrylist-removeentrybyindex
     [PreserveSig]

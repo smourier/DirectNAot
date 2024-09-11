@@ -9,5 +9,5 @@ public partial interface IDirectManipulationCompositor2 : IDirectManipulationCom
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor2-addcontentwithcrossprocesschaining
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddContentWithCrossProcessChaining(IDirectManipulationPrimaryContent content, nint device, nint parentVisual, nint childVisual);
+    HRESULT AddContentWithCrossProcessChaining([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationPrimaryContent>))] IDirectManipulationPrimaryContent content, nint device, nint parentVisual, nint childVisual);
 }

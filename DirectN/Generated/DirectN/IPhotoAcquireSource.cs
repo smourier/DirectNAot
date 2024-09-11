@@ -18,7 +18,7 @@ public partial interface IPhotoAcquireSource
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-initializeitemlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeItemList(BOOL fForceEnumeration, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB, nint /* optional uint* */ pnItemCount);
+    HRESULT InitializeItemList(BOOL fForceEnumeration, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireProgressCB?>))] IPhotoAcquireProgressCB? pPhotoAcquireProgressCB, nint /* optional uint* */ pnItemCount);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquiresource-getitemcount
     [PreserveSig]

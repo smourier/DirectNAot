@@ -19,7 +19,7 @@ public partial interface ISBE2Crossbar
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2crossbar-setoutputprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputProfile(ISBE2MediaTypeProfile pProfile, out uint pcOutputPins, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppOutputPins);
+    HRESULT SetOutputProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISBE2MediaTypeProfile>))] ISBE2MediaTypeProfile pProfile, out uint pcOutputPins, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] out IPin ppOutputPins);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-isbe2crossbar-enumstreams
     [PreserveSig]

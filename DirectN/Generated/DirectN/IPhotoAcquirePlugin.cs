@@ -8,12 +8,12 @@ public partial interface IPhotoAcquirePlugin
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireplugin-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IPhotoAcquireSource? pPhotoAcquireSource, IPhotoAcquireProgressCB? pPhotoAcquireProgressCB);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireSource?>))] IPhotoAcquireSource? pPhotoAcquireSource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireProgressCB?>))] IPhotoAcquireProgressCB? pPhotoAcquireProgressCB);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireplugin-processitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessItem(uint dwAcquireStage, IPhotoAcquireItem? pPhotoAcquireItem, IStream? pOriginalItemStream, PWSTR pszFinalFilename, IPropertyStore? pPropertyStore);
+    HRESULT ProcessItem(uint dwAcquireStage, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoAcquireItem?>))] IPhotoAcquireItem? pPhotoAcquireItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream?>))] IStream? pOriginalItemStream, PWSTR pszFinalFilename, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore?>))] IPropertyStore? pPropertyStore);
     
     // https://learn.microsoft.com/windows/win32/api/photoacquire/nf-photoacquire-iphotoacquireplugin-transfercomplete
     [PreserveSig]

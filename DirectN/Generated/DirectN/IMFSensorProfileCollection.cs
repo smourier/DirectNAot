@@ -17,7 +17,7 @@ public partial interface IMFSensorProfileCollection
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-addprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddProfile(IMFSensorProfile pProfile);
+    HRESULT AddProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSensorProfile>))] IMFSensorProfile pProfile);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsensorprofilecollection-findprofile
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IMemAllocatorCallbackTemp : IMemAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imemallocatorcallbacktemp-setnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNotify(IMemAllocatorNotifyCallbackTemp pNotify);
+    HRESULT SetNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocatorNotifyCallbackTemp>))] IMemAllocatorNotifyCallbackTemp pNotify);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imemallocatorcallbacktemp-getfreecount
     [PreserveSig]

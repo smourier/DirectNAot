@@ -224,7 +224,7 @@ public partial interface ITextRow : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrow-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(ITextRow? pRow, out int pB);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRow?>))] ITextRow? pRow, out int pB);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrow-reset
     [PreserveSig]

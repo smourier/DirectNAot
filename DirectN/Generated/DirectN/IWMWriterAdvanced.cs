@@ -18,17 +18,17 @@ public partial interface IWMWriterAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-addsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSink(IWMWriterSink pSink);
+    HRESULT AddSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMWriterSink>))] IWMWriterSink pSink);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-removesink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveSink(IWMWriterSink pSink);
+    HRESULT RemoveSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMWriterSink>))] IWMWriterSink pSink);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-writestreamsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteStreamSample(ushort wStreamNum, ulong cnsSampleTime, uint msSampleSendTime, ulong cnsSampleDuration, uint dwFlags, INSSBuffer pSample);
+    HRESULT WriteStreamSample(ushort wStreamNum, ulong cnsSampleTime, uint msSampleSendTime, ulong cnsSampleDuration, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pSample);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriteradvanced-setlivesource
     [PreserveSig]

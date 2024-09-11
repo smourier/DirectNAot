@@ -23,7 +23,7 @@ public partial interface IDCompositionAffineTransform2DEffect : IDCompositionFil
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-settransformmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransformMatrixElement(int row, int column, IDCompositionAnimation animation);
+    HRESULT SetTransformMatrixElement(int row, int column, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-settransformmatrixelement(int_int_idcompositionanimation)
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IDCompositionAffineTransform2DEffect : IDCompositionFil
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setsharpness(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSharpness(IDCompositionAnimation animation);
+    HRESULT SetSharpness([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionaffinetransform2deffect-setsharpness(float)
     [PreserveSig]

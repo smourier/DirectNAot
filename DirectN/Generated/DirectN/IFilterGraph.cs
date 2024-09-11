@@ -9,12 +9,12 @@ public partial interface IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-addfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddFilter(IBaseFilter pFilter, PWSTR pName);
+    HRESULT AddFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter, PWSTR pName);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-removefilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveFilter(IBaseFilter pFilter);
+    HRESULT RemoveFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-enumfilters
     [PreserveSig]
@@ -29,17 +29,17 @@ public partial interface IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-connectdirect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectDirect(IPin ppinOut, IPin ppinIn, nint /* optional AM_MEDIA_TYPE* */ pmt);
+    HRESULT ConnectDirect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinOut, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinIn, nint /* optional AM_MEDIA_TYPE* */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-reconnect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reconnect(IPin ppin);
+    HRESULT Reconnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-disconnect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Disconnect(IPin ppin);
+    HRESULT Disconnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppin);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph-setdefaultsyncsource
     [PreserveSig]

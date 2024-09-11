@@ -71,7 +71,7 @@ public partial interface IPhotoProgressDialog
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetActionLinkCallback(IPhotoProgressActionCB? pPhotoProgressActionCB);
+    HRESULT SetActionLinkCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPhotoProgressActionCB?>))] IPhotoProgressActionCB? pPhotoProgressActionCB);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

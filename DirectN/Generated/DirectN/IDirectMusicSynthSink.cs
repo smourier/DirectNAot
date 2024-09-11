@@ -8,12 +8,12 @@ public partial interface IDirectMusicSynthSink
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-init
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Init(IDirectMusicSynth pSynth);
+    HRESULT Init([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicSynth>))] IDirectMusicSynth pSynth);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-setmasterclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMasterClock(IReferenceClock pClock);
+    HRESULT SetMasterClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] IReferenceClock pClock);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-getlatencyclock
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IDirectMusicSynthSink
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-setdirectsound
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDirectSound(IDirectSound pDirectSound, IDirectSoundBuffer pDirectSoundBuffer);
+    HRESULT SetDirectSound([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] IDirectSound pDirectSound, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] IDirectSoundBuffer pDirectSoundBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/dmusics/nf-dmusics-idirectmusicsynthsink-getdesiredbuffersize
     [PreserveSig]

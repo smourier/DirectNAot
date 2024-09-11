@@ -14,12 +14,12 @@ public partial interface IMFTopology : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-addnode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddNode(IMFTopologyNode pNode);
+    HRESULT AddNode([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-removenode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveNode(IMFTopologyNode pNode);
+    HRESULT RemoveNode([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getnodecount
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IMFTopology : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-clonefrom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CloneFrom(IMFTopology pTopology);
+    HRESULT CloneFrom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getnodebyid
     [PreserveSig]

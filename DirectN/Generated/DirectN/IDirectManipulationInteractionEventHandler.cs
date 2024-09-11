@@ -9,5 +9,5 @@ public partial interface IDirectManipulationInteractionEventHandler
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationinteractioneventhandler-oninteraction
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnInteraction(IDirectManipulationViewport2 viewport, DIRECTMANIPULATION_INTERACTION_TYPE interaction);
+    HRESULT OnInteraction([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationViewport2>))] IDirectManipulationViewport2 viewport, DIRECTMANIPULATION_INTERACTION_TYPE interaction);
 }

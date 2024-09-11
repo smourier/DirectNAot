@@ -70,7 +70,7 @@ public partial interface ISpRecoGrammar : ISpGrammarBuilder
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveCmd(IStream pStream, nint /* optional PWSTR* */ ppszCoMemErrorText);
+    HRESULT SaveCmd([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, nint /* optional PWSTR* */ ppszCoMemErrorText);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

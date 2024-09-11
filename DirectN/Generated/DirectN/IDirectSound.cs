@@ -14,7 +14,7 @@ public partial interface IDirectSound
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSoundBuffer(IDirectSoundBuffer pDSBufferOriginal, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer ppDSBufferDuplicate);
+    HRESULT DuplicateSoundBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] IDirectSoundBuffer pDSBufferOriginal, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] out IDirectSoundBuffer ppDSBufferDuplicate);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -19,5 +19,5 @@ public partial interface IMFPMPHost
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpmphost-createobjectbyclsid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateObjectByCLSID(in Guid clsid, IStream pStream, in Guid riid, out nint /* void */ ppv);
+    HRESULT CreateObjectByCLSID(in Guid clsid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, in Guid riid, out nint /* void */ ppv);
 }

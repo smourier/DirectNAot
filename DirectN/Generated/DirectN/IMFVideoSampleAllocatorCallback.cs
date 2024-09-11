@@ -9,7 +9,7 @@ public partial interface IMFVideoSampleAllocatorCallback
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocatorcallback-setcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCallback(IMFVideoSampleAllocatorNotify pNotify);
+    HRESULT SetCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFVideoSampleAllocatorNotify>))] IMFVideoSampleAllocatorNotify pNotify);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocatorcallback-getfreesamplecount
     [PreserveSig]

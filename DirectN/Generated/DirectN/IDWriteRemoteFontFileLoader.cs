@@ -18,5 +18,5 @@ public partial interface IDWriteRemoteFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteremotefontfileloader-createfontfilereferencefromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFileReferenceFromUrl(IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
+    HRESULT CreateFontFileReferenceFromUrl([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFactory>))] IDWriteFactory factory, PWSTR baseUrl, PWSTR fontFileUrl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
 }

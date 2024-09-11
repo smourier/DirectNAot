@@ -14,10 +14,10 @@ public partial interface IMFCapturePhotoSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturephotosink-setsamplecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSampleCallback(IMFCaptureEngineOnSampleCallback pCallback);
+    HRESULT SetSampleCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCaptureEngineOnSampleCallback>))] IMFCaptureEngineOnSampleCallback pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturephotosink-setoutputbytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputByteStream(IMFByteStream pByteStream);
+    HRESULT SetOutputByteStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pByteStream);
 }

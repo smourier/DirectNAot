@@ -9,7 +9,7 @@ public partial interface ID2D1GdiMetafile : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gdimetafile-stream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Stream(ID2D1GdiMetafileSink sink);
+    HRESULT Stream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1GdiMetafileSink>))] ID2D1GdiMetafileSink sink);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1gdimetafile-getbounds
     [PreserveSig]

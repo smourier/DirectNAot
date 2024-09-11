@@ -24,7 +24,7 @@ public partial interface ITextStrings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-append
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Append(ITextRange2? pRange, int iString);
+    HRESULT Append([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange, int iString);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-cat2
     [PreserveSig]
@@ -39,12 +39,12 @@ public partial interface ITextStrings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-deleterange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeleteRange(ITextRange2? pRange);
+    HRESULT DeleteRange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-encodefunction
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EncodeFunction(int Type, int Align, int Char, int Char1, int Char2, int Count, int TeXStyle, int cCol, ITextRange2? pRange);
+    HRESULT EncodeFunction(int Type, int Align, int Char, int Char1, int Char2, int Count, int TeXStyle, int cCol, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-getcch
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface ITextStrings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-setformattedtext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFormattedText(ITextRange2? pRangeD, ITextRange2? pRangeS);
+    HRESULT SetFormattedText([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRangeD, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRangeS);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-setopcp
     [PreserveSig]
@@ -84,7 +84,7 @@ public partial interface ITextStrings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-suffixtop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SuffixTop(BSTR bstr, ITextRange2? pRange);
+    HRESULT SuffixTop(BSTR bstr, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextstrings-swap
     [PreserveSig]

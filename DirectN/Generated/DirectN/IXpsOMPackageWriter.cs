@@ -9,17 +9,17 @@ public partial interface IXpsOMPackageWriter
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackagewriter-startnewdocument
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartNewDocument(IOpcPartUri documentPartName, IXpsOMPrintTicketResource documentPrintTicket, IXpsOMDocumentStructureResource documentStructure, IXpsOMSignatureBlockResourceCollection signatureBlockResources, IXpsOMPartUriCollection restrictedFonts);
+    HRESULT StartNewDocument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri documentPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] IXpsOMPrintTicketResource documentPrintTicket, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMDocumentStructureResource>))] IXpsOMDocumentStructureResource documentStructure, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMSignatureBlockResourceCollection>))] IXpsOMSignatureBlockResourceCollection signatureBlockResources, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPartUriCollection>))] IXpsOMPartUriCollection restrictedFonts);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackagewriter-addpage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddPage(IXpsOMPage page, in XPS_SIZE advisoryPageDimensions, IXpsOMPartUriCollection discardableResourceParts, IXpsOMStoryFragmentsResource storyFragments, IXpsOMPrintTicketResource pagePrintTicket, IXpsOMImageResource pageThumbnail);
+    HRESULT AddPage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPage>))] IXpsOMPage page, in XPS_SIZE advisoryPageDimensions, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPartUriCollection>))] IXpsOMPartUriCollection discardableResourceParts, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMStoryFragmentsResource>))] IXpsOMStoryFragmentsResource storyFragments, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] IXpsOMPrintTicketResource pagePrintTicket, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMImageResource>))] IXpsOMImageResource pageThumbnail);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackagewriter-addresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddResource(IXpsOMResource resource);
+    HRESULT AddResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMResource>))] IXpsOMResource resource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsompackagewriter-close
     [PreserveSig]

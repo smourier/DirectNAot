@@ -6,7 +6,7 @@ public partial interface ISpRecognizer2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EmulateRecognitionEx(ISpPhrase pPhrase, uint dwCompareFlags);
+    HRESULT EmulateRecognitionEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhrase>))] ISpPhrase pPhrase, uint dwCompareFlags);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

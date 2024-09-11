@@ -14,12 +14,12 @@ public partial interface IPersistStream : IPersist
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersiststream-load
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IStream pStm);
+    HRESULT Load([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersiststream-save
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Save(IStream pStm, BOOL fClearDirty);
+    HRESULT Save([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm, BOOL fClearDirty);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-ipersiststream-getsizemax
     [PreserveSig]

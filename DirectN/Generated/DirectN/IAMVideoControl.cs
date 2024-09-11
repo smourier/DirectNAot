@@ -9,30 +9,30 @@ public partial interface IAMVideoControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getcaps
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCaps(IPin pPin, out int pCapsFlags);
+    HRESULT GetCaps([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, out int pCapsFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-setmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMode(IPin pPin, int Mode);
+    HRESULT SetMode([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, int Mode);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getmode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMode(IPin pPin, out int Mode);
+    HRESULT GetMode([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, out int Mode);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getcurrentactualframerate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentActualFrameRate(IPin pPin, out long ActualFrameRate);
+    HRESULT GetCurrentActualFrameRate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, out long ActualFrameRate);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getmaxavailableframerate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMaxAvailableFrameRate(IPin pPin, int iIndex, SIZE Dimensions, out long MaxAvailableFrameRate);
+    HRESULT GetMaxAvailableFrameRate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, int iIndex, SIZE Dimensions, out long MaxAvailableFrameRate);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamvideocontrol-getframeratelist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrameRateList(IPin pPin, int iIndex, SIZE Dimensions, out int ListSize, out nint FrameRates);
+    HRESULT GetFrameRateList([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, int iIndex, SIZE Dimensions, out int ListSize, out nint FrameRates);
 }

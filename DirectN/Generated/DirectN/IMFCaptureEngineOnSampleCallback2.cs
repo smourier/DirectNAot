@@ -9,5 +9,5 @@ public partial interface IMFCaptureEngineOnSampleCallback2 : IMFCaptureEngineOnS
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengineonsamplecallback2-onsynchronizedevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSynchronizedEvent(IMFMediaEvent pEvent);
+    HRESULT OnSynchronizedEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent);
 }

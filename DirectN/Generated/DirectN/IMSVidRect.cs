@@ -59,5 +59,5 @@ public partial interface IMSVidRect : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidrect-put_rect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Rect(IMSVidRect RectVal);
+    HRESULT put_Rect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] IMSVidRect RectVal);
 }

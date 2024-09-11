@@ -6,5 +6,5 @@ public partial interface ISpContainerLexicon : ISpLexicon
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddLexicon(ISpLexicon? pAddLexicon, uint dwFlags);
+    HRESULT AddLexicon([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpLexicon?>))] ISpLexicon? pAddLexicon, uint dwFlags);
 }

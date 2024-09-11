@@ -43,7 +43,7 @@ public partial interface IWMPCdromBurn
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromburn-put_burnplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_burnPlaylist(IWMPPlaylist pPlaylist);
+    HRESULT put_burnPlaylist([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromburn-refreshstatus
     [PreserveSig]

@@ -9,10 +9,10 @@ public partial interface IWICPersistStream : IPersistStream
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicpersiststream-loadex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadEx(IStream pIStream, in Guid pguidPreferredVendor, uint dwPersistOptions);
+    HRESULT LoadEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, in Guid pguidPreferredVendor, uint dwPersistOptions);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicpersiststream-saveex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveEx(IStream pIStream, uint dwPersistOptions, BOOL fClearDirty);
+    HRESULT SaveEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, uint dwPersistOptions, BOOL fClearDirty);
 }

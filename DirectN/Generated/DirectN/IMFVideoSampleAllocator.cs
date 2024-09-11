@@ -19,7 +19,7 @@ public partial interface IMFVideoSampleAllocator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocator-initializesampleallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitializeSampleAllocator(uint cRequestedFrames, IMFMediaType pMediaType);
+    HRESULT InitializeSampleAllocator(uint cRequestedFrames, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfvideosampleallocator-allocatesample
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface IMSEventBinder : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Bind(IDispatch pEventObject, BSTR EventName, BSTR EventHandler, out int CancelID);
+    HRESULT Bind([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pEventObject, BSTR EventName, BSTR EventHandler, out int CancelID);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

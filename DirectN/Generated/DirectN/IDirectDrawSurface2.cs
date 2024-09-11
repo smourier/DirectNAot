@@ -6,7 +6,7 @@ public partial interface IDirectDrawSurface2
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddAttachedSurface(IDirectDrawSurface2 param0);
+    HRESULT AddAttachedSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,7 +14,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Blt(ref RECT param0, IDirectDrawSurface2 param1, ref RECT param2, uint param3, ref DDBLTFX param4);
+    HRESULT Blt(ref RECT param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param1, ref RECT param2, uint param3, ref DDBLTFX param4);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -22,11 +22,11 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BltFast(uint param0, uint param1, IDirectDrawSurface2 param2, ref RECT param3, uint param4);
+    HRESULT BltFast(uint param0, uint param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param2, ref RECT param3, uint param4);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeleteAttachedSurface(uint param0, IDirectDrawSurface2 param1);
+    HRESULT DeleteAttachedSurface(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -38,7 +38,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Flip(IDirectDrawSurface2 param0, uint param1);
+    HRESULT Flip([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param0, uint param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -86,7 +86,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IDirectDraw param0, ref DDSURFACEDESC param1);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw param0, ref DDSURFACEDESC param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -106,7 +106,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClipper(IDirectDrawClipper param0);
+    HRESULT SetClipper([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] IDirectDrawClipper param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -118,7 +118,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPalette(IDirectDrawPalette param0);
+    HRESULT SetPalette([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] IDirectDrawPalette param0);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -126,7 +126,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateOverlay(ref RECT param0, IDirectDrawSurface2 param1, ref RECT param2, uint param3, ref DDOVERLAYFX param4);
+    HRESULT UpdateOverlay(ref RECT param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param1, ref RECT param2, uint param3, ref DDOVERLAYFX param4);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -134,7 +134,7 @@ public partial interface IDirectDrawSurface2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateOverlayZOrder(uint param0, IDirectDrawSurface2 param1);
+    HRESULT UpdateOverlayZOrder(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface2>))] IDirectDrawSurface2 param1);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

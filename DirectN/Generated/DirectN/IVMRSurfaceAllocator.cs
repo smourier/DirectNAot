@@ -19,10 +19,10 @@ public partial interface IVMRSurfaceAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocator-preparesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PrepareSurface(nuint dwUserID, IDirectDrawSurface7 lpSurface, uint dwSurfaceFlags);
+    HRESULT PrepareSurface(nuint dwUserID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 lpSurface, uint dwSurfaceFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocator-advisenotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AdviseNotify(IVMRSurfaceAllocatorNotify lpIVMRSurfAllocNotify);
+    HRESULT AdviseNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRSurfaceAllocatorNotify>))] IVMRSurfaceAllocatorNotify lpIVMRSurfAllocNotify);
 }

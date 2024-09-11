@@ -32,12 +32,12 @@ public partial interface IMFMediaSourceExtension
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-addsourcebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSourceBuffer(BSTR type, IMFSourceBufferNotify pNotify, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBuffer>))] out IMFSourceBuffer ppSourceBuffer);
+    HRESULT AddSourceBuffer(BSTR type, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBufferNotify>))] IMFSourceBufferNotify pNotify, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBuffer>))] out IMFSourceBuffer ppSourceBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-removesourcebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveSourceBuffer(IMFSourceBuffer pSourceBuffer);
+    HRESULT RemoveSourceBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSourceBuffer>))] IMFSourceBuffer pSourceBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediasourceextension-setendofstream
     [PreserveSig]

@@ -12,7 +12,7 @@ public partial interface ID2D1Device2 : ID2D1Device1
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1device2-flushdevicecontexts
     [PreserveSig]
-    void FlushDeviceContexts(ID2D1Bitmap bitmap);
+    void FlushDeviceContexts([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Bitmap>))] ID2D1Bitmap bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1device2-getdxgidevice
     [PreserveSig]

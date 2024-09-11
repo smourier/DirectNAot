@@ -9,5 +9,5 @@ public partial interface IMFCaptureEngineOnSampleCallback
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcaptureengineonsamplecallback-onsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSample(IMFSample? pSample);
+    HRESULT OnSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample?>))] IMFSample? pSample);
 }

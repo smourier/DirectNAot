@@ -6,5 +6,5 @@ public partial interface IDirectMusicThru
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ThruChannel(uint dwSourceChannelGroup, uint dwSourceChannel, uint dwDestinationChannelGroup, uint dwDestinationChannel, IDirectMusicPort pDestinationPort);
+    HRESULT ThruChannel(uint dwSourceChannelGroup, uint dwSourceChannel, uint dwDestinationChannelGroup, uint dwDestinationChannel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicPort>))] IDirectMusicPort pDestinationPort);
 }

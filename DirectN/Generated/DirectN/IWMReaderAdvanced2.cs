@@ -78,5 +78,5 @@ public partial interface IWMReaderAdvanced2 : IWMReaderAdvanced
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced2-openstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenStream(IStream pStream, IWMReaderCallback pCallback, nint pvContext);
+    HRESULT OpenStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMReaderCallback>))] IWMReaderCallback pCallback, nint pvContext);
 }

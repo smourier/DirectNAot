@@ -179,7 +179,7 @@ public partial interface IDvdControl2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-setstate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetState(IDvdState pState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
+    HRESULT SetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdState>))] IDvdState pState, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvdCmd>))] out IDvdCmd ppCmd);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdcontrol2-playperiodintitleautostop
     [PreserveSig]

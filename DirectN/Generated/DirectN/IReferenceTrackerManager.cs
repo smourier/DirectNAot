@@ -23,5 +23,5 @@ public partial interface IReferenceTrackerManager
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.hosting.referencetracker/nf-windows-ui-xaml-hosting-referencetracker-ireferencetrackermanager-setreferencetrackerhost
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReferenceTrackerHost(IReferenceTrackerHost value);
+    HRESULT SetReferenceTrackerHost([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceTrackerHost>))] IReferenceTrackerHost value);
 }

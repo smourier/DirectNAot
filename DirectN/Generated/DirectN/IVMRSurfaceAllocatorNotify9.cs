@@ -9,17 +9,17 @@ public partial interface IVMRSurfaceAllocatorNotify9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocatornotify9-advisesurfaceallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AdviseSurfaceAllocator(nuint dwUserID, IVMRSurfaceAllocator9 lpIVRMSurfaceAllocator);
+    HRESULT AdviseSurfaceAllocator(nuint dwUserID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRSurfaceAllocator9>))] IVMRSurfaceAllocator9 lpIVRMSurfaceAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocatornotify9-setd3ddevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetD3DDevice(IDirect3DDevice9 lpD3DDevice, HMONITOR hMonitor);
+    HRESULT SetD3DDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] IDirect3DDevice9 lpD3DDevice, HMONITOR hMonitor);
     
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocatornotify9-changed3ddevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ChangeD3DDevice(IDirect3DDevice9 lpD3DDevice, HMONITOR hMonitor);
+    HRESULT ChangeD3DDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] IDirect3DDevice9 lpD3DDevice, HMONITOR hMonitor);
     
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocatornotify9-allocatesurfacehelper
     [PreserveSig]

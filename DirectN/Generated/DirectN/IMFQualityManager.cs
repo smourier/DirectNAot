@@ -9,27 +9,27 @@ public partial interface IMFQualityManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-notifytopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyTopology(IMFTopology pTopology);
+    HRESULT NotifyTopology([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-notifypresentationclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyPresentationClock(IMFPresentationClock pClock);
+    HRESULT NotifyPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock>))] IMFPresentationClock pClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-notifyprocessinput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyProcessInput(IMFTopologyNode pNode, int lInputIndex, IMFSample pSample);
+    HRESULT NotifyProcessInput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pNode, int lInputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-notifyprocessoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyProcessOutput(IMFTopologyNode pNode, int lOutputIndex, IMFSample pSample);
+    HRESULT NotifyProcessOutput([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pNode, int lOutputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-notifyqualityevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyQualityEvent(nint pObject, IMFMediaEvent pEvent);
+    HRESULT NotifyQualityEvent(nint pObject, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualitymanager-shutdown
     [PreserveSig]

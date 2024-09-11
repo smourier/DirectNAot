@@ -18,7 +18,7 @@ public partial interface IMediaStream
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-setsameformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSameFormat(IMediaStream pStreamThatHasDesiredFormat, uint dwFlags);
+    HRESULT SetSameFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStream>))] IMediaStream pStreamThatHasDesiredFormat, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-allocatesample
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IMediaStream
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-createsharedsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSharedSample(IStreamSample pExistingSample, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamSample>))] out IStreamSample ppNewSample);
+    HRESULT CreateSharedSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamSample>))] IStreamSample pExistingSample, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamSample>))] out IStreamSample ppNewSample);
     
     // https://learn.microsoft.com/windows/win32/api/mmstream/nf-mmstream-imediastream-sendendofstream
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-setcontentenabler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetContentEnabler(IMFContentEnabler contentEnabler, IMFAsyncResult result);
+    HRESULT SetContentEnabler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentEnabler>))] IMFContentEnabler contentEnabler, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult result);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-getsuspendnotify
     [PreserveSig]
@@ -19,12 +19,12 @@ public partial interface IMFContentDecryptionModule
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-setpmphostapp
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPMPHostApp(IMFPMPHostApp pmpHostApp);
+    HRESULT SetPMPHostApp([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPMPHostApp>))] IMFPMPHostApp pmpHostApp);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-createsession
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSession(MF_MEDIAKEYSESSION_TYPE sessionType, IMFContentDecryptionModuleSessionCallbacks callbacks, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentDecryptionModuleSession>))] out IMFContentDecryptionModuleSession session);
+    HRESULT CreateSession(MF_MEDIAKEYSESSION_TYPE sessionType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentDecryptionModuleSessionCallbacks>))] IMFContentDecryptionModuleSessionCallbacks callbacks, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFContentDecryptionModuleSession>))] out IMFContentDecryptionModuleSession session);
     
     // https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-imfcontentdecryptionmodule-setservercertificate
     [PreserveSig]

@@ -28,12 +28,12 @@ public partial interface IAudioProcessingObject
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobject-isinputformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsInputFormatSupported(IAudioMediaType pOppositeFormat, IAudioMediaType pRequestedInputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedInputFormat);
+    HRESULT IsInputFormatSupported([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pOppositeFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pRequestedInputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedInputFormat);
     
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobject-isoutputformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsOutputFormatSupported(IAudioMediaType pOppositeFormat, IAudioMediaType pRequestedOutputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedOutputFormat);
+    HRESULT IsOutputFormatSupported([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pOppositeFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pRequestedOutputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedOutputFormat);
     
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iaudioprocessingobject-getinputchannelcount
     [PreserveSig]

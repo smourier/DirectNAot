@@ -19,22 +19,22 @@ public partial interface IResourceManager
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-requestresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RequestResource(int idResource, nint pFocusObject, IResourceConsumer pConsumer);
+    HRESULT RequestResource(int idResource, nint pFocusObject, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IResourceConsumer>))] IResourceConsumer pConsumer);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-notifyacquire
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyAcquire(int idResource, IResourceConsumer pConsumer, HRESULT hr);
+    HRESULT NotifyAcquire(int idResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IResourceConsumer>))] IResourceConsumer pConsumer, HRESULT hr);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-notifyrelease
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyRelease(int idResource, IResourceConsumer pConsumer, BOOL bStillWant);
+    HRESULT NotifyRelease(int idResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IResourceConsumer>))] IResourceConsumer pConsumer, BOOL bStillWant);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-cancelrequest
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CancelRequest(int idResource, IResourceConsumer pConsumer);
+    HRESULT CancelRequest(int idResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IResourceConsumer>))] IResourceConsumer pConsumer);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iresourcemanager-setfocus
     [PreserveSig]

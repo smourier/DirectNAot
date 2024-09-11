@@ -8,5 +8,5 @@ public partial interface IWMReaderAdvanced5 : IWMReaderAdvanced4
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderadvanced5-setplayerhook
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPlayerHook(uint dwOutputNum, IWMPlayerHook pHook);
+    HRESULT SetPlayerHook(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPlayerHook>))] IWMPlayerHook pHook);
 }

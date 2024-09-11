@@ -69,15 +69,15 @@ public partial interface ICodecAPI
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-getallsettings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAllSettings(IStream __MIDL__ICodecAPI0000);
+    HRESULT GetAllSettings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream __MIDL__ICodecAPI0000);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-setallsettings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllSettings(IStream __MIDL__ICodecAPI0001);
+    HRESULT SetAllSettings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream __MIDL__ICodecAPI0001);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icodecapi-setallsettingswithnotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllSettingsWithNotify(IStream __MIDL__ICodecAPI0002, out nint ChangedParam, out uint ChangedParamCount);
+    HRESULT SetAllSettingsWithNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream __MIDL__ICodecAPI0002, out nint ChangedParam, out uint ChangedParamCount);
 }

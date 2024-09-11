@@ -26,7 +26,7 @@ public partial interface ISpVoice : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVoice(ISpObjectToken pToken);
+    HRESULT SetVoice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] ISpObjectToken pToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -38,7 +38,7 @@ public partial interface ISpVoice : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SpeakStream(IStream pStream, uint dwFlags, nint /* optional uint* */ pulStreamNumber);
+    HRESULT SpeakStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, uint dwFlags, nint /* optional uint* */ pulStreamNumber);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

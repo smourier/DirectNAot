@@ -9,7 +9,7 @@ public partial interface IMFMediaTypeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-ismediatypesupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsMediaTypeSupported(IMFMediaType pMediaType, nint /* optional IMFMediaType* */ ppMediaType);
+    HRESULT IsMediaTypeSupported([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, nint /* optional IMFMediaType* */ ppMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getmediatypecount
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFMediaTypeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-setcurrentmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCurrentMediaType(IMFMediaType pMediaType);
+    HRESULT SetCurrentMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediatypehandler-getcurrentmediatype
     [PreserveSig]

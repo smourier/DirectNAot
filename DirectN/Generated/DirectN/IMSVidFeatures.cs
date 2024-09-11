@@ -24,7 +24,7 @@ public partial interface IMSVidFeatures : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidfeatures-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IMSVidFeature pDB);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidFeature>))] IMSVidFeature pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidfeatures-remove
     [PreserveSig]

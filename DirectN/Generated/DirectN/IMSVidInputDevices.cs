@@ -24,7 +24,7 @@ public partial interface IMSVidInputDevices : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidinputdevices-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IMSVidInputDevice pDB);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidInputDevice>))] IMSVidInputDevice pDB);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidinputdevices-remove
     [PreserveSig]

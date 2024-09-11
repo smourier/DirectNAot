@@ -9,10 +9,10 @@ public partial interface IXpsOMPackageWriter3D : IXpsOMPackageWriter
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_2/nf-xpsobjectmodel_2-ixpsompackagewriter3d-addmodeltexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddModelTexture(IOpcPartUri texturePartName, IStream textureData);
+    HRESULT AddModelTexture([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri texturePartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream textureData);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_2/nf-xpsobjectmodel_2-ixpsompackagewriter3d-setmodelprintticket
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetModelPrintTicket(IOpcPartUri printTicketPartName, IStream printTicketData);
+    HRESULT SetModelPrintTicket([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri printTicketPartName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream printTicketData);
 }

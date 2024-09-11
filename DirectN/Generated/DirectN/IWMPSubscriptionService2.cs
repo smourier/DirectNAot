@@ -18,10 +18,10 @@ public partial interface IWMPSubscriptionService2 : IWMPSubscriptionService
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice2-deviceavailable
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT deviceAvailable(BSTR bstrDeviceName, IWMPSubscriptionServiceCallback pCB);
+    HRESULT deviceAvailable(BSTR bstrDeviceName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSubscriptionServiceCallback>))] IWMPSubscriptionServiceCallback pCB);
     
     // https://learn.microsoft.com/windows/win32/api/subscriptionservices/nf-subscriptionservices-iwmpsubscriptionservice2-prepareforsync
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT prepareForSync(BSTR bstrFilename, BSTR bstrDeviceName, IWMPSubscriptionServiceCallback pCB);
+    HRESULT prepareForSync(BSTR bstrFilename, BSTR bstrDeviceName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSubscriptionServiceCallback>))] IWMPSubscriptionServiceCallback pCB);
 }

@@ -8,5 +8,5 @@ public partial interface IMSVidPlaybackEvent : IMSVidInputDeviceEvent
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidplaybackevent-endofmedia
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndOfMedia(IMSVidPlayback lpd);
+    HRESULT EndOfMedia([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidPlayback>))] IMSVidPlayback lpd);
 }

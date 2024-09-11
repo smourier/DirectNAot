@@ -8,7 +8,7 @@ public partial interface IMediaStreamFilter : IBaseFilter
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-addmediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMediaStream(IAMMediaStream pAMMediaStream);
+    HRESULT AddMediaStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMMediaStream>))] IAMMediaStream pAMMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-imediastreamfilter-getmediastream
     [PreserveSig]

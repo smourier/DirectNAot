@@ -14,5 +14,5 @@ public partial interface IMFAsyncCallback
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfasynccallback-invoke
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Invoke(IMFAsyncResult pAsyncResult);
+    HRESULT Invoke([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pAsyncResult);
 }

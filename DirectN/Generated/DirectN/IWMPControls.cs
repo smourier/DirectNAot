@@ -68,7 +68,7 @@ public partial interface IWMPControls : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-put_currentitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_currentItem(IWMPMedia pIWMPMedia);
+    HRESULT put_currentItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-get_currentmarker
     [PreserveSig]
@@ -83,5 +83,5 @@ public partial interface IWMPControls : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-playitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT playItem(IWMPMedia pIWMPMedia);
+    HRESULT playItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia);
 }

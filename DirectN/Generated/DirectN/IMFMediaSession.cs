@@ -9,7 +9,7 @@ public partial interface IMFMediaSession : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-settopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopology(uint dwSetTopologyFlags, IMFTopology pTopology);
+    HRESULT SetTopology(uint dwSetTopologyFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-cleartopologies
     [PreserveSig]

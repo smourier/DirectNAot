@@ -9,10 +9,10 @@ public partial interface IStreamBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-istreambuilder-render
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Render(IPin ppinOut, IGraphBuilder pGraph);
+    HRESULT Render([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinOut, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-istreambuilder-backout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Backout(IPin ppinOut, IGraphBuilder pGraph);
+    HRESULT Backout([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinOut, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph);
 }

@@ -54,7 +54,7 @@ public partial interface IMFSample : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-addbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddBuffer(IMFMediaBuffer pBuffer);
+    HRESULT AddBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-removebufferbyindex
     [PreserveSig]
@@ -74,5 +74,5 @@ public partial interface IMFSample : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfsample-copytobuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyToBuffer(IMFMediaBuffer pBuffer);
+    HRESULT CopyToBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] IMFMediaBuffer pBuffer);
 }

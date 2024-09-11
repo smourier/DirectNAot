@@ -48,7 +48,7 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-get_isidentical
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_isIdentical(IWMPPlaylist pIWMPPlaylist, ref VARIANT_BOOL pvbool);
+    HRESULT get_isIdentical([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pIWMPPlaylist, ref VARIANT_BOOL pvbool);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-clear
     [PreserveSig]
@@ -58,17 +58,17 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-insertitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT insertItem(int lIndex, IWMPMedia pIWMPMedia);
+    HRESULT insertItem(int lIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-appenditem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT appendItem(IWMPMedia pIWMPMedia);
+    HRESULT appendItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-removeitem
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT removeItem(IWMPMedia pIWMPMedia);
+    HRESULT removeItem([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pIWMPMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-moveitem
     [PreserveSig]

@@ -39,7 +39,7 @@ public partial interface ITextRange : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-setformattedtext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFormattedText(ITextRange? pRange);
+    HRESULT SetFormattedText([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange?>))] ITextRange? pRange);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-getstart
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface ITextRange : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-setfont
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFont(ITextFont? pFont);
+    HRESULT SetFont([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont?>))] ITextFont? pFont);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-getpara
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface ITextRange : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-setpara
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPara(ITextPara? pPara);
+    HRESULT SetPara([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara?>))] ITextPara? pPara);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-getstorylength
     [PreserveSig]
@@ -119,17 +119,17 @@ public partial interface ITextRange : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-inrange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InRange(ITextRange? pRange, out int pValue);
+    HRESULT InRange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange?>))] ITextRange? pRange, out int pValue);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-instory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InStory(ITextRange? pRange, out int pValue);
+    HRESULT InStory([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange?>))] ITextRange? pRange, out int pValue);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(ITextRange? pRange, out int pValue);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange?>))] ITextRange? pRange, out int pValue);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange-select
     [PreserveSig]

@@ -23,17 +23,17 @@ public partial interface ID3D11FunctionLinkingGraph
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-callfunction
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CallFunction(PSTR pModuleInstanceNamespace, ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] out ID3D11LinkingNode ppCallNode);
+    HRESULT CallFunction(PSTR pModuleInstanceNamespace, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Module>))] ID3D11Module pModuleWithFunctionPrototype, PSTR pFunctionName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] out ID3D11LinkingNode ppCallNode);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-passvalue
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PassValue(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, ID3D11LinkingNode pDstNode, int DstParameterIndex);
+    HRESULT PassValue([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] ID3D11LinkingNode pSrcNode, int SrcParameterIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] ID3D11LinkingNode pDstNode, int DstParameterIndex);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-passvaluewithswizzle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PassValueWithSwizzle(ID3D11LinkingNode pSrcNode, int SrcParameterIndex, PSTR pSrcSwizzle, ID3D11LinkingNode pDstNode, int DstParameterIndex, PSTR pDstSwizzle);
+    HRESULT PassValueWithSwizzle([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] ID3D11LinkingNode pSrcNode, int SrcParameterIndex, PSTR pSrcSwizzle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11LinkingNode>))] ID3D11LinkingNode pDstNode, int DstParameterIndex, PSTR pDstSwizzle);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11shader/nf-d3d11shader-id3d11functionlinkinggraph-getlasterror
     [PreserveSig]

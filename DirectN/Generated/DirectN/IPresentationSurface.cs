@@ -8,7 +8,7 @@ public partial interface IPresentationSurface : IPresentationContent
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationsurface-setbuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetBuffer(IPresentationBuffer presentationBuffer);
+    HRESULT SetBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPresentationBuffer>))] IPresentationBuffer presentationBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationsurface-setcolorspace
     [PreserveSig]

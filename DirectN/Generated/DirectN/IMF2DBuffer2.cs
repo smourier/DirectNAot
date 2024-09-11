@@ -14,5 +14,5 @@ public partial interface IMF2DBuffer2 : IMF2DBuffer
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imf2dbuffer2-copy2dto
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Copy2DTo(IMF2DBuffer2 pDestBuffer);
+    HRESULT Copy2DTo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMF2DBuffer2>))] IMF2DBuffer2 pDestBuffer);
 }

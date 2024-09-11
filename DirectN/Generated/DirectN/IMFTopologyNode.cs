@@ -44,7 +44,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-connectoutput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConnectOutput(uint dwOutputIndex, IMFTopologyNode pDownstreamNode, uint dwInputIndexOnDownstreamNode);
+    HRESULT ConnectOutput(uint dwOutputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pDownstreamNode, uint dwInputIndexOnDownstreamNode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-disconnectoutput
     [PreserveSig]
@@ -64,7 +64,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-setoutputpreftype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputPrefType(uint dwOutputIndex, IMFMediaType pType);
+    HRESULT SetOutputPrefType(uint dwOutputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getoutputpreftype
     [PreserveSig]
@@ -74,7 +74,7 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-setinputpreftype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputPrefType(uint dwInputIndex, IMFMediaType pType);
+    HRESULT SetInputPrefType(uint dwInputIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pType);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-getinputpreftype
     [PreserveSig]
@@ -84,5 +84,5 @@ public partial interface IMFTopologyNode : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopologynode-clonefrom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CloneFrom(IMFTopologyNode pNode);
+    HRESULT CloneFrom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopologyNode>))] IMFTopologyNode pNode);
 }

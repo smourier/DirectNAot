@@ -9,10 +9,10 @@ public partial interface IMFReadWriteClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfreadwriteclassfactory-createinstancefromurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstanceFromURL(in Guid clsid, PWSTR pwszURL, IMFAttributes? pAttributes, in Guid riid, out nint /* void */ ppvObject);
+    HRESULT CreateInstanceFromURL(in Guid clsid, PWSTR pwszURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pAttributes, in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfreadwriteclassfactory-createinstancefromobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstanceFromObject(in Guid clsid, nint punkObject, IMFAttributes? pAttributes, in Guid riid, out nint /* void */ ppvObject);
+    HRESULT CreateInstanceFromObject(in Guid clsid, nint punkObject, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pAttributes, in Guid riid, out nint /* void */ ppvObject);
 }

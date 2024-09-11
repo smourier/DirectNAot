@@ -8,5 +8,5 @@ public partial interface IAMWMBufferPassCallback
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iamwmbufferpasscallback-notify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Notify(INSSBuffer3 pNSSBuffer3, IPin pPin, in long prtStart, in long prtEnd);
+    HRESULT Notify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer3>))] INSSBuffer3 pNSSBuffer3, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, in long prtStart, in long prtEnd);
 }

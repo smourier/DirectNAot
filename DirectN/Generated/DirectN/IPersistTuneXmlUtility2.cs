@@ -9,5 +9,5 @@ public partial interface IPersistTuneXmlUtility2 : IPersistTuneXmlUtility
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ipersisttunexmlutility2-serialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Serialize(ITuneRequest piTuneRequest, out BSTR pString);
+    HRESULT Serialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest piTuneRequest, out BSTR pString);
 }

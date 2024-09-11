@@ -24,5 +24,5 @@ public partial interface IVMRImageCompositor9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrimagecompositor9-compositeimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompositeImage(nint pD3DDevice, IDirect3DSurface9 pddsRenderTarget, in AM_MEDIA_TYPE pmtRenderTarget, long rtStart, long rtEnd, uint dwClrBkGnd, in VMR9VideoStreamInfo pVideoStreamInfo, uint cStreams);
+    HRESULT CompositeImage(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pddsRenderTarget, in AM_MEDIA_TYPE pmtRenderTarget, long rtStart, long rtEnd, uint dwClrBkGnd, in VMR9VideoStreamInfo pVideoStreamInfo, uint cStreams);
 }

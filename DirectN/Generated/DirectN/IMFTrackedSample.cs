@@ -9,5 +9,5 @@ public partial interface IMFTrackedSample
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftrackedsample-setallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAllocator(IMFAsyncCallback pSampleAllocator, nint pUnkState);
+    HRESULT SetAllocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pSampleAllocator, nint pUnkState);
 }

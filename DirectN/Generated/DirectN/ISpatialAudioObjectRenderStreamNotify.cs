@@ -9,5 +9,5 @@ public partial interface ISpatialAudioObjectRenderStreamNotify
     // https://learn.microsoft.com/windows/win32/api/spatialaudioclient/nf-spatialaudioclient-ispatialaudioobjectrenderstreamnotify-onavailabledynamicobjectcountchange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnAvailableDynamicObjectCountChange(ISpatialAudioObjectRenderStreamBase sender, long hnsComplianceDeadlineTime, uint availableDynamicObjectCountChange);
+    HRESULT OnAvailableDynamicObjectCountChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioObjectRenderStreamBase>))] ISpatialAudioObjectRenderStreamBase sender, long hnsComplianceDeadlineTime, uint availableDynamicObjectCountChange);
 }

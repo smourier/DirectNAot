@@ -19,5 +19,5 @@ public partial interface IMFPMPHostApp
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfpmphostapp-activateclassbyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ActivateClassById(PWSTR id, IStream pStream, in Guid riid, out nint /* void */ ppv);
+    HRESULT ActivateClassById(PWSTR id, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream, in Guid riid, out nint /* void */ ppv);
 }

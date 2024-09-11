@@ -9,10 +9,10 @@ public partial interface IQualityControl
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iqualitycontrol-notify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Notify(IBaseFilter pSelf, Quality q);
+    HRESULT Notify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pSelf, Quality q);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iqualitycontrol-setsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSink(IQualityControl piqc);
+    HRESULT SetSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IQualityControl>))] IQualityControl piqc);
 }

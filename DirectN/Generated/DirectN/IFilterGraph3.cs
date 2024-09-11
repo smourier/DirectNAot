@@ -9,5 +9,5 @@ public partial interface IFilterGraph3 : IFilterGraph2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ifiltergraph3-setsyncsourceex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSyncSourceEx(IReferenceClock pClockForMostOfFilterGraph, IReferenceClock pClockForFilter, IBaseFilter pFilter);
+    HRESULT SetSyncSourceEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] IReferenceClock pClockForMostOfFilterGraph, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] IReferenceClock pClockForFilter, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFilter);
 }

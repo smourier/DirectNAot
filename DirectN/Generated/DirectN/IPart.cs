@@ -64,10 +64,10 @@ public partial interface IPart
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-registercontrolchangecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterControlChangeCallback(in Guid riid, IControlChangeNotify pNotify);
+    HRESULT RegisterControlChangeCallback(in Guid riid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IControlChangeNotify>))] IControlChangeNotify pNotify);
     
     // https://learn.microsoft.com/windows/win32/api/devicetopology/nf-devicetopology-ipart-unregistercontrolchangecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterControlChangeCallback(IControlChangeNotify pNotify);
+    HRESULT UnregisterControlChangeCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IControlChangeNotify>))] IControlChangeNotify pNotify);
 }

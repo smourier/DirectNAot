@@ -9,5 +9,5 @@ public partial interface IMFSampleGrabberSinkCallback2 : IMFSampleGrabberSinkCal
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsamplegrabbersinkcallback2-onprocesssampleex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnProcessSampleEx(in Guid guidMajorMediaType, uint dwSampleFlags, long llSampleTime, long llSampleDuration, nint /* byte array */ pSampleBuffer, uint dwSampleSize, IMFAttributes pAttributes);
+    HRESULT OnProcessSampleEx(in Guid guidMajorMediaType, uint dwSampleFlags, long llSampleTime, long llSampleDuration, nint /* byte array */ pSampleBuffer, uint dwSampleSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pAttributes);
 }

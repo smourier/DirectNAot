@@ -44,12 +44,12 @@ public partial interface IMFByteStream
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-beginread
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginRead(nint /* byte array */ pb, uint cb, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginRead(nint /* byte array */ pb, uint cb, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-endread
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndRead(IMFAsyncResult pResult, out uint pcbRead);
+    HRESULT EndRead([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out uint pcbRead);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-write
     [PreserveSig]
@@ -59,12 +59,12 @@ public partial interface IMFByteStream
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-beginwrite
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginWrite(nint /* byte array */ pb, uint cb, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginWrite(nint /* byte array */ pb, uint cb, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-endwrite
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndWrite(IMFAsyncResult pResult, out uint pcbWritten);
+    HRESULT EndWrite([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out uint pcbWritten);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestream-seek
     [PreserveSig]

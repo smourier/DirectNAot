@@ -14,7 +14,7 @@ public partial interface ID2D1Device : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1device-createprintcontrol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatePrintControl(IWICImagingFactory wicFactory, IPrintDocumentPackageTarget documentTarget, nint /* optional D2D1_PRINT_CONTROL_PROPERTIES* */ printControlProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1PrintControl>))] out ID2D1PrintControl printControl);
+    HRESULT CreatePrintControl([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICImagingFactory>))] IWICImagingFactory wicFactory, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPrintDocumentPackageTarget>))] IPrintDocumentPackageTarget documentTarget, nint /* optional D2D1_PRINT_CONTROL_PROPERTIES* */ printControlProperties, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1PrintControl>))] out ID2D1PrintControl printControl);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_1/nf-d2d1_1-id2d1device-setmaximumtexturememory
     [PreserveSig]

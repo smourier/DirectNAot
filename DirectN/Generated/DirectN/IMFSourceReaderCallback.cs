@@ -9,7 +9,7 @@ public partial interface IMFSourceReaderCallback
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereadercallback-onreadsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnReadSample(HRESULT hrStatus, uint dwStreamIndex, uint dwStreamFlags, long llTimestamp, IMFSample? pSample);
+    HRESULT OnReadSample(HRESULT hrStatus, uint dwStreamIndex, uint dwStreamFlags, long llTimestamp, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample?>))] IMFSample? pSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereadercallback-onflush
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IMFSourceReaderCallback
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereadercallback-onevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnEvent(uint dwStreamIndex, IMFMediaEvent pEvent);
+    HRESULT OnEvent(uint dwStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent);
 }

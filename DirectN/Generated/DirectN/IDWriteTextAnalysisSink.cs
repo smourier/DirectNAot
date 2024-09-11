@@ -24,5 +24,5 @@ public partial interface IDWriteTextAnalysisSink
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritetextanalysissink-setnumbersubstitution
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetNumberSubstitution(uint textPosition, uint textLength, IDWriteNumberSubstitution numberSubstitution);
+    HRESULT SetNumberSubstitution(uint textPosition, uint textLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteNumberSubstitution>))] IDWriteNumberSubstitution numberSubstitution);
 }

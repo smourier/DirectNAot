@@ -29,10 +29,10 @@ public partial interface IAMTVAudio
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamtvaudio-registernotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterNotificationCallBack(IAMTunerNotification pNotify, int lEvents);
+    HRESULT RegisterNotificationCallBack([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMTunerNotification>))] IAMTunerNotification pNotify, int lEvents);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamtvaudio-unregisternotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnRegisterNotificationCallBack(IAMTunerNotification pNotify);
+    HRESULT UnRegisterNotificationCallBack([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMTunerNotification>))] IAMTunerNotification pNotify);
 }

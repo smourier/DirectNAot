@@ -9,17 +9,17 @@ public partial interface IVMRSurfaceAllocatorNotify
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocatornotify-advisesurfaceallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AdviseSurfaceAllocator(nuint dwUserID, IVMRSurfaceAllocator lpIVRMSurfaceAllocator);
+    HRESULT AdviseSurfaceAllocator(nuint dwUserID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRSurfaceAllocator>))] IVMRSurfaceAllocator lpIVRMSurfaceAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocatornotify-setddrawdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDDrawDevice(IDirectDraw7 lpDDrawDevice, HMONITOR hMonitor);
+    HRESULT SetDDrawDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw7>))] IDirectDraw7 lpDDrawDevice, HMONITOR hMonitor);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocatornotify-changeddrawdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ChangeDDrawDevice(IDirectDraw7 lpDDrawDevice, HMONITOR hMonitor);
+    HRESULT ChangeDDrawDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw7>))] IDirectDraw7 lpDDrawDevice, HMONITOR hMonitor);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrsurfaceallocatornotify-restoreddrawsurfaces
     [PreserveSig]

@@ -67,7 +67,7 @@ public partial interface IWMPEvents
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-playlistchange
     [PreserveSig]
-    void PlaylistChange(IDispatch Playlist, WMPPlaylistChangeEventType change);
+    void PlaylistChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch Playlist, WMPPlaylistChangeEventType change);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-currentplaylistchange
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface IWMPEvents
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-mediachange
     [PreserveSig]
-    void MediaChange(IDispatch Item);
+    void MediaChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch Item);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-currentmediaitemavailable
     [PreserveSig]
@@ -87,7 +87,7 @@ public partial interface IWMPEvents
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-currentitemchange
     [PreserveSig]
-    void CurrentItemChange(IDispatch pdispMedia);
+    void CurrentItemChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pdispMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-mediacollectionchange
     [PreserveSig]
@@ -127,11 +127,11 @@ public partial interface IWMPEvents
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-mediaerror
     [PreserveSig]
-    void MediaError(IDispatch pMediaObject);
+    void MediaError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pMediaObject);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-openplaylistswitch
     [PreserveSig]
-    void OpenPlaylistSwitch(IDispatch pItem);
+    void OpenPlaylistSwitch([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents-domainchange
     [PreserveSig]

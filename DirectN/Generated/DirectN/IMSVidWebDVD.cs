@@ -382,5 +382,5 @@ public partial interface IMSVidWebDVD : IMSVidPlayback
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_DVDScreenInMouseCoordinates(IMSVidRect pRect);
+    HRESULT put_DVDScreenInMouseCoordinates([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] IMSVidRect pRect);
 }

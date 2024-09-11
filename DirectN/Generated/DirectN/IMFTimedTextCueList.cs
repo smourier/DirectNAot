@@ -29,5 +29,5 @@ public partial interface IMFTimedTextCueList
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveCue(IMFTimedTextCue cue);
+    HRESULT RemoveCue([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextCue>))] IMFTimedTextCue cue);
 }

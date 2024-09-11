@@ -9,10 +9,10 @@ public partial interface IAMGraphBuilderCallback
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphbuildercallback-selectedfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SelectedFilter(IMoniker pMon);
+    HRESULT SelectedFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMon);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphbuildercallback-createdfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreatedFilter(IBaseFilter pFil);
+    HRESULT CreatedFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pFil);
 }

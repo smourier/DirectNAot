@@ -34,5 +34,5 @@ public partial interface IMemAllocator
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-imemallocator-releasebuffer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReleaseBuffer(IMediaSample pBuffer);
+    HRESULT ReleaseBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample pBuffer);
 }

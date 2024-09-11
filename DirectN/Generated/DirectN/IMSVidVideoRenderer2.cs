@@ -28,7 +28,7 @@ public partial interface IMSVidVideoRenderer2 : IMSVidVideoRenderer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT _SetAllocator2(IVMRSurfaceAllocator AllocPresent, int ID);
+    HRESULT _SetAllocator2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRSurfaceAllocator>))] IVMRSurfaceAllocator AllocPresent, int ID);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer2-put_suppresseffects
     [PreserveSig]

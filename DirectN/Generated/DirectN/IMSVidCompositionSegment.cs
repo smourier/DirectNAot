@@ -6,7 +6,7 @@ public partial interface IMSVidCompositionSegment : IMSVidGraphSegment
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Compose(IMSVidGraphSegment upstream, IMSVidGraphSegment downstream);
+    HRESULT Compose([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegment>))] IMSVidGraphSegment upstream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidGraphSegment>))] IMSVidGraphSegment downstream);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -38,5 +38,5 @@ public partial interface IDirectMusic
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDirectSound(IDirectSound pDirectSound, HWND hWnd);
+    HRESULT SetDirectSound([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] IDirectSound pDirectSound, HWND hWnd);
 }

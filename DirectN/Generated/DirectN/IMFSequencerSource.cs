@@ -9,7 +9,7 @@ public partial interface IMFSequencerSource
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-appendtopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AppendTopology(IMFTopology pTopology, uint dwFlags, out uint pdwId);
+    HRESULT AppendTopology([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology, uint dwFlags, out uint pdwId);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-deletetopology
     [PreserveSig]
@@ -19,12 +19,12 @@ public partial interface IMFSequencerSource
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-getpresentationcontext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPresentationContext(IMFPresentationDescriptor pPD, nint /* optional uint* */ pId, nint /* optional IMFTopology* */ ppTopology);
+    HRESULT GetPresentationContext([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor>))] IMFPresentationDescriptor pPD, nint /* optional uint* */ pId, nint /* optional IMFTopology* */ ppTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-updatetopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateTopology(uint dwId, IMFTopology pTopology);
+    HRESULT UpdateTopology(uint dwId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsequencersource-updatetopologyflags
     [PreserveSig]

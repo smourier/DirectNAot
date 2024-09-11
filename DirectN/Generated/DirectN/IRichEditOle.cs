@@ -62,7 +62,7 @@ public partial interface IRichEditOle
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-savecompleted
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveCompleted(int iob, IStorage lpstg);
+    HRESULT SaveCompleted(int iob, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] IStorage lpstg);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-inplacedeactivate
     [PreserveSig]
@@ -82,5 +82,5 @@ public partial interface IRichEditOle
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditole-importdataobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ImportDataObject(IDataObject lpdataobj, ushort cf, HGLOBAL hMetaPict);
+    HRESULT ImportDataObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject lpdataobj, ushort cf, HGLOBAL hMetaPict);
 }

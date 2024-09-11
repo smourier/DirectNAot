@@ -18,7 +18,7 @@ public partial interface ISpeechRecoContext : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_Voice(ISpeechVoice? Voice);
+    HRESULT putref_Voice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechVoice?>))] ISpeechVoice? Voice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -74,7 +74,7 @@ public partial interface ISpeechRecoContext : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_RetainedAudioFormat(ISpeechAudioFormat? Format);
+    HRESULT putref_RetainedAudioFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat?>))] ISpeechAudioFormat? Format);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

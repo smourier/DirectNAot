@@ -9,12 +9,12 @@ public partial interface IDWriteFontFallbackBuilder
     // https://learn.microsoft.com/windows/win32/DirectWrite/idwritefontfallbackbuilder-addmapping
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMapping([In][MarshalUsing(CountElementName = nameof(rangesCount))] DWRITE_UNICODE_RANGE[] ranges, uint rangesCount, [In][MarshalUsing(CountElementName = nameof(targetFamilyNamesCount))] ushort[] targetFamilyNames, uint targetFamilyNamesCount, IDWriteFontCollection? fontCollection, PWSTR localeName, PWSTR baseFamilyName, float scale);
+    HRESULT AddMapping([In][MarshalUsing(CountElementName = nameof(rangesCount))] DWRITE_UNICODE_RANGE[] ranges, uint rangesCount, [In][MarshalUsing(CountElementName = nameof(targetFamilyNamesCount))] ushort[] targetFamilyNames, uint targetFamilyNamesCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection?>))] IDWriteFontCollection? fontCollection, PWSTR localeName, PWSTR baseFamilyName, float scale);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontfallbackbuilder-addmappings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMappings(IDWriteFontFallback fontFallback);
+    HRESULT AddMappings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFallback>))] IDWriteFontFallback fontFallback);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_2/nf-dwrite_2-idwritefontfallbackbuilder-createfontfallback
     [PreserveSig]

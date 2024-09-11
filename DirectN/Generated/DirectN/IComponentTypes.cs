@@ -29,12 +29,12 @@ public partial interface IComponentTypes : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponenttypes-put_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Item(VARIANT Index, IComponentType ComponentType);
+    HRESULT put_Item(VARIANT Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentType>))] IComponentType ComponentType);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponenttypes-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IComponentType ComponentType, out VARIANT NewIndex);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentType>))] IComponentType ComponentType, out VARIANT NewIndex);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponenttypes-remove
     [PreserveSig]

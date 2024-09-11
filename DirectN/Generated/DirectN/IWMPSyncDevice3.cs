@@ -8,7 +8,7 @@ public partial interface IWMPSyncDevice3 : IWMPSyncDevice2
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice3-estimatesyncsize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT estimateSyncSize(IWMPPlaylist pNonRulePlaylist, IWMPPlaylist pRulesPlaylist);
+    HRESULT estimateSyncSize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pNonRulePlaylist, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pRulesPlaylist);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice3-cancelestimation
     [PreserveSig]

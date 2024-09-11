@@ -44,10 +44,10 @@ public partial interface IAudioSessionControl
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessioncontrol-registeraudiosessionnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterAudioSessionNotification(IAudioSessionEvents NewNotifications);
+    HRESULT RegisterAudioSessionNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionEvents>))] IAudioSessionEvents NewNotifications);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessioncontrol-unregisteraudiosessionnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterAudioSessionNotification(IAudioSessionEvents NewNotifications);
+    HRESULT UnregisterAudioSessionNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionEvents>))] IAudioSessionEvents NewNotifications);
 }

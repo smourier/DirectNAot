@@ -20,7 +20,7 @@ public partial interface ID2D1BitmapBrush : ID2D1Brush
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmapbrush-setbitmap
     [PreserveSig]
-    void SetBitmap(ID2D1Bitmap? bitmap);
+    void SetBitmap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Bitmap?>))] ID2D1Bitmap? bitmap);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1bitmapbrush-getextendmodex
     [PreserveSig]

@@ -9,7 +9,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setoffsetx(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOffsetX(IDCompositionAnimation animation);
+    HRESULT SetOffsetX([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setoffsetx(idcompositionanimation)
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setoffsety(idcompositionanimation)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOffsetY(IDCompositionAnimation animation);
+    HRESULT SetOffsetY([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setoffsety(idcompositionanimation)
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransform(constd2d_matrix_3x2_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransform(IDCompositionTransform? transform);
+    HRESULT SetTransform([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionTransform?>))] IDCompositionTransform? transform);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransform(constd2d_matrix_3x2_f_)
     [PreserveSig]
@@ -39,12 +39,12 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-settransformparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTransformParent(IDCompositionVisual? visual);
+    HRESULT SetTransformParent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionVisual?>))] IDCompositionVisual? visual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-seteffect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetEffect(IDCompositionEffect? effect);
+    HRESULT SetEffect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionEffect?>))] IDCompositionEffect? effect);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setbitmapinterpolationmode
     [PreserveSig]
@@ -59,7 +59,7 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setclip(constd2d_rect_f_)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClip(IDCompositionClip? clip);
+    HRESULT SetClip([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionClip?>))] IDCompositionClip? clip);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-setclip(constd2d_rect_f_)
     [PreserveSig]
@@ -74,12 +74,12 @@ public partial interface IDCompositionVisual
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-addvisual
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddVisual(IDCompositionVisual visual, BOOL insertAbove, IDCompositionVisual? referenceVisual);
+    HRESULT AddVisual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionVisual>))] IDCompositionVisual visual, BOOL insertAbove, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionVisual?>))] IDCompositionVisual? referenceVisual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-removevisual
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveVisual(IDCompositionVisual visual);
+    HRESULT RemoveVisual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionVisual>))] IDCompositionVisual visual);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositionvisual-removeallvisuals
     [PreserveSig]

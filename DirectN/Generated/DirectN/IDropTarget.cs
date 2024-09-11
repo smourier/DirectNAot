@@ -9,7 +9,7 @@ public partial interface IDropTarget
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-idroptarget-dragenter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DragEnter(IDataObject pDataObj, MODIFIERKEYS_FLAGS grfKeyState, POINTL pt, ref DROPEFFECT pdwEffect);
+    HRESULT DragEnter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj, MODIFIERKEYS_FLAGS grfKeyState, POINTL pt, ref DROPEFFECT pdwEffect);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-idroptarget-dragover
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface IDropTarget
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-idroptarget-drop
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Drop(IDataObject pDataObj, MODIFIERKEYS_FLAGS grfKeyState, POINTL pt, ref DROPEFFECT pdwEffect);
+    HRESULT Drop([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj, MODIFIERKEYS_FLAGS grfKeyState, POINTL pt, ref DROPEFFECT pdwEffect);
 }

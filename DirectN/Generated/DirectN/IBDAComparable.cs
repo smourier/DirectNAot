@@ -8,12 +8,12 @@ public partial interface IBDAComparable
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ibdacomparable-compareexact
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompareExact(IDispatch CompareTo, out int Result);
+    HRESULT CompareExact([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch CompareTo, out int Result);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ibdacomparable-compareequivalent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompareEquivalent(IDispatch CompareTo, uint dwFlags, out int Result);
+    HRESULT CompareEquivalent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch CompareTo, uint dwFlags, out int Result);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ibdacomparable-hashexact
     [PreserveSig]

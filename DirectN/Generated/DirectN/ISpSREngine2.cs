@@ -22,7 +22,7 @@ public partial interface ISpSREngine2 : ISpSREngine
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EmulateRecognition(ISpPhrase pPhrase, uint dwCompareFlags);
+    HRESULT EmulateRecognition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhrase>))] ISpPhrase pPhrase, uint dwCompareFlags);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

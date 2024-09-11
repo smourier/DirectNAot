@@ -29,7 +29,7 @@ public partial interface IConfigAsfWriter
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-configurefilterusingprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ConfigureFilterUsingProfile(IWMProfile pProfile);
+    HRESULT ConfigureFilterUsingProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] IWMProfile pProfile);
     
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter-getcurrentprofile
     [PreserveSig]

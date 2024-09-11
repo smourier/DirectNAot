@@ -9,7 +9,7 @@ public partial interface IMFCaptureRecordSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturerecordsink-setoutputbytestream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputByteStream(IMFByteStream pByteStream, in Guid guidContainerType);
+    HRESULT SetOutputByteStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pByteStream, in Guid guidContainerType);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturerecordsink-setoutputfilename
     [PreserveSig]
@@ -19,12 +19,12 @@ public partial interface IMFCaptureRecordSink : IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturerecordsink-setsamplecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSampleCallback(uint dwStreamSinkIndex, IMFCaptureEngineOnSampleCallback pCallback);
+    HRESULT SetSampleCallback(uint dwStreamSinkIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCaptureEngineOnSampleCallback>))] IMFCaptureEngineOnSampleCallback pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturerecordsink-setcustomsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCustomSink(IMFMediaSink pMediaSink);
+    HRESULT SetCustomSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaSink>))] IMFMediaSink pMediaSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturerecordsink-getrotation
     [PreserveSig]

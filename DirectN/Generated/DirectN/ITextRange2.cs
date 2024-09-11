@@ -39,7 +39,7 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-setfont2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFont2(ITextFont2? pFont);
+    HRESULT SetFont2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont2?>))] ITextFont2? pFont);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getformattedtext2
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-setformattedtext2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFormattedText2(ITextRange2? pRange);
+    HRESULT SetFormattedText2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getgravity
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-setpara2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPara2(ITextPara2? pPara);
+    HRESULT SetPara2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara2?>))] ITextPara2? pPara);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getrow
     [PreserveSig]
@@ -114,7 +114,7 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-find
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Find(ITextRange2? pRange, int Count, int Flags, out int pDelta);
+    HRESULT Find([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextRange2?>))] ITextRange2? pRange, int Count, int Flags, out int pDelta);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-getchar2
     [PreserveSig]
@@ -204,5 +204,5 @@ public partial interface ITextRange2 : ITextSelection
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextrange2-insertimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InsertImage(int width, int height, int ascent, int Type, BSTR bstrAltText, IStream? pStream);
+    HRESULT InsertImage(int width, int height, int ascent, int Type, BSTR bstrAltText, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream?>))] IStream? pStream);
 }

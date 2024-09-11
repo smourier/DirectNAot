@@ -8,5 +8,5 @@ public partial interface IWMReaderTypeNegotiation
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreadertypenegotiation-tryoutputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TryOutputProps(uint dwOutputNum, IWMOutputMediaProps pOutput);
+    HRESULT TryOutputProps(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] IWMOutputMediaProps pOutput);
 }

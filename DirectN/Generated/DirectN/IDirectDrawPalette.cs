@@ -18,7 +18,7 @@ public partial interface IDirectDrawPalette
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IDirectDraw param0, uint param1, ref PALETTEENTRY param2);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw param0, uint param1, ref PALETTEENTRY param2);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawpalette-setentries
     [PreserveSig]

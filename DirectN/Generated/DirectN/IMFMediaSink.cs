@@ -14,7 +14,7 @@ public partial interface IMFMediaSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-addstreamsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddStreamSink(uint dwStreamSinkIdentifier, IMFMediaType pMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamSink>))] out IMFStreamSink ppStreamSink);
+    HRESULT AddStreamSink(uint dwStreamSinkIdentifier, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFStreamSink>))] out IMFStreamSink ppStreamSink);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-removestreamsink
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IMFMediaSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-setpresentationclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPresentationClock(IMFPresentationClock pPresentationClock);
+    HRESULT SetPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock>))] IMFPresentationClock pPresentationClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasink-getpresentationclock
     [PreserveSig]

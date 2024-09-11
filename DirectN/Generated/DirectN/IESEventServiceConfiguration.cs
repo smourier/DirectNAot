@@ -9,7 +9,7 @@ public partial interface IESEventServiceConfiguration
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-setparent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetParent(IESEventService? pEventService);
+    HRESULT SetParent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IESEventService?>))] IESEventService? pEventService);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-removeparent
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IESEventServiceConfiguration
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-setowner
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOwner(IESEvents? pESEvents);
+    HRESULT SetOwner([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IESEvents?>))] IESEvents? pESEvents);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-removeowner
     [PreserveSig]
@@ -29,10 +29,10 @@ public partial interface IESEventServiceConfiguration
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-setgraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGraph(IFilterGraph? pGraph);
+    HRESULT SetGraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFilterGraph?>))] IFilterGraph? pGraph);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ieseventserviceconfiguration-removegraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveGraph(IFilterGraph? pGraph);
+    HRESULT RemoveGraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFilterGraph?>))] IFilterGraph? pGraph);
 }

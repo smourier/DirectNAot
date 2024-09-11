@@ -23,20 +23,20 @@ public partial interface IWMPPlaylistCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-remove
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT remove(IWMPPlaylist pItem);
+    HRESULT remove([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pItem);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nn-wmp-iwmpplaylistcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT setDeleted(IWMPPlaylist pItem, VARIANT_BOOL varfIsDeleted);
+    HRESULT setDeleted([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pItem, VARIANT_BOOL varfIsDeleted);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-isdeleted
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isDeleted(IWMPPlaylist pItem, ref VARIANT_BOOL pvarfIsDeleted);
+    HRESULT isDeleted([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pItem, ref VARIANT_BOOL pvarfIsDeleted);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylistcollection-importplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT importPlaylist(IWMPPlaylist pItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppImportedItem);
+    HRESULT importPlaylist([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] out IWMPPlaylist ppImportedItem);
 }

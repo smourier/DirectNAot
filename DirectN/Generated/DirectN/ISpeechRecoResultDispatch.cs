@@ -14,7 +14,7 @@ public partial interface ISpeechRecoResultDispatch : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT putref_AudioFormat(ISpeechAudioFormat? Format);
+    HRESULT putref_AudioFormat([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechAudioFormat?>))] ISpeechAudioFormat? Format);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

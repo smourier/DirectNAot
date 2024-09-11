@@ -8,12 +8,12 @@ public partial interface IDWriteFactory6 : IDWriteFactory5
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontFaceReference(IDWriteFontFile fontFile, uint faceIndex, DWRITE_FONT_SIMULATIONS fontSimulations, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference1>))] out IDWriteFontFaceReference1 fontFaceReference);
+    HRESULT CreateFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] IDWriteFontFile fontFile, uint faceIndex, DWRITE_FONT_SIMULATIONS fontSimulations, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference1>))] out IDWriteFontFaceReference1 fontFaceReference);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontResource(IDWriteFontFile fontFile, uint faceIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontResource>))] out IDWriteFontResource fontResource);
+    HRESULT CreateFontResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] IDWriteFontFile fontFile, uint faceIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontResource>))] out IDWriteFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-getsystemfontset
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IDWriteFactory6 : IDWriteFactory5
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createfontcollectionfromfontset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateFontCollectionFromFontSet(IDWriteFontSet fontSet, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection2>))] out IDWriteFontCollection2 fontCollection);
+    HRESULT CreateFontCollectionFromFontSet([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontSet>))] IDWriteFontSet fontSet, DWRITE_FONT_FAMILY_MODEL fontFamilyModel, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection2>))] out IDWriteFontCollection2 fontCollection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createfontsetbuilder
     [PreserveSig]
@@ -38,5 +38,5 @@ public partial interface IDWriteFactory6 : IDWriteFactory5
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefactory6-createtextformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTextFormat(PWSTR fontFamilyName, IDWriteFontCollection? fontCollection, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, float fontSize, PWSTR localeName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat3>))] out IDWriteTextFormat3 textFormat);
+    HRESULT CreateTextFormat(PWSTR fontFamilyName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection?>))] IDWriteFontCollection? fontCollection, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, float fontSize, PWSTR localeName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat3>))] out IDWriteTextFormat3 textFormat);
 }

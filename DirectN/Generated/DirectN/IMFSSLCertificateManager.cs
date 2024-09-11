@@ -14,12 +14,12 @@ public partial interface IMFSSLCertificateManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsslcertificatemanager-begingetclientcertificate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginGetClientCertificate(PWSTR pszURL, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginGetClientCertificate(PWSTR pszURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsslcertificatemanager-endgetclientcertificate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndGetClientCertificate(IMFAsyncResult pResult, out nint /* byte array */ ppbData, out uint pcbData);
+    HRESULT EndGetClientCertificate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out nint /* byte array */ ppbData, out uint pcbData);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsslcertificatemanager-getcertificatepolicy
     [PreserveSig]

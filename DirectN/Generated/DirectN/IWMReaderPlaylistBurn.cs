@@ -8,7 +8,7 @@ public partial interface IWMReaderPlaylistBurn
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderplaylistburn-initplaylistburn
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitPlaylistBurn(uint cFiles, in PWSTR ppwszFilenames, IWMStatusCallback pCallback, nint pvContext);
+    HRESULT InitPlaylistBurn(uint cFiles, in PWSTR ppwszFilenames, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderplaylistburn-getinitresults
     [PreserveSig]

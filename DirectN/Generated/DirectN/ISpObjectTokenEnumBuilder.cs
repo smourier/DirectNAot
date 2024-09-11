@@ -14,11 +14,11 @@ public partial interface ISpObjectTokenEnumBuilder : IEnumSpObjectTokens
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddTokensFromDataKey(ISpDataKey pDataKey, PWSTR pszSubKey, PWSTR pszCategoryId);
+    HRESULT AddTokensFromDataKey([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpDataKey>))] ISpDataKey pDataKey, PWSTR pszSubKey, PWSTR pszCategoryId);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddTokensFromTokenEnum(IEnumSpObjectTokens pTokenEnum);
+    HRESULT AddTokensFromTokenEnum([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSpObjectTokens>))] IEnumSpObjectTokens pTokenEnum);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

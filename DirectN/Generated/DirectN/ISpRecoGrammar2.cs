@@ -30,9 +30,9 @@ public partial interface ISpRecoGrammar2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGrammarLoader(ISpeechResourceLoader pLoader);
+    HRESULT SetGrammarLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechResourceLoader>))] ISpeechResourceLoader pLoader);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSMLSecurityManager(IInternetSecurityManager pSMLSecurityManager);
+    HRESULT SetSMLSecurityManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInternetSecurityManager>))] IInternetSecurityManager pSMLSecurityManager);
 }

@@ -24,10 +24,10 @@ public partial interface IMMDeviceEnumerator
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdeviceenumerator-registerendpointnotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterEndpointNotificationCallback(IMMNotificationClient pClient);
+    HRESULT RegisterEndpointNotificationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMMNotificationClient>))] IMMNotificationClient pClient);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdeviceenumerator-unregisterendpointnotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterEndpointNotificationCallback(IMMNotificationClient pClient);
+    HRESULT UnregisterEndpointNotificationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMMNotificationClient>))] IMMNotificationClient pClient);
 }

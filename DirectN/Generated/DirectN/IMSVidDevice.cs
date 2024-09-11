@@ -49,5 +49,5 @@ public partial interface IMSVidDevice : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsviddevice-isequaldevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqualDevice(IMSVidDevice Device, out VARIANT_BOOL IsEqual);
+    HRESULT IsEqualDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidDevice>))] IMSVidDevice Device, out VARIANT_BOOL IsEqual);
 }

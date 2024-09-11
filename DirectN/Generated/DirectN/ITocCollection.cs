@@ -19,12 +19,12 @@ public partial interface ITocCollection
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoccollection-addentry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntry(IToc pToc, ref uint pdwEntryIndex);
+    HRESULT AddEntry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] IToc pToc, ref uint pdwEntryIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoccollection-addentrybyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntryByIndex(uint dwEntryIndex, IToc pToc);
+    HRESULT AddEntryByIndex(uint dwEntryIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] IToc pToc);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoccollection-removeentrybyindex
     [PreserveSig]

@@ -49,7 +49,7 @@ public partial interface IOverlay
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-advise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Advise(IOverlayNotify pOverlayNotify, uint dwInterests);
+    HRESULT Advise([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOverlayNotify>))] IOverlayNotify pOverlayNotify, uint dwInterests);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ioverlay-unadvise
     [PreserveSig]

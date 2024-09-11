@@ -6,7 +6,7 @@ public partial interface IDxcLinker
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterLibrary(PWSTR pLibName, IDxcBlob pLib);
+    HRESULT RegisterLibrary(PWSTR pLibName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pLib);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

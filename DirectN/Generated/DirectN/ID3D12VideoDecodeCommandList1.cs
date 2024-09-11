@@ -7,5 +7,5 @@ public partial interface ID3D12VideoDecodeCommandList1 : ID3D12VideoDecodeComman
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videodecodecommandlist1-decodeframe1
     [PreserveSig]
-    void DecodeFrame1(ID3D12VideoDecoder pDecoder, in D3D12_VIDEO_DECODE_OUTPUT_STREAM_ARGUMENTS1 pOutputArguments, in D3D12_VIDEO_DECODE_INPUT_STREAM_ARGUMENTS pInputArguments);
+    void DecodeFrame1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12VideoDecoder>))] ID3D12VideoDecoder pDecoder, in D3D12_VIDEO_DECODE_OUTPUT_STREAM_ARGUMENTS1 pOutputArguments, in D3D12_VIDEO_DECODE_INPUT_STREAM_ARGUMENTS pInputArguments);
 }

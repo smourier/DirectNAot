@@ -7,11 +7,11 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-updatetilemappings
     [PreserveSig]
-    void UpdateTileMappings(ID3D12Resource pResource, uint NumResourceRegions, nint /* optional D3D12_TILED_RESOURCE_COORDINATE* */ pResourceRegionStartCoordinates, nint /* optional D3D12_TILE_REGION_SIZE* */ pResourceRegionSizes, ID3D12Heap? pHeap, uint NumRanges, nint /* optional D3D12_TILE_RANGE_FLAGS* */ pRangeFlags, nint /* optional uint* */ pHeapRangeStartOffsets, nint /* optional uint* */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
+    void UpdateTileMappings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pResource, uint NumResourceRegions, nint /* optional D3D12_TILED_RESOURCE_COORDINATE* */ pResourceRegionStartCoordinates, nint /* optional D3D12_TILE_REGION_SIZE* */ pResourceRegionSizes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Heap?>))] ID3D12Heap? pHeap, uint NumRanges, nint /* optional D3D12_TILE_RANGE_FLAGS* */ pRangeFlags, nint /* optional uint* */ pHeapRangeStartOffsets, nint /* optional uint* */ pRangeTileCounts, D3D12_TILE_MAPPING_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-copytilemappings
     [PreserveSig]
-    void CopyTileMappings(ID3D12Resource pDstResource, in D3D12_TILED_RESOURCE_COORDINATE pDstRegionStartCoordinate, ID3D12Resource pSrcResource, in D3D12_TILED_RESOURCE_COORDINATE pSrcRegionStartCoordinate, in D3D12_TILE_REGION_SIZE pRegionSize, D3D12_TILE_MAPPING_FLAGS Flags);
+    void CopyTileMappings([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pDstResource, in D3D12_TILED_RESOURCE_COORDINATE pDstRegionStartCoordinate, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pSrcResource, in D3D12_TILED_RESOURCE_COORDINATE pSrcRegionStartCoordinate, in D3D12_TILE_REGION_SIZE pRegionSize, D3D12_TILE_MAPPING_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-executecommandlists
     [PreserveSig]
@@ -32,12 +32,12 @@ public partial interface ID3D12CommandQueue : ID3D12Pageable
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-signal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Signal(ID3D12Fence pFence, ulong Value);
+    HRESULT Signal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Fence>))] ID3D12Fence pFence, ulong Value);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-wait
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Wait(ID3D12Fence pFence, ulong Value);
+    HRESULT Wait([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Fence>))] ID3D12Fence pFence, ulong Value);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12commandqueue-gettimestampfrequency
     [PreserveSig]

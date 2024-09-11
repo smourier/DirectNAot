@@ -9,7 +9,7 @@ public partial interface IConfigAsfWriter2 : IConfigAsfWriter
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter2-streamnumfrompin
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StreamNumFromPin(IPin pPin, out ushort pwStreamNum);
+    HRESULT StreamNumFromPin([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, out ushort pwStreamNum);
     
     // https://learn.microsoft.com/windows/win32/api/dshowasf/nf-dshowasf-iconfigasfwriter2-setparam
     [PreserveSig]

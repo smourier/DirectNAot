@@ -6,5 +6,5 @@ public partial interface IMMDeviceActivator
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Activate(in Guid iid, IMMDevice pDevice, nint /* optional PROPVARIANT* */ pActivationParams, out nint ppInterface);
+    HRESULT Activate(in Guid iid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMMDevice>))] IMMDevice pDevice, nint /* optional PROPVARIANT* */ pActivationParams, out nint ppInterface);
 }

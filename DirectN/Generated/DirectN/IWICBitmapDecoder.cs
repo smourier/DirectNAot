@@ -9,12 +9,12 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-querycapability
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryCapability(IStream pIStream, out uint pdwCapability);
+    HRESULT QueryCapability([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, out uint pdwCapability);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IStream pIStream, WICDecodeOptions cacheOptions);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, WICDecodeOptions cacheOptions);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getcontainerformat
     [PreserveSig]
@@ -29,7 +29,7 @@ public partial interface IWICBitmapDecoder
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-copypalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyPalette(IWICPalette pIPalette);
+    HRESULT CopyPalette([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICPalette>))] IWICPalette pIPalette);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapdecoder-getmetadataqueryreader
     [PreserveSig]

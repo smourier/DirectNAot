@@ -23,7 +23,7 @@ public partial interface IMFVirtualCamera : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-start
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Start(IMFAsyncCallback? pCallback);
+    HRESULT Start([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback?>))] IMFAsyncCallback? pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-imfvirtualcamera-stop
     [PreserveSig]

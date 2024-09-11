@@ -6,9 +6,9 @@ public partial interface IWMCodecVideoAccelerator
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NegotiateConnection(IAMVideoAccelerator pIAMVA, in AM_MEDIA_TYPE pMediaType);
+    HRESULT NegotiateConnection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMVideoAccelerator>))] IAMVideoAccelerator pIAMVA, in AM_MEDIA_TYPE pMediaType);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPlayerNotify(IWMPlayerTimestampHook pHook);
+    HRESULT SetPlayerNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPlayerTimestampHook>))] IWMPlayerTimestampHook pHook);
 }

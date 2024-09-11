@@ -74,10 +74,10 @@ public partial interface IAMTuner
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamtuner-registernotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterNotificationCallBack(IAMTunerNotification pNotify, int lEvents);
+    HRESULT RegisterNotificationCallBack([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMTunerNotification>))] IAMTunerNotification pNotify, int lEvents);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamtuner-unregisternotificationcallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnRegisterNotificationCallBack(IAMTunerNotification pNotify);
+    HRESULT UnRegisterNotificationCallBack([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMTunerNotification>))] IAMTunerNotification pNotify);
 }

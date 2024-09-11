@@ -10,7 +10,7 @@ public partial interface IPrintPreviewDxgiPackageTarget
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawPage(uint jobPageNumber, IDXGISurface pageImage, float dpiX, float dpiY);
+    HRESULT DrawPage(uint jobPageNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISurface>))] IDXGISurface pageImage, float dpiX, float dpiY);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

@@ -9,7 +9,7 @@ public partial interface ISpatialAudioMetadataWriter
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatawriter-open
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Open(ISpatialAudioMetadataItems metadataItems);
+    HRESULT Open([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioMetadataItems>))] ISpatialAudioMetadataItems metadataItems);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatawriter-writenextitem
     [PreserveSig]

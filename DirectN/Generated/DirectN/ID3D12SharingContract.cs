@@ -7,11 +7,11 @@ public partial interface ID3D12SharingContract
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12sharingcontract-present
     [PreserveSig]
-    void Present(ID3D12Resource pResource, uint Subresource, HWND window);
+    void Present([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pResource, uint Subresource, HWND window);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/nf-d3d12sdklayers-id3d12sharingcontract-sharedfencesignal
     [PreserveSig]
-    void SharedFenceSignal(ID3D12Fence pFence, ulong FenceValue);
+    void SharedFenceSignal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Fence>))] ID3D12Fence pFence, ulong FenceValue);
     
     [PreserveSig]
     void BeginCapturableWork(in Guid guid);

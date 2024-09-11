@@ -23,7 +23,7 @@ public partial interface IWMProfileManager
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-saveprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveProfile(IWMProfile pIWMProfile, PWSTR pwszProfile, ref uint pdwLength);
+    HRESULT SaveProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] IWMProfile pIWMProfile, PWSTR pwszProfile, ref uint pdwLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofilemanager-getsystemprofilecount
     [PreserveSig]

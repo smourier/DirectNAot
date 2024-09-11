@@ -16,7 +16,7 @@ public partial interface IAdviseSink
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-iadvisesink-onrename
     [PreserveSig]
-    void OnRename(IMoniker pmk);
+    void OnRename([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pmk);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-iadvisesink-onsave
     [PreserveSig]

@@ -6,5 +6,5 @@ namespace DirectN;
 public partial interface IWMPEvents4 : IWMPEvents3
 {
     [PreserveSig]
-    void DeviceEstimation(IWMPSyncDevice pDevice, HRESULT hrResult, long qwEstimatedUsedSpace, long qwEstimatedSpace);
+    void DeviceEstimation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, HRESULT hrResult, long qwEstimatedUsedSpace, long qwEstimatedSpace);
 }

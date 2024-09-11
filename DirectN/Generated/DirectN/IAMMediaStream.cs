@@ -18,15 +18,15 @@ public partial interface IAMMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediastream-joinammultimediastream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JoinAMMultiMediaStream(IAMMultiMediaStream pAMMultiMediaStream);
+    HRESULT JoinAMMultiMediaStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMMultiMediaStream>))] IAMMultiMediaStream pAMMultiMediaStream);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediastream-joinfilter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JoinFilter(IMediaStreamFilter pMediaStreamFilter);
+    HRESULT JoinFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaStreamFilter>))] IMediaStreamFilter pMediaStreamFilter);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammediastream-joinfiltergraph
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT JoinFilterGraph(IFilterGraph pFilterGraph);
+    HRESULT JoinFilterGraph([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IFilterGraph>))] IFilterGraph pFilterGraph);
 }

@@ -9,7 +9,7 @@ public partial interface IWICPlanarFormatConverter : IWICBitmapSource
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarformatconverter-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize([In][MarshalUsing(CountElementName = nameof(cPlanes))] IWICBitmapSource[] ppPlanes, uint cPlanes, in Guid dstFormat, WICBitmapDitherType dither, IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
+    HRESULT Initialize([In][MarshalUsing(CountElementName = nameof(cPlanes))] IWICBitmapSource[] ppPlanes, uint cPlanes, in Guid dstFormat, WICBitmapDitherType dither, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICPalette>))] IWICPalette pIPalette, double alphaThresholdPercent, WICBitmapPaletteType paletteTranslate);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicplanarformatconverter-canconvert
     [PreserveSig]

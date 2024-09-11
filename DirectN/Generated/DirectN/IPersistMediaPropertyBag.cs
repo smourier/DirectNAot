@@ -14,10 +14,10 @@ public partial interface IPersistMediaPropertyBag : IPersist
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipersistmediapropertybag-load
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IMediaPropertyBag pPropBag, IErrorLog pErrorLog);
+    HRESULT Load([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaPropertyBag>))] IMediaPropertyBag pPropBag, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorLog>))] IErrorLog pErrorLog);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipersistmediapropertybag-save
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Save(IMediaPropertyBag pPropBag, BOOL fClearDirty, BOOL fSaveAllProperties);
+    HRESULT Save([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaPropertyBag>))] IMediaPropertyBag pPropBag, BOOL fClearDirty, BOOL fSaveAllProperties);
 }

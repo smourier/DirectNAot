@@ -6,7 +6,7 @@ public partial interface ISpTTSEngine
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Speak(uint dwSpeakFlags, in Guid rguidFormatId, in WAVEFORMATEX pWaveFormatEx, in SPVTEXTFRAG pTextFragList, ISpTTSEngineSite pOutputSite);
+    HRESULT Speak(uint dwSpeakFlags, in Guid rguidFormatId, in WAVEFORMATEX pWaveFormatEx, in SPVTEXTFRAG pTextFragList, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpTTSEngineSite>))] ISpTTSEngineSite pOutputSite);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

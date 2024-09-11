@@ -14,7 +14,7 @@ public partial interface IInkPresenterDesktop
     // https://learn.microsoft.com/windows/win32/api/inkpresenterdesktop/nf-inkpresenterdesktop-iinkpresenterdesktop-setcommitrequesthandler
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCommitRequestHandler(IInkCommitRequestHandler handler);
+    HRESULT SetCommitRequestHandler([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IInkCommitRequestHandler>))] IInkCommitRequestHandler handler);
     
     // https://learn.microsoft.com/windows/win32/api/inkpresenterdesktop/nf-inkpresenterdesktop-iinkpresenterdesktop-getsize
     [PreserveSig]

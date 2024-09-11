@@ -24,5 +24,5 @@ public partial interface IOleInPlaceUIWindow : IOleWindow
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceuiwindow-setactiveobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetActiveObject(IOleInPlaceActiveObject pActiveObject, PWSTR pszObjName);
+    HRESULT SetActiveObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleInPlaceActiveObject>))] IOleInPlaceActiveObject pActiveObject, PWSTR pszObjName);
 }

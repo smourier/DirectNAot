@@ -24,5 +24,5 @@ public partial interface IVMRSurfaceAllocator9
     // https://learn.microsoft.com/windows/win32/api/vmr9/nf-vmr9-ivmrsurfaceallocator9-advisenotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AdviseNotify(IVMRSurfaceAllocatorNotify9 lpIVMRSurfAllocNotify);
+    HRESULT AdviseNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRSurfaceAllocatorNotify9>))] IVMRSurfaceAllocatorNotify9 lpIVMRSurfAllocNotify);
 }

@@ -9,7 +9,7 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-registernotifications
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterNotifications(IMFTimedTextNotify? notify);
+    HRESULT RegisterNotifications([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextNotify?>))] IMFTimedTextNotify? notify);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-selecttrack
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-adddatasource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddDataSource(IMFByteStream byteStream, PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, BOOL isDefault, out uint trackId);
+    HRESULT AddDataSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream byteStream, PWSTR label, PWSTR language, MF_TIMED_TEXT_TRACK_KIND kind, BOOL isDefault, out uint trackId);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-adddatasourcefromurl
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IMFTimedText
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-removetrack
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveTrack(IMFTimedTextTrack track);
+    HRESULT RemoveTrack([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTimedTextTrack>))] IMFTimedTextTrack track);
     
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imftimedtext-getcuetimeoffset
     [PreserveSig]

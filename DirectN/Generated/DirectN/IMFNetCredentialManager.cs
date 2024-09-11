@@ -9,15 +9,15 @@ public partial interface IMFNetCredentialManager
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialmanager-begingetcredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginGetCredentials(in MFNetCredentialManagerGetParam pParam, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginGetCredentials(in MFNetCredentialManagerGetParam pParam, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialmanager-endgetcredentials
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndGetCredentials(IMFAsyncResult pResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetCredential>))] out IMFNetCredential ppCred);
+    HRESULT EndGetCredentials([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetCredential>))] out IMFNetCredential ppCred);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfnetcredentialmanager-setgood
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetGood(IMFNetCredential pCred, BOOL fGood);
+    HRESULT SetGood([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFNetCredential>))] IMFNetCredential pCred, BOOL fGood);
 }

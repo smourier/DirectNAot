@@ -38,5 +38,5 @@ public partial interface IWMDMStorageGlobals
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmstorageglobals-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(uint fuMode, IWMDMProgress? pProgress);
+    HRESULT Initialize(uint fuMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMProgress?>))] IWMDMProgress? pProgress);
 }

@@ -24,7 +24,7 @@ public partial interface IDistributorNotify
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idistributornotify-setsyncsource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSyncSource(IReferenceClock pClock);
+    HRESULT SetSyncSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IReferenceClock>))] IReferenceClock pClock);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idistributornotify-notifygraphchange
     [PreserveSig]

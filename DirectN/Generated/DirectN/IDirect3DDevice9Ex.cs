@@ -13,7 +13,7 @@ public partial interface IDirect3DDevice9Ex : IDirect3DDevice9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-composerects
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ComposeRects(IDirect3DSurface9 pSrc, IDirect3DSurface9 pDst, IDirect3DVertexBuffer9 pSrcRectDescs, uint NumRects, IDirect3DVertexBuffer9 pDstRectDescs, D3DCOMPOSERECTSOP Operation, int Xoffset, int Yoffset);
+    HRESULT ComposeRects([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pSrc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pDst, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexBuffer9>))] IDirect3DVertexBuffer9 pSrcRectDescs, uint NumRects, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DVertexBuffer9>))] IDirect3DVertexBuffer9 pDstRectDescs, D3DCOMPOSERECTSOP Operation, int Xoffset, int Yoffset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3ddevice9ex-presentex
     [PreserveSig]

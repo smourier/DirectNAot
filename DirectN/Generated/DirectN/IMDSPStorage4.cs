@@ -18,12 +18,12 @@ public partial interface IMDSPStorage4 : IMDSPStorage3
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-createstoragewithmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStorageWithMetadata(uint dwAttributes, PWSTR pwszName, IWMDMMetaData? pMetadata, ulong qwFileSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppNewStorage);
+    HRESULT CreateStorageWithMetadata(uint dwAttributes, PWSTR pwszName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMMetaData?>))] IWMDMMetaData? pMetadata, ulong qwFileSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMDSPStorage>))] out IMDSPStorage ppNewStorage);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-getspecifiedmetadata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetSpecifiedMetadata(uint cProperties, [In][MarshalUsing(CountElementName = nameof(cProperties))] PWSTR[] ppwszPropNames, IWMDMMetaData? pMetadata);
+    HRESULT GetSpecifiedMetadata(uint cProperties, [In][MarshalUsing(CountElementName = nameof(cProperties))] PWSTR[] ppwszPropNames, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMDMMetaData?>))] IWMDMMetaData? pMetadata);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-imdspstorage4-findstorage
     [PreserveSig]

@@ -9,12 +9,12 @@ public partial interface IMFSchemeHandler
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfschemehandler-begincreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginCreateObject(PWSTR pwszURL, uint dwFlags, IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginCreateObject(PWSTR pwszURL, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyStore>))] IPropertyStore pProps, nint /* optional nint* */ ppIUnknownCancelCookie, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfschemehandler-endcreateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndCreateObject(IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
+    HRESULT EndCreateObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out MF_OBJECT_TYPE pObjectType, out nint ppObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfschemehandler-cancelobjectcreation
     [PreserveSig]

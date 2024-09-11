@@ -49,12 +49,12 @@ public partial interface IToc
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoc-addentrylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntryList(ITocEntryList pEntryList, ref ushort pwEntryListIndex);
+    HRESULT AddEntryList([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocEntryList>))] ITocEntryList pEntryList, ref ushort pwEntryListIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoc-addentrylistbyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddEntryListByIndex(ushort wEntryListIndex, ITocEntryList pEntryList);
+    HRESULT AddEntryListByIndex(ushort wEntryListIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITocEntryList>))] ITocEntryList pEntryList);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itoc-removeentrylistbyindex
     [PreserveSig]

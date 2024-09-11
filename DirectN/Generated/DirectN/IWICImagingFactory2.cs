@@ -9,5 +9,5 @@ public partial interface IWICImagingFactory2 : IWICImagingFactory
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicimagingfactory2-createimageencoder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateImageEncoder(ID2D1Device pD2DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICImageEncoder>))] out IWICImageEncoder ppWICImageEncoder);
+    HRESULT CreateImageEncoder([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Device>))] ID2D1Device pD2DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICImageEncoder>))] out IWICImageEncoder ppWICImageEncoder);
 }

@@ -94,7 +94,7 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-setfontresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFontResource(IXpsOMFontResource fontResource);
+    HRESULT SetFontResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMFontResource>))] IXpsOMFontResource fontResource);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getfontfaceindex
     [PreserveSig]
@@ -119,7 +119,7 @@ public partial interface IXpsOMGlyphs : IXpsOMVisual
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-setfillbrushlocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFillBrushLocal(IXpsOMBrush fillBrush);
+    HRESULT SetFillBrushLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMBrush>))] IXpsOMBrush fillBrush);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomglyphs-getfillbrushlookup
     [PreserveSig]

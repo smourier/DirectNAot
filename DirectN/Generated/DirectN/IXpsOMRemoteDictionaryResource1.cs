@@ -14,5 +14,5 @@ public partial interface IXpsOMRemoteDictionaryResource1 : IXpsOMRemoteDictionar
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel_1/nf-xpsobjectmodel_1-ixpsomremotedictionaryresource1-write1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Write1(ISequentialStream stream, XPS_DOCUMENT_TYPE documentType);
+    HRESULT Write1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISequentialStream>))] ISequentialStream stream, XPS_DOCUMENT_TYPE documentType);
 }

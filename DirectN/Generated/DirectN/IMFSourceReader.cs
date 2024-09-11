@@ -29,7 +29,7 @@ public partial interface IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-setcurrentmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCurrentMediaType(uint dwStreamIndex, nint /* optional uint* */ pdwReserved, IMFMediaType pMediaType);
+    HRESULT SetCurrentMediaType(uint dwStreamIndex, nint /* optional uint* */ pdwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-setcurrentposition
     [PreserveSig]

@@ -6,7 +6,7 @@ public partial interface IDirectMusicPort
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlayBuffer(IDirectMusicBuffer pBuffer);
+    HRESULT PlayBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicBuffer>))] IDirectMusicBuffer pBuffer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,15 +14,15 @@ public partial interface IDirectMusicPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Read(IDirectMusicBuffer pBuffer);
+    HRESULT Read([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicBuffer>))] IDirectMusicBuffer pBuffer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DownloadInstrument(IDirectMusicInstrument pInstrument, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownloadedInstrument>))] out IDirectMusicDownloadedInstrument ppDownloadedInstrument, ref DMUS_NOTERANGE pNoteRanges, uint dwNumNoteRanges);
+    HRESULT DownloadInstrument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicInstrument>))] IDirectMusicInstrument pInstrument, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownloadedInstrument>))] out IDirectMusicDownloadedInstrument ppDownloadedInstrument, ref DMUS_NOTERANGE pNoteRanges, uint dwNumNoteRanges);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnloadInstrument(IDirectMusicDownloadedInstrument pDownloadedInstrument);
+    HRESULT UnloadInstrument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectMusicDownloadedInstrument>))] IDirectMusicDownloadedInstrument pDownloadedInstrument);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -66,7 +66,7 @@ public partial interface IDirectMusicPort
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDirectSound(IDirectSound pDirectSound, IDirectSoundBuffer pDirectSoundBuffer);
+    HRESULT SetDirectSound([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSound>))] IDirectSound pDirectSound, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectSoundBuffer>))] IDirectSoundBuffer pDirectSoundBuffer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

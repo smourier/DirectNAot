@@ -13,5 +13,5 @@ public partial interface IDWriteBitmapRenderTarget3 : IDWriteBitmapRenderTarget2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DrawGlyphRunWithColorSupport(float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, IDWriteRenderingParams renderingParams, COLORREF textColor, uint colorPaletteIndex, nint /* optional RECT* */ blackBoxRect);
+    HRESULT DrawGlyphRunWithColorSupport(float baselineOriginX, float baselineOriginY, DWRITE_MEASURING_MODE measuringMode, in DWRITE_GLYPH_RUN glyphRun, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteRenderingParams>))] IDWriteRenderingParams renderingParams, COLORREF textColor, uint colorPaletteIndex, nint /* optional RECT* */ blackBoxRect);
 }

@@ -24,17 +24,17 @@ public partial interface ID3D11Device3 : ID3D11Device2
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-createshaderresourceview1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateShaderResourceView1(ID3D11Resource pResource, nint /* optional D3D11_SHADER_RESOURCE_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11ShaderResourceView1* */ ppSRView1);
+    HRESULT CreateShaderResourceView1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, nint /* optional D3D11_SHADER_RESOURCE_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11ShaderResourceView1* */ ppSRView1);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-createunorderedaccessview1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateUnorderedAccessView1(ID3D11Resource pResource, nint /* optional D3D11_UNORDERED_ACCESS_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11UnorderedAccessView1* */ ppUAView1);
+    HRESULT CreateUnorderedAccessView1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, nint /* optional D3D11_UNORDERED_ACCESS_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11UnorderedAccessView1* */ ppUAView1);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-createrendertargetview1
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTargetView1(ID3D11Resource pResource, nint /* optional D3D11_RENDER_TARGET_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11RenderTargetView1* */ ppRTView1);
+    HRESULT CreateRenderTargetView1([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, nint /* optional D3D11_RENDER_TARGET_VIEW_DESC1* */ pDesc1, nint /* optional ID3D11RenderTargetView1* */ ppRTView1);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-createquery1
     [PreserveSig]
@@ -52,9 +52,9 @@ public partial interface ID3D11Device3 : ID3D11Device2
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-writetosubresource
     [PreserveSig]
-    void WriteToSubresource(ID3D11Resource pDstResource, uint DstSubresource, nint /* optional D3D11_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
+    void WriteToSubresource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pDstResource, uint DstSubresource, nint /* optional D3D11_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11_3/nf-d3d11_3-id3d11device3-readfromsubresource
     [PreserveSig]
-    void ReadFromSubresource(nint pDstData, uint DstRowPitch, uint DstDepthPitch, ID3D11Resource pSrcResource, uint SrcSubresource, nint /* optional D3D11_BOX* */ pSrcBox);
+    void ReadFromSubresource(nint pDstData, uint DstRowPitch, uint DstDepthPitch, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pSrcResource, uint SrcSubresource, nint /* optional D3D11_BOX* */ pSrcBox);
 }

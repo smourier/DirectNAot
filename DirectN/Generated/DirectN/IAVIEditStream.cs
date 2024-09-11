@@ -19,7 +19,7 @@ public partial interface IAVIEditStream
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-paste
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Paste(ref int plPos, ref int plLength, IAVIStream pstream, int lStart, int lEnd);
+    HRESULT Paste(ref int plPos, ref int plLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] IAVIStream pstream, int lStart, int lEnd);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iavieditstream-clone
     [PreserveSig]

@@ -44,7 +44,7 @@ public partial interface IDvbExtendedEventDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbextendedeventdescriptor-getconcatenateditemw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConcatenatedItemW(IDvbExtendedEventDescriptor pFollowingDescriptor, DVB_STRCONV_MODE convMode, out BSTR pbstrDesc, out BSTR pbstrItem);
+    HRESULT GetConcatenatedItemW([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvbExtendedEventDescriptor>))] IDvbExtendedEventDescriptor pFollowingDescriptor, DVB_STRCONV_MODE convMode, out BSTR pbstrDesc, out BSTR pbstrItem);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbextendedeventdescriptor-gettextw
     [PreserveSig]
@@ -54,7 +54,7 @@ public partial interface IDvbExtendedEventDescriptor
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbextendedeventdescriptor-getconcatenatedtextw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConcatenatedTextW(IDvbExtendedEventDescriptor FollowingDescriptor, DVB_STRCONV_MODE convMode, out BSTR pbstrText);
+    HRESULT GetConcatenatedTextW([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDvbExtendedEventDescriptor>))] IDvbExtendedEventDescriptor FollowingDescriptor, DVB_STRCONV_MODE convMode, out BSTR pbstrText);
     
     // https://learn.microsoft.com/windows/win32/api/dvbsiparser/nf-dvbsiparser-idvbextendedeventdescriptor-getrecorditemrawbytes
     [PreserveSig]

@@ -23,7 +23,7 @@ public partial interface IWMWriterPreprocess
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpreprocess-preprocesssample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PreprocessSample(uint dwInputNum, ulong cnsSampleTime, uint dwFlags, INSSBuffer pSample);
+    HRESULT PreprocessSample(uint dwInputNum, ulong cnsSampleTime, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pSample);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriterpreprocess-endpreprocessingpass
     [PreserveSig]

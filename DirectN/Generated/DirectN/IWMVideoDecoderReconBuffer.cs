@@ -14,10 +14,10 @@ public partial interface IWMVideoDecoderReconBuffer
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-iwmvideodecoderreconbuffer-getreconstructedvideoframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetReconstructedVideoFrame(IMediaBuffer pBuf);
+    HRESULT GetReconstructedVideoFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaBuffer>))] IMediaBuffer pBuf);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-iwmvideodecoderreconbuffer-setreconstructedvideoframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetReconstructedVideoFrame(IMediaBuffer pBuf);
+    HRESULT SetReconstructedVideoFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaBuffer>))] IMediaBuffer pBuf);
 }

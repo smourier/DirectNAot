@@ -10,5 +10,5 @@ public partial interface ISpITNProcessor
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ITNPhrase(ISpPhraseBuilder pPhrase);
+    HRESULT ITNPhrase([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhraseBuilder>))] ISpPhraseBuilder pPhrase);
 }

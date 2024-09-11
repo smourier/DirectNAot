@@ -24,7 +24,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-setstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStream(IMFASFStreamConfig pIStream);
+    HRESULT SetStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] IMFASFStreamConfig pIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-removestream
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-createstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateStream(IMFMediaType pIMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStream);
+    HRESULT CreateStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pIMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamConfig>))] out IMFASFStreamConfig ppIStream);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-getmutualexclusioncount
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-addmutualexclusion
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddMutualExclusion(IMFASFMutualExclusion pIMutex);
+    HRESULT AddMutualExclusion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFMutualExclusion>))] IMFASFMutualExclusion pIMutex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-removemutualexclusion
     [PreserveSig]
@@ -69,7 +69,7 @@ public partial interface IMFASFProfile : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-addstreamprioritization
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddStreamPrioritization(IMFASFStreamPrioritization pIStreamPrioritization);
+    HRESULT AddStreamPrioritization([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFStreamPrioritization>))] IMFASFStreamPrioritization pIStreamPrioritization);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfprofile-removestreamprioritization
     [PreserveSig]

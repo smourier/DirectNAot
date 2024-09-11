@@ -9,7 +9,7 @@ public partial interface IWICBitmapFrameEncode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IPropertyBag2 pIEncoderOptions);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2>))] IPropertyBag2 pIEncoderOptions);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-setsize
     [PreserveSig]
@@ -34,12 +34,12 @@ public partial interface IWICBitmapFrameEncode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-setpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPalette(IWICPalette pIPalette);
+    HRESULT SetPalette([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICPalette>))] IWICPalette pIPalette);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-setthumbnail
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetThumbnail(IWICBitmapSource pIThumbnail);
+    HRESULT SetThumbnail([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] IWICBitmapSource pIThumbnail);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-writepixels
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IWICBitmapFrameEncode
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-writesource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteSource(IWICBitmapSource pIBitmapSource, in WICRect prc);
+    HRESULT WriteSource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICBitmapSource>))] IWICBitmapSource pIBitmapSource, in WICRect prc);
     
     // https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-iwicbitmapframeencode-commit
     [PreserveSig]

@@ -9,10 +9,10 @@ public partial interface IMFSinkWriterEncoderConfig
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsinkwriterencoderconfig-settargetmediatype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTargetMediaType(uint dwStreamIndex, IMFMediaType pTargetMediaType, IMFAttributes? pEncodingParameters);
+    HRESULT SetTargetMediaType(uint dwStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pTargetMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pEncodingParameters);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsinkwriterencoderconfig-placeencodingparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT PlaceEncodingParameters(uint dwStreamIndex, IMFAttributes pEncodingParameters);
+    HRESULT PlaceEncodingParameters(uint dwStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pEncodingParameters);
 }

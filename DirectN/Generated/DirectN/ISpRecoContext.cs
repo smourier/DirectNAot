@@ -54,7 +54,7 @@ public partial interface ISpRecoContext : ISpEventSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVoice(ISpVoice pVoice, BOOL fAllowFormatChanges);
+    HRESULT SetVoice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpVoice>))] ISpVoice pVoice, BOOL fAllowFormatChanges);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

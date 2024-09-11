@@ -8,7 +8,7 @@ public partial interface IWMIndexer
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmindexer-startindexing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StartIndexing(PWSTR pwszURL, IWMStatusCallback pCallback, nint pvContext);
+    HRESULT StartIndexing(PWSTR pwszURL, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback, nint pvContext);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmindexer-cancel
     [PreserveSig]

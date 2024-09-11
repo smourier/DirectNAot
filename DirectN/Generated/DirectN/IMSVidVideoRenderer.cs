@@ -34,7 +34,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put__customcompositor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put__CustomCompositor(IVMRImageCompositor Compositor);
+    HRESULT put__CustomCompositor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRImageCompositor>))] IVMRImageCompositor Compositor);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_mixerbitmap
     [PreserveSig]
@@ -49,7 +49,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_mixerbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_MixerBitmap(IPictureDisp MixerPictureDisp);
+    HRESULT put_MixerBitmap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPictureDisp>))] IPictureDisp MixerPictureDisp);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put__mixerbitmap
     [PreserveSig]
@@ -64,7 +64,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_mixerbitmappositionrect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_MixerBitmapPositionRect(IMSVidRect rDest);
+    HRESULT put_MixerBitmapPositionRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] IMSVidRect rDest);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_mixerbitmapopacity
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-setupmixerbitmap
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetupMixerBitmap(IPictureDisp MixerPictureDisp, int Opacity, IMSVidRect rDest);
+    HRESULT SetupMixerBitmap([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPictureDisp>))] IPictureDisp MixerPictureDisp, int Opacity, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] IMSVidRect rDest);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_sourcesize
     [PreserveSig]
@@ -124,7 +124,7 @@ public partial interface IMSVidVideoRenderer : IMSVidOutputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-put_clippedsourcerect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_ClippedSourceRect(IMSVidRect pRect);
+    HRESULT put_ClippedSourceRect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidRect>))] IMSVidRect pRect);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidvideorenderer-get_usingoverlay
     [PreserveSig]

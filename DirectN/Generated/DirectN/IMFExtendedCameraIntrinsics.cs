@@ -26,5 +26,5 @@ public partial interface IMFExtendedCameraIntrinsics
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddIntrinsicModel(IMFExtendedCameraIntrinsicModel pIntrinsicModel);
+    HRESULT AddIntrinsicModel([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFExtendedCameraIntrinsicModel>))] IMFExtendedCameraIntrinsicModel pIntrinsicModel);
 }

@@ -14,7 +14,7 @@ public partial interface IComponent : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponent-put_type
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Type(IComponentType CT);
+    HRESULT put_Type([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponentType>))] IComponentType CT);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponent-get_desclangid
     [PreserveSig]

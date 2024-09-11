@@ -13,11 +13,11 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-reset
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Reset(ID3D12CommandAllocator pAllocator, ID3D12PipelineState? pInitialState);
+    HRESULT Reset([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12CommandAllocator>))] ID3D12CommandAllocator pAllocator, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12PipelineState?>))] ID3D12PipelineState? pInitialState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearstate
     [PreserveSig]
-    void ClearState(ID3D12PipelineState? pPipelineState);
+    void ClearState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12PipelineState?>))] ID3D12PipelineState? pPipelineState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-drawinstanced
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copybufferregion
     [PreserveSig]
-    void CopyBufferRegion(ID3D12Resource pDstBuffer, ulong DstOffset, ID3D12Resource pSrcBuffer, ulong SrcOffset, ulong NumBytes);
+    void CopyBufferRegion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pDstBuffer, ulong DstOffset, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pSrcBuffer, ulong SrcOffset, ulong NumBytes);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copytextureregion
     [PreserveSig]
@@ -41,15 +41,15 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copyresource
     [PreserveSig]
-    void CopyResource(ID3D12Resource pDstResource, ID3D12Resource pSrcResource);
+    void CopyResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pDstResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pSrcResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-copytiles
     [PreserveSig]
-    void CopyTiles(ID3D12Resource pTiledResource, in D3D12_TILED_RESOURCE_COORDINATE pTileRegionStartCoordinate, in D3D12_TILE_REGION_SIZE pTileRegionSize, ID3D12Resource pBuffer, ulong BufferStartOffsetInBytes, D3D12_TILE_COPY_FLAGS Flags);
+    void CopyTiles([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pTiledResource, in D3D12_TILED_RESOURCE_COORDINATE pTileRegionStartCoordinate, in D3D12_TILE_REGION_SIZE pTileRegionSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pBuffer, ulong BufferStartOffsetInBytes, D3D12_TILE_COPY_FLAGS Flags);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-resolvesubresource
     [PreserveSig]
-    void ResolveSubresource(ID3D12Resource pDstResource, uint DstSubresource, ID3D12Resource pSrcResource, uint SrcSubresource, DXGI_FORMAT Format);
+    void ResolveSubresource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pDstResource, uint DstSubresource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pSrcResource, uint SrcSubresource, DXGI_FORMAT Format);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-iasetprimitivetopology
     [PreserveSig]
@@ -73,7 +73,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setpipelinestate
     [PreserveSig]
-    void SetPipelineState(ID3D12PipelineState pPipelineState);
+    void SetPipelineState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12PipelineState>))] ID3D12PipelineState pPipelineState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-resourcebarrier
     [PreserveSig]
@@ -81,7 +81,7 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-executebundle
     [PreserveSig]
-    void ExecuteBundle(ID3D12GraphicsCommandList pCommandList);
+    void ExecuteBundle([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12GraphicsCommandList>))] ID3D12GraphicsCommandList pCommandList);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setdescriptorheaps
     [PreserveSig]
@@ -89,11 +89,11 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootsignature
     [PreserveSig]
-    void SetComputeRootSignature(ID3D12RootSignature? pRootSignature);
+    void SetComputeRootSignature([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12RootSignature?>))] ID3D12RootSignature? pRootSignature);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setgraphicsrootsignature
     [PreserveSig]
-    void SetGraphicsRootSignature(ID3D12RootSignature? pRootSignature);
+    void SetGraphicsRootSignature([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12RootSignature?>))] ID3D12RootSignature? pRootSignature);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootdescriptortable
     [PreserveSig]
@@ -169,31 +169,31 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewuint
     [PreserveSig]
-    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] uint[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
+    void ClearUnorderedAccessViewUint(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] uint[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-clearunorderedaccessviewfloat
     [PreserveSig]
-    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] float[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
+    void ClearUnorderedAccessViewFloat(D3D12_GPU_DESCRIPTOR_HANDLE ViewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE ViewCPUHandle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pResource, [In][MarshalUsing(ConstantElementCount = 4)] float[] Values, uint NumRects, [In][MarshalUsing(CountElementName = nameof(NumRects))] RECT[] pRects);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-discardresource
     [PreserveSig]
-    void DiscardResource(ID3D12Resource pResource, nint /* optional D3D12_DISCARD_REGION* */ pRegion);
+    void DiscardResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pResource, nint /* optional D3D12_DISCARD_REGION* */ pRegion);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-beginquery
     [PreserveSig]
-    void BeginQuery(ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint Index);
+    void BeginQuery([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12QueryHeap>))] ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-endquery
     [PreserveSig]
-    void EndQuery(ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint Index);
+    void EndQuery([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12QueryHeap>))] ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint Index);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-resolvequerydata
     [PreserveSig]
-    void ResolveQueryData(ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint StartIndex, uint NumQueries, ID3D12Resource pDestinationBuffer, ulong AlignedDestinationBufferOffset);
+    void ResolveQueryData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12QueryHeap>))] ID3D12QueryHeap pQueryHeap, D3D12_QUERY_TYPE Type, uint StartIndex, uint NumQueries, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pDestinationBuffer, ulong AlignedDestinationBufferOffset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setpredication
     [PreserveSig]
-    void SetPredication(ID3D12Resource? pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
+    void SetPredication([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pBuffer, ulong AlignedBufferOffset, D3D12_PREDICATION_OP Operation);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setmarker
     [PreserveSig]
@@ -209,5 +209,5 @@ public partial interface ID3D12GraphicsCommandList : ID3D12CommandList
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12graphicscommandlist-executeindirect
     [PreserveSig]
-    void ExecuteIndirect(ID3D12CommandSignature pCommandSignature, uint MaxCommandCount, ID3D12Resource pArgumentBuffer, ulong ArgumentBufferOffset, ID3D12Resource? pCountBuffer, ulong CountBufferOffset);
+    void ExecuteIndirect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12CommandSignature>))] ID3D12CommandSignature pCommandSignature, uint MaxCommandCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource>))] ID3D12Resource pArgumentBuffer, ulong ArgumentBufferOffset, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Resource?>))] ID3D12Resource? pCountBuffer, ulong CountBufferOffset);
 }

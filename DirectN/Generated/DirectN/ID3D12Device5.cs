@@ -9,7 +9,7 @@ public partial interface ID3D12Device5 : ID3D12Device4
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-createlifetimetracker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateLifetimeTracker(ID3D12LifetimeOwner pOwner, in Guid riid, out nint /* void */ ppvTracker);
+    HRESULT CreateLifetimeTracker([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12LifetimeOwner>))] ID3D12LifetimeOwner pOwner, in Guid riid, out nint /* void */ ppvTracker);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device5-removedevice
     [PreserveSig]

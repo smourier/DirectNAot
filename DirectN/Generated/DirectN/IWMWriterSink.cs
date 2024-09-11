@@ -8,7 +8,7 @@ public partial interface IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-onheader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnHeader(INSSBuffer pHeader);
+    HRESULT OnHeader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-isrealtime
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-ondataunit
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnDataUnit(INSSBuffer pDataUnit);
+    HRESULT OnDataUnit([MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pDataUnit);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwritersink-onendwriting
     [PreserveSig]

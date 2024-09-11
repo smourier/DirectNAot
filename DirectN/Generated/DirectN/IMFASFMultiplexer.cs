@@ -9,7 +9,7 @@ public partial interface IMFASFMultiplexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IMFASFContentInfo pIContentInfo);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-setflags
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IMFASFMultiplexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-processsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessSample(ushort wStreamNumber, IMFSample pISample, long hnsTimestampAdjust);
+    HRESULT ProcessSample(ushort wStreamNumber, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pISample, long hnsTimestampAdjust);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-getnextpacket
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface IMFASFMultiplexer
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-end
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT End(IMFASFContentInfo pIContentInfo);
+    HRESULT End([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFASFContentInfo>))] IMFASFContentInfo pIContentInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-imfasfmultiplexer-getstatistics
     [PreserveSig]

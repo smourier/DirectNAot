@@ -28,7 +28,7 @@ public partial interface IWMPropertyVault
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmpropertyvault-copypropertiesfrom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyPropertiesFrom(IWMPropertyVault pIWMPropertyVault);
+    HRESULT CopyPropertiesFrom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPropertyVault>))] IWMPropertyVault pIWMPropertyVault);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmpropertyvault-clear
     [PreserveSig]

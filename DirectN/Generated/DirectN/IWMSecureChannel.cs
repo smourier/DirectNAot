@@ -9,7 +9,7 @@ public partial interface IWMSecureChannel : IWMAuthorizer
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_addcertificate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WMSC_AddCertificate(IWMAuthorizer pCert);
+    HRESULT WMSC_AddCertificate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMAuthorizer>))] IWMAuthorizer pCert);
     
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_addsignature
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IWMSecureChannel : IWMAuthorizer
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WMSC_Connect(IWMSecureChannel pOtherSide);
+    HRESULT WMSC_Connect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMSecureChannel>))] IWMSecureChannel pOtherSide);
     
     // https://learn.microsoft.com/windows/win32/api/wmsecure/nf-wmsecure-iwmsecurechannel-wmsc_isconnected
     [PreserveSig]

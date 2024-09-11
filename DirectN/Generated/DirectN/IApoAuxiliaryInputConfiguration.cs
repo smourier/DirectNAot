@@ -18,5 +18,5 @@ public partial interface IApoAuxiliaryInputConfiguration
     // https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/nf-audioenginebaseapo-iapoauxiliaryinputconfiguration-isinputformatsupported
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsInputFormatSupported(IAudioMediaType pRequestedInputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedInputFormat);
+    HRESULT IsInputFormatSupported([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pRequestedInputFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] out IAudioMediaType ppSupportedInputFormat);
 }

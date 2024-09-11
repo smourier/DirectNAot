@@ -9,5 +9,5 @@ public partial interface IStreamBufferSource
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambuffersource-setstreamsink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStreamSink(IStreamBufferSink pIStreamBufferSink);
+    HRESULT SetStreamSink([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStreamBufferSink>))] IStreamBufferSink pIStreamBufferSink);
 }

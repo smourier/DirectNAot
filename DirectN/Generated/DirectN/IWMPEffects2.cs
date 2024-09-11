@@ -8,7 +8,7 @@ public partial interface IWMPEffects2 : IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects2-setcore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCore(IWMPCore pPlayer);
+    HRESULT SetCore([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCore>))] IWMPCore pPlayer);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects2-create
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface IWMPEffects2 : IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects2-notifynewmedia
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyNewMedia(IWMPMedia pMedia);
+    HRESULT NotifyNewMedia([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects2-onwindowmessage
     [PreserveSig]

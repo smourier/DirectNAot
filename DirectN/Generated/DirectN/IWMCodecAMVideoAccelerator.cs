@@ -8,7 +8,7 @@ public partial interface IWMCodecAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/wmdxva/nf-wmdxva-iwmcodecamvideoaccelerator-setacceleratorinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetAcceleratorInterface(IAMVideoAccelerator pIAMVA);
+    HRESULT SetAcceleratorInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAMVideoAccelerator>))] IAMVideoAccelerator pIAMVA);
     
     // https://learn.microsoft.com/windows/win32/api/wmdxva/nf-wmdxva-iwmcodecamvideoaccelerator-negotiateconnection
     [PreserveSig]
@@ -18,5 +18,5 @@ public partial interface IWMCodecAMVideoAccelerator
     // https://learn.microsoft.com/windows/win32/api/wmdxva/nf-wmdxva-iwmcodecamvideoaccelerator-setplayernotify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPlayerNotify(IWMPlayerTimestampHook pHook);
+    HRESULT SetPlayerNotify([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPlayerTimestampHook>))] IWMPlayerTimestampHook pHook);
 }

@@ -9,12 +9,12 @@ public partial interface IVMRImageCompositor
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-initcompositiontarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT InitCompositionTarget(nint pD3DDevice, IDirectDrawSurface7 pddsRenderTarget);
+    HRESULT InitCompositionTarget(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 pddsRenderTarget);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-termcompositiontarget
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TermCompositionTarget(nint pD3DDevice, IDirectDrawSurface7 pddsRenderTarget);
+    HRESULT TermCompositionTarget(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 pddsRenderTarget);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-setstreammediatype
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface IVMRImageCompositor
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrimagecompositor-compositeimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompositeImage(nint pD3DDevice, IDirectDrawSurface7 pddsRenderTarget, in AM_MEDIA_TYPE pmtRenderTarget, long rtStart, long rtEnd, uint dwClrBkGnd, in VMRVIDEOSTREAMINFO pVideoStreamInfo, uint cStreams);
+    HRESULT CompositeImage(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 pddsRenderTarget, in AM_MEDIA_TYPE pmtRenderTarget, long rtStart, long rtEnd, uint dwClrBkGnd, in VMRVIDEOSTREAMINFO pVideoStreamInfo, uint cStreams);
 }

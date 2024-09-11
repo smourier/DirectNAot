@@ -14,20 +14,20 @@ public partial interface IAudioSessionManager2 : IAudioSessionManager
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-registersessionnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterSessionNotification(IAudioSessionNotification SessionNotification);
+    HRESULT RegisterSessionNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionNotification>))] IAudioSessionNotification SessionNotification);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-unregistersessionnotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterSessionNotification(IAudioSessionNotification SessionNotification);
+    HRESULT UnregisterSessionNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionNotification>))] IAudioSessionNotification SessionNotification);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-registerducknotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterDuckNotification(PWSTR sessionID, IAudioVolumeDuckNotification duckNotification);
+    HRESULT RegisterDuckNotification(PWSTR sessionID, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioVolumeDuckNotification>))] IAudioVolumeDuckNotification duckNotification);
     
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionmanager2-unregisterducknotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterDuckNotification(IAudioVolumeDuckNotification duckNotification);
+    HRESULT UnregisterDuckNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioVolumeDuckNotification>))] IAudioVolumeDuckNotification duckNotification);
 }

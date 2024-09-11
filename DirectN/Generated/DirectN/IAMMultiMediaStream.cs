@@ -8,7 +8,7 @@ public partial interface IAMMultiMediaStream : IMultiMediaStream
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(STREAM_TYPE StreamType, uint dwFlags, IGraphBuilder pFilterGraph);
+    HRESULT Initialize(STREAM_TYPE StreamType, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pFilterGraph);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-getfiltergraph
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IAMMultiMediaStream : IMultiMediaStream
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-openmoniker
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenMoniker(IBindCtx pCtx, IMoniker pMoniker, uint dwFlags);
+    HRESULT OpenMoniker([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pCtx, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMoniker, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/amstream/nf-amstream-iammultimediastream-render
     [PreserveSig]

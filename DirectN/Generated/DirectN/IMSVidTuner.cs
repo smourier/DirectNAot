@@ -14,7 +14,7 @@ public partial interface IMSVidTuner : IMSVidVideoInputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-put_tune
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Tune(ITuneRequest pTR);
+    HRESULT put_Tune([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest pTR);
     
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-get_tuningspace
     [PreserveSig]
@@ -24,5 +24,5 @@ public partial interface IMSVidTuner : IMSVidVideoInputDevice
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsvidtuner-put_tuningspace
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_TuningSpace(ITuningSpace plTS);
+    HRESULT put_TuningSpace([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuningSpace>))] ITuningSpace plTS);
 }

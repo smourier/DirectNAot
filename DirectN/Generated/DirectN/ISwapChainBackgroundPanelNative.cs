@@ -7,5 +7,5 @@ public partial interface ISwapChainBackgroundPanelNative
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSwapChain(IDXGISwapChain swapChain);
+    HRESULT SetSwapChain([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGISwapChain>))] IDXGISwapChain swapChain);
 }

@@ -8,5 +8,5 @@ public partial interface IMSVidDeviceEvent : IDispatch
     // https://learn.microsoft.com/windows/win32/api/segment/nf-segment-imsviddeviceevent-statechange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StateChange(IMSVidDevice lpd, int oldState, int newState);
+    HRESULT StateChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMSVidDevice>))] IMSVidDevice lpd, int oldState, int newState);
 }

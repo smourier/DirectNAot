@@ -13,7 +13,7 @@ public partial interface IDCompositionColorMatrixEffect : IDCompositionFilterEff
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioncolormatrixeffect-setmatrixelement(int_int_float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetMatrixElement(int row, int column, IDCompositionAnimation animation);
+    HRESULT SetMatrixElement(int row, int column, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositioncolormatrixeffect-setmatrixelement(int_int_float)
     [PreserveSig]

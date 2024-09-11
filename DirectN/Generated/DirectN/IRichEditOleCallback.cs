@@ -24,17 +24,17 @@ public partial interface IRichEditOleCallback
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-queryinsertobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryInsertObject(ref Guid lpclsid, IStorage lpstg, int cp);
+    HRESULT QueryInsertObject(ref Guid lpclsid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStorage>))] IStorage lpstg, int cp);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-deleteobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeleteObject(IOleObject lpoleobj);
+    HRESULT DeleteObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleObject>))] IOleObject lpoleobj);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-queryacceptdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueryAcceptData(IDataObject lpdataobj, ref ushort lpcfFormat, RECO_FLAGS reco, BOOL fReally, HGLOBAL hMetaPict);
+    HRESULT QueryAcceptData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject lpdataobj, ref ushort lpcfFormat, RECO_FLAGS reco, BOOL fReally, HGLOBAL hMetaPict);
     
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-contextsensitivehelp
     [PreserveSig]
@@ -54,5 +54,5 @@ public partial interface IRichEditOleCallback
     // https://learn.microsoft.com/windows/win32/api/richole/nf-richole-iricheditolecallback-getcontextmenu
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContextMenu(RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE seltype, IOleObject lpoleobj, ref CHARRANGE lpchrg, ref HMENU lphmenu);
+    HRESULT GetContextMenu(RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE seltype, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleObject>))] IOleObject lpoleobj, ref CHARRANGE lpchrg, ref HMENU lphmenu);
 }

@@ -9,7 +9,7 @@ public partial interface IWMLicenseBackup
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmlicensebackup-backuplicenses
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BackupLicenses(uint dwFlags, IWMStatusCallback pCallback);
+    HRESULT BackupLicenses(uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMStatusCallback>))] IWMStatusCallback pCallback);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmlicensebackup-cancellicensebackup
     [PreserveSig]

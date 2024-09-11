@@ -6,11 +6,11 @@ public partial interface IKsInterfaceHandler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsSetPin(IKsPin KsPin);
+    HRESULT KsSetPin([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsPin>))] IKsPin KsPin);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsProcessMediaSamples(IKsDataTypeHandler KsDataTypeHandler, [In][MarshalUsing(CountElementName = nameof(SampleCount))] IMediaSample[] SampleList, ref int SampleCount, KSIOOPERATION IoOperation, out nint StreamSegment);
+    HRESULT KsProcessMediaSamples([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsDataTypeHandler>))] IKsDataTypeHandler KsDataTypeHandler, [In][MarshalUsing(CountElementName = nameof(SampleCount))] IMediaSample[] SampleList, ref int SampleCount, KSIOOPERATION IoOperation, out nint StreamSegment);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

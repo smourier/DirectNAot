@@ -73,7 +73,7 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-setoutputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetOutputProps(uint dwOutputNum, IWMOutputMediaProps pOutput);
+    HRESULT SetOutputProps(uint dwOutputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMOutputMediaProps>))] IWMOutputMediaProps pOutput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-getoutputformatcount
     [PreserveSig]
@@ -108,5 +108,5 @@ public partial interface IWMSyncReader
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmsyncreader-openstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenStream(IStream pStream);
+    HRESULT OpenStream([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStream);
 }

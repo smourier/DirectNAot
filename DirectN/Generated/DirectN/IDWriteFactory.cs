@@ -14,17 +14,17 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createcustomfontcollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCustomFontCollection(IDWriteFontCollectionLoader collectionLoader, nint collectionKey, uint collectionKeySize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection);
+    HRESULT CreateCustomFontCollection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollectionLoader>))] IDWriteFontCollectionLoader collectionLoader, nint collectionKey, uint collectionKeySize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection>))] out IDWriteFontCollection fontCollection);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-registerfontcollectionloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterFontCollectionLoader(IDWriteFontCollectionLoader fontCollectionLoader);
+    HRESULT RegisterFontCollectionLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollectionLoader>))] IDWriteFontCollectionLoader fontCollectionLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-unregisterfontcollectionloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterFontCollectionLoader(IDWriteFontCollectionLoader fontCollectionLoader);
+    HRESULT UnregisterFontCollectionLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollectionLoader>))] IDWriteFontCollectionLoader fontCollectionLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createfontfilereference
     [PreserveSig]
@@ -34,7 +34,7 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createcustomfontfilereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateCustomFontFileReference(nint fontFileReferenceKey, uint fontFileReferenceKeySize, IDWriteFontFileLoader fontFileLoader, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
+    HRESULT CreateCustomFontFileReference(nint fontFileReferenceKey, uint fontFileReferenceKeySize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFileLoader>))] IDWriteFontFileLoader fontFileLoader, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createfontface
     [PreserveSig]
@@ -59,17 +59,17 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-registerfontfileloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterFontFileLoader(IDWriteFontFileLoader fontFileLoader);
+    HRESULT RegisterFontFileLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFileLoader>))] IDWriteFontFileLoader fontFileLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-unregisterfontfileloader
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterFontFileLoader(IDWriteFontFileLoader fontFileLoader);
+    HRESULT UnregisterFontFileLoader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFileLoader>))] IDWriteFontFileLoader fontFileLoader);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createtextformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTextFormat(PWSTR fontFamilyName, IDWriteFontCollection? fontCollection, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch, float fontSize, PWSTR localeName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat>))] out IDWriteTextFormat textFormat);
+    HRESULT CreateTextFormat(PWSTR fontFamilyName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection?>))] IDWriteFontCollection? fontCollection, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch, float fontSize, PWSTR localeName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat>))] out IDWriteTextFormat textFormat);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createtypography
     [PreserveSig]
@@ -84,17 +84,17 @@ public partial interface IDWriteFactory
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createtextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float maxWidth, float maxHeight, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
+    HRESULT CreateTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat>))] IDWriteTextFormat textFormat, float maxWidth, float maxHeight, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-creategdicompatibletextlayout
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateGdiCompatibleTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, BOOL useGdiNatural, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
+    HRESULT CreateGdiCompatibleTextLayout([MarshalUsing(CountElementName = nameof(stringLength))] PWSTR @string, uint stringLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat>))] IDWriteTextFormat textFormat, float layoutWidth, float layoutHeight, float pixelsPerDip, nint /* optional DWRITE_MATRIX* */ transform, BOOL useGdiNatural, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextLayout>))] out IDWriteTextLayout textLayout);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createellipsistrimmingsign
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateEllipsisTrimmingSign(IDWriteTextFormat textFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteInlineObject>))] out IDWriteInlineObject trimmingSign);
+    HRESULT CreateEllipsisTrimmingSign([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextFormat>))] IDWriteTextFormat textFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteInlineObject>))] out IDWriteInlineObject trimmingSign);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createtextanalyzer
     [PreserveSig]

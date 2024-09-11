@@ -7,31 +7,31 @@ public partial interface IWMPEvents3 : IWMPEvents2
 {
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-cdromripstatechange
     [PreserveSig]
-    void CdromRipStateChange(IWMPCdromRip pCdromRip, WMPRipState wmprs);
+    void CdromRipStateChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromRip>))] IWMPCdromRip pCdromRip, WMPRipState wmprs);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-cdromripmediaerror
     [PreserveSig]
-    void CdromRipMediaError(IWMPCdromRip pCdromRip, IDispatch pMedia);
+    void CdromRipMediaError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromRip>))] IWMPCdromRip pCdromRip, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-cdromburnstatechange
     [PreserveSig]
-    void CdromBurnStateChange(IWMPCdromBurn pCdromBurn, WMPBurnState wmpbs);
+    void CdromBurnStateChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromBurn>))] IWMPCdromBurn pCdromBurn, WMPBurnState wmpbs);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-cdromburnmediaerror
     [PreserveSig]
-    void CdromBurnMediaError(IWMPCdromBurn pCdromBurn, IDispatch pMedia);
+    void CdromBurnMediaError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromBurn>))] IWMPCdromBurn pCdromBurn, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-cdromburnerror
     [PreserveSig]
-    void CdromBurnError(IWMPCdromBurn pCdromBurn, HRESULT hrError);
+    void CdromBurnError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCdromBurn>))] IWMPCdromBurn pCdromBurn, HRESULT hrError);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-libraryconnect
     [PreserveSig]
-    void LibraryConnect(IWMPLibrary pLibrary);
+    void LibraryConnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPLibrary>))] IWMPLibrary pLibrary);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-librarydisconnect
     [PreserveSig]
-    void LibraryDisconnect(IWMPLibrary pLibrary);
+    void LibraryDisconnect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPLibrary>))] IWMPLibrary pLibrary);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-folderscanstatechange
     [PreserveSig]
@@ -39,13 +39,13 @@ public partial interface IWMPEvents3 : IWMPEvents2
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-stringcollectionchange
     [PreserveSig]
-    void StringCollectionChange(IDispatch pdispStringCollection, WMPStringCollectionChangeEventType change, int lCollectionIndex);
+    void StringCollectionChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pdispStringCollection, WMPStringCollectionChangeEventType change, int lCollectionIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-mediacollectionmediaadded
     [PreserveSig]
-    void MediaCollectionMediaAdded(IDispatch pdispMedia);
+    void MediaCollectionMediaAdded([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pdispMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpevents3-mediacollectionmediaremoved
     [PreserveSig]
-    void MediaCollectionMediaRemoved(IDispatch pdispMedia);
+    void MediaCollectionMediaRemoved([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] IDispatch pdispMedia);
 }

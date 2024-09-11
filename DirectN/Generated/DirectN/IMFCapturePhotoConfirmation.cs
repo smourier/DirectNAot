@@ -6,7 +6,7 @@ public partial interface IMFCapturePhotoConfirmation
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPhotoConfirmationCallback(IMFAsyncCallback pNotificationCallback);
+    HRESULT SetPhotoConfirmationCallback([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pNotificationCallback);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

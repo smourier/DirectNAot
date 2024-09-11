@@ -6,7 +6,7 @@ public partial interface ISpRecognizer : ISpProperties
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRecognizer(ISpObjectToken pRecognizer);
+    HRESULT SetRecognizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] ISpObjectToken pRecognizer);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -34,7 +34,7 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetRecoProfile(ISpObjectToken pToken);
+    HRESULT SetRecoProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpObjectToken>))] ISpObjectToken pToken);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -66,5 +66,5 @@ public partial interface ISpRecognizer : ISpProperties
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EmulateRecognition(ISpPhrase pPhrase);
+    HRESULT EmulateRecognition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpPhrase>))] ISpPhrase pPhrase);
 }

@@ -99,7 +99,7 @@ public partial interface ITextFont2 : ITextFont
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont2-setduplicate2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDuplicate2(ITextFont2? pFont);
+    HRESULT SetDuplicate2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont2?>))] ITextFont2? pFont);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont2-getlinktype
     [PreserveSig]
@@ -219,7 +219,7 @@ public partial interface ITextFont2 : ITextFont
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont2-isequal2
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual2(ITextFont2? pFont, out int pB);
+    HRESULT IsEqual2([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextFont2?>))] ITextFont2? pFont, out int pB);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextfont2-seteffects
     [PreserveSig]

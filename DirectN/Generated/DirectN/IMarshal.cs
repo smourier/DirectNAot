@@ -19,17 +19,17 @@ public partial interface IMarshal
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-marshalinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MarshalInterface(IStream pStm, in Guid riid, nint /* optional void* */ pv, uint dwDestContext, nint /* optional void* */ pvDestContext, uint mshlflags);
+    HRESULT MarshalInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm, in Guid riid, nint /* optional void* */ pv, uint dwDestContext, nint /* optional void* */ pvDestContext, uint mshlflags);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-unmarshalinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnmarshalInterface(IStream pStm, in Guid riid, out nint ppv);
+    HRESULT UnmarshalInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm, in Guid riid, out nint ppv);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-releasemarshaldata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReleaseMarshalData(IStream pStm);
+    HRESULT ReleaseMarshalData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-disconnectobject
     [PreserveSig]

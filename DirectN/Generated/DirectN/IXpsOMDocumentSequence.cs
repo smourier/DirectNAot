@@ -24,5 +24,5 @@ public partial interface IXpsOMDocumentSequence : IXpsOMPart
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomdocumentsequence-setprintticketresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPrintTicketResource(IXpsOMPrintTicketResource printTicketResource);
+    HRESULT SetPrintTicketResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMPrintTicketResource>))] IXpsOMPrintTicketResource printTicketResource);
 }

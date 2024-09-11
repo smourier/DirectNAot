@@ -48,7 +48,7 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-put_currentmedia
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_currentMedia(IWMPMedia pMedia);
+    HRESULT put_currentMedia([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pMedia);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_mediacollection
     [PreserveSig]
@@ -83,7 +83,7 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-put_currentplaylist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_currentPlaylist(IWMPPlaylist pPL);
+    HRESULT put_currentPlaylist([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPPlaylist>))] IWMPPlaylist pPL);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_cdromcollection
     [PreserveSig]

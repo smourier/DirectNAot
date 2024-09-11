@@ -39,7 +39,7 @@ public partial interface IMixerOCX
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-advise
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Advise(IMixerOCXNotify pmdns);
+    HRESULT Advise([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMixerOCXNotify>))] IMixerOCXNotify pmdns);
     
     // https://learn.microsoft.com/windows/win32/api/mixerocx/nf-mixerocx-imixerocx-unadvise
     [PreserveSig]

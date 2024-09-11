@@ -19,7 +19,7 @@ public partial interface IMFMediaSource : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasource-start
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Start(IMFPresentationDescriptor pPresentationDescriptor, in Guid pguidTimeFormat, in PROPVARIANT pvarStartPosition);
+    HRESULT Start([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor>))] IMFPresentationDescriptor pPresentationDescriptor, in Guid pguidTimeFormat, in PROPVARIANT pvarStartPosition);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasource-stop
     [PreserveSig]

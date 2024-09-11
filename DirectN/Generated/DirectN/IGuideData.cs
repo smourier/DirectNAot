@@ -13,7 +13,7 @@ public partial interface IGuideData
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-iguidedata-getserviceproperties
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetServiceProperties(ITuneRequest pTuneRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumGuideDataProperties>))] out IEnumGuideDataProperties ppEnumProperties);
+    HRESULT GetServiceProperties([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITuneRequest>))] ITuneRequest pTuneRequest, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumGuideDataProperties>))] out IEnumGuideDataProperties ppEnumProperties);
     
     // https://learn.microsoft.com/windows/win32/api/bdatif/nf-bdatif-iguidedata-getguideprogramids
     [PreserveSig]

@@ -10,5 +10,5 @@ public partial interface IClusterDetector
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Detect(uint dwMaxNumClusters, float fMinClusterDuration, float fMaxClusterDuration, IToc pSrcToc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] out IToc ppDstToc);
+    HRESULT Detect(uint dwMaxNumClusters, float fMinClusterDuration, float fMaxClusterDuration, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] IToc pSrcToc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] out IToc ppDstToc);
 }

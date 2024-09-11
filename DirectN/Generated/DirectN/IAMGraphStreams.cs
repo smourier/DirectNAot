@@ -9,7 +9,7 @@ public partial interface IAMGraphStreams
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphstreams-findupstreaminterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindUpstreamInterface(IPin pPin, in Guid riid, out nint ppvInterface, uint dwFlags);
+    HRESULT FindUpstreamInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pPin, in Guid riid, out nint ppvInterface, uint dwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamgraphstreams-syncusingstreamoffset
     [PreserveSig]

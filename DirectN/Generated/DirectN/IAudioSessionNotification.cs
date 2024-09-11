@@ -9,5 +9,5 @@ public partial interface IAudioSessionNotification
     // https://learn.microsoft.com/windows/win32/api/audiopolicy/nf-audiopolicy-iaudiosessionnotification-onsessioncreated
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSessionCreated(IAudioSessionControl NewSession);
+    HRESULT OnSessionCreated([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSessionControl>))] IAudioSessionControl NewSession);
 }

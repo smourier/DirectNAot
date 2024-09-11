@@ -6,7 +6,7 @@ public partial interface IKsDataTypeHandler
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsCompleteIoOperation(IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation, BOOL Cancelled);
+    HRESULT KsCompleteIoOperation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation, BOOL Cancelled);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,7 +14,7 @@ public partial interface IKsDataTypeHandler
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT KsPrepareIoOperation(IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation);
+    HRESULT KsPrepareIoOperation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample Sample, nint StreamHeader, KSIOOPERATION IoOperation);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

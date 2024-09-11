@@ -29,7 +29,7 @@ public partial interface ITocParser
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocparser-addtoc
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddToc(TOC_POS_TYPE enumTocPosType, IToc pToc, ref uint pdwTocIndex);
+    HRESULT AddToc(TOC_POS_TYPE enumTocPosType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IToc>))] IToc pToc, ref uint pdwTocIndex);
     
     // https://learn.microsoft.com/windows/win32/api/wmcodecdsp/nf-wmcodecdsp-itocparser-removetocbyindex
     [PreserveSig]

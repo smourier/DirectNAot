@@ -14,7 +14,7 @@ public partial interface IMFSpatialAudioSample : IMFSample
     // https://learn.microsoft.com/windows/win32/api/mfspatialaudio/nf-mfspatialaudio-imfspatialaudiosample-addspatialaudioobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSpatialAudioObject(IMFSpatialAudioObjectBuffer pAudioObjBuffer);
+    HRESULT AddSpatialAudioObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSpatialAudioObjectBuffer>))] IMFSpatialAudioObjectBuffer pAudioObjBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/mfspatialaudio/nf-mfspatialaudio-imfspatialaudiosample-getspatialaudioobjectbyindex
     [PreserveSig]

@@ -15,7 +15,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetshader
     [PreserveSig]
-    void PSSetShader(ID3D10PixelShader? pPixelShader);
+    void PSSetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10PixelShader?>))] ID3D10PixelShader? pPixelShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-pssetsamplers
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vssetshader
     [PreserveSig]
-    void VSSetShader(ID3D10VertexShader? pVertexShader);
+    void VSSetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10VertexShader?>))] ID3D10VertexShader? pVertexShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-drawindexed
     [PreserveSig]
@@ -39,7 +39,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetinputlayout
     [PreserveSig]
-    void IASetInputLayout(ID3D10InputLayout? pInputLayout);
+    void IASetInputLayout([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10InputLayout?>))] ID3D10InputLayout? pInputLayout);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetvertexbuffers
     [PreserveSig]
@@ -47,7 +47,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetindexbuffer
     [PreserveSig]
-    void IASetIndexBuffer(ID3D10Buffer? pIndexBuffer, DXGI_FORMAT Format, uint Offset);
+    void IASetIndexBuffer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Buffer?>))] ID3D10Buffer? pIndexBuffer, DXGI_FORMAT Format, uint Offset);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-drawindexedinstanced
     [PreserveSig]
@@ -63,7 +63,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshader
     [PreserveSig]
-    void GSSetShader(ID3D10GeometryShader? pShader);
+    void GSSetShader([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10GeometryShader?>))] ID3D10GeometryShader? pShader);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-iasetprimitivetopology
     [PreserveSig]
@@ -79,7 +79,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-setpredication
     [PreserveSig]
-    void SetPredication(ID3D10Predicate? pPredicate, BOOL PredicateValue);
+    void SetPredication([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Predicate?>))] ID3D10Predicate? pPredicate, BOOL PredicateValue);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-gssetshaderresources
     [PreserveSig]
@@ -91,15 +91,15 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetrendertargets
     [PreserveSig]
-    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView* */ ppRenderTargetViews, ID3D10DepthStencilView? pDepthStencilView);
+    void OMSetRenderTargets(uint NumViews, nint /* optional ID3D10RenderTargetView* */ ppRenderTargetViews, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10DepthStencilView?>))] ID3D10DepthStencilView? pDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetblendstate
     [PreserveSig]
-    void OMSetBlendState(ID3D10BlendState? pBlendState, [In][MarshalUsing(ConstantElementCount = 4)] float[] BlendFactor, uint SampleMask);
+    void OMSetBlendState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10BlendState?>))] ID3D10BlendState? pBlendState, [In][MarshalUsing(ConstantElementCount = 4)] float[] BlendFactor, uint SampleMask);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-omsetdepthstencilstate
     [PreserveSig]
-    void OMSetDepthStencilState(ID3D10DepthStencilState? pDepthStencilState, uint StencilRef);
+    void OMSetDepthStencilState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10DepthStencilState?>))] ID3D10DepthStencilState? pDepthStencilState, uint StencilRef);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-sosettargets
     [PreserveSig]
@@ -111,7 +111,7 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetstate
     [PreserveSig]
-    void RSSetState(ID3D10RasterizerState? pRasterizerState);
+    void RSSetState([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10RasterizerState?>))] ID3D10RasterizerState? pRasterizerState);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-rssetviewports
     [PreserveSig]
@@ -123,31 +123,31 @@ public partial interface ID3D10Device
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-copysubresourceregion
     [PreserveSig]
-    void CopySubresourceRegion(ID3D10Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, ID3D10Resource pSrcResource, uint SrcSubresource, nint /* optional D3D10_BOX* */ pSrcBox);
+    void CopySubresourceRegion([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pDstResource, uint DstSubresource, uint DstX, uint DstY, uint DstZ, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pSrcResource, uint SrcSubresource, nint /* optional D3D10_BOX* */ pSrcBox);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-copyresource
     [PreserveSig]
-    void CopyResource(ID3D10Resource pDstResource, ID3D10Resource pSrcResource);
+    void CopyResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pDstResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pSrcResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-updatesubresource
     [PreserveSig]
-    void UpdateSubresource(ID3D10Resource pDstResource, uint DstSubresource, nint /* optional D3D10_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
+    void UpdateSubresource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pDstResource, uint DstSubresource, nint /* optional D3D10_BOX* */ pDstBox, nint pSrcData, uint SrcRowPitch, uint SrcDepthPitch);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-clearrendertargetview
     [PreserveSig]
-    void ClearRenderTargetView(ID3D10RenderTargetView pRenderTargetView, [In][MarshalUsing(ConstantElementCount = 4)] float[] ColorRGBA);
+    void ClearRenderTargetView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10RenderTargetView>))] ID3D10RenderTargetView pRenderTargetView, [In][MarshalUsing(ConstantElementCount = 4)] float[] ColorRGBA);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-cleardepthstencilview
     [PreserveSig]
-    void ClearDepthStencilView(ID3D10DepthStencilView pDepthStencilView, uint ClearFlags, float Depth, byte Stencil);
+    void ClearDepthStencilView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10DepthStencilView>))] ID3D10DepthStencilView pDepthStencilView, uint ClearFlags, float Depth, byte Stencil);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-generatemips
     [PreserveSig]
-    void GenerateMips(ID3D10ShaderResourceView pShaderResourceView);
+    void GenerateMips([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10ShaderResourceView>))] ID3D10ShaderResourceView pShaderResourceView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-resolvesubresource
     [PreserveSig]
-    void ResolveSubresource(ID3D10Resource pDstResource, uint DstSubresource, ID3D10Resource pSrcResource, uint SrcSubresource, DXGI_FORMAT Format);
+    void ResolveSubresource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pDstResource, uint DstSubresource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pSrcResource, uint SrcSubresource, DXGI_FORMAT Format);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-vsgetconstantbuffers
     [PreserveSig]
@@ -305,17 +305,17 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createshaderresourceview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateShaderResourceView(ID3D10Resource pResource, nint /* optional D3D10_SHADER_RESOURCE_VIEW_DESC* */ pDesc, nint /* optional ID3D10ShaderResourceView* */ ppSRView);
+    HRESULT CreateShaderResourceView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pResource, nint /* optional D3D10_SHADER_RESOURCE_VIEW_DESC* */ pDesc, nint /* optional ID3D10ShaderResourceView* */ ppSRView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createrendertargetview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRenderTargetView(ID3D10Resource pResource, nint /* optional D3D10_RENDER_TARGET_VIEW_DESC* */ pDesc, nint /* optional ID3D10RenderTargetView* */ ppRTView);
+    HRESULT CreateRenderTargetView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pResource, nint /* optional D3D10_RENDER_TARGET_VIEW_DESC* */ pDesc, nint /* optional ID3D10RenderTargetView* */ ppRTView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createdepthstencilview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDepthStencilView(ID3D10Resource pResource, nint /* optional D3D10_DEPTH_STENCIL_VIEW_DESC* */ pDesc, nint /* optional ID3D10DepthStencilView* */ ppDepthStencilView);
+    HRESULT CreateDepthStencilView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D10Resource>))] ID3D10Resource pResource, nint /* optional D3D10_DEPTH_STENCIL_VIEW_DESC* */ pDesc, nint /* optional ID3D10DepthStencilView* */ ppDepthStencilView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-createinputlayout
     [PreserveSig]

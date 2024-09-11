@@ -39,7 +39,7 @@ public partial interface IDirectDrawVideo
     // https://learn.microsoft.com/windows/win32/api/amvideo/nf-amvideo-idirectdrawvideo-setdirectdraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDirectDraw(IDirectDraw pDirectDraw);
+    HRESULT SetDirectDraw([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw pDirectDraw);
     
     // https://learn.microsoft.com/windows/win32/api/amvideo/nf-amvideo-idirectdrawvideo-getdirectdraw
     [PreserveSig]

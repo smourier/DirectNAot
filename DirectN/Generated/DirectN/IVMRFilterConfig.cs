@@ -9,7 +9,7 @@ public partial interface IVMRFilterConfig
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrfilterconfig-setimagecompositor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetImageCompositor(IVMRImageCompositor lpVMRImgCompositor);
+    HRESULT SetImageCompositor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVMRImageCompositor>))] IVMRImageCompositor lpVMRImgCompositor);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ivmrfilterconfig-setnumberofstreams
     [PreserveSig]

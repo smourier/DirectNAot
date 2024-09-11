@@ -9,5 +9,5 @@ public partial interface IParseDisplayName
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-iparsedisplayname-parsedisplayname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ParseDisplayName(IBindCtx pbc, PWSTR pszDisplayName, out uint pchEaten, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkOut);
+    HRESULT ParseDisplayName([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pbc, PWSTR pszDisplayName, out uint pchEaten, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmkOut);
 }

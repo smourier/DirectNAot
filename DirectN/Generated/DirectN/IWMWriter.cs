@@ -13,7 +13,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-setprofile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetProfile(IWMProfile pProfile);
+    HRESULT SetProfile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMProfile>))] IWMProfile pProfile);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-setoutputfilename
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-setinputprops
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetInputProps(uint dwInputNum, IWMInputMediaProps pInput);
+    HRESULT SetInputProps(uint dwInputNum, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMInputMediaProps>))] IWMInputMediaProps pInput);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-getinputformatcount
     [PreserveSig]
@@ -63,7 +63,7 @@ public partial interface IWMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-writesample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT WriteSample(uint dwInputNum, ulong cnsSampleTime, uint dwFlags, INSSBuffer pSample);
+    HRESULT WriteSample(uint dwInputNum, ulong cnsSampleTime, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<INSSBuffer>))] INSSBuffer pSample);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriter-flush
     [PreserveSig]

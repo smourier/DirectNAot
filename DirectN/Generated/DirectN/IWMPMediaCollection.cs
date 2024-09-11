@@ -43,7 +43,7 @@ public partial interface IWMPMediaCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-remove
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT remove(IWMPMedia pItem, VARIANT_BOOL varfDeleteFile);
+    HRESULT remove([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pItem, VARIANT_BOOL varfDeleteFile);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-getattributestringcollection
     [PreserveSig]
@@ -58,10 +58,10 @@ public partial interface IWMPMediaCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmediacollection-setdeleted
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT setDeleted(IWMPMedia pItem, VARIANT_BOOL varfIsDeleted);
+    HRESULT setDeleted([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pItem, VARIANT_BOOL varfIsDeleted);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nn-wmp-iwmpmediacollection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isDeleted(IWMPMedia pItem, ref VARIANT_BOOL pvarfIsDeleted);
+    HRESULT isDeleted([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPMedia>))] IWMPMedia pItem, ref VARIANT_BOOL pvarfIsDeleted);
 }

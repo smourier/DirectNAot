@@ -9,12 +9,12 @@ public partial interface IGraphBuilder : IFilterGraph
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Connect(IPin ppinOut, IPin ppinIn);
+    HRESULT Connect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinOut, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinIn);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-render
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Render(IPin ppinOut);
+    HRESULT Render([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin ppinOut);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-igraphbuilder-renderfile
     [PreserveSig]

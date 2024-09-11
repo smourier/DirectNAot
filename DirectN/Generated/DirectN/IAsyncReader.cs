@@ -9,12 +9,12 @@ public partial interface IAsyncReader
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-requestallocator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RequestAllocator(IMemAllocator pPreferred, in ALLOCATOR_PROPERTIES pProps, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))] out IMemAllocator ppActual);
+    HRESULT RequestAllocator([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))] IMemAllocator pPreferred, in ALLOCATOR_PROPERTIES pProps, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMemAllocator>))] out IMemAllocator ppActual);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-request
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Request(IMediaSample pSample, nuint dwUser);
+    HRESULT Request([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample pSample, nuint dwUser);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-waitfornext
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface IAsyncReader
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-syncreadaligned
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SyncReadAligned(IMediaSample pSample);
+    HRESULT SyncReadAligned([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample pSample);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iasyncreader-syncread
     [PreserveSig]

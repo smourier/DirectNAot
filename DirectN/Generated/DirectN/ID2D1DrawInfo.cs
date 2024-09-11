@@ -14,7 +14,7 @@ public partial interface ID2D1DrawInfo : ID2D1RenderInfo
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1drawinfo-setresourcetexture
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetResourceTexture(uint textureIndex, ID2D1ResourceTexture resourceTexture);
+    HRESULT SetResourceTexture(uint textureIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1ResourceTexture>))] ID2D1ResourceTexture resourceTexture);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1drawinfo-setvertexshaderconstantbuffer
     [PreserveSig]
@@ -29,5 +29,5 @@ public partial interface ID2D1DrawInfo : ID2D1RenderInfo
     // https://learn.microsoft.com/windows/win32/api/d2d1effectauthor/nf-d2d1effectauthor-id2d1drawinfo-setvertexprocessing
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVertexProcessing(ID2D1VertexBuffer? vertexBuffer, D2D1_VERTEX_OPTIONS vertexOptions, nint /* optional D2D1_BLEND_DESCRIPTION* */ blendDescription, nint /* optional D2D1_VERTEX_RANGE* */ vertexRange, nint /* optional Guid* */ vertexShader);
+    HRESULT SetVertexProcessing([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1VertexBuffer?>))] ID2D1VertexBuffer? vertexBuffer, D2D1_VERTEX_OPTIONS vertexOptions, nint /* optional D2D1_BLEND_DESCRIPTION* */ blendDescription, nint /* optional D2D1_VERTEX_RANGE* */ vertexRange, nint /* optional Guid* */ vertexShader);
 }

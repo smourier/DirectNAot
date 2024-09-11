@@ -8,7 +8,7 @@ public partial interface IDWriteInMemoryFontFileLoader : IDWriteFontFileLoader
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteinmemoryfontfileloader-createinmemoryfontfilereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInMemoryFontFileReference(IDWriteFactory factory, nint fontData, uint fontDataSize, nint ownerObject, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
+    HRESULT CreateInMemoryFontFileReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFactory>))] IDWriteFactory factory, nint fontData, uint fontDataSize, nint ownerObject, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFile>))] out IDWriteFontFile fontFile);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwriteinmemoryfontfileloader-getfilecount
     [PreserveSig]

@@ -19,7 +19,7 @@ public partial interface IXpsOMVisualBrush : IXpsOMTileBrush
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-setvisuallocal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetVisualLocal(IXpsOMVisual visual);
+    HRESULT SetVisualLocal([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXpsOMVisual>))] IXpsOMVisual visual);
     
     // https://learn.microsoft.com/windows/win32/api/xpsobjectmodel/nf-xpsobjectmodel-ixpsomvisualbrush-getvisuallookup
     [PreserveSig]

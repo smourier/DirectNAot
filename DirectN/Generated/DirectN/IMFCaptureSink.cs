@@ -19,7 +19,7 @@ public partial interface IMFCaptureSink
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesink-addstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddStream(uint dwSourceStreamIndex, IMFMediaType pMediaType, IMFAttributes? pAttributes, nint /* optional uint* */ pdwSinkStreamIndex);
+    HRESULT AddStream(uint dwSourceStreamIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pAttributes, nint /* optional uint* */ pdwSinkStreamIndex);
     
     // https://learn.microsoft.com/windows/win32/api/mfcaptureengine/nf-mfcaptureengine-imfcapturesink-prepare
     [PreserveSig]

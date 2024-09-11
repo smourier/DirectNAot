@@ -9,7 +9,7 @@ public partial interface IOpcPartUri : IOpcUri
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcparturi-compareparturi
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ComparePartUri(IOpcPartUri partUri, out int comparisonResult);
+    HRESULT ComparePartUri([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOpcPartUri>))] IOpcPartUri partUri, out int comparisonResult);
     
     // https://learn.microsoft.com/windows/win32/api/msopc/nf-msopc-iopcparturi-getsourceuri
     [PreserveSig]

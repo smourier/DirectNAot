@@ -29,7 +29,7 @@ public partial interface IComponents : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-add
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Add(IComponent Component, out VARIANT NewIndex);
+    HRESULT Add([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] IComponent Component, out VARIANT NewIndex);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-remove
     [PreserveSig]
@@ -44,5 +44,5 @@ public partial interface IComponents : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-icomponents-put_item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT put_Item(VARIANT Index, IComponent ppComponent);
+    HRESULT put_Item(VARIANT Index, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IComponent>))] IComponent ppComponent);
 }

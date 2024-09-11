@@ -8,11 +8,11 @@ public partial interface ID2D1DeviceContext5 : ID2D1DeviceContext4
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext5-createsvgdocument
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSvgDocument(IStream? inputXmlStream, D2D_SIZE_F viewportSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgDocument>))] out ID2D1SvgDocument svgDocument);
+    HRESULT CreateSvgDocument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream?>))] IStream? inputXmlStream, D2D_SIZE_F viewportSize, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgDocument>))] out ID2D1SvgDocument svgDocument);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext5-drawsvgdocument
     [PreserveSig]
-    void DrawSvgDocument(ID2D1SvgDocument svgDocument);
+    void DrawSvgDocument([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SvgDocument>))] ID2D1SvgDocument svgDocument);
     
     // https://learn.microsoft.com/windows/win32/api/d2d1_3/nf-d2d1_3-id2d1devicecontext5-createcolorcontextfromdxgicolorspace
     [PreserveSig]

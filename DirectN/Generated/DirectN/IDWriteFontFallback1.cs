@@ -7,5 +7,5 @@ public partial interface IDWriteFontFallback1 : IDWriteFontFallback
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MapCharacters(IDWriteTextAnalysisSource analysisSource, uint textPosition, uint textLength, IDWriteFontCollection? baseFontCollection, PWSTR baseFamilyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, ref uint mappedLength, out float scale, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace5>))] out IDWriteFontFace5 mappedFontFace);
+    HRESULT MapCharacters([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteTextAnalysisSource>))] IDWriteTextAnalysisSource analysisSource, uint textPosition, uint textLength, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontCollection?>))] IDWriteFontCollection? baseFontCollection, PWSTR baseFamilyName, [In][MarshalUsing(CountElementName = nameof(fontAxisValueCount))] DWRITE_FONT_AXIS_VALUE[] fontAxisValues, uint fontAxisValueCount, ref uint mappedLength, out float scale, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace5>))] out IDWriteFontFace5 mappedFontFace);
 }

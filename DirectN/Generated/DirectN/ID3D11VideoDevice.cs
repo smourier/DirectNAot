@@ -14,7 +14,7 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessor
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessor(ID3D11VideoProcessorEnumerator pEnum, uint RateConversionIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessor>))] out ID3D11VideoProcessor ppVideoProcessor);
+    HRESULT CreateVideoProcessor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessorEnumerator>))] ID3D11VideoProcessorEnumerator pEnum, uint RateConversionIndex, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessor>))] out ID3D11VideoProcessor ppVideoProcessor);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createauthenticatedchannel
     [PreserveSig]
@@ -29,17 +29,17 @@ public partial interface ID3D11VideoDevice
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideodecoderoutputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoDecoderOutputView(ID3D11Resource pResource, in D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoDecoderOutputView* */ ppVDOVView);
+    HRESULT CreateVideoDecoderOutputView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, in D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoDecoderOutputView* */ ppVDOVView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessorinputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessorInputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorInputView* */ ppVPIView);
+    HRESULT CreateVideoProcessorInputView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessorEnumerator>))] ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorInputView* */ ppVPIView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessoroutputview
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateVideoProcessorOutputView(ID3D11Resource pResource, ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorOutputView* */ ppVPOView);
+    HRESULT CreateVideoProcessorOutputView([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11Resource>))] ID3D11Resource pResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D11VideoProcessorEnumerator>))] ID3D11VideoProcessorEnumerator pEnum, in D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC pDesc, nint /* optional ID3D11VideoProcessorOutputView* */ ppVPOView);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11videodevice-createvideoprocessorenumerator
     [PreserveSig]

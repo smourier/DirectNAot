@@ -8,7 +8,7 @@ public partial interface IWMPPluginUI
     // https://learn.microsoft.com/windows/win32/api/wmpplug/nf-wmpplug-iwmppluginui-setcore
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetCore(IWMPCore pCore);
+    HRESULT SetCore([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPCore>))] IWMPCore pCore);
     
     // https://learn.microsoft.com/windows/win32/api/wmpplug/nf-wmpplug-iwmppluginui-create
     [PreserveSig]

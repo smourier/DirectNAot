@@ -9,7 +9,7 @@ public partial interface IDirectManipulationUpdateManager
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationupdatemanager-registerwaithandlecallback
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterWaitHandleCallback(HANDLE handle, IDirectManipulationUpdateHandler eventHandler, out uint cookie);
+    HRESULT RegisterWaitHandleCallback(HANDLE handle, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationUpdateHandler>))] IDirectManipulationUpdateHandler eventHandler, out uint cookie);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationupdatemanager-unregisterwaithandlecallback
     [PreserveSig]
@@ -19,5 +19,5 @@ public partial interface IDirectManipulationUpdateManager
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationupdatemanager-update
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Update(IDirectManipulationFrameInfoProvider? frameInfo);
+    HRESULT Update([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationFrameInfoProvider?>))] IDirectManipulationFrameInfoProvider? frameInfo);
 }

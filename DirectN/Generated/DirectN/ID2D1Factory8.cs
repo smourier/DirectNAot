@@ -6,5 +6,5 @@ public partial interface ID2D1Factory8 : ID2D1Factory7
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateDevice(IDXGIDevice dxgiDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Device7>))] out ID2D1Device7 d2dDevice6);
+    HRESULT CreateDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIDevice>))] IDXGIDevice dxgiDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Device7>))] out ID2D1Device7 d2dDevice6);
 }

@@ -9,12 +9,12 @@ public partial interface ISpatialAudioMetadataCopier
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatacopier-open
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Open(ISpatialAudioMetadataItems metadataItems);
+    HRESULT Open([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioMetadataItems>))] ISpatialAudioMetadataItems metadataItems);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatacopier-copymetadataforframes
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyMetadataForFrames(ushort copyFrameCount, SpatialAudioMetadataCopyMode copyMode, ISpatialAudioMetadataItems dstMetadataItems, out ushort itemsCopied);
+    HRESULT CopyMetadataForFrames(ushort copyFrameCount, SpatialAudioMetadataCopyMode copyMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpatialAudioMetadataItems>))] ISpatialAudioMetadataItems dstMetadataItems, out ushort itemsCopied);
     
     // https://learn.microsoft.com/windows/win32/api/spatialaudiometadata/nf-spatialaudiometadata-ispatialaudiometadatacopier-close
     [PreserveSig]

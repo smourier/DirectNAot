@@ -9,7 +9,7 @@ public partial interface IDWriteFontDownloadQueue
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-addlistener
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddListener(IDWriteFontDownloadListener listener, out uint token);
+    HRESULT AddListener([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontDownloadListener>))] IDWriteFontDownloadListener listener, out uint token);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadqueue-removelistener
     [PreserveSig]

@@ -9,12 +9,12 @@ public partial interface IPin
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-connect
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Connect(IPin pReceivePin, nint /* optional AM_MEDIA_TYPE* */ pmt);
+    HRESULT Connect([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pReceivePin, nint /* optional AM_MEDIA_TYPE* */ pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-receiveconnection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ReceiveConnection(IPin pConnector, in AM_MEDIA_TYPE pmt);
+    HRESULT ReceiveConnection([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPin>))] IPin pConnector, in AM_MEDIA_TYPE pmt);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ipin-disconnect
     [PreserveSig]

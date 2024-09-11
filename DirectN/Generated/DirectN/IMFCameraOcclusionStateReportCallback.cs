@@ -8,5 +8,5 @@ public partial interface IMFCameraOcclusionStateReportCallback
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfcameraocclusionstatereportcallback-onocclusionstatereport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnOcclusionStateReport(IMFCameraOcclusionStateReport occlusionStateReport);
+    HRESULT OnOcclusionStateReport([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFCameraOcclusionStateReport>))] IMFCameraOcclusionStateReport occlusionStateReport);
 }

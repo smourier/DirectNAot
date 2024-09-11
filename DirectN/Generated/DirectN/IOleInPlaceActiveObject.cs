@@ -24,7 +24,7 @@ public partial interface IOleInPlaceActiveObject : IOleWindow
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-resizeborder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ResizeBorder(in RECT prcBorder, IOleInPlaceUIWindow pUIWindow, BOOL fFrameWindow);
+    HRESULT ResizeBorder(in RECT prcBorder, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleInPlaceUIWindow>))] IOleInPlaceUIWindow pUIWindow, BOOL fFrameWindow);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleinplaceactiveobject-enablemodeless
     [PreserveSig]

@@ -34,10 +34,10 @@ public partial interface IDirectManipulationManager
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager-createviewport
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateViewport(IDirectManipulationFrameInfoProvider? frameInfo, HWND window, in Guid riid, out nint /* void */ @object);
+    HRESULT CreateViewport([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationFrameInfoProvider?>))] IDirectManipulationFrameInfoProvider? frameInfo, HWND window, in Guid riid, out nint /* void */ @object);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationmanager-createcontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateContent(IDirectManipulationFrameInfoProvider? frameInfo, in Guid clsid, in Guid riid, out nint /* void */ @object);
+    HRESULT CreateContent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationFrameInfoProvider?>))] IDirectManipulationFrameInfoProvider? frameInfo, in Guid clsid, in Guid riid, out nint /* void */ @object);
 }

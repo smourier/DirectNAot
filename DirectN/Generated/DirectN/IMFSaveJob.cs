@@ -9,12 +9,12 @@ public partial interface IMFSaveJob
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsavejob-beginsave
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginSave(IMFByteStream pStream, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginSave([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsavejob-endsave
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndSave(IMFAsyncResult pResult);
+    HRESULT EndSave([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsavejob-cancelsave
     [PreserveSig]

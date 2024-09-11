@@ -6,11 +6,11 @@ public partial interface IDxcContainerBuilder
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Load(IDxcBlob pDxilContainerHeader);
+    HRESULT Load([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pDxilContainerHeader);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddPart(uint fourCC, IDxcBlob pSource);
+    HRESULT AddPart(uint fourCC, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pSource);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

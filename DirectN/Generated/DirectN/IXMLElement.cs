@@ -46,9 +46,9 @@ public partial interface IXMLElement : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT addChild(IXMLElement pChildElem, int lIndex, int lReserved);
+    HRESULT addChild([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXMLElement>))] IXMLElement pChildElem, int lIndex, int lReserved);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT removeChild(IXMLElement pChildElem);
+    HRESULT removeChild([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXMLElement>))] IXMLElement pChildElem);
 }

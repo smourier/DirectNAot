@@ -33,10 +33,10 @@ public partial interface IAudioSystemEffectsPropertyStore
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-registerpropertychangenotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterPropertyChangeNotification(IAudioSystemEffectsPropertyChangeNotificationClient callback);
+    HRESULT RegisterPropertyChangeNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSystemEffectsPropertyChangeNotificationClient>))] IAudioSystemEffectsPropertyChangeNotificationClient callback);
     
     // https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-iaudiosystemeffectspropertystore-unregisterpropertychangenotification
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnregisterPropertyChangeNotification(IAudioSystemEffectsPropertyChangeNotificationClient callback);
+    HRESULT UnregisterPropertyChangeNotification([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioSystemEffectsPropertyChangeNotificationClient>))] IAudioSystemEffectsPropertyChangeNotificationClient callback);
 }

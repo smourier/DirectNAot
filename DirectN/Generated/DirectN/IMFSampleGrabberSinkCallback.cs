@@ -9,7 +9,7 @@ public partial interface IMFSampleGrabberSinkCallback : IMFClockStateSink
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsamplegrabbersinkcallback-onsetpresentationclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSetPresentationClock(IMFPresentationClock pPresentationClock);
+    HRESULT OnSetPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock>))] IMFPresentationClock pPresentationClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsamplegrabbersinkcallback-onprocesssample
     [PreserveSig]

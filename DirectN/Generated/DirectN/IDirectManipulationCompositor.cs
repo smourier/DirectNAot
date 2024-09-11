@@ -9,17 +9,17 @@ public partial interface IDirectManipulationCompositor
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-addcontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddContent(IDirectManipulationContent content, nint device, nint parentVisual, nint childVisual);
+    HRESULT AddContent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationContent>))] IDirectManipulationContent content, nint device, nint parentVisual, nint childVisual);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-removecontent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RemoveContent(IDirectManipulationContent content);
+    HRESULT RemoveContent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationContent>))] IDirectManipulationContent content);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-setupdatemanager
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetUpdateManager(IDirectManipulationUpdateManager updateManager);
+    HRESULT SetUpdateManager([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectManipulationUpdateManager>))] IDirectManipulationUpdateManager updateManager);
     
     // https://learn.microsoft.com/windows/win32/api/directmanipulation/nf-directmanipulation-idirectmanipulationcompositor-flush
     [PreserveSig]

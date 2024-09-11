@@ -23,5 +23,5 @@ public partial interface IWMPLibrary
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary-isidentical
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isIdentical(IWMPLibrary pIWMPLibrary, ref VARIANT_BOOL pvbool);
+    HRESULT isIdentical([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPLibrary>))] IWMPLibrary pIWMPLibrary, ref VARIANT_BOOL pvbool);
 }

@@ -9,20 +9,20 @@ public partial interface IMFTimecodeTranslate
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimecodetranslate-beginconverttimecodetohns
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginConvertTimecodeToHNS(in PROPVARIANT pPropVarTimecode, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginConvertTimecodeToHNS(in PROPVARIANT pPropVarTimecode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimecodetranslate-endconverttimecodetohns
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndConvertTimecodeToHNS(IMFAsyncResult pResult, out long phnsTime);
+    HRESULT EndConvertTimecodeToHNS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out long phnsTime);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimecodetranslate-beginconverthnstotimecode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginConvertHNSToTimecode(long hnsTime, IMFAsyncCallback pCallback, nint punkState);
+    HRESULT BeginConvertHNSToTimecode(long hnsTime, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint punkState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftimecodetranslate-endconverthnstotimecode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndConvertHNSToTimecode(IMFAsyncResult pResult, out PROPVARIANT pPropVarTimecode);
+    HRESULT EndConvertHNSToTimecode([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out PROPVARIANT pPropVarTimecode);
 }

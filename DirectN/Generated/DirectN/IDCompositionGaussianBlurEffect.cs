@@ -8,7 +8,7 @@ public partial interface IDCompositionGaussianBlurEffect : IDCompositionFilterEf
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiongaussianblureffect-setstandarddeviation(float)
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetStandardDeviation(IDCompositionAnimation animation);
+    HRESULT SetStandardDeviation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDCompositionAnimation>))] IDCompositionAnimation animation);
     
     // https://learn.microsoft.com/windows/win32/api/dcomp/nf-dcomp-idcompositiongaussianblureffect-setstandarddeviation(float)
     [PreserveSig]

@@ -7,7 +7,7 @@ public partial interface ID3D12VideoEncodeCommandList2 : ID3D12VideoEncodeComman
 {
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist2-encodeframe
     [PreserveSig]
-    void EncodeFrame(ID3D12VideoEncoder pEncoder, ID3D12VideoEncoderHeap pHeap, in D3D12_VIDEO_ENCODER_ENCODEFRAME_INPUT_ARGUMENTS pInputArguments, in D3D12_VIDEO_ENCODER_ENCODEFRAME_OUTPUT_ARGUMENTS pOutputArguments);
+    void EncodeFrame([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12VideoEncoder>))] ID3D12VideoEncoder pEncoder, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12VideoEncoderHeap>))] ID3D12VideoEncoderHeap pHeap, in D3D12_VIDEO_ENCODER_ENCODEFRAME_INPUT_ARGUMENTS pInputArguments, in D3D12_VIDEO_ENCODER_ENCODEFRAME_OUTPUT_ARGUMENTS pOutputArguments);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12video/nf-d3d12video-id3d12videoencodecommandlist2-resolveencoderoutputmetadata
     [PreserveSig]

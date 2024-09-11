@@ -8,5 +8,5 @@ public partial interface IDWriteFontDownloadListener
 {
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontdownloadlistener-downloadcompleted
     [PreserveSig]
-    void DownloadCompleted(IDWriteFontDownloadQueue downloadQueue, nint context, HRESULT downloadResult);
+    void DownloadCompleted([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontDownloadQueue>))] IDWriteFontDownloadQueue downloadQueue, nint context, HRESULT downloadResult);
 }

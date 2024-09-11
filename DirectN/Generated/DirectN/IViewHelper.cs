@@ -27,7 +27,7 @@ public partial interface IViewHelper
     // https://learn.microsoft.com/windows/win32/api/cloneviewhelper/nf-cloneviewhelper-iviewhelper-setconfiguration
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetConfiguration(IStream pIStream, out uint pulStatus);
+    HRESULT SetConfiguration([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, out uint pulStatus);
     
     // https://learn.microsoft.com/windows/win32/api/cloneviewhelper/nf-cloneviewhelper-iviewhelper-getproceedonnewconfiguration
     [PreserveSig]

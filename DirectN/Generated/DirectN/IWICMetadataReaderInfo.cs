@@ -14,7 +14,7 @@ public partial interface IWICMetadataReaderInfo : IWICMetadataHandlerInfo
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareaderinfo-matchespattern
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MatchesPattern(in Guid guidContainerFormat, IStream pIStream, out BOOL pfMatches);
+    HRESULT MatchesPattern(in Guid guidContainerFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream, out BOOL pfMatches);
     
     // https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-iwicmetadatareaderinfo-createinstance
     [PreserveSig]

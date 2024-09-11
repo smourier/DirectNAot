@@ -8,7 +8,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-addattachedsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddAttachedSurface(IDirectDrawSurface7 param0);
+    HRESULT AddAttachedSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-addoverlaydirtyrect
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-blt
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Blt(ref RECT param0, IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDBLTFX param4);
+    HRESULT Blt(ref RECT param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDBLTFX param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-bltbatch
     [PreserveSig]
@@ -28,12 +28,12 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-bltfast
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BltFast(uint param0, uint param1, IDirectDrawSurface7 param2, ref RECT param3, uint param4);
+    HRESULT BltFast(uint param0, uint param1, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param2, ref RECT param3, uint param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-deleteattachedsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DeleteAttachedSurface(uint param0, IDirectDrawSurface7 param1);
+    HRESULT DeleteAttachedSurface(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-enumattachedsurfaces
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-flip
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Flip(IDirectDrawSurface7 param0, uint param1);
+    HRESULT Flip([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param0, uint param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-getattachedsurface
     [PreserveSig]
@@ -108,7 +108,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-initialize
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Initialize(IDirectDraw param0, ref DDSURFACEDESC2 param1);
+    HRESULT Initialize([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw param0, ref DDSURFACEDESC2 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-islost
     [PreserveSig]
@@ -133,7 +133,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-setclipper
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetClipper(IDirectDrawClipper param0);
+    HRESULT SetClipper([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawClipper>))] IDirectDrawClipper param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-setcolorkey
     [PreserveSig]
@@ -148,7 +148,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-setpalette
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPalette(IDirectDrawPalette param0);
+    HRESULT SetPalette([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] IDirectDrawPalette param0);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-unlock
     [PreserveSig]
@@ -158,7 +158,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-updateoverlay
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateOverlay(ref RECT param0, IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDOVERLAYFX param4);
+    HRESULT UpdateOverlay(ref RECT param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param1, ref RECT param2, uint param3, ref DDOVERLAYFX param4);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-updateoverlaydisplay
     [PreserveSig]
@@ -168,7 +168,7 @@ public partial interface IDirectDrawSurface7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-updateoverlayzorder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UpdateOverlayZOrder(uint param0, IDirectDrawSurface7 param1);
+    HRESULT UpdateOverlayZOrder(uint param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdrawsurface7-getddinterface
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface ID3D12Device7 : ID3D12Device6
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device7-addtostateobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddToStateObject(in D3D12_STATE_OBJECT_DESC pAddition, ID3D12StateObject pStateObjectToGrowFrom, in Guid riid, out nint /* void */ ppNewStateObject);
+    HRESULT AddToStateObject(in D3D12_STATE_OBJECT_DESC pAddition, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12StateObject>))] ID3D12StateObject pStateObjectToGrowFrom, in Guid riid, out nint /* void */ ppNewStateObject);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-id3d12device7-createprotectedresourcesession1
     [PreserveSig]

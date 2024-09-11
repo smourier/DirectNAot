@@ -28,7 +28,7 @@ public partial interface IVirtualSurfaceImageSourceNative : ISurfaceImageSourceN
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-registerforupdatesneeded
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterForUpdatesNeeded(IVirtualSurfaceUpdatesCallbackNative? callback);
+    HRESULT RegisterForUpdatesNeeded([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IVirtualSurfaceUpdatesCallbackNative?>))] IVirtualSurfaceUpdatesCallbackNative? callback);
     
     // https://learn.microsoft.com/windows/win32/api/windows.ui.xaml.media.dxinterop/nf-windows-ui-xaml-media-dxinterop-ivirtualsurfaceimagesourcenative-resize
     [PreserveSig]

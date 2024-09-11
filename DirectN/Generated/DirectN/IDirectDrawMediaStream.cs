@@ -13,7 +13,7 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-setformat
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetFormat(in DDSURFACEDESC pDDSurfaceDesc, IDirectDrawPalette pDirectDrawPalette);
+    HRESULT SetFormat(in DDSURFACEDESC pDDSurfaceDesc, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawPalette>))] IDirectDrawPalette pDirectDrawPalette);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-getdirectdraw
     [PreserveSig]
@@ -23,12 +23,12 @@ public partial interface IDirectDrawMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-setdirectdraw
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDirectDraw(IDirectDraw pDirectDraw);
+    HRESULT SetDirectDraw([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDraw>))] IDirectDraw pDirectDraw);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-createsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSample(IDirectDrawSurface pSurface, in RECT pRect, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawStreamSample>))] out IDirectDrawStreamSample ppSample);
+    HRESULT CreateSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface>))] IDirectDrawSurface pSurface, in RECT pRect, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawStreamSample>))] out IDirectDrawStreamSample ppSample);
     
     // https://learn.microsoft.com/windows/win32/api/ddstream/nf-ddstream-idirectdrawmediastream-gettimeperframe
     [PreserveSig]

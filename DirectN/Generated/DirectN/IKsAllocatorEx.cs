@@ -15,5 +15,5 @@ public partial interface IKsAllocatorEx : IKsAllocator
     
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
-    HANDLE KsCreateAllocatorAndGetHandle(IKsPin KsPin);
+    HANDLE KsCreateAllocatorAndGetHandle([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsPin>))] IKsPin KsPin);
 }

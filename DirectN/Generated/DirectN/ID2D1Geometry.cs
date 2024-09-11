@@ -14,12 +14,12 @@ public partial interface ID2D1Geometry : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-getwidenedbounds
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetWidenedBounds(float strokeWidth, ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out D2D_RECT_F bounds);
+    HRESULT GetWidenedBounds(float strokeWidth, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1StrokeStyle?>))] ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out D2D_RECT_F bounds);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-strokecontainspoint
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT StrokeContainsPoint(D2D_POINT_2F point, float strokeWidth, ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out BOOL contains);
+    HRESULT StrokeContainsPoint(D2D_POINT_2F point, float strokeWidth, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1StrokeStyle?>))] ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, out BOOL contains);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-fillcontainspoint
     [PreserveSig]
@@ -29,27 +29,27 @@ public partial interface ID2D1Geometry : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-comparewithgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CompareWithGeometry(ID2D1Geometry inputGeometry, nint /* optional D2D_MATRIX_3X2_F* */ inputGeometryTransform, float flatteningTolerance, out D2D1_GEOMETRY_RELATION relation);
+    HRESULT CompareWithGeometry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Geometry>))] ID2D1Geometry inputGeometry, nint /* optional D2D_MATRIX_3X2_F* */ inputGeometryTransform, float flatteningTolerance, out D2D1_GEOMETRY_RELATION relation);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-simplify
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Simplify(D2D1_GEOMETRY_SIMPLIFICATION_OPTION simplificationOption, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT Simplify(D2D1_GEOMETRY_SIMPLIFICATION_OPTION simplificationOption, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SimplifiedGeometrySink>))] ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-tessellate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Tessellate(nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, ID2D1TessellationSink tessellationSink);
+    HRESULT Tessellate(nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1TessellationSink>))] ID2D1TessellationSink tessellationSink);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-combinewithgeometry
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CombineWithGeometry(ID2D1Geometry inputGeometry, D2D1_COMBINE_MODE combineMode, nint /* optional D2D_MATRIX_3X2_F* */ inputGeometryTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT CombineWithGeometry([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1Geometry>))] ID2D1Geometry inputGeometry, D2D1_COMBINE_MODE combineMode, nint /* optional D2D_MATRIX_3X2_F* */ inputGeometryTransform, float flatteningTolerance, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SimplifiedGeometrySink>))] ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-outline
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Outline(nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT Outline(nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SimplifiedGeometrySink>))] ID2D1SimplifiedGeometrySink geometrySink);
     
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-computearea
     [PreserveSig]
@@ -69,5 +69,5 @@ public partial interface ID2D1Geometry : ID2D1Resource
     // https://learn.microsoft.com/windows/win32/Direct2D/id2d1geometry-widen
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Widen(float strokeWidth, ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, ID2D1SimplifiedGeometrySink geometrySink);
+    HRESULT Widen(float strokeWidth, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1StrokeStyle?>))] ID2D1StrokeStyle? strokeStyle, nint /* optional D2D_MATRIX_3X2_F* */ worldTransform, float flatteningTolerance, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID2D1SimplifiedGeometrySink>))] ID2D1SimplifiedGeometrySink geometrySink);
 }

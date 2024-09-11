@@ -5,5 +5,5 @@ namespace DirectN;
 public partial interface IKsPinEx : IKsPin
 {
     [PreserveSig]
-    void KsNotifyError(IMediaSample Sample, HRESULT hr);
+    void KsNotifyError([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMediaSample>))] IMediaSample Sample, HRESULT hr);
 }

@@ -13,7 +13,7 @@ public partial interface IDirect3DSwapChain9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9-getfrontbufferdata
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetFrontBufferData(IDirect3DSurface9 pDestSurface);
+    HRESULT GetFrontBufferData([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DSurface9>))] IDirect3DSurface9 pDestSurface);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dswapchain9-getbackbuffer
     [PreserveSig]

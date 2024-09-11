@@ -83,5 +83,5 @@ public partial interface IWMPSyncDevice
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-isidentical
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT isIdentical(IWMPSyncDevice pDevice, ref VARIANT_BOOL pvbool);
+    HRESULT isIdentical([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWMPSyncDevice>))] IWMPSyncDevice pDevice, ref VARIANT_BOOL pvbool);
 }

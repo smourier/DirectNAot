@@ -13,7 +13,7 @@ public partial interface IAudioMediaType
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(IAudioMediaType pIAudioType, out uint pdwFlags);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioMediaType>))] IAudioMediaType pIAudioType, out uint pdwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/audiomediatype/nf-audiomediatype-iaudiomediatype-getaudioformat
     [PreserveSig]

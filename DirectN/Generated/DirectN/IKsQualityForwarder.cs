@@ -5,5 +5,5 @@ namespace DirectN;
 public partial interface IKsQualityForwarder : IKsObject
 {
     [PreserveSig]
-    void KsFlushClient(IKsPin Pin);
+    void KsFlushClient([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IKsPin>))] IKsPin Pin);
 }

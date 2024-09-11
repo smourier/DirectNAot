@@ -14,13 +14,13 @@ public partial interface ISpeechGrammarRuleState : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddWordTransition(ISpeechGrammarRuleState? DestState, BSTR Words, BSTR Separators, SpeechGrammarWordType Type, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
+    HRESULT AddWordTransition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleState?>))] ISpeechGrammarRuleState? DestState, BSTR Words, BSTR Separators, SpeechGrammarWordType Type, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddRuleTransition(ISpeechGrammarRuleState? DestinationState, ISpeechGrammarRule? Rule, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
+    HRESULT AddRuleTransition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleState?>))] ISpeechGrammarRuleState? DestinationState, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRule?>))] ISpeechGrammarRule? Rule, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT AddSpecialTransition(ISpeechGrammarRuleState? DestinationState, SpeechSpecialTransitionType Type, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
+    HRESULT AddSpecialTransition([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ISpeechGrammarRuleState?>))] ISpeechGrammarRuleState? DestinationState, SpeechSpecialTransitionType Type, BSTR PropertyName, int PropertyId, in VARIANT PropertyValue, float Weight);
 }

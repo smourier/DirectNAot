@@ -6,5 +6,5 @@ public partial interface IMFMediaEngineTransferSource
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TransferSourceToMediaEngine(IMFMediaEngine destination);
+    HRESULT TransferSourceToMediaEngine([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEngine>))] IMFMediaEngine destination);
 }

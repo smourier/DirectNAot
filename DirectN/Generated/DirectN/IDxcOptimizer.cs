@@ -14,5 +14,5 @@ public partial interface IDxcOptimizer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RunOptimizer(IDxcBlob pBlob, [In][MarshalUsing(CountElementName = nameof(optionCount))] PWSTR[] ppOptions, uint optionCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob pOutputModule, nint /* optional IDxcBlobEncoding* */ ppOutputText);
+    HRESULT RunOptimizer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] IDxcBlob pBlob, [In][MarshalUsing(CountElementName = nameof(optionCount))] PWSTR[] ppOptions, uint optionCount, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDxcBlob>))] out IDxcBlob pOutputModule, nint /* optional IDxcBlobEncoding* */ ppOutputText);
 }

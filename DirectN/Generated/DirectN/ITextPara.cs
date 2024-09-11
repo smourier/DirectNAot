@@ -14,7 +14,7 @@ public partial interface ITextPara : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara-setduplicate
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetDuplicate(ITextPara? pPara);
+    HRESULT SetDuplicate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara?>))] ITextPara? pPara);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara-canchange
     [PreserveSig]
@@ -24,7 +24,7 @@ public partial interface ITextPara : IDispatch
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual(ITextPara? pPara, out int pValue);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITextPara?>))] ITextPara? pPara, out int pValue);
     
     // https://learn.microsoft.com/windows/win32/api/tom/nf-tom-itextpara-reset
     [PreserveSig]

@@ -9,22 +9,22 @@ public partial interface IMFWorkQueueServices
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-beginregistertopologyworkqueueswithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginRegisterTopologyWorkQueuesWithMMCSS(IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginRegisterTopologyWorkQueuesWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-endregistertopologyworkqueueswithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndRegisterTopologyWorkQueuesWithMMCSS(IMFAsyncResult pResult);
+    HRESULT EndRegisterTopologyWorkQueuesWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-beginunregistertopologyworkqueueswithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginUnregisterTopologyWorkQueuesWithMMCSS(IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginUnregisterTopologyWorkQueuesWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-endunregistertopologyworkqueueswithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndUnregisterTopologyWorkQueuesWithMMCSS(IMFAsyncResult pResult);
+    HRESULT EndUnregisterTopologyWorkQueuesWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-gettopologyworkqueuemmcssclass
     [PreserveSig]
@@ -39,22 +39,22 @@ public partial interface IMFWorkQueueServices
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-beginregisterplatformworkqueuewithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginRegisterPlatformWorkQueueWithMMCSS(uint dwPlatformWorkQueue, PWSTR wszClass, uint dwTaskId, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginRegisterPlatformWorkQueueWithMMCSS(uint dwPlatformWorkQueue, PWSTR wszClass, uint dwTaskId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-endregisterplatformworkqueuewithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndRegisterPlatformWorkQueueWithMMCSS(IMFAsyncResult pResult, out uint pdwTaskId);
+    HRESULT EndRegisterPlatformWorkQueueWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult, out uint pdwTaskId);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-beginunregisterplatformworkqueuewithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BeginUnregisterPlatformWorkQueueWithMMCSS(uint dwPlatformWorkQueue, IMFAsyncCallback pCallback, nint pState);
+    HRESULT BeginUnregisterPlatformWorkQueueWithMMCSS(uint dwPlatformWorkQueue, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncCallback>))] IMFAsyncCallback pCallback, nint pState);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-endunregisterplatformworkqueuewithmmcss
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EndUnregisterPlatformWorkQueueWithMMCSS(IMFAsyncResult pResult);
+    HRESULT EndUnregisterPlatformWorkQueueWithMMCSS([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAsyncResult>))] IMFAsyncResult pResult);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfworkqueueservices-getplaftormworkqueuemmcssclass
     [PreserveSig]

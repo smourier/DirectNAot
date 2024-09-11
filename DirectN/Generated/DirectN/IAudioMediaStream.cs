@@ -18,5 +18,5 @@ public partial interface IAudioMediaStream : IMediaStream
     // https://learn.microsoft.com/windows/win32/api/austream/nf-austream-iaudiomediastream-createsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSample(IAudioData pAudioData, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStreamSample>))] out IAudioStreamSample ppSample);
+    HRESULT CreateSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioData>))] IAudioData pAudioData, uint dwFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStreamSample>))] out IAudioStreamSample ppSample);
 }

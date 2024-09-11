@@ -9,15 +9,15 @@ public partial interface IXMLGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/amxmlgraphbuilder/nf-amxmlgraphbuilder-ixmlgraphbuilder-buildfromxml
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BuildFromXML(IGraphBuilder pGraph, IXMLElement pxml);
+    HRESULT BuildFromXML([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXMLElement>))] IXMLElement pxml);
     
     // https://learn.microsoft.com/windows/win32/api/amxmlgraphbuilder/nf-amxmlgraphbuilder-ixmlgraphbuilder-savetoxml
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveToXML(IGraphBuilder pGraph, ref BSTR pbstrxml);
+    HRESULT SaveToXML([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph, ref BSTR pbstrxml);
     
     // https://learn.microsoft.com/windows/win32/api/amxmlgraphbuilder/nf-amxmlgraphbuilder-ixmlgraphbuilder-buildfromxmlfile
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BuildFromXMLFile(IGraphBuilder pGraph, PWSTR wszFileName, PWSTR wszBaseURL);
+    HRESULT BuildFromXMLFile([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph, PWSTR wszFileName, PWSTR wszBaseURL);
 }

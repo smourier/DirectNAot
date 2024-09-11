@@ -18,12 +18,12 @@ public partial interface IDWriteFontSet
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-findfontfacereference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFontFaceReference(IDWriteFontFaceReference fontFaceReference, out uint listIndex, out BOOL exists);
+    HRESULT FindFontFaceReference([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFaceReference>))] IDWriteFontFaceReference fontFaceReference, out uint listIndex, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-findfontface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindFontFace(IDWriteFontFace fontFace, out uint listIndex, out BOOL exists);
+    HRESULT FindFontFace([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDWriteFontFace>))] IDWriteFontFace fontFace, out uint listIndex, out BOOL exists);
     
     // https://learn.microsoft.com/windows/win32/api/dwrite_3/nf-dwrite_3-idwritefontset-getpropertyvalues(dwrite_font_property_id_wcharconst_idwritestringlist)
     [PreserveSig]

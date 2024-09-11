@@ -28,7 +28,7 @@ public partial interface IDirectDraw7
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-duplicatesurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DuplicateSurface(IDirectDrawSurface7 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param1);
+    HRESULT DuplicateSurface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] IDirectDrawSurface7 param0, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirectDrawSurface7>))] out IDirectDrawSurface7 param1);
     
     // https://learn.microsoft.com/windows/win32/api/ddraw/nf-ddraw-idirectdraw7-enumdisplaymodes
     [PreserveSig]
