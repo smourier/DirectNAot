@@ -7,7 +7,7 @@ public partial struct DISPLAY_DEVICEW
     public uint cb;
     public InlineArraySystemChar_32 DeviceName;
     public InlineArraySystemChar_128 DeviceString;
-    public uint StateFlags;
+    public DISPLAY_DEVICE_STATE_FLAGS StateFlags;
     public InlineArraySystemChar_128 DeviceID;
     public InlineArraySystemChar_128 DeviceKey;
 }
