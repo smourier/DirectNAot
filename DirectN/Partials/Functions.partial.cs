@@ -98,6 +98,11 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     public static BOOL PostMessageW(HWND hWnd, uint Msg) => PostMessageW(hWnd, Msg, WPARAM.Null, LPARAM.Null);
 
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial BOOL GetMonitorInfoW(HMONITOR hMonitor, ref MONITORINFOEXW lpmi);
+
     [LibraryImport("user32")]
     private static partial nint MB_GetString(int button);
 

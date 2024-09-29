@@ -7,14 +7,8 @@ public partial class Monitor
         Handle = handle;
         var mix = new MONITORINFOEXW();
         mix.monitorInfo.cbSize = (uint)sizeof(MONITORINFOEXW);
-        unsafe
-        {
-            var mi = Unsafe.AsRef<MONITORINFO>(&mix);
-            if (!Functions.GetMonitorInfoW(handle, ref mi))
-                throw new Win32Exception(Marshal.GetLastWin32Error());
-
-            mix = Unsafe.Read<MONITORINFOEXW>(&mi);
-        }
+        if (!Functions.GetMonitorInfoW(handle, ref mix))
+            throw new Win32Exception(Marshal.GetLastWin32Error());
 
         DeviceName = mix.szDevice.ToString();
         Bounds = mix.monitorInfo.rcMonitor;

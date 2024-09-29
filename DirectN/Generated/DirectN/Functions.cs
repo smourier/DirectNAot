@@ -298,6 +298,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint AMGetErrorTextW(HRESULT hr, [MarshalUsing(CountElementName = nameof(MaxLen))] PWSTR pbuffer, uint MaxLen);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-appendmenuw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL AppendMenuW(HMENU hMenu, MENU_ITEM_FLAGS uFlags, nuint uIDNewItem, PWSTR lpNewItem);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-aredpiawarenesscontextsequal
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows10.0.14393")]
@@ -3475,6 +3482,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial uint GetSystemDpiForProcess(HANDLE hProcess);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsystemmenu
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HMENU GetSystemMenu(HWND hWnd, BOOL bRevert);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsystemmetrics
     [LibraryImport("USER32")]

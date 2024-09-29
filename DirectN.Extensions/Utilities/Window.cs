@@ -54,6 +54,7 @@ public class Window : IDisposable, IEquatable<Window>
     public Process? Process => _process.Value;
     public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
+    protected uint AboutSysMenuId { get; set; } = 1;
     protected virtual bool DestroyOnDispose { get; set; } = true;
     public D2D_SIZE_U Dpi => DpiUtilities.GetDpiForWindow(Handle);
     public bool IsWindow => Functions.IsWindow(Handle);
@@ -74,6 +75,10 @@ public class Window : IDisposable, IEquatable<Window>
     public HWND OwnerHandle => Functions.GetWindow(Handle, GET_WINDOW_CMD.GW_OWNER);
     public Window? Owner => FromHandle(OwnerHandle.Value);
     public RECT ClientRect { get { Functions.GetClientRect(Handle, out var rc); return rc; } }
+    public DPI_AWARENESS_CONTEXT DpiAwareness => DpiUtilities.GetWindowDpiAwarenessContext(Handle);
+    public string DpiAwarenessDescription => DpiUtilities.GetDpiAwarenessDescription(DpiAwareness);
+    [SupportedOSPlatform("windows10.0.17134")]
+    public uint DpiFromDpiAwareness => Functions.GetDpiFromDpiAwarenessContext(DpiAwareness);
     public virtual HWND ParentHandle { get => Functions.GetParent(Handle); set => Functions.SetParent(Handle, value); }
     public virtual RECT WindowRect { get { Functions.GetWindowRect(Handle, out var rc); return rc; } set => Functions.SetWindowPos(Handle, HWND.Null, value.left, value.top, value.Width, value.Height, SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE | SET_WINDOW_POS_FLAGS.SWP_NOREDRAW | SET_WINDOW_POS_FLAGS.SWP_NOZORDER); }
     public virtual WINDOW_STYLE Style { get => (WINDOW_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE, (int)value); }
@@ -189,6 +194,7 @@ public class Window : IDisposable, IEquatable<Window>
 
     protected virtual internal bool ShowingFatalError() => true;
 
+    public HMONITOR GetMonitorHandle(MONITOR_FROM_FLAGS flags) => Functions.MonitorFromWindow(Handle, flags);
     public Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Monitor.FromWindow(Handle, flags);
     public POINT ScreenToClient(POINT point) { Functions.ScreenToClient(Handle, ref point); return point; }
     public POINT ClientToScreen(POINT point) { Functions.ClientToScreen(Handle, ref point); return point; }
@@ -284,6 +290,16 @@ public class Window : IDisposable, IEquatable<Window>
                 throw new Win32Exception(gle);
 
             throw new DirectNException("0004: Cannot create window.");
+        }
+
+        if (AboutSysMenuId != 0)
+        {
+            var sysMenu = Functions.GetSystemMenu(hwnd, false);
+            if (sysMenu.Value != 0)
+            {
+                Functions.AppendMenuW(sysMenu, MENU_ITEM_FLAGS.MF_SEPARATOR, 0, PWSTR.Null);
+                Functions.AppendMenuW(sysMenu, MENU_ITEM_FLAGS.MF_STRING, AboutSysMenuId, PWSTR.From("About DirectN..."));
+            }
         }
     }
 
@@ -384,6 +400,26 @@ public class Window : IDisposable, IEquatable<Window>
                 if (OnResized(sized, new SIZE(lParam.Value.LOWORD(), lParam.Value.HIWORD())))
                     return new();
 
+                break;
+
+            case MessageDecoder.WM_SYSCOMMAND:
+                if (wParam.Value == AboutSysMenuId && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
+                {
+                    var di = new DiagnosticsInformation();
+                    var sb = new StringBuilder();
+                    foreach (var item in di.GetType().GetProperties().OrderBy(p => p.Name))
+                    {
+                        sb.AppendLine($"{item.Name} : {item.GetValue(di)}");
+                    }
+
+                    var td = new TaskDialog();
+                    td.Flags |= TASKDIALOG_FLAGS.TDF_SIZE_TO_CONTENT;
+                    td.MainIcon = TaskDialog.TD_INFORMATION_ICON;
+                    td.Title = "About DirectN";
+                    td.MainInstruction = "System Information";
+                    td.Content = sb.ToString();
+                    td.Show(hwnd);
+                }
                 break;
 
             case MessageDecoder.WM_MOVE:
