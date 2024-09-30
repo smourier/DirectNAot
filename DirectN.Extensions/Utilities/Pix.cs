@@ -28,5 +28,95 @@
 
         [LibraryImport(DllName, StringMarshalling = StringMarshalling.Utf8, EntryPoint = "PIXSetMarkerOnCommandQueue")]
         public static partial void PIXSetMarker(ID3D12CommandQueue commandQueue, ulong color, string formatString);
+
+        public static void WithPixEvent(this IComObject<ID3D12GraphicsCommandList> list, Action action, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(action);
+            PIXBeginEvent(list, color, formatString, methodName);
+            try
+            {
+                action();
+            }
+            finally
+            {
+                PIXEndEvent(list);
+            }
+        }
+
+        public static T WithPixEvent<T>(this IComObject<ID3D12GraphicsCommandList> list, Func<T> func, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(func);
+            PIXBeginEvent(list, color, formatString, methodName);
+            try
+            {
+                return func();
+            }
+            finally
+            {
+                PIXEndEvent(list);
+            }
+        }
+
+        public static void PIXBeginEvent(this IComObject<ID3D12GraphicsCommandList> list, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(list);
+            if (methodName != null)
+            {
+                if (formatString != null)
+                {
+                    formatString = methodName + ": " + formatString;
+                }
+                else
+                {
+                    formatString = methodName;
+                }
+            }
+            PIXBeginEvent(list, color, formatString ?? string.Empty);
+        }
+
+        public static void WithPixEvent(this IComObject<ID3D12CommandQueue> queue, Action action, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(action);
+            PIXBeginEvent(queue, color, formatString, methodName);
+            try
+            {
+                action();
+            }
+            finally
+            {
+                PIXEndEvent(queue);
+            }
+        }
+
+        public static T WithPixEvent<T>(this IComObject<ID3D12CommandQueue> queue, Func<T> func, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(func);
+            PIXBeginEvent(queue, color, formatString, methodName);
+            try
+            {
+                return func();
+            }
+            finally
+            {
+                PIXEndEvent(queue);
+            }
+        }
+
+        public static void PIXBeginEvent(this IComObject<ID3D12CommandQueue> queue, ulong color = 0, string? formatString = null, [CallerMemberName] string? methodName = null)
+        {
+            ArgumentNullException.ThrowIfNull(queue);
+            if (methodName != null)
+            {
+                if (formatString != null)
+                {
+                    formatString = methodName + ": " + formatString;
+                }
+                else
+                {
+                    formatString = methodName;
+                }
+            }
+            PIXBeginEvent(queue, color, formatString ?? string.Empty);
+        }
     }
 }

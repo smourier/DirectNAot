@@ -40,7 +40,7 @@ public static class ID3DBlobExtensions
             var len = blob.GetBufferSize();
             if (ptr != 0 && len > 0)
             {
-                str = Marshal.PtrToStringAnsi(ptr, (int)len).Nullify();
+                str = Marshal.PtrToStringAnsi(ptr, (int)(len - 1)).Nullify();
             }
         }
         return str;
@@ -56,7 +56,7 @@ public static class ID3DBlobExtensions
             var len = blob.GetBufferSize();
             if (ptr != 0 && len > 0)
             {
-                str = Marshal.PtrToStringUTF8(ptr, (int)len).Nullify();
+                str = Marshal.PtrToStringUTF8(ptr, (int)(len - 1)).Nullify();
             }
         }
         return str;
@@ -72,7 +72,7 @@ public static class ID3DBlobExtensions
             var len = blob.GetBufferSize();
             if (ptr != 0 && len > 0)
             {
-                str = Marshal.PtrToStringUni(ptr, (int)len).Nullify();
+                str = Marshal.PtrToStringUni(ptr, (int)((len - 1) / 2)).Nullify();
             }
         }
         return str;

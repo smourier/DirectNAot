@@ -54,7 +54,8 @@ public class Window : IDisposable, IEquatable<Window>
     public Process? Process => _process.Value;
     public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
-    protected uint AboutSysMenuId { get; set; } = 1;
+    protected virtual uint AboutSysMenuId { get; set; } = 1;
+    protected virtual bool ValidateOnPaint { get; set; } = true;
     protected virtual bool DestroyOnDispose { get; set; } = true;
     public D2D_SIZE_U Dpi => DpiUtilities.GetDpiForWindow(Handle);
     public bool IsWindow => Functions.IsWindow(Handle);
@@ -292,13 +293,13 @@ public class Window : IDisposable, IEquatable<Window>
             throw new DirectNException("0004: Cannot create window.");
         }
 
-        if (AboutSysMenuId != 0)
+        if (AboutSysMenuId != 0 && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
         {
             var sysMenu = Functions.GetSystemMenu(hwnd, false);
             if (sysMenu.Value != 0)
             {
                 Functions.AppendMenuW(sysMenu, MENU_ITEM_FLAGS.MF_SEPARATOR, 0, PWSTR.Null);
-                Functions.AppendMenuW(sysMenu, MENU_ITEM_FLAGS.MF_STRING, AboutSysMenuId, PWSTR.From("About DirectN..."));
+                Functions.AppendMenuW(sysMenu, MENU_ITEM_FLAGS.MF_STRING, AboutSysMenuId, PWSTR.From($"About '{text}'..."));
             }
         }
     }
@@ -361,11 +362,14 @@ public class Window : IDisposable, IEquatable<Window>
                 break;
 
             case MessageDecoder.WM_PAINT:
-                var hdc = Functions.BeginPaint(Handle, out var ps);
-                var op = OnPaint(hdc, ps);
-                Functions.EndPaint(Handle, ps);
-                if (op)
-                    return new();
+                if (ValidateOnPaint)
+                {
+                    var hdc = Functions.BeginPaint(Handle, out var ps);
+                    var op = OnPaint(hdc, ps);
+                    Functions.EndPaint(Handle, ps);
+                    if (op)
+                        return new();
+                }
                 break;
 
             case MessageDecoder.WM_ACTIVATE:
@@ -405,7 +409,7 @@ public class Window : IDisposable, IEquatable<Window>
             case MessageDecoder.WM_SYSCOMMAND:
                 if (wParam.Value == AboutSysMenuId && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
                 {
-                    var di = new DiagnosticsInformation();
+                    var di = CreateDiagnosticsInformation();
                     var sb = new StringBuilder();
                     foreach (var item in di.GetType().GetProperties().OrderBy(p => p.Name))
                     {
@@ -415,7 +419,7 @@ public class Window : IDisposable, IEquatable<Window>
                     var td = new TaskDialog();
                     td.Flags |= TASKDIALOG_FLAGS.TDF_SIZE_TO_CONTENT;
                     td.MainIcon = TaskDialog.TD_INFORMATION_ICON;
-                    td.Title = "About DirectN";
+                    td.Title = $"About '{Text}'";
                     td.MainInstruction = "System Information";
                     td.Content = sb.ToString();
                     td.Show(hwnd);
@@ -443,6 +447,9 @@ public class Window : IDisposable, IEquatable<Window>
         }
         return null; // unhandled
     }
+
+    [SupportedOSPlatform("windows10.0.17134")]
+    protected virtual DiagnosticsInformation CreateDiagnosticsInformation() => new();
 
     protected virtual void Dispose(bool disposing)
     {
