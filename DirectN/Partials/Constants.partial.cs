@@ -2,6 +2,17 @@
 
 public static partial class Constants
 {
+    // game input
+    public const ulong GAMEINPUT_CURRENT_CALLBACK_TOKEN_VALUE = 0xFFFFFFFFFFFFFFFF;
+    public const ulong GAMEINPUT_INVALID_CALLBACK_TOKEN_VALUE = 0x0000000000000000;
+    public const uint FACILITY_GAMEINPUT = 906;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_DEVICE_DISCONNECTED = unchecked((int)0x838A0001);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_DEVICE_NOT_FOUND = unchecked((int)0x838A0002);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_READING_NOT_FOUND = unchecked((int)0x838A0003);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_REFERENCE_READING_TOO_OLD = unchecked((int)0x838A0004);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_TIMESTAMP_OUT_OF_RANGE = unchecked((int)0x838A0005);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_INSUFFICIENT_FORCE_FEEDBACK_RESOURCES = unchecked((int)0x838A0006);
+
     public const float XM_PI = 3.141592654f;
     public const float XM_2PI = 6.283185307f;
     public const float XM_1DIVPI = 0.318309886f;

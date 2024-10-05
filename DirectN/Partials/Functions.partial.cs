@@ -118,4 +118,8 @@ public static partial class Functions
 
         return str;
     }
+
+    [LibraryImport("gameinput")]
+    [PreserveSig]
+    public static partial HRESULT GameInputCreate(out IGameInput gameInput);
 }
