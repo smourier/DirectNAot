@@ -33,9 +33,6 @@ public static partial class Pix
     public static bool IsAvailable => _isAvailable.Value;
     private static bool GetIsAvailable()
     {
-        if (!IsEnabled)
-            return false;
-
         try
         {
             _ = PIXGetThreadInfo();
