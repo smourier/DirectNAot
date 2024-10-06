@@ -121,5 +121,5 @@ public static partial class Functions
 
     [LibraryImport("gameinput")]
     [PreserveSig]
-    public static partial HRESULT GameInputCreate(out IGameInput gameInput);
+    public static partial HRESULT GameInputCreate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInput>))] out IGameInput gameInput);
 }

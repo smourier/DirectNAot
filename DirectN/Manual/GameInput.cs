@@ -1115,23 +1115,24 @@ public partial interface IGameInput
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCurrentReading(GameInputKind inputKind, IGameInputDevice device, out IGameInputReading reading);
+    HRESULT GetCurrentReading(GameInputKind inputKind, IGameInputDevice? device, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputReading>))] out IGameInputReading reading);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNextReading(IGameInputReading referenceReading, GameInputKind inputKind, IGameInputDevice device, out IGameInputReading reading);
+    HRESULT GetNextReading(IGameInputReading referenceReading, GameInputKind inputKind, IGameInputDevice? device, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputReading>))] out IGameInputReading reading);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPreviousReading(IGameInputReading referenceReading, GameInputKind inputKind, IGameInputDevice device, out IGameInputReading reading);
+    HRESULT GetPreviousReading(IGameInputReading referenceReading, GameInputKind inputKind, IGameInputDevice? device, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputReading>))] out IGameInputReading reading);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTemporalReading(ulong timestamp, IGameInputDevice device, out IGameInputReading reading);
+    HRESULT GetTemporalReading(ulong timestamp, IGameInputDevice? device, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputReading>))] out IGameInputReading reading);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT RegisterReadingCallback(IGameInputDevice device,
+    HRESULT RegisterReadingCallback(
+        IGameInputDevice? device,
         GameInputKind inputKind,
         float analogThreshold,
         nint context,
@@ -1141,7 +1142,7 @@ public partial interface IGameInput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
     HRESULT RegisterDeviceCallback(
-        IGameInputDevice device,
+        IGameInputDevice? device,
         GameInputKind inputKind,
         GameInputDeviceStatus statusFilter,
         GameInputEnumerationKind enumerationKind,
@@ -1152,7 +1153,7 @@ public partial interface IGameInput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
     HRESULT RegisterGuideButtonCallback(
-        IGameInputDevice device,
+        IGameInputDevice? device,
         nint context,
         GameInputGuideButtonCallback callbackFunc,
         out ulong callbackToken);
@@ -1160,7 +1161,7 @@ public partial interface IGameInput
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
     HRESULT RegisterKeyboardLayoutCallback(
-        IGameInputDevice device,
+        IGameInputDevice? device,
         nint context,
         GameInputKeyboardLayoutCallback callbackFunc,
         out ulong callbackToken);
@@ -1178,7 +1179,7 @@ public partial interface IGameInput
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateAggregateDevice(GameInputKind inputKind, out IGameInputDevice device);
+    HRESULT CreateAggregateDevice(GameInputKind inputKind, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputDevice>))] out IGameInputDevice device);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -1186,15 +1187,15 @@ public partial interface IGameInput
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindDeviceFromObject(IUnknown value, out IGameInputDevice device);
+    HRESULT FindDeviceFromObject(IUnknown value, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputDevice>))] out IGameInputDevice device);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindDeviceFromPlatformHandle(HANDLE value, out IGameInputDevice device);
+    HRESULT FindDeviceFromPlatformHandle(HANDLE value, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputDevice>))] out IGameInputDevice device);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindDeviceFromPlatformString(PWSTR value, out IGameInputDevice device);
+    HRESULT FindDeviceFromPlatformString(PWSTR value, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputDevice>))] out IGameInputDevice device);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -1217,11 +1218,11 @@ public partial interface IGameInputReading
     ulong GetTimestamp();
 
     [PreserveSig]
-    void GetDevice(out IGameInputDevice device);
+    void GetDevice([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputDevice>))] out IGameInputDevice device);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U1)]
-    bool GetRawReport(out IGameInputRawDeviceReport report);
+    bool GetRawReport([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputRawDeviceReport>))] out IGameInputRawDeviceReport report);
 
     [PreserveSig]
     uint GetControllerAxisCount();
@@ -1296,7 +1297,7 @@ public partial interface IGameInputDevice
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateForceFeedbackEffect(uint motorIndex, in GameInputForceFeedbackParams @params, out IGameInputForceFeedbackEffect effect);
+    HRESULT CreateForceFeedbackEffect(uint motorIndex, in GameInputForceFeedbackParams @params, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputForceFeedbackEffect>))] out IGameInputForceFeedbackEffect effect);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.U1)]
@@ -1323,11 +1324,11 @@ public partial interface IGameInputDevice
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateRawDeviceReport(uint reportId, GameInputRawDeviceReportKind reportKind, out IGameInputRawDeviceReport report);
+    HRESULT CreateRawDeviceReport(uint reportId, GameInputRawDeviceReportKind reportKind, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputRawDeviceReport>))] out IGameInputRawDeviceReport report);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRawDeviceFeature(uint reportId, out IGameInputRawDeviceReport report);
+    HRESULT GetRawDeviceFeature(uint reportId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputRawDeviceReport>))] out IGameInputRawDeviceReport report);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -1339,7 +1340,7 @@ public partial interface IGameInputDevice
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SendRawDeviceOutputWithResponse(IGameInputRawDeviceReport requestReport, out IGameInputRawDeviceReport responseReport);
+    HRESULT SendRawDeviceOutputWithResponse(IGameInputRawDeviceReport requestReport, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInputRawDeviceReport>))] out IGameInputRawDeviceReport responseReport);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
