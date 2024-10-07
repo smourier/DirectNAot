@@ -2,7 +2,12 @@
 
 [TypeConverter(typeof(D3DCOLORVALUEConverter))]
 [StructLayout(LayoutKind.Sequential)]
-public partial struct D3DCOLORVALUE : IEquatable<D3DCOLORVALUE>
+public partial struct D3DCOLORVALUE :
+    IEquatable<D3DCOLORVALUE>,
+    IEquatable<Vector4>,
+    IEquatable<D2D_VECTOR_4F>,
+    IEquatable<Vector3>,
+    IEquatable<D2D_VECTOR_3F>
 {
     public float r;
     public float g;
@@ -202,19 +207,51 @@ public partial struct D3DCOLORVALUE : IEquatable<D3DCOLORVALUE>
     public readonly D3DCOLORVALUE ChangeAlpha(byte newAlpha) => FromArgb(newAlpha, BR, BG, BB);
     public readonly D3DCOLORVALUE ChangeAlpha(float newAlpha) => new(newAlpha, r, g, b);
     public readonly float[] ToArray() => [r, g, b, a];
-    public override readonly bool Equals(object? obj) => (obj is D3DCOLORVALUE c && Equals(c)) || (obj is D2D_VECTOR_4F v && r == v.x && g == v.y && b == v.z && a == v.w);
+    public override readonly bool Equals(object? obj) => (obj is D3DCOLORVALUE c && Equals(c)) ||
+        (obj is D2D_VECTOR_4F v4f && Equals(v4f)) ||
+        (obj is D2D_VECTOR_3F v3f && Equals(v3f)) ||
+        (obj is Vector4 v4 && Equals(v4)) ||
+        (obj is Vector3 v3 && Equals(v3));
+
     public readonly bool Equals(D3DCOLORVALUE other) => a == other.a && r == other.r && g == other.g && b == other.b;
     public override readonly int GetHashCode() => a.GetHashCode() ^ r.GetHashCode() ^ g.GetHashCode() ^ b.GetHashCode();
     public static bool operator ==(D3DCOLORVALUE left, D3DCOLORVALUE right) => left.Equals(right);
     public static bool operator !=(D3DCOLORVALUE left, D3DCOLORVALUE right) => !left.Equals(right);
+
+    public static implicit operator D3DCOLORVALUE(uint ui) => new(ui);
+    public static implicit operator D3DCOLORVALUE(int i) => new(i);
+
+    public readonly bool Equals(D2D_VECTOR_4F other) => a == other.w && r == other.x && g == other.y && b == other.z;
     public static bool operator ==(D2D_VECTOR_4F left, D3DCOLORVALUE right) => right.Equals(left);
     public static bool operator !=(D2D_VECTOR_4F left, D3DCOLORVALUE right) => !right.Equals(left);
     public static bool operator ==(D3DCOLORVALUE left, D2D_VECTOR_4F right) => left.Equals(right);
     public static bool operator !=(D3DCOLORVALUE left, D2D_VECTOR_4F right) => !left.Equals(right);
     public static implicit operator D2D_VECTOR_4F(D3DCOLORVALUE c) => new(c.r, c.g, c.b, c.a);
     public static implicit operator D3DCOLORVALUE(D2D_VECTOR_4F vc) => new(vc.x, vc.y, vc.z, vc.w);
-    public static implicit operator D3DCOLORVALUE(uint ui) => new(ui);
-    public static implicit operator D3DCOLORVALUE(int i) => new(i);
+
+    public readonly bool Equals(D2D_VECTOR_3F other) => a == 1 && r == other.x && g == other.y && b == other.z;
+    public static bool operator ==(D2D_VECTOR_3F left, D3DCOLORVALUE right) => right.Equals(left);
+    public static bool operator !=(D2D_VECTOR_3F left, D3DCOLORVALUE right) => !right.Equals(left);
+    public static bool operator ==(D3DCOLORVALUE left, D2D_VECTOR_3F right) => left.Equals(right);
+    public static bool operator !=(D3DCOLORVALUE left, D2D_VECTOR_3F right) => !left.Equals(right);
+    public static implicit operator D2D_VECTOR_3F(D3DCOLORVALUE c) => new(c.r, c.g, c.b);
+    public static implicit operator D3DCOLORVALUE(D2D_VECTOR_3F vc) => new(vc.x, vc.y, vc.z, 1);
+
+    public readonly bool Equals(Vector4 other) => a == other.W && r == other.X && g == other.Y && b == other.Z;
+    public static bool operator ==(Vector4 left, D3DCOLORVALUE right) => right.Equals(left);
+    public static bool operator !=(Vector4 left, D3DCOLORVALUE right) => !right.Equals(left);
+    public static bool operator ==(D3DCOLORVALUE left, Vector4 right) => left.Equals(right);
+    public static bool operator !=(D3DCOLORVALUE left, Vector4 right) => !left.Equals(right);
+    public static implicit operator Vector4(D3DCOLORVALUE c) => new(c.r, c.g, c.b, c.a);
+    public static implicit operator D3DCOLORVALUE(Vector4 vc) => new(vc.X, vc.Y, vc.Z, vc.W);
+
+    public readonly bool Equals(Vector3 other) => a == 1 && r == other.X && g == other.Y && b == other.Z;
+    public static bool operator ==(Vector3 left, D3DCOLORVALUE right) => right.Equals(left);
+    public static bool operator !=(Vector3 left, D3DCOLORVALUE right) => !right.Equals(left);
+    public static bool operator ==(D3DCOLORVALUE left, Vector3 right) => left.Equals(right);
+    public static bool operator !=(D3DCOLORVALUE left, Vector3 right) => !left.Equals(right);
+    public static implicit operator Vector3(D3DCOLORVALUE c) => new(c.r, c.g, c.b);
+    public static implicit operator D3DCOLORVALUE(Vector3 vc) => new(vc.X, vc.Y, vc.Z, 1);
 
     private static float ByteToSingle(byte value) => value / 255f;
     private static byte SingleToByte(float value) => (byte)(value * 255);
