@@ -178,4 +178,20 @@ public static class WindowUtilities
         // map screen coordinates to child coordinates
         return Functions.SetWindowPos(handle, HWND.Null, left, top, -1, -1, SET_WINDOW_POS_FLAGS.SWP_NOSIZE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     }
+
+    // https://stackoverflow.com/a/61681245/403671
+    public static RECT GetWindowCaptionRect(HWND handle) => GetWindowCaptionRect(DpiUtilities.GetDpiForWindow(handle).width);
+    public static RECT GetWindowCaptionRect(uint dpi)
+    {
+        var rc = new RECT();
+        if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 14393))
+        {
+            Functions.AdjustWindowRectExForDpi(ref rc, WINDOW_STYLE.WS_OVERLAPPEDWINDOW, false, 0, dpi);
+        }
+        else
+        {
+            Functions.AdjustWindowRectEx(ref rc, WINDOW_STYLE.WS_OVERLAPPEDWINDOW, false, 0);
+        }
+        return rc;
+    }
 }
