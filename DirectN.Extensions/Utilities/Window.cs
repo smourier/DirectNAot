@@ -253,6 +253,75 @@ public class Window : IDisposable, IEquatable<Window>
         return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, _scheduler);
     }
 
+    protected virtual void RunWithErrorHandled(Action action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        try
+        {
+            action();
+        }
+        catch (Exception ex)
+        {
+            HandleError(ex);
+            throw;
+        }
+    }
+
+    protected virtual async Task RunWithErrorHandledAsync(Func<Task> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        try
+        {
+            await action();
+        }
+        catch (Exception ex)
+        {
+            HandleError(ex);
+            throw;
+        }
+    }
+
+    protected virtual T? RunWithErrorHandled<T>(Func<T> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        try
+        {
+            return action();
+        }
+        catch (Exception ex)
+        {
+            HandleError(ex);
+            throw;
+        }
+    }
+
+    protected virtual async Task<T?> RunWithErrorHandledAsync<T>(Func<Task<T>> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        try
+        {
+            return await action();
+        }
+        catch (Exception ex)
+        {
+            HandleError(ex);
+            throw;
+        }
+    }
+
+    protected virtual void HandleError(Exception error)
+    {
+        if (error == null)
+            return;
+
+        Application.AddError(error);
+        if (Application.CanShowFatalError)
+        {
+            Application.ShowFatalError(new HWND { Value = Handle });
+        }
+        _ = RunTaskOnUIThread(Application.Exit);
+    }
+
     protected virtual void OnFocusChanged(object? sender, HandledEventArgs e) => FocusChanged?.Invoke(sender, e);
     protected virtual void OnActivated(object? sender, HandledEventArgs e) => Activated?.Invoke(sender, e);
     protected virtual void OnDeactivated(object? sender, HandledEventArgs e) => Deactivated?.Invoke(sender, e);
