@@ -1004,11 +1004,35 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ConvertIndexToColorName(nint hProfile, [In][MarshalUsing(CountElementName = nameof(dwCount))] uint[] paIndex, [In][Out][MarshalUsing(CountElementName = nameof(dwCount))] sbyte[] paColorName, uint dwCount);
     
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregisterclassobject
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoRegisterClassObject(in Guid rclsid, nint pUnk, CLSCTX dwClsContext, uint flags, out uint lpdwRegister);
+    
     // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregistermessagefilter
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT CoRegisterMessageFilter([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMessageFilter?>))] IMessageFilter? lpMessageFilter, nint /* optional IMessageFilter* */ lplpMessageFilter);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coresumeclassobjects
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoResumeClassObjects();
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-corevokeclassobject
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoRevokeClassObject(uint dwRegister);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cosuspendclassobjects
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoSuspendClassObjects();
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
