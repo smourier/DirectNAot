@@ -8,13 +8,15 @@ public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
 
     public event EventHandler<CommandTargetEventArgs>? Command;
 
-    public CommandTarget(string moniker)
+    public CommandTarget(string moniker, Guid groupId)
     {
         ArgumentNullException.ThrowIfNull(moniker);
         Moniker = moniker;
+        GroupId = groupId;
     }
 
     public string Moniker { get; }
+    public Guid GroupId { get; }
 
     public void Register() => RunningObjectTable.Register(this, out _cookie);
     public void Revoke()
@@ -48,13 +50,7 @@ public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
             {
                 try
                 {
-                    using var vi = new Variant(input);
-                    var vo = new VARIANT();
-                    var hr = target.Object.Exec(commandGroup, commandId, 0, vi.Detached, ref vo);
-                    if (hr < 0)
-                        return new CommandResult(hr, null);
-
-                    return new CommandResult(hr, Variant.Unwrap(vo));
+                    return TryExec(target.Object, commandGroup, commandId, input);
                 }
                 catch
                 {
@@ -62,6 +58,19 @@ public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
                 }
             }
         }
+    }
+
+    public static CommandResult TryExec(IComObject<IOleCommandTarget> target, Guid commandGroup, uint commandId, object? input) => TryExec(target?.Object!, commandGroup, commandId, input);
+    public static CommandResult TryExec(IOleCommandTarget target, Guid commandGroup, uint commandId, object? input)
+    {
+        ArgumentNullException.ThrowIfNull(target);
+        using var vi = new Variant(input);
+        var vo = new VARIANT();
+        var hr = target.Exec(commandGroup, commandId, 0, vi.Detached, ref vo);
+        if (hr.IsError)
+            return new CommandResult(hr, null);
+
+        return new CommandResult(hr, Variant.Unwrap(vo));
     }
 
     private static IEnumerable<nint> GetObjects(int targetPid, string moniker)

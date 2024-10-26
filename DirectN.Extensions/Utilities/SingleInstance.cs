@@ -2,32 +2,36 @@
 
 public static partial class SingleInstance
 {
-    public static Guid CommandGroupId { get; set; } = new("a10c0a04-6d0f-412f-b185-df0785fec625");
-
-    private static CommandTarget? _commandTarget = new(typeof(SingleInstance).FullName!);
-
     public static event EventHandler<SingleInstanceCommandEventArgs>? Command;
 
+    public static Guid DefaultGroupId { get; } = new("a10c0a04-6d0f-412f-b185-df0785fec625");
+
+    private const int _wellKnownArgs = 5;
+    private static CommandTarget? _commandTarget;
+
+    // well-known commands
     public static IEnumerable<CommandResult> SendCommandLine(Guid? desktopId = null, int targetPid = 0, IEnumerable<string?>? arguments = null) => Send(desktopId, targetPid, SingleInstanceCommandType.SendCommandLine, arguments?.ToArray());
     public static IEnumerable<CommandResult> Quit(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Quit);
+    public static IEnumerable<CommandResult> FailFast(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.FailFast);
     public static IEnumerable<CommandResult> Ping(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Ping);
+    public static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, SingleInstanceCommandType type, params object?[]? arguments) => Send(desktopId, targetPid, (uint)type, arguments);
 
-    private static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, SingleInstanceCommandType type, params object?[]? arguments) => Send(desktopId, targetPid, (uint)type, arguments);
-    private static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, uint type, params object?[]? arguments)
+    public static void AddWellKnownArguments(Guid? desktopId, IList<object?> list)
     {
-        var ct = _commandTarget;
-        if (ct == null)
-            return [];
+        ArgumentNullException.ThrowIfNull(list);
+        list.Add(SystemUtilities.CurrentProcess.Id);
+        list.Add(Environment.CurrentDirectory);
+        list.Add(Environment.UserDomainName);
+        list.Add(Environment.UserName);
+        list.Add((desktopId ?? Guid.Empty).ToString("N"));
+    }
 
-        var input = new List<object>
-        {
-            SystemUtilities.CurrentProcess.Id,
-            Environment.CurrentDirectory,
-            Environment.UserDomainName,
-            Environment.UserName,
-            (desktopId ?? Guid.Empty).ToString("N"),
-        };
-
+    public static CommandResult Send(IComObject<IOleCommandTarget> target, Guid commandGroupId, uint commandId, Guid? desktopId = null, params object?[]? arguments) => Send(target?.Object!, commandGroupId, commandId, desktopId, arguments);
+    public static CommandResult Send(IOleCommandTarget target, Guid commandGroupId, uint commandId, Guid? desktopId = null, params object?[]? arguments)
+    {
+        ArgumentNullException.ThrowIfNull(target);
+        var input = new List<object?>();
+        AddWellKnownArguments(desktopId, input);
         if (input.Count != _wellKnownArgs)
             throw new InvalidOperationException();
 
@@ -36,7 +40,26 @@ public static partial class SingleInstance
             input.AddRange(arguments!);
         }
 
-        return CommandTarget.TryExec(targetPid, ct.Moniker, CommandGroupId, type, input.ToArray());
+        return CommandTarget.TryExec(target, commandGroupId, commandId, input.ToArray());
+    }
+
+    public static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, uint type, params object?[]? arguments)
+    {
+        var ct = _commandTarget;
+        if (ct == null)
+            return [];
+
+        var input = new List<object?>();
+        AddWellKnownArguments(desktopId, input);
+        if (input.Count != _wellKnownArgs)
+            throw new InvalidOperationException();
+
+        if (arguments != null && arguments.Length > 0)
+        {
+            input.AddRange(arguments!);
+        }
+
+        return CommandTarget.TryExec(targetPid, ct.Moniker, ct.GroupId, type, input.ToArray());
     }
 
     public static void AllowSetForegroundWindow(Guid desktopId)
@@ -50,15 +73,29 @@ public static partial class SingleInstance
         }
     }
 
-    public static void UnregisterCommandTarget() => Interlocked.Exchange(ref _commandTarget, null)?.Dispose();
-    public static void RegisterCommandTarget()
+    public static void WithCommandTarget(Action action, string? moniker = null, Guid? groupId = null)
     {
-        var ct = _commandTarget;
-        if (ct == null)
-            return;
+        ArgumentNullException.ThrowIfNull(action);
+        RegisterCommandTarget(moniker, groupId);
+        try
+        {
+            action();
+        }
+        finally
+        {
+            UnregisterCommandTarget();
+        }
+    }
 
-        ct.Command += OnCommand;
-        ct.Register();
+    public static void UnregisterCommandTarget() => Interlocked.Exchange(ref _commandTarget, null)?.Dispose();
+    public static void RegisterCommandTarget(string? moniker = null, Guid? groupId = null)
+    {
+        UnregisterCommandTarget();
+        moniker ??= typeof(SingleInstance).FullName!;
+        groupId ??= DefaultGroupId;
+        _commandTarget = new CommandTarget(moniker, groupId.Value);
+        _commandTarget.Command += OnCommand;
+        _commandTarget.Register();
     }
 
     private sealed class SingleInstanceCommand
@@ -127,6 +164,4 @@ public static partial class SingleInstance
             e.HResult = Constants.S_OK;
         }
     }
-
-    private const int _wellKnownArgs = 5;
 }

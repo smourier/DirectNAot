@@ -1,9 +1,11 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
+// well-known commands
 public enum SingleInstanceCommandType
 {
     Unknown,
-    Quit,
-    SendCommandLine,
     Ping,
+    Quit,
+    FailFast,
+    SendCommandLine,
 }
