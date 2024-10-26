@@ -288,6 +288,19 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL AdjustWindowRectExForDpi(ref RECT lpRect, WINDOW_STYLE dwStyle, BOOL bMenu, WINDOW_EX_STYLE dwExStyle, uint dpi);
     
+    // https://learn.microsoft.com/windows/console/allocconsole
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL AllocConsole();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-allowsetforegroundwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL AllowSetForegroundWindow(uint dwProcessId);
+    
     // https://learn.microsoft.com/windows/win32/api/errors/nf-errors-amgeterrortexta
     [LibraryImport("QUARTZ")]
     [PreserveSig]
@@ -323,6 +336,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL AssociateColorProfileWithDeviceW(PWSTR pMachineName, PWSTR pProfileName, PWSTR pDeviceName);
+    
+    // https://learn.microsoft.com/windows/console/attachconsole
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL AttachConsole(uint dwProcessId);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetdevcapsa
     [LibraryImport("WINMM")]
@@ -1042,6 +1061,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CreateAudioVolumeMeter(out nint ppApo);
     
+    // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createbindctx
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CreateBindCtx(uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] out IBindCtx ppbc);
+    
     [LibraryImport("Windows.Media.MediaControl")]
     [PreserveSig]
     public static partial HRESULT CreateCaptureAudioStateMonitor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
@@ -1164,6 +1189,12 @@ public static partial class Functions
     [LibraryImport("HrtfApo")]
     [PreserveSig]
     public static partial HRESULT CreateHrtfApo(in HrtfApoInit init, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IXAPO>))] out IXAPO xApo);
+    
+    // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createitemmoniker
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CreateItemMoniker(PWSTR lpszDelim, PWSTR lpszItem, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] out IMoniker ppmk);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createmultiprofiletransform
     [LibraryImport("mscms", SetLastError = true)]
@@ -2918,6 +2949,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial void FONTOBJ_vGetInfo(ref FONTOBJ pfo, uint cjSize, ref FONTINFO pfi);
     
+    // https://learn.microsoft.com/windows/console/freeconsole
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL FreeConsole();
+    
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-freelibrary
     [LibraryImport("KERNEL32", SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -3448,6 +3485,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial HRESULT GetRestrictedErrorInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IRestrictedErrorInfo>))] out IRestrictedErrorInfo ppRestrictedErrorInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-getrunningobjecttable
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT GetRunningObjectTable(uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IRunningObjectTable>))] out IRunningObjectTable pprot);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getsavefilenamepreviewa
     [LibraryImport("MSVFW32", SetLastError = true)]

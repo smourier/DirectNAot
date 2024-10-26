@@ -2,7 +2,8 @@
 
 public sealed partial class EventProvider : IDisposable
 {
-    public static readonly EventProvider Default = new(new Guid("964d4572-adb9-4f3a-8170-fcbecec27467"));
+    public static Guid DefaultGuid { get; set; } = new("964d4572-adb9-4f3a-8170-fcbecec27467");
+    public static readonly EventProvider Default = new(DefaultGuid);
 
     private long _handle;
     public Guid Id { get; }

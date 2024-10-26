@@ -866,7 +866,7 @@ public sealed class PropVariant : IDisposable
 
     public static object? Unwrap(object? value)
     {
-        if (value is Com.IComObject co)
+        if (value is IComObject co)
             return Unwrap(co.Object);
 
         if (value is Variant variant)

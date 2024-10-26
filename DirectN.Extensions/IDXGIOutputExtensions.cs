@@ -132,7 +132,7 @@ public static class IDXGIOutputExtensions
     private delegate int QueryInterfaceFn(nint pThis, ref Guid riid, ref nint ppInterface);
 
     [StructLayout(LayoutKind.Sequential)]
-    private class IDXGIOutputDuplicationVTable
+    private sealed class IDXGIOutputDuplicationVTable
     {
         // IUnknown
         public nint QueryInterfacePtr;
