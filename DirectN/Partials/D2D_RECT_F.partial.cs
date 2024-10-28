@@ -1,7 +1,9 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
+public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>
 {
+    public static D2D_RECT_F Zero => default;
+
     public D2D_RECT_F(float left, float top, float right, float bottom)
     {
 #if DEBUG
@@ -115,8 +117,8 @@ public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
     public readonly D2D_POINT_2F CenterPoint => new(left + Width / 2f, top + Height / 2f);
 
     public D2D_SIZE_F Size { readonly get => new(Width, Height); set { Width = value.width; Height = value.height; } }
-    public D2D_SIZE_U SizeU => new() { width = (uint)Width, height = (uint)Height };
-    public D2D_SIZE_U SizeCeilingU => new() { width = Width.CeilingU(), height = Height.CeilingU() };
+    public readonly D2D_SIZE_U SizeU => new() { width = (uint)Width, height = (uint)Height };
+    public readonly D2D_SIZE_U SizeCeilingU => new() { width = Width.CeilingU(), height = Height.CeilingU() };
     public readonly D2D_POINT_2F LeftTop => new(left, top);
     public readonly D2D_POINT_2F LeftBottom => new(left, bottom);
     public readonly D2D_POINT_2F RightTop => new(right, top);
@@ -131,6 +133,7 @@ public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
     public readonly bool IsNotSet => !IsSet;
 
     public readonly RECT ToRECT() => new(left, top, right, bottom);
+    public readonly D2D_RECT_U ToD2D_RECT_U() => new(left, top, right, bottom);
     public readonly D2D_RECT_F ToFloorCeiling() => new(left.Floor(), top.Floor(), right.Ceiling(), bottom.Ceiling());
     public readonly D2D_RECT_F Translate(float left, float top) => Sized(this.left + left, this.top + top, Width, Height);
     public readonly D2D_RECT_F Resize(float width, float height) => Sized(left, top, width, height);
@@ -157,7 +160,7 @@ public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
     public readonly D2D_RECT_F Deflate(float left, float top, float right, float bottom) => Sized(this.left + left, this.top + top, Math.Max(0, Width - 2 * right), Math.Max(0, Height - 2 * bottom));
     public readonly D2D_RECT_F Inflate(float left, float top, float right, float bottom) => Deflate(-left, -top, -right, -bottom);
     public readonly D2D_RECT_F Deflate(D2D_RECT_F rect) => Sized(left + rect.left, top + rect.top, Math.Max(0, Width - 2 * rect.right), Math.Max(0, Height - 2 * rect.bottom));
-    public readonly D2D_RECT_F Inflate(D2D_RECT_F rect) => Deflate(left + -rect.left, top + -rect.top, Math.Max(0, Width - 2 * -rect.right), Math.Max(0, Height - 2 * -rect.bottom));
+    public readonly D2D_RECT_F Inflate(D2D_RECT_F rect) => Sized(left - rect.left, top - rect.top, Math.Max(0, Width - 2 * -rect.right), Math.Max(0, Height - 2 * -rect.bottom));
 
     public readonly D2D_RECT_F Intersect(D2D_RECT_F rect)
     {
@@ -260,54 +263,52 @@ public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
 
     public static D2D_RECT_F Union(IEnumerable<D2D_POINT_2F> points)
     {
+        ArgumentNullException.ThrowIfNull(points);
         var left = float.NaN;
         var top = float.NaN;
         var right = float.NaN;
         var bottom = float.NaN;
-        if (points != null)
+        foreach (var pt in points)
         {
-            foreach (var pt in points)
+            if (pt.IsInvalid)
+                continue;
+
+            if (float.IsNaN(left))
             {
-                if (pt.IsInvalid)
-                    continue;
+                left = pt.x;
+            }
 
-                if (float.IsNaN(left))
-                {
-                    left = pt.x;
-                }
+            if (float.IsNaN(right))
+            {
+                right = pt.x;
+            }
 
-                if (float.IsNaN(right))
-                {
-                    right = pt.x;
-                }
+            if (pt.x < left)
+            {
+                left = pt.x;
+            }
+            else if (pt.x > right)
+            {
+                right = pt.x;
+            }
 
-                if (pt.x < left)
-                {
-                    left = pt.x;
-                }
-                else if (pt.x > right)
-                {
-                    right = pt.x;
-                }
+            if (float.IsNaN(top))
+            {
+                top = pt.y;
+            }
 
-                if (float.IsNaN(top))
-                {
-                    top = pt.y;
-                }
+            if (float.IsNaN(bottom))
+            {
+                bottom = pt.y;
+            }
 
-                if (float.IsNaN(bottom))
-                {
-                    bottom = pt.y;
-                }
-
-                if (pt.y < top)
-                {
-                    top = pt.y;
-                }
-                else if (pt.y > bottom)
-                {
-                    bottom = pt.y;
-                }
+            if (pt.y < top)
+            {
+                top = pt.y;
+            }
+            else if (pt.y > bottom)
+            {
+                bottom = pt.y;
             }
         }
 
@@ -330,14 +331,23 @@ public partial struct D2D_RECT_F : IEquatable<D2D_RECT_F>
         return rc;
     }
 
-    public override readonly string ToString() => "L:" + left + " T:" + top + " W:" + Width + " H:" + Height + " R:" + right + " B:" + bottom;
+    public override readonly string ToString() => $"{left},{top},{right},{bottom}";
 
+    public override readonly bool Equals(object? obj) =>
+        (obj is RECT rc && Equals(rc)) ||
+        (obj is D2D_RECT_F rf && Equals(rf)) ||
+        (obj is D2D_RECT_U ru && Equals(ru));
     public readonly bool Equals(D2D_RECT_F other) => IsInvalid && other.IsInvalid || (left == other.left && top == other.top && right == other.right && bottom == other.bottom);
-    public override readonly bool Equals(object? obj) => obj is D2D_RECT_F rc && Equals(rc);
     public override readonly int GetHashCode() => left.GetHashCode() ^ top.GetHashCode() ^ right.GetHashCode() ^ bottom.GetHashCode();
     public static bool operator ==(D2D_RECT_F left, D2D_RECT_F right) => left.Equals(right);
     public static bool operator !=(D2D_RECT_F left, D2D_RECT_F right) => !(left == right);
+
+    public readonly bool Equals(RECT other) => left == other.left && top == other.top && right == other.right && bottom == other.bottom;
+    public readonly bool Equals(D2D_RECT_U other) => left == other.left && top == other.top && right == other.right && bottom == other.bottom;
+
     public static implicit operator D2D_RECT_F(float all) => Thickness(all);
+    public static implicit operator D2D_RECT_F(D2D_RECT_U rc) => new(rc.left, rc.top, rc.right, rc.bottom);
+    public static implicit operator D2D_RECT_F(RECT rc) => new(rc.left, rc.top, rc.right, rc.bottom);
 
     // margin/thickness type calculation
     public static D2D_RECT_F operator +(D2D_RECT_F left, D2D_RECT_F right)

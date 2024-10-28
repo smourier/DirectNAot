@@ -668,6 +668,171 @@ public static class Conversions
             return false;
         }
 
+        if (conversionType == typeof(Vector2))
+        {
+            if (TryChangeType(input, out Vector2 v2))
+            {
+                value = v2;
+                return true;
+            }
+            value = Vector2.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(Vector3))
+        {
+            if (TryChangeType(input, out Vector3 v3))
+            {
+                value = v3;
+                return true;
+            }
+            value = Vector3.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(Vector4))
+        {
+            if (TryChangeType(input, out Vector4 v4))
+            {
+                value = v4;
+                return true;
+            }
+            value = Vector4.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_VECTOR_2F))
+        {
+            if (TryChangeType(input, out D2D_VECTOR_2F v2f))
+            {
+                value = v2f;
+                return true;
+            }
+            value = D2D_VECTOR_2F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_VECTOR_3F))
+        {
+            if (TryChangeType(input, out D2D_VECTOR_3F v3f))
+            {
+                value = v3f;
+                return true;
+            }
+            value = D2D_VECTOR_3F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_VECTOR_4F))
+        {
+            if (TryChangeType(input, out D2D_VECTOR_4F v4f))
+            {
+                value = v4f;
+                return true;
+            }
+            value = D2D_VECTOR_4F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(SIZE))
+        {
+            if (TryChangeType(input, out SIZE s))
+            {
+                value = s;
+                return true;
+            }
+            value = SIZE.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_SIZE_F))
+        {
+            if (TryChangeType(input, out D2D_SIZE_F sf))
+            {
+                value = sf;
+                return true;
+            }
+            value = D2D_SIZE_F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_SIZE_U))
+        {
+            if (TryChangeType(input, out D2D_SIZE_U su))
+            {
+                value = su;
+                return true;
+            }
+            value = D2D_SIZE_U.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(POINT))
+        {
+            if (TryChangeType(input, out POINT p))
+            {
+                value = p;
+                return true;
+            }
+            value = POINT.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_POINT_2F))
+        {
+            if (TryChangeType(input, out D2D_POINT_2F pf))
+            {
+                value = pf;
+                return true;
+            }
+            value = D2D_POINT_2F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_POINT_2U))
+        {
+            if (TryChangeType(input, out D2D_POINT_2U pu))
+            {
+                value = pu;
+                return true;
+            }
+            value = D2D_POINT_2U.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(RECT))
+        {
+            if (TryChangeType(input, out RECT r))
+            {
+                value = r;
+                return true;
+            }
+            value = RECT.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_RECT_F))
+        {
+            if (TryChangeType(input, out D2D_RECT_F rf))
+            {
+                value = rf;
+                return true;
+            }
+            value = D2D_RECT_F.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D2D_RECT_U))
+        {
+            if (TryChangeType(input, out D2D_RECT_U ru))
+            {
+                value = ru;
+                return true;
+            }
+            value = D2D_RECT_U.Zero;
+            return false;
+        }
+
         // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
         bool isWellKnownConvertible()
         {
@@ -1385,6 +1550,785 @@ public static class Conversions
 #pragma warning restore IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
 
         return null;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_POINT_2F point)
+    {
+        if (value == null)
+        {
+            point = D2D_POINT_2F.Zero;
+            return false;
+        }
+
+        if (value is D2D_POINT_2F p2)
+        {
+            point = p2;
+            return true;
+        }
+
+        if (value is D2D_POINT_2U pu)
+        {
+            point = pu;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            point = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            point = v;
+            return true;
+        }
+
+        if (value is POINT p)
+        {
+            point = p;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            point = D2D_POINT_2F.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            point = D2D_POINT_2F.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            point = D2D_POINT_2F.Zero;
+            return false;
+        }
+
+        point = new D2D_POINT_2F(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_POINT_2U point)
+    {
+        if (value == null)
+        {
+            point = D2D_POINT_2U.Zero;
+            return false;
+        }
+
+        if (value is D2D_POINT_2U pu)
+        {
+            point = pu;
+            return true;
+        }
+
+        if (value is D2D_POINT_2F pf)
+        {
+            point = pf;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            point = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            point = v;
+            return true;
+        }
+
+        if (value is POINT p)
+        {
+            point = p;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            point = D2D_POINT_2U.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            point = D2D_POINT_2U.Zero;
+            return false;
+        }
+
+        if (!uint.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !uint.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            point = D2D_POINT_2U.Zero;
+            return false;
+        }
+
+        point = new D2D_POINT_2U(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out POINT point)
+    {
+        if (value == null)
+        {
+            point = POINT.Zero;
+            return false;
+        }
+
+        if (value is POINT p)
+        {
+            point = p;
+            return true;
+        }
+
+        if (value is D2D_POINT_2U pu)
+        {
+            point = pu;
+            return true;
+        }
+
+        if (value is D2D_POINT_2F pf)
+        {
+            point = pf;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            point = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            point = v;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            point = POINT.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            point = POINT.Zero;
+            return false;
+        }
+
+        if (!int.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !int.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            point = POINT.Zero;
+            return false;
+        }
+
+        point = new POINT(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_SIZE_F size)
+    {
+        if (value == null)
+        {
+            size = D2D_SIZE_F.Zero;
+            return false;
+        }
+
+        if (value is D2D_SIZE_F s)
+        {
+            size = s;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            size = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            size = v;
+            return true;
+        }
+
+        if (value is D2D_SIZE_F sf)
+        {
+            size = sf;
+            return true;
+        }
+
+        if (value is D2D_SIZE_U su)
+        {
+            size = su;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            size = D2D_SIZE_F.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            size = D2D_SIZE_F.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            size = D2D_SIZE_F.Zero;
+            return false;
+        }
+
+        size = new D2D_SIZE_F(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_SIZE_U size)
+    {
+        if (value == null)
+        {
+            size = D2D_SIZE_U.Zero;
+            return false;
+        }
+
+        if (value is D2D_SIZE_U su)
+        {
+            size = su;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            size = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            size = v;
+            return true;
+        }
+
+        if (value is D2D_SIZE_F sf)
+        {
+            size = sf;
+            return true;
+        }
+
+        if (value is SIZE s)
+        {
+            size = s;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            size = D2D_SIZE_U.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            size = D2D_SIZE_U.Zero;
+            return false;
+        }
+
+        if (!uint.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !uint.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            size = D2D_SIZE_U.Zero;
+            return false;
+        }
+
+        size = new D2D_SIZE_U(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out SIZE size)
+    {
+        if (value == null)
+        {
+            size = SIZE.Zero;
+            return false;
+        }
+
+        if (value is SIZE s)
+        {
+            size = s;
+            return true;
+        }
+
+        if (value is D2D_SIZE_U su)
+        {
+            size = su;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            size = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            size = v;
+            return true;
+        }
+
+        if (value is D2D_SIZE_F sf)
+        {
+            size = sf;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            size = SIZE.Zero;
+            return true;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            size = SIZE.Zero;
+            return false;
+        }
+
+        if (!int.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !int.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            size = SIZE.Zero;
+            return false;
+        }
+
+        size = new SIZE(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_VECTOR_2F vector)
+    {
+        if (value == null)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            vector = v;
+            return true;
+        }
+
+        if (value is Vector2 v2)
+        {
+            vector = v2;
+            return true;
+        }
+
+        if (value is D2D_POINT_2F p2)
+        {
+            vector = p2;
+            return true;
+        }
+
+        if (value is D2D_POINT_2U pu)
+        {
+            vector = pu;
+            return true;
+        }
+
+        if (value is POINT p)
+        {
+            vector = p;
+            return true;
+        }
+
+        if (value is D2D_SIZE_F size)
+        {
+            vector = size;
+            return true;
+        }
+
+        if (value is D2D_SIZE_U su)
+        {
+            vector = su;
+            return true;
+        }
+
+        if (value is SIZE s)
+        {
+            vector = s;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        vector = new Vector2(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out Vector2 vector)
+    {
+        if (value == null)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        if (value is Vector2 v2)
+        {
+            vector = v2;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_2F v)
+        {
+            vector = v;
+            return true;
+        }
+
+        if (value is D2D_POINT_2F p2)
+        {
+            vector = p2;
+            return true;
+        }
+
+        if (value is D2D_POINT_2U pu)
+        {
+            vector = pu;
+            return true;
+        }
+
+        if (value is POINT p)
+        {
+            vector = p;
+            return true;
+        }
+
+        if (value is D2D_SIZE_F size)
+        {
+            vector = size;
+            return true;
+        }
+
+        if (value is D2D_SIZE_U su)
+        {
+            vector = su;
+            return true;
+        }
+
+        if (value is SIZE s)
+        {
+            vector = s;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 3)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 2)
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y))
+        {
+            vector = Vector2.Zero;
+            return false;
+        }
+
+        vector = new Vector2(x, y);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out Vector3 vector)
+    {
+        if (value == null)
+        {
+            vector = Vector3.Zero;
+            return false;
+        }
+
+        if (value is Vector3 v3)
+        {
+            vector = v3;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_3F v)
+        {
+            vector = v;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 5)
+        {
+            vector = Vector3.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 3)
+        {
+            vector = Vector3.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y) ||
+            !float.TryParse(split[2], CultureInfo.InvariantCulture, out var z))
+        {
+            vector = Vector3.Zero;
+            return false;
+        }
+
+        vector = new Vector3(x, y, z);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out Vector4 vector)
+    {
+        if (value == null)
+        {
+            vector = Vector4.Zero;
+            return false;
+        }
+
+        if (value is Vector4 v4)
+        {
+            vector = v4;
+            return true;
+        }
+
+        if (value is D2D_VECTOR_4F v)
+        {
+            vector = v;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 7)
+        {
+            vector = Vector4.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 4)
+        {
+            vector = Vector4.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var x) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var y) ||
+            !float.TryParse(split[2], CultureInfo.InvariantCulture, out var z) ||
+            !float.TryParse(split[3], CultureInfo.InvariantCulture, out var w))
+        {
+            vector = Vector4.Zero;
+            return false;
+        }
+
+        vector = new Vector4(x, y, z, w);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_RECT_F rect)
+    {
+        if (value == null)
+        {
+            rect = D2D_RECT_F.Zero;
+            return false;
+        }
+
+        if (value is D2D_RECT_F rc)
+        {
+            rect = rc;
+            return true;
+        }
+
+        if (value is D2D_RECT_U ru)
+        {
+            rect = ru;
+            return true;
+        }
+
+        if (value is RECT r)
+        {
+            rect = r;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 7)
+        {
+            rect = D2D_RECT_F.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 4)
+        {
+            rect = D2D_RECT_F.Zero;
+            return false;
+        }
+
+        if (!float.TryParse(split[0], CultureInfo.InvariantCulture, out var left) ||
+            !float.TryParse(split[1], CultureInfo.InvariantCulture, out var top) ||
+            !float.TryParse(split[2], CultureInfo.InvariantCulture, out var right) ||
+            !float.TryParse(split[3], CultureInfo.InvariantCulture, out var bottom))
+        {
+            rect = D2D_RECT_F.Zero;
+            return false;
+        }
+
+        rect = new D2D_RECT_F(left, top, right, bottom);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out D2D_RECT_U rect)
+    {
+        if (value == null)
+        {
+            rect = D2D_RECT_U.Zero;
+            return false;
+        }
+
+        if (value is D2D_RECT_U ru)
+        {
+            rect = ru;
+            return true;
+        }
+
+        if (value is D2D_RECT_F rc)
+        {
+            rect = rc;
+            return true;
+        }
+
+        if (value is RECT r)
+        {
+            rect = r;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 7)
+        {
+            rect = D2D_RECT_U.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 4)
+        {
+            rect = D2D_RECT_U.Zero;
+            return false;
+        }
+
+        if (!uint.TryParse(split[0], CultureInfo.InvariantCulture, out var left) ||
+            !uint.TryParse(split[1], CultureInfo.InvariantCulture, out var top) ||
+            !uint.TryParse(split[2], CultureInfo.InvariantCulture, out var right) ||
+            !uint.TryParse(split[3], CultureInfo.InvariantCulture, out var bottom))
+        {
+            rect = D2D_RECT_U.Zero;
+            return false;
+        }
+
+        rect = new D2D_RECT_U(left, top, right, bottom);
+        return true;
+    }
+
+    public static bool TryChangeType(object? value, out RECT rect)
+    {
+        if (value == null)
+        {
+            rect = RECT.Zero;
+            return false;
+        }
+
+        if (value is D2D_RECT_U ru)
+        {
+            rect = ru;
+            return true;
+        }
+
+        if (value is D2D_RECT_F rc)
+        {
+            rect = rc;
+            return true;
+        }
+
+        if (value is RECT r)
+        {
+            rect = r;
+            return true;
+        }
+
+        if (!TryChangeType<string>(value, CultureInfo.InvariantCulture, out var str) || str?.Length < 7)
+        {
+            rect = RECT.Zero;
+            return false;
+        }
+
+        var split = str!.Replace("<", string.Empty).Replace(">", string.Empty).Split([' ', ',', ';']);
+        if (split.Length != 4)
+        {
+            rect = RECT.Zero;
+            return false;
+        }
+
+        if (!int.TryParse(split[0], CultureInfo.InvariantCulture, out var left) ||
+            !int.TryParse(split[1], CultureInfo.InvariantCulture, out var top) ||
+            !int.TryParse(split[2], CultureInfo.InvariantCulture, out var right) ||
+            !int.TryParse(split[3], CultureInfo.InvariantCulture, out var bottom))
+        {
+            rect = RECT.Zero;
+            return false;
+        }
+
+        rect = new RECT(left, top, right, bottom);
+        return true;
     }
 
     public static bool TryChangeType<T>(object? input, out T? value) => TryChangeType(input, null, out value);

@@ -1,7 +1,9 @@
 ﻿namespace DirectN;
 
-public partial struct SIZE
+public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatable<D2D_SIZE_U>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>
 {
+    public static SIZE Zero => default;
+
     public SIZE(uint cx, uint cy)
     {
         this.cx = (int)cx;
@@ -14,41 +16,49 @@ public partial struct SIZE
         this.cy = cy;
     }
 
+    public SIZE(float cx, float cy)
+    {
+        this.cx = cx.FloorI();
+        this.cy = cy.FloorI();
+    }
+
+    public SIZE(double cx, double cy)
+    {
+        this.cx = cx.FloorI();
+        this.cy = cy.FloorI();
+    }
+
+    public override readonly string ToString() => $"{cx},{cy}";
+
     public readonly bool IsZero => cx == 0 && cy == 0;
     public readonly bool IsEmpty => cx == 0 || cy == 0;
 
-    public override readonly string ToString() => "W:" + cx + " H:" + cy;
-    public readonly RECT ToRECT() => new(0, 0, cx, cy);
-    public D2D_SIZE_U ToD2D_SIZE_U() => new() { width = (uint)cx, height = (uint)cx };
-    public D2D_SIZE_F ToD2D_SIZE_F() => new() { width = (uint)cx, height = (uint)cy };
+    public override readonly bool Equals(object? obj) =>
+        (obj is D2D_SIZE_F sz && Equals(sz)) ||
+        (obj is SIZE s && Equals(s)) ||
+        (obj is D2D_SIZE_U su && Equals(su)) ||
+        (obj is Vector2 v2 && Equals(v2));
+    public readonly bool Equals(SIZE other) => cx == other.cx && cy == other.cy;
+    public override readonly int GetHashCode() => cx.GetHashCode() ^ cy.GetHashCode();
+    public static bool operator ==(SIZE left, SIZE right) => left.Equals(right);
+    public static bool operator !=(SIZE left, SIZE right) => !(left == right);
 
-    public const long HIMETRIC_PER_INCH = 2540;
+    public readonly D2D_SIZE_U ToD2D_SIZE_U() => new(cx, cx);
+    public readonly D2D_SIZE_F ToD2D_SIZE_F() => new(cx, cy);
+    public readonly D2D_VECTOR_2F ToD2D_VECTOR_2F() => new(cx, cy);
+    public readonly Vector2 ToVector2() => new(cx, cy);
 
-    [SupportedOSPlatform("windows6.1")]
-    public readonly SIZE PixelToHiMetric()
-    {
-        var dpi = Functions.Dpi;
-        return new SIZE((uint)(HIMETRIC_PER_INCH * cx / dpi.width), (uint)(HIMETRIC_PER_INCH * cy / dpi.height));
-    }
+    public static SIZE operator +(SIZE left, SIZE right) => new(left.cx + right.cx, left.cy + right.cy);
+    public static SIZE operator -(SIZE left, SIZE right) => new(left.cx - right.cx, left.cy - right.cy);
 
-    [SupportedOSPlatform("windows6.1")]
-    public readonly SIZE HiMetricToPixel()
-    {
-        var dpi = Functions.Dpi;
-        return new SIZE((uint)(cx * dpi.width / HIMETRIC_PER_INCH), (uint)(cy * dpi.height / HIMETRIC_PER_INCH));
-    }
+    public readonly bool Equals(D2D_SIZE_U other) => cx == other.width && cy == other.height;
+    public readonly bool Equals(D2D_SIZE_F other) => cx == other.width && cy == other.height;
+    public readonly bool Equals(D2D_VECTOR_2F other) => cx == other.x && cy == other.y;
+    public readonly bool Equals(Vector2 other) => cx == other.X && cy == other.Y;
 
-    [SupportedOSPlatform("windows6.1")]
-    public readonly D2D_SIZE_F PixelToHiMetricF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_SIZE_F(HIMETRIC_PER_INCH * cx / dpi.width, HIMETRIC_PER_INCH * cy / dpi.height);
-    }
-
-    [SupportedOSPlatform("windows6.1")]
-    public readonly D2D_SIZE_F HiMetricToPixelF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_SIZE_F(cx * dpi.width / HIMETRIC_PER_INCH, cy * dpi.height / HIMETRIC_PER_INCH);
-    }
+    public static implicit operator SIZE(D2D_SIZE_U pt) => new(pt.width, pt.height);
+    public static implicit operator SIZE(D2D_VECTOR_2F pt) => new(pt.x, pt.y);
+    public static implicit operator SIZE(Vector2 pt) => new(pt.X, pt.Y);
+    public static implicit operator Vector2(SIZE pt) => new(pt.cx, pt.cy);
+    public static implicit operator SIZE(D2D_SIZE_F pt) => new(pt.height, pt.height);
 }
