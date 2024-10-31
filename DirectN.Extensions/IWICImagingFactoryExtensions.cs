@@ -80,6 +80,22 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapDecoder>(value);
     }
 
+    public static IComObject<IWICBitmapDecoder> CreateDecoder(this IComObject<IWICImagingFactory> factory, Guid guidContainerFormat, Guid? guidVendor = null) => CreateDecoder(factory?.Object!, guidContainerFormat, guidVendor);
+    public static IComObject<IWICBitmapDecoder> CreateDecoder(this IWICImagingFactory factory, Guid guidContainerFormat, Guid? guidVendor = null)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        IWICBitmapDecoder value;
+        if (guidVendor.HasValue)
+        {
+            factory.CreateDecoder(guidContainerFormat, guidVendor.Value, out value).ThrowOnError();
+        }
+        else
+        {
+            factory.CreateDecoder(guidContainerFormat, Unsafe.NullRef<Guid>(), out value).ThrowOnError();
+        }
+        return new ComObject<IWICBitmapDecoder>(value);
+    }
+
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromFileHandle(this IComObject<IWICImagingFactory> factory, nuint handle, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand) => CreateDecoderFromFileHandle(factory?.Object!, handle, guidVendor, metadataOptions);
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromFileHandle(this IWICImagingFactory factory, nuint handle, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
     {
@@ -169,6 +185,14 @@ public static class IWICImagingFactoryExtensions
         ArgumentNullException.ThrowIfNull(source);
         factory.CreateBitmapFromSourceRect(source, x, y, width, height, out var value).ThrowOnError();
         return new ComObject<IWICBitmap>(value);
+    }
+
+    public static IComObject<IWICComponentInfo> CreateComponentInfo(this IComObject<IWICImagingFactory> factory, Guid clsidComponent) => CreateComponentInfo(factory?.Object!, clsidComponent);
+    public static IComObject<IWICComponentInfo> CreateComponentInfo(this IWICImagingFactory factory, Guid clsidComponent)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        factory.CreateComponentInfo(clsidComponent, out var value).ThrowOnError();
+        return new ComObject<IWICComponentInfo>(value);
     }
 
     public static IComObject<IWICColorContext> CreateColorContext(this IComObject<IWICImagingFactory> factory) => CreateColorContext(factory?.Object!);
