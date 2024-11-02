@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DirectN.WinUI3.MinimalD3D11 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DirectN.WinUI3.MinimalD3D11 (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
