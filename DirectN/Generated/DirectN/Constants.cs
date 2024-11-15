@@ -2059,6 +2059,8 @@ public static partial class Constants
     
     public static readonly Guid CLSID_XMLGraphBuilder = new("1bb05961-5fbf-11d2-a521-44df07c10000");
     
+    public static readonly Guid CLSID_XPSRASTERIZER_FACTORY = new("503e79bf-1d09-4764-9d72-1eb0c65967c6");
+    
     public const uint CMM_DESCRIPTION = 5;
     
     public const uint CMM_DLL_VERSION = 3;

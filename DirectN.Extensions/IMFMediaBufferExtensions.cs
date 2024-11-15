@@ -19,7 +19,7 @@ public static class IMFMediaBufferExtensions
         }
     }
 
-    public static T WithLock<T>(this IComObject<IMFMediaBuffer> buffer, Func<nint, uint, uint, T> action) => WithLock<T>(buffer?.Object!, action);
+    public static T WithLock<T>(this IComObject<IMFMediaBuffer> buffer, Func<nint, uint, uint, T> action) => WithLock(buffer?.Object!, action);
     public static T WithLock<T>(this IMFMediaBuffer buffer, Func<nint, uint, uint, T> func)
     {
         ArgumentNullException.ThrowIfNull(buffer);

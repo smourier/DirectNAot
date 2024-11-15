@@ -172,6 +172,14 @@ public static class ID2D1DeviceContextExtensions
         context.SetTags(tag1, tag2);
     }
 
+    public static IComObject<ID2D1CommandList> CreateCommandList(this IComObject<ID2D1DeviceContext> context) => CreateCommandList(context?.Object!);
+    public static IComObject<ID2D1CommandList> CreateCommandList(this ID2D1DeviceContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.CreateCommandList(out var commandList).ThrowOnError();
+        return new ComObject<ID2D1CommandList>(commandList);
+    }
+
     public static IComObject<ID2D1Effect>? CreateEffect(this IComObject<ID2D1DeviceContext> context, Guid id) => CreateEffect(context?.Object!, id);
     public static IComObject<ID2D1Effect>? CreateEffect(this ID2D1DeviceContext context, Guid id)
     {

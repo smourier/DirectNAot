@@ -42,6 +42,8 @@ public static partial class Constants
     public const uint XM_CRMASK_CR6FALSE = 0x00000020;
     public const uint XM_CRMASK_CR6BOUNDS = XM_CRMASK_CR6FALSE;
 
+    public const uint JOB_PAGE_APPLICATION_DEFINED = 0xFFFFFFFF;
+
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_OK = 0;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_FALSE = 1;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_FAIL = unchecked((int)0x80004005);

@@ -48,6 +48,12 @@
     "IDispatch",
     "IOleCommandTarget",
     "ITextHost2",
+    "IXpsDocumentConsumer",
+    "IXpsDocumentProvider",
+    "IXpsRasterizationFactory",
+    "IXpsRasterizationFactory1",
+    "IXpsRasterizationFactory2",
+    "IXpsRasterizer",
     "REGCLS",
     "STGC",
     "STGTY",
@@ -274,6 +280,7 @@
     "WinRTPropertyValueToPropVariant",
     "WindowFromPoint",
     "WindowFromPhysicalPoint",
+    "CLSID_XPSRASTERIZER_FACTORY",
     "IDI_APPLICATION",
     "SIZE_*"
   ]

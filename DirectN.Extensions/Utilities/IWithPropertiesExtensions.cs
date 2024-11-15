@@ -11,7 +11,7 @@ public static class IWithPropertiesExtensions
         if (!instance.Properties.TryGetValue(propertyName, out var value))
             return default;
 
-        return Conversions.ChangeType<T>(value, defaultValue, CultureInfo.InvariantCulture);
+        return Conversions.ChangeType(value, defaultValue, CultureInfo.InvariantCulture);
     }
 
     public static void SetProperty<T>(this IWithProperties? instance, string propertyName, T? value)

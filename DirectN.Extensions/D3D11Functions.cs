@@ -4,7 +4,7 @@ public static class D3D11Functions
 {
     [SupportedOSPlatform("windows6.1")]
     public static unsafe IComObject<ID3D11Device> D3D11CreateDevice(
-        IDXGIAdapter adapter,
+        IDXGIAdapter? adapter,
         D3D_DRIVER_TYPE driverType,
         D3D11_CREATE_DEVICE_FLAG flags,
         D3D_FEATURE_LEVEL[]? featureLevels = null,
@@ -38,7 +38,7 @@ public static class D3D11Functions
 
     [SupportedOSPlatform("windows6.1")]
     public static unsafe IComObject<ID3D11Device> D3D11CreateDevice(
-        IDXGIAdapter adapter,
+        IDXGIAdapter? adapter,
         D3D_DRIVER_TYPE driverType,
         D3D11_CREATE_DEVICE_FLAG flags,
         out IComObject<ID3D11DeviceContext> deviceContext,
