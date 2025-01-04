@@ -6,7 +6,7 @@
 
 [assembly: AssemblyTitle("DirectN.Extensions")]
 [assembly: AssemblyProduct("DirectN")]
-[assembly: AssemblyCopyright("Copyright (C) 2017-2024 Simon Mourier. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (C) 2017-2025 Simon Mourier. All rights reserved.")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyDescription("Support code for DirectN")]
 [assembly: AssemblyCompany("Simon Mourier")]
