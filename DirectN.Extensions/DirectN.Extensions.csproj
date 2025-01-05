@@ -9,6 +9,16 @@
 		<IsAotCompatible>true</IsAotCompatible>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RootNamespace>DirectN.Extensions</RootNamespace>
+		<Title>DirectNAot.Extensions</Title>
+		<PackageId>DirectNAot.Extensions</PackageId>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSD</PackageTags>
+		<RepositoryUrl>https://github.com/smourier/DirectNAot</RepositoryUrl>
+		<Description>Extensions code for DirectNAOT package: Com utilities, Extension methods, Windows utilities, DXC utilities, etc.</Description>
+		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
+		<PackageIcon>DirectN.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,6 +37,13 @@
 
 	<ItemGroup>
 	  <Compile Include="..\DirectN\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -51,6 +68,13 @@
 		<Using Include="System.Runtime.InteropServices" />
 		<Using Include="System.Runtime.Versioning" />
 		<Using Include="System.Text" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="DirectN.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

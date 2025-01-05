@@ -9,6 +9,16 @@
 		<IsAotCompatible>true</IsAotCompatible>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Description>AOT-compatible Interop Code for .NET Core 8+: DXGI, WIC, DirectX, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, WinAppSK, etc.</Description>
+		<Title>DirectNAot</Title>
+		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
+		<PackageIcon>DirectN.png</PackageIcon>
+		<RepositoryUrl>https://github.com/smourier/DirectNAot</RepositoryUrl>
+		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSD</PackageTags>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageId>DirectNAot</PackageId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,7 +48,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	  <None Include="Generated\DirectN\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="DirectN.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
