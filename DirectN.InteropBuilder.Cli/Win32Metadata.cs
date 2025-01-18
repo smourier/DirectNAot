@@ -13,7 +13,7 @@ namespace DirectN.InteropBuilder.Cli
 {
     public static class Win32Metadata
     {
-        public const string WinMdPath = @"E:\packages\nuget\microsoft.windows.sdk.win32metadata\62.0.23-preview";
+        public const string WinMdPath = @"E:\packages\nuget\microsoft.windows.sdk.win32metadata\63.0.31-preview";
         public const string SolutionDir = @"E:\smo\GitHub\DirectNAot\";
     }
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-// https://learn.microsoft.com/windows/win32/api/aviriff/ns-aviriff-avistreamheader
+// https://learn.microsoft.com/previous-versions/windows/desktop/api/aviriff/ns-aviriff-avistreamheader
 [StructLayout(LayoutKind.Sequential, Pack = 2)]
 public partial struct AVISTREAMHEADER
 {

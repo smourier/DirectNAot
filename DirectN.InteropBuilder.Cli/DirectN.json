@@ -54,6 +54,7 @@
     "IXpsRasterizationFactory1",
     "IXpsRasterizationFactory2",
     "IXpsRasterizer",
+    "BIND_OPTS*",
     "REGCLS",
     "STGC",
     "STGTY",

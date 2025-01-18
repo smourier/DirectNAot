@@ -41,7 +41,7 @@ public partial interface IPresentationManager
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-getpresentretiringfence
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPresentRetiringFence(in Guid riid, out nint fence);
+    HRESULT GetPresentRetiringFence(in Guid riid, out nint /* void */ fence);
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-ipresentationmanager-cancelpresentsfrom
     [PreserveSig]

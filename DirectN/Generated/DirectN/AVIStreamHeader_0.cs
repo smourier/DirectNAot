@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-// https://learn.microsoft.com/windows/win32/api/avifmt/ns-avifmt-avistreamheader
+// https://learn.microsoft.com/previous-versions/windows/desktop/api/avifmt/ns-avifmt-avistreamheader
 public partial struct AVIStreamHeader
 {
     public uint fccType;

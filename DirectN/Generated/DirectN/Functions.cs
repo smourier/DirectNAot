@@ -1210,7 +1210,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-createpresentationfactory
     [LibraryImport("dcomp")]
     [PreserveSig]
-    public static partial HRESULT CreatePresentationFactory(nint d3dDevice, in Guid riid, out nint presentationFactory);
+    public static partial HRESULT CreatePresentationFactory(nint d3dDevice, in Guid riid, out nint /* void */ presentationFactory);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createprofilefromlogcolorspacea
     [LibraryImport("mscms", SetLastError = true)]

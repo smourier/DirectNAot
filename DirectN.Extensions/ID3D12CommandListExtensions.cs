@@ -299,7 +299,7 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = rects?.ToArray();
-        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, array.Length(), array!);
+        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, array.Length(), array.AsPointer());
     }
 
     public static void ClearRenderTargetView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT>? rects = null) => ClearRenderTargetView(list?.Object!, renderTargetView, colorRGBA, rects);

@@ -14,7 +14,7 @@ namespace DirectN.InteropBuilder.Cli
             if (Generator is not CSharpGenerator)
                 throw new NotSupportedException();
 
-            if (type.FullName == DEVPROPKEY)
+            if (type.Name == DEVPROPKEY.Name)
             {
                 var (fmtid, pid) = ParsePropertyKey(constant.ValueAsText);
                 return $"new(new Guid(\"{fmtid}\"), {pid})";
