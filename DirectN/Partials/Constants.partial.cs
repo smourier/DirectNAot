@@ -688,6 +688,8 @@ public static partial class Constants
     public const string IID_ISoftwareBitmapString = "689e0708-7eef-483f-963f-da938818e073";
     public static readonly Guid IID_ISoftwareBitmap = new(IID_ISoftwareBitmapString);
 
+    public static readonly Guid PSGUID_FOLDER_COLUMNID = new Guid("9e5e05ac-1936-4a75-94f7-4704b8b01923");
+
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");
 

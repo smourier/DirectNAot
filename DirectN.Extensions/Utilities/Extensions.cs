@@ -453,6 +453,12 @@ public static class Extensions
         return str;
     }
 
+    [SupportedOSPlatform("windows6.0.6000")]
+    public static PropertyDescription? ToDescription(this PROPERTYKEY pk) => PropertyDescription.FromPropertyKey(pk);
+
+    [SupportedOSPlatform("windows6.0.6000")]
+    public static string? GetCanonicalName(this PROPERTYKEY pk) => PropertyDescription.FromPropertyKey(pk)?.CanonicalName;
+
     public static object? ChangeType(this VARENUM vt, object? value)
     {
         object? changed;

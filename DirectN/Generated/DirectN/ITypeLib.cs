@@ -42,12 +42,12 @@ public partial interface ITypeLib
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-isname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsName(ref PWSTR szNameBuf, uint lHashVal, out BOOL pfName);
+    HRESULT IsName(PWSTR szNameBuf, uint lHashVal, out BOOL pfName);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-findname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindName(ref PWSTR szNameBuf, uint lHashVal, [MarshalUsing(CountElementName = nameof(pcFound))] out ITypeInfo[] ppTInfo, [MarshalUsing(CountElementName = nameof(pcFound))] out int[] rgMemId, ref ushort pcFound);
+    HRESULT FindName(PWSTR szNameBuf, uint lHashVal, [MarshalUsing(CountElementName = nameof(pcFound))] out ITypeInfo[] ppTInfo, [MarshalUsing(CountElementName = nameof(pcFound))] out int[] rgMemId, ref ushort pcFound);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-releasetlibattr
     [PreserveSig]

@@ -8235,6 +8235,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial void PATHOBJ_vGetBounds(ref PATHOBJ ppo, ref RECTFX prectfx);
     
+    // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-pathparseiconlocationw
+    [LibraryImport("SHLWAPI", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int PathParseIconLocationW(PWSTR pszIconFile);
+    
     // https://learn.microsoft.com/windows/win32/api/windows.data.pdf.interop/nf-windows-data-pdf-interop-pdfcreaterenderer
     [LibraryImport("Windows.Data.Pdf")]
     [PreserveSig]
@@ -8313,6 +8319,42 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial HRESULT PropVariantToWinRTPropertyValue(in PROPVARIANT propvar, in Guid riid, out nint /* void */ ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatememorypropertystore
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSCreateMemoryPropertyStore(in Guid riid, out nint ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psenumeratepropertydescriptions
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSEnumeratePropertyDescriptions(PROPDESC_ENUMFILTER filterOn, in Guid riid, out nint ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescription
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSGetPropertyDescription(in PROPERTYKEY propkey, in Guid riid, out nint ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionbyname
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSGetPropertyDescriptionByName(PWSTR pszCanonicalName, in Guid riid, out nint ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionlistfromstring
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSGetPropertyDescriptionListFromString(PWSTR pszPropList, in Guid riid, out nint ppv);
+    
+    // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertykeyfromstring
+    [LibraryImport("PROPSYS")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT PSPropertyKeyFromString(PWSTR pszString, out PROPERTYKEY pkey);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-querydisplayconfig
     [LibraryImport("USER32")]

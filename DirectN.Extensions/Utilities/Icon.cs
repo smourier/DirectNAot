@@ -56,6 +56,19 @@ public class Icon : IDisposable
         return new Icon { _handle = handle };
     }
 
+    public static string? PathParseIconLocation(string? path, out int index)
+    {
+        if (path == null)
+        {
+            index = 0;
+            return null;
+        }
+
+        using var str = new Pwstr(path);
+        index = Functions.PathParseIconLocationW(str);
+        return str.ToString();
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (disposing)
