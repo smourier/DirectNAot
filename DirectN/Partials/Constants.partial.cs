@@ -63,6 +63,10 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_NAME = unchecked((int)0x8007007B);
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_HANDLE = unchecked((int)0x80070006);
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_EXCEPTION = unchecked((int)0x80020009);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_NOCONNECTION = unchecked((int)0x80040200);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_ADVISELIMIT = unchecked((int)0x80040201);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_CANNOTCONNECT = unchecked((int)0x80040202);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_OVERRIDDEN = unchecked((int)0x80040203);
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = unchecked((int)0x80030001);
@@ -688,7 +692,7 @@ public static partial class Constants
     public const string IID_ISoftwareBitmapString = "689e0708-7eef-483f-963f-da938818e073";
     public static readonly Guid IID_ISoftwareBitmap = new(IID_ISoftwareBitmapString);
 
-    public static readonly Guid PSGUID_FOLDER_COLUMNID = new Guid("9e5e05ac-1936-4a75-94f7-4704b8b01923");
+    public static readonly Guid PSGUID_FOLDER_COLUMNID = new("9e5e05ac-1936-4a75-94f7-4704b8b01923");
 
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");

@@ -1,29 +1,117 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-public static partial class SingleInstance
+public partial class SingleInstance(Guid groupId)
 {
-    public static event EventHandler<SingleInstanceCommandEventArgs>? Command;
-
-    public static Guid DefaultGroupId { get; } = new("a10c0a04-6d0f-412f-b185-df0785fec625");
+    public event EventHandler<SingleInstanceCommandEventArgs>? Command;
 
     private const int _wellKnownArgs = 5;
-    private static CommandTarget? _commandTarget;
+    private CommandTarget? _commandTarget;
+
+    public Guid GroupId { get; } = groupId;
+    public CommandTarget? CommandTarget => _commandTarget;
+
+    public override string ToString() => $"{GroupId}";
 
     // well-known commands
-    public static IEnumerable<CommandResult> SendCommandLine(Guid? desktopId = null, int targetPid = 0, IEnumerable<string?>? arguments = null) => Send(desktopId, targetPid, SingleInstanceCommandType.SendCommandLine, arguments?.ToArray());
-    public static IEnumerable<CommandResult> Quit(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Quit);
-    public static IEnumerable<CommandResult> FailFast(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.FailFast);
-    public static IEnumerable<CommandResult> Ping(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Ping);
-    public static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, SingleInstanceCommandType type, params object?[]? arguments) => Send(desktopId, targetPid, (uint)type, arguments);
-
-    public static void AddWellKnownArguments(Guid? desktopId, IList<object?> list)
+    public IEnumerable<CommandResult> SendCommandLine(Guid? desktopId = null, int targetPid = 0, IEnumerable<string?>? arguments = null) => Send(desktopId, targetPid, SingleInstanceCommandType.SendCommandLine, arguments?.ToArray());
+    public IEnumerable<CommandResult> Quit(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Quit);
+    public IEnumerable<CommandResult> FailFast(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.FailFast);
+    public IEnumerable<CommandResult> Ping(Guid? desktopId = null, int targetPid = -1) => Send(desktopId, targetPid, SingleInstanceCommandType.Ping);
+    public IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, SingleInstanceCommandType type, params object?[]? arguments) => Send(desktopId, targetPid, (uint)type, arguments);
+    public virtual IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, uint type, params object?[]? arguments)
     {
-        ArgumentNullException.ThrowIfNull(list);
-        list.Add(SystemUtilities.CurrentProcess.Id);
-        list.Add(Environment.CurrentDirectory);
-        list.Add(Environment.UserDomainName);
-        list.Add(Environment.UserName);
-        list.Add((desktopId ?? Guid.Empty).ToString("N"));
+        var ct = _commandTarget;
+        if (ct == null)
+            return [];
+
+        var input = new List<object?>();
+        AddWellKnownArguments(desktopId, input);
+        if (input.Count != _wellKnownArgs)
+            throw new InvalidOperationException();
+
+        if (arguments != null && arguments.Length > 0)
+        {
+            input.AddRange(arguments!);
+        }
+
+        return CommandTarget.TryExec(targetPid, ct.Moniker, GroupId, type, input.ToArray());
+    }
+
+    public virtual void AllowSetForegroundWindow(Guid desktopId)
+    {
+        foreach (var result in Ping(desktopId))
+        {
+            if (result.HResult.IsOk && Conversions.TryChangeType<uint>(result.Output, out var pid) && pid > 0)
+            {
+                Functions.AllowSetForegroundWindow(pid);
+            }
+        }
+    }
+
+    public virtual void UnregisterCommandTarget() => Interlocked.Exchange(ref _commandTarget, null)?.Dispose();
+    public virtual void RegisterCommandTarget(string? moniker = null)
+    {
+        UnregisterCommandTarget();
+        moniker ??= typeof(SingleInstance).FullName!;
+        _commandTarget = new CommandTarget(moniker);
+        _commandTarget.Command += OnCommand;
+        _commandTarget.Register();
+    }
+
+    public virtual void WithCommandTarget(Action<CommandTarget> action, string? moniker = null)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        RegisterCommandTarget(moniker);
+        try
+        {
+            action(CommandTarget!);
+        }
+        finally
+        {
+            UnregisterCommandTarget();
+        }
+    }
+
+    public virtual async Task WithCommandTarget(Func<CommandTarget, Task> action, string? moniker = null)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        RegisterCommandTarget(moniker);
+        try
+        {
+            await action(CommandTarget!);
+        }
+        finally
+        {
+            UnregisterCommandTarget();
+        }
+    }
+
+    public virtual T WithCommandTarget<T>(Func<CommandTarget, T> action, string? moniker = null)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        RegisterCommandTarget(moniker);
+        try
+        {
+            return action(CommandTarget!);
+        }
+        finally
+        {
+            UnregisterCommandTarget();
+        }
+    }
+
+    public virtual async Task<T> WithCommandTarget<T>(Func<CommandTarget, Task<T>> action, string? moniker = null)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        RegisterCommandTarget(moniker);
+        try
+        {
+            return await action(CommandTarget!);
+        }
+        finally
+        {
+            UnregisterCommandTarget();
+        }
     }
 
     public static CommandResult Send(IComObject<IOleCommandTarget> target, Guid commandGroupId, uint commandId, Guid? desktopId = null, params object?[]? arguments) => Send(target?.Object!, commandGroupId, commandId, desktopId, arguments);
@@ -43,59 +131,14 @@ public static partial class SingleInstance
         return CommandTarget.TryExec(target, commandGroupId, commandId, input.ToArray());
     }
 
-    public static IEnumerable<CommandResult> Send(Guid? desktopId, int targetPid, uint type, params object?[]? arguments)
+    protected static void AddWellKnownArguments(Guid? desktopId, IList<object?> list)
     {
-        var ct = _commandTarget;
-        if (ct == null)
-            return [];
-
-        var input = new List<object?>();
-        AddWellKnownArguments(desktopId, input);
-        if (input.Count != _wellKnownArgs)
-            throw new InvalidOperationException();
-
-        if (arguments != null && arguments.Length > 0)
-        {
-            input.AddRange(arguments!);
-        }
-
-        return CommandTarget.TryExec(targetPid, ct.Moniker, ct.GroupId, type, input.ToArray());
-    }
-
-    public static void AllowSetForegroundWindow(Guid desktopId)
-    {
-        foreach (var result in Ping(desktopId))
-        {
-            if (result.HResult.IsOk && Conversions.TryChangeType<uint>(result.Output, out var pid) && pid > 0)
-            {
-                Functions.AllowSetForegroundWindow(pid);
-            }
-        }
-    }
-
-    public static void WithCommandTarget(Action action, string? moniker = null, Guid? groupId = null)
-    {
-        ArgumentNullException.ThrowIfNull(action);
-        RegisterCommandTarget(moniker, groupId);
-        try
-        {
-            action();
-        }
-        finally
-        {
-            UnregisterCommandTarget();
-        }
-    }
-
-    public static void UnregisterCommandTarget() => Interlocked.Exchange(ref _commandTarget, null)?.Dispose();
-    public static void RegisterCommandTarget(string? moniker = null, Guid? groupId = null)
-    {
-        UnregisterCommandTarget();
-        moniker ??= typeof(SingleInstance).FullName!;
-        groupId ??= DefaultGroupId;
-        _commandTarget = new CommandTarget(moniker, groupId.Value);
-        _commandTarget.Command += OnCommand;
-        _commandTarget.Register();
+        ArgumentNullException.ThrowIfNull(list);
+        list.Add(SystemUtilities.CurrentProcess.Id);
+        list.Add(Environment.CurrentDirectory);
+        list.Add(Environment.UserDomainName);
+        list.Add(Environment.UserName);
+        list.Add((desktopId ?? Guid.Empty).ToString("N"));
     }
 
     private sealed class SingleInstanceCommand
@@ -140,7 +183,7 @@ public static partial class SingleInstance
         }
     }
 
-    private static void OnCommand(object? sender, CommandTargetEventArgs e)
+    private void OnCommand(object? sender, CommandTargetEventArgs e)
     {
         var cmd = SingleInstanceCommand.Parse(e);
         if (cmd == null)

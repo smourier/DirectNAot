@@ -69,7 +69,7 @@
     "-!D2D_MATRIX_*",
     "-D3DCOLORVALUE",
     "-tomConstants",
-    "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
+    "!IDWriteGdiInterop1", // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
   "MemberInputs": [

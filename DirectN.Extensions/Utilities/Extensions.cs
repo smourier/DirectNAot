@@ -252,7 +252,7 @@ public static class Extensions
         return total;
     }
 
-    public static void Dispose(this IEnumerable disposables, bool throwOnError = false)
+    public static void Dispose(this IEnumerable? disposables, bool throwOnError = false)
     {
         if (disposables == null)
             return;
@@ -280,7 +280,7 @@ public static class Extensions
         }
     }
 
-    public static void WithDispose(this IEnumerable disposables, Action action, bool throwOnError = false)
+    public static void WithDispose(this IEnumerable? disposables, Action action, bool throwOnError = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (disposables == null)
@@ -319,7 +319,7 @@ public static class Extensions
         }
     }
 
-    public static T WithDispose<T>(this IEnumerable disposables, Func<T> func, bool throwOnError = false)
+    public static T WithDispose<T>(this IEnumerable? disposables, Func<T> func, bool throwOnError = false)
     {
         ArgumentNullException.ThrowIfNull(func);
         if (disposables == null)
@@ -355,7 +355,7 @@ public static class Extensions
         }
     }
 
-    public static void WithDispose(this IDisposable disposable, Action action, bool throwOnError = false)
+    public static void WithDispose(this IDisposable? disposable, Action action, bool throwOnError = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (disposable == null)
@@ -388,7 +388,7 @@ public static class Extensions
         }
     }
 
-    public static T WithDispose<T>(this IDisposable disposable, Func<T> func, bool throwOnError = false)
+    public static T WithDispose<T>(this IDisposable? disposable, Func<T> func, bool throwOnError = false)
     {
         ArgumentNullException.ThrowIfNull(func);
         if (disposable == null)

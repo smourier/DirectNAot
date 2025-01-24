@@ -1,25 +1,24 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
 [System.Runtime.InteropServices.Marshalling.GeneratedComClass]
-public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
+public partial class CommandTarget : IOleCommandTarget, IConnectionPointContainer, IDisposable
 {
+    private readonly ConcurrentDictionary<Guid, IConnectionPoint> _connectionPoints = new();
     private uint _cookie;
     public const string Delimiter = "!";
 
     public event EventHandler<CommandTargetEventArgs>? Command;
 
-    public CommandTarget(string moniker, Guid groupId)
+    public CommandTarget(string moniker)
     {
         ArgumentNullException.ThrowIfNull(moniker);
         Moniker = moniker;
-        GroupId = groupId;
     }
 
     public string Moniker { get; }
-    public Guid GroupId { get; }
 
-    public void Register() => RunningObjectTable.Register(this, out _cookie);
-    public void Revoke()
+    public virtual void Register() => RunningObjectTable.Register(this, out _cookie);
+    public virtual void Revoke()
     {
         var cookie = Interlocked.Exchange(ref _cookie, 0);
         if (cookie != 0)
@@ -28,7 +27,21 @@ public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
         }
     }
 
-    public void Dispose() => Revoke();
+    public virtual void AddConnectionPoint(IConnectionPoint connectionPoint)
+    {
+        ArgumentNullException.ThrowIfNull(connectionPoint);
+        if (connectionPoint is CommandTargetConnectionPoint target)
+        {
+            if (target._container != null)
+                throw new ArgumentException("Connection point already has a container", nameof(connectionPoint));
+
+            target._container = this;
+        }
+
+        connectionPoint.GetConnectionInterface(out var iid).ThrowOnError();
+        if (!_connectionPoints.TryAdd(iid, connectionPoint))
+            throw new ArgumentException($"Connection point with iid {iid} is already registered", nameof(connectionPoint));
+    }
 
     // targetPid = 0 => first
     // targetPid = -1 => all
@@ -133,4 +146,70 @@ public sealed partial class CommandTarget : IOleCommandTarget, IDisposable
         }
         return e.HResult;
     }
+
+    HRESULT IConnectionPointContainer.EnumConnectionPoints(out IEnumConnectionPoints enumerator)
+    {
+        enumerator = new ConnectionsPoints([.. _connectionPoints]);
+        return Constants.S_OK;
+    }
+
+    HRESULT IConnectionPointContainer.FindConnectionPoint(in Guid riid, out IConnectionPoint icp)
+    {
+        _connectionPoints.TryGetValue(riid, out var cp);
+        icp = cp!;
+        return cp == null ? Constants.CONNECT_E_NOCONNECTION : Constants.S_OK;
+    }
+
+    [System.Runtime.InteropServices.Marshalling.GeneratedComClass]
+    private sealed partial class ConnectionsPoints(KeyValuePair<Guid, IConnectionPoint>[] connections) : IEnumConnectionPoints
+    {
+        private int _index = -1;
+
+        public HRESULT Clone(out IEnumConnectionPoints enumerator)
+        {
+            enumerator = new ConnectionsPoints(connections);
+            return Constants.S_OK;
+        }
+
+        public HRESULT Next(uint count, IConnectionPoint[] points, out uint fetched)
+        {
+            var max = (uint)Math.Max(0, Math.Min(connections.Length - (_index + 1), count));
+            fetched = max;
+            if (fetched > 0)
+            {
+                for (var i = _index + 1; i < fetched; i++)
+                {
+                    points[i] = connections[i].Value;
+                    _index++;
+                }
+            }
+            return (fetched == count) ? Constants.S_OK : Constants.S_FALSE;
+        }
+
+        public HRESULT Reset() => _index = -1;
+        public HRESULT Skip(uint count)
+        {
+            var max = (uint)Math.Max(0, Math.Min(connections.Length - (_index + 1), count));
+            if (max > 0)
+            {
+                _index += (int)max;
+            }
+            return (max == count) ? Constants.S_OK : Constants.S_FALSE;
+        }
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            Revoke();
+            // dispose managed state (managed objects)
+        }
+
+        // free unmanaged resources (unmanaged objects) and override finalizer
+        // set large fields to null
+    }
+
+    ~CommandTarget() { Dispose(disposing: false); }
+    public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }
