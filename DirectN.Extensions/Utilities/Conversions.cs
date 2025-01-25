@@ -210,6 +210,39 @@ public static class Conversions
         }
     }
 
+    public static IList<string> SplitToNullifiedList(this string? text, char[] separators, int count = int.MaxValue, StringSplitOptions options = StringSplitOptions.None)
+    {
+        var list = new List<string>();
+        if (!string.IsNullOrEmpty(text))
+        {
+            foreach (var str in text.Split(separators, count, options))
+            {
+                var s = str.Nullify();
+                if (s != null)
+                {
+                    list.Add(s);
+                }
+            }
+        }
+        return list;
+    }
+
+    public static IList<T> SplitToList<T>(this string? text, char[] separators, IFormatProvider? provider = null, int count = int.MaxValue, StringSplitOptions options = StringSplitOptions.None)
+    {
+        var list = new List<T>();
+        if (!string.IsNullOrEmpty(text))
+        {
+            foreach (var str in text.Split(separators, count, options))
+            {
+                if (TryChangeType<T>(str, provider, out var value) && value != null)
+                {
+                    list.Add(value);
+                }
+            }
+        }
+        return list;
+    }
+
     public static bool IsNullable(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>); }
     public static bool IsReallyValueType(this Type type) { ArgumentNullException.ThrowIfNull(type); return type.IsValueType && !IsNullable(type); }
 
