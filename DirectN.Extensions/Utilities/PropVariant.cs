@@ -5,6 +5,7 @@ public sealed class PropVariant : IDisposable
     private PROPVARIANT _inner;
 
     public PROPVARIANT Detached => _inner;
+    public ref PROPVARIANT RefDetached => ref _inner;
 
     public static int Size { get; } = GetSizeOf32();
     private static int GetSizeOf32() { unsafe { return sizeof(PROPVARIANT); } }
@@ -872,10 +873,10 @@ public sealed class PropVariant : IDisposable
         if (value is Variant variant)
             return Unwrap(variant.Value);
 
-        if (value is PropVariant pv)
-            return Unwrap(pv.Value);
+        if (value is PropVariant propVariant)
+            return Unwrap(propVariant.Value);
 
-        while (value is VARIANT v)
+        if (value is VARIANT v)
         {
             using var v2 = new Variant(v);
             value = v2.Value;
@@ -883,9 +884,9 @@ public sealed class PropVariant : IDisposable
             return Unwrap(value);
         }
 
-        while (value is PROPVARIANT v)
+        if (value is PROPVARIANT pv)
         {
-            using var pv2 = new PropVariant(v);
+            using var pv2 = new PropVariant(pv);
             value = pv2.Value;
             pv2.Detach();
             return Unwrap(value);

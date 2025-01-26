@@ -5,28 +5,31 @@ public static partial class RunningObjectTable
     public static HRESULT Register(CommandTarget commandTarget, out uint cookie, ROT_FLAGS flags = ROT_FLAGS.ROTFLAGS_REGISTRATIONKEEPSALIVE, bool throwOnError = true)
     {
         cookie = 0;
-        var hr = Functions.GetRunningObjectTable(0, out var table).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        var hr = Functions.GetRunningObjectTable(0, out var tablePtr).ThrowOnError(throwOnError);
+        if (tablePtr == null)
             return hr;
 
+        using var table = new ComObject<IRunningObjectTable>(tablePtr);
         var moniker = commandTarget.Moniker + ":" + SystemUtilities.CurrentProcess.Id;
         using var d = new Pwstr(CommandTarget.Delimiter);
         using var m = new Pwstr(moniker);
-        hr = Functions.CreateItemMoniker(d, m, out var mk).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        hr = Functions.CreateItemMoniker(d, m, out var mkPtr).ThrowOnError(throwOnError);
+        if (mkPtr == null)
             return hr;
 
+        using var mk = new ComObject<IMoniker>(mkPtr);
         var unk = ComObject.GetOrCreateComInstance(commandTarget);
-        return table.Register(flags, unk, mk, out cookie).ThrowOnError(throwOnError);
+        return table.Object.Register(flags, unk, mk.Object, out cookie).ThrowOnError(throwOnError);
     }
 
     public static HRESULT Revoke(uint cookie, bool throwOnError = true)
     {
-        var hr = Functions.GetRunningObjectTable(0, out var table).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        var hr = Functions.GetRunningObjectTable(0, out var tablePtr).ThrowOnError(throwOnError);
+        if (tablePtr == null)
             return hr;
 
-        return table.Revoke(cookie).ThrowOnError(false);
+        using var table = new ComObject<IRunningObjectTable>(tablePtr);
+        return table.Object.Revoke(cookie).ThrowOnError(false);
     }
 
     public static nint GetObject(string itemName, string? delimiter = null, bool throwOnError = true)
@@ -36,63 +39,57 @@ public static partial class RunningObjectTable
         delimiter = delimiter.Nullify() ?? "!";
         using var d = new Pwstr(delimiter);
         using var n = new Pwstr(itemName);
-        var hr = Functions.CreateItemMoniker(d, n, out var mk).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        Functions.CreateItemMoniker(d, n, out var mkPtr).ThrowOnError(throwOnError);
+        if (mkPtr == null)
             return 0;
 
+        using var mk = new ComObject<IMoniker>(mkPtr);
         if (mk == null)
             return 0;
 
-        hr = Functions.GetRunningObjectTable(0, out var table).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        Functions.GetRunningObjectTable(0, out var tablePtr).ThrowOnError(throwOnError);
+        if (tablePtr == null)
             return 0;
 
-        if (table == null)
-            return 0;
-
-        hr = table.GetObject(mk, out var unk).ThrowOnError(throwOnError);
-        if (hr.IsError)
-            return 0;
-
+        using var table = new ComObject<IRunningObjectTable>(tablePtr);
+        table.Object.GetObject(mk.Object, out var unk).ThrowOnError(throwOnError);
         return unk;
     }
 
     public static nint GetObject(IMoniker moniker, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(moniker);
-        var hr = Functions.GetRunningObjectTable(0, out var table).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        Functions.GetRunningObjectTable(0, out var tablePtr).ThrowOnError(throwOnError);
+        if (tablePtr == null)
             return 0;
 
-        if (table == null)
-            return 0;
-
-        hr = table.GetObject(moniker, out var unk).ThrowOnError(throwOnError);
-        if (hr.IsError)
-            return 0;
-
+        using var table = new ComObject<IRunningObjectTable>(tablePtr);
+        table.Object.GetObject(moniker, out var unk).ThrowOnError(throwOnError);
         return unk;
     }
 
-    public static IEnumerable<IMoniker> Enumerate(bool throwOnError = true)
+    public static IEnumerable<IComObject<IMoniker>> Enumerate(bool throwOnError = true)
     {
-        var hr = Functions.GetRunningObjectTable(0, out var table).ThrowOnError(throwOnError);
-        if (hr.IsError)
+        Functions.GetRunningObjectTable(0, out var tablePtr).ThrowOnError(throwOnError);
+        if (tablePtr == null)
             yield break;
 
-        hr = table.EnumRunning(out var enumerator).ThrowOnError(throwOnError);
-        if (hr.IsError || enumerator == null)
+        using var table = new ComObject<IRunningObjectTable>(tablePtr);
+        table.Object.EnumRunning(out var enumeratorPtr).ThrowOnError(throwOnError);
+        if (enumeratorPtr == null)
             yield break;
 
-        var mks = new IMoniker[1];
+        using var enumerator = new ComObject<IEnumMoniker>(enumeratorPtr);
+        var mks = new nint[1];
         do
         {
-            if (enumerator.Next(1, mks, nint.Zero) != 0)
+            if (enumerator.Object.Next(1, mks, nint.Zero) != 0)
                 break;
 
             var mk = mks[0];
-            if (mk != null)
-                yield return mk;
+            var m = ComObject.FromPointer<IMoniker>(mk);
+            if (m != null)
+                yield return m; // caller will have to call dispose
         }
         while (true);
     }

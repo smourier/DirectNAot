@@ -130,6 +130,6 @@ public partial struct ID3D10EffectDepthStencilViewVariable
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectdepthstencilviewvariable-getdepthstencilarray
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT GetDepthStencilArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] ID3D10DepthStencilView[] ppResources, uint Offset, uint Count) =>
-        ((delegate* unmanaged<ID3D10EffectDepthStencilViewVariable*,ID3D10DepthStencilView[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectDepthStencilViewVariable*)VTablePtr, ppResources, Offset, Count);
+    public readonly unsafe HRESULT GetDepthStencilArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] nint[] ppResources, uint Offset, uint Count) =>
+        ((delegate* unmanaged<ID3D10EffectDepthStencilViewVariable*,nint[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectDepthStencilViewVariable*)VTablePtr, ppResources, Offset, Count);
 }

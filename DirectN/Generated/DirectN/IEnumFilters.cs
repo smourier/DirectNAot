@@ -9,7 +9,7 @@ public partial interface IEnumFilters
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumfilters-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint cFilters, [In][Out][MarshalUsing(CountElementName = nameof(cFilters))] IBaseFilter[] ppFilter, nint /* optional uint* */ pcFetched);
+    HRESULT Next(uint cFilters, [In][Out][MarshalUsing(CountElementName = nameof(cFilters))] nint[] ppFilter, nint /* optional uint* */ pcFetched);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-ienumfilters-skip
     [PreserveSig]

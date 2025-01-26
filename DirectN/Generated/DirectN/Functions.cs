@@ -1589,7 +1589,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddecompressshaders
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DDecompressShaders(nint pSrcData, nuint SrcDataSize, uint uNumShaders, uint uStartIndex, nint /* optional uint* */ pIndices, uint uFlags, [In][Out][MarshalUsing(CountElementName = nameof(uNumShaders))] ID3DBlob[] ppShaders, nint /* optional uint* */ pTotalShaders);
+    public static partial HRESULT D3DDecompressShaders(nint pSrcData, nuint SrcDataSize, uint uNumShaders, uint uStartIndex, nint /* optional uint* */ pIndices, uint uFlags, [In][Out][MarshalUsing(CountElementName = nameof(uNumShaders))] nint[] ppShaders, nint /* optional uint* */ pTotalShaders);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble
     [LibraryImport("D3DCOMPILER_47")]
@@ -7474,7 +7474,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows10.0.19041")]
     [PreserveSig]
-    public static partial HRESULT MFSplitSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample, [In][Out][MarshalUsing(CountElementName = nameof(dwOutputSampleMaxCount))] IMFSample[] pOutputSamples, uint dwOutputSampleMaxCount, out uint pdwOutputSampleCount);
+    public static partial HRESULT MFSplitSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample, [In][Out][MarshalUsing(CountElementName = nameof(dwOutputSampleMaxCount))] nint[] pOutputSamples, uint dwOutputSampleMaxCount, out uint pdwOutputSampleCount);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfstartup
     [LibraryImport("MFPlat")]

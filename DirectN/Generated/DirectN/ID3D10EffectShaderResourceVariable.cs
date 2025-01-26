@@ -130,6 +130,6 @@ public partial struct ID3D10EffectShaderResourceVariable
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectshaderresourcevariable-getresourcearray
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT GetResourceArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] ID3D10ShaderResourceView[] ppResources, uint Offset, uint Count) =>
-        ((delegate* unmanaged<ID3D10EffectShaderResourceVariable*,ID3D10ShaderResourceView[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectShaderResourceVariable*)VTablePtr, ppResources, Offset, Count);
+    public readonly unsafe HRESULT GetResourceArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] nint[] ppResources, uint Offset, uint Count) =>
+        ((delegate* unmanaged<ID3D10EffectShaderResourceVariable*,nint[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectShaderResourceVariable*)VTablePtr, ppResources, Offset, Count);
 }

@@ -22,6 +22,7 @@ public class Bstr : IDisposable
 
     public static implicit operator Bstr(string? value) => new(value);
     public static implicit operator BSTR(Bstr value) => new(value.Value);
+    public static implicit operator Bstr(BSTR value) => new(value.Value);
 
     protected virtual void Dispose(bool disposing)
     {

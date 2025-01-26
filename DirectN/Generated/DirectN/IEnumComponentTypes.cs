@@ -9,7 +9,7 @@ public partial interface IEnumComponentTypes
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumcomponenttypes-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] IComponentType[] rgelt, out uint pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] nint[] rgelt, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/tuner/nf-tuner-ienumcomponenttypes-skip
     [PreserveSig]

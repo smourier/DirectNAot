@@ -5,6 +5,7 @@ public sealed class Variant : IDisposable
     private VARIANT _inner;
 
     public VARIANT Detached => _inner;
+    public ref VARIANT RefDetached => ref _inner;
 
     public static int Size { get; } = GetSizeOf32();
     private static int GetSizeOf32() { unsafe { return sizeof(VARIANT); } }

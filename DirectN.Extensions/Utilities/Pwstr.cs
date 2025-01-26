@@ -34,6 +34,7 @@ public class Pwstr : IDisposable
 
     public static implicit operator Pwstr(string? value) => new(value);
     public static implicit operator PWSTR(Pwstr value) => new(value.Value);
+    public static implicit operator Pwstr(PWSTR value) => new(value.Value);
 
     protected virtual void Dispose(bool disposing)
     {

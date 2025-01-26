@@ -52,6 +52,7 @@ public class Pstr : IDisposable
 
     public static implicit operator Pstr(string? value) => new(value);
     public static implicit operator PSTR(Pstr value) => new(value.Value);
+    public static implicit operator Pstr(PSTR value) => new(value.Value);
 
     protected virtual void Dispose(bool disposing)
     {

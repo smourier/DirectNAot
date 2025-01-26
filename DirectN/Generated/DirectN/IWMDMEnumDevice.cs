@@ -8,7 +8,7 @@ public partial interface IWMDMEnumDevice
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmenumdevice-next
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] IWMDMDevice[] ppDevice, out uint pceltFetched);
+    HRESULT Next(uint celt, [In][Out][MarshalUsing(CountElementName = nameof(celt))] nint[] ppDevice, out uint pceltFetched);
     
     // https://learn.microsoft.com/windows/win32/api/mswmdm/nf-mswmdm-iwmdmenumdevice-skip
     [PreserveSig]

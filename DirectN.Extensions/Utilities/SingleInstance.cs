@@ -41,7 +41,9 @@ public partial class SingleInstance(Guid groupId)
     {
         foreach (var result in Ping(desktopId))
         {
-            if (result.HResult.IsOk && Conversions.TryChangeType<uint>(result.Output, out var pid) && pid > 0)
+            if (result.HResult.IsOk &&
+                Conversions.TryChangeType<uint>(result.Output, out var pid)
+                && pid > 0)
             {
                 Functions.AllowSetForegroundWindow(pid);
             }

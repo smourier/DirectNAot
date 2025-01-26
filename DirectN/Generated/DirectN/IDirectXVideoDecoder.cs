@@ -14,7 +14,7 @@ public partial interface IDirectXVideoDecoder
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getcreationparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCreationParameters(nint /* optional Guid* */ pDeviceGuid, nint /* optional DXVA2_VideoDesc* */ pVideoDesc, nint /* optional DXVA2_ConfigPictureDecode* */ pConfig, [MarshalUsing(CountElementName = nameof(pNumSurfaces))] out IDirect3DSurface9[] pDecoderRenderTargets, nint /* optional uint* */ pNumSurfaces);
+    HRESULT GetCreationParameters(nint /* optional Guid* */ pDeviceGuid, nint /* optional DXVA2_VideoDesc* */ pVideoDesc, nint /* optional DXVA2_ConfigPictureDecode* */ pConfig, [MarshalUsing(CountElementName = nameof(pNumSurfaces))] out nint[] pDecoderRenderTargets, nint /* optional uint* */ pNumSurfaces);
     
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirectxvideodecoder-getbuffer
     [PreserveSig]

@@ -78,12 +78,12 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
     {
         ArgumentNullException.ThrowIfNull(target);
         using var vi = new Variant(input);
-        var vo = new VARIANT();
-        var hr = target.Exec(commandGroup, commandId, 0, vi.Detached, ref vo);
+        using var vo = new Variant();
+        var hr = target.Exec(commandGroup, commandId, 0, vi.Detached, ref vo.RefDetached);
         if (hr.IsError)
             return new CommandResult(hr, null);
 
-        return new CommandResult(hr, Variant.Unwrap(vo));
+        return new CommandResult(hr, vo.Value);
     }
 
     private static IEnumerable<nint> GetObjects(int targetPid, string moniker)
@@ -97,33 +97,36 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
             yield break;
         }
 
-        Functions.CreateBindCtx(0, out var ctx);
-        if (ctx == null)
+        Functions.CreateBindCtx(0, out var ctxPtr);
+        if (ctxPtr == null)
             yield break;
 
+        using var ctx = new ComObject<IBindCtx>(ctxPtr);
         foreach (var mk in RunningObjectTable.Enumerate(false))
         {
             var name = getName();
-            if (name == null)
-                continue;
-
-            if (name.StartsWith(Delimiter + moniker))
+            if (name != null)
             {
-                var remoteUnk = RunningObjectTable.GetObject(mk, false);
-                if (remoteUnk != 0)
+                if (name.StartsWith(Delimiter + moniker))
                 {
-                    yield return remoteUnk;
-                    if (targetPid == 0)
-                        break;
+                    var remoteUnk = RunningObjectTable.GetObject(mk.Object, false);
+                    if (remoteUnk != 0)
+                    {
+                        yield return remoteUnk;
+                        if (targetPid == 0)
+                            break;
+                    }
                 }
             }
+            mk.Dispose();
 
             string? getName()
             {
                 try
                 {
-                    mk.GetDisplayName(ctx, null!, out var dn);
-                    return dn.ToString();
+                    mk.Object.GetDisplayName(ctx.Object, null!, out var dn);
+                    using Pwstr p = dn;
+                    return p.ToString();
                 }
                 catch
                 {
@@ -142,7 +145,7 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
         if (e._outputSet)
         {
             var vo = new Variant(e.Output);
-            pvaOut = vo.Detached;
+            pvaOut = vo.Detach();
         }
         return e.HResult;
     }
@@ -160,6 +163,35 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
         return cp == null ? Constants.CONNECT_E_NOCONNECTION : Constants.S_OK;
     }
 
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            foreach (var kv in _connectionPoints)
+            {
+                if (kv.Value is IDisposable disposable)
+                {
+                    try
+                    {
+                        disposable.Dispose();
+                    }
+                    catch
+                    {
+                        // continue;
+                    }
+                }
+            }
+            Revoke();
+            // dispose managed state (managed objects)
+        }
+
+        // free unmanaged resources (unmanaged objects) and override finalizer
+        // set large fields to null
+    }
+
+    ~CommandTarget() { Dispose(disposing: false); }
+    public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
+
     [System.Runtime.InteropServices.Marshalling.GeneratedComClass]
     private sealed partial class ConnectionsPoints(KeyValuePair<Guid, IConnectionPoint>[] connections) : IEnumConnectionPoints
     {
@@ -171,7 +203,7 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
             return Constants.S_OK;
         }
 
-        public HRESULT Next(uint count, IConnectionPoint[] points, out uint fetched)
+        public HRESULT Next(uint count, nint[] points, out uint fetched)
         {
             var max = (uint)Math.Max(0, Math.Min(connections.Length - (_index + 1), count));
             fetched = max;
@@ -179,7 +211,7 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
             {
                 for (var i = _index + 1; i < fetched; i++)
                 {
-                    points[i] = connections[i].Value;
+                    points[i] = ComObject.GetOrCreateComInstance<IConnectionPoint>(connections[i].Value);
                     _index++;
                 }
             }
@@ -197,19 +229,4 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
             return (max == count) ? Constants.S_OK : Constants.S_FALSE;
         }
     }
-
-    protected virtual void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            Revoke();
-            // dispose managed state (managed objects)
-        }
-
-        // free unmanaged resources (unmanaged objects) and override finalizer
-        // set large fields to null
-    }
-
-    ~CommandTarget() { Dispose(disposing: false); }
-    public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }

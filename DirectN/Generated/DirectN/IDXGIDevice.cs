@@ -13,7 +13,7 @@ public partial interface IDXGIDevice : IDXGIObject
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-createsurface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateSurface(in DXGI_SURFACE_DESC pDesc, uint NumSurfaces, DXGI_USAGE Usage, nint /* optional DXGI_SHARED_RESOURCE* */ pSharedResource, [In][Out][MarshalUsing(CountElementName = nameof(NumSurfaces))] IDXGISurface[] ppSurface);
+    HRESULT CreateSurface(in DXGI_SURFACE_DESC pDesc, uint NumSurfaces, DXGI_USAGE Usage, nint /* optional DXGI_SHARED_RESOURCE* */ pSharedResource, [In][Out][MarshalUsing(CountElementName = nameof(NumSurfaces))] nint[] ppSurface);
     
     // https://learn.microsoft.com/windows/win32/api/dxgi/nf-dxgi-idxgidevice-queryresourceresidency
     [PreserveSig]

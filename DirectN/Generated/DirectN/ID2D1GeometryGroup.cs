@@ -16,5 +16,5 @@ public partial interface ID2D1GeometryGroup : ID2D1Geometry
     
     // https://learn.microsoft.com/windows/win32/api/d2d1/nf-d2d1-id2d1geometrygroup-getsourcegeometries
     [PreserveSig]
-    void GetSourceGeometries([In][Out][MarshalUsing(CountElementName = nameof(geometriesCount))] ID2D1Geometry[] geometries, uint geometriesCount);
+    void GetSourceGeometries([In][Out][MarshalUsing(CountElementName = nameof(geometriesCount))] nint[] geometries, uint geometriesCount);
 }

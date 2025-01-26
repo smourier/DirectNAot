@@ -115,8 +115,8 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
                 for (var i = _index + 1; i < fetched; i++)
                 {
                     rgcd[i].dwCookie = connections[i].Key;
-                    Marshal.AddRef(rgcd[i].pUnk);
                     rgcd[i].pUnk = ComObject.GetOrCreateComInstance(connections[i].Value);
+                    Marshal.AddRef(rgcd[i].pUnk);
                     _index++;
                 }
             }
@@ -141,7 +141,14 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
         {
             foreach (var kv in _sinks)
             {
-                kv.Value.Dispose();
+                try
+                {
+                    kv.Value.Dispose();
+                }
+                catch
+                {
+                    // continue
+                }
             }
             // dispose managed state (managed objects)
         }

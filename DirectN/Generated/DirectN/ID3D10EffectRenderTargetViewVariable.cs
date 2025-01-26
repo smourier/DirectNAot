@@ -130,6 +130,6 @@ public partial struct ID3D10EffectRenderTargetViewVariable
     
     // https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-id3d10effectrendertargetviewvariable-getrendertargetarray
     [return: MarshalAs(UnmanagedType.Error)]
-    public readonly unsafe HRESULT GetRenderTargetArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] ID3D10RenderTargetView[] ppResources, uint Offset, uint Count) =>
-        ((delegate* unmanaged<ID3D10EffectRenderTargetViewVariable*,ID3D10RenderTargetView[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectRenderTargetViewVariable*)VTablePtr, ppResources, Offset, Count);
+    public readonly unsafe HRESULT GetRenderTargetArray([In][Out][MarshalUsing(CountElementName = nameof(Count))] nint[] ppResources, uint Offset, uint Count) =>
+        ((delegate* unmanaged<ID3D10EffectRenderTargetViewVariable*,nint[],uint,uint, HRESULT>)(((void**)*((void**)VTablePtr))[28]))((ID3D10EffectRenderTargetViewVariable*)VTablePtr, ppResources, Offset, Count);
 }
