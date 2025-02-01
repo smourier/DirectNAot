@@ -41,7 +41,7 @@ public class Application : IDisposable
         }
     }
 
-    private bool _disposedValue;
+    private int _disposeState;
 
     public Application()
     {
@@ -51,12 +51,19 @@ public class Application : IDisposable
         UIhreadId = Environment.CurrentManagedThreadId;
     }
 
+    public bool IsDisposingOrDisposed => _disposeState != 0;
+    public bool IsDisposing => _disposeState == 1;
+    public bool IsDisposed => _disposeState == 2;
+
     public virtual void Run()
     {
         if (_errors.IsEmpty)
         {
             while (Functions.GetMessageW(out var msg, HWND.Null, 0, 0))
             {
+                if (IsDisposingOrDisposed)
+                    break;
+
                 if (msg.message == WM_APP_QUIT)
                     break;
 
@@ -73,29 +80,28 @@ public class Application : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
+        if (!disposing)
+            return;
+
         //TraceInfo("windows count:" + _windows.Count);
-        if (!_disposedValue)
+        var isDisposing = Interlocked.CompareExchange(ref _disposeState, 1, 0);
+        if (isDisposing != 0)
+            return;
+
+        // dispose managed state (managed objects)
+        var windows = Interlocked.Exchange(ref _windows, new());
+        foreach (var kv in windows)
         {
-            if (disposing)
-            {
-                // dispose managed state (managed objects)
-                var windows = Interlocked.Exchange(ref _windows, new());
-                foreach (var kv in windows)
-                {
-                    WindowRemoved?.Invoke(Current, new ValueEventArgs<Window>(kv.Key));
-                    kv.Key.Dispose();
-                }
-
-                if (ReportLiveObjects)
-                {
-                    DXGIFunctions.DXGIReportLiveObjects();
-                }
-            }
-
-            // free unmanaged resources (unmanaged objects) and override finalizer
-            // set large fields to null
-            _disposedValue = true;
+            WindowRemoved?.Invoke(Current, new ValueEventArgs<Window>(kv.Key));
+            kv.Key.Dispose();
         }
+
+        if (ReportLiveObjects)
+        {
+            DXGIFunctions.DXGIReportLiveObjects();
+        }
+
+        Interlocked.Exchange(ref _disposeState, 2);
     }
 
     ~Application() { Dispose(disposing: false); }

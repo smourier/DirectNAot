@@ -6,6 +6,7 @@ public class Window : IDisposable, IEquatable<Window>
     private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;
     private const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
     private nint _handle;
+    private int _disposeState;
     private GCHandle _gcHandle;
     private readonly WindowProc? _windowProc;
     private ConcurrentQueue<Task>? _tasks = [];
@@ -15,6 +16,7 @@ public class Window : IDisposable, IEquatable<Window>
     public event EventHandler? HandleCreated;
     public event EventHandler? Created;
     public event EventHandler? Destroyed;
+    public event CancelEventHandler? Disposing;
     public event EventHandler<HandledEventArgs>? Moved;
     public event EventHandler<ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>>? Resized;
     public event EventHandler<HandledEventArgs>? Activated;
@@ -52,6 +54,9 @@ public class Window : IDisposable, IEquatable<Window>
     public HWND Handle => new() { Value = _handle };
     public TaskScheduler? TaskScheduler => _scheduler;
     public Process? Process => _process.Value;
+    public bool IsDisposingOrDisposed => _disposeState != 0;
+    public bool IsDisposing => _disposeState == 1;
+    public bool IsDisposed => _disposeState == 2;
     public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
     protected virtual uint AboutSysMenuId { get; set; } = 1;
@@ -326,6 +331,7 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnActivated(object? sender, HandledEventArgs e) => Activated?.Invoke(sender, e);
     protected virtual void OnDeactivated(object? sender, HandledEventArgs e) => Deactivated?.Invoke(sender, e);
     protected virtual void OnResized(object? sender, ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)> e) => Resized?.Invoke(sender, e);
+    protected virtual void OnDisposing(object? sender, CancelEventArgs e) => Disposing?.Invoke(sender, e);
     protected virtual void OnDestroyed(object? sender, EventArgs e) => Destroyed?.Invoke(sender, e);
     protected virtual void OnMoved(object? sender, HandledEventArgs e) => Moved?.Invoke(sender, e);
     protected virtual void OnCreated(object? sender, EventArgs e) => Created?.Invoke(sender, e); // after window has been created
@@ -522,25 +528,36 @@ public class Window : IDisposable, IEquatable<Window>
 
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            Application.RemoveWindow(this);
-            var handle = Interlocked.Exchange(ref _handle, 0);
-            if (handle != 0)
-            {
-                Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(_handlePropName));
-                if (_gcHandle.IsAllocated)
-                {
-                    _gcHandle.Free();
-                }
+        if (!disposing)
+            return;
 
-                if (DestroyOnDispose)
-                {
-                    Functions.DestroyWindow(new HWND { Value = handle });
-                    OnDestroyed(this, EventArgs.Empty);
-                }
+        var isDisposing = Interlocked.CompareExchange(ref _disposeState, 1, 0);
+        if (isDisposing != 0)
+            return;
+
+        var e = new CancelEventArgs();
+        OnDisposing(this, e);
+        if (e.Cancel)
+            return;
+
+        Application.RemoveWindow(this);
+        var handle = Interlocked.Exchange(ref _handle, 0);
+        if (handle != 0)
+        {
+            Functions.RemovePropW(new HWND { Value = handle }, PWSTR.From(_handlePropName));
+            if (_gcHandle.IsAllocated)
+            {
+                _gcHandle.Free();
+            }
+
+            if (DestroyOnDispose)
+            {
+                Functions.DestroyWindow(new HWND { Value = handle });
+                OnDestroyed(this, EventArgs.Empty);
             }
         }
+
+        Interlocked.Exchange(ref _disposeState, 2);
     }
 
     ~Window() { Dispose(disposing: false); }
