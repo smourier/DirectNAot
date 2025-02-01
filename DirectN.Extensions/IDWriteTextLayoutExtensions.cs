@@ -44,11 +44,9 @@ public static class IDWriteTextLayoutExtensions
     {
         ArgumentNullException.ThrowIfNull(layout);
         DWRITE_TEXT_METRICS1 metrics1;
-        if (layout is IDWriteTextLayout2 layout2)
+        if (OperatingSystem.IsWindowsVersionAtLeast(8, 1) && layout is IDWriteTextLayout2 layout2)
         {
-#pragma warning disable CA1416 // Validate platform compatibility
             layout2.GetMetrics(out metrics1).ThrowOnError();
-#pragma warning restore CA1416 // Validate platform compatibility
         }
         else
         {

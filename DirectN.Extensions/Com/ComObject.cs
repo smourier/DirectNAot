@@ -9,7 +9,7 @@ public abstract class ComObject : IComObject
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private System.Runtime.InteropServices.Marshalling.ComObject? _comObject;
 
-    public ComObject(object? comObject, bool releaseOnDispose = true)
+    public ComObject(object comObject, bool releaseOnDispose = true)
     {
         ArgumentNullException.ThrowIfNull(comObject);
         if (comObject is not System.Runtime.InteropServices.Marshalling.ComObject co)
@@ -394,7 +394,7 @@ public abstract class ComObject : IComObject
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }
 
-public class ComObject<T>(object? comObject, bool releaseOnDispose = true) : ComObject((T?)comObject, releaseOnDispose), IComObject<T>
+public class ComObject<T>(object comObject, bool releaseOnDispose = true) : ComObject((T)comObject, releaseOnDispose), IComObject<T>
 {
     [AllowNull]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]

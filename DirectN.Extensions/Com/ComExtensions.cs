@@ -68,5 +68,5 @@ public static class ComExtensions
     public static nint[]? GetOrCreateComInstances<T>(this IEnumerable<IComObject<T>?>? enumerable, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None) => enumerable?.Select(e => e is null ? 0 : ComObject.GetOrCreateComInstance(e, flags)).ToArray();
 
     [return: NotNullIfNotNull(nameof(enumerable))]
-    public static IEnumerable<IComObject<T>>? ToComObjects<T>(this IEnumerable<T>? enumerable) => enumerable?.Select(e => new ComObject<T>(e));
+    public static IEnumerable<IComObject<T>>? ToComObjects<T>(this IEnumerable<T>? enumerable) => enumerable?.Where(e => e != null).Select(e => new ComObject<T>(e!));
 }
