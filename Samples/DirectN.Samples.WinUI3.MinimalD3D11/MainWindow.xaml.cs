@@ -32,7 +32,7 @@ namespace DirectN.Samples.WinUI3.MinimalD3D11
         private D3D11_VIEWPORT _shadowmapVP;
         private D3D11_VIEWPORT _framebufferVP;
         private float[] _framebufferClear;
-        private bool _disposed;
+        private bool _disposed = true;
         private bool _rendering;
 
         public MainWindow()
@@ -50,6 +50,7 @@ namespace DirectN.Samples.WinUI3.MinimalD3D11
             // we dispose on another thread or a lock will happen when closing under Visual Studio debugger for some reason... (doesn't happen under WinDbg)
             Closed += (s, e) => Task.Run(Dispose);
             panel.SizeChanged += OnSizeChanged;
+            CompositionTarget.Rendering += Render;
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -235,19 +236,18 @@ namespace DirectN.Samples.WinUI3.MinimalD3D11
 
             Extensions.Utilities.Extensions.CopyFromWithPad(
                 _constants.CameraProjection,
-                new float[] { 2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0 },
+                [2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0],
                 InlineArraySingle_16.Length);
 
             Extensions.Utilities.Extensions.CopyFromWithPad(
                 _constants.LightProjection,
-                new float[] { 0.5f, 0, 0, 0, 0, 0.5f, 0, 0, 0, 0, 0.125f, 0, 0, 0, -0.125f, 1 },
+                [0.5f, 0, 0, 0, 0, 0.5f, 0, 0, 0, 0, 0.125f, 0, 0, 0, -0.125f, 1],
                 InlineArraySingle_16.Length);
 
             var nativePanel = panel.As<ISwapChainPanelNative>();
             nativePanel.SetSwapChain(_swapChain.Object).ThrowOnError();
 
             _disposed = false;
-            CompositionTarget.Rendering += Render;
         }
 
         private unsafe void Render(object sender, object e)
