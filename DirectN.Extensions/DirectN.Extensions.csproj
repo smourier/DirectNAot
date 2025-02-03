@@ -18,36 +18,41 @@
 		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
 		<PackageIcon>DirectN.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <NoWarn>1701;1702;IDE0130</NoWarn>
+		<NoWarn>1701;1702;IDE0130</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <NoWarn>1701;1702;IDE0130</NoWarn>
+		<NoWarn>1701;1702;IDE0130</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Generated\**" />
-	  <EmbeddedResource Remove="Generated\**" />
-	  <None Remove="Generated\**" />
+		<Compile Remove="Generated\**" />
+		<EmbeddedResource Remove="Generated\**" />
+		<None Remove="Generated\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="..\DirectN\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+		<Compile Include="..\DirectN\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="..\LICENSE">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DirectN\DirectN.csproj" />
+		<ProjectReference Include="..\DirectN\DirectN.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -72,10 +77,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="DirectN.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Update="DirectN.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 </Project>
