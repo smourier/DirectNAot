@@ -234,7 +234,16 @@ public static class Conversions
         {
             foreach (var str in text.Split(separators, count, options))
             {
-                if (TryChangeType<T>(str, provider, out var value) && value != null)
+                var newStr = str;
+                if (newStr != null && options.HasFlag(StringSplitOptions.TrimEntries))
+                {
+                    newStr = newStr.Trim();
+                }
+
+                if (string.IsNullOrEmpty(newStr) && options.HasFlag(StringSplitOptions.RemoveEmptyEntries))
+                    continue;
+
+                if (TryChangeType<T>(newStr, provider, out var value) && value != null)
                 {
                     list.Add(value);
                 }
@@ -361,6 +370,18 @@ public static class Conversions
             if (inputType == typeof(TimeSpan))
             {
                 value = ((TimeSpan)input).Ticks;
+                return true;
+            }
+
+            if (inputType == typeof(DateTime))
+            {
+                value = ((DateTime)input).Ticks;
+                return true;
+            }
+
+            if (inputType == typeof(DateTimeOffset))
+            {
+                value = ((DateTimeOffset)input).Ticks;
                 return true;
             }
         }
