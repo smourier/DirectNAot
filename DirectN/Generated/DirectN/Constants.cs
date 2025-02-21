@@ -12893,7 +12893,1937 @@ public static partial class Constants
     
     public static readonly Guid EvalRat = new("c5c5c5f1-3abc-11d6-b25b-00c04fa0c026");
     
+    public const uint EVENT_ACTIVITY_CTRL_CREATE_ID = 3;
+    
+    public const uint EVENT_ACTIVITY_CTRL_CREATE_SET_ID = 5;
+    
+    public const uint EVENT_ACTIVITY_CTRL_GET_ID = 1;
+    
+    public const uint EVENT_ACTIVITY_CTRL_GET_SET_ID = 4;
+    
+    public const uint EVENT_ACTIVITY_CTRL_SET_ID = 2;
+    
+    public const uint EVENT_AIA_END = 45055;
+    
+    public const uint EVENT_AIA_START = 40960;
+    
+    public const int EVENT_AUDIENCECOMPUTATION_CANNOTSTART = -1073738223;
+    
+    public const int EVENT_AUTOCAT_CANT_CREATE_FILE_SHARE = -1073738726;
+    
+    public const int EVENT_AUTOCAT_PERFMON = -1073738753;
+    
+    public const int EVENT_BAD_ACCOUNT_NAME = -1073734816;
+    
+    public const int EVENT_BAD_SERVICE_STATE = -1073734808;
+    
+    public const int EVENT_BOOT_SYSTEM_DRIVERS_FAILED = -1073734798;
+    
+    public const int EVENT_BOWSER_CANT_READ_REGISTRY = 1073749853;
+    
+    public const int EVENT_BOWSER_ELECTION_RECEIVED = 8012;
+    
+    public const int EVENT_BOWSER_ELECTION_SENT_FIND_MASTER_FAILED = 1073749838;
+    
+    public const int EVENT_BOWSER_ELECTION_SENT_GETBLIST_FAILED = 1073749837;
+    
+    public const int EVENT_BOWSER_GETBROWSERLIST_THRESHOLD_EXCEEDED = 1073749855;
+    
+    public const int EVENT_BOWSER_ILLEGAL_DATAGRAM = -2147475642;
+    
+    public const int EVENT_BOWSER_ILLEGAL_DATAGRAM_THRESHOLD = -1073733808;
+    
+    public const int EVENT_BOWSER_MAILSLOT_DATAGRAM_THRESHOLD_EXCEEDED = 1073749854;
+    
+    public const int EVENT_BOWSER_NAME_CONVERSION_FAILED = -1073733814;
+    
+    public const int EVENT_BOWSER_NON_MASTER_MASTER_ANNOUNCE = -2147475643;
+    
+    public const int EVENT_BOWSER_NON_PDC_WON_ELECTION = 1073749852;
+    
+    public const int EVENT_BOWSER_OLD_BACKUP_FOUND = 1073749848;
+    
+    public const int EVENT_BOWSER_OTHER_MASTER_ON_NET = -1073733821;
+    
+    public const int EVENT_BOWSER_PDC_LOST_ELECTION = 1073749851;
+    
+    public const int EVENT_BOWSER_PROMOTED_WHILE_ALREADY_MASTER = -2147475644;
+    
+    public const int EVENT_BRIDGE_ADAPTER_BIND_FAILED = -1073727120;
+    
+    public const int EVENT_BRIDGE_ADAPTER_FILTER_FAILED = -1073727122;
+    
+    public const int EVENT_BRIDGE_ADAPTER_LINK_SPEED_QUERY_FAILED = -1073727124;
+    
+    public const int EVENT_BRIDGE_ADAPTER_MAC_ADDR_QUERY_FAILED = -1073727123;
+    
+    public const int EVENT_BRIDGE_ADAPTER_NAME_QUERY_FAILED = -1073727121;
+    
+    public const int EVENT_BRIDGE_BUFFER_POOL_CREATION_FAILED = -1073727214;
+    
+    public const int EVENT_BRIDGE_DEVICE_CREATION_FAILED = -1073727221;
+    
+    public const int EVENT_BRIDGE_ETHERNET_NOT_OFFERED = -1073727218;
+    
+    public const int EVENT_BRIDGE_INIT_MALLOC_FAILED = -1073727213;
+    
+    public const int EVENT_BRIDGE_MINIPORT_INIT_FAILED = -1073727219;
+    
+    public const int EVENT_BRIDGE_MINIPORT_REGISTER_FAILED = -1073727222;
+    
+    public const int EVENT_BRIDGE_MINIPROT_DEVNAME_MISSING = -1073727223;
+    
+    public const int EVENT_BRIDGE_NO_BRIDGE_MAC_ADDR = -1073727220;
+    
+    public const int EVENT_BRIDGE_PACKET_POOL_CREATION_FAILED = -1073727215;
+    
+    public const int EVENT_BRIDGE_PROTOCOL_REGISTER_FAILED = -1073727224;
+    
+    public const int EVENT_BRIDGE_THREAD_CREATION_FAILED = -1073727217;
+    
+    public const int EVENT_BRIDGE_THREAD_REF_FAILED = -1073727216;
+    
+    public const int EVENT_BROWSER_BACKUP_STOPPED = -1073733792;
+    
+    public const int EVENT_BROWSER_DEPENDANT_SERVICE_FAILED = -1073733807;
+    
+    public const int EVENT_BROWSER_DOMAIN_LIST_FAILED = -2147475626;
+    
+    public const int EVENT_BROWSER_DOMAIN_LIST_RETRIEVED = 8026;
+    
+    public const int EVENT_BROWSER_ELECTION_SENT_LANMAN_NT_STARTED = 1073749839;
+    
+    public const int EVENT_BROWSER_ELECTION_SENT_LANMAN_NT_STOPPED = 1073749857;
+    
+    public const int EVENT_BROWSER_ELECTION_SENT_ROLE_CHANGED = 1073749859;
+    
+    public const int EVENT_BROWSER_GETBLIST_RECEIVED_NOT_MASTER = -1073733790;
+    
+    public const int EVENT_BROWSER_ILLEGAL_CONFIG = -2147475625;
+    
+    public const int EVENT_BROWSER_MASTER_PROMOTION_FAILED = -1073733815;
+    
+    public const int EVENT_BROWSER_MASTER_PROMOTION_FAILED_NO_MASTER = -1073733804;
+    
+    public const int EVENT_BROWSER_MASTER_PROMOTION_FAILED_STOPPING = -1073733805;
+    
+    public const int EVENT_BROWSER_NOT_STARTED_IPX_CONFIG_MISMATCH = -1073733788;
+    
+    public const int EVENT_BROWSER_OTHERDOMAIN_ADD_FAILED = -1073733813;
+    
+    public const int EVENT_BROWSER_ROLE_CHANGE_FAILED = -1073733816;
+    
+    public const int EVENT_BROWSER_SERVER_LIST_FAILED = -2147475627;
+    
+    public const int EVENT_BROWSER_SERVER_LIST_RETRIEVED = 8025;
+    
+    public const int EVENT_BROWSER_STATUS_BITS_UPDATE_FAILED = -1073733817;
+    
+    public const int EVENT_CALL_TO_FUNCTION_FAILED = -1073734819;
+    
+    public const int EVENT_CALL_TO_FUNCTION_FAILED_II = -1073734818;
+    
+    public const int EVENT_CIRCULAR_DEPENDENCY_AUTO = -1073734806;
+    
+    public const int EVENT_CIRCULAR_DEPENDENCY_DEMAND = -1073734807;
+    
+    public const int EVENT_COMMAND_NOT_INTERACTIVE = -1073733924;
+    
+    public const int EVENT_COMMAND_START_FAILED = -1073733923;
+    
+    public const int EVENT_ComputerNameChange = -2147477637;
+    
+    public const int EVENT_CONFIG_ERROR = -1073738821;
+    
+    public const int EVENT_CONFIG_SYNTAX = -2147482604;
+    
+    public const int EVENT_CONNECTION_TIMEOUT = -1073734815;
+    
+    public const uint EVENT_CONSOLE_CARET = 16385;
+    
+    public const uint EVENT_CONSOLE_END = 16639;
+    
+    public const uint EVENT_CONSOLE_END_APPLICATION = 16391;
+    
+    public const uint EVENT_CONSOLE_LAYOUT = 16389;
+    
+    public const uint EVENT_CONSOLE_START_APPLICATION = 16390;
+    
+    public const uint EVENT_CONSOLE_UPDATE_REGION = 16386;
+    
+    public const uint EVENT_CONSOLE_UPDATE_SCROLL = 16388;
+    
+    public const uint EVENT_CONSOLE_UPDATE_SIMPLE = 16387;
+    
+    public const int EVENT_CRAWL_SCHEDULED = 1073744884;
+    
+    public const uint EVENT_DATA_DESCRIPTOR_TYPE_EVENT_METADATA = 1;
+    
+    public const uint EVENT_DATA_DESCRIPTOR_TYPE_NONE = 0;
+    
+    public const uint EVENT_DATA_DESCRIPTOR_TYPE_PROVIDER_METADATA = 2;
+    
+    public const uint EVENT_DATA_DESCRIPTOR_TYPE_TIMESTAMP_OVERRIDE = 3;
+    
+    public const int EVENT_DAV_REDIR_DELAYED_WRITE_FAILED = -2147468848;
+    
+    public const int EVENT_DCOM_ASSERTION_FAILURE = -1073731812;
+    
+    public const int EVENT_DCOM_COMPLUS_DISABLED = -1073731810;
+    
+    public const int EVENT_DCOM_INVALID_ENDPOINT_DATA = -1073731811;
+    
+    public const int EVENT_DEPEND_ON_LATER_GROUP = -1073734804;
+    
+    public const int EVENT_DEPEND_ON_LATER_SERVICE = -1073734805;
+    
+    public const int EVENT_DETAILED_FILTERPOOL_ADD_FAILED = -1073738719;
+    
+    public const int EVENT_DNS_CACHE_NETWORK_PERF_WARNING = -2147472598;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_LOW_MEMORY = -1073730817;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_CONTROL = -1073730822;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_DLL = -1073730824;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_DONE_EVENT = -1073730821;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_ENTRY = -1073730823;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_RPC = -1073730820;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_SHUTDOWN_NOTIFY = -1073730819;
+    
+    public const int EVENT_DNS_CACHE_START_FAILURE_NO_UPDATE = -1073730818;
+    
+    public const int EVENT_DNS_CACHE_UNABLE_TO_REACH_SERVER_WARNING = -2147472597;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_NOTSUPP = -2147472466;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_NOTSUPP_PRIMARY_DN = -2147472454;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_OTHER = -2147472463;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_OTHER_PRIMARY_DN = -2147472451;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_REFUSED = -2147472465;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_REFUSED_PRIMARY_DN = -2147472453;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_SECURITY = -2147472464;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_SECURITY_PRIMARY_DN = -2147472452;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_SERVERFAIL = -2147472467;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_SERVERFAIL_PRIMARY_DN = -2147472455;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_TIMEOUT = -2147472468;
+    
+    public const int EVENT_DNSAPI_DEREGISTRATION_FAILED_TIMEOUT_PRIMARY_DN = -2147472456;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_NOTSUPP = -2147472460;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_OTHER = -2147472457;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_REFUSED = -2147472459;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_SECURITY = -2147472458;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_SERVERFAIL = -2147472461;
+    
+    public const int EVENT_DNSAPI_PTR_DEREGISTRATION_FAILED_TIMEOUT = -2147472462;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_NOTSUPP = -2147472490;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_OTHER = -2147472487;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_REFUSED = -2147472489;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_SECURITY = -2147472488;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_SERVERFAIL = -2147472491;
+    
+    public const int EVENT_DNSAPI_PTR_REGISTRATION_FAILED_TIMEOUT = -2147472492;
+    
+    public const int EVENT_DNSAPI_REGISTERED_ADAPTER = 1073753024;
+    
+    public const int EVENT_DNSAPI_REGISTERED_ADAPTER_PRIMARY_DN = 1073753026;
+    
+    public const int EVENT_DNSAPI_REGISTERED_PTR = 1073753025;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_NOTSUPP = -2147472496;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_NOTSUPP_PRIMARY_DN = -2147472484;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_OTHER = -2147472493;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_OTHER_PRIMARY_DN = -2147472481;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_REFUSED = -2147472495;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_REFUSED_PRIMARY_DN = -2147472483;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_SECURITY = -2147472494;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_SECURITY_PRIMARY_DN = -2147472482;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_SERVERFAIL = -2147472497;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_SERVERFAIL_PRIMARY_DN = -2147472485;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_TIMEOUT = -2147472498;
+    
+    public const int EVENT_DNSAPI_REGISTRATION_FAILED_TIMEOUT_PRIMARY_DN = -2147472486;
+    
+    public const int EVENT_DNSDomainNameChange = -2147477636;
+    
+    public const int EVENT_DSS_NOT_ENABLED = -2147476572;
+    
+    public const int EVENT_E_FIRST = -2147220992;
+    
+    public const int EVENT_E_LAST = -2147220961;
+    
+    public const uint EVENT_ENABLE_PROPERTY_ENABLE_KEYWORD_0 = 64;
+    
+    public const uint EVENT_ENABLE_PROPERTY_ENABLE_SILOS = 1024;
+    
+    public const uint EVENT_ENABLE_PROPERTY_EVENT_KEY = 256;
+    
+    public const uint EVENT_ENABLE_PROPERTY_EXCLUDE_INPRIVATE = 512;
+    
+    public const uint EVENT_ENABLE_PROPERTY_IGNORE_KEYWORD_0 = 16;
+    
+    public const uint EVENT_ENABLE_PROPERTY_PROCESS_START_KEY = 128;
+    
+    public const uint EVENT_ENABLE_PROPERTY_PROVIDER_GROUP = 32;
+    
+    public const uint EVENT_ENABLE_PROPERTY_PSM_KEY = 8;
+    
+    public const uint EVENT_ENABLE_PROPERTY_SID = 1;
+    
+    public const uint EVENT_ENABLE_PROPERTY_SOURCE_CONTAINER_TRACKING = 2048;
+    
+    public const uint EVENT_ENABLE_PROPERTY_STACK_TRACE = 4;
+    
+    public const uint EVENT_ENABLE_PROPERTY_TS_ID = 2;
+    
+    public const int EVENT_ENUMERATE_SESSIONS_FAILED = -1073738720;
+    
+    public const int EVENT_EQOS_ERROR_MACHINE_POLICY_KEYNAME_SIZE_ZERO = -1073725118;
+    
+    public const int EVENT_EQOS_ERROR_MACHINE_POLICY_KEYNAME_TOO_LONG = -1073725120;
+    
+    public const int EVENT_EQOS_ERROR_MACHINE_POLICY_REFERESH = -1073725124;
+    
+    public const int EVENT_EQOS_ERROR_OPENING_MACHINE_POLICY_ROOT_KEY = -1073725122;
+    
+    public const int EVENT_EQOS_ERROR_OPENING_MACHINE_POLICY_SUBKEY = -1073725116;
+    
+    public const int EVENT_EQOS_ERROR_OPENING_USER_POLICY_ROOT_KEY = -1073725121;
+    
+    public const int EVENT_EQOS_ERROR_OPENING_USER_POLICY_SUBKEY = -1073725115;
+    
+    public const int EVENT_EQOS_ERROR_PROCESSING_MACHINE_POLICY_FIELD = -1073725114;
+    
+    public const int EVENT_EQOS_ERROR_PROCESSING_USER_POLICY_FIELD = -1073725113;
+    
+    public const int EVENT_EQOS_ERROR_SETTING_APP_MARKING = -1073725111;
+    
+    public const int EVENT_EQOS_ERROR_SETTING_TCP_AUTOTUNING = -1073725112;
+    
+    public const int EVENT_EQOS_ERROR_USER_POLICY_KEYNAME_SIZE_ZERO = -1073725117;
+    
+    public const int EVENT_EQOS_ERROR_USER_POLICY_KEYNAME_TOO_LONG = -1073725119;
+    
+    public const int EVENT_EQOS_ERROR_USER_POLICY_REFERESH = -1073725123;
+    
+    public const int EVENT_EQOS_INFO_APP_MARKING_ALLOWED = 1073758335;
+    
+    public const int EVENT_EQOS_INFO_APP_MARKING_IGNORED = 1073758334;
+    
+    public const int EVENT_EQOS_INFO_APP_MARKING_NOT_CONFIGURED = 1073758333;
+    
+    public const int EVENT_EQOS_INFO_LOCAL_SETTING_DONT_USE_NLA = 1073758336;
+    
+    public const int EVENT_EQOS_INFO_MACHINE_POLICY_REFRESH_NO_CHANGE = 1073758324;
+    
+    public const int EVENT_EQOS_INFO_MACHINE_POLICY_REFRESH_WITH_CHANGE = 1073758325;
+    
+    public const int EVENT_EQOS_INFO_TCP_AUTOTUNING_HIGHLY_RESTRICTED = 1073758330;
+    
+    public const int EVENT_EQOS_INFO_TCP_AUTOTUNING_NORMAL = 1073758332;
+    
+    public const int EVENT_EQOS_INFO_TCP_AUTOTUNING_NOT_CONFIGURED = 1073758328;
+    
+    public const int EVENT_EQOS_INFO_TCP_AUTOTUNING_OFF = 1073758329;
+    
+    public const int EVENT_EQOS_INFO_TCP_AUTOTUNING_RESTRICTED = 1073758331;
+    
+    public const int EVENT_EQOS_INFO_USER_POLICY_REFRESH_NO_CHANGE = 1073758326;
+    
+    public const int EVENT_EQOS_INFO_USER_POLICY_REFRESH_WITH_CHANGE = 1073758327;
+    
+    public const int EVENT_EQOS_URL_QOS_APPLICATION_CONFLICT = 1073758337;
+    
+    public const int EVENT_EQOS_WARNING_MACHINE_POLICY_CONFLICT = -2147467040;
+    
+    public const int EVENT_EQOS_WARNING_MACHINE_POLICY_NO_FULLPATH_APPNAME = -2147467038;
+    
+    public const int EVENT_EQOS_WARNING_MACHINE_POLICY_PROFILE_NOT_SPECIFIED = -2147467044;
+    
+    public const int EVENT_EQOS_WARNING_MACHINE_POLICY_QUOTA_EXCEEDED = -2147467042;
+    
+    public const int EVENT_EQOS_WARNING_MACHINE_POLICY_VERSION = -2147467046;
+    
+    public const int EVENT_EQOS_WARNING_TEST_1 = -2147467048;
+    
+    public const int EVENT_EQOS_WARNING_TEST_2 = -2147467047;
+    
+    public const int EVENT_EQOS_WARNING_USER_POLICY_CONFLICT = -2147467039;
+    
+    public const int EVENT_EQOS_WARNING_USER_POLICY_NO_FULLPATH_APPNAME = -2147467037;
+    
+    public const int EVENT_EQOS_WARNING_USER_POLICY_PROFILE_NOT_SPECIFIED = -2147467043;
+    
+    public const int EVENT_EQOS_WARNING_USER_POLICY_QUOTA_EXCEEDED = -2147467041;
+    
+    public const int EVENT_EQOS_WARNING_USER_POLICY_VERSION = -2147467045;
+    
+    public const int EVENT_EventlogAbnormalShutdown = -2147477640;
+    
+    public const int EVENT_EventLogProductInfo = -2147477639;
+    
+    public const int EVENT_EventlogStarted = -2147477643;
+    
+    public const int EVENT_EventlogStopped = -2147477642;
+    
+    public const int EVENT_EventlogUptime = -2147477635;
+    
+    public const int EVENT_EXCEPTION = -1073740815;
+    
+    public const int EVENT_FAILED_CREATE_GATHERER_LOG = -2147480587;
+    
+    public const int EVENT_FAILED_INITIALIZE_CRAWL = -1073738765;
+    
+    public const int EVENT_FILTER_HOST_FORCE_TERMINATE = -2147473624;
+    
+    public const int EVENT_FILTER_HOST_NOT_INITIALIZED = -1073738724;
+    
+    public const int EVENT_FILTER_HOST_NOT_TERMINATED = -1073738723;
+    
+    public const uint EVENT_FILTER_TYPE_CONTAINER = 2147516416;
+    
+    public const uint EVENT_FILTER_TYPE_EVENT_ID = 2147484160;
+    
+    public const uint EVENT_FILTER_TYPE_EVENT_NAME = 2147484672;
+    
+    public const uint EVENT_FILTER_TYPE_EXECUTABLE_NAME = 2147483656;
+    
+    public const uint EVENT_FILTER_TYPE_NONE = 0;
+    
+    public const uint EVENT_FILTER_TYPE_PACKAGE_APP_ID = 2147483680;
+    
+    public const uint EVENT_FILTER_TYPE_PACKAGE_ID = 2147483664;
+    
+    public const uint EVENT_FILTER_TYPE_PAYLOAD = 2147483904;
+    
+    public const uint EVENT_FILTER_TYPE_PID = 2147483652;
+    
+    public const uint EVENT_FILTER_TYPE_SCHEMATIZED = 2147483648;
+    
+    public const uint EVENT_FILTER_TYPE_STACKWALK = 2147487744;
+    
+    public const uint EVENT_FILTER_TYPE_STACKWALK_LEVEL_KW = 2147500032;
+    
+    public const uint EVENT_FILTER_TYPE_STACKWALK_NAME = 2147491840;
+    
+    public const uint EVENT_FILTER_TYPE_SYSTEM_FLAGS = 2147483649;
+    
+    public const uint EVENT_FILTER_TYPE_TRACEHANDLE = 2147483650;
+    
+    public const int EVENT_FILTERPOOL_ADD_FAILED = -1073738722;
+    
+    public const int EVENT_FILTERPOOL_DELETE_FAILED = -1073738721;
+    
+    public const int EVENT_FIRST_LOGON_FAILED = -1073734811;
+    
+    public const int EVENT_FIRST_LOGON_FAILED_II = -1073734786;
+    
+    public const int EVENT_FRS_ACCESS_CHECKS_DISABLED = -2147470131;
+    
+    public const int EVENT_FRS_ACCESS_CHECKS_FAILED_UNKNOWN = -1073728305;
+    
+    public const int EVENT_FRS_ACCESS_CHECKS_FAILED_USER = -2147470130;
+    
+    public const int EVENT_FRS_ASSERT = -1073728318;
+    
+    public const int EVENT_FRS_BAD_REG_DATA = -2147470101;
+    
+    public const int EVENT_FRS_CANNOT_COMMUNICATE = -1073728314;
+    
+    public const int EVENT_FRS_CANNOT_CREATE_UUID = -1073728300;
+    
+    public const int EVENT_FRS_CANNOT_START_BACKUP_RESTORE_IN_PROGRESS = -1073728303;
+    
+    public const int EVENT_FRS_CANT_OPEN_PREINSTALL = -1073728273;
+    
+    public const int EVENT_FRS_CANT_OPEN_STAGE = -1073728274;
+    
+    public const int EVENT_FRS_DATABASE_SPACE = -1073728313;
+    
+    public const int EVENT_FRS_DISK_WRITE_CACHE_ENABLED = -2147470136;
+    
+    public const int EVENT_FRS_DS_POLL_ERROR_SUMMARY = -2147470086;
+    
+    public const int EVENT_FRS_DUPLICATE_IN_CXTION = -1073728266;
+    
+    public const int EVENT_FRS_DUPLICATE_IN_CXTION_SYSVOL = -1073728267;
+    
+    public const int EVENT_FRS_ERROR = -1073728324;
+    
+    public const int EVENT_FRS_ERROR_REPLICA_SET_DELETED = -2147470088;
+    
+    public const int EVENT_FRS_HUGE_FILE = -2147470125;
+    
+    public const int EVENT_FRS_IN_ERROR_STATE = -1073728269;
+    
+    public const int EVENT_FRS_JET_1414 = -1073728311;
+    
+    public const int EVENT_FRS_JOIN_FAIL_TIME_SKEW = -1073728276;
+    
+    public const int EVENT_FRS_LONG_JOIN = -2147470140;
+    
+    public const int EVENT_FRS_LONG_JOIN_DONE = -2147470139;
+    
+    public const int EVENT_FRS_MOVED_PREEXISTING = -2147470128;
+    
+    public const int EVENT_FRS_NO_DNS_ATTRIBUTE = -2147470123;
+    
+    public const int EVENT_FRS_NO_SID = -1073728298;
+    
+    public const int EVENT_FRS_OVERLAPS_LOGGING = -1073728283;
+    
+    public const int EVENT_FRS_OVERLAPS_OTHER_STAGE = -1073728279;
+    
+    public const int EVENT_FRS_OVERLAPS_ROOT = -1073728280;
+    
+    public const int EVENT_FRS_OVERLAPS_STAGE = -1073728281;
+    
+    public const int EVENT_FRS_OVERLAPS_WORKING = -1073728282;
+    
+    public const int EVENT_FRS_PREPARE_ROOT_FAILED = -1073728278;
+    
+    public const int EVENT_FRS_REPLICA_IN_JRNL_WRAP_ERROR = -1073728263;
+    
+    public const int EVENT_FRS_REPLICA_NO_ROOT_CHANGE = -1073728268;
+    
+    public const int EVENT_FRS_REPLICA_SET_CREATE_FAIL = -1073728272;
+    
+    public const int EVENT_FRS_REPLICA_SET_CREATE_OK = 1073755377;
+    
+    public const int EVENT_FRS_REPLICA_SET_CXTIONS = 1073755378;
+    
+    public const int EVENT_FRS_RMTCO_TIME_SKEW = -1073728275;
+    
+    public const int EVENT_FRS_ROOT_HAS_MOVED = -1073728265;
+    
+    public const int EVENT_FRS_ROOT_NOT_VALID = -1073728285;
+    
+    public const int EVENT_FRS_STAGE_NOT_VALID = -1073728284;
+    
+    public const int EVENT_FRS_STAGING_AREA_FULL = -2147470126;
+    
+    public const int EVENT_FRS_STARTING = 1073755325;
+    
+    public const int EVENT_FRS_STOPPED = 1073755327;
+    
+    public const int EVENT_FRS_STOPPED_ASSERT = -1073728319;
+    
+    public const int EVENT_FRS_STOPPED_FORCE = -1073728320;
+    
+    public const int EVENT_FRS_STOPPING = 1073755326;
+    
+    public const int EVENT_FRS_SYSVOL_NOT_READY = -2147470134;
+    
+    public const int EVENT_FRS_SYSVOL_NOT_READY_PRIMARY = -2147470133;
+    
+    public const int EVENT_FRS_SYSVOL_READY = 1073755340;
+    
+    public const int EVENT_FRS_VOLUME_NOT_SUPPORTED = -1073728317;
+    
+    public const int EVENT_GATHER_ADVISE_FAILED = -1073738798;
+    
+    public const int EVENT_GATHER_APP_INIT_FAILED = -1073738766;
+    
+    public const int EVENT_GATHER_AUTODESCENCODE_INVALID = -2147480592;
+    
+    public const int EVENT_GATHER_AUTODESCLEN_ADJUSTED = -2147480603;
+    
+    public const int EVENT_GATHER_BACKUPAPP_COMPLETE = 3077;
+    
+    public const int EVENT_GATHER_BACKUPAPP_ERROR = -1073738748;
+    
+    public const int EVENT_GATHER_CANT_CREATE_DOCID = -1073738793;
+    
+    public const int EVENT_GATHER_CANT_DELETE_DOCID = -1073738792;
+    
+    public const int EVENT_GATHER_CHECKPOINT_CORRUPT = -1073738732;
+    
+    public const int EVENT_GATHER_CHECKPOINT_FAILED = -1073738736;
+    
+    public const int EVENT_GATHER_CHECKPOINT_FILE_MISSING = -1073738731;
+    
+    public const int EVENT_GATHER_CRAWL_IN_PROGRESS = -2147480609;
+    
+    public const int EVENT_GATHER_CRAWL_NOT_STARTED = -2147480625;
+    
+    public const int EVENT_GATHER_CRAWL_SEED_ERROR = -2147480624;
+    
+    public const int EVENT_GATHER_CRAWL_SEED_FAILED = -2147480612;
+    
+    public const int EVENT_GATHER_CRAWL_SEED_FAILED_INIT = -2147480611;
+    
+    public const int EVENT_GATHER_CRITICAL_ERROR = -1073738799;
+    
+    public const int EVENT_GATHER_DAEMON_TERMINATED = -2147480570;
+    
+    public const int EVENT_GATHER_DELETING_HISTORY_ITEMS = -1073738774;
+    
+    public const int EVENT_GATHER_DIRTY_STARTUP = -2147480576;
+    
+    public const int EVENT_GATHER_DISK_FULL = -2147480594;
+    
+    public const int EVENT_GATHER_END_ADAPTIVE = 1073744891;
+    
+    public const int EVENT_GATHER_END_CRAWL = 1073744842;
+    
+    public const int EVENT_GATHER_END_INCREMENTAL = 1073744871;
+    
+    public const int EVENT_GATHER_EXCEPTION = -1073738810;
+    
+    public const int EVENT_GATHER_FLUSH_FAILED = -1073738737;
+    
+    public const int EVENT_GATHER_FROM_NOT_SET = -1073738776;
+    
+    public const int EVENT_GATHER_HISTORY_CORRUPTION_DETECTED = -2147480575;
+    
+    public const int EVENT_GATHER_INPLACE_INDEX_REBUILD = 1073745427;
+    
+    public const int EVENT_GATHER_INTERNAL = -1073738804;
+    
+    public const int EVENT_GATHER_INVALID_NETWORK_ACCESS_ACCOUNT = -1073738739;
+    
+    public const int EVENT_GATHER_LOCK_FAILED = -1073738784;
+    
+    public const int EVENT_GATHER_NO_CRAWL_SEEDS = -2147480602;
+    
+    public const int EVENT_GATHER_NO_SCHEMA = -2147480593;
+    
+    public const int EVENT_GATHER_OBJ_INIT_FAILED = -1073738796;
+    
+    public const int EVENT_GATHER_PLUGIN_INIT_FAILED = -1073738795;
+    
+    public const int EVENT_GATHER_PLUGINMGR_INIT_FAILED = -1073738767;
+    
+    public const int EVENT_GATHER_PROTOCOLHANDLER_INIT_FAILED = -1073738740;
+    
+    public const int EVENT_GATHER_PROTOCOLHANDLER_LOAD_FAILED = -1073738741;
+    
+    public const int EVENT_GATHER_READ_CHECKPOINT_FAILED = -1073738733;
+    
+    public const int EVENT_GATHER_RECOVERY_FAILURE = -1073738222;
+    
+    public const int EVENT_GATHER_REG_MISSING = -2147480610;
+    
+    public const int EVENT_GATHER_RESET_START = 1073744865;
+    
+    public const int EVENT_GATHER_RESTORE_CHECKPOINT_FAILED = -1073738734;
+    
+    public const int EVENT_GATHER_RESTORE_COMPLETE = 3069;
+    
+    public const int EVENT_GATHER_RESTORE_ERROR = -1073738754;
+    
+    public const int EVENT_GATHER_RESTOREAPP_COMPLETE = 3075;
+    
+    public const int EVENT_GATHER_RESTOREAPP_ERROR = -1073738750;
+    
+    public const int EVENT_GATHER_RESUME = 1073744868;
+    
+    public const int EVENT_GATHER_SAVE_FAILED = -1073738735;
+    
+    public const int EVENT_GATHER_SERVICE_INIT = -1073738794;
+    
+    public const int EVENT_GATHER_START_CRAWL = 1073744843;
+    
+    public const int EVENT_GATHER_START_CRAWL_IF_RESET = -2147480595;
+    
+    public const int EVENT_GATHER_START_PAUSE = -2147480606;
+    
+    public const int EVENT_GATHER_STOP_START = 1073744876;
+    
+    public const int EVENT_GATHER_SYSTEM_LCID_CHANGED = -2147480562;
+    
+    public const int EVENT_GATHER_THROTTLE = 1073744867;
+    
+    public const int EVENT_GATHER_TRANSACTION_FAIL = -1073738797;
+    
+    public const int EVENT_GATHERER_DATASOURCE = -1073738727;
+    
+    public const int EVENT_GATHERER_PERFMON = -1073738817;
+    
+    public const int EVENT_GATHERSVC_PERFMON = -1073738818;
+    
+    public const int EVENT_HASHMAP_INSERT = -1073738816;
+    
+    public const int EVENT_HASHMAP_UPDATE = -1073738811;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_CONTAINER_ID = 16;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_CONTROL_GUID = 14;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_EVENT_KEY = 10;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_EVENT_SCHEMA_TL = 11;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_INSTANCE_INFO = 4;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_MAX = 19;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_PEBS_INDEX = 7;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_PMC_COUNTERS = 8;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_PROCESS_START_KEY = 13;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_PROV_TRAITS = 12;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_PSM_KEY = 9;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_QPC_DELTA = 15;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_RELATED_ACTIVITYID = 1;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_SID = 2;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_STACK_KEY32 = 17;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_STACK_KEY64 = 18;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_STACK_TRACE32 = 5;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_STACK_TRACE64 = 6;
+    
+    public const uint EVENT_HEADER_EXT_TYPE_TS_ID = 3;
+    
+    public const uint EVENT_HEADER_FLAG_32_BIT_HEADER = 32;
+    
+    public const uint EVENT_HEADER_FLAG_64_BIT_HEADER = 64;
+    
+    public const uint EVENT_HEADER_FLAG_CLASSIC_HEADER = 256;
+    
+    public const uint EVENT_HEADER_FLAG_DECODE_GUID = 128;
+    
+    public const uint EVENT_HEADER_FLAG_EXTENDED_INFO = 1;
+    
+    public const uint EVENT_HEADER_FLAG_NO_CPUTIME = 16;
+    
+    public const uint EVENT_HEADER_FLAG_PRIVATE_SESSION = 2;
+    
+    public const uint EVENT_HEADER_FLAG_PROCESSOR_INDEX = 512;
+    
+    public const uint EVENT_HEADER_FLAG_STRING_ONLY = 4;
+    
+    public const uint EVENT_HEADER_FLAG_TRACE_MESSAGE = 8;
+    
+    public const uint EVENT_HEADER_PROPERTY_FORWARDED_XML = 2;
+    
+    public const uint EVENT_HEADER_PROPERTY_LEGACY_EVENTLOG = 4;
+    
+    public const uint EVENT_HEADER_PROPERTY_RELOGGABLE = 8;
+    
+    public const uint EVENT_HEADER_PROPERTY_XML = 1;
+    
+    public const int EVENT_INDEXER_ADD_DSS_DISCONNECT = -2147476585;
+    
+    public const int EVENT_INDEXER_ADD_DSS_FAILED = -2147476627;
+    
+    public const int EVENT_INDEXER_ADD_DSS_SUCCEEDED = 7019;
+    
+    public const int EVENT_INDEXER_BUILD_ENDED = 1073748873;
+    
+    public const int EVENT_INDEXER_BUILD_FAILED = -1073734797;
+    
+    public const int EVENT_INDEXER_BUILD_START = 1073748872;
+    
+    public const int EVENT_INDEXER_CI_LOAD_ERROR = -1073734785;
+    
+    public const int EVENT_INDEXER_DSS_ALREADY_ADDED = 1073748870;
+    
+    public const int EVENT_INDEXER_DSS_CONTACT_FAILED = -1073734800;
+    
+    public const int EVENT_INDEXER_DSS_UNABLE_TO_REMOVE = -1073734755;
+    
+    public const int EVENT_INDEXER_FAIL_TO_CREATE_PER_USER_CATALOG = -1073731797;
+    
+    public const int EVENT_INDEXER_FAIL_TO_SET_MAX_JETINSTANCE = -1073731798;
+    
+    public const int EVENT_INDEXER_FAIL_TO_UNLOAD_PER_USER_CATALOG = -1073731796;
+    
+    public const int EVENT_INDEXER_INIT_ERROR = -1073734814;
+    
+    public const int EVENT_INDEXER_INVALID_DIRECTORY = -1073734813;
+    
+    public const int EVENT_INDEXER_LOAD_FAIL = -1073734781;
+    
+    public const int EVENT_INDEXER_MISSING_APP_DIRECTORY = -1073734758;
+    
+    public const int EVENT_INDEXER_NEW_PROJECT = -1073734754;
+    
+    public const int EVENT_INDEXER_NO_SEARCH_SERVERS = -2147476630;
+    
+    public const int EVENT_INDEXER_OUT_OF_DATABASE_INSTANCE = -1073731799;
+    
+    public const int EVENT_INDEXER_PAUSED_FOR_DISKFULL = -1073734811;
+    
+    public const int EVENT_INDEXER_PERFMON = -1073734760;
+    
+    public const int EVENT_INDEXER_PROP_ABORTED = 1073748899;
+    
+    public const int EVENT_INDEXER_PROP_COMMIT_FAILED = -1073734747;
+    
+    public const int EVENT_INDEXER_PROP_COMMITTED = 1073748898;
+    
+    public const int EVENT_INDEXER_PROP_ERROR = -1073734812;
+    
+    public const int EVENT_INDEXER_PROP_STARTED = 1073748841;
+    
+    public const int EVENT_INDEXER_PROP_STATE_CORRUPT = -1073734780;
+    
+    public const int EVENT_INDEXER_PROP_STOPPED = -2147476633;
+    
+    public const int EVENT_INDEXER_PROP_SUCCEEDED = 7016;
+    
+    public const int EVENT_INDEXER_PROPSTORE_INIT_FAILED = -1073734787;
+    
+    public const int EVENT_INDEXER_REG_ERROR = -1073734756;
+    
+    public const int EVENT_INDEXER_REG_MISSING = -1073734796;
+    
+    public const int EVENT_INDEXER_REMOVE_DSS_FAILED = -1073734801;
+    
+    public const int EVENT_INDEXER_REMOVE_DSS_SUCCEEDED = 7020;
+    
+    public const int EVENT_INDEXER_REMOVED_PROJECT = -1073734753;
+    
+    public const int EVENT_INDEXER_RESET_FOR_CORRUPTION = -1073734784;
+    
+    public const int EVENT_INDEXER_SCHEMA_COPY_ERROR = -1073734823;
+    
+    public const int EVENT_INDEXER_SHUTDOWN = 1073748866;
+    
+    public const int EVENT_INDEXER_STARTED = 1073748824;
+    
+    public const int EVENT_INDEXER_VERIFY_PROP_ACCOUNT = -1073734768;
+    
+    public const int EVENT_INVALID_DRIVER_DEPENDENCY = -1073734809;
+    
+    public const int EVENT_IPX_CREATE_DEVICE = -1073732318;
+    
+    public const int EVENT_IPX_ILLEGAL_CONFIG = -2147474145;
+    
+    public const int EVENT_IPX_INTERNAL_NET_INVALID = -1073732320;
+    
+    public const int EVENT_IPX_NEW_DEFAULT_TYPE = 1073751325;
+    
+    public const int EVENT_IPX_NO_ADAPTERS = -1073732317;
+    
+    public const int EVENT_IPX_NO_FRAME_TYPES = -1073732319;
+    
+    public const int EVENT_IPX_SAP_ANNOUNCE = -2147474146;
+    
+    public const int EVENT_LEARN_COMPILE_FAILED = -2147480583;
+    
+    public const int EVENT_LEARN_CREATE_DB_FAILED = -2147480584;
+    
+    public const int EVENT_LEARN_PROPAGATION_COPY_FAILED = -2147480585;
+    
+    public const int EVENT_LEARN_PROPAGATION_FAILED = -2147480582;
+    
+    public const int EVENT_LOCAL_GROUP_NOT_EXPANDED = 1073744919;
+    
+    public const int EVENT_LOCAL_GROUPS_CACHE_FLUSHED = 1073744920;
+    
+    public const string EVENT_LOGGER_NAME = @"EventLog";
+    
+    public const string EVENT_LOGGER_NAMEA = @"EventLog";
+    
+    public const string EVENT_LOGGER_NAMEW = @"EventLog";
+    
+    public const uint EVENT_MAX = 2147483647;
+    
+    public const uint EVENT_MAX_LEVEL = 255;
+    
+    public const uint EVENT_MIN = 1;
+    
+    public const uint EVENT_MIN_LEVEL = 0;
+    
+    public const int EVENT_NBT_BAD_BACKUP_WINS_ADDR = -2147479344;
+    
+    public const int EVENT_NBT_BAD_PRIMARY_WINS_ADDR = -2147479343;
+    
+    public const int EVENT_NBT_CREATE_ADDRESS = -1073737517;
+    
+    public const int EVENT_NBT_CREATE_CONNECTION = -1073737516;
+    
+    public const int EVENT_NBT_CREATE_DEVICE = -1073737513;
+    
+    public const int EVENT_NBT_CREATE_DRIVER = -1073737524;
+    
+    public const int EVENT_NBT_DUPLICATE_NAME = -1073737505;
+    
+    public const int EVENT_NBT_DUPLICATE_NAME_ERROR = -1073737503;
+    
+    public const int EVENT_NBT_NAME_RELEASE = -1073737504;
+    
+    public const int EVENT_NBT_NAME_SERVER_ADDRS = -1073737518;
+    
+    public const int EVENT_NBT_NO_BACKUP_WINS = -2147479346;
+    
+    public const int EVENT_NBT_NO_DEVICES = -2147479336;
+    
+    public const int EVENT_NBT_NO_RESOURCES = -1073737502;
+    
+    public const int EVENT_NBT_NO_WINS = -2147479345;
+    
+    public const int EVENT_NBT_NON_OS_INIT = -1073737515;
+    
+    public const int EVENT_NBT_OPEN_REG_LINKAGE = -1073737511;
+    
+    public const int EVENT_NBT_OPEN_REG_NAMESERVER = -2147479332;
+    
+    public const int EVENT_NBT_OPEN_REG_PARAMS = -1073737523;
+    
+    public const int EVENT_NBT_READ_BIND = -1073737510;
+    
+    public const int EVENT_NBT_READ_EXPORT = -1073737509;
+    
+    public const int EVENT_NBT_TIMERS = -1073737514;
+    
+    public const int EVENT_NDIS_ADAPTER_CHECK_ERROR = -1073736793;
+    
+    public const int EVENT_NDIS_ADAPTER_DISABLED = -2147478634;
+    
+    public const int EVENT_NDIS_ADAPTER_NOT_FOUND = -1073736821;
+    
+    public const int EVENT_NDIS_BAD_IO_BASE_ADDRESS = -1073736812;
+    
+    public const int EVENT_NDIS_BAD_VERSION = -1073736818;
+    
+    public const int EVENT_NDIS_CABLE_DISCONNECTED_ERROR = -2147478615;
+    
+    public const int EVENT_NDIS_DMA_CONFLICT = -2147478629;
+    
+    public const int EVENT_NDIS_DRIVER_FAILURE = -1073736819;
+    
+    public const int EVENT_NDIS_HARDWARE_FAILURE = -1073736822;
+    
+    public const int EVENT_NDIS_INTERRUPT_CONFLICT = -2147478630;
+    
+    public const int EVENT_NDIS_INTERRUPT_CONNECT = -1073736820;
+    
+    public const int EVENT_NDIS_INVALID_DOWNLOAD_FILE_ERROR = -1073736804;
+    
+    public const int EVENT_NDIS_INVALID_VALUE_FROM_ADAPTER = -1073736814;
+    
+    public const int EVENT_NDIS_IO_PORT_CONFLICT = -2147478633;
+    
+    public const int EVENT_NDIS_LOBE_FAILUE_ERROR = -2147478621;
+    
+    public const int EVENT_NDIS_MAXFRAMESIZE_ERROR = -2147478625;
+    
+    public const int EVENT_NDIS_MAXINTERNALBUFS_ERROR = -2147478624;
+    
+    public const int EVENT_NDIS_MAXMULTICAST_ERROR = -2147478623;
+    
+    public const int EVENT_NDIS_MAXRECEIVES_ERROR = -2147478627;
+    
+    public const int EVENT_NDIS_MAXTRANSMITS_ERROR = -2147478626;
+    
+    public const int EVENT_NDIS_MEMORY_CONFLICT = -2147478631;
+    
+    public const int EVENT_NDIS_MISSING_CONFIGURATION_PARAMETER = -1073736813;
+    
+    public const int EVENT_NDIS_NETWORK_ADDRESS = -1073736816;
+    
+    public const int EVENT_NDIS_OUT_OF_RESOURCE = -1073736823;
+    
+    public const int EVENT_NDIS_PORT_OR_DMA_CONFLICT = -2147478632;
+    
+    public const int EVENT_NDIS_PRODUCTID_ERROR = -2147478622;
+    
+    public const int EVENT_NDIS_RECEIVE_SPACE_SMALL = 1073746837;
+    
+    public const int EVENT_NDIS_REMOVE_RECEIVED_ERROR = -2147478619;
+    
+    public const int EVENT_NDIS_RESET_FAILURE_CORRECTION = -2147478614;
+    
+    public const int EVENT_NDIS_RESET_FAILURE_ERROR = -2147478616;
+    
+    public const int EVENT_NDIS_RESOURCE_CONFLICT = -1073736824;
+    
+    public const int EVENT_NDIS_SIGNAL_LOSS_ERROR = -2147478620;
+    
+    public const int EVENT_NDIS_TIMEOUT = -2147478641;
+    
+    public const int EVENT_NDIS_TOKEN_RING_CORRECTION = 1073746854;
+    
+    public const int EVENT_NDIS_UNSUPPORTED_CONFIGURATION = -1073736815;
+    
+    public const int EVENT_NOTIFICATION_FAILURE = -1073738745;
+    
+    public const int EVENT_NOTIFICATION_FAILURE_SCOPE_EXCEEDED_LOGGING = -2147480568;
+    
+    public const int EVENT_NOTIFICATION_RESTORED = 1073744905;
+    
+    public const int EVENT_NOTIFICATION_RESTORED_SCOPE_EXCEEDED_LOGGING = -2147480566;
+    
+    public const int EVENT_NOTIFICATION_THREAD_EXIT_FAILED = -1073738725;
+    
+    public const uint EVENT_OBJECT_ACCELERATORCHANGE = 32786;
+    
+    public const uint EVENT_OBJECT_CLOAKED = 32791;
+    
+    public const uint EVENT_OBJECT_CONTENTSCROLLED = 32789;
+    
+    public const uint EVENT_OBJECT_CREATE = 32768;
+    
+    public const uint EVENT_OBJECT_DEFACTIONCHANGE = 32785;
+    
+    public const uint EVENT_OBJECT_DESCRIPTIONCHANGE = 32781;
+    
+    public const uint EVENT_OBJECT_DESTROY = 32769;
+    
+    public const uint EVENT_OBJECT_DRAGCANCEL = 32802;
+    
+    public const uint EVENT_OBJECT_DRAGCOMPLETE = 32803;
+    
+    public const uint EVENT_OBJECT_DRAGDROPPED = 32806;
+    
+    public const uint EVENT_OBJECT_DRAGENTER = 32804;
+    
+    public const uint EVENT_OBJECT_DRAGLEAVE = 32805;
+    
+    public const uint EVENT_OBJECT_DRAGSTART = 32801;
+    
+    public const uint EVENT_OBJECT_END = 33023;
+    
+    public const uint EVENT_OBJECT_FOCUS = 32773;
+    
+    public const uint EVENT_OBJECT_HELPCHANGE = 32784;
+    
+    public const uint EVENT_OBJECT_HIDE = 32771;
+    
+    public const uint EVENT_OBJECT_HOSTEDOBJECTSINVALIDATED = 32800;
+    
+    public const uint EVENT_OBJECT_IME_CHANGE = 32809;
+    
+    public const uint EVENT_OBJECT_IME_HIDE = 32808;
+    
+    public const uint EVENT_OBJECT_IME_SHOW = 32807;
+    
+    public const uint EVENT_OBJECT_INVOKED = 32787;
+    
+    public const uint EVENT_OBJECT_LIVEREGIONCHANGED = 32793;
+    
+    public const uint EVENT_OBJECT_LOCATIONCHANGE = 32779;
+    
+    public const uint EVENT_OBJECT_NAMECHANGE = 32780;
+    
+    public const uint EVENT_OBJECT_PARENTCHANGE = 32783;
+    
+    public const uint EVENT_OBJECT_REORDER = 32772;
+    
+    public const uint EVENT_OBJECT_SELECTION = 32774;
+    
+    public const uint EVENT_OBJECT_SELECTIONADD = 32775;
+    
+    public const uint EVENT_OBJECT_SELECTIONREMOVE = 32776;
+    
+    public const uint EVENT_OBJECT_SELECTIONWITHIN = 32777;
+    
+    public const uint EVENT_OBJECT_SHOW = 32770;
+    
+    public const uint EVENT_OBJECT_STATECHANGE = 32778;
+    
+    public const uint EVENT_OBJECT_TEXTEDIT_CONVERSIONTARGETCHANGED = 32816;
+    
+    public const uint EVENT_OBJECT_TEXTSELECTIONCHANGED = 32788;
+    
+    public const uint EVENT_OBJECT_UNCLOAKED = 32792;
+    
+    public const uint EVENT_OBJECT_VALUECHANGE = 32782;
+    
+    public const uint EVENT_OEM_DEFINED_END = 511;
+    
+    public const uint EVENT_OEM_DEFINED_START = 257;
+    
+    public const int EVENT_OUTOFMEMORY = -1073740817;
+    
+    public const int EVENT_PERF_COUNTERS_ALREADY_EXISTS = -2147473626;
+    
+    public const int EVENT_PERF_COUNTERS_NOT_LOADED = -2147473628;
+    
+    public const int EVENT_PERF_COUNTERS_REGISTRY_TROUBLE = -2147473627;
+    
+    public const int EVENT_PROTOCOL_HOST_FORCE_TERMINATE = -2147473625;
+    
+    public const int EVENT_PS_ADMISSIONCONTROL_OVERFLOW = -2147469537;
+    
+    public const int EVENT_PS_BAD_BESTEFFORT_LIMIT = -2147469548;
+    
+    public const int EVENT_PS_BINDING_FAILED = -1073727720;
+    
+    public const int EVENT_PS_GPC_REGISTER_FAILED = -1073727824;
+    
+    public const int EVENT_PS_INIT_DEVICE_FAILED = -1073727717;
+    
+    public const int EVENT_PS_MISSING_ADAPTER_REGISTRY_DATA = -1073727719;
+    
+    public const int EVENT_PS_NETWORK_ADDRESS_FAIL = -1073727712;
+    
+    public const int EVENT_PS_NO_RESOURCES_FOR_INIT = -1073727823;
+    
+    public const int EVENT_PS_QUERY_OID_GEN_LINK_SPEED = -1073727721;
+    
+    public const int EVENT_PS_QUERY_OID_GEN_MAXIMUM_FRAME_SIZE = -1073727723;
+    
+    public const int EVENT_PS_QUERY_OID_GEN_MAXIMUM_TOTAL_SIZE = -1073727722;
+    
+    public const int EVENT_PS_REGISTER_ADDRESS_FAMILY_FAILED = -1073727718;
+    
+    public const int EVENT_PS_REGISTER_MINIPORT_FAILED = -1073727821;
+    
+    public const int EVENT_PS_REGISTER_PROTOCOL_FAILED = -1073727822;
+    
+    public const int EVENT_PS_RESOURCE_POOL = -1073727714;
+    
+    public const int EVENT_PS_WAN_LIMITED_BESTEFFORT = -2147469539;
+    
+    public const int EVENT_PS_WMI_INSTANCE_NAME_FAILED = -1073727716;
+    
+    public const int EVENT_RDR_AT_THREAD_MAX = -2147480622;
+    
+    public const int EVENT_RDR_CANT_BIND_TRANSPORT = -2147480616;
+    
+    public const int EVENT_RDR_CANT_BUILD_SMB_HEADER = -2147480613;
+    
+    public const int EVENT_RDR_CANT_CREATE_DEVICE = -2147480646;
+    
+    public const int EVENT_RDR_CANT_CREATE_THREAD = -2147480645;
+    
+    public const int EVENT_RDR_CANT_GET_SECURITY_CONTEXT = -2147480614;
+    
+    public const int EVENT_RDR_CANT_READ_REGISTRY = -2147480621;
+    
+    public const int EVENT_RDR_CANT_REGISTER_ADDRESS = -2147480615;
+    
+    public const int EVENT_RDR_CANT_SET_THREAD = -2147480644;
+    
+    public const int EVENT_RDR_CLOSE_BEHIND = -2147480637;
+    
+    public const int EVENT_RDR_CONNECTION = -2147480629;
+    
+    public const int EVENT_RDR_CONNECTION_REFERENCE = -2147480633;
+    
+    public const int EVENT_RDR_CONTEXTS = -2147480624;
+    
+    public const int EVENT_RDR_DELAYED_SET_ATTRIBUTES_FAILED = -2147480618;
+    
+    public const int EVENT_RDR_DELETEONCLOSE_FAILED = -2147480617;
+    
+    public const int EVENT_RDR_DISPOSITION = -2147480625;
+    
+    public const int EVENT_RDR_ENCRYPT = -2147480630;
+    
+    public const int EVENT_RDR_FAILED_UNLOCK = -2147480639;
+    
+    public const int EVENT_RDR_INVALID_LOCK_REPLY = -2147480641;
+    
+    public const int EVENT_RDR_INVALID_OPLOCK = -2147480634;
+    
+    public const int EVENT_RDR_INVALID_REPLY = -2147480643;
+    
+    public const int EVENT_RDR_INVALID_SMB = -2147480642;
+    
+    public const int EVENT_RDR_MAXCMDS = -2147480627;
+    
+    public const int EVENT_RDR_OPLOCK_SMB = -2147480626;
+    
+    public const int EVENT_RDR_PRIMARY_TRANSPORT_CONNECT_FAILED = -2147480619;
+    
+    public const int EVENT_RDR_RESOURCE_SHORTAGE = -2147480647;
+    
+    public const int EVENT_RDR_SECURITY_SIGNATURE_MISMATCH = -2147480612;
+    
+    public const int EVENT_RDR_SERVER_REFERENCE = -2147480632;
+    
+    public const int EVENT_RDR_SMB_REFERENCE = -2147480631;
+    
+    public const int EVENT_RDR_TIMEOUT = -2147480635;
+    
+    public const int EVENT_RDR_TIMEZONE_BIAS_TOO_LARGE = -2147480620;
+    
+    public const int EVENT_RDR_UNEXPECTED_ERROR = -2147480636;
+    
+    public const int EVENT_RDR_WRITE_BEHIND_FLUSH_FAILED = -2147480623;
+    
+    public const int EVENT_READFILE_TIMEOUT = -1073734814;
+    
+    public const int EVENT_REG_VERSION = -1073738790;
+    
+    public const int EVENT_REVERTED_TO_LASTKNOWNGOOD = -1073734817;
+    
+    public const int EVENT_RPCSS_ACTIVATION_ERROR = -1073731817;
+    
+    public const int EVENT_RPCSS_CREATEDEBUGGERPROCESS_FAILURE = -1073731794;
+    
+    public const int EVENT_RPCSS_CREATEPROCESS_FAILURE = -1073731824;
+    
+    public const int EVENT_RPCSS_DEFAULT_LAUNCH_ACCESS_DENIED = -1073731821;
+    
+    public const int EVENT_RPCSS_LAUNCH_ACCESS_DENIED = -1073731822;
+    
+    public const int EVENT_RPCSS_REMOTE_SIDE_ERROR = -1073731818;
+    
+    public const int EVENT_RPCSS_REMOTE_SIDE_ERROR_WITH_FILE = -1073731816;
+    
+    public const int EVENT_RPCSS_REMOTE_SIDE_UNAVAILABLE = -1073731815;
+    
+    public const int EVENT_RPCSS_RUNAS_CANT_LOGIN = -1073731820;
+    
+    public const int EVENT_RPCSS_RUNAS_CREATEPROCESS_FAILURE = -1073731823;
+    
+    public const int EVENT_RPCSS_SERVER_NOT_RESPONDING = -1073731813;
+    
+    public const int EVENT_RPCSS_SERVER_START_TIMEOUT = -1073731814;
+    
+    public const int EVENT_RPCSS_START_SERVICE_FAILURE = -1073731819;
+    
+    public const int EVENT_RPCSS_STOP_SERVICE_FAILURE = -1073731795;
+    
+    public const int EVENT_RUNNING_LASTKNOWNGOOD = -1073734797;
+    
+    public const int EVENT_S_FIRST = 262656;
+    
+    public const int EVENT_S_LAST = 262687;
+    
+    public const int EVENT_SCOPE_LABEL_TOO_LONG = -2147479331;
+    
+    public const int EVENT_SCOPE_TOO_LONG = -2147479330;
+    
+    public const int EVENT_SECOND_LOGON_FAILED = -1073734810;
+    
+    public const int EVENT_SERVICE_CONFIG_BACKOUT_FAILED = -1073734787;
+    
+    public const int EVENT_SERVICE_CONTROL_SUCCESS = 1073748859;
+    
+    public const int EVENT_SERVICE_CRASH = -1073734793;
+    
+    public const int EVENT_SERVICE_CRASH_NO_ACTION = -1073734790;
+    
+    public const int EVENT_SERVICE_DIFFERENT_PID_CONNECTED = -2147476609;
+    
+    public const int EVENT_SERVICE_EXIT_FAILED = -1073734801;
+    
+    public const int EVENT_SERVICE_EXIT_FAILED_SPECIFIC = -1073734800;
+    
+    public const int EVENT_SERVICE_LOGON_TYPE_NOT_GRANTED = -1073734783;
+    
+    public const int EVENT_SERVICE_NOT_INTERACTIVE = -1073734794;
+    
+    public const int EVENT_SERVICE_RECOVERY_FAILED = -1073734792;
+    
+    public const int EVENT_SERVICE_SCESRV_FAILED = -1073734791;
+    
+    public const int EVENT_SERVICE_SHUTDOWN_FAILED = -1073734781;
+    
+    public const int EVENT_SERVICE_START_AT_BOOT_FAILED = -1073734799;
+    
+    public const int EVENT_SERVICE_START_FAILED = -1073734824;
+    
+    public const int EVENT_SERVICE_START_FAILED_GROUP = -1073734822;
+    
+    public const int EVENT_SERVICE_START_FAILED_II = -1073734823;
+    
+    public const int EVENT_SERVICE_START_FAILED_NONE = -1073734821;
+    
+    public const int EVENT_SERVICE_START_HUNG = -1073734802;
+    
+    public const int EVENT_SERVICE_START_TYPE_CHANGED = 1073748864;
+    
+    public const int EVENT_SERVICE_STATUS_SUCCESS = 1073748860;
+    
+    public const int EVENT_SERVICE_STOP_SUCCESS_WITH_REASON = 1073748866;
+    
+    public const int EVENT_SEVERE_SERVICE_FAILED = -1073734803;
+    
+    public const uint EVENT_SRCSPEW = 100;
+    
+    public const uint EVENT_SRCSPEW_END = 199;
+    
+    public const uint EVENT_SRCSPEW_START = 100;
+    
+    public const int EVENT_SRV_CANT_BIND_DUP_NAME = -1073739319;
+    
+    public const int EVENT_SRV_CANT_BIND_TO_TRANSPORT = -2147481144;
+    
+    public const int EVENT_SRV_CANT_CHANGE_DOMAIN_NAME = -2147481136;
+    
+    public const int EVENT_SRV_CANT_CREATE_DEVICE = -1073739822;
+    
+    public const int EVENT_SRV_CANT_CREATE_PROCESS = -1073739821;
+    
+    public const int EVENT_SRV_CANT_CREATE_THREAD = -1073739820;
+    
+    public const int EVENT_SRV_CANT_GROW_TABLE = -2147481639;
+    
+    public const int EVENT_SRV_CANT_LOAD_DRIVER = -2147481140;
+    
+    public const int EVENT_SRV_CANT_MAP_ERROR = -2147481138;
+    
+    public const int EVENT_SRV_CANT_OPEN_NPFS = -1073739817;
+    
+    public const int EVENT_SRV_CANT_RECREATE_SHARE = -2147481137;
+    
+    public const int EVENT_SRV_CANT_START_SCAVENGER = -1073739814;
+    
+    public const int EVENT_SRV_CANT_UNLOAD_DRIVER = -2147481139;
+    
+    public const int EVENT_SRV_DISK_FULL = -2147481635;
+    
+    public const int EVENT_SRV_DOS_ATTACK_DETECTED = -2147481623;
+    
+    public const int EVENT_SRV_INVALID_REGISTRY_VALUE = -2147481142;
+    
+    public const int EVENT_SRV_INVALID_REQUEST = -1073739818;
+    
+    public const int EVENT_SRV_INVALID_SD = -2147481141;
+    
+    public const int EVENT_SRV_IRP_STACK_SIZE = -1073739813;
+    
+    public const int EVENT_SRV_KEY_NOT_CREATED = -1073739322;
+    
+    public const int EVENT_SRV_KEY_NOT_FOUND = -1073739323;
+    
+    public const int EVENT_SRV_NETWORK_ERROR = -2147481636;
+    
+    public const int EVENT_SRV_NO_BLOCKING_IO = -2147481624;
+    
+    public const int EVENT_SRV_NO_FREE_CONNECTIONS = -2147481626;
+    
+    public const int EVENT_SRV_NO_FREE_RAW_WORK_ITEM = -2147481625;
+    
+    public const int EVENT_SRV_NO_NONPAGED_POOL = -1073739805;
+    
+    public const int EVENT_SRV_NO_PAGED_POOL = -1073739804;
+    
+    public const int EVENT_SRV_NO_TRANSPORTS_BOUND = -1073739321;
+    
+    public const int EVENT_SRV_NO_VIRTUAL_MEMORY = -1073739808;
+    
+    public const int EVENT_SRV_NO_WORK_ITEM = -2147481627;
+    
+    public const int EVENT_SRV_NONPAGED_POOL_LIMIT = -1073739807;
+    
+    public const int EVENT_SRV_OUT_OF_WORK_ITEM_DOS = -2147481621;
+    
+    public const int EVENT_SRV_PAGED_POOL_LIMIT = -1073739806;
+    
+    public const int EVENT_SRV_RESOURCE_SHORTAGE = -1073739823;
+    
+    public const int EVENT_SRV_SERVICE_FAILED = -1073739824;
+    
+    public const int EVENT_SRV_TOO_MANY_DOS = -2147481622;
+    
+    public const int EVENT_SRV_TXF_INIT_FAILED = -2147481135;
+    
+    public const int EVENT_SRV_UNEXPECTED_DISC = -1073739819;
+    
+    public const int EVENT_SSSEARCH_CREATE_PATH_RULES_FAILED = -2147482634;
+    
+    public const int EVENT_SSSEARCH_CSM_SAVE_FAILED = -1073740805;
+    
+    public const int EVENT_SSSEARCH_DATAFILES_MOVE_FAILED = -1073740808;
+    
+    public const int EVENT_SSSEARCH_DATAFILES_MOVE_ROLLBACK_ERRORS = -2147482630;
+    
+    public const int EVENT_SSSEARCH_DATAFILES_MOVE_SUCCEEDED = 1073742841;
+    
+    public const int EVENT_SSSEARCH_DROPPED_EVENTS = -2147482633;
+    
+    public const int EVENT_SSSEARCH_SETUP_CLEANUP_FAILED = -1073740813;
+    
+    public const int EVENT_SSSEARCH_SETUP_CLEANUP_STARTED = -2147482640;
+    
+    public const int EVENT_SSSEARCH_SETUP_CLEANUP_SUCCEEDED = 1073742834;
+    
+    public const int EVENT_SSSEARCH_SETUP_FAILED = -1073740818;
+    
+    public const int EVENT_SSSEARCH_SETUP_SUCCEEDED = 1073742829;
+    
+    public const int EVENT_SSSEARCH_STARTED = 1073742827;
+    
+    public const int EVENT_SSSEARCH_STARTING_SETUP = 1073742828;
+    
+    public const int EVENT_SSSEARCH_STOPPED = 1073742837;
+    
+    public const int EVENT_STREAMS_ALLOCB_FAILURE = -2147479647;
+    
+    public const int EVENT_STREAMS_ALLOCB_FAILURE_CNT = -2147479646;
+    
+    public const int EVENT_STREAMS_ESBALLOC_FAILURE = -2147479645;
+    
+    public const int EVENT_STREAMS_ESBALLOC_FAILURE_CNT = -2147479644;
+    
+    public const int EVENT_STREAMS_STRLOG = -1073737824;
+    
+    public const int EVENT_STS_INIT_SECURITY_FAILED = -2147480554;
+    
+    public const uint EVENT_SYSTEM_ALERT = 2;
+    
+    public const uint EVENT_SYSTEM_ARRANGMENTPREVIEW = 32790;
+    
+    public const uint EVENT_SYSTEM_CAPTUREEND = 9;
+    
+    public const uint EVENT_SYSTEM_CAPTURESTART = 8;
+    
+    public const uint EVENT_SYSTEM_CONTEXTHELPEND = 13;
+    
+    public const uint EVENT_SYSTEM_CONTEXTHELPSTART = 12;
+    
+    public const uint EVENT_SYSTEM_DESKTOPSWITCH = 32;
+    
+    public const uint EVENT_SYSTEM_DIALOGEND = 17;
+    
+    public const uint EVENT_SYSTEM_DIALOGSTART = 16;
+    
+    public const uint EVENT_SYSTEM_DRAGDROPEND = 15;
+    
+    public const uint EVENT_SYSTEM_DRAGDROPSTART = 14;
+    
+    public const uint EVENT_SYSTEM_END = 255;
+    
+    public const int EVENT_SYSTEM_EXCEPTION = -2147482595;
+    
+    public const uint EVENT_SYSTEM_FOREGROUND = 3;
+    
+    public const uint EVENT_SYSTEM_IME_KEY_NOTIFICATION = 41;
+    
+    public const uint EVENT_SYSTEM_MENUEND = 5;
+    
+    public const uint EVENT_SYSTEM_MENUPOPUPEND = 7;
+    
+    public const uint EVENT_SYSTEM_MENUPOPUPSTART = 6;
+    
+    public const uint EVENT_SYSTEM_MENUSTART = 4;
+    
+    public const uint EVENT_SYSTEM_MINIMIZEEND = 23;
+    
+    public const uint EVENT_SYSTEM_MINIMIZESTART = 22;
+    
+    public const uint EVENT_SYSTEM_MOVESIZEEND = 11;
+    
+    public const uint EVENT_SYSTEM_MOVESIZESTART = 10;
+    
+    public const uint EVENT_SYSTEM_SCROLLINGEND = 19;
+    
+    public const uint EVENT_SYSTEM_SCROLLINGSTART = 18;
+    
+    public const uint EVENT_SYSTEM_SOUND = 1;
+    
+    public const uint EVENT_SYSTEM_SWITCHEND = 21;
+    
+    public const uint EVENT_SYSTEM_SWITCHER_APPDROPPED = 38;
+    
+    public const uint EVENT_SYSTEM_SWITCHER_APPGRABBED = 36;
+    
+    public const uint EVENT_SYSTEM_SWITCHER_APPOVERTARGET = 37;
+    
+    public const uint EVENT_SYSTEM_SWITCHER_CANCELLED = 39;
+    
+    public const uint EVENT_SYSTEM_SWITCHSTART = 20;
+    
+    public const int EVENT_TAKE_OWNERSHIP = -1073734796;
+    
+    public const int EVENT_TCPIP_ADAPTER_REG_FAILURE = -1073737633;
+    
+    public const int EVENT_TCPIP_ADDRESS_CONFLICT1 = -1073737626;
+    
+    public const int EVENT_TCPIP_ADDRESS_CONFLICT2 = -1073737625;
+    
+    public const int EVENT_TCPIP_AUTOCONFIGURED_ADDRESS_LIMIT_REACHED = -2147479444;
+    
+    public const int EVENT_TCPIP_AUTOCONFIGURED_ROUTE_LIMIT_REACHED = -2147479443;
+    
+    public const int EVENT_TCPIP_CREATE_DEVICE_FAILED = -1073737724;
+    
+    public const int EVENT_TCPIP_DHCP_INIT_FAILED = -2147479458;
+    
+    public const int EVENT_TCPIP_INTERFACE_BIND_FAILURE = -1073737617;
+    
+    public const int EVENT_TCPIP_INVALID_ADDRESS = -1073737637;
+    
+    public const int EVENT_TCPIP_INVALID_DEFAULT_GATEWAY = -2147479456;
+    
+    public const int EVENT_TCPIP_INVALID_MASK = -1073737636;
+    
+    public const int EVENT_TCPIP_IP_INIT_FAILED = -1073737628;
+    
+    public const int EVENT_TCPIP_IPV4_UNINSTALLED = 1073746027;
+    
+    public const int EVENT_TCPIP_MEDIA_CONNECT = 1073746025;
+    
+    public const int EVENT_TCPIP_MEDIA_DISCONNECT = 1073746026;
+    
+    public const int EVENT_TCPIP_NO_ADAPTER_RESOURCES = -1073737635;
+    
+    public const int EVENT_TCPIP_NO_ADDRESS_LIST = -1073737631;
+    
+    public const int EVENT_TCPIP_NO_BINDINGS = -1073737629;
+    
+    public const int EVENT_TCPIP_NO_MASK = -1073737638;
+    
+    public const int EVENT_TCPIP_NO_MASK_LIST = -1073737630;
+    
+    public const int EVENT_TCPIP_NO_RESOURCES_FOR_INIT = -1073737723;
+    
+    public const int EVENT_TCPIP_NTE_CONTEXT_LIST_FAILURE = -1073737624;
+    
+    public const int EVENT_TCPIP_OUT_OF_ORDER_FRAGMENTS_EXCEEDED = -2147479442;
+    
+    public const int EVENT_TCPIP_PCF_CLEAR_FILTER_FAILURE = -1073737530;
+    
+    public const int EVENT_TCPIP_PCF_MISSING_CAPABILITY = -2147479357;
+    
+    public const int EVENT_TCPIP_PCF_MULTICAST_OID_ISSUE = -2147479358;
+    
+    public const int EVENT_TCPIP_PCF_NO_ARP_FILTER = -2147479355;
+    
+    public const int EVENT_TCPIP_PCF_SET_FILTER_FAILURE = -2147479356;
+    
+    public const int EVENT_TCPIP_TCP_CONNECT_LIMIT_REACHED = -2147479422;
+    
+    public const int EVENT_TCPIP_TCP_CONNECTIONS_PERF_IMPACTED = -2147479418;
+    
+    public const int EVENT_TCPIP_TCP_GLOBAL_EPHEMERAL_PORT_SPACE_EXHAUSTED = -2147479417;
+    
+    public const int EVENT_TCPIP_TCP_INIT_FAILED = -1073737599;
+    
+    public const int EVENT_TCPIP_TCP_MPP_ATTACKS_DETECTED = -2147479419;
+    
+    public const int EVENT_TCPIP_TCP_TIME_WAIT_COLLISION = -2147479421;
+    
+    public const int EVENT_TCPIP_TCP_WSD_WS_RESTRICTED = -2147479420;
+    
+    public const int EVENT_TCPIP_TOO_MANY_GATEWAYS = -2147479451;
+    
+    public const int EVENT_TCPIP_TOO_MANY_NETS = -1073737639;
+    
+    public const int EVENT_TCPIP_UDP_GLOBAL_EPHEMERAL_PORT_SPACE_EXHAUSTED = -2147479382;
+    
+    public const int EVENT_TCPIP_UDP_LIMIT_REACHED = -2147479383;
+    
+    public const int EVENT_TCPIP6_STARTED = 1073744924;
+    
+    public const uint EVENT_TRACE_ADD_HEADER_MODE = 4096;
+    
+    public const uint EVENT_TRACE_ADDTO_TRIAGE_DUMP = 2147483648;
+    
+    public const uint EVENT_TRACE_BUFFERING_MODE = 1024;
+    
+    public const uint EVENT_TRACE_COMPRESSED_MODE = 67108864;
+    
+    public const uint EVENT_TRACE_CONTROL_CONVERT_TO_REALTIME = 5;
+    
+    public const uint EVENT_TRACE_CONTROL_INCREMENT_FILE = 4;
+    
+    public const uint EVENT_TRACE_DELAY_OPEN_FILE_MODE = 512;
+    
+    public const uint EVENT_TRACE_FILE_MODE_APPEND = 4;
+    
+    public const uint EVENT_TRACE_FILE_MODE_CIRCULAR = 2;
+    
+    public const uint EVENT_TRACE_FILE_MODE_NEWFILE = 8;
+    
+    public const uint EVENT_TRACE_FILE_MODE_NONE = 0;
+    
+    public const uint EVENT_TRACE_FILE_MODE_PREALLOCATE = 32;
+    
+    public const uint EVENT_TRACE_FILE_MODE_SEQUENTIAL = 1;
+    
+    public const uint EVENT_TRACE_FLAG_DEBUG_EVENTS = 4194304;
+    
+    public const uint EVENT_TRACE_FLAG_ENABLE_RESERVE = 536870912;
+    
+    public const uint EVENT_TRACE_FLAG_EXTENSION = 2147483648;
+    
+    public const uint EVENT_TRACE_FLAG_FORWARD_WMI = 1073741824;
+    
+    public const uint EVENT_TRACE_INDEPENDENT_SESSION_MODE = 134217728;
+    
+    public const uint EVENT_TRACE_MODE_RESERVED = 1048576;
+    
+    public const uint EVENT_TRACE_NO_PER_PROCESSOR_BUFFERING = 268435456;
+    
+    public const uint EVENT_TRACE_NONSTOPPABLE_MODE = 64;
+    
+    public const uint EVENT_TRACE_PERSIST_ON_HYBRID_SHUTDOWN = 8388608;
+    
+    public const uint EVENT_TRACE_PRIVATE_IN_PROC = 131072;
+    
+    public const uint EVENT_TRACE_PRIVATE_LOGGER_MODE = 2048;
+    
+    public const uint EVENT_TRACE_REAL_TIME_MODE = 256;
+    
+    public const uint EVENT_TRACE_RELOG_MODE = 65536;
+    
+    public const uint EVENT_TRACE_SECURE_MODE = 128;
+    
+    public const uint EVENT_TRACE_STOP_ON_HYBRID_SHUTDOWN = 4194304;
+    
+    public const uint EVENT_TRACE_SYSTEM_LOGGER_MODE = 33554432;
+    
+    public const uint EVENT_TRACE_TYPE_ACCEPT = 15;
+    
+    public const uint EVENT_TRACE_TYPE_ACKDUP = 22;
+    
+    public const uint EVENT_TRACE_TYPE_ACKFULL = 20;
+    
+    public const uint EVENT_TRACE_TYPE_ACKPART = 21;
+    
+    public const uint EVENT_TRACE_TYPE_CHECKPOINT = 8;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG = 11;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_BOOT = 37;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_CI_INFO = 29;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_CPU = 10;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_DEFRAG = 31;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_DEVICEFAMILY = 33;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_DPI = 28;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_FLIGHTID = 34;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_IDECHANNEL = 23;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_IRQ = 21;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_LOGICALDISK = 12;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_MACHINEID = 30;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_MOBILEPLATFORM = 32;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_NETINFO = 17;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_NIC = 13;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_NUMANODE = 24;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_OPTICALMEDIA = 18;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PHYSICALDISK = 11;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PHYSICALDISK_EX = 19;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PLATFORM = 25;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PNP = 22;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_POWER = 16;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PROCESSOR = 35;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PROCESSORGROUP = 26;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_PROCESSORNUMBER = 27;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_SERVICES = 15;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_VIDEO = 14;
+    
+    public const uint EVENT_TRACE_TYPE_CONFIG_VIRTUALIZATION = 36;
+    
+    public const uint EVENT_TRACE_TYPE_CONNECT = 12;
+    
+    public const uint EVENT_TRACE_TYPE_CONNFAIL = 17;
+    
+    public const uint EVENT_TRACE_TYPE_COPY_ARP = 19;
+    
+    public const uint EVENT_TRACE_TYPE_COPY_TCP = 18;
+    
+    public const uint EVENT_TRACE_TYPE_DBGID_RSDS = 64;
+    
+    public const uint EVENT_TRACE_TYPE_DC_END = 4;
+    
+    public const uint EVENT_TRACE_TYPE_DC_START = 3;
+    
+    public const uint EVENT_TRACE_TYPE_DEQUEUE = 7;
+    
+    public const uint EVENT_TRACE_TYPE_DISCONNECT = 13;
+    
+    public const uint EVENT_TRACE_TYPE_END = 2;
+    
+    public const uint EVENT_TRACE_TYPE_EXTENSION = 5;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_POSTOP_COMPLETION = 99;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_POSTOP_FAILURE = 101;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_POSTOP_INIT = 97;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_PREOP_COMPLETION = 98;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_PREOP_FAILURE = 100;
+    
+    public const uint EVENT_TRACE_TYPE_FLT_PREOP_INIT = 96;
+    
+    public const uint EVENT_TRACE_TYPE_GUIDMAP = 10;
+    
+    public const uint EVENT_TRACE_TYPE_INFO = 0;
+    
+    public const uint EVENT_TRACE_TYPE_IO_FLUSH = 14;
+    
+    public const uint EVENT_TRACE_TYPE_IO_FLUSH_INIT = 15;
+    
+    public const uint EVENT_TRACE_TYPE_IO_READ = 10;
+    
+    public const uint EVENT_TRACE_TYPE_IO_READ_INIT = 12;
+    
+    public const uint EVENT_TRACE_TYPE_IO_REDIRECTED_INIT = 16;
+    
+    public const uint EVENT_TRACE_TYPE_IO_WRITE = 11;
+    
+    public const uint EVENT_TRACE_TYPE_IO_WRITE_INIT = 13;
+    
+    public const uint EVENT_TRACE_TYPE_LOAD = 10;
+    
+    public const uint EVENT_TRACE_TYPE_MM_AV = 15;
+    
+    public const uint EVENT_TRACE_TYPE_MM_COW = 12;
+    
+    public const uint EVENT_TRACE_TYPE_MM_DZF = 11;
+    
+    public const uint EVENT_TRACE_TYPE_MM_GPF = 13;
+    
+    public const uint EVENT_TRACE_TYPE_MM_HPF = 14;
+    
+    public const uint EVENT_TRACE_TYPE_MM_TF = 10;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_FLUSH = 57;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_FLUSH_INIT = 60;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_READ = 55;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_READ_INIT = 58;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_WRITE = 56;
+    
+    public const uint EVENT_TRACE_TYPE_OPTICAL_IO_WRITE_INIT = 59;
+    
+    public const uint EVENT_TRACE_TYPE_RECEIVE = 11;
+    
+    public const uint EVENT_TRACE_TYPE_RECONNECT = 16;
+    
+    public const uint EVENT_TRACE_TYPE_REGCLOSE = 27;
+    
+    public const uint EVENT_TRACE_TYPE_REGCOMMIT = 30;
+    
+    public const uint EVENT_TRACE_TYPE_REGCREATE = 10;
+    
+    public const uint EVENT_TRACE_TYPE_REGDELETE = 12;
+    
+    public const uint EVENT_TRACE_TYPE_REGDELETEVALUE = 15;
+    
+    public const uint EVENT_TRACE_TYPE_REGENUMERATEKEY = 17;
+    
+    public const uint EVENT_TRACE_TYPE_REGENUMERATEVALUEKEY = 18;
+    
+    public const uint EVENT_TRACE_TYPE_REGFLUSH = 21;
+    
+    public const uint EVENT_TRACE_TYPE_REGKCBCREATE = 22;
+    
+    public const uint EVENT_TRACE_TYPE_REGKCBDELETE = 23;
+    
+    public const uint EVENT_TRACE_TYPE_REGKCBRUNDOWNBEGIN = 24;
+    
+    public const uint EVENT_TRACE_TYPE_REGKCBRUNDOWNEND = 25;
+    
+    public const uint EVENT_TRACE_TYPE_REGMOUNTHIVE = 33;
+    
+    public const uint EVENT_TRACE_TYPE_REGOPEN = 11;
+    
+    public const uint EVENT_TRACE_TYPE_REGPREPARE = 31;
+    
+    public const uint EVENT_TRACE_TYPE_REGQUERY = 13;
+    
+    public const uint EVENT_TRACE_TYPE_REGQUERYMULTIPLEVALUE = 19;
+    
+    public const uint EVENT_TRACE_TYPE_REGQUERYSECURITY = 29;
+    
+    public const uint EVENT_TRACE_TYPE_REGQUERYVALUE = 16;
+    
+    public const uint EVENT_TRACE_TYPE_REGROLLBACK = 32;
+    
+    public const uint EVENT_TRACE_TYPE_REGSETINFORMATION = 20;
+    
+    public const uint EVENT_TRACE_TYPE_REGSETSECURITY = 28;
+    
+    public const uint EVENT_TRACE_TYPE_REGSETVALUE = 14;
+    
+    public const uint EVENT_TRACE_TYPE_REGVIRTUALIZE = 26;
+    
+    public const uint EVENT_TRACE_TYPE_REPLY = 6;
+    
+    public const uint EVENT_TRACE_TYPE_RESUME = 7;
+    
+    public const uint EVENT_TRACE_TYPE_RETRANSMIT = 14;
+    
+    public const uint EVENT_TRACE_TYPE_SECURITY = 13;
+    
+    public const uint EVENT_TRACE_TYPE_SEND = 10;
+    
+    public const uint EVENT_TRACE_TYPE_SIDINFO = 12;
+    
+    public const uint EVENT_TRACE_TYPE_START = 1;
+    
+    public const uint EVENT_TRACE_TYPE_STOP = 2;
+    
+    public const uint EVENT_TRACE_TYPE_SUSPEND = 8;
+    
+    public const uint EVENT_TRACE_TYPE_TERMINATE = 11;
+    
+    public const uint EVENT_TRACE_TYPE_WINEVT_RECEIVE = 240;
+    
+    public const uint EVENT_TRACE_TYPE_WINEVT_SEND = 9;
+    
+    public const uint EVENT_TRACE_USE_GLOBAL_SEQUENCE = 16384;
+    
+    public const uint EVENT_TRACE_USE_KBYTES_FOR_SIZE = 8192;
+    
+    public const uint EVENT_TRACE_USE_LOCAL_SEQUENCE = 32768;
+    
+    public const uint EVENT_TRACE_USE_NOCPUTIME = 2;
+    
+    public const uint EVENT_TRACE_USE_PAGED_MEMORY = 16777216;
+    
+    public const uint EVENT_TRACE_USE_PROCTIME = 1;
+    
+    public const int EVENT_TRANSACT_INVALID = -1073734812;
+    
+    public const int EVENT_TRANSACT_TIMEOUT = -1073734813;
+    
+    public const int EVENT_TRANSACTION_READ = -1073738809;
+    
+    public const int EVENT_TRANSLOG_APPEND = -1073738814;
+    
+    public const int EVENT_TRANSLOG_CREATE = -1073738791;
+    
+    public const int EVENT_TRANSLOG_CREATE_TRX = -1073738815;
+    
+    public const int EVENT_TRANSLOG_UPDATE = -1073738813;
+    
+    public const int EVENT_TRANSPORT_ADAPTER_NOT_FOUND = -1073732818;
+    
+    public const int EVENT_TRANSPORT_BAD_PROTOCOL = 1073750835;
+    
+    public const int EVENT_TRANSPORT_BINDING_FAILED = -1073732819;
+    
+    public const int EVENT_TRANSPORT_QUERY_OID_FAILED = -1073732816;
+    
+    public const int EVENT_TRANSPORT_REGISTER_FAILED = -1073732820;
+    
+    public const int EVENT_TRANSPORT_RESOURCE_LIMIT = -2147474646;
+    
+    public const int EVENT_TRANSPORT_RESOURCE_POOL = -2147474647;
+    
+    public const int EVENT_TRANSPORT_RESOURCE_SPECIFIC = -2147474645;
+    
+    public const int EVENT_TRANSPORT_SET_OID_FAILED = -1073732817;
+    
+    public const int EVENT_TRANSPORT_TOO_MANY_LINKS = 1073750834;
+    
+    public const int EVENT_TRANSPORT_TRANSFER_DATA = 1073750833;
+    
+    public const int EVENT_TRK_INTERNAL_ERROR = -1073729324;
+    
+    public const int EVENT_TRK_SERVICE_CORRUPT_LOG = -1073729321;
+    
+    public const int EVENT_TRK_SERVICE_DUPLICATE_VOLIDS = 1073754331;
+    
+    public const int EVENT_TRK_SERVICE_MOVE_QUOTA_EXCEEDED = -2147471140;
+    
+    public const int EVENT_TRK_SERVICE_START_FAILURE = -1073729322;
+    
+    public const int EVENT_TRK_SERVICE_START_SUCCESS = 1073754325;
+    
+    public const int EVENT_TRK_SERVICE_VOL_QUOTA_EXCEEDED = -2147471144;
+    
+    public const int EVENT_TRK_SERVICE_VOLUME_CLAIM = 1073754330;
+    
+    public const int EVENT_TRK_SERVICE_VOLUME_CREATE = 1073754329;
+    
+    public const uint EVENT_UIA_EVENTID_END = 20223;
+    
+    public const uint EVENT_UIA_EVENTID_START = 19968;
+    
+    public const uint EVENT_UIA_PROPID_END = 30207;
+    
+    public const uint EVENT_UIA_PROPID_START = 29952;
+    
+    public const int EVENT_UNPRIVILEGED_SERVICE_ACCOUNT = -2147482596;
+    
+    public const int EVENT_UP_DRIVER_ON_MP = -1073735724;
+    
+    public const int EVENT_USING_DIFFERENT_WORD_BREAKER = -2147480580;
+    
+    public const int EVENT_WARNING_CANNOT_UPGRADE_NOISE_FILE = -2147473634;
+    
+    public const int EVENT_WARNING_CANNOT_UPGRADE_NOISE_FILES = -2147473635;
+    
+    public const int EVENT_WBREAKER_NOT_LOADED = -2147480586;
+    
+    public const int EVENT_WEBCLIENT_CLOSE_DELETE_FAILED = -2147468746;
+    
+    public const int EVENT_WEBCLIENT_CLOSE_PROPPATCH_FAILED = -2147468745;
+    
+    public const int EVENT_WEBCLIENT_CLOSE_PUT_FAILED = -2147468747;
+    
+    public const int EVENT_WEBCLIENT_SETINFO_PROPPATCH_FAILED = -2147468744;
+    
+    public const int EVENT_WIN32_ERROR = -2147473633;
+    
+    public const int EVENT_WINNAT_SESSION_LIMIT_REACHED = -2147466648;
+    
+    public const int EVENT_WINSOCK_CLOSESOCKET_STUCK = -2147467646;
+    
+    public const int EVENT_WINSOCK_TDI_FILTER_DETECTED = -2147467647;
+    
     public static readonly Guid EVENT_WMDM_CONTENT_TRANSFER = new("339c9bf4-bcfe-4ed8-94df-eaf8c26ab61b");
+    
+    public const uint EVENT_WRITE_FLAG_INPRIVATE = 2;
+    
+    public const uint EVENT_WRITE_FLAG_NO_FAULTING = 1;
+    
+    public const int EVENT_WSK_OWNINGTHREAD_PARAMETER_IGNORED = -1073725824;
     
     public static readonly Guid EVENTCONTEXT_VOLUMESLIDER = new("e2c2e9de-09b1-4b04-84e5-07931225ee04");
     
@@ -28311,7 +30241,25 @@ public static partial class Constants
     
     public const uint NANOSECONDS = 10000000;
     
+    public const uint NIN_BALLOONHIDE = 1027;
+    
+    public const uint NIN_BALLOONSHOW = 1026;
+    
+    public const uint NIN_BALLOONTIMEOUT = 1028;
+    
+    public const uint NIN_BALLOONUSERCLICK = 1029;
+    
+    public const uint NIN_POPUPCLOSE = 1031;
+    
+    public const uint NIN_POPUPOPEN = 1030;
+    
+    public const uint NIN_SELECT = 1024;
+    
     public const uint NORMAL_MODE = 2;
+    
+    public const uint NOTIFYICON_VERSION = 3;
+    
+    public const uint NOTIFYICON_VERSION_4 = 4;
     
     public const int OBJECT_ISROOT = int.MinValue;
     

@@ -5,6 +5,7 @@ public class Icon : IDisposable
     private nint _handle;
 
     public HICON Handle => new() { Value = _handle };
+    public virtual bool DestroyHandleOnDispose { get; set; }
 
     public static Icon? LoadApplicationIcon(int size = 16)
     {
@@ -13,15 +14,15 @@ public class Icon : IDisposable
             return null;
 
         var exeHandle = Functions.GetModuleHandleW(PWSTR.From(path));
-        return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = exeHandle.Value }, Constants.IDI_APPLICATION, GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value);
+        return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = exeHandle.Value }, Constants.IDI_APPLICATION, GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
     }
 
-    public static Icon? FromHandle(nint handle)
+    public static Icon? FromHandle(nint handle, bool destroyHandleOnDispose = false)
     {
         if (handle == 0)
             return null;
 
-        return new Icon { _handle = handle };
+        return new Icon { _handle = handle, DestroyHandleOnDispose = destroyHandleOnDispose };
     }
 
     public static bool Destroy(ref HICON handle)
@@ -53,7 +54,7 @@ public class Icon : IDisposable
         if (handle == 0)
             return null;
 
-        return new Icon { _handle = handle };
+        return new Icon { _handle = handle, DestroyHandleOnDispose = true };
     }
 
     public static string? PathParseIconLocation(string? path, out int index)
@@ -74,7 +75,7 @@ public class Icon : IDisposable
         if (disposing)
         {
             var handle = Interlocked.Exchange(ref _handle, 0);
-            if (handle != 0)
+            if (handle != 0 && DestroyHandleOnDispose)
             {
                 Functions.DestroyIcon(new HICON { Value = handle });
             }

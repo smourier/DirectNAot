@@ -8,7 +8,7 @@ public class Window : IDisposable, IEquatable<Window>
     private nint _handle;
     private int _disposeState;
     private GCHandle _gcHandle;
-    private readonly WindowProc? _windowProc;
+    private readonly WNDPROC? _windowProc;
     private ConcurrentQueue<Task>? _tasks = [];
     private readonly Lazy<Process?> _process;
     private readonly Scheduler? _scheduler;
@@ -605,8 +605,8 @@ public class Window : IDisposable, IEquatable<Window>
     public static Window? Foreground => FromHandle(Functions.GetForegroundWindow().Value);
     public static Window? Desktop => FromHandle(Functions.GetDesktopWindow().Value, false);
     public static Window? Shell => FromHandle(Functions.GetShellWindow().Value, false);
-    public static WindowProc DefWindowProc { get; } = GetDefWindowProc();
-    private static WindowProc GetDefWindowProc() => Marshal.GetDelegateForFunctionPointer<WindowProc>(Functions.GetProcAddress(Functions.GetModuleHandleW(PWSTR.From("user32.dll")), PSTR.From("DefWindowProcW")));
+    public static WNDPROC DefWindowProc { get; } = GetDefWindowProc();
+    private static WNDPROC GetDefWindowProc() => Marshal.GetDelegateForFunctionPointer<WNDPROC>(Functions.GetProcAddress(Functions.GetModuleHandleW(PWSTR.From("user32.dll")), PSTR.From("DefWindowProcW")));
 
     private static LRESULT SafeWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
@@ -765,5 +765,4 @@ public class Window : IDisposable, IEquatable<Window>
 
         public new bool TryExecuteTask(Task task) => base.TryExecuteTask(task);
     }
-
 }

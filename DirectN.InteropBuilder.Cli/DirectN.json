@@ -65,11 +65,15 @@
     "VIRTUAL_KEY",
     "MINMAXINFO",
     "MODIFIERKEYS_FLAGS",
+    "NOTIFYICONDATAW",
+    "NOTIFY_ICON_*",
+    "OBJECT_IDENTIFIER",
+    "TRACK_POPUP_MENU_FLAGS",
     "Windows.Win32.Graphics.Gdi.BITMAP",
     "-!D2D_MATRIX_*",
     "-D3DCOLORVALUE",
     "-tomConstants",
-    "!IDWriteGdiInterop1", // currently removed see https://github.com/dotnet/runtime/issues/101242
+    "!IDWriteGdiInterop1" // currently removed see https://github.com/dotnet/runtime/issues/101242
   ],
   // members (method, fields) we want to include or exclude
   "MemberInputs": [
@@ -83,6 +87,7 @@
     "AttachConsole",
     "BeginPaint",
     "BringWindowToTop",
+    "CalculatePopupWindowPosition",
     "CloseThemeData",
     "CloseHandle",
     "ClientToScreen",
@@ -133,6 +138,7 @@
     "ExtCreateRegion",
     "ExtractAssociatedIconW",
     "FillRgn",
+    "FindWindowW",
     "FrameRgn",
     "FreeConsole",
     "FreeLibrary",
@@ -230,6 +236,7 @@
     "MessageBoxW",
     "MonitorFromPoint",
     "MonitorFromWindow",
+    "NotifyWinEvent",
     "OffsetRgn",
     "OpenProcessToken",
     "OpenThemeData",
@@ -255,6 +262,7 @@
     "RealGetWindowClassW",
     "RectInRegion",
     "RegisterClassW",
+    "RegisterWindowMessageW",
     "ReleaseCapture",
     "RemoveDllDirectory",
     "RemovePropW",
@@ -293,6 +301,8 @@
     "SHCreateMemStream",
     "SHCreateStreamOnFileW",
     "ShellAboutW",
+    "Shell_NotifyIconW",
+    "Shell_NotifyIconGetRect",
     "ShowWindow",
     "SHGetPropertyStoreForWindow",
     "SkipPointerFrameMessages",
@@ -317,6 +327,9 @@
     "WindowFromPhysicalPoint",
     "CLSID_XPSRASTERIZER_FACTORY",
     "IDI_APPLICATION",
-    "SIZE_*"
+    "SIZE_*",
+    "NIN_*",
+    "NOTIFYICON_*",
+    "EVENT_*"
   ]
 }

@@ -725,6 +725,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint BRUSHOBJ_ulGetBrushColor(ref BRUSHOBJ pbo);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-calculatepopupwindowposition
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL CalculatePopupWindowPosition(in POINT anchorPoint, in SIZE windowSize, uint flags, nint /* optional RECT* */ excludeRect, out RECT popupWindowPosition);
+    
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-capabilitiesrequestandcapabilitiesreply
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -2976,6 +2983,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-findwindoww
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND FindWindowW(PWSTR lpClassName, PWSTR lpWindowName);
     
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetallglyphhandles
     [LibraryImport("GDI32")]
@@ -8249,6 +8263,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HMONITOR MonitorFromWindow(HWND hwnd, MONITOR_FROM_FLAGS dwFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-notifywinevent
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void NotifyWinEvent(uint @event, HWND hwnd, int idObject, int idChild);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-offsetrgn
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8526,6 +8546,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL RegisterCMMW(PWSTR pMachineName, uint cmmID, PWSTR pCMMdll);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerwindowmessagew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint RegisterWindowMessageW(PWSTR lpString);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-releasecapture
     [LibraryImport("USER32", SetLastError = true)]
@@ -9144,6 +9170,19 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT SHCreateStreamOnFileW(PWSTR pszFile, uint grfMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shell_notifyicongetrect
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    public static partial HRESULT Shell_NotifyIconGetRect(in NOTIFYICONIDENTIFIER identifier, out RECT iconLocation);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shell_notifyiconw
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL Shell_NotifyIconW(NOTIFY_ICON_MESSAGE dwMessage, in NOTIFYICONDATAW lpData);
     
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shellaboutw
     [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
