@@ -12,7 +12,7 @@
 		<Title>DirectNAot.Extensions</Title>
 		<PackageId>DirectNAot.Extensions</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSD</PackageTags>
+		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSDK</PackageTags>
 		<RepositoryUrl>https://github.com/smourier/DirectNAot</RepositoryUrl>
 		<Description>Extensions code for DirectNAOT package: Com utilities, Extension methods, Windows utilities, DXC utilities, etc.</Description>
 		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>

@@ -16,7 +16,7 @@
 		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
 		<PackageIcon>DirectN.png</PackageIcon>
 		<RepositoryUrl>https://github.com/smourier/DirectNAot</RepositoryUrl>
-		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSD</PackageTags>
+		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSDK</PackageTags>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageId>DirectNAot</PackageId>
