@@ -17,7 +17,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Remove="DirectN.ico" />
+		<None Remove="DirectN.ico" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="..\..\DirectN\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
@@ -36,9 +36,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250205002" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
 		<Manifest Include="$(ApplicationManifest)" />
+		<!-- this is needed to remove warning due to webview2 imported (?) but we don't want that -->
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -74,9 +76,9 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-	<PropertyGroup Label="Globals">
-	  <WebView2EnableCsWinRTProjection>False</WebView2EnableCsWinRTProjection>
-	  <ApplicationIcon>DirectN.ico</ApplicationIcon>
+	<PropertyGroup>
+		<WebView2EnableCsWinRTProjection>False</WebView2EnableCsWinRTProjection>
+		<ApplicationIcon>DirectN.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<!-- 
