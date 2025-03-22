@@ -35,6 +35,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Document = _services.As<ITextDocument2>()!;
     }
 
+    public IComObject<ITextServices2> Services => _services;
     public IComObject<ITextDocument2> Document { get; }
 
     public string Generator
@@ -329,8 +330,8 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         _services.Object.OnTxUIActivate().ThrowOnError();
     }
 
-    public void Draw(IComObject<ID2D1RenderTarget> target, RECT rc) => Draw(target?.Object!, rc);
-    public virtual void Draw(ID2D1RenderTarget target, RECT rc)
+    public void Draw(IComObject<ID2D1RenderTarget> target, RECT rc, RECT? updateRect, TXTVIEW view = TXTVIEW.TXTVIEW_ACTIVE) => Draw(target?.Object!, rc, updateRect, view);
+    public virtual void Draw(ID2D1RenderTarget target, RECT rc, RECT? updateRect = null, TXTVIEW view = TXTVIEW.TXTVIEW_ACTIVE)
     {
         ArgumentNullException.ThrowIfNull(target);
         Trace("rc: " + rc);
@@ -338,7 +339,15 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         var rcl = new RECTL { left = rc.left, right = rc.right, top = rc.top, bottom = rc.bottom };
         unsafe
         {
-            _services.Object.TxDrawD2D(target, ref rcl, ref Unsafe.NullRef<RECT>(), (int)TXTVIEW.TXTVIEW_ACTIVE).ThrowOnError();
+            if (updateRect == null)
+            {
+                _services.Object.TxDrawD2D(target, ref rcl, ref Unsafe.NullRef<RECT>(), (int)view).ThrowOnError();
+            }
+            else
+            {
+                var urc = updateRect.Value;
+                _services.Object.TxDrawD2D(target, ref rcl, ref urc, (int)view).ThrowOnError();
+            }
         }
     }
 
