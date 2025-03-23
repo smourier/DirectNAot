@@ -71,7 +71,7 @@ public static class IDXGIFactoryExtensions
         HWND hwnd,
         DXGI_SWAP_CHAIN_DESC1 desc,
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
-        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device, hwnd, desc, fullScreenDesc, restrictToOutput?.Object!);
+        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T> CreateSwapChainForHwnd<T>(this IComObject<IDXGIFactory2> factory,
@@ -79,7 +79,7 @@ public static class IDXGIFactoryExtensions
         HWND hwnd,
         DXGI_SWAP_CHAIN_DESC1 desc,
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
-        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device, hwnd, desc, fullScreenDesc, restrictToOutput?.Object!);
+        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T> CreateSwapChainForHwnd<T>(this IComObject<IDXGIFactory2> factory,
@@ -87,7 +87,7 @@ public static class IDXGIFactoryExtensions
         HWND hwnd,
         DXGI_SWAP_CHAIN_DESC1 desc,
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
-        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object!);
+        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T> CreateSwapChainForHwnd<T>(this IComObject<IDXGIFactory2> factory,
@@ -95,7 +95,7 @@ public static class IDXGIFactoryExtensions
         HWND hwnd,
         DXGI_SWAP_CHAIN_DESC1 desc,
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
-        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object!);
+        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T> CreateSwapChainForHwnd<T>(this IComObject<IDXGIFactory2> factory,
@@ -103,7 +103,15 @@ public static class IDXGIFactoryExtensions
         HWND hwnd,
         DXGI_SWAP_CHAIN_DESC1 desc,
         DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
-        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object!);
+        IComObject<IDXGIOutput1>? restrictToOutput = null) where T : IDXGISwapChain1 => CreateSwapChainForHwnd<T>(factory?.Object!, device?.Object!, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static IComObject<IDXGISwapChain1> CreateSwapChainForHwnd(this IComObject<IDXGIFactory2> factory,
+        object device,
+        HWND hwnd,
+        DXGI_SWAP_CHAIN_DESC1 desc,
+        DXGI_SWAP_CHAIN_FULLSCREEN_DESC? fullScreenDesc = null,
+        IComObject<IDXGIOutput1>? restrictToOutput = null) => CreateSwapChainForHwnd<IDXGISwapChain1>(factory?.Object!, device, hwnd, desc, fullScreenDesc, restrictToOutput?.Object);
 
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T> CreateSwapChainForHwnd<T>(this IDXGIFactory2 factory,
@@ -118,6 +126,24 @@ public static class IDXGIFactoryExtensions
         return ComObject.WithComInstance(device, unk =>
         {
             factory.CreateSwapChainForHwnd(unk, hwnd, desc, fullScreenDesc.CopyToPointer(), restrictToOutput, out var swapChain).ThrowOnError();
+            return new ComObject<T>((T)swapChain);
+        });
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static IComObject<T> CreateSwapChain<T>(this IComObject<IDXGIFactory> factory, object device, DXGI_SWAP_CHAIN_DESC desc) where T : IDXGISwapChain => CreateSwapChain<T>(factory?.Object!, device, desc);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static IComObject<IDXGISwapChain> CreateSwapChain(this IComObject<IDXGIFactory> factory, object device, DXGI_SWAP_CHAIN_DESC desc) => CreateSwapChain<IDXGISwapChain>(factory?.Object!, device, desc);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static IComObject<T> CreateSwapChain<T>(this IDXGIFactory factory, object device, DXGI_SWAP_CHAIN_DESC desc) where T : IDXGISwapChain
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(device);
+        return ComObject.WithComInstance(device, unk =>
+        {
+            factory.CreateSwapChain(unk, desc, out var swapChain).ThrowOnError();
             return new ComObject<T>((T)swapChain);
         });
     }

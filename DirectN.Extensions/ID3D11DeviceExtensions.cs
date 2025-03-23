@@ -3,6 +3,20 @@
 [SupportedOSPlatform("windows6.1")]
 public static class ID3D11DeviceExtensions
 {
+    public static IComObject<T> CreateTexture1D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE1D_DESC desc, D3D11_SUBRESOURCE_DATA initialData) where T : ID3D11Texture1D => CreateTexture1D<T>(device?.Object!, desc, [initialData]);
+    public static IComObject<T> CreateTexture1D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE1D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) where T : ID3D11Texture1D => CreateTexture1D<T>(device?.Object!, desc, initialData);
+    public static IComObject<ID3D11Texture1D> CreateTexture1D(this IComObject<ID3D11Device> device, D3D11_TEXTURE1D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) => CreateTexture1D<ID3D11Texture1D>(device?.Object!, desc, initialData);
+    public static IComObject<T> CreateTexture1D<T>(this ID3D11Device device, D3D11_TEXTURE1D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) where T : ID3D11Texture1D
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        unsafe
+        {
+            nint texture;
+            device.CreateTexture1D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
+            return ComObject.FromPointer<T>(texture)!;
+        }
+    }
+
     public static IComObject<T> CreateTexture2D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE2D_DESC desc, D3D11_SUBRESOURCE_DATA initialData) where T : ID3D11Texture2D => CreateTexture2D<T>(device?.Object!, desc, [initialData]);
     public static IComObject<T> CreateTexture2D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE2D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) where T : ID3D11Texture2D => CreateTexture2D<T>(device?.Object!, desc, initialData);
     public static IComObject<ID3D11Texture2D> CreateTexture2D(this IComObject<ID3D11Device> device, D3D11_TEXTURE2D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) => CreateTexture2D<ID3D11Texture2D>(device?.Object!, desc, initialData);
@@ -13,6 +27,20 @@ public static class ID3D11DeviceExtensions
         {
             nint texture;
             device.CreateTexture2D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
+            return ComObject.FromPointer<T>(texture)!;
+        }
+    }
+
+    public static IComObject<T> CreateTexture3D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE3D_DESC desc, D3D11_SUBRESOURCE_DATA initialData) where T : ID3D11Texture3D => CreateTexture3D<T>(device?.Object!, desc, [initialData]);
+    public static IComObject<T> CreateTexture3D<T>(this IComObject<ID3D11Device> device, D3D11_TEXTURE3D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) where T : ID3D11Texture3D => CreateTexture3D<T>(device?.Object!, desc, initialData);
+    public static IComObject<ID3D11Texture3D> CreateTexture3D(this IComObject<ID3D11Device> device, D3D11_TEXTURE3D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) => CreateTexture3D<ID3D11Texture3D>(device?.Object!, desc, initialData);
+    public static IComObject<T> CreateTexture3D<T>(this ID3D11Device device, D3D11_TEXTURE3D_DESC desc, D3D11_SUBRESOURCE_DATA[]? initialData = null) where T : ID3D11Texture3D
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        unsafe
+        {
+            nint texture;
+            device.CreateTexture3D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
             return ComObject.FromPointer<T>(texture)!;
         }
     }
