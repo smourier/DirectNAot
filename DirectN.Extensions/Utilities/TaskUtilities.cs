@@ -46,6 +46,28 @@ public static class TaskUtilities
         return tcs.Task;
     }
 
+    public static Task<T> RunWithNewSTAThread<T>(Func<Task<T>> func)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        var tcs = new TaskCompletionSource<T>();
+        var thread = new Thread(async () =>
+        {
+            try
+            {
+                var item = await func();
+                tcs.SetResult(item);
+            }
+            catch (Exception e)
+            {
+                tcs.SetException(e);
+            }
+        });
+
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+        return tcs.Task;
+    }
+
     public static Task<T> RunWithSTAThread<T>(Func<T> func, bool startNew = false)
     {
         ArgumentNullException.ThrowIfNull(func);
@@ -53,6 +75,15 @@ public static class TaskUtilities
             return RunWithNewSTAThread(func);
 
         return Task.FromResult(func());
+    }
+
+    public static async Task<T> RunWithSTAThread<T>(Func<Task<T>> func, bool startNew = false)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        if (startNew || Thread.CurrentThread.GetApartmentState() != ApartmentState.STA)
+            return await RunWithNewSTAThread(func);
+
+        return await func();
     }
 
     public static Task RunWithNewSTAThread(Action action)

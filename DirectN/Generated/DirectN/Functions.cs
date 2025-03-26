@@ -268,6 +268,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT ActivateAudioInterfaceAsync(PWSTR deviceInterfacePath, in Guid riid, nint /* optional PROPVARIANT* */ activationParams, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IActivateAudioInterfaceCompletionHandler>))] IActivateAudioInterfaceCompletionHandler completionHandler, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IActivateAudioInterfaceAsyncOperation>))] out IActivateAudioInterfaceAsyncOperation activationOperation);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-addclipboardformatlistener
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL AddClipboardFormatListener(HWND hwnd);
+    
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
     [LibraryImport("KERNEL32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -766,6 +773,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL capGetDriverDescriptionW(uint wDriverIndex, [MarshalUsing(CountElementName = nameof(cbName))] PWSTR lpszName, int cbName, [MarshalUsing(CountElementName = nameof(cbVer))] PWSTR lpszVer, int cbVer);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-changeclipboardchain
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL ChangeClipboardChain(HWND hWndRemove, HWND hWndNewNext);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-checkbitmapbits
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -816,6 +830,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial nint CLIPOBJ_ppoGetPath(ref CLIPOBJ pco);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-closeclipboard
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL CloseClipboard();
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-closecolorprofile
     [LibraryImport("mscms", SetLastError = true)]
@@ -1065,6 +1086,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT CoSuspendClassObjects();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-countclipboardformats
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int CountClipboardFormats();
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
@@ -2528,6 +2555,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT EditStreamSetNameW([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAVIStream>))] IAVIStream pavi, PWSTR lpszName);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-emptyclipboard
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EmptyClipboard();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enablemouseinpointer
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -2878,6 +2912,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL EnumChildWindows(HWND hWndParent, WNDENUMPROC lpEnumFunc, LPARAM lParam);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumclipboardformats
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint EnumClipboardFormats(uint format);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesa
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -3115,6 +3155,39 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetClientRect(HWND hWnd, out RECT lpRect);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboarddata
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE GetClipboardData(uint uFormat);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardformatnamew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetClipboardFormatNameW(uint format, [MarshalUsing(CountElementName = nameof(cchMaxCount))] PWSTR lpszFormatName, int cchMaxCount);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardowner
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetClipboardOwner();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardsequencenumber
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint GetClipboardSequenceNumber();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardviewer
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetClipboardViewer();
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcmminfo
     [LibraryImport("mscms")]
@@ -3472,6 +3545,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetObjectW(HGDIOBJ h, int c, nint /* optional void* */ pv);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getopenclipboardwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetOpenClipboardWindow();
+    
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getopenfilenamepreviewa
     [LibraryImport("MSVFW32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3545,6 +3625,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial int GetPolyFillMode(HDC hdc);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpriorityclipboardformat
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetPriorityClipboardFormat([In][MarshalUsing(CountElementName = nameof(cFormats))] uint[] paFormatPriorityList, int cFormats);
     
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress
     [LibraryImport("KERNEL32", SetLastError = true)]
@@ -3728,6 +3814,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetTokenInformation(HANDLE TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, nint /* optional void* */ TokenInformation, uint TokenInformationLength, out uint ReturnLength);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getupdatedclipboardformats
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetUpdatedClipboardFormats([In][Out][MarshalUsing(CountElementName = nameof(cFormats))] uint[] lpuiFormats, uint cFormats, out uint pcFormatsOut);
     
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getvcpfeatureandvcpfeaturereply
     [LibraryImport("dxva2", SetLastError = true)]
@@ -4747,6 +4840,19 @@ public static partial class Functions
     [LibraryImport("OPENGL32")]
     [PreserveSig]
     public static partial void glNormalPointer(uint type, int stride, nint pointer);
+    
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globallock
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial nint GlobalLock(HGLOBAL hMem);
+    
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalunlock
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GlobalUnlock(HGLOBAL hMem);
     
     // https://learn.microsoft.com/windows/win32/OpenGL/glortho
     [LibraryImport("OPENGL32")]
@@ -5985,6 +6091,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL IsChild(HWND hWndParent, HWND hWnd);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL IsClipboardFormatAvailable(uint format);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-iscolorprofiletagpresent
     [LibraryImport("mscms", SetLastError = true)]
@@ -8275,6 +8388,37 @@ public static partial class Functions
     [PreserveSig]
     public static partial GDI_REGION_TYPE OffsetRgn(HRGN hrgn, int x, int y);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleflushclipboard
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleFlushClipboard();
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegetclipboard
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleGetClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] out IDataObject ppDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleiscurrentclipboard
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleIsCurrentClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetclipboard
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleSetClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openclipboard
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL OpenClipboard(HWND hWndNewOwner);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-opencolorprofilea
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -8535,6 +8679,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial ushort RegisterClassW(in WNDCLASSW lpWndClass);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerclipboardformatw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint RegisterClipboardFormatW(PWSTR lpszFormat);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-registercmma
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -8559,6 +8709,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ReleaseCapture();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-removeclipboardformatlistener
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL RemoveClipboardFormatListener(HWND hwnd);
     
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-removedlldirectory
     [LibraryImport("KERNEL32", SetLastError = true)]
@@ -8851,6 +9008,20 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL SetCaretPos(int X, int Y);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboarddata
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE SetClipboardData(uint uFormat, HANDLE hMem);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboardviewer
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND SetClipboardViewer(HWND hWndNewViewer);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setcolorprofileelement
     [LibraryImport("mscms", SetLastError = true)]
