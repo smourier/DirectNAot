@@ -85,7 +85,16 @@ public static class ID2D1FactoryExtensions
         return new ComObject<T>((T)geometry);
     }
 
-    public static IComObject<ID2D1GeometryGroup> CreateGeometryGroup(this IComObject<ID2D1Factory> factory, D2D1_FILL_MODE fillMode, IReadOnlyList<ID2D1Geometry> geometries) => CreateGeometryGroup(factory?.Object!, fillMode, geometries);
+    public static IComObject<ID2D1TransformedGeometry> CreateTransformedGeometry(this IComObject<ID2D1Factory> factory, IComObject<ID2D1Geometry> sourceGeometry, in D2D_MATRIX_3X2_F transform) => CreateTransformedGeometry(factory?.Object!, sourceGeometry?.Object!, transform);
+    public static IComObject<ID2D1TransformedGeometry> CreateTransformedGeometry(this ID2D1Factory factory, ID2D1Geometry sourceGeometry, in D2D_MATRIX_3X2_F transform)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(sourceGeometry);
+        factory.CreateTransformedGeometry(sourceGeometry, transform, out var geometry).ThrowOnError();
+        return new ComObject<ID2D1TransformedGeometry>(geometry);
+    }
+
+    public static IComObject<ID2D1GeometryGroup> CreateGeometryGroup(this IComObject<ID2D1Factory> factory, D2D1_FILL_MODE fillMode, IReadOnlyList<IComObject<ID2D1Geometry>> geometries) => CreateGeometryGroup(factory?.Object!, fillMode, geometries.UnwrapAsArray()!);
     public static IComObject<ID2D1GeometryGroup> CreateGeometryGroup(this ID2D1Factory factory, D2D1_FILL_MODE fillMode, IReadOnlyList<ID2D1Geometry> geometries)
     {
         ArgumentNullException.ThrowIfNull(factory);
