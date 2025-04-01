@@ -1067,6 +1067,13 @@ public static class Conversions
         return defaultValue;
     }
 
+    public static object ToEnum(Type type, string text)
+    {
+        EnumTryParse(type, text, out var value);
+        return value;
+    }
+
+#pragma warning disable IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
     public static bool EnumTryParse(Type type, object input, out object value)
     {
         ArgumentNullException.ThrowIfNull(type);
@@ -1075,7 +1082,7 @@ public static class Conversions
 
         if (input == null)
         {
-            value = GetDefaultValue(type)!;
+            value = Activator.CreateInstance(type)!;
             return false;
         }
 
@@ -1083,29 +1090,27 @@ public static class Conversions
         stringInput = stringInput.Nullify();
         if (stringInput == null)
         {
-            value = GetDefaultValue(type)!;
+            value = Activator.CreateInstance(type)!;
             return false;
         }
 
-        if (stringInput.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+        if (stringInput.StartsWith("0x", StringComparison.OrdinalIgnoreCase) && ulong.TryParse(stringInput.AsSpan(2), NumberStyles.HexNumber, null, out var ulx))
         {
-            if (ulong.TryParse(stringInput.AsSpan(2), NumberStyles.HexNumber, null, out var ulx))
-            {
-                value = ToEnum(ulx.ToString(CultureInfo.InvariantCulture), type);
-                return true;
-            }
+            value = ToEnum(type, ulx.ToString(CultureInfo.InvariantCulture));
+            return true;
         }
 
         var names = Enum.GetNames(type);
         if (names.Length == 0)
         {
-            value = GetDefaultValue(type)!;
+            value = Activator.CreateInstance(type)!;
             return false;
         }
 
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-        var values = Enum.GetValues(type);
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
+#pragma warning disable IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
+        // this is ok for enums
+        var values = type.GetFields(BindingFlags.Public | BindingFlags.Static).Select(f => f.GetValue(null)).ToArray();
+#pragma warning restore IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
         // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
         if (!type.IsDefined(typeof(FlagsAttribute), true) && stringInput.IndexOfAny(_enumSeparators) < 0)
             return StringToEnum(type, names, values, stringInput, out value);
@@ -1114,38 +1119,28 @@ public static class Conversions
         var tokens = stringInput.Split(_enumSeparators, StringSplitOptions.RemoveEmptyEntries);
         if (tokens.Length == 0)
         {
-            value = GetDefaultValue(type)!;
+            value = Activator.CreateInstance(type)!;
             return false;
         }
 
         ulong ul = 0;
-        foreach (string tok in tokens)
+        foreach (var tok in tokens)
         {
             var token = tok.Nullify(); // NOTE: we don't consider empty tokens as errors
             if (token == null)
                 continue;
 
-            if (!StringToEnum(type, names, values, token, out object tokenValue))
+            if (!StringToEnum(type, names, values, token, out var tokenValue))
             {
-                value = GetDefaultValue(type)!;
+                value = Activator.CreateInstance(type)!;
                 return false;
             }
 
-            ulong tokenUl;
-            switch (Convert.GetTypeCode(tokenValue))
+            var tokenUl = Convert.GetTypeCode(tokenValue) switch
             {
-                case TypeCode.Int16:
-                case TypeCode.Int32:
-                case TypeCode.Int64:
-                case TypeCode.SByte:
-                    tokenUl = (ulong)Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
-                    break;
-
-                default:
-                    tokenUl = Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture);
-                    break;
-            }
-
+                TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.SByte => (ulong)Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture),
+                _ => Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture),
+            };
             ul |= tokenUl;
         }
         value = Enum.ToObject(type, ul);
@@ -1191,74 +1186,62 @@ public static class Conversions
             var obj = EnumToObject(type, input);
             if (obj == null)
             {
-                value = GetDefaultValue(type)!;
+                value = Activator.CreateInstance(type)!;
                 return false;
             }
+
             value = obj;
             return true;
         }
 
-        value = GetDefaultValue(type)!;
+        value = Activator.CreateInstance(type)!;
         return false;
     }
-
-    public static object EnumToObject(Type enumType, object value)
-    {
-        ArgumentNullException.ThrowIfNull(enumType);
-        ArgumentNullException.ThrowIfNull(value);
-        if (!enumType.IsEnum)
-            throw new ArgumentException(null, nameof(enumType));
-
-        var underlyingType = Enum.GetUnderlyingType(enumType);
-        if (underlyingType == typeof(long))
-            return Enum.ToObject(enumType, ChangeType<long>(value));
-
-        if (underlyingType == typeof(ulong))
-            return Enum.ToObject(enumType, ChangeType<ulong>(value));
-
-        if (underlyingType == typeof(int))
-            return Enum.ToObject(enumType, ChangeType<int>(value));
-
-        if ((underlyingType == typeof(uint)))
-            return Enum.ToObject(enumType, ChangeType<uint>(value));
-
-        if (underlyingType == typeof(short))
-            return Enum.ToObject(enumType, ChangeType<short>(value));
-
-        if (underlyingType == typeof(ushort))
-            return Enum.ToObject(enumType, ChangeType<ushort>(value));
-
-        if (underlyingType == typeof(byte))
-            return Enum.ToObject(enumType, ChangeType<byte>(value));
-
-        if (underlyingType == typeof(sbyte))
-            return Enum.ToObject(enumType, ChangeType<sbyte>(value));
-
-        throw new ArgumentException(null, nameof(enumType));
-    }
+#pragma warning restore IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
 
     public static ulong EnumToUInt64(object value)
     {
-        ArgumentNullException.ThrowIfNull(value);
         var typeCode = Convert.GetTypeCode(value);
-        switch (typeCode)
+        return typeCode switch
         {
-            case TypeCode.SByte:
-            case TypeCode.Int16:
-            case TypeCode.Int32:
-            case TypeCode.Int64:
-                return (ulong)Convert.ToInt64(value, CultureInfo.InvariantCulture);
+            TypeCode.SByte or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 => (ulong)Convert.ToInt64(value, CultureInfo.InvariantCulture),
+            TypeCode.Byte or TypeCode.UInt16 or TypeCode.UInt32 or TypeCode.UInt64 => Convert.ToUInt64(value, CultureInfo.InvariantCulture),
+            _ => ChangeType<ulong>(value, 0, CultureInfo.InvariantCulture),
+        };
+    }
 
-            case TypeCode.Byte:
-            case TypeCode.UInt16:
-            case TypeCode.UInt32:
-            case TypeCode.UInt64:
-                return Convert.ToUInt64(value, CultureInfo.InvariantCulture);
+    public static object EnumToObject(Type type, object value)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+        if (!type.IsEnum)
+            throw new ArgumentException(null, nameof(type));
 
-            //case TypeCode.String:
-            default:
-                return ChangeType<ulong>(value, 0, CultureInfo.InvariantCulture);
-        }
+        var underlyingType = Enum.GetUnderlyingType(type);
+        if (underlyingType == typeof(long))
+            return Enum.ToObject(type, ChangeType<long>(value));
+
+        if (underlyingType == typeof(ulong))
+            return Enum.ToObject(type, ChangeType<ulong>(value));
+
+        if (underlyingType == typeof(int))
+            return Enum.ToObject(type, ChangeType<int>(value));
+
+        if (underlyingType == typeof(uint))
+            return Enum.ToObject(type, ChangeType<uint>(value));
+
+        if (underlyingType == typeof(short))
+            return Enum.ToObject(type, ChangeType<short>(value));
+
+        if (underlyingType == typeof(ushort))
+            return Enum.ToObject(type, ChangeType<ushort>(value));
+
+        if (underlyingType == typeof(byte))
+            return Enum.ToObject(type, ChangeType<byte>(value));
+
+        if (underlyingType == typeof(sbyte))
+            return Enum.ToObject(type, ChangeType<sbyte>(value));
+
+        throw new NotSupportedException();
     }
 
     private static bool TryGetEnumValue(object input, Type conversionType, Type inputType, out object? value)
