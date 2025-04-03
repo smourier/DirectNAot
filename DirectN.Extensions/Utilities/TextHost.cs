@@ -811,7 +811,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
                 // dispose managed state (managed objects).
             }
 
-            TextServicesFunctions.Shutdown(_services.Object, false);
+            TextServicesFunctions.Shutdown(_services.Object, true);
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+            // we need that in AOT case to avoid crashes in .NET...
+            GC.SuppressFinalize(_services.Object);
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
             _charFormat?.Dispose();
             _paraFormat?.Dispose();
             _disposedValue = true;
