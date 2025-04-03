@@ -38,7 +38,7 @@ namespace DirectN.Samples.WinUI3.MinimalD3D11
         public MainWindow()
         {
             InitializeComponent();
-            Title = "minimal d3d11 pt3 by d7samurai - On WinUI3 and .NET 8.0 AOT";
+            Title = $"minimal d3d11 pt3 by d7samurai - On WinUI3 and .NET {Environment.Version} AOT";
 
             var size = 1000;
             AppWindow.Resize(new SizeInt32(size, size));

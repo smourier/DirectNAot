@@ -84,7 +84,6 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     [SupportedOSPlatform("windows6.1")]
     public string? GetImageReferenceForValue(PROPVARIANT value)
     {
-        ArgumentNullException.ThrowIfNull(value);
         if (NativeObject is not IPropertyDescription2 pd2)
             return null;
 

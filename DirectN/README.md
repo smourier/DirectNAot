@@ -14,8 +14,8 @@ The key points that drive how code is generated and built:
     * Audio (WASAPI)
     * XPS
     * others (dependencies, etc)
-* Modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers, etc.
-* How it works and how it's made is, at its root, completely driven by .NET 8 ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
+* Modern code exclusively based on .NET 8, and above, newer source-generated `LibraryImport`, source-generated `ComWrappers, etc.
+* How it works and how it's made is, at its root, completely driven by .NET 8 and above ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
 * DirectN is AOT-friendly.
 * `unsafe` usage is as limited as possible.
 * Raw pointers (like `ISomething*`) usage is not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal, including for authoring (aka implementing COM interfaces in .NET) scenarios.

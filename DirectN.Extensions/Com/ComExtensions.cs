@@ -11,9 +11,12 @@ public static class ComExtensions
         var co = (System.Runtime.InteropServices.Marshalling.ComObject)comObject;
         co.FinalRelease();
 
-        // this hack is to overcome a dreadful bug in .NET 8 https://github.com/dotnet/runtime/issues/96901
-        // we want only unique objects but the system currently totally fails at supporting this
-        SafeIUnknown.Patch(co);
+        if (Environment.Version.Major < 9)
+        {
+            // this hack is to overcome a dreadful bug in .NET 8 https://github.com/dotnet/runtime/issues/96901
+            // we want only unique objects but the system currently totally fails at supporting this
+            SafeIUnknown.Patch(co);
+        }
     }
 
     private partial class SafeIUnknown
@@ -23,7 +26,7 @@ public static class ComExtensions
         private static readonly PropertyInfo? _uniqueInstanceField = typeof(System.Runtime.InteropServices.Marshalling.ComObject).GetProperty("UniqueInstance", BindingFlags.NonPublic | BindingFlags.Instance);
         private static readonly nint _unk = ComObject.ComWrappers.GetOrCreateComInterfaceForObject(_instance, CreateComInterfaceFlags.None);
 
-        // old version that crashes https://github.com/dotnet/runtime/blob/1dedddef7b8f389e3720b9c643306b98b092ad87/src/libraries/System.Runtime.InteropServices/src/System/Runtime/InteropServices/Marshalling/ComObject.cs
+        // old version that crashes https://github.com/dotnet/runtime/blob/1dedddef7b8f389e3720b9c643306b98b092ad87/src/libraries/System.Runtime.InteropServices/src/System/Runtime/InteropServices/Marshalling/ComObject.cs#L78
         public static void Patch(System.Runtime.InteropServices.Marshalling.ComObject obj)
         {
             if (obj == null || _pointerField == null || _uniqueInstanceField == null)

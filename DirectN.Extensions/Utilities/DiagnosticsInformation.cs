@@ -253,6 +253,7 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
     {
         var di = new DiagnosticsInformation(assembly);
         var dic = new Dictionary<string, List<PropertyInfo>>();
+#pragma warning disable IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
         foreach (var prop in di.GetType().GetProperties())
         {
             var browsable = prop.GetCustomAttribute<BrowsableAttribute>();
@@ -268,6 +269,7 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
             }
             props.Add(prop);
         }
+#pragma warning restore IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
 
         var sb = new StringBuilder();
         foreach (var kv in dic.OrderBy(k => k.Key))

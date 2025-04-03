@@ -486,10 +486,12 @@ public class Window : IDisposable, IEquatable<Window>
                 {
                     var di = CreateDiagnosticsInformation();
                     var sb = new StringBuilder();
+#pragma warning disable IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
                     foreach (var item in di.GetType().GetProperties().OrderBy(p => p.Name))
                     {
                         sb.AppendLine($"{item.Name} : {item.GetValue(di)}");
                     }
+#pragma warning restore IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
 
                     var td = new TaskDialog();
                     td.Flags |= TASKDIALOG_FLAGS.TDF_SIZE_TO_CONTENT;
@@ -683,7 +685,9 @@ public class Window : IDisposable, IEquatable<Window>
         int windowExtraBytesSize = 0)
     {
         ArgumentNullException.ThrowIfNull(className);
-        ArgumentNullException.ThrowIfNull(windowProc);
+        if (windowProc == 0)
+            throw new ArgumentException(null, nameof(windowProc));
+
         if (Functions.GetClassInfoW(new HINSTANCE { Value = Application.ModuleHandle.Value }, PWSTR.From(className), out _))
             return false;
 

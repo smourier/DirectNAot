@@ -163,7 +163,9 @@ public static class IWICImagingFactoryExtensions
     public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, uint bufferSize, nint buffer)
     {
         ArgumentNullException.ThrowIfNull(factory);
-        ArgumentNullException.ThrowIfNull(buffer);
+        if (buffer == 0)
+            throw new ArgumentException(null, nameof(buffer));
+
         factory.Object.CreateBitmapFromMemory(width, height, pixelFormat, stride, bufferSize, buffer, out var value).ThrowOnError();
         return new ComObject<IWICBitmap>(value);
     }

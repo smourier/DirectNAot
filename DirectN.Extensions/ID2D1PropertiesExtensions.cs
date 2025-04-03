@@ -359,7 +359,8 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
-        ArgumentNullException.ThrowIfNull(data);
+        if (data == 0)
+            throw new ArgumentException(null, nameof(data));
         properties.SetValueByName(PWSTR.From(name), type, data, dataLength).ThrowOnError();
     }
 

@@ -41,7 +41,9 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
 
     public virtual void CopyTo(nint target, uint size = uint.MaxValue)
     {
-        ArgumentNullException.ThrowIfNull(target);
+        if (target == 0)
+            throw new ArgumentException(null, nameof(target));
+
         if (size == uint.MaxValue)
         {
             size = Size;
@@ -55,7 +57,9 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
 
     public virtual void CopyFrom(nint source, uint size = uint.MaxValue)
     {
-        ArgumentNullException.ThrowIfNull(source);
+        if (source == 0)
+            throw new ArgumentException(null, nameof(source));
+
         if (size == uint.MaxValue)
         {
             size = Size;

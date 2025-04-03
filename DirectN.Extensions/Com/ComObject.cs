@@ -101,7 +101,7 @@ public abstract class ComObject : IComObject
         var iid = typeof(T).GUID;
         try
         {
-            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out var iface));
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out var iface));
             return iface;
         }
         finally
@@ -135,7 +135,7 @@ public abstract class ComObject : IComObject
         var iid = typeof(T).GUID;
         try
         {
-            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out var iface));
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out var iface));
             return iface;
         }
         finally
@@ -204,7 +204,7 @@ public abstract class ComObject : IComObject
         if (unk != 0)
         {
             var iid = typeof(T).GUID;
-            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out iface));
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out iface));
         }
 
         try
@@ -231,7 +231,7 @@ public abstract class ComObject : IComObject
         if (unk != 0)
         {
             var iid = typeof(Ti).GUID;
-            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, ref iid, out iface));
+            Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out iface));
         }
 
         try
@@ -268,7 +268,7 @@ public abstract class ComObject : IComObject
             if (unk != 0)
             {
                 var iid = typeof(T).GUID;
-                var hr = Marshal.QueryInterface(unk, ref iid, out iface);
+                var hr = Marshal.QueryInterface(unk, iid, out iface);
                 Marshal.Release(unk);
                 Marshal.ThrowExceptionForHR(hr);
             }
@@ -315,7 +315,7 @@ public abstract class ComObject : IComObject
             if (unk != 0)
             {
                 var iid = typeof(Ti).GUID;
-                var hr = Marshal.QueryInterface(unk, ref iid, out iface);
+                var hr = Marshal.QueryInterface(unk, iid, out iface);
                 Marshal.Release(unk);
                 Marshal.ThrowExceptionForHR(hr);
             }
