@@ -8431,6 +8431,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT OleGetClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] out IDataObject ppDataObj);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleinitialize
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleInitialize(nint pvReserved);
+    
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleiscurrentclipboard
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8442,6 +8448,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT OleSetClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleuninitialize
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void OleUninitialize();
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openclipboard
     [LibraryImport("USER32", SetLastError = true)]
