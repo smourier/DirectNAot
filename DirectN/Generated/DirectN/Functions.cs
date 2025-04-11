@@ -2150,6 +2150,37 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT DMOUnregister(in Guid clsidDMO, in Guid guidCategory);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-dodragdrop
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT DoDragDrop([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDropSource>))] IDropSource pDropSource, DROPEFFECT dwOKEffects, out DROPEFFECT pdwEffect);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragacceptfiles
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial void DragAcceptFiles(HWND hWnd, BOOL fAccept);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragfinish
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial void DragFinish(HDROP hDrop);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragqueryfilew
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial uint DragQueryFileW(HDROP hDrop, uint iFile, [MarshalUsing(CountElementName = nameof(cch))] PWSTR lpszFile, uint cch);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragquerypoint
+    [LibraryImport("SHELL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL DragQueryPoint(HDROP hDrop, out POINT ppt);
+    
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibbegin
     [LibraryImport("MSVFW32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8697,6 +8728,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL RegisterCMMW(PWSTR pMachineName, uint cmmID, PWSTR pCMMdll);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-registerdragdrop
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT RegisterDragDrop(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDropTarget>))] IDropTarget pDropTarget);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerwindowmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8709,6 +8746,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ReleaseCapture();
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-releasestgmedium
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void ReleaseStgMedium(ref STGMEDIUM param0);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-removeclipboardformatlistener
     [LibraryImport("USER32", SetLastError = true)]
@@ -8742,6 +8785,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     public static partial int RestoreMonitorFactoryDefaults(HANDLE hMonitor);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-revokedragdrop
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT RevokeDragDrop(HWND hwnd);
     
     // https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roactivateinstance
     [LibraryImport("api-ms-win-core-winrt-l1-1-0")]
@@ -9329,6 +9378,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL SetWindowTextW(HWND hWnd, PWSTR lpString);
     
+    // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedataobject
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial HRESULT SHCreateDataObject(nint /* optional ITEMIDLIST* */ pidlFolder, uint cidl, nint /* optional ITEMIDLIST** */ apidl, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject?>))] IDataObject? pdtInner, in Guid riid, out nint /* void */ ppv);
+    
     // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-shcreatememstream
     [LibraryImport("SHLWAPI")]
     [SupportedOSPlatform("windows5.0")]
@@ -9341,6 +9396,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT SHCreateStreamOnFileW(PWSTR pszFile, uint grfMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
+    
+    // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdodragdrop
+    [LibraryImport("SHELL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT SHDoDragDrop(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pdata, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDropSource?>))] IDropSource? pdsrc, DROPEFFECT dwEffect, out DROPEFFECT pdwEffect);
     
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shell_notifyicongetrect
     [LibraryImport("SHELL32")]
