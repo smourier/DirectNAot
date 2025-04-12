@@ -418,6 +418,116 @@ public static class Extensions
         }
     }
 
+    public static StorageMedium? GetStorageMedium(this IComObject<IDataObject>? dataObject, in FORMATETC format) => GetStorageMedium(dataObject?.Object, format);
+    public static StorageMedium? GetStorageMedium(this IDataObject? dataObject, in FORMATETC format)
+    {
+        if (dataObject == null)
+            return null;
+
+        var hr = dataObject.GetData(format, out var medium);
+        if (hr.IsError)
+            return null;
+
+        return new StorageMedium(medium);
+    }
+
+    [return: NotNullIfNotNull(nameof(buffer))]
+    public static System.IO.UnmanagedMemoryStream? GetUnmanagedMemoryStream(this SafeBuffer? buffer)
+    {
+        if (buffer == null)
+            return null;
+
+        return new System.IO.UnmanagedMemoryStream(buffer, 0, (long)buffer.ByteLength);
+    }
+
+    public static unsafe Span<byte> GetSpan(this SafeBuffer buffer)
+    {
+        ArgumentNullException.ThrowIfNull(buffer);
+        return new((void*)buffer.DangerousGetHandle(), (int)buffer.ByteLength);
+    }
+
+    public static unsafe Span<byte> GetSpan(this SafeBuffer buffer, int length)
+    {
+        ArgumentNullException.ThrowIfNull(buffer);
+        return new((void*)buffer.DangerousGetHandle(), Math.Min(length, (int)buffer.ByteLength));
+    }
+
+    [return: NotNullIfNotNull(nameof(stream))]
+    public static byte[]? ToByteArray(this Stream? stream)
+    {
+        if (stream == null)
+            return null;
+
+        if (stream is MemoryStream m)
+            return m.ToArray();
+
+        using var ms = new MemoryStream();
+        stream.CopyTo(ms);
+        return ms.ToArray();
+    }
+
+    [return: NotNullIfNotNull(nameof(stream))]
+    public static MemoryStream? ToMemoryStream(this Stream? stream, bool resetPositionToZero = true)
+    {
+        if (stream == null)
+            return null;
+
+        if (stream is not MemoryStream ms)
+        {
+            ms = new MemoryStream();
+            stream.CopyTo(ms);
+        }
+
+        if (resetPositionToZero)
+        {
+            ms.Position = 0;
+        }
+        return ms;
+    }
+
+    [return: NotNullIfNotNull(nameof(buffer))]
+    public static unsafe byte[]? ToByteArray(this SafeBuffer buffer)
+    {
+        if (buffer == null)
+            return null;
+
+        var size = (uint)buffer.ByteLength;
+        if (size == 0)
+            return [];
+
+        var bytes = new byte[size];
+        fixed (byte* p = bytes)
+        {
+            ((nint)p).CopyFrom(buffer.DangerousGetHandle(), size);
+            return bytes;
+        }
+    }
+
+    public static bool DataEqualsTo(this SafeBuffer? buffer, SafeBuffer? other)
+    {
+        if (buffer is null)
+            return other is null;
+
+        if (other is null)
+            return false;
+
+        if (buffer.ByteLength != other.ByteLength)
+            return false;
+
+        var pointer = buffer.DangerousGetHandle();
+        var otherPointer = other.DangerousGetHandle();
+        if (pointer == otherPointer)
+            return true;
+
+        if (pointer == 0 || otherPointer == 0)
+            return false;
+
+        var span = buffer.GetSpan();
+        var otherSpan = other.GetSpan();
+        return span.SequenceCompareTo(otherSpan) == 0;
+    }
+
+
     private static readonly ConcurrentDictionary<string, string> _loadedStrings = new(StringComparer.OrdinalIgnoreCase);
 
     [SupportedOSPlatform("windows6.0.6000")]

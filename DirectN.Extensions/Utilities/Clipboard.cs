@@ -49,7 +49,7 @@ public static class Clipboard
         return Functions.OleIsCurrentClipboard(dataObject).IsOk;
     }
 
-    public static IReadOnlyList<string> GetFormats(bool throwOnError = true) => GetDataObject(throwOnError)?.GetDataFormats(throwOnError) ?? [];
+    public static IReadOnlyList<string> GetFormats(bool throwOnError = true) => GetDataObject(throwOnError)?.GetFormats(throwOnError) ?? [];
     public static DataObject? GetDataObject(bool throwOnError = true)
     {
         Functions.OleGetClipboard(out var obj).ThrowOnError(throwOnError);

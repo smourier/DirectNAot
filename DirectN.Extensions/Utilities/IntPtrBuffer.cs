@@ -3,7 +3,7 @@
 public sealed class IntPtrBuffer : SafeBuffer
 {
     public IntPtrBuffer(nint pointer, long byteLength, bool owned = false)
-        : base(false)
+        : base(owned)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(byteLength);
         handle = pointer;
@@ -51,47 +51,12 @@ public sealed class IntPtrBuffer : SafeBuffer
 
     public bool Owned { get; }
 
-    public unsafe Span<byte> GetSpan() => new((void*)DangerousGetHandle(), (int)ByteLength);
-    public unsafe Span<byte> GetSpan(int length) => new((void*)DangerousGetHandle(), Math.Min(length, (int)ByteLength));
-
     public unsafe IntPtrBuffer Clone()
     {
         var size = (uint)ByteLength;
         var buffer = new IntPtrBuffer(size);
         DangerousGetHandle().CopyTo(buffer.DangerousGetHandle(), size);
         return buffer;
-    }
-
-    public bool DataEqualsTo(IntPtrBuffer? other)
-    {
-        if (other is null)
-            return false;
-
-        if (ByteLength != other.ByteLength)
-            return false;
-
-        var pointer = DangerousGetHandle();
-        var otherPointer = other.DangerousGetHandle();
-        if (pointer == otherPointer)
-            return true;
-
-        if (pointer == 0 || otherPointer == 0)
-            return false;
-
-        var span = GetSpan();
-        var otherSpan = other.GetSpan();
-        return span.SequenceCompareTo(otherSpan) == 0;
-    }
-
-    public unsafe byte[] ToByteArray()
-    {
-        var size = (uint)ByteLength;
-        var buffer = new byte[size];
-        fixed (byte* p = buffer)
-        {
-            ((nint)p).CopyFrom(DangerousGetHandle(), size);
-            return buffer;
-        }
     }
 
     protected override bool ReleaseHandle()

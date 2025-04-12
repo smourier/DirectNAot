@@ -67,6 +67,7 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_ADVISELIMIT = unchecked((int)0x80040201);
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_CANNOTCONNECT = unchecked((int)0x80040202);
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_OVERRIDDEN = unchecked((int)0x80040203);
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLIPBRD_E_BAD_DATA = unchecked((int)0x800401D3);
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = unchecked((int)0x80030001);

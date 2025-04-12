@@ -4878,6 +4878,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial nint GlobalLock(HGLOBAL hMem);
     
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalsize
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial nuint GlobalSize(HGLOBAL hMem);
+    
     // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalunlock
     [LibraryImport("KERNEL32", SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
