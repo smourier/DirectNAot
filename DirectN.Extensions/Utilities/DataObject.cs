@@ -5,6 +5,7 @@ public class DataObject(IComObject<IDataObject>? dataObject, bool owned = true) 
     [SupportedOSPlatform("windows6.0.6000")]
     public static DataObject Create()
     {
+        // note this data object only supports SetData(..., ..., true); (release)
         Functions.SHCreateDataObject(0, 0, 0, null, typeof(IDataObject).GUID, out var obj).ThrowOnError();
         return new DataObject(new ComObject<IDataObject>(obj));
     }
