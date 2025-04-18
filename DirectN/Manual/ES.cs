@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum ES
 {
     ES_NOIME = 0x00080000,

@@ -334,7 +334,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     public virtual void Draw(ID2D1RenderTarget target, RECT rc, RECT? updateRect = null, TXTVIEW view = TXTVIEW.TXTVIEW_ACTIVE)
     {
         ArgumentNullException.ThrowIfNull(target);
-        Trace("rc: " + rc);
+        Trace("rc: " + rc + " updateRc:" + updateRect + " view:" + view);
         rc = rc.PixelToDip();
         var rcl = new RECTL { left = rc.left, right = rc.right, top = rc.top, bottom = rc.bottom };
         unsafe
@@ -463,11 +463,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             //format.dwMask |= CFM.CFM_EFFECTS2;
 
             _charFormat = new ComBuffer<CHARFORMAT2W>(format);
-            Trace("fmt: " + format);
+            //Trace("fmt: " + format);
         }
 
         ppCF = _charFormat.DangerousGetHandle();
-        Trace("ppCF: " + ppCF);
+        //Trace("ppCF: " + ppCF);
         return Constants.S_OK;
     }
 
@@ -481,17 +481,17 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             format.wBorderWidth = (ushort)Functions.PointsToTwips(20);
             format.Base.wAlignment = Aligment;
             _paraFormat = new ComBuffer<PARAFORMAT2>(format);
-            Trace("fmt: " + format);
+            //Trace("fmt: " + format);
         }
 
         ppPF = _paraFormat.DangerousGetHandle();
-        Trace("ppPF: " + ppPF);
+        //Trace("ppPF: " + ppPF);
         return Constants.S_OK;
     }
 
     public virtual HRESULT TxGetClientRect(nint prc)
     {
-        Trace("prc: " + prc);
+        //Trace("prc: " + prc);
         if (prc == 0)
             return Constants.E_INVALIDARG;
 
@@ -715,7 +715,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxNotify(uint iNotify, nint pv)
     {
-        Trace("iNotify: " + iNotify + " pv: " + pv);
+        Trace("iNotify: " + (EN)iNotify + " pv: " + pv);
         return Constants.S_OK;
     }
 

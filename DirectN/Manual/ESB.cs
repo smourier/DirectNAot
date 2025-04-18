@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum ESB
 {
     ESB_ENABLE_BOTH = 0x0000,

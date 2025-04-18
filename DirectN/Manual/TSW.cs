@@ -1,5 +1,6 @@
 ﻿namespace DirectN;
 
+[Flags]
 public enum TSW
 {
     SW_SCROLLCHILDREN = 0x0001, /* Scroll children within *lprcScroll. */
