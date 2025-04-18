@@ -46,7 +46,7 @@ public class SampleWindow : D3D11SwapChainWindow
 
         Extensions.Utilities.Extensions.CopyFromWithPad(
             _constants.LightProjection,
-            new float[] { 0.5f, 0, 0, 0, 0, 0.5f, 0, 0, 0, 0, 0.125f, 0, 0, 0, -0.125f, 1 },
+            [0.5f, 0, 0, 0, 0, 0.5f, 0, 0, 0, 0, 0.125f, 0, 0, 0, -0.125f, 1],
             InlineArraySingle_16.Length);
     }
 
@@ -81,7 +81,7 @@ public class SampleWindow : D3D11SwapChainWindow
 
         Extensions.Utilities.Extensions.CopyFromWithPad(
             _constants.CameraProjection,
-            new float[] { 2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0 },
+            [2.0f / (_framebufferVP.Width / _framebufferVP.Height), 0, 0, 0, 0, 2, 0, 0, 0, 0, 1.125f, 1, 0, 0, -1.125f, 0],
             InlineArraySingle_16.Length);
     }
 

@@ -11,6 +11,7 @@
   },
   // per-generator configuration
   "Generator": {
+    "TypeName": "DirectN.InteropBuilder.Cli.DirectNCSharpGenerator, DirectN.InteropBuilder.Cli",
     "CSharp": {
       "GenerateTypeKeywords": true,
 

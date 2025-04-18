@@ -18,22 +18,26 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowscrollbar
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxShowScrollBar(int fnBar, BOOL fShow);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxShowScrollBar(int fnBar, BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txenablescrollbar
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollrange
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetscrollpos
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txinvalidaterect
     [PreserveSig]
@@ -48,22 +52,26 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txcreatecaret
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txshowcaret
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxShowCaret(BOOL fShow);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxShowCaret(BOOL fShow);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsetcaretpos
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetCaretPos(int x, int y);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxSetCaretPos(int x, int y);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txsettimer
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxSetTimer(uint idTimer, uint uTimeout);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxSetTimer(uint idTimer, uint uTimeout);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txkilltimer
     [PreserveSig]
@@ -93,12 +101,14 @@ public partial interface ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txscreentoclient
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxScreenToClient(nint /* optional POINT* */ lppt);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxScreenToClient(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txclienttoscreen
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    BOOL TxClientToScreen(nint /* optional POINT* */ lppt);
+    [return: MarshalAs(UnmanagedType.U4)]
+    bool TxClientToScreen(nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost-txactivate
     [PreserveSig]

@@ -67,16 +67,22 @@ namespace DirectN.InteropBuilder.Cli
                         }
                     }
 
-                    // using something else than raw structs crashes (ComWrapper generation bug?)
                     var returnName = method.ReturnTypeFullName;
-                    if (returnName != null &&
-                        returnName != FullName.HRESULT &&
-                        returnName != FullName.BOOL &&
-                        returnName != WellKnownTypes.SystemInt32.FullName &&
-                        returnName != WellKnownTypes.SystemVoid.FullName)
+                    if (returnName == FullName.BOOL)
                     {
-                        var returnType = context.AllTypes[returnName];
-                        method.ReturnTypeFullName = returnType.Fields[0].TypeFullName;
+                        method.ReturnTypeFullName = WellKnownTypes.SystemBoolean.FullName;
+                    }
+                    else
+                    {
+                        // using something else than raw structs crashes (ComWrapper generation bug?)
+                        if (returnName != null &&
+                            returnName != FullName.HRESULT &&
+                            returnName != WellKnownTypes.SystemInt32.FullName &&
+                            returnName != WellKnownTypes.SystemVoid.FullName)
+                        {
+                            var returnType = context.AllTypes[returnName];
+                            method.ReturnTypeFullName = returnType.Fields[0].TypeFullName;
+                        }
                     }
                 }
             }
