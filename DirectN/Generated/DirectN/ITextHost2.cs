@@ -8,7 +8,7 @@ public partial interface ITextHost2 : ITextHost
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txisdoubleclickpending
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
-    int TxIsDoubleClickPending();
+    BOOL TxIsDoubleClickPending();
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itexthost2-txgetwindow
     [PreserveSig]

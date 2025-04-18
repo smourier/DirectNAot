@@ -8,4 +8,6 @@ public enum TextHostOptions
     Vertical = TXTBIT.TXTBIT_VERTICAL,
     Multiline = TXTBIT.TXTBIT_MULTILINE,
     ReadOnly = TXTBIT.TXTBIT_READONLY,
+
+    Default = Multiline
 }

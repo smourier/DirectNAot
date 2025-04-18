@@ -25,7 +25,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     {
         _textColor = new COLORREF { Value = 0xFFFFFF }; // white
         _backColor = new COLORREF { Value = 0x00FFFFFF }; // transparent
-        _options = TextHostOptions.Multiline;
+        _options = TextHostOptions.Default;
 
         var services = this.Create<ITextServices2>(generator);
         if (services == null)
@@ -369,22 +369,22 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual int TxClientToScreen(nint lppt)
+    public virtual BOOL TxClientToScreen(nint lppt)
     {
         Trace("lppt: " + lppt);
-        return 0;
+        return false;
     }
 
-    public virtual int TxScreenToClient(nint lppt)
+    public virtual BOOL TxScreenToClient(nint lppt)
     {
         Trace("lppt: " + lppt);
-        return 0;
+        return false;
     }
 
-    public virtual int TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
+    public virtual BOOL TxCreateCaret(HBITMAP hbmp, int xWidth, int yHeight)
     {
         Trace("hbmp: " + hbmp + " xWidth: " + xWidth + " yHeight: " + yHeight);
-        return 0;
+        return true;
     }
 
     public virtual HRESULT TxDeactivate(int lNewState)
@@ -399,10 +399,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual int TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags)
+    public virtual BOOL TxEnableScrollBar(SCROLLBAR_CONSTANTS fuSBFlags, int fuArrowflags)
     {
-        Trace("fuSBFlags: " + fuSBFlags + " fuArrowflags: " + fuArrowflags);
-        return 1;
+        Trace("fuSBFlags: " + fuSBFlags + " fuArrowflags: " + (ESB)fuArrowflags);
+        return true;
     }
 
     public virtual void TxFreeTextServicesNotification()
@@ -707,10 +707,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("prc: " + prc + " fMode: " + fMode);
     }
 
-    public virtual int TxIsDoubleClickPending()
+    public virtual BOOL TxIsDoubleClickPending()
     {
         Trace();
-        return 0;
+        return false;
     }
 
     public virtual HRESULT TxNotify(uint iNotify, nint pv)
@@ -729,11 +729,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("fCapture: " + fCapture);
     }
 
-    public virtual int TxSetCaretPos(int x, int y)
+    public virtual BOOL TxSetCaretPos(int x, int y)
     {
         Trace("x: " + x + " y: " + y);
         CaretPos = new POINT(x, y);
-        return 1;
+        return true;
     }
 
     public virtual void TxSetCursor(HCURSOR hcur, BOOL fText) => TxSetCursor2(hcur, fText);
@@ -754,16 +754,16 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual int TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw)
+    public virtual BOOL TxSetScrollPos(int fnBar, int nPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nPos: " + nPos + " fRedraw: " + fRedraw);
-        return 1;
+        return true;
     }
 
-    public virtual int TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw)
+    public virtual BOOL TxSetScrollRange(int fnBar, int nMinPos, int nMaxPos, BOOL fRedraw)
     {
         Trace("fnBar: " + fnBar + " nMinPos: " + nMinPos + " nMaxPos: " + nMaxPos + " fRedraw: " + fRedraw);
-        return 1;
+        return true;
     }
 
     public virtual void TxKillTimer(uint idTimer)
@@ -771,17 +771,17 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         Trace("idTimer: " + idTimer);
     }
 
-    public virtual int TxSetTimer(uint idTimer, uint uTimeout)
+    public virtual BOOL TxSetTimer(uint idTimer, uint uTimeout)
     {
         Trace("idTimer: " + idTimer + " uTimeout: " + uTimeout);
-        return 1;
+        return true;
     }
 
-    public virtual int TxShowCaret(BOOL fShow)
+    public virtual BOOL TxShowCaret(BOOL fShow)
     {
         Trace("fShow: " + fShow);
         _showCaret = fShow;
-        return 1;
+        return true;
     }
 
     public virtual HRESULT TxShowDropCaret(BOOL fShow, HDC hdc, nint prc)
@@ -790,11 +790,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public virtual int TxShowScrollBar(int fnBar, BOOL fShow)
+    public virtual BOOL TxShowScrollBar(int fnBar, BOOL fShow)
     {
         var bar = (SCROLLBAR_CONSTANTS)fnBar;
         Trace("fnBar: " + bar + " fShow: " + fShow);
-        return fShow;
+        return true;
     }
 
     public virtual void TxViewChange(BOOL fUpdate)

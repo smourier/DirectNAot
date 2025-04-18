@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Win32InteropBuilder;
 using Win32InteropBuilder.Generators;
 using Win32InteropBuilder.Model;
@@ -7,6 +8,32 @@ namespace DirectN.InteropBuilder.Cli
 {
     public class DirectNBuilderContext(BuilderConfiguration configuration, IGenerator language) : BuilderContext(configuration, language)
     {
+        private static readonly FullName[] _unresolvableTypes =
+        [
+            new("Windows.System.DispatcherQueueController"),
+            new("Windows.UI.Composition.ICompositionSurface"),
+            new("Windows.UI.Composition.ICompositionSurface"),
+            new("Windows.UI.Composition.CompositionGraphicsDevice"),
+            new("Windows.UI.Composition.CompositionTexture"),
+            new("Windows.UI.Composition.CompositionCapabilities"),
+            new("Windows.UI.Composition.Desktop.DesktopWindowTarget"),
+            new("Windows.Foundation.IPropertyValue"),
+            new("Windows.Graphics.Effects.IGraphicsEffectSource"),
+        ];
+
+        public override SignatureTypeProvider CreateSignatureTypeProvider() => new Stp(this);
+
+        private sealed class Stp(DirectNBuilderContext context) : SignatureTypeProvider(context)
+        {
+            public override BuilderType GetTypeFromFullName(FullName fullName)
+            {
+                if (_unresolvableTypes.Contains(fullName))
+                    return WellKnownTypes.SystemObject;
+
+                return base.GetTypeFromFullName(fullName);
+            }
+        }
+
         public override string GetConstantValue(BuilderType type, Constant constant)
         {
             ArgumentNullException.ThrowIfNull(type);
@@ -89,7 +116,7 @@ namespace DirectN.InteropBuilder.Cli
         public static (Guid fmtid, uint pid) ParsePropertyKey(string pk)
         {
             ArgumentNullException.ThrowIfNull(pk);
-            var split = pk.Split(new[] { '.', '{', '}', ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            var split = pk.Split(['.', '{', '}', ','], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             if (split.Length != 12)
                 throw new ArgumentException(null, nameof(pk));
 

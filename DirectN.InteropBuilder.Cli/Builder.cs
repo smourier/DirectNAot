@@ -71,6 +71,7 @@ namespace DirectN.InteropBuilder.Cli
                     var returnName = method.ReturnTypeFullName;
                     if (returnName != null &&
                         returnName != FullName.HRESULT &&
+                        returnName != FullName.BOOL &&
                         returnName != WellKnownTypes.SystemInt32.FullName &&
                         returnName != WellKnownTypes.SystemVoid.FullName)
                     {
