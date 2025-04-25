@@ -150,6 +150,7 @@
     "EnumDisplayMonitors",
     "EnumDisplaySettingsW",
     "EnumDisplaySettingsExW",
+    "EnumPropsW",
     "EnumThreadWindows",
     "EnumWindows",
     "EnableNonClientDpiScaling",

@@ -3008,6 +3008,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial int EnumICMProfilesW(HDC hdc, ICMENUMPROCW proc, LPARAM param2);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumpropsw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int EnumPropsW(HWND hWnd, PROPENUMPROCW lpEnumFunc);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumthreadwindows
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]

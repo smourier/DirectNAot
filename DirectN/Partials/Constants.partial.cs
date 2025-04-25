@@ -80,6 +80,10 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_S_DROP = 0x00040100;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_S_CANCEL = 0x00040101;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_S_USEDEFAULTCURSORS = 0x00040102;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_NOTREGISTERED = 0x80040100;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_ALREADYREGISTERED = 0x80040101;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_INVALIDHWND = 0x80040102;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_CONCURRENT_DRAG_ATTEMPTED = 0x80040103;
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = 0x80030001;
