@@ -13,6 +13,15 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_TIMESTAMP_OUT_OF_RANGE = 0x838A0005;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_INSUFFICIENT_FORCE_FEEDBACK_RESOURCES = 0x838A0006;
 
+    public const int WMSZ_LEFT = 1;
+    public const int WMSZ_RIGHT = 2;
+    public const int WMSZ_TOP = 3;
+    public const int WMSZ_TOPLEFT = 4;
+    public const int WMSZ_TOPRIGHT = 5;
+    public const int WMSZ_BOTTOM = 6;
+    public const int WMSZ_BOTTOMLEFT = 7;
+    public const int WMSZ_BOTTOMRIGHT = 8;
+
     public const float XM_PI = 3.141592654f;
     public const float XM_2PI = 6.283185307f;
     public const float XM_1DIVPI = 0.318309886f;

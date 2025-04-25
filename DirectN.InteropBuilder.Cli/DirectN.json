@@ -99,6 +99,7 @@
     "BeginPaint",
     "BringWindowToTop",
     "CalculatePopupWindowPosition",
+    "CallWindowProcW",
     "ChangeClipboardChain",
     "CloseClipboard",
     "CloseThemeData",

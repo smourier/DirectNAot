@@ -739,6 +739,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL CalculatePopupWindowPosition(in POINT anchorPoint, in SIZE windowSize, uint flags, nint /* optional RECT* */ excludeRect, out RECT popupWindowPosition);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-callwindowprocw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial LRESULT CallWindowProcW(WNDPROC lpPrevWndFunc, HWND hWnd, uint Msg, WPARAM wParam, LPARAM lParam);
+    
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-capabilitiesrequestandcapabilitiesreply
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
