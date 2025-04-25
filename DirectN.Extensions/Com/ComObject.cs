@@ -64,7 +64,7 @@ public abstract class ComObject : IComObject
         return default;
     }
 
-    public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
     {
         if (unknown == 0)
             return null;
@@ -77,7 +77,7 @@ public abstract class ComObject : IComObject
         if (instance == null || instance is not T t)
             return null;
 
-        return new ComObject<T>(t);
+        return new ComObject<T>(t, releaseOnDispose);
     }
 
     public static nint GetOrCreateComInstance(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
@@ -351,15 +351,15 @@ public abstract class ComObject : IComObject
         return type.GetGenericArguments()[0];
     }
 
-    public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
+    public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
         // we use IUnknown first, some objects don't support direct query interface
         Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
-        return FromPointer<T>(unk, flags);
+        return FromPointer<T>(unk, flags, releaseOnDispose);
     }
 
     [SupportedOSPlatform("windows8.0")]
-    public static IComObject<T>? GetActivationFactory<T>(string activatableClassId, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
+    public static IComObject<T>? GetActivationFactory<T>(string activatableClassId, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(activatableClassId);
         using var p = new Hstring(activatableClassId);
@@ -367,7 +367,7 @@ public abstract class ComObject : IComObject
         if (unk == 0)
             return default;
 
-        return FromPointer<T>(unk, flags);
+        return FromPointer<T>(unk, flags, releaseOnDispose);
     }
 
     [SupportedOSPlatform("windows8.0")]
@@ -401,5 +401,5 @@ public class ComObject<T>(object comObject, bool releaseOnDispose = true) : ComO
     public new T Object => (T)(object)base.Object;
     public override Type InterfaceType => typeof(T);
 
-    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true) => CoCreate<T>(classId, ctx, outer, flags, throwOnError);
+    public static IComObject<T>? CoCreate(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true) => CoCreate<T>(classId, ctx, outer, flags, releaseOnDispose, throwOnError);
 }
