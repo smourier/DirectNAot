@@ -3300,6 +3300,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HANDLE GetCurrentProcess();
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentthreadid
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial uint GetCurrentThreadId();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcursor
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8635,6 +8641,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial void PostQuitMessage(int nExitCode);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postthreadmessagew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL PostThreadMessageW(uint idThread, uint Msg, WPARAM wParam, LPARAM lParam);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-printwindow
     [LibraryImport("USER32", SetLastError = true)]

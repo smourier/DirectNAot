@@ -123,8 +123,9 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
-    private T WithWholeRange<T>(Func<ITextRange2, T> func)
+    protected T WithWholeRange<T>(Func<ITextRange2, T> func)
     {
+        ArgumentNullException.ThrowIfNull(func);
         using var range = GetWholeRange();
         return func(range.Object);
     }
@@ -202,7 +203,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
-    public int Height
+    public virtual int Height
     {
         get => _height;
         set
@@ -270,19 +271,19 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public static D3DCOLORVALUE ToColor(COLORREF color) => new(color.Value);
 
-    private void ResetCharFormat()
+    protected virtual void ResetCharFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _charFormat, null)?.Dispose();
         ChangeBitNotify(TXTBIT.TXTBIT_CHARFORMATCHANGE);
     }
 
-    private void ResetParaFormat()
+    protected virtual void ResetParaFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _paraFormat, null)?.Dispose();
         ChangeBitNotify(TXTBIT.TXTBIT_PARAFORMATCHANGE);
     }
 
-    protected virtual void ChangeBitNotify(TXTBIT bit)
+    protected virtual void ChangeBitNotify(TXTBIT bit, [CallerMemberName] string? memberName = null)
     {
         if (bit == 0)
             return;
@@ -443,7 +444,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             var name = FaceName.Nullify();
             if (name != null)
             {
-                format.Base.szFaceName = FaceName.Nullify();
+                format.Base.szFaceName = name;
                 format.Base.dwMask |= CFM_MASK.CFM_FACE;
             }
 
