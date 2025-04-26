@@ -274,13 +274,13 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     protected virtual void ResetCharFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _charFormat, null)?.Dispose();
-        ChangeBitNotify(TXTBIT.TXTBIT_CHARFORMATCHANGE);
+        ChangeBitNotify(TXTBIT.TXTBIT_CHARFORMATCHANGE, memberName);
     }
 
     protected virtual void ResetParaFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _paraFormat, null)?.Dispose();
-        ChangeBitNotify(TXTBIT.TXTBIT_PARAFORMATCHANGE);
+        ChangeBitNotify(TXTBIT.TXTBIT_PARAFORMATCHANGE, memberName);
     }
 
     protected virtual void ChangeBitNotify(TXTBIT bit, [CallerMemberName] string? memberName = null)
