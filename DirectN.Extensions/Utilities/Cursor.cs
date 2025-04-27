@@ -12,6 +12,11 @@ public class Cursor : IEquatable<Cursor>
     public int Id { get; }
     public HCURSOR Handle { get; }
 
+    public Cursor(HCURSOR handle)
+    {
+        Handle = handle;
+    }
+
     public static readonly Cursor AppStarting = new(32650);
     public static readonly Cursor Arrow = new(32512);
     public static readonly Cursor Cross = new(32515);
@@ -28,7 +33,6 @@ public class Cursor : IEquatable<Cursor>
     public static readonly Cursor UpArrow = new(32516);
     public static readonly Cursor Wait = new(32514);
 
-    private static void Set(HCURSOR handle) => Functions.SetCursor(handle);
     public static void Set(Cursor? cursor)
     {
         if (cursor == null || cursor.Handle.Value == 0)
@@ -37,23 +41,31 @@ public class Cursor : IEquatable<Cursor>
         }
         else
         {
-            Set(cursor.Handle);
+            Functions.SetCursor(cursor.Handle);
         }
     }
 
     public override int GetHashCode() => Handle.GetHashCode();
     public override string ToString() => Id + " " + Handle;
     public override bool Equals(object? obj) => Equals(obj as Cursor);
-    public bool Equals(Cursor? other) => other != null && (Id == other.Id || Handle == other.Handle);
+    public bool Equals(Cursor? other) => other != null && (Handle == other.Handle || (Id != 0 && Id == other.Id));
 }
 
 public class CursorConverter : TypeConverter
 {
-    public override bool CanConvertFrom(ITypeDescriptorContext? context, Type type) => type == typeof(string);
+    public override bool CanConvertTo(ITypeDescriptorContext? context, [NotNullWhen(true)] Type? destinationType)
+        => base.CanConvertTo(context, destinationType) || destinationType == typeof(string) || destinationType == typeof(HCURSOR);
+
+    public override bool CanConvertFrom(ITypeDescriptorContext? context, Type type)
+        => base.CanConvertFrom(context, type) || type == typeof(string) || type == typeof(HCURSOR);
+
     public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object? value)
     {
         if (value is string s && s != null && int.TryParse(s, out var i))
             return new Cursor(i);
+
+        if (value is HCURSOR cursor)
+            return new Cursor(cursor);
 
         return null;
     }
@@ -64,6 +76,14 @@ public class CursorConverter : TypeConverter
         {
             if (value is Cursor cursor)
                 return cursor.Id.ToString();
+
+            return null;
+        }
+
+        if (destinationType == typeof(HCURSOR))
+        {
+            if (value is Cursor cursor)
+                return cursor.Handle;
 
             return null;
         }
