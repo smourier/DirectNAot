@@ -123,7 +123,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
-    protected T WithWholeRange<T>(Func<ITextRange2, T> func)
+    public T WithWholeRange<T>(Func<ITextRange2, T> func)
     {
         ArgumentNullException.ThrowIfNull(func);
         using var range = GetWholeRange();
@@ -140,7 +140,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     public virtual POINT CaretPos
     {
         get => _caretPos;
-        protected set
+        set
         {
             if (_caretPos == value)
                 return;
@@ -152,7 +152,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     public virtual bool ShowCaret
     {
         get => _showCaret;
-        protected set
+        set
         {
             if (_showCaret == value)
                 return;
@@ -271,19 +271,19 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public static D3DCOLORVALUE ToColor(COLORREF color) => new(color.Value);
 
-    protected virtual void ResetCharFormat([CallerMemberName] string? memberName = null)
+    public virtual void ResetCharFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _charFormat, null)?.Dispose();
         ChangeBitNotify(TXTBIT.TXTBIT_CHARFORMATCHANGE, memberName);
     }
 
-    protected virtual void ResetParaFormat([CallerMemberName] string? memberName = null)
+    public virtual void ResetParaFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _paraFormat, null)?.Dispose();
         ChangeBitNotify(TXTBIT.TXTBIT_PARAFORMATCHANGE, memberName);
     }
 
-    protected virtual void ChangeBitNotify(TXTBIT bit, [CallerMemberName] string? memberName = null)
+    public virtual void ChangeBitNotify(TXTBIT bit, [CallerMemberName] string? memberName = null)
     {
         if (bit == 0)
             return;
@@ -309,8 +309,8 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return TxGetNaturalSize2(mode, width, height, null, out ascent);
     }
 
-    protected SIZE TxGetNaturalSize2(TXTNATURALSIZE mode, int width, int height, SIZE? extent = null) => TxGetNaturalSize2(mode, width, height, extent, out _);
-    protected virtual SIZE TxGetNaturalSize2(TXTNATURALSIZE mode, int width, int height, SIZE? extent, out int ascent)
+    public SIZE TxGetNaturalSize2(TXTNATURALSIZE mode, int width, int height, SIZE? extent = null) => TxGetNaturalSize2(mode, width, height, extent, out _);
+    public virtual SIZE TxGetNaturalSize2(TXTNATURALSIZE mode, int width, int height, SIZE? extent, out int ascent)
     {
         // for some reason, -1, -1 avoids the himetric mumbo jumbo computation...
         extent ??= new SIZE { cx = -1, cy = -1 };
