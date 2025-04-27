@@ -84,6 +84,9 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_ALREADYREGISTERED = 0x80040101;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_INVALIDHWND = 0x80040102;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DRAGDROP_E_CONCURRENT_DRAG_ATTEMPTED = 0x80040103;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT RPC_E_CHANGED_MODE = 0x80010106;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CO_E_NOTINITIALIZED = 0x800401F0;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CO_E_ALREADYINITIALIZED = 0x800401F1;
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = 0x80030001;
