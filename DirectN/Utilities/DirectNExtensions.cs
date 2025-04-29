@@ -91,6 +91,99 @@ public static class DirectNExtensions
         return value;
     }
 
+    public static float PixelToHiMetric(this float value)
+    {
+        var dpi = Functions.Dpi;
+        return D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width;
+    }
+
+    public static double PixelToHiMetric(this double value)
+    {
+        var dpi = Functions.Dpi;
+        return D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width;
+    }
+
+    public static int PixelToHiMetric(this int value)
+    {
+        var dpi = Functions.Dpi;
+        return (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width);
+    }
+
+    public static uint PixelToHiMetric(this uint value)
+    {
+        var dpi = Functions.Dpi;
+        return (uint)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width);
+    }
+
+    public static float HiMetricToPixel(this float value)
+    {
+        var dpi = Functions.Dpi;
+        return value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH;
+    }
+
+    public static double HiMetricToPixel(this double value)
+    {
+        var dpi = Functions.Dpi;
+        return value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH;
+    }
+
+    public static int HiMetricToPixel(this int value)
+    {
+        var dpi = Functions.Dpi;
+        return (int)(value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH);
+    }
+
+    public static uint HiMetricToPixel(this uint value)
+    {
+        var dpi = Functions.Dpi;
+        return (uint)(value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH);
+    }
+
+    public static float PixelToDip(this float value)
+    {
+        var scale = Functions.DpiScale;
+        return value / scale.width;
+    }
+
+    public static double PixelToDip(this double value)
+    {
+        var scale = Functions.DpiScale;
+        return value / scale.width;
+    }
+
+    public static int PixelToDip(this int value)
+    {
+        var scale = Functions.DpiScale;
+        return (int)(value / scale.width);
+    }
+
+    public static uint PixelToDip(this uint value)
+    {
+        var scale = Functions.DpiScale;
+        return (uint)(value / scale.width);
+    }
+
+    // https://blogs.msdn.microsoft.com/text/2009/12/11/wpf-text-measurement-units/
+    public static float PointsToDips(this float pt) => 96 / (72 * pt);
+    public static float DipsToPoints(this float dip) => 72 / (96 * dip);
+    public static float PointsToTwips(this float pt) => pt * 20;
+    public static float TwipsToPoints(this float twips) => twips / 20;
+
+    public static double PointsToDips(this double pt) => 96 / (72 * pt);
+    public static double DipsToPoints(this double dip) => 72 / (96 * dip);
+    public static double PointsToTwips(this double pt) => pt * 20;
+    public static double TwipsToPoints(this double twips) => twips / 20;
+
+    public static int PointsToDips(this int pt) => (int)(96 / (72.0 * pt));
+    public static int DipsToPoints(this int dip) => (int)(72 / (96.0 * dip));
+    public static int PointsToTwips(this int pt) => (int)(pt * 20.0);
+    public static int TwipsToPoints(this int twips) => (int)(twips / 20.0);
+
+    public static uint PointsToDips(this uint pt) => (uint)(96 / (72.0 * pt));
+    public static uint DipsToPoints(this uint dip) => (uint)(72 / (96.0 * dip));
+    public static uint PointsToTwips(this uint pt) => (uint)(pt * 20.0);
+    public static uint TwipsToPoints(this uint twips) => (uint)(twips / 20.0);
+
     public static uint ToUInt32(this float value)
     {
         if (float.IsNaN(value))

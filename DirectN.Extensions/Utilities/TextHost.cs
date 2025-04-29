@@ -16,6 +16,9 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     private COLORREF _textColor;
     private COLORREF _backColor;
     private TextHostOptions _options;
+    private TXTBACKSTYLE _backStyle;
+    private SBOUT _sbout;
+    private int _selectionBarWidth;
     private PARAFORMAT_ALIGNMENT _aligment;
     private readonly IComObject<ITextServices2> _services;
     private ComBuffer<CHARFORMAT2W>? _charFormat;
@@ -23,9 +26,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public TextHost(TextServicesGenerator generator = TextServicesGenerator.Default)
     {
-        _textColor = new COLORREF { Value = 0xFFFFFF }; // white
+        _textColor = new COLORREF(); // white
         _backColor = new COLORREF { Value = 0x00FFFFFF }; // transparent
         _options = TextHostOptions.Default;
+        _backStyle = TXTBACKSTYLE.TXTBACK_TRANSPARENT;
 
         var services = this.Create<ITextServices2>(generator);
         if (services == null)
@@ -255,6 +259,45 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
+    public virtual TXTBACKSTYLE BackStyle
+    {
+        get => _backStyle;
+        set
+        {
+            if (_backStyle == value)
+                return;
+
+            _backStyle = value;
+            ResetBackStyle();
+        }
+    }
+
+    public virtual SBOUT ScrollBars
+    {
+        get => _sbout;
+        set
+        {
+            if (_sbout == value)
+                return;
+
+            _sbout = value;
+            ResetScrollBars();
+        }
+    }
+
+    public virtual int SelectionBarWidth
+    {
+        get => _selectionBarWidth;
+        set
+        {
+            if (_selectionBarWidth == value)
+                return;
+
+            _selectionBarWidth = value;
+            ResetSelectionBarWidth();
+        }
+    }
+
     public static COLORREF ToColor(D3DCOLORVALUE color)
     {
         int i = color.BR;
@@ -262,15 +305,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         i |= color.BB << 16;
         i |= color.BA << 24;
 
-        // for some reason, white is not 0xFFFFFFFF
-        if (i == -1)
-            return new COLORREF { Value = 0xFFFFFF };
-
         return new COLORREF { Value = (uint)i };
     }
 
     public static D3DCOLORVALUE ToColor(COLORREF color) => new(color.Value);
 
+    public virtual void ResetSelectionBarWidth([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_SELBARCHANGE, memberName);
+    public virtual void ResetBackStyle([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_BACKSTYLECHANGE, memberName);
+    public virtual void ResetScrollBars([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_SCROLLBARCHANGE, memberName);
     public virtual void ResetCharFormat([CallerMemberName] string? memberName = null)
     {
         Interlocked.Exchange(ref _charFormat, null)?.Dispose();
@@ -427,7 +469,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         if (pstyle == 0)
             return Constants.E_INVALIDARG;
 
-        *(TXTBACKSTYLE*)pstyle = TXTBACKSTYLE.TXTBACK_TRANSPARENT;
+        *(TXTBACKSTYLE*)pstyle = BackStyle;
         return Constants.S_OK;
     }
 
@@ -467,7 +509,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             //Trace("fmt: " + format);
         }
 
-        ppCF = _charFormat.DangerousGetHandle();
+        *(nint*)ppCF = _charFormat.DangerousGetHandle();
         //Trace("ppCF: " + ppCF);
         return Constants.S_OK;
     }
@@ -485,7 +527,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             //Trace("fmt: " + format);
         }
 
-        ppPF = _paraFormat.DangerousGetHandle();
+        *(nint*)ppPF = _paraFormat.DangerousGetHandle();
         //Trace("ppPF: " + ppPF);
         return Constants.S_OK;
     }
@@ -626,8 +668,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         if (pdwScrollBar == 0)
             return Constants.E_INVALIDARG;
 
-        //pdwScrollBar = SBOUT.WS_VSCROLL | SBOUT.WS_HSCROLL;
-        *(SBOUT*)pdwScrollBar = 0;
+        *(SBOUT*)pdwScrollBar = ScrollBars;
         return Constants.S_OK;
     }
 
@@ -637,15 +678,12 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         if (lSelBarWidth == 0)
             return Constants.E_INVALIDARG;
 
-        *(int*)lSelBarWidth = 0;
+        *(int*)lSelBarWidth = SelectionBarWidth.PixelToHiMetric();
         return Constants.S_OK;
     }
 
     public virtual uint TxGetSysColor(SYS_COLOR_INDEX nIndex)
     {
-        //if (nIndex == COLOR.COLOR_WINDOW)
-        //    return 0xF03050;
-
         var color = Functions.GetSysColor(nIndex);
         Trace("nIndex: " + nIndex + " color:#" + color.ToString("X8"));
         return color;
