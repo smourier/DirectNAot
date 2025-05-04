@@ -94,11 +94,11 @@ public abstract class ComObject : IComObject
         return ComWrappers.GetOrCreateComInterfaceForObject(unwrapped, flags);
     }
 
-    public static nint GetOrCreateComInstance<T>(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
+    public static nint GetOrCreateComInstance<T>(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None) => GetOrCreateComInstance(obj, typeof(T).GUID, flags);
+    public static nint GetOrCreateComInstance(object obj, Guid iid, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
     {
         ArgumentNullException.ThrowIfNull(obj);
         var unk = GetOrCreateComInstance(obj, flags);
-        var iid = typeof(T).GUID;
         try
         {
             Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out var iface));

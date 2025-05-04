@@ -185,6 +185,23 @@ public static class IMFAttributesExtensions
         return value;
     }
 
+    public static void Set<T>(this IComObject<IMFAttributes> input, Guid key, IComObject<T>? value)
+    {
+        var obj = input?.Object;
+        if (obj == null)
+            return;
+
+        if (value == null)
+        {
+            obj.SetUnknown(key, 0).ThrowOnError();
+        }
+        else
+        {
+            var unk = ComObject.GetOrCreateComInstance(value);
+            obj.SetUnknown(key, unk).ThrowOnError();
+        }
+    }
+
     public static void Set(this IComObject<IMFAttributes> input, Guid key, nint value) => input?.Object!.SetUnknown(key, value).ThrowOnError();
     public static void Set(this IComObject<IMFAttributes> input, Guid key, double value) => input?.Object!.SetDouble(key, value).ThrowOnError();
     public static void Set(this IComObject<IMFAttributes> input, Guid key, Guid value) => input?.Object!.SetGUID(key, value).ThrowOnError();

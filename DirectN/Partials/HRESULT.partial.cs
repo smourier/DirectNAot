@@ -101,6 +101,15 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
         }
     }
 
+    public static HRESULT FromWin32(WIN32_ERROR error) => FromWin32((int)error);
+    public static HRESULT FromWin32(uint error)
+    {
+        if (error >= 0x80000000)
+            return error;
+
+        return FromWin32((int)error);
+    }
+
     public static HRESULT FromWin32(int error)
     {
         if (error < 0)
@@ -111,6 +120,5 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
     }
 
     public static implicit operator HRESULT(uint result) => new(result);
-
     public static explicit operator uint(HRESULT hr) => hr.UValue;
 }
