@@ -80,12 +80,14 @@ public abstract class ComObject : IComObject
         return new ComObject<T>(t, releaseOnDispose);
     }
 
-    public static nint GetOrCreateComInstance(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
+    public static nint GetOrCreateComInstance(object? obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
     {
-        ArgumentNullException.ThrowIfNull(obj);
+        if (obj == null)
+            return 0;
+
         var unwrapped = Unwrap(obj);
         if (unwrapped == null)
-            throw new ArgumentException(null, nameof(obj));
+            return 0;
 
         ComWrappers.TryGetComInstance(unwrapped, out var unk);
         if (unk != 0)
@@ -94,11 +96,16 @@ public abstract class ComObject : IComObject
         return ComWrappers.GetOrCreateComInterfaceForObject(unwrapped, flags);
     }
 
-    public static nint GetOrCreateComInstance<T>(object obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None) => GetOrCreateComInstance(obj, typeof(T).GUID, flags);
-    public static nint GetOrCreateComInstance(object obj, Guid iid, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
+    public static nint GetOrCreateComInstance<T>(object? obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None) => GetOrCreateComInstance(obj, typeof(T).GUID, flags);
+    public static nint GetOrCreateComInstance(object? obj, Guid iid, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None)
     {
-        ArgumentNullException.ThrowIfNull(obj);
+        if (obj == null)
+            return 0;
+
         var unk = GetOrCreateComInstance(obj, flags);
+        if (unk == 0)
+            return 0;
+
         try
         {
             Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out var iface));

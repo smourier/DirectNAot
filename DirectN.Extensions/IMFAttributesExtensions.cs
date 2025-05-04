@@ -37,10 +37,13 @@ public static class IMFAttributesExtensions
     public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IComObject<IMFAttributes> input) => EnumDeviceSources(input?.Object!);
 
     [SupportedOSPlatform("windows6.1")]
-    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IMFAttributes input)
+    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IMFAttributes input, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        Functions.MFEnumDeviceSources(input, out var array, out var count).ThrowOnError();
+        var hr = Functions.MFEnumDeviceSources(input, out var array, out var count).ThrowOnError(throwOnError);
+        if (hr.IsError)
+            yield break;
+
         try
         {
             for (var i = 0; i < count; i++)
@@ -57,32 +60,32 @@ public static class IMFAttributesExtensions
         }
     }
 
-    public static void DeleteAllItems(this IComObject<IMFAttributes> input) => DeleteAllItems(input?.Object!);
-    public static void DeleteAllItems(this IMFAttributes input)
+    public static void DeleteAllItems(this IComObject<IMFAttributes> input, bool throwOnError = true) => DeleteAllItems(input?.Object!, throwOnError);
+    public static void DeleteAllItems(this IMFAttributes input, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        input.DeleteAllItems().ThrowOnError();
+        input.DeleteAllItems().ThrowOnError(throwOnError);
     }
 
-    public static void DeleteItem(this IComObject<IMFAttributes> input, Guid key) => DeleteItem(input?.Object!, key);
-    public static void DeleteItem(this IMFAttributes input, Guid key)
+    public static void DeleteItem(this IComObject<IMFAttributes> input, Guid key, bool throwOnError = true) => DeleteItem(input?.Object!, key, throwOnError);
+    public static void DeleteItem(this IMFAttributes input, Guid key, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        input.DeleteItem(key).ThrowOnError();
+        input.DeleteItem(key).ThrowOnError(throwOnError);
     }
 
-    public static void LockStore(this IComObject<IMFAttributes> input) => LockStore(input?.Object!);
-    public static void LockStore(this IMFAttributes input)
+    public static void LockStore(this IComObject<IMFAttributes> input, bool throwOnError = true) => LockStore(input?.Object!, throwOnError);
+    public static void LockStore(this IMFAttributes input, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        input.LockStore().ThrowOnError();
+        input.LockStore().ThrowOnError(throwOnError);
     }
 
-    public static void UnlockStore(this IComObject<IMFAttributes> input) => UnlockStore(input?.Object!);
-    public static void UnlockStore(this IMFAttributes input)
+    public static void UnlockStore(this IComObject<IMFAttributes> input, bool throwOnError = true) => UnlockStore(input?.Object!, throwOnError);
+    public static void UnlockStore(this IMFAttributes input, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        input.UnlockStore().ThrowOnError();
+        input.UnlockStore().ThrowOnError(throwOnError);
     }
 
     public static void TryGetItemByIndex(this IComObject<IMFAttributes> input, uint index, out Guid key, out object? value) => TryGetItemByIndex(input?.Object!, index, out key, out value);
@@ -104,25 +107,25 @@ public static class IMFAttributesExtensions
         }
     }
 
-    public static void Set2UINT32asUINT64(this IComObject<IMFAttributes> input, Guid key, uint high, uint low) => Set2UINT32asUINT64(input?.Object!, key, high, low);
-    public static void Set2UINT32asUINT64(this IMFAttributes input, Guid key, uint high, uint low)
+    public static void Set2UINT32asUINT64(this IComObject<IMFAttributes> input, Guid key, uint high, uint low, bool throwOnError = true) => Set2UINT32asUINT64(input?.Object!, key, high, low, throwOnError);
+    public static void Set2UINT32asUINT64(this IMFAttributes input, Guid key, uint high, uint low, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        MFSetAttribute2UINT32asUINT64(input, key, high, low).ThrowOnError();
+        MFSetAttribute2UINT32asUINT64(input, key, high, low).ThrowOnError(throwOnError);
     }
 
-    public static void SetSize(this IComObject<IMFAttributes> input, Guid key, uint width, uint height) => SetSize(input?.Object!, key, width, height);
-    public static void SetSize(this IMFAttributes input, Guid key, uint width, uint height)
+    public static void SetSize(this IComObject<IMFAttributes> input, Guid key, uint width, uint height, bool throwOnError = true) => SetSize(input?.Object!, key, width, height, throwOnError);
+    public static void SetSize(this IMFAttributes input, Guid key, uint width, uint height, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        MFSetAttribute2UINT32asUINT64(input, key, width, height).ThrowOnError();
+        MFSetAttribute2UINT32asUINT64(input, key, width, height).ThrowOnError(throwOnError);
     }
 
-    public static void SetRatio(this IComObject<IMFAttributes> input, Guid key, uint numerator, uint denominator) => SetRatio(input?.Object!, key, numerator, denominator);
-    public static void SetRatio(this IMFAttributes input, Guid key, uint numerator, uint denominator)
+    public static void SetRatio(this IComObject<IMFAttributes> input, Guid key, uint numerator, uint denominator, bool throwOnError = true) => SetRatio(input?.Object!, key, numerator, denominator, throwOnError);
+    public static void SetRatio(this IMFAttributes input, Guid key, uint numerator, uint denominator, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        MFSetAttribute2UINT32asUINT64(input, key, numerator, denominator).ThrowOnError();
+        MFSetAttribute2UINT32asUINT64(input, key, numerator, denominator).ThrowOnError(throwOnError);
     }
 
     public static bool TryGet2UINT32asUINT64(this IComObject<IMFAttributes> input, Guid key, out uint high, out uint low) => TryGet2UINT32asUINT64(input?.Object!, key, out high, out low);
@@ -156,16 +159,22 @@ public static class IMFAttributesExtensions
         return Constants.S_OK;
     }
 
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IComObject<IMFAttributes> input) => Enumerate(input?.Object!);
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IMFAttributes input)
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IComObject<IMFAttributes> input, bool throwOnError = true) => Enumerate(input?.Object!, throwOnError);
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IMFAttributes input, bool throwOnError = true)
     {
         if (input == null)
             yield break;
 
         for (uint i = 0; i < Count(input); i++)
         {
-            input.GetItemByIndex(i, out Guid guid, 0).ThrowOnError();
-            input.GetItemType(guid, out var type).ThrowOnError();
+            var hr = input.GetItemByIndex(i, out Guid guid, 0).ThrowOnError(throwOnError);
+            if (hr.IsError)
+                continue;
+
+            hr = input.GetItemType(guid, out var type).ThrowOnError(throwOnError);
+            if (hr.IsError)
+                continue;
+
             yield return new KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>(guid, type);
         }
     }
@@ -177,15 +186,15 @@ public static class IMFAttributesExtensions
         return Enumerate(input).Select(kv => new KeyValuePair<Guid, object?>(kv.Key, GetValue(input, kv.Key))).ToArray();
     }
 
-    public static uint Count(this IComObject<IMFAttributes> input) => Count(input?.Object!);
-    public static uint Count(this IMFAttributes input)
+    public static uint Count(this IComObject<IMFAttributes> input, bool throwOnError = true) => Count(input?.Object!, throwOnError);
+    public static uint Count(this IMFAttributes input, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
-        input.GetCount(out var value).ThrowOnError();
+        input.GetCount(out var value).ThrowOnError(throwOnError);
         return value;
     }
 
-    public static void Set<T>(this IComObject<IMFAttributes> input, Guid key, IComObject<T>? value)
+    public static void Set<T>(this IComObject<IMFAttributes> input, Guid key, IComObject<T>? value, bool throwOnError = true)
     {
         var obj = input?.Object;
         if (obj == null)
@@ -193,27 +202,27 @@ public static class IMFAttributesExtensions
 
         if (value == null)
         {
-            obj.SetUnknown(key, 0).ThrowOnError();
+            obj.SetUnknown(key, 0).ThrowOnError(throwOnError);
         }
         else
         {
             var unk = ComObject.GetOrCreateComInstance(value);
-            obj.SetUnknown(key, unk).ThrowOnError();
+            obj.SetUnknown(key, unk).ThrowOnError(throwOnError);
         }
     }
 
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, nint value) => input?.Object!.SetUnknown(key, value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, double value) => input?.Object!.SetDouble(key, value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, Guid value) => input?.Object!.SetGUID(key, value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, long value) => input?.Object!.SetUINT64(key, (ulong)value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, ulong value) => input?.Object!.SetUINT64(key, value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, int value) => input?.Object!.SetUINT32(key, (uint)value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, uint value) => input?.Object!.SetUINT32(key, value).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, bool value) => input?.Object!.SetUINT32(key, (uint)(value ? 1 : 0)).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, Enum value) => input?.Object!.SetUINT32(key, (uint)Convert.ChangeType(value, typeof(uint), CultureInfo.InvariantCulture)).ThrowOnError();
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, string? value)
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, nint value, bool throwOnError = true) => input?.Object!.SetUnknown(key, value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, double value, bool throwOnError = true) => input?.Object!.SetDouble(key, value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, Guid value, bool throwOnError = true) => input?.Object!.SetGUID(key, value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, long value, bool throwOnError = true) => input?.Object!.SetUINT64(key, (ulong)value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, ulong value, bool throwOnError = true) => input?.Object!.SetUINT64(key, value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, int value, bool throwOnError = true) => input?.Object!.SetUINT32(key, (uint)value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, uint value, bool throwOnError = true) => input?.Object!.SetUINT32(key, value).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, bool value, bool throwOnError = true) => input?.Object!.SetUINT32(key, (uint)(value ? 1 : 0)).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, Enum value, bool throwOnError = true) => input?.Object!.SetUINT32(key, (uint)Convert.ChangeType(value, typeof(uint), CultureInfo.InvariantCulture)).ThrowOnError(throwOnError);
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, string? value, bool throwOnError = true)
     {
-        input?.Object!.SetString(key, PWSTR.From(value)).ThrowOnError();
+        input?.Object!.SetString(key, PWSTR.From(value)).ThrowOnError(throwOnError);
     }
 
     public static T? Get<T>(this IComObject<IMFAttributes> input, Guid key, T? defaultValue = default, IFormatProvider? provider = null) => Get(input?.Object!, key, defaultValue, provider);
@@ -454,27 +463,31 @@ public static class IMFAttributesExtensions
         return ComObject.FromPointer<T>(unk);
     }
 
-    public static byte[]? GetBlob(this IComObject<IMFAttributes> input, Guid key) => GetBlob(input, key);
-    public static byte[]? GetBlob(this IMFAttributes input, Guid key)
+    public static byte[]? GetBlob(this IComObject<IMFAttributes> input, Guid key, bool throwOnError = true) => GetBlob(input, key, throwOnError);
+    public static byte[]? GetBlob(this IMFAttributes input, Guid key, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
         if (input.GetBlobSize(key, out var size).IsError || size == 0)
             return null;
 
         var bytes = new byte[(int)size];
-        input.GetBlob(key, bytes.AsPointer(), size, 0).ThrowOnError();
+        if (input.GetBlob(key, bytes.AsPointer(), size, 0).ThrowOnError(throwOnError).IsError)
+            return null;
+
         return bytes;
     }
 
-    public static string? GetString(this IComObject<IMFAttributes> input, Guid key, string? defaultValue = null) => GetString(input?.Object!, key, defaultValue);
-    public static string? GetString(this IMFAttributes input, Guid key, string? defaultValue = null)
+    public static string? GetString(this IComObject<IMFAttributes> input, Guid key, string? defaultValue = null, bool throwOnError = true) => GetString(input?.Object!, key, defaultValue, throwOnError);
+    public static string? GetString(this IMFAttributes input, Guid key, string? defaultValue = null, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
         if (input.GetStringLength(key, out var length).IsError)
             return defaultValue;
 
-        var p = new AllocPwstr((length + 1) * 2);
-        input.GetString(key, p, p.SizeInChars, 0).ThrowOnError();
+        using var p = new AllocPwstr((length + 1) * 2);
+        if (input.GetString(key, p, p.SizeInChars, 0).ThrowOnError(throwOnError).IsError)
+            return null;
+
         return p.ToString();
     }
 }
