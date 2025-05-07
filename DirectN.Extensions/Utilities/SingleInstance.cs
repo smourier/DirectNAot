@@ -172,7 +172,7 @@ public partial class SingleInstance(Guid groupId)
             if (args[4] is not string did || !Guid.TryParse(did, out var desktopId))
                 return null;
 
-            args = args.Skip(_wellKnownArgs).ToArray();
+            args = [.. args.Skip(_wellKnownArgs)];
             return new SingleInstanceCommand
             {
                 ProcessId = processId,

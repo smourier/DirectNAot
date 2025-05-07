@@ -10,6 +10,11 @@ public sealed class ComObjectArray<T> : IEnumerable<IComObject<T>?>, IDisposable
     {
         DisposeOnRemove = disposeOnRemove;
         _list = new List<IComObject<T>?>(capacity);
+        for (var i = 0; i < capacity; i++)
+        {
+            _list.Add(null);
+        }
+
         _array = new nint[capacity];
     }
 
@@ -53,7 +58,7 @@ public sealed class ComObjectArray<T> : IEnumerable<IComObject<T>?>, IDisposable
                     Marshal.Release(unk);
                 }
 
-                unk = ComObject.GetOrCreateComInstance(item);
+                unk = ComObject.GetOrCreateComInstance(value);
                 _array[index] = unk;
             }
 

@@ -53,6 +53,8 @@ public sealed class ComObjectWrapper<T> : IComObject, IDisposable
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     Type IComObject.InterfaceType => typeof(T);
 
+    void IComObject.AddRef() => _cot.AddRef();
+
     public void Dispose()
     {
         if (_cot.IsDisposed)

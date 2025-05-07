@@ -328,7 +328,7 @@ public sealed class ColorProfile
     {
         try
         {
-            return TrimTerminatingZeros(Encoding.ASCII.GetString(BitConverter.GetBytes(value).Reverse().ToArray()));
+            return TrimTerminatingZeros(Encoding.ASCII.GetString([.. BitConverter.GetBytes(value).Reverse()]));
         }
         catch
         {
@@ -353,7 +353,7 @@ public sealed class ColorProfile
     {
         try
         {
-            return TrimTerminatingZeros(Encoding.ASCII.GetString(BitConverter.GetBytes(value).Reverse().ToArray()));
+            return TrimTerminatingZeros(Encoding.ASCII.GetString([.. BitConverter.GetBytes(value).Reverse()]));
         }
         catch
         {

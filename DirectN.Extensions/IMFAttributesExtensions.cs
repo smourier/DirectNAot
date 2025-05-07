@@ -10,7 +10,7 @@ public static class IMFAttributesExtensions
             return "<null>";
 
         separator ??= " | ";
-        return string.Join(separator, Enumerate(input).Select(kv => kv.Key.ToString("B") + "=" + TraceValue(input, kv.Key)));
+        return string.Join(separator, EnumerateTypes(input).Select(kv => kv.Key.ToString("B") + "=" + TraceValue(input, kv.Key)));
     }
 
     public static string TraceValue(this IComObject<IMFAttributes> input, Guid key) => TraceValue(input?.Object!, key);
@@ -159,19 +159,28 @@ public static class IMFAttributesExtensions
         return Constants.S_OK;
     }
 
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IComObject<IMFAttributes> input, bool throwOnError = true) => Enumerate(input?.Object!, throwOnError);
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> Enumerate(this IMFAttributes input, bool throwOnError = true)
+    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IComObject<IMFAttributes> input) => GetTraceDictionary(input?.Object!);
+    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IMFAttributes input)
+    {
+        foreach (var item in input.EnumerateValues())
+        {
+            yield return new(item.Key.GetTraceConstantName(), item.Value);
+        }
+    }
+
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IComObject<IMFAttributes> input) => EnumerateTypes(input?.Object!);
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IMFAttributes input)
     {
         if (input == null)
             yield break;
 
         for (uint i = 0; i < Count(input); i++)
         {
-            var hr = input.GetItemByIndex(i, out Guid guid, 0).ThrowOnError(throwOnError);
+            var hr = input.GetItemByIndex(i, out var guid, 0);
             if (hr.IsError)
                 continue;
 
-            hr = input.GetItemType(guid, out var type).ThrowOnError(throwOnError);
+            hr = input.GetItemType(guid, out var type);
             if (hr.IsError)
                 continue;
 
@@ -179,11 +188,19 @@ public static class IMFAttributesExtensions
         }
     }
 
-    public static KeyValuePair<Guid, object?>[] ToValues(this IComObject<IMFAttributes> input) => ToValues(input?.Object!);
-    public static KeyValuePair<Guid, object?>[] ToValues(this IMFAttributes input)
+    public static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IComObject<IMFAttributes> input) => EnumerateValues(input?.Object!);
+    public unsafe static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IMFAttributes input)
     {
-        ArgumentNullException.ThrowIfNull(input);
-        return Enumerate(input).Select(kv => new KeyValuePair<Guid, object?>(kv.Key, GetValue(input, kv.Key))).ToArray();
+        if (input == null)
+            yield break;
+
+        for (uint i = 0; i < Count(input); i++)
+        {
+            if (!TryGetItemByIndex(input, i, out var guid, out var value))
+                continue;
+
+            yield return new KeyValuePair<Guid, object?>(guid, value);
+        }
     }
 
     public static uint Count(this IComObject<IMFAttributes> input, bool throwOnError = true) => Count(input?.Object!, throwOnError);
@@ -192,6 +209,110 @@ public static class IMFAttributesExtensions
         ArgumentNullException.ThrowIfNull(input);
         input.GetCount(out var value).ThrowOnError(throwOnError);
         return value;
+    }
+
+    public static void Set(this IComObject<IMFAttributes> input, Guid key, object? value, bool throwOnError = true)
+    {
+        var obj = input?.Object;
+        if (obj == null)
+            return;
+
+        if (value == null || value == Type.Missing)
+        {
+            obj.DeleteItem(key).ThrowOnError(throwOnError);
+            return;
+        }
+
+        var type = value.GetType();
+        var tc = Type.GetTypeCode(type);
+        switch (tc)
+        {
+            case TypeCode.Empty:
+            case TypeCode.DBNull:
+                obj.SetItem(key, new PROPVARIANT()).ThrowOnError(throwOnError);
+                break;
+
+            case TypeCode.Boolean:
+                input!.Set(key, (bool)value, throwOnError);
+                return;
+
+            case TypeCode.Char:
+                input!.Set(key, (ushort)value, throwOnError);
+                break;
+
+            case TypeCode.SByte:
+                input!.Set(key, (sbyte)value, throwOnError);
+                break;
+
+            case TypeCode.Byte:
+                input!.Set(key, (byte)value, throwOnError);
+                break;
+
+            case TypeCode.Int16:
+                input!.Set(key, (short)value, throwOnError);
+                break;
+
+            case TypeCode.UInt16:
+                input!.Set(key, (ushort)value, throwOnError);
+                break;
+
+            case TypeCode.Int32:
+                input!.Set(key, (int)value, throwOnError);
+                break;
+
+            case TypeCode.UInt32:
+                input!.Set(key, (uint)value, throwOnError);
+                break;
+
+            case TypeCode.Int64:
+                input!.Set(key, (long)value, throwOnError);
+                break;
+
+            case TypeCode.UInt64:
+                input!.Set(key, (ulong)value, throwOnError);
+                break;
+
+            case TypeCode.Single:
+                input!.Set(key, (float)value, throwOnError);
+                break;
+
+            case TypeCode.Double:
+                input!.Set(key, (double)value, throwOnError);
+                break;
+
+            case TypeCode.Decimal:
+                input!.Set(key, decimal.ToDouble((decimal)value), throwOnError);
+                break;
+
+            case TypeCode.DateTime:
+                input!.Set(key, ((DateTime)value).ToOADate(), throwOnError);
+                break;
+
+            case TypeCode.String:
+                input!.Set(key, (string)value, throwOnError);
+                break;
+
+            case TypeCode.Object:
+                if (type == typeof(Guid))
+                {
+                    input!.Set(key, (Guid)value, throwOnError);
+                    break;
+                }
+
+                if (type == typeof(TimeSpan))
+                {
+                    input!.Set(key, ((TimeSpan)value).Ticks, throwOnError);
+                    break;
+                }
+
+                if (type == typeof(DateTimeOffset))
+                {
+                    input!.Set(key, ((DateTimeOffset)value).Date.ToOADate(), throwOnError);
+                    break;
+                }
+                break;
+
+        }
     }
 
     public static void Set<T>(this IComObject<IMFAttributes> input, Guid key, IComObject<T>? value, bool throwOnError = true)
@@ -354,6 +475,21 @@ public static class IMFAttributesExtensions
             default:
                 throw new NotSupportedException();
         }
+    }
+
+    public static bool TryGetValue(this IComObject<IMFAttributes> input, Guid key, out object? value) => TryGetValue(input?.Object!, key, out value);
+    public static unsafe bool TryGetValue(this IMFAttributes input, Guid key, out object? value)
+    {
+        var detached = new PROPVARIANT();
+        if (input.GetItem(key, (nint)(&detached)).IsError)
+        {
+            value = null;
+            return false;
+        }
+
+        using var pv = PropVariant.Attach(ref detached);
+        value = pv.Value;
+        return true;
     }
 
     public static object? GetValue(this IComObject<IMFAttributes> input, Guid key) => GetValue(input?.Object!, key);

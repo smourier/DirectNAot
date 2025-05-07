@@ -4,6 +4,14 @@ public static class GuidNames
 {
     private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<Guid, string>> _guidsNames = new();
 
+    public static string GetTraceConstantName(this Guid guid)
+    {
+        if (TryGetGuidName(typeof(Constants), guid, out var name))
+            return $"{name} ({guid:B})";
+
+        return guid.ToString("B");
+    }
+
     public static string GetConstantName(this Guid guid) => GetGuidName(typeof(Constants), guid);
     public static string GetGuidName([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] this Type type, Guid guid)
     {

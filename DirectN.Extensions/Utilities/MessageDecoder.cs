@@ -18,7 +18,9 @@ public static class MessageDecoder
             list.Add(msg.Name);
         }
 
-        return new ConcurrentDictionary<uint, string[]>(dic.Select(kv => new KeyValuePair<uint, string[]>(kv.Key, [.. kv.Value])));
+#pragma warning disable IDE0306 // Simplify collection initialization
+        return new(dic.Select(kv => new KeyValuePair<uint, string[]>(kv.Key, [.. kv.Value])));
+#pragma warning restore IDE0306 // Simplify collection initialization
     }
 
     public static string Decode(this MSG msg) => Decode(msg.hwnd, msg.message, msg.wParam, msg.lParam);

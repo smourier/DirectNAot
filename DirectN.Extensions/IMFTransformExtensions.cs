@@ -22,6 +22,6 @@ public static class IMFTransformExtensions
         if (obj == null || obj.GetAttributes(out var atts).IsError)
             return [];
 
-        return atts.Enumerate();
+        return atts.EnumerateTypes();
     }
 }
