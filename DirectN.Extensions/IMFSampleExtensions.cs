@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public static class IMFSampleExtensions
 {
     public static long GetSampleDuration(this IComObject<IMFSample> sample) => GetSampleDuration(sample?.Object!);

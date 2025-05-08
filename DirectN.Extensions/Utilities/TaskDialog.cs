@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public class TaskDialog
 {
     public static readonly nint TD_WARNING_ICON = new(unchecked((ushort)-1));

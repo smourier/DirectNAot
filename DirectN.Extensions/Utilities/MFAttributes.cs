@@ -3,7 +3,6 @@
 namespace DirectN.Extensions.Utilities;
 
 [GeneratedComClass]
-[SupportedOSPlatform("windows6.0.6000")]
 public partial class MFAttributes(string? name = null) :
     InterlockedComObject<IMFAttributes>(CreateAttributes()),
     IMFAttributes,
@@ -68,7 +67,11 @@ public partial class MFAttributes(string? name = null) :
     HRESULT IMFAttributes.CompareItem(in Guid guidKey, in PROPVARIANT Value, out BOOL pbResult)
     {
         var hr = NativeObject.CompareItem(guidKey, Value, out pbResult);
-        Trace($"{guidKey} {Value} {pbResult} => {hr}");
+#if DEBUG
+        Trace($"{guidKey} value:{PropVariant.Unwrap(Value)} result:{pbResult} => {hr}");
+#else
+        Trace($"{guidKey} value:{Value} result:{pbResult} => {hr}");
+#endif
         return hr;
     }
 
@@ -201,56 +204,60 @@ public partial class MFAttributes(string? name = null) :
     HRESULT IMFAttributes.SetBlob(in Guid guidKey, nint pBuf, uint cbBufSize)
     {
         var hr = NativeObject.SetBlob(guidKey, pBuf, cbBufSize);
-        Trace($"{guidKey} {pBuf} {cbBufSize} => {hr}");
+        Trace($"{guidKey} value:{pBuf} {cbBufSize} => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetDouble(in Guid guidKey, double fValue)
     {
         var hr = NativeObject.SetDouble(guidKey, fValue);
-        Trace($"{guidKey} {fValue} => {hr}");
+        Trace($"{guidKey} value:{fValue} => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetGUID(in Guid guidKey, in Guid guidValue)
     {
         var hr = NativeObject.SetGUID(guidKey, guidValue);
-        Trace($"{guidKey} {guidValue} => {hr}");
+        Trace($"{guidKey} value:{guidValue} => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetItem(in Guid guidKey, in PROPVARIANT Value)
     {
         var hr = NativeObject.SetItem(guidKey, Value);
-        Trace($"{guidKey} {Value} => {hr}");
+#if DEBUG
+        Trace($"{guidKey} value:{PropVariant.Unwrap(Value)} => {hr}");
+#else
+        Trace($"{guidKey} value:{Value} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetString(in Guid guidKey, PWSTR wszValue)
     {
         var hr = NativeObject.SetString(guidKey, wszValue);
-        Trace($"{guidKey} {wszValue} => {hr}");
+        Trace($"{guidKey} '{wszValue.ToString()}' => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetUINT32(in Guid guidKey, uint unValue)
     {
         var hr = NativeObject.SetUINT32(guidKey, unValue);
-        Trace($"{guidKey} {unValue} => {hr}");
+        Trace($"{guidKey} value:{unValue} => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetUINT64(in Guid guidKey, ulong unValue)
     {
         var hr = NativeObject.SetUINT64(guidKey, unValue);
-        Trace($"{guidKey} {unValue} => {hr}");
+        Trace($"{guidKey} value:{unValue} => {hr}");
         return hr;
     }
 
     HRESULT IMFAttributes.SetUnknown(in Guid guidKey, nint pUnknown)
     {
         var hr = NativeObject.SetUnknown(guidKey, pUnknown);
-        Trace($"{guidKey} {pUnknown} => {hr}");
+        Trace($"{guidKey} value:{pUnknown} => {hr}");
         return hr;
     }
 

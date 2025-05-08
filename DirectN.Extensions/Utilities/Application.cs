@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public class Application : IDisposable
 {
     private static Application? _current;

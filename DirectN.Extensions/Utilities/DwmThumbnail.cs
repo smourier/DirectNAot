@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public class DwmThumbnail : IDisposable
 {
     private nint _id;

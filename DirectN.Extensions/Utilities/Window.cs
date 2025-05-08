@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public class Window : IDisposable, IEquatable<Window>
 {
     private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;

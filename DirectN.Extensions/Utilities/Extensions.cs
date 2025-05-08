@@ -530,7 +530,6 @@ public static class Extensions
 
     private static readonly ConcurrentDictionary<string, string> _loadedStrings = new(StringComparer.OrdinalIgnoreCase);
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public static string LoadString(string libPath, uint id, int lcid = -1)
     {
         ArgumentNullException.ThrowIfNull(libPath);
@@ -563,10 +562,8 @@ public static class Extensions
         return str;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public static PropertyDescription? ToDescription(this PROPERTYKEY pk) => PropertyDescription.FromPropertyKey(pk);
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public static string? GetCanonicalName(this PROPERTYKEY pk) => PropertyDescription.FromPropertyKey(pk)?.CanonicalName;
 
     public static object? ChangeType(this VARENUM vt, object? value)

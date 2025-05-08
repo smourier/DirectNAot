@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public static class IMFMediaBufferExtensions
 {
     public static void WithLock(this IComObject<IMFMediaBuffer> buffer, Action<nint, uint, uint> action) => WithLock(buffer?.Object!, action);

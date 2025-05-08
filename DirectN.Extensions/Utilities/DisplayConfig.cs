@@ -18,7 +18,6 @@ public static class DisplayConfig
         return paths;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static DISPLAYCONFIG_TARGET_DEVICE_NAME GetTargetName(DISPLAYCONFIG_PATH_INFO path)
     {
         var info = new DISPLAYCONFIG_TARGET_DEVICE_NAME();
@@ -30,7 +29,6 @@ public static class DisplayConfig
         return info;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static DISPLAYCONFIG_SDR_WHITE_LEVEL GetSdrWhiteLevel(DISPLAYCONFIG_PATH_INFO path)
     {
         var info = new DISPLAYCONFIG_SDR_WHITE_LEVEL();
@@ -42,7 +40,6 @@ public static class DisplayConfig
         return info;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static DISPLAYCONFIG_GET_MONITOR_SPECIALIZATION GetMonitorSpecialization(DISPLAYCONFIG_PATH_INFO path)
     {
         var info = new DISPLAYCONFIG_GET_MONITOR_SPECIALIZATION();
@@ -54,7 +51,6 @@ public static class DisplayConfig
         return info;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static DISPLAYCONFIG_SOURCE_DEVICE_NAME GetSourceName(DISPLAYCONFIG_PATH_INFO path)
     {
         var info = new DISPLAYCONFIG_SOURCE_DEVICE_NAME();
@@ -66,7 +62,6 @@ public static class DisplayConfig
         return info;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static DISPLAYCONFIG_GET_ADVANCED_COLOR_INFO GetAdvancedColorInfo(DISPLAYCONFIG_PATH_INFO path)
     {
         var info = new DISPLAYCONFIG_GET_ADVANCED_COLOR_INFO();
@@ -78,7 +73,6 @@ public static class DisplayConfig
         return info;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public unsafe static string? GetGdiDeviceName(int adapterIdHighPart, uint adapterIdLowPart, uint sourceId, bool throwOnError = true)
     {
         var info = new DISPLAYCONFIG_SOURCE_DEVICE_NAME();
@@ -114,7 +108,6 @@ public static class DisplayConfig
         return null;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     private static unsafe int DisplayConfigGetDeviceInfo(void* info, bool throwOnError = true)
     {
         var err = Functions.DisplayConfigGetDeviceInfo(ref Unsafe.AsRef<DISPLAYCONFIG_DEVICE_INFO_HEADER>(info));

@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public sealed class PropertyEnumType : InterlockedComObject<IPropertyEnumType>
 {
     public PropertyEnumType(IComObject<IPropertyEnumType> type)

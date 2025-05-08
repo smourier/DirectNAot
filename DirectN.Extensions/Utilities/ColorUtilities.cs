@@ -26,7 +26,6 @@ public static partial class ColorUtilities
         }
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public static IEnumerable<Tuple<SYS_COLOR_INDEX, D3DCOLORVALUE>> GetThemeSysColors(HTHEME theme)
     {
         foreach (var color in Enum.GetValues<SYS_COLOR_INDEX>())
@@ -36,10 +35,7 @@ public static partial class ColorUtilities
     }
 
     public static D3DCOLORVALUE GetSysColor(SYS_COLOR_INDEX color) => D3DCOLORVALUE.FromCOLORREF(Functions.GetSysColor(color));
-    [SupportedOSPlatform("windows6.0.6000")]
     public static D3DCOLORVALUE GetThemeSysColor(HTHEME theme, SYS_COLOR_INDEX color) => D3DCOLORVALUE.FromCOLORREF(Functions.GetThemeSysColor(theme, (int)color).Value);
-
-    [SupportedOSPlatform("windows6.0.6000")]
     public static D3DCOLORVALUE GetThemeColor(string classList, int partId = 0, int stateId = 0, int propId = 0, D3DCOLORVALUE? defaultColor = null, HWND? hwnd = null)
     {
         ArgumentNullException.ThrowIfNull(classList);

@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public static class IMFTransformExtensions
 {
     public static bool IsBuiltinEncoder(this IComObject<IMFTransform> obj) => IsBuiltinEncoder(obj?.Object!);

@@ -2,7 +2,6 @@
 
 public class DataObject(IComObject<IDataObject>? dataObject, bool owned = true) : InterlockedComObject<IDataObject>(dataObject)
 {
-    [SupportedOSPlatform("windows6.0.6000")]
     public static DataObject Create()
     {
         // note this data object only supports SetData(..., ..., true); (release)

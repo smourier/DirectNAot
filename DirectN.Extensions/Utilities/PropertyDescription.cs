@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public sealed class PropertyDescription : InterlockedComObject<IPropertyDescription>, IComparable, IComparable<PropertyDescription>, IEquatable<PropertyDescription>
 {
     private IComObject<IPropertyDescriptionSearchInfo>? _searchInfo;
@@ -223,7 +222,7 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     public static PropertyDescription? FromCanonicalName(string canonicalName)
     {
         ArgumentNullException.ThrowIfNull(canonicalName);
-        var hr = Functions.PSGetPropertyDescriptionByName(PWSTR.From(canonicalName), typeof(IPropertyDescription).GUID, out var unk);
+        Functions.PSGetPropertyDescriptionByName(PWSTR.From(canonicalName), typeof(IPropertyDescription).GUID, out var unk);
         var pd = Com.ComObject.FromPointer<IPropertyDescription>(unk);
         return pd != null ? new PropertyDescription(pd) : null;
     }

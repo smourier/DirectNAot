@@ -9,6 +9,14 @@ public abstract class ComObject : IComObject
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private System.Runtime.InteropServices.Marshalling.ComObject? _comObject;
 
+#if DEBUG
+    internal static long _uniqueId;
+    internal long _id;
+
+    internal static void StaticTrace(object? message = null, [CallerMemberName] string? methodName = null) => Application.TraceVerbose($"{message}", methodName);
+    internal void Trace(object? message = null, [CallerMemberName] string? methodName = null) => Application.TraceVerbose($"{_id}|{message}", methodName);
+#endif
+
     public ComObject(object comObject, bool releaseOnDispose = true)
     {
         ArgumentNullException.ThrowIfNull(comObject);
@@ -31,6 +39,12 @@ public abstract class ComObject : IComObject
         get
         {
             var obj = _comObject;
+#if DEBUG
+            if (obj == null)
+            {
+                Trace("Object is disposed.");
+            }
+#endif
             ObjectDisposedException.ThrowIf(obj == null, this);
             return obj;
         }
@@ -38,6 +52,16 @@ public abstract class ComObject : IComObject
 
     public static void AddRef(object obj)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace();
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName}");
+        }
+#endif
         ArgumentNullException.ThrowIfNull(obj);
         var unwrapped = Unwrap(obj);
         if (unwrapped == null)
@@ -82,6 +106,9 @@ public abstract class ComObject : IComObject
 
     public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
     {
+#if DEBUG
+        StaticTrace($"unknown:{unknown} releaseOnDispose:{releaseOnDispose}");
+#endif
         if (unknown == 0)
             return null;
 
@@ -98,6 +125,16 @@ public abstract class ComObject : IComObject
 
     public static nint GetOrCreateComInstance(object? obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None, bool throwOnError = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace();
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName}");
+        }
+#endif
         if (obj == null)
             return 0;
 
@@ -125,6 +162,16 @@ public abstract class ComObject : IComObject
     public static nint GetOrCreateComInstance<T>(object? obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None, bool throwOnError = false) => GetOrCreateComInstance(obj, typeof(T).GUID, flags, throwOnError);
     public static nint GetOrCreateComInstance(object? obj, Guid iid, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None, bool throwOnError = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace($"iid:{iid.GetConstantName()}");
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName} iid:{iid.GetConstantName()}");
+        }
+#endif
         if (obj == null)
             return 0;
 
@@ -181,16 +228,29 @@ public abstract class ComObject : IComObject
     }
 
     public static void Release(System.Runtime.InteropServices.Marshalling.ComObject? obj) => ComExtensions.FinalRelease(obj);
-    public static int Release(nint unk)
+    public static int Release(nint unknown)
     {
-        if (unk == 0)
+#if DEBUG
+        StaticTrace($"unknown:{unknown}");
+#endif
+        if (unknown == 0)
             return 0;
 
-        return Marshal.Release(unk);
+        return Marshal.Release(unknown);
     }
 
     public static void WithComInstance(object? obj, Action<nint> action, bool createIfNeeded = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace();
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName}");
+        }
+#endif
         ArgumentNullException.ThrowIfNull(action);
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
@@ -210,6 +270,16 @@ public abstract class ComObject : IComObject
 
     public static T WithComInstance<T>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace($"type:{typeof(T).FullName}");
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName} type:{typeof(T).FullName}");
+        }
+#endif
         ArgumentNullException.ThrowIfNull(func);
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
@@ -229,6 +299,16 @@ public abstract class ComObject : IComObject
 
     public static void WithComInstanceOfType<T>(object? obj, Action<nint> action, bool createIfNeeded = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace($"type:{typeof(T).FullName}");
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName} type:{typeof(T).FullName}");
+        }
+#endif
         ArgumentNullException.ThrowIfNull(action);
         nint iface = 0;
         var unk = ToComInstance(obj);
@@ -256,6 +336,16 @@ public abstract class ComObject : IComObject
 
     public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
     {
+#if DEBUG
+        if (obj is ComObject co)
+        {
+            co.Trace($"type:{typeof(T).FullName}");
+        }
+        else
+        {
+            StaticTrace($"obj:{obj?.GetType().FullName} type:{typeof(T).FullName}");
+        }
+#endif
         ArgumentNullException.ThrowIfNull(func);
         nint iface = 0;
         var unk = ToComInstance(obj);
@@ -283,6 +373,10 @@ public abstract class ComObject : IComObject
 
     public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action, bool createIfNeeded = false)
     {
+#if DEBUG
+        StaticTrace($"array:{array?.Count}");
+#endif
+
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
         {
@@ -333,6 +427,10 @@ public abstract class ComObject : IComObject
 
     public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action, bool createIfNeeded = false)
     {
+#if DEBUG
+        StaticTrace($"array:{array?.Count}");
+#endif
+
         ArgumentNullException.ThrowIfNull(action);
         if (array == null)
             return action(0);
@@ -389,6 +487,9 @@ public abstract class ComObject : IComObject
 
     public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
+#if DEBUG
+        StaticTrace($"classId:{classId} ctx:{ctx}");
+#endif
         // we use IUnknown first, some objects don't support direct query interface
         Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
         return FromPointer<T>(unk, flags, releaseOnDispose);
@@ -397,6 +498,9 @@ public abstract class ComObject : IComObject
     [SupportedOSPlatform("windows8.0")]
     public static IComObject<T>? GetActivationFactory<T>(string activatableClassId, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
+#if DEBUG
+        StaticTrace($"activatableClassId:{activatableClassId}");
+#endif
         ArgumentNullException.ThrowIfNull(activatableClassId);
         using var p = new Hstring(activatableClassId);
         Functions.RoGetActivationFactory(p, typeof(T).GUID, out var unk).ThrowOnError(throwOnError);
@@ -409,6 +513,9 @@ public abstract class ComObject : IComObject
     [SupportedOSPlatform("windows8.0")]
     public static object? GetActivationFactory(string activatableClassId, Guid iid, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
     {
+#if DEBUG
+        StaticTrace($"activatableClassId:{activatableClassId} iid:{iid.GetConstantName()}");
+#endif
         ArgumentNullException.ThrowIfNull(activatableClassId);
         using var p = new Hstring(activatableClassId);
         Functions.RoGetActivationFactory(p, iid, out var unk).ThrowOnError(throwOnError);
@@ -420,6 +527,9 @@ public abstract class ComObject : IComObject
 
     protected virtual void Dispose(bool disposing)
     {
+#if DEBUG
+        Trace($"disposing:{disposing} releaseOnDispose:{ReleaseOnDispose}");
+#endif
         if (disposing && ReleaseOnDispose)
         {
             ComExtensions.FinalRelease(Interlocked.Exchange(ref _comObject, null));
@@ -430,8 +540,17 @@ public abstract class ComObject : IComObject
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }
 
-public class ComObject<T>(object comObject, bool releaseOnDispose = true) : ComObject((T)comObject, releaseOnDispose), IComObject<T>
+public class ComObject<T> : ComObject, IComObject<T>
 {
+    public ComObject(object comObject, bool releaseOnDispose = true)
+        : base((T)comObject, releaseOnDispose)
+    {
+#if DEBUG
+        _id = Interlocked.Increment(ref _uniqueId);
+        Trace($"{comObject.GetType().Name} type:{typeof(T).FullName} releaseOnDispose:{releaseOnDispose}");
+#endif
+    }
+
     [AllowNull]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public new T Object => (T)(object)base.Object;

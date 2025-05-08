@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public static class IMFActivateExtensions
 {
     public static IComObject<T>? ActivateObject<T>(this IComObject<IMFActivate> obj, bool throwOnError = true) => ActivateObject<T>(obj?.Object!, typeof(T).GUID, throwOnError);

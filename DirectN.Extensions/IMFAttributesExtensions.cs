@@ -1,6 +1,5 @@
 ﻿namespace DirectN.Extensions;
 
-[SupportedOSPlatform("windows6.0.6000")]
 public static class IMFAttributesExtensions
 {
     public static string Trace(this IComObject<IMFAttributes>? input, string? separator = null) => Trace(input?.Object, separator);

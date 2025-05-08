@@ -335,7 +335,6 @@ public sealed class PropVariant : IDisposable
         return bytes;
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public Variant? ToVariant(bool throwOnError = true)
     {
         var hr = Functions.PropVariantToVariant(_inner, out var inner).ThrowOnError(throwOnError);
@@ -663,7 +662,6 @@ public sealed class PropVariant : IDisposable
         return new PropVariant { _inner = inner };
     }
 
-    [SupportedOSPlatform("windows6.0.6000")]
     public static PropVariant? FromVariant(object? value, bool throwOnError = true)
     {
         if (value == null)
@@ -878,7 +876,7 @@ public sealed class PropVariant : IDisposable
 
         if (value is VARIANT v)
         {
-            using var v2 = new Variant(v);
+            var v2 = Variant.Attach(ref v, false);
             value = v2.Value;
             v2.Detach();
             return Unwrap(value);
@@ -886,7 +884,7 @@ public sealed class PropVariant : IDisposable
 
         if (value is PROPVARIANT pv)
         {
-            using var pv2 = new PropVariant(pv);
+            var pv2 = Attach(ref pv, false);
             value = pv2.Value;
             pv2.Detach();
             return Unwrap(value);
