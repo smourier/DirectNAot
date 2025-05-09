@@ -19,7 +19,7 @@ public partial interface IMFMediaType : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediatype-isequal
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pIMediaType, out uint pdwFlags);
+    HRESULT IsEqual([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType?>))] IMFMediaType? pIMediaType, out uint pdwFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediatype-getrepresentation
     [PreserveSig]

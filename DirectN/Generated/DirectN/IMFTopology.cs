@@ -39,7 +39,7 @@ public partial interface IMFTopology : IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-clonefrom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CloneFrom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
+    HRESULT CloneFrom([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology?>))] IMFTopology? pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imftopology-getnodebyid
     [PreserveSig]

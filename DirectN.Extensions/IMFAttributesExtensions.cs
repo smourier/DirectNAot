@@ -9,14 +9,11 @@ public static class IMFAttributesExtensions
             return "<null>";
 
         separator ??= " | ";
-        return string.Join(separator, EnumerateTypes(input).Select(kv => kv.Key.ToString("B") + "=" + TraceValue(input, kv.Key)));
+        return string.Join(separator, EnumerateValues(input).Select(kv => $"{kv.Key.GetConstantName()}={TraceValue(kv.Value)}"));
     }
 
-    public static string TraceValue(this IComObject<IMFAttributes> input, Guid key) => TraceValue(input?.Object!, key);
-    public static string TraceValue(this IMFAttributes input, Guid key)
+    public static string TraceValue(this object? value)
     {
-        ArgumentNullException.ThrowIfNull(input);
-        var value = GetValue(input, key);
         if (value == null)
             return "<null>";
 
@@ -33,12 +30,14 @@ public static class IMFAttributesExtensions
     }
 
     [SupportedOSPlatform("windows6.1")]
-    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IComObject<IMFAttributes> input) => EnumDeviceSources(input?.Object!);
+    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IComObject<IMFAttributes>? input) => EnumDeviceSources(input?.Object);
 
     [SupportedOSPlatform("windows6.1")]
-    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IMFAttributes input, bool throwOnError = true)
+    public static IEnumerable<IComObject<IMFActivate>> EnumDeviceSources(this IMFAttributes? input, bool throwOnError = true)
     {
-        ArgumentNullException.ThrowIfNull(input);
+        if (input == null)
+            yield break;
+
         var hr = Functions.MFEnumDeviceSources(input, out var array, out var count).ThrowOnError(throwOnError);
         if (hr.IsError)
             yield break;
@@ -158,22 +157,23 @@ public static class IMFAttributesExtensions
         return Constants.S_OK;
     }
 
-    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IComObject<IMFAttributes> input) => GetTraceDictionary(input?.Object!);
-    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IMFAttributes input)
+    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IComObject<IMFAttributes>? input) => GetTraceDictionary(input?.Object);
+    public static IEnumerable<KeyValuePair<string, object?>> GetTraceDictionary(this IMFAttributes? input)
     {
         foreach (var item in input.EnumerateValues())
         {
-            yield return new(item.Key.GetTraceConstantName(), item.Value);
+            yield return new(item.Key.GetConstantName(true), item.Value);
         }
     }
 
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IComObject<IMFAttributes> input) => EnumerateTypes(input?.Object!);
-    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IMFAttributes input)
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IComObject<IMFAttributes>? input) => EnumerateTypes(input?.Object);
+    public static IEnumerable<KeyValuePair<Guid, MF_ATTRIBUTE_TYPE>> EnumerateTypes(this IMFAttributes? input)
     {
         if (input == null)
             yield break;
 
-        for (uint i = 0; i < Count(input); i++)
+        var count = Count(input);
+        for (uint i = 0; i < count; i++)
         {
             var hr = input.GetItemByIndex(i, out var guid, 0);
             if (hr.IsError)
@@ -187,13 +187,14 @@ public static class IMFAttributesExtensions
         }
     }
 
-    public static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IComObject<IMFAttributes> input) => EnumerateValues(input?.Object!);
-    public unsafe static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IMFAttributes input)
+    public static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IComObject<IMFAttributes>? input) => EnumerateValues(input?.Object);
+    public unsafe static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IMFAttributes? input)
     {
         if (input == null)
             yield break;
 
-        for (uint i = 0; i < Count(input); i++)
+        var count = Count(input);
+        for (uint i = 0; i < count; i++)
         {
             if (!TryGetItemByIndex(input, i, out var guid, out var value))
                 continue;
@@ -202,15 +203,17 @@ public static class IMFAttributesExtensions
         }
     }
 
-    public static uint Count(this IComObject<IMFAttributes> input, bool throwOnError = true) => Count(input?.Object!, throwOnError);
-    public static uint Count(this IMFAttributes input, bool throwOnError = true)
+    public static uint Count(this IComObject<IMFAttributes>? input, bool throwOnError = true) => Count(input?.Object, throwOnError);
+    public static uint Count(this IMFAttributes? input, bool throwOnError = true)
     {
-        ArgumentNullException.ThrowIfNull(input);
+        if (input == null)
+            return 0;
+
         input.GetCount(out var value).ThrowOnError(throwOnError);
         return value;
     }
 
-    public static void Set(this IComObject<IMFAttributes> input, Guid key, object? value, bool throwOnError = true)
+    public static void Set(this IComObject<IMFAttributes>? input, Guid key, object? value, bool throwOnError = true)
     {
         var obj = input?.Object;
         if (obj == null)

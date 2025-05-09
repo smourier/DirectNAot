@@ -29,7 +29,7 @@ public partial interface IMFMediaEventQueue
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-queueeventparamvar
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueueEventParamVar(uint met, in Guid guidExtendedType, HRESULT hrStatus, in PROPVARIANT pvValue);
+    HRESULT QueueEventParamVar(uint met, in Guid guidExtendedType, HRESULT hrStatus, nint /* optional PROPVARIANT* */ pvValue);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventqueue-queueeventparamunk
     [PreserveSig]

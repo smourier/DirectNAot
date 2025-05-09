@@ -24,5 +24,5 @@ public partial interface IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfmediaeventgenerator-queueevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT QueueEvent(uint met, in Guid guidExtendedType, HRESULT hrStatus, in PROPVARIANT pvValue);
+    HRESULT QueueEvent(uint met, in Guid guidExtendedType, HRESULT hrStatus, nint /* optional PROPVARIANT* */ pvValue);
 }

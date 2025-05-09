@@ -55,16 +55,20 @@ public static partial class Constants
 
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_OK = 0;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT S_FALSE = 1;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_FAIL = 0x80004005;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOINTERFACE = 0x80004002;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_INVALIDARG = 0x80070057;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_ACCESSDENIED = 0x80070005;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOTIMPL = 0x80004001;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOT_VALID_STATE = 0x8007139F;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_UNEXPECTED = 0x8000FFFF;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOTIMPL = 0x80004001;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_OUTOFMEMORY = 0x8007000E;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_INVALIDARG = 0x80070057;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOINTERFACE = 0x80004002;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_POINTER = 0x80004003;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_HANDLE = 0x80070006;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_ABORT = 0x80004004;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_FAIL = 0x80004005;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_ACCESSDENIED = 0x80070005;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_PENDING = 0x8000000A;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOT_VALID_STATE = 0x8007139F;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_NOT_SUFFICIENT_BUFFER = 0x8007007A;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_BOUNDS = 0x8000000B;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT E_POINTER = 0x80004003;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_CANCELLED = 0x800704C7;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INTERNAL_ERROR = 0x8007054F;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_DATA = 0x8007000D;
@@ -87,6 +91,9 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT RPC_E_CHANGED_MODE = 0x80010106;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CO_E_NOTINITIALIZED = 0x800401F0;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CO_E_ALREADYINITIALIZED = 0x800401F1;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_NOAGGREGATION = 0x80040110;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_CLASSNOTAVAILABLE = 0x80040111;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_NOTLICENSED = 0x80040112;
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = 0x80030001;
@@ -1774,4 +1781,8 @@ public static partial class Constants
     public static readonly Guid SPROP_INTERLEAVING_DEPTH = new("57ae4937-043a-4b2f-87f3-1b8135e878e3");
     public static readonly Guid SPROP_MAX_DON_DIFF = new("827affa2-5567-4b61-a79b-4a38236fb8e1");
     public static readonly Guid VIDEO_SINK_BROADCASTING_PORT = new("5e402c0d-d239-43fc-b2e4-b69dca46ce63");
+
+    // https://github.com/microsoft/win32metadata/issues/2085
+    public static readonly Guid MF_MT_D3D12_RESOURCE_DIMENSION = new("5f772624-16ca-4b89-9651-5ddf769f8ab8");
+    public static readonly Guid MF_SA_D3D12_AWARE = new("77f0bacb-17a8-4a50-9a7d-a5cc09d39d44");
 }

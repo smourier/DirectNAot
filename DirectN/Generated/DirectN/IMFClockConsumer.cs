@@ -9,7 +9,7 @@ public partial interface IMFClockConsumer
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfclockconsumer-setpresentationclock
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock>))] IMFPresentationClock pPresentationClock);
+    HRESULT SetPresentationClock([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationClock?>))] IMFPresentationClock? pPresentationClock);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfclockconsumer-getpresentationclock
     [PreserveSig]

@@ -9,5 +9,5 @@ public partial interface IMFByteStreamProxyClassFactory
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfbytestreamproxyclassfactory-createbytestreamproxy
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateByteStreamProxy([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pByteStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pAttributes, in Guid riid, out nint /* void */ ppvObject);
+    HRESULT CreateByteStreamProxy([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream?>))] IMFByteStream? pByteStream, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pAttributes, in Guid riid, out nint /* void */ ppvObject);
 }

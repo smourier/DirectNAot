@@ -9,5 +9,5 @@ public partial interface IMFMediaSourcePresentationProvider
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasourcepresentationprovider-forceendofpresentation
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ForceEndOfPresentation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor>))] IMFPresentationDescriptor pPresentationDescriptor);
+    HRESULT ForceEndOfPresentation([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFPresentationDescriptor?>))] IMFPresentationDescriptor? pPresentationDescriptor);
 }

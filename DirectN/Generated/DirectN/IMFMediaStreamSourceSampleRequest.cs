@@ -9,5 +9,5 @@ public partial interface IMFMediaStreamSourceSampleRequest
     // https://learn.microsoft.com/windows/win32/medfound/imfmediastreamsourcesamplerequest-setsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample value);
+    HRESULT SetSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample?>))] IMFSample? value);
 }

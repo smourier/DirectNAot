@@ -154,5 +154,5 @@ public partial interface IMFAttributes
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfattributes-copyallitems
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CopyAllItems([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pDest);
+    HRESULT CopyAllItems([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes?>))] IMFAttributes? pDest);
 }

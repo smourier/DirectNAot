@@ -9,7 +9,7 @@ public partial interface IMFMediaSession : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-settopology
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SetTopology(uint dwSetTopologyFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology>))] IMFTopology pTopology);
+    HRESULT SetTopology(uint dwSetTopologyFlags, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFTopology?>))] IMFTopology? pTopology);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-cleartopologies
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFMediaSession : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-start
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Start(in Guid pguidTimeFormat, in PROPVARIANT pvarStartPosition);
+    HRESULT Start(nint /* optional Guid* */ pguidTimeFormat, nint /* optional PROPVARIANT* */ pvarStartPosition);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfmediasession-pause
     [PreserveSig]

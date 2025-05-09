@@ -24,7 +24,7 @@ public partial interface IMFStreamSink : IMFMediaEventGenerator
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-processsample
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT ProcessSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample>))] IMFSample pSample);
+    HRESULT ProcessSample([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFSample?>))] IMFSample? pSample);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfstreamsink-placemarker
     [PreserveSig]

@@ -9,5 +9,5 @@ public partial interface IMFQualityAdvise2 : IMFQualityAdvise
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfqualityadvise2-notifyqualityevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT NotifyQualityEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent, out uint pdwFlags);
+    HRESULT NotifyQualityEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent?>))] IMFMediaEvent? pEvent, out uint pdwFlags);
 }

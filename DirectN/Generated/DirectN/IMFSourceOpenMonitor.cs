@@ -9,5 +9,5 @@ public partial interface IMFSourceOpenMonitor
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfsourceopenmonitor-onsourceevent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OnSourceEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent>))] IMFMediaEvent pEvent);
+    HRESULT OnSourceEvent([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaEvent?>))] IMFMediaEvent? pEvent);
 }

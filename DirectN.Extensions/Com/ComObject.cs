@@ -13,8 +13,23 @@ public abstract class ComObject : IComObject
     internal static long _uniqueId;
     internal long _id;
 
-    internal static void StaticTrace(object? message = null, [CallerMemberName] string? methodName = null) => Application.TraceVerbose($"{message}", methodName);
-    internal void Trace(object? message = null, [CallerMemberName] string? methodName = null) => Application.TraceVerbose($"{_id}|{message}", methodName);
+    public static bool EnableTraces { get; set; } = false;
+
+    internal static void StaticTrace(object? message = null, [CallerMemberName] string? methodName = null)
+    {
+        if (!EnableTraces)
+            return;
+
+        Application.TraceVerbose($"{message}", methodName);
+    }
+
+    internal void Trace(object? message = null, [CallerMemberName] string? methodName = null)
+    {
+        if (!EnableTraces)
+            return;
+
+        Application.TraceVerbose($"{_id}|{message}", methodName);
+    }
 #endif
 
     public ComObject(object comObject, bool releaseOnDispose = true)
@@ -102,6 +117,17 @@ public abstract class ComObject : IComObject
             return t;
 
         return default;
+    }
+
+    public static nint GetUnknown(nint pointer, bool throwOnError = true) => QueryInterface(pointer, typeof(IUnknown).GUID, throwOnError);
+    public static nint QueryInterface(nint pointer, Guid iid, bool throwOnError = true)
+    {
+        if (pointer == 0)
+            return throwOnError ? Constants.E_POINTER.ThrowOnError() : 0;
+
+        HRESULT hr = Marshal.QueryInterface(pointer, iid, out var unk);
+        hr.ThrowOnError(throwOnError);
+        return unk;
     }
 
     public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
@@ -239,7 +265,7 @@ public abstract class ComObject : IComObject
         return Marshal.Release(unknown);
     }
 
-    public static void WithComInstance(object? obj, Action<nint> action, bool createIfNeeded = false)
+    public static void WithComInstance(object? obj, Action<nint> action, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         if (obj is ComObject co)
@@ -255,8 +281,11 @@ public abstract class ComObject : IComObject
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
         {
-            unk = GetOrCreateComInstance(obj!);
+            unk = GetOrCreateComInstance(obj, throwOnError: throwIfZero);
         }
+
+        if (unk == 0 && obj != null && throwIfZero)
+            throw new ArgumentException(null, nameof(obj));
 
         try
         {
@@ -268,7 +297,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstance<T>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
+    public static T WithComInstance<T>(object? obj, Func<nint, T> func, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         if (obj is ComObject co)
@@ -284,8 +313,11 @@ public abstract class ComObject : IComObject
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
         {
-            unk = GetOrCreateComInstance(obj!);
+            unk = GetOrCreateComInstance(obj, throwOnError: throwIfZero);
         }
+
+        if (unk == 0 && obj != null && throwIfZero)
+            throw new ArgumentException(null, nameof(obj));
 
         try
         {
@@ -297,7 +329,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstanceOfType<T>(object? obj, Action<nint> action, bool createIfNeeded = false)
+    public static void WithComInstanceOfType<T>(object? obj, Action<nint> action, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         if (obj is ComObject co)
@@ -314,13 +346,18 @@ public abstract class ComObject : IComObject
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
         {
-            unk = GetOrCreateComInstance(obj!);
+            unk = GetOrCreateComInstance(obj, throwOnError: throwIfZero);
         }
 
         if (unk != 0)
         {
             var iid = typeof(T).GUID;
             Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out iface));
+        }
+        else
+        {
+            if (obj != null && throwIfZero)
+                throw new ArgumentException(null, nameof(obj));
         }
 
         try
@@ -334,7 +371,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func, bool createIfNeeded = false)
+    public static T WithComInstanceOfType<T, Ti>(object? obj, Func<nint, T> func, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         if (obj is ComObject co)
@@ -351,13 +388,18 @@ public abstract class ComObject : IComObject
         var unk = ToComInstance(obj);
         if (unk == 0 && createIfNeeded)
         {
-            unk = GetOrCreateComInstance(obj!);
+            unk = GetOrCreateComInstance(obj, throwOnError: throwIfZero);
         }
 
         if (unk != 0)
         {
             var iid = typeof(Ti).GUID;
             Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out iface));
+        }
+        else
+        {
+            if (obj != null && throwIfZero)
+                throw new ArgumentException(null, nameof(obj));
         }
 
         try
@@ -371,7 +413,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action, bool createIfNeeded = false)
+    public static void WithComInstancesOfType<T>(IReadOnlyCollection<T>? array, Action<nint> action, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         StaticTrace($"array:{array?.Count}");
@@ -392,7 +434,7 @@ public abstract class ComObject : IComObject
             var unk = ToComInstance(item);
             if (unk == 0 && createIfNeeded)
             {
-                unk = GetOrCreateComInstance(item!);
+                unk = GetOrCreateComInstance(item, throwOnError: throwIfZero);
             }
 
             if (unk != 0)
@@ -402,6 +444,12 @@ public abstract class ComObject : IComObject
                 Marshal.Release(unk);
                 Marshal.ThrowExceptionForHR(hr);
             }
+            else
+            {
+                if (item != null && throwIfZero)
+                    throw new ArgumentException(null, nameof(array));
+            }
+
             pointers[i++] = iface;
         }
 
@@ -425,7 +473,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action, bool createIfNeeded = false)
+    public static T WithComInstancesOfType<T, Ti>(IReadOnlyCollection<Ti>? array, Func<nint, T> action, bool createIfNeeded = false, bool throwIfZero = true)
     {
 #if DEBUG
         StaticTrace($"array:{array?.Count}");
@@ -443,7 +491,7 @@ public abstract class ComObject : IComObject
             var unk = ToComInstance(item);
             if (unk == 0 && createIfNeeded)
             {
-                unk = GetOrCreateComInstance(item!);
+                unk = GetOrCreateComInstance(item, throwOnError: throwIfZero);
             }
 
             if (unk != 0)
@@ -453,6 +501,12 @@ public abstract class ComObject : IComObject
                 Marshal.Release(unk);
                 Marshal.ThrowExceptionForHR(hr);
             }
+            else
+            {
+                if (item != null && throwIfZero)
+                    throw new ArgumentException(null, nameof(array));
+            }
+
             pointers[i++] = iface;
         }
 

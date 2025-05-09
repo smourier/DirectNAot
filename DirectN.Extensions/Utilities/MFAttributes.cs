@@ -28,7 +28,17 @@ public partial class MFAttributes(string? name = null) :
         }
     }
 
-    protected virtual void Trace(string? text = null, [CallerMemberName] string? methodName = null) => Application.TraceVerbose($"{Name}::{methodName}: {text}");
+#if DEBUG
+    public static bool EnableTraces { get; set; } = false;
+
+    protected virtual void Trace(string? text = null, [CallerMemberName] string? methodName = null)
+    {
+        if (!EnableTraces)
+            return;
+
+        Application.TraceVerbose($"{Name}::{methodName}: {text}");
+    }
+#endif
 
     public virtual void Add(Guid key, object? value) => this.Set(key, value);
     public virtual void Clear() => NativeObject.DeleteAllItems().ThrowOnError();
@@ -53,14 +63,18 @@ public partial class MFAttributes(string? name = null) :
     HRESULT IMFAttributes.CopyAllItems(IMFAttributes pDest)
     {
         var hr = NativeObject.CopyAllItems(pDest);
+#if DEBUG
         Trace($"{pDest} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.Compare(IMFAttributes? pTheirs, MF_ATTRIBUTES_MATCH_TYPE MatchType, out BOOL pbResult)
     {
         var hr = NativeObject.Compare(pTheirs, MatchType, out pbResult);
+#if DEBUG
         Trace($"{pTheirs} {MatchType} {pbResult} => {hr}");
+#endif
         return hr;
     }
 
@@ -68,9 +82,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.CompareItem(guidKey, Value, out pbResult);
 #if DEBUG
-        Trace($"{guidKey} value:{PropVariant.Unwrap(Value)} result:{pbResult} => {hr}");
-#else
-        Trace($"{guidKey} value:{Value} result:{pbResult} => {hr}");
+        Trace($"{guidKey.GetConstantName()} value:{PropVariant.Unwrap(Value)} result:{pbResult} => {hr}");
 #endif
         return hr;
     }
@@ -78,147 +90,189 @@ public partial class MFAttributes(string? name = null) :
     HRESULT IMFAttributes.DeleteAllItems()
     {
         var hr = NativeObject.DeleteAllItems();
+#if DEBUG
         Trace($" => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.DeleteItem(in Guid guidKey)
     {
         var hr = NativeObject.DeleteItem(guidKey);
-        Trace($"{guidKey} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetAllocatedBlob(in Guid guidKey, out nint ppBuf, out uint pcbSize)
     {
         var hr = NativeObject.GetAllocatedBlob(guidKey, out ppBuf, out pcbSize);
-        Trace($"{guidKey} {ppBuf} {pcbSize} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {ppBuf} {pcbSize} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetAllocatedString(in Guid guidKey, out PWSTR ppwszValue, out uint pcchLength)
     {
         var hr = NativeObject.GetAllocatedString(guidKey, out ppwszValue, out pcchLength);
-        Trace($"{guidKey} {ppwszValue} {pcchLength} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {ppwszValue} {pcchLength} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetBlob(in Guid guidKey, nint pBuf, uint cbBufSize, nint pcbBlobSize)
     {
         var hr = NativeObject.GetBlob(guidKey, pBuf, cbBufSize, pcbBlobSize);
-        Trace($"{guidKey} {pBuf} {cbBufSize} {pcbBlobSize} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pBuf} {cbBufSize} {pcbBlobSize} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetBlobSize(in Guid guidKey, out uint pcbBlobSize)
     {
         var hr = NativeObject.GetBlobSize(guidKey, out pcbBlobSize);
-        Trace($"{guidKey} {pcbBlobSize} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pcbBlobSize} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetCount(out uint pcItems)
     {
         var hr = NativeObject.GetCount(out pcItems);
-        Trace($"{pcItems} => {hr}");
+        //#if DEBUG
+        //        Trace($"{pcItems} => {hr}");
+        //#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetDouble(in Guid guidKey, out double pfValue)
     {
         var hr = NativeObject.GetDouble(guidKey, out pfValue);
-        Trace($"{guidKey} {pfValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pfValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetGUID(in Guid guidKey, out Guid pguidValue)
     {
         var hr = NativeObject.GetGUID(guidKey, out pguidValue);
-        Trace($"{guidKey} {pguidValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pguidValue.GetConstantName()} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetItem(in Guid guidKey, nint pValue)
     {
         var hr = NativeObject.GetItem(guidKey, pValue);
-        Trace($"{guidKey} {pValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetItemByIndex(uint unIndex, out Guid pguidKey, nint pValue)
     {
         var hr = NativeObject.GetItemByIndex(unIndex, out pguidKey, pValue);
-        Trace($"{unIndex} {pguidKey} {pValue} => {hr}");
+#if DEBUG
+        Trace($"{unIndex} {pguidKey.GetConstantName()} {pValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetItemType(in Guid guidKey, out MF_ATTRIBUTE_TYPE pType)
     {
         var hr = NativeObject.GetItemType(guidKey, out pType);
-        Trace($"{guidKey} {pType} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pType} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetString(in Guid guidKey, PWSTR pwszValue, uint cchBufSize, nint pcchLength)
     {
         var hr = NativeObject.GetString(guidKey, pwszValue, cchBufSize, pcchLength);
-        Trace($"{guidKey} {pwszValue} {cchBufSize} {pcchLength} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pwszValue} {cchBufSize} {pcchLength} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetStringLength(in Guid guidKey, out uint pcchLength)
     {
         var hr = NativeObject.GetStringLength(guidKey, out pcchLength);
-        Trace($"{guidKey} {pcchLength} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {pcchLength} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetUINT32(in Guid guidKey, out uint punValue)
     {
         var hr = NativeObject.GetUINT32(guidKey, out punValue);
-        Trace($"{guidKey} {punValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {punValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetUINT64(in Guid guidKey, out ulong punValue)
     {
         var hr = NativeObject.GetUINT64(guidKey, out punValue);
-        Trace($"{guidKey} {punValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {punValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.GetUnknown(in Guid guidKey, in Guid riid, out nint ppv)
     {
         var hr = NativeObject.GetUnknown(guidKey, riid, out ppv);
-        Trace($"{guidKey} {riid} {ppv} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} {riid.GetConstantName()} {ppv} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.LockStore()
     {
         var hr = NativeObject.LockStore();
+#if DEBUG
         Trace($" => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetBlob(in Guid guidKey, nint pBuf, uint cbBufSize)
     {
         var hr = NativeObject.SetBlob(guidKey, pBuf, cbBufSize);
-        Trace($"{guidKey} value:{pBuf} {cbBufSize} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{pBuf} {cbBufSize} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetDouble(in Guid guidKey, double fValue)
     {
         var hr = NativeObject.SetDouble(guidKey, fValue);
-        Trace($"{guidKey} value:{fValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{fValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetGUID(in Guid guidKey, in Guid guidValue)
     {
         var hr = NativeObject.SetGUID(guidKey, guidValue);
-        Trace($"{guidKey} value:{guidValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{guidValue.GetConstantName()} => {hr}");
+#endif
         return hr;
     }
 
@@ -226,9 +280,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetItem(guidKey, Value);
 #if DEBUG
-        Trace($"{guidKey} value:{PropVariant.Unwrap(Value)} => {hr}");
-#else
-        Trace($"{guidKey} value:{Value} => {hr}");
+        Trace($"{guidKey.GetConstantName()} value:{PropVariant.Unwrap(Value)} => {hr}");
 #endif
         return hr;
     }
@@ -236,35 +288,45 @@ public partial class MFAttributes(string? name = null) :
     HRESULT IMFAttributes.SetString(in Guid guidKey, PWSTR wszValue)
     {
         var hr = NativeObject.SetString(guidKey, wszValue);
-        Trace($"{guidKey} '{wszValue.ToString()}' => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} '{wszValue}' => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetUINT32(in Guid guidKey, uint unValue)
     {
         var hr = NativeObject.SetUINT32(guidKey, unValue);
-        Trace($"{guidKey} value:{unValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{unValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetUINT64(in Guid guidKey, ulong unValue)
     {
         var hr = NativeObject.SetUINT64(guidKey, unValue);
-        Trace($"{guidKey} value:{unValue} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{unValue} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.SetUnknown(in Guid guidKey, nint pUnknown)
     {
         var hr = NativeObject.SetUnknown(guidKey, pUnknown);
-        Trace($"{guidKey} value:{pUnknown} => {hr}");
+#if DEBUG
+        Trace($"{guidKey.GetConstantName()} value:{pUnknown} => {hr}");
+#endif
         return hr;
     }
 
     HRESULT IMFAttributes.UnlockStore()
     {
         var hr = NativeObject.UnlockStore();
+#if DEBUG
         Trace($" => {hr}");
+#endif
         return hr;
     }
 }
