@@ -306,6 +306,7 @@
     "QueryDisplayConfig",
     "RealGetWindowClassW",
     "RectInRegion",
+    "RedrawWindow",
     "RegisterClassW",
     "RegisterClipboardFormatW",
     "RegisterDragDrop",

@@ -8748,6 +8748,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL RectInRegion(HRGN hrgn, in RECT lprect);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-redrawwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL RedrawWindow(HWND hWnd, nint /* optional RECT* */ lprcUpdate, HRGN hrgnUpdate, REDRAW_WINDOW_FLAGS flags);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerclassw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
