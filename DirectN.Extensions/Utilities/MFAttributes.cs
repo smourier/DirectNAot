@@ -60,7 +60,7 @@ public partial class MFAttributes(string? name = null) :
         Array.Copy(thisArray, 0, array, arrayIndex, thisArray.Length);
     }
 
-    HRESULT IMFAttributes.CopyAllItems(IMFAttributes pDest)
+    HRESULT IMFAttributes.CopyAllItems(IMFAttributes? pDest)
     {
         var hr = NativeObject.CopyAllItems(pDest);
 #if DEBUG
