@@ -40,6 +40,7 @@ public class Window : IDisposable, IEquatable<Window>
         string? className = null
         )
     {
+        ManagedThreadId = Environment.CurrentManagedThreadId;
         className ??= GetType().FullName + AssemblyUtilities.GetInformationalVersion();
         ArgumentNullException.ThrowIfNull(className);
         _process = new Lazy<Process?>(GetProcess);
@@ -50,6 +51,7 @@ public class Window : IDisposable, IEquatable<Window>
         Application.AddWindow(this);
     }
 
+    public int ManagedThreadId { get; }
     public HWND Handle => new() { Value = _handle };
     public TaskScheduler? TaskScheduler => _scheduler;
     public Process? Process => _process.Value;
@@ -88,6 +90,8 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual RECT WindowRect { get { Functions.GetWindowRect(Handle, out var rc); return rc; } set => Functions.SetWindowPos(Handle, HWND.Null, value.left, value.top, value.Width, value.Height, SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE | SET_WINDOW_POS_FLAGS.SWP_NOREDRAW | SET_WINDOW_POS_FLAGS.SWP_NOZORDER); }
     public virtual WINDOW_STYLE Style { get => (WINDOW_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE, (int)value); }
     public virtual WINDOW_EX_STYLE ExtendedStyle { get => (WINDOW_EX_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE, (int)value); }
+    public bool IsRunningAsUIThread => ManagedThreadId == Environment.CurrentManagedThreadId;
+    public Application? Application => Application.GetApplication(this);
 
     public HICON BigIconHandle
     {
@@ -197,6 +201,55 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
+    public IReadOnlyDictionary<string, nint> Props
+    {
+        get
+        {
+            var dic = new Dictionary<string, nint>();
+            BOOL enumProc(HWND h, PWSTR p1, HANDLE p2)
+            {
+                var value = Functions.GetPropW(h, p1);
+                var s = p1.ToString();
+                if (s != null)
+                {
+                    dic[s] = value;
+                }
+                return true;
+            }
+            Functions.EnumPropsW(Handle, enumProc);
+            return dic.AsReadOnly();
+        }
+    }
+
+    [SupportedOSPlatform("windows6.1")]
+    public IReadOnlyDictionary<PROPERTYKEY, object?> Properties
+    {
+        get
+        {
+            var dic = new Dictionary<PROPERTYKEY, object?>();
+            Functions.SHGetPropertyStoreForWindow(Handle, typeof(IPropertyStore).GUID, out var unk);
+            using var ps = ComObject.FromPointer<IPropertyStore>(unk);
+            if (ps != null)
+            {
+                ps.Object.GetCount(out var count);
+                for (uint i = 0; i < count; i++)
+                {
+                    var hr = ps.Object.GetAt(i, out var pk);
+                    if (hr.IsError)
+                        continue;
+
+                    hr = ps.Object.GetValue(pk, out var pv);
+                    if (hr == 0)
+                    {
+                        using var managed = PropVariant.Attach(ref pv);
+                        dic[pk] = managed.Value;
+                    }
+                }
+            }
+            return dic;
+        }
+    }
+
     protected virtual internal bool ShowingFatalError() => true;
 
     public HMONITOR GetMonitorHandle(MONITOR_FROM_FLAGS flags) => Functions.MonitorFromWindow(Handle, flags);
@@ -248,7 +301,7 @@ public class Window : IDisposable, IEquatable<Window>
         if (_scheduler == null)
             throw new DirectNException("0005: Cannot run or schedule a task on a non-owned window.");
 
-        if (!startNew && Application.IsRunningAsUIThread)
+        if (!startNew && IsRunningAsUIThread)
         {
             action();
             return Task.CompletedTask;
@@ -323,7 +376,12 @@ public class Window : IDisposable, IEquatable<Window>
         {
             Application.ShowFatalError(new HWND { Value = Handle });
         }
-        _ = RunTaskOnUIThread(Application.Exit);
+
+        var app = Application;
+        if (app != null)
+        {
+            _ = RunTaskOnUIThread(() => app.Exit());
+        }
     }
 
     protected virtual void OnFocusChanged(object? sender, HandledEventArgs e) => FocusChanged?.Invoke(sender, e);
@@ -488,7 +546,7 @@ public class Window : IDisposable, IEquatable<Window>
 #pragma warning disable IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
                     foreach (var item in di.GetType().GetProperties().OrderBy(p => p.Name))
                     {
-                        sb.AppendLine($"{item.Name} : {item.GetValue(di)}");
+                        sb.AppendLine($"{Conversions.Decamelize(item.Name)} : {item.GetValue(di)}");
                     }
 #pragma warning restore IL2075 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The return value of the source method does not have matching annotations.
 
@@ -636,7 +694,7 @@ public class Window : IDisposable, IEquatable<Window>
     private static readonly string _handlePropName = "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
     private static LRESULT StaticWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
-        if (Application.Current.TraceMessage(msg))
+        if (Application.Current?.TraceMessage(msg) == true)
         {
             var str = MessageDecoder.Decode(hwnd, msg, wParam, lParam);
             Application.TraceVerbose(str);
@@ -716,6 +774,47 @@ public class Window : IDisposable, IEquatable<Window>
             throw new Win32Exception(Marshal.GetLastWin32Error());
 
         return true;
+    }
+
+    public virtual HWND CreateButton(
+        string? text,
+        int x, int y, int width, int height,
+        int id,
+        WINDOW_STYLE style = WINDOW_STYLE.WS_TABSTOP | WINDOW_STYLE.WS_VISIBLE | WINDOW_STYLE.WS_CHILD)
+    {
+        return Functions.CreateWindowExW(
+            0,
+            PWSTR.From("BUTTON"),
+            PWSTR.From(text ?? string.Empty),
+            style,
+            x, y, width, height,
+            Handle,
+            id,
+            HINSTANCE.Null,
+            0);
+    }
+
+    public unsafe static Font? GetMessageBoxFont(bool throwOnError = true)
+    {
+        var metrics = new NONCLIENTMETRICSW { cbSize = (uint)sizeof(NONCLIENTMETRICSW) };
+        // note: although this is supposed to set LastError, it doesn't seem to do so here
+        if (!Functions.SystemParametersInfoW(SYSTEM_PARAMETERS_INFO_ACTION.SPI_GETNONCLIENTMETRICS, metrics.cbSize, (nint)(&metrics), 0))
+        {
+            if (throwOnError)
+                throw new InvalidOperationException($"Failed to get {nameof(SYSTEM_PARAMETERS_INFO_ACTION.SPI_GETNONCLIENTMETRICS)}.");
+
+            return null;
+        }
+
+        var font = Functions.CreateFontIndirectW(metrics.lfMessageFont);
+        if (font == 0)
+        {
+            if (throwOnError)
+                throw new InvalidOperationException($"Failed to create message box font '{metrics.lfMessageFont.lfFaceName}'.");
+
+            return null;
+        }
+        return new Font(font);
     }
 
     public override int GetHashCode() => _handle.GetHashCode();

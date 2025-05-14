@@ -37,6 +37,7 @@ public class D2DRenderWindow(
         base.OnCreated(sender, e);
     }
 
+    [MemberNotNull(nameof(RenderTarget))]
     protected virtual void CreateRenderTarget()
     {
         var rt = RenderTarget;

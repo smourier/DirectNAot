@@ -33,6 +33,14 @@ public static class ID2D1DeviceExtensions
         return device.GetMaximumTextureMemory();
     }
 
+    public static IComObject<IDXGIDevice> GetDxgiDevice(this IComObject<ID2D1Device2> device) => GetDxgiDevice(device?.Object!);
+    public static IComObject<IDXGIDevice> GetDxgiDevice(this ID2D1Device2 device)
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        device.GetDxgiDevice(out var dxgi).ThrowOnError();
+        return new ComObject<IDXGIDevice>(dxgi);
+    }
+
     public static IComObject<ID2D1PrintControl> CreatePrintControl(this IComObject<ID2D1Device> device, IComObject<IWICImagingFactory> wicFactory, IComObject<IPrintDocumentPackageTarget> documentTarget, D2D1_PRINT_CONTROL_PROPERTIES? printControlProperties = null) => CreatePrintControl(device?.Object!, wicFactory?.Object!, documentTarget?.Object!, printControlProperties);
     public static IComObject<ID2D1PrintControl> CreatePrintControl(this ID2D1Device device, IWICImagingFactory wicFactory, IPrintDocumentPackageTarget documentTarget, D2D1_PRINT_CONTROL_PROPERTIES? printControlProperties = null)
     {

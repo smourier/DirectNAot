@@ -1035,6 +1035,70 @@ public static partial class Constants
     
     public static readonly Guid BroadcastEventService = new("0b3ffb92-0919-4934-9d5b-619c719d0202");
     
+    public const int BS_3STATE = 5;
+    
+    public const int BS_AUTO3STATE = 6;
+    
+    public const int BS_AUTOCHECKBOX = 3;
+    
+    public const int BS_AUTORADIOBUTTON = 9;
+    
+    public const int BS_BITMAP = 128;
+    
+    public const int BS_BOTTOM = 2048;
+    
+    public const int BS_CENTER = 768;
+    
+    public const int BS_CHECKBOX = 2;
+    
+    public const int BS_COMMANDLINK = 14;
+    
+    public const int BS_DEFCOMMANDLINK = 15;
+    
+    public const int BS_DEFPUSHBUTTON = 1;
+    
+    public const int BS_DEFSPLITBUTTON = 13;
+    
+    public const int BS_FLAT = 32768;
+    
+    public const int BS_GROUPBOX = 7;
+    
+    public const int BS_ICON = 64;
+    
+    public const int BS_LEFT = 256;
+    
+    public const int BS_LEFTTEXT = 32;
+    
+    public const int BS_MULTILINE = 8192;
+    
+    public const int BS_NOTIFY = 16384;
+    
+    public const int BS_OWNERDRAW = 11;
+    
+    public const int BS_PUSHBOX = 10;
+    
+    public const int BS_PUSHBUTTON = 0;
+    
+    public const int BS_PUSHLIKE = 4096;
+    
+    public const int BS_RADIOBUTTON = 4;
+    
+    public const int BS_RIGHT = 512;
+    
+    public const int BS_RIGHTBUTTON = 32;
+    
+    public const int BS_SPLITBUTTON = 12;
+    
+    public const int BS_TEXT = 0;
+    
+    public const int BS_TOP = 1024;
+    
+    public const int BS_TYPEMASK = 15;
+    
+    public const int BS_USERBUTTON = 8;
+    
+    public const int BS_VCENTER = 3072;
+    
     public static readonly Guid BSKYB_TERRESTRIAL_TV_NETWORK_TYPE = new("9e9e46c6-3aba-4f08-ad0e-cc5ac8148c2b");
     
     public const uint BUS_INTERFACE_REFERENCE_VERSION = 256;

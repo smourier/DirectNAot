@@ -1241,6 +1241,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CreateErrorInfo([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICreateErrorInfo>))] out ICreateErrorInfo pperrinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createfontindirectw
+    [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HFONT CreateFontIndirectW(in LOGFONTW lplf);
+    
     // https://learn.microsoft.com/windows/win32/api/xapofx/nf-xapofx-createfx
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
@@ -6103,6 +6110,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ICSeqCompressFrameStart(in COMPVARS pc, in BITMAPINFO lpbiIn);
     
+    // https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-initcommoncontrolsex
+    [LibraryImport("COMCTL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL InitCommonControlsEx(in INITCOMMONCONTROLSEX picce);
+    
     // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromfiletime
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -6166,6 +6180,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL IsColorProfileValid(nint hProfile, out BOOL pbValid);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-isdialogmessagew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL IsDialogMessageW(HWND hDlg, in MSG lpMsg);
     
     // https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-iserrorpropagationenabled
     [LibraryImport("api-ms-win-core-winrt-error-l1-1-1", SetLastError = true)]

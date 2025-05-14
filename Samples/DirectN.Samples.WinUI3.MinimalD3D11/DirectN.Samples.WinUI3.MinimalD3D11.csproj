@@ -17,6 +17,12 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="Generated Files\**" />
+	  <EmbeddedResource Remove="Generated Files\**" />
+	  <None Remove="Generated Files\**" />
+	  <Page Remove="Generated Files\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Remove="DirectN.ico" />
 	</ItemGroup>
 	<ItemGroup>
@@ -89,4 +95,7 @@
 	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
 	</PropertyGroup>
+	<ItemGroup>
+	  <PRIResource Remove="Generated Files\**" />
+	</ItemGroup>
 </Project>

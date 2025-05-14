@@ -25,6 +25,7 @@ public class D3D11SwapChainWindow(
     protected virtual IComObject<ID3D11Device>? Device => _device;
     protected virtual IComObject<ID3D11DeviceContext>? DeviceContext => _deviceContext;
     protected virtual IComObject<IDXGISwapChain1>? SwapChain => _swapChain;
+    protected virtual bool InvalidateOnTick { get; set; } = true;
 
     // we handle background
     protected override void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon, background: new HBRUSH());
@@ -32,8 +33,11 @@ public class D3D11SwapChainWindow(
     protected override void OnCreated(object? sender, EventArgs e)
     {
         CreateDeviceResources();
-        _ticker.Tick += (s, e) => Invalidate();
-        _ticker.Start();
+        if (InvalidateOnTick)
+        {
+            _ticker.Tick += (s, e) => Invalidate();
+            _ticker.Start();
+        }
         base.OnCreated(sender, e);
     }
 
@@ -46,7 +50,6 @@ public class D3D11SwapChainWindow(
             if (!size.IsEmpty)
             {
                 DisposeSwapChainDependentResources();
-                //swapChain.ResizeBuffers(0, 0, 0, DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM, 0);
                 swapChain.ResizeBuffers(0, (uint)size.cx, (uint)size.cy, DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM, 0);
                 CreateSwapChainDependentResources(device, swapChain);
             }
@@ -70,6 +73,11 @@ public class D3D11SwapChainWindow(
         _ticker?.Stop(1000);
         DisposeDeviceResources();
         base.Dispose(disposing);
+    }
+
+    protected virtual void PrepareSwapChainDesc(ref DXGI_SWAP_CHAIN_DESC1 desc)
+    {
+        // do nothing by default
     }
 
     protected virtual void CreateDeviceResources()
@@ -117,6 +125,7 @@ public class D3D11SwapChainWindow(
         using var adapter = dxgiDevice.GetAdapter();
         using var fac = adapter.GetFactory2()!;
 
+        PrepareSwapChainDesc(ref desc);
         _swapChain = fac.CreateSwapChainForHwnd<IDXGISwapChain1>(_device, Handle, desc);
 
         // provide non null references
@@ -135,7 +144,8 @@ public class D3D11SwapChainWindow(
             dc.ClearState();
             dc.Flush();
             dc.Dispose();
-        };
+        }
+        ;
 
         var sc = Interlocked.Exchange(ref _swapChain, null);
         if (sc != null)

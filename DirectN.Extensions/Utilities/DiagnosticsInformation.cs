@@ -2,12 +2,27 @@
 
 #pragma warning disable CA1822 // Mark members as static
 [SupportedOSPlatform("windows10.0.17134")]
-public class DiagnosticsInformation(Assembly? assembly = null, Window? window = null)
+public class DiagnosticsInformation(Assembly? assembly = null, Window? window = null, string? separator = null)
 {
     private readonly Window? _window = window;
 
     [Browsable(false)]
     public Assembly Assembly { get; } = assembly ?? Assembly.GetExecutingAssembly();
+
+    [Category("Application")]
+    public string ApplicationCompany => Assembly.GetCompany() ?? string.Empty;
+
+    [Category("Application")]
+    public string ApplicationDescription => Assembly.GetDescription() ?? string.Empty;
+
+    [Category("Application")]
+    public string ApplicationProduct => Assembly.GetProduct() ?? string.Empty;
+
+    [Category("Application")]
+    public string ApplicationTitle => Assembly.GetTitle() ?? string.Empty;
+
+    [Category("Application")]
+    public string ApplicationCopyright => Assembly.GetCopyright() ?? string.Empty;
 
     [Category("Windows")]
     public string OSVersion => Environment.OSVersion.VersionString;
@@ -58,23 +73,18 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
     public int TextScaleFactor => DpiUtilities.TextScaleFactor;
 
     [Category("Graphics")]
-    public string? WindowDpiAwareness => (_window ?? Application.Windows.FirstOrDefault())?.DpiAwarenessDescription;
+#pragma warning disable CA1826 // Do not use Enumerable methods on indexable collections
+    public string? WindowDpiAwareness => (_window ?? Application.AllWindows.FirstOrDefault())?.DpiAwarenessDescription;
 
     [Category("Graphics")]
-    public uint WindowDpiFromDpiAwareness => (_window ?? Application.Windows.FirstOrDefault())?.DpiFromDpiAwareness ?? 96;
-
-    [Category("Graphics")]
-    public string ThreadDpiAwareness { get; } = DpiUtilities.GetDpiAwarenessDescription(Functions.GetThreadDpiAwarenessContext());
-
-    [Category("Graphics")]
-    public uint ThreadDpiFromDpiAwareness { get; } = Functions.GetDpiFromDpiAwarenessContext(Functions.GetThreadDpiAwarenessContext());
+    public uint WindowDpiFromDpiAwareness => (_window ?? Application.AllWindows.FirstOrDefault())?.DpiFromDpiAwareness ?? 96;
 
     [Category("Graphics")]
     public string? WindowMonitor
     {
         get
         {
-            var monitor = (_window ?? Application.Windows.FirstOrDefault())?.GetMonitor();
+            var monitor = (_window ?? Application.AllWindows.FirstOrDefault())?.GetMonitor();
             if (monitor == null)
                 return null;
 
@@ -87,6 +97,13 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
             return s;
         }
     }
+#pragma warning restore CA1826 // Do not use Enumerable methods on indexable collections
+
+    [Category("Graphics")]
+    public string ThreadDpiAwareness { get; } = DpiUtilities.GetDpiAwarenessDescription(Functions.GetThreadDpiAwarenessContext());
+
+    [Category("Graphics")]
+    public uint ThreadDpiFromDpiAwareness { get; } = Functions.GetDpiFromDpiAwarenessContext(Functions.GetThreadDpiAwarenessContext());
 
     [Category("Graphics")]
     public string DesktopDpi
@@ -100,13 +117,13 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
 
     [Category("Graphics")]
     [DisplayName("Graphic Adapter(s)")]
-    public string Adapters => GetAdapters();
+    public string Adapters => GetAdapters(separator);
 
     [Category("Graphics")]
     [DisplayName("Display(s)")]
-    public string Displays => string.Join(Environment.NewLine, DisplayConfigQuery());
+    public string Displays => string.Join(separator ?? Environment.NewLine, DisplayConfigQuery());
 
-    [Category("Software")]
+    [Category("Application")]
     public Version AssemblyInformationalVersion
     {
         get
@@ -127,14 +144,14 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
         }
     }
 
-    [Category("Software")]
+    [Category("Application")]
     public string AssemblyConfiguration => Assembly.GetConfiguration() ?? string.Empty;
 
-    private static string GetAdapters()
+    private static string GetAdapters(string? separator)
     {
         using var fac = DXGIFunctions.CreateDXGIFactory1();
         var adapters = fac.EnumAdapters1().ToArray();
-        var str = string.Join(Environment.NewLine, adapters.Select(a => a.GetDesc().Description));
+        var str = string.Join(separator ?? Environment.NewLine, adapters.Select(a => a.GetDesc().Description));
         adapters.Dispose();
         return str;
     }
@@ -160,7 +177,7 @@ public class DiagnosticsInformation(Assembly? assembly = null, Window? window = 
             if (display.DeviceName == null)
                 yield return tar.monitorFriendlyDeviceName + " " + src.viewGdiDeviceName + dpi;
 
-            yield return tar.monitorFriendlyDeviceName + " " + display.CurrentSettings + dpi;
+            yield return tar.monitorFriendlyDeviceName + " " + display.DeviceName + dpi;
         }
     }
 

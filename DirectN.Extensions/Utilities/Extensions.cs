@@ -50,6 +50,19 @@ public static class Extensions
         return i;
     }
 
+    public static HRESULT ThrowOnPInvokeError(this BOOL ret, bool throwOnError = true, [CallerMemberName] string? methodName = null)
+    {
+        if (ret)
+            return Constants.S_OK;
+
+        var gle = Marshal.GetLastPInvokeError();
+        if (gle == 0)
+            return Constants.S_OK;
+
+        var hr = HRESULT.FromWin32(gle);
+        return hr.ThrowOnError(throwOnError, methodName);
+    }
+
     public static int IndexOf<T>(this IEnumerable<T> source, Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);

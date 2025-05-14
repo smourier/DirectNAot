@@ -2,14 +2,15 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<IsAotCompatible>true</IsAotCompatible>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<ApplicationIcon>DirectN.ico</ApplicationIcon>
+		<ApplicationIcon>PdfView.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,12 +18,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="DirectN.ico" />
+	  <Content Include="PdfView.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\DirectN.Extensions\DirectN.Extensions.csproj" />
-	  <ProjectReference Include="..\..\DirectN\DirectN.csproj" />
+		<ProjectReference Include="..\..\DirectN.Extensions\DirectN.Extensions.csproj" />
+		<ProjectReference Include="..\..\DirectN\DirectN.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,6 +31,8 @@
 		<Using Include="DirectN.Extensions" />
 		<Using Include="DirectN.Extensions.Com" />
 		<Using Include="DirectN.Extensions.Utilities" />
+		<Using Include="DirectN.Samples.PdfView.Utilities" />
+		<Using Include="System" />
 		<Using Include="System.Collections.Concurrent" />
 		<Using Include="System.ComponentModel" />
 		<Using Include="System.Diagnostics.CodeAnalysis" />
@@ -40,6 +43,14 @@
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
 		<Using Include="System.Threading" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Windows.Data.Pdf" />
+		<Using Include="Windows.Storage.Pickers" />
+		<Using Include="Windows.UI" />
+		<Using Include="Windows.UI.Composition" />
+		<Using Include="Windows.UI.Composition.Core" />
+		<Using Include="WinRT" />
+		<Using Include="WinRT.Interop" />
 	</ItemGroup>
 
 </Project>

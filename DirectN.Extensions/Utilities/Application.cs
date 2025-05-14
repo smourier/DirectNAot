@@ -2,72 +2,80 @@
 
 public class Application : IDisposable
 {
-    private static Application? _current;
-    private static bool _exiting;
-    private static ConcurrentDictionary<Window, object?> _windows = [];
-    private readonly static ConcurrentQueue<Error> _errors = [];
-    internal const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
+    public event EventHandler? ApplicationExit;
+    private bool _disposedValue;
 
-    public static event EventHandler<ValueEventArgs<Window>>? WindowRemoved;
-    public static event EventHandler<ValueEventArgs<Window>>? WindowAdded;
-    public static event EventHandler? ApplicationExit;
-    public static event EventHandler<CancelEventArgs>? ShowingFatalError;
-
-    static Application()
+    public Application()
     {
-        AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
+        var apps = _applications;
+        if (apps == null)
+            throw new DirectNException("0003: It's not possible to create applications any more.");
+
+        apps.AddOrUpdate(Environment.CurrentManagedThreadId, this, (k, o) =>
+        {
+            throw new DirectNException("0006: There can be only one Application instance for a given thread.");
+        });
+
+        UIThreadId = Environment.CurrentManagedThreadId;
+        ThreadId = Functions.GetCurrentThreadId();
     }
 
-    private static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
-    {
-        if (e.ExceptionObject is Exception error)
-        {
-            AddError(error);
-            var e2 = new CancelEventArgs();
-            ShowingFatalError?.Invoke(Current, e2);
-            if (e2.Cancel)
-                return;
+    public bool ExitOnLastWindowRemoved { get; set; } = true;
+    public bool Exiting { get; private set; }
+    public int UIThreadId { get; private set; }
+    public uint ThreadId { get; }
+    public bool IsRunningAsUIThread => UIThreadId == Environment.CurrentManagedThreadId;
+    public bool IsDisposed => _disposedValue;
 
-            if (CanShowFatalError)
+    public IReadOnlyList<Window> Windows
+    {
+        get
+        {
+            lock (_windowsLock)
             {
-                var handle = _windows.FirstOrDefault(w => !w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
-                if (handle == null)
-                {
-                    handle = _windows.FirstOrDefault(w => w.Key.IsBackground && w.Key.IsWindow).Key?.Handle;
-                }
-                ShowFatalError(handle ?? HWND.Null);
+                return [.. _windows.Where(w => w.ManagedThreadId == UIThreadId)];
             }
         }
     }
 
-    private int _disposeState;
-
-    public Application()
+    public IReadOnlyList<Window> BackgroundWindows
     {
-        if (Interlocked.CompareExchange(ref _current, this, null) != null)
-            throw new DirectNException("0003: There can be only one Application instance.");
-
-        UIhreadId = Environment.CurrentManagedThreadId;
+        get
+        {
+            lock (_windowsLock)
+            {
+                return [.. _windows.Where(w => w.ManagedThreadId == UIThreadId && w.IsBackground)];
+            }
+        }
     }
 
-    public bool IsDisposingOrDisposed => _disposeState != 0;
-    public bool IsDisposing => _disposeState == 1;
-    public bool IsDisposed => _disposeState == 2;
+    public IReadOnlyList<Window> NonBackgroundWindows
+    {
+        get
+        {
+            lock (_windowsLock)
+            {
+                return [.. _windows.Where(w => w.ManagedThreadId == UIThreadId && !w.IsBackground)];
+            }
+        }
+    }
+
+    public void ThrowIfNotRunningAsUIThread() { if (!IsRunningAsUIThread) throw new DirectNException("0002: This method must be called on the render thread."); }
 
     public virtual void Run()
     {
-        if (_errors.IsEmpty)
+        if (!HasErrors)
         {
             while (Functions.GetMessageW(out var msg, HWND.Null, 0, 0))
             {
-                if (IsDisposingOrDisposed)
+                if (IsDisposed)
                     break;
 
                 if (msg.message == WM_APP_QUIT)
                     break;
 
-                Functions.TranslateMessage(msg);
-                Functions.DispatchMessageW(msg);
+                if (!HandleMessage(msg))
+                    break;
             }
         }
 
@@ -77,118 +85,147 @@ public class Application : IDisposable
         }
     }
 
+    protected virtual bool HandleMessage(in MSG msg)
+    {
+        Functions.TranslateMessage(msg);
+        Functions.DispatchMessageW(msg);
+        return true;
+    }
+
+    protected virtual void OnApplicationExit(object sender, EventArgs e) => ApplicationExit?.Invoke(sender, e);
+    public virtual void Exit()
+    {
+        ThrowIfNotRunningAsUIThread();
+        OnApplicationExit(this, EventArgs.Empty);
+        Functions.PostQuitMessage(0);
+    }
+
     protected virtual void Dispose(bool disposing)
     {
         if (!disposing)
             return;
 
-        //TraceInfo("windows count:" + _windows.Count);
-        var isDisposing = Interlocked.CompareExchange(ref _disposeState, 1, 0);
-        if (isDisposing != 0)
-            return;
-
-        // dispose managed state (managed objects)
-        var windows = Interlocked.Exchange(ref _windows, new());
-        foreach (var kv in windows)
+        if (!_disposedValue)
         {
-            WindowRemoved?.Invoke(Current, new ValueEventArgs<Window>(kv.Key));
-            kv.Key.Dispose();
+            // note: we don't check thread id here
+            _applications?.TryRemove(Environment.CurrentManagedThreadId, out _);
+            OnApplicationExit(this, EventArgs.Empty);
+            _disposedValue = true;
         }
 
         if (ReportLiveObjects)
         {
             DXGIFunctions.DXGIReportLiveObjects();
         }
-
-        Interlocked.Exchange(ref _disposeState, 2);
     }
 
     ~Application() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 
-    internal static void AddWindow(Window window)
-    {
-        //TraceInfo("window:" + window);
-        if (_windows.TryAdd(window, null))
-        {
-            // default is for new windows to be background (don't prevent to quit)
-            if (_windows.Count > 1)
-            {
-                window.IsBackground = true;
-            }
+    internal const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
+    private static readonly Lock _windowsLock = new();
+    private static readonly Lock _errorsLock = new();
+    private readonly static List<Window> _windows = [];
+    private readonly static List<Exception> _errors = [];
+    private static ConcurrentDictionary<int, Application>? _applications = [];
 
-            WindowAdded?.Invoke(Current, new ValueEventArgs<Window>(window));
-        }
+    public static event EventHandler<ValueEventArgs<Window>>? WindowRemoved;
+    public static event EventHandler<ValueEventArgs<Window>>? WindowAdded;
+    public static event EventHandler? AllApplicationsExit;
+    public static event EventHandler<CancelEventArgs>? ShowingFatalError;
+
+    static Application()
+    {
+        AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
     }
 
-    internal static void RemoveWindow(Window window)
-    {
-        //TraceInfo("window:" + window);
-        if (!_windows.TryRemove(window, out _))
-            return;
-
-        WindowRemoved?.Invoke(Current, new ValueEventArgs<Window>(window));
-        if (QuitOnLastWindowRemoved && !_exiting && !_windows.Any(w => !w.Key.IsBackground))
-        {
-            _exiting = true;
-            foreach (var bw in _windows.ToArray().Where(w => w.Key.IsBackground))
-            {
-                bw.Key?.Dispose();
-            }
-            Exit();
-        }
-    }
-
-    public static Application Current
+    public static Application? Current
     {
         get
         {
-            if (_current == null)
-            {
-                _ = new Application();
-            }
-            return _current!;
+            var apps = _applications;
+            if (apps == null)
+                return null;
+
+            apps.TryGetValue(Environment.CurrentManagedThreadId, out var app);
+            return app;
         }
     }
 
-    public static IEnumerable<Window> Windows => _windows.Keys;
+    public static IReadOnlyList<Window> AllWindows
+    {
+        get
+        {
+            lock (_windowsLock)
+            {
+                return [.. _windows];
+            }
+        }
+    }
+
+    public static IReadOnlyDictionary<int, Application> Applications => _applications ?? [];
+    public static bool HasErrors => _errors.Count > 0;
+    public static Exception[] Errors { get { lock (_errorsLock) { return [.. _errors]; } } }
     public static HMODULE ModuleHandle => Functions.GetModuleHandleW(PWSTR.Null);
     public static bool IsFatalErrorShowing { get; private set; }
-    public static bool QuitOnLastWindowRemoved { get; set; } = true;
     public static bool CanShowFatalError { get; set; } = true;
+    public static bool ExitAllOnLastWindowRemoved { get; set; } = true;
+    public static bool AllExiting { get; private set; }
     public static int MaximumNumberOfErrors { get; set; } = 3;
     public static TraceLevel TraceLevel { get; set; } = TraceLevel.Verbose;
-    public static int UIhreadId { get; private set; }
     public static bool ReportLiveObjects { get; set; }
 #if DEBUG
         = true;
 #endif
-    public static bool IsRunningAsUIThread => UIhreadId == Environment.CurrentManagedThreadId;
-    public static void ThrowIfNotRunningAsUIThread() { if (!IsRunningAsUIThread) throw new DirectNException("0002: This method must be called on the render thread."); }
 
-    public static void Exit()
+    public static Application? GetApplication(Window? window) => GetApplication(window?.ManagedThreadId ?? 0);
+    public static Application? GetApplication(int threadId)
     {
-        ApplicationExit?.Invoke(Current, EventArgs.Empty);
-        Functions.PostQuitMessage(0);
+        if (threadId == 0)
+            return null;
+
+        var apps = _applications;
+        if (apps == null)
+            return null;
+
+        apps.TryGetValue(threadId, out var app);
+        return app;
     }
 
-    public static bool HasErrors => !_errors.IsEmpty;
+    public static void AllExit()
+    {
+        var apps = Interlocked.Exchange(ref _applications, null);
+        if (apps == null)
+            return;
+
+        foreach (var kv in apps)
+        {
+            // call from one thread
+            kv.Value.OnApplicationExit(kv.Value, EventArgs.Empty);
+            Functions.PostThreadMessageW(kv.Value.ThreadId, MessageDecoder.WM_QUIT, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        AllApplicationsExit?.Invoke(null, EventArgs.Empty);
+    }
+
     public static void AddError(Exception? error, [CallerMemberName] string? methodName = null)
     {
         if (error == null)
             return;
 
-        TraceError(error);
-        var ts = error.ToString();
-        if (_errors.Any(e => e.ToString() == ts))
-            return;
-
-        while (_errors.Count >= MaximumNumberOfErrors)
+        lock (_errorsLock)
         {
-            _errors.TryDequeue(out _);
-        }
+            TraceError(error);
+            var ts = error.ToString();
+            if (_errors.Any(e => e.ToString() == ts))
+                return;
 
-        _errors.Enqueue(new(error, methodName));
+            if (_errors.Count >= MaximumNumberOfErrors)
+                return;
+
+            TraceError(error, methodName);
+            _errors.Add(error);
+        }
 
         // we don't use PostQuitMessage because it prevents any other windows from showing (like messagebox, taskdialog, etc.)
         Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
@@ -196,7 +233,7 @@ public class Application : IDisposable
 
     public static MESSAGEBOX_RESULT ShowFatalError(HWND hwnd, bool clearErrors = true)
     {
-        if (_errors.IsEmpty)
+        if (!HasErrors)
             return 0;
 
         if (IsFatalErrorShowing)
@@ -207,10 +244,10 @@ public class Application : IDisposable
         if (errors.Length == 0)
             return 0;
 
-        var windows = _windows.ToArray();
-        foreach (var kv in windows)
+        var windows = AllWindows;
+        foreach (var win in windows)
         {
-            if (!kv.Key.ShowingFatalError())
+            if (!win.ShowingFatalError())
                 return 0;
         }
 
@@ -284,6 +321,24 @@ public class Application : IDisposable
         return Assembly.GetEntryAssembly()?.GetName().Name ?? "DirectN Application";
     }
 
+    public unsafe static bool InitCommonControlsEx(INITCOMMONCONTROLSEX_ICC flags = 0, bool throwOnError = true)
+    {
+        if (flags == 0)
+        {
+            foreach (var value in Enum.GetValues<INITCOMMONCONTROLSEX_ICC>())
+            {
+                flags |= value;
+            }
+        }
+
+        var init = new INITCOMMONCONTROLSEX { dwSize = (uint)sizeof(INITCOMMONCONTROLSEX), dwICC = flags, };
+        var ret = Functions.InitCommonControlsEx(init);
+        if (!ret && throwOnError)
+            throw new Win32Exception(Marshal.GetLastPInvokeError());
+
+        return ret;
+    }
+
     protected virtual internal bool TraceMessage(uint msg)
     {
         return false;
@@ -331,6 +386,87 @@ public class Application : IDisposable
                 return $"{MethodName} {Exception}";
 
             return Exception.ToString();
+        }
+    }
+
+    private static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
+    {
+        if (e.ExceptionObject is Exception error)
+        {
+            AddError(error);
+            var e2 = new CancelEventArgs();
+            ShowingFatalError?.Invoke(Current, e2);
+            if (e2.Cancel)
+                return;
+
+            if (CanShowFatalError)
+            {
+                AddError(error);
+                var win = _windows.FirstOrDefault()?.Handle;
+                ShowFatalError(win.GetValueOrDefault());
+            }
+        }
+    }
+
+    internal static void AddWindow(Window window)
+    {
+        lock (_windowsLock)
+        {
+            _windows.Add(window);
+
+            var apps = _applications;
+            if (apps != null)
+            {
+                apps.TryGetValue(window.ManagedThreadId, out var app);
+                if (app != null)
+                {
+                    // default is for new windows to be background (don't prevent to quit)
+                    if (app.Windows.Count > 1)
+                    {
+                        window.IsBackground = true;
+                    }
+
+                    WindowAdded?.Invoke(app, new ValueEventArgs<Window>(window));
+                }
+            }
+        }
+    }
+
+    internal static void RemoveWindow(Window window)
+    {
+        lock (_windowsLock)
+        {
+            _windows.Remove(window);
+
+            var apps = _applications;
+            if (apps != null)
+            {
+                apps.TryGetValue(window.ManagedThreadId, out var app);
+                if (app != null)
+                {
+                    WindowRemoved?.Invoke(app, new ValueEventArgs<Window>(window));
+                    if (app.ExitOnLastWindowRemoved && !app.Exiting && app.NonBackgroundWindows.Count == 0)
+                    {
+                        app.Exiting = true;
+                        foreach (var bw in app.BackgroundWindows)
+                        {
+                            bw.Dispose();
+                        }
+                        app.Exit();
+                    }
+                }
+            }
+
+            if (ExitAllOnLastWindowRemoved && !AllExiting && !_windows.Any(w => !w.IsBackground))
+            {
+                AllExiting = true;
+                var backgroundWindows = _windows.Where(w => w.IsBackground).ToArray();
+                foreach (var bw in backgroundWindows)
+                {
+                    bw.Dispose();
+                }
+                AllExit();
+            }
         }
     }
 }
