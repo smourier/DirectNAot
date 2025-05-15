@@ -37,7 +37,7 @@ The key points that drive how code is generated and built:
 * Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different.
 
 # Installation
-You can just compile the source (not it take minutes due to the fact ComWrapper Source geneation is *slooooowwwwww*...) or use the nuget packages
+You can just compile the source (not it take minutes due to the fact ComWrapper Source generation is *slooooowwwwww*...) or use the nuget packages
 
 https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/DirectNAot.Extensions/
 
@@ -67,5 +67,11 @@ It supports native-AOT deployment, through usage of DirectNAOT.
 
 Check it out at https://github.com/aelyo-softworks/Wice
 
+<img alt="Wice" src="https://github.com/user-attachments/assets/7dd33147-241c-4db1-a5b9-34fdfcda5a82" width="50%">
+
 # WebView2 sample
 [WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 9+ AOT-compatible bindings 100% independent from WinForms or WPF for Microsoft's WebView2.
+
+<img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
+
+
