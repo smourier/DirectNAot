@@ -23,7 +23,7 @@ public class PdfViewWindow : Window
 
         // add buttons to the window
         CreateButton("Open", _buttonsPadding, _buttonsPadding, _buttonsWidth, _buttonsHeight, (int)ButtonId.Open);
-        _previousButton = CreateButton("Previous Page", _buttonsPadding + (_buttonsWidth + _buttonsPadding), _buttonsPadding, _buttonsWidth, _buttonsHeight, (int)ButtonId.Previous);
+        _previousButton = CreateButton("Previous Page", _buttonsPadding + _buttonsWidth + _buttonsPadding, _buttonsPadding, _buttonsWidth, _buttonsHeight, (int)ButtonId.Previous);
         _nextButton = CreateButton("Next Page", _buttonsPadding + (_buttonsWidth + _buttonsPadding) * 2, _buttonsPadding, _buttonsWidth, _buttonsHeight, (int)ButtonId.Next);
 
         // set standard font for all buttons
@@ -188,7 +188,7 @@ public class PdfViewWindow : Window
             {
                 var pageUnk = ((IWinRTObject)parent._pdfPage).NativeObject.ThisPtr; // no AddRef needed
 
-                // resize to fit window's height or width if window's width is too small
+                // resize to fit window's height or width
                 var rc = ClientRect;
                 var size = parent._pdfPage.Size;
 
@@ -208,13 +208,14 @@ public class PdfViewWindow : Window
                         );
                 }
 
-                using var backgroundBrush = dc.CreateSolidColorBrush(D3DCOLORVALUE.White);
                 // note sure why but PDF_RENDER_PARAMS's BackgroundColor seems to not be used
+                // so we do it ourselves
+                using var backgroundBrush = dc.CreateSolidColorBrush(D3DCOLORVALUE.White);
                 dc.FillRectangle(new D2D_RECT_F(0, 0, width, height), backgroundBrush);
 
                 var renderParams = new PDF_RENDER_PARAMS
                 {
-                    //BackgroundColor = D3DCOLORVALUE.White,
+                    //BackgroundColor = D3DCOLORVALUE.White, // doesn't seem to be honored
                     DestinationWidth = (uint)width,
                     DestinationHeight = (uint)height,
                 };
