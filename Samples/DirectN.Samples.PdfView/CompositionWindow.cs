@@ -13,11 +13,18 @@ public class CompositionWindow : D3D11SwapChainWindow
         : base(title, style, extendedStyle, rect, parentHandle, menu, className)
     {
         InvalidateOnTick = false; // we're using composition, we don't need to tick
+
+        DoUseDirect2D = UseDirect2D;
+        if (DoUseDirect2D)
+        {
+            DeviceCreateFlags |= D3D11_CREATE_DEVICE_FLAG.D3D11_CREATE_DEVICE_BGRA_SUPPORT; // need Direct2D support
+        }
+
         CompositorController = new CompositorController();
         CompositorController.CommitNeeded += (s, e) => s.Commit();
 
         var desktopInterop = CompositorController.Compositor.As<ICompositorDesktopInterop>();
-        desktopInterop.CreateDesktopWindowTarget(Handle, true, out var target).ThrowOnError();
+        desktopInterop.CreateDesktopWindowTarget(Handle, TopMostDesktopWindowTarget, out var target).ThrowOnError();
         var compositionTarget = MarshalInspectable<CompositionTarget>.FromAbi(target);
 
         RootVisual = CreateWindowVisual();
@@ -25,19 +32,39 @@ public class CompositionWindow : D3D11SwapChainWindow
         SetVisualSize();
     }
 
+    public CompositionGraphicsDevice? GraphicsDevice { get; private set; } // guaranteed to be not null after device resources are created
+    public IComObject<ID2D1Device>? D2D1Device { get; private set; } // guaranteed to be not null if UseDirect2D is set to true, and after device resources are created
+
     public CompositorController CompositorController { get; }
-    [AllowNull]
-    public CompositionGraphicsDevice GraphicsDevice { get; private set; }
     public SpriteVisual RootVisual { get; }
     public Compositor Compositor => CompositorController.Compositor;
 
+    protected bool DoUseDirect2D { get; }
+    protected virtual bool TopMostDesktopWindowTarget => true;
+    protected virtual bool UseDirect2D => true;
     protected virtual SpriteVisual CreateWindowVisual() => Compositor.CreateSpriteVisual();
 
     protected override void CreateDeviceResources()
     {
         base.CreateDeviceResources();
+
+        object? device;
+        if (DoUseDirect2D)
+        {
+            // we need to create a D2D device for the composition graphics device to be able to use ICompositionDrawingSurfaceInterop.BeginDraw
+            using var fac = D2D1Functions.D2D1CreateFactory1();
+            D2D1Device = fac.CreateDevice(Device.As<IDXGIDevice>()!);
+            device = D2D1Device.Object;
+        }
+        else
+        {
+            device = Device;
+        }
+        if (device == null)
+            return;
+
         var interop = CompositorController.Compositor.As<ICompositorInterop>();
-        ComObject.WithComInstance(Device, unk =>
+        ComObject.WithComInstance(D2D1Device, unk =>
         {
             interop.CreateGraphicsDevice(unk, out var obj).ThrowOnError();
             GraphicsDevice = MarshalInterface<CompositionGraphicsDevice>.FromAbi(obj);
@@ -65,6 +92,7 @@ public class CompositionWindow : D3D11SwapChainWindow
         {
             CompositorController?.Dispose();
             RootVisual?.Dispose();
+            D2D1Device?.Dispose();
         }
         base.Dispose(disposing);
     }

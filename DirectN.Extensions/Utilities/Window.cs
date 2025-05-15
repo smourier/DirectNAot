@@ -583,7 +583,10 @@ public class Window : IDisposable, IEquatable<Window>
     }
 
     [SupportedOSPlatform("windows10.0.17134")]
-    protected virtual DiagnosticsInformation CreateDiagnosticsInformation() => new();
+    protected virtual DiagnosticsInformation CreateDiagnosticsInformation<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)] T>() where T : DiagnosticsInformation => new();
+
+    [SupportedOSPlatform("windows10.0.17134")]
+    protected virtual DiagnosticsInformation CreateDiagnosticsInformation() => CreateDiagnosticsInformation<DiagnosticsInformation>();
 
     protected virtual void Dispose(bool disposing)
     {

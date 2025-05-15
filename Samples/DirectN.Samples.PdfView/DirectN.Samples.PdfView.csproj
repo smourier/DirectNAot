@@ -11,6 +11,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>PdfView.ico</ApplicationIcon>
+		<WindowsSdkPackageVersion>10.0.26100.57</WindowsSdkPackageVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,6 +20,10 @@
 
 	<ItemGroup>
 	  <Content Include="PdfView.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -31,7 +36,6 @@
 		<Using Include="DirectN.Extensions" />
 		<Using Include="DirectN.Extensions.Com" />
 		<Using Include="DirectN.Extensions.Utilities" />
-		<Using Include="DirectN.Samples.PdfView.Utilities" />
 		<Using Include="System" />
 		<Using Include="System.Collections.Concurrent" />
 		<Using Include="System.ComponentModel" />
@@ -45,6 +49,8 @@
 		<Using Include="System.Threading" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="Windows.Data.Pdf" />
+		<Using Include="Windows.Graphics.DirectX" />
+		<Using Include="Windows.Foundation" />
 		<Using Include="Windows.Storage.Pickers" />
 		<Using Include="Windows.UI" />
 		<Using Include="Windows.UI.Composition" />

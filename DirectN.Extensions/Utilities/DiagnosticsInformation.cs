@@ -2,6 +2,7 @@
 
 #pragma warning disable CA1822 // Mark members as static
 [SupportedOSPlatform("windows10.0.17134")]
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)]
 public class DiagnosticsInformation(Assembly? assembly = null, Window? window = null, string? separator = null)
 {
     private readonly Window? _window = window;
