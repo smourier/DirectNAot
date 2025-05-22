@@ -34,6 +34,35 @@ public static class WindowUtilities
         return info;
     }
 
+    // in ms
+    public static uint GetKeyboardRepeatDelay() => 250 * (1 + GetUInt32SystemParametersInfo(SYSTEM_PARAMETERS_INFO_ACTION.SPI_GETKEYBOARDDELAY) ?? 1);
+    public static unsafe uint? GetUInt32SystemParametersInfo(SYSTEM_PARAMETERS_INFO_ACTION action)
+    {
+        uint value = 0;
+        if (Functions.SystemParametersInfoW(action, 0, (nint)(&value), 0))
+            return value;
+
+        return null;
+    }
+
+    public static unsafe int? GetInt32SystemParametersInfo(SYSTEM_PARAMETERS_INFO_ACTION action)
+    {
+        var value = 0;
+        if (Functions.SystemParametersInfoW(action, 0, (nint)(&value), 0))
+            return value;
+
+        return null;
+    }
+
+    public static unsafe bool? GetBooleanSystemParametersInfo(SYSTEM_PARAMETERS_INFO_ACTION action)
+    {
+        var value = 0;
+        if (Functions.SystemParametersInfoW(action, 0, (nint)(&value), 0))
+            return value != 0;
+
+        return null;
+    }
+
     public static POINT GetCursorPosition() { Functions.GetCursorPos(out var pt); return pt; }
     public static char VirtualKeyToCharacter(VIRTUAL_KEY vk) => (char)Functions.MapVirtualKeyW((uint)vk, MAP_VIRTUAL_KEY_TYPE.MAPVK_VK_TO_CHAR);
     public static bool IsKeyPressed(VIRTUAL_KEY vk, bool async = true) => (async ? Functions.GetAsyncKeyState((int)vk) : Functions.GetKeyState((int)vk)) < 0;

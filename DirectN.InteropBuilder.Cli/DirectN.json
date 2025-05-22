@@ -48,6 +48,7 @@
     "IDispatch",
     "IDropTarget",
     "IDropSourceNotify",
+    "IInitializeWithWindow",
     "IOleCommandTarget",
     "IPrintPreviewDxgiPackageTarget",
     "IPropertyDescription*",

@@ -13,6 +13,8 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_TIMESTAMP_OUT_OF_RANGE = 0x838A0005;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT GAMEINPUT_E_INSUFFICIENT_FORCE_FEEDBACK_RESOURCES = 0x838A0006;
 
+    public const int WHERE_NOONE_CAN_SEE_ME = -32000; // from \windows\core\ntuser\kernel\userk.h
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;
