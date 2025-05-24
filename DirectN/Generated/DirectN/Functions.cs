@@ -3930,6 +3930,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint GetWindowModuleFileNameW(HWND hwnd, [MarshalUsing(CountElementName = nameof(cchFileNameMax))] PWSTR pszFileName, uint cchFileNameMax);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowplacement
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetWindowPlacement(HWND hWnd, ref WINDOWPLACEMENT lpwndpl);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowrect
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -9429,6 +9436,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial int SetWindowLongW(HWND hWnd, WINDOW_LONG_PTR_INDEX nIndex, int dwNewLong);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowplacement
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetWindowPlacement(HWND hWnd, in WINDOWPLACEMENT lpwndpl);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos
     [LibraryImport("USER32", SetLastError = true)]
