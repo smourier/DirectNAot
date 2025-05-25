@@ -127,6 +127,21 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
+    public string? GetText(tomConstants flags)
+    {
+        var bstr = BSTR.Null;
+        WithWholeRange(rng => rng.GetText2((int)flags, out bstr).ThrowOnError());
+        var str = bstr.ToString();
+        BSTR.Dispose(ref bstr);
+        return str;
+    }
+
+    public void SetText(tomConstants flags, string? text)
+    {
+        using var b = new Bstr(text);
+        WithWholeRange(rng => rng.SetText2((int)flags, b)).ThrowOnError();
+    }
+
     public T WithWholeRange<T>(Func<ITextRange2, T> func)
     {
         ArgumentNullException.ThrowIfNull(func);
