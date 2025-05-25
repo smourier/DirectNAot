@@ -13,6 +13,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     private string? _faceName;
     private int _height;
     private ushort _weight;
+    private FONT_CHARSET _fontCharset;
     private COLORREF _textColor;
     private COLORREF _backColor;
     private TextHostOptions _options;
@@ -222,6 +223,19 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
+    public virtual FONT_CHARSET FontCharset
+    {
+        get => _fontCharset;
+        set
+        {
+            if (_fontCharset == value)
+                return;
+
+            _fontCharset = value;
+            ResetCharFormat();
+        }
+    }
+
     public virtual int Height
     {
         get => _height;
@@ -346,6 +360,16 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             return;
 
         _services.Object.OnTxPropertyBitsChange((uint)bit, (uint)bit).ThrowOnError();
+    }
+
+    public HRESULT SendMessage(uint msg, LPARAM lParam) => SendMessage(msg, 0, lParam);
+    public HRESULT SendMessage(uint msg, WPARAM wParam) => SendMessage(msg, wParam, 0);
+    public HRESULT SendMessage(uint msg, WPARAM wParam, LPARAM lParam) => SendMessage(msg, wParam, lParam, out _);
+    public HRESULT SendMessage(uint msg, WPARAM wParam, LPARAM lParam, out LRESULT result)
+    {
+        Trace("msg: " + msg + " wParam: " + wParam + " lParam: " + lParam);
+        result = new LRESULT();
+        return _services.Object.TxSendMessage(msg, wParam, lParam, ref result);
     }
 
     public SIZE GetNaturalSize(TXTNATURALSIZE mode, D2D_SIZE_F constraint) => GetNaturalSize(mode, constraint, out _);
@@ -517,15 +541,16 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
                 format.Base.dwMask |= CFM_MASK.CFM_WEIGHT;
             }
 
-            //format.dwEffects = CFE.CFE_AUTOCOLOR;
-            //format.dwMask |= CFM.CFM_EFFECTS2;
+            if (FontCharset != 0)
+            {
+                format.Base.bCharSet = FontCharset;
+                format.Base.dwMask |= CFM_MASK.CFM_CHARSET;
+            }
 
             _charFormat = new ComBuffer<CHARFORMAT2W>(format);
-            //Trace("fmt: " + format);
         }
 
         *(nint*)ppCF = _charFormat.DangerousGetHandle();
-        //Trace("ppCF: " + ppCF);
         return Constants.S_OK;
     }
 
