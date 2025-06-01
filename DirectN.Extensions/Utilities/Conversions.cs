@@ -1109,11 +1109,11 @@ public static class Conversions
 
 #pragma warning disable IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
         // this is ok for enums
-        var values = type.GetFields(BindingFlags.Public | BindingFlags.Static).Select(f => f.GetValue(null)).ToArray();
+        var values = type.GetFields(BindingFlags.Public | BindingFlags.Static).Select(f => new { name = f.Name, value = f.GetValue(null) }).ToDictionary(x => x.name, x => x.value!, StringComparer.OrdinalIgnoreCase);
 #pragma warning restore IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
         // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
         if (!type.IsDefined(typeof(FlagsAttribute), true) && stringInput.IndexOfAny(_enumSeparators) < 0)
-            return StringToEnum(type, names, values, stringInput, out value);
+            return StringToEnum(type, values, stringInput, out value);
 
         // multi value enum
         var tokens = stringInput.Split(_enumSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -1130,7 +1130,7 @@ public static class Conversions
             if (token == null)
                 continue;
 
-            if (!StringToEnum(type, names, values, token, out var tokenValue))
+            if (!StringToEnum(type, values, token, out var tokenValue))
             {
                 value = Activator.CreateInstance(type)!;
                 return false;
@@ -1147,35 +1147,28 @@ public static class Conversions
         return true;
     }
 
-    private static bool StringToEnum(Type type, string[] names, Array values, string input, out object value)
+    private static bool StringToEnum(Type type, Dictionary<string, object> values, string input, out object value)
     {
-        for (var i = 0; i < names.Length; i++)
-        {
-            if (names[i].EqualsIgnoreCase(input))
-            {
-                value = values.GetValue(i)!;
-                return true;
-            }
-        }
+        if (values.TryGetValue(input, out value!))
+            return true;
 
-        for (var i = 0; i < values.GetLength(0); i++)
+        foreach (var kv in values)
         {
-            var valuei = values.GetValue(i)!;
             if (input.Length > 0 && input[0] == '-')
             {
-                var ul = (long)EnumToUInt64(valuei);
+                var ul = (long)EnumToUInt64(kv.Value);
                 if (ul.ToString().EqualsIgnoreCase(input))
                 {
-                    value = valuei;
+                    value = kv.Value;
                     return true;
                 }
             }
             else
             {
-                var ul = EnumToUInt64(valuei);
+                var ul = EnumToUInt64(kv.Value);
                 if (ul.ToString().EqualsIgnoreCase(input))
                 {
-                    value = valuei;
+                    value = kv.Value;
                     return true;
                 }
             }
