@@ -335,6 +335,16 @@ public sealed class Variant : IDisposable
         return pv;
     }
 
+    public unsafe void DetachTo(nint variantPtr)
+    {
+        if (variantPtr == 0)
+            throw new ArgumentException(null, nameof(variantPtr));
+
+        var pv = _inner;
+        Zero();
+        *(VARIANT*)(variantPtr) = pv;
+    }
+
     public static Variant Attach(ref VARIANT detached, bool zeroDetached = true)
     {
         var pv = new Variant { _inner = detached };

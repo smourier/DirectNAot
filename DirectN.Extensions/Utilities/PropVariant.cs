@@ -390,6 +390,16 @@ public sealed class PropVariant : IDisposable
         return pv;
     }
 
+    public unsafe void DetachTo(nint propVariantPtr)
+    {
+        if (propVariantPtr == 0)
+            throw new ArgumentException(null, nameof(propVariantPtr));
+
+        var pv = _inner;
+        Zero();
+        *(PROPVARIANT*)(propVariantPtr) = pv;
+    }
+
     public static PropVariant Attach(ref PROPVARIANT detached, bool zeroDetached = true)
     {
         var pv = new PropVariant { _inner = detached };
