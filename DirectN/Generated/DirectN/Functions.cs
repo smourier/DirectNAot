@@ -9768,6 +9768,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UpdateICMRegKeyW(uint? reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-updatewindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UpdateWindow(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-validaterect
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
