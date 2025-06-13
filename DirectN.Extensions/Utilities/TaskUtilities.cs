@@ -105,4 +105,52 @@ public static class TaskUtilities
         action();
         return Task.CompletedTask;
     }
+
+    // https://stackoverflow.com/a/55709530/403671
+    // returns true if the call went to completion successfully, false otherwise
+    public static bool RunWithAbort(this Action action, int milliseconds) => RunWithAbort(action, new TimeSpan(0, 0, 0, 0, milliseconds));
+    public static bool RunWithAbort(this Action action, TimeSpan delay)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        var source = new CancellationTokenSource(delay);
+        var success = false;
+        HANDLE handle = 0;
+        uint fn(nint ptr)
+        {
+            using (source.Token.Register(() => Functions.TerminateThread(handle, 0)))
+            {
+                action();
+                success = true;
+            }
+            return 0u;
+        }
+
+        handle = Functions.CreateThread(0, 0, fn, 0, 0, 0);
+        Functions.WaitForSingleObject(handle, (uint)(20 + delay.TotalMilliseconds));
+        Functions.CloseHandle(handle);
+        return success;
+    }
+
+    // returns what's the function should return if the call went to completion successfully, default(T) otherwise
+    public static T? RunWithAbort<T>(this Func<T> func, int milliseconds) => RunWithAbort(func, new TimeSpan(0, 0, 0, 0, milliseconds));
+    public static T? RunWithAbort<T>(this Func<T> func, TimeSpan delay)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        var source = new CancellationTokenSource(delay);
+        var item = default(T);
+        HANDLE handle = 0;
+        uint fn(nint ptr)
+        {
+            using (source.Token.Register(() => Functions.TerminateThread(handle, 0)))
+            {
+                item = func();
+            }
+            return 0u;
+        }
+
+        handle = Functions.CreateThread(0, 0, fn, 0, 0, 0);
+        Functions.WaitForSingleObject(handle, (uint)(20 + delay.TotalMilliseconds));
+        Functions.CloseHandle(handle);
+        return item;
+    }
 }

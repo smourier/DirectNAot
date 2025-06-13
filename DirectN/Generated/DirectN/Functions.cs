@@ -1367,6 +1367,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CreateStreamOverRandomAccessStream(nint randomAccessStream, in Guid riid, out nint /* void */ ppv);
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE CreateThread(nint /* optional SECURITY_ATTRIBUTES* */ lpThreadAttributes, nuint dwStackSize, LPTHREAD_START_ROUTINE lpStartAddress, nint /* optional void* */ lpParameter, THREAD_CREATION_FLAGS dwCreationFlags, nint /* optional uint* */ lpThreadId);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createwindowexw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8460,6 +8467,18 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HMONITOR MonitorFromWindow(HWND hwnd, MONITOR_FROM_FLAGS dwFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-msgwaitformultipleobjects
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT MsgWaitForMultipleObjects(uint nCount, nint /* optional HANDLE* */ pHandles, BOOL fWaitAll, uint dwMilliseconds, QUEUE_STATUS_FLAGS dwWakeMask);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-msgwaitformultipleobjectsex
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT MsgWaitForMultipleObjectsEx(uint nCount, nint /* optional HANDLE* */ pHandles, uint dwMilliseconds, QUEUE_STATUS_FLAGS dwWakeMask, MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS dwFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-notifywinevent
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -9659,6 +9678,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT TaskDialogIndirect(in TASKDIALOGCONFIG pTaskConfig, nint /* optional int* */ pnButton, nint /* optional int* */ pnRadioButton, nint /* optional BOOL* */ pfVerificationFlagChecked);
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminatethread
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL TerminateThread(HANDLE hThread, uint dwExitCode);
+    
     // https://learn.microsoft.com/windows/win32/api/timeapi/nf-timeapi-timebeginperiod
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
@@ -9811,6 +9837,30 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [PreserveSig]
     public static partial uint VideoForWindowsVersion();
+    
+    // https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT WaitForMultipleObjects(uint nCount, [In][MarshalUsing(CountElementName = nameof(nCount))] HANDLE[] lpHandles, BOOL bWaitAll, uint dwMilliseconds);
+    
+    // https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjectsex
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT WaitForMultipleObjectsEx(uint nCount, [In][MarshalUsing(CountElementName = nameof(nCount))] HANDLE[] lpHandles, BOOL bWaitAll, uint dwMilliseconds, BOOL bAlertable);
+    
+    // https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT WaitForSingleObject(HANDLE hHandle, uint dwMilliseconds);
+    
+    // https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitforsingleobjectex
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial WAIT_EVENT WaitForSingleObjectEx(HANDLE hHandle, uint dwMilliseconds, BOOL bAlertable);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinaddbuffer
     [LibraryImport("WINMM")]
