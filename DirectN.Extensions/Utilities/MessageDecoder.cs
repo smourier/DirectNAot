@@ -1,5 +1,6 @@
 ﻿namespace DirectN.Extensions.Utilities;
 
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
 public static class MessageDecoder
 {
     private static readonly Lazy<ConcurrentDictionary<uint, string[]>> _messagesNames = new(GetMessageNames, true);
