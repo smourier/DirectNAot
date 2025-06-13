@@ -265,6 +265,21 @@ public static class Extensions
         return total;
     }
 
+    public static void SafeDispose(this IDisposable? disposable)
+    {
+        if (disposable == null)
+            return;
+
+        try
+        {
+            disposable.Dispose();
+        }
+        catch
+        {
+            // continue;
+        }
+    }
+
     public static void Dispose(this IEnumerable? disposables, bool throwOnError = false)
     {
         if (disposables == null)
