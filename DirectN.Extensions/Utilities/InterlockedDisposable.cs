@@ -37,6 +37,5 @@ public abstract class InterlockedDisposable<T>(T? disposable) : IDisposable wher
         }
     }
 
-    ~InterlockedDisposable() { Dispose(false); }
     public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
 }

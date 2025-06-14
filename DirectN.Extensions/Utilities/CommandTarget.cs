@@ -189,7 +189,6 @@ public partial class CommandTarget : IOleCommandTarget, IConnectionPointContaine
         // set large fields to null
     }
 
-    ~CommandTarget() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 
     [System.Runtime.InteropServices.Marshalling.GeneratedComClass]

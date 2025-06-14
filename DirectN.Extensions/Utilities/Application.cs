@@ -119,7 +119,6 @@ public class Application : IDisposable
         }
     }
 
-    ~Application() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 
     internal const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message

@@ -309,6 +309,11 @@ public class SampleWindow : D3D11SwapChainWindow
                     Dispose();
                     return new();
 
+                case VIRTUAL_KEY.VK_F9:
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    break;
+
                 case VIRTUAL_KEY.VK_F11:
                     var sw = SwapChain;
                     if (sw != null)

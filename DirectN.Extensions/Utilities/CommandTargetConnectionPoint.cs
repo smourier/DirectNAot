@@ -157,7 +157,6 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
         // set large fields to null
     }
 
-    ~CommandTargetConnectionPoint() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }
 

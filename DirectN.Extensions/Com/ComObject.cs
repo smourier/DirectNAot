@@ -590,7 +590,6 @@ public abstract class ComObject : IComObject
         }
     }
 
-    ~ComObject() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 }
 
