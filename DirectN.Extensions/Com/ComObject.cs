@@ -133,7 +133,7 @@ public abstract class ComObject : IComObject
     public static IComObject<T>? FromPointer<T>(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
     {
 #if DEBUG
-        StaticTrace($"unknown:{unknown} releaseOnDispose:{releaseOnDispose}");
+        StaticTrace($"unknown:{unknown} flags:{flags} releaseOnDispose:{releaseOnDispose}");
 #endif
         if (unknown == 0)
             return null;
@@ -147,6 +147,22 @@ public abstract class ComObject : IComObject
             return null;
 
         return new ComObject<T>(t, releaseOnDispose);
+    }
+
+    public static object? FromPointer(nint unknown, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    {
+#if DEBUG
+        StaticTrace($"unknown:{unknown} flags:{flags}");
+#endif
+        if (unknown == 0)
+            return null;
+
+        var instance = ComWrappers.GetOrCreateObjectForComInstance(unknown, flags);
+        if (flags == CreateObjectFlags.UniqueInstance)
+        {
+            Marshal.Release(unknown);
+        }
+        return instance;
     }
 
     public static nint GetOrCreateComInstance(object? obj, CreateComInterfaceFlags flags = CreateComInterfaceFlags.None, bool throwOnError = false)
@@ -539,14 +555,103 @@ public abstract class ComObject : IComObject
         return type.GetGenericArguments()[0];
     }
 
+    public static HRESULT TryCoCreate<T>(Guid classId, out IComObject<T>? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
+    {
+#if DEBUG
+        StaticTrace($"classId:{classId} ctx:{ctx}");
+#endif
+        // we use IUnknown first, some objects (including .NET/.NET Framework ones) don't support direct query interface
+        var hr = Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        if (unk == 0)
+        {
+            comObject = null;
+            return Constants.E_FAIL;
+        }
+
+        comObject = FromPointer<T>(unk, flags, releaseOnDispose);
+        if (comObject == null)
+        {
+            Marshal.Release(unk);
+            return Constants.E_FAIL;
+        }
+
+        return Constants.S_OK;
+    }
+
+    public static HRESULT TryCoCreate(Guid classId, out object? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    {
+#if DEBUG
+        StaticTrace($"classId:{classId} ctx:{ctx}");
+#endif
+        // we use IUnknown first, some objects (including .NET/.NET Framework ones) don't support direct query interface
+        var hr = Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        if (unk == 0)
+        {
+            comObject = null;
+            return Constants.E_FAIL;
+        }
+
+        comObject = FromPointer(unk, flags);
+        if (comObject == null)
+        {
+            Marshal.Release(unk);
+            return Constants.E_FAIL;
+        }
+
+        return Constants.S_OK;
+    }
+
     public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
 #if DEBUG
         StaticTrace($"classId:{classId} ctx:{ctx}");
 #endif
-        // we use IUnknown first, some objects don't support direct query interface
+        // we use IUnknown first, some objects (including .NET/.NET Framework ones) don't support direct query interface
         Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
         return FromPointer<T>(unk, flags, releaseOnDispose);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static HRESULT TryGetActivationFactory<T>(string activatableClassId, out IComObject<T>? comObject, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
+    {
+#if DEBUG
+        StaticTrace($"activatableClassId:{activatableClassId}");
+#endif
+        ArgumentNullException.ThrowIfNull(activatableClassId);
+        using var p = new Hstring(activatableClassId);
+        var hr = Functions.RoGetActivationFactory(p, typeof(T).GUID, out var unk);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        if (unk == 0)
+        {
+            comObject = null;
+            return Constants.E_FAIL;
+        }
+
+        comObject = FromPointer<T>(unk, flags, releaseOnDispose);
+        if (comObject == null)
+        {
+            Marshal.Release(unk);
+            return Constants.E_FAIL;
+        }
+
+        return Constants.S_OK;
     }
 
     [SupportedOSPlatform("windows8.0")]
@@ -559,9 +664,40 @@ public abstract class ComObject : IComObject
         using var p = new Hstring(activatableClassId);
         Functions.RoGetActivationFactory(p, typeof(T).GUID, out var unk).ThrowOnError(throwOnError);
         if (unk == 0)
-            return default;
+            return null;
 
         return FromPointer<T>(unk, flags, releaseOnDispose);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static HRESULT TryGetActivationFactory(string activatableClassId, out object? comObject, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    {
+#if DEBUG
+        StaticTrace($"activatableClassId:{activatableClassId}");
+#endif
+        ArgumentNullException.ThrowIfNull(activatableClassId);
+        using var p = new Hstring(activatableClassId);
+        var hr = Functions.RoGetActivationFactory(p, typeof(IUnknown).GUID, out var unk);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        if (unk == 0)
+        {
+            comObject = null;
+            return Constants.E_FAIL;
+        }
+
+        comObject = FromPointer(unk, flags);
+        if (comObject == null)
+        {
+            Marshal.Release(unk);
+            return Constants.E_FAIL;
+        }
+
+        return Constants.S_OK;
     }
 
     [SupportedOSPlatform("windows8.0")]
