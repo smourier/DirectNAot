@@ -1002,6 +1002,24 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CoDecodeProxy(uint dwClientPid, ulong ui64ProxyAddress, out ServerInformation pServerInformation);
     
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetapartmenttype
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    public static partial HRESULT CoGetApartmentType(out APTTYPE pAptType, out APTTYPEQUALIFIER pAptQualifier);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcallcontext
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoGetCallContext(in Guid riid, out nint /* void */ ppInterface);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetobjectcontext
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoGetObjectContext(in Guid riid, out nint /* void */ ppv);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-colorcorrectpalette
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3708,6 +3726,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetProcessDpiAwareness(HANDLE hprocess, out PROCESS_DPI_AWARENESS value);
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocessid
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial uint GetProcessId(HANDLE Process);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpropw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
@@ -3859,6 +3883,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial DPI_HOSTING_BEHAVIOR GetThreadDpiHostingBehavior();
+    
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getthreadid
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial uint GetThreadId(HANDLE Thread);
     
     // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getthreaduilanguage
     [LibraryImport("KERNEL32")]
@@ -8550,6 +8580,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HDRVR OpenDriver(PWSTR szDriverName, PWSTR szSectionName, LPARAM lParam2);
+    
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE OpenProcess(PROCESS_ACCESS_RIGHTS dwDesiredAccess, BOOL bInheritHandle, uint dwProcessId);
     
     // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocesstoken
     [LibraryImport("ADVAPI32", SetLastError = true)]

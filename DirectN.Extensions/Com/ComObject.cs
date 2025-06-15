@@ -715,6 +715,44 @@ public abstract class ComObject : IComObject
         return ComWrappers.GetOrCreateObjectForComInstance(unk, flags);
     }
 
+    public static Process? GetCallContextProcess(bool throwOnError = true)
+    {
+        if (throwOnError)
+            return get();
+
+        try
+        {
+            return get();
+        }
+        catch
+        {
+            return null;
+        }
+
+        static Process? get()
+        {
+            var id = GetCallContextProcessId();
+            return id > 0 ? Process.GetProcessById(id) : null;
+        }
+    }
+
+    public static int GetCallContextProcessId()
+    {
+        Functions.CoGetCallContext(typeof(ICallingProcessInfo).GUID, out var unk);
+        using var info = ComObject.FromPointer<ICallingProcessInfo>(unk);
+        if (info != null)
+        {
+            info.Object.OpenCallerProcessHandle(PROCESS_ACCESS_RIGHTS.PROCESS_QUERY_LIMITED_INFORMATION, out var handle);
+            if (handle != 0)
+            {
+                var id = Functions.GetProcessId(handle);
+                Functions.CloseHandle(handle);
+                return (int)id;
+            }
+        }
+        return 0;
+    }
+
     protected virtual void Dispose(bool disposing)
     {
 #if DEBUG
