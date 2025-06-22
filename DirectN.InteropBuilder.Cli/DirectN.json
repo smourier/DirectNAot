@@ -48,6 +48,7 @@
     "IComThreadingInfo",
     "IConnectionPointContainer",
     "IDispatch",
+    "IDispatchEx",
     "IDropTarget",
     "IDropSourceNotify",
     "IInitializeWithWindow",
