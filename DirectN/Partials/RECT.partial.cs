@@ -114,6 +114,148 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
     public static RECT Thickness(int all) => Thickness(all, all, all, all);
     public static RECT Thickness(int left, int top, int right, int bottom) => new() { left = left, top = top, right = right, bottom = bottom }; // don't change how this is done (avoids validation)
 
+    public readonly RECT Deflate(int thickness) => Sized(left + thickness, top + thickness, Math.Max(0, Width - 2 * thickness), Math.Max(0, Height - 2 * thickness));
+    public readonly RECT Inflate(int thickness) => Deflate(-thickness);
+    public readonly RECT Deflate(int left, int top, int right, int bottom) => Sized(this.left + left, this.top + top, Math.Max(0, Width - 2 * right), Math.Max(0, Height - 2 * bottom));
+    public readonly RECT Inflate(int left, int top, int right, int bottom) => Deflate(-left, -top, -right, -bottom);
+    public readonly RECT Deflate(RECT rect) => Sized(left + rect.left, top + rect.top, Math.Max(0, Width - 2 * rect.right), Math.Max(0, Height - 2 * rect.bottom));
+    public readonly RECT Inflate(RECT rect) => Sized(left - rect.left, top - rect.top, Math.Max(0, Width - 2 * -rect.right), Math.Max(0, Height - 2 * -rect.bottom));
+
+    public readonly RECT Intersect(RECT rect)
+    {
+        var l = Math.Max(left, rect.left);
+        var t = Math.Max(top, rect.top);
+        return new RECT(l, t, Math.Max(l, Math.Min(right, rect.right)), Math.Max(t, Math.Min(bottom, rect.bottom)));
+    }
+
+    public readonly bool IntersectsWith(RECT rect)
+    {
+        var i = Intersect(rect);
+        return i.Width > 0 && i.Height > 0;
+    }
+
+    public readonly RECT Union(RECT rect)
+    {
+        var left = Math.Min(this.left, rect.left);
+        var top = Math.Min(this.top, rect.top);
+        var right = Math.Max(this.right, rect.right);
+        var bottom = Math.Max(this.bottom, rect.bottom);
+        return Sized(left, top, Math.Max(0, right - left), Math.Max(0, bottom - top));
+    }
+
+    public static RECT? Union(IEnumerable<POINT> points)
+    {
+        ArgumentNullException.ThrowIfNull(points);
+        RECT? rc = null;
+        foreach (var pt in points)
+        {
+            if (rc == null)
+            {
+                rc = new RECT(pt.x, pt.y, pt.x, pt.y);
+                continue;
+            }
+
+            var rcv = rc.Value;
+
+            if (pt.x < rcv.left)
+            {
+                rcv.left = pt.x;
+            }
+            else if (pt.x > rcv.right)
+            {
+                rcv.right = pt.x;
+            }
+
+            if (pt.y < rcv.top)
+            {
+                rcv.top = pt.y;
+            }
+            else if (pt.y > rcv.bottom)
+            {
+                rcv.bottom = pt.y;
+            }
+
+            rc = rcv;
+        }
+        return rc;
+    }
+
+    public static RECT? Union(IEnumerable<RECT> rects)
+    {
+        ArgumentNullException.ThrowIfNull(rects);
+        RECT? rc = null;
+        foreach (var rect in rects)
+        {
+            if (rc == null)
+            {
+                rc = rect;
+            }
+            else
+            {
+                rc = rc.Value.Union(rect);
+            }
+        }
+        return rc;
+    }
+
+    public readonly RECT FitIn(RECT rect, bool shrinkOnly)
+    {
+        if (IsEmpty)
+            return this;
+
+        if (shrinkOnly && Width <= rect.Width && Height <= rect.Height)
+            return new RECT(rect.left, rect.top, Width, Height);
+
+        int w;
+        int h;
+        if (Width / Height >= rect.Width / rect.Height)
+        {
+            w = Width * rect.Width / Width;
+            h = Height * rect.Width / Width;
+        }
+        else
+        {
+            w = Width * rect.Height / Height;
+            h = Height * rect.Height / Height;
+        }
+
+        var l = rect.left + (rect.Width - w) / 2f;
+        var t = rect.top + (rect.Height - h) / 2f;
+        return new RECT(l, t, w + l, h + t);
+    }
+
+    public readonly RECT MoveInside(RECT outer)
+    {
+        var newLeft = left;
+        var newTop = top;
+
+        if (left < outer.left)
+        {
+            newLeft = outer.left;
+        }
+        else if (right > outer.right)
+        {
+            newLeft = outer.right - Width;
+        }
+
+        if (top < outer.top)
+        {
+            newTop = outer.top;
+        }
+        else if (bottom > outer.bottom)
+        {
+            newTop = outer.bottom - Height;
+        }
+
+        return new RECT
+        {
+            left = newLeft,
+            top = newTop,
+            Width = Width,
+            Height = Height
+        };
+    }
+
     public readonly D2D_RECT_F ToD2D_RECT_F() => new(left, top, right, bottom);
 
     public readonly RECT PixelToHiMetric()

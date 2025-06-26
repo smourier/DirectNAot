@@ -213,6 +213,38 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         return new D2D_RECT_F(l, t, w + l, h + t);
     }
 
+    public readonly D2D_RECT_F MoveInside(D2D_RECT_F outer)
+    {
+        var newLeft = left;
+        var newTop = top;
+
+        if (left < outer.left)
+        {
+            newLeft = outer.left;
+        }
+        else if (right > outer.right)
+        {
+            newLeft = outer.right - Width;
+        }
+
+        if (top < outer.top)
+        {
+            newTop = outer.top;
+        }
+        else if (bottom > outer.bottom)
+        {
+            newTop = outer.bottom - Height;
+        }
+
+        return new D2D_RECT_F
+        {
+            left = newLeft,
+            top = newTop,
+            Width = Width,
+            Height = Height
+        };
+    }
+
     public readonly D2D_RECT_F TransformToBounds(ref Matrix4x4 matrix)
     {
         var xMin = left;
@@ -261,71 +293,59 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         }
     }
 
-    public static D2D_RECT_F Union(IEnumerable<D2D_POINT_2F> points)
+    public static D2D_RECT_F? Union(IEnumerable<D2D_POINT_2F> points)
     {
         ArgumentNullException.ThrowIfNull(points);
-        var left = float.NaN;
-        var top = float.NaN;
-        var right = float.NaN;
-        var bottom = float.NaN;
+        D2D_RECT_F? rc = null;
         foreach (var pt in points)
         {
             if (pt.IsInvalid)
                 continue;
 
-            if (float.IsNaN(left))
+            if (rc == null)
             {
-                left = pt.x;
+                rc = new D2D_RECT_F(pt.x, pt.y, pt.x, pt.y);
+                continue;
             }
 
-            if (float.IsNaN(right))
+            var rcv = rc.Value;
+
+            if (pt.x < rcv.left)
             {
-                right = pt.x;
+                rcv.left = pt.x;
+            }
+            else if (pt.x > rcv.right)
+            {
+                rcv.right = pt.x;
             }
 
-            if (pt.x < left)
+            if (pt.y < rcv.top)
             {
-                left = pt.x;
+                rcv.top = pt.y;
             }
-            else if (pt.x > right)
+            else if (pt.y > rcv.bottom)
             {
-                right = pt.x;
-            }
-
-            if (float.IsNaN(top))
-            {
-                top = pt.y;
+                rcv.bottom = pt.y;
             }
 
-            if (float.IsNaN(bottom))
-            {
-                bottom = pt.y;
-            }
-
-            if (pt.y < top)
-            {
-                top = pt.y;
-            }
-            else if (pt.y > bottom)
-            {
-                bottom = pt.y;
-            }
+            rc = rcv;
         }
-
-        if (float.IsNaN(left) || float.IsNaN(top) || float.IsNaN(right) || float.IsNaN(bottom))
-            throw new ArgumentException(null, nameof(points));
-
-        return new D2D_RECT_F(left, top, right, bottom);
+        return rc;
     }
 
-    public static D2D_RECT_F Union(IEnumerable<D2D_RECT_F> rects)
+    public static D2D_RECT_F? Union(IEnumerable<D2D_RECT_F> rects)
     {
-        var rc = new D2D_RECT_F();
-        if (rects != null)
+        ArgumentNullException.ThrowIfNull(rects);
+        D2D_RECT_F? rc = null;
+        foreach (var rect in rects)
         {
-            foreach (var rect in rects)
+            if (rc == null)
             {
-                rc = rc.Union(rect);
+                rc = rect;
+            }
+            else
+            {
+                rc = rc.Value.Union(rect);
             }
         }
         return rc;
@@ -374,6 +394,6 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
 #if DEBUG
     public static readonly D2D_RECT_F Invalid = new() { left = float.NaN, top = float.NaN, right = float.NaN, bottom = float.NaN };
 #else
-    public static readonly D2D_RECT_F Invalid = new D2D_RECT_F(float.NaN, float.NaN, float.NaN, float.NaN);
+    public static readonly D2D_RECT_F Invalid = new(float.NaN, float.NaN, float.NaN, float.NaN);
 #endif
 }
