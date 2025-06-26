@@ -213,10 +213,12 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         return new D2D_RECT_F(l, t, w + l, h + t);
     }
 
-    public readonly D2D_RECT_F MoveInside(D2D_RECT_F outer)
+    public readonly D2D_RECT_F MoveInside(D2D_RECT_F outer, bool shrink = true)
     {
         var newLeft = left;
         var newTop = top;
+        var innerWidth = shrink ? Math.Min(outer.Width, Width) : Width;
+        var innerHeight = shrink ? Math.Min(outer.Height, Height) : Width;
 
         if (left < outer.left)
         {
@@ -224,7 +226,7 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         }
         else if (right > outer.right)
         {
-            newLeft = outer.right - Width;
+            newLeft = outer.right - innerWidth;
         }
 
         if (top < outer.top)
@@ -233,16 +235,10 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         }
         else if (bottom > outer.bottom)
         {
-            newTop = outer.bottom - Height;
+            newTop = outer.bottom - innerHeight;
         }
 
-        return new D2D_RECT_F
-        {
-            left = newLeft,
-            top = newTop,
-            Width = Width,
-            Height = Height
-        };
+        return Sized(newLeft, newTop, innerWidth, innerHeight);
     }
 
     public readonly D2D_RECT_F TransformToBounds(ref Matrix4x4 matrix)

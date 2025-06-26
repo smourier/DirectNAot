@@ -224,10 +224,12 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
         return new RECT(l, t, w + l, h + t);
     }
 
-    public readonly RECT MoveInside(RECT outer)
+    public readonly RECT MoveInside(RECT outer, bool shrink = true)
     {
         var newLeft = left;
         var newTop = top;
+        var innerWidth = shrink ? Math.Min(outer.Width, Width) : Width;
+        var innerHeight = shrink ? Math.Min(outer.Height, Height) : Width;
 
         if (left < outer.left)
         {
@@ -235,7 +237,7 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
         }
         else if (right > outer.right)
         {
-            newLeft = outer.right - Width;
+            newLeft = outer.right - innerWidth;
         }
 
         if (top < outer.top)
@@ -244,16 +246,10 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
         }
         else if (bottom > outer.bottom)
         {
-            newTop = outer.bottom - Height;
+            newTop = outer.bottom - innerHeight;
         }
 
-        return new RECT
-        {
-            left = newLeft,
-            top = newTop,
-            Width = Width,
-            Height = Height
-        };
+        return Sized(newLeft, newTop, innerWidth, innerHeight);
     }
 
     public readonly D2D_RECT_F ToD2D_RECT_F() => new(left, top, right, bottom);
