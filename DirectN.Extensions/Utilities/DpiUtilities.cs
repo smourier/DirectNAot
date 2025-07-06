@@ -3,8 +3,6 @@
 // note this class considers dpix = dpiy
 public static class DpiUtilities
 {
-    public const int USER_DEFAULT_SCREEN_DPI = 96;
-
     public static int TextScaleFactor => _textScaleFactor.Value;
     private static readonly Lazy<int> _textScaleFactor = new(() =>
     {
@@ -53,7 +51,7 @@ public static class DpiUtilities
     public static D2D_SIZE_U GetDpiForMonitor(HMONITOR monitor, MONITOR_DPI_TYPE type = MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI)
     {
         if (monitor.Value == 0)
-            return new D2D_SIZE_U(USER_DEFAULT_SCREEN_DPI, USER_DEFAULT_SCREEN_DPI);
+            return new D2D_SIZE_U(Constants.USER_DEFAULT_SCREEN_DPI, Constants.USER_DEFAULT_SCREEN_DPI);
 
         var module = Functions.LoadLibraryW(PWSTR.From("shcore.dll"));
         try
@@ -90,7 +88,7 @@ public static class DpiUtilities
         if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
             return Functions.GetDpiFromDpiAwarenessContext(value);
 
-        return USER_DEFAULT_SCREEN_DPI;
+        return Constants.USER_DEFAULT_SCREEN_DPI;
     }
 
     public static uint GetWindowDpi(HWND hwnd) => GetDpiFromDpiAwarenessContext(GetWindowDpiAwarenessContext(hwnd));
@@ -153,20 +151,40 @@ public static class DpiUtilities
     public static int AdjustForWindowDpi(int value, HWND handle)
     {
         var dpi = GetDpiForWindow(handle);
-        if (dpi.width == USER_DEFAULT_SCREEN_DPI)
+        if (dpi.width == Constants.USER_DEFAULT_SCREEN_DPI)
             return value;
 
-        return (int)(value * dpi.width / USER_DEFAULT_SCREEN_DPI);
+        return (int)(value * dpi.width / Constants.USER_DEFAULT_SCREEN_DPI);
+    }
+
+    [SupportedOSPlatform("windows6.1")]
+    public static uint AdjustForWindowDpi(uint value, HWND handle)
+    {
+        var dpi = GetDpiForWindow(handle);
+        if (dpi.width == Constants.USER_DEFAULT_SCREEN_DPI)
+            return value;
+
+        return value * dpi.width / Constants.USER_DEFAULT_SCREEN_DPI;
     }
 
     [SupportedOSPlatform("windows6.1")]
     public static float AdjustForWindowDpi(float value, HWND handle)
     {
         var dpi = GetDpiForWindow(handle);
-        if (dpi.width == USER_DEFAULT_SCREEN_DPI)
+        if (dpi.width == Constants.USER_DEFAULT_SCREEN_DPI)
             return value;
 
-        return value * dpi.width / USER_DEFAULT_SCREEN_DPI;
+        return value * dpi.width / Constants.USER_DEFAULT_SCREEN_DPI;
+    }
+
+    [SupportedOSPlatform("windows6.1")]
+    public static double AdjustForWindowDpi(double value, HWND handle)
+    {
+        var dpi = GetDpiForWindow(handle);
+        if (dpi.width == Constants.USER_DEFAULT_SCREEN_DPI)
+            return value;
+
+        return value * dpi.width / Constants.USER_DEFAULT_SCREEN_DPI;
     }
 
     private delegate int GetDpiForWindowFn(nint hwnd);

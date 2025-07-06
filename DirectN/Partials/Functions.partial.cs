@@ -8,7 +8,7 @@ public static partial class Functions
     private static readonly Lazy<D2D_SIZE_F> _dpiScale = new(() =>
     {
         var dpi = Dpi;
-        return new D2D_SIZE_F(dpi.width / 96, dpi.height / 96);
+        return new D2D_SIZE_F(dpi.width / Constants.USER_DEFAULT_SCREEN_DPI, dpi.height / Constants.USER_DEFAULT_SCREEN_DPI);
     }, true);
 
     // https://docs.microsoft.com/en-us/windows/win32/learnwin32/dpi-and-device-independent-pixels
@@ -28,19 +28,19 @@ public static partial class Functions
                 }
             }
         }
-        return new(96, 96);
+        return new(Constants.USER_DEFAULT_SCREEN_DPI, Constants.USER_DEFAULT_SCREEN_DPI);
     }
 
     // https://blogs.msdn.microsoft.com/text/2009/12/11/wpf-text-measurement-units/
-    public static float PointsToDips(float pt) => 96 / (72 * pt);
-    public static float DipsToPoints(float dip) => 72 / (96 * dip);
+    public static float PointsToDips(float pt) => Constants.USER_DEFAULT_SCREEN_DPI / (72 * pt);
+    public static float DipsToPoints(float dip) => 72 / (Constants.USER_DEFAULT_SCREEN_DPI * dip);
     public static float PointsToTwips(float pt) => pt * 20;
     public static float TwipsToPoints(float twips) => twips / 20;
 
-    public static double PixelsToDips(int pixels, double dpi) => pixels * 96 / dpi;
-    public static int DipsToPixels(int dips, double dpi) => (int)(dips * dpi / 96);
-    public static float PixelsToDips(int pixels, float dpi) => pixels * 96 / dpi;
-    public static int DipsToPixels(int dips, float dpi) => (int)(dips * dpi / 96);
+    public static double PixelsToDips(int pixels, double dpi) => pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi;
+    public static int DipsToPixels(int dips, double dpi) => (int)(dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI);
+    public static float PixelsToDips(int pixels, float dpi) => pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi;
+    public static int DipsToPixels(int dips, float dpi) => (int)(dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI);
 
     [LibraryImport("kernel32", EntryPoint = "RtlMoveMemory")]
     [PreserveSig]

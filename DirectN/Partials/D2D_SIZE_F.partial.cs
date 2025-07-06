@@ -73,15 +73,15 @@ public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
 #if DEBUG
     public static readonly D2D_SIZE_F Invalid = new() { width = float.NaN, height = float.NaN };
 #else
-    public static readonly D2D_SIZE_F Invalid = new D2D_SIZE_F(float.NaN, float.NaN);
+    public static readonly D2D_SIZE_F Invalid = new(float.NaN, float.NaN);
 #endif
 
 #if DEBUG
     public static readonly D2D_SIZE_F MaxValue = new() { width = float.MaxValue, height = float.MaxValue };
     public static readonly D2D_SIZE_F PositiveInfinity = new() { width = float.PositiveInfinity, height = float.PositiveInfinity };
 #else
-    public static readonly D2D_SIZE_F MaxValue = new D2D_SIZE_F(float.MaxValue, float.MaxValue);
-    public static readonly D2D_SIZE_F PositiveInfinity = new D2D_SIZE_F(float.PositiveInfinity, float.PositiveInfinity);
+    public static readonly D2D_SIZE_F MaxValue = new(float.MaxValue, float.MaxValue);
+    public static readonly D2D_SIZE_F PositiveInfinity = new(float.PositiveInfinity, float.PositiveInfinity);
 #endif
 
     public const long HIMETRIC_PER_INCH = 2540;

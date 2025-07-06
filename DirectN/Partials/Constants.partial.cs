@@ -15,6 +15,8 @@ public static partial class Constants
 
     public const int WHERE_NOONE_CAN_SEE_ME = -32000; // from \windows\core\ntuser\kernel\userk.h
 
+    public const uint USER_DEFAULT_SCREEN_DPI = 96;
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;

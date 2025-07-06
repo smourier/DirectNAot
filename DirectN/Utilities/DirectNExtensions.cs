@@ -198,23 +198,23 @@ public static class DirectNExtensions
     }
 
     // https://blogs.msdn.microsoft.com/text/2009/12/11/wpf-text-measurement-units/
-    public static float PointsToDips(this float pt) => 96 / (72 * pt);
-    public static float DipsToPoints(this float dip) => 72 / (96 * dip);
+    public static float PointsToDips(this float pt) => Constants.USER_DEFAULT_SCREEN_DPI / (72 * pt);
+    public static float DipsToPoints(this float dip) => 72 / (Constants.USER_DEFAULT_SCREEN_DPI * dip);
     public static float PointsToTwips(this float pt) => pt * 20;
     public static float TwipsToPoints(this float twips) => twips / 20;
 
-    public static double PointsToDips(this double pt) => 96 / (72 * pt);
-    public static double DipsToPoints(this double dip) => 72 / (96 * dip);
+    public static double PointsToDips(this double pt) => Constants.USER_DEFAULT_SCREEN_DPI / (72 * pt);
+    public static double DipsToPoints(this double dip) => 72 / (Constants.USER_DEFAULT_SCREEN_DPI * dip);
     public static double PointsToTwips(this double pt) => pt * 20;
     public static double TwipsToPoints(this double twips) => twips / 20;
 
-    public static int PointsToDips(this int pt) => (int)(96 / (72.0 * pt));
-    public static int DipsToPoints(this int dip) => (int)(72 / (96.0 * dip));
+    public static int PointsToDips(this int pt) => (int)(Constants.USER_DEFAULT_SCREEN_DPI / (72.0 * pt));
+    public static int DipsToPoints(this int dip) => (int)(72 / ((double)Constants.USER_DEFAULT_SCREEN_DPI * dip));
     public static int PointsToTwips(this int pt) => (int)(pt * 20.0);
     public static int TwipsToPoints(this int twips) => (int)(twips / 20.0);
 
-    public static uint PointsToDips(this uint pt) => (uint)(96 / (72.0 * pt));
-    public static uint DipsToPoints(this uint dip) => (uint)(72 / (96.0 * dip));
+    public static uint PointsToDips(this uint pt) => (uint)(Constants.USER_DEFAULT_SCREEN_DPI / (72.0 * pt));
+    public static uint DipsToPoints(this uint dip) => (uint)(72 / ((double)Constants.USER_DEFAULT_SCREEN_DPI * dip));
     public static uint PointsToTwips(this uint pt) => (uint)(pt * 20.0);
     public static uint TwipsToPoints(this uint twips) => (uint)(twips / 20.0);
 
