@@ -46,6 +46,19 @@
           ]
         }
       ]
+    },
+    {
+      "TypeName": "SET_WINDOW_POS_FLAGS",
+      "Fields": [
+        {
+          "Name": "SWP_NOCLIENTSIZE",
+          "Value": "2048"
+        },
+        {
+          "Name": "SWP_NOCLIENTMOVE",
+          "Value": "4096"
+        }
+      ]
     }
   ],
   "OptionalArguments": [

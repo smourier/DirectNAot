@@ -88,6 +88,7 @@
     "TRACK_POPUP_MENU_FLAGS",
     "TYMED",
     "VIRTUAL_KEY",
+    "WINDOWPOS",
     "Windows.Win32.Graphics.Gdi.BITMAP",
     "-!D2D_MATRIX_*",
     "-D3DCOLORVALUE",
