@@ -1,19 +1,17 @@
 # DirectN AOT
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 or with .NET Framework.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at 64-bit targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 or with .NET Framework.
 
-**.NET 8 is not supported as it has a dreadful bug https://github.com/dotnet/runtime/issues/96901 the causes crashes** (can someone explain to me why it's not been ported back to .NET 8?).
+**.NET 8 is not supported anymore as it has a dreadful bug https://github.com/dotnet/runtime/issues/96901 the causes crashes** (can someone explain to me why the fix has not been ported back to .NET 8? as far as I know).
 
-This is a still work in progress although it's been fairly stable now. If you want to discuss how, where, why, just create an issue.
+It's always a work in progress although it's been fairly stable now. If you want to discuss how, where, why, just create an issue.
 
 * **DirectN** is the AOT-friendly version of DirectN.
-* **DirectN.Extensions** is a set of utilities that are not mandatory, but quite useful for programming with DirectN (and interop in general).
-* **DirectN.InteropBuilder.Cli** is the tool that generates code in DirectN. Contrary to the DirectN project, this tool is now open source, and based on the linked [Win32InteropBuilder](https://github.com/smourier/Win32InteropBuilder) generic project.
+* **DirectN.Extensions** is a set of utilities that are not mandatory, but super useful for programming with DirectN (and COM and interop in general).
+* **DirectN.InteropBuilder.Cli** is the tool that generates code in DirectN. Contrary to the original DirectN project, this tool is open source, and based on the linked [Win32InteropBuilder](https://github.com/smourier/Win32InteropBuilder) generic project.
 
 So, DirectN has now been split into two projects: the interop code in one project, and the utilities, add-ons and extensions code in another project.
 
-You don't have to use the extensions, but it's easier to use it.
-
-The reason Extensions is separated from DirectN is more an engineering reason. The new COM Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes (since COM interop is not builtin in CLR anymore), so the DirectN project is just very difficult to work directly with in Visual Studio.
+You don't have to use the extensions, but it's much easier to use them. The reason Extensions is separated from DirectN is more an engineering reason. The new COM Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes (since COM interop is not builtin in CLR anymore), so the DirectN project is just very difficult to work directly with in Visual Studio.
 
 The key points that drive how code is generated and built:
 * Although Win32InteropBuilder is totally generic, the goal for **DirectN** is still to create built-in interop code for modern media & graphics Windows (cross-platform is *not* a target) technologies only:
