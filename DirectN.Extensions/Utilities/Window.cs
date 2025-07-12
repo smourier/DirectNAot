@@ -295,6 +295,8 @@ public class Window : IDisposable, IEquatable<Window>
         return str;
     }
 
+    public virtual bool Close() => Functions.PostMessageW(Handle, MessageDecoder.WM_CLOSE);
+
     public virtual Task RunTaskOnUIThread(Action action, bool startNew = false)
     {
         ArgumentNullException.ThrowIfNull(action);

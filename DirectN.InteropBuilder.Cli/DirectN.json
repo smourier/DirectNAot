@@ -181,6 +181,7 @@
     "FreeConsole",
     "FreeLibrary",
     "GetActiveWindow",
+    "GetAncestor",
     "GetAsyncKeyState",
     "GetAwarenessFromDpiAwarenessContext",
     "GetCaretBlinkTime",

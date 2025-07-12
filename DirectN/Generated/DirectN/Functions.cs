@@ -3182,6 +3182,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetActiveWindow();
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getancestor
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetAncestor(HWND hwnd, GET_ANCESTOR_FLAGS gaFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getasynckeystate
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
