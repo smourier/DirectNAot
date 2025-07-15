@@ -62,20 +62,30 @@ public class Application : IDisposable
 
     public void ThrowIfNotRunningAsUIThread() { if (!IsRunningAsUIThread) throw new DirectNException("0002: This method must be called on the render thread."); }
 
-    public virtual void Run()
+    public virtual ExitLoopReason Run()
     {
+        var reason = ExitLoopReason.Quit;
         if (!HasErrors)
         {
             while (Functions.GetMessageW(out var msg, HWND.Null, 0, 0))
             {
                 if (IsDisposed)
+                {
+                    reason = ExitLoopReason.Disposed;
                     break;
+                }
 
                 if (msg.message == WM_APP_QUIT)
+                {
+                    reason = ExitLoopReason.AppQuit;
                     break;
+                }
 
                 if (!HandleMessage(msg))
+                {
+                    reason = ExitLoopReason.UnhandledMessage;
                     break;
+                }
             }
         }
 
@@ -83,6 +93,45 @@ public class Application : IDisposable
         {
             ShowFatalError(HWND.Null);
         }
+        return reason;
+    }
+
+    public virtual ExitLoopReason RunMessageLoop(Func<MSG, bool> exitLoopFunc)
+    {
+        ArgumentNullException.ThrowIfNull(exitLoopFunc);
+        ThrowIfNotRunningAsUIThread();
+        do
+        {
+            if (Functions.PeekMessageW(out var msg, HWND.Null, 0, 0, PEEK_MESSAGE_REMOVE_TYPE.PM_REMOVE))
+            {
+                if (exitLoopFunc(msg))
+                    return ExitLoopReason.Func;
+
+                if (IsDisposed)
+                {
+                    // repost
+                    Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+                    return ExitLoopReason.Disposed;
+                }
+
+                if (msg.message == MessageDecoder.WM_QUIT)
+                {
+                    // repost
+                    Functions.PostQuitMessage(0);
+                    return ExitLoopReason.Quit;
+                }
+
+                if (msg.message == WM_APP_QUIT)
+                {
+                    // repost
+                    Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+                    return ExitLoopReason.AppQuit;
+                }
+
+                if (!HandleMessage(msg))
+                    return ExitLoopReason.UnhandledMessage;
+            }
+        } while (true);
     }
 
     protected virtual bool HandleMessage(in MSG msg)

@@ -4,8 +4,8 @@ public class WindowSynchronizationContext : SynchronizationContext
 {
     public int ManagedThreadId { get; } = Environment.CurrentManagedThreadId;
     public override SynchronizationContext CreateCopy() => new WindowSynchronizationContext();
-    public override void Send(SendOrPostCallback d, object? state) => GetWindow().RunTaskOnUIThread(() => { d(state); });
-    public override void Post(SendOrPostCallback d, object? state) => GetWindow().RunTaskOnUIThread(() => { d(state); }, true);
+    public override void Send(SendOrPostCallback d, object? state) => GetWindow()?.RunTaskOnUIThread(() => { d(state); });
+    public override void Post(SendOrPostCallback d, object? state) => GetWindow()?.RunTaskOnUIThread(() => { d(state); }, true);
 
     public static void Install()
     {
@@ -16,16 +16,12 @@ public class WindowSynchronizationContext : SynchronizationContext
         SetSynchronizationContext(new WindowSynchronizationContext());
     }
 
-    private Window GetWindow()
+    private Window? GetWindow()
     {
         var windows = Application.GetApplication(ManagedThreadId)?.Windows;
         if (windows == null || windows.Count == 0)
-            throw new InvalidAsynchronousStateException();
+            return null;
 
-        var window = windows.FirstOrDefault(w => w.TaskScheduler != null && !w.IsBackground) ?? windows.FirstOrDefault(w => w.TaskScheduler != null);
-        if (window == null)
-            throw new InvalidAsynchronousStateException();
-
-        return window;
+        return windows.FirstOrDefault(w => w.TaskScheduler != null && !w.IsBackground) ?? windows.FirstOrDefault(w => w.TaskScheduler != null);
     }
 }
