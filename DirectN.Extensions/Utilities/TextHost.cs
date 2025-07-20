@@ -9,10 +9,10 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     private bool _disposedValue;
     private bool _showCaret;
     private POINT _caretPos;
-    private RECT _rect;
     private string? _faceName;
     private int _height;
     private ushort _weight;
+    private SIZE? _extent;
     private FONT_CHARSET _fontCharset;
     private COLORREF _textColor;
     private COLORREF _backColor;
@@ -127,6 +127,9 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             WithWholeRange(rng => rng.SetText2((int)tomConstants.tomConvertHtml, b)).ThrowOnError();
         }
     }
+
+    public virtual HWND WindowHandle { get; protected set; }
+    public virtual RECT ClientRect { get; protected set; }
 
     public string? GetText(tomConstants flags)
     {
@@ -249,6 +252,19 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         }
     }
 
+    public virtual SIZE? Extent
+    {
+        get => _extent;
+        set
+        {
+            if (_extent == value)
+                return;
+
+            _extent = value;
+            ResetExtent();
+        }
+    }
+
     public virtual ushort Weight
     {
         get => _weight;
@@ -339,6 +355,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public static D3DCOLORVALUE ToColor(COLORREF color) => new(color.Value);
 
+    public virtual void ResetExtent([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_EXTENTCHANGE, memberName);
     public virtual void ResetSelectionBarWidth([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_SELBARCHANGE, memberName);
     public virtual void ResetBackStyle([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_BACKSTYLECHANGE, memberName);
     public virtual void ResetScrollBars([CallerMemberName] string? memberName = null) => ChangeBitNotify(TXTBIT.TXTBIT_SCROLLBARCHANGE, memberName);
@@ -375,7 +392,6 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     public SIZE GetNaturalSize(TXTNATURALSIZE mode, D2D_SIZE_F constraint) => GetNaturalSize(mode, constraint, out _);
     public virtual SIZE GetNaturalSize(TXTNATURALSIZE mode, D2D_SIZE_F constraint, out int ascent)
     {
-        Trace("mode: " + mode + " constraint: " + constraint);
         var width = (int)constraint.width;
         if (Options.HasFlag(TextHostOptions.WordWrap))
         {
@@ -401,13 +417,15 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             int asc = 0;
             _services.Object.TxGetNaturalSize2((uint)DVASPECT.DVASPECT_CONTENT, HDC.Null, HDC.Null, ref Unsafe.NullRef<DVTARGETDEVICE>(), (uint)mode, ext, ref width, ref height, ref asc).ThrowOnError();
             ascent = asc;
-            return new SIZE(width, height);
+            var size = new SIZE(width, height);
+            Trace("mode: " + mode + " width: " + width + " height:" + height + " size:" + size + " ascent:" + ascent);
+            return size;
         }
     }
 
     public virtual void Activate(RECT rect)
     {
-        _rect = rect;
+        ClientRect = rect;
         _services.Object.OnTxInPlaceActivate(ref rect).ThrowOnError();
         _services.Object.OnTxUIActivate().ThrowOnError();
     }
@@ -504,11 +522,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxGetBackStyle(nint pstyle)
     {
-        Trace("pstyle: " + pstyle);
         if (pstyle == 0)
+        {
+            Trace("pstyle: " + pstyle);
             return Constants.E_INVALIDARG;
+        }
 
         *(TXTBACKSTYLE*)pstyle = BackStyle;
+        Trace("pstyle: " + BackStyle);
         return Constants.S_OK;
     }
 
@@ -574,12 +595,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxGetClientRect(nint prc)
     {
-        //Trace("prc: " + prc);
         if (prc == 0)
+        {
+            Trace("prc: " + prc);
             return Constants.E_INVALIDARG;
+        }
 
-        *(RECT*)prc = _rect;
-        Trace("rc: " + _rect);
+        *(RECT*)prc = ClientRect;
+        Trace("rc: " + ClientRect);
         return Constants.S_OK;
     }
 
@@ -618,15 +641,25 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxGetExtent(nint lpExtent)
     {
-        Trace("lpExtent: " + lpExtent);
         if (lpExtent == 0)
+        {
+            Trace("lpExtent: " + lpExtent);
             return Constants.E_INVALIDARG;
+        }
 
-        *(SIZE*)lpExtent = new SIZE();
-        //lpExtent.width = 400;
-        //lpExtent.height = 400;
-        //lpExtent = lpExtent.PixelToHiMetric();
-        //return Constants.S_OK;
+        var extent = Extent;
+        if (extent != null)
+        {
+            var dpi = DpiUtilities.GetDpiForWindow(WindowHandle).width;
+            var value = extent.Value;
+            value.cx = value.cx.PixelToHiMetric(dpi);
+            value.cy = value.cy.PixelToHiMetric(dpi);
+            *(SIZE*)lpExtent = value;
+            Trace("lpExtent: " + value);
+            return Constants.S_OK;
+        }
+
+        Trace("lpExtent: " + extent);
         return Constants.E_NOTIMPL;
     }
 
@@ -642,11 +675,14 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxGetMaxLength(nint plength)
     {
-        Trace("plength: " + plength);
         if (plength == 0)
+        {
+            Trace("plength: " + plength);
             return Constants.E_INVALIDARG;
+        }
 
         *(int*)plength = -1;
+        Trace("plength: -1");
         return Constants.S_OK;
     }
 
@@ -665,9 +701,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     public virtual HRESULT TxGetPropertyBits(uint dwMask, nint pdwBits)
     {
         var mask = (TXTBIT)dwMask;
-        Trace("dwMask: " + mask + " pdwBits: " + pdwBits);
         if (pdwBits == 0)
+        {
+            Trace("dwMask: " + mask + " pdwBits: " + pdwBits);
             return Constants.E_INVALIDARG;
+        }
 
         //pdwBits = dwMask;
         //pdwBits &= ~TXTBIT.TXTBIT_VERTICAL;
@@ -699,26 +737,35 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         bits &= mask;
         //pdwBits |= TXTBIT.TXTBIT_UNDOCUMENTED2;
         *(TXTBIT*)pdwBits = bits;
+        Trace("dwMask: " + mask + " pdwBits: " + bits);
         return Constants.S_OK;
     }
 
     public virtual HRESULT TxGetScrollBars(nint pdwScrollBar)
     {
-        Trace("pdwScrollBar: " + pdwScrollBar);
         if (pdwScrollBar == 0)
+        {
+            Trace("pdwScrollBar: " + pdwScrollBar);
             return Constants.E_INVALIDARG;
+        }
 
         *(SBOUT*)pdwScrollBar = ScrollBars;
+        Trace("pdwScrollBar: " + ScrollBars);
         return Constants.S_OK;
     }
 
     public virtual HRESULT TxGetSelectionBarWidth(nint lSelBarWidth)
     {
-        Trace("lSelBarWidth: " + lSelBarWidth);
         if (lSelBarWidth == 0)
+        {
+            Trace("lSelBarWidth: " + lSelBarWidth);
             return Constants.E_INVALIDARG;
+        }
 
-        *(int*)lSelBarWidth = SelectionBarWidth.PixelToHiMetric();
+        var dpi = DpiUtilities.GetDpiForWindow(WindowHandle).width;
+        var width = SelectionBarWidth.PixelToHiMetric(dpi);
+        *(int*)lSelBarWidth = width;
+        Trace("lSelBarWidth: " + width);
         return Constants.S_OK;
     }
 
@@ -731,9 +778,11 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     public virtual HRESULT TxGetViewInset(nint prc)
     {
-        Trace("prc: " + prc);
         if (prc == 0)
+        {
+            Trace("prc: " + prc);
             return Constants.E_INVALIDARG;
+        }
 
         RECT rc;
         rc.left = 0;
@@ -742,17 +791,21 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         rc.bottom = 0;
         rc = rc.PixelToHiMetric();
         *(RECT*)prc = rc;
+        Trace("prc: " + rc);
         return Constants.S_OK;
     }
 
     public virtual HRESULT TxGetWindow(nint phwnd)
     {
-        Trace("phwnd: " + phwnd);
         if (phwnd == 0)
+        {
+            Trace("phwnd: " + phwnd);
             return Constants.E_INVALIDARG;
+        }
 
-        *(nint*)phwnd = 0;
-        return Constants.S_OK;
+        *(nint*)phwnd = WindowHandle;
+        Trace("phwnd: " + WindowHandle);
+        return Constants.E_FAIL;
     }
 
     public virtual HRESULT TxGetWindowStyles(nint pdwStyle, nint pdwExStyle)
@@ -845,15 +898,25 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return true;
     }
 
+    // well-known timer IDs that riched can kill on exit even it it didn't set them...
+    // RETID_BGND_RECALC	0x01af 431
+    // RETID_AUTOSCROLL	    0x01b0 432
+    // RETID_SMOOTHSCROLL	0x01b1 433
+    // RETID_DRAGDROP		0x01b2 434
+    // RETID_MAGELLANTRACK	0x01b3 435 
+    // RETID_VISEFFECTS	    0x01b4 436 
+    // RETID_?      	    0x01b5 437
     public virtual void TxKillTimer(uint idTimer)
     {
-        Trace("idTimer: " + idTimer);
+        var ret = Functions.KillTimer(WindowHandle, idTimer);
+        Trace("idTimer: " + idTimer + " => " + ret);
     }
 
     public virtual bool TxSetTimer(uint idTimer, uint uTimeout)
     {
-        Trace("idTimer: " + idTimer + " uTimeout: " + uTimeout);
-        return true;
+        var res = Functions.SetTimer(WindowHandle, idTimer, uTimeout, null);
+        Trace("idTimer: " + idTimer + " uTimeout: " + uTimeout + " => " + res);
+        return res != 0;
     }
 
     public virtual bool TxShowCaret(BOOL fShow)
@@ -891,18 +954,19 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
             }
 
             TextServicesFunctions.Shutdown(_services.Object, true);
-#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
-            // we need that in AOT case to avoid crashes in .NET...
-            GC.SuppressFinalize(_services.Object);
-#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
+            //#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+            //            // we need that in AOT case to avoid crashes in .NET...
+            //            GC.SuppressFinalize(_services.Object);
+            //#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
             _charFormat?.Dispose();
             _paraFormat?.Dispose();
+            _services.Dispose();
             _disposedValue = true;
         }
     }
 
     [Conditional("DEBUG")]
-    private static void Trace(string? message = null, [CallerMemberName] string? methodName = null)
+    protected static void Trace(string? message = null, [CallerMemberName] string? methodName = null)
     {
         if (!string.IsNullOrEmpty(methodName))
         {

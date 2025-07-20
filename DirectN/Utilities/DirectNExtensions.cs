@@ -125,77 +125,49 @@ public static class DirectNExtensions
         return value;
     }
 
-    public static float PixelToHiMetric(this float value)
-    {
-        var dpi = Functions.Dpi;
-        return D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width;
-    }
+    public static float PixelToHiMetric(this float value, uint dpi) => D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi;
+    public static double PixelToHiMetric(this double value, uint dpi) => D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi;
+    public static int PixelToHiMetric(this int value, uint dpi) => (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi);
+    public static uint PixelToHiMetric(this uint value, uint dpi) => (uint)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi);
+    public static float HiMetricToPixel(this float value, uint dpi) => value * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH;
+    public static double HiMetricToPixel(this double value, uint dpi) => value * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH;
+    public static int HiMetricToPixel(this int value, uint dpi) => (int)(value * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH);
+    public static uint HiMetricToPixel(this uint value, uint dpi) => (uint)(value * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH);
 
-    public static double PixelToHiMetric(this double value)
-    {
-        var dpi = Functions.Dpi;
-        return D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width;
-    }
+    public static int PixelsToDips(int pixels, uint dpi) => (int)(pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi);
+    public static int DipsToPixels(int dips, uint dpi) => (int)(dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI);
+    public static uint PixelsToDips(uint pixels, uint dpi) => pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi;
+    public static uint DipsToPixels(uint dips, uint dpi) => dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI;
+    public static float PixelsToDips(float pixels, uint dpi) => pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi;
+    public static float DipsToPixels(float dips, uint dpi) => dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI;
+    public static double PixelsToDips(double pixels, uint dpi) => pixels * Constants.USER_DEFAULT_SCREEN_DPI / dpi;
+    public static double DipsToPixels(double dips, uint dpi) => dips * dpi / Constants.USER_DEFAULT_SCREEN_DPI;
 
-    public static int PixelToHiMetric(this int value)
-    {
-        var dpi = Functions.Dpi;
-        return (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width);
-    }
+    public static uint DpiScale(uint value, uint oldDpi, uint newDpi) => (uint)DpiScale((float)value, oldDpi, newDpi);
+    public static int DpiScale(int value, uint oldDpi, uint newDpi) => (int)DpiScale((float)value, oldDpi, newDpi);
+    public static float DpiScale(float value, uint oldDpi, uint newDpi) => value * newDpi / oldDpi;
+    public static double DpiScale(double value, uint oldDpi, uint newDpi) => value * newDpi / oldDpi;
+    public static Vector2 DpiScale(Vector2 value, uint oldDpi, uint newDpi) => new(DpiScale(value.X, oldDpi, newDpi), DpiScale(value.Y, oldDpi, newDpi));
+    public static Vector3 DpiScale(Vector3 value, uint oldDpi, uint newDpi) => new(DpiScale(value.X, oldDpi, newDpi), DpiScale(value.Y, oldDpi, newDpi), DpiScale(value.Z, oldDpi, newDpi));
+    public static D2D_SIZE_F DpiScale(D2D_SIZE_F value, uint oldDpi, uint newDpi) => new(DpiScale(value.width, oldDpi, newDpi), DpiScale(value.height, oldDpi, newDpi));
 
-    public static uint PixelToHiMetric(this uint value)
-    {
-        var dpi = Functions.Dpi;
-        return (uint)(D2D_SIZE_F.HIMETRIC_PER_INCH * value / dpi.width);
-    }
+    public static D2D_RECT_F DpiScale(D2D_RECT_F value, uint oldDpi, uint newDpi) => new(
+        DpiScale(value.left, oldDpi, newDpi),
+        DpiScale(value.top, oldDpi, newDpi),
+        DpiScale(value.right, oldDpi, newDpi),
+        DpiScale(value.bottom, oldDpi, newDpi));
 
-    public static float HiMetricToPixel(this float value)
-    {
-        var dpi = Functions.Dpi;
-        return value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH;
-    }
+    public static D2D_RECT_F DpiScaleThickness(D2D_RECT_F value, uint oldDpi, uint newDpi) => D2D_RECT_F.Thickness(
+        DpiScale(value.left, oldDpi, newDpi),
+        DpiScale(value.top, oldDpi, newDpi),
+        DpiScale(value.right, oldDpi, newDpi),
+        DpiScale(value.bottom, oldDpi, newDpi));
 
-    public static double HiMetricToPixel(this double value)
-    {
-        var dpi = Functions.Dpi;
-        return value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH;
-    }
-
-    public static int HiMetricToPixel(this int value)
-    {
-        var dpi = Functions.Dpi;
-        return (int)(value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH);
-    }
-
-    public static uint HiMetricToPixel(this uint value)
-    {
-        var dpi = Functions.Dpi;
-        return (uint)(value * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH);
-    }
-
-    public static float PixelToDip(this float value)
-    {
-        var scale = Functions.DpiScale;
-        return value / scale.width;
-    }
-
-    public static double PixelToDip(this double value)
-    {
-        var scale = Functions.DpiScale;
-        return value / scale.width;
-    }
-
-    public static int PixelToDip(this int value)
-    {
-        var scale = Functions.DpiScale;
-        return (int)(value / scale.width);
-    }
-
-    public static uint PixelToDip(this uint value)
-    {
-        var scale = Functions.DpiScale;
-        return (uint)(value / scale.width);
-    }
+    public static D2D_RECT_F DpiScaleSized(D2D_RECT_F value, uint oldDpi, uint newDpi) => D2D_RECT_F.Sized(
+        DpiScale(value.left, oldDpi, newDpi),
+        DpiScale(value.top, oldDpi, newDpi),
+        DpiScale(value.Width, oldDpi, newDpi),
+        DpiScale(value.Height, oldDpi, newDpi));
 
     // https://blogs.msdn.microsoft.com/text/2009/12/11/wpf-text-measurement-units/
     public static float PointsToDips(this float pt) => Constants.USER_DEFAULT_SCREEN_DPI / (72 * pt);
