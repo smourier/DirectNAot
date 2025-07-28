@@ -1,5 +1,7 @@
 # DirectN AOT
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types) . Only for .NET Core 8 and beyond, it won't work for version below 8 or with .NET Framework.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at x64 targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types) . Only for .NET Core 9 and beyond, it won't work for version below 9 or with .NET Framework.
+
+Don't forget to check the [DirectN.Extensions](https://www.nuget.org/packages/DirectNAot.Extensions/) nuget, a set of utilities that are not mandatory, but super useful for programming with DirectN (and COM and interop in general).
 
 The key points that drive how code is generated and built:
 

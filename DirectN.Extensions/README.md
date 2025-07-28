@@ -1,5 +1,5 @@
 # DirectN AOT Extensions
-This is companion project to the [DirectN AOT](https://github.com/smourier/DirectNAot) project. DirectN AOT is required. Only for .NET Core 8 and beyond, it won't work for version below 8 or with .NET Framework. 
+This is companion project to the [DirectN AOT](https://github.com/smourier/DirectNAot) project. DirectN AOT is required. Only for .NET Core 9 and beyond, it won't work for version below 9 or with .NET Framework. 
 
 DirectN Extensions brings the following utilities to DirectN:
 
