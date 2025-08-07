@@ -233,6 +233,7 @@ public static class MessageDecoder
         WM_IME_COMPOSITIONFULL = 0x0284,
         WM_IME_SELECT = 0x0285,
         WM_IME_CHAR = 0x0286,
+        WM_IME_REQUEST = 0x0288,
         WM_IME_KEYDOWN = 0x0290,
         WM_IME_KEYUP = 0x0291,
         WM_MDICREATE = 0x0220,
