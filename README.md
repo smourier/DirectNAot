@@ -1,5 +1,5 @@
 # DirectN AOT
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at 64-bit targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 or with .NET Framework.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at 64-bit targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 nor with .NET Framework.
 
 **.NET 8 is not supported anymore as it has a dreadful bug https://github.com/dotnet/runtime/issues/96901 the causes crashes** (can someone explain to me why the fix has not been ported back to .NET 8? as far as I know).
 
@@ -35,7 +35,7 @@ The key points that drive how code is generated and built:
 * Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different.
 
 # Installation
-You can just compile the source (not it take minutes due to the fact ComWrapper Source generation is *slooooowwwwww*...) or use the nuget packages
+You can just compile the source (note it can take *minutes* due to the fact ComWrapper Source generation is *slooooowwwwww*...) or use the nuget packages
 
 https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/DirectNAot.Extensions/
 
