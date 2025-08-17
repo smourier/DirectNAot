@@ -73,11 +73,11 @@ public class DataObject(IComObject<IDataObject>? dataObject, bool owned = true) 
         FORMATETC fmt;
         if (index.HasValue)
         {
-            fmt = formats.FirstOrDefault(f => f.cfFormat == (short)format && f.lindex == index.Value);
+            fmt = formats.FirstOrDefault(f => f.cfFormat == (ushort)format && f.lindex == index.Value);
         }
         else
         {
-            fmt = formats.FirstOrDefault(f => f.cfFormat == (short)format);
+            fmt = formats.FirstOrDefault(f => f.cfFormat == (ushort)format);
         }
 
         using var medium = ComObject.GetStorageMedium(fmt);

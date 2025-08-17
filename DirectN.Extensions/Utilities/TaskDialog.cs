@@ -20,7 +20,11 @@ public class TaskDialog
     public virtual HICON FooterIcon { get; set; }
     public virtual uint Width { get; set; }
 
-    public unsafe virtual MESSAGEBOX_RESULT Show(HWND hwnd)
+    public int ResultButton { get; private set; }
+    public int ResultRadioButton { get; private set; }
+    public bool ResultVerificationFlagChecked { get; private set; }
+
+    public unsafe virtual MESSAGEBOX_RESULT Show(HWND hwnd, bool throwOnError = true)
     {
         var config = new TASKDIALOGCONFIG
         {
@@ -40,12 +44,16 @@ public class TaskDialog
 
         config.Anonymous1.hMainIcon = MainIcon;
         config.Anonymous2.hFooterIcon = FooterIcon;
+
         try
         {
             var button = 0;
             var radioButton = 0;
             var verificationFlagChecked = 0;
-            Functions.TaskDialogIndirect(config, (nint)(&button), (nint)(&radioButton), (nint)(&verificationFlagChecked)).ThrowOnError();
+            var hr = Functions.TaskDialogIndirect(config, (nint)(&button), (nint)(&radioButton), (nint)(&verificationFlagChecked)).ThrowOnError(throwOnError);
+            if (hr.IsError)
+                return (MESSAGEBOX_RESULT)hr.Value; // yes, we return an error code as the result which should be "ok" since MESSAGEBOX_RESULT is never negative.
+
             ResultButton = button;
             ResultRadioButton = radioButton;
             ResultVerificationFlagChecked = verificationFlagChecked != 0;
@@ -62,8 +70,4 @@ public class TaskDialog
             return MESSAGEBOX_RESULT.IDABORT;
         }
     }
-
-    public int ResultButton { get; private set; }
-    public int ResultRadioButton { get; private set; }
-    public bool ResultVerificationFlagChecked { get; private set; }
 }
