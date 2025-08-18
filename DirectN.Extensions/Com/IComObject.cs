@@ -3,7 +3,7 @@
 public interface IComObject : IDisposable
 {
     bool IsDisposed { get; }
-    void AddRef();
+    nint AddRef();
 
     [AllowNull]
     System.Runtime.InteropServices.Marshalling.ComObject Object { get; }

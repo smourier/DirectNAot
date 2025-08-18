@@ -45,5 +45,5 @@ public abstract class InterlockedComObject<T> : InterlockedDisposable<IComObject
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     Type IComObject.InterfaceType => typeof(T);
 
-    void IComObject.AddRef() => Disposable.AddRef();
+    nint IComObject.AddRef() => Disposable.AddRef();
 }

@@ -72,4 +72,86 @@ public static class ComExtensions
 
     [return: NotNullIfNotNull(nameof(enumerable))]
     public static IEnumerable<IComObject<T>>? ToComObjects<T>(this IEnumerable<T>? enumerable) => enumerable?.Where(e => e != null).Select(e => new ComObject<T>(e!));
+
+    public static IComObject<T> Clone<T>(this IComObject<T>? comObject, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        ObjectDisposedException.ThrowIf(comObject.IsDisposed, nameof(comObject));
+        return WithAddRef(comObject, unk => ComObject.FromPointer<T>(unk, flags, releaseOnDispose))!;
+    }
+
+    // comObject is not null, this is just to be consistent with IComObject.AddRef(), so we can write:
+    //
+    // var unk = comObject.AddRef()
+    // ...
+    // comObject.Release(unk)
+    //
+    public static int Release(this IComObject? comObject, nint unk)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        if (unk == 0)
+            return -1;
+
+        return Marshal.Release(unk);
+    }
+
+    public static void WithAddRef(this IComObject comObject, Action<nint> action)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        ArgumentNullException.ThrowIfNull(action);
+        var unk = comObject.AddRef();
+        try
+        {
+            action(unk);
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
+
+    public static T WithAddRef<T>(this IComObject comObject, Func<nint, T> func)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        ArgumentNullException.ThrowIfNull(func);
+        var unk = comObject.AddRef();
+        try
+        {
+            return func(unk);
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
+
+    public static async Task WithAddRef<T>(this IComObject comObject, Func<nint, Task> action)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        ArgumentNullException.ThrowIfNull(action);
+        var unk = comObject.AddRef();
+        try
+        {
+            await action(unk);
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
+
+    public static async Task<T> WithAddRef<T>(this IComObject comObject, Func<nint, Task<T>> action)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        ArgumentNullException.ThrowIfNull(action);
+        var unk = comObject.AddRef();
+        try
+        {
+            return await action(unk);
+        }
+        finally
+        {
+            Marshal.Release(unk);
+        }
+    }
 }

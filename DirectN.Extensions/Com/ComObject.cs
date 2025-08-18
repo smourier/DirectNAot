@@ -46,7 +46,7 @@ public abstract class ComObject : IComObject
     public bool ReleaseOnDispose { get; }
     public bool IsDisposed => _comObject == null;
 
-    public void AddRef() => AddRef(Object);
+    public nint AddRef() => AddRef(Object);
 
     [AllowNull]
     public System.Runtime.InteropServices.Marshalling.ComObject Object
@@ -65,7 +65,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void AddRef(object obj)
+    public static nint AddRef(object obj)
     {
 #if DEBUG
         if (obj is ComObject co)
@@ -87,6 +87,7 @@ public abstract class ComObject : IComObject
             throw new ArgumentException(null, nameof(obj));
 
         // just don't release
+        return unk;
     }
 
     public static object? Unwrap(object? obj)
@@ -269,7 +270,7 @@ public abstract class ComObject : IComObject
         }
     }
 
-    public static void Release(System.Runtime.InteropServices.Marshalling.ComObject? obj) => ComExtensions.FinalRelease(obj);
+    public static void FinalRelease(System.Runtime.InteropServices.Marshalling.ComObject? obj) => ComExtensions.FinalRelease(obj);
     public static int Release(nint unknown)
     {
 #if DEBUG

@@ -143,4 +143,54 @@ public static class ID2D1FactoryExtensions
             Marshal.FreeHGlobal(ptr);
         }
     }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static void RunMultithreadProtected(this IComObject<ID2D1Factory> factory, Action action) => RunMultithreadProtected(factory?.Object!, action);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static void RunMultithreadProtected(this ID2D1Factory factory, Action action)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ((ID2D1Multithread)factory).RunMultithreadProtected(action);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static Task RunMultithreadProtected(this IComObject<ID2D1Factory> factory, Func<Task> action) => RunMultithreadProtected(factory?.Object!, action);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static Task RunMultithreadProtected(this ID2D1Factory factory, Func<Task> action)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        return ((ID2D1Multithread)factory).RunMultithreadProtected(action);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static T RunMultithreadProtected<T>(this IComObject<ID2D1Factory> factory, Func<T> func) => RunMultithreadProtected(factory?.Object!, func);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static T RunMultithreadProtected<T>(this ID2D1Factory factory, Func<T> func)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        return ((ID2D1Multithread)factory).RunMultithreadProtected(func);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static Task<T> RunMultithreadProtected<T>(this IComObject<ID2D1Factory> factory, Func<Task<T>> func) => RunMultithreadProtected(factory?.Object!, func);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static Task<T> RunMultithreadProtected<T>(this ID2D1Factory factory, Func<Task<T>> func)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        return ((ID2D1Multithread)factory).RunMultithreadProtected(func);
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static bool IsMultithreadProtected(this IComObject<ID2D1Factory> factory) => IsMultithreadProtected(factory?.Object!);
+
+    [SupportedOSPlatform("windows8.0")]
+    public static bool IsMultithreadProtected(this ID2D1Factory factory)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        return ((ID2D1Multithread)factory).GetMultithreadProtected();
+    }
 }
