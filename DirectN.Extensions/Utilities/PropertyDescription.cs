@@ -10,6 +10,8 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     {
         ArgumentNullException.ThrowIfNull(description);
         _searchInfo = ComObject.As<IPropertyDescriptionSearchInfo>();
+        NativeObject.GetPropertyKey(out var pk);
+        PropertyKey = pk;
         CanonicalName = GetString(NativeObject.GetCanonicalName);
         DisplayName = GetString(NativeObject.GetDisplayName);
         EditInvitation = GetString(NativeObject.GetEditInvitation);
@@ -39,12 +41,12 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     public string? DisplayName { get; }
     public string? EditInvitation { get; }
     public string? SearchProjectionString { get; }
+    public PROPERTYKEY PropertyKey { get; }
     public uint DefaultColumnWidth { get { NativeObject.GetDefaultColumnWidth(out var width); return width; } }
     public bool HasSearchInfo => _searchInfo != null;
     public uint? SearchMaxSize { get { if (_searchInfo == null) return null; _searchInfo.Object.GetMaxSize(out var size); return size; } }
     public PROPDESC_SEARCHINFO_FLAGS? SearchInfoFlags { get { if (_searchInfo == null) return null; _searchInfo.Object.GetSearchInfoFlags(out var flags); return flags; } }
     public PROPDESC_COLUMNINDEX_TYPE? SearchColumnIndexType { get { if (_searchInfo == null) return null; _searchInfo.Object.GetColumnIndexType(out var type); return type; } }
-    public PROPERTYKEY PropertyKey { get { NativeObject.GetPropertyKey(out var pk); return pk; } }
     public VARENUM PropertyType { get { NativeObject.GetPropertyType(out var pt); return (VARENUM)pt; } }
     public SHCOLSTATE ColumnState { get { NativeObject.GetColumnState(out var state); return (SHCOLSTATE)state; } }
     public PROPDESC_AGGREGATION_TYPE AggregationType { get { NativeObject.GetAggregationType(out var type); return type; } }
@@ -146,24 +148,42 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
 
     public bool TryCoerceToCanonicalValue(object? value, out object? canonicalValue)
     {
-        using var pv = new PropVariant(value);
-        var detached = pv.Detached;
+        using var pvIn = new PropVariant(value);
+        var detached = pvIn.Detach();
         var hr = NativeObject.CoerceToCanonicalValue(ref detached);
-        if (hr != 0)
+        if (hr.IsError)
         {
+            // detached will be cleared by the CoerceToCanonicalValue call
             canonicalValue = null;
             return false;
         }
 
-        canonicalValue = pv.Value;
+        using var pvOut = PropVariant.Attach(ref detached, false);
+        canonicalValue = pvOut.Value;
         return true;
+    }
+
+    public bool TryCoerceToCanonicalValue<T>(object? value, out T? canonicalValue)
+    {
+        if (!TryCoerceToCanonicalValue(value, out object? result))
+        {
+            canonicalValue = default;
+            return false;
+        }
+
+        return Conversions.TryChangeType(result, out canonicalValue);
     }
 
     public string? FormatForDisplay(object? value, PROPDESC_FORMAT_FLAGS flags)
     {
         using var pv = new PropVariant(value);
         NativeObject.FormatForDisplay(pv.Detached, flags, out var ptr);
-        return ptr.Value == 0 ? null : ptr.ToString();
+        if (ptr.Value == 0)
+            return null;
+
+        var s = ptr.ToString();
+        Marshal.FreeCoTaskMem(ptr.Value);
+        return s;
     }
 
     protected override void Dispose(bool disposing)
@@ -172,7 +192,7 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     }
 
     public override string ToString() => CanonicalName ?? string.Empty;
-    public override int GetHashCode() => StringComparer.Ordinal.GetHashCode(CanonicalName ?? string.Empty);
+    public override int GetHashCode() => PropertyKey.GetHashCode();
     int IComparable.CompareTo(object? obj) => CompareTo(obj as PropertyDescription);
     public int CompareTo(PropertyDescription? other)
     {
@@ -181,7 +201,7 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     }
 
     public override bool Equals(object? obj) => Equals(obj as PropertyDescription);
-    public bool Equals(PropertyDescription? other) => string.Equals(CanonicalName, other?.CanonicalName, StringComparison.Ordinal);
+    public bool Equals(PropertyDescription? other) => other is not null && PropertyKey.Equals(other.PropertyKey);
 
     public static bool operator ==(PropertyDescription item1, PropertyDescription item2)
     {
@@ -318,6 +338,11 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     private static string? GetString(GetStringFn func)
     {
         func(out var ptr);
-        return ptr.Value == 0 ? null : ptr.ToString();
+        if (ptr.Value == 0)
+            return null;
+
+        var s = ptr.ToString();
+        Marshal.FreeCoTaskMem(ptr.Value);
+        return s;
     }
 }
