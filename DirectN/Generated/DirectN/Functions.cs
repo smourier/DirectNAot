@@ -1189,6 +1189,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CreateControlInputEx(nint pCoreWindow, in Guid riid, out nint /* void */ ppv);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-createdataadviseholder
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CreateDataAdviseHolder([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataAdviseHolder>))] out IDataAdviseHolder ppDAHolder);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createdcw
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16)]
     [SupportedOSPlatform("windows5.0")]
@@ -1292,6 +1298,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     public static partial HRESULT CreateNamedPropertyStore([MarshalUsing(typeof(UniqueComInterfaceMarshaller<INamedPropertyStore>))] out INamedPropertyStore ppStore);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-createoleadviseholder
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CreateOleAdviseHolder([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleAdviseHolder>))] out IOleAdviseHolder ppOAHolder);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createpolygonrgn
     [LibraryImport("GDI32")]
@@ -8528,6 +8540,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial GDI_REGION_TYPE OffsetRgn(HRGN hrgn, int x, int y);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatedefaulthandler
+    [LibraryImport("ole32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleCreateDefaultHandler(in Guid clsid, nint pUnkOuter, in Guid riid, out nint lplpObj);
+    
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleflushclipboard
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8552,11 +8570,41 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT OleIsCurrentClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
     
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumformatetc
+    [LibraryImport("ole32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleRegEnumFormatEtc(in Guid clsid, uint dwDirection, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumFORMATETC>))] out IEnumFORMATETC ppenum);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumverbs
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleRegEnumVerbs(in Guid clsid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumOLEVERB>))] out IEnumOLEVERB ppenum);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olereggetmiscstatus
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleRegGetMiscStatus(in Guid clsid, uint dwAspect, out uint pdwStatus);
+    
+    // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olereggetusertype
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleRegGetUserType(in Guid clsid, uint dwFormOfType, out PWSTR pszUserType);
+    
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetclipboard
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT OleSetClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oletranslatecolor
+    [LibraryImport("OLEAUT32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleTranslateColor(uint clr, HPALETTE hpal, out COLORREF lpcolorref);
     
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleuninitialize
     [LibraryImport("OLE32")]
@@ -8812,6 +8860,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT PSPropertyKeyFromString(PWSTR pszString, out PROPERTYKEY pkey);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-ptinrect
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL PtInRect(in RECT lprc, POINT pt);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-ptinregion
     [LibraryImport("GDI32", SetLastError = true)]

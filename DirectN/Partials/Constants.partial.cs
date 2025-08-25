@@ -98,6 +98,11 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_NOAGGREGATION = 0x80040110;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_CLASSNOTAVAILABLE = 0x80040111;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CLASS_E_NOTLICENSED = 0x80040112;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLE_S_USEREG = 0x00040000;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLE_S_STATIC = 0x00040001;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_INVALIDVERB = 0x00040180;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_CANNOT_DOVERB_NOW = 0x00040181;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_INVALIDHWND = 0x00040182;
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = 0x80030001;

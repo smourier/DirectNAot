@@ -44,6 +44,7 @@ public partial struct D2D_VECTOR_2F :
         (obj is SIZE s && Equals(s)) ||
         (obj is D2D_POINT_2F pf && Equals(pf)) ||
         (obj is D2D_POINT_2U pu && Equals(pu)) ||
+        (obj is POINTF ptf && Equals(ptf)) ||
         (obj is POINT p && Equals(p));
     public readonly bool Equals(D2D_VECTOR_2F other) => x == other.x && y == other.y;
     public override readonly int GetHashCode() => x.GetHashCode() ^ y.GetHashCode();
@@ -54,6 +55,7 @@ public partial struct D2D_VECTOR_2F :
     public readonly D2D_SIZE_U ToD2D_SIZE_U() => new(x, y);
     public readonly SIZE ToSIZE() => new(x, y);
     public readonly POINT ToPOINT() => new(x, y);
+    public readonly POINTF ToPOINTF() => new(x, y);
     public readonly D2D_POINT_2F ToD2D_POINT_2F() => new(x, y);
     public readonly D2D_POINT_2U ToD2D_POINT_2U() => new(x, y);
     public readonly Vector2 ToVector2() => new(x, y);
@@ -66,6 +68,7 @@ public partial struct D2D_VECTOR_2F :
     public readonly bool Equals(D2D_POINT_2U other) => x == other.x && y == other.y;
     public readonly bool Equals(D2D_POINT_2F other) => x == other.x && y == other.y;
     public readonly bool Equals(POINT other) => x == other.x && y == other.y;
+    public readonly bool Equals(POINTF other) => x == other.x && y == other.y;
     public readonly bool Equals(D2D_SIZE_F other) => x == other.width && y == other.height;
     public readonly bool Equals(D2D_SIZE_U other) => x == other.width && y == other.height;
     public readonly bool Equals(SIZE other) => x == other.cx && y == other.cy;
@@ -77,6 +80,7 @@ public partial struct D2D_VECTOR_2F :
     public static implicit operator D2D_VECTOR_2F(D2D_SIZE_U vc) => new(vc.width, vc.height);
     public static implicit operator D2D_VECTOR_2F(SIZE vc) => new(vc.cx, vc.cy);
     public static implicit operator D2D_VECTOR_2F(POINT vc) => new(vc.x, vc.y);
+    public static implicit operator D2D_VECTOR_2F(POINTF vc) => new(vc.x, vc.y);
     public static implicit operator D2D_VECTOR_2F(D2D_POINT_2F vc) => new(vc.x, vc.y);
     public static implicit operator D2D_VECTOR_2F(D2D_POINT_2U vc) => new(vc.x, vc.y);
 }
