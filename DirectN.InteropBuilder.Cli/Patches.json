@@ -59,6 +59,23 @@
           "Value": "4096"
         }
       ]
+    },
+    {
+      "TypeName": "ITypeLib",
+      "Methods": [
+        {
+          "Name": "ReleaseTLibAttr",
+          "Parameters": [
+            {
+              "Name": "pTLibAttr",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "OptionalArguments": [

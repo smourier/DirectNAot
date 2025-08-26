@@ -700,6 +700,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HDC BeginPaint(HWND hWnd, out PAINTSTRUCT lpPaint);
     
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-beginupdateresourcew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HANDLE BeginUpdateResourceW(PWSTR pFileName, BOOL bDeleteExistingResources);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-bringwindowtotop
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -2684,6 +2691,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL EndPaint(HWND hWnd, in PAINTSTRUCT lpPaint);
     
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-endupdateresourcew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EndUpdateResourceW(HANDLE hUpdate, BOOL fDiscard);
+    
     // https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engacquiresemaphore
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -3058,6 +3072,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int EnumPropsW(HWND hWnd, PROPENUMPROCW lpEnumFunc);
     
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-enumresourcetypesw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnumResourceTypesW(HMODULE hModule, ENUMRESTYPEPROCW lpEnumFunc, nint lParam);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumthreadwindows
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3111,6 +3132,18 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-findresourceexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HRSRC FindResourceExW(HMODULE hModule, PWSTR lpType, PWSTR lpName, ushort wLanguage);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-findresourcew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HRSRC FindResourceW(HMODULE hModule, PWSTR lpName, PWSTR lpType);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-findwindoww
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
@@ -3186,6 +3219,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL FreeLibrary(HMODULE hLibModule);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-freeresource
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL FreeResource(HGLOBAL hResData);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getactivewindow
     [LibraryImport("USER32")]
@@ -6458,11 +6498,39 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HMODULE LoadLibraryW(PWSTR lpLibFileName);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadregtypelib
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT LoadRegTypeLib(in Guid rguid, ushort wVerMajor, ushort wVerMinor, uint lcid, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] out ITypeLib pptlib);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadresource
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HGLOBAL LoadResource(HMODULE hModule, HRSRC hResInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadstringw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial int LoadStringW(HINSTANCE hInstance, uint uID, out PWSTR lpBuffer, int cchBufferMax);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadtypelib
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT LoadTypeLib(PWSTR szFile, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] out ITypeLib pptlib);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadtypelibex
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT LoadTypeLibEx(PWSTR szFile, REGKIND regkind, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] out ITypeLib pptlib);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-lockresource
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial nint LockResource(HGLOBAL hResData);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-logicaltophysicalpointforpermonitordpi
     [LibraryImport("USER32", SetLastError = true)]
@@ -8534,6 +8602,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial void NotifyWinEvent(uint @event, HWND hwnd, int idObject, int idChild);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-oaenableperusertlibregistration
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial void OaEnablePerUserTLibRegistration();
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-offsetrgn
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8881,6 +8954,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial WIN32_ERROR QueryDisplayConfig(QUERY_DISPLAY_CONFIG_FLAGS flags, ref uint numPathArrayElements, [In][Out][MarshalUsing(CountElementName = nameof(numPathArrayElements))] DISPLAYCONFIG_PATH_INFO[] pathArray, ref uint numModeInfoArrayElements, [In][Out][MarshalUsing(CountElementName = nameof(numModeInfoArrayElements))] DISPLAYCONFIG_MODE_INFO[] modeInfoArray, nint /* optional DISPLAYCONFIG_TOPOLOGY_ID* */ currentTopologyId);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-querypathofregtypelib
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT QueryPathOfRegTypeLib(in Guid guid, ushort wMaj, ushort wMin, uint lcid, out BSTR lpbstrPathName);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-realgetwindowclassw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -8930,6 +9008,16 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT RegisterDragDrop(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDropTarget>))] IDropTarget pDropTarget);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registertypelib
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT RegisterTypeLib([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] ITypeLib ptlib, PWSTR szFullPath, PWSTR szHelpDir);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registertypelibforuser
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT RegisterTypeLibForUser([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ITypeLib>))] ITypeLib ptlib, PWSTR szFullPath, PWSTR szHelpDir);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerwindowmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
@@ -9639,6 +9727,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ShowWindow(HWND hWnd, SHOW_WINDOW_CMD nCmdShow);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-sizeofresource
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint SizeofResource(HMODULE hModule, HRSRC hResInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-skippointerframemessages
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -9879,6 +9973,16 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UnregisterCMMW(PWSTR pMachineName, uint cmmID);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-unregistertypelib
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT UnRegisterTypeLib(in Guid libID, ushort wVerMajor, ushort wVerMinor, uint lcid, SYSKIND syskind);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-unregistertypelibforuser
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT UnRegisterTypeLibForUser(in Guid libID, ushort wMajorVerNum, ushort wMinorVerNum, uint lcid, SYSKIND syskind);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-updateicmregkeya
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -9892,6 +9996,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UpdateICMRegKeyW(uint? reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
+    
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-updateresourcew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UpdateResourceW(HANDLE hUpdate, PWSTR lpType, PWSTR lpName, ushort wLanguage, nint /* optional void* */ lpData, uint cb);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-updatewindow
     [LibraryImport("USER32", SetLastError = true)]

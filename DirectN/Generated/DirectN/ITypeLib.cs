@@ -51,5 +51,5 @@ public partial interface ITypeLib
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypelib-releasetlibattr
     [PreserveSig]
-    void ReleaseTLibAttr(in TLIBATTR pTLibAttr);
+    void ReleaseTLibAttr(nint pTLibAttr);
 }

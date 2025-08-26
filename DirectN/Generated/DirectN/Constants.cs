@@ -30947,9 +30947,47 @@ public static partial class Constants
     
     public const uint RSA_KEY_LEN = 64;
     
+    public static readonly PWSTR RT_ACCELERATOR = new('\u0009');
+    
+    public static readonly PWSTR RT_ANICURSOR = new('\u0015');
+    
+    public static readonly PWSTR RT_ANIICON = new('\u0016');
+    
+    public static readonly PWSTR RT_BITMAP = new('\u0002');
+    
+    public static readonly PWSTR RT_CURSOR = new('\u0001');
+    
+    public static readonly PWSTR RT_DIALOG = new('\u0005');
+    
+    public static readonly PWSTR RT_DLGINCLUDE = new('\u0011');
+    
+    public static readonly PWSTR RT_FONT = new('\u0008');
+    
+    public static readonly PWSTR RT_FONTDIR = new('\u0007');
+    
+    public static readonly PWSTR RT_GROUP_CURSOR = new('\u000c');
+    
+    public static readonly PWSTR RT_GROUP_ICON = new('\u000e');
+    
+    public static readonly PWSTR RT_HTML = new('\u0017');
+    
+    public static readonly PWSTR RT_ICON = new('\u0003');
+    
+    public static readonly PWSTR RT_MANIFEST = new('\u0018');
+    
+    public static readonly PWSTR RT_MENU = new('\u0004');
+    
+    public static readonly PWSTR RT_MESSAGETABLE = new('\u000b');
+    
+    public static readonly PWSTR RT_PLUGPLAY = new('\u0013');
+    
     public static readonly PWSTR RT_RCDATA = new('\u000a');
     
     public static readonly PWSTR RT_STRING = new('\u0006');
+    
+    public static readonly PWSTR RT_VERSION = new('\u0010');
+    
+    public static readonly PWSTR RT_VXD = new('\u0014');
     
     public const uint RTO_DISABLEHANDLES = 2;
     
