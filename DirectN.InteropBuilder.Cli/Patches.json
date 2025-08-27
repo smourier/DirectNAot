@@ -76,6 +76,47 @@
           ]
         }
       ]
+    },
+    {
+      "TypeName": "ITypeInfo",
+      "Methods": [
+        {
+          "Name": "ReleaseTypeAttr",
+          "Parameters": [
+            {
+              "Name": "pTypeAttr",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ReleaseFuncDesc",
+          "Parameters": [
+            {
+              "Name": "pFuncDesc",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ReleaseVarDesc",
+          "Parameters": [
+            {
+              "Name": "pVarDesc",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "OptionalArguments": [

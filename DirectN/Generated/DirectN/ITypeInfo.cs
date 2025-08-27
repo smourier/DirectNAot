@@ -87,13 +87,13 @@ public partial interface ITypeInfo
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-releasetypeattr
     [PreserveSig]
-    void ReleaseTypeAttr(in TYPEATTR pTypeAttr);
+    void ReleaseTypeAttr(nint pTypeAttr);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-releasefuncdesc
     [PreserveSig]
-    void ReleaseFuncDesc(in FUNCDESC pFuncDesc);
+    void ReleaseFuncDesc(nint pFuncDesc);
     
     // https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-itypeinfo-releasevardesc
     [PreserveSig]
-    void ReleaseVarDesc(in VARDESC pVarDesc);
+    void ReleaseVarDesc(nint pVarDesc);
 }

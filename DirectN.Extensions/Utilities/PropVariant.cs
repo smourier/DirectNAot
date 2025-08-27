@@ -86,7 +86,7 @@ public sealed class PropVariant : IDisposable
         switch (tc)
         {
             case TypeCode.Boolean:
-                _inner.Anonymous.Anonymous.Anonymous.boolVal = new VARIANT_BOOL { Value = (bool)value ? (short)(-1) : (short)0 };
+                _inner.Anonymous.Anonymous.Anonymous.boolVal = new VARIANT_BOOL { Value = (bool)value ? (short)-1 : (short)0 };
                 vt = VARENUM.VT_BOOL;
                 break;
 
@@ -344,13 +344,24 @@ public sealed class PropVariant : IDisposable
         return new Variant(inner);
     }
 
-    public PropVariant? ChangeType(VARENUM type, bool throwOnError = true)
+    public unsafe PropVariant? ChangeType(VARENUM type, bool throwOnError = true)
     {
-        var hr = Functions.PropVariantChangeType(out var inner, _inner, 0, type).ThrowOnError(throwOnError);
+        if (type == (VARENUM.VT_VARIANT | VARENUM.VT_BYREF) || type == VARENUM.VT_VARIANT)
+        {
+            Functions.PropVariantCopy(out var inner, _inner).ThrowOnError(throwOnError);
+
+            var copy = new PROPVARIANT();
+            copy.Anonymous.Anonymous.vt = type;
+            copy.Anonymous.Anonymous.Anonymous.pvarVal = Marshal.AllocCoTaskMem(Size);
+            copy.Anonymous.Anonymous.Anonymous.pvarVal.CopyFrom((nint)(&inner), Size);
+            return Attach(ref copy, false);
+        }
+
+        var hr = Functions.PropVariantChangeType(out var inner2, _inner, 0, type).ThrowOnError(throwOnError);
         if (hr.IsError)
             return null;
 
-        return new PropVariant { _inner = inner };
+        return new PropVariant { _inner = inner2 };
     }
 
     public void CopyFrom(PropVariant source, bool throwOnError = true)
@@ -397,7 +408,102 @@ public sealed class PropVariant : IDisposable
 
         var pv = _inner;
         Zero();
-        *(PROPVARIANT*)(propVariantPtr) = pv;
+        *(PROPVARIANT*)propVariantPtr = pv;
+    }
+
+    public unsafe void DetachToByRef(nint propVariantPtr)
+    {
+        if (propVariantPtr == 0)
+            throw new ArgumentException(null, nameof(propVariantPtr));
+
+        var variant = (PROPVARIANT*)propVariantPtr;
+        if (!variant->Anonymous.Anonymous.vt.HasFlag(VARENUM.VT_BYREF))
+            throw new ArgumentException($"Target type is {variant->Anonymous.Anonymous.vt}, not a VT_BYREF variant.", nameof(propVariantPtr));
+
+        var vt = variant->Anonymous.Anonymous.vt & ~VARENUM.VT_BYREF;
+        if (vt != VarType && variant->Anonymous.Anonymous.vt != VarType)
+            throw new ArgumentException($"Source type {VarType} and target type {variant->Anonymous.Anonymous.vt} are incompatible.", nameof(propVariantPtr));
+
+        switch (vt)
+        {
+            case VARENUM.VT_EMPTY:
+            case VARENUM.VT_NULL:
+                break;
+
+            case VARENUM.VT_I1:
+                *(sbyte*)variant->Anonymous.Anonymous.Anonymous.pcVal.Value = _inner.Anonymous.Anonymous.Anonymous.cVal;
+                break;
+
+            case VARENUM.VT_I2:
+                *(short*)variant->Anonymous.Anonymous.Anonymous.piVal = _inner.Anonymous.Anonymous.Anonymous.iVal;
+                break;
+
+            case VARENUM.VT_I4:
+            case VARENUM.VT_INT:
+                *(int*)variant->Anonymous.Anonymous.Anonymous.plVal = _inner.Anonymous.Anonymous.Anonymous.lVal;
+                break;
+
+            case VARENUM.VT_I8:
+                *(long*)variant->Anonymous.Anonymous.Anonymous.plVal = _inner.Anonymous.Anonymous.Anonymous.hVal;
+                break;
+
+            case VARENUM.VT_UI1:
+                *(byte*)variant->Anonymous.Anonymous.Anonymous.pbVal = _inner.Anonymous.Anonymous.Anonymous.bVal;
+                break;
+
+            case VARENUM.VT_UI2:
+                *(ushort*)variant->Anonymous.Anonymous.Anonymous.puiVal = _inner.Anonymous.Anonymous.Anonymous.uiVal;
+                break;
+
+            case VARENUM.VT_UI4:
+            case VARENUM.VT_UINT:
+            case VARENUM.VT_ERROR:
+                *(uint*)variant->Anonymous.Anonymous.Anonymous.pulVal = _inner.Anonymous.Anonymous.Anonymous.ulVal;
+                break;
+
+            case VARENUM.VT_UI8:
+                *(ulong*)variant->Anonymous.Anonymous.Anonymous.pulVal = _inner.Anonymous.Anonymous.Anonymous.uhVal;
+                break;
+
+            case VARENUM.VT_R4:
+                *(float*)variant->Anonymous.Anonymous.Anonymous.pfltVal = _inner.Anonymous.Anonymous.Anonymous.fltVal;
+                break;
+
+            case VARENUM.VT_R8:
+            case VARENUM.VT_DATE:
+                *(double*)variant->Anonymous.Anonymous.Anonymous.pdblVal = _inner.Anonymous.Anonymous.Anonymous.dblVal;
+                break;
+
+            case VARENUM.VT_BOOL:
+                *(VARIANT_BOOL*)variant->Anonymous.Anonymous.Anonymous.pboolVal = _inner.Anonymous.Anonymous.Anonymous.boolVal;
+                break;
+
+            case VARENUM.VT_DECIMAL:
+                *(decimal*)variant->Anonymous.Anonymous.Anonymous.pdecVal = _inner.Anonymous.decVal;
+                break;
+
+            case VARENUM.VT_CY:
+                *(CY*)variant->Anonymous.Anonymous.Anonymous.pcyVal = _inner.Anonymous.Anonymous.Anonymous.cyVal;
+                break;
+
+            case VARENUM.VT_BSTR:
+                *(BSTR*)variant->Anonymous.Anonymous.Anonymous.pbstrVal = _inner.Anonymous.Anonymous.Anonymous.bstrVal;
+                break;
+
+            case VARENUM.VT_VARIANT:
+                *(nint*)variant->Anonymous.Anonymous.Anonymous.pvarVal = _inner.Anonymous.Anonymous.Anonymous.pvarVal;
+                break;
+
+            case VARENUM.VT_UNKNOWN:
+            case VARENUM.VT_DISPATCH:
+                *(nint*)variant->Anonymous.Anonymous.Anonymous.ppunkVal = _inner.Anonymous.Anonymous.Anonymous.punkVal;
+                break;
+
+            default:
+                throw new NotSupportedException("Target property type " + _inner.Anonymous.Anonymous.vt + " is not supported.");
+        }
+
+        Zero();
     }
 
     public static PropVariant Attach(ref PROPVARIANT detached, bool zeroDetached = true)
@@ -416,7 +522,15 @@ public sealed class PropVariant : IDisposable
 
     public override string ToString()
     {
-        var value = Value;
+        object? value;
+        try
+        {
+            value = Value;
+        }
+        catch
+        {
+            return "[" + VarType + "]";
+        }
         if (value == null)
             return "<null>";
 
@@ -480,7 +594,7 @@ public sealed class PropVariant : IDisposable
             var shorts = new short[bools.Length];
             for (var i = 0; i < bools.Length; i++)
             {
-                shorts[i] = bools[i] ? ((short)(-1)) : ((short)0);
+                shorts[i] = bools[i] ? ((short)-1) : ((short)0);
             }
             ConstructVector(shorts, typeof(short), VARENUM.VT_BOOL);
             return;

@@ -79,7 +79,6 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_OPERATION = 0x800710DD;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_NAME = 0x8007007B;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT ERROR_INVALID_HANDLE = 0x80070006;
-    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_EXCEPTION = 0x80020009;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_NOCONNECTION = 0x80040200;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_ADVISELIMIT = 0x80040201;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT CONNECT_E_CANNOTCONNECT = 0x80040202;
@@ -103,6 +102,25 @@ public static partial class Constants
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_INVALIDVERB = 0x00040180;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_CANNOT_DOVERB_NOW = 0x00040181;
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT OLEOBJ_S_INVALIDHWND = 0x00040182;
+
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_UNKNOWNINTERFACE = 0x80020001;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_MEMBERNOTFOUND = 0x80020003;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_PARAMNOTFOUND = 0x80020004;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_TYPEMISMATCH = 0x80020005;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_UNKNOWNNAME = 0x80020006;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_NONAMEDARGS = 0x80020007;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_BADVARTYPE = 0x80020008;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_EXCEPTION = 0x80020009;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_OVERFLOW = 0x8002000A;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_BADINDEX = 0x8002000B;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_UNKNOWNLCID = 0x8002000C;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_ARRAYISLOCKED = 0x8002000D;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_BADPARAMCOUNT = 0x8002000E;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_PARAMNOTOPTIONAL = 0x8002000F;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_BADCALLEE = 0x80020010;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_NOTACOLLECTION = 0x80020011;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_DIVBYZERO = 0x80020012;
+    [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT DISP_E_BUFFERTOOSMALL = 0x80020013;
 
     // storage
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT STG_E_INVALIDFUNCTION = 0x80030001;

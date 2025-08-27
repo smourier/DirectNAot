@@ -10023,6 +10023,11 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT VariantChangeType(ref VARIANT pvargDest, in VARIANT pvarSrc, VAR_CHANGE_FLAGS wFlags, VARENUM vt);
     
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantchangetypeex
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT VariantChangeTypeEx(ref VARIANT pvargDest, in VARIANT pvarSrc, uint lcid, VAR_CHANGE_FLAGS wFlags, VARENUM vt);
+    
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantclear
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
@@ -10032,6 +10037,11 @@ public static partial class Functions
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
     public static partial HRESULT VariantCopy(ref VARIANT pvargDest, in VARIANT pvargSrc);
+    
+    // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantcopyind
+    [LibraryImport("OLEAUT32")]
+    [PreserveSig]
+    public static partial HRESULT VariantCopyInd(ref VARIANT pvarDest, in VARIANT pvargSrc);
     
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantinit
     [LibraryImport("OLEAUT32")]

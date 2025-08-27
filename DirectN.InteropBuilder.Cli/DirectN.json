@@ -455,8 +455,10 @@
     "UpdateWindow",
     "ValidateRect",
     "VariantChangeType",
+    "VariantChangeTypeEx",
     "VariantClear",
     "VariantCopy",
+    "VariantCopyInd",
     "VariantInit",
     "VariantToPropVariant",
     "WaitForMultipleObjects",
@@ -468,11 +470,11 @@
     "WindowFromPhysicalPoint",
     "BS_*",
     "CLSID_XPSRASTERIZER_FACTORY",
+    "EVENT_*",
     "IDI_APPLICATION",
-    "SIZE_*",
     "NIN_*",
     "NOTIFYICON_*",
-    "EVENT_*",
-    "RT_*"
+    "RT_*",
+    "SIZE_*"
   ]
 }
