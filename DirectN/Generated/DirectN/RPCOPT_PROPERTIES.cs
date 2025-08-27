@@ -1,0 +1,12 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum RPCOPT_PROPERTIES
+{
+    COMBND_RPCTIMEOUT = 1,
+    COMBND_SERVER_LOCALITY = 2,
+    COMBND_RESERVED1 = 4,
+    COMBND_RESERVED2 = 5,
+    COMBND_RESERVED3 = 8,
+    COMBND_RESERVED4 = 16,
+}

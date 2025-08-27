@@ -49,7 +49,7 @@ public partial interface IOleObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-doverb
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT DoVerb(int iVerb, in MSG lpmsg, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleClientSite>))] IOleClientSite pActiveSite, int lindex, HWND hwndParent, in RECT lprcPosRect);
+    HRESULT DoVerb(int iVerb, nint lpmsg, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IOleClientSite>))] IOleClientSite pActiveSite, int lindex, HWND hwndParent, nint lprcPosRect);
     
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-ioleobject-enumverbs
     [PreserveSig]

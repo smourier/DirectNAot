@@ -78,6 +78,30 @@
       ]
     },
     {
+      "TypeName": "IOleObject",
+      "Methods": [
+        {
+          "Name": "DoVerb",
+          "Parameters": [
+            {
+              "Name": "lpmsg",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            },
+            {
+              "Name": "lprcPosRect",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "TypeName": "ITypeInfo",
       "Methods": [
         {

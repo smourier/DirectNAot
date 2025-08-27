@@ -9,7 +9,7 @@ public static class IMFAttributesExtensions
             return "<null>";
 
         separator ??= " | ";
-        return string.Join(separator, EnumerateValues(input).Select(kv => $"{kv.Key.GetConstantName()}={TraceValue(kv.Value)}"));
+        return string.Join(separator, EnumerateValues(input).Select(kv => $"{kv.Key.GetName()}={TraceValue(kv.Value)}"));
     }
 
     public static string TraceValue(this object? value)
@@ -162,7 +162,7 @@ public static class IMFAttributesExtensions
     {
         foreach (var item in input.EnumerateValues())
         {
-            yield return new(item.Key.GetConstantName(true), item.Value);
+            yield return new(item.Key.GetName(), item.Value);
         }
     }
 
