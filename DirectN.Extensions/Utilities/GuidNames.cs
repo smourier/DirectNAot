@@ -18,6 +18,16 @@ public static class GuidNames
         }
     }
 
+    public static void AddClassGuids([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] this Type type)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+
+        foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly).Where(f => f.FieldType == typeof(Guid)))
+        {
+            _guidNames[(Guid)field.GetValue(null)!] = field.Name;
+        }
+    }
+
     public static string GetName(this Guid guid)
     {
         if (TryGetName(guid, out var name))
