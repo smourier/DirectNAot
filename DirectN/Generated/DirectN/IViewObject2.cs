@@ -9,5 +9,5 @@ public partial interface IViewObject2 : IViewObject
     // https://learn.microsoft.com/windows/win32/api/oleidl/nf-oleidl-iviewobject2-getextent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetExtent(DVASPECT dwDrawAspect, int lindex, in DVTARGETDEVICE ptd, out SIZE lpsizel);
+    HRESULT GetExtent(DVASPECT dwDrawAspect, int lindex, nint ptd, out SIZE lpsizel);
 }

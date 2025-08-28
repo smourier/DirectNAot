@@ -10,7 +10,7 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
 
     public CommandTargetConnectionPoint(Guid interfaceId)
     {
-        InterfaceId = interfaceId; ;
+        InterfaceId = interfaceId;
     }
 
     public Guid InterfaceId { get; }

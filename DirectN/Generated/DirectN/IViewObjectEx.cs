@@ -29,5 +29,5 @@ public partial interface IViewObjectEx : IViewObject2
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iviewobjectex-getnaturalextent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetNaturalExtent(DVASPECT dwAspect, int lindex, in DVTARGETDEVICE ptd, HDC hicTargetDev, in DVEXTENTINFO pExtentInfo, out SIZE pSizel);
+    HRESULT GetNaturalExtent(DVASPECT dwAspect, int lindex, nint ptd, HDC hicTargetDev, nint pExtentInfo, nint pSizel);
 }

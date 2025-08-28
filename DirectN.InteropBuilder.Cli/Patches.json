@@ -102,6 +102,54 @@
       ]
     },
     {
+      "TypeName": "IViewObject2",
+      "Methods": [
+        {
+          "Name": "GetExtent",
+          "Parameters": [
+            {
+              "Name": "ptd",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "TypeName": "IViewObjectEx",
+      "Methods": [
+        {
+          "Name": "GetNaturalExtent",
+          "Parameters": [
+            {
+              "Name": "ptd",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            },
+            {
+              "Name": "pExtentInfo",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            },
+            {
+              "Name": "pSizel",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "TypeName": "ITypeInfo",
       "Methods": [
         {

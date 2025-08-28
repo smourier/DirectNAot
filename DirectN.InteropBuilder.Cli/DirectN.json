@@ -80,6 +80,7 @@
     "IPropertyNotifySink",
     "IPropertyPage2",
     "IProvideClassInfo2",
+    "IProvideMultipleClassInfo",
     "IQuickActivate",
     "IRpcOptions",
     "IRunnableObject",

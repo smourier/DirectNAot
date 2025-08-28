@@ -81,6 +81,12 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
                 return UValue.ToString();
 
             case "n":
+                if (Value == 0)
+                    return "S_OK";
+
+                if (Value == 1)
+                    return "S_FALSE";
+
                 if (!_names.TryGetValue(Value, out var text))
                 {
                     var value = Value;
