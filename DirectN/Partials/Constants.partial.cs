@@ -17,6 +17,11 @@ public static partial class Constants
 
     public const uint USER_DEFAULT_SCREEN_DPI = 96;
 
+    public const uint INTERFACESAFE_FOR_UNTRUSTED_CALLER = 0x00000001;
+    public const uint INTERFACESAFE_FOR_UNTRUSTED_DATA = 0x00000002;
+    public const uint INTERFACE_USES_DISPEX = 0x00000004;
+    public const uint INTERFACE_USES_SECURITY_MANAGER = 0x00000008;
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;

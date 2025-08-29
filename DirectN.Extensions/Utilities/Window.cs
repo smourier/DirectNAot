@@ -2,15 +2,12 @@
 
 public class Window : IDisposable, IEquatable<Window>
 {
-    private const uint WM_PROCESS_TASKS = Application.WM_APP_QUIT - 3;
     private const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
     private nint _handle;
     private int _disposeState;
     private GCHandle _gcHandle;
     private readonly WNDPROC? _windowProc;
-    private ConcurrentQueue<Task>? _tasks = [];
     private readonly Lazy<Process?> _process;
-    private readonly Scheduler? _scheduler;
 
     public event EventHandler? HandleCreated;
     public event EventHandler? Created;
@@ -45,7 +42,7 @@ public class Window : IDisposable, IEquatable<Window>
         ArgumentNullException.ThrowIfNull(className);
         _process = new Lazy<Process?>(GetProcess);
         _windowProc = SafeWindowProc;
-        _scheduler = new Scheduler(this);
+        TaskScheduler = CreateScheduler(this) ?? throw new InvalidOperationException(); ;
         RegisterClass(className, Marshal.GetFunctionPointerForDelegate(_windowProc), LoadCreationIcon());
         CreateWindow(title, style, extendedStyle, rect, parentHandle, menu, className);
         Application.AddWindow(this);
@@ -53,7 +50,7 @@ public class Window : IDisposable, IEquatable<Window>
 
     public int ManagedThreadId { get; }
     public HWND Handle => new() { Value = _handle };
-    public TaskScheduler? TaskScheduler => _scheduler;
+    public WindowScheduler? TaskScheduler { get; }
     public Process? Process => _process.Value;
     public bool IsDisposingOrDisposed => _disposeState != 0;
     public bool IsDisposing => _disposeState == 1;
@@ -300,7 +297,8 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual Task RunTaskOnUIThread(Action action, bool startNew = false)
     {
         ArgumentNullException.ThrowIfNull(action);
-        if (_scheduler == null)
+        var scheduler = TaskScheduler;
+        if (scheduler == null)
             throw new DirectNException("0005: Cannot run or schedule a task on a non-owned window.");
 
         if (!startNew && IsRunningAsUIThread)
@@ -309,7 +307,7 @@ public class Window : IDisposable, IEquatable<Window>
             return Task.CompletedTask;
         }
 
-        return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, _scheduler);
+        return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, scheduler);
     }
 
     protected virtual void RunWithErrorHandled(Action action)
@@ -568,10 +566,6 @@ public class Window : IDisposable, IEquatable<Window>
 
                 break;
 
-            case WM_PROCESS_TASKS:
-                ProcessTasks();
-                break;
-
             case WM_WINDOW_CREATED:
                 OnCreated(this, EventArgs.Empty);
                 break;
@@ -580,9 +574,19 @@ public class Window : IDisposable, IEquatable<Window>
                 DestroyOnDispose = false;
                 Dispose();
                 break;
+
+            default:
+                var scheduler = TaskScheduler;
+                if (scheduler != null && msg == scheduler.ProcessTasksMessage)
+                {
+                    scheduler.ProcessTasks();
+                }
+                break;
         }
         return null; // unhandled
     }
+
+    protected virtual WindowScheduler CreateScheduler(Window window) => new(window);
 
     [SupportedOSPlatform("windows10.0.17134")]
     protected virtual DiagnosticsInformation CreateDiagnosticsInformation<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)] T>() where T : DiagnosticsInformation => new();
@@ -825,21 +829,8 @@ public class Window : IDisposable, IEquatable<Window>
     public override int GetHashCode() => _handle.GetHashCode();
     public override bool Equals(object? obj) => Equals(obj as Window);
     public bool Equals(Window? other) => other is not null && other._handle == _handle;
-    public static bool operator ==(Window? left, Window? right) => left is not null && right is not null && left._handle == right._handle;
-    public static bool operator !=(Window? left, Window? right) => left is null || right is null || left._handle != right._handle;
-
-    private void ProcessTasks()
-    {
-        var tasks = Interlocked.Exchange(ref _tasks, new());
-        if (tasks == null || tasks.IsEmpty || _scheduler == null)
-            return;
-
-        foreach (var task in tasks)
-        {
-            if (!_scheduler.TryExecuteTask(task))
-                throw new InvalidOperationException();
-        }
-    }
+    public static bool operator ==(Window? left, Window? right) => Equals(left, right);
+    public static bool operator !=(Window? left, Window? right) => !Equals(left, right);
 
     private Process? GetProcess()
     {
@@ -854,22 +845,5 @@ public class Window : IDisposable, IEquatable<Window>
         {
             return null;
         }
-    }
-
-    private sealed class Scheduler(Window window) : TaskScheduler
-    {
-        protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued) => false;
-        protected override IEnumerable<Task> GetScheduledTasks() => window._tasks ?? Enumerable.Empty<Task>();
-        protected override void QueueTask(Task task)
-        {
-            ArgumentNullException.ThrowIfNull(task);
-            if (window._tasks == null || window._scheduler == null)
-                return;
-
-            window._tasks.Enqueue(task);
-            Functions.PostMessageW(window.Handle, WM_PROCESS_TASKS);
-        }
-
-        public new bool TryExecuteTask(Task task) => base.TryExecuteTask(task);
     }
 }

@@ -208,11 +208,11 @@ public abstract class ComObject : IComObject
 #if DEBUG
         if (obj is ComObject co)
         {
-            co.Trace($"iid:{iid.GetConstantName()}");
+            co.Trace($"iid:{iid.GetName()}");
         }
         else
         {
-            StaticTrace($"obj:{obj?.GetType().FullName} iid:{iid.GetConstantName()}");
+            StaticTrace($"obj:{obj?.GetType().FullName} iid:{iid.GetName()}");
         }
 #endif
         if (obj == null)
@@ -705,7 +705,7 @@ public abstract class ComObject : IComObject
     public static object? GetActivationFactory(string activatableClassId, Guid iid, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool throwOnError = true)
     {
 #if DEBUG
-        StaticTrace($"activatableClassId:{activatableClassId} iid:{iid.GetConstantName()}");
+        StaticTrace($"activatableClassId:{activatableClassId} iid:{iid.GetName()}");
 #endif
         ArgumentNullException.ThrowIfNull(activatableClassId);
         using var p = new Hstring(activatableClassId);

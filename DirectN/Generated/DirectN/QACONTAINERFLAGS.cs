@@ -1,0 +1,15 @@
+﻿#nullable enable
+namespace DirectN;
+
+// https://learn.microsoft.com/windows/win32/api/ocidl/ne-ocidl-qacontainerflags
+public enum QACONTAINERFLAGS
+{
+    QACONTAINER_SHOWHATCHING = 1,
+    QACONTAINER_SHOWGRABHANDLES = 2,
+    QACONTAINER_USERMODE = 4,
+    QACONTAINER_DISPLAYASDEFAULT = 8,
+    QACONTAINER_UIDEAD = 16,
+    QACONTAINER_AUTOCLIP = 32,
+    QACONTAINER_MESSAGEREFLECT = 64,
+    QACONTAINER_SUPPORTSMNEMONICS = 128,
+}

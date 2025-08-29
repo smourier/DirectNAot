@@ -82,7 +82,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.CompareItem(guidKey, Value, out pbResult);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{PropVariant.Unwrap(Value)} result:{pbResult} => {hr}");
+        Trace($"{guidKey.GetName()} value:{PropVariant.Unwrap(Value)} result:{pbResult} => {hr}");
 #endif
         return hr;
     }
@@ -100,7 +100,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.DeleteItem(guidKey);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} => {hr}");
+        Trace($"{guidKey.GetName()} => {hr}");
 #endif
         return hr;
     }
@@ -109,7 +109,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetAllocatedBlob(guidKey, out ppBuf, out pcbSize);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {ppBuf} {pcbSize} => {hr}");
+        Trace($"{guidKey.GetName()} {ppBuf} {pcbSize} => {hr}");
 #endif
         return hr;
     }
@@ -118,7 +118,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetAllocatedString(guidKey, out ppwszValue, out pcchLength);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {ppwszValue} {pcchLength} => {hr}");
+        Trace($"{guidKey.GetName()} {ppwszValue} {pcchLength} => {hr}");
 #endif
         return hr;
     }
@@ -127,7 +127,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetBlob(guidKey, pBuf, cbBufSize, pcbBlobSize);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pBuf} {cbBufSize} {pcbBlobSize} => {hr}");
+        Trace($"{guidKey.GetName()} {pBuf} {cbBufSize} {pcbBlobSize} => {hr}");
 #endif
         return hr;
     }
@@ -136,7 +136,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetBlobSize(guidKey, out pcbBlobSize);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pcbBlobSize} => {hr}");
+        Trace($"{guidKey.GetName()} {pcbBlobSize} => {hr}");
 #endif
         return hr;
     }
@@ -154,7 +154,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetDouble(guidKey, out pfValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pfValue} => {hr}");
+        Trace($"{guidKey.GetName()} {pfValue} => {hr}");
 #endif
         return hr;
     }
@@ -163,7 +163,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetGUID(guidKey, out pguidValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pguidValue.GetConstantName()} => {hr}");
+        Trace($"{guidKey.GetName()} {pguidValue.GetName()} => {hr}");
 #endif
         return hr;
     }
@@ -172,7 +172,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetItem(guidKey, pValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pValue} => {hr}");
+        Trace($"{guidKey.GetName()} {pValue} => {hr}");
 #endif
         return hr;
     }
@@ -181,7 +181,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetItemByIndex(unIndex, out pguidKey, pValue);
 #if DEBUG
-        Trace($"{unIndex} {pguidKey.GetConstantName()} {pValue} => {hr}");
+        Trace($"{unIndex} {pguidKey.GetName()} {pValue} => {hr}");
 #endif
         return hr;
     }
@@ -190,7 +190,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetItemType(guidKey, out pType);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pType} => {hr}");
+        Trace($"{guidKey.GetName()} {pType} => {hr}");
 #endif
         return hr;
     }
@@ -199,7 +199,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetString(guidKey, pwszValue, cchBufSize, pcchLength);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pwszValue} {cchBufSize} {pcchLength} => {hr}");
+        Trace($"{guidKey.GetName()} {pwszValue} {cchBufSize} {pcchLength} => {hr}");
 #endif
         return hr;
     }
@@ -208,7 +208,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetStringLength(guidKey, out pcchLength);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {pcchLength} => {hr}");
+        Trace($"{guidKey.GetName()} {pcchLength} => {hr}");
 #endif
         return hr;
     }
@@ -217,7 +217,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetUINT32(guidKey, out punValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {punValue} => {hr}");
+        Trace($"{guidKey.GetName()} {punValue} => {hr}");
 #endif
         return hr;
     }
@@ -226,7 +226,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetUINT64(guidKey, out punValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {punValue} => {hr}");
+        Trace($"{guidKey.GetName()} {punValue} => {hr}");
 #endif
         return hr;
     }
@@ -235,7 +235,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.GetUnknown(guidKey, riid, out ppv);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} {riid.GetConstantName()} {ppv} => {hr}");
+        Trace($"{guidKey.GetName()} {riid.GetName()} {ppv} => {hr}");
 #endif
         return hr;
     }
@@ -253,7 +253,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetBlob(guidKey, pBuf, cbBufSize);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{pBuf} {cbBufSize} => {hr}");
+        Trace($"{guidKey.GetName()} value:{pBuf} {cbBufSize} => {hr}");
 #endif
         return hr;
     }
@@ -262,7 +262,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetDouble(guidKey, fValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{fValue} => {hr}");
+        Trace($"{guidKey.GetName()} value:{fValue} => {hr}");
 #endif
         return hr;
     }
@@ -271,7 +271,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetGUID(guidKey, guidValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{guidValue.GetConstantName()} => {hr}");
+        Trace($"{guidKey.GetName()} value:{guidValue.GetName()} => {hr}");
 #endif
         return hr;
     }
@@ -280,7 +280,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetItem(guidKey, Value);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{PropVariant.Unwrap(Value)} => {hr}");
+        Trace($"{guidKey.GetName()} value:{PropVariant.Unwrap(Value)} => {hr}");
 #endif
         return hr;
     }
@@ -289,7 +289,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetString(guidKey, wszValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} '{wszValue}' => {hr}");
+        Trace($"{guidKey.GetName()} '{wszValue}' => {hr}");
 #endif
         return hr;
     }
@@ -298,7 +298,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetUINT32(guidKey, unValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{unValue} => {hr}");
+        Trace($"{guidKey.GetName()} value:{unValue} => {hr}");
 #endif
         return hr;
     }
@@ -307,7 +307,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetUINT64(guidKey, unValue);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{unValue} => {hr}");
+        Trace($"{guidKey.GetName()} value:{unValue} => {hr}");
 #endif
         return hr;
     }
@@ -316,7 +316,7 @@ public partial class MFAttributes(string? name = null) :
     {
         var hr = NativeObject.SetUnknown(guidKey, pUnknown);
 #if DEBUG
-        Trace($"{guidKey.GetConstantName()} value:{pUnknown} => {hr}");
+        Trace($"{guidKey.GetName()} value:{pUnknown} => {hr}");
 #endif
         return hr;
     }
