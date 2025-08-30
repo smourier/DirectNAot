@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct D3D12_TEX2DMS_UAV : IEquatable<D3D12_TEX2DMS_UAV>
+public partial struct D3D12_TEX2DMS_UAV : IEquatable<D3D12_TEX2DMS_UAV>, IValueGet<uint>
 {
     public static readonly D3D12_TEX2DMS_UAV Null = new();
     
@@ -17,4 +17,7 @@ public partial struct D3D12_TEX2DMS_UAV : IEquatable<D3D12_TEX2DMS_UAV>
     public static bool operator !=(D3D12_TEX2DMS_UAV left, D3D12_TEX2DMS_UAV right) => !left.Equals(right);
     public static implicit operator uint(D3D12_TEX2DMS_UAV value) => value.UnusedField_NothingToDefine;
     public static implicit operator D3D12_TEX2DMS_UAV(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => UnusedField_NothingToDefine;
+    readonly object? IValueGet.GetValue() => UnusedField_NothingToDefine;
 }

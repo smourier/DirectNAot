@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HBITMAP : IEquatable<HBITMAP>
+public partial struct HBITMAP : IEquatable<HBITMAP>, IValueGet<nint>
 {
     public static readonly HBITMAP Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HBITMAP : IEquatable<HBITMAP>
     public static bool operator !=(HBITMAP left, HBITMAP right) => !left.Equals(right);
     public static implicit operator nint(HBITMAP value) => value.Value;
     public static implicit operator HBITMAP(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

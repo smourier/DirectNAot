@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct D3D12_SAMPLE_MASK : IEquatable<D3D12_SAMPLE_MASK>
+public partial struct D3D12_SAMPLE_MASK : IEquatable<D3D12_SAMPLE_MASK>, IValueGet<uint>
 {
     public static readonly D3D12_SAMPLE_MASK Null = new();
     
@@ -17,4 +17,7 @@ public partial struct D3D12_SAMPLE_MASK : IEquatable<D3D12_SAMPLE_MASK>
     public static bool operator !=(D3D12_SAMPLE_MASK left, D3D12_SAMPLE_MASK right) => !left.Equals(right);
     public static implicit operator uint(D3D12_SAMPLE_MASK value) => value.SampleMask;
     public static implicit operator D3D12_SAMPLE_MASK(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => SampleMask;
+    readonly object? IValueGet.GetValue() => SampleMask;
 }

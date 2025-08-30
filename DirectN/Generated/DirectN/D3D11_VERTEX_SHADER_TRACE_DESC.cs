@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11shadertracing/ns-d3d11shadertracing-d3d11_vertex_shader_trace_desc
-public partial struct D3D11_VERTEX_SHADER_TRACE_DESC : IEquatable<D3D11_VERTEX_SHADER_TRACE_DESC>
+public partial struct D3D11_VERTEX_SHADER_TRACE_DESC : IEquatable<D3D11_VERTEX_SHADER_TRACE_DESC>, IValueGet<ulong>
 {
     public static readonly D3D11_VERTEX_SHADER_TRACE_DESC Null = new();
     
@@ -18,4 +18,7 @@ public partial struct D3D11_VERTEX_SHADER_TRACE_DESC : IEquatable<D3D11_VERTEX_S
     public static bool operator !=(D3D11_VERTEX_SHADER_TRACE_DESC left, D3D11_VERTEX_SHADER_TRACE_DESC right) => !left.Equals(right);
     public static implicit operator ulong(D3D11_VERTEX_SHADER_TRACE_DESC value) => value.Invocation;
     public static implicit operator D3D11_VERTEX_SHADER_TRACE_DESC(ulong value) => new(value);
+    
+    readonly ulong IValueGet<ulong>.GetValue() => Invocation;
+    readonly object? IValueGet.GetValue() => Invocation;
 }

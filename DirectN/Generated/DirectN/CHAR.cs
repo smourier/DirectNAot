@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct CHAR : IEquatable<CHAR>
+public partial struct CHAR : IEquatable<CHAR>, IValueGet<sbyte>
 {
     public static readonly CHAR Null = new();
     
@@ -17,4 +17,7 @@ public partial struct CHAR : IEquatable<CHAR>
     public static bool operator !=(CHAR left, CHAR right) => !left.Equals(right);
     public static implicit operator sbyte(CHAR value) => value.Value;
     public static implicit operator CHAR(sbyte value) => new(value);
+    
+    readonly sbyte IValueGet<sbyte>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

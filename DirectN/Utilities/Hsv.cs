@@ -20,7 +20,7 @@ public struct Hsv(float hue, float saturation, float value) : IEquatable<Hsv>
         }
     }
 
-    public D3DCOLORVALUE ToD3DCOLORVALUE(float a = 1f)
+    public readonly D3DCOLORVALUE ToD3DCOLORVALUE(float a = 1f)
     {
         var hue = Hue;
         var saturation = Saturation;

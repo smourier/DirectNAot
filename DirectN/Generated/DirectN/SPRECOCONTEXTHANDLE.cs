@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPRECOCONTEXTHANDLE : IEquatable<SPRECOCONTEXTHANDLE>
+public partial struct SPRECOCONTEXTHANDLE : IEquatable<SPRECOCONTEXTHANDLE>, IValueGet<nint>
 {
     public static readonly SPRECOCONTEXTHANDLE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPRECOCONTEXTHANDLE : IEquatable<SPRECOCONTEXTHANDLE>
     public static bool operator !=(SPRECOCONTEXTHANDLE left, SPRECOCONTEXTHANDLE right) => !left.Equals(right);
     public static implicit operator nint(SPRECOCONTEXTHANDLE value) => value.Value;
     public static implicit operator SPRECOCONTEXTHANDLE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

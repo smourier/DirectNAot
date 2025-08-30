@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KSCLOCK_CREATE : IEquatable<KSCLOCK_CREATE>
+public partial struct KSCLOCK_CREATE : IEquatable<KSCLOCK_CREATE>, IValueGet<uint>
 {
     public static readonly KSCLOCK_CREATE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KSCLOCK_CREATE : IEquatable<KSCLOCK_CREATE>
     public static bool operator !=(KSCLOCK_CREATE left, KSCLOCK_CREATE right) => !left.Equals(right);
     public static implicit operator uint(KSCLOCK_CREATE value) => value.CreateFlags;
     public static implicit operator KSCLOCK_CREATE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => CreateFlags;
+    readonly object? IValueGet.GetValue() => CreateFlags;
 }

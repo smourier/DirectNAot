@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HGDIOBJ : IEquatable<HGDIOBJ>
+public partial struct HGDIOBJ : IEquatable<HGDIOBJ>, IValueGet<nint>
 {
     public static readonly HGDIOBJ Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HGDIOBJ : IEquatable<HGDIOBJ>
     public static bool operator !=(HGDIOBJ left, HGDIOBJ right) => !left.Equals(right);
     public static implicit operator nint(HGDIOBJ value) => value.Value;
     public static implicit operator HGDIOBJ(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct POOLCUE : IEquatable<POOLCUE>
+public partial struct POOLCUE : IEquatable<POOLCUE>, IValueGet<uint>
 {
     public static readonly POOLCUE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct POOLCUE : IEquatable<POOLCUE>
     public static bool operator !=(POOLCUE left, POOLCUE right) => !left.Equals(right);
     public static implicit operator uint(POOLCUE value) => value.ulOffset;
     public static implicit operator POOLCUE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulOffset;
+    readonly object? IValueGet.GetValue() => ulOffset;
 }

@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-namedcolor
-public partial struct NAMEDCOLOR : IEquatable<NAMEDCOLOR>
+public partial struct NAMEDCOLOR : IEquatable<NAMEDCOLOR>, IValueGet<uint>
 {
     public static readonly NAMEDCOLOR Null = new();
     
@@ -18,4 +18,7 @@ public partial struct NAMEDCOLOR : IEquatable<NAMEDCOLOR>
     public static bool operator !=(NAMEDCOLOR left, NAMEDCOLOR right) => !left.Equals(right);
     public static implicit operator uint(NAMEDCOLOR value) => value.dwIndex;
     public static implicit operator NAMEDCOLOR(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwIndex;
+    readonly object? IValueGet.GetValue() => dwIndex;
 }

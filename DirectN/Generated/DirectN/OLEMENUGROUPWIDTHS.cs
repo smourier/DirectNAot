@@ -2,7 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/oleidl/ns-oleidl-olemenugroupwidths
-public partial struct OLEMENUGROUPWIDTHS
+public partial struct OLEMENUGROUPWIDTHS : IValueGet<int[]>
 {
     public InlineArrayInt32_6 width;
+    
+    readonly int[]? IValueGet<int[]>.GetValue() => ((ReadOnlySpan<int>)width).ToArray();
+    readonly object? IValueGet.GetValue() => ((ReadOnlySpan<int>)width).ToArray();
 }

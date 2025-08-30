@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct NTSTATUS : IEquatable<NTSTATUS>
+public partial struct NTSTATUS : IEquatable<NTSTATUS>, IValueGet<int>
 {
     public static readonly NTSTATUS Null = new();
     
@@ -17,4 +17,7 @@ public partial struct NTSTATUS : IEquatable<NTSTATUS>
     public static bool operator !=(NTSTATUS left, NTSTATUS right) => !left.Equals(right);
     public static implicit operator int(NTSTATUS value) => value.Value;
     public static implicit operator NTSTATUS(int value) => new(value);
+    
+    readonly int IValueGet<int>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

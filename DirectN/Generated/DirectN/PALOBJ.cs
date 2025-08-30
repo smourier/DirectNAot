@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-palobj
-public partial struct PALOBJ : IEquatable<PALOBJ>
+public partial struct PALOBJ : IEquatable<PALOBJ>, IValueGet<uint>
 {
     public static readonly PALOBJ Null = new();
     
@@ -18,4 +18,7 @@ public partial struct PALOBJ : IEquatable<PALOBJ>
     public static bool operator !=(PALOBJ left, PALOBJ right) => !left.Equals(right);
     public static implicit operator uint(PALOBJ value) => value.ulReserved;
     public static implicit operator PALOBJ(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulReserved;
+    readonly object? IValueGet.GetValue() => ulReserved;
 }

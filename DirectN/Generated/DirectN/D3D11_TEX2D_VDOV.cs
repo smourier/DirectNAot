@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d11/ns-d3d11-d3d11_tex2d_vdov
-public partial struct D3D11_TEX2D_VDOV : IEquatable<D3D11_TEX2D_VDOV>
+public partial struct D3D11_TEX2D_VDOV : IEquatable<D3D11_TEX2D_VDOV>, IValueGet<uint>
 {
     public static readonly D3D11_TEX2D_VDOV Null = new();
     
@@ -18,4 +18,7 @@ public partial struct D3D11_TEX2D_VDOV : IEquatable<D3D11_TEX2D_VDOV>
     public static bool operator !=(D3D11_TEX2D_VDOV left, D3D11_TEX2D_VDOV right) => !left.Equals(right);
     public static implicit operator uint(D3D11_TEX2D_VDOV value) => value.ArraySlice;
     public static implicit operator D3D11_TEX2D_VDOV(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ArraySlice;
+    readonly object? IValueGet.GetValue() => ArraySlice;
 }

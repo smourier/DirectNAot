@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HACMDRIVERID : IEquatable<HACMDRIVERID>
+public partial struct HACMDRIVERID : IEquatable<HACMDRIVERID>, IValueGet<nint>
 {
     public static readonly HACMDRIVERID Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HACMDRIVERID : IEquatable<HACMDRIVERID>
     public static bool operator !=(HACMDRIVERID left, HACMDRIVERID right) => !left.Equals(right);
     public static implicit operator nint(HACMDRIVERID value) => value.Value;
     public static implicit operator HACMDRIVERID(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

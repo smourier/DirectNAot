@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct GLUnurbs : IEquatable<GLUnurbs>
+public partial struct GLUnurbs : IEquatable<GLUnurbs>, IValueGet<nint>
 {
     public static readonly GLUnurbs Null = new();
     
@@ -17,4 +17,7 @@ public partial struct GLUnurbs : IEquatable<GLUnurbs>
     public static bool operator !=(GLUnurbs left, GLUnurbs right) => !left.Equals(right);
     public static implicit operator nint(GLUnurbs value) => value.Value;
     public static implicit operator GLUnurbs(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

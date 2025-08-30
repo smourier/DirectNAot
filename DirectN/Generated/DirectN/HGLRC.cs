@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HGLRC : IEquatable<HGLRC>
+public partial struct HGLRC : IEquatable<HGLRC>, IValueGet<nint>
 {
     public static readonly HGLRC Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HGLRC : IEquatable<HGLRC>
     public static bool operator !=(HGLRC left, HGLRC right) => !left.Equals(right);
     public static implicit operator nint(HGLRC value) => value.Value;
     public static implicit operator HGLRC(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/office/client-developer/outlook/mapi/hresult
-public partial struct HRESULT : IEquatable<HRESULT>
+public partial struct HRESULT : IEquatable<HRESULT>, IValueGet<int>
 {
     public static readonly HRESULT Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HRESULT : IEquatable<HRESULT>
     public static bool operator !=(HRESULT left, HRESULT right) => !left.Equals(right);
     public static implicit operator int(HRESULT value) => value.Value;
     public static implicit operator HRESULT(int value) => new(value);
+    
+    readonly int IValueGet<int>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

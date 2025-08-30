@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct LPARAM : IEquatable<LPARAM>
+public partial struct LPARAM : IEquatable<LPARAM>, IValueGet<nint>
 {
     public static readonly LPARAM Null = new();
     
@@ -17,4 +17,7 @@ public partial struct LPARAM : IEquatable<LPARAM>
     public static bool operator !=(LPARAM left, LPARAM right) => !left.Equals(right);
     public static implicit operator nint(LPARAM value) => value.Value;
     public static implicit operator LPARAM(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

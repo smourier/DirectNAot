@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct DMUS_WAVEDL : IEquatable<DMUS_WAVEDL>
+public partial struct DMUS_WAVEDL : IEquatable<DMUS_WAVEDL>, IValueGet<uint>
 {
     public static readonly DMUS_WAVEDL Null = new();
     
@@ -17,4 +17,7 @@ public partial struct DMUS_WAVEDL : IEquatable<DMUS_WAVEDL>
     public static bool operator !=(DMUS_WAVEDL left, DMUS_WAVEDL right) => !left.Equals(right);
     public static implicit operator uint(DMUS_WAVEDL value) => value.cbWaveData;
     public static implicit operator DMUS_WAVEDL(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => cbWaveData;
+    readonly object? IValueGet.GetValue() => cbWaveData;
 }

@@ -2,7 +2,7 @@
 
 namespace DirectN;
 
-public partial struct PSTR // not disposable as we don't know here who allocated it
+public partial struct PSTR : IValueGet<string?>, IValueGet<nint> // not disposable as we don't know here who allocated it
 {
     public static readonly PSTR Null = new();
 
@@ -37,4 +37,8 @@ public partial struct PSTR // not disposable as we don't know here who allocated
     }
 
     public override readonly string? ToString() => Marshal.PtrToStringAnsi(Value);
+
+    readonly string? IValueGet<string?>.GetValue() => ToString();
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => ToString();
 }

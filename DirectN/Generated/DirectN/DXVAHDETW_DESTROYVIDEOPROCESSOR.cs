@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct DXVAHDETW_DESTROYVIDEOPROCESSOR : IEquatable<DXVAHDETW_DESTROYVIDEOPROCESSOR>
+public partial struct DXVAHDETW_DESTROYVIDEOPROCESSOR : IEquatable<DXVAHDETW_DESTROYVIDEOPROCESSOR>, IValueGet<ulong>
 {
     public static readonly DXVAHDETW_DESTROYVIDEOPROCESSOR Null = new();
     
@@ -17,4 +17,7 @@ public partial struct DXVAHDETW_DESTROYVIDEOPROCESSOR : IEquatable<DXVAHDETW_DES
     public static bool operator !=(DXVAHDETW_DESTROYVIDEOPROCESSOR left, DXVAHDETW_DESTROYVIDEOPROCESSOR right) => !left.Equals(right);
     public static implicit operator ulong(DXVAHDETW_DESTROYVIDEOPROCESSOR value) => value.pObject;
     public static implicit operator DXVAHDETW_DESTROYVIDEOPROCESSOR(ulong value) => new(value);
+    
+    readonly ulong IValueGet<ulong>.GetValue() => pObject;
+    readonly object? IValueGet.GetValue() => pObject;
 }

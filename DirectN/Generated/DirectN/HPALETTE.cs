@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HPALETTE : IEquatable<HPALETTE>
+public partial struct HPALETTE : IEquatable<HPALETTE>, IValueGet<nint>
 {
     public static readonly HPALETTE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HPALETTE : IEquatable<HPALETTE>
     public static bool operator !=(HPALETTE left, HPALETTE right) => !left.Equals(right);
     public static implicit operator nint(HPALETTE value) => value.Value;
     public static implicit operator HPALETTE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

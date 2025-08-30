@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPPHRASEPROPERTYHANDLE : IEquatable<SPPHRASEPROPERTYHANDLE>
+public partial struct SPPHRASEPROPERTYHANDLE : IEquatable<SPPHRASEPROPERTYHANDLE>, IValueGet<nint>
 {
     public static readonly SPPHRASEPROPERTYHANDLE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPPHRASEPROPERTYHANDLE : IEquatable<SPPHRASEPROPERTYHANDLE
     public static bool operator !=(SPPHRASEPROPERTYHANDLE left, SPPHRASEPROPERTYHANDLE right) => !left.Equals(right);
     public static implicit operator nint(SPPHRASEPROPERTYHANDLE value) => value.Value;
     public static implicit operator SPPHRASEPROPERTYHANDLE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

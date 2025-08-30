@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct VIDEO_REGISTER_VDM : IEquatable<VIDEO_REGISTER_VDM>
+public partial struct VIDEO_REGISTER_VDM : IEquatable<VIDEO_REGISTER_VDM>, IValueGet<uint>
 {
     public static readonly VIDEO_REGISTER_VDM Null = new();
     
@@ -17,4 +17,7 @@ public partial struct VIDEO_REGISTER_VDM : IEquatable<VIDEO_REGISTER_VDM>
     public static bool operator !=(VIDEO_REGISTER_VDM left, VIDEO_REGISTER_VDM right) => !left.Equals(right);
     public static implicit operator uint(VIDEO_REGISTER_VDM value) => value.MinimumStateSize;
     public static implicit operator VIDEO_REGISTER_VDM(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => MinimumStateSize;
+    readonly object? IValueGet.GetValue() => MinimumStateSize;
 }

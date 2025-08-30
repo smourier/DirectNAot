@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HDROP : IEquatable<HDROP>
+public partial struct HDROP : IEquatable<HDROP>, IValueGet<nint>
 {
     public static readonly HDROP Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HDROP : IEquatable<HDROP>
     public static bool operator !=(HDROP left, HDROP right) => !left.Equals(right);
     public static implicit operator nint(HDROP value) => value.Value;
     public static implicit operator HDROP(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct BOOL : IEquatable<BOOL>
+public partial struct BOOL
 {
     public static readonly BOOL TRUE = new(true);
     public static readonly BOOL FALSE = new();

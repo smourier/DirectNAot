@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct BSTR // not disposable as we don't know here who allocated it
+public partial struct BSTR : IValueGet<string?>, IValueGet<nint> // not disposable as we don't know here who allocated it
 {
     public static readonly BSTR Null = new();
 
@@ -24,4 +24,8 @@ public partial struct BSTR // not disposable as we don't know here who allocated
     }
 
     public override readonly string? ToString() => Marshal.PtrToStringBSTR(Value);
+
+    readonly string? IValueGet<string?>.GetValue() => ToString();
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => ToString();
 }

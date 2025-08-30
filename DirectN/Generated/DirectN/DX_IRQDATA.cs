@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-dx_irqdata
-public partial struct DX_IRQDATA : IEquatable<DX_IRQDATA>
+public partial struct DX_IRQDATA : IEquatable<DX_IRQDATA>, IValueGet<uint>
 {
     public static readonly DX_IRQDATA Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DX_IRQDATA : IEquatable<DX_IRQDATA>
     public static bool operator !=(DX_IRQDATA left, DX_IRQDATA right) => !left.Equals(right);
     public static implicit operator uint(DX_IRQDATA value) => value.dwIrqFlags;
     public static implicit operator DX_IRQDATA(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwIrqFlags;
+    readonly object? IValueGet.GetValue() => dwIrqFlags;
 }

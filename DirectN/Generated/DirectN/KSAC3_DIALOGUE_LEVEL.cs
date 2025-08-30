@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KSAC3_DIALOGUE_LEVEL : IEquatable<KSAC3_DIALOGUE_LEVEL>
+public partial struct KSAC3_DIALOGUE_LEVEL : IEquatable<KSAC3_DIALOGUE_LEVEL>, IValueGet<uint>
 {
     public static readonly KSAC3_DIALOGUE_LEVEL Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KSAC3_DIALOGUE_LEVEL : IEquatable<KSAC3_DIALOGUE_LEVEL>
     public static bool operator !=(KSAC3_DIALOGUE_LEVEL left, KSAC3_DIALOGUE_LEVEL right) => !left.Equals(right);
     public static implicit operator uint(KSAC3_DIALOGUE_LEVEL value) => value.DialogueLevel;
     public static implicit operator KSAC3_DIALOGUE_LEVEL(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => DialogueLevel;
+    readonly object? IValueGet.GetValue() => DialogueLevel;
 }

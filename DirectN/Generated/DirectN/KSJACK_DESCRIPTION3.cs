@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KSJACK_DESCRIPTION3 : IEquatable<KSJACK_DESCRIPTION3>
+public partial struct KSJACK_DESCRIPTION3 : IEquatable<KSJACK_DESCRIPTION3>, IValueGet<uint>
 {
     public static readonly KSJACK_DESCRIPTION3 Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KSJACK_DESCRIPTION3 : IEquatable<KSJACK_DESCRIPTION3>
     public static bool operator !=(KSJACK_DESCRIPTION3 left, KSJACK_DESCRIPTION3 right) => !left.Equals(right);
     public static implicit operator uint(KSJACK_DESCRIPTION3 value) => value.ConfigId;
     public static implicit operator KSJACK_DESCRIPTION3(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ConfigId;
+    readonly object? IValueGet.GetValue() => ConfigId;
 }

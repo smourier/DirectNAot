@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HMIXEROBJ : IEquatable<HMIXEROBJ>
+public partial struct HMIXEROBJ : IEquatable<HMIXEROBJ>, IValueGet<nint>
 {
     public static readonly HMIXEROBJ Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HMIXEROBJ : IEquatable<HMIXEROBJ>
     public static bool operator !=(HMIXEROBJ left, HMIXEROBJ right) => !left.Equals(right);
     public static implicit operator nint(HMIXEROBJ value) => value.Value;
     public static implicit operator HMIXEROBJ(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

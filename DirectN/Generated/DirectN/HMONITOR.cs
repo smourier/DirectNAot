@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HMONITOR : IEquatable<HMONITOR>
+public partial struct HMONITOR : IEquatable<HMONITOR>, IValueGet<nint>
 {
     public static readonly HMONITOR Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HMONITOR : IEquatable<HMONITOR>
     public static bool operator !=(HMONITOR left, HMONITOR right) => !left.Equals(right);
     public static implicit operator nint(HMONITOR value) => value.Value;
     public static implicit operator HMONITOR(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

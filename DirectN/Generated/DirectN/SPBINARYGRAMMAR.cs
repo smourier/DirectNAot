@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPBINARYGRAMMAR : IEquatable<SPBINARYGRAMMAR>
+public partial struct SPBINARYGRAMMAR : IEquatable<SPBINARYGRAMMAR>, IValueGet<uint>
 {
     public static readonly SPBINARYGRAMMAR Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPBINARYGRAMMAR : IEquatable<SPBINARYGRAMMAR>
     public static bool operator !=(SPBINARYGRAMMAR left, SPBINARYGRAMMAR right) => !left.Equals(right);
     public static implicit operator uint(SPBINARYGRAMMAR value) => value.ulTotalSerializedSize;
     public static implicit operator SPBINARYGRAMMAR(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulTotalSerializedSize;
+    readonly object? IValueGet.GetValue() => ulTotalSerializedSize;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HCERTSTORE : IEquatable<HCERTSTORE>
+public partial struct HCERTSTORE : IEquatable<HCERTSTORE>, IValueGet<nint>
 {
     public static readonly HCERTSTORE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HCERTSTORE : IEquatable<HCERTSTORE>
     public static bool operator !=(HCERTSTORE left, HCERTSTORE right) => !left.Equals(right);
     public static implicit operator nint(HCERTSTORE value) => value.Value;
     public static implicit operator HCERTSTORE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

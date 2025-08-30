@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HWAVEOUT : IEquatable<HWAVEOUT>
+public partial struct HWAVEOUT : IEquatable<HWAVEOUT>, IValueGet<nint>
 {
     public static readonly HWAVEOUT Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HWAVEOUT : IEquatable<HWAVEOUT>
     public static bool operator !=(HWAVEOUT left, HWAVEOUT right) => !left.Equals(right);
     public static implicit operator nint(HWAVEOUT value) => value.Value;
     public static implicit operator HWAVEOUT(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

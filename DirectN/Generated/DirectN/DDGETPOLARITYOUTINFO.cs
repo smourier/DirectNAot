@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddgetpolarityoutinfo
-public partial struct DDGETPOLARITYOUTINFO : IEquatable<DDGETPOLARITYOUTINFO>
+public partial struct DDGETPOLARITYOUTINFO : IEquatable<DDGETPOLARITYOUTINFO>, IValueGet<uint>
 {
     public static readonly DDGETPOLARITYOUTINFO Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DDGETPOLARITYOUTINFO : IEquatable<DDGETPOLARITYOUTINFO>
     public static bool operator !=(DDGETPOLARITYOUTINFO left, DDGETPOLARITYOUTINFO right) => !left.Equals(right);
     public static implicit operator uint(DDGETPOLARITYOUTINFO value) => value.bPolarity;
     public static implicit operator DDGETPOLARITYOUTINFO(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => bPolarity;
+    readonly object? IValueGet.GetValue() => bPolarity;
 }

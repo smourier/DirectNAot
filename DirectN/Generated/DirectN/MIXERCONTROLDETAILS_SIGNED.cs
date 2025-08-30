@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixercontroldetails_signed
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct MIXERCONTROLDETAILS_SIGNED : IEquatable<MIXERCONTROLDETAILS_SIGNED>
+public partial struct MIXERCONTROLDETAILS_SIGNED : IEquatable<MIXERCONTROLDETAILS_SIGNED>, IValueGet<int>
 {
     public static readonly MIXERCONTROLDETAILS_SIGNED Null = new();
     
@@ -19,4 +19,7 @@ public partial struct MIXERCONTROLDETAILS_SIGNED : IEquatable<MIXERCONTROLDETAIL
     public static bool operator !=(MIXERCONTROLDETAILS_SIGNED left, MIXERCONTROLDETAILS_SIGNED right) => !left.Equals(right);
     public static implicit operator int(MIXERCONTROLDETAILS_SIGNED value) => value.lValue;
     public static implicit operator MIXERCONTROLDETAILS_SIGNED(int value) => new(value);
+    
+    readonly int IValueGet<int>.GetValue() => lValue;
+    readonly object? IValueGet.GetValue() => lValue;
 }

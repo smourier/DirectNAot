@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HSURF : IEquatable<HSURF>
+public partial struct HSURF : IEquatable<HSURF>, IValueGet<nint>
 {
     public static readonly HSURF Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HSURF : IEquatable<HSURF>
     public static bool operator !=(HSURF left, HSURF right) => !left.Equals(right);
     public static implicit operator nint(HSURF value) => value.Value;
     public static implicit operator HSURF(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

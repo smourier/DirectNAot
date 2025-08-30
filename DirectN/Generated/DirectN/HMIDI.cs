@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HMIDI : IEquatable<HMIDI>
+public partial struct HMIDI : IEquatable<HMIDI>, IValueGet<nint>
 {
     public static readonly HMIDI Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HMIDI : IEquatable<HMIDI>
     public static bool operator !=(HMIDI left, HMIDI right) => !left.Equals(right);
     public static implicit operator nint(HMIDI value) => value.Value;
     public static implicit operator HMIDI(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

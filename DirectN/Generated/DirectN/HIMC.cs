@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HIMC : IEquatable<HIMC>
+public partial struct HIMC : IEquatable<HIMC>, IValueGet<nint>
 {
     public static readonly HIMC Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HIMC : IEquatable<HIMC>
     public static bool operator !=(HIMC left, HIMC right) => !left.Equals(right);
     public static implicit operator nint(HIMC value) => value.Value;
     public static implicit operator HIMC(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

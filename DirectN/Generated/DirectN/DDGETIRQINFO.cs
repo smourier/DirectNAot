@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddgetirqinfo
-public partial struct DDGETIRQINFO : IEquatable<DDGETIRQINFO>
+public partial struct DDGETIRQINFO : IEquatable<DDGETIRQINFO>, IValueGet<uint>
 {
     public static readonly DDGETIRQINFO Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DDGETIRQINFO : IEquatable<DDGETIRQINFO>
     public static bool operator !=(DDGETIRQINFO left, DDGETIRQINFO right) => !left.Equals(right);
     public static implicit operator uint(DDGETIRQINFO value) => value.dwFlags;
     public static implicit operator DDGETIRQINFO(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwFlags;
+    readonly object? IValueGet.GetValue() => dwFlags;
 }

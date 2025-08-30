@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct MPEG_HEADER_VERSION_BITS_MIDL : IEquatable<MPEG_HEADER_VERSION_BITS_MIDL>
+public partial struct MPEG_HEADER_VERSION_BITS_MIDL : IEquatable<MPEG_HEADER_VERSION_BITS_MIDL>, IValueGet<byte>
 {
     public static readonly MPEG_HEADER_VERSION_BITS_MIDL Null = new();
     
@@ -17,4 +17,7 @@ public partial struct MPEG_HEADER_VERSION_BITS_MIDL : IEquatable<MPEG_HEADER_VER
     public static bool operator !=(MPEG_HEADER_VERSION_BITS_MIDL left, MPEG_HEADER_VERSION_BITS_MIDL right) => !left.Equals(right);
     public static implicit operator byte(MPEG_HEADER_VERSION_BITS_MIDL value) => value.Bits;
     public static implicit operator MPEG_HEADER_VERSION_BITS_MIDL(byte value) => new(value);
+    
+    readonly byte IValueGet<byte>.GetValue() => Bits;
+    readonly object? IValueGet.GetValue() => Bits;
 }

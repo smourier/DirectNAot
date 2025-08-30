@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct GLUquadric : IEquatable<GLUquadric>
+public partial struct GLUquadric : IEquatable<GLUquadric>, IValueGet<nint>
 {
     public static readonly GLUquadric Null = new();
     
@@ -17,4 +17,7 @@ public partial struct GLUquadric : IEquatable<GLUquadric>
     public static bool operator !=(GLUquadric left, GLUquadric right) => !left.Equals(right);
     public static implicit operator nint(GLUquadric value) => value.Value;
     public static implicit operator GLUquadric(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

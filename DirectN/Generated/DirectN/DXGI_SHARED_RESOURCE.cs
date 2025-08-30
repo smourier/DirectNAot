@@ -2,7 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_shared_resource
-public partial struct DXGI_SHARED_RESOURCE
+public partial struct DXGI_SHARED_RESOURCE : IValueGet<HANDLE>
 {
     public HANDLE Handle;
+    
+    readonly HANDLE IValueGet<HANDLE>.GetValue() => Handle;
+    readonly object? IValueGet.GetValue() => Handle;
 }

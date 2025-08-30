@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxgi1_3/ns-dxgi1_3-dxgi_decode_swap_chain_desc
-public partial struct DXGI_DECODE_SWAP_CHAIN_DESC : IEquatable<DXGI_DECODE_SWAP_CHAIN_DESC>
+public partial struct DXGI_DECODE_SWAP_CHAIN_DESC : IEquatable<DXGI_DECODE_SWAP_CHAIN_DESC>, IValueGet<uint>
 {
     public static readonly DXGI_DECODE_SWAP_CHAIN_DESC Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DXGI_DECODE_SWAP_CHAIN_DESC : IEquatable<DXGI_DECODE_SWAP_
     public static bool operator !=(DXGI_DECODE_SWAP_CHAIN_DESC left, DXGI_DECODE_SWAP_CHAIN_DESC right) => !left.Equals(right);
     public static implicit operator uint(DXGI_DECODE_SWAP_CHAIN_DESC value) => value.Flags;
     public static implicit operator DXGI_DECODE_SWAP_CHAIN_DESC(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => Flags;
+    readonly object? IValueGet.GetValue() => Flags;
 }

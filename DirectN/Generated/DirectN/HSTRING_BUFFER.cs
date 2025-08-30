@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/WinRT/hstring-buffer
-public partial struct HSTRING_BUFFER : IEquatable<HSTRING_BUFFER>
+public partial struct HSTRING_BUFFER : IEquatable<HSTRING_BUFFER>, IValueGet<nint>
 {
     public static readonly HSTRING_BUFFER Null = new();
     
@@ -18,4 +18,7 @@ public partial struct HSTRING_BUFFER : IEquatable<HSTRING_BUFFER>
     public static bool operator !=(HSTRING_BUFFER left, HSTRING_BUFFER right) => !left.Equals(right);
     public static implicit operator nint(HSTRING_BUFFER value) => value.Value;
     public static implicit operator HSTRING_BUFFER(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

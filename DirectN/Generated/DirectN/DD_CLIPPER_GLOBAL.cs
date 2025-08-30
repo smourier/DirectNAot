@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_clipper_global
-public partial struct DD_CLIPPER_GLOBAL : IEquatable<DD_CLIPPER_GLOBAL>
+public partial struct DD_CLIPPER_GLOBAL : IEquatable<DD_CLIPPER_GLOBAL>, IValueGet<nuint>
 {
     public static readonly DD_CLIPPER_GLOBAL Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DD_CLIPPER_GLOBAL : IEquatable<DD_CLIPPER_GLOBAL>
     public static bool operator !=(DD_CLIPPER_GLOBAL left, DD_CLIPPER_GLOBAL right) => !left.Equals(right);
     public static implicit operator nuint(DD_CLIPPER_GLOBAL value) => value.dwReserved1;
     public static implicit operator DD_CLIPPER_GLOBAL(nuint value) => new(value);
+    
+    readonly nuint IValueGet<nuint>.GetValue() => dwReserved1;
+    readonly object? IValueGet.GetValue() => dwReserved1;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HMENU : IEquatable<HMENU>
+public partial struct HMENU : IEquatable<HMENU>, IValueGet<nint>
 {
     public static readonly HMENU Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HMENU : IEquatable<HMENU>
     public static bool operator !=(HMENU left, HMENU right) => !left.Equals(right);
     public static implicit operator nint(HMENU value) => value.Value;
     public static implicit operator HMENU(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

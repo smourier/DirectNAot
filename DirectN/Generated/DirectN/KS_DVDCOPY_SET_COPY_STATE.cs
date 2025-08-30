@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KS_DVDCOPY_SET_COPY_STATE : IEquatable<KS_DVDCOPY_SET_COPY_STATE>
+public partial struct KS_DVDCOPY_SET_COPY_STATE : IEquatable<KS_DVDCOPY_SET_COPY_STATE>, IValueGet<uint>
 {
     public static readonly KS_DVDCOPY_SET_COPY_STATE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KS_DVDCOPY_SET_COPY_STATE : IEquatable<KS_DVDCOPY_SET_COPY
     public static bool operator !=(KS_DVDCOPY_SET_COPY_STATE left, KS_DVDCOPY_SET_COPY_STATE right) => !left.Equals(right);
     public static implicit operator uint(KS_DVDCOPY_SET_COPY_STATE value) => value.DVDCopyState;
     public static implicit operator KS_DVDCOPY_SET_COPY_STATE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => DVDCopyState;
+    readonly object? IValueGet.GetValue() => DVDCopyState;
 }

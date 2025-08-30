@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/presentationtypes/ns-presentationtypes-systeminterrupttime
-public partial struct SystemInterruptTime : IEquatable<SystemInterruptTime>
+public partial struct SystemInterruptTime : IEquatable<SystemInterruptTime>, IValueGet<ulong>
 {
     public static readonly SystemInterruptTime Null = new();
     
@@ -18,4 +18,7 @@ public partial struct SystemInterruptTime : IEquatable<SystemInterruptTime>
     public static bool operator !=(SystemInterruptTime left, SystemInterruptTime right) => !left.Equals(right);
     public static implicit operator ulong(SystemInterruptTime value) => value.value;
     public static implicit operator SystemInterruptTime(ulong value) => new(value);
+    
+    readonly ulong IValueGet<ulong>.GetValue() => value;
+    readonly object? IValueGet.GetValue() => value;
 }

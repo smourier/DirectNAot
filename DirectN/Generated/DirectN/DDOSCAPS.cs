@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct DDOSCAPS : IEquatable<DDOSCAPS>
+public partial struct DDOSCAPS : IEquatable<DDOSCAPS>, IValueGet<uint>
 {
     public static readonly DDOSCAPS Null = new();
     
@@ -17,4 +17,7 @@ public partial struct DDOSCAPS : IEquatable<DDOSCAPS>
     public static bool operator !=(DDOSCAPS left, DDOSCAPS right) => !left.Equals(right);
     public static implicit operator uint(DDOSCAPS value) => value.dwCaps;
     public static implicit operator DDOSCAPS(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwCaps;
+    readonly object? IValueGet.GetValue() => dwCaps;
 }

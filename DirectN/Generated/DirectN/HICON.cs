@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HICON : IEquatable<HICON>
+public partial struct HICON : IEquatable<HICON>, IValueGet<nint>
 {
     public static readonly HICON Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HICON : IEquatable<HICON>
     public static bool operator !=(HICON left, HICON right) => !left.Equals(right);
     public static implicit operator nint(HICON value) => value.Value;
     public static implicit operator HICON(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

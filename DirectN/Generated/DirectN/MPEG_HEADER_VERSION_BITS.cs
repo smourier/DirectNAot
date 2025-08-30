@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2bits/ns-mpeg2bits-mpeg_header_version_bits
-public partial struct MPEG_HEADER_VERSION_BITS : IEquatable<MPEG_HEADER_VERSION_BITS>
+public partial struct MPEG_HEADER_VERSION_BITS : IEquatable<MPEG_HEADER_VERSION_BITS>, IValueGet<byte>
 {
     public static readonly MPEG_HEADER_VERSION_BITS Null = new();
     
@@ -18,4 +18,7 @@ public partial struct MPEG_HEADER_VERSION_BITS : IEquatable<MPEG_HEADER_VERSION_
     public static bool operator !=(MPEG_HEADER_VERSION_BITS left, MPEG_HEADER_VERSION_BITS right) => !left.Equals(right);
     public static implicit operator byte(MPEG_HEADER_VERSION_BITS value) => value._bitfield;
     public static implicit operator MPEG_HEADER_VERSION_BITS(byte value) => new(value);
+    
+    readonly byte IValueGet<byte>.GetValue() => _bitfield;
+    readonly object? IValueGet.GetValue() => _bitfield;
 }

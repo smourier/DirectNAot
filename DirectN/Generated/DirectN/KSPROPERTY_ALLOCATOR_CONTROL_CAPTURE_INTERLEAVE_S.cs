@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S : IEquatable<KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S>
+public partial struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S : IEquatable<KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S>, IValueGet<uint>
 {
     public static readonly KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S : IEquat
     public static bool operator !=(KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S left, KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S right) => !left.Equals(right);
     public static implicit operator uint(KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S value) => value.InterleavedCapPossible;
     public static implicit operator KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => InterleavedCapPossible;
+    readonly object? IValueGet.GetValue() => InterleavedCapPossible;
 }

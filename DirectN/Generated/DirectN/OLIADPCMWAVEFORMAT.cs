@@ -2,7 +2,10 @@
 namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct OLIADPCMWAVEFORMAT
+public partial struct OLIADPCMWAVEFORMAT : IValueGet<WAVEFORMATEX>
 {
     public WAVEFORMATEX wfx;
+    
+    readonly WAVEFORMATEX IValueGet<WAVEFORMATEX>.GetValue() => wfx;
+    readonly object? IValueGet.GetValue() => wfx;
 }

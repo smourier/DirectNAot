@@ -3,7 +3,10 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-itemidlist
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct ITEMIDLIST
+public partial struct ITEMIDLIST : IValueGet<SHITEMID>
 {
     public SHITEMID mkid;
+    
+    readonly SHITEMID IValueGet<SHITEMID>.GetValue() => mkid;
+    readonly object? IValueGet.GetValue() => mkid;
 }

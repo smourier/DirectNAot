@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HCURSOR : IEquatable<HCURSOR>
+public partial struct HCURSOR : IEquatable<HCURSOR>, IValueGet<nint>
 {
     public static readonly HCURSOR Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HCURSOR : IEquatable<HCURSOR>
     public static bool operator !=(HCURSOR left, HCURSOR right) => !left.Equals(right);
     public static implicit operator nint(HCURSOR value) => value.Value;
     public static implicit operator HCURSOR(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

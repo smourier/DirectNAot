@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct PDD_DESTROYDRIVERDATA : IEquatable<PDD_DESTROYDRIVERDATA>
+public partial struct PDD_DESTROYDRIVERDATA : IEquatable<PDD_DESTROYDRIVERDATA>, IValueGet<nint>
 {
     public static readonly PDD_DESTROYDRIVERDATA Null = new();
     
@@ -17,4 +17,7 @@ public partial struct PDD_DESTROYDRIVERDATA : IEquatable<PDD_DESTROYDRIVERDATA>
     public static bool operator !=(PDD_DESTROYDRIVERDATA left, PDD_DESTROYDRIVERDATA right) => !left.Equals(right);
     public static implicit operator nint(PDD_DESTROYDRIVERDATA value) => value.Value;
     public static implicit operator PDD_DESTROYDRIVERDATA(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

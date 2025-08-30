@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPSERIALIZEDPHRASE : IEquatable<SPSERIALIZEDPHRASE>
+public partial struct SPSERIALIZEDPHRASE : IEquatable<SPSERIALIZEDPHRASE>, IValueGet<uint>
 {
     public static readonly SPSERIALIZEDPHRASE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPSERIALIZEDPHRASE : IEquatable<SPSERIALIZEDPHRASE>
     public static bool operator !=(SPSERIALIZEDPHRASE left, SPSERIALIZEDPHRASE right) => !left.Equals(right);
     public static implicit operator uint(SPSERIALIZEDPHRASE value) => value.ulSerializedSize;
     public static implicit operator SPSERIALIZEDPHRASE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulSerializedSize;
+    readonly object? IValueGet.GetValue() => ulSerializedSize;
 }

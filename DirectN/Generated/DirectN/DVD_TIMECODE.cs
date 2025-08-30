@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_timecode
-public partial struct DVD_TIMECODE : IEquatable<DVD_TIMECODE>
+public partial struct DVD_TIMECODE : IEquatable<DVD_TIMECODE>, IValueGet<uint>
 {
     public static readonly DVD_TIMECODE Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DVD_TIMECODE : IEquatable<DVD_TIMECODE>
     public static bool operator !=(DVD_TIMECODE left, DVD_TIMECODE right) => !left.Equals(right);
     public static implicit operator uint(DVD_TIMECODE value) => value._bitfield;
     public static implicit operator DVD_TIMECODE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => _bitfield;
+    readonly object? IValueGet.GetValue() => _bitfield;
 }

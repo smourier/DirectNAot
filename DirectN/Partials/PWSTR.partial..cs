@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct PWSTR // not disposable as we don't know here who allocated it
+public partial struct PWSTR : IValueGet<string?>, IValueGet<nint> // not disposable as we don't know here who allocated it
 {
     public static readonly PWSTR Null = new();
 
@@ -33,4 +33,8 @@ public partial struct PWSTR // not disposable as we don't know here who allocate
     }
 
     public override readonly string? ToString() => Marshal.PtrToStringUni(Value);
+
+    readonly string? IValueGet<string?>.GetValue() => ToString();
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => ToString();
 }

@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct BOOLEAN : IEquatable<BOOLEAN>
+public partial struct BOOLEAN
 {
     public BOOLEAN(bool value)
     {

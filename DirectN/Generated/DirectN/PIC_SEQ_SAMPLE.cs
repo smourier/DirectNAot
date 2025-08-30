@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct PIC_SEQ_SAMPLE : IEquatable<PIC_SEQ_SAMPLE>
+public partial struct PIC_SEQ_SAMPLE : IEquatable<PIC_SEQ_SAMPLE>, IValueGet<uint>
 {
     public static readonly PIC_SEQ_SAMPLE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct PIC_SEQ_SAMPLE : IEquatable<PIC_SEQ_SAMPLE>
     public static bool operator !=(PIC_SEQ_SAMPLE left, PIC_SEQ_SAMPLE right) => !left.Equals(right);
     public static implicit operator uint(PIC_SEQ_SAMPLE value) => value._bitfield;
     public static implicit operator PIC_SEQ_SAMPLE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => _bitfield;
+    readonly object? IValueGet.GetValue() => _bitfield;
 }

@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_tex1d_rtv
-public partial struct D3D12_TEX1D_RTV : IEquatable<D3D12_TEX1D_RTV>
+public partial struct D3D12_TEX1D_RTV : IEquatable<D3D12_TEX1D_RTV>, IValueGet<uint>
 {
     public static readonly D3D12_TEX1D_RTV Null = new();
     
@@ -18,4 +18,7 @@ public partial struct D3D12_TEX1D_RTV : IEquatable<D3D12_TEX1D_RTV>
     public static bool operator !=(D3D12_TEX1D_RTV left, D3D12_TEX1D_RTV right) => !left.Equals(right);
     public static implicit operator uint(D3D12_TEX1D_RTV value) => value.MipSlice;
     public static implicit operator D3D12_TEX1D_RTV(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => MipSlice;
+    readonly object? IValueGet.GetValue() => MipSlice;
 }

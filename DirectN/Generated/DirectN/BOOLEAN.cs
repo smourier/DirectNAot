@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct BOOLEAN : IEquatable<BOOLEAN>
+public partial struct BOOLEAN : IEquatable<BOOLEAN>, IValueGet<byte>
 {
     public static readonly BOOLEAN Null = new();
     
@@ -17,4 +17,7 @@ public partial struct BOOLEAN : IEquatable<BOOLEAN>
     public static bool operator !=(BOOLEAN left, BOOLEAN right) => !left.Equals(right);
     public static implicit operator byte(BOOLEAN value) => value.Value;
     public static implicit operator BOOLEAN(byte value) => new(value);
+    
+    readonly byte IValueGet<byte>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

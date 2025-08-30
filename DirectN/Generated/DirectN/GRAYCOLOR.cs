@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/icm/ns-icm-graycolor
-public partial struct GRAYCOLOR : IEquatable<GRAYCOLOR>
+public partial struct GRAYCOLOR : IEquatable<GRAYCOLOR>, IValueGet<ushort>
 {
     public static readonly GRAYCOLOR Null = new();
     
@@ -18,4 +18,7 @@ public partial struct GRAYCOLOR : IEquatable<GRAYCOLOR>
     public static bool operator !=(GRAYCOLOR left, GRAYCOLOR right) => !left.Equals(right);
     public static implicit operator ushort(GRAYCOLOR value) => value.gray;
     public static implicit operator GRAYCOLOR(ushort value) => new(value);
+    
+    readonly ushort IValueGet<ushort>.GetValue() => gray;
+    readonly object? IValueGet.GetValue() => gray;
 }

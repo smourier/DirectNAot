@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct PDD_GETVPORTAUTOFLIPSURFACEDATA : IEquatable<PDD_GETVPORTAUTOFLIPSURFACEDATA>
+public partial struct PDD_GETVPORTAUTOFLIPSURFACEDATA : IEquatable<PDD_GETVPORTAUTOFLIPSURFACEDATA>, IValueGet<nint>
 {
     public static readonly PDD_GETVPORTAUTOFLIPSURFACEDATA Null = new();
     
@@ -17,4 +17,7 @@ public partial struct PDD_GETVPORTAUTOFLIPSURFACEDATA : IEquatable<PDD_GETVPORTA
     public static bool operator !=(PDD_GETVPORTAUTOFLIPSURFACEDATA left, PDD_GETVPORTAUTOFLIPSURFACEDATA right) => !left.Equals(right);
     public static implicit operator nint(PDD_GETVPORTAUTOFLIPSURFACEDATA value) => value.Value;
     public static implicit operator PDD_GETVPORTAUTOFLIPSURFACEDATA(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

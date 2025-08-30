@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct VIDEO_MODE : IEquatable<VIDEO_MODE>
+public partial struct VIDEO_MODE : IEquatable<VIDEO_MODE>, IValueGet<uint>
 {
     public static readonly VIDEO_MODE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct VIDEO_MODE : IEquatable<VIDEO_MODE>
     public static bool operator !=(VIDEO_MODE left, VIDEO_MODE right) => !left.Equals(right);
     public static implicit operator uint(VIDEO_MODE value) => value.RequestedMode;
     public static implicit operator VIDEO_MODE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => RequestedMode;
+    readonly object? IValueGet.GetValue() => RequestedMode;
 }

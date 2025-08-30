@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HCOLORSPACE : IEquatable<HCOLORSPACE>
+public partial struct HCOLORSPACE : IEquatable<HCOLORSPACE>, IValueGet<nint>
 {
     public static readonly HCOLORSPACE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HCOLORSPACE : IEquatable<HCOLORSPACE>
     public static bool operator !=(HCOLORSPACE left, HCOLORSPACE right) => !left.Equals(right);
     public static implicit operator nint(HCOLORSPACE value) => value.Value;
     public static implicit operator HCOLORSPACE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

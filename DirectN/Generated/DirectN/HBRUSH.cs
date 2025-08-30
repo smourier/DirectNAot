@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HBRUSH : IEquatable<HBRUSH>
+public partial struct HBRUSH : IEquatable<HBRUSH>, IValueGet<nint>
 {
     public static readonly HBRUSH Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HBRUSH : IEquatable<HBRUSH>
     public static bool operator !=(HBRUSH left, HBRUSH right) => !left.Equals(right);
     public static implicit operator nint(HBRUSH value) => value.Value;
     public static implicit operator HBRUSH(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

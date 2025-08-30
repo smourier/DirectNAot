@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddtransferoutinfo
-public partial struct DDTRANSFEROUTINFO : IEquatable<DDTRANSFEROUTINFO>
+public partial struct DDTRANSFEROUTINFO : IEquatable<DDTRANSFEROUTINFO>, IValueGet<uint>
 {
     public static readonly DDTRANSFEROUTINFO Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DDTRANSFEROUTINFO : IEquatable<DDTRANSFEROUTINFO>
     public static bool operator !=(DDTRANSFEROUTINFO left, DDTRANSFEROUTINFO right) => !left.Equals(right);
     public static implicit operator uint(DDTRANSFEROUTINFO value) => value.dwBufferPolarity;
     public static implicit operator DDTRANSFEROUTINFO(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwBufferPolarity;
+    readonly object? IValueGet.GetValue() => dwBufferPolarity;
 }

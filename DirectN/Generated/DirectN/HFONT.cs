@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HFONT : IEquatable<HFONT>
+public partial struct HFONT : IEquatable<HFONT>, IValueGet<nint>
 {
     public static readonly HFONT Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HFONT : IEquatable<HFONT>
     public static bool operator !=(HFONT left, HFONT right) => !left.Equals(right);
     public static implicit operator nint(HFONT value) => value.Value;
     public static implicit operator HFONT(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

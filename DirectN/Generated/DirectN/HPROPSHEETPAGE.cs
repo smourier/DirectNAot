@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HPROPSHEETPAGE : IEquatable<HPROPSHEETPAGE>
+public partial struct HPROPSHEETPAGE : IEquatable<HPROPSHEETPAGE>, IValueGet<nint>
 {
     public static readonly HPROPSHEETPAGE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HPROPSHEETPAGE : IEquatable<HPROPSHEETPAGE>
     public static bool operator !=(HPROPSHEETPAGE left, HPROPSHEETPAGE right) => !left.Equals(right);
     public static implicit operator nint(HPROPSHEETPAGE value) => value.Value;
     public static implicit operator HPROPSHEETPAGE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

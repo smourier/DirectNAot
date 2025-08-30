@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HSEMAPHORE : IEquatable<HSEMAPHORE>
+public partial struct HSEMAPHORE : IEquatable<HSEMAPHORE>, IValueGet<nint>
 {
     public static readonly HSEMAPHORE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HSEMAPHORE : IEquatable<HSEMAPHORE>
     public static bool operator !=(HSEMAPHORE left, HSEMAPHORE right) => !left.Equals(right);
     public static implicit operator nint(HSEMAPHORE value) => value.Value;
     public static implicit operator HSEMAPHORE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

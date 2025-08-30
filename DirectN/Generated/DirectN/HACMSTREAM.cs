@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HACMSTREAM : IEquatable<HACMSTREAM>
+public partial struct HACMSTREAM : IEquatable<HACMSTREAM>, IValueGet<nint>
 {
     public static readonly HACMSTREAM Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HACMSTREAM : IEquatable<HACMSTREAM>
     public static bool operator !=(HACMSTREAM left, HACMSTREAM right) => !left.Equals(right);
     public static implicit operator nint(HACMSTREAM value) => value.Value;
     public static implicit operator HACMSTREAM(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

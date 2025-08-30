@@ -902,6 +902,46 @@ public static class Conversions
                 conversionType == typeof(ulong);
         }
 
+        if (input is IValueGet vg)
+        {
+            try
+            {
+                var vgValue = vg.GetValue();
+                if (!Equals(vgValue, input))
+                    return TryChangeObjectType(vgValue, conversionType, provider, out value);
+            }
+            catch
+            {
+                // continue
+            }
+        }
+        else if (input is Variant v)
+        {
+            try
+            {
+                var vValue = v.Value;
+                if (!Equals(vValue, input))
+                    return TryChangeObjectType(vValue, conversionType, provider, out value);
+            }
+            catch
+            {
+                // continue
+            }
+        }
+        else if (input is PropVariant pv)
+        {
+            try
+            {
+                var pvValue = pv.Value;
+                if (!Equals(pvValue, input))
+                    return TryChangeObjectType(pvValue, conversionType, provider, out value);
+            }
+            catch
+            {
+                // continue
+            }
+        }
+
         if (isWellKnownConvertible() && input is IConvertible convertible)
         {
             try

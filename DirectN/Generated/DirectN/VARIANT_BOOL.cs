@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct VARIANT_BOOL : IEquatable<VARIANT_BOOL>
+public partial struct VARIANT_BOOL : IEquatable<VARIANT_BOOL>, IValueGet<short>
 {
     public static readonly VARIANT_BOOL Null = new();
     
@@ -17,4 +17,7 @@ public partial struct VARIANT_BOOL : IEquatable<VARIANT_BOOL>
     public static bool operator !=(VARIANT_BOOL left, VARIANT_BOOL right) => !left.Equals(right);
     public static implicit operator short(VARIANT_BOOL value) => value.Value;
     public static implicit operator VARIANT_BOOL(short value) => new(value);
+    
+    readonly short IValueGet<short>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

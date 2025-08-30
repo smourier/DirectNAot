@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct BDA_CAS_CLOSEMMIDATA : IEquatable<BDA_CAS_CLOSEMMIDATA>
+public partial struct BDA_CAS_CLOSEMMIDATA : IEquatable<BDA_CAS_CLOSEMMIDATA>, IValueGet<uint>
 {
     public static readonly BDA_CAS_CLOSEMMIDATA Null = new();
     
@@ -17,4 +17,7 @@ public partial struct BDA_CAS_CLOSEMMIDATA : IEquatable<BDA_CAS_CLOSEMMIDATA>
     public static bool operator !=(BDA_CAS_CLOSEMMIDATA left, BDA_CAS_CLOSEMMIDATA right) => !left.Equals(right);
     public static implicit operator uint(BDA_CAS_CLOSEMMIDATA value) => value.ulDialogNumber;
     public static implicit operator BDA_CAS_CLOSEMMIDATA(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulDialogNumber;
+    readonly object? IValueGet.GetValue() => ulDialogNumber;
 }

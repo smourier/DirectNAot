@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HKEY : IEquatable<HKEY>
+public partial struct HKEY : IEquatable<HKEY>, IValueGet<nint>
 {
     public static readonly HKEY Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HKEY : IEquatable<HKEY>
     public static bool operator !=(HKEY left, HKEY right) => !left.Equals(right);
     public static implicit operator nint(HKEY value) => value.Value;
     public static implicit operator HKEY(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

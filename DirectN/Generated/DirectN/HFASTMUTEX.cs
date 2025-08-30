@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HFASTMUTEX : IEquatable<HFASTMUTEX>
+public partial struct HFASTMUTEX : IEquatable<HFASTMUTEX>, IValueGet<nint>
 {
     public static readonly HFASTMUTEX Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HFASTMUTEX : IEquatable<HFASTMUTEX>
     public static bool operator !=(HFASTMUTEX left, HFASTMUTEX right) => !left.Equals(right);
     public static implicit operator nint(HFASTMUTEX value) => value.Value;
     public static implicit operator HFASTMUTEX(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

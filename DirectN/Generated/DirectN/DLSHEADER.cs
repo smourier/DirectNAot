@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct DLSHEADER : IEquatable<DLSHEADER>
+public partial struct DLSHEADER : IEquatable<DLSHEADER>, IValueGet<uint>
 {
     public static readonly DLSHEADER Null = new();
     
@@ -17,4 +17,7 @@ public partial struct DLSHEADER : IEquatable<DLSHEADER>
     public static bool operator !=(DLSHEADER left, DLSHEADER right) => !left.Equals(right);
     public static implicit operator uint(DLSHEADER value) => value.cInstruments;
     public static implicit operator DLSHEADER(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => cInstruments;
+    readonly object? IValueGet.GetValue() => cInstruments;
 }

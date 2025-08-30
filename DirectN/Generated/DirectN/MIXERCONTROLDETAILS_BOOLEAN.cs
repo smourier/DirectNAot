@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixercontroldetails_boolean
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct MIXERCONTROLDETAILS_BOOLEAN : IEquatable<MIXERCONTROLDETAILS_BOOLEAN>
+public partial struct MIXERCONTROLDETAILS_BOOLEAN : IEquatable<MIXERCONTROLDETAILS_BOOLEAN>, IValueGet<int>
 {
     public static readonly MIXERCONTROLDETAILS_BOOLEAN Null = new();
     
@@ -19,4 +19,7 @@ public partial struct MIXERCONTROLDETAILS_BOOLEAN : IEquatable<MIXERCONTROLDETAI
     public static bool operator !=(MIXERCONTROLDETAILS_BOOLEAN left, MIXERCONTROLDETAILS_BOOLEAN right) => !left.Equals(right);
     public static implicit operator int(MIXERCONTROLDETAILS_BOOLEAN value) => value.fValue;
     public static implicit operator MIXERCONTROLDETAILS_BOOLEAN(int value) => new(value);
+    
+    readonly int IValueGet<int>.GetValue() => fValue;
+    readonly object? IValueGet.GetValue() => fValue;
 }

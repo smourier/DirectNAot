@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct BOOL : IEquatable<BOOL>
+public partial struct BOOL : IEquatable<BOOL>, IValueGet<int>
 {
     public static readonly BOOL Null = new();
     
@@ -16,4 +16,7 @@ public partial struct BOOL : IEquatable<BOOL>
     public static bool operator !=(BOOL left, BOOL right) => !left.Equals(right);
     public static implicit operator int(BOOL value) => value.Value;
     public static implicit operator BOOL(int value) => new(value);
+    
+    readonly int IValueGet<int>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

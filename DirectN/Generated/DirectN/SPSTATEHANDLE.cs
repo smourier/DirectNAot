@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPSTATEHANDLE : IEquatable<SPSTATEHANDLE>
+public partial struct SPSTATEHANDLE : IEquatable<SPSTATEHANDLE>, IValueGet<nint>
 {
     public static readonly SPSTATEHANDLE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPSTATEHANDLE : IEquatable<SPSTATEHANDLE>
     public static bool operator !=(SPSTATEHANDLE left, SPSTATEHANDLE right) => !left.Equals(right);
     public static implicit operator nint(SPSTATEHANDLE value) => value.Value;
     public static implicit operator SPSTATEHANDLE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

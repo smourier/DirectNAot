@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HMIDIOUT : IEquatable<HMIDIOUT>
+public partial struct HMIDIOUT : IEquatable<HMIDIOUT>, IValueGet<nint>
 {
     public static readonly HMIDIOUT Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HMIDIOUT : IEquatable<HMIDIOUT>
     public static bool operator !=(HMIDIOUT left, HMIDIOUT right) => !left.Equals(right);
     public static implicit operator nint(HMIDIOUT value) => value.Value;
     public static implicit operator HMIDIOUT(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct CAPTURE_STREAMTIME : IEquatable<CAPTURE_STREAMTIME>
+public partial struct CAPTURE_STREAMTIME : IEquatable<CAPTURE_STREAMTIME>, IValueGet<long>
 {
     public static readonly CAPTURE_STREAMTIME Null = new();
     
@@ -17,4 +17,7 @@ public partial struct CAPTURE_STREAMTIME : IEquatable<CAPTURE_STREAMTIME>
     public static bool operator !=(CAPTURE_STREAMTIME left, CAPTURE_STREAMTIME right) => !left.Equals(right);
     public static implicit operator long(CAPTURE_STREAMTIME value) => value.StreamTime;
     public static implicit operator CAPTURE_STREAMTIME(long value) => new(value);
+    
+    readonly long IValueGet<long>.GetValue() => StreamTime;
+    readonly object? IValueGet.GetValue() => StreamTime;
 }

@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/amva/ns-amva-amvainternalmeminfo
-public partial struct AMVAInternalMemInfo : IEquatable<AMVAInternalMemInfo>
+public partial struct AMVAInternalMemInfo : IEquatable<AMVAInternalMemInfo>, IValueGet<uint>
 {
     public static readonly AMVAInternalMemInfo Null = new();
     
@@ -18,4 +18,7 @@ public partial struct AMVAInternalMemInfo : IEquatable<AMVAInternalMemInfo>
     public static bool operator !=(AMVAInternalMemInfo left, AMVAInternalMemInfo right) => !left.Equals(right);
     public static implicit operator uint(AMVAInternalMemInfo value) => value.dwScratchMemAlloc;
     public static implicit operator AMVAInternalMemInfo(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwScratchMemAlloc;
+    readonly object? IValueGet.GetValue() => dwScratchMemAlloc;
 }

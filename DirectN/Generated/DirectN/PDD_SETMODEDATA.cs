@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct PDD_SETMODEDATA : IEquatable<PDD_SETMODEDATA>
+public partial struct PDD_SETMODEDATA : IEquatable<PDD_SETMODEDATA>, IValueGet<nint>
 {
     public static readonly PDD_SETMODEDATA Null = new();
     
@@ -17,4 +17,7 @@ public partial struct PDD_SETMODEDATA : IEquatable<PDD_SETMODEDATA>
     public static bool operator !=(PDD_SETMODEDATA left, PDD_SETMODEDATA right) => !left.Equals(right);
     public static implicit operator nint(PDD_SETMODEDATA value) => value.Value;
     public static implicit operator PDD_SETMODEDATA(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

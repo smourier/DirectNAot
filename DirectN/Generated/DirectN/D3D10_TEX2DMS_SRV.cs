@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d10/ns-d3d10-d3d10_tex2dms_srv
-public partial struct D3D10_TEX2DMS_SRV : IEquatable<D3D10_TEX2DMS_SRV>
+public partial struct D3D10_TEX2DMS_SRV : IEquatable<D3D10_TEX2DMS_SRV>, IValueGet<uint>
 {
     public static readonly D3D10_TEX2DMS_SRV Null = new();
     
@@ -18,4 +18,7 @@ public partial struct D3D10_TEX2DMS_SRV : IEquatable<D3D10_TEX2DMS_SRV>
     public static bool operator !=(D3D10_TEX2DMS_SRV left, D3D10_TEX2DMS_SRV right) => !left.Equals(right);
     public static implicit operator uint(D3D10_TEX2DMS_SRV value) => value.UnusedField_NothingToDefine;
     public static implicit operator D3D10_TEX2DMS_SRV(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => UnusedField_NothingToDefine;
+    readonly object? IValueGet.GetValue() => UnusedField_NothingToDefine;
 }

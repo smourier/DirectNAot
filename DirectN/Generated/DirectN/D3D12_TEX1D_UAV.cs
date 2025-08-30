@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_tex1d_uav
-public partial struct D3D12_TEX1D_UAV : IEquatable<D3D12_TEX1D_UAV>
+public partial struct D3D12_TEX1D_UAV : IEquatable<D3D12_TEX1D_UAV>, IValueGet<uint>
 {
     public static readonly D3D12_TEX1D_UAV Null = new();
     
@@ -18,4 +18,7 @@ public partial struct D3D12_TEX1D_UAV : IEquatable<D3D12_TEX1D_UAV>
     public static bool operator !=(D3D12_TEX1D_UAV left, D3D12_TEX1D_UAV right) => !left.Equals(right);
     public static implicit operator uint(D3D12_TEX1D_UAV value) => value.MipSlice;
     public static implicit operator D3D12_TEX1D_UAV(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => MipSlice;
+    readonly object? IValueGet.GetValue() => MipSlice;
 }

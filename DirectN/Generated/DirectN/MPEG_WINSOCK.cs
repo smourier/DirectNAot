@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mpeg2structs/ns-mpeg2structs-mpeg_winsock
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct MPEG_WINSOCK : IEquatable<MPEG_WINSOCK>
+public partial struct MPEG_WINSOCK : IEquatable<MPEG_WINSOCK>, IValueGet<uint>
 {
     public static readonly MPEG_WINSOCK Null = new();
     
@@ -19,4 +19,7 @@ public partial struct MPEG_WINSOCK : IEquatable<MPEG_WINSOCK>
     public static bool operator !=(MPEG_WINSOCK left, MPEG_WINSOCK right) => !left.Equals(right);
     public static implicit operator uint(MPEG_WINSOCK value) => value.AVMGraphId;
     public static implicit operator MPEG_WINSOCK(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => AVMGraphId;
+    readonly object? IValueGet.GetValue() => AVMGraphId;
 }

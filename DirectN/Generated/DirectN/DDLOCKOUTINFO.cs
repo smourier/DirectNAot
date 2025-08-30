@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddlockoutinfo
-public partial struct DDLOCKOUTINFO : IEquatable<DDLOCKOUTINFO>
+public partial struct DDLOCKOUTINFO : IEquatable<DDLOCKOUTINFO>, IValueGet<nuint>
 {
     public static readonly DDLOCKOUTINFO Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DDLOCKOUTINFO : IEquatable<DDLOCKOUTINFO>
     public static bool operator !=(DDLOCKOUTINFO left, DDLOCKOUTINFO right) => !left.Equals(right);
     public static implicit operator nuint(DDLOCKOUTINFO value) => value.dwSurfacePtr;
     public static implicit operator DDLOCKOUTINFO(nuint value) => new(value);
+    
+    readonly nuint IValueGet<nuint>.GetValue() => dwSurfacePtr;
+    readonly object? IValueGet.GetValue() => dwSurfacePtr;
 }

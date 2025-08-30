@@ -1,7 +1,7 @@
 ﻿namespace DirectN;
 
 [SupportedOSPlatform("windows8.0")]
-public partial struct HSTRING
+public partial struct HSTRING : IValueGet<string?>, IValueGet<nint>
 {
     public HSTRING(string? value)
     {
@@ -52,4 +52,8 @@ public partial struct HSTRING
     }
 
     public override readonly string? ToString() => GetString(this);
+
+    readonly string? IValueGet<string?>.GetValue() => ToString();
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => ToString();
 }

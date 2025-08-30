@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct TrackerHandle : IEquatable<TrackerHandle>
+public partial struct TrackerHandle : IEquatable<TrackerHandle>, IValueGet<nint>
 {
     public static readonly TrackerHandle Null = new();
     
@@ -17,4 +17,7 @@ public partial struct TrackerHandle : IEquatable<TrackerHandle>
     public static bool operator !=(TrackerHandle left, TrackerHandle right) => !left.Equals(right);
     public static implicit operator nint(TrackerHandle value) => value.Value;
     public static implicit operator TrackerHandle(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

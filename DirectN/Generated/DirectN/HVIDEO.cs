@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HVIDEO : IEquatable<HVIDEO>
+public partial struct HVIDEO : IEquatable<HVIDEO>, IValueGet<nint>
 {
     public static readonly HVIDEO Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HVIDEO : IEquatable<HVIDEO>
     public static bool operator !=(HVIDEO left, HVIDEO right) => !left.Equals(right);
     public static implicit operator nint(HVIDEO value) => value.Value;
     public static implicit operator HVIDEO(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

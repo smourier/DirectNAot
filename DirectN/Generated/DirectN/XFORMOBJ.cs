@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-xformobj
-public partial struct XFORMOBJ : IEquatable<XFORMOBJ>
+public partial struct XFORMOBJ : IEquatable<XFORMOBJ>, IValueGet<uint>
 {
     public static readonly XFORMOBJ Null = new();
     
@@ -18,4 +18,7 @@ public partial struct XFORMOBJ : IEquatable<XFORMOBJ>
     public static bool operator !=(XFORMOBJ left, XFORMOBJ right) => !left.Equals(right);
     public static implicit operator uint(XFORMOBJ value) => value.ulReserved;
     public static implicit operator XFORMOBJ(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulReserved;
+    readonly object? IValueGet.GetValue() => ulReserved;
 }

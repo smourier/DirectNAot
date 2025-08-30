@@ -33,14 +33,14 @@ public sealed class Variant : IDisposable
         if (value is nint ptr)
         {
             _inner.Anonymous.Anonymous.Anonymous.punkVal = ptr;
-            _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+            _inner.Anonymous.Anonymous.vt = type ?? (nint.Size == 4 ? VARENUM.VT_I4 : VARENUM.VT_I8);
             return;
         }
 
         if (value is nuint uptr)
         {
             _inner.Anonymous.Anonymous.Anonymous.punkVal = (nint)uptr;
-            _inner.Anonymous.Anonymous.vt = type ?? VARENUM.VT_UNKNOWN;
+            _inner.Anonymous.Anonymous.vt = type ?? (nint.Size == 4 ? VARENUM.VT_UI4 : VARENUM.VT_UI8);
             return;
         }
 

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KS_COPY_MACROVISION : IEquatable<KS_COPY_MACROVISION>
+public partial struct KS_COPY_MACROVISION : IEquatable<KS_COPY_MACROVISION>, IValueGet<uint>
 {
     public static readonly KS_COPY_MACROVISION Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KS_COPY_MACROVISION : IEquatable<KS_COPY_MACROVISION>
     public static bool operator !=(KS_COPY_MACROVISION left, KS_COPY_MACROVISION right) => !left.Equals(right);
     public static implicit operator uint(KS_COPY_MACROVISION value) => value.MACROVISIONLevel;
     public static implicit operator KS_COPY_MACROVISION(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => MACROVISIONLevel;
+    readonly object? IValueGet.GetValue() => MACROVISIONLevel;
 }

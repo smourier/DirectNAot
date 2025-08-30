@@ -2,7 +2,10 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_dred_auto_breadcrumbs_output
-public partial struct D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT
+public partial struct D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT : IValueGet<nint>
 {
     public nint pHeadAutoBreadcrumbNode;
+    
+    readonly nint IValueGet<nint>.GetValue() => pHeadAutoBreadcrumbNode;
+    readonly object? IValueGet.GetValue() => pHeadAutoBreadcrumbNode;
 }

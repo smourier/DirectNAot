@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddscaps
-public partial struct DDSCAPS : IEquatable<DDSCAPS>
+public partial struct DDSCAPS : IEquatable<DDSCAPS>, IValueGet<uint>
 {
     public static readonly DDSCAPS Null = new();
     
@@ -18,4 +18,7 @@ public partial struct DDSCAPS : IEquatable<DDSCAPS>
     public static bool operator !=(DDSCAPS left, DDSCAPS right) => !left.Equals(right);
     public static implicit operator uint(DDSCAPS value) => value.dwCaps;
     public static implicit operator DDSCAPS(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwCaps;
+    readonly object? IValueGet.GetValue() => dwCaps;
 }

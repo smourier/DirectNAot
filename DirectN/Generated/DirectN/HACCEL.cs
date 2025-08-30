@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HACCEL : IEquatable<HACCEL>
+public partial struct HACCEL : IEquatable<HACCEL>, IValueGet<nint>
 {
     public static readonly HACCEL Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HACCEL : IEquatable<HACCEL>
     public static bool operator !=(HACCEL left, HACCEL right) => !left.Equals(right);
     public static implicit operator nint(HACCEL value) => value.Value;
     public static implicit operator HACCEL(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

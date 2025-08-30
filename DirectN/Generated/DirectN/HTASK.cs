@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HTASK : IEquatable<HTASK>
+public partial struct HTASK : IEquatable<HTASK>, IValueGet<nint>
 {
     public static readonly HTASK Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HTASK : IEquatable<HTASK>
     public static bool operator !=(HTASK left, HTASK right) => !left.Equals(right);
     public static implicit operator nint(HTASK value) => value.Value;
     public static implicit operator HTASK(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

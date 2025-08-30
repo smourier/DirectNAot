@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SPWORDHANDLE : IEquatable<SPWORDHANDLE>
+public partial struct SPWORDHANDLE : IEquatable<SPWORDHANDLE>, IValueGet<nint>
 {
     public static readonly SPWORDHANDLE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SPWORDHANDLE : IEquatable<SPWORDHANDLE>
     public static bool operator !=(SPWORDHANDLE left, SPWORDHANDLE right) => !left.Equals(right);
     public static implicit operator nint(SPWORDHANDLE value) => value.Value;
     public static implicit operator SPWORDHANDLE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

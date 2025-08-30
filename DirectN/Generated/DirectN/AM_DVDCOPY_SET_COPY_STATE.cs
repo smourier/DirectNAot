@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-am_dvdcopy_set_copy_state
-public partial struct AM_DVDCOPY_SET_COPY_STATE : IEquatable<AM_DVDCOPY_SET_COPY_STATE>
+public partial struct AM_DVDCOPY_SET_COPY_STATE : IEquatable<AM_DVDCOPY_SET_COPY_STATE>, IValueGet<uint>
 {
     public static readonly AM_DVDCOPY_SET_COPY_STATE Null = new();
     
@@ -18,4 +18,7 @@ public partial struct AM_DVDCOPY_SET_COPY_STATE : IEquatable<AM_DVDCOPY_SET_COPY
     public static bool operator !=(AM_DVDCOPY_SET_COPY_STATE left, AM_DVDCOPY_SET_COPY_STATE right) => !left.Equals(right);
     public static implicit operator uint(AM_DVDCOPY_SET_COPY_STATE value) => value.DVDCopyState;
     public static implicit operator AM_DVDCOPY_SET_COPY_STATE(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => DVDCopyState;
+    readonly object? IValueGet.GetValue() => DVDCopyState;
 }

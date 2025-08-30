@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct SAMPLE_SEQ_OFFSET : IEquatable<SAMPLE_SEQ_OFFSET>
+public partial struct SAMPLE_SEQ_OFFSET : IEquatable<SAMPLE_SEQ_OFFSET>, IValueGet<uint>
 {
     public static readonly SAMPLE_SEQ_OFFSET Null = new();
     
@@ -17,4 +17,7 @@ public partial struct SAMPLE_SEQ_OFFSET : IEquatable<SAMPLE_SEQ_OFFSET>
     public static bool operator !=(SAMPLE_SEQ_OFFSET left, SAMPLE_SEQ_OFFSET right) => !left.Equals(right);
     public static implicit operator uint(SAMPLE_SEQ_OFFSET value) => value._bitfield;
     public static implicit operator SAMPLE_SEQ_OFFSET(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => _bitfield;
+    readonly object? IValueGet.GetValue() => _bitfield;
 }

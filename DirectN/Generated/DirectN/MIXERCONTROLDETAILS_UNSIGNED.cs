@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/api/mmeapi/ns-mmeapi-mixercontroldetails_unsigned
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct MIXERCONTROLDETAILS_UNSIGNED : IEquatable<MIXERCONTROLDETAILS_UNSIGNED>
+public partial struct MIXERCONTROLDETAILS_UNSIGNED : IEquatable<MIXERCONTROLDETAILS_UNSIGNED>, IValueGet<uint>
 {
     public static readonly MIXERCONTROLDETAILS_UNSIGNED Null = new();
     
@@ -19,4 +19,7 @@ public partial struct MIXERCONTROLDETAILS_UNSIGNED : IEquatable<MIXERCONTROLDETA
     public static bool operator !=(MIXERCONTROLDETAILS_UNSIGNED left, MIXERCONTROLDETAILS_UNSIGNED right) => !left.Equals(right);
     public static implicit operator uint(MIXERCONTROLDETAILS_UNSIGNED value) => value.dwValue;
     public static implicit operator MIXERCONTROLDETAILS_UNSIGNED(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => dwValue;
+    readonly object? IValueGet.GetValue() => dwValue;
 }

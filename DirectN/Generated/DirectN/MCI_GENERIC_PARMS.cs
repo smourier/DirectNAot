@@ -3,7 +3,7 @@ namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/Multimedia/mci-generic-parms
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct MCI_GENERIC_PARMS : IEquatable<MCI_GENERIC_PARMS>
+public partial struct MCI_GENERIC_PARMS : IEquatable<MCI_GENERIC_PARMS>, IValueGet<nuint>
 {
     public static readonly MCI_GENERIC_PARMS Null = new();
     
@@ -19,4 +19,7 @@ public partial struct MCI_GENERIC_PARMS : IEquatable<MCI_GENERIC_PARMS>
     public static bool operator !=(MCI_GENERIC_PARMS left, MCI_GENERIC_PARMS right) => !left.Equals(right);
     public static implicit operator nuint(MCI_GENERIC_PARMS value) => value.dwCallback;
     public static implicit operator MCI_GENERIC_PARMS(nuint value) => new(value);
+    
+    readonly nuint IValueGet<nuint>.GetValue() => dwCallback;
+    readonly object? IValueGet.GetValue() => dwCallback;
 }

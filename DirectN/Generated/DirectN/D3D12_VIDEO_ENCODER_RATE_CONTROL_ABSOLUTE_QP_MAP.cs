@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP : IEquatable<D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP>
+public partial struct D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP : IEquatable<D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP>, IValueGet<uint>
 {
     public static readonly D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP Null = new();
     
@@ -17,4 +17,7 @@ public partial struct D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP : IEquata
     public static bool operator !=(D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP left, D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP right) => !left.Equals(right);
     public static implicit operator uint(D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP value) => value.QualityVsSpeed;
     public static implicit operator D3D12_VIDEO_ENCODER_RATE_CONTROL_ABSOLUTE_QP_MAP(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => QualityVsSpeed;
+    readonly object? IValueGet.GetValue() => QualityVsSpeed;
 }

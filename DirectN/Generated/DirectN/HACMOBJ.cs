@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct HACMOBJ : IEquatable<HACMOBJ>
+public partial struct HACMOBJ : IEquatable<HACMOBJ>, IValueGet<nint>
 {
     public static readonly HACMOBJ Null = new();
     
@@ -17,4 +17,7 @@ public partial struct HACMOBJ : IEquatable<HACMOBJ>
     public static bool operator !=(HACMOBJ left, HACMOBJ right) => !left.Equals(right);
     public static implicit operator nint(HACMOBJ value) => value.Value;
     public static implicit operator HACMOBJ(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

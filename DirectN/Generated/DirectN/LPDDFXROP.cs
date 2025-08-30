@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct LPDDFXROP : IEquatable<LPDDFXROP>
+public partial struct LPDDFXROP : IEquatable<LPDDFXROP>, IValueGet<nint>
 {
     public static readonly LPDDFXROP Null = new();
     
@@ -17,4 +17,7 @@ public partial struct LPDDFXROP : IEquatable<LPDDFXROP>
     public static bool operator !=(LPDDFXROP left, LPDDFXROP right) => !left.Equals(right);
     public static implicit operator nint(LPDDFXROP value) => value.Value;
     public static implicit operator LPDDFXROP(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -2,7 +2,7 @@
 namespace DirectN;
 
 // https://learn.microsoft.com/windows/win32/gdi/colorref
-public partial struct COLORREF : IEquatable<COLORREF>
+public partial struct COLORREF : IEquatable<COLORREF>, IValueGet<uint>
 {
     public static readonly COLORREF Null = new();
     
@@ -18,4 +18,7 @@ public partial struct COLORREF : IEquatable<COLORREF>
     public static bool operator !=(COLORREF left, COLORREF right) => !left.Equals(right);
     public static implicit operator uint(COLORREF value) => value.Value;
     public static implicit operator COLORREF(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct KSWAVE_COMPATCAPS : IEquatable<KSWAVE_COMPATCAPS>
+public partial struct KSWAVE_COMPATCAPS : IEquatable<KSWAVE_COMPATCAPS>, IValueGet<uint>
 {
     public static readonly KSWAVE_COMPATCAPS Null = new();
     
@@ -17,4 +17,7 @@ public partial struct KSWAVE_COMPATCAPS : IEquatable<KSWAVE_COMPATCAPS>
     public static bool operator !=(KSWAVE_COMPATCAPS left, KSWAVE_COMPATCAPS right) => !left.Equals(right);
     public static implicit operator uint(KSWAVE_COMPATCAPS value) => value.ulDeviceType;
     public static implicit operator KSWAVE_COMPATCAPS(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => ulDeviceType;
+    readonly object? IValueGet.GetValue() => ulDeviceType;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct APARTMENT_SHUTDOWN_REGISTRATION_COOKIE : IEquatable<APARTMENT_SHUTDOWN_REGISTRATION_COOKIE>
+public partial struct APARTMENT_SHUTDOWN_REGISTRATION_COOKIE : IEquatable<APARTMENT_SHUTDOWN_REGISTRATION_COOKIE>, IValueGet<nint>
 {
     public static readonly APARTMENT_SHUTDOWN_REGISTRATION_COOKIE Null = new();
     
@@ -17,4 +17,7 @@ public partial struct APARTMENT_SHUTDOWN_REGISTRATION_COOKIE : IEquatable<APARTM
     public static bool operator !=(APARTMENT_SHUTDOWN_REGISTRATION_COOKIE left, APARTMENT_SHUTDOWN_REGISTRATION_COOKIE right) => !left.Equals(right);
     public static implicit operator nint(APARTMENT_SHUTDOWN_REGISTRATION_COOKIE value) => value.Value;
     public static implicit operator APARTMENT_SHUTDOWN_REGISTRATION_COOKIE(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => Value;
+    readonly object? IValueGet.GetValue() => Value;
 }

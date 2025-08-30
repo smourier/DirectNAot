@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct VBICODECFILTERING_CC_SUBSTREAMS : IEquatable<VBICODECFILTERING_CC_SUBSTREAMS>
+public partial struct VBICODECFILTERING_CC_SUBSTREAMS : IEquatable<VBICODECFILTERING_CC_SUBSTREAMS>, IValueGet<uint>
 {
     public static readonly VBICODECFILTERING_CC_SUBSTREAMS Null = new();
     
@@ -17,4 +17,7 @@ public partial struct VBICODECFILTERING_CC_SUBSTREAMS : IEquatable<VBICODECFILTE
     public static bool operator !=(VBICODECFILTERING_CC_SUBSTREAMS left, VBICODECFILTERING_CC_SUBSTREAMS right) => !left.Equals(right);
     public static implicit operator uint(VBICODECFILTERING_CC_SUBSTREAMS value) => value.SubstreamMask;
     public static implicit operator VBICODECFILTERING_CC_SUBSTREAMS(uint value) => new(value);
+    
+    readonly uint IValueGet<uint>.GetValue() => SubstreamMask;
+    readonly object? IValueGet.GetValue() => SubstreamMask;
 }

@@ -1,7 +1,7 @@
 ﻿#nullable enable
 namespace DirectN;
 
-public partial struct VIDEO_MEMORY : IEquatable<VIDEO_MEMORY>
+public partial struct VIDEO_MEMORY : IEquatable<VIDEO_MEMORY>, IValueGet<nint>
 {
     public static readonly VIDEO_MEMORY Null = new();
     
@@ -17,4 +17,7 @@ public partial struct VIDEO_MEMORY : IEquatable<VIDEO_MEMORY>
     public static bool operator !=(VIDEO_MEMORY left, VIDEO_MEMORY right) => !left.Equals(right);
     public static implicit operator nint(VIDEO_MEMORY value) => value.RequestedVirtualAddress;
     public static implicit operator VIDEO_MEMORY(nint value) => new(value);
+    
+    readonly nint IValueGet<nint>.GetValue() => RequestedVirtualAddress;
+    readonly object? IValueGet.GetValue() => RequestedVirtualAddress;
 }

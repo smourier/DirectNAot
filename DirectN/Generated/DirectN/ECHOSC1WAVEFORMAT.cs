@@ -2,7 +2,10 @@
 namespace DirectN;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public partial struct ECHOSC1WAVEFORMAT
+public partial struct ECHOSC1WAVEFORMAT : IValueGet<WAVEFORMATEX>
 {
     public WAVEFORMATEX wfx;
+    
+    readonly WAVEFORMATEX IValueGet<WAVEFORMATEX>.GetValue() => wfx;
+    readonly object? IValueGet.GetValue() => wfx;
 }
