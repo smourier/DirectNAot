@@ -339,6 +339,12 @@ public static class Conversions
                 value = unchecked((int)(byte)input);
                 return true;
             }
+
+            if (inputType == typeof(D3DCOLORVALUE))
+            {
+                value = ((D3DCOLORVALUE)input).Int32Value;
+                return true;
+            }
         }
 
         if (conversionType == typeof(long))
@@ -382,6 +388,12 @@ public static class Conversions
             if (inputType == typeof(DateTimeOffset))
             {
                 value = ((DateTimeOffset)input).Ticks;
+                return true;
+            }
+
+            if (inputType == typeof(D3DCOLORVALUE))
+            {
+                value = ((D3DCOLORVALUE)input).Int32Value;
                 return true;
             }
         }
@@ -465,6 +477,12 @@ public static class Conversions
                 value = unchecked((uint)(sbyte)input);
                 return true;
             }
+
+            if (inputType == typeof(D3DCOLORVALUE))
+            {
+                value = ((D3DCOLORVALUE)input).UInt32Value;
+                return true;
+            }
         }
 
         if (conversionType == typeof(ulong))
@@ -490,6 +508,12 @@ public static class Conversions
             if (inputType == typeof(sbyte))
             {
                 value = unchecked((ulong)(sbyte)input);
+                return true;
+            }
+
+            if (inputType == typeof(D3DCOLORVALUE))
+            {
+                value = ((D3DCOLORVALUE)input).UInt32Value;
                 return true;
             }
         }
@@ -884,6 +908,24 @@ public static class Conversions
                 return true;
             }
             value = D2D_RECT_U.Zero;
+            return false;
+        }
+
+        if (conversionType == typeof(D3DCOLORVALUE))
+        {
+            if (input is string si && D3DCOLORVALUE.TryParseFromName(si, out var named))
+            {
+                value = named;
+                return true;
+            }
+
+            if (TryChangeType(input, out uint ui))
+            {
+                value = new D3DCOLORVALUE(ui);
+                return true;
+            }
+
+            value = new D3DCOLORVALUE();
             return false;
         }
 
@@ -1843,6 +1885,12 @@ public static class Conversions
         if (value is D2D_SIZE_U su)
         {
             size = su;
+            return true;
+        }
+
+        if (value is SIZE sz)
+        {
+            size = sz;
             return true;
         }
 

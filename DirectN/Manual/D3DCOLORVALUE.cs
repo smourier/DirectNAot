@@ -7,7 +7,10 @@ public partial struct D3DCOLORVALUE :
     IEquatable<Vector4>,
     IEquatable<D2D_VECTOR_4F>,
     IEquatable<Vector3>,
-    IEquatable<D2D_VECTOR_3F>
+    IEquatable<D2D_VECTOR_3F>,
+    IValueGet<int>,
+    IValueGet<uint>,
+    IParsable<D3DCOLORVALUE>
 {
     public float r;
     public float g;
@@ -63,6 +66,10 @@ public partial struct D3DCOLORVALUE :
         this.b = b;
     }
 
+    readonly int IValueGet<int>.GetValue() => Int32Value;
+    readonly uint IValueGet<uint>.GetValue() => UInt32Value;
+    readonly object? IValueGet.GetValue() => UInt32Value;
+
     private static readonly ConcurrentDictionary<uint, string> _names = new();
     private static readonly ConcurrentDictionary<string, D3DCOLORVALUE> _colors = new(StringComparer.OrdinalIgnoreCase);
 
@@ -96,6 +103,15 @@ public partial struct D3DCOLORVALUE :
         return value;
     }
 
+    static D3DCOLORVALUE IParsable<D3DCOLORVALUE>.Parse(string s, IFormatProvider? provider)
+    {
+        if (TryParseFromName(s ?? string.Empty, out var value))
+            return value;
+
+        throw new FormatException();
+    }
+
+    static bool IParsable<D3DCOLORVALUE>.TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D3DCOLORVALUE result) => TryParseFromName(s ?? string.Empty, out result!);
     public static bool TryParseFromName(string name, out D3DCOLORVALUE outValue)
     {
         ArgumentNullException.ThrowIfNull(name);

@@ -99,6 +99,7 @@
     "IXpsRasterizationFactory2",
     "IXpsRasterizer",
     "ACTIVATEFLAGS",
+    "ADVF",
     "BIND_OPTS*",
     "BINDSPEED",
     "CIDA",

@@ -17,7 +17,7 @@ public class Window : IDisposable, IEquatable<Window>
     public event EventHandler<ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>>? Resized;
     public event EventHandler<HandledEventArgs>? Activated;
     public event EventHandler<HandledEventArgs>? Deactivated;
-    public event EventHandler<HandledEventArgs>? FocusChanged;
+    public event EventHandler<ValueEventArgs<bool>>? FocusChanged;
     public event EventHandler<CancelEventArgs>? Closing;
 
     protected Window(nint handle)
@@ -384,7 +384,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    protected virtual void OnFocusChanged(object? sender, HandledEventArgs e) => FocusChanged?.Invoke(sender, e);
+    protected virtual void OnFocusChanged(object? sender, ValueEventArgs<bool> e) => FocusChanged?.Invoke(sender, e);
     protected virtual void OnActivated(object? sender, HandledEventArgs e) => Activated?.Invoke(sender, e);
     protected virtual void OnDeactivated(object? sender, HandledEventArgs e) => Deactivated?.Invoke(sender, e);
     protected virtual void OnResized(object? sender, ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)> e) => Resized?.Invoke(sender, e);
@@ -455,11 +455,11 @@ public class Window : IDisposable, IEquatable<Window>
         return false;
     }
 
-    protected virtual bool OnFocusChanged()
+    protected virtual bool OnFocusChanged(bool setOrKill)
     {
-        var e = new HandledEventArgs();
+        var e = new ValueEventArgs<bool>(setOrKill, isCancellable: true);
         OnFocusChanged(this, e);
-        return false;
+        return e.Cancel;
     }
 
     protected virtual MINMAXINFO? GetMinMaxInfo(MINMAXINFO info)
@@ -510,8 +510,12 @@ public class Window : IDisposable, IEquatable<Window>
                 break;
 
             case MessageDecoder.WM_SETFOCUS:
+                if (OnFocusChanged(true))
+                    return new();
+                break;
+
             case MessageDecoder.WM_KILLFOCUS:
-                if (OnFocusChanged())
+                if (OnFocusChanged(false))
                     return new();
                 break;
 

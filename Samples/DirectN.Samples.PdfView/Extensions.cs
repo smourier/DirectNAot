@@ -6,7 +6,8 @@ public static class Extensions
     public static D3DCOLORVALUE ToColor(this Color value) => D3DCOLORVALUE.FromArgb(value.A, value.R, value.G, value.B);
     public static Size ToSize(this RECT value) => new(value.Width, value.Height);
 
-    // this is to replace the As<T> on C#/WinRT object which doesn't work well under AOT once published in release...
+    // this is to replace WinRT's As<T> on C#/WinRT object which doesn't work well under AOT once published in release...
+    // throws "Target type is not a projected type: DirectN.ICompositorInterop" from WinRT.TypeExtensions.GetHelperType(Type)
     [return: NotNullIfNotNull(nameof(winRTObject))]
     public static IComObject<T>? AsComObject<T>(this object? winRTObject, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
     {

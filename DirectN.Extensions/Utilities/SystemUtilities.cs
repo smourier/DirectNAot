@@ -5,6 +5,23 @@ public static class SystemUtilities
     private static readonly Lazy<Process> _currentProcess = new(() => Process.GetCurrentProcess(), true);
     public static Process CurrentProcess => _currentProcess.Value;
 
+    public static bool IsAppContainer()
+    {
+        if (!Functions.OpenProcessToken(Functions.GetCurrentProcess(), TOKEN_ACCESS_MASK.TOKEN_QUERY, out var handle))
+            return false;
+
+        try
+        {
+            using var mem = new ComMemory(4);
+            Functions.GetTokenInformation(handle, TOKEN_INFORMATION_CLASS.TokenIsAppContainer, mem.Pointer, mem.Size, out _);
+            return Marshal.ReadInt32(mem.Pointer) != 0;
+        }
+        finally
+        {
+            Functions.CloseHandle(handle);
+        }
+    }
+
     public static TokenElevationType GetTokenElevationType()
     {
         var type = TokenElevationType.Unknown;
