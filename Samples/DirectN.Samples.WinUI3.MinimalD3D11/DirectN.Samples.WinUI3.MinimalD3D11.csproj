@@ -17,10 +17,10 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Remove="Generated Files\**" />
-	  <EmbeddedResource Remove="Generated Files\**" />
-	  <None Remove="Generated Files\**" />
-	  <Page Remove="Generated Files\**" />
+		<Compile Remove="Generated Files\**" />
+		<EmbeddedResource Remove="Generated Files\**" />
+		<None Remove="Generated Files\**" />
+		<Page Remove="Generated Files\**" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="DirectN.ico" />
@@ -96,6 +96,6 @@
 		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PRIResource Remove="Generated Files\**" />
+		<PRIResource Remove="Generated Files\**" />
 	</ItemGroup>
 </Project>

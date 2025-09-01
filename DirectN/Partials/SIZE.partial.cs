@@ -43,7 +43,7 @@ public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatabl
     public static bool operator ==(SIZE left, SIZE right) => left.Equals(right);
     public static bool operator !=(SIZE left, SIZE right) => !(left == right);
 
-    public readonly D2D_SIZE_U ToD2D_SIZE_U() => new(cx, cx);
+    public readonly D2D_SIZE_U ToD2D_SIZE_U() => new(cx, cy);
     public readonly D2D_SIZE_F ToD2D_SIZE_F() => new(cx, cy);
     public readonly D2D_VECTOR_2F ToD2D_VECTOR_2F() => new(cx, cy);
     public readonly Vector2 ToVector2() => new(cx, cy);
