@@ -121,6 +121,7 @@ public abstract class ComObject : IComObject
     }
 
     public static nint GetUnknown(nint pointer, bool throwOnError = true) => QueryInterface(pointer, typeof(IUnknown).GUID, throwOnError);
+    public static nint QueryInterface<T>(nint pointer, bool throwOnError = true) => QueryInterface(pointer, typeof(T).GUID, throwOnError);
     public static nint QueryInterface(nint pointer, Guid iid, bool throwOnError = true)
     {
         if (pointer == 0)
@@ -252,13 +253,13 @@ public abstract class ComObject : IComObject
         return unk;
     }
 
-    public static nint ToComInstanceOfType<T>(object? obj)
+    public static nint ToComInstanceOfType<T>(object? obj) => ToComInstanceOfType(obj, typeof(T).GUID);
+    public static nint ToComInstanceOfType(object? obj, Guid iid)
     {
         var unk = ToComInstance(obj);
         if (unk == 0)
             return 0;
 
-        var iid = typeof(T).GUID;
         try
         {
             Marshal.ThrowExceptionForHR(Marshal.QueryInterface(unk, iid, out var iface));

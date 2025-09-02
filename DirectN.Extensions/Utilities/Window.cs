@@ -625,8 +625,8 @@ public class Window : IDisposable, IEquatable<Window>
             if (DestroyOnDispose)
             {
                 Functions.DestroyWindow(new HWND { Value = handle });
-                OnDestroyed(this, EventArgs.Empty);
             }
+            OnDestroyed(this, EventArgs.Empty);
         }
 
         Interlocked.Exchange(ref _disposeState, 2);
