@@ -275,16 +275,10 @@ public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
     public static implicit operator D2D_RECT_U(RECT rc) => new(rc.left, rc.top, rc.right, rc.bottom);
 
     // margin/thickness type calculation
-    public static D2D_RECT_U operator +(D2D_RECT_U left, D2D_RECT_U right)
-    {
-        return Sized((uint)Math.Max(0, (int)left.left - (int)right.left), (uint)Math.Max(0, (int)left.top - (int)right.top), (uint)Math.Max(0, (int)left.Width + (int)right.HorizontalThickness), (uint)Math.Max(0, (int)left.Height + (int)right.VerticalThickness));
-    }
+    public static D2D_RECT_U operator +(D2D_RECT_U left, D2D_RECT_U right) => Sized((uint)Math.Max(0, (int)left.left - (int)right.left), (uint)Math.Max(0, (int)left.top - (int)right.top), (uint)Math.Max(0, (int)left.Width + (int)right.HorizontalThickness), (uint)Math.Max(0, (int)left.Height + (int)right.VerticalThickness));
 
     // margin/thickness type calculation
-    public static D2D_RECT_U operator -(D2D_RECT_U left, D2D_RECT_U right)
-    {
-        return Sized(left.left + right.left, left.top + right.top, (uint)Math.Max(0, (int)left.Width - (int)right.HorizontalThickness), (uint)Math.Max(0, (int)left.Height - (int)right.VerticalThickness));
-    }
+    public static D2D_RECT_U operator -(D2D_RECT_U left, D2D_RECT_U right) => Sized(left.left + right.left, left.top + right.top, (uint)Math.Max(0, (int)left.Width - (int)right.HorizontalThickness), (uint)Math.Max(0, (int)left.Height - (int)right.VerticalThickness));
 
     // margin/thickness type calculation
     public static D2D_SIZE_U operator +(D2D_SIZE_U left, D2D_RECT_U right) => new(left.width + right.HorizontalThickness, left.height + right.VerticalThickness);

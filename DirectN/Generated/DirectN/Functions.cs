@@ -1089,6 +1089,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ConvertIndexToColorName(nint hProfile, [In][MarshalUsing(CountElementName = nameof(dwCount))] uint[] paIndex, [In][Out][MarshalUsing(CountElementName = nameof(dwCount))] sbyte[] paColorName, uint dwCount);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-copyacceleratortablew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int CopyAcceleratorTableW(HACCEL hAccelSrc, nint /* optional ACCEL* */ lpAccelDst, int cAccelEntries);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-copyrect
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -1131,6 +1137,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial int CountClipboardFormats();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createacceleratortablew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HACCEL CreateAcceleratorTableW([In][MarshalUsing(CountElementName = nameof(cAccel))] ACCEL[] paccel, int cAccel);
     
     [LibraryImport("XAudio2_8")]
     [PreserveSig]
@@ -2020,6 +2033,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int DescribePixelFormat(HDC hdc, int iPixelFormat, uint nBytes, nint /* optional PIXELFORMATDESCRIPTOR* */ ppfd);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-destroyacceleratortable
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL DestroyAcceleratorTable(HACCEL hAccel);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-destroycaret
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -2368,6 +2388,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL DrawFocusRect(HDC hDC, in RECT lprc);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-drawiconex
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon, int cxWidth, int cyWidth, uint istepIfAniCur, HBRUSH hbrFlickerFreeDraw, DI_FLAGS diFlags);
     
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-drivercallback
     [LibraryImport("WINMM", SetLastError = true)]
@@ -3483,6 +3510,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetDesktopWindow();
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetDeviceCaps(HDC hdc, int index);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getdevicegammaramp
     [LibraryImport("GDI32", SetLastError = true)]
@@ -6569,6 +6602,13 @@ public static partial class Functions
     [LibraryImport("ksproxy.ax")]
     [PreserveSig]
     public static partial HRESULT KsSynchronousDeviceControl(HANDLE Handle, uint IoControl, nint /* optional void* */ InBuffer, uint InLength, nint /* optional void* */ OutBuffer, uint OutLength, nint /* optional uint* */ BytesReturned);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadacceleratorsw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HACCEL LoadAcceleratorsW(HINSTANCE hInstance, PWSTR lpTableName);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadcursorw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
@@ -10070,6 +10110,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL TrackMouseEvent(ref TRACKMOUSEEVENT lpEventTrack);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-translateacceleratorw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int TranslateAcceleratorW(HWND hWnd, HACCEL hAccTable, in MSG lpMsg);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-translatebitmapbits
     [LibraryImport("mscms", SetLastError = true)]
     [PreserveSig]
@@ -10742,6 +10788,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT WICSerializeMetadataContent(in Guid guidContainerFormat, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IWICMetadataWriter>))] IWICMetadataWriter pIWriter, uint dwPersistOptions, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pIStream);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfromdc
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND WindowFromDC(HDC hDC);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-windowfromphysicalpoint
     [LibraryImport("USER32")]

@@ -20,7 +20,9 @@ public class Application : IDisposable
         ThreadId = Functions.GetCurrentThreadId();
     }
 
-    public bool ExitOnLastWindowRemoved { get; set; } = true;
+    public virtual bool ExitOnLastWindowRemoved { get; set; } = true;
+    public virtual AcceleratorTable? AcceleratorTable { get; set; }
+    public virtual HWND AcceleratorsTarget { get; set; }
     public bool Exiting { get; private set; }
     public int UIThreadId { get; private set; }
     public uint ThreadId { get; }
@@ -136,6 +138,10 @@ public class Application : IDisposable
 
     protected virtual bool HandleMessage(in MSG msg)
     {
+        var at = AcceleratorTable;
+        if (at != null && AcceleratorsTarget != 0 && at.Translate(AcceleratorsTarget, msg) != 0)
+            return true;
+
         Functions.TranslateMessage(msg);
         Functions.DispatchMessageW(msg);
         return true;

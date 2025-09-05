@@ -48,6 +48,9 @@ public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatabl
     public readonly D2D_VECTOR_2F ToD2D_VECTOR_2F() => new(cx, cy);
     public readonly Vector2 ToVector2() => new(cx, cy);
 
+    public readonly SIZE PixelToHiMetric(uint dpi) => new((int)(D2D_SIZE_F.HIMETRIC_PER_INCH * cx / dpi), (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * cy / dpi));
+    public readonly SIZE HiMetricToPixel(uint dpi) => new((int)(cx * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH), (int)(cy * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH));
+
     public static SIZE operator +(SIZE left, SIZE right) => new(left.cx + right.cx, left.cy + right.cy);
     public static SIZE operator -(SIZE left, SIZE right) => new(left.cx - right.cx, left.cy - right.cy);
 

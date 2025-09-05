@@ -670,4 +670,88 @@ public static class Extensions
         }
         return changed;
     }
+
+    public static D2D_SIZE_F GetScaleFactor(this D2D_SIZE_U size, uint? width = null, uint? height = null, ScaleOptions options = ScaleOptions.Default) => new D2D_SIZE_F(size.width, size.height).GetScaleFactor(width, height, options);
+    public static D2D_SIZE_F GetScaleFactor(this D2D_SIZE_U size, int? width = null, int? height = null, ScaleOptions options = ScaleOptions.Default) => new D2D_SIZE_F(size.width, size.height).GetScaleFactor(width, height, options);
+    public static D2D_SIZE_F GetScaleFactor(this D2D_SIZE_F size, int? width = null, int? height = null, ScaleOptions options = ScaleOptions.Default)
+    {
+        float? fw = width.HasValue ? width : null;
+        float? fh = height.HasValue ? height : null;
+        return GetScaleFactor(size, fw, fh, options);
+    }
+
+    public static D2D_SIZE_F GetScaleFactor(this SIZE size, int? width = null, int? height = null, ScaleOptions options = ScaleOptions.Default)
+    {
+        float? fw = width.HasValue ? width : null;
+        float? fh = height.HasValue ? height : null;
+        return GetScaleFactor(size, fw, fh, options);
+    }
+
+    public static D2D_SIZE_F GetScaleFactor(this D2D_SIZE_F size, uint? width = null, uint? height = null, ScaleOptions options = ScaleOptions.Default)
+    {
+        float? fw = width.HasValue ? width : null;
+        float? fh = height.HasValue ? height : null;
+        return GetScaleFactor(size, fw, fh, options);
+    }
+
+    public static D2D_SIZE_F GetScaleFactor(this D2D_SIZE_F size, float? width = null, float? height = null, ScaleOptions options = ScaleOptions.Default)
+    {
+        if (width.HasValue && width.Value <= 0)
+            throw new ArgumentOutOfRangeException(nameof(width));
+
+        if (height.HasValue && height.Value <= 0)
+            throw new ArgumentOutOfRangeException(nameof(height));
+
+        if (size.width == 0 || size.height == 0 || (!width.HasValue && !height.HasValue))
+            return new D2D_SIZE_F(1, 1);
+
+        var scaleW = size.width == 0 ? 0 : (width ?? float.PositiveInfinity) / size.width;
+        var scaleH = size.height == 0 ? 0 : (height ?? float.PositiveInfinity) / size.height;
+        if (!width.HasValue)
+        {
+            scaleW = scaleH;
+        }
+        else if (!height.HasValue)
+        {
+            scaleH = scaleW;
+        }
+        else if (options.HasFlag(ScaleOptions.Uniform))
+        {
+            var minscale = scaleW < scaleH ? scaleW : scaleH;
+            scaleW = scaleH = minscale;
+        }
+        else if (options.HasFlag(ScaleOptions.UniformToFill))
+        {
+            var maxscale = scaleW > scaleH ? scaleW : scaleH;
+            scaleW = scaleH = maxscale;
+        }
+
+        if (options.HasFlag(ScaleOptions.UpOnly))
+        {
+            if (scaleW < 1)
+            {
+                scaleW = 1;
+            }
+
+            if (scaleH < 1)
+            {
+                scaleH = 1;
+            }
+        }
+
+        if (options.HasFlag(ScaleOptions.DownOnly))
+        {
+            if (scaleW > 1)
+            {
+                scaleW = 1;
+            }
+
+            if (scaleH > 1)
+            {
+                scaleH = 1;
+            }
+        }
+        return new D2D_SIZE_F(scaleW, scaleH);
+    }
+
 }

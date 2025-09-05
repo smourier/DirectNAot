@@ -17,6 +17,11 @@ public class Icon : IDisposable
         return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = exeHandle.Value }, Constants.IDI_APPLICATION, GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
     }
 
+    public static Icon? Load(HMODULE module, int resourceId, int size = 16)
+    {
+        return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = module.Value }, new PWSTR(resourceId), GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
+    }
+
     public static Icon? FromHandle(nint handle, bool destroyHandleOnDispose = false)
     {
         if (handle == 0)

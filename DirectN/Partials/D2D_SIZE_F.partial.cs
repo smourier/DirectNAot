@@ -86,29 +86,18 @@ public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
 
     public const long HIMETRIC_PER_INCH = 2540;
 
-    public readonly D2D_SIZE_F PixelToHiMetricF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_SIZE_F(HIMETRIC_PER_INCH * width / dpi.width, HIMETRIC_PER_INCH * height / dpi.height);
-    }
-
-    public readonly SIZE PixelToHiMetric()
-    {
-        var dpi = Functions.Dpi;
-        return new SIZE((uint)(HIMETRIC_PER_INCH * width / dpi.width), (uint)(HIMETRIC_PER_INCH * height / dpi.height));
-    }
-
-    public readonly D2D_SIZE_F HiMetricToPixelF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_SIZE_F(width * dpi.width / HIMETRIC_PER_INCH, height * dpi.height / HIMETRIC_PER_INCH);
-    }
-
-    public readonly SIZE HiMetricToPixel()
-    {
-        var dpi = Functions.Dpi;
-        return new SIZE((uint)(width * dpi.width / HIMETRIC_PER_INCH), (uint)(height * dpi.height / HIMETRIC_PER_INCH));
-    }
+    public readonly D2D_SIZE_F PixelToHiMetricF() => PixelToHiMetricF(Functions.Dpi);
+    public readonly SIZE PixelToHiMetric() => PixelToHiMetric(Functions.Dpi);
+    public readonly D2D_SIZE_F HiMetricToPixelF() => HiMetricToPixelF(Functions.Dpi);
+    public readonly SIZE HiMetricToPixel() => HiMetricToPixel(Functions.Dpi);
+    public readonly D2D_SIZE_F PixelToHiMetricF(D2D_SIZE_F dpi) => new(HIMETRIC_PER_INCH * width / dpi.width, HIMETRIC_PER_INCH * height / dpi.height);
+    public readonly SIZE PixelToHiMetric(D2D_SIZE_F dpi) => new((uint)(HIMETRIC_PER_INCH * width / dpi.width), (uint)(HIMETRIC_PER_INCH * height / dpi.height));
+    public readonly D2D_SIZE_F HiMetricToPixelF(D2D_SIZE_F dpi) => new(width * dpi.width / HIMETRIC_PER_INCH, height * dpi.height / HIMETRIC_PER_INCH);
+    public readonly SIZE HiMetricToPixel(D2D_SIZE_F dpi) => new((uint)(width * dpi.width / HIMETRIC_PER_INCH), (uint)(height * dpi.height / HIMETRIC_PER_INCH));
+    public readonly D2D_SIZE_F PixelToHiMetricF(uint dpi) => new(HIMETRIC_PER_INCH * width / dpi, HIMETRIC_PER_INCH * height / dpi);
+    public readonly SIZE PixelToHiMetric(uint dpi) => new((uint)(HIMETRIC_PER_INCH * width / dpi), (uint)(HIMETRIC_PER_INCH * height / dpi));
+    public readonly D2D_SIZE_F HiMetricToPixelF(uint dpi) => new(width * dpi / HIMETRIC_PER_INCH, height * dpi / HIMETRIC_PER_INCH);
+    public readonly SIZE HiMetricToPixel(uint dpi) => new((uint)(width * dpi / HIMETRIC_PER_INCH), (uint)(height * dpi / HIMETRIC_PER_INCH));
 
     public readonly D2D_SIZE_F PixelToDip()
     {

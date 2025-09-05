@@ -342,7 +342,15 @@ public static class Conversions
 
             if (inputType == typeof(D3DCOLORVALUE))
             {
-                value = ((D3DCOLORVALUE)input).Int32Value;
+                var color = (D3DCOLORVALUE)input;
+                if (color.BA == 0)
+                {
+                    value = color.ChangeAlpha(255).Int32Value;
+                }
+                else
+                {
+                    value = color.Int32Value;
+                }
                 return true;
             }
         }
@@ -393,7 +401,15 @@ public static class Conversions
 
             if (inputType == typeof(D3DCOLORVALUE))
             {
-                value = ((D3DCOLORVALUE)input).Int32Value;
+                var color = (D3DCOLORVALUE)input;
+                if (color.BA == 0)
+                {
+                    value = (long)color.ChangeAlpha(255).Int32Value;
+                }
+                else
+                {
+                    value = (long)color.Int32Value;
+                }
                 return true;
             }
         }
@@ -480,7 +496,15 @@ public static class Conversions
 
             if (inputType == typeof(D3DCOLORVALUE))
             {
-                value = ((D3DCOLORVALUE)input).UInt32Value;
+                var color = (D3DCOLORVALUE)input;
+                if (color.BA == 0)
+                {
+                    value = color.ChangeAlpha(255).UInt32Value;
+                }
+                else
+                {
+                    value = color.UInt32Value;
+                }
                 return true;
             }
         }
@@ -513,7 +537,15 @@ public static class Conversions
 
             if (inputType == typeof(D3DCOLORVALUE))
             {
-                value = ((D3DCOLORVALUE)input).UInt32Value;
+                var color = (D3DCOLORVALUE)input;
+                if (color.BA == 0)
+                {
+                    value = (ulong)color.ChangeAlpha(255).UInt32Value;
+                }
+                else
+                {
+                    value = (ulong)color.UInt32Value;
+                }
                 return true;
             }
         }
@@ -915,13 +947,22 @@ public static class Conversions
         {
             if (input is string si && D3DCOLORVALUE.TryParseFromName(si, out var named))
             {
+                if (named.BA == 0)
+                {
+                    named = named.ChangeAlpha(255);
+                }
                 value = named;
                 return true;
             }
 
             if (TryChangeType(input, out uint ui))
             {
-                value = new D3DCOLORVALUE(ui);
+                var color = new D3DCOLORVALUE(ui);
+                if (color.BA == 0)
+                {
+                    color = color.ChangeAlpha(255);
+                }
+                value = color;
                 return true;
             }
 

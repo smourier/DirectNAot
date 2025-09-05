@@ -254,47 +254,55 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
 
     public readonly D2D_RECT_F ToD2D_RECT_F() => new(left, top, right, bottom);
 
-    public readonly RECT PixelToHiMetric()
-    {
-        var dpi = Functions.Dpi;
-        return new RECT(
+    public readonly RECT PixelToHiMetric() => PixelToHiMetric(Functions.Dpi);
+    public readonly RECT PixelToHiMetric(D2D_SIZE_F dpi) => new(
             (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * left / dpi.width),
             (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * top / dpi.height),
             (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * right / dpi.width),
             (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * bottom / dpi.height)
             );
-    }
 
-    public readonly D2D_RECT_F PixelToHiMetricF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_RECT_F(
+    public readonly RECT PixelToHiMetric(uint dpi) => new(
+            (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * left / dpi),
+            (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * top / dpi),
+            (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * right / dpi),
+            (int)(D2D_SIZE_F.HIMETRIC_PER_INCH * bottom / dpi)
+            );
+
+    public readonly D2D_RECT_F PixelToHiMetricF() => PixelToHiMetricF(Functions.Dpi);
+    public readonly D2D_RECT_F PixelToHiMetricF(D2D_SIZE_F dpi) => new(
             D2D_SIZE_F.HIMETRIC_PER_INCH * left / dpi.width,
             D2D_SIZE_F.HIMETRIC_PER_INCH * top / dpi.height,
             D2D_SIZE_F.HIMETRIC_PER_INCH * right / dpi.width,
             D2D_SIZE_F.HIMETRIC_PER_INCH * bottom / dpi.height
             );
-    }
 
-    public readonly RECT HiMetricToPixel()
-    {
-        var dpi = Functions.Dpi;
-        return new RECT(
+    public readonly D2D_RECT_F PixelToHiMetricF(uint dpi) => new(
+            D2D_SIZE_F.HIMETRIC_PER_INCH * left / dpi,
+            D2D_SIZE_F.HIMETRIC_PER_INCH * top / dpi,
+            D2D_SIZE_F.HIMETRIC_PER_INCH * right / dpi,
+            D2D_SIZE_F.HIMETRIC_PER_INCH * bottom / dpi
+            );
+
+    public readonly RECT HiMetricToPixel() => HiMetricToPixel(Functions.Dpi);
+    public readonly RECT HiMetricToPixel(D2D_SIZE_F dpi) => new(
             (int)(left * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH),
             (int)(top * dpi.height / D2D_SIZE_F.HIMETRIC_PER_INCH),
             (int)(right * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH),
             (int)(bottom * dpi.height / D2D_SIZE_F.HIMETRIC_PER_INCH));
-    }
 
-    public readonly D2D_RECT_F HiMetricToPixelF()
-    {
-        var dpi = Functions.Dpi;
-        return new D2D_RECT_F(
+    public readonly RECT HiMetricToPixel(uint dpi) => new(
+            (int)(left * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH),
+            (int)(top * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH),
+            (int)(right * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH),
+            (int)(bottom * dpi / D2D_SIZE_F.HIMETRIC_PER_INCH));
+
+    public readonly D2D_RECT_F HiMetricToPixelF() => HiMetricToPixelF(Functions.Dpi);
+    public readonly D2D_RECT_F HiMetricToPixelF(D2D_SIZE_F dpi) => new(
             left * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH,
             top * dpi.height / D2D_SIZE_F.HIMETRIC_PER_INCH,
             right * dpi.width / D2D_SIZE_F.HIMETRIC_PER_INCH,
             bottom * dpi.height / D2D_SIZE_F.HIMETRIC_PER_INCH);
-    }
 
     public readonly RECT PixelToDip()
     {
