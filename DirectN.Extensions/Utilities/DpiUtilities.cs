@@ -35,6 +35,10 @@ public static class DpiUtilities
                 return GetDpiForNearestMonitor(hwnd);
 
             var dpi = Marshal.GetDelegateForFunctionPointer<GetDpiForWindowFn>(proc)(hwnd.Value);
+            if (dpi <= 0)
+            {
+                dpi = (int)Constants.USER_DEFAULT_SCREEN_DPI;
+            }
             return new D2D_SIZE_U((uint)dpi, (uint)dpi);
         }
         finally
@@ -69,6 +73,16 @@ public static class DpiUtilities
             }
             if (hr < 0)
                 return GetDpiForDesktop();
+
+            if (x == 0)
+            {
+                x = (int)Constants.USER_DEFAULT_SCREEN_DPI;
+            }
+
+            if (y == 0)
+            {
+                y = (int)Constants.USER_DEFAULT_SCREEN_DPI;
+            }
 
             return new D2D_SIZE_U(x, y);
         }

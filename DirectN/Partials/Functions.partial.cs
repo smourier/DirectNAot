@@ -24,6 +24,17 @@ public static partial class Functions
                 {
                     factory.GetDesktopDpi(out var x, out var y);
                     ((ComObject)(object)factory).FinalRelease();
+
+                    if (x <= 0)
+                    {
+                        x = (int)Constants.USER_DEFAULT_SCREEN_DPI;
+                    }
+
+                    if (y <= 0)
+                    {
+                        y = (int)Constants.USER_DEFAULT_SCREEN_DPI;
+                    }
+
                     return new(x, y);
                 }
             }

@@ -1,0 +1,28 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum PEN_STYLE
+{
+    PS_GEOMETRIC = 65536,
+    PS_COSMETIC = 0,
+    PS_SOLID = 0,
+    PS_DASH = 1,
+    PS_DOT = 2,
+    PS_DASHDOT = 3,
+    PS_DASHDOTDOT = 4,
+    PS_NULL = 5,
+    PS_INSIDEFRAME = 6,
+    PS_USERSTYLE = 7,
+    PS_ALTERNATE = 8,
+    PS_STYLE_MASK = 15,
+    PS_ENDCAP_ROUND = 0,
+    PS_ENDCAP_SQUARE = 256,
+    PS_ENDCAP_FLAT = 512,
+    PS_ENDCAP_MASK = 3840,
+    PS_JOIN_ROUND = 0,
+    PS_JOIN_BEVEL = 4096,
+    PS_JOIN_MITER = 8192,
+    PS_JOIN_MASK = 61440,
+    PS_TYPE_MASK = 983040,
+}

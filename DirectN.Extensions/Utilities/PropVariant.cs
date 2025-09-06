@@ -1000,6 +1000,12 @@ public sealed class PropVariant : IDisposable
 
         if (value is VARIANT v)
         {
+            var dest = new VARIANT();
+            if (Functions.VariantCopyInd(ref dest, v).ThrowOnError().IsOk)
+            {
+                v = dest;
+            }
+
             var v2 = Variant.Attach(ref v, false);
             value = v2.Value;
             v2.Detach();
