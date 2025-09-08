@@ -9,7 +9,7 @@ public partial struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COM
     public ulong CompactedSizeInBytes;
     
     public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE_DESC(ulong value) => this.CompactedSizeInBytes = value;
-    public override string ToString() => $"0x{CompactedSizeInBytes:x}";
+    public override readonly string ToString() => $"0x{CompactedSizeInBytes:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE_DESC value && Equals(value);
     public readonly bool Equals(D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE_DESC other) => other.CompactedSizeInBytes == CompactedSizeInBytes;

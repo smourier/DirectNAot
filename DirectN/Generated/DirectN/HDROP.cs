@@ -8,7 +8,7 @@ public partial struct HDROP : IEquatable<HDROP>, IValueGet<nint>
     public nint Value;
     
     public HDROP(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HDROP value && Equals(value);
     public readonly bool Equals(HDROP other) => other.Value == Value;

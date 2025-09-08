@@ -9,7 +9,7 @@ public partial struct DD_PALETTE_GLOBAL : IEquatable<DD_PALETTE_GLOBAL>, IValueG
     public nuint dwReserved1;
     
     public DD_PALETTE_GLOBAL(nuint value) => this.dwReserved1 = value;
-    public override string ToString() => $"0x{dwReserved1:x}";
+    public override readonly string ToString() => $"0x{dwReserved1:x}";
     
     public override readonly bool Equals(object? obj) => obj is DD_PALETTE_GLOBAL value && Equals(value);
     public readonly bool Equals(DD_PALETTE_GLOBAL other) => other.dwReserved1 == dwReserved1;

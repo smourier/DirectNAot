@@ -8,7 +8,7 @@ public partial struct SPPHRASERULEHANDLE : IEquatable<SPPHRASERULEHANDLE>, IValu
     public nint Value;
     
     public SPPHRASERULEHANDLE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPPHRASERULEHANDLE value && Equals(value);
     public readonly bool Equals(SPPHRASERULEHANDLE other) => other.Value == Value;

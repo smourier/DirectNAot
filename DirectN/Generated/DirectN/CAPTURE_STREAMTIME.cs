@@ -8,7 +8,7 @@ public partial struct CAPTURE_STREAMTIME : IEquatable<CAPTURE_STREAMTIME>, IValu
     public long StreamTime;
     
     public CAPTURE_STREAMTIME(long value) => this.StreamTime = value;
-    public override string ToString() => $"0x{StreamTime:x}";
+    public override readonly string ToString() => $"0x{StreamTime:x}";
     
     public override readonly bool Equals(object? obj) => obj is CAPTURE_STREAMTIME value && Equals(value);
     public readonly bool Equals(CAPTURE_STREAMTIME other) => other.StreamTime == StreamTime;

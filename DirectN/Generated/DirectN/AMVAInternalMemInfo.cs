@@ -9,7 +9,7 @@ public partial struct AMVAInternalMemInfo : IEquatable<AMVAInternalMemInfo>, IVa
     public uint dwScratchMemAlloc;
     
     public AMVAInternalMemInfo(uint value) => this.dwScratchMemAlloc = value;
-    public override string ToString() => $"0x{dwScratchMemAlloc:x}";
+    public override readonly string ToString() => $"0x{dwScratchMemAlloc:x}";
     
     public override readonly bool Equals(object? obj) => obj is AMVAInternalMemInfo value && Equals(value);
     public readonly bool Equals(AMVAInternalMemInfo other) => other.dwScratchMemAlloc == dwScratchMemAlloc;

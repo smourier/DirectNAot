@@ -8,7 +8,7 @@ public partial struct DMUS_WAVEDL : IEquatable<DMUS_WAVEDL>, IValueGet<uint>
     public uint cbWaveData;
     
     public DMUS_WAVEDL(uint value) => this.cbWaveData = value;
-    public override string ToString() => $"0x{cbWaveData:x}";
+    public override readonly string ToString() => $"0x{cbWaveData:x}";
     
     public override readonly bool Equals(object? obj) => obj is DMUS_WAVEDL value && Equals(value);
     public readonly bool Equals(DMUS_WAVEDL other) => other.cbWaveData == cbWaveData;

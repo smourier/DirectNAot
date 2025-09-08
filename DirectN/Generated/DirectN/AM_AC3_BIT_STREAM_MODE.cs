@@ -8,7 +8,7 @@ public partial struct AM_AC3_BIT_STREAM_MODE : IEquatable<AM_AC3_BIT_STREAM_MODE
     public int BitStreamMode;
     
     public AM_AC3_BIT_STREAM_MODE(int value) => this.BitStreamMode = value;
-    public override string ToString() => $"0x{BitStreamMode:x}";
+    public override readonly string ToString() => $"0x{BitStreamMode:x}";
     
     public override readonly bool Equals(object? obj) => obj is AM_AC3_BIT_STREAM_MODE value && Equals(value);
     public readonly bool Equals(AM_AC3_BIT_STREAM_MODE other) => other.BitStreamMode == BitStreamMode;

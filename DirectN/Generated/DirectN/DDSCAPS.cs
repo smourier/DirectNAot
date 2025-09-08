@@ -9,7 +9,7 @@ public partial struct DDSCAPS : IEquatable<DDSCAPS>, IValueGet<uint>
     public uint dwCaps;
     
     public DDSCAPS(uint value) => this.dwCaps = value;
-    public override string ToString() => $"0x{dwCaps:x}";
+    public override readonly string ToString() => $"0x{dwCaps:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDSCAPS value && Equals(value);
     public readonly bool Equals(DDSCAPS other) => other.dwCaps == dwCaps;

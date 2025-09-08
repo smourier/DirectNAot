@@ -8,7 +8,7 @@ public partial struct HBM : IEquatable<HBM>, IValueGet<nint>
     public nint Value;
     
     public HBM(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HBM value && Equals(value);
     public readonly bool Equals(HBM other) => other.Value == Value;

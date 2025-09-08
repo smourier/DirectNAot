@@ -9,7 +9,7 @@ public partial struct RO_REGISTRATION_COOKIE : IEquatable<RO_REGISTRATION_COOKIE
     public nint Value;
     
     public RO_REGISTRATION_COOKIE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is RO_REGISTRATION_COOKIE value && Equals(value);
     public readonly bool Equals(RO_REGISTRATION_COOKIE other) => other.Value == Value;

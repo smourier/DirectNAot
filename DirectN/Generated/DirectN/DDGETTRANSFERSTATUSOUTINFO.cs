@@ -9,7 +9,7 @@ public partial struct DDGETTRANSFERSTATUSOUTINFO : IEquatable<DDGETTRANSFERSTATU
     public nuint dwTransferID;
     
     public DDGETTRANSFERSTATUSOUTINFO(nuint value) => this.dwTransferID = value;
-    public override string ToString() => $"0x{dwTransferID:x}";
+    public override readonly string ToString() => $"0x{dwTransferID:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDGETTRANSFERSTATUSOUTINFO value && Equals(value);
     public readonly bool Equals(DDGETTRANSFERSTATUSOUTINFO other) => other.dwTransferID == dwTransferID;

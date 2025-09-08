@@ -8,7 +8,7 @@ public partial struct SPSERIALIZEDRESULT : IEquatable<SPSERIALIZEDRESULT>, IValu
     public uint ulSerializedSize;
     
     public SPSERIALIZEDRESULT(uint value) => this.ulSerializedSize = value;
-    public override string ToString() => $"0x{ulSerializedSize:x}";
+    public override readonly string ToString() => $"0x{ulSerializedSize:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPSERIALIZEDRESULT value && Equals(value);
     public readonly bool Equals(SPSERIALIZEDRESULT other) => other.ulSerializedSize == ulSerializedSize;

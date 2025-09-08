@@ -8,7 +8,7 @@ public partial struct CHAR : IEquatable<CHAR>, IValueGet<sbyte>
     public sbyte Value;
     
     public CHAR(sbyte value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is CHAR value && Equals(value);
     public readonly bool Equals(CHAR other) => other.Value == Value;

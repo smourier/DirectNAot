@@ -8,7 +8,7 @@ public partial struct SPGRAMMARHANDLE : IEquatable<SPGRAMMARHANDLE>, IValueGet<n
     public nint Value;
     
     public SPGRAMMARHANDLE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPGRAMMARHANDLE value && Equals(value);
     public readonly bool Equals(SPGRAMMARHANDLE other) => other.Value == Value;

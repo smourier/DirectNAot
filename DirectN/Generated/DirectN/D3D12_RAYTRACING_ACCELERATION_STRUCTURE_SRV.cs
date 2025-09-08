@@ -9,7 +9,7 @@ public partial struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV : IEquatable<D
     public ulong Location;
     
     public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV(ulong value) => this.Location = value;
-    public override string ToString() => $"0x{Location:x}";
+    public override readonly string ToString() => $"0x{Location:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV value && Equals(value);
     public readonly bool Equals(D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV other) => other.Location == Location;

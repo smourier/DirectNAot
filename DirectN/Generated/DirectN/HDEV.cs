@@ -8,7 +8,7 @@ public partial struct HDEV : IEquatable<HDEV>, IValueGet<nint>
     public nint Value;
     
     public HDEV(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HDEV value && Equals(value);
     public readonly bool Equals(HDEV other) => other.Value == Value;

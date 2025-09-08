@@ -9,7 +9,7 @@ public partial struct XFORMOBJ : IEquatable<XFORMOBJ>, IValueGet<uint>
     public uint ulReserved;
     
     public XFORMOBJ(uint value) => this.ulReserved = value;
-    public override string ToString() => $"0x{ulReserved:x}";
+    public override readonly string ToString() => $"0x{ulReserved:x}";
     
     public override readonly bool Equals(object? obj) => obj is XFORMOBJ value && Equals(value);
     public readonly bool Equals(XFORMOBJ other) => other.ulReserved == ulReserved;

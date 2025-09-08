@@ -8,7 +8,7 @@ public partial struct HMIXEROBJ : IEquatable<HMIXEROBJ>, IValueGet<nint>
     public nint Value;
     
     public HMIXEROBJ(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMIXEROBJ value && Equals(value);
     public readonly bool Equals(HMIXEROBJ other) => other.Value == Value;

@@ -8,7 +8,7 @@ public partial struct DLSHEADER : IEquatable<DLSHEADER>, IValueGet<uint>
     public uint cInstruments;
     
     public DLSHEADER(uint value) => this.cInstruments = value;
-    public override string ToString() => $"0x{cInstruments:x}";
+    public override readonly string ToString() => $"0x{cInstruments:x}";
     
     public override readonly bool Equals(object? obj) => obj is DLSHEADER value && Equals(value);
     public readonly bool Equals(DLSHEADER other) => other.cInstruments == cInstruments;

@@ -8,7 +8,7 @@ public partial struct VIDEO_REGISTER_VDM : IEquatable<VIDEO_REGISTER_VDM>, IValu
     public uint MinimumStateSize;
     
     public VIDEO_REGISTER_VDM(uint value) => this.MinimumStateSize = value;
-    public override string ToString() => $"0x{MinimumStateSize:x}";
+    public override readonly string ToString() => $"0x{MinimumStateSize:x}";
     
     public override readonly bool Equals(object? obj) => obj is VIDEO_REGISTER_VDM value && Equals(value);
     public readonly bool Equals(VIDEO_REGISTER_VDM other) => other.MinimumStateSize == MinimumStateSize;

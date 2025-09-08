@@ -8,7 +8,7 @@ public partial struct SPTRANSITIONID : IEquatable<SPTRANSITIONID>, IValueGet<nin
     public nint Value;
     
     public SPTRANSITIONID(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPTRANSITIONID value && Equals(value);
     public readonly bool Equals(SPTRANSITIONID other) => other.Value == Value;

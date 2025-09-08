@@ -9,7 +9,7 @@ public partial struct DXGI_DECODE_SWAP_CHAIN_DESC : IEquatable<DXGI_DECODE_SWAP_
     public uint Flags;
     
     public DXGI_DECODE_SWAP_CHAIN_DESC(uint value) => this.Flags = value;
-    public override string ToString() => $"0x{Flags:x}";
+    public override readonly string ToString() => $"0x{Flags:x}";
     
     public override readonly bool Equals(object? obj) => obj is DXGI_DECODE_SWAP_CHAIN_DESC value && Equals(value);
     public readonly bool Equals(DXGI_DECODE_SWAP_CHAIN_DESC other) => other.Flags == Flags;

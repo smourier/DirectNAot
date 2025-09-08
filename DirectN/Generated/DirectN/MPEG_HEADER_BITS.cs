@@ -10,7 +10,7 @@ public partial struct MPEG_HEADER_BITS : IEquatable<MPEG_HEADER_BITS>, IValueGet
     public ushort _bitfield;
     
     public MPEG_HEADER_BITS(ushort value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is MPEG_HEADER_BITS value && Equals(value);
     public readonly bool Equals(MPEG_HEADER_BITS other) => other._bitfield == _bitfield;

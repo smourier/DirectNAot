@@ -8,7 +8,7 @@ public partial struct GLUquadric : IEquatable<GLUquadric>, IValueGet<nint>
     public nint Value;
     
     public GLUquadric(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is GLUquadric value && Equals(value);
     public readonly bool Equals(GLUquadric other) => other.Value == Value;

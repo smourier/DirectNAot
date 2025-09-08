@@ -10,7 +10,7 @@ public partial struct MIXERCONTROLDETAILS_SIGNED : IEquatable<MIXERCONTROLDETAIL
     public int lValue;
     
     public MIXERCONTROLDETAILS_SIGNED(int value) => this.lValue = value;
-    public override string ToString() => $"0x{lValue:x}";
+    public override readonly string ToString() => $"0x{lValue:x}";
     
     public override readonly bool Equals(object? obj) => obj is MIXERCONTROLDETAILS_SIGNED value && Equals(value);
     public readonly bool Equals(MIXERCONTROLDETAILS_SIGNED other) => other.lValue == lValue;

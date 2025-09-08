@@ -8,7 +8,7 @@ public partial struct PIC_SEQ_SAMPLE : IEquatable<PIC_SEQ_SAMPLE>, IValueGet<uin
     public uint _bitfield;
     
     public PIC_SEQ_SAMPLE(uint value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is PIC_SEQ_SAMPLE value && Equals(value);
     public readonly bool Equals(PIC_SEQ_SAMPLE other) => other._bitfield == _bitfield;

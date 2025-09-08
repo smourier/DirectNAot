@@ -8,7 +8,7 @@ public partial struct KS_DVDCOPY_SET_COPY_STATE : IEquatable<KS_DVDCOPY_SET_COPY
     public uint DVDCopyState;
     
     public KS_DVDCOPY_SET_COPY_STATE(uint value) => this.DVDCopyState = value;
-    public override string ToString() => $"0x{DVDCopyState:x}";
+    public override readonly string ToString() => $"0x{DVDCopyState:x}";
     
     public override readonly bool Equals(object? obj) => obj is KS_DVDCOPY_SET_COPY_STATE value && Equals(value);
     public readonly bool Equals(KS_DVDCOPY_SET_COPY_STATE other) => other.DVDCopyState == DVDCopyState;

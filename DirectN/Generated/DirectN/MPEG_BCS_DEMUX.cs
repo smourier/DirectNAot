@@ -10,7 +10,7 @@ public partial struct MPEG_BCS_DEMUX : IEquatable<MPEG_BCS_DEMUX>, IValueGet<uin
     public uint AVMGraphId;
     
     public MPEG_BCS_DEMUX(uint value) => this.AVMGraphId = value;
-    public override string ToString() => $"0x{AVMGraphId:x}";
+    public override readonly string ToString() => $"0x{AVMGraphId:x}";
     
     public override readonly bool Equals(object? obj) => obj is MPEG_BCS_DEMUX value && Equals(value);
     public readonly bool Equals(MPEG_BCS_DEMUX other) => other.AVMGraphId == AVMGraphId;

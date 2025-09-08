@@ -8,7 +8,7 @@ public partial struct PDD_GETVPORTAUTOFLIPSURFACEDATA : IEquatable<PDD_GETVPORTA
     public nint Value;
     
     public PDD_GETVPORTAUTOFLIPSURFACEDATA(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is PDD_GETVPORTAUTOFLIPSURFACEDATA value && Equals(value);
     public readonly bool Equals(PDD_GETVPORTAUTOFLIPSURFACEDATA other) => other.Value == Value;

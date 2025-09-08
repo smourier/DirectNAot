@@ -8,7 +8,7 @@ public partial struct SPRECOCONTEXTHANDLE : IEquatable<SPRECOCONTEXTHANDLE>, IVa
     public nint Value;
     
     public SPRECOCONTEXTHANDLE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPRECOCONTEXTHANDLE value && Equals(value);
     public readonly bool Equals(SPRECOCONTEXTHANDLE other) => other.Value == Value;

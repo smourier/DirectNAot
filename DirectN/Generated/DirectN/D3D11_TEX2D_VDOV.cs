@@ -9,7 +9,7 @@ public partial struct D3D11_TEX2D_VDOV : IEquatable<D3D11_TEX2D_VDOV>, IValueGet
     public uint ArraySlice;
     
     public D3D11_TEX2D_VDOV(uint value) => this.ArraySlice = value;
-    public override string ToString() => $"0x{ArraySlice:x}";
+    public override readonly string ToString() => $"0x{ArraySlice:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_TEX2D_VDOV value && Equals(value);
     public readonly bool Equals(D3D11_TEX2D_VDOV other) => other.ArraySlice == ArraySlice;

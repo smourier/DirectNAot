@@ -9,7 +9,7 @@ public partial struct AM_FRAMESTEP_STEP : IEquatable<AM_FRAMESTEP_STEP>, IValueG
     public uint dwFramesToStep;
     
     public AM_FRAMESTEP_STEP(uint value) => this.dwFramesToStep = value;
-    public override string ToString() => $"0x{dwFramesToStep:x}";
+    public override readonly string ToString() => $"0x{dwFramesToStep:x}";
     
     public override readonly bool Equals(object? obj) => obj is AM_FRAMESTEP_STEP value && Equals(value);
     public readonly bool Equals(AM_FRAMESTEP_STEP other) => other.dwFramesToStep == dwFramesToStep;

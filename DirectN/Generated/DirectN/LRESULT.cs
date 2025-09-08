@@ -8,7 +8,7 @@ public partial struct LRESULT : IEquatable<LRESULT>, IValueGet<nint>
     public nint Value;
     
     public LRESULT(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is LRESULT value && Equals(value);
     public readonly bool Equals(LRESULT other) => other.Value == Value;

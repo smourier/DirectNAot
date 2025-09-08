@@ -8,7 +8,7 @@ public partial struct VIDEO_MEMORY : IEquatable<VIDEO_MEMORY>, IValueGet<nint>
     public nint RequestedVirtualAddress;
     
     public VIDEO_MEMORY(nint value) => this.RequestedVirtualAddress = value;
-    public override string ToString() => $"0x{RequestedVirtualAddress:x}";
+    public override readonly string ToString() => $"0x{RequestedVirtualAddress:x}";
     
     public override readonly bool Equals(object? obj) => obj is VIDEO_MEMORY value && Equals(value);
     public readonly bool Equals(VIDEO_MEMORY other) => other.RequestedVirtualAddress == RequestedVirtualAddress;

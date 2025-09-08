@@ -8,7 +8,7 @@ public partial struct OLE_HANDLE : IEquatable<OLE_HANDLE>, IValueGet<uint>
     public uint Value;
     
     public OLE_HANDLE(uint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is OLE_HANDLE value && Equals(value);
     public readonly bool Equals(OLE_HANDLE other) => other.Value == Value;

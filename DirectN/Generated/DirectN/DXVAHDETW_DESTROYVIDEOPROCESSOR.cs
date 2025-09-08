@@ -8,7 +8,7 @@ public partial struct DXVAHDETW_DESTROYVIDEOPROCESSOR : IEquatable<DXVAHDETW_DES
     public ulong pObject;
     
     public DXVAHDETW_DESTROYVIDEOPROCESSOR(ulong value) => this.pObject = value;
-    public override string ToString() => $"0x{pObject:x}";
+    public override readonly string ToString() => $"0x{pObject:x}";
     
     public override readonly bool Equals(object? obj) => obj is DXVAHDETW_DESTROYVIDEOPROCESSOR value && Equals(value);
     public readonly bool Equals(DXVAHDETW_DESTROYVIDEOPROCESSOR other) => other.pObject == pObject;

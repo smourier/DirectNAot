@@ -8,7 +8,7 @@ public partial struct D3D12_SAMPLE_MASK : IEquatable<D3D12_SAMPLE_MASK>, IValueG
     public uint SampleMask;
     
     public D3D12_SAMPLE_MASK(uint value) => this.SampleMask = value;
-    public override string ToString() => $"0x{SampleMask:x}";
+    public override readonly string ToString() => $"0x{SampleMask:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_SAMPLE_MASK value && Equals(value);
     public readonly bool Equals(D3D12_SAMPLE_MASK other) => other.SampleMask == SampleMask;

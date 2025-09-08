@@ -8,7 +8,7 @@ public partial struct HACMOBJ : IEquatable<HACMOBJ>, IValueGet<nint>
     public nint Value;
     
     public HACMOBJ(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HACMOBJ value && Equals(value);
     public readonly bool Equals(HACMOBJ other) => other.Value == Value;

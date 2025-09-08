@@ -9,7 +9,7 @@ public partial struct NAMEDCOLOR : IEquatable<NAMEDCOLOR>, IValueGet<uint>
     public uint dwIndex;
     
     public NAMEDCOLOR(uint value) => this.dwIndex = value;
-    public override string ToString() => $"0x{dwIndex:x}";
+    public override readonly string ToString() => $"0x{dwIndex:x}";
     
     public override readonly bool Equals(object? obj) => obj is NAMEDCOLOR value && Equals(value);
     public readonly bool Equals(NAMEDCOLOR other) => other.dwIndex == dwIndex;

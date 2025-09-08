@@ -8,7 +8,7 @@ public partial struct VIDEO_MODE : IEquatable<VIDEO_MODE>, IValueGet<uint>
     public uint RequestedMode;
     
     public VIDEO_MODE(uint value) => this.RequestedMode = value;
-    public override string ToString() => $"0x{RequestedMode:x}";
+    public override readonly string ToString() => $"0x{RequestedMode:x}";
     
     public override readonly bool Equals(object? obj) => obj is VIDEO_MODE value && Equals(value);
     public readonly bool Equals(VIDEO_MODE other) => other.RequestedMode == RequestedMode;

@@ -8,7 +8,7 @@ public partial struct BOOLEAN : IEquatable<BOOLEAN>, IValueGet<byte>
     public byte Value;
     
     public BOOLEAN(byte value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is BOOLEAN value && Equals(value);
     public readonly bool Equals(BOOLEAN other) => other.Value == Value;

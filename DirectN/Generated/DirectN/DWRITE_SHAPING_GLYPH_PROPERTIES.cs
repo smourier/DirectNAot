@@ -9,7 +9,7 @@ public partial struct DWRITE_SHAPING_GLYPH_PROPERTIES : IEquatable<DWRITE_SHAPIN
     public ushort _bitfield;
     
     public DWRITE_SHAPING_GLYPH_PROPERTIES(ushort value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is DWRITE_SHAPING_GLYPH_PROPERTIES value && Equals(value);
     public readonly bool Equals(DWRITE_SHAPING_GLYPH_PROPERTIES other) => other._bitfield == _bitfield;

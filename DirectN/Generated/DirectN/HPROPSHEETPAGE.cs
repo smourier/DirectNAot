@@ -8,7 +8,7 @@ public partial struct HPROPSHEETPAGE : IEquatable<HPROPSHEETPAGE>, IValueGet<nin
     public nint Value;
     
     public HPROPSHEETPAGE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HPROPSHEETPAGE value && Equals(value);
     public readonly bool Equals(HPROPSHEETPAGE other) => other.Value == Value;

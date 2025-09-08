@@ -8,7 +8,7 @@ public partial struct KSCLOCK_CREATE : IEquatable<KSCLOCK_CREATE>, IValueGet<uin
     public uint CreateFlags;
     
     public KSCLOCK_CREATE(uint value) => this.CreateFlags = value;
-    public override string ToString() => $"0x{CreateFlags:x}";
+    public override readonly string ToString() => $"0x{CreateFlags:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSCLOCK_CREATE value && Equals(value);
     public readonly bool Equals(KSCLOCK_CREATE other) => other.CreateFlags == CreateFlags;

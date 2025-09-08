@@ -9,7 +9,7 @@ public partial struct DD_CLIPPER_LOCAL : IEquatable<DD_CLIPPER_LOCAL>, IValueGet
     public nuint dwReserved1;
     
     public DD_CLIPPER_LOCAL(nuint value) => this.dwReserved1 = value;
-    public override string ToString() => $"0x{dwReserved1:x}";
+    public override readonly string ToString() => $"0x{dwReserved1:x}";
     
     public override readonly bool Equals(object? obj) => obj is DD_CLIPPER_LOCAL value && Equals(value);
     public readonly bool Equals(DD_CLIPPER_LOCAL other) => other.dwReserved1 == dwReserved1;

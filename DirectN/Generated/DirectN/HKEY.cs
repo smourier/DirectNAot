@@ -8,7 +8,7 @@ public partial struct HKEY : IEquatable<HKEY>, IValueGet<nint>
     public nint Value;
     
     public HKEY(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HKEY value && Equals(value);
     public readonly bool Equals(HKEY other) => other.Value == Value;

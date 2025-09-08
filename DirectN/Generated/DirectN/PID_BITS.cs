@@ -9,7 +9,7 @@ public partial struct PID_BITS : IEquatable<PID_BITS>, IValueGet<ushort>
     public ushort _bitfield;
     
     public PID_BITS(ushort value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is PID_BITS value && Equals(value);
     public readonly bool Equals(PID_BITS other) => other._bitfield == _bitfield;

@@ -4131,6 +4131,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint GetSysColor(SYS_COLOR_INDEX nIndex);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsyscolorbrush
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HBRUSH GetSysColorBrush(SYS_COLOR_INDEX nIndex);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsystemdpiforprocess
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows10.0.17134")]

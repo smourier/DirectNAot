@@ -9,7 +9,7 @@ public partial struct HSTRING_BUFFER : IEquatable<HSTRING_BUFFER>, IValueGet<nin
     public nint Value;
     
     public HSTRING_BUFFER(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HSTRING_BUFFER value && Equals(value);
     public readonly bool Equals(HSTRING_BUFFER other) => other.Value == Value;

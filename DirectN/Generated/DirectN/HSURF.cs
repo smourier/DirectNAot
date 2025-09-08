@@ -8,7 +8,7 @@ public partial struct HSURF : IEquatable<HSURF>, IValueGet<nint>
     public nint Value;
     
     public HSURF(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HSURF value && Equals(value);
     public readonly bool Equals(HSURF other) => other.Value == Value;

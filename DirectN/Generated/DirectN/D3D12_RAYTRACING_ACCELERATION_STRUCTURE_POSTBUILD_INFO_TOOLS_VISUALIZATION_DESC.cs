@@ -9,7 +9,7 @@ public partial struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOO
     public ulong DecodedSizeInBytes;
     
     public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC(ulong value) => this.DecodedSizeInBytes = value;
-    public override string ToString() => $"0x{DecodedSizeInBytes:x}";
+    public override readonly string ToString() => $"0x{DecodedSizeInBytes:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC value && Equals(value);
     public readonly bool Equals(D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC other) => other.DecodedSizeInBytes == DecodedSizeInBytes;

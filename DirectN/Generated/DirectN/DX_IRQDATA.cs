@@ -9,7 +9,7 @@ public partial struct DX_IRQDATA : IEquatable<DX_IRQDATA>, IValueGet<uint>
     public uint dwIrqFlags;
     
     public DX_IRQDATA(uint value) => this.dwIrqFlags = value;
-    public override string ToString() => $"0x{dwIrqFlags:x}";
+    public override readonly string ToString() => $"0x{dwIrqFlags:x}";
     
     public override readonly bool Equals(object? obj) => obj is DX_IRQDATA value && Equals(value);
     public readonly bool Equals(DX_IRQDATA other) => other.dwIrqFlags == dwIrqFlags;

@@ -8,7 +8,7 @@ public partial struct SAMPLE_SEQ_OFFSET : IEquatable<SAMPLE_SEQ_OFFSET>, IValueG
     public uint _bitfield;
     
     public SAMPLE_SEQ_OFFSET(uint value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is SAMPLE_SEQ_OFFSET value && Equals(value);
     public readonly bool Equals(SAMPLE_SEQ_OFFSET other) => other._bitfield == _bitfield;

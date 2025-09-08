@@ -8,7 +8,7 @@ public partial struct APARTMENT_SHUTDOWN_REGISTRATION_COOKIE : IEquatable<APARTM
     public nint Value;
     
     public APARTMENT_SHUTDOWN_REGISTRATION_COOKIE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is APARTMENT_SHUTDOWN_REGISTRATION_COOKIE value && Equals(value);
     public readonly bool Equals(APARTMENT_SHUTDOWN_REGISTRATION_COOKIE other) => other.Value == Value;

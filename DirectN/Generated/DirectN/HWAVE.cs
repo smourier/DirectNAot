@@ -8,7 +8,7 @@ public partial struct HWAVE : IEquatable<HWAVE>, IValueGet<nint>
     public nint Value;
     
     public HWAVE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HWAVE value && Equals(value);
     public readonly bool Equals(HWAVE other) => other.Value == Value;

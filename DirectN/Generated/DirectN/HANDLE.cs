@@ -8,7 +8,7 @@ public partial struct HANDLE : IEquatable<HANDLE>, IValueGet<nint>
     public nint Value;
     
     public HANDLE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HANDLE value && Equals(value);
     public readonly bool Equals(HANDLE other) => other.Value == Value;

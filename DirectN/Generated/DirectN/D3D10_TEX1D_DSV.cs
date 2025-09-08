@@ -9,7 +9,7 @@ public partial struct D3D10_TEX1D_DSV : IEquatable<D3D10_TEX1D_DSV>, IValueGet<u
     public uint MipSlice;
     
     public D3D10_TEX1D_DSV(uint value) => this.MipSlice = value;
-    public override string ToString() => $"0x{MipSlice:x}";
+    public override readonly string ToString() => $"0x{MipSlice:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D10_TEX1D_DSV value && Equals(value);
     public readonly bool Equals(D3D10_TEX1D_DSV other) => other.MipSlice == MipSlice;

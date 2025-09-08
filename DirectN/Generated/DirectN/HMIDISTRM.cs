@@ -8,7 +8,7 @@ public partial struct HMIDISTRM : IEquatable<HMIDISTRM>, IValueGet<nint>
     public nint Value;
     
     public HMIDISTRM(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMIDISTRM value && Equals(value);
     public readonly bool Equals(HMIDISTRM other) => other.Value == Value;

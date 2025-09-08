@@ -10,7 +10,7 @@ public partial struct OPM_SET_HDCP_SRM_PARAMETERS : IEquatable<OPM_SET_HDCP_SRM_
     public uint ulSRMVersion;
     
     public OPM_SET_HDCP_SRM_PARAMETERS(uint value) => this.ulSRMVersion = value;
-    public override string ToString() => $"0x{ulSRMVersion:x}";
+    public override readonly string ToString() => $"0x{ulSRMVersion:x}";
     
     public override readonly bool Equals(object? obj) => obj is OPM_SET_HDCP_SRM_PARAMETERS value && Equals(value);
     public readonly bool Equals(OPM_SET_HDCP_SRM_PARAMETERS other) => other.ulSRMVersion == ulSRMVersion;

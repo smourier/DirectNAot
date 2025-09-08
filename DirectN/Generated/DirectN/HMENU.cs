@@ -8,7 +8,7 @@ public partial struct HMENU : IEquatable<HMENU>, IValueGet<nint>
     public nint Value;
     
     public HMENU(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMENU value && Equals(value);
     public readonly bool Equals(HMENU other) => other.Value == Value;

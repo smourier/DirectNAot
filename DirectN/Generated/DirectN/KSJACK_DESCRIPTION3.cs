@@ -8,7 +8,7 @@ public partial struct KSJACK_DESCRIPTION3 : IEquatable<KSJACK_DESCRIPTION3>, IVa
     public uint ConfigId;
     
     public KSJACK_DESCRIPTION3(uint value) => this.ConfigId = value;
-    public override string ToString() => $"0x{ConfigId:x}";
+    public override readonly string ToString() => $"0x{ConfigId:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSJACK_DESCRIPTION3 value && Equals(value);
     public readonly bool Equals(KSJACK_DESCRIPTION3 other) => other.ConfigId == ConfigId;

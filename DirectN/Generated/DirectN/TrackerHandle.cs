@@ -8,7 +8,7 @@ public partial struct TrackerHandle : IEquatable<TrackerHandle>, IValueGet<nint>
     public nint Value;
     
     public TrackerHandle(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is TrackerHandle value && Equals(value);
     public readonly bool Equals(TrackerHandle other) => other.Value == Value;

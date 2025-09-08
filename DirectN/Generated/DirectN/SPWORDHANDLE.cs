@@ -8,7 +8,7 @@ public partial struct SPWORDHANDLE : IEquatable<SPWORDHANDLE>, IValueGet<nint>
     public nint Value;
     
     public SPWORDHANDLE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPWORDHANDLE value && Equals(value);
     public readonly bool Equals(SPWORDHANDLE other) => other.Value == Value;

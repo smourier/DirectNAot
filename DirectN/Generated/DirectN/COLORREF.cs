@@ -9,7 +9,7 @@ public partial struct COLORREF : IEquatable<COLORREF>, IValueGet<uint>
     public uint Value;
     
     public COLORREF(uint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is COLORREF value && Equals(value);
     public readonly bool Equals(COLORREF other) => other.Value == Value;

@@ -32,6 +32,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Partials\COLORREF.partial.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Using Include="DirectN" />
 		<Using Include="System.Collections.Concurrent" />
 		<Using Include="System.ComponentModel" />
@@ -54,6 +58,7 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+		<None Include="Partials\COLORREF.partial.cs" />
 		<None Include="README.md">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>

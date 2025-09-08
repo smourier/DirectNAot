@@ -9,7 +9,7 @@ public partial struct AM_COPY_MACROVISION : IEquatable<AM_COPY_MACROVISION>, IVa
     public uint MACROVISIONLevel;
     
     public AM_COPY_MACROVISION(uint value) => this.MACROVISIONLevel = value;
-    public override string ToString() => $"0x{MACROVISIONLevel:x}";
+    public override readonly string ToString() => $"0x{MACROVISIONLevel:x}";
     
     public override readonly bool Equals(object? obj) => obj is AM_COPY_MACROVISION value && Equals(value);
     public readonly bool Equals(AM_COPY_MACROVISION other) => other.MACROVISIONLevel == MACROVISIONLevel;

@@ -9,7 +9,7 @@ public partial struct D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CUR
     public ulong CurrentSizeInBytes;
     
     public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC(ulong value) => this.CurrentSizeInBytes = value;
-    public override string ToString() => $"0x{CurrentSizeInBytes:x}";
+    public override readonly string ToString() => $"0x{CurrentSizeInBytes:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC value && Equals(value);
     public readonly bool Equals(D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC other) => other.CurrentSizeInBytes == CurrentSizeInBytes;

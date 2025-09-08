@@ -8,7 +8,7 @@ public partial struct HICON : IEquatable<HICON>, IValueGet<nint>
     public nint Value;
     
     public HICON(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HICON value && Equals(value);
     public readonly bool Equals(HICON other) => other.Value == Value;

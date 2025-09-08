@@ -9,7 +9,7 @@ public partial struct D3D11_FEATURE_DATA_SHADER_CACHE : IEquatable<D3D11_FEATURE
     public uint SupportFlags;
     
     public D3D11_FEATURE_DATA_SHADER_CACHE(uint value) => this.SupportFlags = value;
-    public override string ToString() => $"0x{SupportFlags:x}";
+    public override readonly string ToString() => $"0x{SupportFlags:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_FEATURE_DATA_SHADER_CACHE value && Equals(value);
     public readonly bool Equals(D3D11_FEATURE_DATA_SHADER_CACHE other) => other.SupportFlags == SupportFlags;

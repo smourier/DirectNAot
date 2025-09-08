@@ -8,7 +8,7 @@ public partial struct PDD_SETMODEDATA : IEquatable<PDD_SETMODEDATA>, IValueGet<n
     public nint Value;
     
     public PDD_SETMODEDATA(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is PDD_SETMODEDATA value && Equals(value);
     public readonly bool Equals(PDD_SETMODEDATA other) => other.Value == Value;

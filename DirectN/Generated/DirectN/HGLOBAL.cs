@@ -8,7 +8,7 @@ public partial struct HGLOBAL : IEquatable<HGLOBAL>, IValueGet<nint>
     public nint Value;
     
     public HGLOBAL(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HGLOBAL value && Equals(value);
     public readonly bool Equals(HGLOBAL other) => other.Value == Value;

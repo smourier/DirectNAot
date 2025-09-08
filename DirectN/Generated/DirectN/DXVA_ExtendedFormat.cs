@@ -8,7 +8,7 @@ public partial struct DXVA_ExtendedFormat : IEquatable<DXVA_ExtendedFormat>, IVa
     public uint _bitfield;
     
     public DXVA_ExtendedFormat(uint value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is DXVA_ExtendedFormat value && Equals(value);
     public readonly bool Equals(DXVA_ExtendedFormat other) => other._bitfield == _bitfield;

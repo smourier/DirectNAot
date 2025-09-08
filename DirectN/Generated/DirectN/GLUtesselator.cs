@@ -8,7 +8,7 @@ public partial struct GLUtesselator : IEquatable<GLUtesselator>, IValueGet<nint>
     public nint Value;
     
     public GLUtesselator(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is GLUtesselator value && Equals(value);
     public readonly bool Equals(GLUtesselator other) => other.Value == Value;

@@ -8,7 +8,7 @@ public partial struct VBICODECFILTERING_CC_SUBSTREAMS : IEquatable<VBICODECFILTE
     public uint SubstreamMask;
     
     public VBICODECFILTERING_CC_SUBSTREAMS(uint value) => this.SubstreamMask = value;
-    public override string ToString() => $"0x{SubstreamMask:x}";
+    public override readonly string ToString() => $"0x{SubstreamMask:x}";
     
     public override readonly bool Equals(object? obj) => obj is VBICODECFILTERING_CC_SUBSTREAMS value && Equals(value);
     public readonly bool Equals(VBICODECFILTERING_CC_SUBSTREAMS other) => other.SubstreamMask == SubstreamMask;

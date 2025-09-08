@@ -8,7 +8,7 @@ public partial struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S : IEquat
     public uint InterleavedCapPossible;
     
     public KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S(uint value) => this.InterleavedCapPossible = value;
-    public override string ToString() => $"0x{InterleavedCapPossible:x}";
+    public override readonly string ToString() => $"0x{InterleavedCapPossible:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S value && Equals(value);
     public readonly bool Equals(KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S other) => other.InterleavedCapPossible == InterleavedCapPossible;

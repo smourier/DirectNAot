@@ -353,6 +353,12 @@ public static class Conversions
                 }
                 return true;
             }
+
+            if (input is IValueGet<int> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(long))
@@ -412,6 +418,12 @@ public static class Conversions
                 }
                 return true;
             }
+
+            if (input is IValueGet<long> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(short))
@@ -439,6 +451,12 @@ public static class Conversions
                 value = unchecked((short)(byte)input);
                 return true;
             }
+
+            if (input is IValueGet<short> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(sbyte))
@@ -464,6 +482,12 @@ public static class Conversions
             if (inputType == typeof(byte))
             {
                 value = unchecked((sbyte)(byte)input);
+                return true;
+            }
+
+            if (input is IValueGet<sbyte> valueGet)
+            {
+                value = valueGet.GetValue();
                 return true;
             }
         }
@@ -507,6 +531,12 @@ public static class Conversions
                 }
                 return true;
             }
+
+            if (input is IValueGet<uint> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(ulong))
@@ -548,6 +578,12 @@ public static class Conversions
                 }
                 return true;
             }
+
+            if (input is IValueGet<ulong> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(ushort))
@@ -573,6 +609,12 @@ public static class Conversions
             if (inputType == typeof(sbyte))
             {
                 value = unchecked((ushort)(sbyte)input);
+                return true;
+            }
+
+            if (input is IValueGet<ushort> valueGet)
+            {
+                value = valueGet.GetValue();
                 return true;
             }
         }
@@ -602,6 +644,12 @@ public static class Conversions
                 value = unchecked((byte)(sbyte)input);
                 return true;
             }
+
+            if (input is IValueGet<byte> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
         }
 
         if (conversionType == typeof(bool))
@@ -628,6 +676,12 @@ public static class Conversions
             if (bool.TryParse(svalue, out bool b))
             {
                 value = b;
+                return true;
+            }
+
+            if (input is IValueGet<bool> valueGet)
+            {
+                value = valueGet.GetValue();
                 return true;
             }
 
@@ -667,6 +721,12 @@ public static class Conversions
                 return true;
             }
 
+            if (input is IValueGet<DateTime> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
+
             if (TryChangeToDateTime(input, provider, DateTimeStyles.None, out var dt))
             {
                 value = dt;
@@ -690,6 +750,12 @@ public static class Conversions
                     value = new DateTimeOffset((DateTime)input);
                     return true;
                 }
+            }
+
+            if (input is IValueGet<DateTimeOffset> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
             }
 
             if (TryChangeToDateTime(input, provider, DateTimeStyles.None, out var dto))
@@ -719,6 +785,12 @@ public static class Conversions
                 return true;
             }
 
+            if (input is IValueGet<TimeSpan> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
+
             if (TryChangeType(input, provider, out string? sv) && TimeSpan.TryParse(sv, provider, out var ts))
             {
                 value = ts;
@@ -731,6 +803,12 @@ public static class Conversions
             if (input is byte[] bytes && bytes.Length == 16)
             {
                 value = new Guid(bytes);
+                return true;
+            }
+
+            if (input is IValueGet<Guid> valueGet)
+            {
+                value = valueGet.GetValue();
                 return true;
             }
 
@@ -754,6 +832,12 @@ public static class Conversions
                 return true;
             }
 
+            if (input is IValueGet<Uri> valueGet)
+            {
+                value = valueGet.GetValue();
+                return true;
+            }
+
             value = GetDefaultValue(conversionType);
             return false;
         }
@@ -771,6 +855,12 @@ public static class Conversions
             else if (TryChangeType(input, provider, out int i))
             {
                 value = new nint(i);
+                return true;
+            }
+
+            if (input is IValueGet<nint> valueGet)
+            {
+                value = valueGet.GetValue();
                 return true;
             }
 
@@ -967,6 +1057,37 @@ public static class Conversions
             }
 
             value = new D3DCOLORVALUE();
+            return false;
+        }
+
+        if (conversionType == typeof(OLE_COLOR))
+        {
+            if (TryChangeType(input, out uint ui))
+            {
+                // keep possible flags as is
+                value = new OLE_COLOR(ui);
+                return true;
+            }
+
+            if (TryChangeType(input, out D3DCOLORVALUE clr))
+            {
+                value = clr.ToOLE_COLOR();
+                return true;
+            }
+
+            value = new OLE_COLOR();
+            return false;
+        }
+
+        if (conversionType == typeof(COLORREF))
+        {
+            if (TryChangeType(input, out D3DCOLORVALUE clr))
+            {
+                value = clr.ToCOLORREF();
+                return true;
+            }
+
+            value = new COLORREF();
             return false;
         }
 

@@ -9,7 +9,7 @@ public partial struct DDLOCKOUTINFO : IEquatable<DDLOCKOUTINFO>, IValueGet<nuint
     public nuint dwSurfacePtr;
     
     public DDLOCKOUTINFO(nuint value) => this.dwSurfacePtr = value;
-    public override string ToString() => $"0x{dwSurfacePtr:x}";
+    public override readonly string ToString() => $"0x{dwSurfacePtr:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDLOCKOUTINFO value && Equals(value);
     public readonly bool Equals(DDLOCKOUTINFO other) => other.dwSurfacePtr == dwSurfacePtr;

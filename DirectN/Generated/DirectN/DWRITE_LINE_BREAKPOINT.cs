@@ -9,7 +9,7 @@ public partial struct DWRITE_LINE_BREAKPOINT : IEquatable<DWRITE_LINE_BREAKPOINT
     public byte _bitfield;
     
     public DWRITE_LINE_BREAKPOINT(byte value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is DWRITE_LINE_BREAKPOINT value && Equals(value);
     public readonly bool Equals(DWRITE_LINE_BREAKPOINT other) => other._bitfield == _bitfield;

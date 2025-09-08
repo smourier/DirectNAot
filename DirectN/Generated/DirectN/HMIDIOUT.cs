@@ -8,7 +8,7 @@ public partial struct HMIDIOUT : IEquatable<HMIDIOUT>, IValueGet<nint>
     public nint Value;
     
     public HMIDIOUT(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMIDIOUT value && Equals(value);
     public readonly bool Equals(HMIDIOUT other) => other.Value == Value;

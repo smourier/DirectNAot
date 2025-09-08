@@ -8,7 +8,7 @@ public partial struct KSAUDIO_CHANNEL_CONFIG : IEquatable<KSAUDIO_CHANNEL_CONFIG
     public int ActiveSpeakerPositions;
     
     public KSAUDIO_CHANNEL_CONFIG(int value) => this.ActiveSpeakerPositions = value;
-    public override string ToString() => $"0x{ActiveSpeakerPositions:x}";
+    public override readonly string ToString() => $"0x{ActiveSpeakerPositions:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSAUDIO_CHANNEL_CONFIG value && Equals(value);
     public readonly bool Equals(KSAUDIO_CHANNEL_CONFIG other) => other.ActiveSpeakerPositions == ActiveSpeakerPositions;

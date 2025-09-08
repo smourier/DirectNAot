@@ -9,7 +9,7 @@ public partial struct D3D11_TEX2DMS_SRV : IEquatable<D3D11_TEX2DMS_SRV>, IValueG
     public uint UnusedField_NothingToDefine;
     
     public D3D11_TEX2DMS_SRV(uint value) => this.UnusedField_NothingToDefine = value;
-    public override string ToString() => $"0x{UnusedField_NothingToDefine:x}";
+    public override readonly string ToString() => $"0x{UnusedField_NothingToDefine:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_TEX2DMS_SRV value && Equals(value);
     public readonly bool Equals(D3D11_TEX2DMS_SRV other) => other.UnusedField_NothingToDefine == UnusedField_NothingToDefine;

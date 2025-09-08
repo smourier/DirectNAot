@@ -8,7 +8,7 @@ public partial struct HACMDRIVERID : IEquatable<HACMDRIVERID>, IValueGet<nint>
     public nint Value;
     
     public HACMDRIVERID(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HACMDRIVERID value && Equals(value);
     public readonly bool Equals(HACMDRIVERID other) => other.Value == Value;

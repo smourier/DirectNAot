@@ -9,7 +9,7 @@ public partial struct PALOBJ : IEquatable<PALOBJ>, IValueGet<uint>
     public uint ulReserved;
     
     public PALOBJ(uint value) => this.ulReserved = value;
-    public override string ToString() => $"0x{ulReserved:x}";
+    public override readonly string ToString() => $"0x{ulReserved:x}";
     
     public override readonly bool Equals(object? obj) => obj is PALOBJ value && Equals(value);
     public readonly bool Equals(PALOBJ other) => other.ulReserved == ulReserved;

@@ -8,7 +8,7 @@ public partial struct KSWAVE_COMPATCAPS : IEquatable<KSWAVE_COMPATCAPS>, IValueG
     public uint ulDeviceType;
     
     public KSWAVE_COMPATCAPS(uint value) => this.ulDeviceType = value;
-    public override string ToString() => $"0x{ulDeviceType:x}";
+    public override readonly string ToString() => $"0x{ulDeviceType:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSWAVE_COMPATCAPS value && Equals(value);
     public readonly bool Equals(KSWAVE_COMPATCAPS other) => other.ulDeviceType == ulDeviceType;

@@ -8,7 +8,7 @@ public partial struct HFASTMUTEX : IEquatable<HFASTMUTEX>, IValueGet<nint>
     public nint Value;
     
     public HFASTMUTEX(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HFASTMUTEX value && Equals(value);
     public readonly bool Equals(HFASTMUTEX other) => other.Value == Value;

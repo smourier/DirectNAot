@@ -9,7 +9,7 @@ public partial struct D3D11_TEX2D_VPOV : IEquatable<D3D11_TEX2D_VPOV>, IValueGet
     public uint MipSlice;
     
     public D3D11_TEX2D_VPOV(uint value) => this.MipSlice = value;
-    public override string ToString() => $"0x{MipSlice:x}";
+    public override readonly string ToString() => $"0x{MipSlice:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_TEX2D_VPOV value && Equals(value);
     public readonly bool Equals(D3D11_TEX2D_VPOV other) => other.MipSlice == MipSlice;

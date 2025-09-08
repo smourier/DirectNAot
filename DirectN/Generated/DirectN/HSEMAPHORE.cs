@@ -8,7 +8,7 @@ public partial struct HSEMAPHORE : IEquatable<HSEMAPHORE>, IValueGet<nint>
     public nint Value;
     
     public HSEMAPHORE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HSEMAPHORE value && Equals(value);
     public readonly bool Equals(HSEMAPHORE other) => other.Value == Value;

@@ -10,7 +10,7 @@ public partial struct MIXERCONTROLDETAILS_UNSIGNED : IEquatable<MIXERCONTROLDETA
     public uint dwValue;
     
     public MIXERCONTROLDETAILS_UNSIGNED(uint value) => this.dwValue = value;
-    public override string ToString() => $"0x{dwValue:x}";
+    public override readonly string ToString() => $"0x{dwValue:x}";
     
     public override readonly bool Equals(object? obj) => obj is MIXERCONTROLDETAILS_UNSIGNED value && Equals(value);
     public readonly bool Equals(MIXERCONTROLDETAILS_UNSIGNED other) => other.dwValue == dwValue;

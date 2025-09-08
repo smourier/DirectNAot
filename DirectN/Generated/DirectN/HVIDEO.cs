@@ -8,7 +8,7 @@ public partial struct HVIDEO : IEquatable<HVIDEO>, IValueGet<nint>
     public nint Value;
     
     public HVIDEO(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HVIDEO value && Equals(value);
     public readonly bool Equals(HVIDEO other) => other.Value == Value;

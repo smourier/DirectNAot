@@ -9,7 +9,7 @@ public partial struct DDTRANSFEROUTINFO : IEquatable<DDTRANSFEROUTINFO>, IValueG
     public uint dwBufferPolarity;
     
     public DDTRANSFEROUTINFO(uint value) => this.dwBufferPolarity = value;
-    public override string ToString() => $"0x{dwBufferPolarity:x}";
+    public override readonly string ToString() => $"0x{dwBufferPolarity:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDTRANSFEROUTINFO value && Equals(value);
     public readonly bool Equals(DDTRANSFEROUTINFO other) => other.dwBufferPolarity == dwBufferPolarity;

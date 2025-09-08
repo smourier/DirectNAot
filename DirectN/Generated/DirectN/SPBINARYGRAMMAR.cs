@@ -8,7 +8,7 @@ public partial struct SPBINARYGRAMMAR : IEquatable<SPBINARYGRAMMAR>, IValueGet<u
     public uint ulTotalSerializedSize;
     
     public SPBINARYGRAMMAR(uint value) => this.ulTotalSerializedSize = value;
-    public override string ToString() => $"0x{ulTotalSerializedSize:x}";
+    public override readonly string ToString() => $"0x{ulTotalSerializedSize:x}";
     
     public override readonly bool Equals(object? obj) => obj is SPBINARYGRAMMAR value && Equals(value);
     public readonly bool Equals(SPBINARYGRAMMAR other) => other.ulTotalSerializedSize == ulTotalSerializedSize;

@@ -8,7 +8,7 @@ public partial struct AM_AC3_DIALOGUE_LEVEL : IEquatable<AM_AC3_DIALOGUE_LEVEL>,
     public uint DialogueLevel;
     
     public AM_AC3_DIALOGUE_LEVEL(uint value) => this.DialogueLevel = value;
-    public override string ToString() => $"0x{DialogueLevel:x}";
+    public override readonly string ToString() => $"0x{DialogueLevel:x}";
     
     public override readonly bool Equals(object? obj) => obj is AM_AC3_DIALOGUE_LEVEL value && Equals(value);
     public readonly bool Equals(AM_AC3_DIALOGUE_LEVEL other) => other.DialogueLevel == DialogueLevel;

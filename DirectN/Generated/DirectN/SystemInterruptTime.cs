@@ -9,7 +9,7 @@ public partial struct SystemInterruptTime : IEquatable<SystemInterruptTime>, IVa
     public ulong value;
     
     public SystemInterruptTime(ulong value) => this.value = value;
-    public override string ToString() => $"0x{value:x}";
+    public override readonly string ToString() => $"0x{value:x}";
     
     public override readonly bool Equals(object? obj) => obj is SystemInterruptTime value && Equals(value);
     public readonly bool Equals(SystemInterruptTime other) => other.value == value;

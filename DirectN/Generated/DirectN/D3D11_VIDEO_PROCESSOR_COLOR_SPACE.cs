@@ -9,7 +9,7 @@ public partial struct D3D11_VIDEO_PROCESSOR_COLOR_SPACE : IEquatable<D3D11_VIDEO
     public uint _bitfield;
     
     public D3D11_VIDEO_PROCESSOR_COLOR_SPACE(uint value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_VIDEO_PROCESSOR_COLOR_SPACE value && Equals(value);
     public readonly bool Equals(D3D11_VIDEO_PROCESSOR_COLOR_SPACE other) => other._bitfield == _bitfield;

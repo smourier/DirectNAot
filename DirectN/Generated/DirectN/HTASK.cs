@@ -8,7 +8,7 @@ public partial struct HTASK : IEquatable<HTASK>, IValueGet<nint>
     public nint Value;
     
     public HTASK(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HTASK value && Equals(value);
     public readonly bool Equals(HTASK other) => other.Value == Value;

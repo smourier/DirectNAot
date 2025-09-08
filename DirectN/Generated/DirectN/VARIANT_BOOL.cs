@@ -8,7 +8,7 @@ public partial struct VARIANT_BOOL : IEquatable<VARIANT_BOOL>, IValueGet<short>
     public short Value;
     
     public VARIANT_BOOL(short value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is VARIANT_BOOL value && Equals(value);
     public readonly bool Equals(VARIANT_BOOL other) => other.Value == Value;

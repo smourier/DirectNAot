@@ -10,7 +10,7 @@ public partial struct MCI_GENERIC_PARMS : IEquatable<MCI_GENERIC_PARMS>, IValueG
     public nuint dwCallback;
     
     public MCI_GENERIC_PARMS(nuint value) => this.dwCallback = value;
-    public override string ToString() => $"0x{dwCallback:x}";
+    public override readonly string ToString() => $"0x{dwCallback:x}";
     
     public override readonly bool Equals(object? obj) => obj is MCI_GENERIC_PARMS value && Equals(value);
     public readonly bool Equals(MCI_GENERIC_PARMS other) => other.dwCallback == dwCallback;

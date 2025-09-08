@@ -9,7 +9,7 @@ public partial struct DDGETIRQINFO : IEquatable<DDGETIRQINFO>, IValueGet<uint>
     public uint dwFlags;
     
     public DDGETIRQINFO(uint value) => this.dwFlags = value;
-    public override string ToString() => $"0x{dwFlags:x}";
+    public override readonly string ToString() => $"0x{dwFlags:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDGETIRQINFO value && Equals(value);
     public readonly bool Equals(DDGETIRQINFO other) => other.dwFlags == dwFlags;

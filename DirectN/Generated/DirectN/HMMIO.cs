@@ -8,7 +8,7 @@ public partial struct HMMIO : IEquatable<HMMIO>, IValueGet<nint>
     public nint Value;
     
     public HMMIO(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMMIO value && Equals(value);
     public readonly bool Equals(HMMIO other) => other.Value == Value;

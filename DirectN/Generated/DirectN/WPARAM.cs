@@ -8,7 +8,7 @@ public partial struct WPARAM : IEquatable<WPARAM>, IValueGet<nuint>
     public nuint Value;
     
     public WPARAM(nuint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is WPARAM value && Equals(value);
     public readonly bool Equals(WPARAM other) => other.Value == Value;

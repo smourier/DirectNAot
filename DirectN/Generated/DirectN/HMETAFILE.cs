@@ -8,7 +8,7 @@ public partial struct HMETAFILE : IEquatable<HMETAFILE>, IValueGet<nint>
     public nint Value;
     
     public HMETAFILE(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HMETAFILE value && Equals(value);
     public readonly bool Equals(HMETAFILE other) => other.Value == Value;

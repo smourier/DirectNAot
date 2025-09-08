@@ -8,7 +8,7 @@ public partial struct LPARAM : IEquatable<LPARAM>, IValueGet<nint>
     public nint Value;
     
     public LPARAM(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is LPARAM value && Equals(value);
     public readonly bool Equals(LPARAM other) => other.Value == Value;

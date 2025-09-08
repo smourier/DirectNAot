@@ -8,7 +8,7 @@ public partial struct DMUS_MSCPARAMS : IEquatable<DMUS_MSCPARAMS>, IValueGet<int
     public int ptDefaultPan;
     
     public DMUS_MSCPARAMS(int value) => this.ptDefaultPan = value;
-    public override string ToString() => $"0x{ptDefaultPan:x}";
+    public override readonly string ToString() => $"0x{ptDefaultPan:x}";
     
     public override readonly bool Equals(object? obj) => obj is DMUS_MSCPARAMS value && Equals(value);
     public readonly bool Equals(DMUS_MSCPARAMS other) => other.ptDefaultPan == ptDefaultPan;

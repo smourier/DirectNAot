@@ -8,7 +8,7 @@ public partial struct HBITMAP : IEquatable<HBITMAP>, IValueGet<nint>
     public nint Value;
     
     public HBITMAP(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HBITMAP value && Equals(value);
     public readonly bool Equals(HBITMAP other) => other.Value == Value;

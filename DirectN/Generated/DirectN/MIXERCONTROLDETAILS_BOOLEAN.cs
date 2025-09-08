@@ -10,7 +10,7 @@ public partial struct MIXERCONTROLDETAILS_BOOLEAN : IEquatable<MIXERCONTROLDETAI
     public int fValue;
     
     public MIXERCONTROLDETAILS_BOOLEAN(int value) => this.fValue = value;
-    public override string ToString() => $"0x{fValue:x}";
+    public override readonly string ToString() => $"0x{fValue:x}";
     
     public override readonly bool Equals(object? obj) => obj is MIXERCONTROLDETAILS_BOOLEAN value && Equals(value);
     public readonly bool Equals(MIXERCONTROLDETAILS_BOOLEAN other) => other.fValue == fValue;

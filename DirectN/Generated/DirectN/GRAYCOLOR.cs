@@ -9,7 +9,7 @@ public partial struct GRAYCOLOR : IEquatable<GRAYCOLOR>, IValueGet<ushort>
     public ushort gray;
     
     public GRAYCOLOR(ushort value) => this.gray = value;
-    public override string ToString() => $"0x{gray:x}";
+    public override readonly string ToString() => $"0x{gray:x}";
     
     public override readonly bool Equals(object? obj) => obj is GRAYCOLOR value && Equals(value);
     public readonly bool Equals(GRAYCOLOR other) => other.gray == gray;

@@ -8,7 +8,7 @@ public partial struct DDOSCAPS : IEquatable<DDOSCAPS>, IValueGet<uint>
     public uint dwCaps;
     
     public DDOSCAPS(uint value) => this.dwCaps = value;
-    public override string ToString() => $"0x{dwCaps:x}";
+    public override readonly string ToString() => $"0x{dwCaps:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDOSCAPS value && Equals(value);
     public readonly bool Equals(DDOSCAPS other) => other.dwCaps == dwCaps;

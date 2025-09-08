@@ -9,7 +9,7 @@ public partial struct D3D12_NODE_MASK : IEquatable<D3D12_NODE_MASK>, IValueGet<u
     public uint NodeMask;
     
     public D3D12_NODE_MASK(uint value) => this.NodeMask = value;
-    public override string ToString() => $"0x{NodeMask:x}";
+    public override readonly string ToString() => $"0x{NodeMask:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_NODE_MASK value && Equals(value);
     public readonly bool Equals(D3D12_NODE_MASK other) => other.NodeMask == NodeMask;

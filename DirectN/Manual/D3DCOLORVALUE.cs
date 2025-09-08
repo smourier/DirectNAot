@@ -8,6 +8,8 @@ public partial struct D3DCOLORVALUE :
     IEquatable<D2D_VECTOR_4F>,
     IEquatable<Vector3>,
     IEquatable<D2D_VECTOR_3F>,
+    IEquatable<COLORREF>,
+    IEquatable<OLE_COLOR>,
     IValueGet<int>,
     IValueGet<uint>,
     IParsable<D3DCOLORVALUE>
@@ -85,6 +87,25 @@ public partial struct D3DCOLORVALUE :
 
     private static bool IsHexa(char c) => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 
+    [SupportedOSPlatform("windows5.0")]
+    public static D3DCOLORVALUE GetSysColor(SYS_COLOR_INDEX color) => FromCOLORREF(Functions.GetSysColor(color));
+
+    public readonly OLE_COLOR ToOLE_COLOR() => new((uint)((BB << 16) | (BG << 8) | BR));
+
+    [SupportedOSPlatform("windows5.0")]
+    public static D3DCOLORVALUE FromOLE_COLOR(OLE_COLOR color) => FromOLE_COLOR(color.Value);
+
+    [SupportedOSPlatform("windows5.0")]
+    public static D3DCOLORVALUE FromOLE_COLOR(uint color)
+    {
+        var masked = color & ~OLE_COLOR.TypeMask;
+        if ((color & OLE_COLOR.TypeMask) == OLE_COLOR.SystemPalette)
+            return GetSysColor((SYS_COLOR_INDEX)(masked & 0xFFFF));
+
+        return FromCOLORREF(new COLORREF(masked));
+    }
+
+    public readonly COLORREF ToCOLORREF() => new((uint)((BB << 16) | (BG << 8) | BR));
     public static D3DCOLORVALUE FromCOLORREF(COLORREF color, byte alpha = 255) => FromCOLORREF(color.Value, alpha);
     public static D3DCOLORVALUE FromCOLORREF(uint color, byte alpha = 255)
     {
@@ -268,6 +289,24 @@ public partial struct D3DCOLORVALUE :
     public static bool operator !=(D3DCOLORVALUE left, Vector3 right) => !left.Equals(right);
     public static implicit operator Vector3(D3DCOLORVALUE c) => new(c.r, c.g, c.b);
     public static implicit operator D3DCOLORVALUE(Vector3 vc) => new(1, vc.X, vc.Y, vc.Z);
+
+    public readonly bool Equals(COLORREF other) => ToCOLORREF() == other;
+    public static bool operator ==(COLORREF left, D3DCOLORVALUE right) => right.Equals(left);
+    public static bool operator !=(COLORREF left, D3DCOLORVALUE right) => !right.Equals(left);
+    public static bool operator ==(D3DCOLORVALUE left, COLORREF right) => left.Equals(right);
+    public static bool operator !=(D3DCOLORVALUE left, COLORREF right) => !left.Equals(right);
+    public static implicit operator COLORREF(D3DCOLORVALUE c) => c.ToCOLORREF();
+    public static implicit operator D3DCOLORVALUE(COLORREF vc) => FromCOLORREF(vc);
+
+    public readonly bool Equals(OLE_COLOR other) => ToOLE_COLOR() == other;
+    public static bool operator ==(OLE_COLOR left, D3DCOLORVALUE right) => right.Equals(left);
+    public static bool operator !=(OLE_COLOR left, D3DCOLORVALUE right) => !right.Equals(left);
+    public static bool operator ==(D3DCOLORVALUE left, OLE_COLOR right) => left.Equals(right);
+    public static bool operator !=(D3DCOLORVALUE left, OLE_COLOR right) => !left.Equals(right);
+    public static implicit operator OLE_COLOR(D3DCOLORVALUE c) => c.ToOLE_COLOR();
+
+    [SupportedOSPlatform("windows5.0")]
+    public static implicit operator D3DCOLORVALUE(OLE_COLOR vc) => FromOLE_COLOR(vc);
 
     private static float ByteToSingle(byte value) => value / 255f;
     private static byte SingleToByte(float value) => (byte)(value * 255);

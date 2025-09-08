@@ -10,7 +10,7 @@ public partial struct MPEG_WINSOCK : IEquatable<MPEG_WINSOCK>, IValueGet<uint>
     public uint AVMGraphId;
     
     public MPEG_WINSOCK(uint value) => this.AVMGraphId = value;
-    public override string ToString() => $"0x{AVMGraphId:x}";
+    public override readonly string ToString() => $"0x{AVMGraphId:x}";
     
     public override readonly bool Equals(object? obj) => obj is MPEG_WINSOCK value && Equals(value);
     public readonly bool Equals(MPEG_WINSOCK other) => other.AVMGraphId == AVMGraphId;

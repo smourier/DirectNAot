@@ -8,7 +8,7 @@ public partial struct POOLCUE : IEquatable<POOLCUE>, IValueGet<uint>
     public uint ulOffset;
     
     public POOLCUE(uint value) => this.ulOffset = value;
-    public override string ToString() => $"0x{ulOffset:x}";
+    public override readonly string ToString() => $"0x{ulOffset:x}";
     
     public override readonly bool Equals(object? obj) => obj is POOLCUE value && Equals(value);
     public readonly bool Equals(POOLCUE other) => other.ulOffset == ulOffset;

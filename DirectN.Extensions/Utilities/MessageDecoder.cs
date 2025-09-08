@@ -176,6 +176,7 @@ public static class MessageDecoder
         WM_SYSKEYUP = 0x0105,
         WM_SYSCHAR = 0x0106,
         WM_SYSDEADCHAR = 0x0107,
+        WM_UNICHAR = 0x0109,
         WM_IME_STARTCOMPOSITION = 0x010D,
         WM_IME_ENDCOMPOSITION = 0x010E,
         WM_IME_COMPOSITION = 0x010F,

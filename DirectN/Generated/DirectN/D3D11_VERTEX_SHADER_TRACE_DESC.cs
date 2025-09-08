@@ -9,7 +9,7 @@ public partial struct D3D11_VERTEX_SHADER_TRACE_DESC : IEquatable<D3D11_VERTEX_S
     public ulong Invocation;
     
     public D3D11_VERTEX_SHADER_TRACE_DESC(ulong value) => this.Invocation = value;
-    public override string ToString() => $"0x{Invocation:x}";
+    public override readonly string ToString() => $"0x{Invocation:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D11_VERTEX_SHADER_TRACE_DESC value && Equals(value);
     public readonly bool Equals(D3D11_VERTEX_SHADER_TRACE_DESC other) => other.Invocation == Invocation;

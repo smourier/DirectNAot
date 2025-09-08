@@ -8,7 +8,7 @@ public partial struct HGDIOBJ : IEquatable<HGDIOBJ>, IValueGet<nint>
     public nint Value;
     
     public HGDIOBJ(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is HGDIOBJ value && Equals(value);
     public readonly bool Equals(HGDIOBJ other) => other.Value == Value;

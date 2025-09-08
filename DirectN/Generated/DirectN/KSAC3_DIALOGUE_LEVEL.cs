@@ -8,7 +8,7 @@ public partial struct KSAC3_DIALOGUE_LEVEL : IEquatable<KSAC3_DIALOGUE_LEVEL>, I
     public uint DialogueLevel;
     
     public KSAC3_DIALOGUE_LEVEL(uint value) => this.DialogueLevel = value;
-    public override string ToString() => $"0x{DialogueLevel:x}";
+    public override readonly string ToString() => $"0x{DialogueLevel:x}";
     
     public override readonly bool Equals(object? obj) => obj is KSAC3_DIALOGUE_LEVEL value && Equals(value);
     public readonly bool Equals(KSAC3_DIALOGUE_LEVEL other) => other.DialogueLevel == DialogueLevel;

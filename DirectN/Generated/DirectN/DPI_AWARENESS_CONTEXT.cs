@@ -8,7 +8,7 @@ public partial struct DPI_AWARENESS_CONTEXT : IEquatable<DPI_AWARENESS_CONTEXT>,
     public nint Value;
     
     public DPI_AWARENESS_CONTEXT(nint value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is DPI_AWARENESS_CONTEXT value && Equals(value);
     public readonly bool Equals(DPI_AWARENESS_CONTEXT other) => other.Value == Value;

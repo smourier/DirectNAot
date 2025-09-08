@@ -9,7 +9,7 @@ public partial struct MPEG_HEADER_VERSION_BITS : IEquatable<MPEG_HEADER_VERSION_
     public byte _bitfield;
     
     public MPEG_HEADER_VERSION_BITS(byte value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is MPEG_HEADER_VERSION_BITS value && Equals(value);
     public readonly bool Equals(MPEG_HEADER_VERSION_BITS other) => other._bitfield == _bitfield;

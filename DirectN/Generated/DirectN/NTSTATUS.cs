@@ -8,7 +8,7 @@ public partial struct NTSTATUS : IEquatable<NTSTATUS>, IValueGet<int>
     public int Value;
     
     public NTSTATUS(int value) => this.Value = value;
-    public override string ToString() => $"0x{Value:x}";
+    public override readonly string ToString() => $"0x{Value:x}";
     
     public override readonly bool Equals(object? obj) => obj is NTSTATUS value && Equals(value);
     public readonly bool Equals(NTSTATUS other) => other.Value == Value;

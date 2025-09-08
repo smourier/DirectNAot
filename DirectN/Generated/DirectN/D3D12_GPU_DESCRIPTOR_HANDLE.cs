@@ -9,7 +9,7 @@ public partial struct D3D12_GPU_DESCRIPTOR_HANDLE : IEquatable<D3D12_GPU_DESCRIP
     public ulong ptr;
     
     public D3D12_GPU_DESCRIPTOR_HANDLE(ulong value) => this.ptr = value;
-    public override string ToString() => $"0x{ptr:x}";
+    public override readonly string ToString() => $"0x{ptr:x}";
     
     public override readonly bool Equals(object? obj) => obj is D3D12_GPU_DESCRIPTOR_HANDLE value && Equals(value);
     public readonly bool Equals(D3D12_GPU_DESCRIPTOR_HANDLE other) => other.ptr == ptr;

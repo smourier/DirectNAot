@@ -9,7 +9,7 @@ public partial struct DVD_TIMECODE : IEquatable<DVD_TIMECODE>, IValueGet<uint>
     public uint _bitfield;
     
     public DVD_TIMECODE(uint value) => this._bitfield = value;
-    public override string ToString() => $"0x{_bitfield:x}";
+    public override readonly string ToString() => $"0x{_bitfield:x}";
     
     public override readonly bool Equals(object? obj) => obj is DVD_TIMECODE value && Equals(value);
     public readonly bool Equals(DVD_TIMECODE other) => other._bitfield == _bitfield;

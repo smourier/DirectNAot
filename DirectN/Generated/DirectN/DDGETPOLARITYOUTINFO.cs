@@ -9,7 +9,7 @@ public partial struct DDGETPOLARITYOUTINFO : IEquatable<DDGETPOLARITYOUTINFO>, I
     public uint bPolarity;
     
     public DDGETPOLARITYOUTINFO(uint value) => this.bPolarity = value;
-    public override string ToString() => $"0x{bPolarity:x}";
+    public override readonly string ToString() => $"0x{bPolarity:x}";
     
     public override readonly bool Equals(object? obj) => obj is DDGETPOLARITYOUTINFO value && Equals(value);
     public readonly bool Equals(DDGETPOLARITYOUTINFO other) => other.bPolarity == bPolarity;
