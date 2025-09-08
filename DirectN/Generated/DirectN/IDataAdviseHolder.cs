@@ -24,5 +24,5 @@ public partial interface IDataAdviseHolder
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-idataadviseholder-sendondatachange
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SendOnDataChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObject, uint? dwReserved, uint advf);
+    HRESULT SendOnDataChange([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObject, uint dwReserved, uint advf);
 }

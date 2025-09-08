@@ -49,7 +49,7 @@ public partial interface IStorage
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-enumelements
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT EnumElements(uint? reserved1, nint /* optional void* */ reserved2, uint? reserved3, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSTATSTG>))] out IEnumSTATSTG ppenum);
+    HRESULT EnumElements(uint reserved1, nint /* optional void* */ reserved2, uint reserved3, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IEnumSTATSTG>))] out IEnumSTATSTG ppenum);
     
     // https://learn.microsoft.com/windows/win32/api/objidl/nf-objidl-istorage-destroyelement
     [PreserveSig]

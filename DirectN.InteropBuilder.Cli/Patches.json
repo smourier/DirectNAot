@@ -102,6 +102,30 @@
       ]
     },
     {
+      "TypeName": "IPerPropertyBrowsing",
+      "Methods": [
+        {
+          "Name": "GetPredefinedStrings",
+          "Parameters": [
+            {
+              "Name": "pCaStringsOut",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            },
+            {
+              "Name": "pCaCookiesOut",
+              "Def": {
+                "IsNullDirection": true,
+                "TypeName": "nint"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "TypeName": "IViewObject2",
       "Methods": [
         {

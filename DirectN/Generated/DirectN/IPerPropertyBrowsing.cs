@@ -19,7 +19,7 @@ public partial interface IPerPropertyBrowsing
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iperpropertybrowsing-getpredefinedstrings
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPredefinedStrings(int dispID, out CALPOLESTR pCaStringsOut, out CADWORD pCaCookiesOut);
+    HRESULT GetPredefinedStrings(int dispID, nint pCaStringsOut, nint pCaCookiesOut);
     
     // https://learn.microsoft.com/windows/win32/api/ocidl/nf-ocidl-iperpropertybrowsing-getpredefinedvalue
     [PreserveSig]

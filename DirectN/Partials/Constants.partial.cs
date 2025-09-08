@@ -83,6 +83,11 @@ public static partial class Constants
 
     public static readonly Guid PSGUID_FOLDER_COLUMNID = new("9e5e05ac-1936-4a75-94f7-4704b8b01923");
 
+    // msstkppg.h
+    public static readonly Guid CLSID_StockFontPage = new("7ebdaae0-8120-11cf-899f-00aa00688b10");
+    public static readonly Guid CLSID_StockColorPage = new("7ebdaae1-8120-11cf-899f-00aa00688b10");
+    public static readonly Guid CLSID_StockPicturePage = new("7ebdaae2-8120-11cf-899f-00aa00688b10");
+
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");
 

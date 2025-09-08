@@ -392,7 +392,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint auxOutMessage(uint uDeviceID, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint auxOutMessage(uint uDeviceID, uint uMsg, nuint dw1, nuint dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxsetvolume
     [LibraryImport("WINMM")]
@@ -6457,7 +6457,7 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial nint ICSeqCompressFrame(in COMPVARS pc, uint? uiFlags, nint lpBits, out BOOL pfKey, nint /* optional int* */ plSize);
+    public static partial nint ICSeqCompressFrame(in COMPVARS pc, uint uiFlags, nint lpBits, out BOOL pfKey, nint /* optional int* */ plSize);
     
     // https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframeend
     [LibraryImport("MSVFW32")]
@@ -6904,11 +6904,11 @@ public static partial class Functions
     
     [LibraryImport("WINMM")]
     [PreserveSig]
-    public static partial uint mciSendCommandA(uint mciId, uint uMsg, nuint? dwParam1, nuint? dwParam2);
+    public static partial uint mciSendCommandA(uint mciId, uint uMsg, nuint dwParam1, nuint dwParam2);
     
     [LibraryImport("WINMM", StringMarshalling = StringMarshalling.Utf16)]
     [PreserveSig]
-    public static partial uint mciSendCommandW(uint mciId, uint uMsg, nuint? dwParam1, nuint? dwParam2);
+    public static partial uint mciSendCommandW(uint mciId, uint uMsg, nuint dwParam1, nuint dwParam2);
     
     [LibraryImport("WINMM")]
     [PreserveSig]
@@ -8397,13 +8397,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInMessage(HMIDIIN hmi, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint midiInMessage(HMIDIIN hmi, uint uMsg, nuint dw1, nuint dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinopen
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiInOpen(out HMIDIIN phmi, uint uDeviceID, nuint? dwCallback, nuint? dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint midiInOpen(out HMIDIIN phmi, uint uDeviceID, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinprepareheader
     [LibraryImport("WINMM")]
@@ -8505,13 +8505,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutMessage(HMIDIOUT hmo, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint midiOutMessage(HMIDIOUT hmo, uint uMsg, nuint dw1, nuint dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutopen
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiOutOpen(out HMIDIOUT phmo, uint uDeviceID, nuint? dwCallback, nuint? dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint midiOutOpen(out HMIDIOUT phmo, uint uDeviceID, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutprepareheader
     [LibraryImport("WINMM")]
@@ -8553,7 +8553,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint midiStreamOpen(out HMIDISTRM phms, [In][Out][MarshalUsing(CountElementName = nameof(cMidi))] uint[] puDeviceID, uint cMidi, nuint? dwCallback, nuint? dwInstance, uint fdwOpen);
+    public static partial uint midiStreamOpen(out HMIDISTRM phms, [In][Out][MarshalUsing(CountElementName = nameof(cMidi))] uint[] puDeviceID, uint cMidi, nuint dwCallback, nuint dwInstance, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamout
     [LibraryImport("WINMM")]
@@ -8661,13 +8661,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerMessage(HMIXER hmx, uint uMsg, nuint? dwParam1, nuint? dwParam2);
+    public static partial uint mixerMessage(HMIXER hmx, uint uMsg, nuint dwParam1, nuint dwParam2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixeropen
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint mixerOpen(nint /* optional HMIXER* */ phmx, uint uMxId, nuint? dwCallback, nuint? dwInstance, uint fdwOpen);
+    public static partial uint mixerOpen(nint /* optional HMIXER* */ phmx, uint uMxId, nuint dwCallback, nuint dwInstance, uint fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixersetcontroldetails
     [LibraryImport("WINMM")]
@@ -8927,6 +8927,18 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT OleCreateDefaultHandler(in Guid clsid, nint pUnkOuter, in Guid riid, out nint lplpObj);
     
+    // https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepropertyframe
+    [LibraryImport("OLEAUT32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleCreatePropertyFrame(HWND hwndOwner, uint x, uint y, PWSTR lpszCaption, uint cObjects, nint ppUnk, uint cPages, in Guid pPageClsID, uint lcid, uint dwReserved, nint pvReserved);
+    
+    // https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepropertyframeindirect
+    [LibraryImport("OLEAUT32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleCreatePropertyFrameIndirect(in OCPFIPARAMS lpParams);
+    
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleflushclipboard
     [LibraryImport("OLE32")]
     [SupportedOSPlatform("windows5.0")]
@@ -8950,6 +8962,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT OleIsCurrentClipboard([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDataObject>))] IDataObject pDataObj);
+    
+    // https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpicturepath
+    [LibraryImport("OLEAUT32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT OleLoadPicturePath(PWSTR szURLorPath, nint punkCaller, uint dwReserved, uint clrReserved, in Guid riid, out nint ppvRet);
     
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumformatetc
     [LibraryImport("ole32")]
@@ -10443,14 +10461,14 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
-    public static partial BOOL UpdateICMRegKeyA(uint? reserved, PSTR lpszCMID, PSTR lpszFileName, ICM_COMMAND command);
+    public static partial BOOL UpdateICMRegKeyA(uint reserved, PSTR lpszCMID, PSTR lpszFileName, ICM_COMMAND command);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-updateicmregkeyw
     [LibraryImport("GDI32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
-    public static partial BOOL UpdateICMRegKeyW(uint? reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
+    public static partial BOOL UpdateICMRegKeyW(uint reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
     
     // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-updateresourcew
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
@@ -10594,13 +10612,13 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveInMessage(HWAVEIN hwi, uint uMsg, nuint? dw1, nuint? dw2);
+    public static partial uint waveInMessage(HWAVEIN hwi, uint uMsg, nuint dw1, nuint dw2);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinopen
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveInOpen(nint /* optional HWAVEIN* */ phwi, uint uDeviceID, in WAVEFORMATEX pwfx, nuint? dwCallback, nuint? dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint waveInOpen(nint /* optional HWAVEIN* */ phwi, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinprepareheader
     [LibraryImport("WINMM")]
@@ -10706,7 +10724,7 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial uint waveOutOpen(nint /* optional HWAVEOUT* */ phwo, uint uDeviceID, in WAVEFORMATEX pwfx, nuint? dwCallback, nuint? dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
+    public static partial uint waveOutOpen(nint /* optional HWAVEOUT* */ phwo, uint uDeviceID, in WAVEFORMATEX pwfx, nuint dwCallback, nuint dwInstance, MIDI_WAVE_OPEN_TYPE fdwOpen);
     
     // https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutpause
     [LibraryImport("WINMM")]
