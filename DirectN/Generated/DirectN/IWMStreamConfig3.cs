@@ -8,7 +8,7 @@ public partial interface IWMStreamConfig3 : IWMStreamConfig2
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig3-getlanguage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLanguage([MarshalUsing(CountElementName = nameof(pcchLanguageStringLength))] out PWSTR pwszLanguageString, ref ushort pcchLanguageStringLength);
+    HRESULT GetLanguage([MarshalUsing(CountElementName = nameof(pcchLanguageStringLength))] PWSTR pwszLanguageString, ref ushort pcchLanguageStringLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig3-setlanguage
     [PreserveSig]

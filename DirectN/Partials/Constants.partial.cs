@@ -88,6 +88,16 @@ public static partial class Constants
     public static readonly Guid CLSID_StockColorPage = new("7ebdaae1-8120-11cf-899f-00aa00688b10");
     public static readonly Guid CLSID_StockPicturePage = new("7ebdaae2-8120-11cf-899f-00aa00688b10");
 
+    // metahost.h
+    public static readonly Guid CLSID_CLRMetaHost = new("9280188d-0e8e-4867-b30c-7fa83884e8de");
+    public static readonly Guid CLSID_CLRMetaHostPolicy = new("2ebcd49a-1b47-4a61-b13a-4a03701e594b");
+    public static readonly Guid CLSID_CLRDebugging = new("bacc578d-fbdd-48a4-969f-02d932b74634");
+    public static readonly Guid CLSID_CLRRuntimeHost = new("90f1a06e-7712-4762-86b5-7a5eba6bdb02");
+    public static readonly Guid CLSID_CLRDebuggingLegacy = new("df8395b5-a4ba-450b-a77c-a9a47762c520");
+    public static readonly Guid CLSID_CLRStrongName = new("b79b0acd-f5cd-409b-b5a5-a16244610b92");
+    public static readonly Guid CLSID_TypeNameFactory = new("b81ff171-20f3-11d2-8dcc-00a0c9b00525");
+    public static readonly Guid CLSID_CorMetaDataDispenser = new("e5cb7a31-7512-11d2-89ce-0080c792e5d8");
+
     // DocumentTarget.h
     public static readonly Guid CLSID_PrintDocumentPackageTargetFactory = new("348ef17d-6c81-4982-92b4-ee188a43867a");
 

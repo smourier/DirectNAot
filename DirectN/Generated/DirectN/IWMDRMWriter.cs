@@ -9,17 +9,17 @@ public partial interface IWMDRMWriter
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmwriter-generatekeyseed
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateKeySeed([MarshalUsing(CountElementName = nameof(pcwchLength))] out PWSTR pwszKeySeed, ref uint pcwchLength);
+    HRESULT GenerateKeySeed([MarshalUsing(CountElementName = nameof(pcwchLength))] PWSTR pwszKeySeed, ref uint pcwchLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmwriter-generatekeyid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateKeyID([MarshalUsing(CountElementName = nameof(pcwchLength))] out PWSTR pwszKeyID, ref uint pcwchLength);
+    HRESULT GenerateKeyID([MarshalUsing(CountElementName = nameof(pcwchLength))] PWSTR pwszKeyID, ref uint pcwchLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmwriter-generatesigningkeypair
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GenerateSigningKeyPair([MarshalUsing(CountElementName = nameof(pcwchPrivKeyLength))] out PWSTR pwszPrivKey, ref uint pcwchPrivKeyLength, [MarshalUsing(CountElementName = nameof(pcwchPubKeyLength))] out PWSTR pwszPubKey, ref uint pcwchPubKeyLength);
+    HRESULT GenerateSigningKeyPair([MarshalUsing(CountElementName = nameof(pcwchPrivKeyLength))] PWSTR pwszPrivKey, ref uint pcwchPrivKeyLength, [MarshalUsing(CountElementName = nameof(pcwchPubKeyLength))] PWSTR pwszPubKey, ref uint pcwchPubKeyLength);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmdrmwriter-setdrmattribute
     [PreserveSig]

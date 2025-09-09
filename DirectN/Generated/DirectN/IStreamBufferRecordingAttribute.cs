@@ -24,7 +24,7 @@ public partial interface IStreamBufferRecordingAttribute
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferrecordingattribute-getattributebyindex
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAttributeByIndex(ushort wIndex, in uint pulReserved, out PWSTR pszAttributeName, ref ushort pcchNameLength, out STREAMBUFFER_ATTR_DATATYPE pStreamBufferAttributeType, nint /* byte array */ pbAttribute, ref ushort pcbLength);
+    HRESULT GetAttributeByIndex(ushort wIndex, in uint pulReserved, PWSTR pszAttributeName, ref ushort pcchNameLength, out STREAMBUFFER_ATTR_DATATYPE pStreamBufferAttributeType, nint /* byte array */ pbAttribute, ref ushort pcbLength);
     
     // https://learn.microsoft.com/windows/win32/api/sbe/nf-sbe-istreambufferrecordingattribute-enumattributes
     [PreserveSig]

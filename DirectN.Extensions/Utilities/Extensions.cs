@@ -555,10 +555,9 @@ public static class Extensions
         return span.SequenceCompareTo(otherSpan) == 0;
     }
 
-
     private static readonly ConcurrentDictionary<string, string> _loadedStrings = new(StringComparer.OrdinalIgnoreCase);
 
-    public static string LoadString(string libPath, uint id, int lcid = -1)
+    public unsafe static string LoadString(string libPath, uint id, int lcid = -1)
     {
         ArgumentNullException.ThrowIfNull(libPath);
         if (lcid == -1) // default => current UI culture
@@ -576,18 +575,24 @@ public static class Extensions
 
         var oldLcid = Functions.GetThreadUILanguage();
         Functions.SetThreadUILanguage((ushort)lcid);
+        try
+        {
 
-        var ret = Functions.LoadStringW(new HINSTANCE { Value = h.Value }, id, out var ptr, 0);
-        Functions.SetThreadUILanguage(oldLcid);
-        if (ret == 0)
-            return key;
+            long ptr = 0;
+            var ret = Functions.LoadStringW(new HINSTANCE { Value = h.Value }, id, new PWSTR((nint)(&ptr)), 0);
+            if (ret == 0)
+                return key;
 
-        // each string starts with its size (a bit like a bstr)
-        var len = Marshal.ReadInt16(ptr.Value, -2);
-        str = len > 0 ? Marshal.PtrToStringUni(ptr.Value, len) : key;
-        _loadedStrings[key] = str;
-        Functions.FreeLibrary(h);
-        return str;
+            var pwstr = new PWSTR((nint)ptr);
+            str = pwstr.ToString(ret) ?? key;
+            _loadedStrings[key] = str;
+            return str;
+        }
+        finally
+        {
+            Functions.SetThreadUILanguage(oldLcid);
+            Functions.FreeLibrary(h);
+        }
     }
 
     public static PropertyDescription? ToDescription(this PROPERTYKEY pk) => PropertyDescription.FromPropertyKey(pk);

@@ -34,7 +34,7 @@ public class DataObject(IComObject<IDataObject>? dataObject, bool owned = true) 
         return list;
     }
 
-    public unsafe IEnumerable<FORMATETC> EnumerateFormats(bool throwOnError)
+    public unsafe IReadOnlyList<FORMATETC> EnumerateFormats(bool throwOnError)
     {
         var list = new List<FORMATETC>();
         ComObject.Object.EnumFormatEtc((uint)DATADIR.DATADIR_GET, out var obj).ThrowOnError(throwOnError);

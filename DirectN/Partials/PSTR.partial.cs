@@ -37,6 +37,7 @@ public partial struct PSTR : IValueGet<string?>, IValueGet<nint> // not disposab
     }
 
     public override readonly string? ToString() => Marshal.PtrToStringAnsi(Value);
+    public readonly string? ToString(int len) => Marshal.PtrToStringAnsi(Value, len);
 
     readonly string? IValueGet<string?>.GetValue() => ToString();
     readonly nint IValueGet<nint>.GetValue() => Value;

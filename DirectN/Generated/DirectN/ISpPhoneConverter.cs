@@ -10,5 +10,5 @@ public partial interface ISpPhoneConverter : ISpObjectWithToken
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT IdToPhone(in ushort pId, out PWSTR pszPhone);
+    HRESULT IdToPhone(in ushort pId, PWSTR pszPhone);
 }

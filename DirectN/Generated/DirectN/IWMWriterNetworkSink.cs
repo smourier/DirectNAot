@@ -28,7 +28,7 @@ public partial interface IWMWriterNetworkSink : IWMWriterSink
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriternetworksink-gethosturl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHostURL(out PWSTR pwszURL, ref uint pcchURL);
+    HRESULT GetHostURL(PWSTR pwszURL, ref uint pcchURL);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmwriternetworksink-open
     [PreserveSig]

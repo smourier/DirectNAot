@@ -33,6 +33,7 @@ public partial struct PWSTR : IValueGet<string?>, IValueGet<nint> // not disposa
     }
 
     public override readonly string? ToString() => Marshal.PtrToStringUni(Value);
+    public readonly string? ToString(int len) => Marshal.PtrToStringUni(Value, len);
 
     readonly string? IValueGet<string?>.GetValue() => ToString();
     readonly nint IValueGet<nint>.GetValue() => Value;

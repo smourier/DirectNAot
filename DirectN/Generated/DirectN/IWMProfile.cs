@@ -13,7 +13,7 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetName([MarshalUsing(CountElementName = nameof(pcchName))] out PWSTR pwszName, ref uint pcchName);
+    HRESULT GetName([MarshalUsing(CountElementName = nameof(pcchName))] PWSTR pwszName, ref uint pcchName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-setname
     [PreserveSig]
@@ -23,7 +23,7 @@ public partial interface IWMProfile
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-getdescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDescription([MarshalUsing(CountElementName = nameof(pcchDescription))] out PWSTR pwszDescription, ref uint pcchDescription);
+    HRESULT GetDescription([MarshalUsing(CountElementName = nameof(pcchDescription))] PWSTR pwszDescription, ref uint pcchDescription);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmprofile-setdescription
     [PreserveSig]

@@ -38,7 +38,7 @@ public partial interface INSNetSourceCreator
     // https://learn.microsoft.com/windows/win32/api/wmnetsourcecreator/nn-wmnetsourcecreator-insnetsourcecreator
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetProtocolName(uint dwProtocolNum, out PWSTR pwszProtocolName, ref ushort pcchProtocolName);
+    HRESULT GetProtocolName(uint dwProtocolNum, PWSTR pwszProtocolName, ref ushort pcchProtocolName);
     
     // https://learn.microsoft.com/windows/win32/api/wmnetsourcecreator/nf-wmnetsourcecreator-insnetsourcecreator-shutdown
     [PreserveSig]

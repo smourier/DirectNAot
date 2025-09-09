@@ -119,7 +119,7 @@ public partial interface IDvdInfo2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getdvdtextstringasunicode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDVDTextStringAsUnicode(uint ulLangIndex, uint ulStringIndex, out PWSTR pchwBuffer, uint ulMaxBufferSize, out uint pulActualSize, out DVD_TextStringType pType);
+    HRESULT GetDVDTextStringAsUnicode(uint ulLangIndex, uint ulStringIndex, PWSTR pchwBuffer, uint ulMaxBufferSize, out uint pulActualSize, out DVD_TextStringType pType);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdinfo2-getplayerparentallevel
     [PreserveSig]

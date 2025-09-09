@@ -15,6 +15,18 @@ public class AllocPwstr : Pwstr
         Value = sizeInBytes > 0 ? Marshal.AllocCoTaskMem((int)sizeInBytes) : 0;
     }
 
+    public static AllocPwstr FromSizeInChars(int countOfChars, bool addOneForTerminatingZero = true)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(countOfChars);
+        return new AllocPwstr((uint)((addOneForTerminatingZero ? 1 : 0) + countOfChars) * 2);
+    }
+
+    public static AllocPwstr FromSizeInChars(uint countOfChars, bool addOneForTerminatingZero = true)
+    {
+        ArgumentOutOfRangeException.ThrowIfZero(countOfChars);
+        return new AllocPwstr((uint)((addOneForTerminatingZero ? 1 : 0) + countOfChars) * 2);
+    }
+
     public uint SizeInBytes { get; }
     public uint SizeInChars => SizeInBytes / 2;
 }

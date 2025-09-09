@@ -16,9 +16,9 @@ public partial interface ID3D11ClassInstance : ID3D11DeviceChild
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-getinstancename
     [PreserveSig]
-    void GetInstanceName([MarshalUsing(CountElementName = nameof(pBufferLength))] out PSTR pInstanceName, ref nuint pBufferLength);
+    void GetInstanceName([MarshalUsing(CountElementName = nameof(pBufferLength))] PSTR pInstanceName, ref nuint pBufferLength);
     
     // https://learn.microsoft.com/windows/win32/api/d3d11/nf-d3d11-id3d11classinstance-gettypename
     [PreserveSig]
-    void GetTypeName([MarshalUsing(CountElementName = nameof(pBufferLength))] out PSTR pTypeName, ref nuint pBufferLength);
+    void GetTypeName([MarshalUsing(CountElementName = nameof(pBufferLength))] PSTR pTypeName, ref nuint pBufferLength);
 }

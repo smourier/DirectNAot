@@ -18,7 +18,7 @@ public partial interface IWMDMLogger
     // https://learn.microsoft.com/windows/win32/api/wmdmlog/nf-wmdmlog-iwmdmlogger-getlogfilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLogFileName(out PSTR pszFilename, uint nMaxChars);
+    HRESULT GetLogFileName(PSTR pszFilename, uint nMaxChars);
     
     // https://learn.microsoft.com/windows/win32/api/wmdmlog/nf-wmdmlog-iwmdmlogger-setlogfilename
     [PreserveSig]

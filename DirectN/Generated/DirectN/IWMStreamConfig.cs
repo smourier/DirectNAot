@@ -23,7 +23,7 @@ public partial interface IWMStreamConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig-getstreamname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetStreamName([MarshalUsing(CountElementName = nameof(pcchStreamName))] out PWSTR pwszStreamName, ref ushort pcchStreamName);
+    HRESULT GetStreamName([MarshalUsing(CountElementName = nameof(pcchStreamName))] PWSTR pwszStreamName, ref ushort pcchStreamName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig-setstreamname
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IWMStreamConfig
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig-getconnectionname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetConnectionName([MarshalUsing(CountElementName = nameof(pcchInputName))] out PWSTR pwszInputName, ref ushort pcchInputName);
+    HRESULT GetConnectionName([MarshalUsing(CountElementName = nameof(pcchInputName))] PWSTR pwszInputName, ref ushort pcchInputName);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmstreamconfig-setconnectionname
     [PreserveSig]
