@@ -88,6 +88,11 @@ public static partial class Constants
     public static readonly Guid CLSID_StockColorPage = new("7ebdaae1-8120-11cf-899f-00aa00688b10");
     public static readonly Guid CLSID_StockPicturePage = new("7ebdaae2-8120-11cf-899f-00aa00688b10");
 
+    // ComSvcs.h
+    public static readonly Guid CLSID_SharedProperty = new("2a005c05-a5de-11cf-9e66-00aa00a3f464");
+    public static readonly Guid CLSID_SharedPropertyGroup = new("2a005c0b-a5de-11cf-9e66-00aa00a3f464");
+    public static readonly Guid CLSID_SharedPropertyGroupManager = new("2a005c11-a5de-11cf-9e66-00aa00a3f464");
+
     // metahost.h
     public static readonly Guid CLSID_CLRMetaHost = new("9280188d-0e8e-4867-b30c-7fa83884e8de");
     public static readonly Guid CLSID_CLRMetaHostPolicy = new("2ebcd49a-1b47-4a61-b13a-4a03701e594b");

@@ -166,6 +166,6 @@ public sealed class ClrRuntime(IComObject<ICLRRuntimeInfo>? comObject)
         return pwstr.ToString();
     }
 
-    public void SetDefaultStartupFlags(STARTUP_FLAGS flags, string hostConfigurationFile, bool throwOnError = true) =>
+    public HRESULT SetDefaultStartupFlags(STARTUP_FLAGS flags, string hostConfigurationFile, bool throwOnError = true) =>
         ComObject.Object.SetDefaultStartupFlags((uint)flags, PWSTR.From(hostConfigurationFile)).ThrowOnError(throwOnError);
 }

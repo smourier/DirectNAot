@@ -12,6 +12,8 @@ public sealed class ClrRuntimeHost(IComObject<ICLRRuntimeHost>? comObject)
         }
     }
 
+    public override string ToString() => $"CLR Runtime Host (AppDomainId={CurrentAppDomainId})";
+
     public HRESULT Start(bool throwOnError = true) => ComObject.Object.Start().ThrowOnError(throwOnError);
     public HRESULT Stop(bool throwOnError = true) => ComObject.Object.Stop().ThrowOnError(throwOnError);
     public HRESULT UnloadAppDomain(uint appDomainId, bool waitUntilDone, bool throwOnError = true) => ComObject.Object.UnloadAppDomain(appDomainId, waitUntilDone ? 1 : 0).ThrowOnError(throwOnError);
@@ -25,10 +27,10 @@ public sealed class ClrRuntimeHost(IComObject<ICLRRuntimeHost>? comObject)
         base.Dispose(disposing);
     }
 
-    public IComObject<ICLRControl>? GetCLRControl(bool throwOnError = true)
+    public ClrControl? GetCLRControl(bool throwOnError = true)
     {
         ComObject.Object.GetCLRControl(out var clrControl).ThrowOnError(throwOnError);
-        return clrControl != null ? new Com.ComObject<ICLRControl>(clrControl) : null;
+        return clrControl != null ? new ClrControl(new ComObject<ICLRControl>(clrControl)) : null;
     }
 
     public unsafe int ExecuteApplication(string appFullName, IEnumerable<string> manifestPaths, IEnumerable<string> activationDatas, bool throwOnError = true)
@@ -81,10 +83,10 @@ public sealed class ClrRuntimeHost(IComObject<ICLRRuntimeHost>? comObject)
         }
     }
 
-    public void ExecuteInAppDomain(uint appDomainId, FExecuteInAppDomainCallback callback, nint cookie, bool throwOnError = true)
+    public HRESULT ExecuteInAppDomain(uint appDomainId, FExecuteInAppDomainCallback callback, nint cookie, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(callback);
-        ComObject.Object.ExecuteInAppDomain(appDomainId, callback, cookie).ThrowOnError(throwOnError);
+        return ComObject.Object.ExecuteInAppDomain(appDomainId, callback, cookie).ThrowOnError(throwOnError);
     }
 
     public uint ExecuteInDefaultAppDomain(string assemblyPath, string typeName, string methodName, string argument, bool throwOnError = true)
@@ -97,10 +99,10 @@ public sealed class ClrRuntimeHost(IComObject<ICLRRuntimeHost>? comObject)
         return ret;
     }
 
-    public void SetHostControl(IComObject<IHostControl> hostControl, bool throwOnError = true) => SetHostControl(hostControl?.Object!, throwOnError);
-    public void SetHostControl(IHostControl hostControl, bool throwOnError = true)
+    public HRESULT SetHostControl(IComObject<IHostControl> hostControl, bool throwOnError = true) => SetHostControl(hostControl?.Object!, throwOnError);
+    public HRESULT SetHostControl(IHostControl hostControl, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(hostControl);
-        ComObject.Object.SetHostControl(hostControl).ThrowOnError(throwOnError);
+        return ComObject.Object.SetHostControl(hostControl).ThrowOnError(throwOnError);
     }
 }

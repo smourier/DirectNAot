@@ -1219,19 +1219,19 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HBRUSH CreateBrushIndirect(in LOGBRUSH plbrush);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateCaptureAudioStateMonitor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateCaptureAudioStateMonitorForCategory(AUDIO_STREAM_CATEGORY category, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateCaptureAudioStateMonitorForCategoryAndDeviceId(AUDIO_STREAM_CATEGORY category, PWSTR deviceId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(AUDIO_STREAM_CATEGORY category, ERole role, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
@@ -1281,12 +1281,12 @@ public static partial class Functions
     public static partial HDC CreateCompatibleDC(HDC hdc);
     
     // https://learn.microsoft.com/windows/win32/api/corewindow/nf-corewindow-createcontrolinput
-    [LibraryImport("Windows.UI")]
+    [LibraryImport("Windows.UI.dll")]
     [PreserveSig]
     public static partial HRESULT CreateControlInput(in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/corewindow/nf-corewindow-createcontrolinputex
-    [LibraryImport("Windows.UI")]
+    [LibraryImport("Windows.UI.dll")]
     [PreserveSig]
     public static partial HRESULT CreateControlInputEx(nint pCoreWindow, in Guid riid, out nint /* void */ ppv);
     
@@ -1511,19 +1511,19 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HRGN CreateRectRgnIndirect(in RECT lprect);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateRenderAudioStateMonitor([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateRenderAudioStateMonitorForCategory(AUDIO_STREAM_CATEGORY category, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateRenderAudioStateMonitorForCategoryAndDeviceId(AUDIO_STREAM_CATEGORY category, PWSTR deviceId, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
-    [LibraryImport("Windows.Media.MediaControl")]
+    [LibraryImport("Windows.Media.MediaControl.dll")]
     [PreserveSig]
     public static partial HRESULT CreateRenderAudioStateMonitorForCategoryAndDeviceRole(AUDIO_STREAM_CATEGORY category, ERole role, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IAudioStateMonitor>))] out IAudioStateMonitor audioStateMonitor);
     
@@ -9177,7 +9177,7 @@ public static partial class Functions
     public static partial int PathParseIconLocationW(PWSTR pszIconFile);
     
     // https://learn.microsoft.com/windows/win32/api/windows.data.pdf.interop/nf-windows-data-pdf-interop-pdfcreaterenderer
-    [LibraryImport("Windows.Data.Pdf")]
+    [LibraryImport("Windows.Data.Pdf.dll")]
     [PreserveSig]
     public static partial HRESULT PdfCreateRenderer([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDXGIDevice>))] IDXGIDevice pDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPdfRendererNative>))] out IPdfRendererNative ppRenderer);
     
