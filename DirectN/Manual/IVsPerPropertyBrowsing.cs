@@ -13,7 +13,7 @@ public partial interface IVsPerPropertyBrowsing
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetLocalizedPropertyInfo(int dispid, uint localeID, nint pbstrLocalizedName, nint pbstrLocalizeDescription);
+    HRESULT GetLocalizedPropertyInfo(int dispid, uint localeID, out BSTR pbstrLocalizedName, out BSTR pbstrLocalizeDescription);
 
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
