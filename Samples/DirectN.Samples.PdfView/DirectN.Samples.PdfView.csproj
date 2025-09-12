@@ -12,7 +12,6 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>PdfView.ico</ApplicationIcon>
 		<WindowsSdkPackageVersion>10.0.26100.57</WindowsSdkPackageVersion>
-		<Platforms>ARM64;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

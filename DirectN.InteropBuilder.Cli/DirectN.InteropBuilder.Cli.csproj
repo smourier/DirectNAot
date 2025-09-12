@@ -6,7 +6,6 @@
 		<Nullable>enable</Nullable>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RootNamespace>DirectN.InteropBuilder.Cli</RootNamespace>
-		<Platforms>x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
