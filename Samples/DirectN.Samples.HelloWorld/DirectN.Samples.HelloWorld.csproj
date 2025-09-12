@@ -10,6 +10,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>DirectN.ico</ApplicationIcon>
+		<Platforms>ARM64;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -10,7 +10,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Description>AOT-compatible Interop Code for .NET Core 8+: DXGI, WIC, DirectX, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, WinAppSK, etc.</Description>
+		<Description>AOT-compatible Interop Code for .NET Core 9+: DXGI, WIC, DirectX, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, WinAppSK, etc.</Description>
 		<Title>DirectNAot</Title>
 		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
