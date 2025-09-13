@@ -13,12 +13,12 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_sourceurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_sourceURL(ref BSTR pbstrSourceURL);
+    HRESULT get_sourceURL(out BSTR pbstrSourceURL);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_name
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_name(ref BSTR pbstrName);
+    HRESULT get_name(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-put_name
     [PreserveSig]
@@ -48,7 +48,7 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-getmarkername
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getMarkerName(int MarkerNum, ref BSTR pbstrMarkerName);
+    HRESULT getMarkerName(int MarkerNum, out BSTR pbstrMarkerName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_duration
     [PreserveSig]
@@ -58,7 +58,7 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_durationstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_durationString(ref BSTR pbstrDuration);
+    HRESULT get_durationString(out BSTR pbstrDuration);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-get_attributecount
     [PreserveSig]
@@ -68,12 +68,12 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-getattributename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAttributeName(int lIndex, ref BSTR pbstrItemName);
+    HRESULT getAttributeName(int lIndex, out BSTR pbstrItemName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrItemName, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrItemName, out BSTR pbstrVal);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-setiteminfo
     [PreserveSig]
@@ -83,7 +83,7 @@ public partial interface IWMPMedia : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-getiteminfobyatom
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfoByAtom(int lAtom, ref BSTR pbstrVal);
+    HRESULT getItemInfoByAtom(int lAtom, out BSTR pbstrVal);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmedia-ismemberof
     [PreserveSig]

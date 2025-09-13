@@ -13,7 +13,7 @@ public partial interface IWMPErrorItem : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmperroritem-get_errordescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_errorDescription(ref BSTR pbstrDescription);
+    HRESULT get_errorDescription(out BSTR pbstrDescription);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmperroritem-get_errorcontext
     [PreserveSig]
@@ -28,5 +28,5 @@ public partial interface IWMPErrorItem : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmperroritem-get_customurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_customUrl(ref BSTR pbstrCustomUrl);
+    HRESULT get_customUrl(out BSTR pbstrCustomUrl);
 }

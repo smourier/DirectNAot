@@ -9,10 +9,10 @@ public partial interface IDShowPlugin
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-idshowplugin-get_url
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_URL(ref BSTR pURL);
+    HRESULT get_URL(out BSTR pURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-idshowplugin-get_useragent
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_UserAgent(ref BSTR pUserAgent);
+    HRESULT get_UserAgent(out BSTR pUserAgent);
 }

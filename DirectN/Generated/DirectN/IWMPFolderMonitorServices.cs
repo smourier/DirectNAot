@@ -13,7 +13,7 @@ public partial interface IWMPFolderMonitorServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpfoldermonitorservices-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(int lIndex, ref BSTR pbstrFolder);
+    HRESULT item(int lIndex, out BSTR pbstrFolder);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpfoldermonitorservices-add
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IWMPFolderMonitorServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpfoldermonitorservices-get_currentfolder
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentFolder(ref BSTR pbstrFolder);
+    HRESULT get_currentFolder(out BSTR pbstrFolder);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpfoldermonitorservices-get_scannedfilescount
     [PreserveSig]

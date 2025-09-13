@@ -14,7 +14,7 @@ public partial interface IAMExtendedErrorInfo : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamextendederrorinfo-get_errordescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ErrorDescription(ref BSTR pbstrErrorDescription);
+    HRESULT get_ErrorDescription(out BSTR pbstrErrorDescription);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamextendederrorinfo-get_errorcode
     [PreserveSig]

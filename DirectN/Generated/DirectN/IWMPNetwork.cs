@@ -18,7 +18,7 @@ public partial interface IWMPNetwork : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-get_sourceprotocol
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_sourceProtocol(ref BSTR pbstrSourceProtocol);
+    HRESULT get_sourceProtocol(out BSTR pbstrSourceProtocol);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-get_receivedpackets
     [PreserveSig]
@@ -83,7 +83,7 @@ public partial interface IWMPNetwork : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-getproxyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getProxyName(BSTR bstrProtocol, ref BSTR pbstrProxyName);
+    HRESULT getProxyName(BSTR bstrProtocol, out BSTR pbstrProxyName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-setproxyname
     [PreserveSig]
@@ -103,7 +103,7 @@ public partial interface IWMPNetwork : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-getproxyexceptionlist
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getProxyExceptionList(BSTR bstrProtocol, ref BSTR pbstrExceptionList);
+    HRESULT getProxyExceptionList(BSTR bstrProtocol, out BSTR pbstrExceptionList);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpnetwork-setproxyexceptionlist
     [PreserveSig]

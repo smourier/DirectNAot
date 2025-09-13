@@ -35,7 +35,7 @@ public partial interface IWMPPlayer3 : IWMPCore2
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_uiMode(ref BSTR pbstrMode);
+    HRESULT get_uiMode(out BSTR pbstrMode);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

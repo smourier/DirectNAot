@@ -13,7 +13,7 @@ public partial interface IWMPDVD : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpdvd-get_domain
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_domain(ref BSTR strDomain);
+    HRESULT get_domain(out BSTR strDomain);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpdvd-topmenu
     [PreserveSig]

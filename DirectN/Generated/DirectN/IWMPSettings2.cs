@@ -13,7 +13,7 @@ public partial interface IWMPSettings2 : IWMPSettings
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings2-get_mediaaccessrights
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_mediaAccessRights(ref BSTR pbstrRights);
+    HRESULT get_mediaAccessRights(out BSTR pbstrRights);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings2-requestmediaaccessrights
     [PreserveSig]

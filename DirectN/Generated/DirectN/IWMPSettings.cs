@@ -23,7 +23,7 @@ public partial interface IWMPSettings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings-get_baseurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_baseURL(ref BSTR pbstrBaseURL);
+    HRESULT get_baseURL(out BSTR pbstrBaseURL);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings-put_baseurl
     [PreserveSig]
@@ -33,7 +33,7 @@ public partial interface IWMPSettings : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings-get_defaultframe
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_defaultFrame(ref BSTR pbstrDefaultFrame);
+    HRESULT get_defaultFrame(out BSTR pbstrDefaultFrame);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsettings-put_defaultframe
     [PreserveSig]

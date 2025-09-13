@@ -8,20 +8,20 @@ public partial interface IWMPMetadataPicture : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatapicture-get_mimetype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_mimeType(ref BSTR pbstrMimeType);
+    HRESULT get_mimeType(out BSTR pbstrMimeType);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatapicture-get_picturetype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_pictureType(ref BSTR pbstrPictureType);
+    HRESULT get_pictureType(out BSTR pbstrPictureType);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatapicture-get_description
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_description(ref BSTR pbstrDescription);
+    HRESULT get_description(out BSTR pbstrDescription);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatapicture-get_url
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_URL(ref BSTR pbstrURL);
+    HRESULT get_URL(out BSTR pbstrURL);
 }

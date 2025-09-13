@@ -48,7 +48,7 @@ public partial interface IWMPControls : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-get_currentpositionstring
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentPositionString(ref BSTR pbstrCurrentPosition);
+    HRESULT get_currentPositionString(out BSTR pbstrCurrentPosition);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols-next
     [PreserveSig]

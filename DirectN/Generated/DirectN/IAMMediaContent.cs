@@ -9,65 +9,65 @@ public partial interface IAMMediaContent : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_authorname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_AuthorName(ref BSTR pbstrAuthorName);
+    HRESULT get_AuthorName(out BSTR pbstrAuthorName);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_title
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Title(ref BSTR pbstrTitle);
+    HRESULT get_Title(out BSTR pbstrTitle);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_rating
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Rating(ref BSTR pbstrRating);
+    HRESULT get_Rating(out BSTR pbstrRating);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_description
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Description(ref BSTR pbstrDescription);
+    HRESULT get_Description(out BSTR pbstrDescription);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_copyright
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_Copyright(ref BSTR pbstrCopyright);
+    HRESULT get_Copyright(out BSTR pbstrCopyright);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_baseurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_BaseURL(ref BSTR pbstrBaseURL);
+    HRESULT get_BaseURL(out BSTR pbstrBaseURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_logourl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_LogoURL(ref BSTR pbstrLogoURL);
+    HRESULT get_LogoURL(out BSTR pbstrLogoURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_logoiconurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_LogoIconURL(ref BSTR pbstrLogoURL);
+    HRESULT get_LogoIconURL(out BSTR pbstrLogoURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_watermarkurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_WatermarkURL(ref BSTR pbstrWatermarkURL);
+    HRESULT get_WatermarkURL(out BSTR pbstrWatermarkURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_moreinfourl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MoreInfoURL(ref BSTR pbstrMoreInfoURL);
+    HRESULT get_MoreInfoURL(out BSTR pbstrMoreInfoURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_moreinfobannerimage
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MoreInfoBannerImage(ref BSTR pbstrMoreInfoBannerImage);
+    HRESULT get_MoreInfoBannerImage(out BSTR pbstrMoreInfoBannerImage);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_moreinfobannerurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MoreInfoBannerURL(ref BSTR pbstrMoreInfoBannerURL);
+    HRESULT get_MoreInfoBannerURL(out BSTR pbstrMoreInfoBannerURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iammediacontent-get_moreinfotext
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_MoreInfoText(ref BSTR pbstrMoreInfoText);
+    HRESULT get_MoreInfoText(out BSTR pbstrMoreInfoText);
 }

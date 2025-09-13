@@ -13,7 +13,7 @@ public partial interface IWMPClosedCaption2 : IWMPClosedCaption
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption2-getsamilangname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getSAMILangName(int nIndex, ref BSTR pbstrName);
+    HRESULT getSAMILangName(int nIndex, out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption2-getsamilangid
     [PreserveSig]
@@ -28,5 +28,5 @@ public partial interface IWMPClosedCaption2 : IWMPClosedCaption
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption2-getsamistylename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getSAMIStyleName(int nIndex, ref BSTR pbstrName);
+    HRESULT getSAMIStyleName(int nIndex, out BSTR pbstrName);
 }

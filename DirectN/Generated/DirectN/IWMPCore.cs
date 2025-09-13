@@ -13,7 +13,7 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_url
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_URL(ref BSTR pbstrURL);
+    HRESULT get_URL(out BSTR pbstrURL);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-put_url
     [PreserveSig]
@@ -63,7 +63,7 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_versioninfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_versionInfo(ref BSTR pbstrVersionInfo);
+    HRESULT get_versionInfo(out BSTR pbstrVersionInfo);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-launchurl
     [PreserveSig]
@@ -108,5 +108,5 @@ public partial interface IWMPCore : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcore-get_status
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_status(ref BSTR pbstrStatus);
+    HRESULT get_status(out BSTR pbstrStatus);
 }

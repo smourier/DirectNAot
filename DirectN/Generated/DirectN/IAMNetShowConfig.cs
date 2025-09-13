@@ -59,7 +59,7 @@ public partial interface IAMNetShowConfig : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowconfig-get_httpproxyhost
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_HTTPProxyHost(ref BSTR pbstrHTTPProxyHost);
+    HRESULT get_HTTPProxyHost(out BSTR pbstrHTTPProxyHost);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowconfig-put_httpproxyhost
     [PreserveSig]

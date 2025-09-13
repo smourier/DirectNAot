@@ -18,7 +18,7 @@ public partial interface IWMPControls3 : IWMPControls2
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols3-getaudiolanguagedescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getAudioLanguageDescription(int lIndex, ref BSTR pbstrLangDesc);
+    HRESULT getAudioLanguageDescription(int lIndex, out BSTR pbstrLangDesc);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols3-get_currentaudiolanguage
     [PreserveSig]
@@ -43,12 +43,12 @@ public partial interface IWMPControls3 : IWMPControls2
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols3-getlanguagename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getLanguageName(int lLangID, ref BSTR pbstrLangName);
+    HRESULT getLanguageName(int lLangID, out BSTR pbstrLangName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols3-get_currentpositiontimecode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_currentPositionTimecode(ref BSTR bstrTimecode);
+    HRESULT get_currentPositionTimecode(out BSTR bstrTimecode);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcontrols3-put_currentpositiontimecode
     [PreserveSig]

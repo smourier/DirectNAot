@@ -13,7 +13,7 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-get_name
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_name(ref BSTR pbstrName);
+    HRESULT get_name(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-put_name
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-get_attributename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_attributeName(int lIndex, ref BSTR pbstrAttributeName);
+    HRESULT get_attributeName(int lIndex, out BSTR pbstrAttributeName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-get_item
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWMPPlaylist : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrName, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrName, out BSTR pbstrVal);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplaylist-setiteminfo
     [PreserveSig]

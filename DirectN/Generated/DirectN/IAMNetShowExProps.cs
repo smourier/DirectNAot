@@ -19,7 +19,7 @@ public partial interface IAMNetShowExProps : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-get_errorcorrection
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_ErrorCorrection(ref BSTR pbstrErrorCorrection);
+    HRESULT get_ErrorCorrection(out BSTR pbstrErrorCorrection);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-get_codeccount
     [PreserveSig]
@@ -34,12 +34,12 @@ public partial interface IAMNetShowExProps : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-getcodecdescription
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecDescription(int CodecNum, ref BSTR pbstrCodecDescription);
+    HRESULT GetCodecDescription(int CodecNum, out BSTR pbstrCodecDescription);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-getcodecurl
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecURL(int CodecNum, ref BSTR pbstrCodecURL);
+    HRESULT GetCodecURL(int CodecNum, out BSTR pbstrCodecURL);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-get_creationdate
     [PreserveSig]
@@ -49,5 +49,5 @@ public partial interface IAMNetShowExProps : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamnetshowexprops-get_sourcelink
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SourceLink(ref BSTR pbstrSourceLink);
+    HRESULT get_SourceLink(out BSTR pbstrSourceLink);
 }

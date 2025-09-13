@@ -13,7 +13,7 @@ public partial interface IWMPStringCollection2 : IWMPStringCollection
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpstringcollection2-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(int lCollectionIndex, BSTR bstrItemName, ref BSTR pbstrValue);
+    HRESULT getItemInfo(int lCollectionIndex, BSTR bstrItemName, out BSTR pbstrValue);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpstringcollection2-getattributecountbytype
     [PreserveSig]

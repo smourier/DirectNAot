@@ -13,12 +13,12 @@ public partial interface IWMPCdromBurn
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromburn-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrItem, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrItem, out BSTR pbstrVal);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromburn-get_label
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_label(ref BSTR pbstrLabel);
+    HRESULT get_label(out BSTR pbstrLabel);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdromburn-put_label
     [PreserveSig]

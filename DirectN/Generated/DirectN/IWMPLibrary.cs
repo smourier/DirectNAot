@@ -8,7 +8,7 @@ public partial interface IWMPLibrary
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary-get_name
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_name(ref BSTR pbstrName);
+    HRESULT get_name(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary-get_type
     [PreserveSig]

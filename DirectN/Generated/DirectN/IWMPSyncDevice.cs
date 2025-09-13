@@ -8,7 +8,7 @@ public partial interface IWMPSyncDevice
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-get_friendlyname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_friendlyName(ref BSTR pbstrName);
+    HRESULT get_friendlyName(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-put_friendlyname
     [PreserveSig]
@@ -18,12 +18,12 @@ public partial interface IWMPSyncDevice
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-get_devicename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_deviceName(ref BSTR pbstrName);
+    HRESULT get_deviceName(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-get_deviceid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_deviceId(ref BSTR pbstrDeviceId);
+    HRESULT get_deviceId(out BSTR pbstrDeviceId);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-get_partnershipindex
     [PreserveSig]
@@ -53,7 +53,7 @@ public partial interface IWMPSyncDevice
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrItemName, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrItemName, out BSTR pbstrVal);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpsyncdevice-createpartnership
     [PreserveSig]

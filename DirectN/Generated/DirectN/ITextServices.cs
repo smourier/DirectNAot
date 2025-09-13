@@ -69,7 +69,7 @@ public partial interface ITextServices
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvThiscall)])]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT TxGetText(ref BSTR pbstrText);
+    HRESULT TxGetText(out BSTR pbstrText);
     
     // https://learn.microsoft.com/windows/win32/api/textserv/nf-textserv-itextservices-txsettext
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface IWMPCdrom : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdrom-get_drivespecifier
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_driveSpecifier(ref BSTR pbstrDrive);
+    HRESULT get_driveSpecifier(out BSTR pbstrDrive);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpcdrom-get_playlist
     [PreserveSig]

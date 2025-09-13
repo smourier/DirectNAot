@@ -14,7 +14,7 @@ public partial interface IXMLGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/amxmlgraphbuilder/nf-amxmlgraphbuilder-ixmlgraphbuilder-savetoxml
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT SaveToXML([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph, ref BSTR pbstrxml);
+    HRESULT SaveToXML([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGraphBuilder>))] IGraphBuilder pGraph, out BSTR pbstrxml);
     
     // https://learn.microsoft.com/windows/win32/api/amxmlgraphbuilder/nf-amxmlgraphbuilder-ixmlgraphbuilder-buildfromxmlfile
     [PreserveSig]

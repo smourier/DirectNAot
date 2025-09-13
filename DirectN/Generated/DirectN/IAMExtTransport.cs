@@ -39,7 +39,7 @@ public partial interface IAMExtTransport
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamexttransport-gettransportbasicparameters
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransportBasicParameters(int Param, ref int pValue, ref PWSTR ppszData);
+    HRESULT GetTransportBasicParameters(int Param, ref int pValue, out PWSTR ppszData);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-iamexttransport-settransportbasicparameters
     [PreserveSig]

@@ -86,7 +86,7 @@ public partial interface ISpeechRecognizer : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPropertyString(BSTR Name, ref BSTR Value, out VARIANT_BOOL Supported);
+    HRESULT GetPropertyString(BSTR Name, out BSTR Value, out VARIANT_BOOL Supported);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

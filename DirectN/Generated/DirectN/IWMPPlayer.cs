@@ -43,5 +43,5 @@ public partial interface IWMPPlayer : IWMPCore
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpplayer-get_uimode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_uiMode(ref BSTR pbstrMode);
+    HRESULT get_uiMode(out BSTR pbstrMode);
 }

@@ -8,10 +8,10 @@ public partial interface IWMPMetadataText : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatatext-get_description
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_description(ref BSTR pbstrDescription);
+    HRESULT get_description(out BSTR pbstrDescription);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpmetadatatext-get_text
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_text(ref BSTR pbstrText);
+    HRESULT get_text(out BSTR pbstrText);
 }

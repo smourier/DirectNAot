@@ -8,7 +8,7 @@ public partial interface IWMPClosedCaption : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-get_samistyle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SAMIStyle(ref BSTR pbstrSAMIStyle);
+    HRESULT get_SAMIStyle(out BSTR pbstrSAMIStyle);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-put_samistyle
     [PreserveSig]
@@ -18,7 +18,7 @@ public partial interface IWMPClosedCaption : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-get_samilang
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SAMILang(ref BSTR pbstrSAMILang);
+    HRESULT get_SAMILang(out BSTR pbstrSAMILang);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-put_samilang
     [PreserveSig]
@@ -28,7 +28,7 @@ public partial interface IWMPClosedCaption : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-get_samifilename
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_SAMIFileName(ref BSTR pbstrSAMIFileName);
+    HRESULT get_SAMIFileName(out BSTR pbstrSAMIFileName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-put_samifilename
     [PreserveSig]
@@ -38,7 +38,7 @@ public partial interface IWMPClosedCaption : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-get_captioningid
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_captioningId(ref BSTR pbstrCaptioningID);
+    HRESULT get_captioningId(out BSTR pbstrCaptioningID);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpclosedcaption-put_captioningid
     [PreserveSig]

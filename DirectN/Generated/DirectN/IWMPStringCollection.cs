@@ -13,5 +13,5 @@ public partial interface IWMPStringCollection : IDispatch
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpstringcollection-item
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT item(int lIndex, ref BSTR pbstrString);
+    HRESULT item(int lIndex, out BSTR pbstrString);
 }

@@ -8,5 +8,5 @@ public partial interface IWMPLibrary2 : IWMPLibrary
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmplibrary2-getiteminfo
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrItemName, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrItemName, out BSTR pbstrVal);
 }

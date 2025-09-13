@@ -8,20 +8,20 @@ public partial interface IWMPRemoteMediaServices
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getservicetype
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetServiceType(ref BSTR pbstrType);
+    HRESULT GetServiceType(out BSTR pbstrType);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getapplicationname
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetApplicationName(ref BSTR pbstrName);
+    HRESULT GetApplicationName(out BSTR pbstrName);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getscriptableobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetScriptableObject(ref BSTR pbstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppDispatch);
+    HRESULT GetScriptableObject(out BSTR pbstrName, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDispatch>))] out IDispatch ppDispatch);
     
     // https://learn.microsoft.com/windows/win32/api/wmp/nf-wmp-iwmpremotemediaservices-getcustomuimode
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCustomUIMode(ref BSTR pbstrFile);
+    HRESULT GetCustomUIMode(out BSTR pbstrFile);
 }

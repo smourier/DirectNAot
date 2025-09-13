@@ -6,5 +6,5 @@ public partial interface IWMPDownloadItem2 : IWMPDownloadItem
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT getItemInfo(BSTR bstrItemName, ref BSTR pbstrVal);
+    HRESULT getItemInfo(BSTR bstrItemName, out BSTR pbstrVal);
 }

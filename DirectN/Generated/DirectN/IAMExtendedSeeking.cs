@@ -29,7 +29,7 @@ public partial interface IAMExtendedSeeking : IDispatch
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamextendedseeking-getmarkername
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetMarkerName(int MarkerNum, ref BSTR pbstrMarkerName);
+    HRESULT GetMarkerName(int MarkerNum, out BSTR pbstrMarkerName);
     
     // https://learn.microsoft.com/windows/win32/api/qnetwork/nf-qnetwork-iamextendedseeking-put_playbackspeed
     [PreserveSig]

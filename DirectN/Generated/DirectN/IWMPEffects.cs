@@ -23,12 +23,12 @@ public partial interface IWMPEffects
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-gettitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTitle(ref BSTR bstrTitle);
+    HRESULT GetTitle(out BSTR bstrTitle);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-getpresettitle
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPresetTitle(int nPreset, ref BSTR bstrPresetTitle);
+    HRESULT GetPresetTitle(int nPreset, out BSTR bstrPresetTitle);
     
     // https://learn.microsoft.com/windows/win32/api/effects/nf-effects-iwmpeffects-getpresetcount
     [PreserveSig]

@@ -8,7 +8,7 @@ public partial interface IWMPAudioRenderConfig
     // https://learn.microsoft.com/windows/win32/api/wmprealestate/nf-wmprealestate-iwmpaudiorenderconfig-get_audiooutputdevice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_audioOutputDevice(ref BSTR pbstrOutputDevice);
+    HRESULT get_audioOutputDevice(out BSTR pbstrOutputDevice);
     
     // https://learn.microsoft.com/windows/win32/api/wmprealestate/nf-wmprealestate-iwmpaudiorenderconfig-put_audiooutputdevice
     [PreserveSig]

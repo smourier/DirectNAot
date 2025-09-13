@@ -6,7 +6,7 @@ public partial interface IWMPDownloadItem : IDispatch
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_sourceURL(ref BSTR pbstrURL);
+    HRESULT get_sourceURL(out BSTR pbstrURL);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
@@ -14,7 +14,7 @@ public partial interface IWMPDownloadItem : IDispatch
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT get_type(ref BSTR pbstrType);
+    HRESULT get_type(out BSTR pbstrType);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

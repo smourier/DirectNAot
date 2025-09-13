@@ -42,6 +42,7 @@ public class Hstring : IDisposable
 
     public static implicit operator Hstring(string? value) => new(value);
     public static implicit operator HSTRING(Hstring value) => new() { Value = value.Value };
+    public static implicit operator Hstring(HSTRING value) => new() { Value = value.Value };
 
     protected virtual void Dispose(bool disposing)
     {
