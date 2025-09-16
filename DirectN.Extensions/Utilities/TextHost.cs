@@ -6,7 +6,6 @@ namespace DirectN.Extensions.Utilities;
 [GeneratedComClass]
 public unsafe partial class TextHost : ITextHost2, IDisposable
 {
-    private bool _disposedValue;
     private bool _showCaret;
     private POINT _caretPos;
     private string? _faceName;
@@ -21,7 +20,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
     private SBOUT _sbout;
     private int _selectionBarWidth;
     private PARAFORMAT_ALIGNMENT _aligment;
-    private readonly IComObject<ITextServices2> _services;
+    private IComObject<ITextServices2> _services;
     private ComBuffer<CHARFORMAT2W>? _charFormat;
     private ComBuffer<PARAFORMAT2>? _paraFormat;
 
@@ -946,22 +945,18 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposedValue)
+        if (disposing)
         {
-            if (disposing)
+            var services = Interlocked.Exchange(ref _services, null!);
+            if (services != null && !services.IsDisposed && services.Object != null)
             {
-                // dispose managed state (managed objects).
+                // if we do both Shutdown & Dispose, we get a crash
+                TextServicesFunctions.Shutdown(services.Object);
+                //services.Dispose();
             }
 
-            TextServicesFunctions.Shutdown(_services.Object, true);
-            //#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
-            //            // we need that in AOT case to avoid crashes in .NET...
-            //            GC.SuppressFinalize(_services.Object);
-            //#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
-            _charFormat?.Dispose();
-            _paraFormat?.Dispose();
-            _services.Dispose();
-            _disposedValue = true;
+            Interlocked.Exchange(ref _charFormat, null)?.Dispose();
+            Interlocked.Exchange(ref _paraFormat, null)?.Dispose();
         }
     }
 
