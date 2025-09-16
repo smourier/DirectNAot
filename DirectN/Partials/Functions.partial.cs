@@ -91,6 +91,20 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT D3D12SerializeRootSignature(in D3D12_ROOT_SIGNATURE_DESC1 pRootSignature, D3D_ROOT_SIGNATURE_VERSION Version, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3DBlob>))] out ID3DBlob ppBlob, nint /* optional ID3DBlob* */ ppErrorBlob);
 
+    [LibraryImport("Windows.UI.dll")]
+    [PreserveSig]
+    public static partial HRESULT GetWindowIdFromWindow(int hWnd, out ulong id);
+
+    [LibraryImport("Windows.UI.dll")]
+    [PreserveSig]
+    public static partial HRESULT GetWindowFromWindowId(ulong id, out int hWnd);
+
+    public static ulong GetWindowIdFromWindow(int hWnd) { GetWindowIdFromWindow(hWnd, out var id); return id; }
+    public static ulong GetWindowIdFromWindow(nint hWnd) => GetWindowIdFromWindow((int)hWnd);
+    public static ulong GetWindowIdFromWindow(HWND hWnd) => GetWindowIdFromWindow(hWnd.Value);
+    public static ulong GetWindowId(this HWND hWnd) => GetWindowIdFromWindow(hWnd.Value);
+    public static nint GetWindowFromWindowId(ulong id) { GetWindowFromWindowId(id, out var hWnd); return hWnd; }
+
     [SupportedOSPlatform("windows5.0")]
     public static LRESULT SendMessageW(HWND hWnd, uint Msg, WPARAM wParam) => SendMessageW(hWnd, Msg, wParam, LPARAM.Null);
 
