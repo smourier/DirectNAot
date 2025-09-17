@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<IsAotCompatible>true</IsAotCompatible>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>DirectN.ico</ApplicationIcon>
+		<WindowsSdkPackageVersion>10.0.26100.57</WindowsSdkPackageVersion>
+		<Platforms>ARM64;x64;x86</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\..\DirectN\Properties\AssemblyVersionInfo.cs" Link="Properties\AssemblyVersionInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="DirectN.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\DirectN.Extensions\DirectN.Extensions.csproj" />
+		<ProjectReference Include="..\..\DirectN\DirectN.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="DirectN" />
+		<Using Include="DirectN.Extensions" />
+		<Using Include="DirectN.Extensions.Com" />
+		<Using Include="DirectN.Extensions.Utilities" />
+		<Using Include="System" />
+		<Using Include="System.Collections.Concurrent" />
+		<Using Include="System.ComponentModel" />
+		<Using Include="System.Diagnostics.CodeAnalysis" />
+		<Using Include="System.Globalization" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Numerics" />
+		<Using Include="System.Reflection" />
+		<Using Include="System.Runtime.Versioning" />
+		<Using Include="System.Runtime.CompilerServices" />
+		<Using Include="System.Runtime.InteropServices" />
+		<Using Include="System.Threading" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Windows.Graphics" />
+		<Using Include="Windows.Graphics.Capture" />
+		<Using Include="Windows.Graphics.DirectX" />
+		<Using Include="Windows.Graphics.DirectX.Direct3D11" />
+		<Using Include="Windows.Foundation" />
+		<Using Include="Windows.Storage.Pickers" />
+		<Using Include="Windows.UI" />
+		<Using Include="Windows.UI.Composition" />
+		<Using Include="Windows.UI.Composition.Core" />
+		<Using Include="WinRT" />
+		<Using Include="WinRT.Interop" />
+	</ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-﻿namespace DirectN.Samples.PdfView;
+﻿namespace DirectN.Samples.ScreenCapture;
 
 public static class Extensions
 {

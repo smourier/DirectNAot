@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5D20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectN.Samples.PdfView", "Samples\DirectN.Samples.PdfView\DirectN.Samples.PdfView.csproj", "{32051DA4-8E7A-9F7A-3E28-5F80D4704663}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectN.Samples.ScreenCapture", "Samples\DirectN.Samples.ScreenCapture\DirectN.Samples.ScreenCapture.csproj", "{FC96C5E8-A22D-B662-2778-08272F505326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -147,6 +149,18 @@ Global
 		{32051DA4-8E7A-9F7A-3E28-5F80D4704663}.Release|x64.Build.0 = Release|x64
 		{32051DA4-8E7A-9F7A-3E28-5F80D4704663}.Release|x86.ActiveCfg = Release|x86
 		{32051DA4-8E7A-9F7A-3E28-5F80D4704663}.Release|x86.Build.0 = Release|x86
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|ARM64.Build.0 = Debug|ARM64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|x64.ActiveCfg = Debug|x64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|x64.Build.0 = Debug|x64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|x86.ActiveCfg = Debug|x86
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Debug|x86.Build.0 = Debug|x86
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|ARM64.ActiveCfg = Release|ARM64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|ARM64.Build.0 = Release|ARM64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|x64.ActiveCfg = Release|x64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|x64.Build.0 = Release|x64
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|x86.ActiveCfg = Release|x86
+		{FC96C5E8-A22D-B662-2778-08272F505326}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -157,6 +171,7 @@ Global
 		{01B91849-6035-4093-86E0-A86EA850CBF7} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 		{4A6C6421-D4B5-46B2-A1C6-662964E8D623} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 		{32051DA4-8E7A-9F7A-3E28-5F80D4704663} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
+		{FC96C5E8-A22D-B662-2778-08272F505326} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46CCC4C0-B09A-4BF1-A82C-F4C132CF5BA5}

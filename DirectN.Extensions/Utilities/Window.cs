@@ -12,12 +12,16 @@ public class Window : IDisposable, IEquatable<Window>
     public event EventHandler? HandleCreated;
     public event EventHandler? Created;
     public event EventHandler? Destroyed;
+    public event EventHandler? EnterSizeMove;
+    public event EventHandler? ExitSizeMove;
     public event CancelEventHandler? Disposing;
     public event EventHandler<HandledEventArgs>? Moved;
     public event EventHandler<ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>>? Resized;
     public event EventHandler<HandledEventArgs>? Activated;
     public event EventHandler<HandledEventArgs>? Deactivated;
     public event EventHandler<ValueEventArgs<bool>>? FocusChanged;
+    public event EventHandler<ValueEventArgs<WINDOWPOS>>? PositionChanging;
+    public event EventHandler<ValueEventArgs<WINDOWPOS>>? PositionChanged;
     public event EventHandler<CancelEventArgs>? Closing;
 
     protected Window(nint handle)
@@ -55,6 +59,7 @@ public class Window : IDisposable, IEquatable<Window>
     public bool IsDisposingOrDisposed => _disposeState != 0;
     public bool IsDisposing => _disposeState == 1;
     public bool IsDisposed => _disposeState == 2;
+    public bool IsSizingOrMoving { get; private set; }
     public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
     protected virtual uint AboutSysMenuId { get; set; } = 1;
@@ -388,12 +393,16 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnActivated(object? sender, HandledEventArgs e) => Activated?.Invoke(sender, e);
     protected virtual void OnDeactivated(object? sender, HandledEventArgs e) => Deactivated?.Invoke(sender, e);
     protected virtual void OnResized(object? sender, ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)> e) => Resized?.Invoke(sender, e);
+    protected virtual void OnPositionChanging(object? sender, ValueEventArgs<WINDOWPOS> e) => PositionChanging?.Invoke(sender, e);
+    protected virtual void OnPositionChanged(object? sender, ValueEventArgs<WINDOWPOS> e) => PositionChanged?.Invoke(sender, e);
     protected virtual void OnDisposing(object? sender, CancelEventArgs e) => Disposing?.Invoke(sender, e);
     protected virtual void OnDestroyed(object? sender, EventArgs e) => Destroyed?.Invoke(sender, e);
     protected virtual void OnMoved(object? sender, HandledEventArgs e) => Moved?.Invoke(sender, e);
     protected virtual void OnCreated(object? sender, EventArgs e) => Created?.Invoke(sender, e); // after window has been created
     protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e); // inside window being created
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
+    protected virtual void OnEnterSizeMove(object? sender, EventArgs e) => EnterSizeMove?.Invoke(sender, e);
+    protected virtual void OnExitSizeMove(object? sender, EventArgs e) => ExitSizeMove?.Invoke(sender, e);
 
     protected virtual void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon);
 
@@ -530,6 +539,41 @@ public class Window : IDisposable, IEquatable<Window>
                         return new();
                     }
                 }
+                break;
+
+            case MessageDecoder.WM_WINDOWPOSCHANGING:
+                unsafe
+                {
+                    var pos = *(WINDOWPOS*)lParam.Value;
+                    var pose = new ValueEventArgs<WINDOWPOS>(pos, false, isCancellable: true);
+                    OnPositionChanging(this, pose);
+                    if (pose.Cancel) // cancel here means "handled"
+                    {
+                        *(WINDOWPOS*)lParam.Value = pose.Value;
+                        return new LRESULT { Value = 0 };
+                    }
+                }
+                break;
+
+            case MessageDecoder.WM_WINDOWPOSCHANGED:
+                unsafe
+                {
+                    var pos = *(WINDOWPOS*)lParam.Value;
+                    var pose = new ValueEventArgs<WINDOWPOS>(pos, isCancellable: true);
+                    OnPositionChanged(this, pose);
+                    if (pose.Cancel) // cancel here means "handled"
+                        return new LRESULT { Value = 0 };
+                }
+                break;
+
+            case MessageDecoder.WM_ENTERSIZEMOVE:
+                IsSizingOrMoving = true;
+                OnEnterSizeMove(this, EventArgs.Empty);
+                break;
+
+            case MessageDecoder.WM_EXITSIZEMOVE:
+                IsSizingOrMoving = false;
+                OnExitSizeMove(this, EventArgs.Empty);
                 break;
 
             case MessageDecoder.WM_SIZE:
