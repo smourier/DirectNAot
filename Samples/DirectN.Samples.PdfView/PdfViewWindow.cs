@@ -181,56 +181,62 @@ public class PdfViewWindow : Window
             var surface = GraphicsDevice.CreateDrawingSurface(ClientRect.ToSize(), DirectXPixelFormat.B8G8R8A8UIntNormalized, DirectXAlphaMode.Premultiplied);
             RootVisual.Brush = Compositor.CreateSurfaceBrush(surface);
             using var interop = surface.AsComObject<ICompositionDrawingSurfaceInterop>();
-            using var dc = interop.BeginDraw(null);
-            dc.Clear(D3DCOLORVALUE.LightGray);
-
-            if (parent._pdfPage != null && _pdfRendererNative != null)
+            try
             {
-                var pageUnk = ((IWinRTObject)parent._pdfPage).NativeObject.ThisPtr; // no AddRef needed
+                using var dc = interop.BeginDraw(null);
+                dc.Clear(D3DCOLORVALUE.LightGray);
 
-                // resize to fit window's height or width
-                var rc = ClientRect;
-                var size = parent._pdfPage.Size;
-
-                var factor = GetScaleFactor(rc.ToSize(), size);
-                var width = size.Width * factor.Width;
-                var height = size.Height * factor.Height;
-
-                // center if needed
-                // there may be an existing transform, so we need to combine it and restore it
-                D2D_MATRIX_3X2_F? xf = null;
-                if (width < rc.Width || height < rc.Height)
+                if (parent._pdfPage != null && _pdfRendererNative != null)
                 {
-                    xf = dc.GetTransform();
-                    dc.SetTransform(xf.Value * D2D_MATRIX_3X2_F.Translation(
-                        Math.Max(0, (float)((rc.Width - width) / 2)),
-                        Math.Max(0, (float)((rc.Height - height) / 2)))
-                        );
+                    var pageUnk = ((IWinRTObject)parent._pdfPage).NativeObject.ThisPtr; // no AddRef needed
+
+                    // resize to fit window's height or width
+                    var rc = ClientRect;
+                    var size = parent._pdfPage.Size;
+
+                    var factor = GetScaleFactor(rc.ToSize(), size);
+                    var width = size.Width * factor.Width;
+                    var height = size.Height * factor.Height;
+
+                    // center if needed
+                    // there may be an existing transform, so we need to combine it and restore it
+                    D2D_MATRIX_3X2_F? xf = null;
+                    if (width < rc.Width || height < rc.Height)
+                    {
+                        xf = dc.GetTransform();
+                        dc.SetTransform(xf.Value * D2D_MATRIX_3X2_F.Translation(
+                            Math.Max(0, (float)((rc.Width - width) / 2)),
+                            Math.Max(0, (float)((rc.Height - height) / 2)))
+                            );
+                    }
+
+                    // note sure why but PDF_RENDER_PARAMS's BackgroundColor seems to not be used
+                    // so we do it ourselves
+                    using var backgroundBrush = dc.CreateSolidColorBrush(D3DCOLORVALUE.White);
+                    dc.FillRectangle(new D2D_RECT_F(0, 0, width, height), backgroundBrush);
+
+                    var renderParams = new PDF_RENDER_PARAMS
+                    {
+                        //BackgroundColor = D3DCOLORVALUE.White, // doesn't seem to be honored
+                        DestinationWidth = (uint)width,
+                        DestinationHeight = (uint)height,
+                    };
+
+                    // render
+                    _pdfRendererNative.Object.RenderPageToDeviceContext(pageUnk, dc.Object, (nint)(&renderParams)).ThrowOnError();
+
+                    // restore previous transform
+                    if (xf.HasValue)
+                    {
+                        dc.SetTransform(xf.Value);
+                    }
                 }
 
-                // note sure why but PDF_RENDER_PARAMS's BackgroundColor seems to not be used
-                // so we do it ourselves
-                using var backgroundBrush = dc.CreateSolidColorBrush(D3DCOLORVALUE.White);
-                dc.FillRectangle(new D2D_RECT_F(0, 0, width, height), backgroundBrush);
-
-                var renderParams = new PDF_RENDER_PARAMS
-                {
-                    //BackgroundColor = D3DCOLORVALUE.White, // doesn't seem to be honored
-                    DestinationWidth = (uint)width,
-                    DestinationHeight = (uint)height,
-                };
-
-                // render
-                _pdfRendererNative.Object.RenderPageToDeviceContext(pageUnk, dc.Object, (nint)(&renderParams)).ThrowOnError();
-
-                // restore previous transform
-                if (xf.HasValue)
-                {
-                    dc.SetTransform(xf.Value);
-                }
             }
-
-            interop.EndDraw();
+            finally
+            {
+                interop.EndDraw();
+            }
         }
 
         protected override void Dispose(bool disposing)

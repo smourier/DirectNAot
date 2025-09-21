@@ -3977,6 +3977,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetParent(HWND hWnd);
     
+    // https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getphysicallyinstalledsystemmemory
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPhysicallyInstalledSystemMemory(out ulong TotalMemoryInKilobytes);
+    
     // https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getphysicalmonitorsfromhmonitor
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -5296,6 +5303,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial nint GlobalLock(HGLOBAL hMem);
+    
+    // https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GlobalMemoryStatusEx(ref MEMORYSTATUSEX lpBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalsize
     [LibraryImport("KERNEL32", SetLastError = true)]

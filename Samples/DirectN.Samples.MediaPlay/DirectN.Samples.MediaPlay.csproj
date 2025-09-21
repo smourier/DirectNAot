@@ -37,8 +37,10 @@
 		<Using Include="DirectN.Extensions" />
 		<Using Include="DirectN.Extensions.Com" />
 		<Using Include="DirectN.Extensions.Utilities" />
+		<Using Include="Microsoft.Win32" />
 		<Using Include="System" />
 		<Using Include="System.Collections.Concurrent" />
+		<Using Include="System.Collections.Generic" />
 		<Using Include="System.ComponentModel" />
 		<Using Include="System.Diagnostics.CodeAnalysis" />
 		<Using Include="System.Globalization" />
@@ -55,6 +57,9 @@
 		<Using Include="Windows.Graphics.DirectX" />
 		<Using Include="Windows.Graphics.DirectX.Direct3D11" />
 		<Using Include="Windows.Foundation" />
+		<Using Include="Windows.Media.Core" />
+		<Using Include="Windows.Media.Playback" />
+		<Using Include="Windows.Storage.Pickers" />
 		<Using Include="Windows.UI" />
 		<Using Include="Windows.UI.Composition" />
 		<Using Include="Windows.UI.Composition.Core" />
