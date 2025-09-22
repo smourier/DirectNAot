@@ -38,7 +38,6 @@ public class MediaPlayWindow : Window
         {
             var source = MediaSource.CreateFromStorageFile(file);
             _playerWindow.Player.Source = source;
-            _playerWindow.Player.Play();
         }
     }
 
@@ -108,24 +107,32 @@ public class MediaPlayWindow : Window
     private sealed class PlayerWindow(MediaPlayWindow parent)
         : CompositionWindow(null, WINDOW_STYLE.WS_VISIBLE | WINDOW_STYLE.WS_CHILD, parentHandle: parent.Handle)
     {
-        private MediaPlayer? _player = new();
+        private MediaPlayer? _player = new() { AutoPlay = true, IsLoopingEnabled = true };
         private MediaPlayerSurface? _surface;
-
         public MediaPlayer? Player => _player;
 
-        protected override void CreateDeviceResources()
+        protected override bool OnResized(WindowResizedType type, SIZE size)
         {
-            base.CreateDeviceResources();
-            _surface = _player!.GetSurface(Compositor);
-            var brush = Compositor.CreateSurfaceBrush(_surface.CompositionSurface);
-            RootVisual.Brush = brush;
+            var ret = base.OnResized(type, size);
+            if (type != WindowResizedType.Minimized && !size.IsZero && _player != null)
+            {
+                _surface?.Dispose();
+                _player.SetSurfaceSize(new Size(size.cx, size.cy));
+                _surface = _player.GetSurface(Compositor);
+                RootVisual.Brush?.Dispose();
+
+                var brush = Compositor.CreateSurfaceBrush(_surface.CompositionSurface);
+                RootVisual.Brush = brush;
+            }
+            return ret;
         }
 
         protected override void Dispose(bool disposing)
         {
-            base.Dispose(disposing);
+            RootVisual?.Brush?.Dispose();
             Interlocked.Exchange(ref _surface, null)?.Dispose();
             Interlocked.Exchange(ref _player, null)?.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
