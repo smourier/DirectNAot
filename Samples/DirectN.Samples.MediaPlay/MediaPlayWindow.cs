@@ -109,20 +109,22 @@ public class MediaPlayWindow : Window
         : CompositionWindow(null, WINDOW_STYLE.WS_VISIBLE | WINDOW_STYLE.WS_CHILD, parentHandle: parent.Handle)
     {
         private MediaPlayer? _player = new();
+        private MediaPlayerSurface? _surface;
 
         public MediaPlayer? Player => _player;
 
         protected override void CreateDeviceResources()
         {
             base.CreateDeviceResources();
-            var surface = _player!.GetSurface(Compositor);
-            var brush = Compositor.CreateSurfaceBrush(surface.CompositionSurface);
+            _surface = _player!.GetSurface(Compositor);
+            var brush = Compositor.CreateSurfaceBrush(_surface.CompositionSurface);
             RootVisual.Brush = brush;
         }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
+            Interlocked.Exchange(ref _surface, null)?.Dispose();
             Interlocked.Exchange(ref _player, null)?.Dispose();
         }
     }
