@@ -1812,6 +1812,12 @@ public static class Conversions
             return false;
         }
 
+        if (conversionType == typeof(string))
+        {
+            value = input.ToString() ?? "0";
+            return true;
+        }
+
         value = GetDefaultValue(conversionType);
         return false;
     }
