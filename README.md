@@ -39,7 +39,7 @@ You can just compile the source (note it can take *minutes* due to the fact ComW
 
 https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/DirectNAot.Extensions/
 
-# Direct3D11 minimal sample.
+# Direct3D11 minimal sample
 The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
 
 It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
@@ -61,7 +61,7 @@ It uses Windows (WinRT) PDF API so it demonstrates how to include WinRT (C#/WinR
 
 # Wice
 Wice (aka "Windows Interface Composition Engine") is a .NET UI engine for creating Windows application. It's not dependent on WPF nor Winforms, nor WinUI 2 nor 3, nor Windows XAML, nor UWP, it's another UI Framework. The way it works is somewhat inspired from WPF, but there is no technical dependency over it.
-It supports native-AOT deployment, through usage of DirectNAOT.
+It supports native-AOT deployment, through usage of DirectN AOT.
 
 Check it out at https://github.com/aelyo-softworks/Wice
 
@@ -71,5 +71,12 @@ Check it out at https://github.com/aelyo-softworks/Wice
 [WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 9+ AOT-compatible bindings 100% independent from WinForms or WPF for Microsoft's WebView2.
 
 <img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
+
+# VCamNetSample sample
+[VCamNetSample](https://github.com/smourier/VCamNetSample) is a project that exposes a Media Foundation Virtual Camera Sample developed using .NET AOT with DirectN AOT. It works only on Windows 11 thanks to the MFCreateVirtualCamera API.
+
+<img width="1502" height="848" alt="VCamNetSample" src="https://github.com/user-attachments/assets/03b289a6-cee2-497f-a692-9a060b2b50d9" />
+
+
 
 
