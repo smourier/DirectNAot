@@ -1,0 +1,13 @@
+﻿namespace DirectN;
+
+public enum PHOTO_ORIENTATION
+{
+    NORMAL = 1,
+    FLIPHORIZONTAL,
+    ROTATE180,
+    FLIPVERTICAL,
+    TRANSPOSE,
+    ROTATE270,
+    TRANSVERSE,
+    ROTATE90
+}
