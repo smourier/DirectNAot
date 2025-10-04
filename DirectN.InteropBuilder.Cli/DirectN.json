@@ -492,6 +492,7 @@
     "PostMessageW",
     "PostQuitMessage",
     "PostThreadMessageW",
+    "ProcessIdToSessionId",
     "PropVariantChangeType",
     "PropVariantClear",
     "PropVariantCopy",

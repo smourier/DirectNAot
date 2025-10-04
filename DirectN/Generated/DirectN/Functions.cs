@@ -9302,6 +9302,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL PrintWindow(HWND hwnd, HDC hdcBlt, PRINT_WINDOW_FLAGS nFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-processidtosessionid
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL ProcessIdToSessionId(uint dwProcessId, out uint pSessionId);
+    
     // https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantchangetype
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
