@@ -17,6 +17,7 @@ public class Bstr : IDisposable
     }
 
     public int? Length => ToString()?.Length;
+    public BSTR BSTR => new(Value);
 
     public override string? ToString() => Marshal.PtrToStringBSTR(Value)!;
 

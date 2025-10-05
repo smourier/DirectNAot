@@ -74,6 +74,7 @@
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
 		<Using Include="System.Runtime.Versioning" />
+		<Using Include="System.Security.Cryptography" />
 		<Using Include="System.Text" />
 	</ItemGroup>
 

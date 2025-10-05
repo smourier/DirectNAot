@@ -510,20 +510,62 @@ public sealed class Variant : IDisposable
 
     private void ConstructEnumerable(IEnumerable enumerable, VARENUM? type = null)
     {
-        var et = PropVariant.GetElementType(enumerable);
-        if (et == null)
-            throw new ArgumentException("Enumerable type '" + enumerable.GetType().FullName + "' is not supported.", nameof(enumerable));
-
-        var count = PropVariant.GetCount(enumerable);
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-        var array = Array.CreateInstance(et, count);
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-        var i = 0;
-        foreach (var obj in enumerable)
+        Type? arrayType = null;
+        if (type != null)
         {
-            array.SetValue(obj, i++);
+            var count = PropVariant.GetCount(enumerable);
+            var i = 0;
+            if (type == VARENUM.VT_VARIANT)
+            {
+                var objects = new object?[count];
+                foreach (var obj in enumerable)
+                {
+                    objects.SetValue(obj, i++);
+                }
+
+                ConstructArray(objects, type);
+                return;
+            }
+
+            arrayType = PropVariant.FromTypeArray(type.Value);
+            var array = Array.CreateInstanceFromArrayType(arrayType, count);
+            var elementType = array.GetType().GetElementType()!;
+            foreach (var obj in enumerable)
+            {
+                var converted = Conversions.ChangeObjectType(obj, elementType);
+                array.SetValue(converted, i++);
+            }
+
+            ConstructArray(array, type);
+            return;
         }
-        ConstructArray(array, type);
+
+        if (!enumerable.GetType().IsGenericType)
+        {
+            ConstructEnumerable(enumerable, VARENUM.VT_VARIANT);
+            return;
+        }
+
+        // get the first item to determine the type and the build the array
+        var list = new List<object?>();
+        var enumerator = enumerable.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            var item = enumerator.Current;
+            if (type == null)
+            {
+                var et = item.GetType();
+                type = PropVariant.FromType(et, null, false);
+                arrayType = PropVariant.FromTypeArray(type.Value);
+            }
+            list.Add(item);
+        }
+
+        if (list.Count > 0 && arrayType != null)
+        {
+            var array = Array.CreateInstanceFromArrayType(arrayType, list.Count);
+            ConstructArray(array, type);
+        }
     }
 
     private void ConstructArray(Array array, VARENUM? type = null)
@@ -594,13 +636,8 @@ public sealed class Variant : IDisposable
                 }
                 else
                 {
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-#pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-                    var size = Marshal.SizeOf(type) * array.Length;
-#pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-
-                    Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), size);
+                    var size = PropVariant.SizeofForVector(vt) * array.Length;
+                    Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), (nint)size);
                 }
             }
             catch
@@ -618,6 +655,13 @@ public sealed class Variant : IDisposable
         }
     }
 
+    private static int GetCount(in SAFEARRAY psa)
+    {
+        Functions.SafeArrayGetLBound(psa, 1, out var l).ThrowOnError();
+        Functions.SafeArrayGetUBound(psa, 1, out var u).ThrowOnError();
+        return u - l + 1;
+    }
+
     private bool TryGetArrayValue(VARENUM vt, out object? value)
     {
         value = null;
@@ -630,9 +674,7 @@ public sealed class Variant : IDisposable
             if (psa->cDims != 1)
                 return false;
 
-            Functions.SafeArrayGetLBound(*psa, 1, out var l).ThrowOnError();
-            Functions.SafeArrayGetUBound(*psa, 1, out var u).ThrowOnError();
-            var count = u - l + 1;
+            var count = GetCount(*psa);
 
             Functions.SafeArrayAccessData(*psa, out var ptr).ThrowOnError();
             try
@@ -698,13 +740,10 @@ public sealed class Variant : IDisposable
                     case VARENUM.VT_DATE:
                     case VARENUM.VT_UNKNOWN:
                     case VARENUM.VT_DISPATCH:
+                        var arrayType = PropVariant.FromTypeArray(vt);
                         var et = PropVariant.FromType(vt);
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-                        var values = Array.CreateInstance(et, psa->cbElements);
-#pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-                        size = (uint)(values.Length * Marshal.SizeOf(et));
-#pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
+                        var values = Array.CreateInstanceFromArrayType(arrayType, count);
+                        size = (uint)count * PropVariant.SizeofForVector(vt);
                         Functions.CopyMemory(Marshal.UnsafeAddrOfPinnedArrayElement(values, 0), ptr, (nint)size);
                         value = values;
                         ret = true;

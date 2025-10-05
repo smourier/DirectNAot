@@ -47,6 +47,9 @@ public static class Conversions
     public static DateTime ToDateTime(this FILETIME ft) => DateTime.FromFileTime(ToFileTime(ft));
     public static DateTime ToDateTimeUtc(this FILETIME ft) => DateTime.FromFileTimeUtc(ToFileTime(ft));
 
+    public static DateTime RemoveMilliseconds(this DateTime dateTime) => new(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Kind);
+    public static DateTimeOffset RemoveMilliseconds(this DateTimeOffset dateTime) => new(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Offset);
+
     public static string ToHex(this byte value) => $"0x{value:X2}";
     public static string ToHex(this sbyte value) => $"0x{value:X2}";
     public static string ToHex(this ushort value) => $"0x{value:X4}";

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace DirectN.Extensions.Utilities;
+﻿namespace DirectN.Extensions.Utilities;
 
 public static class Extensions
 {
@@ -34,6 +32,24 @@ public static class Extensions
 
         var t = text.Trim();
         return t.Length == 0 ? null : t;
+    }
+
+    public static string? RemoveDiacritics(this string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return text;
+
+        var normalized = text.Normalize(NormalizationForm.FormD);
+        var sb = new StringBuilder();
+        for (var i = 0; i < normalized.Length; i++)
+        {
+            var uc = CharUnicodeInfo.GetUnicodeCategory(normalized[i]);
+            if (uc != UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(normalized[i]);
+            }
+        }
+        return sb.ToString().Normalize(NormalizationForm.FormC);
     }
 
     public static int AddRange<T>(this ICollection<T>? collection, IEnumerable<T>? enumerable)

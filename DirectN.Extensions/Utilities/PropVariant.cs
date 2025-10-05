@@ -562,20 +562,62 @@ public sealed class PropVariant : IDisposable
 
     private void ConstructEnumerable(IEnumerable enumerable, VARENUM? type = null)
     {
-        var et = GetElementType(enumerable);
-        if (et == null)
-            throw new ArgumentException("Enumerable type '" + enumerable.GetType().FullName + "' is not supported.", nameof(enumerable));
-
-        var count = GetCount(enumerable);
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-        var array = Array.CreateInstance(et, count);
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-        var i = 0;
-        foreach (var obj in enumerable)
+        Type? arrayType = null;
+        if (type != null)
         {
-            array.SetValue(obj, i++);
+            var count = GetCount(enumerable);
+            var i = 0;
+            if (type == VARENUM.VT_VARIANT)
+            {
+                var objects = new object?[count];
+                foreach (var obj in enumerable)
+                {
+                    objects.SetValue(obj, i++);
+                }
+
+                ConstructArray(objects, type);
+                return;
+            }
+
+            arrayType = FromTypeArray(type.Value);
+            var array = Array.CreateInstanceFromArrayType(arrayType, count);
+            var elementType = array.GetType().GetElementType()!;
+            foreach (var obj in enumerable)
+            {
+                var converted = Conversions.ChangeObjectType(obj, elementType);
+                array.SetValue(converted, i++);
+            }
+
+            ConstructArray(array, type);
+            return;
         }
-        ConstructArray(array, type);
+
+        if (!enumerable.GetType().IsGenericType)
+        {
+            ConstructEnumerable(enumerable, VARENUM.VT_VARIANT);
+            return;
+        }
+
+        // get the first item to determine the type and the build the array
+        var list = new List<object?>();
+        var enumerator = enumerable.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            var item = enumerator.Current;
+            if (type == null)
+            {
+                var et = item.GetType();
+                type = FromType(et, null, false);
+                arrayType = FromTypeArray(type.Value);
+            }
+            list.Add(item);
+        }
+
+        if (list.Count > 0 && arrayType != null)
+        {
+            var array = Array.CreateInstanceFromArrayType(arrayType, list.Count);
+            ConstructArray(array, type);
+        }
     }
 
     private void ConstructBlob(byte[] bytes)
@@ -631,11 +673,7 @@ public sealed class PropVariant : IDisposable
             }
             else
             {
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-#pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-                size = Marshal.SizeOf(type);
-#pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
+                size = (int)SizeofForVector(vt);
             }
 
             var elementSize = size;
@@ -728,8 +766,21 @@ public sealed class PropVariant : IDisposable
                 ret = true;
                 break;
 
-            case VARENUM.VT_I1:
+            case VARENUM.VT_CLSID:
+                var clsids = new Guid[_inner.Anonymous.Anonymous.Anonymous.cauuid.cElems];
+                for (var i = 0; i < clsids.Length; i++)
+                {
+                    var ptr = _inner.Anonymous.Anonymous.Anonymous.cauuid.pElems + 16 * i;
+                    var guid = new byte[16];
+                    Marshal.Copy(ptr, guid, 0, 16);
+                    clsids[i] = new Guid(guid);
+                }
+                value = clsids;
+                ret = true;
+                break;
+
             case VARENUM.VT_UI1:
+            case VARENUM.VT_I1:
             case VARENUM.VT_I2:
             case VARENUM.VT_UI2:
             case VARENUM.VT_I4:
@@ -744,16 +795,12 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_CY:
             case VARENUM.VT_DATE:
             case VARENUM.VT_FILETIME:
-            case VARENUM.VT_CLSID:
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+                var arrayType = FromTypeArray(vt);
                 var et = FromType(vt);
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-                var values = Array.CreateInstance(et, _inner.Anonymous.Anonymous.Anonymous.cai.cElems);
-#pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-                size = _inner.Anonymous.Anonymous.Anonymous.cai.cElems * (uint)Marshal.SizeOf(et);
-#pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
+                var values = Array.CreateInstanceFromArrayType(arrayType, (int)_inner.Anonymous.Anonymous.Anonymous.cai.cElems);
+                size = _inner.Anonymous.Anonymous.Anonymous.cai.cElems * SizeofForVector(vt);
                 Functions.CopyMemory(Marshal.UnsafeAddrOfPinnedArrayElement(values, 0), _inner.Anonymous.Anonymous.Anonymous.cai.pElems, (nint)size);
                 value = values;
                 ret = true;
@@ -841,38 +888,50 @@ public sealed class PropVariant : IDisposable
         }
     }
 
-    internal static Type? GetElementType(Type collectionType)
+    internal static uint SizeofForVector(VARENUM type)
     {
-#pragma warning disable IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-        foreach (var iface in collectionType.GetInterfaces())
+        switch (type)
         {
-            if (!iface.IsGenericType)
-                continue;
+            case VARENUM.VT_I1:
+            case VARENUM.VT_UI1:
+                return 1;
 
-            if (iface.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-                return iface.GetGenericArguments()[0];
+            case VARENUM.VT_I2:
+            case VARENUM.VT_UI2:
+            case VARENUM.VT_BOOL:
+                return 2;
 
-            if (iface.GetGenericTypeDefinition() == typeof(ICollection<>))
-                return iface.GetGenericArguments()[0];
+            case VARENUM.VT_UI4:
+            case VARENUM.VT_UINT:
+            case VARENUM.VT_R4:
+            case VARENUM.VT_I4:
+            case VARENUM.VT_INT:
+            case VARENUM.VT_ERROR:
+                return 4;
 
-            if (iface.GetGenericTypeDefinition() == typeof(IList<>))
-                return iface.GetGenericArguments()[0];
+            case VARENUM.VT_I8:
+            case VARENUM.VT_UI8:
+            case VARENUM.VT_R8:
+            case VARENUM.VT_DATE:
+            case VARENUM.VT_FILETIME:
+            case VARENUM.VT_CY:
+                return 8;
+
+            case VARENUM.VT_DECIMAL:
+            case VARENUM.VT_CLSID:
+                return 16;
+
+            case VARENUM.VT_BLOB:
+            case VARENUM.VT_BSTR:
+            case VARENUM.VT_LPSTR:
+            case VARENUM.VT_LPWSTR:
+            case VARENUM.VT_UNKNOWN:
+            case VARENUM.VT_DISPATCH:
+                return (uint)nint.Size;
+
+            default:
+                throw new ArgumentException("Property type " + type + " is not supported.", nameof(type));
         }
-#pragma warning restore IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-        return null;
-    }
-
-    internal static Type? GetElementType(IEnumerable enumerable)
-    {
-        var et = GetElementType(enumerable.GetType());
-        if (et != null)
-            return et;
-
-        foreach (var obj in enumerable)
-        {
-            return obj.GetType();
-        }
-        return null;
     }
 
     internal static Type FromType(VARENUM type)
@@ -939,6 +998,79 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_CY:
             case VARENUM.VT_DECIMAL:
                 return typeof(decimal);
+
+            default:
+                throw new ArgumentException("Property type " + type + " is not supported.", nameof(type));
+        }
+    }
+
+    internal static Type FromTypeArray(VARENUM type)
+    {
+        switch (type)
+        {
+            case VARENUM.VT_I1:
+                return typeof(sbyte[]);
+
+            case VARENUM.VT_UI1:
+                return typeof(byte[]);
+
+            case VARENUM.VT_I2:
+                return typeof(short[]);
+
+            case VARENUM.VT_UI2:
+                return typeof(ushort[]);
+
+            case VARENUM.VT_UI4:
+            case VARENUM.VT_UINT:
+                return typeof(uint[]);
+
+            case VARENUM.VT_I8:
+                return typeof(long[]);
+
+            case VARENUM.VT_UI8:
+                return typeof(ulong[]);
+
+            case VARENUM.VT_R4:
+                return typeof(float[]);
+
+            case VARENUM.VT_R8:
+                return typeof(double[]);
+
+            case VARENUM.VT_BOOL:
+                return typeof(bool[]);
+
+            case VARENUM.VT_I4:
+            case VARENUM.VT_INT:
+            case VARENUM.VT_ERROR:
+                return typeof(int[]);
+
+            case VARENUM.VT_DATE:
+                return typeof(DateTime[]);
+
+            case VARENUM.VT_FILETIME:
+                return typeof(FILETIME[]);
+
+            case VARENUM.VT_BLOB:
+                return typeof(byte[][]);
+
+            case VARENUM.VT_CLSID:
+                return typeof(Guid[]);
+
+            case VARENUM.VT_BSTR:
+            case VARENUM.VT_LPSTR:
+            case VARENUM.VT_LPWSTR:
+                return typeof(string[]);
+
+            case VARENUM.VT_UNKNOWN:
+            case VARENUM.VT_DISPATCH:
+                return typeof(object[]);
+
+            case VARENUM.VT_CY:
+            case VARENUM.VT_DECIMAL:
+                return typeof(decimal[]);
+
+            case VARENUM.VT_VARIANT:
+                return typeof(object[]);
 
             default:
                 throw new ArgumentException("Property type " + type + " is not supported.", nameof(type));
@@ -1026,7 +1158,7 @@ public sealed class PropVariant : IDisposable
         return value;
     }
 
-    internal static VARENUM FromType(Type type, VARENUM? vt, bool forVariant)
+    internal static VARENUM FromType(Type? type, VARENUM? vt, bool forVariant)
     {
         if (type == null)
             return VARENUM.VT_NULL;
@@ -1116,6 +1248,14 @@ public sealed class PropVariant : IDisposable
                         return VARENUM.VT_DATE;
 
                     return VARENUM.VT_FILETIME;
+                }
+
+                if (type == typeof(DateTimeOffset))
+                {
+                    if (vt == VARENUM.VT_FILETIME)
+                        return VARENUM.VT_FILETIME;
+
+                    return VARENUM.VT_DATE;
                 }
 
                 if (type == typeof(byte))
