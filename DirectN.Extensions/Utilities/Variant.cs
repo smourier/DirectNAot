@@ -86,6 +86,31 @@ public sealed class Variant : IDisposable
         }
 
         var valueType = value.GetType();
+        var details = System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(valueType.TypeHandle);
+        if (details != null)
+        {
+            // favor IDispatch for late-bound clients
+            nint unk;
+            if (type != VARENUM.VT_UNKNOWN)
+            {
+                unk = ComObject.GetOrCreateComInstance<IDispatch>(value);
+                if (unk != 0)
+                {
+                    _inner.Anonymous.Anonymous.Anonymous.pdispVal = unk;
+                    _inner.Anonymous.Anonymous.vt = VARENUM.VT_DISPATCH;
+                    return;
+                }
+            }
+
+            unk = ComObject.GetOrCreateComInstance(value, throwOnError: true);
+            if (unk == 0)
+                throw new ArgumentException("Value of type '" + value.GetType().FullName + "' is not supported.", nameof(value));
+
+            _inner.Anonymous.Anonymous.Anonymous.punkVal = unk;
+            _inner.Anonymous.Anonymous.vt = VARENUM.VT_UNKNOWN;
+            return;
+        }
+
         var vt = PropVariant.FromType(valueType, type, true);
         var tc = Type.GetTypeCode(valueType);
         switch (tc)
@@ -554,18 +579,23 @@ public sealed class Variant : IDisposable
             var item = enumerator.Current;
             if (type == null)
             {
-                var et = item.GetType();
-                type = PropVariant.FromType(et, null, false);
+                var objectVt = PropVariant.GetObjectType(item, type);
+                if (objectVt != null)
+                {
+                    type = objectVt.Value;
+                }
+                else
+                {
+                    var et = item.GetType();
+                    type = PropVariant.FromType(et, null, true);
+                }
                 arrayType = PropVariant.FromTypeArray(type.Value);
             }
             list.Add(item);
         }
 
-        if (list.Count > 0 && arrayType != null)
-        {
-            var array = Array.CreateInstanceFromArrayType(arrayType, list.Count);
-            ConstructArray(array, type);
-        }
+        var listArray = Array.CreateInstanceFromArrayType(arrayType ?? typeof(object[]), list.Count);
+        ConstructArray(listArray, type);
     }
 
     private void ConstructArray(Array array, VARENUM? type = null)
@@ -578,7 +608,7 @@ public sealed class Variant : IDisposable
             {
                 shorts[i] = bools[i] ? ((short)-1) : ((short)0);
             }
-            ConstructSafeArray(shorts, typeof(short), VARENUM.VT_BOOL);
+            ConstructSafeArray(shorts, VARENUM.VT_BOOL);
             return;
         }
 
@@ -589,7 +619,7 @@ public sealed class Variant : IDisposable
             {
                 strings[i] = guids[i].ToString("B");
             }
-            ConstructSafeArray(strings, typeof(string), VARENUM.VT_BSTR);
+            ConstructSafeArray(strings, VARENUM.VT_BSTR);
             return;
         }
 
@@ -597,14 +627,25 @@ public sealed class Variant : IDisposable
         if (et == null)
             throw new NotSupportedException();
 
-        ConstructSafeArray(array, et, PropVariant.FromType(et, type, true));
+        if (array.Length > 0)
+        {
+            var objectVt = PropVariant.GetObjectType(array.GetValue(0), type);
+            if (objectVt != null)
+            {
+                ConstructSafeArray(array, objectVt.Value);
+                return;
+            }
+        }
+
+        var vt = PropVariant.FromType(et, type, true);
+        ConstructSafeArray(array, vt);
     }
 
-    private void ConstructSafeArray(Array array, Type type, VARENUM vt)
+    private void ConstructSafeArray(Array array, VARENUM vt)
     {
         unsafe
         {
-            var bounds = new SAFEARRAYBOUND { lLbound = 0, cElements = (uint)array.Length };
+            var bounds = new SAFEARRAYBOUND { cElements = (uint)array.Length };
             var sa = Functions.SafeArrayCreate(vt, 1, bounds);
             if (sa == 0)
                 throw new OutOfMemoryException();
@@ -613,31 +654,51 @@ public sealed class Variant : IDisposable
             Functions.SafeArrayAccessData(*psa, out var ptr).ThrowOnError();
             try
             {
-                if (type == typeof(string))
+                switch (vt)
                 {
-                    for (var i = 0; i < array.Length; i++)
-                    {
-                        var str = PropVariant.MarshalString((string?)array.GetValue(i)!, vt);
-                        Marshal.WriteIntPtr(ptr, nint.Size * i, str);
-                    }
-                }
-                else if (type == typeof(object))
-                {
-                    for (var i = 0; i < array.Length; i++)
-                    {
-                        var variantValue = array.GetValue(i);
-                        using var variant = new Variant(variantValue);
-                        unsafe
+                    case VARENUM.VT_VARIANT:
+                        for (var i = 0; i < array.Length; i++)
                         {
-                            var p = (VARIANT*)(ptr + Size * i);
-                            *p = variant.Detach();
+                            var item = array.GetValue(i);
+                            using var variant = new Variant(item);
+                            variant.DetachTo(ptr + Size * i);
                         }
-                    }
-                }
-                else
-                {
-                    var size = PropVariant.SizeofForVector(vt) * array.Length;
-                    Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), (nint)size);
+                        break;
+
+                    case VARENUM.VT_LPSTR:
+                    case VARENUM.VT_LPWSTR:
+                    case VARENUM.VT_BSTR:
+                        for (var i = 0; i < array.Length; i++)
+                        {
+                            var str = PropVariant.MarshalString((string?)array.GetValue(i), vt);
+                            Marshal.WriteIntPtr(ptr, nint.Size * i, str);
+                        }
+                        break;
+
+                    case VARENUM.VT_BOOL:
+                        for (var i = 0; i < array.Length; i++)
+                        {
+                            var item = Conversions.ChangeType<bool>(array.GetValue(i));
+                            Marshal.WriteInt16(ptr, 2 * i, (short)(item ? 1 : 0));
+                        }
+                        break;
+
+                    case VARENUM.VT_UNKNOWN:
+                    case VARENUM.VT_DISPATCH:
+                        for (var i = 0; i < array.Length; i++)
+                        {
+                            var item = array.GetValue(i);
+                            using var variant = new Variant(item, vt);
+                            // any p*** variable will do (all same offset)
+                            Marshal.WriteIntPtr(ptr, nint.Size * i, variant.Detached.Anonymous.Anonymous.Anonymous.punkVal);
+                            variant.Detach();
+                        }
+                        break;
+
+                    default:
+                        var size = PropVariant.SizeofForVector(vt) * array.Length;
+                        Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), (nint)size);
+                        break;
                 }
             }
             catch
@@ -738,6 +799,7 @@ public sealed class Variant : IDisposable
                     case VARENUM.VT_ERROR:
                     case VARENUM.VT_CY:
                     case VARENUM.VT_DATE:
+                    case VARENUM.VT_DECIMAL:
                     case VARENUM.VT_UNKNOWN:
                     case VARENUM.VT_DISPATCH:
                         var arrayType = PropVariant.FromTypeArray(vt);

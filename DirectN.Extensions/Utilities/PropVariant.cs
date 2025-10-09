@@ -81,6 +81,31 @@ public sealed class PropVariant : IDisposable
         }
 
         var valueType = value.GetType();
+        var details = System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(valueType.TypeHandle);
+        if (details != null)
+        {
+            // favor IDispatch for late-bound clients
+            nint unk;
+            if (type != VARENUM.VT_UNKNOWN)
+            {
+                unk = ComObject.GetOrCreateComInstance<IDispatch>(value);
+                if (unk != 0)
+                {
+                    _inner.Anonymous.Anonymous.Anonymous.pdispVal = unk;
+                    _inner.Anonymous.Anonymous.vt = VARENUM.VT_DISPATCH;
+                    return;
+                }
+            }
+
+            unk = ComObject.GetOrCreateComInstance(value, throwOnError: true);
+            if (unk == 0)
+                throw new ArgumentException("Value of type '" + value.GetType().FullName + "' is not supported.", nameof(value));
+
+            _inner.Anonymous.Anonymous.Anonymous.punkVal = unk;
+            _inner.Anonymous.Anonymous.vt = VARENUM.VT_UNKNOWN;
+            return;
+        }
+
         var vt = FromType(valueType, type, false);
         var tc = Type.GetTypeCode(valueType);
         switch (tc)
@@ -606,18 +631,23 @@ public sealed class PropVariant : IDisposable
             var item = enumerator.Current;
             if (type == null)
             {
-                var et = item.GetType();
-                type = FromType(et, null, false);
+                var objectVt = GetObjectType(item, type);
+                if (objectVt != null)
+                {
+                    type = objectVt.Value;
+                }
+                else
+                {
+                    var et = item.GetType();
+                    type = FromType(et, null, false);
+                }
                 arrayType = FromTypeArray(type.Value);
             }
             list.Add(item);
         }
 
-        if (list.Count > 0 && arrayType != null)
-        {
-            var array = Array.CreateInstanceFromArrayType(arrayType, list.Count);
-            ConstructArray(array, type);
-        }
+        var listArray = Array.CreateInstanceFromArrayType(arrayType ?? typeof(object[]), list.Count);
+        ConstructArray(listArray, type);
     }
 
     private void ConstructBlob(byte[] bytes)
@@ -655,7 +685,18 @@ public sealed class PropVariant : IDisposable
             return;
         }
 
-        ConstructVector(array, et, FromType(et, type, false));
+        if (array.Length > 0)
+        {
+            var objectVt = PropVariant.GetObjectType(array.GetValue(0), type);
+            if (objectVt != null)
+            {
+                ConstructVector(array, et, objectVt.Value);
+                return;
+            }
+        }
+
+        var vt = FromType(et, type, false);
+        ConstructVector(array, et, vt);
     }
 
     private void ConstructVector(Array array, Type type, VARENUM vt)
@@ -794,6 +835,7 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_ERROR:
             case VARENUM.VT_CY:
             case VARENUM.VT_DATE:
+            case VARENUM.VT_DECIMAL:
             case VARENUM.VT_FILETIME:
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
@@ -1158,6 +1200,37 @@ public sealed class PropVariant : IDisposable
         return value;
     }
 
+    internal static bool IsObjectType(Type type) => System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(type.TypeHandle) != null;
+    internal static VARENUM? GetObjectType(object? value, VARENUM? preferred)
+    {
+        if (value == null)
+            return null;
+
+        var type = value.GetType();
+        var details = System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(type.TypeHandle);
+        if (details == null)
+            return null;
+
+        // favor IDispatch for late-bound clients
+        nint unk;
+        if (preferred != VARENUM.VT_UNKNOWN)
+        {
+            unk = ComObject.GetOrCreateComInstance<IDispatch>(value);
+            if (unk != 0)
+            {
+                Marshal.Release(unk);
+                return VARENUM.VT_DISPATCH;
+            }
+        }
+
+        unk = ComObject.GetOrCreateComInstance(value, throwOnError: true);
+        if (unk == 0)
+            throw new ArgumentException("Value of type '" + value.GetType().FullName + "' is not supported.", nameof(value));
+
+        Marshal.Release(unk);
+        return VARENUM.VT_UNKNOWN;
+    }
+
     internal static VARENUM FromType(Type? type, VARENUM? vt, bool forVariant)
     {
         if (type == null)
@@ -1179,7 +1252,7 @@ public sealed class PropVariant : IDisposable
                 return VARENUM.VT_LPWSTR;
 
             case TypeCode.DateTime:
-                if (vt == VARENUM.VT_FILETIME)
+                if (!forVariant && vt == VARENUM.VT_FILETIME)
                     return VARENUM.VT_FILETIME;
 
                 return VARENUM.VT_DATE;
@@ -1258,7 +1331,7 @@ public sealed class PropVariant : IDisposable
                     return VARENUM.VT_DATE;
                 }
 
-                if (type == typeof(byte))
+                if (type == typeof(byte[]))
                 {
                     if (forVariant)
                         return VARENUM.VT_UI1 | VARENUM.VT_ARRAY;
