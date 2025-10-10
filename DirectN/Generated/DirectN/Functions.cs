@@ -3278,6 +3278,20 @@ public static partial class Functions
     [PreserveSig]
     public static partial int EnumPropsW(HWND hWnd, PROPENUMPROCW lpEnumFunc);
     
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-enumresourcelanguagesexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnumResourceLanguagesExW(HMODULE hModule, PWSTR lpType, PWSTR lpName, ENUMRESLANGPROCW lpEnumFunc, nint lParam, uint dwFlags, ushort LangId);
+    
+    // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-enumresourcenamesexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnumResourceNamesExW(HMODULE hModule, PWSTR lpType, ENUMRESNAMEPROCW lpEnumFunc, nint lParam, uint dwFlags, ushort LangId);
+    
     // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-enumresourcetypesw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3351,6 +3365,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HICON ExtractAssociatedIconW(HINSTANCE hInst, [MarshalUsing(ConstantElementCount = 128)] PWSTR pszIconPath, ref ushort piIcon);
+    
+    // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extracticonw
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HICON ExtractIconW(HINSTANCE hInst, PWSTR pszExeFileName, uint nIconIndex);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-fillrect
     [LibraryImport("USER32")]
@@ -10269,6 +10290,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT SHCreateStreamOnFileW(PWSTR pszFile, uint grfMode, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] out IStream ppstm);
+    
+    // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdefextracticonw
+    [LibraryImport("SHELL32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT SHDefExtractIconW(PWSTR pszIconFile, int iIndex, uint uFlags, nint /* optional HICON* */ phiconLarge, nint /* optional HICON* */ phiconSmall, uint nIconSize);
     
     // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdodragdrop
     [LibraryImport("SHELL32")]

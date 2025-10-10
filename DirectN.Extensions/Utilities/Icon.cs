@@ -17,10 +17,8 @@ public class Icon : IDisposable
         return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = exeHandle.Value }, Constants.IDI_APPLICATION, GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
     }
 
-    public static Icon? Load(HMODULE module, int resourceId, int size = 16)
-    {
-        return FromHandle(Functions.LoadImageW(new HINSTANCE { Value = module.Value }, new PWSTR(resourceId), GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
-    }
+    public static Icon? Load(HMODULE module, int resourceId, int size = 16) =>
+        FromHandle(Functions.LoadImageW(new HINSTANCE { Value = module.Value }, new PWSTR(resourceId), GDI_IMAGE_TYPE.IMAGE_ICON, size, size, 0).Value, true);
 
     public static Icon? FromHandle(nint handle, bool destroyHandleOnDispose = false)
     {
@@ -60,6 +58,24 @@ public class Icon : IDisposable
             return null;
 
         return new Icon { _handle = handle, DestroyHandleOnDispose = true };
+    }
+
+    public unsafe static Icon? ExtractIcon(string iconPath, int index, uint size = 0, GILIN flags = GILIN.GIL_NONE, bool throwOnError = true)
+    {
+        ArgumentNullException.ThrowIfNull(iconPath);
+
+        var handle = nint.Zero;
+        var hr = Functions.SHDefExtractIconW(PWSTR.From(iconPath), index, (uint)flags, (nint)(&handle), 0, size).ThrowOnError(throwOnError);
+        if (hr.IsError || handle == 0)
+            return null;
+
+        return new Icon { _handle = handle, DestroyHandleOnDispose = true };
+    }
+
+    public static int ExtractIconsCount(string iconPath)
+    {
+        ArgumentNullException.ThrowIfNull(iconPath);
+        return (int)(long)Functions.ExtractIconW(0, PWSTR.From(iconPath), uint.MaxValue).Value;
     }
 
     public static string? PathParseIconLocation(string? path, out int index)
