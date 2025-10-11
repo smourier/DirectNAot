@@ -3784,6 +3784,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetErrorInfo(uint dwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorInfo>))] out IErrorInfo pperrinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesexw
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetFileAttributesExW(PWSTR lpFileName, GET_FILEEX_INFO_LEVELS fInfoLevelId, nint lpFileInformation);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getfocus
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]

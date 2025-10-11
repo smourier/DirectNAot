@@ -22,6 +22,8 @@ public static partial class Constants
     public const uint INTERFACE_USES_DISPEX = 0x00000004;
     public const uint INTERFACE_USES_SECURITY_MANAGER = 0x00000008;
 
+    public const uint HOVER_DEFAULT = 0xFFFFFFFF;
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;
