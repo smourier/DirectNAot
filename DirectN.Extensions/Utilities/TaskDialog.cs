@@ -19,6 +19,8 @@ public class TaskDialog
     public virtual HICON MainIcon { get; set; }
     public virtual HICON FooterIcon { get; set; }
     public virtual uint Width { get; set; }
+    public virtual nint Callback { get; set; }
+    public virtual nint CallbackData { get; set; }
 
     public int ResultButton { get; private set; }
     public int ResultRadioButton { get; private set; }
@@ -39,7 +41,9 @@ public class TaskDialog
             pszExpandedControlText = PWSTR.From(ExpandedInformation),
             pszCollapsedControlText = PWSTR.From(CollapsedControlText),
             pszFooter = PWSTR.From(Footer),
-            cxWidth = Width
+            lpCallbackData = CallbackData,
+            pfCallback = Callback,
+            cxWidth = Width,
         };
 
         config.Anonymous1.hMainIcon = MainIcon;
