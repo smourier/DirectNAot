@@ -3537,6 +3537,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetClassInfoW(HINSTANCE hInstance, PWSTR lpClassName, out WNDCLASSW lpWndClass);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclasslongptrw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial nuint GetClassLongPtrW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclassnamew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -9871,6 +9877,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL SetCaretPos(int X, int Y);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclasslongptrw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial nuint SetClassLongPtrW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex, nint dwNewLong);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboarddata
     [LibraryImport("USER32", SetLastError = true)]
