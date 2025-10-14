@@ -588,6 +588,7 @@ public sealed class PropVariant : IDisposable
     private void ConstructEnumerable(IEnumerable enumerable, VARENUM? type = null)
     {
         Type? arrayType = null;
+        Type? elementType;
         if (type != null)
         {
             var count = GetCount(enumerable);
@@ -606,7 +607,7 @@ public sealed class PropVariant : IDisposable
 
             arrayType = FromTypeArray(type.Value);
             var array = Array.CreateInstanceFromArrayType(arrayType, count);
-            var elementType = array.GetType().GetElementType()!;
+            elementType = array.GetType().GetElementType()!;
             foreach (var obj in enumerable)
             {
                 var converted = Conversions.ChangeObjectType(obj, elementType);
@@ -623,7 +624,7 @@ public sealed class PropVariant : IDisposable
             return;
         }
 
-        // get the first item to determine the type and the build the array
+        // get the first item to determine the type and build the array
         var list = new List<object?>();
         var enumerator = enumerable.GetEnumerator();
         while (enumerator.MoveNext())
@@ -638,15 +639,22 @@ public sealed class PropVariant : IDisposable
                 }
                 else
                 {
-                    var et = item.GetType();
-                    type = FromType(et, null, false);
+                    elementType = item.GetType();
+                    type = FromType(elementType, null, false);
                 }
                 arrayType = FromTypeArray(type.Value);
             }
             list.Add(item);
         }
 
-        var listArray = Array.CreateInstanceFromArrayType(arrayType ?? typeof(object[]), list.Count);
+        arrayType ??= typeof(object[]);
+        elementType = arrayType.GetElementType()!;
+        var listArray = Array.CreateInstanceFromArrayType(arrayType, list.Count);
+        for (var i = 0; i < list.Count; i++)
+        {
+            var converted = Conversions.ChangeObjectType(list[i], elementType);
+            listArray.SetValue(converted, i);
+        }
         ConstructArray(listArray, type);
     }
 

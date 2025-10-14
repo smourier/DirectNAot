@@ -536,6 +536,7 @@ public sealed class Variant : IDisposable
     private void ConstructEnumerable(IEnumerable enumerable, VARENUM? type = null)
     {
         Type? arrayType = null;
+        Type? elementType;
         if (type != null)
         {
             var count = PropVariant.GetCount(enumerable);
@@ -554,7 +555,7 @@ public sealed class Variant : IDisposable
 
             arrayType = PropVariant.FromTypeArray(type.Value);
             var array = Array.CreateInstanceFromArrayType(arrayType, count);
-            var elementType = array.GetType().GetElementType()!;
+            elementType = array.GetType().GetElementType()!;
             foreach (var obj in enumerable)
             {
                 var converted = Conversions.ChangeObjectType(obj, elementType);
@@ -586,15 +587,22 @@ public sealed class Variant : IDisposable
                 }
                 else
                 {
-                    var et = item.GetType();
-                    type = PropVariant.FromType(et, null, true);
+                    elementType = item.GetType();
+                    type = PropVariant.FromType(elementType, null, true);
                 }
                 arrayType = PropVariant.FromTypeArray(type.Value);
             }
             list.Add(item);
         }
 
-        var listArray = Array.CreateInstanceFromArrayType(arrayType ?? typeof(object[]), list.Count);
+        arrayType ??= typeof(object[]);
+        elementType = arrayType.GetElementType()!;
+        var listArray = Array.CreateInstanceFromArrayType(arrayType, list.Count);
+        for (var i = 0; i < list.Count; i++)
+        {
+            var converted = Conversions.ChangeObjectType(list[i], elementType);
+            listArray.SetValue(converted, i);
+        }
         ConstructArray(listArray, type);
     }
 
