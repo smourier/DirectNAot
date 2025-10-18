@@ -30319,6 +30319,56 @@ public static partial class Constants
     
     public const uint NIN_SELECT = 1024;
     
+    public const uint NM_CHAR = 4294967278;
+    
+    public const uint NM_CLICK = 4294967294;
+    
+    public const uint NM_CUSTOMDRAW = 4294967284;
+    
+    public const uint NM_CUSTOMTEXT = 4294967272;
+    
+    public const uint NM_DBLCLK = 4294967293;
+    
+    public const uint NM_FIRST = 0;
+    
+    public const uint NM_FONTCHANGED = 4294967273;
+    
+    public const uint NM_GETCUSTOMSPLITRECT = 4294966049;
+    
+    public const uint NM_HOVER = 4294967283;
+    
+    public const uint NM_KEYDOWN = 4294967281;
+    
+    public const uint NM_KILLFOCUS = 4294967288;
+    
+    public const uint NM_LAST = 4294967197;
+    
+    public const uint NM_LDOWN = 4294967276;
+    
+    public const uint NM_NCHITTEST = 4294967282;
+    
+    public const uint NM_OUTOFMEMORY = uint.MaxValue;
+    
+    public const uint NM_RCLICK = 4294967291;
+    
+    public const uint NM_RDBLCLK = 4294967290;
+    
+    public const uint NM_RDOWN = 4294967275;
+    
+    public const uint NM_RELEASEDCAPTURE = 4294967280;
+    
+    public const uint NM_RETURN = 4294967292;
+    
+    public const uint NM_SETCURSOR = 4294967279;
+    
+    public const uint NM_SETFOCUS = 4294967289;
+    
+    public const uint NM_THEMECHANGED = 4294967274;
+    
+    public const uint NM_TOOLTIPSCREATED = 4294967277;
+    
+    public const uint NM_TVSTATEIMAGECHANGING = 4294967272;
+    
     public const uint NORMAL_MODE = 2;
     
     public const uint NOTIFYICON_VERSION = 3;
@@ -31743,11 +31793,161 @@ public static partial class Constants
     
     public const uint TOC_MAX_DESCRIPTION_SIZE = 65535;
     
+    public const string TOOLTIPS_CLASSW = @"tooltips_class32";
+    
+    public const uint TTM_ACTIVATE = 1025;
+    
+    public const uint TTM_ADDTOOL = 1074;
+    
+    public const uint TTM_ADDTOOLA = 1028;
+    
+    public const uint TTM_ADDTOOLW = 1074;
+    
+    public const uint TTM_ADJUSTRECT = 1055;
+    
+    public const uint TTM_DELTOOL = 1075;
+    
+    public const uint TTM_DELTOOLA = 1029;
+    
+    public const uint TTM_DELTOOLW = 1075;
+    
+    public const uint TTM_ENUMTOOLS = 1082;
+    
+    public const uint TTM_ENUMTOOLSA = 1038;
+    
+    public const uint TTM_ENUMTOOLSW = 1082;
+    
+    public const uint TTM_GETBUBBLESIZE = 1054;
+    
+    public const uint TTM_GETCURRENTTOOL = 1083;
+    
+    public const uint TTM_GETCURRENTTOOLA = 1039;
+    
+    public const uint TTM_GETCURRENTTOOLW = 1083;
+    
+    public const uint TTM_GETDELAYTIME = 1045;
+    
+    public const uint TTM_GETMARGIN = 1051;
+    
+    public const uint TTM_GETMAXTIPWIDTH = 1049;
+    
+    public const uint TTM_GETTEXT = 1080;
+    
+    public const uint TTM_GETTEXTA = 1035;
+    
+    public const uint TTM_GETTEXTW = 1080;
+    
+    public const uint TTM_GETTIPBKCOLOR = 1046;
+    
+    public const uint TTM_GETTIPTEXTCOLOR = 1047;
+    
+    public const uint TTM_GETTITLE = 1059;
+    
+    public const uint TTM_GETTOOLCOUNT = 1037;
+    
+    public const uint TTM_GETTOOLINFO = 1077;
+    
+    public const uint TTM_GETTOOLINFOA = 1032;
+    
+    public const uint TTM_GETTOOLINFOW = 1077;
+    
+    public const uint TTM_HITTEST = 1079;
+    
+    public const uint TTM_HITTESTA = 1034;
+    
+    public const uint TTM_HITTESTW = 1079;
+    
+    public const uint TTM_NEWTOOLRECT = 1076;
+    
+    public const uint TTM_NEWTOOLRECTA = 1030;
+    
+    public const uint TTM_NEWTOOLRECTW = 1076;
+    
+    public const uint TTM_POP = 1052;
+    
+    public const uint TTM_POPUP = 1058;
+    
+    public const uint TTM_RELAYEVENT = 1031;
+    
+    public const uint TTM_SETDELAYTIME = 1027;
+    
+    public const uint TTM_SETMARGIN = 1050;
+    
+    public const uint TTM_SETMAXTIPWIDTH = 1048;
+    
+    public const uint TTM_SETTIPBKCOLOR = 1043;
+    
+    public const uint TTM_SETTIPTEXTCOLOR = 1044;
+    
+    public const uint TTM_SETTITLE = 1057;
+    
+    public const uint TTM_SETTITLEA = 1056;
+    
+    public const uint TTM_SETTITLEW = 1057;
+    
+    public const uint TTM_SETTOOLINFO = 1078;
+    
+    public const uint TTM_SETTOOLINFOA = 1033;
+    
+    public const uint TTM_SETTOOLINFOW = 1078;
+    
+    public const uint TTM_SETWINDOWTHEME = 8203;
+    
+    public const uint TTM_TRACKACTIVATE = 1041;
+    
+    public const uint TTM_TRACKPOSITION = 1042;
+    
+    public const uint TTM_UPDATE = 1053;
+    
+    public const uint TTM_UPDATETIPTEXT = 1081;
+    
+    public const uint TTM_UPDATETIPTEXTA = 1036;
+    
+    public const uint TTM_UPDATETIPTEXTW = 1081;
+    
+    public const uint TTM_WINDOWFROMPOINT = 1040;
+    
+    public const uint TTN_FIRST = 4294966776;
+    
+    public const uint TTN_GETDISPINFO = 4294966766;
+    
+    public const uint TTN_GETDISPINFOA = 4294966776;
+    
+    public const uint TTN_GETDISPINFOW = 4294966766;
+    
+    public const uint TTN_LAST = 4294966747;
+    
+    public const uint TTN_LINKCLICK = 4294966773;
+    
+    public const uint TTN_NEEDTEXT = 4294966766;
+    
+    public const uint TTN_NEEDTEXTA = 4294966776;
+    
+    public const uint TTN_NEEDTEXTW = 4294966766;
+    
+    public const uint TTN_POP = 4294966774;
+    
+    public const uint TTN_SHOW = 4294966775;
+    
     public const uint TTO_METRICS_ONLY = 1;
     
     public const uint TTO_QUBICS = 2;
     
     public const uint TTO_UNHINTED = 4;
+    
+    public const uint TTS_ALWAYSTIP = 1;
+    
+    public const uint TTS_BALLOON = 64;
+    
+    public const uint TTS_CLOSE = 128;
+    
+    public const uint TTS_NOANIMATE = 16;
+    
+    public const uint TTS_NOFADE = 32;
+    
+    public const uint TTS_NOPREFIX = 2;
+    
+    public const uint TTS_USEVISUALSTYLE = 256;
     
     public static readonly Guid TuneRequest = new("b46e0d38-ab35-4a06-a137-70576b01b39f");
     

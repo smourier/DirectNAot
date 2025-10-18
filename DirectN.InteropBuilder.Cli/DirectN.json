@@ -181,6 +181,9 @@
     "TASKDIALOG_NOTIFICATIONS",
     "TASKDIALOGPARTS",
     "TEXT_ALIGN_OPTIONS",
+    "TTGETTITLE",
+    "TTHITTESTINFOW",
+    "TTTOOLINFOW",
     "TRACK_POPUP_MENU_FLAGS",
     "TYMED",
     "UASFLAGS",
@@ -644,8 +647,13 @@
     "EVENT_*",
     "IDI_APPLICATION",
     "NIN_*",
+    "NM_*",
     "NOTIFYICON_*",
     "RT_*",
-    "SIZE_*"
+    "SIZE_*",
+    "TOOLTIPS_CLASSW",
+    "TTM_*",
+    "TTN_*",
+    "TTS_*"
   ]
 }
