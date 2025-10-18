@@ -1,9 +1,12 @@
-﻿namespace DirectN.Samples.MediaPlay;
+﻿using Windows.Storage;
+
+namespace DirectN.Samples.MediaPlay;
 
 public class MediaPlayWindow : Window
 {
     private Font? _font;
     private PlayerWindow? _playerWindow;
+    private SIZE? _size;
     private const int _buttonsHeight = 24;
     private const int _buttonsPadding = 10;
     private const int _buttonsWidth = 100;
@@ -36,8 +39,30 @@ public class MediaPlayWindow : Window
         var file = await picker.PickSingleFileAsync();
         if (file != null && _playerWindow?.Player != null)
         {
+            _size = await GetSize(file);
+            if (_size != null)
+            {
+                _playerWindow.Resize(_size.Value.cx, _size.Value.cy);
+            }
+
             var source = MediaSource.CreateFromStorageFile(file);
             _playerWindow.Player.Source = source;
+        }
+    }
+
+    private async Task<SIZE?> GetSize(StorageFile file)
+    {
+        try
+        {
+            var width = ClientRect.Width;
+            var props = await file.Properties.GetVideoPropertiesAsync();
+            var size = new SIZE { cx = (int)props.Width, cy = (int)props.Height };
+            var scale = size.GetScaleFactor(width);
+            return new SIZE { cx = (int)(size.cx * scale.width), cy = (int)(size.cy * scale.height) };
+        }
+        catch
+        {
+            return null;
         }
     }
 
@@ -62,7 +87,7 @@ public class MediaPlayWindow : Window
     {
         if (type != WindowResizedType.Minimized)
         {
-            // resize pdf window to fit the client area of this window w/o buttons
+            // resize media player window to fit the client area of this window w/o buttons
             var offset = _buttonsHeight + 2 * _buttonsPadding;
             _playerWindow?.ResizeAndMove(0, offset, size.cx, size.cy - offset);
         }

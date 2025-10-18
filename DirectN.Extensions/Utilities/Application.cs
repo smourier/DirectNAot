@@ -225,8 +225,9 @@ public class Application : IDisposable
     public static bool CanShowFatalError { get; set; } = true;
     public static bool ExitAllOnLastWindowRemoved { get; set; } = true;
     public static bool AllExiting { get; private set; }
-    public static int MaximumNumberOfErrors { get; set; } = 3;
     public static TraceLevel TraceLevel { get; set; } = TraceLevel.Verbose;
+    public static bool ShowFatalErrorsOnUnhandledException { get; set; } = !Debugger.IsAttached;
+    public static Func<HWND, bool>? ShowFatalErrorFunc { get; set; }
     public static bool ReportLiveObjects { get; set; }
 #if DEBUG
         = true;
@@ -262,48 +263,79 @@ public class Application : IDisposable
         AllApplicationsExit?.Invoke(null, EventArgs.Empty);
     }
 
-    public static void AddError(Exception? error, [CallerMemberName] string? methodName = null)
+    public static IReadOnlyList<Exception> GetErrors(bool clear = false)
+    {
+        lock (_errorsLock)
+        {
+            var errors = _errors.ToArray();
+            if (clear)
+            {
+                _errors.Clear();
+            }
+            return errors;
+        }
+    }
+
+    public static int ClearErrors()
+    {
+        lock (_errorsLock)
+        {
+            var count = _errors.Count;
+            _errors.Clear();
+            return count;
+        }
+    }
+
+    public static void AddError(Exception? error, bool quit = true, [CallerMemberName] string? methodName = null)
     {
         if (error == null)
             return;
 
         lock (_errorsLock)
         {
-            TraceError(error);
             var ts = error.ToString();
             if (_errors.Any(e => e.ToString() == ts))
+            {
+                handleQuit();
                 return;
-
-            if (_errors.Count >= MaximumNumberOfErrors)
-                return;
+            }
 
             TraceError(error, methodName);
             _errors.Add(error);
         }
+        handleQuit();
 
-        // we don't use PostQuitMessage because it prevents any other windows from showing (like messagebox, taskdialog, etc.)
-        Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+        void handleQuit()
+        {
+            if (!quit)
+                return;
+
+            // we don't use PostQuitMessage because it prevents any other windows from showing (like messagebox, taskdialog, etc.)
+            Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+        }
     }
 
-    public static MESSAGEBOX_RESULT ShowFatalError(HWND hwnd, bool clearErrors = true)
+    public static bool ShowFatalError(HWND hwnd, Action<ShowFatalErrorOptions>? configureOptions = null, bool callCustomFunc = true)
     {
-        if (!HasErrors)
-            return 0;
+        if (hwnd != 0 && !Functions.IsWindow(hwnd))
+        {
+            hwnd.Value = 0;
+        }
+
+        if (callCustomFunc)
+        {
+            var func = ShowFatalErrorFunc;
+            if (func != null)
+                return func(hwnd);
+        }
 
         if (IsFatalErrorShowing)
-            return 0;
+            return false;
 
         TraceError("Hwnd:" + hwnd.Value.ToHex() + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         var errors = _errors.ToArray();
         if (errors.Length == 0)
-            return 0;
-
-        var windows = AllWindows;
-        foreach (var win in windows)
-        {
-            if (!win.ShowingFatalError())
-                return 0;
-        }
+            return false;
 
         IsFatalErrorShowing = true;
         try
@@ -338,12 +370,25 @@ public class Application : IDisposable
                 td.Content = sb.ToString();
             }
 
-            var res = td.Show(hwnd);
-            if (clearErrors)
+            var options = new ShowFatalErrorOptions(errors, td, hwnd);
+            if (configureOptions != null)
             {
-                _errors.Clear();
+                configureOptions(options);
+                if (!options.ShowDialog)
+                    return false;
             }
-            return res;
+
+            // note if something goes wrong (dialog wasn't show), Show will possibly return cancel (TaskDialogIndirect won't fail).
+            var result = td.Show(hwnd);
+
+            options.ShownFunc?.Invoke(options, result);
+
+            var shown = result != MESSAGEBOX_RESULT.IDCANCEL;
+            if (shown && options.ClearErrorsOnShown)
+            {
+                _errors.Clear(); // clear errors to prevent showing them again
+            }
+            return shown;
         }
         finally
         {
@@ -427,6 +472,16 @@ public class Application : IDisposable
 
         var name = Thread.CurrentThread.Name.Nullify() ?? Environment.CurrentManagedThreadId.ToString();
         EventProvider.Default.WriteMessageEvent(name + "|" + methodName + slevel + message, (byte)level);
+    }
+
+    public class ShowFatalErrorOptions(IReadOnlyList<Exception> errors, TaskDialog dialog, HWND hwnd)
+    {
+        public IReadOnlyList<Exception> Errors { get; } = errors;
+        public TaskDialog Dialog { get; } = dialog;
+        public HWND Hwnd { get; } = hwnd;
+        public bool ShowDialog { get; set; } = true;
+        public virtual bool ClearErrorsOnShown { get; set; } = true;
+        public virtual Action<ShowFatalErrorOptions, MESSAGEBOX_RESULT>? ShownFunc { get; set; }
     }
 
     private sealed class Error(Exception exception, string? methodName)

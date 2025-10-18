@@ -252,8 +252,6 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    protected virtual internal bool ShowingFatalError() => true;
-
     public HMONITOR GetMonitorHandle(MONITOR_FROM_FLAGS flags) => Functions.MonitorFromWindow(Handle, flags);
     public Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Monitor.FromWindow(Handle, flags);
     public POINT ScreenToClient(POINT point) { Functions.ScreenToClient(Handle, ref point); return point; }
@@ -737,7 +735,37 @@ public class Window : IDisposable, IEquatable<Window>
             }
             catch (Exception e)
             {
-                Application.AddError(e);
+                if (Application.ShowFatalErrorsOnUnhandledException)
+                {
+                    var current = Application.Current;
+                    Application.AddError(e, false);
+
+                    if (msg == MessageDecoder.WM_DESTROY ||
+                        msg == MessageDecoder.WM_NCDESTROY ||
+                        msg == MessageDecoder.WM_CREATE ||
+                        msg == MessageDecoder.WM_CLOSE ||
+                        msg == MessageDecoder.WM_QUIT)
+                    {
+                        var mainHwnd = Process.GetCurrentProcess().MainWindowHandle;
+                        if (mainHwnd != IntPtr.Zero && mainHwnd != hwnd.Value)
+                        {
+                            hwnd.Value = mainHwnd;
+                        }
+                        else
+                        {
+                            hwnd.Value = 0;
+                        }
+                    }
+
+                    if (Application.ShowFatalError(hwnd))
+                    {
+                        current?.Exit();
+                    }
+                }
+                else
+                {
+                    Application.AddError(e);
+                }
                 return LRESULT.Null;
             }
         }
