@@ -1,4 +1,5 @@
-﻿namespace DirectN.Samples.PdfView;
+﻿
+namespace DirectN.Samples.PdfView;
 
 public class PdfViewWindow : Window
 {
@@ -154,6 +155,8 @@ public class PdfViewWindow : Window
         : CompositionWindow(null, WINDOW_STYLE.WS_VISIBLE | WINDOW_STYLE.WS_CHILD, parentHandle: parent.Handle)
     {
         private ComObject<IPdfRendererNative>? _pdfRendererNative;
+        private CompositionDrawingSurface? _surface;
+        private CompositionSurfaceBrush? _surfaceBrush;
 
         protected override void CreateDeviceResources()
         {
@@ -173,14 +176,15 @@ public class PdfViewWindow : Window
             return new Size(scaleX, scaleY);
         }
 
-        protected unsafe override void Render(IComObject<ID3D11DeviceContext> deviceContext, IComObject<IDXGISwapChain1> swapChain)
+        protected unsafe override void OnRendering(object? sender, HandledEventArgs e)
         {
             if (GraphicsDevice == null)
                 return;
 
-            var surface = GraphicsDevice.CreateDrawingSurface(ClientRect.ToSize(), DirectXPixelFormat.B8G8R8A8UIntNormalized, DirectXAlphaMode.Premultiplied);
-            RootVisual.Brush = Compositor.CreateSurfaceBrush(surface);
-            using var interop = surface.AsComObject<ICompositionDrawingSurfaceInterop>();
+            _surface ??= GraphicsDevice.CreateDrawingSurface(ClientRect.ToSize(), DirectXPixelFormat.B8G8R8A8UIntNormalized, DirectXAlphaMode.Premultiplied);
+            _surfaceBrush ??= Compositor.CreateSurfaceBrush(_surface);
+            RootVisual.Brush = _surfaceBrush;
+            using var interop = _surface.AsComObject<ICompositionDrawingSurfaceInterop>();
             try
             {
                 using var dc = interop.BeginDraw(null);
@@ -237,12 +241,16 @@ public class PdfViewWindow : Window
             {
                 interop.EndDraw();
             }
+
+            e.Handled = true;
         }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
             Interlocked.Exchange(ref _pdfRendererNative, null)?.Dispose();
+            Interlocked.Exchange(ref _surfaceBrush, null)?.Dispose();
+            Interlocked.Exchange(ref _surface, null)?.Dispose();
         }
     }
 }

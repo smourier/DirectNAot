@@ -40,6 +40,7 @@ public class CompositionWindow : D3D11SwapChainWindow
     public Compositor Compositor => CompositorController.Compositor;
 
     protected bool DoUseDirect2D { get; }
+    protected override bool NeedsSwapChain => false;
     protected virtual bool TopMostDesktopWindowTarget => true;
     protected virtual bool UseDirect2D => true;
     protected virtual SpriteVisual CreateWindowVisual() => Compositor.CreateSpriteVisual();

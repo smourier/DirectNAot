@@ -26,6 +26,7 @@ public class D3D11SwapChainWindow(
     protected virtual IComObject<ID3D11DeviceContext>? DeviceContext => _deviceContext;
     protected virtual IComObject<IDXGISwapChain1>? SwapChain => _swapChain;
     protected virtual bool InvalidateOnTick { get; set; } = true;
+    protected virtual bool NeedsSwapChain => true;
 
     // we handle background
     protected override void RegisterClass(string className, nint windowProc, Icon? icon = null) => RegisterWindowClass(className, windowProc, icon: icon, background: new HBRUSH());
@@ -50,6 +51,10 @@ public class D3D11SwapChainWindow(
             if (!size.IsEmpty)
             {
                 DisposeSwapChainDependentResources();
+
+                // note: if the swapchain doesn't (never) call Present, there will be some memory/handle (handle of Section type) leaks on this ResizeBuffers call
+                // so if you don' need a swap chain, for example if you plan to use Composition,
+                // then, well, don't create one at all (set NeedsSwapChain to false), or call Present(..., DXGI_PRESENT_RESTART) here before, for example.
                 swapChain.ResizeBuffers(0, (uint)size.cx, (uint)size.cy, DXGI_FORMAT.DXGI_FORMAT_B8G8R8A8_UNORM, 0);
                 CreateSwapChainDependentResources(device, swapChain);
             }
@@ -125,12 +130,15 @@ public class D3D11SwapChainWindow(
         using var adapter = dxgiDevice.GetAdapter();
         using var fac = adapter.GetFactory2()!;
 
-        PrepareSwapChainDesc(ref desc);
-        _swapChain = fac.CreateSwapChainForHwnd<IDXGISwapChain1>(_device, Handle, desc);
+        if (NeedsSwapChain)
+        {
+            PrepareSwapChainDesc(ref desc);
+            _swapChain = fac.CreateSwapChainForHwnd<IDXGISwapChain1>(_device, Handle, desc);
 
-        // provide non null references
-        CreateSwapChainDependentResources(_device, _swapChain);
-        CreateDeviceDependentResources(_device, _swapChain);
+            // provide non null references
+            CreateSwapChainDependentResources(_device, _swapChain);
+            CreateDeviceDependentResources(_device, _swapChain);
+        }
     }
 
     protected virtual void DisposeDeviceResources()
