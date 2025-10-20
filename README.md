@@ -40,7 +40,7 @@ You can just compile the source (note it can take *minutes* due to the fact ComW
 https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/DirectNAot.Extensions/
 
 # Direct3D11 minimal sample
-The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
+The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
 
 It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
  
@@ -51,13 +51,27 @@ Here is the output (believe me, it rotates):
 Full credits go to d7Samurai: https://gist.github.com/d7samurai
 
 # PDF view sample
-The **DirectN.Samples.PdfView** sample here [https://github.com/smourier/DirectN/tree/master/DirectN/DirectN.WinUI3.PdfView](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.PdfView) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a PDF file's content.
+The **DirectN.Samples.PdfView** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.PdfView](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.PdfView) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a PDF file's content.
 
 It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
 
 It uses Windows (WinRT) PDF API so it demonstrates how to include WinRT (C#/WinRT) in a DirectN AOT application. It also demonstrates how to use the [Visual Layer](https://learn.microsoft.com/en-us/windows/apps/desktop/modernize/ui/visual-layer-in-desktop-apps) (aka Direct Composition) in a Windows app without any pre-baked UI framework, only DirectN, some of its utilities and Windows.
 
 <img alt="PDFView Sample" src="https://github.com/user-attachments/assets/2e62cdae-375f-4e24-9e9a-82ea15c91bb8" width="50%">
+
+# Screen Capture sample
+The **DirectN.Samples.ScreenCapture** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.ScreenCapture](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.ScreenCapture) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a live (primary) screen capture
+
+It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
+
+<img width="1922" height="1076" alt="ScreenCapture sample" src="https://github.com/user-attachments/assets/15140dfb-4075-4f45-8708-812ab047f143" />
+
+# Media Play sample
+The **DirectN.Samples.MediaPlay** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.MediaPlay](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MediaPlay) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can play a video file (you can choose the source)
+
+It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 13M bytes!
+
+<img width="1167" height="662" alt="MediaPlay sample" src="https://github.com/user-attachments/assets/853d1e87-d23a-4114-a5e0-6b153d591aa2" />
 
 # Wice
 Wice (aka "Windows Interface Composition Engine") is a .NET UI engine for creating Windows application. It's not dependent on WPF nor Winforms, nor WinUI 2 nor 3, nor Windows XAML, nor UWP, it's another UI Framework. The way it works is somewhat inspired from WPF, but there is no technical dependency over it.
@@ -68,12 +82,12 @@ Check it out at https://github.com/aelyo-softworks/Wice
 <img alt="Wice" src="https://github.com/user-attachments/assets/7dd33147-241c-4db1-a5b9-34fdfcda5a82" width="50%">
 
 # WebView2 sample
-[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 9+ AOT-compatible bindings 100% independent from WinForms or WPF for Microsoft's WebView2.
+[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 9+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
 
 <img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
 
 # VCamNetSample sample
-[VCamNetSample](https://github.com/smourier/VCamNetSample) is a project that exposes a Media Foundation Virtual Camera Sample developed using .NET AOT with DirectN AOT. It works only on Windows 11 thanks to the MFCreateVirtualCamera API.
+[VCamNetSample](https://github.com/smourier/VCamNetSample) is a project that exposes a Media Foundation Virtual Camera Sample developed using .NET AOT with DirectN AOT (only on Windows 11).
 
 <img width="1502" height="848" alt="VCamNetSample" src="https://github.com/user-attachments/assets/03b289a6-cee2-497f-a692-9a060b2b50d9" />
 
