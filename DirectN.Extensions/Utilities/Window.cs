@@ -92,6 +92,7 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual RECT WindowRect { get { Functions.GetWindowRect(Handle, out var rc); return rc; } set => Functions.SetWindowPos(Handle, HWND.Null, value.left, value.top, value.Width, value.Height, SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE | SET_WINDOW_POS_FLAGS.SWP_NOREDRAW | SET_WINDOW_POS_FLAGS.SWP_NOZORDER); }
     public virtual WINDOW_STYLE Style { get => (WINDOW_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_STYLE, (int)value); }
     public virtual WINDOW_EX_STYLE ExtendedStyle { get => (WINDOW_EX_STYLE)Functions.GetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE); set => Functions.SetWindowLongW(Handle, WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE, (int)value); }
+    public virtual HCURSOR Cursor { get => new((nint)Functions.GetClassLongPtrW(Handle, GET_CLASS_LONG_INDEX.GCLP_HCURSOR)); set => Functions.SetClassLongPtrW(Handle, GET_CLASS_LONG_INDEX.GCLP_HCURSOR, value.Value); }
     public bool IsRunningAsUIThread => ManagedThreadId == Environment.CurrentManagedThreadId;
     public Application? Application => Application.GetApplication(this);
 
@@ -107,7 +108,7 @@ public class Window : IDisposable, IEquatable<Window>
         set => Icon.Destroy(Functions.SendMessageW(Handle, MessageDecoder.WM_SETICON, new WPARAM { Value = Constants.ICON_SMALL }, new LPARAM { Value = value.Value }).Value);
     }
 
-    protected string ClassName
+    public string ClassName
     {
         get
         {
@@ -118,7 +119,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    protected string RealClassName
+    public string RealClassName
     {
         get
         {
@@ -840,7 +841,7 @@ public class Window : IDisposable, IEquatable<Window>
             hInstance = new HINSTANCE { Value = Application.ModuleHandle.Value },
             lpszClassName = PWSTR.From(className),
             hIcon = icon?.Handle ?? HICON.Null,
-            hCursor = cursor?.Handle ?? Cursor.Arrow.Handle,
+            hCursor = cursor?.Handle ?? Utilities.Cursor.Arrow.Handle,
             lpszMenuName = PWSTR.From(menuName),
             cbClsExtra = classExtraBytesSize,
             cbWndExtra = windowExtraBytesSize
