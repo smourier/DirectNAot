@@ -61,6 +61,18 @@ public static partial class Functions
     [PreserveSig]
     public static partial void ZeroMemory(nint pdst, nint cb);
 
+    [LibraryImport("kernel32", EntryPoint = "RtlCompareMemory")]
+    [PreserveSig]
+    public static partial nint CompareMemory(nint source1, nint source2, nint length);
+
+    [LibraryImport("ntdll", EntryPoint = "RtlCrc64")]
+    [PreserveSig]
+    public static partial ulong Crc64(nint buffer, nint length, ulong initialCrc);
+
+    [LibraryImport("ntdll", EntryPoint = "RtlCrc32")]
+    [PreserveSig]
+    public static partial uint Crc32(nint buffer, nint length, uint initialCrc);
+
     [LibraryImport("PROPSYS")]
     [PreserveSig]
     public static partial HRESULT StgDeserializePropVariant(nint pprop, uint cbMax, out PROPVARIANT ppropvar);

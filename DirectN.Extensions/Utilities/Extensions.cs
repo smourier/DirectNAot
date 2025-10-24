@@ -124,6 +124,27 @@ public static class Extensions
         }
     }
 
+    public static uint Crc32(this nint source, int length, uint initialCrc = 0) => Functions.Crc32(source, length, initialCrc);
+    public static uint Crc32(this nint source, long length, uint initialCrc = 0) => Functions.Crc32(source, (nint)length, initialCrc);
+    public static uint Crc32(this nint source, uint length, uint initialCrc = 0) => Functions.Crc32(source, (nint)length, initialCrc);
+    public static uint Crc32(this nint source, ulong length, uint initialCrc = 0) => Functions.Crc32(source, (nint)length, initialCrc);
+    public static uint Crc32(this nint source, nuint length, uint initialCrc = 0) => Functions.Crc32(source, (nint)length, initialCrc);
+    public static uint Crc32(this nint source, nint length, uint initialCrc = 0) => Functions.Crc32(source, length, initialCrc);
+
+    public static ulong Crc64(this nint source, int length, ulong initialCrc = 0) => Functions.Crc64(source, length, initialCrc);
+    public static ulong Crc64(this nint source, long length, ulong initialCrc = 0) => Functions.Crc64(source, (nint)length, initialCrc);
+    public static ulong Crc64(this nint source, uint length, ulong initialCrc = 0) => Functions.Crc64(source, (nint)length, initialCrc);
+    public static ulong Crc64(this nint source, ulong length, ulong initialCrc = 0) => Functions.Crc64(source, (nint)length, initialCrc);
+    public static ulong Crc64(this nint source, nuint length, ulong initialCrc = 0) => Functions.Crc64(source, (nint)length, initialCrc);
+    public static ulong Crc64(this nint source, nint length, ulong initialCrc = 0) => Functions.Crc64(source, length, initialCrc);
+
+    public static nint CompareMemoryTo(this nint source, nint other, int length) => Functions.CompareMemory(source, other, length);
+    public static nint CompareMemoryTo(this nint source, nint other, long length) => Functions.CompareMemory(source, other, (nint)length);
+    public static nint CompareMemoryTo(this nint source, nint other, uint length) => Functions.CompareMemory(source, other, (nint)length);
+    public static nint CompareMemoryTo(this nint source, nint other, ulong length) => Functions.CompareMemory(source, other, (nint)length);
+    public static nint CompareMemoryTo(this nint source, nint other, nuint length) => Functions.CompareMemory(source, other, (nint)length);
+    public static nint CompareMemoryTo(this nint source, nint other, nint length) => Functions.CompareMemory(source, other, length);
+
     public static void CopyFrom(this nint destination, nint source, int length) => Functions.CopyMemory(destination, source, length);
     public static void CopyFrom(this nint destination, nint source, long length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyFrom(this nint destination, nint source, uint length) => Functions.CopyMemory(destination, source, (nint)length);

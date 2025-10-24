@@ -11,6 +11,15 @@ public sealed class IntPtrBuffer : SafeBuffer
         Initialize((ulong)byteLength);
     }
 
+    public IntPtrBuffer(nint pointer, ulong byteLength, bool owned = false)
+        : base(owned)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(byteLength);
+        handle = pointer;
+        Owned = owned;
+        Initialize(byteLength);
+    }
+
     public IntPtrBuffer(ComMemory memory, bool owned = false)
         : base(owned)
     {
@@ -70,6 +79,34 @@ public sealed class IntPtrBuffer : SafeBuffer
             Marshal.FreeCoTaskMem(h);
         }
         return true;
+    }
+
+    public void Zero()
+    {
+        if (ByteLength > 0)
+        {
+            DangerousGetHandle().Zero(ByteLength);
+        }
+    }
+
+    public bool MemoryEqualsTo(IntPtrBuffer other)
+    {
+        ArgumentNullException.ThrowIfNull(other);
+        if (ByteLength == 0 && other.ByteLength == 0)
+            return true;
+
+        if (ByteLength != other.ByteLength)
+            return false;
+
+        return DangerousGetHandle().CompareMemoryTo(other.DangerousGetHandle(), ByteLength) == (nint)ByteLength;
+    }
+
+    public unsafe T To<T>() where T : unmanaged
+    {
+        if (ByteLength < (ulong)sizeof(T))
+            throw new InvalidOperationException("Buffer is too small.");
+
+        return *(T*)handle;
     }
 
     public unsafe static IntPtrBuffer From<T>(T value) where T : unmanaged
