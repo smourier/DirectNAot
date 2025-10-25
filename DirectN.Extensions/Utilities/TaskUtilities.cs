@@ -112,7 +112,7 @@ public static class TaskUtilities
     public static bool RunWithAbort(this Action action, TimeSpan delay)
     {
         ArgumentNullException.ThrowIfNull(action);
-        var source = new CancellationTokenSource(delay);
+        using var source = new CancellationTokenSource(delay);
         var success = false;
         HANDLE handle = 0;
         uint fn(nint ptr)
@@ -136,7 +136,7 @@ public static class TaskUtilities
     public static T? RunWithAbort<T>(this Func<T> func, TimeSpan delay)
     {
         ArgumentNullException.ThrowIfNull(func);
-        var source = new CancellationTokenSource(delay);
+        using var source = new CancellationTokenSource(delay);
         var item = default(T);
         HANDLE handle = 0;
         uint fn(nint ptr)
@@ -152,5 +152,71 @@ public static class TaskUtilities
         Functions.WaitForSingleObject(handle, (uint)(20 + delay.TotalMilliseconds));
         Functions.CloseHandle(handle);
         return item;
+    }
+
+    // returns true if the call went to completion successfully, false otherwise
+    public static Task<bool> RunWithAbortAsync(this Action action, CancellationToken token)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        var source = new TaskCompletionSource<bool>();
+        HANDLE handle = 0;
+        uint fn(nint ptr)
+        {
+            using (token.Register(() =>
+            {
+                source.SetResult(false);
+                Functions.TerminateThread(handle, 0);
+                Functions.CloseHandle(handle);
+            }))
+            {
+                try
+                {
+                    action();
+                    source.SetResult(true);
+                }
+                catch (Exception ex)
+                {
+                    source.SetException(ex);
+                }
+            }
+            return 0u;
+        }
+
+        handle = Functions.CreateThread(0, 0, fn, 0, 0, 0);
+        return source.Task;
+    }
+
+    // returns what's the function should return if the call went to completion successfully, default(T) otherwise
+    // cancelled can be used to provide a specific value (progress for example) when the operation is cancelled
+    public static Task<T?> RunWithAbortAsync<T>(this Func<T> func, CancellationToken token, Func<T?>? cancelled = null)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        var source = new TaskCompletionSource<T?>();
+        HANDLE handle = 0;
+        uint fn(nint ptr)
+        {
+            using (token.Register(() =>
+            {
+                var result = cancelled != null ? cancelled() : default;
+                source.SetResult(result);
+                Functions.TerminateThread(handle, 0);
+                Functions.CloseHandle(handle);
+            }))
+            {
+                try
+                {
+                    var result = func();
+                    source.SetResult(result);
+                }
+                catch (Exception ex)
+                {
+                    source.SetException(ex);
+                }
+            }
+            return 0u;
+        }
+
+        handle = Functions.CreateThread(0, 0, fn, 0, 0, 0);
+        return source.Task;
     }
 }
