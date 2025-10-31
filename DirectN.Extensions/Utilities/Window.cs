@@ -314,6 +314,19 @@ public class Window : IDisposable, IEquatable<Window>
         return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, scheduler);
     }
 
+    public virtual async Task<T> RunTaskOnUIThread<T>(Func<T> action, bool startNew = false)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        var scheduler = TaskScheduler;
+        if (scheduler == null)
+            throw new DirectNException("0005: Cannot run or schedule a task on a non-owned window.");
+
+        if (!startNew && IsRunningAsUIThread)
+            return action();
+
+        return await Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, scheduler);
+    }
+
     protected virtual void RunWithErrorHandled(Action action)
     {
         ArgumentNullException.ThrowIfNull(action);

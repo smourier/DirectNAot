@@ -721,6 +721,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HANDLE BeginUpdateResourceW(PWSTR pFileName, BOOL bDeleteExistingResources);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-bitblt
+    [LibraryImport("GDI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL BitBlt(HDC hdc, int x, int y, int cx, int cy, HDC hdcSrc, int x1, int y1, ROP_CODE rop);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-bringwindowtotop
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -3518,6 +3525,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial DPI_AWARENESS GetAwarenessFromDpiAwarenessContext(DPI_AWARENESS_CONTEXT value);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getbitmapbits
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetBitmapBits(HBITMAP hbit, int cb, nint lpvBits);
+    
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getcapabilitiesstringlength
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -3681,6 +3694,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetCursorPos(out POINT lpPoint);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdc
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HDC GetDC(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdcex
     [LibraryImport("USER32")]
@@ -4318,6 +4338,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetWindow(HWND hWnd, GET_WINDOW_CMD uCmd);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowdc
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HDC GetWindowDC(HWND hWnd);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowdisplayaffinity
     [LibraryImport("USER32", SetLastError = true)]

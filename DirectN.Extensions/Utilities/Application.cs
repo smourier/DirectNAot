@@ -69,7 +69,7 @@ public class Application : IDisposable
         var reason = ExitLoopReason.Quit;
         if (!HasErrors)
         {
-            while (Functions.GetMessageW(out var msg, HWND.Null, 0, 0))
+            while (GetMessage(out var msg, HWND.Null, 0, 0))
             {
                 if (IsDisposed)
                 {
@@ -134,6 +134,17 @@ public class Application : IDisposable
                     return ExitLoopReason.UnhandledMessage;
             }
         } while (true);
+    }
+
+    protected virtual BOOL GetMessage(out MSG msg, HWND hWnd, uint wMsgFilterMin, uint wMsgFilterMax)
+    {
+        if (IsDisposed)
+        {
+            msg = new MSG { message = (int)WM_APP_QUIT };
+            return -1;
+        }
+
+        return Functions.GetMessageW(out msg, hWnd, wMsgFilterMin, wMsgFilterMax);
     }
 
     protected virtual bool HandleMessage(in MSG msg)
