@@ -24,4 +24,6 @@ public enum AudioObjectType
     AudioObjectType_BottomBackLeft = 32768,
     AudioObjectType_BottomBackRight = 65536,
     AudioObjectType_BackCenter = 131072,
+    AudioObjectType_StereoLeft = 262144,
+    AudioObjectType_StereoRight = 524288,
 }

@@ -15,6 +15,9 @@ public partial struct D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS
         
         [FieldOffset(0)]
         public nint ppGeometryDescs;
+        
+        [FieldOffset(0)]
+        public nint pOpacityMicromapArrayDesc;
     }
     
     public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE Type;

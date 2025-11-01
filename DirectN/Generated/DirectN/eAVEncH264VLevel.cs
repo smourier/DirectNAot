@@ -21,4 +21,7 @@ public enum eAVEncH264VLevel
     eAVEncH264VLevel5 = 50,
     eAVEncH264VLevel5_1 = 51,
     eAVEncH264VLevel5_2 = 52,
+    eAVEncH264VLevel6 = 60,
+    eAVEncH264VLevel6_1 = 61,
+    eAVEncH264VLevel6_2 = 62,
 }

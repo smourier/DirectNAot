@@ -24,6 +24,9 @@ public partial struct APO_NOTIFICATION
         
         [FieldOffset(0)]
         public AUDIO_MICROPHONE_BOOST_NOTIFICATION audioMicrophoneBoostChange;
+        
+        [FieldOffset(0)]
+        public AUDIO_ENVIRONMENT_STATE_CHANGE_NOTIFICATION audioEnvironmentChange;
     }
     
     public APO_NOTIFICATION_TYPE type;

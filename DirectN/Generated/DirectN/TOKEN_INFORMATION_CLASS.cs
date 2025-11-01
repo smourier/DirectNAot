@@ -52,5 +52,6 @@ public enum TOKEN_INFORMATION_CLASS
     TokenIsLessPrivilegedAppContainer = 46,
     TokenIsSandboxed = 47,
     TokenIsAppSilo = 48,
-    MaxTokenInfoClass = 49,
+    TokenLoggingInformation = 49,
+    MaxTokenInfoClass = 50,
 }

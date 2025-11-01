@@ -1099,6 +1099,10 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT ColorProfileAddDisplayAssociation(WCS_PROFILE_MANAGEMENT_SCOPE scope, PWSTR profileName, LUID targetAdapterID, uint sourceID, BOOL setAsDefault, BOOL associateAsAdvancedColor);
     
+    [LibraryImport("mscms")]
+    [PreserveSig]
+    public static partial HRESULT ColorProfileGetDeviceCapabilities(WCS_PROFILE_MANAGEMENT_SCOPE scope, LUID targetAdapterID, uint sourceID, WCS_DEVICE_CAPABILITIES_TYPE capsType, nint outputCapabilities);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofilegetdisplaydefault
     [LibraryImport("mscms")]
     [PreserveSig]
@@ -7383,6 +7387,10 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT MFCreateDeviceSourceActivate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFAttributes>))] IMFAttributes pAttributes, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFActivate>))] out IMFActivate ppActivate);
     
+    [LibraryImport("MFPlat")]
+    [PreserveSig]
+    public static partial HRESULT MFCreateDXGICrossAdapterBuffer(in Guid riid, nint punkDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, uint uSubresource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaBuffer>))] out IMFMediaBuffer ppBuffer);
+    
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatedxgidevicemanager
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
@@ -7970,6 +7978,10 @@ public static partial class Functions
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial HRESULT MFGetContentProtectionSystemCLSID(in Guid guidProtectionSystemID, out Guid pclsid);
+    
+    [LibraryImport("MFPlat")]
+    [PreserveSig]
+    public static partial HRESULT MFGetDXGIDeviceManageMode(nint pDeviceManager, out MF_DXGI_DEVICE_MANAGER_MODE mode);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfgetlocalid
     [LibraryImport("MF")]

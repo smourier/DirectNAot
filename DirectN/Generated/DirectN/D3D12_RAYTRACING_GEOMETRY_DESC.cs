@@ -12,6 +12,9 @@ public partial struct D3D12_RAYTRACING_GEOMETRY_DESC
         
         [FieldOffset(0)]
         public D3D12_RAYTRACING_GEOMETRY_AABBS_DESC AABBs;
+        
+        [FieldOffset(0)]
+        public D3D12_RAYTRACING_GEOMETRY_OMM_TRIANGLES_DESC OmmTriangles;
     }
     
     public D3D12_RAYTRACING_GEOMETRY_TYPE Type;

@@ -554,7 +554,6 @@ public static partial class Constants
     public static readonly Guid MF_Devproxy_VideoPlugin_ProcessOutput_Start = new("10000011-0104-000b-0000-000000000080");
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_D3D_ADAPTERLUID = new("9471213a-ee86-4570-a3ba-79c85a14a7a2");
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_DEVICETYPE = new("4d8c34f7-1178-4ebd-9278-8cbb1e8995fb");
-    public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_FRAMESERVER_SHARE_MODE = new("44d1a9bc-2999-4238-ae43-0730ceb2ab1b");
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_USE_DSHOWBRIDGE = new("053f5e22-cc2f-43bc-aa76-6ff5971c7131");
     public static readonly Guid MF_DEVSOURCE_ATTRIBUTE_USE_STREAM_TIME = new("5b61b815-ebfa-4d06-ad16-b1f515032b79");
     public static readonly Guid MF_DEVSOURCE_CUSTOM_SOURCE_CLSID = new("af90c517-62f3-496a-8305-b0289f34af93");
@@ -1172,10 +1171,6 @@ public static partial class Constants
     public static readonly Guid SPROP_INTERLEAVING_DEPTH = new("57ae4937-043a-4b2f-87f3-1b8135e878e3");
     public static readonly Guid SPROP_MAX_DON_DIFF = new("827affa2-5567-4b61-a79b-4a38236fb8e1");
     public static readonly Guid VIDEO_SINK_BROADCASTING_PORT = new("5e402c0d-d239-43fc-b2e4-b69dca46ce63");
-
-    // https://github.com/microsoft/win32metadata/issues/2085
-    public static readonly Guid MF_MT_D3D12_RESOURCE_DIMENSION = new("5f772624-16ca-4b89-9651-5ddf769f8ab8");
-    public static readonly Guid MF_SA_D3D12_AWARE = new("77f0bacb-17a8-4a50-9a7d-a5cc09d39d44");
 
     // C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um\corerror.h
     [MarshalAs(UnmanagedType.Error)] public static readonly HRESULT COR_E_UNSUPPORTEDMDIL = 0x8013153C;
