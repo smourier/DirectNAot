@@ -1,5 +1,4 @@
-﻿
-namespace DirectN.Samples.PdfView;
+﻿namespace DirectN.Samples.PdfView;
 
 public class PdfViewWindow : Window
 {

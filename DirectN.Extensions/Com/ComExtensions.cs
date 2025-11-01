@@ -47,7 +47,7 @@ public static class ComExtensions
         comObject.Dispose();
     }
 
-    public static IComObject<T>? As<T>(this IComObject? comObject, bool releaseOnDispose = false)
+    public static IComObject<T>? As<T>(this IComObject? comObject, bool releaseOnDispose = false, bool throwOnError = false)
     {
         if (comObject == null)
             return null;
@@ -57,6 +57,9 @@ public static class ComExtensions
 
         if (comObject.Object is T t)
             return new ComObject<T>(t, releaseOnDispose);
+
+        if (throwOnError)
+            throw new InvalidCastException($"Cannot cast COM object of type '{comObject.InterfaceType}' to '{typeof(T)}'.");
 
         return default;
     }

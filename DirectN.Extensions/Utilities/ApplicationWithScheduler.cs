@@ -9,7 +9,7 @@ public class ApplicationWithScheduler : Application
 
     public ApplicationScheduler Scheduler { get; }
 
-    public virtual Task RunTaskOnMainThread(Action action, bool startNew = false)
+    public virtual Task RunTaskOnUIThread(Action action, bool startNew = false)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (!startNew && IsRunningAsUIThread)

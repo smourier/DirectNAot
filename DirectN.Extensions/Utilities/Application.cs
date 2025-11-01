@@ -98,15 +98,14 @@ public class Application : IDisposable
         return reason;
     }
 
-    public virtual ExitLoopReason RunMessageLoop(Func<MSG, bool> exitLoopFunc)
+    public virtual ExitLoopReason RunMessageLoop(Func<MSG, bool>? exitLoopFunc = null)
     {
-        ArgumentNullException.ThrowIfNull(exitLoopFunc);
         ThrowIfNotRunningAsUIThread();
         do
         {
             if (Functions.PeekMessageW(out var msg, HWND.Null, 0, 0, PEEK_MESSAGE_REMOVE_TYPE.PM_REMOVE))
             {
-                if (exitLoopFunc(msg))
+                if (exitLoopFunc != null && exitLoopFunc(msg))
                     return ExitLoopReason.Func;
 
                 if (IsDisposed)
