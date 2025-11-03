@@ -146,21 +146,8 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    public IEnumerable<Window> ChildWindows => WindowUtilities.EnumerateChildWindows(Handle).Select(h => FromHandle(h.Value)).Where(w => w is not null)!;
-    public IEnumerable<Window> AllChildWindows
-    {
-        get
-        {
-            foreach (var child in ChildWindows)
-            {
-                yield return child;
-                foreach (var gchild in child.AllChildWindows)
-                {
-                    yield return gchild;
-                }
-            }
-        }
-    }
+    public IEnumerable<Window> ChildWindows => WindowUtilities.EnumerateChildWindows(Handle).Select(h => FromHandle(h.Value)).WhereNotNull().Where(w => w.ParentHandle == Handle);
+    public IEnumerable<Window> AllChildWindows => WindowUtilities.EnumerateChildWindows(Handle).Select(h => FromHandle(h.Value)).WhereNotNull();
 
     public IEnumerable<Window> ParentWindows
     {

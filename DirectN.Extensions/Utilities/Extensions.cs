@@ -66,6 +66,14 @@ public static class Extensions
         return i;
     }
 
+    public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T?>? source) where T : class
+    {
+        if (source == null)
+            return [];
+
+        return source.Where(item => item is not null)!;
+    }
+
     public static HRESULT ThrowOnPInvokeError(this BOOL ret, bool throwOnError = true, [CallerMemberName] string? methodName = null)
     {
         if (ret)
