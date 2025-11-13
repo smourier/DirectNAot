@@ -39,7 +39,7 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         }
     }
 
-    public virtual void CopyTo(nint target, uint size = uint.MaxValue)
+    public void CopyTo(nint target, uint size = uint.MaxValue)
     {
         if (target == 0)
             throw new ArgumentException(null, nameof(target));
@@ -55,7 +55,7 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
         Pointer.CopyTo(target, size);
     }
 
-    public virtual void CopyFrom(nint source, uint size = uint.MaxValue)
+    public void CopyFrom(nint source, uint size = uint.MaxValue)
     {
         if (source == 0)
             throw new ArgumentException(null, nameof(source));
@@ -69,6 +69,77 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
 
         ArgumentOutOfRangeException.ThrowIfNegative((long)Size - size);
         source.CopyTo(Pointer, size);
+    }
+
+    public byte[] ToArray()
+    {
+        var array = new byte[Size];
+        Marshal.Copy(Pointer, array, 0, (int)Size);
+        return array;
+    }
+
+    public byte[] ToArray(uint offset, uint count)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - (offset + count));
+        var array = new byte[count];
+        Marshal.Copy(Pointer + (nint)offset, array, 0, (int)count);
+        return array;
+    }
+
+    public unsafe T[] ToArray<T>() where T : unmanaged
+    {
+        var count = Size / (uint)sizeof(T);
+        return ToArray<T>(0, count);
+    }
+
+    public unsafe T[] ToArray<T>(uint offset, uint count) where T : unmanaged
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - (offset + count * (uint)sizeof(T)));
+        var array = new T[count];
+        fixed (T* pArray = array)
+        {
+            Unsafe.CopyBlock(pArray, (void*)(Pointer + (nint)offset), count * (uint)sizeof(T));
+        }
+        return array;
+    }
+
+    public unsafe Span<T> AsSpan<T>(uint count = uint.MaxValue) where T : unmanaged
+    {
+        if (count == uint.MaxValue)
+        {
+            count = Size / (uint)sizeof(T);
+        }
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - count * (uint)sizeof(T));
+        unsafe
+        {
+            return new Span<T>((void*)Pointer, (int)count);
+        }
+    }
+
+    public unsafe void Write<T>(ref T value, uint offset = 0) where T : unmanaged
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - offset - (uint)sizeof(T));
+        Unsafe.CopyBlock((void*)(Pointer + (nint)offset), Unsafe.AsPointer(ref value), (uint)sizeof(T));
+    }
+
+    public unsafe T Read<T>(uint offset = 0) where T : unmanaged
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - offset - (uint)sizeof(T));
+        return Unsafe.AsRef<T>((void*)(Pointer + (nint)offset));
+    }
+
+    public Span<byte> AsSpan(uint size = uint.MaxValue)
+    {
+        if (size == uint.MaxValue)
+        {
+            size = Size;
+        }
+
+        ArgumentOutOfRangeException.ThrowIfNegative((long)Size - size);
+        unsafe
+        {
+            return new Span<byte>((void*)Pointer, (int)size);
+        }
     }
 
     protected virtual void Dispose(bool disposing)
