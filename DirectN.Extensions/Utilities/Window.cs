@@ -38,7 +38,8 @@ public class Window : IDisposable, IEquatable<Window>
         RECT? rect = null,
         HWND? parentHandle = null,
         HMENU? menu = null,
-        string? className = null
+        string? className = null,
+        HINSTANCE? instance = null
         )
     {
         ManagedThreadId = Environment.CurrentManagedThreadId;
@@ -48,7 +49,7 @@ public class Window : IDisposable, IEquatable<Window>
         _windowProc = SafeWindowProc;
         TaskScheduler = CreateScheduler(this) ?? throw new InvalidOperationException(); ;
         RegisterClass(className, Marshal.GetFunctionPointerForDelegate(_windowProc), LoadCreationIcon());
-        CreateWindow(title, style, extendedStyle, rect, parentHandle, menu, className);
+        CreateWindow(title, style, extendedStyle, rect, parentHandle, menu, className, instance);
         Application.AddWindow(this);
     }
 
@@ -414,7 +415,8 @@ public class Window : IDisposable, IEquatable<Window>
         RECT? rect = null,
         HWND? parentHandle = null,
         HMENU? menu = null,
-        string? className = null
+        string? className = null,
+        HINSTANCE? instance = null
         )
     {
         className ??= GetType().FullName!;
@@ -423,7 +425,19 @@ public class Window : IDisposable, IEquatable<Window>
         var rc = rect ?? new RECT(Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT);
         _gcHandle = GCHandle.Alloc(this);
         var ptr = GCHandle.ToIntPtr(_gcHandle);
-        var hwnd = Functions.CreateWindowExW(extendedStyle, PWSTR.From(className), PWSTR.From(text), style, rc.left, rc.top, rc.Width, rc.Height, parentHandle ?? HWND.Null, menu ?? HMENU.Null, HINSTANCE.Null, ptr);
+        var hwnd = Functions.CreateWindowExW(
+            extendedStyle,
+            PWSTR.From(className),
+            PWSTR.From(text),
+            style,
+            rc.left,
+            rc.top,
+            rc.Width,
+            rc.Height,
+            parentHandle ?? HWND.Null,
+            menu ?? HMENU.Null,
+            instance ?? HINSTANCE.Null,
+            ptr);
         if (hwnd.Value == 0)
         {
             var gle = Marshal.GetLastPInvokeError();

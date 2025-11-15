@@ -4310,6 +4310,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetTokenInformation(HANDLE TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, nint /* optional void* */ TokenInformation, uint TokenInformationLength, out uint ReturnLength);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-gettopwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetTopWindow(HWND hWnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getupdatedclipboardformats
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -10068,6 +10075,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL SetICMProfileW(HDC hdc, PWSTR lpFileName);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setlayeredwindowattributes
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, byte bAlpha, LAYERED_WINDOW_ATTRIBUTES_FLAGS dwFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setmapmode
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -10689,6 +10703,18 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UpdateICMRegKeyW(uint reserved, PWSTR lpszCMID, PWSTR lpszFileName, ICM_COMMAND command);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-updatelayeredwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UpdateLayeredWindow(HWND hWnd, HDC hdcDst, nint /* optional POINT* */ pptDst, nint /* optional SIZE* */ psize, HDC hdcSrc, nint /* optional POINT* */ pptSrc, COLORREF crKey, nint /* optional BLENDFUNCTION* */ pblend, UPDATE_LAYERED_WINDOW_FLAGS dwFlags);
+    
+    [LibraryImport("USER32", SetLastError = true)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UpdateLayeredWindowIndirect(HWND hWnd, in UPDATELAYEREDWINDOWINFO pULWInfo);
     
     // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-updateresourcew
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
