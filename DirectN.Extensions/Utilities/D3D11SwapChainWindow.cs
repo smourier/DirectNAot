@@ -8,8 +8,9 @@ public class D3D11SwapChainWindow(
     RECT? rect = null,
     HWND? parentHandle = null,
     HMENU? menu = null,
-    string? className = null)
-    : Window(title, style, extendedStyle, rect, parentHandle, menu, className)
+    string? className = null,
+    HINSTANCE? instance = null)
+    : Window(title, style, extendedStyle, rect, parentHandle, menu, className, instance)
 {
     public event EventHandler<HandledEventArgs>? Rendering;
     public event EventHandler? Rendered;

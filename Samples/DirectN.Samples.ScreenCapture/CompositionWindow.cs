@@ -9,8 +9,9 @@ public class CompositionWindow : D3D11SwapChainWindow
         RECT? rect = null,
         HWND? parentHandle = null,
         HMENU? menu = null,
-        string? className = null)
-        : base(title, style, extendedStyle, rect, parentHandle, menu, className)
+        string? className = null,
+        HINSTANCE? instance = null)
+        : base(title, style, extendedStyle, rect, parentHandle, menu, className, instance)
     {
         InvalidateOnTick = false; // we're using composition, we don't need to tick
 
