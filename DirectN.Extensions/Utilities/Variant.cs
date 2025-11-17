@@ -302,6 +302,9 @@ public sealed class Variant : IDisposable
 
                 case VARENUM.VT_UNKNOWN:
                 case VARENUM.VT_DISPATCH:
+                    if (_inner.Anonymous.Anonymous.Anonymous.punkVal == 0)
+                        return null;
+
                     var sw = ComObject.ComWrappers;
                     return sw.GetOrCreateObjectForComInstance(_inner.Anonymous.Anonymous.Anonymous.punkVal, CreateObjectFlags.UniqueInstance);
 
