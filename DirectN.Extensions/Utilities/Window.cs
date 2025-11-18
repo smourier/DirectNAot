@@ -2,7 +2,8 @@
 
 public class Window : IDisposable, IEquatable<Window>
 {
-    private const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
+    public const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
+
     private nint _handle;
     private int _disposeState;
     private GCHandle _gcHandle;
@@ -63,6 +64,7 @@ public class Window : IDisposable, IEquatable<Window>
     public bool IsSizingOrMoving { get; private set; }
     public virtual bool IsBackground { get; set; } // true => doesn't prevent to quit
     public uint UInt32Handle => (uint)(long)Handle.Value;
+    public virtual bool IsInModalLoop { get; protected set; }
     protected virtual uint AboutSysMenuId { get; set; } = 1;
     protected virtual bool ValidateOnPaint { get; set; } = true;
     protected virtual bool DestroyOnDispose { get; set; } = true;
@@ -96,6 +98,26 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual HCURSOR Cursor { get => new((nint)Functions.GetClassLongPtrW(Handle, GET_CLASS_LONG_INDEX.GCLP_HCURSOR)); set => Functions.SetClassLongPtrW(Handle, GET_CLASS_LONG_INDEX.GCLP_HCURSOR, value.Value); }
     public bool IsRunningAsUIThread => ManagedThreadId == Environment.CurrentManagedThreadId;
     public Application? Application => Application.GetApplication(this);
+    public Window? ModalWindow { get; protected set; }
+    public Window? TopModalWindow
+    {
+        get
+        {
+            if (ModalWindow == null)
+                return null;
+
+            var current = ModalWindow;
+            do
+            {
+                var next = current.ModalWindow;
+                if (next == null)
+                    return current;
+
+                current = next;
+            }
+            while (true);
+        }
+    }
 
     public HICON BigIconHandle
     {
@@ -265,6 +287,44 @@ public class Window : IDisposable, IEquatable<Window>
         var wr = WindowRect;
         var cr = ClientRect;
         Resize(width + (wr.Width - cr.Width), height + (wr.Height - cr.Height));
+    }
+
+    public virtual ExitLoopReason ShowModal(Window? parent = null)
+    {
+        var app = Application;
+        if (app == null)
+            return ExitLoopReason.AppQuit;
+
+        if (Style.HasFlag(WINDOW_STYLE.WS_CHILD))
+            throw new DirectNException("0007: Cannot show a child window as modal.");
+
+        Show();
+        SetActive();
+
+        IsInModalLoop = true;
+        if (parent != null)
+        {
+            parent.ModalWindow = this;
+        }
+
+        try
+        {
+            return app.RunModalLoop(this, msg =>
+            {
+                if (IsDisposingOrDisposed)
+                    return true;
+
+                return false;
+            });
+        }
+        finally
+        {
+            IsInModalLoop = false;
+            if (parent != null)
+            {
+                parent.ModalWindow = null;
+            }
+        }
     }
 
     public override string ToString()
@@ -489,6 +549,30 @@ public class Window : IDisposable, IEquatable<Window>
         return null;
     }
 
+    protected virtual bool OnClosing()
+    {
+        // ignore close requests when a modal dialog is open
+        if (ModalWindow != null)
+        {
+            TopModalWindow?.SetForeground();
+            return true;
+        }
+
+        var ec = new CancelEventArgs();
+        OnClosing(this, ec);
+        return ec.Cancel;
+    }
+
+    protected virtual MA? OnMouseActivated(HWND activatedParentWindow, LPARAM lParam)
+    {
+        if (ModalWindow != null)
+        {
+            TopModalWindow?.SetForeground();
+            return MA.MA_NOACTIVATEANDEAT;
+        }
+        return null;
+    }
+
     protected virtual bool OnActivated(bool activated)
     {
         var e = new HandledEventArgs();
@@ -508,11 +592,8 @@ public class Window : IDisposable, IEquatable<Window>
         switch (msg)
         {
             case MessageDecoder.WM_CLOSE:
-                var ec = new CancelEventArgs();
-                OnClosing(this, ec);
-                if (ec.Cancel)
+                if (OnClosing())
                     return new();
-
                 break;
 
             case MessageDecoder.WM_PAINT:
@@ -524,6 +605,12 @@ public class Window : IDisposable, IEquatable<Window>
                     if (op)
                         return new();
                 }
+                break;
+
+            case MessageDecoder.WM_MOUSEACTIVATE:
+                var ma = OnMouseActivated(new HWND((nint)wParam.Value), lParam);
+                if (ma != null)
+                    return new LRESULT { Value = (nint)ma.Value };
                 break;
 
             case MessageDecoder.WM_ACTIVATE:

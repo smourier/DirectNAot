@@ -135,6 +135,47 @@ public class Application : IDisposable
         } while (true);
     }
 
+    public virtual ExitLoopReason RunModalLoop(Window modalWindow, Func<MSG, bool>? exitLoopFunc = null)
+    {
+        ArgumentNullException.ThrowIfNull(modalWindow);
+        ThrowIfNotRunningAsUIThread();
+        do
+        {
+            if (Functions.PeekMessageW(out var msg, HWND.Null, 0, 0, PEEK_MESSAGE_REMOVE_TYPE.PM_REMOVE))
+            {
+                if (exitLoopFunc != null && exitLoopFunc(msg))
+                    return ExitLoopReason.Func;
+
+                if (IsDisposed)
+                {
+                    // repost
+                    Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+                    return ExitLoopReason.Disposed;
+                }
+
+                if (msg.message == MessageDecoder.WM_QUIT)
+                {
+                    // repost
+                    Functions.PostQuitMessage(0);
+                    return ExitLoopReason.Quit;
+                }
+
+                if (msg.message == WM_APP_QUIT)
+                {
+                    // repost
+                    Functions.PostMessageW(HWND.Null, WM_APP_QUIT, WPARAM.Null, LPARAM.Null);
+                    return ExitLoopReason.AppQuit;
+                }
+
+                if (msg.hwnd == modalWindow.Handle || modalWindow.AllChildWindows.Any(w => w.Handle == msg.hwnd))
+                {
+                    if (!HandleMessage(msg))
+                        return ExitLoopReason.UnhandledMessage;
+                }
+            }
+        } while (true);
+    }
+
     protected virtual BOOL GetMessage(out MSG msg, HWND hWnd, uint wMsgFilterMin, uint wMsgFilterMax)
     {
         if (IsDisposed)
@@ -186,7 +227,8 @@ public class Application : IDisposable
 
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 
-    internal const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
+    public const uint WM_APP_QUIT = MessageDecoder.WM_APP + 0x3FFF; // last possible app message
+
     private static readonly Lock _windowsLock = new();
     private static readonly Lock _errorsLock = new();
     private readonly static List<Window> _windows = [];

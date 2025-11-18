@@ -164,7 +164,8 @@ public static class WindowUtilities
             }
             else
             {
-                center = rc;
+                Functions.GetWindowRect(hwndCenter, out var rc2);
+                center = rc2;
                 Functions.GetMonitorInfoW(Functions.MonitorFromWindow(hwndCenter, MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST), ref mi);
                 area = mi.rcWork;
             }
@@ -175,8 +176,7 @@ public static class WindowUtilities
             Functions.GetClientRect(handle, out var cr);
             area = cr;
             center = cr;
-            var pts = Unsafe.AsRef<POINT[]>(&center);
-            Functions.MapWindowPoints(hwndCenter, parentHandle, pts, 2);
+            Functions.MapWindowPoints(hwndCenter, parentHandle, [center.LeftTop, center.RightBottom], 2);
         }
 
         // find dialog's upper left based on rcCenter
@@ -204,7 +204,6 @@ public static class WindowUtilities
             top = area.top;
         }
 
-        // map screen coordinates to child coordinates
         return Functions.SetWindowPos(handle, HWND.Null, left, top, -1, -1, SET_WINDOW_POS_FLAGS.SWP_NOSIZE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     }
 
