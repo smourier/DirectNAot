@@ -213,6 +213,100 @@ public static class Conversions
         }
     }
 
+    public static string ToHexaDump(this Span<byte> bytes, HexaDumpOptions? options = null)
+        => ToHexaDump((ReadOnlySpan<byte>)bytes, options);
+
+    public static string ToHexaDump(this ReadOnlySpan<byte> bytes, HexaDumpOptions? options = null)
+    {
+        using var writer = new StringWriter();
+        WriteHexaDump(bytes, writer, options);
+        return writer.ToString();
+    }
+
+    public static void WriteHexaDump(this Span<byte> bytes, TextWriter writer, HexaDumpOptions? options = null)
+        => WriteHexaDump((ReadOnlySpan<byte>)bytes, writer, options);
+
+    public static void WriteHexaDump(this ReadOnlySpan<byte> bytes, TextWriter writer, HexaDumpOptions? options = null)
+    {
+        ArgumentNullException.ThrowIfNull(writer);
+        options ??= new HexaDumpOptions();
+
+        var bytesPerLine = Math.Max(8, options.BytesPerLine);
+        var byteFormatter = options.ByteFormatter ?? defaultByteFormatter;
+
+        if (options.AddHeader)
+        {
+            // write something like that (16 bytes per line):
+            // Offset    00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  0123456789ABCDEF
+            // --------  -----------------------------------------------  ----------------
+
+            writer.Write(options.LinePrefix);
+            writer.Write("Offset    ");
+            for (var h = 0; h < bytesPerLine; h++)
+            {
+                writer.Write($"{h:X2} ");
+            }
+
+            for (var h = 0; h < bytesPerLine; h++)
+            {
+                writer.Write("0123456789ABCDEF"[h % 16]);
+            }
+            writer.WriteLine();
+
+            writer.Write(options.LinePrefix);
+            writer.Write("--------  ");
+            for (var h = 0; h < bytesPerLine; h++)
+            {
+                writer.Write("---");
+            }
+            writer.Write("  ");
+            for (var h = 0; h < bytesPerLine; h++)
+            {
+                writer.Write("-");
+            }
+            writer.WriteLine();
+        }
+
+        for (var i = 0; i < bytes.Length; i += bytesPerLine)
+        {
+            writer.Write(options.LinePrefix);
+            writer.Write(string.Format("{0:X8}  ", options.StartOffset + i));
+
+            int j;
+            for (j = 0; (j < bytesPerLine) && ((i + j) < bytes.Length); j++)
+            {
+                writer.Write(string.Format("{0:X2} ", bytes[i + j]));
+            }
+
+            writer.Write(' ');
+            if (j < bytesPerLine)
+            {
+                writer.Write(new string(' ', 3 * (bytesPerLine - j)));
+            }
+
+            for (j = 0; j < bytesPerLine && (i + j) < bytes.Length; j++)
+            {
+                var b = bytes[i + j];
+                byteFormatter(writer, b);
+            }
+
+            writer.WriteLine();
+        }
+
+        static void defaultByteFormatter(TextWriter writer, byte b)
+        {
+            // writer.Write((char)(0x2400 + b)); for using unicode control pictures
+            if (b > 31 && b < 128)
+            {
+                writer.Write((char)b);
+            }
+            else
+            {
+                writer.Write('.');
+            }
+        }
+    }
+
     public static IList<string> SplitToNullifiedList(this string? text, char[] separators, int count = int.MaxValue, StringSplitOptions options = StringSplitOptions.None)
     {
         var list = new List<string>();
