@@ -281,6 +281,7 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual bool Show(SHOW_WINDOW_CMD command = SHOW_WINDOW_CMD.SW_SHOW) => Functions.ShowWindow(Handle, command);
     public virtual void Move(int x, int y) => Functions.SetWindowPos(Handle, HWND.Null, x, y, -1, -1, SET_WINDOW_POS_FLAGS.SWP_NOSIZE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     public virtual void Resize(int width, int height) => Functions.SetWindowPos(Handle, HWND.Null, 0, 0, width, height, SET_WINDOW_POS_FLAGS.SWP_NOMOVE | SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
+    public void ResizeAndMove(RECT rc) => ResizeAndMove(rc.left, rc.top, rc.Width, rc.Height);
     public virtual void ResizeAndMove(int x, int y, int width, int height) => Functions.SetWindowPos(Handle, HWND.Null, x, y, width, height, SET_WINDOW_POS_FLAGS.SWP_NOZORDER | SET_WINDOW_POS_FLAGS.SWP_NOACTIVATE);
     public virtual void ResizeClient(int width, int height)
     {

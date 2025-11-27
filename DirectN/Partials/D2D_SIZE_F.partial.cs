@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F>, IEquatable<SIZE>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>
+public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F>, IEquatable<SIZE>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>, IParsable<D2D_SIZE_F>
 {
     public static D2D_SIZE_F Zero => default;
 
@@ -30,7 +30,7 @@ public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
     {
     }
 
-    public override readonly string ToString() => $"{width},{height}";
+    public override readonly string ToString() => $"{width};{height}";
 
     public readonly bool IsZero => width == 0 && height == 0;
     public readonly bool IsEmpty => width == 0 || height == 0;
@@ -109,5 +109,35 @@ public partial struct D2D_SIZE_F : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
     {
         var scale = Functions.DpiScale;
         return new D2D_SIZE_F(width * scale.width, height * scale.height);
+    }
+
+    public static D2D_SIZE_F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var width = float.Parse(parts[0], provider);
+        var height = float.Parse(parts[1], provider);
+        return new D2D_SIZE_F(width, height);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_SIZE_F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var width) ||
+            !float.TryParse(parts[1], provider, out var height))
+            return false;
+
+        result = new D2D_SIZE_F(width, height);
+        return true;
     }
 }

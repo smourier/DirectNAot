@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>
+public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<D2D_RECT_F>
 {
     public static D2D_RECT_F Zero => default;
 
@@ -347,7 +347,7 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         return rc;
     }
 
-    public override readonly string ToString() => $"{left},{top},{right},{bottom}";
+    public override readonly string ToString() => $"{left};{top};{right};{bottom}";
 
     public override readonly bool Equals(object? obj) =>
         (obj is RECT rc && Equals(rc)) ||
@@ -392,4 +392,38 @@ public partial struct D2D_RECT_F : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
 #else
     public static readonly D2D_RECT_F Invalid = new(float.NaN, float.NaN, float.NaN, float.NaN);
 #endif
+
+    public static D2D_RECT_F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            throw new FormatException();
+
+        var left = float.Parse(parts[0], provider);
+        var top = float.Parse(parts[1], provider);
+        var right = float.Parse(parts[2], provider);
+        var bottom = float.Parse(parts[3], provider);
+        return new D2D_RECT_F(left, top, right, bottom);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_RECT_F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var left) ||
+            !float.TryParse(parts[1], provider, out var top) ||
+            !float.TryParse(parts[2], provider, out var right) ||
+            !float.TryParse(parts[3], provider, out var bottom))
+            return false;
+
+        result = new D2D_RECT_F(left, top, right, bottom);
+        return true;
+    }
 }

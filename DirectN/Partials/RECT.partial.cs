@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>
+public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<RECT>
 {
     public static RECT Zero => default;
 
@@ -69,7 +69,7 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
     }
 
     public readonly bool IsEmpty => Width == 0 || Height == 0;
-    public override readonly string ToString() => $"{left},{top},{right},{bottom}";
+    public override readonly string ToString() => $"{left};{top};{right};{bottom}";
 
     public readonly POINT Position => new(left, top);
     public readonly SIZE Size => new(Width, Height);
@@ -320,5 +320,39 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
             return this;
 
         return new RECT((int)(left * scale.width), (int)(top * scale.height), (int)(right * scale.width), (int)(bottom * scale.height));
+    }
+
+    public static RECT Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            throw new FormatException();
+
+        var left = int.Parse(parts[0], provider);
+        var top = int.Parse(parts[1], provider);
+        var right = int.Parse(parts[2], provider);
+        var bottom = int.Parse(parts[3], provider);
+        return new RECT(left, top, right, bottom);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out RECT result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            return false;
+
+        if (!int.TryParse(parts[0], provider, out var left) ||
+            !int.TryParse(parts[1], provider, out var top) ||
+            !int.TryParse(parts[2], provider, out var right) ||
+            !int.TryParse(parts[3], provider, out var bottom))
+            return false;
+
+        result = new RECT(left, top, right, bottom);
+        return true;
     }
 }

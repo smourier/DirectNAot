@@ -59,13 +59,13 @@ public class CommandLine
         return cmdLine;
     }
 
-    private readonly Dictionary<string, string?> _namedArguments = new(StringComparer.OrdinalIgnoreCase);
-    private readonly Dictionary<int, string> _positionedArguments = [];
+    private readonly ConcurrentDictionary<string, string?> _namedArguments = new(StringComparer.OrdinalIgnoreCase);
+    private readonly ConcurrentDictionary<int, string> _positionedArguments = new();
 
     public CommandLine() { }
 
-    public virtual IReadOnlyDictionary<string, string?> NamedArguments => _namedArguments;
-    public virtual IReadOnlyDictionary<int, string> PositionedArguments => _positionedArguments;
+    public virtual IDictionary<string, string?> NamedArguments => _namedArguments;
+    public virtual IDictionary<int, string> PositionedArguments => _positionedArguments;
     public virtual bool HelpRequested { get; protected set; }
     public string CurrentDirectory { get; internal set; } = null!;
 

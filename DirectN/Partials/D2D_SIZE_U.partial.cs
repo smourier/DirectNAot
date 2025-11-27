@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_SIZE_U : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F>, IEquatable<SIZE>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>
+public partial struct D2D_SIZE_U : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F>, IEquatable<SIZE>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>, IParsable<D2D_SIZE_U>
 {
     public static D2D_SIZE_U Zero => default;
 
@@ -28,7 +28,7 @@ public partial struct D2D_SIZE_U : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
         this.height = height.FloorU();
     }
 
-    public override readonly string ToString() => $"{width},{height}";
+    public override readonly string ToString() => $"{width};{height}";
 
     public readonly bool IsZero => width == 0 && height == 0;
     public readonly bool IsEmpty => width == 0 || height == 0;
@@ -64,4 +64,34 @@ public partial struct D2D_SIZE_U : IEquatable<D2D_SIZE_U>, IEquatable<D2D_SIZE_F
     public static implicit operator D2D_SIZE_U(Vector2 pt) => new(pt.X, pt.Y);
     public static implicit operator Vector2(D2D_SIZE_U pt) => new(pt.width, pt.height);
     public static implicit operator D2D_SIZE_U(D2D_SIZE_F pt) => new(pt.height, pt.height);
+
+    public static D2D_SIZE_U Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var width = uint.Parse(parts[0], provider);
+        var height = uint.Parse(parts[1], provider);
+        return new D2D_SIZE_U(width, height);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_SIZE_U result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!uint.TryParse(parts[0], provider, out var width) ||
+            !uint.TryParse(parts[1], provider, out var height))
+            return false;
+
+        result = new D2D_SIZE_U(width, height);
+        return true;
+    }
 }

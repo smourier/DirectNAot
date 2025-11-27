@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_VECTOR_3F : IEquatable<D2D_VECTOR_3F>, IEquatable<Vector3>
+public partial struct D2D_VECTOR_3F : IEquatable<D2D_VECTOR_3F>, IEquatable<Vector3>, IParsable<D2D_VECTOR_3F>
 {
     public static D2D_VECTOR_3F Zero => default;
 
@@ -18,7 +18,7 @@ public partial struct D2D_VECTOR_3F : IEquatable<D2D_VECTOR_3F>, IEquatable<Vect
         this.z = (float)z;
     }
 
-    public override readonly string ToString() => $"{x},{y},{z}";
+    public override readonly string ToString() => $"{x};{y};{z}";
 
     public readonly bool IsValid => !IsInvalid;
     public readonly bool IsInvalid => x.IsInvalid() || y.IsInvalid() || z.IsInvalid();
@@ -48,4 +48,36 @@ public partial struct D2D_VECTOR_3F : IEquatable<D2D_VECTOR_3F>, IEquatable<Vect
 
     public static implicit operator D2D_VECTOR_3F(Vector3 vc) => new(vc.X, vc.Y, vc.Z);
     public static implicit operator Vector3(D2D_VECTOR_3F vc) => new(vc.x, vc.y, vc.z);
+
+    public static D2D_VECTOR_3F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            throw new FormatException();
+
+        var x = float.Parse(parts[0], provider);
+        var y = float.Parse(parts[1], provider);
+        var z = float.Parse(parts[2], provider);
+        return new D2D_VECTOR_3F(x, y, z);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_VECTOR_3F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var x) ||
+            !float.TryParse(parts[1], provider, out var y) ||
+            !float.TryParse(parts[2], provider, out var z))
+            return false;
+
+        result = new D2D_VECTOR_3F(x, y, z);
+        return true;
+    }
 }

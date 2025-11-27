@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatable<D2D_SIZE_U>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>
+public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatable<D2D_SIZE_U>, IEquatable<Vector2>, IEquatable<D2D_VECTOR_2F>, IParsable<SIZE>
 {
     public static SIZE Zero => default;
 
@@ -28,7 +28,7 @@ public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatabl
         this.cy = cy.FloorI();
     }
 
-    public override readonly string ToString() => $"{cx},{cy}";
+    public override readonly string ToString() => $"{cx};{cy}";
 
     public readonly bool IsZero => cx == 0 && cy == 0;
     public readonly bool IsEmpty => cx == 0 || cy == 0;
@@ -64,4 +64,34 @@ public partial struct SIZE : IEquatable<SIZE>, IEquatable<D2D_SIZE_F>, IEquatabl
     public static implicit operator SIZE(Vector2 pt) => new(pt.X, pt.Y);
     public static implicit operator Vector2(SIZE pt) => new(pt.cx, pt.cy);
     public static implicit operator SIZE(D2D_SIZE_F pt) => new(pt.height, pt.height);
+
+    public static SIZE Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var cx = int.Parse(parts[0], provider);
+        var cy = int.Parse(parts[1], provider);
+        return new SIZE(cx, cy);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out SIZE result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!int.TryParse(parts[0], provider, out var cx) ||
+            !int.TryParse(parts[1], provider, out var cy))
+            return false;
+
+        result = new SIZE(cx, cy);
+        return true;
+    }
 }

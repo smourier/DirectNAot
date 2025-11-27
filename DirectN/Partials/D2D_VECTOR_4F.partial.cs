@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_VECTOR_4F : IEquatable<D2D_VECTOR_4F>, IEquatable<Vector4>
+public partial struct D2D_VECTOR_4F : IEquatable<D2D_VECTOR_4F>, IEquatable<Vector4>, IParsable<D2D_VECTOR_4F>
 {
     public static D2D_VECTOR_4F Zero => default;
 
@@ -20,7 +20,7 @@ public partial struct D2D_VECTOR_4F : IEquatable<D2D_VECTOR_4F>, IEquatable<Vect
         this.w = (float)w;
     }
 
-    public override readonly string ToString() => $"{x},{y},{z},{w}";
+    public override readonly string ToString() => $"{x};{y};{z};{w}";
 
     public readonly bool IsValid => !IsInvalid;
     public readonly bool IsInvalid => x.IsInvalid() || y.IsInvalid() || z.IsInvalid() || w.IsInvalid();
@@ -49,4 +49,38 @@ public partial struct D2D_VECTOR_4F : IEquatable<D2D_VECTOR_4F>, IEquatable<Vect
 
     public static implicit operator D2D_VECTOR_4F(Vector4 vc) => new(vc.X, vc.Y, vc.Z, vc.W);
     public static implicit operator Vector4(D2D_VECTOR_4F vc) => new(vc.x, vc.y, vc.z, vc.w);
+
+    public static D2D_VECTOR_4F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            throw new FormatException();
+
+        var x = float.Parse(parts[0], provider);
+        var y = float.Parse(parts[1], provider);
+        var z = float.Parse(parts[2], provider);
+        var w = float.Parse(parts[3], provider);
+        return new D2D_VECTOR_4F(x, y, z, w);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_VECTOR_4F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var x) ||
+            !float.TryParse(parts[1], provider, out var y) ||
+            !float.TryParse(parts[2], provider, out var z) ||
+            !float.TryParse(parts[3], provider, out var w))
+            return false;
+
+        result = new D2D_VECTOR_4F(x, y, z, w);
+        return true;
+    }
 }

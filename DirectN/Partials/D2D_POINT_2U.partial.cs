@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_POINT_2U : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VECTOR_2F>, IEquatable<D2D_POINT_2U>, IEquatable<POINT>, IEquatable<Vector2>
+public partial struct D2D_POINT_2U : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VECTOR_2F>, IEquatable<D2D_POINT_2U>, IEquatable<POINT>, IEquatable<Vector2>, IParsable<D2D_POINT_2U>
 {
     public static D2D_POINT_2U Zero => default;
 
@@ -28,7 +28,7 @@ public partial struct D2D_POINT_2U : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VE
         this.y = y.FloorU();
     }
 
-    public override readonly string ToString() => $"{x},{y}";
+    public override readonly string ToString() => $"{x};{y}";
 
     public readonly bool IsZero => x == 0 && y == 0;
 
@@ -65,4 +65,34 @@ public partial struct D2D_POINT_2U : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VE
     public static implicit operator Vector2(D2D_POINT_2U pt) => new(pt.x, pt.y);
     public static implicit operator D2D_POINT_2U(Vector2 pt) => new(pt.X, pt.Y);
     public static implicit operator D2D_POINT_2U(D2D_POINT_2F pt) => new(pt.x, pt.y);
+
+    public static D2D_POINT_2U Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var x = uint.Parse(parts[0], provider);
+        var y = uint.Parse(parts[1], provider);
+        return new D2D_POINT_2U(x, y);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_POINT_2U result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!uint.TryParse(parts[0], provider, out var x) ||
+            !uint.TryParse(parts[1], provider, out var y))
+            return false;
+
+        result = new D2D_POINT_2U(x, y);
+        return true;
+    }
 }

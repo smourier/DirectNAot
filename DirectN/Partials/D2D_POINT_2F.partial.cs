@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_POINT_2F : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VECTOR_2F>, IEquatable<D2D_POINT_2U>, IEquatable<POINT>, IEquatable<Vector2>
+public partial struct D2D_POINT_2F : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VECTOR_2F>, IEquatable<D2D_POINT_2U>, IEquatable<POINT>, IEquatable<Vector2>, IParsable<D2D_POINT_2F>
 {
     public static D2D_POINT_2F Zero => default;
 
@@ -28,7 +28,7 @@ public partial struct D2D_POINT_2F : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VE
         this.y = (float)y;
     }
 
-    public override readonly string ToString() => $"{x},{y}";
+    public override readonly string ToString() => $"{x};{y}";
 
     public readonly bool IsValid => !IsInvalid;
     public readonly bool IsInvalid => x.IsInvalid() || y.IsInvalid();
@@ -76,4 +76,34 @@ public partial struct D2D_POINT_2F : IEquatable<D2D_POINT_2F>, IEquatable<D2D_VE
     public static implicit operator Vector2(D2D_POINT_2F pt) => new(pt.x, pt.y);
     public static implicit operator D2D_POINT_2F(Vector2 pt) => new(pt.X, pt.Y);
     public static implicit operator D2D_POINT_2F(D2D_POINT_2U pt) => new(pt.x, pt.y);
+
+    public static D2D_POINT_2F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var x = float.Parse(parts[0], provider);
+        var y = float.Parse(parts[1], provider);
+        return new D2D_POINT_2F(x, y);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_POINT_2F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var x) ||
+            !float.TryParse(parts[1], provider, out var y))
+            return false;
+
+        result = new D2D_POINT_2F(x, y);
+        return true;
+    }
 }

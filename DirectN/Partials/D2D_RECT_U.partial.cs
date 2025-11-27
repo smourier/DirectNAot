@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>
+public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<D2D_RECT_U>
 {
     public static D2D_RECT_U Zero => default;
 
@@ -256,7 +256,7 @@ public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         return rc;
     }
 
-    public override readonly string ToString() => $"{left},{top},{right},{bottom}";
+    public override readonly string ToString() => $"{left};{top};{right};{bottom}";
 
     public override readonly bool Equals(object? obj) =>
         (obj is RECT rc && Equals(rc)) ||
@@ -283,4 +283,38 @@ public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
     // margin/thickness type calculation
     public static D2D_SIZE_U operator +(D2D_SIZE_U left, D2D_RECT_U right) => new(left.width + right.HorizontalThickness, left.height + right.VerticalThickness);
     public static D2D_SIZE_U operator -(D2D_SIZE_F left, D2D_RECT_U right) => new((uint)Math.Max(0, (int)left.width - (int)right.HorizontalThickness), (uint)Math.Max(0, (int)left.height - (int)right.VerticalThickness));
+
+    public static D2D_RECT_U Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            throw new FormatException();
+
+        var left = uint.Parse(parts[0], provider);
+        var top = uint.Parse(parts[1], provider);
+        var right = uint.Parse(parts[2], provider);
+        var bottom = uint.Parse(parts[3], provider);
+        return new D2D_RECT_U(left, top, right, bottom);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_RECT_U result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 4)
+            return false;
+
+        if (!uint.TryParse(parts[0], provider, out var left) ||
+            !uint.TryParse(parts[1], provider, out var top) ||
+            !uint.TryParse(parts[2], provider, out var right) ||
+            !uint.TryParse(parts[3], provider, out var bottom))
+            return false;
+
+        result = new D2D_RECT_U(left, top, right, bottom);
+        return true;
+    }
 }

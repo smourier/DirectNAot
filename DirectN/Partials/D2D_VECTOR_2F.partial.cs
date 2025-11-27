@@ -8,7 +8,8 @@ public partial struct D2D_VECTOR_2F :
     IEquatable<D2D_VECTOR_2F>,
     IEquatable<D2D_POINT_2F>,
     IEquatable<D2D_POINT_2U>,
-    IEquatable<POINT>
+    IEquatable<POINT>,
+    IParsable<D2D_VECTOR_2F>
 {
     public static D2D_VECTOR_2F Zero => default;
 
@@ -24,7 +25,7 @@ public partial struct D2D_VECTOR_2F :
         this.y = (float)y;
     }
 
-    public override readonly string ToString() => $"{x},{y}";
+    public override readonly string ToString() => $"{x};{y}";
 
     public readonly bool IsValid => !IsInvalid;
     public readonly bool IsInvalid => x.IsInvalid() || y.IsInvalid();
@@ -83,4 +84,34 @@ public partial struct D2D_VECTOR_2F :
     public static implicit operator D2D_VECTOR_2F(POINTF vc) => new(vc.x, vc.y);
     public static implicit operator D2D_VECTOR_2F(D2D_POINT_2F vc) => new(vc.x, vc.y);
     public static implicit operator D2D_VECTOR_2F(D2D_POINT_2U vc) => new(vc.x, vc.y);
+
+    public static D2D_VECTOR_2F Parse(string s, IFormatProvider? provider)
+    {
+        ArgumentNullException.ThrowIfNull(s);
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            throw new FormatException();
+
+        var x = float.Parse(parts[0], provider);
+        var y = float.Parse(parts[1], provider);
+        return new D2D_VECTOR_2F(x, y);
+    }
+
+    public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out D2D_VECTOR_2F result)
+    {
+        result = default;
+        if (string.IsNullOrWhiteSpace(s))
+            return false;
+
+        var parts = s.Split(';');
+        if (parts.Length != 2)
+            return false;
+
+        if (!float.TryParse(parts[0], provider, out var x) ||
+            !float.TryParse(parts[1], provider, out var y))
+            return false;
+
+        result = new D2D_VECTOR_2F(x, y);
+        return true;
+    }
 }
