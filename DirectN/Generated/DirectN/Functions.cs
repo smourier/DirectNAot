@@ -931,6 +931,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CLRCreateInstance(in Guid clsid, in Guid riid, out nint /* void */ ppInterface);
     
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-clsidfromprogid
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CLSIDFromProgID(PWSTR lpszProgID, out Guid lpclsid);
+    
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcheckcolors
     [LibraryImport("ICM32", SetLastError = true)]
     [PreserveSig]

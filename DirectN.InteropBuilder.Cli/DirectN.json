@@ -219,6 +219,7 @@
     "CallWindowProcW",
     "ChangeClipboardChain",
     "Chord",
+    "CLSIDFromProgID",
     "CloseClipboard",
     "CloseEnhMetaFile",
     "CloseMetaFile",

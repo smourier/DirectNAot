@@ -557,6 +557,19 @@ public abstract class ComObject : IComObject
         return type.GetGenericArguments()[0];
     }
 
+    public static HRESULT TryCoCreate<T>(string progId, out IComObject<T>? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
+    {
+        ArgumentNullException.ThrowIfNull(progId);
+        var hr = Functions.CLSIDFromProgID(PWSTR.From(progId), out var classId);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        return TryCoCreate<T>(classId, out comObject, ctx, outer, flags, releaseOnDispose);
+    }
+
     public static HRESULT TryCoCreate<T>(Guid classId, out IComObject<T>? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true)
     {
 #if DEBUG
@@ -584,6 +597,19 @@ public abstract class ComObject : IComObject
         }
 
         return Constants.S_OK;
+    }
+
+    public static HRESULT TryCoCreate(string progId, out object? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
+    {
+        ArgumentNullException.ThrowIfNull(progId);
+        var hr = Functions.CLSIDFromProgID(PWSTR.From(progId), out var classId);
+        if (hr.IsError)
+        {
+            comObject = null;
+            return hr;
+        }
+
+        return TryCoCreate(classId, out comObject, ctx, outer, flags);
     }
 
     public static HRESULT TryCoCreate(Guid classId, out object? comObject, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance)
@@ -615,6 +641,16 @@ public abstract class ComObject : IComObject
         return Constants.S_OK;
     }
 
+    public static IComObject<T>? CoCreate<T>(string progId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
+    {
+        ArgumentNullException.ThrowIfNull(progId);
+        var hr = Functions.CLSIDFromProgID(PWSTR.From(progId), out var classId).ThrowOnError(throwOnError);
+        if (hr.IsError)
+            return null;
+
+        return CoCreate<T>(classId, ctx, outer, flags, releaseOnDispose, throwOnError);
+    }
+
     public static IComObject<T>? CoCreate<T>(Guid classId, CLSCTX ctx = CLSCTX.CLSCTX_ALL, nint outer = 0, CreateObjectFlags flags = CreateObjectFlags.UniqueInstance, bool releaseOnDispose = true, bool throwOnError = true)
     {
 #if DEBUG
@@ -623,6 +659,16 @@ public abstract class ComObject : IComObject
         // we use IUnknown first, some objects (including .NET/.NET Framework ones) don't support direct query interface
         Functions.CoCreateInstance(classId, outer, ctx, typeof(IUnknown).GUID, out var unk).ThrowOnError(throwOnError);
         return FromPointer<T>(unk, flags, releaseOnDispose);
+    }
+
+    public static Guid? GetClsidFromProgId(string progId, bool throwOnError = true)
+    {
+        ArgumentNullException.ThrowIfNull(progId);
+        var hr = Functions.CLSIDFromProgID(PWSTR.From(progId), out var classId).ThrowOnError(throwOnError);
+        if (hr.IsError)
+            return null;
+
+        return classId;
     }
 
     [SupportedOSPlatform("windows8.0")]
