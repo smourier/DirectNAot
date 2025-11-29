@@ -3862,6 +3862,45 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetIconInfo(HICON hIcon, out ICONINFO piconinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeyboardlayout
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HKL GetKeyboardLayout(uint idThread);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeyboardlayoutlist
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetKeyboardLayoutList(int nBuff, nint /* optional HKL* */ lpList);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeyboardlayoutnamew
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetKeyboardLayoutNameW([MarshalUsing(ConstantElementCount = 9)] PWSTR pwszKLID);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeyboardstate
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetKeyboardState(nint /* byte array */ lpKeyState);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeyboardtype
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetKeyboardType(int nTypeFlag);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeynametextw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int GetKeyNameTextW(int lParam, [MarshalUsing(CountElementName = nameof(cchSize))] PWSTR lpString, int cchSize);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeystate
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -4323,6 +4362,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetTopWindow(HWND hWnd);
     
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getuilanguageinfo
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetUILanguageInfo(uint dwFlags, PWSTR pwmszLanguage, [MarshalUsing(CountElementName = nameof(pcchFallbackLanguages))] PWSTR pwszFallbackLanguages, nint /* optional uint* */ pcchFallbackLanguages, out uint pAttributes);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getupdatedclipboardformats
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -4342,6 +4388,25 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial GDI_REGION_TYPE GetUpdateRgn(HWND hWnd, HRGN hRgn, BOOL bErase);
+    
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getuserdefaultlocalename
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial int GetUserDefaultLocaleName([MarshalUsing(CountElementName = nameof(cchLocaleName))] PWSTR lpLocaleName, int cchLocaleName);
+    
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getuserdefaultuilanguage
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial ushort GetUserDefaultUILanguage();
+    
+    // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-getuserpreferreduilanguages
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetUserPreferredUILanguages(uint dwFlags, out uint pulNumLanguages, [MarshalUsing(CountElementName = nameof(pcchLanguagesBuffer))] PWSTR pwszLanguagesBuffer, ref uint pcchLanguagesBuffer);
     
     // https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getvcpfeatureandvcpfeaturereply
     [LibraryImport("dxva2", SetLastError = true)]
@@ -6901,6 +6966,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HANDLE LoadImageW(HINSTANCE hInst, PWSTR name, GDI_IMAGE_TYPE type, int cx, int cy, IMAGE_FLAGS fuLoad);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-loadkeyboardlayoutw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HKL LoadKeyboardLayoutW(PWSTR pwszKLID, ACTIVATE_KEYBOARD_LAYOUT_FLAGS Flags);
+    
     // https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryexw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -6955,6 +7027,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL LogicalToPhysicalPointForPerMonitorDPI(HWND hWnd, ref POINT lpPoint);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-mapvirtualkeyexw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint MapVirtualKeyExW(uint uCode, MAP_VIRTUAL_KEY_TYPE uMapType, HKL dwhkl);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-mapvirtualkeyw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
@@ -10406,6 +10484,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT SHGetPropertyStoreForWindow(HWND hwnd, in Guid riid, out nint /* void */ ppv);
     
+    // https://learn.microsoft.com/windows/win32/api/shlwapi/nf-shlwapi-shloadindirectstring
+    [LibraryImport("SHLWAPI")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial HRESULT SHLoadIndirectString(PWSTR pszSource, [MarshalUsing(CountElementName = nameof(cchOutBuf))] PWSTR pszOutBuf, uint cchOutBuf, nint /* optional void** */ ppvReserved);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-showwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -10615,6 +10699,18 @@ public static partial class Functions
     [LibraryImport("WINMM")]
     [PreserveSig]
     public static partial uint timeSetEvent(uint uDelay, uint uResolution, LPTIMECALLBACK fptc, nuint dwUser, uint fuEvent);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-tounicode
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int ToUnicode(uint wVirtKey, uint wScanCode, nint /* optional byte* */ lpKeyState, [MarshalUsing(CountElementName = nameof(cchBuff))] PWSTR pwszBuff, int cchBuff, uint wFlags);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-tounicodeex
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int ToUnicodeEx(uint wVirtKey, uint wScanCode, nint /* byte array */ lpKeyState, [MarshalUsing(CountElementName = nameof(cchBuff))] PWSTR pwszBuff, int cchBuff, uint wFlags, HKL dwhkl);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-trackmouseevent
     [LibraryImport("USER32", SetLastError = true)]

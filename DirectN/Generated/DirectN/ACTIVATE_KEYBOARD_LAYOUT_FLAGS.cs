@@ -1,0 +1,14 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum ACTIVATE_KEYBOARD_LAYOUT_FLAGS : uint
+{
+    KLF_REORDER = 8,
+    KLF_RESET = 1073741824,
+    KLF_SETFORPROCESS = 256,
+    KLF_SHIFTLOCK = 65536,
+    KLF_ACTIVATE = 1,
+    KLF_NOTELLSHELL = 128,
+    KLF_REPLACELANG = 16,
+    KLF_SUBSTITUTE_OK = 2,
+}
