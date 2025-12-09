@@ -1,0 +1,12 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum THREAD_ERROR_MODE : uint
+{
+    SEM_ALL_ERRORS = 0,
+    SEM_FAILCRITICALERRORS = 1,
+    SEM_NOGPFAULTERRORBOX = 2,
+    SEM_NOOPENFILEERRORBOX = 32768,
+    SEM_NOALIGNMENTFAULTEXCEPT = 4,
+}

@@ -3820,6 +3820,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetErrorInfo(uint dwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorInfo>))] out IErrorInfo pperrinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-geterrormode
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial uint GetErrorMode();
+    
     // https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesexw
     [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -4329,6 +4335,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial DPI_HOSTING_BEHAVIOR GetThreadDpiHostingBehavior();
+    
+    // https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-getthreaderrormode
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    public static partial uint GetThreadErrorMode();
     
     // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getthreadid
     [LibraryImport("KERNEL32", SetLastError = true)]
@@ -10125,6 +10137,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT SetErrorInfo(uint dwReserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IErrorInfo?>))] IErrorInfo? perrinfo);
     
+    // https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-seterrormode
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial THREAD_ERROR_MODE SetErrorMode(THREAD_ERROR_MODE uMode);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setfocus
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -10317,6 +10335,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows10.0.17134")]
     [PreserveSig]
     public static partial DPI_HOSTING_BEHAVIOR SetThreadDpiHostingBehavior(DPI_HOSTING_BEHAVIOR value);
+    
+    // https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-setthreaderrormode
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.1")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetThreadErrorMode(THREAD_ERROR_MODE dwNewMode, nint /* optional THREAD_ERROR_MODE* */ lpOldMode);
     
     // https://learn.microsoft.com/windows/win32/api/winnls/nf-winnls-setthreaduilanguage
     [LibraryImport("KERNEL32", SetLastError = true)]
