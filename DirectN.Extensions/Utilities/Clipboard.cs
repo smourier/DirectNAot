@@ -26,10 +26,10 @@ public static class Clipboard
     public static void Empty() => WithClipboard(Functions.EmptyClipboard);
     public static void Flush() => WithClipboard(Functions.OleFlushClipboard);
 
-    public static uint RegisterFormat(string format)
+    public static ushort RegisterFormat(string format)
     {
         ArgumentNullException.ThrowIfNull(format);
-        return Functions.RegisterClipboardFormatW(PWSTR.From(format));
+        return (ushort)Functions.RegisterClipboardFormatW(PWSTR.From(format));
     }
 
     public static string GetFormatName(uint format)
@@ -153,5 +153,142 @@ public static class Clipboard
         {
             Functions.CloseClipboard();
         }
+    }
+
+    public unsafe static HRESULT TryGet<T>(this IDataObject dataObject, ushort format, out T defaultValue) where T : unmanaged
+    {
+        if (dataObject is null)
+        {
+            defaultValue = default;
+            return Constants.E_POINTER;
+        }
+
+        var hr = dataObject.GetData(new FORMATETC
+        {
+            cfFormat = format,
+            dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
+            lindex = -1,
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+        }, out var medium);
+        if (hr.IsError)
+        {
+            defaultValue = default;
+            return hr;
+        }
+
+        try
+        {
+            if (medium.tymed != (uint)TYMED.TYMED_HGLOBAL || medium.u.hGlobal == 0)
+            {
+                defaultValue = default;
+                return Constants.E_FAIL;
+            }
+
+            var ptr = Functions.GlobalLock(medium.u.hGlobal);
+            if (ptr == 0)
+            {
+                defaultValue = default;
+                return Constants.E_FAIL;
+            }
+
+            defaultValue = *(T*)ptr;
+            Functions.GlobalUnlock(medium.u.hGlobal);
+            return Constants.S_OK;
+        }
+        finally
+        {
+            Functions.ReleaseStgMedium(ref medium);
+        }
+    }
+
+    public unsafe static T Get<T>(this IDataObject dataObject, ushort format, T defaultValue) where T : unmanaged
+    {
+        var hr = TryGet<T>(dataObject, format, out var value);
+        if (hr.IsError)
+            return defaultValue;
+
+        return value;
+    }
+
+    public unsafe static HRESULT Set<T>(this IDataObject dataObject, ushort format, T value, bool throwOnError = true) where T : unmanaged
+    {
+        var ptr = Marshal.AllocHGlobal(sizeof(T));
+        *(T*)ptr = value;
+
+        return dataObject.SetData(new FORMATETC
+        {
+            cfFormat = format,
+            dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
+            lindex = -1,
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+        }, new STGMEDIUM
+        {
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+            u = new STGMEDIUM._u_e__Union { hGlobal = ptr },
+        }, true).ThrowOnError(throwOnError);
+    }
+
+    public unsafe static HRESULT TryGet(this IDataObject dataObject, ushort format, out Span<byte> defaultValue)
+    {
+        if (dataObject is null)
+        {
+            defaultValue = default;
+            return Constants.E_POINTER;
+        }
+
+        var hr = dataObject.GetData(new FORMATETC
+        {
+            cfFormat = format,
+            dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
+            lindex = -1,
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+        }, out var medium);
+        if (hr.IsError)
+        {
+            defaultValue = default;
+            return hr;
+        }
+        try
+        {
+            if (medium.tymed != (uint)TYMED.TYMED_HGLOBAL || medium.u.hGlobal == 0)
+            {
+                defaultValue = default;
+                return Constants.E_FAIL;
+            }
+
+            var ptr = Functions.GlobalLock(medium.u.hGlobal);
+            if (ptr == 0)
+            {
+                defaultValue = default;
+                return Constants.E_FAIL;
+            }
+
+            var size = Functions.GlobalSize(medium.u.hGlobal);
+            defaultValue = new Span<byte>(ptr.ToPointer(), (int)size);
+            Functions.GlobalUnlock(medium.u.hGlobal);
+            return Constants.S_OK;
+        }
+        finally
+        {
+            Functions.ReleaseStgMedium(ref medium);
+        }
+    }
+
+    public unsafe static HRESULT Set(this IDataObject dataObject, ushort format, ReadOnlySpan<byte> bytes, bool throwOnError = true)
+    {
+        var ptr = Marshal.AllocHGlobal(bytes.Length);
+        bytes.CopyTo(new Span<byte>(ptr.ToPointer(), bytes.Length));
+
+        return dataObject.SetData(new FORMATETC
+        {
+            cfFormat = format,
+            dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
+            lindex = -1,
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+        }, new STGMEDIUM
+        {
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+            u = new STGMEDIUM._u_e__Union { hGlobal = ptr },
+        }, true).ThrowOnError(throwOnError);
     }
 }

@@ -59,4 +59,25 @@ public static class SystemUtilities
         }
     }
 
+    public static string LoadIndirectString(string source)
+    {
+        ArgumentNullException.ThrowIfNull(source);
+        if (source.Length == 0 || source[0] != '@')
+            return source;
+
+        var size = 256;
+        do
+        {
+            using var p = new AllocPwstr(size);
+            var hr = Functions.SHLoadIndirectString(PWSTR.From(source), p, p.SizeInChars, IntPtr.Zero);
+            if (hr.IsOk)
+                return p.ToString() ?? source;
+
+            if (hr != Constants.E_NOT_SUFFICIENT_BUFFER)
+                return source;
+
+            size *= 2;
+        }
+        while (true);
+    }
 }
