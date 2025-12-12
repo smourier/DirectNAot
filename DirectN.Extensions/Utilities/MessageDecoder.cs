@@ -300,6 +300,7 @@ public static class MessageDecoder
         WM_PRINT = 0x0317,
         WM_PRINTCLIENT = 0x0318,
         WM_THEMECHANGED = 0x031A,
+        WM_CLIPBOARDUPDATE = 0x031D,
         WM_HANDHELDFIRST = 0x0358,
         WM_GETTITLEBARINFOEX = 0x033F,
         WM_HANDHELDLAST = 0x035F,

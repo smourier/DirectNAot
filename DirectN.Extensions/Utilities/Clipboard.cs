@@ -212,6 +212,9 @@ public static class Clipboard
 
     public unsafe static HRESULT Set<T>(this IDataObject dataObject, ushort format, T value, bool throwOnError = true) where T : unmanaged
     {
+        if (dataObject is null)
+            return Constants.E_POINTER;
+
         var ptr = Marshal.AllocHGlobal(sizeof(T));
         *(T*)ptr = value;
 
@@ -276,6 +279,9 @@ public static class Clipboard
 
     public unsafe static HRESULT Set(this IDataObject dataObject, ushort format, ReadOnlySpan<byte> bytes, bool throwOnError = true)
     {
+        if (dataObject is null)
+            return Constants.E_POINTER;
+
         var ptr = Marshal.AllocHGlobal(bytes.Length);
         bytes.CopyTo(new Span<byte>(ptr.ToPointer(), bytes.Length));
 
@@ -289,6 +295,29 @@ public static class Clipboard
         {
             tymed = (uint)TYMED.TYMED_HGLOBAL,
             u = new STGMEDIUM._u_e__Union { hGlobal = ptr },
+        }, true).ThrowOnError(throwOnError);
+    }
+
+    public static bool Has(this IDataObject dataObject, ushort format)
+    {
+        if (dataObject is null)
+            return false;
+
+        return dataObject.QueryGetData(new FORMATETC { cfFormat = format, tymed = (uint)TYMED.TYMED_HGLOBAL }).IsOk;
+    }
+
+    public unsafe static HRESULT Set(this IDataObject dataObject, ushort format, bool throwOnError = true)
+    {
+        if (dataObject is null)
+            return Constants.E_POINTER;
+
+        return dataObject.SetData(new FORMATETC
+        {
+            cfFormat = format,
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
+        }, new STGMEDIUM
+        {
+            tymed = (uint)TYMED.TYMED_HGLOBAL,
         }, true).ThrowOnError(throwOnError);
     }
 }

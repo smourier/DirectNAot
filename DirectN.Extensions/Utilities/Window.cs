@@ -780,14 +780,17 @@ public class Window : IDisposable, IEquatable<Window>
     ~Window() { Dispose(disposing: false); }
     public void Dispose() { Dispose(disposing: true); GC.SuppressFinalize(this); }
 
-    public static Window? FromHandle(nint handle, bool tryWindowType = true)
+    public unsafe static Window? FromHandle(nint handle, bool tryWindowType = true)
     {
         if (handle == 0)
             return null;
 
-        // try a window created by us
+        // try a window created by us in the same process (otherwise GC handle would be invalid)
         var hwnd = new HWND { Value = handle };
-        if (tryWindowType)
+
+        int processId;
+        _ = Functions.GetWindowThreadProcessId(hwnd, (nint)(&processId));
+        if (processId == Environment.ProcessId && tryWindowType)
         {
             var windowPtr = Functions.GetPropW(hwnd, PWSTR.From(_handlePropName));
             if (windowPtr.Value != 0)
