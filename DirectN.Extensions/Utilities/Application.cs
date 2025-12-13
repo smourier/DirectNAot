@@ -388,7 +388,6 @@ public class Application : IDisposable
         if (errors.Length == 0)
             return false;
 
-        TraceError("Hwnd:" + hwnd.Value.ToHex() + Environment.NewLine + string.Join(Environment.NewLine, _errors));
         IsFatalErrorShowing = true;
         try
         {
