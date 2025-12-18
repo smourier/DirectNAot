@@ -2,6 +2,7 @@
 
 public class Application : IDisposable
 {
+    public event CancelEventHandler? ApplicationExiting;
     public event EventHandler? ApplicationExit;
     private bool _disposedValue;
 
@@ -198,12 +199,25 @@ public class Application : IDisposable
         return true;
     }
 
+    protected virtual void OnApplicationExiting(object sender, CancelEventArgs e) => ApplicationExiting?.Invoke(sender, e);
     protected virtual void OnApplicationExit(object sender, EventArgs e) => ApplicationExit?.Invoke(sender, e);
-    public virtual void Exit()
+    public virtual bool Exit()
     {
-        ThrowIfNotRunningAsUIThread();
+        var ce = new CancelEventArgs();
+        OnApplicationExiting(this, ce);
+        if (ce.Cancel)
+            return false;
+
+        if (!IsRunningAsUIThread)
+        {
+            Functions.PostThreadMessageW(ThreadId, MessageDecoder.WM_QUIT, 0, 0);
+        }
+        else
+        {
+            Functions.PostQuitMessage(0);
+        }
         OnApplicationExit(this, EventArgs.Empty);
-        Functions.PostQuitMessage(0);
+        return true;
     }
 
     protected virtual void Dispose(bool disposing)
@@ -237,6 +251,7 @@ public class Application : IDisposable
 
     public static event EventHandler<ValueEventArgs<Window>>? WindowRemoved;
     public static event EventHandler<ValueEventArgs<Window>>? WindowAdded;
+    public static event CancelEventHandler? AllApplicationsExiting;
     public static event EventHandler? AllApplicationsExit;
     public static event EventHandler<CancelEventArgs>? ShowingFatalError;
 
@@ -299,20 +314,32 @@ public class Application : IDisposable
         return app;
     }
 
-    public static void AllExit()
+    public static bool AllExit()
     {
+        var ce = new CancelEventArgs();
+        AllApplicationsExiting?.Invoke(null, ce);
+        if (ce.Cancel)
+            return false;
+
         var apps = Interlocked.Exchange(ref _applications, null);
         if (apps == null)
-            return;
+            return true;
 
+        var success = true;
         foreach (var kv in apps)
         {
             // call from one thread
-            kv.Value.OnApplicationExit(kv.Value, EventArgs.Empty);
-            Functions.PostThreadMessageW(kv.Value.ThreadId, MessageDecoder.WM_QUIT, IntPtr.Zero, IntPtr.Zero);
+            if (!kv.Value.Exit())
+            {
+                success = false;
+            }
         }
 
-        AllApplicationsExit?.Invoke(null, EventArgs.Empty);
+        if (success)
+        {
+            AllApplicationsExit?.Invoke(null, EventArgs.Empty);
+        }
+        return success;
     }
 
     public static IReadOnlyList<Exception> GetErrors(bool clear = false)

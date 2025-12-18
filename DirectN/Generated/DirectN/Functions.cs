@@ -3470,6 +3470,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial void FONTOBJ_vGetInfo(ref FONTOBJ pfo, uint cjSize, ref FONTINFO pfi);
     
+    // https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-formatmessagew
+    [LibraryImport("KERNEL32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    public static partial uint FormatMessageW(FORMAT_MESSAGE_OPTIONS dwFlags, nint /* optional void* */ lpSource, uint dwMessageId, uint dwLanguageId, PWSTR lpBuffer, uint nSize, nint /* optional sbyte** */ Arguments);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-framerect
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]

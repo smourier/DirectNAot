@@ -32,8 +32,31 @@ public partial struct PWSTR : IValueGet<string?>, IValueGet<nint> // not disposa
         }
     }
 
+    public static void Dispose(ref PWSTR pwstr)
+    {
+        var value = Interlocked.Exchange(ref pwstr.Value, 0);
+        if (value != 0)
+        {
+            Marshal.FreeCoTaskMem(value);
+        }
+    }
+
     public override readonly string? ToString() => Marshal.PtrToStringUni(Value);
     public readonly string? ToString(int len) => Marshal.PtrToStringUni(Value, len);
+
+    public string? ToStringAndDispose()
+    {
+        var str = ToString();
+        Dispose(ref this);
+        return str;
+    }
+
+    public string? ToStringAndDispose(int len)
+    {
+        var str = ToString(len);
+        Dispose(ref this);
+        return str;
+    }
 
     readonly string? IValueGet<string?>.GetValue() => ToString();
     readonly nint IValueGet<nint>.GetValue() => Value;

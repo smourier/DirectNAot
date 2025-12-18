@@ -53,6 +53,13 @@ public partial struct HSTRING : IValueGet<string?>, IValueGet<nint>
 
     public override readonly string? ToString() => GetString(this);
 
+    public string? ToStringAndDispose()
+    {
+        var str = ToString();
+        Dispose(ref this);
+        return str;
+    }
+
     readonly string? IValueGet<string?>.GetValue() => ToString();
     readonly nint IValueGet<nint>.GetValue() => Value;
     readonly object? IValueGet.GetValue() => ToString();

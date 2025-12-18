@@ -326,6 +326,7 @@
     "FillRect",
     "FillRgn",
     "FindWindowW",
+    "FormatMessageW",
     "FrameRect",
     "FrameRgn",
     "FreeConsole",

@@ -23,7 +23,14 @@ public partial struct BSTR : IValueGet<string?>, IValueGet<nint> // not disposab
         }
     }
 
-    public override readonly string? ToString() => Marshal.PtrToStringBSTR(Value);
+    public override readonly string? ToString() => Value == 0 ? null : Marshal.PtrToStringBSTR(Value);
+
+    public string? ToStringAndDispose()
+    {
+        var str = ToString();
+        Dispose(ref this);
+        return str;
+    }
 
     readonly string? IValueGet<string?>.GetValue() => ToString();
     readonly nint IValueGet<nint>.GetValue() => Value;

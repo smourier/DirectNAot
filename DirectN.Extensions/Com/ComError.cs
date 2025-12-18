@@ -17,7 +17,8 @@ public static class ComError
         Functions.SetErrorInfo(0, ei.Object).ThrowOnError();
     }
 
-    public static Exception? GetError()
+    public static Exception? GetError(HRESULT errorCode) => GetError((uint)errorCode.Value);
+    public static Exception? GetError(uint errorCode = 0x80004005)
     {
         Functions.GetErrorInfo(0, out var infoObj);
         if (infoObj == null)
@@ -51,11 +52,11 @@ public static class ComError
         COMException error;
         if (string.IsNullOrWhiteSpace(descString))
         {
-            error = new COMException();
+            error = new COMException(null, (int)errorCode);
         }
         else
         {
-            error = new COMException(descString);
+            error = new COMException(descString, (int)errorCode);
         }
 
         if (!string.IsNullOrWhiteSpace(helpString))
