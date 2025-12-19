@@ -155,11 +155,14 @@ public static class Clipboard
         }
     }
 
-    public unsafe static HRESULT TryGet<T>(this IDataObject dataObject, ushort format, out T defaultValue) where T : unmanaged
+    public unsafe static HRESULT TryGet<T>(this IDataObject? dataObject, ushort format, out T value) where T : unmanaged
+        => TryGet<T>(dataObject, format, -1, out value);
+
+    public unsafe static HRESULT TryGet<T>(this IDataObject? dataObject, ushort format, int index, out T value) where T : unmanaged
     {
         if (dataObject is null)
         {
-            defaultValue = default;
+            value = default;
             return Constants.E_POINTER;
         }
 
@@ -167,31 +170,68 @@ public static class Clipboard
         {
             cfFormat = format,
             dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
-            lindex = -1,
+            lindex = index,
             tymed = (uint)TYMED.TYMED_HGLOBAL,
         }, out var medium);
         if (hr.IsError)
         {
-            defaultValue = default;
+            value = default;
             return hr;
         }
 
         try
         {
+            if (medium.tymed == (uint)TYMED.TYMED_NULL)
+            {
+                value = default;
+                return Constants.S_OK;
+            }
+
+            if (medium.tymed == (uint)TYMED.TYMED_ISTREAM)
+            {
+                if (medium.u.pstm == 0)
+                {
+                    value = default;
+                    return Constants.E_FAIL;
+                }
+
+                using var strm = ComObject.FromPointer<IStream>(medium.u.pstm);
+                if (strm is null)
+                {
+                    value = default;
+                    return Constants.E_FAIL;
+                }
+
+                using var mis = new StreamOnIStream(strm.Object);
+                var buffer = new byte[sizeof(T)];
+                var read = mis.Read(buffer, 0, buffer.Length);
+                if (read != buffer.Length)
+                {
+                    value = default;
+                    return Constants.E_FAIL;
+                }
+
+                fixed (byte* pBuffer = buffer)
+                {
+                    value = *(T*)pBuffer;
+                }
+                return Constants.S_OK;
+            }
+
             if (medium.tymed != (uint)TYMED.TYMED_HGLOBAL || medium.u.hGlobal == 0)
             {
-                defaultValue = default;
+                value = default;
                 return Constants.E_FAIL;
             }
 
             var ptr = Functions.GlobalLock(medium.u.hGlobal);
             if (ptr == 0)
             {
-                defaultValue = default;
+                value = default;
                 return Constants.E_FAIL;
             }
 
-            defaultValue = *(T*)ptr;
+            value = *(T*)ptr;
             Functions.GlobalUnlock(medium.u.hGlobal);
             return Constants.S_OK;
         }
@@ -201,7 +241,7 @@ public static class Clipboard
         }
     }
 
-    public unsafe static T Get<T>(this IDataObject dataObject, ushort format, T defaultValue) where T : unmanaged
+    public unsafe static T Get<T>(this IDataObject? dataObject, ushort format, T defaultValue) where T : unmanaged
     {
         var hr = TryGet<T>(dataObject, format, out var value);
         if (hr.IsError)
@@ -210,7 +250,7 @@ public static class Clipboard
         return value;
     }
 
-    public unsafe static HRESULT Set<T>(this IDataObject dataObject, ushort format, T value, bool throwOnError = true) where T : unmanaged
+    public unsafe static HRESULT Set<T>(this IDataObject dataObject, ushort format, T value, int index = -1, bool throwOnError = true) where T : unmanaged
     {
         if (dataObject is null)
             return Constants.E_POINTER;
@@ -222,7 +262,7 @@ public static class Clipboard
         {
             cfFormat = format,
             dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
-            lindex = -1,
+            lindex = index,
             tymed = (uint)TYMED.TYMED_HGLOBAL,
         }, new STGMEDIUM
         {
@@ -231,11 +271,14 @@ public static class Clipboard
         }, true).ThrowOnError(throwOnError);
     }
 
-    public unsafe static HRESULT TryGet(this IDataObject dataObject, ushort format, out Span<byte> defaultValue)
+    public static HRESULT TryGet(this IDataObject? dataObject, ushort format, out byte[]? value) =>
+        TryGet(dataObject, format, -1, out value);
+
+    public unsafe static HRESULT TryGet(this IDataObject? dataObject, ushort format, int index, out byte[]? value)
     {
         if (dataObject is null)
         {
-            defaultValue = default;
+            value = default;
             return Constants.E_POINTER;
         }
 
@@ -243,31 +286,63 @@ public static class Clipboard
         {
             cfFormat = format,
             dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
-            lindex = -1,
-            tymed = (uint)TYMED.TYMED_HGLOBAL,
+            lindex = index,
+            tymed = (uint)(TYMED.TYMED_HGLOBAL | TYMED.TYMED_ISTREAM),
         }, out var medium);
         if (hr.IsError)
         {
-            defaultValue = default;
+            value = null;
             return hr;
         }
+
         try
         {
+            if (medium.tymed == (uint)TYMED.TYMED_NULL)
+            {
+                value = null;
+                return Constants.S_OK;
+            }
+
+            if (medium.tymed == (uint)TYMED.TYMED_ISTREAM)
+            {
+                if (medium.u.pstm == 0)
+                {
+                    value = null;
+                    return Constants.E_FAIL;
+                }
+
+                using var strm = ComObject.FromPointer<IStream>(medium.u.pstm);
+                if (strm is null)
+                {
+                    value = null;
+                    return Constants.E_FAIL;
+                }
+
+                using var mis = new StreamOnIStream(strm.Object);
+                using var ms = new MemoryStream();
+                mis.CopyTo(ms);
+                value = ms.ToArray();
+                Functions.ReleaseStgMedium(ref medium);
+                return Constants.S_OK;
+            }
+
             if (medium.tymed != (uint)TYMED.TYMED_HGLOBAL || medium.u.hGlobal == 0)
             {
-                defaultValue = default;
+                value = default;
+                Functions.ReleaseStgMedium(ref medium);
                 return Constants.E_FAIL;
             }
 
             var ptr = Functions.GlobalLock(medium.u.hGlobal);
             if (ptr == 0)
             {
-                defaultValue = default;
+                value = null;
                 return Constants.E_FAIL;
             }
 
             var size = Functions.GlobalSize(medium.u.hGlobal);
-            defaultValue = new Span<byte>(ptr.ToPointer(), (int)size);
+            value = new byte[size];
+            Marshal.Copy(ptr, value, 0, (int)size);
             Functions.GlobalUnlock(medium.u.hGlobal);
             return Constants.S_OK;
         }
@@ -277,7 +352,70 @@ public static class Clipboard
         }
     }
 
-    public unsafe static HRESULT Set(this IDataObject dataObject, ushort format, ReadOnlySpan<byte> bytes, bool throwOnError = true)
+    public static HRESULT TryGet(this IDataObject? dataObject, ushort format, out Stream? stream) =>
+        TryGet(dataObject, format, -1, out stream);
+
+    public unsafe static HRESULT TryGet(this IDataObject? dataObject, ushort format, int index, out Stream? stream)
+    {
+        if (dataObject is null)
+        {
+            stream = null;
+            return Constants.E_POINTER;
+        }
+
+        var hr = dataObject.GetData(new FORMATETC
+        {
+            cfFormat = format,
+            dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
+            lindex = index,
+            tymed = (uint)(TYMED.TYMED_HGLOBAL | TYMED.TYMED_ISTREAM),
+        }, out var medium);
+        if (hr.IsError)
+        {
+            stream = null;
+            return hr;
+        }
+
+        if (medium.tymed == (uint)TYMED.TYMED_NULL)
+        {
+            stream = Stream.Null;
+            Functions.ReleaseStgMedium(ref medium);
+            return Constants.S_OK;
+        }
+
+        if (medium.tymed == (uint)TYMED.TYMED_ISTREAM)
+        {
+            if (medium.u.pstm == 0)
+            {
+                stream = null;
+                Functions.ReleaseStgMedium(ref medium);
+                return Constants.E_FAIL;
+            }
+
+            var strm = ComObject.FromPointer<IStream>(medium.u.pstm);
+            if (strm is null)
+            {
+                stream = null;
+                Functions.ReleaseStgMedium(ref medium);
+                return Constants.E_FAIL;
+            }
+
+            stream = new StreamOnIStream(strm.Object, true);
+            return Constants.S_OK;
+        }
+
+        if (medium.tymed != (uint)TYMED.TYMED_HGLOBAL || medium.u.hGlobal == 0)
+        {
+            stream = null;
+            Functions.ReleaseStgMedium(ref medium);
+            return Constants.E_FAIL;
+        }
+
+        stream = new LockedHGLOBALBuffer(medium.u.hGlobal).GetUnmanagedMemoryStream();
+        return Constants.S_OK;
+    }
+
+    public unsafe static HRESULT Set(this IDataObject dataObject, ushort format, ReadOnlySpan<byte> bytes, int index = -1, bool throwOnError = true)
     {
         if (dataObject is null)
             return Constants.E_POINTER;
@@ -289,7 +427,7 @@ public static class Clipboard
         {
             cfFormat = format,
             dwAspect = (uint)DVASPECT.DVASPECT_CONTENT,
-            lindex = -1,
+            lindex = index,
             tymed = (uint)TYMED.TYMED_HGLOBAL,
         }, new STGMEDIUM
         {
@@ -298,7 +436,7 @@ public static class Clipboard
         }, true).ThrowOnError(throwOnError);
     }
 
-    public static bool Has(this IDataObject dataObject, ushort format)
+    public static bool Has(this IDataObject? dataObject, ushort format)
     {
         if (dataObject is null)
             return false;
