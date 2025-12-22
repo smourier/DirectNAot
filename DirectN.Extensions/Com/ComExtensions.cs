@@ -47,6 +47,23 @@ public static class ComExtensions
         comObject.Dispose();
     }
 
+    public static HRESULT QueryInterface<T>(this IComObject comObject, out nint ppvObject) => QueryInterface(comObject, typeof(T).GUID, CreateComInterfaceFlags.None, out ppvObject);
+    public static HRESULT QueryInterface<T>(this IComObject comObject, CreateComInterfaceFlags flags, out nint ppvObject) => QueryInterface(comObject, typeof(T).GUID, flags, out ppvObject);
+    public static HRESULT QueryInterface(this IComObject comObject, Guid iid, out nint ppvObject) => QueryInterface(comObject, iid, CreateComInterfaceFlags.None, out ppvObject);
+    public static HRESULT QueryInterface(this IComObject comObject, Guid iid, CreateComInterfaceFlags flags, out nint ppvObject)
+    {
+        ArgumentNullException.ThrowIfNull(comObject);
+        var unk = ComObject.GetOrCreateComInstance(comObject, iid, flags, throwOnError: false);
+        if (unk == 0)
+        {
+            ppvObject = 0;
+            return Constants.E_NOINTERFACE;
+        }
+
+        ppvObject = unk;
+        return Constants.S_OK;
+    }
+
     public static IComObject<T>? As<T>(this IComObject? comObject, bool releaseOnDispose = false, bool throwOnError = false)
     {
         if (comObject == null)
