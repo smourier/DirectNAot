@@ -3572,6 +3572,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial nuint GetClassLongPtrW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclasslongw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint GetClassLongW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclassnamew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -10031,6 +10037,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial nuint SetClassLongPtrW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex, nint dwNewLong);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclasslongw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint SetClassLongW(HWND hWnd, GET_CLASS_LONG_INDEX nIndex, int dwNewLong);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboarddata
     [LibraryImport("USER32", SetLastError = true)]
