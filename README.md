@@ -1,5 +1,7 @@
 # DirectN AOT
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at 64-bit targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 nor with .NET Framework.
+100% C# interop code for .NET Core 9+ : DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI, Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
+
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN). Aimed at 64-bit (ARM, AMD) targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 nor with .NET Framework.
 
 **.NET 8 is not supported anymore as it has a dreadful bug https://github.com/dotnet/runtime/issues/96901 the causes crashes** (can someone explain to me why the fix has not been ported back to .NET 8? as far as I know).
 
