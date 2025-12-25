@@ -6839,6 +6839,26 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL IsWindowVisible(HWND hWnd);
     
+    // https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64guestmachinesupported
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows10.0.16299")]
+    [PreserveSig]
+    public static partial HRESULT IsWow64GuestMachineSupported(IMAGE_FILE_MACHINE WowGuestMachine, out BOOL MachineIsSupported);
+    
+    // https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64process
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL IsWow64Process(HANDLE hProcess, out BOOL Wow64Process);
+    
+    // https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64process2
+    [LibraryImport("KERNEL32", SetLastError = true)]
+    [SupportedOSPlatform("windows10.0.10586")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL IsWow64Process2(HANDLE hProcess, out IMAGE_FILE_MACHINE pProcessMachine, nint /* optional IMAGE_FILE_MACHINE* */ pNativeMachine);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iszoomed
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
