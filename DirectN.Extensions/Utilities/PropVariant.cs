@@ -84,6 +84,28 @@ public sealed class PropVariant : IDisposable
         var details = System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(valueType.TypeHandle);
         if (details != null)
         {
+            if (type == VARENUM.VT_STREAM)
+            {
+                var strm = ComObject.GetOrCreateComInstance<IDispatch>(value);
+                if (strm != 0)
+                {
+                    _inner.Anonymous.Anonymous.Anonymous.pdispVal = strm;
+                    _inner.Anonymous.Anonymous.vt = VARENUM.VT_STREAM;
+                    return;
+                }
+            }
+
+            if (type == VARENUM.VT_STORAGE)
+            {
+                var storage = ComObject.GetOrCreateComInstance<IStorage>(value);
+                if (storage != 0)
+                {
+                    _inner.Anonymous.Anonymous.Anonymous.pdispVal = storage;
+                    _inner.Anonymous.Anonymous.vt = VARENUM.VT_STORAGE;
+                    return;
+                }
+            }
+
             // favor IDispatch for late-bound clients
             nint unk;
             if (type != VARENUM.VT_UNKNOWN)
@@ -316,6 +338,8 @@ public sealed class PropVariant : IDisposable
 
                 case VARENUM.VT_UNKNOWN:
                 case VARENUM.VT_DISPATCH:
+                case VARENUM.VT_STREAM:
+                case VARENUM.VT_STORAGE:
                     if (_inner.Anonymous.Anonymous.Anonymous.punkVal == 0)
                         return null;
 
@@ -524,6 +548,8 @@ public sealed class PropVariant : IDisposable
 
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
                 *(nint*)variant->Anonymous.Anonymous.Anonymous.ppunkVal = _inner.Anonymous.Anonymous.Anonymous.punkVal;
                 break;
 
@@ -850,6 +876,8 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_FILETIME:
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
                 var arrayType = FromTypeArray(vt);
                 var et = FromType(vt);
                 var values = Array.CreateInstanceFromArrayType(arrayType, (int)_inner.Anonymous.Anonymous.Anonymous.cai.cElems);
@@ -980,6 +1008,8 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_LPWSTR:
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
                 return (uint)nint.Size;
 
             default:
@@ -1046,6 +1076,8 @@ public sealed class PropVariant : IDisposable
 
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
                 return typeof(object);
 
             case VARENUM.VT_CY:
@@ -1116,6 +1148,8 @@ public sealed class PropVariant : IDisposable
 
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
                 return typeof(object[]);
 
             case VARENUM.VT_CY:
@@ -1221,6 +1255,26 @@ public sealed class PropVariant : IDisposable
         var details = System.Runtime.InteropServices.Marshalling.StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetComExposedTypeDetails(type.TypeHandle);
         if (details == null)
             return null;
+
+        if (preferred == VARENUM.VT_STREAM)
+        {
+            var strm = ComObject.GetOrCreateComInstance<IDispatch>(value);
+            if (strm != 0)
+            {
+                Marshal.Release(strm);
+                return VARENUM.VT_STREAM;
+            }
+        }
+
+        if (preferred == VARENUM.VT_STORAGE)
+        {
+            var storage = ComObject.GetOrCreateComInstance<IStorage>(value);
+            if (storage != 0)
+            {
+                Marshal.Release(storage);
+                return VARENUM.VT_STORAGE;
+            }
+        }
 
         // favor IDispatch for late-bound clients
         nint unk;
