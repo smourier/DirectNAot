@@ -1921,6 +1921,10 @@ public static partial class Constants
     
     public static readonly Guid CLSID_WICFormatConverterWMPhoto = new("9cb5172b-d600-46ba-ab77-77bb7e3a00d9");
     
+    public static readonly Guid CLSID_WICGainMapMetadataReader = new("3ac32daf-27b9-4af5-b0ab-d1189dcf34b3");
+    
+    public static readonly Guid CLSID_WICGainMapMetadataWriter = new("6f845268-a92e-4a02-b002-a67c362800b2");
+    
     public static readonly Guid CLSID_WICGCEMetadataReader = new("b92e345d-f52d-41f3-b562-081bc772e3b9");
     
     public static readonly Guid CLSID_WICGCEMetadataWriter = new("af95dc76-16b2-47f4-b3ea-3c31796693e7");
@@ -2687,6 +2691,10 @@ public static partial class Constants
     
     public static readonly Guid CODECAPI_AVEncVideoDisplayDimension = new("de053668-f4ec-47a9-86d0-836770f0c1d5");
     
+    public static readonly Guid CODECAPI_AVEncVideoEnableFramePsnrYuv = new("2bbcdd1d-bc47-430e-b2e8-64801b47f5f0");
+    
+    public static readonly Guid CODECAPI_AVEncVideoEnableSpatialAdaptiveQuantization = new("659cb943-15ca-448d-b99a-875619db4de4");
+    
     public static readonly Guid CODECAPI_AVEncVideoEncodeDimension = new("1074df28-7e0f-47a4-a453-cdd73870f5ce");
     
     public static readonly Guid CODECAPI_AVEncVideoEncodeFrameTypeQP = new("aa70b610-e03f-450c-ad07-07314e639ce7");
@@ -2761,6 +2769,8 @@ public static partial class Constants
     
     public static readonly Guid CODECAPI_AVEncVideoNumGOPsPerIDR = new("83bc5bdb-5b89-4521-8f66-33151c373176");
     
+    public static readonly Guid CODECAPI_AVEncVideoOutputBitsUsedMapBlockSize = new("6c2cd11a-ca3b-44bd-9a9e-93b03634c36e");
+    
     public static readonly Guid CODECAPI_AVEncVideoOutputChromaResolution = new("6097b4c9-7c1d-4e64-bfcc-9e9765318ae7");
     
     public static readonly Guid CODECAPI_AVEncVideoOutputChromaSubsampling = new("fa561c6c-7d17-44f0-83c9-32ed12e96343");
@@ -2779,6 +2789,8 @@ public static partial class Constants
     
     public static readonly Guid CODECAPI_AVEncVideoOutputFrameRateConversion = new("8c068bf4-369a-4ba3-82fd-b2518fb3396e");
     
+    public static readonly Guid CODECAPI_AVEncVideoOutputQPMapBlockSize = new("97038743-4ae3-44c3-a0f2-5bd58a4634ef");
+    
     public static readonly Guid CODECAPI_AVEncVideoOutputScanType = new("460b5576-842e-49ab-a62d-b36f7312c9db");
     
     public static readonly Guid CODECAPI_AVEncVideoPixelAspectRatio = new("3cdc718f-b3e9-4eb6-a57f-cf1f1b321b87");
@@ -2786,6 +2798,8 @@ public static partial class Constants
     public static readonly Guid CODECAPI_AVEncVideoRateControlParams = new("87d43767-7645-44ec-b438-d3322fbca29f");
     
     public static readonly Guid CODECAPI_AVEncVideoROIEnabled = new("d74f7f18-44dd-4b85-aba3-05d9f42a8280");
+    
+    public static readonly Guid CODECAPI_AVEncVideoSatdMapBlockSize = new("596f1106-8ce0-4302-af79-c4ec67aadc6d");
     
     public static readonly Guid CODECAPI_AVEncVideoSelectLayer = new("eb1084f5-6aaa-4914-bb2f-6147227f12e7");
     
@@ -18233,6 +18247,8 @@ public static partial class Constants
     
     public static readonly Guid GUID_MetadataFormatExif = new("1c3c4f9d-b84a-467d-9493-36cfbd59ea57");
     
+    public static readonly Guid GUID_MetadataFormatGainMap = new("568d3138-c446-4ec2-a7a8-59abb16d21e3");
+    
     public static readonly Guid GUID_MetadataFormatGCE = new("2a25cad8-deeb-4c69-a788-0ec2266dcafd");
     
     public static readonly Guid GUID_MetadataFormatGifComment = new("c4b6e0e0-cfb4-4ad3-ab33-9aad2355a34a");
@@ -18381,6 +18397,8 @@ public static partial class Constants
     
     public static readonly Guid GUID_WICPixelFormat24bppRGB = new("6fddc324-4e03-4bfe-b185-3d77768dc90d");
     
+    public static readonly Guid GUID_WICPixelFormat24bppRGBGain = new("a5022b24-7109-443b-9948-25b6ed8f39fd");
+    
     public static readonly Guid GUID_WICPixelFormat2bppGray = new("6fddc324-4e03-4bfe-b185-3d77768dc906");
     
     public static readonly Guid GUID_WICPixelFormat2bppIndexed = new("6fddc324-4e03-4bfe-b185-3d77768dc902");
@@ -18394,6 +18412,8 @@ public static partial class Constants
     public static readonly Guid GUID_WICPixelFormat32bppBGR101010 = new("6fddc324-4e03-4bfe-b185-3d77768dc914");
     
     public static readonly Guid GUID_WICPixelFormat32bppBGRA = new("6fddc324-4e03-4bfe-b185-3d77768dc90f");
+    
+    public static readonly Guid GUID_WICPixelFormat32bppBGRGain = new("837d6738-208a-43e0-8995-79ab74407402");
     
     public static readonly Guid GUID_WICPixelFormat32bppCMYK = new("6fddc324-4e03-4bfe-b185-3d77768dc91c");
     
@@ -19411,6 +19431,8 @@ public static partial class Constants
     
     public const uint IOCTL_FSVIDEO_WRITE_TO_FRAME_BUFFER = 3409924;
     
+    public const uint IOCTL_GET_SCALAR_MULTIPLIER_CAPS = 2297868;
+    
     public const uint IOCTL_KS_DISABLE_EVENT = 3080203;
     
     public const uint IOCTL_KS_ENABLE_EVENT = 3080199;
@@ -19452,6 +19474,8 @@ public static partial class Constants
     public const uint IOCTL_PANEL_SET_BRIGHTNESS_STATE = 2296848;
     
     public const uint IOCTL_SET_ACTIVE_COLOR_PROFILE_NAME = 2297864;
+    
+    public const uint IOCTL_SET_SCALAR_MULTIPLIER = 2297872;
     
     public const uint IOCTL_VIDEO_DISABLE_CURSOR = 2294820;
     
@@ -20270,6 +20294,8 @@ public static partial class Constants
     public static readonly Guid KSATTRIBUTEID_AUDIOLOOPBACK_TAPPOINT = new("2795a0f7-1688-44fe-bc14-bf8273992141");
     
     public static readonly Guid KSATTRIBUTEID_AUDIOSIGNALPROCESSING_MODE = new("e1f89eb5-5f46-419b-967b-ff6770b98401");
+    
+    public static readonly Guid KSATTRIBUTEID_VIDEOFORMAT_DX12 = new("fc9d87b5-0b02-438e-89b0-e241fce889ad");
     
     public const uint KSAUDDECOUTMODE_PCM_51 = 2;
     
@@ -26205,6 +26231,8 @@ public static partial class Constants
     
     public static readonly Guid MFSampleExtension_FrameCorruption = new("b4dd4a8c-0beb-44c4-8b75-b02b913b04f0");
     
+    public static readonly Guid MFSampleExtension_FramePsnrYuv = new("1c633a3d-566f-4752-833b-2907df5415e1");
+    
     public static readonly Guid MFSampleExtension_GenKeyCtx = new("188120cb-d7da-4b59-9b3e-9252fd37301c");
     
     public static readonly Guid MFSampleExtension_GenKeyFunc = new("441ca1ee-6b1f-4501-903a-de87df42f6ed");
@@ -26269,9 +26297,15 @@ public static partial class Constants
     
     public static readonly Guid MFSampleExtension_VideoDSPMode = new("c12d55cb-d7d9-476d-81f3-69117f163ea0");
     
+    public static readonly Guid MFSampleExtension_VideoEncodeBitsUsedMap = new("6894263d-e6e2-4bcc-849d-8570365f5114");
+    
     public static readonly Guid MFSampleExtension_VideoEncodePictureType = new("973704e6-cd14-483c-8f20-c9fc0928bad5");
     
     public static readonly Guid MFSampleExtension_VideoEncodeQP = new("b2efe478-f979-4c66-b95e-ee2b82c82f36");
+    
+    public static readonly Guid MFSampleExtension_VideoEncodeQPMap = new("2c68a331-b712-49ca-860a-3a1d58237d88");
+    
+    public static readonly Guid MFSampleExtension_VideoEncodeSatdMap = new("adf61d96-c2d3-4b57-a138-dde4d351eaa9");
     
     public const uint MFSEQUENCER_INVALID_ELEMENT_ID = uint.MaxValue;
     
@@ -26496,6 +26530,10 @@ public static partial class Constants
     public static readonly Guid MFVideoFormat_HEVC_HDCP = new("3cfe0fe6-05c4-47dc-9d70-4bdb2959720f");
     
     public static readonly Guid MFVideoFormat_I420 = new("30323449-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid MFVideoFormat_I422 = new("32323449-0000-0010-8000-00aa00389b71");
+    
+    public static readonly Guid MFVideoFormat_I444 = new("34343449-0000-0010-8000-00aa00389b71");
     
     public static readonly Guid MFVideoFormat_IYUV = new("56555949-0000-0010-8000-00aa00389b71");
     

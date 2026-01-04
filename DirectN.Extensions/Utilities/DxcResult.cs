@@ -41,17 +41,18 @@ public class DxcResult<T> : InterlockedComObject<T> where T : IDxcResult
     public uint OutputCount { get; }
 
     public IReadOnlyList<DXC_OUT_KIND> OutputKinds => _outputKinds;
-    public virtual DxcResultOutput? GetOutput(DXC_OUT_KIND kind)
+    public unsafe virtual DxcResultOutput? GetOutput(DXC_OUT_KIND kind)
     {
-        ComObject.Object.GetOutput(kind, typeof(IDxcBlob).GUID, out var ppv, out var name);
+        nint namePtr = 0;
+        ComObject.Object.GetOutput(kind, typeof(IDxcBlob).GUID, out var ppv, (nint)(&namePtr));
         if (ppv == 0)
             return null;
 
         string? outputName = null;
-        if (name != null)
+        using var blob = Com.ComObject.FromPointer<ID3DBlob>(namePtr);
+        if (blob != null)
         {
-            outputName = ((ID3DBlob)name).GetUnicodeStringFromBlob();
-            name.FinalRelease();
+            outputName = blob.GetUnicodeStringFromBlob();
         }
         return new DxcResultOutput(kind, new DxcBlob(Com.ComObject.FromPointer<IDxcBlob>(ppv)!), outputName);
     }

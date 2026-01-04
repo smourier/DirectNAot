@@ -7,4 +7,6 @@ public partial struct INDIRECT_DISPLAY_INFO
     public uint Flags;
     public uint NumMonitors;
     public uint DisplayAdapterTargetBase;
+    public uint DriverVersionMajor;
+    public uint DriverVersionMinor;
 }

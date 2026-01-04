@@ -15,4 +15,5 @@ public enum VIDEO_WIN32K_CALLBACKS_PARAMS_TYPE
     VideoDisableMultiPlaneOverlay = 14,
     VideoDesktopDuplicationChange = 15,
     VideoBlackScreenDiagnostics = 16,
+    VideoForceCompositionRender = 17,
 }

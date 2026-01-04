@@ -7,4 +7,7 @@ public enum WICHeifCompressionOption
     WICHeifCompressionNone = 1,
     WICHeifCompressionHEVC = 2,
     WICHeifCompressionAV1 = 3,
+    WICHeifCompressionJpegXL = 4,
+    WICHeifCompressionBrotli = 5,
+    WICHeifCompressionDeflate = 6,
 }

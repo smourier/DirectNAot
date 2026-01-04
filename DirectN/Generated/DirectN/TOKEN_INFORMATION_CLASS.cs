@@ -53,5 +53,6 @@ public enum TOKEN_INFORMATION_CLASS
     TokenIsSandboxed = 47,
     TokenIsAppSilo = 48,
     TokenLoggingInformation = 49,
-    MaxTokenInfoClass = 50,
+    TokenLearningMode = 50,
+    MaxTokenInfoClass = 51,
 }

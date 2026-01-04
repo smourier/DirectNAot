@@ -5,4 +5,6 @@ namespace DirectN;
 public enum WICHeifProperties
 {
     WICHeifOrientation = 1,
+    WICHeifLayeredImageCanvasColor = 2,
+    WICHeifLayeredImageLayerPositions = 3,
 }

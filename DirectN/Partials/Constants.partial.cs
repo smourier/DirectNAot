@@ -993,7 +993,6 @@ public static partial class Constants
     public static readonly Guid MFSampleExtension_SizeMarksEndOfSample = new("7c425150-ac6b-4176-85fd-a506f84b3787");
     public static readonly Guid MFSampleExtension_StreamTick = new("c148d859-e3b3-4be3-a046-e1dff285cb2d");
     public static readonly Guid MFSampleExtension_TIMECODE = new("fe464939-3692-47f4-abeb-228f4600f76a");
-    public static readonly Guid MFSampleExtension_VideoEncodeQPMap = new("2c68a331-b712-49ca-860a-3a1d58237d88");
     public static readonly Guid MFSampleExtension_VideoInterlace = new("8294da67-f328-4805-b551-00deb4c57a61");
     public static readonly Guid MFSAR_VOLUME_CONTEXT = new("de4e4f6b-dbed-45a8-89a5-36a9f2f9e22f");
     public static readonly Guid MFShutdownStart = new("11000065-0104-006a-0000-000000000040");
