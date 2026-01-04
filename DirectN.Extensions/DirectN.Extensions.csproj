@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -15,12 +15,12 @@
 		<PackageTags>.NET DXGI WIC DirectX Direct2D DirectWrite DirectComposition MediaFoundation WASAPI CoreAudio Interop UWP WinAppSDK</PackageTags>
 		<RepositoryUrl>https://github.com/smourier/DirectNAot</RepositoryUrl>
 		<Description>Extensions code for DirectNAOT package: Com utilities, Extension methods, Windows utilities, DXC utilities, etc.</Description>
-		<Copyright>Copyright © 2013-2025 Simon Mourier. All rights reserved.</Copyright>
+		<Copyright>Copyright © 2013-2026 Simon Mourier. All rights reserved.</Copyright>
 		<PackageProjectUrl>https://github.com/smourier/DirectNAot</PackageProjectUrl>
 		<PackageIcon>DirectN.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<Version>1.4.1</Version>
+		<Version>1.5.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

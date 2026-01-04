@@ -6,7 +6,7 @@
 
 [assembly: AssemblyTitle("DirectN.Samples.MediaPlay")]
 [assembly: AssemblyProduct("DirectN")]
-[assembly: AssemblyCopyright("Copyright (C) 2017-2025 Simon Mourier. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (C) 2017-2026 Simon Mourier. All rights reserved.")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyDescription("Sample Code")]
 [assembly: AssemblyCompany("Simon Mourier")]

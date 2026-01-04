@@ -6,7 +6,7 @@
 
 [assembly: AssemblyTitle("DirectN.Samples.MinimalD3D11")]
 [assembly: AssemblyProduct("DirectN")]
-[assembly: AssemblyCopyright("Copyright (C) 2017-2025 Simon Mourier. All rights reserved. Original code by d7samurai.")]
+[assembly: AssemblyCopyright("Copyright (C) 2017-2026 Simon Mourier. All rights reserved. Original code by d7samurai.")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyDescription("Sample Code")]
 [assembly: AssemblyCompany("Simon Mourier")]
