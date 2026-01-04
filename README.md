@@ -1,9 +1,7 @@
 # DirectN AOT
-100% C# interop code for .NET Core 9+ : DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI, Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
+100% C# interop code for .NET Core 10+ : DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI, Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
 
 This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN) (with zero reference to it). Aimed at 64-bit (ARM, AMD) targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 nor with .NET Framework.
-
-**.NET 8 is not supported anymore as it has a dreadful bug https://github.com/dotnet/runtime/issues/96901 the causes crashes** (can someone explain to me why the fix has not been ported back to .NET 8? as far as I know).
 
 It's always a work in progress although it's been fairly stable now. If you want to discuss how, where, why, just create an issue.
 
@@ -27,8 +25,8 @@ The key points that drive how code is generated and built:
     * Audio (WASAPI)
     * XPS
     * others (dependencies, etc)
-* Modern code exclusively based on .NET 8 newer source-generated `LibraryImport`, source-generated `ComWrappers, etc. Note the result is the .dll size is significantly bigger.
-* How it works and how it's made is, at its root, completely driven by .NET 8 ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
+* Modern code exclusively based on .NET Core newer source-generated `LibraryImport`, source-generated `ComWrappers, etc. Note the result is the .dll size is significantly bigger.
+* How it works and how it's made is, at its root, completely driven by .NET Core ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
 * Both DirectN and DirectN.Extensions are AOT-friendly.
 * `unsafe` usage is as limited as possible.
 * Raw pointers (like `ISomething*`) usage is not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal, including for authoring (aka implementing COM interfaces in .NET) scenarios.
@@ -44,7 +42,7 @@ https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/Di
 # Direct3D11 minimal sample
 The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
 
-It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
+It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
  
 Here is the output (believe me, it rotates):
 
@@ -55,7 +53,7 @@ Full credits go to d7Samurai: https://gist.github.com/d7samurai
 # PDF view sample
 The **DirectN.Samples.PdfView** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.PdfView](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.PdfView) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a PDF file's content.
 
-It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
+It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
 
 It uses Windows (WinRT) PDF API so it demonstrates how to include WinRT (C#/WinRT) in a DirectN AOT application. It also demonstrates how to use the [Visual Layer](https://learn.microsoft.com/en-us/windows/apps/desktop/modernize/ui/visual-layer-in-desktop-apps) (aka Direct Composition) in a Windows app without any pre-baked UI framework, only DirectN, some of its utilities and Windows.
 
@@ -64,14 +62,14 @@ It uses Windows (WinRT) PDF API so it demonstrates how to include WinRT (C#/WinR
 # Screen Capture sample
 The **DirectN.Samples.ScreenCapture** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.ScreenCapture](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.ScreenCapture) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a live (primary) screen capture
 
-It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
+It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
 
 <img width="1922" height="1076" alt="ScreenCapture sample" src="https://github.com/user-attachments/assets/15140dfb-4075-4f45-8708-812ab047f143" />
 
 # Media Play sample
 The **DirectN.Samples.MediaPlay** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.MediaPlay](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MediaPlay) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can play a video file (you can choose the source)
 
-It's dependent on DirectN AOT, .NET 9 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 13M bytes!
+It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 13M bytes!
 
 <img width="1167" height="662" alt="MediaPlay sample" src="https://github.com/user-attachments/assets/853d1e87-d23a-4114-a5e0-6b153d591aa2" />
 
@@ -84,7 +82,7 @@ Check it out at https://github.com/aelyo-softworks/Wice
 <img alt="Wice" src="https://github.com/user-attachments/assets/7dd33147-241c-4db1-a5b9-34fdfcda5a82" width="50%">
 
 # WebView2 sample
-[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 9+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
+[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 10+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
 
 <img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
 
