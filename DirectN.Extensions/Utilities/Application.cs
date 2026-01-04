@@ -415,6 +415,13 @@ public class Application : IDisposable
         if (errors.Length == 0)
             return false;
 
+        var windows = AllWindows;
+        foreach (var win in windows)
+        {
+            if (!win.CanShowFatalError())
+                return false;
+        }
+
         IsFatalErrorShowing = true;
         try
         {

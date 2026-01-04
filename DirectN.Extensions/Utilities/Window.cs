@@ -284,6 +284,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
+    protected virtual internal bool CanShowFatalError() => true;
     public HMONITOR GetMonitorHandle(MONITOR_FROM_FLAGS flags) => Functions.MonitorFromWindow(Handle, flags);
     public Monitor? GetMonitor(MONITOR_FROM_FLAGS flags = MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONULL) => Monitor.FromWindow(Handle, flags);
     public POINT ScreenToClient(POINT point) { Functions.ScreenToClient(Handle, ref point); return point; }
@@ -324,10 +325,7 @@ public class Window : IDisposable, IEquatable<Window>
         SetActive();
 
         IsInModalLoop = true;
-        if (parent != null)
-        {
-            parent.ModalWindow = this;
-        }
+        parent?.ModalWindow = this;
 
         try
         {
@@ -342,10 +340,7 @@ public class Window : IDisposable, IEquatable<Window>
         finally
         {
             IsInModalLoop = false;
-            if (parent != null)
-            {
-                parent.ModalWindow = null;
-            }
+            parent?.ModalWindow = null;
         }
     }
 
