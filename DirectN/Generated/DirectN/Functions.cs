@@ -9672,6 +9672,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT RegisterDragDrop(HWND hwnd, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDropTarget>))] IDropTarget pDropTarget);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerhotkey
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL RegisterHotKey(HWND hWnd, int id, HOT_KEY_MODIFIERS fsModifiers, uint vk);
+    
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registertypelib
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
@@ -10845,6 +10852,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UnregisterCMMW(PWSTR pMachineName, uint cmmID);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregisterhotkey
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UnregisterHotKey(HWND hWnd, int id);
+    
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-unregistertypelib
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
@@ -10948,6 +10962,18 @@ public static partial class Functions
     [LibraryImport("MSVFW32")]
     [PreserveSig]
     public static partial uint VideoForWindowsVersion();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-vkkeyscanexw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial short VkKeyScanExW(char ch, HKL dwhkl);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-vkkeyscanw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial short VkKeyScanW(char ch);
     
     // https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects
     [LibraryImport("KERNEL32", SetLastError = true)]
