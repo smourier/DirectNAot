@@ -105,6 +105,59 @@ public static class Conversions
         return s;
     }
 
+    [return: NotNullIfNotNull(nameof(text))]
+    public static byte[]? ToBytesFromHexa(string? text)
+    {
+        if (text == null)
+            return null;
+
+        var list = new List<byte>();
+        var lo = false;
+        byte prev = 0;
+        int offset;
+
+        if (text.Length >= 2 && text[0] == '0' && (text[1] == 'x' || text[1] == 'X'))
+        {
+            offset = 2;
+        }
+        else
+        {
+            offset = 0;
+        }
+
+        for (var i = 0; i < text.Length - offset; i++)
+        {
+            var b = GetHexaByte(text[i + offset]);
+            if (b == 0xFF)
+                continue;
+
+            if (lo)
+            {
+                list.Add((byte)(prev * 16 + b));
+            }
+            else
+            {
+                prev = b;
+            }
+            lo = !lo;
+        }
+        return [.. list];
+    }
+
+    public static byte GetHexaByte(char c)
+    {
+        if (c >= '0' && c <= '9')
+            return (byte)(c - '0');
+
+        if (c >= 'A' && c <= 'F')
+            return (byte)(c - 'A' + 10);
+
+        if (c >= 'a' && c <= 'f')
+            return (byte)(c - 'a' + 10);
+
+        return 0xFF;
+    }
+
     public static string? ToHexaDump(string text, Encoding? encoding = null)
     {
         if (text == null)
