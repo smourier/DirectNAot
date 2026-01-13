@@ -111,7 +111,7 @@ public sealed class Variant : IDisposable
             return;
         }
 
-        var vt = PropVariant.FromType(valueType, type, true);
+        var vt = PropVariant.FromType(valueType, type, true, null);
         var tc = Type.GetTypeCode(valueType);
         switch (tc)
         {
@@ -591,7 +591,7 @@ public sealed class Variant : IDisposable
                 else
                 {
                     elementType = item.GetType();
-                    type = PropVariant.FromType(elementType, null, true);
+                    type = PropVariant.FromType(elementType, null, true, VARENUM.VT_VARIANT);
                 }
                 arrayType = PropVariant.FromTypeArray(type.Value);
             }
@@ -648,7 +648,7 @@ public sealed class Variant : IDisposable
             }
         }
 
-        var vt = PropVariant.FromType(et, type, true);
+        var vt = PropVariant.FromType(et, type, true, VARENUM.VT_VARIANT);
         ConstructSafeArray(array, vt);
     }
 

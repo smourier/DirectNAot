@@ -128,7 +128,7 @@ public sealed class PropVariant : IDisposable
             return;
         }
 
-        var vt = FromType(valueType, type, false);
+        var vt = FromType(valueType, type, false, null);
         var tc = Type.GetTypeCode(valueType);
         switch (tc)
         {
@@ -669,7 +669,7 @@ public sealed class PropVariant : IDisposable
                 else
                 {
                     elementType = item.GetType();
-                    type = FromType(elementType, null, false);
+                    type = FromType(elementType, null, false, VARENUM.VT_VARIANT);
                 }
                 arrayType = FromTypeArray(type.Value);
             }
@@ -724,7 +724,7 @@ public sealed class PropVariant : IDisposable
 
         if (array.Length > 0)
         {
-            var objectVt = PropVariant.GetObjectType(array.GetValue(0), type);
+            var objectVt = GetObjectType(array.GetValue(0), type);
             if (objectVt != null)
             {
                 ConstructVector(array, et, objectVt.Value);
@@ -732,7 +732,7 @@ public sealed class PropVariant : IDisposable
             }
         }
 
-        var vt = FromType(et, type, false);
+        var vt = FromType(et, type, false, VARENUM.VT_VARIANT);
         ConstructVector(array, et, vt);
     }
 
@@ -1296,7 +1296,7 @@ public sealed class PropVariant : IDisposable
         return VARENUM.VT_UNKNOWN;
     }
 
-    internal static VARENUM FromType(Type? type, VARENUM? vt, bool forVariant)
+    internal static VARENUM FromType(Type? type, VARENUM? vt, bool forVariant, VARENUM? fallbackValue)
     {
         if (type == null)
             return VARENUM.VT_NULL;
@@ -1412,6 +1412,9 @@ public sealed class PropVariant : IDisposable
 
                 if (type == typeof(object))
                     return VARENUM.VT_VARIANT;
+
+                if (fallbackValue.HasValue)
+                    return fallbackValue.Value;
 
                 throw new ArgumentException("Value of type '" + type.FullName + "' is not supported.", nameof(type));
         }
