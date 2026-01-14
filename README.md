@@ -73,6 +73,25 @@ It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully 
 
 <img width="1167" height="662" alt="MediaPlay sample" src="https://github.com/user-attachments/assets/853d1e87-d23a-4114-a5e0-6b153d591aa2" />
 
+# WebView2
+[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 10+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
+
+# ShellBat
+[ShellBat](https://github.com/smourier/ShellBat) is a modern Windows file explorer with file viewers, multi-instance workflows, terminal integration, search capabilities, and deep Windows Shell interoperability.
+
+This project is a hybrid web application that combines C#/.NET with JavaScript, HTML and CSS, based on an approach similar to frameworks like Electron, but rather simplified.
+
+It relies solely on DirectN AOT and .NET 10+ AOT and built on DirectNAOT and [WebView2Aot](https://github.com/smourier/WebView2Aot), again with no dependencies on WinForms, WPF, WinUI 3, or UWP.
+The final published file is just a single .exe file of 13MB that works in Windows 10, 11, Sandbox and Virtual environments (Hyver-V, etc.).
+
+Integrated terminal:
+
+<img alt="ShellBat" src="https://raw.githubusercontent.com/smourier/ShellBat/main/DocumentationScreenShots/External%20Command%20Line.png" width="70%">
+
+PDF files rendered:
+
+<img alt="ShellBat" src="https://raw.githubusercontent.com/smourier/ShellBat/main/DocumentationScreenShots/PDF%20Preview%20in%20Images%20View.png" width="70%">
+
 # Wice
 Wice (aka "Windows Interface Composition Engine") is a .NET UI engine for creating Windows application. It's not dependent on WPF nor Winforms, nor WinUI 2 nor 3, nor Windows XAML, nor UWP, it's another UI Framework. The way it works is somewhat inspired from WPF, but there is no technical dependency over it.
 It supports native-AOT deployment, through usage of DirectN AOT.
@@ -81,12 +100,9 @@ Check it out at https://github.com/aelyo-softworks/Wice
 
 <img alt="Wice" src="https://github.com/user-attachments/assets/7dd33147-241c-4db1-a5b9-34fdfcda5a82" width="50%">
 
-# WebView2 sample
-[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 10+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
-
 <img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
 
-# VCamNetSample sample
+# VCamNetSample
 [VCamNetSample](https://github.com/smourier/VCamNetSample) is a project that exposes a Media Foundation Virtual Camera Sample developed using .NET AOT with DirectN AOT (only on Windows 11).
 
 <img width="1502" height="848" alt="VCamNetSample" src="https://github.com/user-attachments/assets/03b289a6-cee2-497f-a692-9a060b2b50d9" />
