@@ -74,7 +74,9 @@ It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully 
 <img width="1167" height="662" alt="MediaPlay sample" src="https://github.com/user-attachments/assets/853d1e87-d23a-4114-a5e0-6b153d591aa2" />
 
 # WebView2
-[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT project, using DirectNAOT that exposes .NET 10+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
+[WebView2Aot](https://github.com/smourier/WebView2Aot) is an AOT library project, using DirectNAOT that exposes .NET 10+ AOT-compatible bindings 100%, fully independent from WinForms, WPF or WinUI3, for Microsoft's WebView2.
+
+<img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
 
 # ShellBat
 [ShellBat](https://github.com/smourier/ShellBat) is a modern Windows file explorer with file viewers, multi-instance workflows, terminal integration, search capabilities, and deep Windows Shell interoperability.
@@ -99,8 +101,6 @@ It supports native-AOT deployment, through usage of DirectN AOT.
 Check it out at https://github.com/aelyo-softworks/Wice
 
 <img alt="Wice" src="https://github.com/user-attachments/assets/7dd33147-241c-4db1-a5b9-34fdfcda5a82" width="50%">
-
-<img alt="WebView2 Sample" src="https://github.com/user-attachments/assets/e626a807-1cba-4b0b-a6ff-33a949f78806" width="50%">
 
 # VCamNetSample
 [VCamNetSample](https://github.com/smourier/VCamNetSample) is a project that exposes a Media Foundation Virtual Camera Sample developed using .NET AOT with DirectN AOT (only on Windows 11).
