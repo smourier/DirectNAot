@@ -40,7 +40,7 @@ DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch
 By design, everything is in the same namespace (and in the same assembly if you use the whole .dll or nuget package) so you don't need to know where is defined this or that interface, constants, etc.
 
 ## Natural .NET programming!
-All native COM interfaces are generated as .NET (COM) interfaces, not classes or fancy/complex/unsafe structs. COM utility wrappers are also provided (ComObject, ComMemory, etc.), and many extension methods are also provided for some COM interfaces (the principle used can be extended to any COM method, but this part is not generated). They allow easier .NET programming, but they are not strictly needed. Most of this is possible because **DirectN represent COM inheritance by .NET inheritance** (so, `DirectN.IWICImagingFactory2` derives from `DirectN.IWICImagingFactory` for example).
+All native COM interfaces are generated as .NET (COM) interfaces, not classes or fancy/complex/unsafe structs. COM utility wrappers are also provided (ComObject, ComMemory, etc.), and many extension methods are also provided for some COM interfaces (the principle used can be extended to any COM method, but this part is not generated). They allow easier .NET programming, but they are not strictly needed. Most of this is possible because **DirectNAot represents COM inheritance by .NET inheritance** (so, `DirectN.IWICImagingFactory2` derives from `DirectN.IWICImagingFactory` for example).
 
 # Installation
 You can just compile the source (note it can take *minutes* due to the fact ComWrapper Source generation is *slooooowwwwww*...) or use the nuget packages
