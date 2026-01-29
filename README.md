@@ -35,7 +35,7 @@ The key points that drive how code is generated and built:
 * Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different (although CsWin32 has been improved at the end of 2025).
 
 ## Same names and types than the native concepts, easy port from C/C++ to C#!
-DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch, probably more easily than with other existing interop libraries in this domain because one of its main objective is to use exactly the **same names and types than the native concepts** (interfaces, enums, structures, constants, methods, arguments, guids, etc.) . So you can read the official documentation, use existing C/C++ samples, and start coding with .NET right away.
+DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch, probably more easily than with other existing interop libraries in this domain because one of its main objective is to use **exactly the same names and types than the native concepts** (interfaces, enums, structures, constants, methods, arguments, guids, etc.) . So you can read the official documentation, use existing C/C++ samples, and start coding with .NET right away.
 
 By design, everything is in the same namespace (and in the same assembly if you use the whole .dll or nuget package) so you don't need to know where is defined this or that interface, constants, etc.
 
