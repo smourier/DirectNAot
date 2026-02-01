@@ -6919,6 +6919,12 @@ public static partial class Functions
     [PreserveSig]
     public static partial uint joySetThreshold(uint uJoyID, uint uThreshold);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-keybd_event
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void keybd_event(byte bVk, byte bScan, KEYBD_EVENT_FLAGS dwFlags, nuint dwExtraInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-killtimer
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -9138,6 +9144,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HMONITOR MonitorFromWindow(HWND hwnd, MONITOR_FROM_FLAGS dwFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-mouse_event
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void mouse_event(MOUSE_EVENT_FLAGS dwFlags, int dx, int dy, int dwData, nuint dwExtraInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-msgwaitformultipleobjects
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -10017,6 +10029,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial LRESULT SendDriverMessage(HDRVR hDriver, uint message, LPARAM lParam1, LPARAM lParam2);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendinput
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint SendInput(uint cInputs, [In][MarshalUsing(CountElementName = nameof(cInputs))] INPUT[] pInputs, int cbSize);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
