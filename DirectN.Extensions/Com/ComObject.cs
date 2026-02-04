@@ -237,6 +237,16 @@ public abstract class ComObject : IComObject
         }
     }
 
+    public static nint ToComInstanceNoAddRef(object? obj)
+    {
+        var unk = ToComInstance(obj);
+        if (unk != 0)
+        {
+            Marshal.Release(unk);
+        }
+        return unk;
+    }
+
     public static nint ToComInstance(object? obj)
     {
         if (obj == null)
@@ -250,6 +260,17 @@ public abstract class ComObject : IComObject
             return unk;
 
         ComWrappers.TryGetComInstance(unwrapped, out unk);
+        return unk;
+    }
+
+    public static nint ToComInstanceOfTypeNoAddRef<T>(object? obj) => ToComInstanceOfTypeNoAddRef(obj, typeof(T).GUID);
+    public static nint ToComInstanceOfTypeNoAddRef(object? obj, Guid iid)
+    {
+        var unk = ToComInstanceOfType(obj, iid);
+        if (unk != 0)
+        {
+            Marshal.Release(unk);
+        }
         return unk;
     }
 

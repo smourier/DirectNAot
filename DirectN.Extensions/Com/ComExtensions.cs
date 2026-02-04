@@ -47,6 +47,22 @@ public static class ComExtensions
         comObject.Dispose();
     }
 
+    public static nint ToComInstance<T>(this IComObject<T>? comObject)
+    {
+        if (comObject == null)
+            return 0;
+
+        return ComObject.ToComInstanceOfType<T>(comObject);
+    }
+
+    public static nint ToComInstanceNoAddRef<T>(this IComObject<T>? comObject)
+    {
+        if (comObject == null)
+            return 0;
+
+        return ComObject.ToComInstanceOfTypeNoAddRef<T>(comObject);
+    }
+
     public static HRESULT QueryInterface<T>(this IComObject comObject, out nint ppvObject) => QueryInterface(comObject, typeof(T).GUID, CreateComInterfaceFlags.None, out ppvObject);
     public static HRESULT QueryInterface<T>(this IComObject comObject, CreateComInterfaceFlags flags, out nint ppvObject) => QueryInterface(comObject, typeof(T).GUID, flags, out ppvObject);
     public static HRESULT QueryInterface(this IComObject comObject, Guid iid, out nint ppvObject) => QueryInterface(comObject, iid, CreateComInterfaceFlags.None, out ppvObject);
