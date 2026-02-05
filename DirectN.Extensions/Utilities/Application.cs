@@ -426,13 +426,17 @@ public class Application : IDisposable
         try
         {
             var td = new TaskDialog();
+            var options = new ShowFatalErrorOptions(errors, td, hwnd);
+            configureOptions?.Invoke(options);
+            options.ErrorToStringFunc ??= (ex) => ex.ToString();
+
             td.Flags |= TASKDIALOG_FLAGS.TDF_SIZE_TO_CONTENT;
             td.MainIcon = new HICON { Value = TaskDialog.TD_ERROR_ICON };
             td.Title = GetTitle(hwnd);
             if (errors.Length == 1)
             {
                 td.MainInstruction = "A fatal error has occured. Press OK to quit.";
-                td.Content = errors[0].ToString();
+                td.Content = options.ErrorToStringFunc(errors[0]);
             }
             else
             {
@@ -450,18 +454,13 @@ public class Application : IDisposable
                     sb.AppendLine("Error #" + i);
                     i++;
 
-                    sb.Append(error);
+                    sb.Append(options.ErrorToStringFunc(error));
                 }
                 td.Content = sb.ToString();
             }
 
-            var options = new ShowFatalErrorOptions(errors, td, hwnd);
-            if (configureOptions != null)
-            {
-                configureOptions(options);
-                if (!options.ShowDialog)
-                    return false;
-            }
+            if (!options.ShowDialog)
+                return false;
 
             // note if something goes wrong (dialog wasn't show), Show will possibly return cancel (TaskDialogIndirect won't fail).
             var result = td.Show(hwnd);
@@ -564,9 +563,10 @@ public class Application : IDisposable
         public IReadOnlyList<Exception> Errors { get; } = errors;
         public TaskDialog Dialog { get; } = dialog;
         public HWND Hwnd { get; } = hwnd;
-        public bool ShowDialog { get; set; } = true;
+        public virtual bool ShowDialog { get; set; } = true;
         public virtual bool ClearErrorsOnShown { get; set; } = true;
         public virtual Action<ShowFatalErrorOptions, MESSAGEBOX_RESULT>? ShownFunc { get; set; }
+        public virtual Func<Exception, string?>? ErrorToStringFunc { get; set; }
     }
 
     private sealed class Error(Exception exception, string? methodName)
