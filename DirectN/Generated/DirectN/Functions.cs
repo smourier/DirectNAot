@@ -10141,6 +10141,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HCURSOR SetCursor(HCURSOR hCursor);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setcursorpos
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetCursorPos(int X, int Y);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setdcbrushcolor
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]

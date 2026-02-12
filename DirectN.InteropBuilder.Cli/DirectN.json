@@ -586,6 +586,7 @@
     "SetCapture",
     "SetCaretPos",
     "SetCursor",
+    "SetCursorPos",
     "SetClassLongW",
     "SetClassLongPtrW",
     "SetClipboardData",
