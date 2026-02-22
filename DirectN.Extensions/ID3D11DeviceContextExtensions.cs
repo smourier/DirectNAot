@@ -98,6 +98,48 @@ public static class ID3D11DeviceContextExtensions
         }
     }
 
+    public static void DrawIndexedInstanced(this IComObject<ID3D11DeviceContext> context, uint vertexCount, uint startVertexLocation) => DrawIndexedInstanced(context?.Object!, vertexCount, startVertexLocation);
+    public static void DrawIndexedInstanced(this ID3D11DeviceContext context, uint vertexCount, uint startVertexLocation)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.DrawIndexedInstanced(vertexCount, startVertexLocation);
+    }
+
+    public static void DrawIndexed(this IComObject<ID3D11DeviceContext> context, int indexCount, int startIndexLocation, int baseVertexLocation) => DrawIndexed(context?.Object!, indexCount, startIndexLocation, baseVertexLocation);
+    public static void DrawIndexed(this ID3D11DeviceContext context, int indexCount, int startIndexLocation, int baseVertexLocation)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.DrawIndexed((uint)indexCount, (uint)startIndexLocation, baseVertexLocation);
+    }
+
+    public static void Draw(this IComObject<ID3D11DeviceContext> context, uint vertexCount, uint startVertexLocation) => Draw(context?.Object!, vertexCount, startVertexLocation);
+    public static void Draw(this ID3D11DeviceContext context, uint vertexCount, uint startVertexLocation)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.Draw(vertexCount, startVertexLocation);
+    }
+
+    public static void DrawAuto(this IComObject<ID3D11DeviceContext> context) => DrawAuto(context?.Object!);
+    public static void DrawAuto(this ID3D11DeviceContext context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.DrawAuto();
+    }
+
+    public static void DrawIndexedInstancedIndirect(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11Buffer> bufferForArgs, uint alignedByteOffsetForArgs) => DrawIndexedInstancedIndirect(context?.Object!, bufferForArgs?.Object!, alignedByteOffsetForArgs);
+    public static void DrawIndexedInstancedIndirect(this ID3D11DeviceContext context, ID3D11Buffer bufferForArgs, uint alignedByteOffsetForArgs)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.DrawIndexedInstancedIndirect(bufferForArgs, alignedByteOffsetForArgs);
+    }
+
+    public static void DrawInstancedIndirect(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11Buffer> bufferForArgs, uint alignedByteOffsetForArgs) => DrawInstancedIndirect(context?.Object!, bufferForArgs?.Object!, alignedByteOffsetForArgs);
+    public static void DrawInstancedIndirect(this ID3D11DeviceContext context, ID3D11Buffer bufferForArgs, uint alignedByteOffsetForArgs)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        context.DrawInstancedIndirect(bufferForArgs, alignedByteOffsetForArgs);
+    }
+
     public static D3D11_MAPPED_SUBRESOURCE Map(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11Resource> resource, uint subResource, D3D11_MAP mapType, D3D11_MAP_FLAG mapFlag = 0) => Map(context?.Object!, resource?.Object!, subResource, mapType, mapFlag);
     public static D3D11_MAPPED_SUBRESOURCE Map(this ID3D11DeviceContext context, ID3D11Resource resource, uint subResource, D3D11_MAP mapType, D3D11_MAP_FLAG mapFlag = 0)
     {
@@ -285,7 +327,7 @@ public static class ID3D11DeviceContextExtensions
     }
 
 
-    public static void CSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => CSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
+    public static void CSSetConstantBuffer(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => CSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
     public static void CSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>[]? constantBuffers) => CSSetConstantBuffers(context?.Object!, startSlot, constantBuffers.UnwrapAsArray());
     public static void CSSetConstantBuffers(this ID3D11DeviceContext context, uint startSlot, ID3D11Buffer?[]? constantBuffers)
     {
@@ -296,7 +338,51 @@ public static class ID3D11DeviceContextExtensions
         });
     }
 
-    public static void CSSetShaderResources(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11ShaderResourceView>? shaderResourceView) => CSSetShaderResources(context, startSlot, shaderResourceView != null ? [shaderResourceView] : null);
+    public static void PSSetConstantBuffer(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => PSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
+    public static void PSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>[]? constantBuffers) => PSSetConstantBuffers(context?.Object!, startSlot, constantBuffers.UnwrapAsArray());
+    public static void PSSetConstantBuffers(this ID3D11DeviceContext context, uint startSlot, ID3D11Buffer?[]? constantBuffers)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ComObject.WithComInstancesOfType(constantBuffers, ptr =>
+        {
+            context.PSSetConstantBuffers(startSlot, constantBuffers.Length(), ptr);
+        });
+    }
+
+    public static void GSSetConstantBuffer(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => GSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
+    public static void GSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>[]? constantBuffers) => GSSetConstantBuffers(context?.Object!, startSlot, constantBuffers.UnwrapAsArray());
+    public static void GSSetConstantBuffers(this ID3D11DeviceContext context, uint startSlot, ID3D11Buffer?[]? constantBuffers)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ComObject.WithComInstancesOfType(constantBuffers, ptr =>
+        {
+            context.GSSetConstantBuffers(startSlot, constantBuffers.Length(), ptr);
+        });
+    }
+
+    public static void DSSetConstantBuffer(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => DSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
+    public static void DSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>[]? constantBuffers) => DSSetConstantBuffers(context?.Object!, startSlot, constantBuffers.UnwrapAsArray());
+    public static void DSSetConstantBuffers(this ID3D11DeviceContext context, uint startSlot, ID3D11Buffer?[]? constantBuffers)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ComObject.WithComInstancesOfType(constantBuffers, ptr =>
+        {
+            context.DSSetConstantBuffers(startSlot, constantBuffers.Length(), ptr);
+        });
+    }
+
+    public static void HSSetConstantBuffer(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>? constantBuffer) => HSSetConstantBuffers(context, startSlot, constantBuffer != null ? [constantBuffer] : null);
+    public static void HSSetConstantBuffers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11Buffer>[]? constantBuffers) => HSSetConstantBuffers(context?.Object!, startSlot, constantBuffers.UnwrapAsArray());
+    public static void HSSetConstantBuffers(this ID3D11DeviceContext context, uint startSlot, ID3D11Buffer?[]? constantBuffers)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ComObject.WithComInstancesOfType(constantBuffers, ptr =>
+        {
+            context.HSSetConstantBuffers(startSlot, constantBuffers.Length(), ptr);
+        });
+    }
+
+    public static void CSSetShaderResource(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11ShaderResourceView>? shaderResourceView) => CSSetShaderResources(context, startSlot, shaderResourceView != null ? [shaderResourceView] : null);
     public static void CSSetShaderResources(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11ShaderResourceView>[]? shaderResourceViews) => CSSetShaderResources(context?.Object!, startSlot, shaderResourceViews.UnwrapAsArray());
     public static void CSSetShaderResources(this ID3D11DeviceContext context, uint startSlot, ID3D11ShaderResourceView?[]? shaderResourceViews)
     {
@@ -307,7 +393,7 @@ public static class ID3D11DeviceContextExtensions
         });
     }
 
-    public static void CSSetSamplers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11SamplerState>? samplers) => CSSetSamplers(context, startSlot, samplers != null ? [samplers] : null);
+    public static void CSSetSampler(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11SamplerState>? samplers) => CSSetSamplers(context, startSlot, samplers != null ? [samplers] : null);
     public static void CSSetSamplers(this IComObject<ID3D11DeviceContext> context, uint startSlot, IComObject<ID3D11SamplerState>[]? samplers) => CSSetSamplers(context?.Object!, startSlot, samplers.UnwrapAsArray());
     public static void CSSetSamplers(this ID3D11DeviceContext context, uint startSlot, ID3D11SamplerState?[]? samplers)
     {
@@ -401,13 +487,6 @@ public static class ID3D11DeviceContextExtensions
     {
         ArgumentNullException.ThrowIfNull(context);
         context.OMSetBlendState(blendState, blendFactor, sampleMask);
-    }
-
-    public static void DrawIndexed(this IComObject<ID3D11DeviceContext> context, int indexCount, int startIndexLocation, int baseVertexLocation) => DrawIndexed(context?.Object!, indexCount, startIndexLocation, baseVertexLocation);
-    public static void DrawIndexed(this ID3D11DeviceContext context, int indexCount, int startIndexLocation, int baseVertexLocation)
-    {
-        ArgumentNullException.ThrowIfNull(context);
-        context.DrawIndexed((uint)indexCount, (uint)startIndexLocation, baseVertexLocation);
     }
 
     public static void ClearState(this IComObject<ID3D11DeviceContext> context) => ClearState(context?.Object!);
