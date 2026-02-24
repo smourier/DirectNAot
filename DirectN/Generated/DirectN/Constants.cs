@@ -33443,6 +33443,144 @@ public static partial class Constants
     
     public static readonly Guid WindowsMediaPlayer = new("6bf52a52-394a-11d3-b153-00c04f79faa6");
     
+    public const int WINEVENT_CHANNEL_CLASSIC_TRACE = 0;
+    
+    public const int WINEVENT_CHANNEL_GLOBAL_APPLICATION = 9;
+    
+    public const int WINEVENT_CHANNEL_GLOBAL_SECURITY = 10;
+    
+    public const int WINEVENT_CHANNEL_GLOBAL_SYSTEM = 8;
+    
+    public const int WINEVENT_CHANNEL_PROVIDERMETADATA = 12;
+    
+    public const int WINEVENT_CHANNEL_TRACELOGGING = 11;
+    
+    public const uint WINEVENT_INCONTEXT = 4;
+    
+    public const long WINEVENT_KEYWORD_AUDIT_FAILURE = 4503599627370496;
+    
+    public const long WINEVENT_KEYWORD_AUDIT_SUCCESS = 9007199254740992;
+    
+    public const long WINEVENT_KEYWORD_CORRELATION_HINT = 18014398509481984;
+    
+    public const long WINEVENT_KEYWORD_EVENTLOG_CLASSIC = 36028797018963968;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_49 = 562949953421312;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_56 = 72057594037927936;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_57 = 144115188075855872;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_58 = 288230376151711744;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_59 = 576460752303423488;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_60 = 1152921504606846976;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_61 = 2305843009213693952;
+    
+    public const long WINEVENT_KEYWORD_RESERVED_62 = 4611686018427387904;
+    
+    public const ulong WINEVENT_KEYWORD_RESERVED_63 = 9223372036854775808;
+    
+    public const long WINEVENT_KEYWORD_RESPONSE_TIME = 281474976710656;
+    
+    public const long WINEVENT_KEYWORD_SQM = 2251799813685248;
+    
+    public const long WINEVENT_KEYWORD_WDI_DIAG = 1125899906842624;
+    
+    public const int WINEVENT_LEVEL_CRITICAL = 1;
+    
+    public const int WINEVENT_LEVEL_ERROR = 2;
+    
+    public const int WINEVENT_LEVEL_INFO = 4;
+    
+    public const int WINEVENT_LEVEL_LOG_ALWAYS = 0;
+    
+    public const int WINEVENT_LEVEL_RESERVED_10 = 10;
+    
+    public const int WINEVENT_LEVEL_RESERVED_11 = 11;
+    
+    public const int WINEVENT_LEVEL_RESERVED_12 = 12;
+    
+    public const int WINEVENT_LEVEL_RESERVED_13 = 13;
+    
+    public const int WINEVENT_LEVEL_RESERVED_14 = 14;
+    
+    public const int WINEVENT_LEVEL_RESERVED_15 = 15;
+    
+    public const int WINEVENT_LEVEL_RESERVED_6 = 6;
+    
+    public const int WINEVENT_LEVEL_RESERVED_7 = 7;
+    
+    public const int WINEVENT_LEVEL_RESERVED_8 = 8;
+    
+    public const int WINEVENT_LEVEL_RESERVED_9 = 9;
+    
+    public const int WINEVENT_LEVEL_VERBOSE = 5;
+    
+    public const int WINEVENT_LEVEL_WARNING = 3;
+    
+    public const int WINEVENT_OPCODE_DC_START = 3;
+    
+    public const int WINEVENT_OPCODE_DC_STOP = 4;
+    
+    public const int WINEVENT_OPCODE_EXTENSION = 5;
+    
+    public const int WINEVENT_OPCODE_INFO = 0;
+    
+    public const int WINEVENT_OPCODE_RECEIVE = 240;
+    
+    public const int WINEVENT_OPCODE_REPLY = 6;
+    
+    public const int WINEVENT_OPCODE_RESERVED_241 = 241;
+    
+    public const int WINEVENT_OPCODE_RESERVED_242 = 242;
+    
+    public const int WINEVENT_OPCODE_RESERVED_243 = 243;
+    
+    public const int WINEVENT_OPCODE_RESERVED_244 = 244;
+    
+    public const int WINEVENT_OPCODE_RESERVED_245 = 245;
+    
+    public const int WINEVENT_OPCODE_RESERVED_246 = 246;
+    
+    public const int WINEVENT_OPCODE_RESERVED_247 = 247;
+    
+    public const int WINEVENT_OPCODE_RESERVED_248 = 248;
+    
+    public const int WINEVENT_OPCODE_RESERVED_249 = 249;
+    
+    public const int WINEVENT_OPCODE_RESERVED_250 = 250;
+    
+    public const int WINEVENT_OPCODE_RESERVED_251 = 251;
+    
+    public const int WINEVENT_OPCODE_RESERVED_252 = 252;
+    
+    public const int WINEVENT_OPCODE_RESERVED_253 = 253;
+    
+    public const int WINEVENT_OPCODE_RESERVED_254 = 254;
+    
+    public const int WINEVENT_OPCODE_RESERVED_255 = 255;
+    
+    public const int WINEVENT_OPCODE_RESUME = 7;
+    
+    public const int WINEVENT_OPCODE_SEND = 9;
+    
+    public const int WINEVENT_OPCODE_START = 1;
+    
+    public const int WINEVENT_OPCODE_STOP = 2;
+    
+    public const int WINEVENT_OPCODE_SUSPEND = 8;
+    
+    public const uint WINEVENT_OUTOFCONTEXT = 0;
+    
+    public const uint WINEVENT_SKIPOWNPROCESS = 2;
+    
+    public const uint WINEVENT_SKIPOWNTHREAD = 1;
+    
+    public const int WINEVENT_TASK_NONE = 0;
+    
     public static readonly Guid WKPDID_CommentStringW = new("d0149dc0-90e8-4ec8-8144-e900ad266bb2");
     
     public static readonly Guid WKPDID_D3D12UniqueObjectId = new("1b39de15-ec04-4bae-ba4d-8cef79fc04c1");

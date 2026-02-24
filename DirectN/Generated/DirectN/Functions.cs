@@ -6860,6 +6860,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL IsWindowVisible(HWND hWnd);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswineventhookinstalled
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL IsWinEventHookInstalled(uint @event);
+    
     // https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64guestmachinesupported
     [LibraryImport("KERNEL32", SetLastError = true)]
     [SupportedOSPlatform("windows10.0.16299")]
@@ -10551,6 +10558,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT SetWindowTheme(HWND hwnd, PWSTR pszSubAppName, PWSTR pszSubIdList);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwineventhook
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWINEVENTHOOK SetWinEventHook(uint eventMin, uint eventMax, HMODULE hmodWinEventProc, WINEVENTPROC pfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedataobject
     [LibraryImport("SHELL32")]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -10873,6 +10887,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL UnhookWindowsHookEx(HHOOK hhk);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unhookwinevent
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL UnhookWinEvent(HWINEVENTHOOK hWinEventHook);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-uninstallcolorprofilea
     [LibraryImport("mscms", SetLastError = true)]
