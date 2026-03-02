@@ -457,4 +457,17 @@ public static class ID2D1DeviceContextExtensions
         context.CreateSvgDocument(stream, viewPortSize, out var doc).ThrowOnError();
         return new ComObject<ID2D1SvgDocument>(doc);
     }
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<ID2D1ImageSource> CreateImageSourceFromDxgi(this IComObject<ID2D1DeviceContext2> context, IComObject<IDXGISurface>[] surfaces, DXGI_COLOR_SPACE_TYPE colorSpace = DXGI_COLOR_SPACE_TYPE.DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options = D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS.D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS_NONE)
+        => CreateImageSourceFromDxgi(context?.Object!, surfaces?.UnwrapAsArray()!, colorSpace, options);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<ID2D1ImageSource> CreateImageSourceFromDxgi(this ID2D1DeviceContext2 context, IDXGISurface[] surfaces, DXGI_COLOR_SPACE_TYPE colorSpace = DXGI_COLOR_SPACE_TYPE.DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709, D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS options = D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS.D2D1_IMAGE_SOURCE_FROM_DXGI_OPTIONS_NONE)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(surfaces);
+        context.CreateImageSourceFromDxgi(surfaces, surfaces.Length(), colorSpace, options, out var imageSource).ThrowOnError();
+        return new ComObject<ID2D1ImageSource>(imageSource);
+    }
 }

@@ -41,6 +41,22 @@ public static class ID2D1DeviceExtensions
         return new ComObject<IDXGIDevice>(dxgi);
     }
 
+    public static IComObject<ID2D1Factory> GetFactory(this IComObject<ID2D1Device2> device) => GetFactory<ID2D1Factory>(device?.Object!);
+    public static IComObject<T> GetFactory<T>(this IComObject<ID2D1Device2> device) where T : ID2D1Factory => GetFactory<T>(device?.Object!);
+    public static IComObject<T> GetFactory<T>(this ID2D1Device2 device) where T : ID2D1Factory
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        device.GetFactory(out var factory);
+        return new ComObject<T>(factory);
+    }
+
+    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this IComObject<ID2D1Device2> device) => GetRenderingPriority(device?.Object!);
+    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this ID2D1Device device)
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        return device.GetRenderingPriority();
+    }
+
     public static IComObject<ID2D1PrintControl> CreatePrintControl(this IComObject<ID2D1Device> device, IComObject<IWICImagingFactory> wicFactory, IComObject<IPrintDocumentPackageTarget> documentTarget, D2D1_PRINT_CONTROL_PROPERTIES? printControlProperties = null) => CreatePrintControl(device?.Object!, wicFactory?.Object!, documentTarget?.Object!, printControlProperties);
     public static IComObject<ID2D1PrintControl> CreatePrintControl(this ID2D1Device device, IWICImagingFactory wicFactory, IPrintDocumentPackageTarget documentTarget, D2D1_PRINT_CONTROL_PROPERTIES? printControlProperties = null)
     {
