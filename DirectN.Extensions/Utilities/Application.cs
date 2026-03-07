@@ -253,7 +253,7 @@ public class Application : IDisposable
     public static event EventHandler<ValueEventArgs<Window>>? WindowAdded;
     public static event CancelEventHandler? AllApplicationsExiting;
     public static event EventHandler? AllApplicationsExit;
-    public static event EventHandler<CancelEventArgs>? ShowingFatalError;
+    public static event EventHandler<ValueEventArgs<Exception>>? ShowingFatalError;
 
     static Application()
     {
@@ -588,14 +588,13 @@ public class Application : IDisposable
         if (e.ExceptionObject is Exception error)
         {
             AddError(error);
-            var e2 = new CancelEventArgs();
+            var e2 = new ValueEventArgs<Exception>(error, isCancellable: true);
             ShowingFatalError?.Invoke(Current, e2);
             if (e2.Cancel)
                 return;
 
             if (CanShowFatalError)
             {
-                AddError(error);
                 var win = _windows.FirstOrDefault()?.Handle;
                 ShowFatalError(win.GetValueOrDefault());
             }
