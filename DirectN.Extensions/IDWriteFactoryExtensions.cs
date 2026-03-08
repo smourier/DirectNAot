@@ -67,7 +67,8 @@ public static class IDWriteFactoryExtensions
         return new ComObject<T>((T)layout);
     }
 
-    public static IComObject<IDWriteInlineObject> CreateEllipsisTrimmingSign(this IComObject<IDWriteFactory> factory, IComObject<IDWriteTextFormat> format) => CreateEllipsisTrimmingSign(factory?.Object!, format?.Object!);
+    public static IComObject<IDWriteInlineObject> CreateEllipsisTrimmingSign(this IComObject<IDWriteFactory> factory, IComObject<IDWriteTextFormat> format) =>
+        CreateEllipsisTrimmingSign(factory?.Object!, format?.Object!);
     public static IComObject<IDWriteInlineObject> CreateEllipsisTrimmingSign(this IDWriteFactory factory, IDWriteTextFormat format)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -76,16 +77,45 @@ public static class IDWriteFactoryExtensions
         return new ComObject<IDWriteInlineObject>(sign);
     }
 
-    public static IComObject<IDWriteFontSetBuilder1>? CreateFontSetBuilder(this IComObject<IDWriteFactory5> factory) => CreateFontSetBuilder<IDWriteFontSetBuilder1>(factory);
-    public static IComObject<T>? CreateFontSetBuilder<T>(this IComObject<IDWriteFactory5> factory) where T : IDWriteFontSetBuilder1 => CreateFontSetBuilder<T>(factory?.Object!);
-    public static IComObject<T>? CreateFontSetBuilder<T>(this IDWriteFactory5 factory) where T : IDWriteFontSetBuilder1
+    public static IComObject<IDWriteFontSetBuilder1> CreateFontSetBuilder(this IComObject<IDWriteFactory5> factory) => CreateFontSetBuilder<IDWriteFontSetBuilder1>(factory);
+    public static IComObject<T> CreateFontSetBuilder<T>(this IComObject<IDWriteFactory5> factory) where T : IDWriteFontSetBuilder1 => CreateFontSetBuilder<T>(factory?.Object!);
+    public static IComObject<T> CreateFontSetBuilder<T>(this IDWriteFactory5 factory) where T : IDWriteFontSetBuilder1
     {
         ArgumentNullException.ThrowIfNull(factory);
-        factory.CreateFontSetBuilder(out IDWriteFontSetBuilder1 builder);
-        if (builder == null)
-            return null;
-
+        factory.CreateFontSetBuilder(out IDWriteFontSetBuilder1 builder).ThrowOnError();
         return new ComObject<T>((T)builder);
+    }
+
+    public static IComObject<IDWriteFontFile> CreateFontFileReference(this IComObject<IDWriteFactory5> factory, string filePath, DateTime? lastWriteTime = null) =>
+        CreateFontFileReference(factory?.Object!, filePath, lastWriteTime);
+    public static IComObject<IDWriteFontFile> CreateFontFileReference(this IDWriteFactory5 factory, string filePath, DateTime? lastWriteTime = null)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(filePath);
+        IDWriteFontFile file;
+        if (lastWriteTime == null)
+        {
+            factory.CreateFontFileReference(PWSTR.From(filePath), 0, out file).ThrowOnError();
+        }
+        else
+        {
+            var time = lastWriteTime.Value.ToFileTime();
+            unsafe
+            {
+                factory.CreateFontFileReference(PWSTR.From(filePath), (nint)(&time), out file).ThrowOnError();
+            }
+        }
+        return new ComObject<IDWriteFontFile>(file);
+    }
+
+    public static IComObject<IDWriteFontFile> CreateCustomFontFileReference(this IComObject<IDWriteFactory5> factory, nint key, uint keySize, IComObject<IDWriteFontFileLoader> loader) =>
+        CreateCustomFontFileReference(factory?.Object!, key, keySize, loader?.Object!);
+    public static IComObject<IDWriteFontFile> CreateCustomFontFileReference(this IDWriteFactory5 factory, nint key, uint keySize, IDWriteFontFileLoader loader)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(loader);
+        factory.CreateCustomFontFileReference(key, keySize, loader, out var file).ThrowOnError();
+        return new ComObject<IDWriteFontFile>(file);
     }
 
     public static IComObject<IDWriteTypography> CreateTypography(this IComObject<IDWriteFactory> factory) => CreateTypography(factory?.Object!);
@@ -94,5 +124,68 @@ public static class IDWriteFactoryExtensions
         ArgumentNullException.ThrowIfNull(factory);
         factory.CreateTypography(out var typography).ThrowOnError();
         return new ComObject<IDWriteTypography>(typography);
+    }
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<IDWriteFontSet> GetSystemFontSet(this IComObject<IDWriteFactory3> factory) => GetSystemFontSet<IDWriteFontSet>(factory?.Object!);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> GetSystemFontSet<T>(this IComObject<IDWriteFactory3> factory) where T : IDWriteFontSet => GetSystemFontSet<T>(factory?.Object!);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> GetSystemFontSet<T>(this IDWriteFactory3 factory) where T : IDWriteFontSet
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        factory.GetSystemFontSet(out var set).ThrowOnError();
+        return new ComObject<T>(set);
+    }
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<IDWriteFontCollection1> CreateFontCollectionFromFontSet(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontSet> set)
+        => CreateFontCollectionFromFontSet<IDWriteFontCollection1>(factory?.Object!, set?.Object!);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> CreateFontCollectionFromFontSet<T>(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontSet> set) where T : IDWriteFontCollection1
+        => CreateFontCollectionFromFontSet<T>(factory?.Object!, set?.Object!);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> CreateFontCollectionFromFontSet<T>(this IDWriteFactory5 factory, IDWriteFontSet set) where T : IDWriteFontCollection1
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(set);
+        factory.CreateFontCollectionFromFontSet(set, out var coll).ThrowOnError();
+        return new ComObject<T>(coll);
+    }
+
+    public static void RegisterFontFileLoader(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontFileLoader> loader) => RegisterFontFileLoader(factory?.Object!, loader?.Object!);
+    public static void RegisterFontFileLoader(this IDWriteFactory5 factory, IDWriteFontFileLoader loader)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(loader);
+        factory.RegisterFontFileLoader(loader).ThrowOnError();
+    }
+
+    public static void UnregisterFontFileLoader(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontFileLoader> loader) => UnregisterFontFileLoader(factory?.Object!, loader?.Object!);
+    public static void UnregisterFontFileLoader(this IDWriteFactory5 factory, IDWriteFontFileLoader loader)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(loader);
+        factory.UnregisterFontFileLoader(loader).ThrowOnError();
+    }
+
+    public static void RegisterFontCollectionLoader(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontCollectionLoader> loader) => RegisterFontCollectionLoader(factory?.Object!, loader?.Object!);
+    public static void RegisterFontCollectionLoader(this IDWriteFactory5 factory, IDWriteFontCollectionLoader loader)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(loader);
+        factory.RegisterFontCollectionLoader(loader).ThrowOnError();
+    }
+
+    public static void UnregisterFontCollectionLoader(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontCollectionLoader> loader) => UnregisterFontCollectionLoader(factory?.Object!, loader?.Object!);
+    public static void UnregisterFontCollectionLoader(this IDWriteFactory5 factory, IDWriteFontCollectionLoader loader)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(loader);
+        factory.UnregisterFontCollectionLoader(loader).ThrowOnError();
     }
 }
