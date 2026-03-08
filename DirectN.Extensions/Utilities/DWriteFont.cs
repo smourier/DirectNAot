@@ -33,16 +33,16 @@ public class DWriteFont(IComObject<IDWriteFontFaceReference> reference) : Interl
         return new ComObject<IDWriteFontFile>(file);
     }
 
-    public virtual IComObject<IDWriteFontFace3> CreateFontFace()
+    public virtual DWriteFontFace CreateFontFace()
     {
         NativeObject.CreateFontFace(out var fontFace).ThrowOnError();
-        return new ComObject<IDWriteFontFace3>(fontFace);
+        return new DWriteFontFace(new ComObject<IDWriteFontFace3>(fontFace));
     }
 
-    public virtual IComObject<IDWriteFontFace3> CreateFontFaceWithSimulations(DWRITE_FONT_SIMULATIONS simulations)
+    public virtual DWriteFontFace CreateFontFaceWithSimulations(DWRITE_FONT_SIMULATIONS simulations)
     {
         NativeObject.CreateFontFaceWithSimulations(simulations, out var fontFace).ThrowOnError();
-        return new ComObject<IDWriteFontFace3>(fontFace);
+        return new DWriteFontFace(new ComObject<IDWriteFontFace3>(fontFace));
     }
 
     public override string ToString() => FullName;

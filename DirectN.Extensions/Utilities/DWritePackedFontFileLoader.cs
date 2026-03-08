@@ -32,7 +32,14 @@ public partial class PackedFontFileLoader : IDWriteFontFileLoader, IDisposable
     {
         ArgumentNullException.ThrowIfNull(filePath);
         ObjectDisposedException.ThrowIf(IsDisposed, this);
-        var bytes = File.ReadAllBytes(filePath);
+        return CreateCustomFontFileReference(File.ReadAllBytes(filePath));
+    }
+
+    [SupportedOSPlatform("windows6.1")]
+    public virtual IComObject<IDWriteFontFile> CreateCustomFontFileReference(byte[] bytes)
+    {
+        ArgumentNullException.ThrowIfNull(bytes);
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
         unsafe
         {
             fixed (byte* ptr = bytes)
