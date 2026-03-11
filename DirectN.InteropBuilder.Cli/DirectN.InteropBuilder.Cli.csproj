@@ -41,7 +41,7 @@ namespace $(RootNamespace)
 	</Target>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Win32InteropBuilder\Win32InteropBuilder\Win32InteropBuilder.csproj" />
+	  <ProjectReference Include="..\Win32InteropBuilder\Win32InteropBuilder\Win32InteropBuilder.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
