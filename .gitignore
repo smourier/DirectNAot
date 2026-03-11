@@ -399,3 +399,4 @@ FodyWeavers.xsd
 /DirectNAot.InteropBuilder.Cli/Win32Metadata.cs
 /nuget.exe
 /nugetpub.bat
+/DirectN.InteropBuilder.Cli/Win32Metadata.cs
