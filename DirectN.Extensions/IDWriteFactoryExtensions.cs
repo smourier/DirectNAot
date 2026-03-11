@@ -157,6 +157,41 @@ public static class IDWriteFactoryExtensions
         return new ComObject<T>(coll);
     }
 
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<IDWriteFontCollection> GetSystemFontCollection(this IComObject<IDWriteFactory> factory, bool checkForUpdates = false, bool includeDownloadableFonts = false)
+        => GetSystemFontCollection<IDWriteFontCollection>(factory, checkForUpdates, includeDownloadableFonts);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> GetSystemFontCollection<T>(this IComObject<IDWriteFactory> factory, bool checkForUpdates = false, bool includeDownloadableFonts = false) where T : IDWriteFontCollection
+        => GetSystemFontCollection<T>(factory?.Object!, checkForUpdates, includeDownloadableFonts);
+
+    [SupportedOSPlatform("windows10.0.10240")]
+    public static IComObject<T> GetSystemFontCollection<T>(this IDWriteFactory factory, bool checkForUpdates = false, bool includeDownloadableFonts = false) where T : IDWriteFontCollection
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        if (includeDownloadableFonts && factory is IDWriteFactory3 fac3)
+        {
+            fac3.GetSystemFontCollection(includeDownloadableFonts, out var coll1, checkForUpdates).ThrowOnError();
+            return new ComObject<T>(coll1);
+        }
+
+        factory.GetSystemFontCollection(out var coll, checkForUpdates).ThrowOnError();
+        return new ComObject<T>(coll);
+    }
+
+    public static IComObject<IDWriteFontCollection2> GetSystemFontCollection(this IComObject<IDWriteFactory6> factory, bool includeDownloadableFonts = false, DWRITE_FONT_FAMILY_MODEL model = DWRITE_FONT_FAMILY_MODEL.DWRITE_FONT_FAMILY_MODEL_TYPOGRAPHIC)
+        => GetSystemFontCollection<IDWriteFontCollection2>(factory, includeDownloadableFonts, model);
+
+    public static IComObject<T> GetSystemFontCollection<T>(this IComObject<IDWriteFactory6> factory, bool includeDownloadableFonts = false, DWRITE_FONT_FAMILY_MODEL model = DWRITE_FONT_FAMILY_MODEL.DWRITE_FONT_FAMILY_MODEL_TYPOGRAPHIC) where T : IDWriteFontCollection2
+        => GetSystemFontCollection<T>(factory?.Object!, includeDownloadableFonts, model);
+
+    public static IComObject<T> GetSystemFontCollection<T>(this IDWriteFactory6 factory, bool includeDownloadableFonts = false, DWRITE_FONT_FAMILY_MODEL model = DWRITE_FONT_FAMILY_MODEL.DWRITE_FONT_FAMILY_MODEL_TYPOGRAPHIC) where T : IDWriteFontCollection2
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        factory.GetSystemFontCollection(includeDownloadableFonts, model, out var coll).ThrowOnError();
+        return new ComObject<T>(coll);
+    }
+
     public static void RegisterFontFileLoader(this IComObject<IDWriteFactory5> factory, IComObject<IDWriteFontFileLoader> loader) => RegisterFontFileLoader(factory?.Object!, loader?.Object!);
     public static void RegisterFontFileLoader(this IDWriteFactory5 factory, IDWriteFontFileLoader loader)
     {
