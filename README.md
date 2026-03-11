@@ -47,6 +47,11 @@ You can just compile the source (note it can take *minutes* due to the fact ComW
 
 https://www.nuget.org/packages/DirectNAot/ and https://www.nuget.org/packages/DirectNAot.Extensions/
 
+# Building
+Generated files are included in the repo, so you can just compile DirectN (this one takes minutes ...) and DirectN.Extensions to use DirectN, they are always up-to-date while the nuget packages may be slightly behind. 
+
+If you really want to understand the generator from Win32 metadata, regenerate and rebuild the whole thing, you must run DirectN.InteropBuilder.Cli which will generate all the files in DirectN and then compile DirectN and DirectN.Extensions. Note it's "intelligent" and doesn't touch unchanged files, so if you run it from a fresh repo clone, no files should be updated.
+
 # Direct3D11 minimal sample
 The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
 
