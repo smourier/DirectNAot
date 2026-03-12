@@ -262,7 +262,16 @@ public static class Extensions
         AppendMessages(sb, e.InnerException, separator);
     }
 
-    public static string? GetInterestingExceptionMessage(this Exception? exception) => GetInterestingException(exception)?.Message;
+    [return: NotNullIfNotNull(nameof(exception))]
+    public static string? GetInterestingExceptionMessage(this Exception? exception)
+    {
+        if (exception == null)
+            return null;
+
+        return GetInterestingException(exception)?.Message.Nullify() ?? exception.HResult.ToHex();
+    }
+
+    [return: NotNullIfNotNull(nameof(exception))]
     public static Exception? GetInterestingException(this Exception? exception)
     {
         if (exception is TargetInvocationException tie && tie.InnerException != null)

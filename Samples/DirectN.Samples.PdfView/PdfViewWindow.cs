@@ -64,7 +64,16 @@ public class PdfViewWindow : Window
         var file = await picker.PickSingleFileAsync();
         if (file != null)
         {
-            _pdfDocument = await PdfDocument.LoadFromFileAsync(file);
+            try
+            {
+                _pdfDocument = await PdfDocument.LoadFromFileAsync(file);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Handle, $"An error occurred while opening the '{file.Path}' file: " + ex.GetInterestingExceptionMessage(), "Error", MESSAGEBOX_STYLE.MB_OK | MESSAGEBOX_STYLE.MB_ICONERROR);
+                return;
+            }
+
             _fileName = file.Path;
             _pdfPage?.Dispose();
             if (_pdfDocument.IsPasswordProtected)
