@@ -3711,6 +3711,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
     
+    // https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefullname
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial WIN32_ERROR GetCurrentPackageFullName(ref uint packageFullNameLength, [MarshalUsing(CountElementName = nameof(packageFullNameLength))] PWSTR packageFullName);
+    
     // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentprocess
     [LibraryImport("KERNEL32")]
     [SupportedOSPlatform("windows5.1.2600")]

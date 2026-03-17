@@ -45,6 +45,8 @@ public static partial class WindowsVersionUtilities
 
     private static readonly ConcurrentDictionary<ushort, bool> _apiContractAvailable = new();
 
+    public static bool IsWindows11OrGreater() => IsWindows10OrGreater() && KernelVersion.Build >= 22000;
+
     [SupportedOSPlatform("windows10.0.10240.0")]
     public static bool IsApiContractAvailable(ushort version)
     {

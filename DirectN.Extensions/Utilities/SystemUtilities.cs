@@ -5,6 +5,24 @@ public static class SystemUtilities
     private static readonly Lazy<Process> _currentProcess = new(() => Process.GetCurrentProcess(), true);
     public static Process CurrentProcess => _currentProcess.Value;
 
+    [SupportedOSPlatform("windows8.0")]
+    private readonly static Lazy<bool> _isPackagedProcess = new(() =>
+    {
+        try
+        {
+            uint len = 0;
+            var hr = Functions.GetCurrentPackageFullName(ref len, PWSTR.Null);
+            return hr != WIN32_ERROR.APPMODEL_ERROR_NO_PACKAGE;
+        }
+        catch
+        {
+            return false;
+        }
+    });
+
+    [SupportedOSPlatform("windows8.0")]
+    public static bool IsPackagedProcess => _isPackagedProcess.Value;
+
     public static bool IsAppContainer()
     {
         if (!Functions.OpenProcessToken(Functions.GetCurrentProcess(), TOKEN_ACCESS_MASK.TOKEN_QUERY, out var handle))

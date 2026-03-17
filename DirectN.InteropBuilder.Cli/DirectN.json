@@ -364,6 +364,7 @@
     "GetClipboardViewer",
     "GetClipRgn",
     "GetConsoleWindow",
+    "GetCurrentPackageFullName",
     "GetCurrentProcess",
     "GetCurrentThreadId",
     "GetCursor",
