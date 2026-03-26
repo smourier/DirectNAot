@@ -60,7 +60,7 @@ public sealed class IntPtrBuffer : SafeBuffer
 
     public bool Owned { get; }
 
-    public unsafe IntPtrBuffer Clone()
+    public IntPtrBuffer Clone()
     {
         var size = (uint)ByteLength;
         var buffer = new IntPtrBuffer(size);

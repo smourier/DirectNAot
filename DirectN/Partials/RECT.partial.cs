@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<RECT>
+public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<RECT>, IFormattable
 {
     public static RECT Zero => default;
 
@@ -69,7 +69,13 @@ public partial struct RECT : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatabl
     }
 
     public readonly bool IsEmpty => Width == 0 || Height == 0;
-    public override readonly string ToString() => $"{left};{top};{right};{bottom}";
+
+    public readonly override string ToString() => ToString(null, null);
+    public readonly string ToString(string? format, IFormatProvider? provider) => (format?.ToUpperInvariant()) switch
+    {
+        "D" => $"{left};{top} {Width}x{Height}",
+        _ => $"{left};{top};{right};{bottom}",
+    };
 
     public readonly POINT Position => new(left, top);
     public readonly SIZE Size => new(Width, Height);

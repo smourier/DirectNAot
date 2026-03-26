@@ -1,6 +1,6 @@
 ﻿namespace DirectN;
 
-public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<D2D_RECT_U>
+public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEquatable<D2D_RECT_F>, IParsable<D2D_RECT_U>, IFormattable
 {
     public static D2D_RECT_U Zero => default;
 
@@ -256,7 +256,12 @@ public partial struct D2D_RECT_U : IEquatable<RECT>, IEquatable<D2D_RECT_U>, IEq
         return rc;
     }
 
-    public override readonly string ToString() => $"{left};{top};{right};{bottom}";
+    public readonly override string ToString() => ToString(null, null);
+    public readonly string ToString(string? format, IFormatProvider? provider) => (format?.ToUpperInvariant()) switch
+    {
+        "D" => $"{left};{top} {Width}x{Height}",
+        _ => $"{left};{top};{right};{bottom}",
+    };
 
     public override readonly bool Equals(object? obj) =>
         (obj is RECT rc && Equals(rc)) ||

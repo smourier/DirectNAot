@@ -10,7 +10,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICPalette>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmap(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => CreateBitmap(factory?.Object!, width, height, pixelFormat, option);
+    public static IComObject<IWICBitmap> CreateBitmap(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
+        => CreateBitmap(factory?.Object!, width, height, pixelFormat, option);
+
     public static IComObject<IWICBitmap> CreateBitmap(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -42,7 +44,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapScaler>(value);
     }
 
-    public static IComObject<IWICBitmapDecoder> CreateDecoderFromFilename(this IComObject<IWICImagingFactory> factory, string fileName, Guid? guidVendor = null, FileAccess desiredAccess = FileAccess.Read, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand) => CreateDecoderFromFilename(factory?.Object!, fileName, guidVendor, desiredAccess, metadataOptions);
+    public static IComObject<IWICBitmapDecoder> CreateDecoderFromFilename(this IComObject<IWICImagingFactory> factory, string fileName, Guid? guidVendor = null, FileAccess desiredAccess = FileAccess.Read, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
+        => CreateDecoderFromFilename(factory?.Object!, fileName, guidVendor, desiredAccess, metadataOptions);
+
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromFilename(this IWICImagingFactory factory, string fileName, Guid? guidVendor = null, FileAccess desiredAccess = FileAccess.Read, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -63,7 +67,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapDecoder>(value);
     }
 
-    public static IComObject<IWICBitmapDecoder> CreateDecoderFromStream(this IComObject<IWICImagingFactory> factory, IStream stream, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand) => CreateDecoderFromStream(factory?.Object!, stream, guidVendor, metadataOptions);
+    public static IComObject<IWICBitmapDecoder> CreateDecoderFromStream(this IComObject<IWICImagingFactory> factory, IStream stream, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
+        => CreateDecoderFromStream(factory?.Object!, stream, guidVendor, metadataOptions);
+
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromStream(this IWICImagingFactory factory, IStream stream, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -80,7 +86,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapDecoder>(value);
     }
 
-    public static IComObject<IWICBitmapDecoder> CreateDecoder(this IComObject<IWICImagingFactory> factory, Guid guidContainerFormat, Guid? guidVendor = null) => CreateDecoder(factory?.Object!, guidContainerFormat, guidVendor);
+    public static IComObject<IWICBitmapDecoder> CreateDecoder(this IComObject<IWICImagingFactory> factory, Guid guidContainerFormat, Guid? guidVendor = null)
+        => CreateDecoder(factory?.Object!, guidContainerFormat, guidVendor);
+
     public static IComObject<IWICBitmapDecoder> CreateDecoder(this IWICImagingFactory factory, Guid guidContainerFormat, Guid? guidVendor = null)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -96,7 +104,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapDecoder>(value);
     }
 
-    public static IComObject<IWICBitmapDecoder> CreateDecoderFromFileHandle(this IComObject<IWICImagingFactory> factory, nuint handle, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand) => CreateDecoderFromFileHandle(factory?.Object!, handle, guidVendor, metadataOptions);
+    public static IComObject<IWICBitmapDecoder> CreateDecoderFromFileHandle(this IComObject<IWICImagingFactory> factory, nuint handle, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
+        => CreateDecoderFromFileHandle(factory?.Object!, handle, guidVendor, metadataOptions);
+
     public static IComObject<IWICBitmapDecoder> CreateDecoderFromFileHandle(this IWICImagingFactory factory, nuint handle, Guid? guidVendor = null, WICDecodeOptions metadataOptions = WICDecodeOptions.WICDecodeMetadataCacheOnDemand)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -112,7 +122,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapDecoder>(value);
     }
 
-    public static IComObject<IEnumUnknown> CreateComponentEnumerator(this IComObject<IWICImagingFactory> factory, WICComponentType type = WICComponentType.WICAllComponents, WICComponentEnumerateOptions options = WICComponentEnumerateOptions.WICComponentEnumerateDefault) => CreateComponentEnumerator(factory?.Object!, type, options);
+    public static IComObject<IEnumUnknown> CreateComponentEnumerator(this IComObject<IWICImagingFactory> factory, WICComponentType type = WICComponentType.WICAllComponents, WICComponentEnumerateOptions options = WICComponentEnumerateOptions.WICComponentEnumerateDefault)
+        => CreateComponentEnumerator(factory?.Object!, type, options);
+
     public static IComObject<IEnumUnknown> CreateComponentEnumerator(this IWICImagingFactory factory, WICComponentType type = WICComponentType.WICAllComponents, WICComponentEnumerateOptions options = WICComponentEnumerateOptions.WICComponentEnumerateDefault)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -144,7 +156,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmapEncoder>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmapFromHBITMAP(this IComObject<IWICImagingFactory> factory, HBITMAP bitmapHandle, HPALETTE paletteHandle, WICBitmapAlphaChannelOption options = WICBitmapAlphaChannelOption.WICBitmapUseAlpha) => CreateBitmapFromHBITMAP(factory?.Object!, bitmapHandle, paletteHandle, options);
+    public static IComObject<IWICBitmap> CreateBitmapFromHBITMAP(this IComObject<IWICImagingFactory> factory, HBITMAP bitmapHandle, HPALETTE paletteHandle, WICBitmapAlphaChannelOption options = WICBitmapAlphaChannelOption.WICBitmapUseAlpha)
+        => CreateBitmapFromHBITMAP(factory?.Object!, bitmapHandle, paletteHandle, options);
+
     public static IComObject<IWICBitmap> CreateBitmapFromHBITMAP(this IWICImagingFactory factory, HBITMAP bitmapHandle, HPALETTE paletteHandle, WICBitmapAlphaChannelOption options = WICBitmapAlphaChannelOption.WICBitmapUseAlpha)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -161,16 +175,21 @@ public static class IWICImagingFactoryExtensions
     }
 
     public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, uint bufferSize, nint buffer)
+        => CreateBitmapFromMemory(factory?.Object!, width, height, pixelFormat, stride, bufferSize, buffer);
+
+    public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, uint stride, uint bufferSize, nint buffer)
     {
         ArgumentNullException.ThrowIfNull(factory);
         if (buffer == 0)
             throw new ArgumentException(null, nameof(buffer));
 
-        factory.Object.CreateBitmapFromMemory(width, height, pixelFormat, stride, bufferSize, buffer, out var value).ThrowOnError();
+        factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, bufferSize, buffer, out var value).ThrowOnError();
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, byte[] buffer) => CreateBitmapFromMemory(factory?.Object!, width, height, pixelFormat, stride, buffer);
+    public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, byte[] buffer)
+        => CreateBitmapFromMemory(factory?.Object!, width, height, pixelFormat, stride, buffer);
+
     public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, uint stride, byte[] buffer)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -179,7 +198,25 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmapFromSource(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache) => CreateBitmapFromSource(factory?.Object!, source?.Object!, option);
+    public static unsafe IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, ReadOnlySpan<byte> buffer)
+        => CreateBitmapFromMemory(factory?.Object!, width, height, pixelFormat, stride, buffer);
+
+    public static unsafe IComObject<IWICBitmap> CreateBitmapFromMemory(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, uint stride, ReadOnlySpan<byte> buffer)
+    {
+        ArgumentNullException.ThrowIfNull(factory);
+        if (buffer.IsEmpty)
+            throw new ArgumentException(null, nameof(buffer));
+
+        fixed (byte* ptr = buffer)
+        {
+            factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, (uint)buffer.Length, (nint)ptr, out var value).ThrowOnError();
+            return new ComObject<IWICBitmap>(value);
+        }
+    }
+
+    public static IComObject<IWICBitmap> CreateBitmapFromSource(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
+        => CreateBitmapFromSource(factory?.Object!, source?.Object!, option);
+
     public static IComObject<IWICBitmap> CreateBitmapFromSource(this IWICImagingFactory factory, IWICBitmapSource source, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -188,7 +225,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, uint x, uint y, uint width, uint height) => CreateBitmapFromSourceRect(factory?.Object!, source?.Object!, x, y, width, height);
+    public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IComObject<IWICImagingFactory> factory, IComObject<IWICBitmapSource> source, uint x, uint y, uint width, uint height)
+        => CreateBitmapFromSourceRect(factory?.Object!, source?.Object!, x, y, width, height);
+
     public static IComObject<IWICBitmap> CreateBitmapFromSourceRect(this IWICImagingFactory factory, IWICBitmapSource source, uint x, uint y, uint width, uint height)
     {
         ArgumentNullException.ThrowIfNull(factory);
@@ -197,7 +236,9 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static IComObject<IWICComponentInfo> CreateComponentInfo(this IComObject<IWICImagingFactory> factory, Guid clsidComponent) => CreateComponentInfo(factory?.Object!, clsidComponent);
+    public static IComObject<IWICComponentInfo> CreateComponentInfo(this IComObject<IWICImagingFactory> factory, Guid clsidComponent)
+        => CreateComponentInfo(factory?.Object!, clsidComponent);
+
     public static IComObject<IWICComponentInfo> CreateComponentInfo(this IWICImagingFactory factory, Guid clsidComponent)
     {
         ArgumentNullException.ThrowIfNull(factory);

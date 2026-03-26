@@ -107,6 +107,28 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
         }
     }
 
+    public static void AddHRESULTMembers<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>(bool force = false)
+        => AddHRESULTMembers(typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public).Where(f => f.FieldType == typeof(HRESULT)), force);
+
+    public static void AddHRESULTMembers(IEnumerable<FieldInfo> fields, bool force = false)
+    {
+        if (fields == null)
+            return;
+
+        foreach (var field in fields)
+        {
+            var value = (HRESULT)field.GetValue(null)!;
+            if (force)
+            {
+                _names[value] = field.Name;
+            }
+            else
+            {
+                _names.TryAdd(value, field.Name);
+            }
+        }
+    }
+
     public static HRESULT FromWin32(WIN32_ERROR error) => FromWin32((int)error);
     public static HRESULT FromWin32(uint error)
     {
