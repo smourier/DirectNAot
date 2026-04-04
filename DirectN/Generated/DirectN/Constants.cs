@@ -2721,6 +2721,8 @@ public static partial class Constants
     
     public static readonly Guid CODECAPI_AVEncVideoHeaderSeconds = new("4a2e1a05-a780-4f58-8120-9a449d69656b");
     
+    public static readonly Guid CODECAPI_AVEncVideoInputAbsoluteQPBlockSettings = new("ef95a145-4f91-4dea-8173-acff11434210");
+    
     public static readonly Guid CODECAPI_AVEncVideoInputChromaResolution = new("bb0cec33-16f1-47b0-8a88-37815bee1739");
     
     public static readonly Guid CODECAPI_AVEncVideoInputChromaSubsampling = new("a8e73a39-4435-4ec3-a6ea-98300f4b36f7");
@@ -2734,6 +2736,8 @@ public static partial class Constants
     public static readonly Guid CODECAPI_AVEncVideoInputColorTransferFunction = new("8c056111-a9c3-4b08-a0a0-ce13f8a27c75");
     
     public static readonly Guid CODECAPI_AVEncVideoInputColorTransferMatrix = new("52ed68b9-72d5-4089-958d-f5405d55081c");
+    
+    public static readonly Guid CODECAPI_AVEncVideoInputDeltaQPBlockSettings = new("5a4787dc-0648-47aa-b945-552bfad2a6d8");
     
     public static readonly Guid CODECAPI_AVEncVideoInstantTemporalUpSwitching = new("a3308307-0d96-4ba4-b1f0-b91a5e49df10");
     
@@ -24809,6 +24813,12 @@ public static partial class Constants
     
     public static readonly Guid MF_ENABLE_3DVIDEO_OUTPUT = new("bdad7bca-0e5f-4b10-ab16-26de381b6293");
     
+    public static readonly Guid MF_ENCRYPTEDMEDIAEXTENSIONS_ACTIVATABLE_CLASS_ID = new("77631a31-e5e7-4785-bf17-20f57b224802");
+    
+    public static readonly Guid MF_ENCRYPTEDMEDIAEXTENSIONS_ACTIVATE = new("2df7b51e-797b-4d06-be71-d14a52cf8421");
+    
+    public static readonly Guid MF_ENCRYPTEDMEDIAEXTENSIONS_INITIALIZATION_DATA = new("3e73735c-e6c0-481d-8260-ee5db1343b5f");
+    
     public static readonly Guid MF_EVENT_DO_THINNING = new("321ea6fb-dad9-46e4-b31d-d2eae7090e30");
     
     public static readonly Guid MF_EVENT_MFT_CONTEXT = new("b7cd31f1-899e-4b41-80c9-26a896d32977");
@@ -25897,6 +25907,8 @@ public static partial class Constants
     
     public static readonly Guid MFAudioFormat_Float_SpatialObjects = new("fa39cd94-bc64-4ab1-9b71-dcd09d5a7e7a");
     
+    public static readonly Guid MFAudioFormat_IAMF = new("78a8eba0-f446-4851-a55d-5372280e6b0b");
+    
     public static readonly Guid MFAudioFormat_LPCM = new("e06d8032-db46-11cf-b4d1-00805f6cbbea");
     
     public static readonly Guid MFAudioFormat_MP3 = new("00000055-0000-0010-8000-00aa00389b71");
@@ -26364,6 +26376,10 @@ public static partial class Constants
     public static readonly Guid MFSampleExtension_VideoDSPMode = new("c12d55cb-d7d9-476d-81f3-69117f163ea0");
     
     public static readonly Guid MFSampleExtension_VideoEncodeBitsUsedMap = new("6894263d-e6e2-4bcc-849d-8570365f5114");
+    
+    public static readonly Guid MFSampleExtension_VideoEncodeInputAbsoluteQPMap = new("432a6e9a-f1ed-456e-8dc3-6f8985649eb9");
+    
+    public static readonly Guid MFSampleExtension_VideoEncodeInputDeltaQPMap = new("dab419c3-bf21-4b46-8692-9a7bf0a71769");
     
     public static readonly Guid MFSampleExtension_VideoEncodePictureType = new("973704e6-cd14-483c-8f20-c9fc0928bad5");
     
