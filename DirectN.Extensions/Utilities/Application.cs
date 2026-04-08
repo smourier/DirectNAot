@@ -99,11 +99,14 @@ public class Application : IDisposable
         return reason;
     }
 
-    public virtual ExitLoopReason RunMessageLoop(Func<MSG, bool>? exitLoopFunc = null)
+    public virtual ExitLoopReason RunMessageLoop(Func<MSG, bool>? exitLoopFunc = null, uint timeout = 0)
     {
         ThrowIfNotRunningAsUIThread();
         do
         {
+            if (timeout != 0 && Functions.MsgWaitForMultipleObjects(0, 0, false, timeout, QUEUE_STATUS_FLAGS.QS_ALLINPUT) != WAIT_EVENT.WAIT_OBJECT_0)
+                return ExitLoopReason.Timeout;
+
             if (Functions.PeekMessageW(out var msg, HWND.Null, 0, 0, PEEK_MESSAGE_REMOVE_TYPE.PM_REMOVE))
             {
                 if (exitLoopFunc != null && exitLoopFunc(msg))
@@ -136,12 +139,15 @@ public class Application : IDisposable
         } while (true);
     }
 
-    public virtual ExitLoopReason RunModalLoop(Window modalWindow, Func<MSG, bool>? exitLoopFunc = null)
+    public virtual ExitLoopReason RunModalLoop(Window modalWindow, Func<MSG, bool>? exitLoopFunc = null, uint timeout = 0)
     {
         ArgumentNullException.ThrowIfNull(modalWindow);
         ThrowIfNotRunningAsUIThread();
         do
         {
+            if (timeout != 0 && Functions.MsgWaitForMultipleObjects(0, 0, false, timeout, QUEUE_STATUS_FLAGS.QS_ALLINPUT) != WAIT_EVENT.WAIT_OBJECT_0)
+                return ExitLoopReason.Timeout;
+
             if (Functions.PeekMessageW(out var msg, HWND.Null, 0, 0, PEEK_MESSAGE_REMOVE_TYPE.PM_REMOVE))
             {
                 if (exitLoopFunc != null && exitLoopFunc(msg))

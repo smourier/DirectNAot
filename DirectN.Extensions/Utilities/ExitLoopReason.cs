@@ -7,4 +7,5 @@ public enum ExitLoopReason
     Disposed,
     Func,
     UnhandledMessage,
+    Timeout,
 }
