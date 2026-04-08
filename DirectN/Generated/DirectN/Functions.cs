@@ -1107,6 +1107,18 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CoGetObjectContext(in Guid riid, out nint /* void */ ppv);
     
+    // https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coinitialize
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoInitialize(nint /* optional void* */ pvReserved);
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coinitializeex
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial HRESULT CoInitializeEx(nint /* optional void* */ pvReserved, uint dwCoInit);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-colorcorrectpalette
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -1222,6 +1234,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial HRESULT CoSuspendClassObjects();
+    
+    // https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
+    [LibraryImport("OLE32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial void CoUninitialize();
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-countclipboardformats
     [LibraryImport("USER32", SetLastError = true)]
