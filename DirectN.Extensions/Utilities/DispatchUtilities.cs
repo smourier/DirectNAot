@@ -6,8 +6,8 @@ public static class DispatchUtilities
     // https://github.com/MicrosoftEdge/WebView2Feedback/issues/347
     private const uint LOCALE_USER_DEFAULT = 0x00000400;
 
-    public static unsafe string? CallMethodNullifiedValue(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null) => CallMethodNullifiedValue(disp?.Object, name, arguments);
-    public static unsafe string? CallMethodNullifiedValue(this IDispatch? disp, string name, object?[]? arguments = null)
+    public static string? CallMethodNullifiedValue(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null) => CallMethodNullifiedValue(disp?.Object, name, arguments);
+    public static string? CallMethodNullifiedValue(this IDispatch? disp, string name, object?[]? arguments = null)
     {
         if (!TryCallMethod(disp, name, out var value, arguments) || value is null)
             return null;
@@ -18,8 +18,8 @@ public static class DispatchUtilities
         return value.ToString().Nullify();
     }
 
-    public static unsafe IComObject<T>? CallMethodComObject<T>(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null) => CallMethodComObject<T>(disp?.Object, name, arguments);
-    public static unsafe IComObject<T>? CallMethodComObject<T>(this IDispatch? disp, string name, object?[]? arguments = null)
+    public static IComObject<T>? CallMethodComObject<T>(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null) => CallMethodComObject<T>(disp?.Object, name, arguments);
+    public static IComObject<T>? CallMethodComObject<T>(this IDispatch? disp, string name, object?[]? arguments = null)
     {
         if (!TryCallMethod(disp, name, out object? value, arguments))
             return null;
@@ -30,8 +30,8 @@ public static class DispatchUtilities
         return new ComObject<T>(co);
     }
 
-    public static unsafe T? CallMethod<T>(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null, T? defaultValue = default) => CallMethod(disp?.Object, name, arguments, defaultValue);
-    public static unsafe T? CallMethod<T>(this IDispatch? disp, string name, object?[]? arguments = null, T? defaultValue = default)
+    public static T? CallMethod<T>(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null, T? defaultValue = default) => CallMethod(disp?.Object, name, arguments, defaultValue);
+    public static T? CallMethod<T>(this IDispatch? disp, string name, object?[]? arguments = null, T? defaultValue = default)
     {
         if (!TryCallMethod(disp, name, out object? value, arguments))
             return defaultValue;
@@ -42,8 +42,8 @@ public static class DispatchUtilities
         return defaultValue;
     }
 
-    public static unsafe object? CallObjectMethod(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null, object? defaultValue = null) => CallObjectMethod(disp?.Object, name, arguments, defaultValue);
-    public static unsafe object? CallObjectMethod(this IDispatch? disp, string name, object?[]? arguments = null, object? defaultValue = null)
+    public static object? CallObjectMethod(this IComObject<IDispatch>? disp, string name, object?[]? arguments = null, object? defaultValue = null) => CallObjectMethod(disp?.Object, name, arguments, defaultValue);
+    public static object? CallObjectMethod(this IDispatch? disp, string name, object?[]? arguments = null, object? defaultValue = null)
     {
         if (!TryCallMethod(disp, name, out object? value, arguments))
             return defaultValue;
@@ -51,7 +51,7 @@ public static class DispatchUtilities
         return value;
     }
 
-    public static unsafe bool TryCallMethod(this IComObject<IDispatch>? disp, string name, out object? value, object?[]? arguments = null) => TryCallMethod(disp?.Object, name, out value, arguments);
+    public static bool TryCallMethod(this IComObject<IDispatch>? disp, string name, out object? value, object?[]? arguments = null) => TryCallMethod(disp?.Object, name, out value, arguments);
     public static unsafe bool TryCallMethod(this IDispatch? disp, string name, out object? value, object?[]? arguments = null)
     {
         ArgumentNullException.ThrowIfNull(name);
@@ -95,7 +95,7 @@ public static class DispatchUtilities
         return true;
     }
 
-    public static unsafe bool TryGetProperty(this IComObject<IDispatch>? disp, string name, out object? value) => TryGetProperty(disp?.Object, name, out value);
+    public static bool TryGetProperty(this IComObject<IDispatch>? disp, string name, out object? value) => TryGetProperty(disp?.Object, name, out value);
     public static unsafe bool TryGetProperty(this IDispatch? disp, string name, out object? value)
     {
         ArgumentNullException.ThrowIfNull(name);
@@ -121,7 +121,7 @@ public static class DispatchUtilities
         return true;
     }
 
-    public static unsafe bool TryGetPropertyWithParameters(this IComObject<IDispatch>? disp, string name, object?[] parameters, out object? value) => TryGetPropertyWithParameters(disp?.Object, name, parameters, out value);
+    public static bool TryGetPropertyWithParameters(this IComObject<IDispatch>? disp, string name, object?[] parameters, out object? value) => TryGetPropertyWithParameters(disp?.Object, name, parameters, out value);
     public static unsafe bool TryGetPropertyWithParameters(this IDispatch? disp, string name, object?[] parameters, out object? value)
     {
         ArgumentNullException.ThrowIfNull(name);
@@ -205,8 +205,8 @@ public static class DispatchUtilities
         return value;
     }
 
-    public static unsafe bool TryGetProperty<T>(this IComObject<IDispatch>? disp, string name, out T? value) => TryGetProperty(disp?.Object, name, out value);
-    public static unsafe bool TryGetProperty<T>(this IDispatch? disp, string name, out T? value)
+    public static bool TryGetProperty<T>(this IComObject<IDispatch>? disp, string name, out T? value) => TryGetProperty(disp?.Object, name, out value);
+    public static bool TryGetProperty<T>(this IDispatch? disp, string name, out T? value)
     {
         if (!TryGetProperty(disp, name, out object? obj))
         {
@@ -231,7 +231,7 @@ public static class DispatchUtilities
         return false;
     }
 
-    public static unsafe bool TryGetValue(this IComObject<IDispatch>? disp, out object? value) => TryGetValue(disp?.Object, out value);
+    public static bool TryGetValue(this IComObject<IDispatch>? disp, out object? value) => TryGetValue(disp?.Object, out value);
     public static unsafe bool TryGetValue(this IDispatch? disp, out object? value)
     {
         value = null;
@@ -249,8 +249,8 @@ public static class DispatchUtilities
         return false;
     }
 
-    public static unsafe bool TryGetValue<T>(this IComObject<IDispatch>? disp, out T? value) => TryGetValue(disp?.Object, out value);
-    public static unsafe bool TryGetValue<T>(this IDispatch? disp, out T? value)
+    public static bool TryGetValue<T>(this IComObject<IDispatch>? disp, out T? value) => TryGetValue(disp?.Object, out value);
+    public static bool TryGetValue<T>(this IDispatch? disp, out T? value)
     {
         if (!TryGetValue(disp, out object? obj))
         {
@@ -288,7 +288,7 @@ public static class DispatchUtilities
         return value.Nullify();
     }
 
-    public static unsafe HRESULT SetProperty(this IComObject<IDispatch> disp, string name, object? value, DISPATCH_FLAGS flags = DISPATCH_FLAGS.DISPATCH_PROPERTYPUT, VARENUM? type = null, bool throwOnError = true)
+    public static HRESULT SetProperty(this IComObject<IDispatch> disp, string name, object? value, DISPATCH_FLAGS flags = DISPATCH_FLAGS.DISPATCH_PROPERTYPUT, VARENUM? type = null, bool throwOnError = true)
         => SetProperty(disp?.Object!, name, value, flags, type, throwOnError);
 
     public static unsafe HRESULT SetProperty(this IDispatch disp, string name, object? value, DISPATCH_FLAGS flags = DISPATCH_FLAGS.DISPATCH_PROPERTYPUT, VARENUM? type = null, bool throwOnError = true)

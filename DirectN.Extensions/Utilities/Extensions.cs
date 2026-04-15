@@ -184,7 +184,7 @@ public static class Extensions
         return (nint)Unsafe.AsPointer(ref (new T[] { structure.Value })[0]);
     }
 
-    public static unsafe uint Length<T>(this IReadOnlyCollection<T>? array)
+    public static uint Length<T>(this IReadOnlyCollection<T>? array)
     {
         if (array == null)
             return 0;
@@ -514,12 +514,12 @@ public static class Extensions
     }
 
     [return: NotNullIfNotNull(nameof(buffer))]
-    public static System.IO.UnmanagedMemoryStream? GetUnmanagedMemoryStream(this SafeBuffer? buffer)
+    public static System.IO.UnmanagedMemoryStream? GetUnmanagedMemoryStream(this SafeBuffer? buffer, FileAccess access = FileAccess.ReadWrite)
     {
         if (buffer == null)
             return null;
 
-        return new System.IO.UnmanagedMemoryStream(buffer, 0, (long)buffer.ByteLength);
+        return new System.IO.UnmanagedMemoryStream(buffer, 0, (long)buffer.ByteLength, access);
     }
 
     public static unsafe Span<byte> GetSpan(this SafeBuffer buffer)

@@ -1268,6 +1268,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT CreateBindCtx(uint reserved, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] out IBindCtx ppbc);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createbitmap
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HBITMAP CreateBitmap(int nWidth, int nHeight, uint nPlanes, uint nBitCount, nint /* optional void* */ lpBits);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createbrushindirect
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -1364,6 +1371,20 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL CreateDeviceLinkProfile([In][Out][MarshalUsing(CountElementName = nameof(nProfiles))] nint[] hProfile, uint nProfiles, [In][MarshalUsing(CountElementName = nameof(nIntents))] uint[] padwIntent, uint nIntents, uint dwFlags, out nint /* byte array */ pProfileData, uint indexPreferredCMM);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createdibitmap
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HBITMAP CreateDIBitmap(HDC hdc, nint /* optional BITMAPINFOHEADER* */ pbmih, uint flInit, nint /* optional void* */ pjBits, nint /* optional BITMAPINFO* */ pbmi, DIB_USAGE iUsage);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createdibsection
+    [LibraryImport("GDI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HBITMAP CreateDIBSection(HDC hdc, in BITMAPINFO pbmi, DIB_USAGE usage, out nint ppvBits, HANDLE hSection, uint offset);
     
     // https://learn.microsoft.com/windows/win32/api/windows.graphics.directx.direct3d11.interop/nf-windows-graphics-directx-direct3d11-interop-createdirect3d11devicefromdxgidevice
     [LibraryImport("d3d11")]

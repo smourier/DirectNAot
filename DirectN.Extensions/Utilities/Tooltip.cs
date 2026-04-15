@@ -85,7 +85,7 @@ public class Tooltip : IDisposable
     }
 
     public void TrackPosition(POINT pt) => TrackPosition(pt.x, pt.y);
-    public virtual unsafe void TrackPosition(int x, int y)
+    public virtual void TrackPosition(int x, int y)
     {
         ObjectDisposedException.ThrowIf(IsDisposed, this);
         var lp = (nint)((y << 16) | (x & 0xFFFF));

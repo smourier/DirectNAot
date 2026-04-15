@@ -532,7 +532,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public unsafe virtual HRESULT TxGetCharFormat(nint ppCF)
+    public virtual HRESULT TxGetCharFormat(nint ppCF)
     {
         if (_charFormat == null)
         {
@@ -574,7 +574,7 @@ public unsafe partial class TextHost : ITextHost2, IDisposable
         return Constants.S_OK;
     }
 
-    public unsafe virtual HRESULT TxGetParaFormat(nint ppPF)
+    public virtual HRESULT TxGetParaFormat(nint ppPF)
     {
         if (_paraFormat == null)
         {

@@ -109,6 +109,48 @@ public sealed class IntPtrBuffer : SafeBuffer
         return *(T*)handle;
     }
 
+    public unsafe Span<byte> ToSpan() => new(DangerousGetHandle().ToPointer(), (int)ByteLength);
+
+    public static IntPtrBuffer FromStream(Stream stream, uint? streamLength = null)
+    {
+        ArgumentNullException.ThrowIfNull(stream);
+        if (!stream.CanRead)
+            throw new ArgumentException("Stream must be readable.", nameof(stream));
+
+        MemoryStream? ms = null;
+        uint length;
+        if (streamLength.HasValue)
+        {
+            length = streamLength.Value;
+        }
+        else
+        {
+            try
+            {
+                length = (uint)stream.Length;
+            }
+            catch
+            {
+                ms = new MemoryStream();
+                stream.CopyTo(ms);
+                length = (uint)ms.Length;
+                stream = ms;
+            }
+        }
+
+        try
+        {
+            var buffer = new IntPtrBuffer(length);
+            var span = buffer.ToSpan();
+            stream.ReadExactly(span);
+            return buffer;
+        }
+        finally
+        {
+            ms?.Dispose();
+        }
+    }
+
     public unsafe static IntPtrBuffer From<T>(T value) where T : unmanaged
     {
         var buffer = new IntPtrBuffer(sizeof(T));

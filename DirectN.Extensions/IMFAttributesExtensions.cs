@@ -188,7 +188,7 @@ public static class IMFAttributesExtensions
     }
 
     public static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IComObject<IMFAttributes>? input) => EnumerateValues(input?.Object);
-    public unsafe static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IMFAttributes? input)
+    public static IEnumerable<KeyValuePair<Guid, object?>> EnumerateValues(this IMFAttributes? input)
     {
         if (input == null)
             yield break;

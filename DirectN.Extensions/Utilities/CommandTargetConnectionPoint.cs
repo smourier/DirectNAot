@@ -16,7 +16,7 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
     public Guid InterfaceId { get; }
     public override string ToString() => InterfaceId.ToString();
 
-    public virtual unsafe void InvokeMember(int dispId, params object?[]? parameters)
+    public virtual void InvokeMember(int dispId, params object?[]? parameters)
     {
         Variant[]? variants = null;
         VARIANT[]? vars;

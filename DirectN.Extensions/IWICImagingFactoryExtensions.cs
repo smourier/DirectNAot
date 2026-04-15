@@ -198,7 +198,7 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICBitmap>(value);
     }
 
-    public static unsafe IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, ReadOnlySpan<byte> buffer)
+    public static IComObject<IWICBitmap> CreateBitmapFromMemory(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, uint stride, ReadOnlySpan<byte> buffer)
         => CreateBitmapFromMemory(factory?.Object!, width, height, pixelFormat, stride, buffer);
 
     public static unsafe IComObject<IWICBitmap> CreateBitmapFromMemory(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, uint stride, ReadOnlySpan<byte> buffer)
