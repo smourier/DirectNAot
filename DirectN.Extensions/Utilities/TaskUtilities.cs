@@ -25,6 +25,49 @@ public static class TaskUtilities
         }
     }
 
+    public static Task RunWithNewThread(Action action, Action<Thread>? configure = null)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        var tcs = new TaskCompletionSource();
+        var thread = new Thread(() =>
+        {
+            try
+            {
+                action();
+                tcs.SetResult();
+            }
+            catch (Exception ex)
+            {
+                tcs.SetException(ex);
+            }
+        });
+
+        configure?.Invoke(thread);
+        thread.Start();
+        return tcs.Task;
+    }
+
+    public static Task<T> RunWithNewThread<T>(Func<T> func, Action<Thread>? configure = null)
+    {
+        ArgumentNullException.ThrowIfNull(func);
+        var tcs = new TaskCompletionSource<T>();
+        var thread = new Thread(() =>
+        {
+            try
+            {
+                tcs.SetResult(func());
+            }
+            catch (Exception ex)
+            {
+                tcs.SetException(ex);
+            }
+        });
+
+        configure?.Invoke(thread);
+        thread.Start();
+        return tcs.Task;
+    }
+
     public static Task<T> RunWithNewSTAThread<T>(Func<T> func)
     {
         ArgumentNullException.ThrowIfNull(func);
