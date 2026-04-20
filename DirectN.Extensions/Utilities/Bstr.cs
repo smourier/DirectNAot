@@ -19,7 +19,7 @@ public class Bstr : IDisposable
     public int? Length => ToString()?.Length;
     public BSTR BSTR => new(Value);
 
-    public override string? ToString() => Marshal.PtrToStringBSTR(Value)!;
+    public override string? ToString() => Value != 0 ? Marshal.PtrToStringBSTR(Value) : null;
 
     public static implicit operator Bstr(string? value) => new(value);
     public static implicit operator BSTR(Bstr value) => new(value.Value);

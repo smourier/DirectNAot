@@ -290,7 +290,7 @@ public sealed class Variant : IDisposable
                     return DateTime.FromOADate(_inner.Anonymous.Anonymous.Anonymous.dblVal);
 
                 case VARENUM.VT_BSTR:
-                    return Marshal.PtrToStringBSTR(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value);
+                    return _inner.Anonymous.Anonymous.Anonymous.bstrVal.Value != 0 ? Marshal.PtrToStringBSTR(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value) : null;
 
                 case VARENUM.VT_LPSTR:
                     // all strings point to same place anyway

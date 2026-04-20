@@ -316,7 +316,7 @@ public sealed class PropVariant : IDisposable
                     return _inner.Anonymous.Anonymous.Anonymous.filetime.ToDateTime();
 
                 case VARENUM.VT_BSTR:
-                    return Marshal.PtrToStringBSTR(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value);
+                    return _inner.Anonymous.Anonymous.Anonymous.bstrVal.Value != 0 ? Marshal.PtrToStringBSTR(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value) : null;
 
                 case VARENUM.VT_BLOB:
                     var blob = new byte[_inner.Anonymous.Anonymous.Anonymous.blob.cbSize];
@@ -1175,7 +1175,7 @@ public sealed class PropVariant : IDisposable
                 return Marshal.PtrToStringUni(ptr);
 
             case VARENUM.VT_BSTR:
-                return Marshal.PtrToStringBSTR(ptr);
+                return ptr != 0 ? Marshal.PtrToStringBSTR(ptr) : null;
 
             case VARENUM.VT_LPSTR:
                 return Marshal.PtrToStringAnsi(ptr);
