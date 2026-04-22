@@ -2461,6 +2461,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial void DragAcceptFiles(HWND hWnd, BOOL fAccept);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-dragdetect
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL DragDetect(HWND hwnd, POINT pt);
+    
     // https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragfinish
     [LibraryImport("SHELL32")]
     [SupportedOSPlatform("windows5.1.2600")]

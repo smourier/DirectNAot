@@ -304,6 +304,7 @@
     "DisplayConfigGetDeviceInfo",
     "DoDragDrop",
     "DragAcceptFiles",
+    "DragDetect",
     "DragFinish",
     "DragQueryFileW",
     "DrawAnimatedRects",
