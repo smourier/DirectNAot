@@ -320,6 +320,7 @@
     "DwmSetWindowAttribute",
     "Ellipse",
     "EmptyClipboard",
+    "EnableMenuItem",
     "EndUpdateResourceW",
     "EnumClipboardFormats",
     "EnumChildWindows",

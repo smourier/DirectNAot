@@ -2941,6 +2941,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL EmptyClipboard();
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enablemenuitem
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnableMenuItem(HMENU hMenu, uint uIDEnableItem, MENU_ITEM_FLAGS uEnable);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enablemouseinpointer
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
