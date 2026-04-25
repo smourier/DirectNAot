@@ -3,6 +3,7 @@
 public static class WindowUtilities
 {
     public static uint GetPointerId(this WPARAM wParam) => wParam.Value.LOWORD();
+    public static HT GetPointerHitTest(this WPARAM wParam) => (HT)wParam.Value.HIWORD();
     public static POINTER_MESSAGE_FLAGS GetPointerFlags(this WPARAM wParam) => (POINTER_MESSAGE_FLAGS)wParam.Value.HIWORD();
     public static int GetWheelDelta(this WPARAM wParam) => (int)wParam.Value.HIWORD();
 

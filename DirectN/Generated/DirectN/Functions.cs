@@ -4204,6 +4204,41 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetPixelFormat(HDC hdc);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdevice
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerDevice(HANDLE device, out POINTER_DEVICE_INFO pointerDevice);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdevicecursors
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerDeviceCursors(HANDLE device, ref uint cursorCount, nint /* optional POINTER_DEVICE_CURSOR_INFO* */ deviceCursors);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdeviceproperties
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerDeviceProperties(HANDLE device, ref uint propertyCount, nint /* optional POINTER_DEVICE_PROPERTY* */ pointerProperties);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdevicerects
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerDeviceRects(HANDLE device, out RECT pointerDeviceRect, out RECT displayRect);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdevices
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerDevices(ref uint deviceCount, nint /* optional POINTER_DEVICE_INFO* */ pointerDevices);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerinfo
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -4286,6 +4321,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetPS2ColorSpaceArray(nint hProfile, uint dwIntent, uint dwCSAType, nint /* optional byte* */ pPS2ColorSpaceArray, ref uint pcbPS2ColorSpaceArray, out BOOL pbBinary);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawpointerdevicedata
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetRawPointerDeviceData(uint pointerId, uint historyCount, uint propertiesCount, [In][MarshalUsing(CountElementName = nameof(propertiesCount))] POINTER_DEVICE_PROPERTY[] pProperties, out int pValues);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getregiondata
     [LibraryImport("GDI32")]
