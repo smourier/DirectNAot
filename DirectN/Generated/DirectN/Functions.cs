@@ -4204,6 +4204,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetPixelFormat(HDC hdc);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointercursorid
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerCursorId(uint pointerId, out uint cursorId);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerdevice
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
@@ -4239,12 +4246,68 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetPointerDevices(ref uint deviceCount, nint /* optional POINTER_DEVICE_INFO* */ pointerDevices);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframeinfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFrameInfo(uint pointerId, ref uint pointerCount, nint /* optional POINTER_INFO* */ pointerInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframeinfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFrameInfoHistory(uint pointerId, ref uint entriesCount, ref uint pointerCount, nint /* optional POINTER_INFO* */ pointerInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframepeninfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFramePenInfo(uint pointerId, ref uint pointerCount, nint /* optional POINTER_PEN_INFO* */ penInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframepeninfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFramePenInfoHistory(uint pointerId, ref uint entriesCount, ref uint pointerCount, nint /* optional POINTER_PEN_INFO* */ penInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframetouchinfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFrameTouchInfo(uint pointerId, ref uint pointerCount, nint /* optional POINTER_TOUCH_INFO* */ touchInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerframetouchinfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerFrameTouchInfoHistory(uint pointerId, ref uint entriesCount, ref uint pointerCount, nint /* optional POINTER_TOUCH_INFO* */ touchInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerinfo
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetPointerInfo(uint pointerId, out POINTER_INFO pointerInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerinfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerInfoHistory(uint pointerId, ref uint entriesCount, nint /* optional POINTER_INFO* */ pointerInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerinputtransform
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.1")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerInputTransform(uint pointerId, uint historyCount, [In][Out][MarshalUsing(CountElementName = nameof(historyCount))] INPUT_TRANSFORM[] inputTransform);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerpeninfo
     [LibraryImport("USER32", SetLastError = true)]
@@ -4253,12 +4316,26 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetPointerPenInfo(uint pointerId, out POINTER_PEN_INFO penInfo);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointerpeninfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerPenInfoHistory(uint pointerId, ref uint entriesCount, nint /* optional POINTER_PEN_INFO* */ penInfo);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointertouchinfo
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetPointerTouchInfo(uint pointerId, out POINTER_TOUCH_INFO touchInfo);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointertouchinfohistory
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetPointerTouchInfoHistory(uint pointerId, ref uint entriesCount, nint /* optional POINTER_TOUCH_INFO* */ touchInfo);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpointertype
     [LibraryImport("USER32", SetLastError = true)]

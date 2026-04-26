@@ -17,6 +17,7 @@ public class Window : IDisposable, IEquatable<Window>
     public event EventHandler? ExitSizeMove;
     public event CancelEventHandler? Disposing;
     public event EventHandler<HandledEventArgs>? Moved;
+    public event EventHandler<ValueEventArgs<RECT>>? Moving;
     public event EventHandler<ValueEventArgs<(WindowResizedType ResizedType, SIZE Size)>>? Resized;
     public event EventHandler<HandledEventArgs>? Activated;
     public event EventHandler<HandledEventArgs>? Deactivated;
@@ -475,6 +476,7 @@ public class Window : IDisposable, IEquatable<Window>
     protected virtual void OnDisposing(object? sender, CancelEventArgs e) => Disposing?.Invoke(sender, e);
     protected virtual void OnDestroyed(object? sender, EventArgs e) => Destroyed?.Invoke(sender, e);
     protected virtual void OnMoved(object? sender, HandledEventArgs e) => Moved?.Invoke(sender, e);
+    protected virtual void OnMoving(object? sender, ValueEventArgs<RECT> e) => Moving?.Invoke(sender, e);
     protected virtual void OnCreated(object? sender, EventArgs e) => Created?.Invoke(sender, e); // after window has been created
     protected virtual void OnHandleCreated(object? sender, EventArgs e) => HandleCreated?.Invoke(sender, e); // inside window being created
     protected virtual void OnClosing(object? sender, CancelEventArgs e) => Closing?.Invoke(sender, e);
@@ -551,7 +553,18 @@ public class Window : IDisposable, IEquatable<Window>
     {
         var e = new HandledEventArgs();
         OnMoved(this, e);
-        return false;
+        return e.Handled;
+    }
+
+    protected virtual bool OnMoving(ref RECT rc)
+    {
+        var e = new ValueEventArgs<RECT>(rc, false, isCancellable: true);
+        OnMoving(this, e);
+        if (e.Cancel)
+        {
+            rc = e.Value;
+        }
+        return e.Cancel;
     }
 
     protected virtual bool OnFocusChanged(bool setOrKill)
@@ -728,6 +741,18 @@ public class Window : IDisposable, IEquatable<Window>
                     return null;
 
                 break;
+
+            case MessageDecoder.WM_MOVING:
+                unsafe
+                {
+                    var rc = *(RECT*)lParam.Value;
+                    if (OnMoving(ref rc))
+                    {
+                        *(RECT*)lParam.Value = rc;
+                        return new LRESULT { Value = 0 };
+                    }
+                    break;
+                }
 
             case WM_WINDOW_CREATED:
                 OnCreated(this, EventArgs.Empty);
