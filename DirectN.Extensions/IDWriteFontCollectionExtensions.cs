@@ -15,4 +15,15 @@ public static class IDWriteFontCollectionExtensions
         }
         return list;
     }
+
+    public static int FindFamilyNameIndex(this IComObject<IDWriteFontCollection> collection, string name) => FindFamilyNameIndex(collection?.Object!, name);
+    public static int FindFamilyNameIndex(this IDWriteFontCollection collection, string name)
+    {
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(name);
+        if (collection.FindFamilyName(PWSTR.From(name), out var idx, out var exists).IsError)
+            return -1;
+
+        return exists ? (int)idx : -1;
+    }
 }

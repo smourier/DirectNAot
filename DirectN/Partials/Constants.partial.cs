@@ -24,6 +24,24 @@ public static partial class Constants
 
     public const uint HOVER_DEFAULT = 0xFFFFFFFF;
 
+    public const int BI_RGB = 0;
+    public const int BI_RLE8 = 1;
+    public const int BI_RLE4 = 2;
+    public const int BI_BITFIELDS = 3;
+    public const int BI_JPEG = 4;
+    public const int BI_PNG = 5;
+
+    public const int SBS_HORZ = 0;
+    public const int SBS_VERT = 1;
+    public const int SBS_TOPALIGN = 0x0002;
+    public const int SBS_LEFTALIGN = 0x0002;
+    public const int SBS_BOTTOMALIGN = 0x0004;
+    public const int SBS_RIGHTALIGN = 0x0004;
+    public const int SBS_SIZEBOXTOPLEFTALIGN = 0x0002;
+    public const int SBS_SIZEBOXBOTTOMRIGHTALIGN = 0x0004;
+    public const int SBS_SIZEBOX = 0x0008;
+    public const int SBS_SIZEGRIP = 0x0010;
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;
@@ -32,6 +50,35 @@ public static partial class Constants
     public const int WMSZ_BOTTOM = 6;
     public const int WMSZ_BOTTOMLEFT = 7;
     public const int WMSZ_BOTTOMRIGHT = 8;
+
+    public const int MUI_LANGUAGE_ID = 0x4;
+    public const int MUI_LANGUAGE_NAME = 0x8;
+    public const int MUI_MERGE_SYSTEM_FALLBACK = 0x10;
+    public const int MUI_MERGE_USER_FALLBACK = 0x20;
+    public const int MUI_UI_FALLBACK = MUI_MERGE_SYSTEM_FALLBACK | MUI_MERGE_USER_FALLBACK;
+    public const int MUI_THREAD_LANGUAGES = 0x40;
+    public const int MUI_CONSOLE_FILTER = 0x100;
+    public const int MUI_COMPLEX_SCRIPT_FILTER = 0x200;
+    public const int MUI_RESET_FILTERS = 0x001;
+    public const int MUI_USER_PREFERRED_UI_LANGUAGES = 0x10;
+    public const int MUI_USE_INSTALLED_LANGUAGES = 0x20;
+    public const int MUI_USE_SEARCH_ALL_LANGUAGES = 0x40;
+    public const int MUI_LANG_NEUTRAL_PE_FILE = 0x100;
+    public const int MUI_NON_LANG_NEUTRAL_FILE = 0x200;
+    public const int MUI_MACHINE_LANGUAGE_SETTINGS = 0x400;
+    public const int MUI_FILETYPE_NOT_LANGUAGE_NEUTRAL = 0x001;
+    public const int MUI_FILETYPE_LANGUAGE_NEUTRAL_MAIN = 0x002;
+    public const int MUI_FILETYPE_LANGUAGE_NEUTRAL_MUI = 0x004;
+    public const int MUI_QUERY_TYPE = 0x001;
+    public const int MUI_QUERY_CHECKSUM = 0x002;
+    public const int MUI_QUERY_LANGUAGE_NAME = 0x004;
+    public const int MUI_QUERY_RESOURCE_TYPES = 0x008;
+    public const int MUI_FILEINFO_VERSION = 0x001;
+    public const int MUI_FULL_LANGUAGE = 0x01;
+    public const int MUI_PARTIAL_LANGUAGE = 0x02;
+    public const int MUI_LIP_LANGUAGE = 0x04;
+    public const int MUI_LANGUAGE_INSTALLED = 0x20;
+    public const int MUI_LANGUAGE_LICENSED = 0x40;
 
     public const int PRF_CHECKVISIBLE = 0x00000001;
     public const int PRF_NONCLIENT = 0x00000002;

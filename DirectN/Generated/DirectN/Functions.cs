@@ -855,6 +855,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL CheckColorsInGamut(HDC hdc, [In][MarshalUsing(CountElementName = nameof(nCount))] RGBTRIPLE[] lpRGBTriple, nint dlpBuffer, uint nCount);
     
+    // https://learn.microsoft.com/windows/win32/api/commdlg/nc-commdlg-choosecolorw
+    [LibraryImport("COMDLG32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL ChooseColorW(ref CHOOSECOLORW param0);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-choosepixelformat
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -1538,6 +1544,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HRGN CreatePolyPolygonRgn(in POINT pptl, [In][MarshalUsing(CountElementName = nameof(cPoly))] int[] pc, int cPoly, CREATE_POLYGON_RGN_MODE iMode);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createpopupmenu
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HMENU CreatePopupMenu();
     
     // https://learn.microsoft.com/windows/win32/api/presentation/nf-presentation-createpresentationfactory
     [LibraryImport("dcomp")]
@@ -2268,6 +2281,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL DestroyIcon(HICON hIcon);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-destroymenu
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL DestroyMenu(HMENU hMenu);
+    
     // https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-destroyphysicalmonitor
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -2961,6 +2981,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL EnableNonClientDpiScaling(HWND hwnd);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enablescrollbar
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL EnableScrollBar(HWND hWnd, uint wSBflags, ENABLE_SCROLL_BAR_ARROWS wArrows);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enablewindow
     [LibraryImport("USER32", SetLastError = true)]
@@ -4019,6 +4046,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetLogColorSpaceW(HCOLORSPACE hColorSpace, nint lpBuffer, uint nSize);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmenuiteminfow
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetMenuItemInfoW(HMENU hmenu, uint item, BOOL fByPosition, ref MENUITEMINFOW lpmii);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmessagepos
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -4450,6 +4484,19 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT GetScaleFactorForMonitor(HMONITOR hMon, out DEVICE_SCALE_FACTOR pScale);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getscrollbarinfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetScrollBarInfo(HWND hwnd, OBJECT_IDENTIFIER idObject, ref SCROLLBARINFO psbi);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getscrollpos
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial int GetScrollPos(HWND hWnd, SCROLLBAR_CONSTANTS nBar);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getshellwindow
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -4475,6 +4522,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HGDIOBJ GetStockObject(GET_STOCK_OBJECT_FLAGS i);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsubmenu
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HMENU GetSubMenu(HMENU hMenu, int nPos);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getsyscolor
     [LibraryImport("USER32")]
@@ -6908,6 +6962,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
     public static partial HRESULT InitVariantFromFileTime(in FILETIME pft, out VARIANT pvar);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-insertmenuitemw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL InsertMenuItemW(HMENU hmenu, uint item, BOOL fByPosition, in MENUITEMINFOW lpmi);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-installcolorprofilea
     [LibraryImport("mscms", SetLastError = true)]
@@ -9356,6 +9417,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial void mouse_event(MOUSE_EVENT_FLAGS dwFlags, int dx, int dy, int dwData, nuint dwExtraInfo);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL MoveWindow(HWND hWnd, int X, int Y, int nWidth, int nHeight, BOOL bRepaint);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-msgwaitformultipleobjects
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.1.2600")]
@@ -10210,6 +10278,19 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL ScreenToClient(HWND hWnd, ref POINT lpPoint);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-scrollwindow
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL ScrollWindow(HWND hWnd, int XAmount, int YAmount, nint /* optional RECT* */ lpRect, nint /* optional RECT* */ lpClipRect);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-scrollwindowex
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial int ScrollWindowEx(HWND hWnd, int dx, int dy, nint /* optional RECT* */ prcScroll, nint /* optional RECT* */ prcClip, HRGN hrgnUpdate, nint /* optional RECT* */ prcUpdate, SCROLL_WINDOW_FLAGS flags);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-selectcliprgn
     [LibraryImport("GDI32")]
     [SupportedOSPlatform("windows5.0")]
@@ -10466,6 +10547,20 @@ public static partial class Functions
     [PreserveSig]
     public static partial int SetMapMode(HDC hdc, HDC_MAP_MODE iMode);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setmenu
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetMenu(HWND hWnd, HMENU hMenu);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setmenuiteminfow
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetMenuItemInfoW(HMENU hmenu, uint item, BOOL fByPositon, in MENUITEMINFOW lpmii);
+    
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorbrightness
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -10573,6 +10668,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial int SetROP2(HDC hdc, R2_MODE rop2);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setscrollinfo
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial int SetScrollInfo(HWND hwnd, SCROLLBAR_CONSTANTS nBar, in SCROLLINFO lpsi, BOOL redraw);
     
     // https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setstandardcolorspaceprofilea
     [LibraryImport("mscms", SetLastError = true)]
@@ -10805,6 +10906,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial HRESULT SHLoadIndirectString(PWSTR pszSource, [MarshalUsing(CountElementName = nameof(cchOutBuf))] PWSTR pszOutBuf, uint cchOutBuf, nint /* optional void** */ ppvReserved);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-showscrollbar
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL ShowScrollBar(HWND hWnd, SCROLLBAR_CONSTANTS wBar, BOOL bShow);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-showwindow
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -11033,6 +11141,20 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL TrackMouseEvent(ref TRACKMOUSEEVENT lpEventTrack);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-trackpopupmenu
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL TrackPopupMenu(HMENU hMenu, TRACK_POPUP_MENU_FLAGS uFlags, int x, int y, int nReserved, HWND hWnd, nint /* optional RECT* */ prcRect);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-trackpopupmenuex
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL TrackPopupMenuEx(HMENU hMenu, uint uFlags, int x, int y, HWND hwnd, nint /* optional TPMPARAMS* */ lptpm);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-translateacceleratorw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
