@@ -23,6 +23,32 @@ public static class SystemUtilities
     [SupportedOSPlatform("windows8.0")]
     public static bool IsPackagedProcess => _isPackagedProcess.Value;
 
+    [SupportedOSPlatform("windows8.0")]
+    public static string? GetCurrentPackagePath()
+    {
+        uint size = 0;
+        Functions.GetCurrentPackagePath(ref size, PWSTR.Null);
+        if (size == 0)
+            return null;
+
+        using var pwstr = new AllocPwstr(size * 2);
+        Functions.GetCurrentPackagePath(ref size, pwstr);
+        return pwstr.ToString();
+    }
+
+    [SupportedOSPlatform("windows8.0")]
+    public static string? GetCurrentPackageFamilyName()
+    {
+        uint size = 0;
+        Functions.GetCurrentPackageFamilyName(ref size, PWSTR.Null);
+        if (size == 0)
+            return null;
+
+        using var pwstr = new AllocPwstr(size * 2);
+        Functions.GetCurrentPackageFamilyName(ref size, pwstr);
+        return pwstr.ToString();
+    }
+
     public static bool IsAppContainer()
     {
         if (!Functions.OpenProcessToken(Functions.GetCurrentProcess(), TOKEN_ACCESS_MASK.TOKEN_QUERY, out var handle))

@@ -122,6 +122,8 @@ public static partial class Constants
 
     // from <Windows SDK Path>\um\winuser.rh
     public const int WHEEL_DELTA = 120;
+    public const uint WHEEL_PAGESCROLL = uint.MaxValue;
+
     public const int ICON_BIG = 1;
     public const int ICON_SMALL = 0;
     public const int ICON_SMALL2 = 2;

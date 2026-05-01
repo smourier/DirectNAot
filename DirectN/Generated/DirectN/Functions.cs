@@ -3791,11 +3791,23 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetCountColorProfileElements(nint hProfile, out uint pnElementCount);
     
+    // https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefamilyname
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial WIN32_ERROR GetCurrentPackageFamilyName(ref uint packageFamilyNameLength, [MarshalUsing(CountElementName = nameof(packageFamilyNameLength))] PWSTR packageFamilyName);
+    
     // https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefullname
     [LibraryImport("KERNEL32")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
     public static partial WIN32_ERROR GetCurrentPackageFullName(ref uint packageFullNameLength, [MarshalUsing(CountElementName = nameof(packageFullNameLength))] PWSTR packageFullName);
+    
+    // https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagepath
+    [LibraryImport("KERNEL32")]
+    [SupportedOSPlatform("windows8.0")]
+    [PreserveSig]
+    public static partial WIN32_ERROR GetCurrentPackagePath(ref uint pathLength, [MarshalUsing(CountElementName = nameof(pathLength))] PWSTR path);
     
     // https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentprocess
     [LibraryImport("KERNEL32")]
@@ -4490,6 +4502,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL GetScrollBarInfo(HWND hwnd, OBJECT_IDENTIFIER idObject, ref SCROLLBARINFO psbi);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getscrollinfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetScrollInfo(HWND hwnd, SCROLLBAR_CONSTANTS nBar, ref SCROLLINFO lpsi);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getscrollpos
     [LibraryImport("USER32", SetLastError = true)]
