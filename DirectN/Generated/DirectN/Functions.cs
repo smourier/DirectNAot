@@ -2637,6 +2637,18 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon, int cxWidth, int cyWidth, uint istepIfAniCur, HBRUSH hbrFlickerFreeDraw, DI_FLAGS diFlags);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-drawtextexw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int DrawTextExW(HDC hdc, [MarshalUsing(CountElementName = nameof(cchText))] PWSTR lpchText, int cchText, ref RECT lprc, DRAW_TEXT_FORMAT format, nint /* optional DRAWTEXTPARAMS* */ lpdtp);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-drawtextw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int DrawTextW(HDC hdc, [MarshalUsing(CountElementName = nameof(cchText))] PWSTR lpchText, int cchText, ref RECT lprc, DRAW_TEXT_FORMAT format);
+    
     // https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-drivercallback
     [LibraryImport("WINMM", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -10368,6 +10380,19 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial COLORREF SetBkColor(HDC hdc, COLORREF color);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setbkmode
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial int SetBkMode(HDC hdc, int mode);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setbrushorgex
+    [LibraryImport("GDI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetBrushOrgEx(HDC hdc, int x, int y, nint /* optional POINT* */ lppt);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setcapture
     [LibraryImport("USER32")]

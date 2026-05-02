@@ -42,6 +42,13 @@ public static partial class Constants
     public const int SBS_SIZEBOX = 0x0008;
     public const int SBS_SIZEGRIP = 0x0010;
 
+    public const int TRANSPARENT = 1;
+    public const int OPAQUE = 2;
+    public const int BKMODE_LAST = 2;
+
+    public const int AC_SRC_OVER = 0x00;
+    public const int AC_SRC_ALPHA = 0x01;
+
     public const int WMSZ_LEFT = 1;
     public const int WMSZ_RIGHT = 2;
     public const int WMSZ_TOP = 3;
