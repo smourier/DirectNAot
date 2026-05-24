@@ -5,10 +5,12 @@ public class SingleThreadTaskScheduler : TaskScheduler, IDisposable
     private readonly AutoResetEvent _stop = new(false);
     private readonly AutoResetEvent _dequeue = new(false);
     private readonly ConcurrentQueue<Task> _tasks = new();
-    private readonly Thread _thread;
+    private readonly Stopwatch _stopWatch = new();
     private bool _disposedValue;
 
     public event EventHandler? Executing;
+    public event EventHandler? Executed;
+    public event EventHandler<ValueEventArgs<Exception>>? Error;
 
     public SingleThreadTaskScheduler(string threadName)
         : this(t =>
@@ -26,16 +28,19 @@ public class SingleThreadTaskScheduler : TaskScheduler, IDisposable
     {
         DisposeThreadJoinTimeout = 1000;
         WaitTimeout = 1000;
-        _thread = new Thread(SafeThreadExecute) { IsBackground = true };
-        if (threadConfigure != null && !threadConfigure(_thread))
+        Thread = new Thread(SafeThreadExecute) { IsBackground = true };
+        if (threadConfigure != null && !threadConfigure(Thread))
             return;
 
-        _thread.Name ??= string.Format("_stts{0}", GetHashCode());
-        _thread.Start();
+        Thread.Name ??= string.Format("_stts{0}", GetHashCode());
+        Thread.Start();
     }
 
     protected ConcurrentQueue<Task> Tasks => _tasks;
+    public Thread Thread { get; }
+    public TimeSpan CurrentExecutionTime => _stopWatch.Elapsed;
     public DateTime LastDequeue { get; protected set; }
+    public virtual bool ContinueOnError { get; set; }
     public virtual bool DequeueOnDispose { get; set; }
     public virtual int DisposeThreadJoinTimeout { get; set; }
     public virtual int WaitTimeout { get; set; }
@@ -66,8 +71,24 @@ public class SingleThreadTaskScheduler : TaskScheduler, IDisposable
 
             if (execute)
             {
+                _stopWatch.Restart();
                 OnExecuting(this, EventArgs.Empty);
-                TryExecuteTask(task);
+                try
+                {
+                    TryExecuteTask(task);
+                }
+                catch (Exception ex)
+                {
+                    var e = new ValueEventArgs<Exception>(ex, true, true);
+                    OnError(this, e);
+                    if (e.Cancel)
+                        break;
+
+                    if (!ContinueOnError)
+                        throw;
+                }
+                OnExecuted(this, EventArgs.Empty);
+                _stopWatch.Stop();
             }
             count++;
         }
@@ -116,6 +137,8 @@ public class SingleThreadTaskScheduler : TaskScheduler, IDisposable
     }
 
     protected virtual void OnExecuting(object sender, EventArgs e) => Executing?.Invoke(this, e);
+    protected virtual void OnExecuted(object sender, EventArgs e) => Executed?.Invoke(this, e);
+    protected virtual void OnError(object sender, ValueEventArgs<Exception> e) => Error?.Invoke(this, e);
 
     protected override void QueueTask(Task task)
     {
@@ -144,9 +167,9 @@ public class SingleThreadTaskScheduler : TaskScheduler, IDisposable
                     Dequeue(true);
                 }
 
-                if (_thread != null && _thread.IsAlive)
+                if (Thread.IsAlive)
                 {
-                    _thread.Join(DisposeThreadJoinTimeout);
+                    Thread.Join(DisposeThreadJoinTimeout);
                 }
             }
 
