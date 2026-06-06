@@ -64,7 +64,7 @@ Here is the output (believe me, it rotates):
 Full credits go to d7Samurai: https://gist.github.com/d7samurai
 
 # PDF view sample
-The **DirectN.Samples.PdfView** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.PdfView](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.PdfView) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a PDF file's content.
+The **DirectN.Samples.PdfView** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN.Samples.PdfView](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.PdfView) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a PDF file's content.
 
 It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
 
