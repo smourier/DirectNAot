@@ -3622,6 +3622,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial BOOL FreeResource(HGLOBAL hResData);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-gdiflush
+    [LibraryImport("GDI32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GdiFlush();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getactivewindow
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -3951,6 +3958,12 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HMODULE GetDriverModuleHandle(HDRVR hDriver);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getenhmetafileheader
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    public static partial uint GetEnhMetaFileHeader(HENHMETAFILE hemf, uint nSize, nint /* optional ENHMETAHEADER* */ lpEnhMetaHeader);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getenhmetafilepixelformat
     [LibraryImport("GDI32", SetLastError = true)]
@@ -10533,6 +10546,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int SetDisplayConfig(uint numPathArrayElements, nint /* optional DISPLAYCONFIG_PATH_INFO* */ pathArray, uint numModeInfoArrayElements, nint /* optional DISPLAYCONFIG_MODE_INFO* */ modeInfoArray, SET_DISPLAY_CONFIG_FLAGS flags);
     
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setenhmetafilebits
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HENHMETAFILE SetEnhMetaFileBits(uint nSize, nint /* byte array */ pb);
+    
     // https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-seterrorinfo
     [LibraryImport("OLEAUT32")]
     [PreserveSig]
@@ -10887,6 +10907,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWINEVENTHOOK SetWinEventHook(uint eventMin, uint eventMax, HMODULE hmodWinEventProc, WINEVENTPROC pfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+    
+    // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setwinmetafilebits
+    [LibraryImport("GDI32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HENHMETAFILE SetWinMetaFileBits(uint nSize, nint /* byte array */ lpMeta16Data, HDC hdcRef, nint /* optional METAFILEPICT* */ lpMFP);
     
     // https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedataobject
     [LibraryImport("SHELL32")]
