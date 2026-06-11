@@ -159,4 +159,47 @@ public static partial class Functions
     [LibraryImport("gameinput")]
     [PreserveSig]
     public static partial HRESULT GameInputCreate([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IGameInput>))] out IGameInput gameInput);
+
+    [LibraryImport("Microsoft.Graphics.Canvas.dll")]
+    [PreserveSig]
+    public static partial HRESULT GetBoundsForICanvasImageInterop(
+		nint resourceCreator, 
+		[MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICanvasImageInterop>))] ICanvasImageInterop image,
+		nint transform,
+		nint rect
+		);
+
+    [LibraryImport("Microsoft.Graphics.Canvas.dll")]
+    [PreserveSig]
+    public static partial HRESULT InvalidateSourceRectangleForICanvasImageInterop(
+		nint resourceCreator, 
+		[MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICanvasImageInterop>))] ICanvasImageInterop image,
+		uint sourceIndex,
+		nint rect
+		);
+
+    [LibraryImport("Microsoft.Graphics.Canvas.dll")]
+    [PreserveSig]
+    public static partial HRESULT GetInvalidRectanglesForICanvasImageInterop(
+		nint resourceCreator, 
+		[MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICanvasImageInterop>))] ICanvasImageInterop image,
+		out uint valueCount,
+		nint valueElements
+		);
+
+    [LibraryImport("Microsoft.Graphics.Canvas.dll")]
+    [PreserveSig]
+    public static partial HRESULT GetRequiredSourceRectanglesForICanvasImageInterop(
+		nint resourceCreator, 
+		[MarshalUsing(typeof(UniqueComInterfaceMarshaller<ICanvasImageInterop>))] ICanvasImageInterop image,
+		nint outputRectangle,
+		uint sourceEffectCount,
+		nint sourceEffects,
+		uint sourceIndexCount,
+		nint sourceIndices,
+		uint sourceBoundsCount,
+		nint sourceBounds,
+		uint valueCount,
+		nint valueElements
+		);
 }
