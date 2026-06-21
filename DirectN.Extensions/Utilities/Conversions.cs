@@ -1,9 +1,125 @@
-﻿namespace DirectN.Extensions.Utilities;
+namespace DirectN.Extensions.Utilities;
 
-public static class Conversions
+public static partial class Conversions
 {
     private static readonly char[] _enumSeparators = [',', ';', '+', '|', ' '];
     private static readonly string[] _dateFormatsUtc = ["yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"];
+
+    static partial void RegisterDirectNTypes()
+    {
+        RegisterInputAdapter(static input =>
+        {
+            try
+            {
+                return input switch
+                {
+                    IValueGet vg => vg.GetValue(),
+                    Variant v => v.Value,
+                    PropVariant pv => pv.Value,
+                    _ => null
+                };
+            }
+            catch
+            {
+                return null;
+            }
+        });
+
+        RegisterInputAdapter(static input =>
+        {
+            if (input is D3DCOLORVALUE c)
+                return (c.BA == 0 ? c.ChangeAlpha(255) : c).UInt32Value;
+
+            return null;
+        });
+
+        Register(static (object? v, ConversionOptions o, out D2D_POINT_2F r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_POINT_2U r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out POINT r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_SIZE_F r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_SIZE_U r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out SIZE r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_VECTOR_2F r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out Vector2 r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out Vector3 r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out Vector4 r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_RECT_F r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out D2D_RECT_U r) => TryChangeType(v, out r));
+        Register(static (object? v, ConversionOptions o, out RECT r) => TryChangeType(v, out r));
+
+        Register(static (object? v, ConversionOptions o, out D2D_VECTOR_3F r) =>
+        {
+            if (TryChangeType<Vector3>(v, CultureInfo.InvariantCulture, out var v3))
+            {
+                r = v3;
+                return true;
+            }
+
+            r = default;
+            return false;
+        });
+
+        Register(static (object? v, ConversionOptions o, out D2D_VECTOR_4F r) =>
+        {
+            if (TryChangeType<Vector4>(v, CultureInfo.InvariantCulture, out var v4))
+            {
+                r = v4;
+                return true;
+            }
+
+            r = default;
+            return false;
+        });
+
+        Register(static (object? v, ConversionOptions o, out D3DCOLORVALUE r) =>
+        {
+            if (v is string s && D3DCOLORVALUE.TryParseFromName(s, out var named))
+            {
+                r = named.BA == 0 ? named.ChangeAlpha(255) : named;
+                return true;
+            }
+
+            if (TryConvert(v, typeof(uint), out var u, o) && u is uint ui)
+            {
+                var c = new D3DCOLORVALUE(ui);
+                r = c.BA == 0 ? c.ChangeAlpha(255) : c;
+                return true;
+            }
+
+            r = default;
+            return false;
+        });
+
+        Register(static (object? v, ConversionOptions o, out OLE_COLOR r) =>
+        {
+            if (TryConvert(v, typeof(uint), out var u, o) && u is uint ui)
+            {
+                r = new OLE_COLOR(ui);
+                return true;
+            }
+
+            if (TryConvert(v, typeof(D3DCOLORVALUE), out var c, o) && c is D3DCOLORVALUE clr)
+            {
+                r = clr.ToOLE_COLOR();
+                return true;
+            }
+
+            r = default;
+            return false;
+        });
+
+        Register(static (object? v, ConversionOptions o, out COLORREF r) =>
+        {
+            if (TryConvert(v, typeof(D3DCOLORVALUE), out var c, o) && c is D3DCOLORVALUE clr)
+            {
+                r = clr.ToCOLORREF();
+                return true;
+            }
+
+            r = default;
+            return false;
+        });
+    }
 
     public static long ToPositiveFileTime(DateTime dt)
     {
@@ -435,888 +551,8 @@ public static class Conversions
             return true;
         }
 
-        var inputType = input.GetType();
-        if (conversionType.IsAssignableFrom(inputType))
-        {
-            value = input;
+        if (TryConvert(input, conversionType, out value, ToConversionOptions(provider)))
             return true;
-        }
-
-        if (conversionType.IsNullable())
-        {
-            var firstType = conversionType.GetGenericArguments()[0];
-            if (TryChangeObjectType(input, firstType, provider, out object? vtValue))
-            {
-#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-                var nt = typeof(Nullable<>).MakeGenericType(firstType);
-#pragma warning restore IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.
-                value = Activator.CreateInstance(nt, vtValue);
-                return true;
-            }
-
-            value = null;
-            return false;
-        }
-
-        if (conversionType.IsEnum)
-            return EnumTryParse(conversionType, input, out value);
-
-        if (inputType.IsEnum)
-            return TryGetEnumValue(input, conversionType, inputType, out value);
-
-        if (conversionType == typeof(int))
-        {
-            if (inputType == typeof(uint))
-            {
-                value = unchecked((int)(uint)input);
-                return true;
-            }
-
-            if (inputType == typeof(ulong))
-            {
-                value = unchecked((int)(ulong)input);
-                return true;
-            }
-
-            if (inputType == typeof(ushort))
-            {
-                value = unchecked((int)(ushort)input);
-                return true;
-            }
-
-            if (inputType == typeof(byte))
-            {
-                value = unchecked((int)(byte)input);
-                return true;
-            }
-
-            if (inputType == typeof(D3DCOLORVALUE))
-            {
-                var color = (D3DCOLORVALUE)input;
-                if (color.BA == 0)
-                {
-                    value = color.ChangeAlpha(255).Int32Value;
-                }
-                else
-                {
-                    value = color.Int32Value;
-                }
-                return true;
-            }
-
-            if (input is IValueGet<int> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(long))
-        {
-            if (inputType == typeof(uint))
-            {
-                value = unchecked((long)(uint)input);
-                return true;
-            }
-
-            if (inputType == typeof(ulong))
-            {
-                value = unchecked((long)(ulong)input);
-                return true;
-            }
-
-            if (inputType == typeof(ushort))
-            {
-                value = unchecked((long)(ushort)input);
-                return true;
-            }
-
-            if (inputType == typeof(byte))
-            {
-                value = unchecked((long)(byte)input);
-                return true;
-            }
-
-            if (inputType == typeof(TimeSpan))
-            {
-                value = ((TimeSpan)input).Ticks;
-                return true;
-            }
-
-            if (inputType == typeof(DateTime))
-            {
-                value = ((DateTime)input).Ticks;
-                return true;
-            }
-
-            if (inputType == typeof(DateTimeOffset))
-            {
-                value = ((DateTimeOffset)input).Ticks;
-                return true;
-            }
-
-            if (inputType == typeof(D3DCOLORVALUE))
-            {
-                var color = (D3DCOLORVALUE)input;
-                if (color.BA == 0)
-                {
-                    value = (long)color.ChangeAlpha(255).Int32Value;
-                }
-                else
-                {
-                    value = (long)color.Int32Value;
-                }
-                return true;
-            }
-
-            if (input is IValueGet<long> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(short))
-        {
-            if (inputType == typeof(uint))
-            {
-                value = unchecked((short)(uint)input);
-                return true;
-            }
-
-            if (inputType == typeof(ulong))
-            {
-                value = unchecked((short)(ulong)input);
-                return true;
-            }
-
-            if (inputType == typeof(ushort))
-            {
-                value = unchecked((short)(ushort)input);
-                return true;
-            }
-
-            if (inputType == typeof(byte))
-            {
-                value = unchecked((short)(byte)input);
-                return true;
-            }
-
-            if (input is IValueGet<short> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(sbyte))
-        {
-            if (inputType == typeof(uint))
-            {
-                value = unchecked((sbyte)(uint)input);
-                return true;
-            }
-
-            if (inputType == typeof(ulong))
-            {
-                value = unchecked((sbyte)(ulong)input);
-                return true;
-            }
-
-            if (inputType == typeof(ushort))
-            {
-                value = unchecked((sbyte)(ushort)input);
-                return true;
-            }
-
-            if (inputType == typeof(byte))
-            {
-                value = unchecked((sbyte)(byte)input);
-                return true;
-            }
-
-            if (input is IValueGet<sbyte> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(uint))
-        {
-            if (inputType == typeof(int))
-            {
-                value = unchecked((uint)(int)input);
-                return true;
-            }
-
-            if (inputType == typeof(long))
-            {
-                value = unchecked((uint)(long)input);
-                return true;
-            }
-
-            if (inputType == typeof(short))
-            {
-                value = unchecked((uint)(short)input);
-                return true;
-            }
-
-            if (inputType == typeof(sbyte))
-            {
-                value = unchecked((uint)(sbyte)input);
-                return true;
-            }
-
-            if (inputType == typeof(D3DCOLORVALUE))
-            {
-                var color = (D3DCOLORVALUE)input;
-                if (color.BA == 0)
-                {
-                    value = color.ChangeAlpha(255).UInt32Value;
-                }
-                else
-                {
-                    value = color.UInt32Value;
-                }
-                return true;
-            }
-
-            if (input is IValueGet<uint> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(ulong))
-        {
-            if (inputType == typeof(int))
-            {
-                value = unchecked((ulong)(int)input);
-                return true;
-            }
-
-            if (inputType == typeof(long))
-            {
-                value = unchecked((ulong)(long)input);
-                return true;
-            }
-
-            if (inputType == typeof(short))
-            {
-                value = unchecked((ulong)(short)input);
-                return true;
-            }
-
-            if (inputType == typeof(sbyte))
-            {
-                value = unchecked((ulong)(sbyte)input);
-                return true;
-            }
-
-            if (inputType == typeof(D3DCOLORVALUE))
-            {
-                var color = (D3DCOLORVALUE)input;
-                if (color.BA == 0)
-                {
-                    value = (ulong)color.ChangeAlpha(255).UInt32Value;
-                }
-                else
-                {
-                    value = (ulong)color.UInt32Value;
-                }
-                return true;
-            }
-
-            if (input is IValueGet<ulong> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(ushort))
-        {
-            if (inputType == typeof(int))
-            {
-                value = unchecked((ushort)(int)input);
-                return true;
-            }
-
-            if (inputType == typeof(long))
-            {
-                value = unchecked((ushort)(long)input);
-                return true;
-            }
-
-            if (inputType == typeof(short))
-            {
-                value = unchecked((ushort)(short)input);
-                return true;
-            }
-
-            if (inputType == typeof(sbyte))
-            {
-                value = unchecked((ushort)(sbyte)input);
-                return true;
-            }
-
-            if (input is IValueGet<ushort> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(byte))
-        {
-            if (inputType == typeof(int))
-            {
-                value = unchecked((byte)(int)input);
-                return true;
-            }
-
-            if (inputType == typeof(long))
-            {
-                value = unchecked((byte)(long)input);
-                return true;
-            }
-
-            if (inputType == typeof(short))
-            {
-                value = unchecked((byte)(short)input);
-                return true;
-            }
-
-            if (inputType == typeof(sbyte))
-            {
-                value = unchecked((byte)(sbyte)input);
-                return true;
-            }
-
-            if (input is IValueGet<byte> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(bool))
-        {
-            if (true.Equals(input))
-            {
-                value = true;
-                return true;
-            }
-
-            if (false.Equals(input))
-            {
-                value = false;
-                return true;
-            }
-
-            var svalue = string.Format(provider, "{0}", input).Nullify();
-            if (svalue == null)
-            {
-                value = false;
-                return false;
-            }
-
-            if (bool.TryParse(svalue, out bool b))
-            {
-                value = b;
-                return true;
-            }
-
-            if (input is IValueGet<bool> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            if (svalue.EqualsIgnoreCase("y") || svalue.EqualsIgnoreCase("yes"))
-            {
-                value = true;
-                return true;
-            }
-
-            if (svalue.EqualsIgnoreCase("n") || svalue.EqualsIgnoreCase("no"))
-            {
-                value = false;
-                return true;
-            }
-
-            if (TryChangeType(input, out long bl))
-            {
-                value = bl != 0;
-                return true;
-            }
-
-            value = false;
-            return false;
-        }
-
-        if (conversionType == typeof(DateTime))
-        {
-            if (inputType == typeof(long))
-            {
-                value = new DateTime((long)input, DateTimeKind.Utc);
-                return true;
-            }
-
-            if (inputType == typeof(DateTimeOffset))
-            {
-                value = ((DateTimeOffset)input).DateTime;
-                return true;
-            }
-
-            if (input is IValueGet<DateTime> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            if (TryChangeToDateTime(input, provider, DateTimeStyles.None, out var dt))
-            {
-                value = dt;
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(DateTimeOffset))
-        {
-            if (inputType == typeof(long))
-            {
-                value = new DateTimeOffset(new DateTime((long)input, DateTimeKind.Utc));
-                return true;
-            }
-
-            if (inputType == typeof(DateTime))
-            {
-                var dt = (DateTime)input;
-                if (dt.IsValid())
-                {
-                    value = new DateTimeOffset((DateTime)input);
-                    return true;
-                }
-            }
-
-            if (input is IValueGet<DateTimeOffset> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            if (TryChangeToDateTime(input, provider, DateTimeStyles.None, out var dto))
-            {
-                value = new DateTimeOffset(dto);
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(TimeSpan))
-        {
-            if (inputType == typeof(long))
-            {
-                value = new TimeSpan((long)input);
-                return true;
-            }
-
-            if (inputType == typeof(DateTime))
-            {
-                value = ((DateTime)input).TimeOfDay;
-                return true;
-            }
-
-            if (inputType == typeof(DateTimeOffset))
-            {
-                value = ((DateTimeOffset)input).TimeOfDay;
-                return true;
-            }
-
-            if (input is IValueGet<TimeSpan> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            if (TryChangeType(input, provider, out string? sv) && TimeSpan.TryParse(sv, provider, out var ts))
-            {
-                value = ts;
-                return true;
-            }
-        }
-
-        if (conversionType == typeof(Guid))
-        {
-            if (input is byte[] bytes && bytes.Length == 16)
-            {
-                value = new Guid(bytes);
-                return true;
-            }
-
-            if (input is IValueGet<Guid> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            var svalue = string.Format(provider, "{0}", input).Nullify();
-            if (svalue != null && Guid.TryParse(svalue, out Guid guid))
-            {
-                value = guid;
-                return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(Uri))
-        {
-            var svalue = string.Format(provider, "{0}", input).Nullify();
-            if (svalue != null && Uri.TryCreate(svalue, UriKind.RelativeOrAbsolute, out var uri))
-            {
-                value = uri;
-                return true;
-            }
-
-            if (input is IValueGet<Uri> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(nint))
-        {
-            if (nint.Size == 8)
-            {
-                if (TryChangeType(input, provider, out long l))
-                {
-                    value = new nint(l);
-                    return true;
-                }
-            }
-            else if (TryChangeType(input, provider, out int i))
-            {
-                value = new nint(i);
-                return true;
-            }
-
-            if (input is IValueGet<nint> valueGet)
-            {
-                value = valueGet.GetValue();
-                return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(Vector2))
-        {
-            if (TryChangeType(input, out Vector2 v2))
-            {
-                value = v2;
-                return true;
-            }
-            value = Vector2.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(Vector3))
-        {
-            if (TryChangeType(input, out Vector3 v3))
-            {
-                value = v3;
-                return true;
-            }
-            value = Vector3.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(Vector4))
-        {
-            if (TryChangeType(input, out Vector4 v4))
-            {
-                value = v4;
-                return true;
-            }
-            value = Vector4.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_VECTOR_2F))
-        {
-            if (TryChangeType(input, out D2D_VECTOR_2F v2f))
-            {
-                value = v2f;
-                return true;
-            }
-            value = D2D_VECTOR_2F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_VECTOR_3F))
-        {
-            if (TryChangeType(input, out D2D_VECTOR_3F v3f))
-            {
-                value = v3f;
-                return true;
-            }
-            value = D2D_VECTOR_3F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_VECTOR_4F))
-        {
-            if (TryChangeType(input, out D2D_VECTOR_4F v4f))
-            {
-                value = v4f;
-                return true;
-            }
-            value = D2D_VECTOR_4F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(SIZE))
-        {
-            if (TryChangeType(input, out SIZE s))
-            {
-                value = s;
-                return true;
-            }
-            value = SIZE.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_SIZE_F))
-        {
-            if (TryChangeType(input, out D2D_SIZE_F sf))
-            {
-                value = sf;
-                return true;
-            }
-            value = D2D_SIZE_F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_SIZE_U))
-        {
-            if (TryChangeType(input, out D2D_SIZE_U su))
-            {
-                value = su;
-                return true;
-            }
-            value = D2D_SIZE_U.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(POINT))
-        {
-            if (TryChangeType(input, out POINT p))
-            {
-                value = p;
-                return true;
-            }
-            value = POINT.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_POINT_2F))
-        {
-            if (TryChangeType(input, out D2D_POINT_2F pf))
-            {
-                value = pf;
-                return true;
-            }
-            value = D2D_POINT_2F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_POINT_2U))
-        {
-            if (TryChangeType(input, out D2D_POINT_2U pu))
-            {
-                value = pu;
-                return true;
-            }
-            value = D2D_POINT_2U.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(RECT))
-        {
-            if (TryChangeType(input, out RECT r))
-            {
-                value = r;
-                return true;
-            }
-            value = RECT.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_RECT_F))
-        {
-            if (TryChangeType(input, out D2D_RECT_F rf))
-            {
-                value = rf;
-                return true;
-            }
-            value = D2D_RECT_F.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D2D_RECT_U))
-        {
-            if (TryChangeType(input, out D2D_RECT_U ru))
-            {
-                value = ru;
-                return true;
-            }
-            value = D2D_RECT_U.Zero;
-            return false;
-        }
-
-        if (conversionType == typeof(D3DCOLORVALUE))
-        {
-            if (input is string si && D3DCOLORVALUE.TryParseFromName(si, out var named))
-            {
-                if (named.BA == 0)
-                {
-                    named = named.ChangeAlpha(255);
-                }
-                value = named;
-                return true;
-            }
-
-            if (TryChangeType(input, out uint ui))
-            {
-                var color = new D3DCOLORVALUE(ui);
-                if (color.BA == 0)
-                {
-                    color = color.ChangeAlpha(255);
-                }
-                value = color;
-                return true;
-            }
-
-            value = new D3DCOLORVALUE();
-            return false;
-        }
-
-        if (conversionType == typeof(OLE_COLOR))
-        {
-            if (TryChangeType(input, out uint ui))
-            {
-                // keep possible flags as is
-                value = new OLE_COLOR(ui);
-                return true;
-            }
-
-            if (TryChangeType(input, out D3DCOLORVALUE clr))
-            {
-                value = clr.ToOLE_COLOR();
-                return true;
-            }
-
-            value = new OLE_COLOR();
-            return false;
-        }
-
-        if (conversionType == typeof(COLORREF))
-        {
-            if (TryChangeType(input, out D3DCOLORVALUE clr))
-            {
-                value = clr.ToCOLORREF();
-                return true;
-            }
-
-            value = new COLORREF();
-            return false;
-        }
-
-        // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
-        bool isWellKnownConvertible()
-        {
-            return conversionType == typeof(short) || conversionType == typeof(int) ||
-                conversionType == typeof(string) || conversionType == typeof(byte) ||
-                conversionType == typeof(char) || conversionType == typeof(DateTime) ||
-                conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
-                conversionType == typeof(double) || conversionType.IsEnum ||
-                conversionType == typeof(short) || conversionType == typeof(int) ||
-                conversionType == typeof(long) || conversionType == typeof(sbyte) ||
-                conversionType == typeof(bool) || conversionType == typeof(float) ||
-                conversionType == typeof(ushort) || conversionType == typeof(uint) ||
-                conversionType == typeof(ulong);
-        }
-
-        if (input is IValueGet vg)
-        {
-            try
-            {
-                var vgValue = vg.GetValue();
-                if (!Equals(vgValue, input))
-                    return TryChangeObjectType(vgValue, conversionType, provider, out value);
-            }
-            catch
-            {
-                // continue
-            }
-        }
-        else if (input is Variant v)
-        {
-            try
-            {
-                var vValue = v.Value;
-                if (!Equals(vValue, input))
-                    return TryChangeObjectType(vValue, conversionType, provider, out value);
-            }
-            catch
-            {
-                // continue
-            }
-        }
-        else if (input is PropVariant pv)
-        {
-            try
-            {
-                var pvValue = pv.Value;
-                if (!Equals(pvValue, input))
-                    return TryChangeObjectType(pvValue, conversionType, provider, out value);
-            }
-            catch
-            {
-                // continue
-            }
-        }
-
-        if (isWellKnownConvertible() && input is IConvertible convertible)
-        {
-            try
-            {
-                value = convertible.ToType(conversionType, provider);
-                if (value is DateTime dt && !dt.IsValid())
-                    return false;
-
-                return true;
-            }
-            catch
-            {
-                // continue;
-            }
-        }
-
-        if (conversionType == typeof(string))
-        {
-            value = string.Format(provider, "{0}", input);
-            return true;
-        }
 
         value = GetDefaultValue(conversionType);
         return false;
@@ -1467,124 +703,21 @@ public static class Conversions
         return value;
     }
 
-#pragma warning disable IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
     public static bool EnumTryParse(Type type, object input, out object value)
     {
         ArgumentNullException.ThrowIfNull(type);
         if (!type.IsEnum)
             throw new ArgumentException(null, nameof(type));
 
-        if (input == null)
+        if (TryConvert(input, type, out var converted, ToConversionOptions(CultureInfo.InvariantCulture)) && converted is not null)
         {
-            value = Activator.CreateInstance(type)!;
-            return false;
-        }
-
-        var stringInput = string.Format(CultureInfo.InvariantCulture, "{0}", input);
-        stringInput = stringInput.Nullify();
-        if (stringInput == null)
-        {
-            value = Activator.CreateInstance(type)!;
-            return false;
-        }
-
-        if (stringInput.StartsWith("0x", StringComparison.OrdinalIgnoreCase) && ulong.TryParse(stringInput.AsSpan(2), NumberStyles.HexNumber, null, out var ulx))
-        {
-            value = ToEnum(type, ulx.ToString(CultureInfo.InvariantCulture));
+            value = converted;
             return true;
         }
 
-        var names = Enum.GetNames(type);
-        if (names.Length == 0)
-        {
-            value = Activator.CreateInstance(type)!;
-            return false;
-        }
-
-#pragma warning disable IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-        // this is ok for enums
-        var values = type.GetFields(BindingFlags.Public | BindingFlags.Static).Select(f => new { name = f.Name, value = f.GetValue(null) }).ToDictionary(x => x.name, x => x.value!, StringComparer.OrdinalIgnoreCase);
-#pragma warning restore IL2070 // 'this' argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-        // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
-        if (!type.IsDefined(typeof(FlagsAttribute), true) && stringInput.IndexOfAny(_enumSeparators) < 0)
-            return StringToEnum(type, values, stringInput, out value);
-
-        // multi value enum
-        var tokens = stringInput.Split(_enumSeparators, StringSplitOptions.RemoveEmptyEntries);
-        if (tokens.Length == 0)
-        {
-            value = Activator.CreateInstance(type)!;
-            return false;
-        }
-
-        ulong ul = 0;
-        foreach (var tok in tokens)
-        {
-            var token = tok.Nullify(); // NOTE: we don't consider empty tokens as errors
-            if (token == null)
-                continue;
-
-            if (!StringToEnum(type, values, token, out var tokenValue))
-            {
-                value = Activator.CreateInstance(type)!;
-                return false;
-            }
-
-            var tokenUl = Convert.GetTypeCode(tokenValue) switch
-            {
-                TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.SByte => (ulong)Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture),
-                _ => Convert.ToUInt64(tokenValue, CultureInfo.InvariantCulture),
-            };
-            ul |= tokenUl;
-        }
-        value = Enum.ToObject(type, ul);
-        return true;
-    }
-
-    private static bool StringToEnum(Type type, Dictionary<string, object> values, string input, out object value)
-    {
-        if (values.TryGetValue(input, out value!))
-            return true;
-
-        foreach (var kv in values)
-        {
-            if (input.Length > 0 && input[0] == '-')
-            {
-                var ul = (long)EnumToUInt64(kv.Value);
-                if (ul.ToString().EqualsIgnoreCase(input))
-                {
-                    value = kv.Value;
-                    return true;
-                }
-            }
-            else
-            {
-                var ul = EnumToUInt64(kv.Value);
-                if (ul.ToString().EqualsIgnoreCase(input))
-                {
-                    value = kv.Value;
-                    return true;
-                }
-            }
-        }
-
-        if (char.IsDigit(input[0]) || input[0] == '-' || input[0] == '+')
-        {
-            var obj = EnumToObject(type, input);
-            if (obj == null)
-            {
-                value = Activator.CreateInstance(type)!;
-                return false;
-            }
-
-            value = obj;
-            return true;
-        }
-
-        value = Activator.CreateInstance(type)!;
+        value = GetDefaultValue(type)!;
         return false;
     }
-#pragma warning restore IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
 
     public static ulong EnumToUInt64(object value)
     {
@@ -1631,356 +764,9 @@ public static class Conversions
         throw new NotSupportedException();
     }
 
-    private static bool TryGetEnumValue(object input, Type conversionType, Type inputType, out object? value)
-    {
-        var tc = Type.GetTypeCode(inputType);
-        if (conversionType == typeof(int))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (int)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (int)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (int)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (int)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (int)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (int)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (int)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(short))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (short)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (short)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (short)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (short)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (short)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (short)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (short)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(long))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (long)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (long)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (long)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (long)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (long)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (long)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (long)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(uint))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (uint)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (uint)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (uint)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (uint)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (uint)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (uint)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (uint)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(ushort))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (ushort)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (ushort)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (ushort)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (ushort)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (ushort)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (ushort)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (ushort)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(ulong))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (ulong)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (ulong)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (ulong)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (ulong)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (ulong)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (ulong)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (ulong)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(byte))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (byte)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (byte)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (byte)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (byte)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (byte)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (byte)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (byte)(sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(sbyte))
-        {
-            switch (tc)
-            {
-                case TypeCode.Int32:
-                    value = (sbyte)(int)input;
-                    return true;
-
-                case TypeCode.Int16:
-                    value = (sbyte)(short)input;
-                    return true;
-
-                case TypeCode.Int64:
-                    value = (sbyte)(long)input;
-                    return true;
-
-                case TypeCode.UInt32:
-                    value = (sbyte)(uint)input;
-                    return true;
-
-                case TypeCode.UInt16:
-                    value = (sbyte)(ushort)input;
-                    return true;
-
-                case TypeCode.UInt64:
-                    value = (sbyte)(ulong)input;
-                    return true;
-
-                case TypeCode.Byte:
-                    value = (sbyte)(byte)input;
-                    return true;
-
-                case TypeCode.SByte:
-                    value = (sbyte)input;
-                    return true;
-            }
-
-            value = GetDefaultValue(conversionType);
-            return false;
-        }
-
-        if (conversionType == typeof(string))
-        {
-            value = input.ToString() ?? "0";
-            return true;
-        }
-
-        value = GetDefaultValue(conversionType);
-        return false;
-    }
-
-    private static object? GetDefaultValue(Type type)
-    {
-#pragma warning disable IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-        if (type.IsReallyValueType())
-            return Activator.CreateInstance(type)!;
-#pragma warning restore IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
-
-        return null;
-    }
+    // a non-nullable value type is zero-initialized and needs no constructor, so GetUninitializedObject is provably safe here
+    [UnconditionalSuppressMessage("Trimming", "IL2067", Justification = "value types are zero-initialized and require no preserved constructor")]
+    private static object? GetDefaultValue(Type type) => type.IsReallyValueType() ? RuntimeHelpers.GetUninitializedObject(type) : null;
 
     public static bool TryChangeType(object? value, out D2D_POINT_2F point)
     {
