@@ -120,6 +120,14 @@ Check it out at https://github.com/aelyo-softworks/Wice
 
 <img width="1502" height="848" alt="VCamNetSample" src="https://github.com/user-attachments/assets/03b289a6-cee2-497f-a692-9a060b2b50d9" />
 
+# ActiveN
+[ActiveN](https://github.com/smourier/ActiveN) is a lightweight framework for building classic COM components and OLE/ActiveX controls in modern fully AOT-compatible .NET, with registration-ready deployment.
+
+It lets you author controls and automation objects that run inside legacy or current COM hosts (VBA, VB6, Delphi, Visual Fox Pro, scripting engines, test containers, etc.) without relying on WinForms or WPF (since they are currently not AOT-compatible).
+
+Check out this 1998 VB6 IDE (x86) hosting modern WebView2 :-)
+
+<img width="1361" height="784" alt="VB6 hosting WebView2" src="https://github.com/user-attachments/assets/bd1b283b-c337-46a5-b0d5-a4989323bdde" />
 
 
 
