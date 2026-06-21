@@ -2207,6 +2207,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial LRESULT DefDriverProc(nuint dwDriverIdentifier, HDRVR hdrvr, uint uMsg, LPARAM lParam1, LPARAM lParam2);
     
+    // https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-defsubclassproc
+    [LibraryImport("COMCTL32")]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial LRESULT DefSubclassProc(HWND hWnd, uint uMsg, WPARAM wParam, LPARAM lParam);
+    
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-degaussmonitor
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]
@@ -10065,6 +10072,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HANDLE RemovePropW(HWND hWnd, PWSTR lpString);
     
+    // https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-removewindowsubclass
+    [LibraryImport("COMCTL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL RemoveWindowSubclass(HWND hWnd, SUBCLASSPROC pfnSubclass, nuint uIdSubclass);
+    
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-restoredc
     [LibraryImport("GDI32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -10887,6 +10901,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HHOOK SetWindowsHookExW(WINDOWS_HOOK_ID idHook, HOOKPROC lpfn, HINSTANCE hmod, uint dwThreadId);
+    
+    // https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-setwindowsubclass
+    [LibraryImport("COMCTL32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.1.2600")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL SetWindowSubclass(HWND hWnd, SUBCLASSPROC pfnSubclass, nuint uIdSubclass, nuint dwRefData);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowtextw
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
