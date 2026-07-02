@@ -39,6 +39,9 @@ public partial struct D3D12_SHADER_RESOURCE_VIEW_DESC
         
         [FieldOffset(0)]
         public D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV RaytracingAccelerationStructure;
+        
+        [FieldOffset(0)]
+        public D3D12_BUFFER_SRV_BYTE_OFFSET BufferByteOffset;
     }
     
     public DXGI_FORMAT Format;

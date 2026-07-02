@@ -1497,6 +1497,8 @@ public static partial class Constants
     
     public static readonly Guid CLSID_D2D1YCbCr = new("99503cc1-66c7-45c9-a875-8ad8a7914401");
     
+    public static readonly Guid CLSID_D3D12ApplicationIdentity = new("08d8e1e8-75a6-42a7-bf3a-d05fe529c47c");
+    
     public static readonly Guid CLSID_D3D12Debug = new("f2352aeb-dd84-49fe-b97b-a9dcfdcc1b4f");
     
     public static readonly Guid CLSID_D3D12DeviceFactory = new("114863bf-c386-4aee-b39d-8f0bbb062955");
@@ -1504,6 +1506,8 @@ public static partial class Constants
     public static readonly Guid CLSID_D3D12DeviceRemovedExtendedData = new("4a75bbc4-9ff4-4ad8-9f18-abae84dc5ff2");
     
     public static readonly Guid CLSID_D3D12DSRDeviceFactory = new("bb6dd27e-94a9-41a6-9f1b-133772172428");
+    
+    public static readonly Guid CLSID_D3D12RuntimeValidationControl = new("e5b53e74-3fca-47b4-88b9-a8b41ef8fb73");
     
     public static readonly Guid CLSID_D3D12SDKConfiguration = new("7cda6aca-a03e-49c8-9458-0334d20e07ce");
     
@@ -5039,6 +5043,8 @@ public static partial class Constants
     
     public const uint D3D12_ARRAY_AXIS_ADDRESS_RANGE_BIT_COUNT = 9;
     
+    public const uint D3D12_AS_TGSM_BYTES_MINIMUM_SUPPORT = 32768;
+    
     public const uint D3D12_CLIP_OR_CULL_DISTANCE_COUNT = 8;
     
     public const uint D3D12_CLIP_OR_CULL_DISTANCE_ELEMENT_COUNT = 2;
@@ -5192,6 +5198,8 @@ public static partial class Constants
     public const uint D3D12_CS_4_X_UAV_REGISTER_COUNT = 1;
     
     public const uint D3D12_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION = 65535;
+    
+    public const uint D3D12_CS_TGSM_BYTES_MINIMUM_SUPPORT = 32768;
     
     public const uint D3D12_CS_TGSM_REGISTER_COUNT = 8192;
     
@@ -5421,6 +5429,12 @@ public static partial class Constants
     
     public const uint D3D12_GS_OUTPUT_REGISTER_COUNT = 32;
     
+    public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_HEIGHT_ALIGNMENT = 4;
+    
+    public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_PITCH_ALIGNMENT = 256;
+    
+    public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_PLANE_ALIGNMENT = 4096;
+    
     public const uint D3D12_HS_CONTROL_POINT_PHASE_INPUT_REGISTER_COUNT = 32;
     
     public const uint D3D12_HS_CONTROL_POINT_PHASE_OUTPUT_REGISTER_COUNT = 32;
@@ -5579,6 +5593,10 @@ public static partial class Constants
     
     public const uint D3D12_MIP_LOD_RANGE_BIT_COUNT = 8;
     
+    public const uint D3D12_MS_DISPATCH_MAX_THREAD_GROUPS_PER_GRID = 4194303;
+    
+    public const uint D3D12_MS_TGSM_BYTES_MINIMUM_SUPPORT = 28672;
+    
     public const float D3D12_MULTISAMPLE_ANTIALIAS_LINE_WIDTH = 1.4f;
     
     public const uint D3D12_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT = 0;
@@ -5593,7 +5611,7 @@ public static partial class Constants
     
     public const uint D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 16;
     
-    public const uint D3D12_PREVIEW_SDK_VERSION = 717;
+    public const uint D3D12_PREVIEW_SDK_VERSION = 719;
     
     public static readonly Guid D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED = new("62b0084e-c70e-4daa-a109-30ff8d5a0482");
     
@@ -5733,7 +5751,7 @@ public static partial class Constants
     
     public const uint D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT = 2;
     
-    public const uint D3D12_SDK_VERSION = 618;
+    public const uint D3D12_SDK_VERSION = 619;
     
     public const uint D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES = 4096;
     
@@ -5993,13 +6011,13 @@ public static partial class Constants
     
     public const uint D3D12_WORK_GRAPHS_BACKING_MEMORY_ALIGNMENT_IN_BYTES = 8;
     
+    public const uint D3D12_WORK_GRAPHS_DISPATCH_MAX_THREAD_GROUPS_PER_GRID = 16777215;
+    
     public const uint D3D12_WORK_GRAPHS_MAX_NODE_DEPTH = 32;
     
     public static readonly Guid D3D12ExperimentalShaderModels = new("76f5573e-f13a-40f5-b297-81ce9e18933f");
     
     public static readonly Guid D3D12GPUUploadHeapsOnUnsupportedOS = new("45dc51f3-767f-4588-b206-0baa2b16fbae");
-    
-    public static readonly Guid D3D12TiledResourceTier4 = new("c9c4725f-a81a-4f56-8c5b-c51039d694fb");
     
     public const uint D3D9_RESOURCE_PRIORITY_HIGH = 2684354560;
     

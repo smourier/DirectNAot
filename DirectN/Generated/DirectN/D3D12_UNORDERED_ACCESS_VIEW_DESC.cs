@@ -30,6 +30,9 @@ public partial struct D3D12_UNORDERED_ACCESS_VIEW_DESC
         
         [FieldOffset(0)]
         public D3D12_TEX3D_UAV Texture3D;
+        
+        [FieldOffset(0)]
+        public D3D12_BUFFER_UAV_BYTE_OFFSET BufferByteOffset;
     }
     
     public DXGI_FORMAT Format;
