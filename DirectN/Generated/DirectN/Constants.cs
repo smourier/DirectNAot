@@ -31485,9 +31485,13 @@ public static partial class Constants
     
     public const uint lDefaultTab = 720;
     
+    public static readonly Guid LIBID_Mpeg2DataLib = new("dbaf6c1b-b6a4-4898-ae65-204f0d9509a1");
+    
     public static readonly Guid LIBID_QuartzNetTypeLib = new("56a868b1-0ad4-11ce-b03a-0020af0ba770");
     
     public static readonly Guid LIBID_QuartzTypeLib = new("56a868b0-0ad4-11ce-b03a-0020af0ba770");
+    
+    public static readonly Guid LIBID_WMPLib = new("6bf52a50-394a-11d3-b153-00c04f79faa6");
     
     public const uint LOCAL_D3DFMT_DEFINES = 1;
     
