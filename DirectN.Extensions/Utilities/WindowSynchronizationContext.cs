@@ -6,7 +6,7 @@ public class WindowSynchronizationContext : SynchronizationContext
 
     public int ManagedThreadId { get; } = Environment.CurrentManagedThreadId;
     public override SynchronizationContext CreateCopy() => new WindowSynchronizationContext();
-    public override void Send(SendOrPostCallback d, object? state) => GetWindow()?.RunTaskOnUIThread(() => { d(state); });
+    public override void Send(SendOrPostCallback d, object? state) => GetWindow()?.RunTaskOnUIThread(() => d(state)).GetAwaiter().GetResult();
     public override void Post(SendOrPostCallback d, object? state) => GetWindow()?.RunTaskOnUIThread(() => { d(state); }, true);
 
     public static void Install()

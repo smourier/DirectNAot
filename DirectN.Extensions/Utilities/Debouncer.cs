@@ -2,48 +2,46 @@
 
 public sealed class Debouncer : IDisposable
 {
-    private ConcurrentDictionary<string, DebouncedAction> _debouncedActions = new();
-
+    private readonly Lock _sync = new();
+    private readonly Dictionary<string, DebouncedAction> _debouncedActions = [];
     public bool FlushOnDispose { get; set; } = true;
 
-    // dueTime = 0 do it if was requested before ("flush if any")
-    // duetime = -1 do it anyway
     public void Debounce(Action action, int dueTime, [CallerMemberName] string? actionKey = null)
     {
         ArgumentNullException.ThrowIfNull(action);
         ArgumentNullException.ThrowIfNull(actionKey);
-
-        if (dueTime <= 0)
+        lock (_sync)
         {
-            if (_debouncedActions.TryRemove(actionKey, out var t))
+            var hadPending = _debouncedActions.Remove(actionKey, out var previous);
+            previous?.Timer.Dispose();
+            if (dueTime > 0)
             {
-                t.Dispose();
+                var pending = new DebouncedAction(action);
+                pending.Timer = new Timer(_ => Invoke(actionKey, pending), null, Timeout.Infinite, Timeout.Infinite);
+                _debouncedActions.Add(actionKey, pending);
+                pending.Timer.Change(dueTime, Timeout.Infinite);
+                return;
             }
-            else if (dueTime == 0)
+
+            if (dueTime == 0 && !hadPending)
+                return;
+        }
+
+        action();
+    }
+
+    private void Invoke(string key, DebouncedAction pending)
+    {
+        lock (_sync)
+        {
+            if (!_debouncedActions.TryGetValue(key, out var current) || !ReferenceEquals(current, pending))
                 return;
 
-            action();
-            return;
+            _debouncedActions.Remove(key);
+            pending.Timer.Dispose();
         }
 
-        if (!_debouncedActions.TryGetValue(actionKey, out var debouncedAction))
-        {
-            debouncedAction = new DebouncedAction(action, new Timer(state =>
-            {
-                if (_debouncedActions.TryRemove(actionKey, out var a))
-                {
-                    a.Dispose();
-                }
-                action();
-            }, null, Timeout.Infinite, Timeout.Infinite));
-            debouncedAction = _debouncedActions.AddOrUpdate(actionKey, debouncedAction, (k, o) =>
-            {
-                // clear the old one
-                o.Dispose();
-                return debouncedAction;
-            });
-        }
-        debouncedAction.Change(dueTime);
+        pending.Action();
     }
 
     public void Cancel() => Finish(false);
@@ -51,43 +49,45 @@ public sealed class Debouncer : IDisposable
     public void Dispose() => Finish(FlushOnDispose);
     private void Finish(bool invoke)
     {
-        var debouncedActions = Interlocked.Exchange(ref _debouncedActions, new());
-        foreach (var debouncedAction in debouncedActions)
+        DebouncedAction[] pending;
+        lock (_sync)
         {
-            if (invoke)
+            pending = [.. _debouncedActions.Values];
+            _debouncedActions.Clear();
+            foreach (var item in pending)
             {
-                debouncedAction.Value.Action.Invoke();
+                item.Timer.Dispose();
             }
-            debouncedAction.Value.Dispose();
+        }
+
+        if (invoke)
+        {
+            List<Exception>? errors = null;
+            foreach (var item in pending)
+            {
+                try
+                {
+                    item.Action();
+                }
+                catch (Exception error)
+                {
+                    (errors ??= []).Add(error);
+                }
+            }
+
+            if (errors?.Count == 1)
+            {
+                System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(errors[0]).Throw();
+            }
+
+            if (errors != null)
+                throw new AggregateException(errors);
         }
     }
 
-    private readonly struct DebouncedAction(Action action, Timer timer)
+    private sealed class DebouncedAction(Action action)
     {
         public Action Action { get; } = action;
-
-        public void Change(int dueTime)
-        {
-            try
-            {
-                timer.Change(dueTime, Timeout.Infinite);
-            }
-            catch
-            {
-                // continue;
-            }
-        }
-
-        public void Dispose()
-        {
-            try
-            {
-                timer.Dispose();
-            }
-            catch
-            {
-                // continue;
-            }
-        }
+        public Timer Timer { get; set; } = null!;
     }
 }

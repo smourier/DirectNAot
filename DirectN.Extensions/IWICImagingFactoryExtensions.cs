@@ -63,7 +63,7 @@ public static class IWICImagingFactoryExtensions
             rights |= GENERIC_ACCESS_RIGHTS.GENERIC_WRITE;
         }
 
-        factory.CreateDecoderFromFilename(PWSTR.From(fileName), guidVendor.CopyToPointer(), rights, metadataOptions, out var value).ThrowOnError();
+        factory.CreateDecoderFromFilename(PWSTR.From(fileName), guidVendor.GetValuePointer(), rights, metadataOptions, out var value).ThrowOnError();
         return new ComObject<IWICBitmapDecoder>(value);
     }
 

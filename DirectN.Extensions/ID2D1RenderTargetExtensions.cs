@@ -47,7 +47,8 @@ public static class ID2D1RenderTargetExtensions
     public static IComObject<ID2D1BitmapRenderTarget> CreateCompatibleRenderTarget(this ID2D1RenderTarget renderTarget, D2D_SIZE_F? desiredSize = null, D2D_SIZE_U? desiredPixelSize = null, D2D1_PIXEL_FORMAT? desiredFormat = null, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS options = D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS.D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
-        renderTarget.CreateCompatibleRenderTarget(desiredSize.CopyToPointer(), desiredPixelSize.CopyToPointer(), desiredFormat.CopyToPointer(), options, out var target).ThrowOnError();
+
+        renderTarget.CreateCompatibleRenderTarget(desiredSize.GetValuePointer(), desiredPixelSize.GetValuePointer(), desiredFormat.GetValuePointer(), options, out var target).ThrowOnError();
         return new ComObject<ID2D1BitmapRenderTarget>(target);
     }
 
@@ -56,7 +57,8 @@ public static class ID2D1RenderTargetExtensions
     public static IComObject<T> CreateSolidColorBrush<T>(this ID2D1RenderTarget renderTarget, D3DCOLORVALUE color, D2D1_BRUSH_PROPERTIES? properties = null) where T : ID2D1SolidColorBrush
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
-        renderTarget.CreateSolidColorBrush(color, properties.CopyToPointer(), out var brush).ThrowOnError();
+
+        renderTarget.CreateSolidColorBrush(color, properties.GetValuePointer(), out var brush).ThrowOnError();
         return new ComObject<T>((T)brush);
     }
 
@@ -65,7 +67,8 @@ public static class ID2D1RenderTargetExtensions
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
         ArgumentNullException.ThrowIfNull(stops);
-        renderTarget.CreateRadialGradientBrush(gradientBrushProperties, brushProperties.CopyToPointer(), stops, out var brush).ThrowOnError();
+
+        renderTarget.CreateRadialGradientBrush(gradientBrushProperties, brushProperties.GetValuePointer(), stops, out var brush).ThrowOnError();
         return new ComObject<ID2D1RadialGradientBrush>(brush);
     }
 
@@ -74,7 +77,8 @@ public static class ID2D1RenderTargetExtensions
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
         ArgumentNullException.ThrowIfNull(stops);
-        renderTarget.CreateLinearGradientBrush(gradientBrushProperties, brushProperties.CopyToPointer(), stops, out var brush).ThrowOnError();
+
+        renderTarget.CreateLinearGradientBrush(gradientBrushProperties, brushProperties.GetValuePointer(), stops, out var brush).ThrowOnError();
         return new ComObject<ID2D1LinearGradientBrush>(brush);
     }
 
@@ -162,7 +166,8 @@ public static class ID2D1RenderTargetExtensions
     public static void Clear(this ID2D1RenderTarget renderTarget, D3DCOLORVALUE? clearColor = null)
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
-        renderTarget.Clear(clearColor.CopyToPointer());
+
+        renderTarget.Clear(clearColor.GetValuePointer());
     }
 
     public static void DrawText(this IComObject<ID2D1RenderTarget> renderTarget,
@@ -212,7 +217,8 @@ public static class ID2D1RenderTargetExtensions
         D2D_RECT_F? sourceRectangle = null)
     {
         ArgumentNullException.ThrowIfNull(renderTarget);
-        renderTarget.DrawBitmap(bitmap, destinationRectangle.CopyToPointer(), opacity, interpolationMode, sourceRectangle.CopyToPointer());
+
+        renderTarget.DrawBitmap(bitmap, destinationRectangle.GetValuePointer(), opacity, interpolationMode, sourceRectangle.GetValuePointer());
     }
 
     public static void DrawTextLayout(this IComObject<ID2D1RenderTarget> renderTarget,

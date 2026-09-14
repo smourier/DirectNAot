@@ -43,7 +43,8 @@ public static class ID2D1PathGeometryExtensions
     public static D2D1_POINT_DESCRIPTION ComputePointAndSegmentAtLength(this ID2D1PathGeometry1 geometry, float length, uint startSegment, float flatteningTolerance, D2D_MATRIX_3X2_F? worldTransform = null)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.ComputePointAndSegmentAtLength(length, startSegment, worldTransform.CopyToPointer(), flatteningTolerance, out var desc).ThrowOnError();
+
+        geometry.ComputePointAndSegmentAtLength(length, startSegment, worldTransform.GetValuePointer(), flatteningTolerance, out var desc).ThrowOnError();
         return desc;
     }
 }

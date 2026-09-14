@@ -63,7 +63,8 @@ public static class ID3D12CommandListExtensions
     public static void CopyTextureRegion(this ID3D12GraphicsCommandList list, D3D12_TEXTURE_COPY_LOCATION dst, uint dstX, uint dstY, uint dstZ, D3D12_TEXTURE_COPY_LOCATION src, D3D12_BOX? srcBox = null)
     {
         ArgumentNullException.ThrowIfNull(list);
-        list.CopyTextureRegion(dst, dstX, dstY, dstZ, src, srcBox.CopyToPointer());
+
+        list.CopyTextureRegion(dst, dstX, dstY, dstZ, src, srcBox.GetValuePointer());
     }
 
     public static void CopyResource(this IComObject<ID3D12GraphicsCommandList> list, IComObject<ID3D12Resource> dstResource, IComObject<ID3D12Resource> srcResource) => CopyResource(list?.Object!, dstResource?.Object!, srcResource?.Object!);
@@ -265,7 +266,8 @@ public static class ID3D12CommandListExtensions
     public static void IASetIndexBuffer(this ID3D12GraphicsCommandList list, D3D12_INDEX_BUFFER_VIEW? view = null)
     {
         ArgumentNullException.ThrowIfNull(list);
-        list.IASetIndexBuffer(view.CopyToPointer());
+
+        list.IASetIndexBuffer(view.GetValuePointer());
     }
 
     public static void IASetVertexBuffers(this IComObject<ID3D12GraphicsCommandList> list, uint startSlot, IEnumerable<D3D12_VERTEX_BUFFER_VIEW> views) => IASetVertexBuffers(list?.Object!, startSlot, views);
@@ -291,7 +293,8 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = renderTargetDescriptors?.ToArray();
-        list.OMSetRenderTargets(array.Length(), array.AsPointer(), rtsSingleHandleToDescriptorRange, depthStencilDescriptor.CopyToPointer());
+
+        list.OMSetRenderTargets(array.Length(), array.AsPointer(), rtsSingleHandleToDescriptorRange, depthStencilDescriptor.GetValuePointer());
     }
 
     public static void ClearDepthStencilView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT>? rects = null) => ClearDepthStencilView(list?.Object!, depthStencilView, clearFlags, depth, stencil, rects);
@@ -333,7 +336,8 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(resource);
-        list.DiscardResource(resource, region.CopyToPointer());
+
+        list.DiscardResource(resource, region.GetValuePointer());
     }
 
     public static void BeginQuery(this IComObject<ID3D12GraphicsCommandList> list, IComObject<ID3D12QueryHeap> queryHeap, D3D12_QUERY_TYPE type, uint index) => BeginQuery(list?.Object!, queryHeap?.Object!, type, index);

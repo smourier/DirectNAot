@@ -47,9 +47,10 @@ public sealed class ColorProfile
         }
 
         Profile = new byte[size];
+        using var pinnedProfile = new PinnedArray<byte>(Profile);
         unsafe
         {
-            if (!Functions.GetColorProfileFromHandle(handle, Profile.AsPointer(), ref size))
+            if (!Functions.GetColorProfileFromHandle(handle, pinnedProfile.Pointer, ref size))
                 throw new Win32Exception(Marshal.GetLastWin32Error());
         }
 
@@ -65,7 +66,8 @@ public sealed class ColorProfile
                 if (size > 0)
                 {
                     var bytes = new byte[size];
-                    if (Functions.GetColorProfileElement(handle, tag, 0, ref size, bytes.AsPointer(), out _))
+                    using var pinnedBytes = new PinnedArray<byte>(bytes);
+                    if (Functions.GetColorProfileElement(handle, tag, 0, ref size, pinnedBytes.Pointer, out _))
                     {
                         elements.Add(new ColorProfileElement(tag, bytes));
 
@@ -382,10 +384,11 @@ public sealed class ColorProfile
         if (buffer == null)
             return null;
 
+        using var pinnedBuffer = new PinnedArray<byte>(buffer);
         var prof = new PROFILE
         {
             dwType = PROFILE_MEMBUFFER,
-            pProfileData = buffer.AsPointer(),
+            pProfileData = pinnedBuffer.Pointer,
             cbDataSize = buffer.Length()
         };
 
@@ -529,7 +532,8 @@ public sealed class ColorProfile
             if (count > 0)
             {
                 var bytes = new byte[size];
-                var ptr = bytes.AsPointer();
+                using var pinnedBytes = new PinnedArray<byte>(bytes);
+                var ptr = pinnedBytes.Pointer;
                 if (!Functions.EnumColorProfilesW(PWSTR.From(machineName), enumType, ptr, ref size, (nint)pc))
                     throw new Win32Exception(Marshal.GetLastWin32Error());
 

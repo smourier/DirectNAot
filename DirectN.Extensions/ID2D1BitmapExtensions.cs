@@ -79,7 +79,8 @@ public static class ID2D1BitmapExtensions
     {
         ArgumentNullException.ThrowIfNull(bitmap);
         ArgumentNullException.ThrowIfNull(source);
-        bitmap.CopyFromBitmap(destinationPoint.CopyToPointer(), source, sourceRect.CopyToPointer()).ThrowOnError();
+
+        bitmap.CopyFromBitmap(destinationPoint.GetValuePointer(), source, sourceRect.GetValuePointer()).ThrowOnError();
     }
 
     public static void CopyFromRenderTarget(this IComObject<ID2D1Bitmap> bitmap, IComObject<ID2D1RenderTarget> renderTarget, D2D_POINT_2U? destinationPoint = null, D2D_RECT_U? sourceRect = null) => CopyFromRenderTarget(bitmap?.Object!, renderTarget?.Object!, destinationPoint, sourceRect);
@@ -87,7 +88,8 @@ public static class ID2D1BitmapExtensions
     {
         ArgumentNullException.ThrowIfNull(bitmap);
         ArgumentNullException.ThrowIfNull(renderTarget);
-        bitmap.CopyFromRenderTarget(destinationPoint.CopyToPointer(), renderTarget, sourceRect.CopyToPointer()).ThrowOnError();
+
+        bitmap.CopyFromRenderTarget(destinationPoint.GetValuePointer(), renderTarget, sourceRect.GetValuePointer()).ThrowOnError();
     }
 
     public static void CopyFromMemory(this IComObject<ID2D1Bitmap> bitmap, nint sourceData, uint pitch, D2D_RECT_U? destinationRect = null) => CopyFromMemory(bitmap?.Object!, sourceData, pitch, destinationRect);
@@ -100,6 +102,6 @@ public static class ID2D1BitmapExtensions
         if (pitch == 0)
             throw new ArgumentException(null, nameof(pitch));
 
-        bitmap.CopyFromMemory(destinationRect.CopyToPointer(), sourceData, pitch).ThrowOnError();
+        bitmap.CopyFromMemory(destinationRect.GetValuePointer(), sourceData, pitch).ThrowOnError();
     }
 }

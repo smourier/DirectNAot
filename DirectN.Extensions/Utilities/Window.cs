@@ -160,6 +160,7 @@ public class Window : IDisposable, IEquatable<Window>
             using var p = new AllocPwstr(1024 * 2);
             if (Functions.GetClassNameW(Handle, p, (int)p.SizeInChars) > 0)
                 return p.ToString() ?? string.Empty;
+
             return string.Empty;
         }
     }
@@ -171,6 +172,7 @@ public class Window : IDisposable, IEquatable<Window>
             using var p = new AllocPwstr(1024 * 2);
             if (Functions.RealGetWindowClassW(Handle, p, p.SizeInChars) > 0)
                 return p.ToString() ?? string.Empty;
+
             return string.Empty;
         }
     }
@@ -182,6 +184,7 @@ public class Window : IDisposable, IEquatable<Window>
             using var p = new AllocPwstr(1024 * 2);
             if (Functions.GetWindowTextW(Handle, p, (int)p.SizeInChars) > 0)
                 return p.ToString() ?? string.Empty;
+
             return string.Empty;
         }
         set
@@ -296,8 +299,18 @@ public class Window : IDisposable, IEquatable<Window>
     public virtual bool BringToTop() => Functions.BringWindowToTop(Handle);
     public virtual bool Center() => WindowUtilities.Center(Handle, HWND.Null);
     public virtual bool Center(HWND alternateOwner) => WindowUtilities.Center(Handle, alternateOwner);
-    public virtual bool Validate(RECT? rectangle = null) => Functions.ValidateRect(Handle, rectangle.CopyToPointer());
-    public virtual bool Invalidate(RECT? rectangle = null, bool eraseBackground = true) => Functions.InvalidateRect(Handle, rectangle.CopyToPointer(), eraseBackground);
+    public virtual bool Validate(RECT? rectangle = null)
+    {
+        using var memory = rectangle.CopyToMemory();
+        return Functions.ValidateRect(Handle, memory.Pointer);
+    }
+
+    public virtual bool Invalidate(RECT? rectangle = null, bool eraseBackground = true)
+    {
+        using var memory = rectangle.CopyToMemory();
+        return Functions.InvalidateRect(Handle, memory.Pointer, eraseBackground);
+    }
+
     public virtual bool SetForeground() => Functions.SetForegroundWindow(Handle);
     public virtual bool SetWindowPos(HWND hWndInsertAfter, int x, int y, int cx, int cy, SET_WINDOW_POS_FLAGS flags) => Functions.SetWindowPos(Handle, hWndInsertAfter, x, y, cx, cy, flags);
     public bool Hide() => Show(SHOW_WINDOW_CMD.SW_HIDE);
@@ -624,6 +637,7 @@ public class Window : IDisposable, IEquatable<Window>
             case MessageDecoder.WM_CLOSE:
                 if (OnClosing())
                     return new();
+
                 break;
 
             case MessageDecoder.WM_PAINT:
@@ -641,21 +655,25 @@ public class Window : IDisposable, IEquatable<Window>
                 var ma = OnMouseActivated(new HWND((nint)wParam.Value), lParam);
                 if (ma != null)
                     return new LRESULT { Value = (nint)ma.Value };
+
                 break;
 
             case MessageDecoder.WM_ACTIVATE:
                 if (OnActivated(wParam.Value != 0))
                     return new();
+
                 break;
 
             case MessageDecoder.WM_SETFOCUS:
                 if (OnFocusChanged(true))
                     return new();
+
                 break;
 
             case MessageDecoder.WM_KILLFOCUS:
                 if (OnFocusChanged(false))
                     return new();
+
                 break;
 
             case MessageDecoder.WM_GETMINMAXINFO:

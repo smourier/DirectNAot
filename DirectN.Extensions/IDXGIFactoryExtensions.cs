@@ -40,7 +40,6 @@ public static class IDXGIFactoryExtensions
         while (true);
     }
 
-
     [SupportedOSPlatform("windows6.1")]
     public static IComObject<IDXGIAdapter1>? GetAdapter1(this IComObject<IDXGIFactory1> factory, uint index) => GetAdapter1<IDXGIAdapter1>(factory?.Object!, index);
 
@@ -125,7 +124,9 @@ public static class IDXGIFactoryExtensions
         ArgumentNullException.ThrowIfNull(device);
         return ComObject.WithComInstance(device, unk =>
         {
-            factory.CreateSwapChainForHwnd(unk, hwnd, desc, fullScreenDesc.CopyToPointer(), restrictToOutput, out var swapChain).ThrowOnError();
+            var nativeFullScreenDesc = fullScreenDesc;
+
+            factory.CreateSwapChainForHwnd(unk, hwnd, desc, nativeFullScreenDesc.GetValuePointer(), restrictToOutput, out var swapChain).ThrowOnError();
             return new ComObject<T>((T)swapChain);
         });
     }

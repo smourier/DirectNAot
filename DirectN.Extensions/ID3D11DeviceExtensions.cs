@@ -46,13 +46,14 @@ public static class ID3D11DeviceExtensions
     }
 
     public static IComObject<ID3D11Buffer> CreateBuffer(this IComObject<ID3D11Device> device, D3D11_BUFFER_DESC desc, D3D11_SUBRESOURCE_DATA? initialData = null) => CreateBuffer(device?.Object!, desc, initialData);
-    public static IComObject<ID3D11Buffer> CreateBuffer(this ID3D11Device device, D3D11_BUFFER_DESC desc, D3D11_SUBRESOURCE_DATA? initialData = null)
+    public static unsafe IComObject<ID3D11Buffer> CreateBuffer(this ID3D11Device device, D3D11_BUFFER_DESC desc, D3D11_SUBRESOURCE_DATA? initialData = null)
     {
         ArgumentNullException.ThrowIfNull(device);
         unsafe
         {
             nint buffer;
-            device.CreateBuffer(desc, initialData.CopyToPointer(), (nint)(&buffer)).ThrowOnError();
+
+            device.CreateBuffer(desc, initialData.GetValuePointer(), (nint)(&buffer)).ThrowOnError();
             return ComObject.FromPointer<ID3D11Buffer>(buffer)!;
         }
     }
@@ -255,53 +256,57 @@ public static class ID3D11DeviceExtensions
     }
 
     public static IComObject<ID3D11RenderTargetView> CreateRenderTargetView(this IComObject<ID3D11Device> device, IComObject<ID3D11Resource> resource, D3D11_RENDER_TARGET_VIEW_DESC? desc = null) => CreateRenderTargetView(device?.Object!, resource?.Object!, desc);
-    public static IComObject<ID3D11RenderTargetView> CreateRenderTargetView(this ID3D11Device device, ID3D11Resource resource, D3D11_RENDER_TARGET_VIEW_DESC? desc = null)
+    public static unsafe IComObject<ID3D11RenderTargetView> CreateRenderTargetView(this ID3D11Device device, ID3D11Resource resource, D3D11_RENDER_TARGET_VIEW_DESC? desc = null)
     {
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(resource);
         unsafe
         {
             nint view;
-            device.CreateRenderTargetView(resource, desc.CopyToPointer(), (nint)(&view)).ThrowOnError();
+
+            device.CreateRenderTargetView(resource, desc.GetValuePointer(), (nint)(&view)).ThrowOnError();
             return ComObject.FromPointer<ID3D11RenderTargetView>(view)!;
         }
     }
 
     public static IComObject<ID3D11ShaderResourceView> CreateShaderResourceView(this IComObject<ID3D11Device> device, IComObject<ID3D11Resource> resource, D3D11_SHADER_RESOURCE_VIEW_DESC? desc = null) => CreateShaderResourceView(device?.Object!, resource?.Object!, desc);
-    public static IComObject<ID3D11ShaderResourceView> CreateShaderResourceView(this ID3D11Device device, ID3D11Resource resource, D3D11_SHADER_RESOURCE_VIEW_DESC? desc = null)
+    public static unsafe IComObject<ID3D11ShaderResourceView> CreateShaderResourceView(this ID3D11Device device, ID3D11Resource resource, D3D11_SHADER_RESOURCE_VIEW_DESC? desc = null)
     {
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(resource);
         unsafe
         {
             nint view;
-            device.CreateShaderResourceView(resource, desc.CopyToPointer(), (nint)(&view)).ThrowOnError();
+
+            device.CreateShaderResourceView(resource, desc.GetValuePointer(), (nint)(&view)).ThrowOnError();
             return ComObject.FromPointer<ID3D11ShaderResourceView>(view)!;
         }
     }
 
     public static IComObject<ID3D11UnorderedAccessView> CreateUnorderedAccessView(this IComObject<ID3D11Device> device, IComObject<ID3D11Resource> resource, D3D11_UNORDERED_ACCESS_VIEW_DESC? desc = null) => CreateUnorderedAccessView(device?.Object!, resource?.Object!, desc);
-    public static IComObject<ID3D11UnorderedAccessView> CreateUnorderedAccessView(this ID3D11Device device, ID3D11Resource resource, D3D11_UNORDERED_ACCESS_VIEW_DESC? desc = null)
+    public static unsafe IComObject<ID3D11UnorderedAccessView> CreateUnorderedAccessView(this ID3D11Device device, ID3D11Resource resource, D3D11_UNORDERED_ACCESS_VIEW_DESC? desc = null)
     {
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(resource);
         unsafe
         {
             nint view;
-            device.CreateUnorderedAccessView(resource, desc.CopyToPointer(), (nint)(&view)).ThrowOnError();
+
+            device.CreateUnorderedAccessView(resource, desc.GetValuePointer(), (nint)(&view)).ThrowOnError();
             return ComObject.FromPointer<ID3D11UnorderedAccessView>(view)!;
         }
     }
 
     public static IComObject<ID3D11DepthStencilView> CreateDepthStencilView(this IComObject<ID3D11Device> device, IComObject<ID3D11Resource> resource, D3D11_DEPTH_STENCIL_VIEW_DESC? desc = null) => CreateDepthStencilView(device?.Object!, resource?.Object!, desc);
-    public static IComObject<ID3D11DepthStencilView> CreateDepthStencilView(this ID3D11Device device, ID3D11Resource resource, D3D11_DEPTH_STENCIL_VIEW_DESC? desc = null)
+    public static unsafe IComObject<ID3D11DepthStencilView> CreateDepthStencilView(this ID3D11Device device, ID3D11Resource resource, D3D11_DEPTH_STENCIL_VIEW_DESC? desc = null)
     {
         ArgumentNullException.ThrowIfNull(device);
         ArgumentNullException.ThrowIfNull(resource);
         unsafe
         {
             nint view;
-            device.CreateDepthStencilView(resource, desc.CopyToPointer(), (nint)(&view)).ThrowOnError();
+
+            device.CreateDepthStencilView(resource, desc.GetValuePointer(), (nint)(&view)).ThrowOnError();
             return ComObject.FromPointer<ID3D11DepthStencilView>(view)!;
         }
     }

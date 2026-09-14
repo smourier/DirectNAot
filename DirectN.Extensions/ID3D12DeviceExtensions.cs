@@ -114,7 +114,8 @@ public static class ID3D12DeviceExtensions
     public static IComObject<T> CreateCommittedResource<T>(this ID3D12Device device, D3D12_HEAP_PROPERTIES heapProperties, D3D12_HEAP_FLAGS heapFlags, D3D12_RESOURCE_DESC desc, D3D12_RESOURCE_STATES initialResourceState, D3D12_CLEAR_VALUE? optimizedClearValue = null) where T : ID3D12Resource
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateCommittedResource(heapProperties, heapFlags, desc, initialResourceState, optimizedClearValue.CopyToPointer(), typeof(T).GUID, out var unk).ThrowOnError();
+
+        device.CreateCommittedResource(heapProperties, heapFlags, desc, initialResourceState, optimizedClearValue.GetValuePointer(), typeof(T).GUID, out var unk).ThrowOnError();
         return ComObject.FromPointer<T>(unk)!;
     }
 
@@ -122,14 +123,16 @@ public static class ID3D12DeviceExtensions
     public static void CreateRenderTargetView(this ID3D12Device device, ID3D12Resource? resource, D3D12_RENDER_TARGET_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateRenderTargetView(resource, desc.CopyToPointer(), handle);
+
+        device.CreateRenderTargetView(resource, desc.GetValuePointer(), handle);
     }
 
     public static void CreateConstantBufferView(this IComObject<ID3D12Device> device, D3D12_CONSTANT_BUFFER_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateConstantBufferView(device?.Object!, desc, handle);
     public static void CreateConstantBufferView(this ID3D12Device device, D3D12_CONSTANT_BUFFER_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateConstantBufferView(desc.CopyToPointer(), handle);
+
+        device.CreateConstantBufferView(desc.GetValuePointer(), handle);
     }
 
     public static void CreateSampler(this IComObject<ID3D12Device> device, D3D12_SAMPLER_DESC desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateSampler(device?.Object!, desc, handle);
@@ -143,21 +146,24 @@ public static class ID3D12DeviceExtensions
     public static void CreateShaderResourceView(this ID3D12Device device, ID3D12Resource? resource, D3D12_SHADER_RESOURCE_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateShaderResourceView(resource, desc.CopyToPointer(), handle);
+
+        device.CreateShaderResourceView(resource, desc.GetValuePointer(), handle);
     }
 
     public static void CreateDepthStencilView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, D3D12_DEPTH_STENCIL_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateDepthStencilView(device?.Object!, resource?.Object!, desc, handle);
     public static void CreateDepthStencilView(this ID3D12Device device, ID3D12Resource? resource, D3D12_DEPTH_STENCIL_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateDepthStencilView(resource, desc.CopyToPointer(), handle);
+
+        device.CreateDepthStencilView(resource, desc.GetValuePointer(), handle);
     }
 
     public static void CreateUnorderedAccessView(this IComObject<ID3D12Device> device, IComObject<ID3D12Resource>? resource, IComObject<ID3D12Resource>? counterResource, D3D12_UNORDERED_ACCESS_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle) => CreateUnorderedAccessView(device?.Object!, resource?.Object!, counterResource?.Object!, desc, handle);
     public static void CreateUnorderedAccessView(this ID3D12Device device, ID3D12Resource? resource, ID3D12Resource? counterResource, D3D12_UNORDERED_ACCESS_VIEW_DESC? desc, D3D12_CPU_DESCRIPTOR_HANDLE handle)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CreateUnorderedAccessView(resource, counterResource, desc.CopyToPointer(), handle);
+
+        device.CreateUnorderedAccessView(resource, counterResource, desc.GetValuePointer(), handle);
     }
 
     public static HRESULT CheckFeatureSupport<T>(this IComObject<ID3D12Device> device, D3D12_FEATURE feature, ref T value) where T : unmanaged => CheckFeatureSupport(device.Object!, feature, ref value);

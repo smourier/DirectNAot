@@ -21,6 +21,9 @@ public partial struct PWSTR : IValueGet<string?>, IValueGet<nint> // not disposa
         }
     }
 
+    // immediate native calls generally works because the backing memory has not moved or been reclaimed, but it is no longer pinned.
+    // do not retain the returned pointer, immediate use is not guaranteed safe if a garbage collection can occur in your context.
+    // use DirectN.Extensions.Utilities.Pwstr if you need to retain it.
     public unsafe static PWSTR From(string? str)
     {
         if (str == null)

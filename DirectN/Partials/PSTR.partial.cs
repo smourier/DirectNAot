@@ -23,6 +23,9 @@ public partial struct PSTR : IValueGet<string?>, IValueGet<nint> // not disposab
         }
     }
 
+    // immediate native calls generally works because the backing memory has not moved or been reclaimed, but it is no longer pinned.
+    // do not retain the returned pointer, immediate use is not guaranteed safe if a garbage collection can occur in your context.
+    // use DirectN.Extensions.Utilities.Pstr if you need to retain it.
     public unsafe static PSTR From(string? str, Encoding? encoding = null)
     {
         if (str == null)

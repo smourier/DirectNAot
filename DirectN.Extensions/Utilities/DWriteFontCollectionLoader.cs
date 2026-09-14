@@ -6,8 +6,7 @@ namespace DirectN.Extensions.Utilities;
 [GeneratedComClass]
 public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, IDisposable
 {
-    private bool _disposedValue = false;
-    private readonly FontFileLoader _loader = new();
+    private FontFileLoader? _loader = new();
 
     public DWriteFontCollectionLoader()
     {
@@ -20,6 +19,8 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
 
     HRESULT IDWriteFontCollectionLoader.CreateEnumeratorFromKey(IDWriteFactory factory, nint collectionKey, uint collectionKeySize, out IDWriteFontFileEnumerator fontFileEnumerator)
     {
+        var loader = Volatile.Read(ref _loader);
+        ObjectDisposedException.ThrowIf(loader == null, this);
         var func = EnumerableFunc;
         if (func == null)
         {
@@ -55,7 +56,7 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
             return Constants.DISP_E_EXCEPTION;
         }
 
-        fontFileEnumerator = new FontFileEnumerator(factory, _loader, enumerator);
+        fontFileEnumerator = new FontFileEnumerator(factory, loader, enumerator);
         return Constants.S_OK;
     }
 
@@ -82,8 +83,9 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
 
             if (file is DWriteFontStreamFile sf && sf.FilePath != null)
             {
-                var ft = sf.LastWriteTime?.ToFileTime();
-                return _factory.CreateFontFileReference(PWSTR.From(sf.FilePath), ft.CopyToPointer(), out fontFile);
+                long? lastWriteTime = sf.LastWriteTime?.ToFileTime();
+                using var ft = lastWriteTime.CopyToMemory();
+                return _factory.CreateFontFileReference(PWSTR.From(sf.FilePath), ft.Pointer, out fontFile);
             }
 
             var stream = new FontFileStream(file);
@@ -115,9 +117,9 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
 
         public void AddStream(FontFileStream stream)
         {
-            _streams[_index] = stream;
-            Marshal.WriteInt32(stream.Key, _index);
-            _index++;
+            var index = Interlocked.Increment(ref _index) - 1;
+            _streams[index] = stream;
+            Marshal.WriteInt32(stream.Key, index);
         }
 
         public void Dispose()
@@ -164,9 +166,15 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
 
         public void Dispose()
         {
-            ((IDisposable)_file)?.Dispose();
             var key = Interlocked.Exchange(ref _key, 0);
-            if (key != 0)
+            if (key == 0)
+                return;
+
+            try
+            {
+                (_file as IDisposable)?.Dispose();
+            }
+            finally
             {
                 Marshal.FreeCoTaskMem(key);
             }
@@ -200,11 +208,18 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
         {
             fragmentStart = 0;
             fragmentContext = 0;
+            if (fileOffset > long.MaxValue || fragmentSize > int.MaxValue)
+                return Constants.E_INVALIDARG;
+
+            var length = _file.Length;
+            if (length.HasValue && (length.Value < 0 || fileOffset > (ulong)length.Value || fragmentSize > (ulong)length.Value - fileOffset))
+                return Constants.E_INVALIDARG;
+
             var bytes = _file.ReadFileFragment((long)fileOffset, (int)fragmentSize, out var read);
             if (bytes == null || bytes.Length == 0 || read == 0)
                 return Constants.E_FAIL;
 
-            if (read < 0 || read > bytes.Length)
+            if (read != (int)fragmentSize || read > bytes.Length)
             {
                 ComError.SetError("Invalid ReadFileFragment implementation.");
                 return Constants.DISP_E_EXCEPTION;
@@ -221,27 +236,41 @@ public partial class DWriteFontCollectionLoader : IDWriteFontCollectionLoader, I
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposedValue)
+        var loader = Interlocked.Exchange(ref _loader, null);
+        if (loader == null)
+            return;
+
+        try
         {
-            if (disposing)
+            using var factory = DWriteFunctions.DWriteCreateFactory();
+            try
             {
-                // dispose managed state (managed objects).
+                factory.Object.UnregisterFontFileLoader(loader).ThrowOnError();
             }
-
-            // free unmanaged resources (unmanaged objects) and override a finalizer below.
-            // set large fields to null.
-
-            using (var fac = DWriteFunctions.DWriteCreateFactory())
+            finally
             {
-                fac.Object.UnregisterFontFileLoader(_loader).ThrowOnError();
-                fac.Object.UnregisterFontCollectionLoader(this).ThrowOnError();
+                factory.Object.UnregisterFontCollectionLoader(this).ThrowOnError();
             }
-
-            _loader.Dispose();
-            _disposedValue = true;
+        }
+        finally
+        {
+            loader.Dispose();
+        }
+    }
+    ~DWriteFontCollectionLoader()
+    {
+        try
+        {
+            Dispose(false);
+        }
+        catch
+        {
         }
     }
 
-    ~DWriteFontCollectionLoader() { Dispose(false); }
-    public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 }

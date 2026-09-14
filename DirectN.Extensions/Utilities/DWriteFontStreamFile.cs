@@ -2,6 +2,7 @@
 
 public sealed class DWriteFontStreamFile : DWriteFontFile, IDisposable
 {
+    private object? _sync = new();
     public DWriteFontStreamFile(string filePath)
     {
         LastWriteTime = File.GetLastWriteTime(filePath);
@@ -35,21 +36,41 @@ public sealed class DWriteFontStreamFile : DWriteFontFile, IDisposable
 
     public void Dispose()
     {
-        if (Owned)
+        var sync = Volatile.Read(ref _sync);
+        if (sync == null)
+            return;
+
+        lock (sync)
         {
-            Stream?.Dispose();
+            if (Interlocked.Exchange(ref _sync, null) == null)
+                return;
+
+            if (Owned)
+            {
+                Stream?.Dispose();
+            }
         }
     }
 
     public override byte[] ReadFileFragment(long offset, int length, out int read)
     {
-        if (FilePath == null)
-            throw new InvalidOperationException();
+        ArgumentOutOfRangeException.ThrowIfNegative(offset);
+        ArgumentOutOfRangeException.ThrowIfNegative(length);
+        read = 0;
+        var sync = Volatile.Read(ref _sync);
+        ObjectDisposedException.ThrowIf(sync == null, this);
+        lock (sync)
+        {
+            ObjectDisposedException.ThrowIf(_sync == null, this);
+            Stream ??= File.OpenRead(FilePath ?? throw new InvalidOperationException());
+            if (offset > Stream.Length || length > Stream.Length - offset)
+                throw new ArgumentOutOfRangeException(nameof(length));
 
-        Stream ??= File.OpenRead(FilePath);
-        Stream.Seek(offset, SeekOrigin.Begin);
-        var buffer = new byte[length];
-        read = Stream.Read(buffer, 0, buffer.Length);
-        return buffer;
+            Stream.Seek(offset, SeekOrigin.Begin);
+            var buffer = new byte[length];
+            Stream.ReadExactly(buffer);
+            read = length;
+            return buffer;
+        }
     }
 }

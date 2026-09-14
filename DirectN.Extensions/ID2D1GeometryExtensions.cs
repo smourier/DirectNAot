@@ -7,7 +7,8 @@ public static class ID2D1GeometryExtensions
     public static D2D_RECT_F GetBounds(this ID2D1Geometry geometry, D2D_MATRIX_3X2_F? worldTransform = null)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.GetBounds(worldTransform.CopyToPointer(), out var bounds).ThrowOnError();
+
+        geometry.GetBounds(worldTransform.GetValuePointer(), out var bounds).ThrowOnError();
         return bounds;
     }
 
@@ -15,7 +16,8 @@ public static class ID2D1GeometryExtensions
     public static D2D_RECT_F GetWidenedBounds(this ID2D1Geometry geometry, float strokeWidth = 1, ID2D1StrokeStyle? strokeStyle = null, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.GetWidenedBounds(strokeWidth, strokeStyle, worldTransform.CopyToPointer(), flatteningTolerance, out var bounds).ThrowOnError();
+
+        geometry.GetWidenedBounds(strokeWidth, strokeStyle, worldTransform.GetValuePointer(), flatteningTolerance, out var bounds).ThrowOnError();
         return bounds;
     }
 
@@ -23,7 +25,8 @@ public static class ID2D1GeometryExtensions
     public static bool StrokeContainsPoint(this ID2D1Geometry geometry, D2D_POINT_2F point, float strokeWidth = 1, ID2D1StrokeStyle? strokeStyle = null, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.StrokeContainsPoint(point, strokeWidth, strokeStyle, worldTransform.CopyToPointer(), flatteningTolerance, out var contains).ThrowOnError();
+
+        geometry.StrokeContainsPoint(point, strokeWidth, strokeStyle, worldTransform.GetValuePointer(), flatteningTolerance, out var contains).ThrowOnError();
         return contains;
     }
 
@@ -31,7 +34,8 @@ public static class ID2D1GeometryExtensions
     public static bool FillContainsPoint(this ID2D1Geometry geometry, D2D_POINT_2F point, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.FillContainsPoint(point, worldTransform.CopyToPointer(), flatteningTolerance, out var contains).ThrowOnError();
+
+        geometry.FillContainsPoint(point, worldTransform.GetValuePointer(), flatteningTolerance, out var contains).ThrowOnError();
         return contains;
     }
 
@@ -39,7 +43,8 @@ public static class ID2D1GeometryExtensions
     public static D2D1_GEOMETRY_RELATION CompareWithGeometry(this ID2D1Geometry geometry, ID2D1Geometry inputGeometry, D2D_MATRIX_3X2_F? inputGeometryTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.CompareWithGeometry(inputGeometry, inputGeometryTransform.CopyToPointer(), flatteningTolerance, out var relation).ThrowOnError();
+
+        geometry.CompareWithGeometry(inputGeometry, inputGeometryTransform.GetValuePointer(), flatteningTolerance, out var relation).ThrowOnError();
         return relation;
     }
 
@@ -48,7 +53,8 @@ public static class ID2D1GeometryExtensions
     {
         ArgumentNullException.ThrowIfNull(geometry);
         ArgumentNullException.ThrowIfNull(geometrySink);
-        geometry.Simplify(simplificationOption, worldTransform.CopyToPointer(), flatteningTolerance, geometrySink).ThrowOnError();
+
+        geometry.Simplify(simplificationOption, worldTransform.GetValuePointer(), flatteningTolerance, geometrySink).ThrowOnError();
     }
 
     public static void Tessellate(this IComObject<ID2D1Geometry> geometry, IComObject<ID2D1TessellationSink> tessellationSink, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE) => Tessellate(geometry?.Object!, tessellationSink?.Object!, worldTransform, flatteningTolerance);
@@ -56,7 +62,8 @@ public static class ID2D1GeometryExtensions
     {
         ArgumentNullException.ThrowIfNull(geometry);
         ArgumentNullException.ThrowIfNull(tessellationSink);
-        geometry.Tessellate(worldTransform.CopyToPointer(), flatteningTolerance, tessellationSink).ThrowOnError();
+
+        geometry.Tessellate(worldTransform.GetValuePointer(), flatteningTolerance, tessellationSink).ThrowOnError();
     }
 
     public static void CombineWithGeometry(this IComObject<ID2D1Geometry> geometry, IComObject<ID2D1Geometry> inputGeometry, IComObject<ID2D1SimplifiedGeometrySink> geometrySink, D2D1_COMBINE_MODE combineMode = D2D1_COMBINE_MODE.D2D1_COMBINE_MODE_UNION, D2D_MATRIX_3X2_F? inputGeometryTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE) => CombineWithGeometry(geometry?.Object!, inputGeometry?.Object!, geometrySink?.Object!, combineMode, inputGeometryTransform, flatteningTolerance);
@@ -65,7 +72,8 @@ public static class ID2D1GeometryExtensions
         ArgumentNullException.ThrowIfNull(geometry);
         ArgumentNullException.ThrowIfNull(inputGeometry);
         ArgumentNullException.ThrowIfNull(geometrySink);
-        geometry.CombineWithGeometry(inputGeometry, combineMode, inputGeometryTransform.CopyToPointer(), flatteningTolerance, geometrySink).ThrowOnError();
+
+        geometry.CombineWithGeometry(inputGeometry, combineMode, inputGeometryTransform.GetValuePointer(), flatteningTolerance, geometrySink).ThrowOnError();
     }
 
     public static void Outline(this IComObject<ID2D1Geometry> geometry, IComObject<ID2D1SimplifiedGeometrySink> geometrySink, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE) => Outline(geometry?.Object!, geometrySink?.Object!, worldTransform, flatteningTolerance);
@@ -73,14 +81,16 @@ public static class ID2D1GeometryExtensions
     {
         ArgumentNullException.ThrowIfNull(geometry);
         ArgumentNullException.ThrowIfNull(geometrySink);
-        geometry.Outline(worldTransform.CopyToPointer(), flatteningTolerance, geometrySink).ThrowOnError();
+
+        geometry.Outline(worldTransform.GetValuePointer(), flatteningTolerance, geometrySink).ThrowOnError();
     }
 
     public static D2D_RECT_F ComputeArea(this IComObject<ID2D1Geometry> geometry, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE) => ComputeArea(geometry?.Object!, worldTransform, flatteningTolerance);
     public static D2D_RECT_F ComputeArea(this ID2D1Geometry geometry, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.ComputeArea(worldTransform.CopyToPointer(), flatteningTolerance, out var area).ThrowOnError();
+
+        geometry.ComputeArea(worldTransform.GetValuePointer(), flatteningTolerance, out var area).ThrowOnError();
         return area;
     }
 
@@ -88,7 +98,8 @@ public static class ID2D1GeometryExtensions
     public static D2D_RECT_F ComputeLength(this ID2D1Geometry geometry, D2D_MATRIX_3X2_F? worldTransform = null, float flatteningTolerance = Constants.D2D1_DEFAULT_FLATTENING_TOLERANCE)
     {
         ArgumentNullException.ThrowIfNull(geometry);
-        geometry.ComputeLength(worldTransform.CopyToPointer(), flatteningTolerance, out var area).ThrowOnError();
+
+        geometry.ComputeLength(worldTransform.GetValuePointer(), flatteningTolerance, out var area).ThrowOnError();
         return area;
     }
 
@@ -98,7 +109,8 @@ public static class ID2D1GeometryExtensions
         ArgumentNullException.ThrowIfNull(geometry);
         var point = new D2D_POINT_2F();
         var unitTangentVector = new D2D_POINT_2F();
-        geometry.ComputePointAtLength(length, worldTransform.CopyToPointer(), flatteningTolerance, (nint)(&point), (nint)(&unitTangentVector)).ThrowOnError();
+
+        geometry.ComputePointAtLength(length, worldTransform.GetValuePointer(), flatteningTolerance, (nint)(&point), (nint)(&unitTangentVector)).ThrowOnError();
         return new Tuple<D2D_POINT_2F, D2D_POINT_2F>(point, unitTangentVector);
     }
 
@@ -107,6 +119,7 @@ public static class ID2D1GeometryExtensions
     {
         ArgumentNullException.ThrowIfNull(geometry);
         ArgumentNullException.ThrowIfNull(geometrySink);
-        geometry.Widen(strokeWidth, strokeStyle, worldTransform.CopyToPointer(), flatteningTolerance, geometrySink).ThrowOnError();
+
+        geometry.Widen(strokeWidth, strokeStyle, worldTransform.GetValuePointer(), flatteningTolerance, geometrySink).ThrowOnError();
     }
 }

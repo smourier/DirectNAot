@@ -556,6 +556,7 @@ public sealed class PropVariant : IDisposable
         result._inner.Anonymous.Anonymous.Anonymous.bstrVal.Value = pointer == 0 ? 0 : Marshal.StringToBSTR(Marshal.PtrToStringBSTR(pointer));
         return result;
     }
+
     public PropVariant? Copy(bool throwOnError = true)
     {
         if (VarType == VARENUM.VT_VARIANT)
@@ -1062,7 +1063,8 @@ public sealed class PropVariant : IDisposable
         if (bytes == null)
             return null;
 
-        var hr = Functions.StgDeserializePropVariant(bytes.AsPointer(), bytes.Length(), out var inner).ThrowOnError(throwOnError);
+        using var pinned = new PinnedArray<byte>(bytes);
+        var hr = Functions.StgDeserializePropVariant(pinned.Pointer, bytes.Length(), out var inner).ThrowOnError(throwOnError);
         if (hr.IsError)
             return null;
 

@@ -58,7 +58,6 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
     public PROPDESC_TYPE_FLAGS TypeFlags { get { NativeObject.GetTypeFlags(PROPDESC_TYPE_FLAGS.PDTF_MASK_ALL, out var flags); return flags; } }
     public PROPDESC_CONDITION_TYPE ConditionType { get { NativeObject.GetConditionType(out var type, out _); return type; } }
     public CONDITION_OPERATION ConditionOperation { get { NativeObject.GetConditionType(out _, out var op); return op; } }
-    [UnconditionalSuppressMessage("AOT", "IL3050:Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.")]
     public Type ClrPropertyType => GetClrPropertyType(PropertyType);
     public IReadOnlyList<PropertyEnumType> EnumTypes => _enumTypes.Value;
     private ReadOnlyCollection<PropertyEnumType> GetEnumTypes()
@@ -254,83 +253,82 @@ public sealed class PropertyDescription : InterlockedComObject<IPropertyDescript
         return pd != null ? new PropertyDescription(pd) : null;
     }
 
-    [RequiresDynamicCode("Dynamic is required if type is a VT_VECTOR")]
     public static Type GetClrPropertyType(VARENUM type)
     {
-        if ((type & VARENUM.VT_VECTOR) == VARENUM.VT_VECTOR)
-            return Array.CreateInstance(GetClrPropertyType(type & ~VARENUM.VT_VECTOR), 0).GetType();
+        var vector = (type & VARENUM.VT_VECTOR) != 0;
+        type &= ~VARENUM.VT_VECTOR;
 
         switch (type)
         {
             case VARENUM.VT_BLOB:
-                return typeof(byte[]);
+                return vector ? typeof(byte[][]) : typeof(byte[]);
 
             case VARENUM.VT_LPSTR:
             case VARENUM.VT_LPWSTR:
             case VARENUM.VT_BSTR:
-                return typeof(string);
+                return vector ? typeof(string[]) : typeof(string);
 
             case VARENUM.VT_BOOL:
-                return typeof(bool);
+                return vector ? typeof(bool[]) : typeof(bool);
 
             case VARENUM.VT_UI1:
-                return typeof(byte);
+                return vector ? typeof(byte[]) : typeof(byte);
 
             case VARENUM.VT_UI2:
-                return typeof(ushort);
+                return vector ? typeof(ushort[]) : typeof(ushort);
 
             case VARENUM.VT_UINT:
             case VARENUM.VT_HRESULT:
             case VARENUM.VT_ERROR:
             case VARENUM.VT_UI4:
-                return typeof(uint);
+                return vector ? typeof(uint[]) : typeof(uint);
 
             case VARENUM.VT_UI8:
-                return typeof(ulong);
+                return vector ? typeof(ulong[]) : typeof(ulong);
 
             case VARENUM.VT_I1:
-                return typeof(sbyte);
+                return vector ? typeof(sbyte[]) : typeof(sbyte);
 
             case VARENUM.VT_I2:
-                return typeof(short);
+                return vector ? typeof(short[]) : typeof(short);
 
             case VARENUM.VT_INT:
             case VARENUM.VT_I4:
-                return typeof(int);
+                return vector ? typeof(int[]) : typeof(int);
 
             case VARENUM.VT_CY:
             case VARENUM.VT_I8:
-                return typeof(long);
+                return vector ? typeof(long[]) : typeof(long);
 
             case VARENUM.VT_DATE:
-                return typeof(DateTime);
+                return vector ? typeof(DateTime[]) : typeof(DateTime);
 
             case VARENUM.VT_DECIMAL:
-                return typeof(decimal);
+                return vector ? typeof(decimal[]) : typeof(decimal);
 
             case VARENUM.VT_CLSID:
-                return typeof(Guid);
+                return vector ? typeof(Guid[]) : typeof(Guid);
 
             case VARENUM.VT_FILETIME:
-                return typeof(System.Runtime.InteropServices.ComTypes.FILETIME);
+                return vector ? typeof(System.Runtime.InteropServices.ComTypes.FILETIME[]) : typeof(System.Runtime.InteropServices.ComTypes.FILETIME);
 
             case VARENUM.VT_INT_PTR:
-                return typeof(IntPtr);
+                return vector ? typeof(IntPtr[]) : typeof(IntPtr);
 
             case VARENUM.VT_UINT_PTR:
-                return typeof(UIntPtr);
+                return vector ? typeof(UIntPtr[]) : typeof(UIntPtr);
 
             case VARENUM.VT_R4:
-                return typeof(float);
+                return vector ? typeof(float[]) : typeof(float);
 
             case VARENUM.VT_R8:
-                return typeof(double);
+                return vector ? typeof(double[]) : typeof(double);
 
             case VARENUM.VT_STREAM:
-                return typeof(Stream);
+                return vector ? typeof(Stream[]) : typeof(Stream);
 
             default:
-                return typeof(object);
+                return vector ? typeof(object[]) : typeof(object);
         }
     }
 

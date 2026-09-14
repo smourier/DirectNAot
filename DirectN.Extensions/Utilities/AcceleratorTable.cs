@@ -43,7 +43,8 @@ public class AcceleratorTable : IDisposable
     public virtual IReadOnlyList<ACCEL> Copy(int count)
     {
         var accels = new ACCEL[count];
-        var copied = Functions.CopyAcceleratorTableW(Handle, accels.AsPointer(), accels.Length);
+        using var pinned = new PinnedArray<ACCEL>(accels);
+        var copied = Functions.CopyAcceleratorTableW(Handle, pinned.Pointer, accels.Length);
         return [.. accels.Take(copied)];
     }
 

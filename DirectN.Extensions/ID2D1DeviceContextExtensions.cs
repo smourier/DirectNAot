@@ -20,7 +20,8 @@ public static class ID2D1DeviceContextExtensions
     {
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(surface);
-        context.CreateBitmapFromDxgiSurface(surface, properties.CopyToPointer(), out var bmp).ThrowOnError();
+
+        context.CreateBitmapFromDxgiSurface(surface, properties.GetValuePointer(), out var bmp).ThrowOnError();
         return new ComObject<T>((T)bmp);
     }
 
@@ -30,7 +31,8 @@ public static class ID2D1DeviceContextExtensions
     {
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(source);
-        context.CreateBitmapFromWicBitmap(source, properties.CopyToPointer(), out ID2D1Bitmap1 bmp).ThrowOnError();
+
+        context.CreateBitmapFromWicBitmap(source, properties.GetValuePointer(), out ID2D1Bitmap1 bmp).ThrowOnError();
         return new ComObject<T>((T)bmp);
     }
 
@@ -39,7 +41,8 @@ public static class ID2D1DeviceContextExtensions
     public static IComObject<T> CreateSolidColorBrush<T>(this ID2D1DeviceContext context, D3DCOLORVALUE color, D2D1_BRUSH_PROPERTIES? properties = null) where T : ID2D1Brush
     {
         ArgumentNullException.ThrowIfNull(context);
-        context.CreateSolidColorBrush(color, properties.CopyToPointer(), out var brush).ThrowOnError();
+
+        context.CreateSolidColorBrush(color, properties.GetValuePointer(), out var brush).ThrowOnError();
         return new ComObject<T>((T)brush);
     }
 
@@ -381,11 +384,11 @@ public static class ID2D1DeviceContextExtensions
         ArgumentNullException.ThrowIfNull(bitmap);
         if (perspectiveTransform.HasValue || (int)interpolationMode > (int)D2D1_BITMAP_INTERPOLATION_MODE.D2D1_BITMAP_INTERPOLATION_MODE_LINEAR)
         {
-            context.DrawBitmap(bitmap, destinationRectangle.CopyToPointer(), opacity, interpolationMode, sourceRectangle.CopyToPointer(), perspectiveTransform.CopyToPointer());
+            context.DrawBitmap(bitmap, destinationRectangle.GetValuePointer(), opacity, interpolationMode, sourceRectangle.GetValuePointer(), perspectiveTransform.GetValuePointer());
         }
         else
         {
-            context.DrawBitmap(bitmap, destinationRectangle.CopyToPointer(), opacity, (D2D1_BITMAP_INTERPOLATION_MODE)interpolationMode, sourceRectangle.CopyToPointer());
+            context.DrawBitmap(bitmap, destinationRectangle.GetValuePointer(), opacity, (D2D1_BITMAP_INTERPOLATION_MODE)interpolationMode, sourceRectangle.GetValuePointer());
         }
     }
 
@@ -405,7 +408,8 @@ public static class ID2D1DeviceContextExtensions
     {
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(image);
-        context.DrawImage(image, targetOffset.CopyToPointer(), imageRectangle.CopyToPointer(), interpolationMode, compositeMode);
+
+        context.DrawImage(image, targetOffset.GetValuePointer(), imageRectangle.GetValuePointer(), interpolationMode, compositeMode);
     }
 
     public static void DrawImage(this IComObject<ID2D1DeviceContext> context,
@@ -427,7 +431,8 @@ public static class ID2D1DeviceContextExtensions
         effect.GetOutput(out var image);
         try
         {
-            context.DrawImage(image, targetOffset.CopyToPointer(), imageRectangle.CopyToPointer(), interpolationMode, compositeMode);
+
+            context.DrawImage(image, targetOffset.GetValuePointer(), imageRectangle.GetValuePointer(), interpolationMode, compositeMode);
         }
         finally
         {

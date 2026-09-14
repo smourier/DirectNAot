@@ -83,9 +83,10 @@ public class Dxc
     private static DxcResult<T> Compile<T>(byte[] bytes, Encoding encoding, IDxcCompilerArgs args) where T : IDxcResult
     {
         using var compiler = CreateCompiler();
+        using var pinned = new PinnedArray<byte>(bytes);
         var src = new DxcBuffer
         {
-            Ptr = bytes.AsPointer(),
+            Ptr = pinned.Pointer,
             Size = bytes.Length(),
             Encoding = (uint)encoding.CodePage
         };

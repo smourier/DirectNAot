@@ -159,7 +159,38 @@ public static class Extensions
     public static void CopyFrom(this nint destination, nint source, nint length) => Functions.CopyMemory(destination, source, length);
     public static void CopyFrom(this nint destination, nint source, ulong length) => Functions.CopyMemory(destination, source, (nint)length);
     public static void CopyFrom(this nint destination, nint source, nuint length) => Functions.CopyMemory(destination, source, (nint)length);
+    [Obsolete("Copies into a discarded value. Use CopyFromPointer on a variable to update it.")]
     public static unsafe void CopyFrom<T>(this T structure, nint source) where T : unmanaged => Unsafe.CopyBlock(Unsafe.AsPointer(ref structure), (void*)source, (uint)sizeof(T));
+
+    public static unsafe void CopyFromPointer<T>(this ref T structure, nint source) where T : unmanaged
+    {
+        if (source == 0)
+            throw new ArgumentNullException(nameof(source));
+
+        fixed (T* destination = &structure)
+        {
+            Unsafe.CopyBlock(destination, (void*)source, (uint)sizeof(T));
+        }
+    }
+
+    public static unsafe nint GetValuePointer<T>(this ref T? structure) where T : unmanaged
+    {
+        if (!structure.HasValue)
+            return 0;
+
+        return (nint)Unsafe.AsPointer(ref Unsafe.AsRef(in Nullable.GetValueRefOrDefaultRef(in structure)));
+    }
+
+    public static unsafe ComMemory CopyToMemory<T>(this T? structure) where T : unmanaged
+    {
+        var memory = new ComMemory(structure.HasValue ? sizeof(T) : 0);
+        if (structure.HasValue)
+        {
+            *(T*)memory.Pointer = structure.Value;
+        }
+
+        return memory;
+    }
 
     public static void Zero(this nint destination, int length) => Functions.ZeroMemory(destination, length);
     public static void Zero(this nint destination, long length) => Functions.ZeroMemory(destination, (nint)length);
@@ -176,6 +207,7 @@ public static class Extensions
     public static void CopyTo(this nint source, nint destination, nuint length) => Functions.CopyMemory(destination, source, (nint)length);
     public static unsafe void CopyTo<T>(this T structure, nint destination) where T : unmanaged => Unsafe.CopyBlock((void*)destination, Unsafe.AsPointer(ref structure), (uint)sizeof(T));
 
+    [Obsolete("Returns a pointer to an unrooted, unpinned temporary array. Use CopyToMemory and keep it alive until the native call completes.")]
     public static unsafe nint CopyToPointer<T>(this T? structure) where T : unmanaged
     {
         if (structure == null)
@@ -206,9 +238,11 @@ public static class Extensions
         if (array.Length == 0)
             return;
 
-        var source = Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(array));
-        var size = (uint)(sizeof(T) * array.Length);
-        Unsafe.CopyBlock((void*)destination, source, size);
+        var size = checked((uint)(sizeof(T) * (long)array.Length));
+        fixed (T* source = array)
+        {
+            Unsafe.CopyBlock((void*)destination, source, size);
+        }
     }
 
     public static byte[] IntPtrToBytes(this nint ptr)

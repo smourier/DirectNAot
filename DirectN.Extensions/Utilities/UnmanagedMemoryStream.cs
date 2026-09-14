@@ -43,7 +43,8 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     public UnmanagedMemoryStream(byte[] bytes)
     {
         ArgumentNullException.ThrowIfNull(bytes);
-        _stream = Functions.SHCreateMemStream(bytes.AsPointer(), bytes.Length());
+        using var pinned = new PinnedArray<byte>(bytes);
+        _stream = Functions.SHCreateMemStream(pinned.Pointer, bytes.Length());
         CheckStream();
         Position = 0;
     }
@@ -72,7 +73,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
     {
         get
         {
-            NativeStream.Stat(out var stat, 0);
+            NativeStream.Stat(out var stat, 1).ThrowOnError();
             return (long)stat.cbSize;
         }
     }
@@ -96,11 +97,16 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
         }
     }
 
-    public override void Flush() => ((IStream)this).Commit(0); // STGC_DEFAULT
-    public override void SetLength(long value) => ((IStream)this).SetSize((ulong)value);
+    public override void Flush() => ((IStream)this).Commit(0).ThrowOnError(); // STGC_DEFAULT
+    public override void SetLength(long value)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(value);
+        ((IStream)this).SetSize((ulong)value).ThrowOnError();
+    }
+
     public override long Seek(long offset, SeekOrigin origin)
     {
-        ((IStream)this).Seek(offset, (STREAM_SEEK)origin, 0);
+        ((IStream)this).Seek(offset, (STREAM_SEEK)origin, 0).ThrowOnError();
         return _position;
     }
 
@@ -111,7 +117,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
         {
             fixed (byte* p = buffer)
             {
-                Read((nint)(p + offset), (uint)count, 0, out var read);
+                Read((nint)(p + offset), (uint)count, 0, out var read).ThrowOnError();
                 return read;
             }
         }
@@ -124,7 +130,7 @@ public sealed partial class UnmanagedMemoryStream : Stream, IStream
         {
             fixed (byte* p = buffer)
             {
-                Write((nint)(p + offset), (uint)count, 0);
+                Write((nint)(p + offset), (uint)count, 0).ThrowOnError();
             }
         }
     }

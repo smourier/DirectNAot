@@ -117,37 +117,25 @@ public sealed class IntPtrBuffer : SafeBuffer
         if (!stream.CanRead)
             throw new ArgumentException("Stream must be readable.", nameof(stream));
 
-        MemoryStream? ms = null;
-        uint length;
-        if (streamLength.HasValue)
+        if (!streamLength.HasValue && !stream.CanSeek)
         {
-            length = streamLength.Value;
-        }
-        else
-        {
-            try
-            {
-                length = (uint)stream.Length;
-            }
-            catch
-            {
-                ms = new MemoryStream();
-                stream.CopyTo(ms);
-                length = (uint)ms.Length;
-                stream = ms;
-            }
+            using var copy = new MemoryStream();
+            stream.CopyTo(copy);
+            copy.Position = 0;
+            return FromStream(copy);
         }
 
+        var length = streamLength.HasValue ? checked((int)streamLength.Value) : checked((int)Math.Max(0, stream.Length - stream.Position));
+        var buffer = new IntPtrBuffer(length);
         try
         {
-            var buffer = new IntPtrBuffer(length);
-            var span = buffer.ToSpan();
-            stream.ReadExactly(span);
+            stream.ReadExactly(buffer.ToSpan());
             return buffer;
         }
-        finally
+        catch
         {
-            ms?.Dispose();
+            buffer.Dispose();
+            throw;
         }
     }
 

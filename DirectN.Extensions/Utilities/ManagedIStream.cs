@@ -1,165 +1,273 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
 
 namespace DirectN.Extensions.Utilities;
-
 [ComVisible(true)]
 [GeneratedComClass]
 public sealed partial class ManagedIStream : IStream, IDisposable
 {
-    private Stream? _stream;
-    private readonly bool _owned;
-
+    private const int _copyBufferSize = 81920;
+    private SharedStream? _state;
+    private long _position;
+    private bool _independentPosition;
     public ManagedIStream(Stream stream, bool owned = false)
     {
         ArgumentNullException.ThrowIfNull(stream);
-        _stream = stream;
-        _owned = owned;
+        _state = new SharedStream(stream, owned);
     }
 
-    public ManagedIStream(string? text, Encoding? encoding = null)
-        : this(GetStream(text, encoding), true)
+    private ManagedIStream(SharedStream state, long position)
+    {
+        _state = state;
+        _position = position;
+        _independentPosition = true;
+        state.References++;
+    }
+
+    public ManagedIStream(string? text, Encoding? encoding = null) : this(string.IsNullOrEmpty(text) ? new MemoryStream() : new MemoryStream((encoding ?? Encoding.Unicode).GetBytes(text)), true)
     {
     }
 
-    private static MemoryStream GetStream(string? text, Encoding? encoding)
+    private sealed class SharedStream(Stream stream, bool owned)
     {
-        if (!string.IsNullOrEmpty(text))
+        public Stream Stream { get; } = stream;
+        public bool Owned { get; } = owned;
+
+        public int References = 1;
+    }
+
+    private SharedStream _currentState => _state ?? throw new ObjectDisposedException(nameof(ManagedIStream));
+
+    private Stream GetStream(SharedStream state)
+    {
+        ObjectDisposedException.ThrowIf(_state == null, this);
+        if (_independentPosition)
         {
-            encoding ??= Encoding.Unicode;
-            return new MemoryStream(encoding.GetBytes(text));
+            state.Stream.Position = _position;
         }
 
-        return new MemoryStream();
+        return state.Stream;
     }
 
     public void Dispose()
     {
-        if (_owned)
+        if (_state is { Owned: false })
+            return;
+
+        Release();
+        GC.SuppressFinalize(this);
+    }
+
+    private void Release()
+    {
+        var state = _state;
+        if (state == null)
+            return;
+
+        lock (state)
         {
-            Interlocked.Exchange(ref _stream, null)?.Dispose();
+            if (Interlocked.Exchange(ref _state, null) == null)
+                return;
+
+            if (--state.References == 0 && state.Owned)
+            {
+                state.Stream.Dispose();
+            }
         }
     }
 
-    private Stream CheckDisposed()
+    ~ManagedIStream()
     {
-        var stream = _stream;
-        ObjectDisposedException.ThrowIf(stream == null, this);
-        return stream;
+        try
+        {
+            Release();
+        }
+        catch
+        {
+        }
     }
 
     HRESULT IStream.Seek(long dlibMove, STREAM_SEEK dwOrigin, nint plibNewPosition)
     {
-        var newPos = CheckDisposed().Seek(dlibMove, (SeekOrigin)dwOrigin);
-        if (plibNewPosition != 0)
+        var state = _currentState;
+        lock (state)
         {
-            Marshal.WriteInt64(plibNewPosition, newPos);
+            _position = GetStream(state).Seek(dlibMove, (SeekOrigin)dwOrigin);
+            if (plibNewPosition != 0)
+            {
+                Marshal.WriteInt64(plibNewPosition, _position);
+            }
         }
+
         return Constants.S_OK;
     }
 
     HRESULT IStream.SetSize(ulong libNewSize)
     {
-        CheckDisposed().SetLength((long)libNewSize);
+        var state = _currentState;
+        lock (state)
+        {
+            GetStream(state).SetLength(checked((long)libNewSize));
+        }
+
         return Constants.S_OK;
     }
 
-    HRESULT IStream.CopyTo(IStream pstm, ulong cb, nint pcbRead, nint pcbWritten)
+    unsafe HRESULT IStream.CopyTo(IStream pstm, ulong cb, nint pcbRead, nint pcbWritten)
     {
         ArgumentNullException.ThrowIfNull(pstm);
-
-        long count;
-        using (var stream = new StreamOnIStream(pstm))
+        ulong totalRead = 0;
+        ulong totalWritten = 0;
+        var bytes = new byte[(int)Math.Min(cb, (ulong)_copyBufferSize)];
+        try
         {
-            count = CheckDisposed().CopyTo(stream, (long)cb);
-        }
+            fixed (byte* pointer = bytes)
+            {
+                while (totalRead < cb)
+                {
+                    var count = (uint)Math.Min((ulong)bytes.Length, cb - totalRead);
+                    uint read = 0;
+                    var hr = ((IStream)this).Read((nint)pointer, count, (nint)(&read));
+                    if (hr.IsError)
+                        return hr;
 
-        if (pcbRead != 0)
-        {
-            Marshal.WriteInt64(pcbRead, count);
-        }
+                    totalRead += read;
+                    if (read > 0)
+                    {
+                        uint written = 0;
+                        hr = pstm.Write((nint)pointer, read, (nint)(&written));
+                        totalWritten += written;
+                        if (hr.IsError)
+                            return hr;
 
-        if (pcbWritten != 0)
-        {
-            Marshal.WriteInt64(pcbWritten, count);
+                        if (written != read)
+                            return Constants.STG_E_WRITEFAULT;
+                    }
+
+                    if (read < count)
+                        return Constants.S_FALSE;
+                }
+            }
+
+            return Constants.S_OK;
         }
-        return Constants.S_OK;
+        finally
+        {
+            if (pcbRead != 0)
+            {
+                Marshal.WriteInt64(pcbRead, (long)totalRead);
+            }
+
+            if (pcbWritten != 0)
+            {
+                Marshal.WriteInt64(pcbWritten, (long)totalWritten);
+            }
+        }
     }
 
     HRESULT IStream.Commit(uint grfCommitFlags)
     {
-        _stream?.Flush(); // don't check if disposed
+        var state = _state;
+        if (state != null)
+        {
+            lock (state)
+            {
+                if (_state != null)
+                {
+                    state.Stream.Flush();
+                }
+            }
+        }
+
         return Constants.S_OK;
     }
 
     HRESULT IStream.Stat(out STATSTG pstatstg, uint grfStatFlag)
     {
-        var stream = CheckDisposed();
-        pstatstg = new STATSTG
+        var state = _currentState;
+        lock (state)
         {
-            type = (uint)STGTY.STGTY_STREAM,
-            cbSize = (uint)stream.Length
-        };
-
-        if (stream.CanRead && stream.CanWrite)
-        {
-            pstatstg.grfMode |= STGM.STGM_READWRITE;
-            return Constants.S_OK;
+            var stream = GetStream(state);
+            pstatstg = new STATSTG
+            {
+                type = (uint)STGTY.STGTY_STREAM,
+                cbSize = checked((ulong)stream.Length),
+                grfMode = stream.CanWrite ? stream.CanRead ? STGM.STGM_READWRITE : STGM.STGM_WRITE : STGM.STGM_READ
+            };
         }
 
-        if (stream.CanRead)
-        {
-            pstatstg.grfMode |= STGM.STGM_READ;
-            return Constants.S_OK;
-        }
-
-        if (stream.CanWrite)
-        {
-            pstatstg.grfMode |= STGM.STGM_WRITE;
-            return Constants.S_OK;
-        }
-
-        throw new NotImplementedException();
+        return Constants.S_OK;
     }
 
     HRESULT IStream.Clone(out IStream ppstm)
     {
-        var clone = new ManagedIStream(CheckDisposed(), _owned);
-        ppstm = clone;
+        var state = _currentState;
+        lock (state)
+        {
+            var stream = GetStream(state);
+            if (!stream.CanSeek)
+            {
+                ppstm = null!;
+                return Constants.E_NOTIMPL;
+            }
+
+            _position = stream.Position;
+            _independentPosition = true;
+            ppstm = new ManagedIStream(state, _position);
+        }
+
         return Constants.S_OK;
     }
 
-    HRESULT ISequentialStream.Read(nint pv, uint cb, nint pcbRead)
+    unsafe HRESULT ISequentialStream.Read(nint pv, uint cb, nint pcbRead)
     {
-        if (pv == 0)
+        if (pv == 0 && cb != 0)
             throw new ArgumentNullException(nameof(pv));
 
-        var bytes = new byte[cb];
-        var read = CheckDisposed().Read(bytes, 0, (int)cb);
-        Marshal.Copy(bytes, 0, pv, read);
+        var state = _currentState;
+        int read;
+        lock (state)
+        {
+            var stream = GetStream(state);
+            read = stream.ReadAtLeast(new Span<byte>((void*)pv, checked((int)cb)), checked((int)cb), false);
+            if (_independentPosition)
+            {
+                _position = stream.Position;
+            }
+        }
+
         if (pcbRead != 0)
         {
             Marshal.WriteInt32(pcbRead, read);
         }
-        return Constants.S_OK;
+
+        return read == cb ? Constants.S_OK : Constants.S_FALSE;
     }
 
-    HRESULT ISequentialStream.Write(nint pv, uint cb, nint pcbWritten)
+    unsafe HRESULT ISequentialStream.Write(nint pv, uint cb, nint pcbWritten)
     {
-        if (pv == 0)
+        if (pv == 0 && cb != 0)
             throw new ArgumentNullException(nameof(pv));
 
-        var bytes = new byte[cb];
-        Marshal.Copy(pv, bytes, 0, (int)cb);
-        CheckDisposed().Write(bytes, 0, (int)cb);
+        var state = _currentState;
+        lock (state)
+        {
+            var stream = GetStream(state);
+            stream.Write(new ReadOnlySpan<byte>((void*)pv, checked((int)cb)));
+            if (_independentPosition)
+            {
+                _position = stream.Position;
+            }
+        }
+
         if (pcbWritten != 0)
         {
-            Marshal.WriteInt32(pcbWritten, (int)cb);
+            Marshal.WriteInt32(pcbWritten, checked((int)cb));
         }
+
         return Constants.S_OK;
     }
 
     HRESULT IStream.Revert() => throw new NotSupportedException();
     HRESULT IStream.LockRegion(ulong libOffset, ulong cb, uint dwLockType) => throw new NotSupportedException();
     HRESULT IStream.UnlockRegion(ulong libOffset, ulong cb, uint dwLockType) => throw new NotSupportedException();
-
 }

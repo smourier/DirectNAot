@@ -9,7 +9,8 @@ public static class ICompositionDrawingSurfaceInteropExtensions
     public static IComObject<T> BeginDraw<T>(this ICompositionDrawingSurfaceInterop surface, RECT? rect = null) where T : ID2D1DeviceContext
     {
         ArgumentNullException.ThrowIfNull(surface);
-        surface.BeginDraw(rect.CopyToPointer(), typeof(T).GUID, out var unk, out var offset).ThrowOnError();
+
+        surface.BeginDraw(rect.GetValuePointer(), typeof(T).GUID, out var unk, out var offset).ThrowOnError();
         var dc = ComObject.FromPointer<T>(unk)!;
         if (!offset.IsZero)
         {

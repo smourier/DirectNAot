@@ -10,7 +10,7 @@ public static class IDWriteTextLayoutExtensions
         if (range == null)
             return call(0);
 
-        return call(range.CopyToPointer());
+        return call(range.GetValuePointer());
 
         string call(nint ptr)
         {
@@ -28,7 +28,7 @@ public static class IDWriteTextLayoutExtensions
         if (range == null)
             return call(0);
 
-        return call(range.CopyToPointer());
+        return call(range.GetValuePointer());
 
         string call(nint ptr)
         {
@@ -83,7 +83,7 @@ public static class IDWriteTextLayoutExtensions
         if (range == null)
             return call(0);
 
-        return call(range.CopyToPointer());
+        return call(range.GetValuePointer());
 
         ComObject<IDWriteFontCollection> call(nint ptr)
         {

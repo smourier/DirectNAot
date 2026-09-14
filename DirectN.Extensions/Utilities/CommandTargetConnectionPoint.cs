@@ -19,7 +19,7 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
     public virtual void InvokeMember(int dispId, params object?[]? parameters)
     {
         Variant[]? variants = null;
-        VARIANT[]? vars;
+        VARIANT[]? vars = null;
         var dp = new DISPPARAMS();
         if (parameters?.Length > 0)
         {
@@ -32,9 +32,11 @@ public partial class CommandTargetConnectionPoint : IConnectionPoint, IDisposabl
             }
 
             dp.cArgs = (uint)parameters.Length;
-            dp.rgvarg = vars.AsPointer();
+
         }
 
+        using var pinned = new PinnedArray<VARIANT>(vars);
+        dp.rgvarg = pinned.Pointer;
         try
         {
             foreach (var kv in _sinks)
