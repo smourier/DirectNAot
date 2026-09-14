@@ -5113,6 +5113,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetWindowTextW(HWND hWnd, [MarshalUsing(CountElementName = nameof(nMaxCount))] PWSTR lpString, int nMaxCount);
     
+    // https://learn.microsoft.com/windows/win32/api/uxtheme/nf-uxtheme-getwindowtheme
+    [LibraryImport("UXTHEME", SetLastError = true)]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HTHEME GetWindowTheme(HWND hwnd);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowthreadprocessid
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows5.0")]
@@ -11383,6 +11390,12 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial COLORREF SetTextColor(HDC hdc, COLORREF color);
     
+    // https://learn.microsoft.com/windows/win32/api/uxtheme/nf-uxtheme-setthemeappproperties
+    [LibraryImport("UxTheme")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial void SetThemeAppProperties(SET_THEME_APP_PROPERTIES_FLAGS dwFlags);
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setthreaddpiawarenesscontext
     [LibraryImport("USER32")]
     [SupportedOSPlatform("windows10.0.14393")]
@@ -11526,6 +11539,12 @@ public static partial class Functions
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
     public static partial HRESULT SetWindowTheme(HWND hwnd, PWSTR pszSubAppName, PWSTR pszSubIdList);
+    
+    // https://learn.microsoft.com/windows/win32/api/uxtheme/nf-uxtheme-setwindowthemeattribute
+    [LibraryImport("UXTHEME")]
+    [SupportedOSPlatform("windows6.0.6000")]
+    [PreserveSig]
+    public static partial HRESULT SetWindowThemeAttribute(HWND hwnd, WINDOWTHEMEATTRIBUTETYPE eAttribute, nint pvAttribute, uint cbAttribute);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwineventhook
     [LibraryImport("USER32")]
