@@ -203,8 +203,7 @@ public sealed class PropVariant : IDisposable
 
             case TypeCode.String:
                 // note: all strings (PWSTR, PSTR, BSTR) point to same place
-                _inner.Anonymous.Anonymous.Anonymous.pwszVal = new PWSTR { Value = MarshalString((string)value, VARENUM.VT_LPWSTR) };
-                vt = VARENUM.VT_LPWSTR;
+                _inner.Anonymous.Anonymous.Anonymous.pwszVal = new PWSTR { Value = MarshalString((string)value, vt) };
                 break;
 
             case TypeCode.UInt16:
@@ -236,7 +235,7 @@ public sealed class PropVariant : IDisposable
                 {
                     if (type == VARENUM.VT_FILETIME)
                     {
-                        var ft = Conversions.ToPositiveFILETIME(dto.DateTime);
+                        var ft = Conversions.ToPositiveFILETIMEUtc(dto.UtcDateTime);
                         Functions.InitPropVariantFromFileTime(ft, out _inner);
                         return;
                     }
@@ -262,6 +261,12 @@ public sealed class PropVariant : IDisposable
     {
         get
         {
+            if (VarType == VARENUM.VT_VARIANT || VarType.HasFlag(VARENUM.VT_BYREF))
+            {
+                using var value = CopyValue();
+                return value?.Value;
+            }
+
             switch (_inner.Anonymous.Anonymous.vt)
             {
                 case VARENUM.VT_EMPTY:
@@ -307,7 +312,7 @@ public sealed class PropVariant : IDisposable
                     return _inner.Anonymous.Anonymous.Anonymous.scode;
 
                 case VARENUM.VT_CY:
-                    return _inner.Anonymous.decVal;
+                    return _inner.Anonymous.Anonymous.Anonymous.cyVal.int64 / 10000m;
 
                 case VARENUM.VT_DATE:
                     return DateTime.FromOADate(_inner.Anonymous.Anonymous.Anonymous.dblVal);
@@ -396,17 +401,90 @@ public sealed class PropVariant : IDisposable
         return new Variant(inner);
     }
 
-    public unsafe PropVariant? ChangeType(VARENUM type, bool throwOnError = true)
+    private unsafe PropVariant? CopyValue(bool throwOnError = true)
     {
-        if (type == (VARENUM.VT_VARIANT | VARENUM.VT_BYREF) || type == VARENUM.VT_VARIANT)
+        if (VarType == (VARENUM.VT_BSTR | VARENUM.VT_BYREF))
         {
-            Functions.PropVariantCopy(out var inner, _inner).ThrowOnError(throwOnError);
+            var pointer = _inner.Anonymous.Anonymous.Anonymous.pvarVal;
+            if (pointer == 0)
+            {
+                if (throwOnError)
+                    throw new InvalidOperationException("The referenced string is null.");
 
-            var copy = new PROPVARIANT();
-            copy.Anonymous.Anonymous.vt = type;
-            copy.Anonymous.Anonymous.Anonymous.pvarVal = Marshal.AllocCoTaskMem(Size);
-            copy.Anonymous.Anonymous.Anonymous.pvarVal.CopyFrom((nint)(&inner), Size);
-            return Attach(ref copy, false);
+                return null;
+            }
+
+            return CopyBstr(*(nint*)pointer);
+        }
+
+        if (VarType == VARENUM.VT_VARIANT || VarType == (VARENUM.VT_VARIANT | VARENUM.VT_BYREF))
+        {
+            var pointer = _inner.Anonymous.Anonymous.Anonymous.pvarVal;
+            if (pointer == 0)
+            {
+                if (throwOnError)
+                    throw new InvalidOperationException("The referenced variant is null.");
+
+                return null;
+            }
+
+            var innerValue = *(PROPVARIANT*)pointer;
+            using var borrowed = Attach(ref innerValue);
+            try
+            {
+                return borrowed.CopyValue(throwOnError);
+            }
+            finally
+            {
+                borrowed.Detach();
+            }
+        }
+
+        if (VarType.HasFlag(VARENUM.VT_BYREF))
+        {
+            using var variant = ToVariant(throwOnError);
+            if (variant == null)
+                return null;
+
+            using var value = variant.CopyValue(throwOnError);
+            if (value == null)
+                return null;
+
+            var conversion = Functions.VariantToPropVariant(value.Detached, out var converted).ThrowOnError(throwOnError);
+            return conversion.IsError ? null : new PropVariant { _inner = converted };
+        }
+
+        if (VarType == VARENUM.VT_BSTR)
+            return CopyBstr(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value);
+
+        var hr = Functions.PropVariantCopy(out var inner, _inner).ThrowOnError(throwOnError);
+        return hr.IsError ? null : new PropVariant { _inner = inner };
+    }
+
+    public PropVariant? ChangeType(VARENUM type, bool throwOnError = true)
+    {
+        if (type.HasFlag(VARENUM.VT_BYREF))
+        {
+            if (throwOnError)
+                throw new ArgumentException("By-reference values require caller-owned storage. Use the storage overload or Attach instead.", nameof(type));
+
+            return null;
+        }
+
+        if (type == VARENUM.VT_VARIANT)
+            return CopyValue(throwOnError);
+
+        if (type == VARENUM.VT_DECIMAL)
+        {
+            if (VarType == VARENUM.VT_DECIMAL)
+                return Copy(throwOnError);
+
+            using var source = ToVariant(throwOnError);
+            if (source == null)
+                return null;
+
+            using var converted = source.ChangeType(type, throwOnError);
+            return converted == null ? null : new PropVariant(converted.Detached.Anonymous.decVal);
         }
 
         var hr = Functions.PropVariantChangeType(out var inner2, _inner, 0, type).ThrowOnError(throwOnError);
@@ -416,24 +494,78 @@ public sealed class PropVariant : IDisposable
         return new PropVariant { _inner = inner2 };
     }
 
+    public unsafe PropVariant? ChangeType(VARENUM type, nint referencedVariant, bool throwOnError = true)
+    {
+        if (referencedVariant == 0)
+            throw new ArgumentException(null, nameof(referencedVariant));
+
+        var valueType = type & ~VARENUM.VT_BYREF;
+        var elementType = valueType & ~VARENUM.VT_ARRAY;
+        if (!type.HasFlag(VARENUM.VT_BYREF) || elementType is not
+            (VARENUM.VT_I1 or VARENUM.VT_UI1 or VARENUM.VT_I2 or VARENUM.VT_UI2 or
+             VARENUM.VT_I4 or VARENUM.VT_UI4 or VARENUM.VT_I8 or VARENUM.VT_UI8 or
+             VARENUM.VT_INT or VARENUM.VT_UINT or VARENUM.VT_R4 or VARENUM.VT_R8 or
+             VARENUM.VT_BOOL or VARENUM.VT_ERROR or VARENUM.VT_CY or VARENUM.VT_DATE or
+             VARENUM.VT_BSTR or VARENUM.VT_UNKNOWN or VARENUM.VT_DISPATCH or
+             VARENUM.VT_DECIMAL or VARENUM.VT_VARIANT))
+        {
+            if (throwOnError)
+                throw new ArgumentException("The type must be a supported by-reference variant type.", nameof(type));
+
+            return null;
+        }
+
+        using var value = valueType == VARENUM.VT_VARIANT || valueType == VarType ? CopyValue(throwOnError) : ChangeType(valueType, throwOnError);
+        if (value == null)
+            return null;
+
+        var result = new PropVariant();
+        var storage = (PROPVARIANT*)referencedVariant;
+        var hr = Functions.PropVariantClear(ref *storage).ThrowOnError(throwOnError);
+        if (hr.IsError)
+            return null;
+
+        *storage = value.Detach();
+        result._inner.Anonymous.Anonymous.vt = type;
+        result._inner.Anonymous.Anonymous.Anonymous.pvarVal = valueType == VARENUM.VT_VARIANT ? referencedVariant : valueType == VARENUM.VT_DECIMAL ? (nint)(&storage->Anonymous.decVal)
+                : (nint)(&storage->Anonymous.Anonymous.Anonymous);
+        return result;
+    }
+
     public void CopyFrom(PropVariant source, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(source);
         if (source == this)
             return;
 
+        using var copy = source.Copy(throwOnError);
+        if (copy == null)
+            return;
+
         Clear(throwOnError);
-        Functions.PropVariantCopy(out var inner, source._inner).ThrowOnError(throwOnError);
-        _inner = inner;
+        if (VarType != VARENUM.VT_EMPTY)
+            return;
+
+        _inner = copy.Detach();
     }
 
+    private static PropVariant CopyBstr(nint pointer)
+    {
+        var result = new PropVariant();
+        result._inner.Anonymous.Anonymous.vt = VARENUM.VT_BSTR;
+        result._inner.Anonymous.Anonymous.Anonymous.bstrVal.Value = pointer == 0 ? 0 : Marshal.StringToBSTR(Marshal.PtrToStringBSTR(pointer));
+        return result;
+    }
     public PropVariant? Copy(bool throwOnError = true)
     {
-        var hr = Functions.PropVariantCopy(out var inner, _inner).ThrowOnError(throwOnError);
-        if (hr.IsError)
-            return null;
+        if (VarType == VARENUM.VT_VARIANT)
+            return CopyValue(throwOnError);
 
-        return new PropVariant { _inner = inner };
+        if (VarType == VARENUM.VT_BSTR)
+            return CopyBstr(_inner.Anonymous.Anonymous.Anonymous.bstrVal.Value);
+
+        var hr = Functions.PropVariantCopy(out var inner, _inner).ThrowOnError(throwOnError);
+        return hr.IsError ? null : new PropVariant { _inner = inner };
     }
 
     [SupportedOSPlatform("windows8.0")]
@@ -472,8 +604,19 @@ public sealed class PropVariant : IDisposable
         if (!variant->Anonymous.Anonymous.vt.HasFlag(VARENUM.VT_BYREF))
             throw new ArgumentException($"Target type is {variant->Anonymous.Anonymous.vt}, not a VT_BYREF variant.", nameof(propVariantPtr));
 
+        if (variant->Anonymous.Anonymous.Anonymous.pvarVal == 0)
+            throw new ArgumentException("The target reference is null.", nameof(propVariantPtr));
+
+        if (VarType.HasFlag(VARENUM.VT_BYREF) || VarType == VARENUM.VT_VARIANT)
+        {
+            using var value = CopyValue()!;
+            value.DetachToByRef(propVariantPtr);
+            Clear();
+            return;
+        }
+
         var vt = variant->Anonymous.Anonymous.vt & ~VARENUM.VT_BYREF;
-        if (vt != VarType && variant->Anonymous.Anonymous.vt != VarType)
+        if (vt != VARENUM.VT_VARIANT && vt != VarType)
             throw new ArgumentException($"Source type {VarType} and target type {variant->Anonymous.Anonymous.vt} are incompatible.", nameof(propVariantPtr));
 
         switch (vt)
@@ -543,8 +686,9 @@ public sealed class PropVariant : IDisposable
                 break;
 
             case VARENUM.VT_VARIANT:
-                *(nint*)variant->Anonymous.Anonymous.Anonymous.pvarVal = _inner.Anonymous.Anonymous.Anonymous.pvarVal;
-                break;
+                Functions.PropVariantClear(ref *(PROPVARIANT*)variant->Anonymous.Anonymous.Anonymous.pvarVal).ThrowOnError();
+                *(PROPVARIANT*)variant->Anonymous.Anonymous.Anonymous.pvarVal = Detach();
+                return;
 
             case VARENUM.VT_UNKNOWN:
             case VARENUM.VT_DISPATCH:
@@ -616,75 +760,55 @@ public sealed class PropVariant : IDisposable
 
     private void ConstructEnumerable(IEnumerable enumerable, VARENUM? type = null)
     {
-        Type? arrayType = null;
-        Type? elementType;
-        if (type != null)
+        type &= ~VARENUM.VT_VECTOR;
+        ConstructArray(MaterializeEnumerable(enumerable, ref type, false), type);
+    }
+
+    internal static Array MaterializeEnumerable(IEnumerable enumerable, ref VARENUM? type, bool forVariant)
+    {
+        var items = new List<object?>();
+        foreach (var item in enumerable)
         {
-            var count = GetCount(enumerable);
-            var i = 0;
-            if (type == VARENUM.VT_VARIANT)
-            {
-                var objects = new object?[count];
-                foreach (var obj in enumerable)
-                {
-                    objects.SetValue(obj, i++);
-                }
+            items.Add(item);
+        }
 
-                ConstructArray(objects, type);
-                return;
-            }
+        if (!type.HasValue)
+        {
+            var first = items.FirstOrDefault(item => item != null);
+            type = enumerable.GetType().IsGenericType && first != null ? GetObjectType(first, null) ?? FromType(first.GetType(), null, forVariant, VARENUM.VT_VARIANT) : VARENUM.VT_VARIANT;
+        }
 
-            arrayType = FromTypeArray(type.Value);
-            var array = Array.CreateInstanceFromArrayType(arrayType, count);
-            elementType = array.GetType().GetElementType()!;
-            foreach (var obj in enumerable)
-            {
-                var converted = Conversions.ChangeObjectType(obj, elementType);
-                array.SetValue(converted, i++);
-            }
+        var arrayType = FromTypeArray(type.Value);
+        var elementType = arrayType.GetElementType()!;
+        var array = Array.CreateInstanceFromArrayType(arrayType, items.Count);
+        for (var i = 0; i < items.Count; i++)
+        {
+            array.SetValue(Conversions.ChangeObjectType(items[i], elementType), i);
+        }
+        return array;
+    }
 
-            ConstructArray(array, type);
+    internal static void CopyArrayMemory(Array array, nint pointer, nint size, bool toNative)
+    {
+        if (size == 0)
             return;
-        }
 
-        if (!enumerable.GetType().IsGenericType)
+        var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+        try
         {
-            ConstructEnumerable(enumerable, VARENUM.VT_VARIANT);
-            return;
-        }
-
-        // get the first item to determine the type and build the array
-        var list = new List<object?>();
-        var enumerator = enumerable.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            var item = enumerator.Current;
-            if (type == null)
+            if (toNative)
             {
-                var objectVt = GetObjectType(item, type);
-                if (objectVt != null)
-                {
-                    type = objectVt.Value;
-                }
-                else
-                {
-                    elementType = item.GetType();
-                    type = FromType(elementType, null, false, VARENUM.VT_VARIANT);
-                }
-                arrayType = FromTypeArray(type.Value);
+                Functions.CopyMemory(pointer, handle.AddrOfPinnedObject(), size);
             }
-            list.Add(item);
+            else
+            {
+                Functions.CopyMemory(handle.AddrOfPinnedObject(), pointer, size);
+            }
         }
-
-        arrayType ??= typeof(object[]);
-        elementType = arrayType.GetElementType()!;
-        var listArray = Array.CreateInstanceFromArrayType(arrayType, list.Count);
-        for (var i = 0; i < list.Count; i++)
+        finally
         {
-            var converted = Conversions.ChangeObjectType(list[i], elementType);
-            listArray.SetValue(converted, i);
+            handle.Free();
         }
-        ConstructArray(listArray, type);
     }
 
     private void ConstructBlob(byte[] bytes)
@@ -697,6 +821,8 @@ public sealed class PropVariant : IDisposable
 
     private void ConstructArray(Array array, VARENUM? type = null)
     {
+        type &= ~VARENUM.VT_VECTOR;
+
         // special case for bools which are shorts...
         if (array is bool[] bools)
         {
@@ -706,6 +832,19 @@ public sealed class PropVariant : IDisposable
                 shorts[i] = bools[i] ? ((short)-1) : ((short)0);
             }
             ConstructVector(shorts, typeof(short), VARENUM.VT_BOOL);
+            return;
+        }
+
+        if (array is DateTime[] dates)
+        {
+            if (type == VARENUM.VT_FILETIME)
+            {
+                ConstructVector(dates.Select(date => Conversions.ToPositiveFILETIME(date)).ToArray(), typeof(FILETIME), VARENUM.VT_FILETIME);
+            }
+            else
+            {
+                ConstructVector(dates.Select(date => date.ToOADate()).ToArray(), typeof(double), VARENUM.VT_DATE);
+            }
             return;
         }
 
@@ -738,57 +877,52 @@ public sealed class PropVariant : IDisposable
 
     private void ConstructVector(Array array, Type type, VARENUM vt)
     {
-        if (array.Length > 0)
+        var elementSize = vt == VARENUM.VT_VARIANT ? Size : checked((int)SizeofForVector(vt));
+        var size = checked(elementSize * array.Length);
+        _inner.Anonymous.Anonymous.vt = vt | VARENUM.VT_VECTOR;
+        if (size == 0)
+            return;
+
+        var ptr = Marshal.AllocCoTaskMem(size);
+        Functions.ZeroMemory(ptr, size);
+        _inner.Anonymous.Anonymous.Anonymous.cai.cElems = (uint)array.Length;
+        _inner.Anonymous.Anonymous.Anonymous.cai.pElems = ptr;
+        try
         {
-            int size;
-            if (type == typeof(string))
-            {
-                size = nint.Size;
-            }
-            else if (type == typeof(object))
-            {
-                size = Variant.Size;
-            }
-            else
-            {
-                size = (int)SizeofForVector(vt);
-            }
-
-            var elementSize = size;
-            size *= array.Length;
-            var ptr = Marshal.AllocCoTaskMem(size);
-
-            // any CA will do
-            _inner.Anonymous.Anonymous.Anonymous.cai.cElems = (uint)array.Length;
-            _inner.Anonymous.Anonymous.Anonymous.cai.pElems = ptr;
-
             if (type == typeof(string))
             {
                 for (var i = 0; i < array.Length; i++)
                 {
-                    var str = MarshalString((string?)array.GetValue(i)!, vt);
-                    Marshal.WriteIntPtr(ptr, elementSize * i, str);
+                    Marshal.WriteIntPtr(ptr, elementSize * i, MarshalString((string?)array.GetValue(i), vt));
                 }
             }
-            else if (type == typeof(object))
+            else if (vt == VARENUM.VT_VARIANT)
             {
                 for (var i = 0; i < array.Length; i++)
                 {
-                    var variantValue = array.GetValue(i);
-                    var variant = new Variant(variantValue);
-                    unsafe
-                    {
-                        var p = (VARIANT*)(ptr + elementSize * i);
-                        *p = variant.Detach();
-                    }
+                    using var item = new PropVariant(array.GetValue(i));
+                    item.DetachTo(ptr + elementSize * i);
+                }
+            }
+            else if (vt is VARENUM.VT_UNKNOWN or VARENUM.VT_DISPATCH or VARENUM.VT_STREAM or VARENUM.VT_STORAGE)
+            {
+                for (var i = 0; i < array.Length; i++)
+                {
+                    using var item = new PropVariant(array.GetValue(i), vt);
+                    Marshal.WriteIntPtr(ptr, elementSize * i, item.Detached.Anonymous.Anonymous.Anonymous.punkVal);
+                    item.Detach();
                 }
             }
             else
             {
-                Functions.CopyMemory(ptr, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), size);
+                CopyArrayMemory(array, ptr, size, true);
             }
         }
-        _inner.Anonymous.Anonymous.vt = vt | VARENUM.VT_VECTOR;
+        catch
+        {
+            Clear(false);
+            throw;
+        }
     }
 
     private bool TryGetVectorValue(VARENUM vt, out object? value)
@@ -807,6 +941,7 @@ public sealed class PropVariant : IDisposable
                     var str = Marshal.ReadIntPtr(_inner.Anonymous.Anonymous.Anonymous.cai.pElems, nint.Size * i);
                     strings[i] = PtrTostring(str, vt);
                 }
+
                 value = strings;
                 ret = true;
                 break;
@@ -815,17 +950,45 @@ public sealed class PropVariant : IDisposable
                 var shorts = new short[_inner.Anonymous.Anonymous.Anonymous.cai.cElems];
                 unsafe
                 {
-                    size = _inner.Anonymous.Anonymous.Anonymous.cai.cElems * sizeof(short);
+                    size = checked(_inner.Anonymous.Anonymous.Anonymous.cai.cElems * sizeof(short));
                 }
-                Functions.CopyMemory(Marshal.UnsafeAddrOfPinnedArrayElement(shorts, 0), _inner.Anonymous.Anonymous.Anonymous.cai.pElems, (nint)size);
+
+                CopyArrayMemory(shorts, _inner.Anonymous.Anonymous.Anonymous.cai.pElems, (nint)size, false);
                 var bools = new bool[shorts.Length];
                 for (var i = 0; i < shorts.Length; i++)
                 {
                     bools[i] = shorts[i] != 0;
                 }
+
                 value = bools;
                 ret = true;
                 break;
+
+            case VARENUM.VT_UNKNOWN:
+            case VARENUM.VT_DISPATCH:
+            case VARENUM.VT_STREAM:
+            case VARENUM.VT_STORAGE:
+                var objects = new object?[checked((int)_inner.Anonymous.Anonymous.Anonymous.cai.cElems)];
+                for (var i = 0; i < objects.Length; i++)
+                {
+                    var pointer = Marshal.ReadIntPtr(_inner.Anonymous.Anonymous.Anonymous.cai.pElems, checked(i * nint.Size));
+                    if (pointer != 0)
+                    {
+                        objects[i] = ComObject.ComWrappers.GetOrCreateObjectForComInstance(pointer, CreateObjectFlags.UniqueInstance);
+                    }
+                }
+                value = objects;
+                return true;
+
+            case VARENUM.VT_DATE:
+                var dates = new DateTime[_inner.Anonymous.Anonymous.Anonymous.cai.cElems];
+                for (var i = 0; i < dates.Length; i++)
+                {
+                    dates[i] = DateTime.FromOADate(BitConverter.Int64BitsToDouble(Marshal.ReadInt64(_inner.Anonymous.Anonymous.Anonymous.cai.pElems, checked(i * sizeof(double)))));
+                }
+
+                value = dates;
+                return true;
 
             case VARENUM.VT_VARIANT:
                 var variants = new object?[_inner.Anonymous.Anonymous.Anonymous.cai.cElems];
@@ -835,11 +998,19 @@ public sealed class PropVariant : IDisposable
                     for (var i = 0; i < variants.Length; i++)
                     {
                         var pv = _inner.Anonymous.Anonymous.Anonymous.cai.pElems + Size * i;
-                        using var v = new Variant(*(VARIANT*)pv);
-                        variants[i] = v.Value;
-                        v.Detach();
+                        var detached = *(PROPVARIANT*)pv;
+                        using var v = Attach(ref detached);
+                        try
+                        {
+                            variants[i] = v.Value;
+                        }
+                        finally
+                        {
+                            v.Detach();
+                        }
                     }
                 }
+
                 value = variants;
                 ret = true;
                 break;
@@ -853,6 +1024,7 @@ public sealed class PropVariant : IDisposable
                     Marshal.Copy(ptr, guid, 0, 16);
                     clsids[i] = new Guid(guid);
                 }
+
                 value = clsids;
                 ret = true;
                 break;
@@ -871,18 +1043,13 @@ public sealed class PropVariant : IDisposable
             case VARENUM.VT_R8:
             case VARENUM.VT_ERROR:
             case VARENUM.VT_CY:
-            case VARENUM.VT_DATE:
             case VARENUM.VT_DECIMAL:
             case VARENUM.VT_FILETIME:
-            case VARENUM.VT_UNKNOWN:
-            case VARENUM.VT_DISPATCH:
-            case VARENUM.VT_STREAM:
-            case VARENUM.VT_STORAGE:
                 var arrayType = FromTypeArray(vt);
                 var et = FromType(vt);
-                var values = Array.CreateInstanceFromArrayType(arrayType, (int)_inner.Anonymous.Anonymous.Anonymous.cai.cElems);
-                size = _inner.Anonymous.Anonymous.Anonymous.cai.cElems * SizeofForVector(vt);
-                Functions.CopyMemory(Marshal.UnsafeAddrOfPinnedArrayElement(values, 0), _inner.Anonymous.Anonymous.Anonymous.cai.pElems, (nint)size);
+                var values = Array.CreateInstanceFromArrayType(arrayType, checked((int)_inner.Anonymous.Anonymous.Anonymous.cai.cElems));
+                size = checked(_inner.Anonymous.Anonymous.Anonymous.cai.cElems * SizeofForVector(vt));
+                CopyArrayMemory(values, _inner.Anonymous.Anonymous.Anonymous.cai.pElems, (nint)size, false);
                 value = values;
                 ret = true;
                 break;
