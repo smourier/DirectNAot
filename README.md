@@ -1,7 +1,7 @@
 # DirectN AOT
 100% C# interop code for .NET Core 10+ : DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI, Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
 
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN) (with zero reference to it). Aimed at 64-bit (ARM, AMD) targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET Core 9 and beyond, it won't work for version below 8 nor with .NET Framework.
+This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN) (with zero reference to it). Aimed at 64-bit (ARM, AMD) targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET 10 and beyond, it won't work with older versions nor with .NET Framework.
 
 It's always a work in progress although it's been fairly stable now. If you want to discuss how, where, why, just create an issue.
 
@@ -25,17 +25,17 @@ The key points that drive how code is generated and built:
     * Audio (WASAPI)
     * XPS
     * others (dependencies, etc)
-* Modern code exclusively based on .NET Core newer source-generated `LibraryImport`, source-generated `ComWrappers, etc. Note the result is the .dll size is significantly bigger.
+* Modern code exclusively based on .NET Core newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
 * How it works and how it's made is, at its root, completely driven by .NET Core ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
 * Both DirectN and DirectN.Extensions are AOT-friendly.
 * `unsafe` usage is as limited as possible.
 * Raw pointers (like `ISomething*`) usage is not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal, including for authoring (aka implementing COM interfaces in .NET) scenarios.
 * All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the serious use of non-unique instances in interop scenarios anyway?)
-* Due to the usage of unique instances everywhere in DirectN AOT, we had to add a hack to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 or everything crashes very quickly at GC or finalizing time. This hack is inactive under .NET 9+.
+* Due to the usage of unique instances everywhere in DirectN AOT, a hack once had to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 where everything crashed very quickly at GC or finalizing time. The bug is fixed since .NET 9, and as DirectN AOT now requires .NET 10, the hack is never active.
 * Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different (although CsWin32 has been improved at the end of 2025).
 
-## Same names and types than the native concepts, easy port from C/C++ to C#!
-DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch, probably more easily than with other existing interop libraries in this domain because one of its main objective is to use **exactly the same names and types than the native concepts** (interfaces, enums, structures, constants, methods, arguments, guids, etc.) . So you can read the official documentation, use existing C/C++ samples, and start coding with .NET right away.
+## Same names and types as the native concepts, easy port from C/C++ to C#!
+DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch, probably more easily than with other existing interop libraries in this domain because one of its main objective is to use **exactly the same names and types as the native concepts** (interfaces, enums, structures, constants, methods, arguments, guids, etc.) . So you can read the official documentation, use existing C/C++ samples, and start coding with .NET right away.
 
 By design, everything is in the same namespace (and in the same assembly if you use the whole .dll or nuget package) so you don't need to know where is defined this or that interface, constants, etc.
 
@@ -53,7 +53,7 @@ Generated files are included in the repo, so you can just compile DirectN (this 
 If you really want to understand the generator from Win32 metadata, regenerate and rebuild the whole thing, you must run DirectN.InteropBuilder.Cli which will generate all the files in DirectN and then compile DirectN and DirectN.Extensions. Note it's "intelligent" and doesn't touch unchanged files, so if you run it from a fresh repo clone, no files should be updated.
 
 # Direct3D11 minimal sample
-The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.WinUI3.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
+The **DirectN.Samples.MinimalD3D11** sample here [https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MinimalD3D11) has been ported to C# from here: https://gist.github.com/d7samurai/abab8a580d0298cb2f34a44eec41d39d which features a minimal Direct3D11 *"'API familiarizer' - an uncluttered Direct3D 11 setup & basic rendering reference implementation, in the form of a complete, runnable Windows application contained in a single function and laid out in a linear, step-by-step fashion"* sample.
 
 It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 4M bytes!
  
@@ -73,14 +73,14 @@ It uses Windows (WinRT) PDF API so it demonstrates how to include WinRT (C#/WinR
 <img alt="PDFView Sample" src="https://github.com/user-attachments/assets/2e62cdae-375f-4e24-9e9a-82ea15c91bb8" width="50%">
 
 # Screen Capture sample
-The **DirectN.Samples.ScreenCapture** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.ScreenCapture](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.ScreenCapture) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a live (primary) screen capture
+The **DirectN.Samples.ScreenCapture** sample here [https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.ScreenCapture](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.ScreenCapture) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can display a live (primary) screen capture
 
 It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 6M bytes!
 
 <img width="1922" height="1076" alt="ScreenCapture sample" src="https://github.com/user-attachments/assets/15140dfb-4075-4f45-8708-812ab047f143" />
 
 # Media Play sample
-The **DirectN.Samples.MediaPlay** sample here [https://github.com/smourier/DirectNAot/tree/master/DirectN/DirectN.MediaPlay](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MediaPlay) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can play a video file (you can choose the source)
+The **DirectN.Samples.MediaPlay** sample here [https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MediaPlay](https://github.com/smourier/DirectNAot/tree/main/Samples/DirectN.Samples.MediaPlay) is a fully non-Winforms, non-WPF, non-WinUI3 window GUI app that can play a video file (you can choose the source)
 
 It's dependent on DirectN AOT, .NET 10 and ... that's it. Once built, the fully standalone .exe with *zero dependency* is only 13M bytes!
 
@@ -99,17 +99,24 @@ A window is a real HWND, the UI is a web page, and the two talk over a typed bri
 <img width="1180" height="820" alt="AOTrino Fluent Gallery" src="https://github.com/user-attachments/assets/8e260baf-5f13-41f7-90dc-56dc7cd8283d" />
 
 # Filociraptor
-[Filociraptor](https://github.com/smourier/Filociraptor) is a fast Windows file manager  written in C#, rendered with Direct2D and compiled with NativeAOT. GPU drawn, fully virtualized and allocation free on the hot path, so folders with thousands of files open and scroll instantly.
+[Filociraptor](https://github.com/smourier/Filociraptor) is a fast Windows file manager written in C#, rendered with Direct2D and compiled with NativeAOT. GPU drawn, fully virtualized and allocation free on the hot path, so folders with thousands of files open and scroll instantly.
 
-<img width="800" alt="Fileociraptor" src="https://github.com/user-attachments/assets/f22c7a41-7491-42c9-ad5f-d13386bfadb1" />
+<img width="800" alt="Filociraptor" src="https://github.com/user-attachments/assets/f22c7a41-7491-42c9-ad5f-d13386bfadb1" />
+
+# Treemapolis
+[Treemapolis](https://github.com/smourier/Treemapolis) is an evolution of Filociraptor: your disks as a 3D city you can fly through. Every folder is a slab and every file a building as big as it weighs on disk, for the whole Windows shell namespace. It is a GPU driven Direct3D 12 renderer (compute shader culling, indirect drawing, shadows, screen effects) with a Direct2D and DirectComposition chrome, written in C# with DirectN AOT and compiled with NativeAOT for x64 and ARM64, about 3 MB once packed with UPX. When run as administrator it reads NTFS drives straight from their master file table, 2.8 million items on screen in a few seconds.
+
+🎬 [Watch the demo video](https://github.com/smourier/Treemapolis/raw/main/media/treemapolis-demo.mp4)
+
+<img width="800" alt="Treemapolis" src="https://raw.githubusercontent.com/smourier/Treemapolis/main/media/city.jpg" />
 
 # ShellBat
 [ShellBat](https://github.com/smourier/ShellBat) is a modern Windows file explorer with file viewers, multi-instance workflows, terminal integration, search capabilities, and deep Windows Shell interoperability.
 
 This project is a hybrid web application that combines C#/.NET with JavaScript, HTML and CSS, based on an approach similar to frameworks like Electron, but rather simplified.
 
-It relies solely on DirectN AOT and .NET 10+ AOT and built on DirectNAOT and [WebView2Aot](https://github.com/smourier/WebView2Aot), again with no dependencies on WinForms, WPF, WinUI 3, or UWP.
-The final published file is just a single .exe file of 13MB that works in Windows 10, 11, Sandbox and Virtual environments (Hyver-V, etc.).
+It relies only on .NET 10+ AOT, DirectN AOT and [WebView2Aot](https://github.com/smourier/WebView2Aot), again with no dependencies on WinForms, WPF, WinUI 3, or UWP.
+The final published file is just a single .exe file of 13MB that works in Windows 10, 11, Sandbox and Virtual environments (Hyper-V, etc.).
 
 Integrated terminal:
 
