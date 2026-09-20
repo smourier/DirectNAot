@@ -251,39 +251,42 @@ public class NotifyIcon : IDisposable
         private readonly NotifyIcon _notifyIcon;
         private nint _handle;
 
-        public NotifyIconNativeWindow(NotifyIcon notifyIcon)
+        public unsafe NotifyIconNativeWindow(NotifyIcon notifyIcon)
         {
             _notifyIcon = notifyIcon;
 
-            var wc = new WNDCLASSW
+            fixed (char* className = GetType().FullName)
             {
-                lpfnWndProc = Marshal.GetFunctionPointerForDelegate(_windowProc),
-                lpszClassName = PWSTR.From(GetType().FullName)
-            };
+                var wc = new WNDCLASSW
+                {
+                    lpfnWndProc = Marshal.GetFunctionPointerForDelegate(_windowProc),
+                    lpszClassName = new(className)
+                };
 
-            var index = (nint)Interlocked.Increment(ref _createIndex);
-            _windowsBeingCreated[index] = this;
+                var index = (nint)Interlocked.Increment(ref _createIndex);
+                _windowsBeingCreated[index] = this;
 
-            if (Functions.RegisterClassW(wc) == 0)
-            {
-                // we always register the same class name, so "already exists" is expected
-                var gle = Marshal.GetLastWin32Error();
-                if ((WIN32_ERROR)gle != WIN32_ERROR.ERROR_CLASS_ALREADY_EXISTS)
-                    throw new Win32Exception(gle);
+                if (Functions.RegisterClassW(wc) == 0)
+                {
+                    // we always register the same class name, so "already exists" is expected
+                    var gle = Marshal.GetLastWin32Error();
+                    if ((WIN32_ERROR)gle != WIN32_ERROR.ERROR_CLASS_ALREADY_EXISTS)
+                        throw new Win32Exception(gle);
+                }
+
+                _handle = Functions.CreateWindowExW(
+                    WINDOW_EX_STYLE.WS_EX_NOACTIVATE,
+                    wc.lpszClassName,
+                    PWSTR.From(nameof(NotifyIconNativeWindow)),
+                    0,
+                    Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT,
+                    HWND.Null,
+                    0,
+                    new HINSTANCE { Value = Functions.GetModuleHandleW(PWSTR.Null) },
+                    index);
+                if (_handle == 0)
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
             }
-
-            _handle = Functions.CreateWindowExW(
-                WINDOW_EX_STYLE.WS_EX_NOACTIVATE,
-                wc.lpszClassName,
-                PWSTR.From(nameof(NotifyIconNativeWindow)),
-                0,
-                Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT, Constants.CW_USEDEFAULT,
-                HWND.Null,
-                0,
-                new HINSTANCE { Value = Functions.GetModuleHandleW(PWSTR.Null) },
-                index);
-            if (_handle == 0)
-                throw new Win32Exception(Marshal.GetLastWin32Error());
         }
 
         public HWND Handle => _handle;

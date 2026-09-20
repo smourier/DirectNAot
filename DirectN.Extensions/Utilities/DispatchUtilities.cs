@@ -59,7 +59,7 @@ public static class DispatchUtilities
         if (disp == null)
             return false;
 
-        var pwstr = new Pwstr(name);
+        using var pwstr = new Pwstr(name);
         var names = new PWSTR[] { pwstr };
         var ids = new int[names.Length];
         var hr = disp.GetIDsOfNames(Guid.Empty, names, names.Length(), LOCALE_USER_DEFAULT, ids);
@@ -67,26 +67,25 @@ public static class DispatchUtilities
             return false;
 
         var argsCount = arguments?.Length ?? 0;
-        var dispParams = new DISPPARAMS();
-        if (argsCount > 0)
+        var vars = new VARIANT[argsCount];
+        for (var i = 0; i < argsCount; i++)
         {
-            var vars = new VARIANT[argsCount];
-            for (var i = 0; i < argsCount; i++)
-            {
-                using var varg = new Variant(arguments![argsCount - 1 - i]);
-                vars[i] = varg.Detach();
-            }
-
-            fixed (VARIANT* pVars = vars)
-            {
-                dispParams.rgvarg = (nint)pVars;
-                dispParams.cArgs = (uint)argsCount;
-            }
+            using var varg = new Variant(arguments![argsCount - 1 - i]);
+            vars[i] = varg.Detach();
         }
 
         var id = ids[0];
         var v = new VARIANT();
-        hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, DISPATCH_FLAGS.DISPATCH_METHOD, dispParams, (nint)(&v), 0, 0);
+        fixed (VARIANT* pVars = vars)
+        {
+            var dispParams = new DISPPARAMS
+            {
+                rgvarg = (nint)pVars,
+                cArgs = (uint)argsCount,
+            };
+            hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, DISPATCH_FLAGS.DISPATCH_METHOD, dispParams, (nint)(&v), 0, 0);
+        }
+
         if (hr.IsError)
             return false;
 
@@ -103,7 +102,7 @@ public static class DispatchUtilities
         if (disp == null)
             return false;
 
-        var pwstr = new Pwstr(name);
+        using var pwstr = new Pwstr(name);
         var names = new PWSTR[] { pwstr };
         var ids = new int[names.Length];
         var hr = disp.GetIDsOfNames(Guid.Empty, names, names.Length(), LOCALE_USER_DEFAULT, ids);
@@ -130,7 +129,7 @@ public static class DispatchUtilities
         if (disp == null)
             return false;
 
-        var pwstr = new Pwstr(name);
+        using var pwstr = new Pwstr(name);
         var names = new PWSTR[] { pwstr };
         var ids = new int[names.Length];
         var hr = disp.GetIDsOfNames(Guid.Empty, names, names.Length(), LOCALE_USER_DEFAULT, ids);
@@ -138,26 +137,25 @@ public static class DispatchUtilities
             return false;
 
         var argsCount = parameters?.Length ?? 0;
-        var dispParams = new DISPPARAMS();
-        if (argsCount > 0)
+        var vars = new VARIANT[argsCount];
+        for (var i = 0; i < argsCount; i++)
         {
-            var vars = new VARIANT[argsCount];
-            for (var i = 0; i < argsCount; i++)
-            {
-                using var varg = new Variant(parameters![argsCount - 1 - i]);
-                vars[i] = varg.Detach();
-            }
-
-            fixed (VARIANT* pVars = vars)
-            {
-                dispParams.rgvarg = (nint)pVars;
-                dispParams.cArgs = (uint)argsCount;
-            }
+            using var varg = new Variant(parameters![argsCount - 1 - i]);
+            vars[i] = varg.Detach();
         }
 
         var id = ids[0];
         var v = new VARIANT();
-        hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, DISPATCH_FLAGS.DISPATCH_PROPERTYGET, dispParams, (nint)(&v), 0, 0);
+        fixed (VARIANT* pVars = vars)
+        {
+            var dispParams = new DISPPARAMS
+            {
+                rgvarg = (nint)pVars,
+                cArgs = (uint)argsCount,
+            };
+            hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, DISPATCH_FLAGS.DISPATCH_PROPERTYGET, dispParams, (nint)(&v), 0, 0);
+        }
+
         if (hr.IsError)
             return false;
 
@@ -296,30 +294,31 @@ public static class DispatchUtilities
         ArgumentNullException.ThrowIfNull(disp);
         ArgumentNullException.ThrowIfNull(name);
 
-        var pwstr = new Pwstr(name);
+        using var pwstr = new Pwstr(name);
         var names = new PWSTR[] { pwstr };
         var ids = new int[names.Length];
         var hr = disp.GetIDsOfNames(Guid.Empty, names, names.Length(), LOCALE_USER_DEFAULT, ids);
         if (hr.IsError)
             return hr;
 
-        var dispParams = new DISPPARAMS();
         var vars = new VARIANT[1];
         using var varg = new Variant(value, type);
         vars[0] = varg.Detach();
 
+        var pp = DISPID.DISPID_PROPERTYPUT;
+        var id = ids[0];
         fixed (VARIANT* pVars = vars)
         {
-            dispParams.rgvarg = (nint)pVars;
-            dispParams.cArgs = 1;
+            var dispParams = new DISPPARAMS
+            {
+                rgvarg = (nint)pVars,
+                cArgs = 1,
+                rgdispidNamedArgs = (nint)(&pp),
+                cNamedArgs = 1,
+            };
+            hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, flags, dispParams, 0, 0, 0);
         }
 
-        var pp = DISPID.DISPID_PROPERTYPUT;
-        dispParams.rgdispidNamedArgs = (nint)(&pp);
-        dispParams.cNamedArgs = 1;
-
-        var id = ids[0];
-        hr = disp.Invoke(id, Guid.Empty, LOCALE_USER_DEFAULT, flags, dispParams, 0, 0, 0);
         if (hr.IsError)
             return hr;
 

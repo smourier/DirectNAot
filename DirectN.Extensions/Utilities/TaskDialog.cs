@@ -29,40 +29,49 @@ public class TaskDialog
 
     public unsafe virtual MESSAGEBOX_RESULT Show(HWND hwnd, bool throwOnError = true)
     {
-        var config = new TASKDIALOGCONFIG
-        {
-            cbSize = (uint)sizeof(TASKDIALOGCONFIG),
-            hwndParent = hwnd,
-            dwFlags = Flags,
-            dwCommonButtons = CommonButtonFlags,
-            pszWindowTitle = PWSTR.From(Title),
-            pszMainInstruction = PWSTR.From(MainInstruction),
-            pszContent = PWSTR.From(Content),
-            pszVerificationText = PWSTR.From(VerificationText),
-            pszExpandedControlText = PWSTR.From(ExpandedInformation),
-            pszCollapsedControlText = PWSTR.From(CollapsedControlText),
-            pszFooter = PWSTR.From(Footer),
-            lpCallbackData = CallbackData,
-            pfCallback = Callback,
-            cxWidth = Width,
-        };
-
-        config.Anonymous1.hMainIcon = MainIcon;
-        config.Anonymous2.hFooterIcon = FooterIcon;
-
         try
         {
-            var button = 0;
-            var radioButton = 0;
-            var verificationFlagChecked = 0;
-            var hr = Functions.TaskDialogIndirect(config, (nint)(&button), (nint)(&radioButton), (nint)(&verificationFlagChecked)).ThrowOnError(throwOnError);
-            if (hr.IsError)
-                return (MESSAGEBOX_RESULT)hr.Value; // yes, we return an error code as the result which should be "ok" since MESSAGEBOX_RESULT is never negative.
+            fixed (char* title = Title)
+            fixed (char* mainInstruction = MainInstruction)
+            fixed (char* content = Content)
+            fixed (char* verificationText = VerificationText)
+            fixed (char* expandedInformation = ExpandedInformation)
+            fixed (char* collapsedControlText = CollapsedControlText)
+            fixed (char* footer = Footer)
+            {
+                var config = new TASKDIALOGCONFIG
+                {
+                    cbSize = (uint)sizeof(TASKDIALOGCONFIG),
+                    hwndParent = hwnd,
+                    dwFlags = Flags,
+                    dwCommonButtons = CommonButtonFlags,
+                    pszWindowTitle = new(title),
+                    pszMainInstruction = new(mainInstruction),
+                    pszContent = new(content),
+                    pszVerificationText = new(verificationText),
+                    pszExpandedControlText = new(expandedInformation),
+                    pszCollapsedControlText = new(collapsedControlText),
+                    pszFooter = new(footer),
+                    lpCallbackData = CallbackData,
+                    pfCallback = Callback,
+                    cxWidth = Width,
+                };
 
-            ResultButton = button;
-            ResultRadioButton = radioButton;
-            ResultVerificationFlagChecked = verificationFlagChecked != 0;
-            return (MESSAGEBOX_RESULT)button;
+                config.Anonymous1.hMainIcon = MainIcon;
+                config.Anonymous2.hFooterIcon = FooterIcon;
+
+                var button = 0;
+                var radioButton = 0;
+                var verificationFlagChecked = 0;
+                var hr = Functions.TaskDialogIndirect(config, (nint)(&button), (nint)(&radioButton), (nint)(&verificationFlagChecked)).ThrowOnError(throwOnError);
+                if (hr.IsError)
+                    return (MESSAGEBOX_RESULT)hr.Value; // yes, we return an error code as the result which should be "ok" since MESSAGEBOX_RESULT is never negative.
+
+                ResultButton = button;
+                ResultRadioButton = radioButton;
+                ResultVerificationFlagChecked = verificationFlagChecked != 0;
+                return (MESSAGEBOX_RESULT)button;
+            }
         }
         catch (EntryPointNotFoundException ex)
         {

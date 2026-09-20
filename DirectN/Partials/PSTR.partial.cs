@@ -32,7 +32,8 @@ public partial struct PSTR : IValueGet<string?>, IValueGet<nint> // not disposab
             return Null;
 
         encoding ??= Encoding.Default;
-        var bytes = encoding.GetBytes(str);
+        var bytes = new byte[encoding.GetByteCount(str) + 1];
+        encoding.GetBytes(str, bytes);
         fixed (byte* p = bytes)
         {
             return new PSTR(p);
