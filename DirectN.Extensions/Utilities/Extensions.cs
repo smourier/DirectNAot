@@ -224,6 +224,9 @@ public static class Extensions
         return (uint)array.Count;
     }
 
+    public static PinnedArray<T> Pin<T>(this T[]? array) where T : unmanaged => new(array);
+
+    [Obsolete("Returns a pointer to an unpinned array, a garbage collection during the native call can move it. Use Pin and keep it until the native call completes.")]
     public static unsafe nint AsPointer<T>(this T[]? array) where T : unmanaged
     {
         if (array == null)

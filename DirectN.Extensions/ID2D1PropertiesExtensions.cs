@@ -39,7 +39,8 @@ public static class ID2D1PropertiesExtensions
         var size = properties.GetValueSize(index);
         var type = properties.GetType(index);
         var bytes = new byte[size];
-        var hr = properties.GetValue(index, type, bytes.AsPointer(), size);
+        using var pinnedBytes = bytes.Pin();
+        var hr = properties.GetValue(index, type, pinnedBytes.Pointer, size);
         if (hr.IsError)
             return false;
 
@@ -49,7 +50,7 @@ public static class ID2D1PropertiesExtensions
             return true;
         }
 
-        return TryGetValue(type, bytes.AsPointer(), size, out value);
+        return TryGetValue(type, pinnedBytes.Pointer, size, out value);
     }
 
     private static unsafe bool TryGetValue(D2D1_PROPERTY_TYPE type, nint data, uint size, out object? value)
@@ -159,7 +160,8 @@ public static class ID2D1PropertiesExtensions
             if (size > 0)
             {
                 var data = new byte[size];
-                properties.GetValue(i, property.Type, data.AsPointer(), size).ThrowOnError();
+                using var pinnedData = data.Pin();
+                properties.GetValue(i, property.Type, pinnedData.Pointer, size).ThrowOnError();
                 property.ValueBytes = data;
             }
 
@@ -266,7 +268,8 @@ public static class ID2D1PropertiesExtensions
         }
 
         var data = new byte[size];
-        if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data.AsPointer(), data.Length()).IsError)
+        using var pinnedData = data.Pin();
+        if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, pinnedData.Pointer, data.Length()).IsError)
         {
             value = null;
             return false;
@@ -297,7 +300,8 @@ public static class ID2D1PropertiesExtensions
         if (size > 0)
         {
             var data = new byte[size];
-            if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, data.AsPointer(), data.Length()).IsSuccess)
+            using var pinnedData = data.Pin();
+            if (properties.GetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, pinnedData.Pointer, data.Length()).IsSuccess)
             {
                 prop.ValueBytes = data;
             }
@@ -313,7 +317,8 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         var bytes = value != null ? Encoding.Unicode.GetBytes(value) : null;
-        properties.SetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, bytes.AsPointer(), bytes.Length()).ThrowOnError();
+        using var pinnedBytes = bytes.Pin();
+        properties.SetValue(index, D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN, pinnedBytes.Pointer, bytes.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, uint index, object value) => SetValue(properties?.Object!, index, value);
@@ -323,7 +328,8 @@ public static class ID2D1PropertiesExtensions
         if (!TryGetData(value, out var type, out var data))
             throw new NotSupportedException();
 
-        properties.SetValue(index, type, data.AsPointer(), data.Length()).ThrowOnError();
+        using var pinnedData = data.Pin();
+        properties.SetValue(index, type, pinnedData.Pointer, data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, object value) => SetValue(properties?.Object!, name, value);
@@ -334,7 +340,8 @@ public static class ID2D1PropertiesExtensions
         if (!TryGetData(value, out var type, out var data))
             throw new NotSupportedException();
 
-        properties.SetValueByName(PWSTR.From(name), type, data.AsPointer(), data.Length()).ThrowOnError();
+        using var pinnedData = data.Pin();
+        properties.SetValueByName(PWSTR.From(name), type, pinnedData.Pointer, data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, uint index, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, index, type, data);
@@ -342,7 +349,8 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(data);
-        properties.SetValue(index, type, data.AsPointer(), data.Length()).ThrowOnError();
+        using var pinnedData = data.Pin();
+        properties.SetValue(index, type, pinnedData.Pointer, data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, D2D1_PROPERTY_TYPE type, byte[] data) => SetValue(properties?.Object!, name, type, data);
@@ -351,7 +359,8 @@ public static class ID2D1PropertiesExtensions
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(name);
         ArgumentNullException.ThrowIfNull(data);
-        properties.SetValueByName(PWSTR.From(name), type, data.AsPointer(), data.Length()).ThrowOnError();
+        using var pinnedData = data.Pin();
+        properties.SetValueByName(PWSTR.From(name), type, pinnedData.Pointer, data.Length()).ThrowOnError();
     }
 
     public static void SetValue(this IComObject<ID2D1Properties> properties, string name, D2D1_PROPERTY_TYPE type, nint data, uint dataLength) => SetValue(properties?.Object!, name, type, data, dataLength);
@@ -452,7 +461,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR2;
                         data = new byte[sizeof(D2D_VECTOR_2F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&v2), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&v2), data.Length);
                         return true;
                     }
 
@@ -460,7 +470,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR3;
                         data = new byte[sizeof(D2D_VECTOR_3F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&v3), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&v3), data.Length);
                         return true;
                     }
 
@@ -468,7 +479,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_VECTOR4;
                         data = new byte[sizeof(D2D_VECTOR_4F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&v4), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&v4), data.Length);
                         return true;
                     }
 
@@ -476,7 +488,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_3X2;
                         data = new byte[sizeof(D2D_MATRIX_3X2_F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&m32), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&m32), data.Length);
                         return true;
                     }
 
@@ -484,7 +497,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X3;
                         data = new byte[sizeof(D2D_MATRIX_4X3_F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&m43), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&m43), data.Length);
                         return true;
                     }
 
@@ -492,7 +506,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_4X4;
                         data = new byte[sizeof(D2D_MATRIX_4X4_F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&m44), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&m44), data.Length);
                         return true;
                     }
 
@@ -500,7 +515,8 @@ public static class ID2D1PropertiesExtensions
                     {
                         type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_MATRIX_5X4;
                         data = new byte[sizeof(D2D_MATRIX_5X4_F)];
-                        Functions.CopyMemory(data.AsPointer(), (nint)(&m54), data.Length);
+                        using var pinnedData = data.Pin();
+                        Functions.CopyMemory(pinnedData.Pointer, (nint)(&m54), data.Length);
                         return true;
                     }
                 }
@@ -534,7 +550,8 @@ public static class ID2D1PropertiesExtensions
     {
         ArgumentNullException.ThrowIfNull(properties);
         ArgumentNullException.ThrowIfNull(value);
-        properties.SetValue((uint)index, type, value.AsPointer(), value.Length()).ThrowOnError();
+        using var pinnedValue = value.Pin();
+        properties.SetValue((uint)index, type, pinnedValue.Pointer, value.Length()).ThrowOnError();
     }
 
     public static void SetValueByName(this ID2D1Properties properties, string name, object? value)
@@ -602,7 +619,15 @@ public static class ID2D1PropertiesExtensions
 #pragma warning disable CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
                 var size = (uint)Marshal.SizeOf(vt);
 #pragma warning restore CA1421 // This method uses runtime marshalling even when the 'DisableRuntimeMarshallingAttribute' is applied
-                SetValueByName(properties, name, (nint)Unsafe.AsPointer(ref vt), size);
+                var handle = GCHandle.Alloc(vt, GCHandleType.Pinned);
+                try
+                {
+                    SetValueByName(properties, name, handle.AddrOfPinnedObject(), size);
+                }
+                finally
+                {
+                    handle.Free();
+                }
             }
             return;
         }
@@ -622,7 +647,12 @@ public static class ID2D1PropertiesExtensions
     public static void SetValueByName(this ID2D1Properties properties, string name, float value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
     public static void SetValueByName(this ID2D1Properties properties, string name, uint value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
     public static void SetValueByName(this ID2D1Properties properties, string name, int value) => SetValueByName(properties, name, BitConverter.GetBytes(value));
-    public static void SetValueByName(this ID2D1Properties properties, string name, byte[]? value, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN) => SetValueByName(properties, name, value.AsPointer(), value.Length(), type);
+    public static void SetValueByName(this ID2D1Properties properties, string name, byte[]? value, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN)
+    {
+        using var pinnedValue = value.Pin();
+        SetValueByName(properties, name, pinnedValue.Pointer, value.Length(), type);
+    }
+
     public static void SetValueByName(this ID2D1Properties properties, string name, nint valuePointer, uint valueSize, D2D1_PROPERTY_TYPE type = D2D1_PROPERTY_TYPE.D2D1_PROPERTY_TYPE_UNKNOWN)
     {
         ArgumentNullException.ThrowIfNull(properties);

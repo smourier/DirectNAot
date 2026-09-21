@@ -26,7 +26,8 @@ public static class IDXGIOutputDuplicationExtensions
         {
             var elementSize = sizeof(RECT);
             var rects = new RECT[size / elementSize];
-            duplication.GetFrameDirtyRects(size, rects.AsPointer(), out _).ThrowOnError();
+            using var pinnedRects = rects.Pin();
+            duplication.GetFrameDirtyRects(size, pinnedRects.Pointer, out _).ThrowOnError();
             return rects;
         }
     }

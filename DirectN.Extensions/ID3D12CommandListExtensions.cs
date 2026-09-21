@@ -120,7 +120,9 @@ public static class ID3D12CommandListExtensions
         if (blendFactor == null || blendFactor.Count != 4)
             throw new ArgumentNullException(nameof(blendFactor));
 
-        list.OMSetBlendFactor(blendFactor);
+        var array = blendFactor.ToArray();
+        using var pinnedArray = array.Pin();
+        list.OMSetBlendFactor(pinnedArray.Pointer);
     }
 
     public static void OMSetStencilRef(this IComObject<ID3D12GraphicsCommandList> list, uint stencilRef) => OMSetStencilRef(list?.Object!, stencilRef);
@@ -276,7 +278,8 @@ public static class ID3D12CommandListExtensions
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(views);
         var array = views.ToArray();
-        list.IASetVertexBuffers(startSlot, array.Length(), array.AsPointer());
+        using var pinnedArray = array.Pin();
+        list.IASetVertexBuffers(startSlot, array.Length(), pinnedArray.Pointer);
     }
 
     public static void SOSetTargets(this IComObject<ID3D12GraphicsCommandList> list, uint startSlot, IEnumerable<D3D12_STREAM_OUTPUT_BUFFER_VIEW> views) => SOSetTargets(list?.Object!, startSlot, views);
@@ -285,7 +288,8 @@ public static class ID3D12CommandListExtensions
         ArgumentNullException.ThrowIfNull(list);
         ArgumentNullException.ThrowIfNull(views);
         var array = views.ToArray();
-        list.SOSetTargets(startSlot, array.Length(), array.AsPointer());
+        using var pinnedArray = array.Pin();
+        list.SOSetTargets(startSlot, array.Length(), pinnedArray.Pointer);
     }
 
     public static void OMSetRenderTargets(this IComObject<ID3D12GraphicsCommandList> list, IEnumerable<D3D12_CPU_DESCRIPTOR_HANDLE> renderTargetDescriptors, bool rtsSingleHandleToDescriptorRange, D3D12_CPU_DESCRIPTOR_HANDLE? depthStencilDescriptor = null) => OMSetRenderTargets(list?.Object!, renderTargetDescriptors, rtsSingleHandleToDescriptorRange, depthStencilDescriptor);
@@ -294,7 +298,8 @@ public static class ID3D12CommandListExtensions
         ArgumentNullException.ThrowIfNull(list);
         var array = renderTargetDescriptors?.ToArray();
 
-        list.OMSetRenderTargets(array.Length(), array.AsPointer(), rtsSingleHandleToDescriptorRange, depthStencilDescriptor.GetValuePointer());
+        using var pinnedArray = array.Pin();
+        list.OMSetRenderTargets(array.Length(), pinnedArray.Pointer, rtsSingleHandleToDescriptorRange, depthStencilDescriptor.GetValuePointer());
     }
 
     public static void ClearDepthStencilView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView, D3D12_CLEAR_FLAGS clearFlags, float depth, byte stencil, IEnumerable<RECT>? rects = null) => ClearDepthStencilView(list?.Object!, depthStencilView, clearFlags, depth, stencil, rects);
@@ -302,7 +307,8 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = rects?.ToArray();
-        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, array.Length(), array.AsPointer());
+        using var pinnedArray = array.Pin();
+        list.ClearDepthStencilView(depthStencilView, clearFlags, depth, stencil, array.Length(), pinnedArray.Pointer);
     }
 
     public static void ClearRenderTargetView(this IComObject<ID3D12GraphicsCommandList> list, D3D12_CPU_DESCRIPTOR_HANDLE renderTargetView, float[] colorRGBA, IEnumerable<RECT>? rects = null) => ClearRenderTargetView(list?.Object!, renderTargetView, colorRGBA, rects);
@@ -310,7 +316,8 @@ public static class ID3D12CommandListExtensions
     {
         ArgumentNullException.ThrowIfNull(list);
         var array = rects?.ToArray();
-        list.ClearRenderTargetView(renderTargetView, colorRGBA, array.Length(), array.AsPointer());
+        using var pinnedArray = array.Pin();
+        list.ClearRenderTargetView(renderTargetView, colorRGBA, array.Length(), pinnedArray.Pointer);
     }
 
     public static void ClearUnorderedAccessViewUint(this IComObject<ID3D12GraphicsCommandList> list, D3D12_GPU_DESCRIPTOR_HANDLE viewGPUHandleInCurrentHeap, D3D12_CPU_DESCRIPTOR_HANDLE viewCPUHandle, IComObject<ID3D12Resource> resource, uint[] values, IEnumerable<RECT>? rects = null) => ClearUnorderedAccessViewUint(list?.Object!, viewGPUHandleInCurrentHeap, viewCPUHandle, resource?.Object!, values, rects);

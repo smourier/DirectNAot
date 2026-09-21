@@ -146,7 +146,8 @@ public class SampleWindow : D3D11SwapChainWindow
             StructureByteStride = 5 * sizeof(float)
         };
 
-        var vData = new D3D11_SUBRESOURCE_DATA { pSysMem = vertexData.AsPointer() };
+        using var pinnedVertexData = vertexData.Pin();
+        var vData = new D3D11_SUBRESOURCE_DATA { pSysMem = pinnedVertexData.Pointer };
         using var vertexBuffer = device.CreateBuffer(vertexBufferDesc, vData);
 
         var vertexBufferSRVdesc = new D3D11_SHADER_RESOURCE_VIEW_DESC

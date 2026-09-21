@@ -48,7 +48,8 @@ public static class ID2D1FactoryExtensions
     {
         ArgumentNullException.ThrowIfNull(factory);
         var array = dashes?.ToArray();
-        factory.CreateStrokeStyle(properties, array.AsPointer(), array.Length(), out var style).ThrowOnError();
+        using var pinnedArray = array.Pin();
+        factory.CreateStrokeStyle(properties, pinnedArray.Pointer, array.Length(), out var style).ThrowOnError();
         return new ComObject<T>((T)style);
     }
 
@@ -135,7 +136,8 @@ public static class ID2D1FactoryExtensions
             var ret = Marshal.ReadInt32(ptr);
             var reg = Marshal.ReadInt32(ptr + 4);
             var clsids = new Guid[reg];
-            factory.GetRegisteredEffects(clsids.AsPointer(), clsids.Length(), ptr, ptr + 4).ThrowOnError();
+            using var pinnedClsids = clsids.Pin();
+            factory.GetRegisteredEffects(pinnedClsids.Pointer, clsids.Length(), ptr, ptr + 4).ThrowOnError();
             return clsids;
         }
         finally

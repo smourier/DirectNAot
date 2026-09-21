@@ -22,12 +22,13 @@ public static class D3D11Functions
         //};
 
         nint devicePtr;
+        using var pinnedFeatureLevels = featureLevels.Pin();
         Functions.D3D11CreateDevice(
             adapter,
             driverType,
             HMODULE.Null,
             flags,
-            featureLevels.AsPointer(),
+            pinnedFeatureLevels.Pointer,
             featureLevels.Length(),
             sdkVersion,
             (nint)(&devicePtr),
@@ -58,12 +59,13 @@ public static class D3D11Functions
 
         nint devicePtr;
         nint deviceContextPtr;
+        using var pinnedFeatureLevels = featureLevels.Pin();
         Functions.D3D11CreateDevice(
             adapter,
             driverType,
             HMODULE.Null,
             flags,
-            featureLevels.AsPointer(),
+            pinnedFeatureLevels.Pointer,
             featureLevels.Length(),
             sdkVersion,
             (nint)(&devicePtr),
@@ -110,7 +112,8 @@ public static class D3D11Functions
         using var sourceNameStr = new Pstr(sourceName);
         using var entrypointStr = new Pstr(entrypoint);
         using var targetStr = new Pstr(target);
-        var hr = Functions.D3DCompile(srcData.AsPointer(), srcData.Length(), sourceNameStr, 0, ID3DInclude.Null, entrypointStr, targetStr, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
+        using var pinnedSrcData = srcData.Pin();
+        var hr = Functions.D3DCompile(pinnedSrcData.Pointer, srcData.Length(), sourceNameStr, 0, ID3DInclude.Null, entrypointStr, targetStr, flags1, flags2, out var blob, (nint)(&errorBlobUnk));
         if (errorBlobUnk != 0)
         {
             using var errorBlob = ComObject.FromPointer<ID3DBlob>(errorBlobUnk);
@@ -125,8 +128,8 @@ public static class D3D11Functions
         return new ComObject<ID3DBlob>(blob);
     }
 
-    public static IComObject<ID3DBlob> D3DCompile(nint srcData, long srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, entrypoint, target, sourceName, flags1, flags2);
-    public static IComObject<ID3DBlob> D3DCompile(nint srcData, int srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, (nint)srcDataSize, entrypoint, target, sourceName, flags1, flags2);
+    public static IComObject<ID3DBlob> D3DCompile(nint srcData, long srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, checked((nuint)srcDataSize), entrypoint, target, sourceName, flags1, flags2);
+    public static IComObject<ID3DBlob> D3DCompile(nint srcData, int srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0) => D3DCompile(srcData, checked((nuint)srcDataSize), entrypoint, target, sourceName, flags1, flags2);
     public static unsafe IComObject<ID3DBlob> D3DCompile(nint srcData, nuint srcDataSize, string entrypoint, string target, string? sourceName = null, uint flags1 = 0, uint flags2 = 0)
     {
         ArgumentNullException.ThrowIfNull(entrypoint);

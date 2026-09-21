@@ -299,7 +299,7 @@ public class DWriteFontFace(IComObject<IDWriteFontFace> face) : InterlockedComOb
         return null;
     }
 
-    public override bool Equals(object? obj) => Equals(obj as DWriteFont);
+    public override bool Equals(object? obj) => Equals(obj as DWriteFontFace);
     public override int GetHashCode() => base.GetHashCode();
     public bool Equals(DWriteFontFace? other)
     {

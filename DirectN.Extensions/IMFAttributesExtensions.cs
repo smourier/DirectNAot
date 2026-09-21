@@ -601,7 +601,7 @@ public static class IMFAttributesExtensions
         return ComObject.FromPointer<T>(unk);
     }
 
-    public static byte[]? GetBlob(this IComObject<IMFAttributes> input, Guid key, bool throwOnError = true) => GetBlob(input, key, throwOnError);
+    public static byte[]? GetBlob(this IComObject<IMFAttributes> input, Guid key, bool throwOnError = true) => GetBlob(input?.Object!, key, throwOnError);
     public static byte[]? GetBlob(this IMFAttributes input, Guid key, bool throwOnError = true)
     {
         ArgumentNullException.ThrowIfNull(input);
@@ -609,7 +609,8 @@ public static class IMFAttributesExtensions
             return null;
 
         var bytes = new byte[(int)size];
-        if (input.GetBlob(key, bytes.AsPointer(), size, 0).ThrowOnError(throwOnError).IsError)
+        using var pinnedBytes = bytes.Pin();
+        if (input.GetBlob(key, pinnedBytes.Pointer, size, 0).ThrowOnError(throwOnError).IsError)
             return null;
 
         return bytes;

@@ -336,7 +336,8 @@ public static class ID2D1DeviceContextExtensions
     public static IComObject<ID2D1ColorContext> CreateColorContext(this ID2D1DeviceContext context, D2D1_COLOR_SPACE space, byte[]? profile = null)
     {
         ArgumentNullException.ThrowIfNull(context);
-        context.CreateColorContext(space, profile.AsPointer(), profile.Length(), out var d2dColorContext).ThrowOnError();
+        using var pinnedProfile = profile.Pin();
+        context.CreateColorContext(space, pinnedProfile.Pointer, profile.Length(), out var d2dColorContext).ThrowOnError();
         return new ComObject<ID2D1ColorContext>(d2dColorContext);
     }
 

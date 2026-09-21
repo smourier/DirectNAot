@@ -194,7 +194,8 @@ public static class IWICImagingFactoryExtensions
     {
         ArgumentNullException.ThrowIfNull(factory);
         ArgumentNullException.ThrowIfNull(buffer);
-        factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, buffer.Length(), buffer.AsPointer(), out var value).ThrowOnError();
+        using var pinnedBuffer = buffer.Pin();
+        factory.CreateBitmapFromMemory(width, height, pixelFormat, stride, buffer.Length(), pinnedBuffer.Pointer, out var value).ThrowOnError();
         return new ComObject<IWICBitmap>(value);
     }
 

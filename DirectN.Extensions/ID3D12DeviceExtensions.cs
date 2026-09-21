@@ -74,7 +74,7 @@ public static class ID3D12DeviceExtensions
     public static void CopyDescriptorsSimple(this ID3D12Device device, int numDescriptors, D3D12_CPU_DESCRIPTOR_HANDLE destDescriptorRangeStart, D3D12_CPU_DESCRIPTOR_HANDLE srcDescriptorRangeStart, D3D12_DESCRIPTOR_HEAP_TYPE descriptorHeapsType)
     {
         ArgumentNullException.ThrowIfNull(device);
-        device.CopyDescriptorsSimple(numDescriptors, destDescriptorRangeStart, srcDescriptorRangeStart, descriptorHeapsType);
+        device.CopyDescriptorsSimple((uint)numDescriptors, destDescriptorRangeStart, srcDescriptorRangeStart, descriptorHeapsType);
     }
 
     public static uint GetDescriptorHandleIncrementSize(this IComObject<ID3D12Device> device, D3D12_DESCRIPTOR_HEAP_TYPE type) => GetDescriptorHandleIncrementSize(device?.Object!, type);
@@ -170,6 +170,9 @@ public static class ID3D12DeviceExtensions
     public unsafe static HRESULT CheckFeatureSupport<T>(this ID3D12Device device, D3D12_FEATURE feature, ref T value) where T : unmanaged
     {
         ArgumentNullException.ThrowIfNull(device);
-        return device.CheckFeatureSupport(feature, (nint)Unsafe.AsPointer(ref value), (uint)sizeof(T));
+        fixed (T* pointer = &value)
+        {
+            return device.CheckFeatureSupport(feature, (nint)pointer, (uint)sizeof(T));
+        }
     }
 }

@@ -98,11 +98,11 @@ public static class ID3D11DeviceContextExtensions
         }
     }
 
-    public static void DrawIndexedInstanced(this IComObject<ID3D11DeviceContext> context, uint vertexCount, uint startVertexLocation) => DrawIndexedInstanced(context?.Object!, vertexCount, startVertexLocation);
-    public static void DrawIndexedInstanced(this ID3D11DeviceContext context, uint vertexCount, uint startVertexLocation)
+    public static void DrawIndexedInstanced(this IComObject<ID3D11DeviceContext> context, uint indexCountPerInstance, uint instanceCount, uint startIndexLocation = 0, int baseVertexLocation = 0, uint startInstanceLocation = 0) => DrawIndexedInstanced(context?.Object!, indexCountPerInstance, instanceCount, startIndexLocation, baseVertexLocation, startInstanceLocation);
+    public static void DrawIndexedInstanced(this ID3D11DeviceContext context, uint indexCountPerInstance, uint instanceCount, uint startIndexLocation = 0, int baseVertexLocation = 0, uint startInstanceLocation = 0)
     {
         ArgumentNullException.ThrowIfNull(context);
-        context.DrawIndexedInstanced(vertexCount, startVertexLocation);
+        context.DrawIndexedInstanced(indexCountPerInstance, instanceCount, startIndexLocation, baseVertexLocation, startInstanceLocation);
     }
 
     public static void DrawIndexed(this IComObject<ID3D11DeviceContext> context, int indexCount, int startIndexLocation, int baseVertexLocation) => DrawIndexed(context?.Object!, indexCount, startIndexLocation, baseVertexLocation);
@@ -178,7 +178,8 @@ public static class ID3D11DeviceContextExtensions
         if (viewPorts.Length == 0)
             throw new ArgumentException(null, nameof(viewPorts));
 
-        context.RSSetViewports(viewPorts.Length(), viewPorts.AsPointer());
+        using var pinnedViewPorts = viewPorts.Pin();
+        context.RSSetViewports(viewPorts.Length(), pinnedViewPorts.Pointer);
     }
 
     public static void RSSetScissorRect(this IComObject<ID3D11DeviceContext> context, RECT rect) => RSSetScissorRects(context?.Object!, [rect]);
@@ -190,7 +191,8 @@ public static class ID3D11DeviceContextExtensions
         if (rects.Length == 0)
             throw new ArgumentException(null, nameof(rects));
 
-        context.RSSetScissorRects(rects.Length(), rects.AsPointer());
+        using var pinnedRects = rects.Pin();
+        context.RSSetScissorRects(rects.Length(), pinnedRects.Pointer);
     }
 
     public static void ClearRenderTargetView(this IComObject<ID3D11DeviceContext> context, IComObject<ID3D11RenderTargetView> renderTargetView, D3DCOLORVALUE color) => ClearRenderTargetView(context?.Object!, renderTargetView?.Object!, color.ToArray());
@@ -278,7 +280,9 @@ public static class ID3D11DeviceContextExtensions
         }
         ComObject.WithComInstancesOfType(vertexBuffers, ptr =>
         {
-            context.IASetVertexBuffers(startSlot, vertexBuffers.Length(), ptr, strides.AsPointer(), offsets.AsPointer());
+            using var pinnedStrides = strides.Pin();
+            using var pinnedOffsets = offsets.Pin();
+            context.IASetVertexBuffers(startSlot, vertexBuffers.Length(), ptr, pinnedStrides.Pointer, pinnedOffsets.Pointer);
         });
     }
 
@@ -486,7 +490,11 @@ public static class ID3D11DeviceContextExtensions
     public static void OMSetBlendState(this ID3D11DeviceContext context, ID3D11BlendState blendState, float[]? blendFactor = null, uint sampleMask = 0xffffffff)
     {
         ArgumentNullException.ThrowIfNull(context);
-        context.OMSetBlendState(blendState, blendFactor, sampleMask);
+        if (blendFactor != null && blendFactor.Length != 4)
+            throw new ArgumentException("The blend factor must have 4 components.", nameof(blendFactor));
+
+        using var pinnedBlendFactor = blendFactor.Pin();
+        context.OMSetBlendState(blendState, pinnedBlendFactor.Pointer, sampleMask);
     }
 
     public static void ClearState(this IComObject<ID3D11DeviceContext> context) => ClearState(context?.Object!);

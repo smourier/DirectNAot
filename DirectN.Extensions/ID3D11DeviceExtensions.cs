@@ -12,7 +12,8 @@ public static class ID3D11DeviceExtensions
         unsafe
         {
             nint texture;
-            device.CreateTexture1D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
+            using var pinnedInitialData = initialData.Pin();
+            device.CreateTexture1D(desc, pinnedInitialData.Pointer, (nint)(&texture)).ThrowOnError();
             return ComObject.FromPointer<T>(texture)!;
         }
     }
@@ -26,7 +27,8 @@ public static class ID3D11DeviceExtensions
         unsafe
         {
             nint texture;
-            device.CreateTexture2D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
+            using var pinnedInitialData = initialData.Pin();
+            device.CreateTexture2D(desc, pinnedInitialData.Pointer, (nint)(&texture)).ThrowOnError();
             return ComObject.FromPointer<T>(texture)!;
         }
     }
@@ -40,7 +42,8 @@ public static class ID3D11DeviceExtensions
         unsafe
         {
             nint texture;
-            device.CreateTexture3D(desc, initialData.AsPointer(), (nint)(&texture)).ThrowOnError();
+            using var pinnedInitialData = initialData.Pin();
+            device.CreateTexture3D(desc, pinnedInitialData.Pointer, (nint)(&texture)).ThrowOnError();
             return ComObject.FromPointer<T>(texture)!;
         }
     }

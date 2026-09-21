@@ -119,7 +119,10 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
     public unsafe void Write<T>(ref T value, uint offset = 0) where T : unmanaged
     {
         ArgumentOutOfRangeException.ThrowIfNegative((long)Size - offset - (uint)sizeof(T));
-        Unsafe.CopyBlock((void*)(Pointer + (nint)offset), Unsafe.AsPointer(ref value), (uint)sizeof(T));
+        fixed (T* source = &value)
+        {
+            Unsafe.CopyBlock((void*)(Pointer + (nint)offset), source, (uint)sizeof(T));
+        }
     }
 
     public unsafe T Read<T>(uint offset = 0) where T : unmanaged
@@ -179,7 +182,8 @@ public class ComMemory : IEquatable<ComMemory>, IDisposable
             return new ComMemory(0);
 
         var mem = new ComMemory(array.Length * sizeof(T));
-        mem.CopyFrom(array.AsPointer());
+        using var pinnedArray = array.Pin();
+        mem.CopyFrom(pinnedArray.Pointer);
         return mem;
     }
 

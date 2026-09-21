@@ -60,7 +60,8 @@ public static class IDXGIOutputExtensions
         if (num > 0)
         {
             var array = new DXGI_MODE_DESC[num];
-            output.GetDisplayModeList(format, modes, ref num, array.AsPointer());
+            using var pinnedArray = array.Pin();
+            output.GetDisplayModeList(format, modes, ref num, pinnedArray.Pointer);
             list.AddRange(array);
         }
         return list;
@@ -79,7 +80,8 @@ public static class IDXGIOutputExtensions
         if (num > 0)
         {
             var array = new DXGI_MODE_DESC1[num];
-            output.GetDisplayModeList1(format, modes, ref num, array.AsPointer());
+            using var pinnedArray = array.Pin();
+            output.GetDisplayModeList1(format, modes, ref num, pinnedArray.Pointer);
             list.AddRange(array);
         }
         return list;

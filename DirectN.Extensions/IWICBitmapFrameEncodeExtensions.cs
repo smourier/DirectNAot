@@ -59,7 +59,8 @@ public static class IWICBitmapFrameEncodeExtensions
     {
         ArgumentNullException.ThrowIfNull(frame);
         ArgumentNullException.ThrowIfNull(pixels);
-        frame.WritePixels(lineCount, stride, pixels.Length(), pixels.AsPointer()).ThrowOnError();
+        using var pinnedPixels = pixels.Pin();
+        frame.WritePixels(lineCount, stride, pixels.Length(), pinnedPixels.Pointer).ThrowOnError();
     }
 
     public static IComObject<IWICMetadataQueryWriter> GetMetadataQueryWriter(this WicBitmapFrameEncode frameBag) => GetMetadataQueryWriter(frameBag?.Encode!);

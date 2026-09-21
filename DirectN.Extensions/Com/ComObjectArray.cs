@@ -79,7 +79,10 @@ public sealed class ComObjectArray<T> : IEnumerable<IComObject<T>?>, IDisposable
     public bool DisposeOnRemove { get; }
     public bool ConcurrencyEnabled { get; set; } = true;
     public uint Length => (uint)_array.Length;
+    [Obsolete("Returns a pointer to an unpinned array, a garbage collection during the native call can move it. Use Pin and keep it until the native call completes.")]
     public unsafe nint Pointer => (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(_array));
+
+    public PinnedArray<nint> Pin() => _array.Pin();
     public nint[] Array => _array;
     public IReadOnlyList<IComObject<T>?> List => _list;
 

@@ -496,8 +496,10 @@ public abstract class ComObject : IComObject
         {
             unsafe
             {
-                var arrayPointer = (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(pointers));
-                action(arrayPointer);
+                fixed (nint* arrayPointer = pointers)
+                {
+                    action((nint)arrayPointer);
+                }
             }
         }
         finally
@@ -553,8 +555,10 @@ public abstract class ComObject : IComObject
         {
             unsafe
             {
-                var arrayPointer = (nint)Unsafe.AsPointer(ref MemoryMarshal.GetArrayDataReference(pointers));
-                return action(arrayPointer);
+                fixed (nint* arrayPointer = pointers)
+                {
+                    return action((nint)arrayPointer);
+                }
             }
         }
         finally

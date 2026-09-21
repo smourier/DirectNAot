@@ -50,8 +50,11 @@ public static class ID2D1DeviceExtensions
         return new ComObject<T>(factory);
     }
 
-    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this IComObject<ID2D1Device2> device) => GetRenderingPriority(device?.Object!);
-    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this ID2D1Device device)
+    [SupportedOSPlatform("windows8.1")]
+    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this IComObject<ID2D1Device1> device) => GetRenderingPriority(device?.Object!);
+
+    [SupportedOSPlatform("windows8.1")]
+    public static D2D1_RENDERING_PRIORITY GetRenderingPriority(this ID2D1Device1 device)
     {
         ArgumentNullException.ThrowIfNull(device);
         return device.GetRenderingPriority();
