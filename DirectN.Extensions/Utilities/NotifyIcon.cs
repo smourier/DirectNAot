@@ -2,7 +2,7 @@
 
 public class NotifyIcon : IDisposable
 {
-    protected static WNDPROC DefWindowProc { get; } = Marshal.GetDelegateForFunctionPointer<WNDPROC>(Functions.GetProcAddress(Functions.GetModuleHandleW(PWSTR.From("user32.dll")), PSTR.From("DefWindowProcW")));
+    protected static WNDPROC DefWindowProc => Window.DefWindowProc;
 
     private NotifyIconNativeWindow? _window;
     private string _text = string.Empty;

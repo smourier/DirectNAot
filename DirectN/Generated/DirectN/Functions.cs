@@ -2262,6 +2262,13 @@ public static partial class Functions
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial LRESULT DefSubclassProc(HWND hWnd, uint uMsg, WPARAM wParam, LPARAM lParam);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-defwindowprocw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial LRESULT DefWindowProcW(HWND hWnd, uint Msg, WPARAM wParam, LPARAM lParam);
+    
     // https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-degaussmonitor
     [LibraryImport("dxva2", SetLastError = true)]
     [SupportedOSPlatform("windows6.0.6000")]

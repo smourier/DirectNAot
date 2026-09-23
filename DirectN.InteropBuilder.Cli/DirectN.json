@@ -304,6 +304,7 @@
     "CreateThread",
     "CreateWindowExW",
     "DefSubclassProc",
+    "DefWindowProcW",
     "DeleteDC",
     "DeleteEnhMetaFile",
     "DeleteMetaFile",

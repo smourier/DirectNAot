@@ -882,8 +882,7 @@ public class Window : IDisposable, IEquatable<Window>
     public static Window? Foreground => FromHandle(Functions.GetForegroundWindow().Value);
     public static Window? Desktop => FromHandle(Functions.GetDesktopWindow().Value, false);
     public static Window? Shell => FromHandle(Functions.GetShellWindow().Value, false);
-    public static WNDPROC DefWindowProc { get; } = GetDefWindowProc();
-    private static WNDPROC GetDefWindowProc() => Marshal.GetDelegateForFunctionPointer<WNDPROC>(Functions.GetProcAddress(Functions.GetModuleHandleW(PWSTR.From("user32.dll")), PSTR.From("DefWindowProcW")));
+    public static WNDPROC DefWindowProc { get; } = Functions.DefWindowProcW;
 
     private static LRESULT SafeWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
@@ -939,7 +938,7 @@ public class Window : IDisposable, IEquatable<Window>
         }
     }
 
-    private static readonly string _handlePropName = "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
+    private static string _handlePropName => field ??= "DirectNWindow" + AssemblyUtilities.GetInformationalVersion();
     private static LRESULT StaticWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {
         if (Application.Current?.TraceMessage(msg) == true)
@@ -964,7 +963,7 @@ public class Window : IDisposable, IEquatable<Window>
                 Functions.SetPropW(hwnd, PWSTR.From(_handlePropName), new HANDLE { Value = ptr });
                 w.OnHandleCreated(w, EventArgs.Empty);
                 Functions.PostMessageW(hwnd, WM_WINDOW_CREATED);
-                return DefWindowProc(hwnd, msg, wParam, lParam);
+                return Functions.DefWindowProcW(hwnd, msg, wParam, lParam);
             }
 
             var win = FromHandle(hwnd.Value);
@@ -975,7 +974,7 @@ public class Window : IDisposable, IEquatable<Window>
                     return result.Value;
             }
         }
-        return DefWindowProc(hwnd, msg, wParam, lParam);
+        return Functions.DefWindowProcW(hwnd, msg, wParam, lParam);
     }
 
     public static bool RegisterWindowClass(
