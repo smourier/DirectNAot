@@ -62,6 +62,60 @@ public static class ID2D1RenderTargetExtensions
         return new ComObject<T>((T)brush);
     }
 
+    public static IComObject<ID2D1BitmapBrush> CreateBitmapBrush(this IComObject<ID2D1RenderTarget> renderTarget, IComObject<ID2D1Bitmap>? bitmap, D2D1_BITMAP_BRUSH_PROPERTIES? bitmapBrushProperties = null, D2D1_BRUSH_PROPERTIES? brushProperties = null) => CreateBitmapBrush(renderTarget?.Object!, bitmap?.Object, bitmapBrushProperties, brushProperties);
+    public static IComObject<ID2D1BitmapBrush> CreateBitmapBrush(this ID2D1RenderTarget renderTarget, ID2D1Bitmap? bitmap, D2D1_BITMAP_BRUSH_PROPERTIES? bitmapBrushProperties = null, D2D1_BRUSH_PROPERTIES? brushProperties = null)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        renderTarget.CreateBitmapBrush(bitmap, bitmapBrushProperties.GetValuePointer(), brushProperties.GetValuePointer(), out var brush).ThrowOnError();
+        return new ComObject<ID2D1BitmapBrush>(brush);
+    }
+
+    public static IComObject<ID2D1Bitmap> CreateBitmapFromWicBitmap(this IComObject<ID2D1RenderTarget> renderTarget, IComObject<IWICBitmapSource> source, D2D1_BITMAP_PROPERTIES? properties = null) => CreateBitmapFromWicBitmap(renderTarget?.Object!, source?.Object!, properties);
+    public static IComObject<ID2D1Bitmap> CreateBitmapFromWicBitmap(this ID2D1RenderTarget renderTarget, IWICBitmapSource source, D2D1_BITMAP_PROPERTIES? properties = null)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        ArgumentNullException.ThrowIfNull(source);
+        renderTarget.CreateBitmapFromWicBitmap(source, properties.GetValuePointer(), out var bitmap).ThrowOnError();
+        return new ComObject<ID2D1Bitmap>(bitmap);
+    }
+
+    public static IComObject<ID2D1Bitmap> CreateSharedBitmap<TData>(this IComObject<ID2D1RenderTarget> renderTarget, object data, D2D1_BITMAP_PROPERTIES? properties = null) => CreateSharedBitmap<TData>(renderTarget?.Object!, data, properties);
+    public static IComObject<ID2D1Bitmap> CreateSharedBitmap<TData>(this ID2D1RenderTarget renderTarget, object data, D2D1_BITMAP_PROPERTIES? properties = null)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        ArgumentNullException.ThrowIfNull(data);
+        return ComObject.WithComInstanceOfType<IComObject<ID2D1Bitmap>, TData>(data, ptr =>
+        {
+            renderTarget.CreateSharedBitmap(typeof(TData).GUID, ptr, properties.GetValuePointer(), out var bitmap).ThrowOnError();
+            return new ComObject<ID2D1Bitmap>(bitmap);
+        });
+    }
+
+    public static IComObject<ID2D1Layer> CreateLayer(this IComObject<ID2D1RenderTarget> renderTarget, D2D_SIZE_F? size = null) => CreateLayer(renderTarget?.Object!, size);
+    public static IComObject<ID2D1Layer> CreateLayer(this ID2D1RenderTarget renderTarget, D2D_SIZE_F? size = null)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        renderTarget.CreateLayer(size.GetValuePointer(), out var layer).ThrowOnError();
+        return new ComObject<ID2D1Layer>(layer);
+    }
+
+    public static void FillOpacityMask(this IComObject<ID2D1RenderTarget> renderTarget, IComObject<ID2D1Bitmap> opacityMask, IComObject<ID2D1Brush> brush, D2D1_OPACITY_MASK_CONTENT content, D2D_RECT_F? destinationRectangle = null, D2D_RECT_F? sourceRectangle = null) => FillOpacityMask(renderTarget?.Object!, opacityMask?.Object!, brush?.Object!, content, destinationRectangle, sourceRectangle);
+    public static void FillOpacityMask(this ID2D1RenderTarget renderTarget, ID2D1Bitmap opacityMask, ID2D1Brush brush, D2D1_OPACITY_MASK_CONTENT content, D2D_RECT_F? destinationRectangle = null, D2D_RECT_F? sourceRectangle = null)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        ArgumentNullException.ThrowIfNull(opacityMask);
+        ArgumentNullException.ThrowIfNull(brush);
+        renderTarget.FillOpacityMask(opacityMask, brush, content, destinationRectangle.GetValuePointer(), sourceRectangle.GetValuePointer());
+    }
+
+    public static void DrawGlyphRun(this IComObject<ID2D1RenderTarget> renderTarget, D2D_POINT_2F baselineOrigin, DWRITE_GLYPH_RUN glyphRun, IComObject<ID2D1Brush> foregroundBrush, DWRITE_MEASURING_MODE measuringMode = DWRITE_MEASURING_MODE.DWRITE_MEASURING_MODE_NATURAL) => DrawGlyphRun(renderTarget?.Object!, baselineOrigin, glyphRun, foregroundBrush?.Object!, measuringMode);
+    public static void DrawGlyphRun(this ID2D1RenderTarget renderTarget, D2D_POINT_2F baselineOrigin, DWRITE_GLYPH_RUN glyphRun, ID2D1Brush foregroundBrush, DWRITE_MEASURING_MODE measuringMode = DWRITE_MEASURING_MODE.DWRITE_MEASURING_MODE_NATURAL)
+    {
+        ArgumentNullException.ThrowIfNull(renderTarget);
+        ArgumentNullException.ThrowIfNull(foregroundBrush);
+        renderTarget.DrawGlyphRun(baselineOrigin, glyphRun, foregroundBrush, measuringMode);
+    }
+
     public static IComObject<ID2D1RadialGradientBrush> CreateRadialGradientBrush(this IComObject<ID2D1RenderTarget> renderTarget, D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES gradientBrushProperties, IComObject<ID2D1GradientStopCollection> stops, D2D1_BRUSH_PROPERTIES? brushProperties = null) => CreateRadialGradientBrush(renderTarget?.Object!, gradientBrushProperties, stops?.Object!, brushProperties);
     public static IComObject<ID2D1RadialGradientBrush> CreateRadialGradientBrush(this ID2D1RenderTarget renderTarget, D2D1_RADIAL_GRADIENT_BRUSH_PROPERTIES gradientBrushProperties, ID2D1GradientStopCollection stops, D2D1_BRUSH_PROPERTIES? brushProperties = null)
     {

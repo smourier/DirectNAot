@@ -10,10 +10,10 @@ public static class IWICImagingFactoryExtensions
         return new ComObject<IWICPalette>(value);
     }
 
-    public static IComObject<IWICBitmap> CreateBitmap(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
+    public static IComObject<IWICBitmap> CreateBitmap(this IComObject<IWICImagingFactory> factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapCacheOnLoad)
         => CreateBitmap(factory?.Object!, width, height, pixelFormat, option);
 
-    public static IComObject<IWICBitmap> CreateBitmap(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapNoCache)
+    public static IComObject<IWICBitmap> CreateBitmap(this IWICImagingFactory factory, uint width, uint height, Guid pixelFormat, WICBitmapCreateCacheOption option = WICBitmapCreateCacheOption.WICBitmapCacheOnLoad)
     {
         ArgumentNullException.ThrowIfNull(factory);
         factory.CreateBitmap(width, height, pixelFormat, option, out var value).ThrowOnError();

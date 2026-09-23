@@ -2,8 +2,15 @@
 
 public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
 {
+    private const string _nameLookupSwitch = "DirectN.HRESULT.IsNameLookupSupported";
     private static readonly ConcurrentDictionary<int, string?> _names = new();
     public static Func<HRESULT, Exception, string?, bool>? OnError { get; set; }
+
+    // off by default, and trimmed from AOT builds. An application gets HRESULT names back with this item in its project,
+    // <RuntimeHostConfigurationOption Include="DirectN.HRESULT.IsNameLookupSupported" Value="true" Trim="true" />
+    // where Trim="true" is required, without it the AOT compiler never sees the value and removes the lookup anyway.
+    [FeatureSwitchDefinition(_nameLookupSwitch)]
+    public static bool IsNameLookupSupported => AppContext.TryGetSwitch(_nameLookupSwitch, out var enabled) && enabled;
 
     public HRESULT(uint value)
         : this((int)value)
@@ -87,10 +94,10 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
                 if (Value == 1)
                     return "S_FALSE";
 
-                if (!_names.TryGetValue(Value, out var text))
+                if (!_names.TryGetValue(Value, out var text) && IsNameLookupSupported)
                 {
                     var value = Value;
-                    text = typeof(Constants).GetFields(BindingFlags.Static | BindingFlags.Public).FirstOrDefault(f => f.FieldType == typeof(HRESULT) && ((int)(HRESULT)f.GetValue(null)!) == value)?.Name;
+                    text = typeof(Constants).GetProperties(BindingFlags.Static | BindingFlags.Public).FirstOrDefault(p => p.PropertyType == typeof(HRESULT) && ((int)(HRESULT)p.GetValue(null)!) == value)?.Name;
                     _names[Value] = text;
                 }
                 return text ?? string.Empty;
@@ -107,24 +114,25 @@ public partial struct HRESULT : IEquatable<HRESULT>, IFormattable
         }
     }
 
-    public static void AddHRESULTMembers<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>(bool force = false)
-        => AddHRESULTMembers(typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public).Where(f => f.FieldType == typeof(HRESULT)), force);
+    public static void AddHRESULTMembers<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields | DynamicallyAccessedMemberTypes.PublicProperties)] T>(bool force = false)
+        => AddHRESULTMembers(typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public).Where(f => f.FieldType == typeof(HRESULT)).Cast<MemberInfo>()
+            .Concat(typeof(T).GetProperties(BindingFlags.Static | BindingFlags.Public).Where(p => p.PropertyType == typeof(HRESULT))), force);
 
-    public static void AddHRESULTMembers(IEnumerable<FieldInfo> fields, bool force = false)
+    public static void AddHRESULTMembers(IEnumerable<MemberInfo> members, bool force = false)
     {
-        if (fields == null)
+        if (members == null)
             return;
 
-        foreach (var field in fields)
+        foreach (var member in members)
         {
-            var value = (HRESULT)field.GetValue(null)!;
+            var value = (HRESULT)(member is PropertyInfo property ? property.GetValue(null) : ((FieldInfo)member).GetValue(null))!;
             if (force)
             {
-                _names[value] = field.Name;
+                _names[value] = member.Name;
             }
             else
             {
-                _names.TryAdd(value, field.Name);
+                _names.TryAdd(value, member.Name);
             }
         }
     }

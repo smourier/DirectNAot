@@ -20,7 +20,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageId>DirectNAot</PackageId>
-		<Version>1.6.10</Version>
+		<Version>1.7.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,6 +38,10 @@
 
 	<ItemGroup>
 	  <Compile Remove="Partials\COLORREF.partial.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="ILLink.Substitutions.xml" LogicalName="ILLink.Substitutions.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

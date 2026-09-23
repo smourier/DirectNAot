@@ -91,4 +91,66 @@ public static class IDWriteTextLayoutExtensions
             return new ComObject<IDWriteFontCollection>(coll);
         }
     }
+
+    public static DWRITE_TEXT_METRICS GetMetrics(this IComObject<IDWriteTextLayout> layout) => GetMetrics(layout?.Object!);
+    public static DWRITE_TEXT_METRICS GetMetrics(this IDWriteTextLayout layout)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.GetMetrics(out var metrics).ThrowOnError();
+        return metrics;
+    }
+
+    public static DWRITE_OVERHANG_METRICS GetOverhangMetrics(this IComObject<IDWriteTextLayout> layout) => GetOverhangMetrics(layout?.Object!);
+    public static DWRITE_OVERHANG_METRICS GetOverhangMetrics(this IDWriteTextLayout layout)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.GetOverhangMetrics(out var metrics).ThrowOnError();
+        return metrics;
+    }
+
+    public static DWRITE_HIT_TEST_METRICS HitTestTextPosition(this IComObject<IDWriteTextLayout> layout, uint textPosition, bool isTrailingHit, out float pointX, out float pointY) => HitTestTextPosition(layout?.Object!, textPosition, isTrailingHit, out pointX, out pointY);
+    public static DWRITE_HIT_TEST_METRICS HitTestTextPosition(this IDWriteTextLayout layout, uint textPosition, bool isTrailingHit, out float pointX, out float pointY)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.HitTestTextPosition(textPosition, isTrailingHit, out pointX, out pointY, out var metrics).ThrowOnError();
+        return metrics;
+    }
+
+    public static DWRITE_HIT_TEST_METRICS HitTestPoint(this IComObject<IDWriteTextLayout> layout, float pointX, float pointY, out bool isTrailingHit, out bool isInside) => HitTestPoint(layout?.Object!, pointX, pointY, out isTrailingHit, out isInside);
+    public static DWRITE_HIT_TEST_METRICS HitTestPoint(this IDWriteTextLayout layout, float pointX, float pointY, out bool isTrailingHit, out bool isInside)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.HitTestPoint(pointX, pointY, out var trailing, out var inside, out var metrics).ThrowOnError();
+        isTrailingHit = trailing;
+        isInside = inside;
+        return metrics;
+    }
+
+    public static IReadOnlyList<DWRITE_LINE_METRICS> GetLineMetrics(this IComObject<IDWriteTextLayout> layout) => GetLineMetrics(layout?.Object!);
+    public static IReadOnlyList<DWRITE_LINE_METRICS> GetLineMetrics(this IDWriteTextLayout layout)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.GetLineMetrics(0, 0, out var count).ThrowOnErrorExcept(Constants.E_NOT_SUFFICIENT_BUFFER);
+        var metrics = new DWRITE_LINE_METRICS[count];
+        if (count > 0)
+        {
+            using var pinned = metrics.Pin();
+            layout.GetLineMetrics(pinned.Pointer, count, out _).ThrowOnError();
+        }
+        return metrics;
+    }
+
+    public static IReadOnlyList<DWRITE_CLUSTER_METRICS> GetClusterMetrics(this IComObject<IDWriteTextLayout> layout) => GetClusterMetrics(layout?.Object!);
+    public static IReadOnlyList<DWRITE_CLUSTER_METRICS> GetClusterMetrics(this IDWriteTextLayout layout)
+    {
+        ArgumentNullException.ThrowIfNull(layout);
+        layout.GetClusterMetrics(0, 0, out var count).ThrowOnErrorExcept(Constants.E_NOT_SUFFICIENT_BUFFER);
+        var metrics = new DWRITE_CLUSTER_METRICS[count];
+        if (count > 0)
+        {
+            using var pinned = metrics.Pin();
+            layout.GetClusterMetrics(pinned.Pointer, count, out _).ThrowOnError();
+        }
+        return metrics;
+    }
 }

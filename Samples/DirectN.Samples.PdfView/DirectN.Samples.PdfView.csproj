@@ -60,4 +60,12 @@
 		<Using Include="WinRT.Interop" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<RuntimeHostConfigurationOption Include="DirectN.HRESULT.IsNameLookupSupported" Value="true" Trim="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="DirectN.Extensions.Window.IsAboutSysMenuSupported" Value="true" Trim="true" />
+	</ItemGroup>
+
 </Project>

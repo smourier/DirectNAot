@@ -98,4 +98,8 @@
 	<ItemGroup>
 		<PRIResource Remove="Generated Files\**" />
 	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<RuntimeHostConfigurationOption Include="DirectN.HRESULT.IsNameLookupSupported" Value="true" Trim="true" />
+	</ItemGroup>
+
 </Project>

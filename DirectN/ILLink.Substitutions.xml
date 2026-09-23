@@ -1,0 +1,8 @@
+<linker>
+	<assembly fullname="DirectN">
+		<type fullname="DirectN.HRESULT">
+			<method signature="System.Boolean get_IsNameLookupSupported()" body="stub" value="false" feature="DirectN.HRESULT.IsNameLookupSupported" featurevalue="false" featuredefault="true" />
+			<method signature="System.Boolean get_IsNameLookupSupported()" body="stub" value="true" feature="DirectN.HRESULT.IsNameLookupSupported" featurevalue="true" />
+		</type>
+	</assembly>
+</linker>

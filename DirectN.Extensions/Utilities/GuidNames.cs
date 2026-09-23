@@ -18,13 +18,17 @@ public static class GuidNames
         }
     }
 
-    public static void AddClassGuids([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] this Type type)
+    public static void AddClassGuids([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields | DynamicallyAccessedMemberTypes.PublicProperties)] this Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
 
-        foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly).Where(f => f.FieldType == typeof(Guid)))
+        const BindingFlags flags = BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly;
+        var members = type.GetFields(flags).Where(f => f.FieldType == typeof(Guid)).Cast<MemberInfo>()
+            .Concat(type.GetProperties(flags).Where(p => p.PropertyType == typeof(Guid)));
+
+        foreach (var member in members)
         {
-            _guidNames[(Guid)field.GetValue(null)!] = field.Name;
+            _guidNames[(Guid)(member is PropertyInfo property ? property.GetValue(null) : ((FieldInfo)member).GetValue(null))!] = member.Name;
         }
     }
 

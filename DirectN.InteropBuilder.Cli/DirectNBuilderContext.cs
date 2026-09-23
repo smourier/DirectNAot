@@ -44,7 +44,7 @@ namespace DirectN.InteropBuilder.Cli
             if (type.Name == DEVPROPKEY.Name)
             {
                 var (fmtid, pid) = ParsePropertyKey(constant.ValueAsText);
-                return $"new(new Guid(\"{fmtid}\"), {pid})";
+                return $"new(new Guid({fmtid.ToConstructorArguments()}), {pid})";
             }
 
             return base.GetConstantValue(type, constant);

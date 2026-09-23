@@ -3,6 +3,7 @@
 public class Window : IDisposable, IEquatable<Window>
 {
     public const uint WM_WINDOW_CREATED = Application.WM_APP_QUIT - 2;
+    private const string _aboutSysMenuSwitch = "DirectN.Extensions.Window.IsAboutSysMenuSupported";
 
     private nint _handle;
     private int _disposeState;
@@ -539,7 +540,7 @@ public class Window : IDisposable, IEquatable<Window>
             throw new DirectNException("0004: Cannot create window.");
         }
 
-        if (AboutSysMenuId != 0 && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
+        if (IsAboutSysMenuSupported && AboutSysMenuId != 0 && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
         {
             var sysMenu = Functions.GetSystemMenu(hwnd, false);
             if (sysMenu.Value != 0)
@@ -735,7 +736,7 @@ public class Window : IDisposable, IEquatable<Window>
                 break;
 
             case MessageDecoder.WM_SYSCOMMAND:
-                if (wParam.Value == AboutSysMenuId && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
+                if (IsAboutSysMenuSupported && wParam.Value == AboutSysMenuId && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134, 0))
                 {
                     var di = CreateDiagnosticsInformation();
                     var sb = new StringBuilder();
@@ -883,6 +884,12 @@ public class Window : IDisposable, IEquatable<Window>
     public static Window? Desktop => FromHandle(Functions.GetDesktopWindow().Value, false);
     public static Window? Shell => FromHandle(Functions.GetShellWindow().Value, false);
     public static WNDPROC DefWindowProc { get; } = Functions.DefWindowProcW;
+
+    // off by default, and trimmed from AOT builds. An application gets the "About" system menu back with this item in its project,
+    // <RuntimeHostConfigurationOption Include="DirectN.Extensions.Window.IsAboutSysMenuSupported" Value="true" Trim="true" />
+    // where Trim="true" is required, without it the AOT compiler never sees the value and removes the menu anyway.
+    [FeatureSwitchDefinition(_aboutSysMenuSwitch)]
+    public static bool IsAboutSysMenuSupported => AppContext.TryGetSwitch(_aboutSysMenuSwitch, out var enabled) && enabled;
 
     private static LRESULT SafeWindowProc(HWND hwnd, uint msg, WPARAM wParam, LPARAM lParam)
     {

@@ -1,0 +1,8 @@
+<linker>
+	<assembly fullname="DirectN.Extensions">
+		<type fullname="DirectN.Extensions.Utilities.Window">
+			<method signature="System.Boolean get_IsAboutSysMenuSupported()" body="stub" value="false" feature="DirectN.Extensions.Window.IsAboutSysMenuSupported" featurevalue="false" featuredefault="true" />
+			<method signature="System.Boolean get_IsAboutSysMenuSupported()" body="stub" value="true" feature="DirectN.Extensions.Window.IsAboutSysMenuSupported" featurevalue="true" />
+		</type>
+	</assembly>
+</linker>

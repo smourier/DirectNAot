@@ -20,7 +20,7 @@
 		<PackageIcon>DirectN.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<Version>1.6.10</Version>
+		<Version>1.7.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,6 +35,10 @@
 		<Compile Remove="Generated\**" />
 		<EmbeddedResource Remove="Generated\**" />
 		<None Remove="Generated\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="ILLink.Substitutions.xml" LogicalName="ILLink.Substitutions.xml" />
 	</ItemGroup>
 
 	<ItemGroup>

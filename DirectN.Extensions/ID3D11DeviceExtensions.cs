@@ -388,4 +388,41 @@ public static class ID3D11DeviceExtensions
         obj.CheckFormatSupport(format, out var support); // don't check error, just return 0 (no support)
         return (D3D11_FORMAT_SUPPORT)support;
     }
+
+    public static uint CheckMultisampleQualityLevels(this IComObject<ID3D11Device> obj, DXGI_FORMAT format, uint sampleCount) => CheckMultisampleQualityLevels(obj?.Object!, format, sampleCount);
+    public static uint CheckMultisampleQualityLevels(this ID3D11Device obj, DXGI_FORMAT format, uint sampleCount)
+    {
+        ArgumentNullException.ThrowIfNull(obj);
+        if (obj.CheckMultisampleQualityLevels(format, sampleCount, out var levels).IsError)
+            return 0;
+
+        return levels;
+    }
+
+    public static HRESULT CheckFeatureSupport<T>(this IComObject<ID3D11Device> device, D3D11_FEATURE feature, ref T value) where T : unmanaged => CheckFeatureSupport(device?.Object!, feature, ref value);
+    public unsafe static HRESULT CheckFeatureSupport<T>(this ID3D11Device device, D3D11_FEATURE feature, ref T value) where T : unmanaged
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        fixed (T* pointer = &value)
+        {
+            return device.CheckFeatureSupport(feature, (nint)pointer, (uint)sizeof(T));
+        }
+    }
+
+    public static IComObject<ID3D11Query> CreateQuery(this IComObject<ID3D11Device> device, D3D11_QUERY_DESC desc) => CreateQuery(device?.Object!, desc);
+    public static unsafe IComObject<ID3D11Query> CreateQuery(this ID3D11Device device, D3D11_QUERY_DESC desc)
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        nint query;
+        device.CreateQuery(desc, (nint)(&query)).ThrowOnError();
+        return ComObject.FromPointer<ID3D11Query>(query)!;
+    }
+
+    public static IComObject<T> OpenSharedResource<T>(this IComObject<ID3D11Device> device, HANDLE resource) => OpenSharedResource<T>(device?.Object!, resource);
+    public static IComObject<T> OpenSharedResource<T>(this ID3D11Device device, HANDLE resource)
+    {
+        ArgumentNullException.ThrowIfNull(device);
+        device.OpenSharedResource(resource, typeof(T).GUID, out var unk).ThrowOnError();
+        return ComObject.FromPointer<T>(unk)!;
+    }
 }
