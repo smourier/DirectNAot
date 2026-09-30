@@ -1,38 +1,55 @@
 # DirectN AOT
-100% C# interop code for .NET Core 10+ : DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI, Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
+100% C# interop code for .NET 10+: DXGI, WIC, DirectX 9 to 12, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, CodecAPI, GDI,
+Spatial Audio, DVD, Windows Media Player, UWP DXInterop, WinUI3, etc.
 
-This is an AOT-friendly version of [DirectN](https://github.com/smourier/DirectN) (with zero reference to it). Aimed at 64-bit (ARM, AMD) targets (doesn't mean it won't work for x86 targets, but it may not work for ambiguous types). Only for .NET 10 and beyond, it won't work with older versions nor with .NET Framework.
+This is the AOT-friendly version of [DirectN](https://github.com/smourier/DirectN), with zero reference to it.
+It's for .NET 10 and beyond only, it won't work with older versions nor with .NET Framework.
+It's aimed at 64-bit (ARM, AMD) targets. x86 works too, except for about fifty structures that the Win32 metadata lays out differently on x86,
+and that are generated for 64-bit only.
 
-It's always a work in progress although it's been fairly stable now. If you want to discuss how, where, why, just create an issue.
+If you want to discuss anything, just create an issue.
 
-* **DirectN** is the core project which contains all interop code and is 99% generated.
-* **DirectN.Extensions** is a set of utilities that are not mandatory, but super useful for programming with DirectN (and Windows, COM and interop in general).
-* **DirectN.InteropBuilder.Cli** is the tool that generates code in DirectN. Contrary to the original DirectN project, this tool is open source, and based on the linked [Win32InteropBuilder](https://github.com/smourier/Win32InteropBuilder) generic project.
+* **DirectN** is the core project, it contains all the interop code and it is almost entirely generated.
+* **DirectN.Extensions** is a set of utilities that are not mandatory, but super useful for programming with DirectN
+  (and Windows, COM and interop in general).
+* **DirectN.InteropBuilder.Cli** is the tool that generates the code in DirectN. Contrary to the original DirectN project, this tool is open source,
+  and based on the generic [Win32InteropBuilder](https://github.com/smourier/Win32InteropBuilder) project.
 
-So, DirectN has now been split into two projects: the interop code in one project, and the utilities, add-ons and extensions code in another project.
+You don't have to use the extensions, but it's much easier with them.
+They are a separate project for an engineering reason. The COM source generator is very slow on thousands of generated types,
+so DirectN itself is difficult to work with directly in Visual Studio.
 
-You don't have to use the extensions, but it's muuuuuuch easier to use them. The reason Extensions is separated from DirectN is more an engineering reason. The new COM Roslyn/.NET source generator at work here is very slow on ~8000 source-generated classes (since COM interop is not builtin in CLR anymore), so the DirectN project is just very difficult to work directly with in Visual Studio.
+## Generated, not written
+Almost none of the source files here are written by hand.
+The interop code is generated from the official Win32 metadata, so it's a mechanical projection of the native API, not somebody's interpretation of it.
+That is the main reason it can be maintained for a very long time:
+* over 9,000 source files are generated, against a few hundred hand-written ones.
+  Every interface, structure, enum, constant and function is in the first group.
+* by size, about 90% of DirectN is generated.
+  The rest is mostly not really code but pure definitions, constants mainly, so there is almost nothing to maintain there.
+* a new Windows SDK, or a fix in the metadata, means running the generator again, not rewriting code.
+  What the metadata gets wrong is patched in the generator itself, in **DirectN.InteropBuilder.Cli** (`Patches.json`, etc.), so the result stays generated.
+  The flip side is that a change in the metadata could introduce source breaking changes for the code that uses DirectN (this has not happened yet).
+* the generated code has no author's coding style to keep consistent, so it doesn't drift, and nobody has to remember how it was written.
+* the hand-written part is small and kept apart.
+  `DirectN/Manual` and `DirectN/Partials` only add what is missing from the metadata, a few types and some helper members on generated structures.
+  The rest is **DirectN.Extensions**, which is optional, and its COM helpers, like `ComObject` and `ComMemory`, are fairly stable.
 
-The key points that drive how code is generated and built:
-* Although Win32InteropBuilder is totally generic, the goal for **DirectN** is still to create built-in interop code for modern media & graphics Windows (cross-platform is *not* a target) technologies only:
-    * DirectX (9 => 12)
-    * Direct2D
-    * DXGI
-    * Media Foundation
-    * Windows Imaging Component (WIC)
-    * Direct Composition
-    * Direct Write
-    * Audio (WASAPI)
-    * XPS
-    * others (dependencies, etc)
-* Modern code exclusively based on .NET Core newer source-generated `LibraryImport`, source-generated `ComWrappers`, etc. Note the result is the .dll size is significantly bigger.
-* How it works and how it's made is, at its root, completely driven by .NET Core ComWrapper source generator and AOT requirements: trimming, and disabled runtime marshaling.
-* Both DirectN and DirectN.Extensions are AOT-friendly.
+The key points that drive how the code is generated and built:
+* Although Win32InteropBuilder is totally generic, DirectN only targets modern media and graphics Windows technologies, cross-platform is *not* a target.
+  That's DirectX 9 to 12, Direct2D, DXGI, Media Foundation, WIC, Direct Composition, Direct Write, WASAPI, XPS, and their dependencies.
+* Modern code only, based on the source-generated `LibraryImport` and `ComWrappers`. The .dll is significantly bigger as a result.
+* How it's made is driven by the .NET COM source generator and by AOT requirements, trimming and disabled runtime marshalling.
+  Both DirectN and DirectN.Extensions are AOT-friendly.
 * `unsafe` usage is as limited as possible.
-* Raw pointers (like `ISomething*`) usage is not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation. `object` as out parameter type for untyped (native `void**`) COM interfaces has been considered but it's been replaced by `nint` which is more universal, including for authoring (aka implementing COM interfaces in .NET) scenarios.
-* All `ComObject` instances are created using ComWrappers' "unique instance" (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`) marshalling feature, as we want to control when objects are released (what's the serious use of non-unique instances in interop scenarios anyway?)
-* Due to the usage of unique instances everywhere in DirectN AOT, a hack once had to overcome a nasty .NET 8 bug https://github.com/dotnet/runtime/issues/96901 where everything crashed very quickly at GC or finalizing time. The bug is fixed since .NET 9, and as DirectN AOT now requires .NET 10, the hack is never active.
-* Doing interop is inherently unsafe but we want to keep a .NET-like programming whenever possible. The generated code serves a similar purpose to the CsWin32 project, but the final generated code and net result (ie: how we use it as a caller) are quite different (although CsWin32 has been improved at the end of 2025).
+* Raw pointers (like `ISomething*`) are not publicly exposed, only interface types (like `ISomething`), or `nint` depending on the situation.
+  `nint` replaced `object` as the out parameter type for untyped (native `void**`) COM interfaces, as it's more universal,
+  including for authoring COM interfaces in .NET.
+* All `ComObject` instances use ComWrappers' unique instance marshalling (`CreateObjectFlags.UniqueInstance` and `UniqueComInterfaceMarshaller<>`),
+  because we want to control when objects are released.
+* Doing interop is inherently unsafe, but we want to keep a .NET-like programming whenever possible.
+  The generated code serves a similar purpose to the CsWin32 project, but the generated code and how you use it as a caller are quite different
+  (although CsWin32 has been improved at the end of 2025).
 
 ## Same names and types as the native concepts, easy port from C/C++ to C#!
 DirectNAot allows you to port C/C++ code to C#, or to write C# code from scratch, probably more easily than with other existing interop libraries in this domain because one of its main objective is to use **exactly the same names and types as the native concepts** (interfaces, enums, structures, constants, methods, arguments, guids, etc.) . So you can read the official documentation, use existing C/C++ samples, and start coding with .NET right away.
