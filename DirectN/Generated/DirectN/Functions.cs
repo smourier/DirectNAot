@@ -3802,6 +3802,13 @@ public static partial class Functions
     [PreserveSig]
     public static partial int GetCapabilitiesStringLength(HANDLE hMonitor, out uint pdwCapabilitiesStringLengthInCharacters);
     
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcapture
+    [LibraryImport("USER32")]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial HWND GetCapture();
+    
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcaretblinktime
     [LibraryImport("USER32", SetLastError = true)]
     [SupportedOSPlatform("windows5.0")]
@@ -4188,6 +4195,13 @@ public static partial class Functions
     [PreserveSig]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
     public static partial HWND GetForegroundWindow();
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getguithreadinfo
+    [LibraryImport("USER32", SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial BOOL GetGUIThreadInfo(uint idThread, ref GUITHREADINFO pgui);
     
     // https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-geticmprofilea
     [LibraryImport("GDI32", SetLastError = true)]
@@ -10985,6 +10999,13 @@ public static partial class Functions
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
     public static partial uint SendInput(uint cInputs, [In][MarshalUsing(CountElementName = nameof(cInputs))] INPUT[] pInputs, int cbSize);
+    
+    // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagetimeoutw
+    [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
+    [SupportedOSPlatform("windows5.0")]
+    [PreserveSig]
+    [UnmanagedCallConv(CallConvs = [typeof(CallConvStdcall)])]
+    public static partial LRESULT SendMessageTimeoutW(HWND hWnd, uint Msg, WPARAM wParam, LPARAM lParam, SEND_MESSAGE_TIMEOUT_FLAGS fuFlags, uint uTimeout, nint /* optional nuint* */ lpdwResult);
     
     // https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew
     [LibraryImport("USER32", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
