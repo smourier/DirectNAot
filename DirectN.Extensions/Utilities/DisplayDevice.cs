@@ -56,11 +56,13 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
 
     private unsafe static DISPLAY_DEVICEW CreateDISPLAY_DEVICEW() => new() { cb = (uint)sizeof(DISPLAY_DEVICEW) };
 
+    private unsafe static DEVMODEW CreateDEVMODEW() => new() { dmSize = (ushort)sizeof(DEVMODEW) };
+
     public DEVMODEW CurrentSettings
     {
         get
         {
-            var mode = new DEVMODEW();
+            var mode = CreateDEVMODEW();
             Functions.EnumDisplaySettingsW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref mode);
             return mode;
         }
@@ -70,7 +72,7 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
     {
         get
         {
-            var mode = new DEVMODEW();
+            var mode = CreateDEVMODEW();
             Functions.EnumDisplaySettingsW(PWSTR.From(DeviceName), ENUM_DISPLAY_SETTINGS_MODE.ENUM_REGISTRY_SETTINGS, ref mode);
             return mode;
         }
@@ -79,8 +81,9 @@ public class DisplayDevice(DISPLAY_DEVICEW device)
     public IEnumerable<DEVMODEW> GetModes(ENUM_DISPLAY_SETTINGS_FLAGS flags = 0)
     {
         var i = 0;
-        var mode = new DEVMODEW();
-        while (Functions.EnumDisplaySettingsExW(PWSTR.From(DeviceName), (ENUM_DISPLAY_SETTINGS_MODE)i++, ref mode, flags))
+        var mode = CreateDEVMODEW();
+        using var name = new Pwstr(DeviceName);
+        while (Functions.EnumDisplaySettingsExW(name, (ENUM_DISPLAY_SETTINGS_MODE)i++, ref mode, flags))
         {
             yield return mode;
         }
