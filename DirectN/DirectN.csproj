@@ -7,7 +7,6 @@
 		<ImplicitUsings>true</ImplicitUsings>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<IsAotCompatible>true</IsAotCompatible>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>AOT-compatible Interop Code for .NET Core 9+: DXGI, WIC, DirectX, Direct2D, Direct Write, Direct Composition, Media Foundation, WASAPI, WinAppSK, etc.</Description>
@@ -21,7 +20,23 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageId>DirectNAot</PackageId>
 		<Version>1.7.1</Version>
+		<AssemblyTitle>DirectN - AOT</AssemblyTitle>
+		<Product>DirectN</Product>
+		<Company>Simon Mourier</Company>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.InteropServices.GuidAttribute">
+			<_Parameter1>dfc45e33-cf51-49e3-bc3f-a4dfd2bee1ad</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute" />
+		<AssemblyAttribute Include="System.Runtime.Versioning.SupportedOSPlatformAttribute">
+			<_Parameter1>windows</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<NoWarn>1701;1702;CA1401</NoWarn>

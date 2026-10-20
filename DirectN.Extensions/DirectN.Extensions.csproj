@@ -7,7 +7,6 @@
 		<ImplicitUsings>true</ImplicitUsings>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<IsAotCompatible>true</IsAotCompatible>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RootNamespace>DirectN.Extensions</RootNamespace>
 		<Title>DirectNAot.Extensions</Title>
 		<PackageId>DirectNAot.Extensions</PackageId>
@@ -21,7 +20,23 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Version>1.7.1</Version>
+		<AssemblyTitle>DirectN.Extensions</AssemblyTitle>
+		<Product>DirectN</Product>
+		<Company>Simon Mourier</Company>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.InteropServices.GuidAttribute">
+			<_Parameter1>952e737d-92da-4665-be06-f94f2fa90142</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute" />
+		<AssemblyAttribute Include="System.Runtime.Versioning.SupportedOSPlatformAttribute">
+			<_Parameter1>windows6.0.6000</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<NoWarn>1701;1702;IDE0130</NoWarn>
