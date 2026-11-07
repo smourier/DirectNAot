@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum D3D12_SHADER_CACHE_SESSION_REGISTERED_FLAGS
+{
+    D3D12_SHADER_CACHE_SESSION_REGISTERED_FLAG_NONE = 0,
+}

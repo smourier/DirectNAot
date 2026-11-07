@@ -4,9 +4,9 @@ namespace DirectN;
 // https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_auto_breadcrumb_node
 public partial struct D3D12_AUTO_BREADCRUMB_NODE
 {
-    public nint pCommandListDebugNameA;
+    public PSTR pCommandListDebugNameA;
     public PWSTR pCommandListDebugNameW;
-    public nint pCommandQueueDebugNameA;
+    public PSTR pCommandQueueDebugNameA;
     public PWSTR pCommandQueueDebugNameW;
     public nint pCommandList;
     public nint pCommandQueue;

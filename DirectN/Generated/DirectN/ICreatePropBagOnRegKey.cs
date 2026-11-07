@@ -9,5 +9,5 @@ public partial interface ICreatePropBagOnRegKey
     // https://learn.microsoft.com/windows/win32/api/regbag/nf-regbag-icreatepropbagonregkey-create
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT Create(HKEY hkey, PWSTR subkey, uint ulOptions, uint samDesired, in Guid iid, out nint ppBag);
+    HRESULT Create(HKEY hkey, PWSTR subkey, uint ulOptions, uint samDesired, in Guid iid, out nint /* void */ ppBag);
 }

@@ -10,9 +10,9 @@ public partial interface IBindHost
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MonikerBindToStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMk, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pBC, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindStatusCallback>))] IBindStatusCallback pBSC, in Guid riid, out nint ppvObj);
+    HRESULT MonikerBindToStorage([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMk, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pBC, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindStatusCallback>))] IBindStatusCallback pBSC, in Guid riid, out nint /* void */ ppvObj);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT MonikerBindToObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMk, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pBC, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindStatusCallback>))] IBindStatusCallback pBSC, in Guid riid, out nint ppvObj);
+    HRESULT MonikerBindToObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMoniker>))] IMoniker pMk, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindCtx>))] IBindCtx pBC, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBindStatusCallback>))] IBindStatusCallback pBSC, in Guid riid, out nint /* void */ ppvObj);
 }

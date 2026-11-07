@@ -6,11 +6,11 @@ public partial interface IWICD3DTextureSource
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTexture(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2?>))] IPropertyBag2? pID3DTextureOptions, in Guid riid, out nint ppTexture);
+    HRESULT GetTexture(nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2?>))] IPropertyBag2? pID3DTextureOptions, in Guid riid, out nint /* void */ ppTexture);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetTransformedTexture(nint /* optional WICRect* */ prc, uint uiWidth, uint uiHeight, nint /* optional Guid* */ pguidDstFormat, WICBitmapTransformOptions dstTransform, nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2?>))] IPropertyBag2? pID3DTextureOptions, in Guid riid, out nint ppTexture);
+    HRESULT GetTransformedTexture(nint /* optional WICRect* */ prc, uint uiWidth, uint uiHeight, nint /* optional Guid* */ pguidDstFormat, WICBitmapTransformOptions dstTransform, nint pD3DDevice, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IPropertyBag2?>))] IPropertyBag2? pID3DTextureOptions, in Guid riid, out nint /* void */ ppTexture);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

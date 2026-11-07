@@ -17,6 +17,9 @@ public partial struct D3D12_DISPATCH_GRAPH_DESC
         
         [FieldOffset(0)]
         public ulong MultiNodeGPUInput;
+        
+        [FieldOffset(0)]
+        public D3D12_MLIR_PROGRAM_BINDINGS MlirProgramBindings;
     }
     
     public D3D12_DISPATCH_MODE Mode;

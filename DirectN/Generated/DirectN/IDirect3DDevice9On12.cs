@@ -6,11 +6,11 @@ public partial interface IDirect3DDevice9On12
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetD3D12Device(in Guid riid, out nint ppvDevice);
+    HRESULT GetD3D12Device(in Guid riid, out nint /* void */ ppvDevice);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnwrapUnderlyingResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DResource9>))] IDirect3DResource9 pResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12CommandQueue>))] ID3D12CommandQueue pCommandQueue, in Guid riid, out nint ppvResource12);
+    HRESULT UnwrapUnderlyingResource([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DResource9>))] IDirect3DResource9 pResource, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12CommandQueue>))] ID3D12CommandQueue pCommandQueue, in Guid riid, out nint /* void */ ppvResource12);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

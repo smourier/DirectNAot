@@ -6,5 +6,5 @@ public partial interface IKsTopology
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNodeInstance(uint NodeId, uint Flags, uint DesiredAccess, nint UnkOuter, in Guid InterfaceId, out nint Interface);
+    HRESULT CreateNodeInstance(uint NodeId, uint Flags, uint DesiredAccess, nint UnkOuter, in Guid InterfaceId, out nint /* void */ Interface);
 }

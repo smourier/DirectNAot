@@ -14,6 +14,9 @@ public partial struct D3D12_SET_PROGRAM_DESC
         
         [FieldOffset(0)]
         public D3D12_SET_WORK_GRAPH_DESC WorkGraph;
+        
+        [FieldOffset(0)]
+        public D3D12_SET_MLIR_PROGRAM_DESC MlirProgram;
     }
     
     public D3D12_PROGRAM_TYPE Type;

@@ -28,7 +28,7 @@ public partial interface IDirect3DVolume9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainer(in Guid riid, out nint ppContainer);
+    HRESULT GetContainer(in Guid riid, out nint /* void */ ppContainer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dvolume9-getdesc
     [PreserveSig]

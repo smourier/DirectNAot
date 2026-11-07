@@ -8,7 +8,7 @@ public partial interface IWMReaderAccelerator
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderaccelerator-getcodecinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCodecInterface(uint dwOutputNum, in Guid riid, out nint ppvCodecInterface);
+    HRESULT GetCodecInterface(uint dwOutputNum, in Guid riid, out nint /* void */ ppvCodecInterface);
     
     // https://learn.microsoft.com/windows/win32/api/wmsdkidl/nf-wmsdkidl-iwmreaderaccelerator-notify
     [PreserveSig]

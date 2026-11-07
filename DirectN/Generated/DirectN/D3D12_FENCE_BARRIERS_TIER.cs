@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum D3D12_FENCE_BARRIERS_TIER
+{
+    D3D12_FENCE_BARRIERS_TIER_NOT_SUPPORTED = 0,
+    D3D12_FENCE_BARRIERS_TIER_1 = 1,
+    D3D12_FENCE_BARRIERS_TIER_2 = 2,
+}

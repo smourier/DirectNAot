@@ -1537,6 +1537,8 @@ public static partial class Constants
     
     public static Guid CLSID_D3D12ApplicationIdentity => new(0x08d8e1e8, 0x75a6, 0x42a7, 0xbf, 0x3a, 0xd0, 0x5f, 0xe5, 0x29, 0xc4, 0x7c);
     
+    public static Guid CLSID_D3D12AsyncCommandsFallback => new(0xef4992f0, 0x0fae, 0x424e, 0xb4, 0x84, 0x7b, 0xcd, 0x8e, 0x56, 0x9e, 0x3e);
+    
     public static Guid CLSID_D3D12Debug => new(0xf2352aeb, 0xdd84, 0x49fe, 0xb9, 0x7b, 0xa9, 0xdc, 0xfd, 0xcc, 0x1b, 0x4f);
     
     public static Guid CLSID_D3D12DeviceFactory => new(0x114863bf, 0xc386, 0x4aee, 0xb3, 0x9d, 0x8f, 0x0b, 0xbb, 0x06, 0x29, 0x55);
@@ -1545,9 +1547,13 @@ public static partial class Constants
     
     public static Guid CLSID_D3D12DSRDeviceFactory => new(0xbb6dd27e, 0x94a9, 0x41a6, 0x9f, 0x1b, 0x13, 0x37, 0x72, 0x17, 0x24, 0x28);
     
+    public static Guid CLSID_D3D12InfoQueue => new(0x4a87fbe2, 0x9e5b, 0x4c5d, 0xa8, 0x21, 0x8e, 0x06, 0xf8, 0x33, 0x71, 0x9a);
+    
     public static Guid CLSID_D3D12RuntimeValidationControl => new(0xe5b53e74, 0x3fca, 0x47b4, 0x88, 0xb9, 0xa8, 0xb4, 0x1e, 0xf8, 0xfb, 0x73);
     
     public static Guid CLSID_D3D12SDKConfiguration => new(0x7cda6aca, 0xa03e, 0x49c8, 0x94, 0x58, 0x03, 0x34, 0xd2, 0x0e, 0x07, 0xce);
+    
+    public static Guid CLSID_D3D12StateObjectDatabaseCapture => new(0x2b6c3e2f, 0xeb8e, 0x4db9, 0x8c, 0xf4, 0x1e, 0x04, 0x7e, 0x67, 0x1b, 0x7f);
     
     public static Guid CLSID_D3D12StateObjectFactory => new(0x54e1c9f3, 0x1303, 0x4112, 0xbf, 0x8e, 0x7b, 0xf2, 0xbb, 0x60, 0x6a, 0x73);
     
@@ -2465,6 +2471,8 @@ public static partial class Constants
     
     public static Guid CODECAPI_AVEncAudioMeanBitRate => new(0x921295bb, 0x4fca, 0x4679, 0xaa, 0xb8, 0x9e, 0x2a, 0x1d, 0x75, 0x33, 0x84);
     
+    public static Guid CODECAPI_AVEncAV1EncoderOperatingMode => new(0x8f2e1f91, 0x5b4c, 0x4e1a, 0x9c, 0x3d, 0x2f, 0x6a, 0x8b, 0x1d, 0x4e, 0x7c);
+    
     public static Guid CODECAPI_AVEncChromaEncodeMode => new(0x8a47ab5a, 0x4798, 0x4c93, 0xb5, 0xa5, 0x55, 0x4f, 0x9a, 0x3b, 0x9f, 0x50);
     
     public static Guid CODECAPI_AVEncChromaUpdateTime => new(0x4b4fd998, 0x4274, 0x40bb, 0x8e, 0xe4, 0x07, 0x55, 0x3e, 0x7e, 0x2d, 0x3a);
@@ -2734,6 +2742,8 @@ public static partial class Constants
     public static Guid CODECAPI_AVEncVideoContentType => new(0x66117aca, 0xeb77, 0x459d, 0x93, 0x0c, 0xa4, 0x8d, 0x9d, 0x06, 0x83, 0xfc);
     
     public static Guid CODECAPI_AVEncVideoCTBSize => new(0xd47db8b2, 0xe73b, 0x4cb9, 0x8c, 0x3e, 0xbd, 0x87, 0x7d, 0x06, 0xd7, 0x7b);
+    
+    public static Guid CODECAPI_AVEncVideoD3D12ReconstructedPictureOutputMode => new(0x4a7b2e8f, 0x1d93, 0x4c6a, 0xb5, 0x48, 0x91, 0xe2, 0xf8, 0xc5, 0xa7, 0xd3);
     
     public static Guid CODECAPI_AVEncVideoDefaultUpperFieldDominant => new(0x810167c4, 0x0bc1, 0x47ca, 0x8f, 0xc2, 0x57, 0x05, 0x5a, 0x14, 0x74, 0xa5);
     
@@ -3346,6 +3356,8 @@ public static partial class Constants
     public const int D3D_RETURN_PARAMETER_INDEX = -1;
     
     public const uint D3D_SDK_VERSION = 32;
+    
+    public const string D3D_SHADER_CACHE_NO_SODB = @"";
     
     public const uint D3D_SHADER_FEATURE_11_1_DOUBLE_EXTENSIONS = 32;
     
@@ -4354,6 +4366,20 @@ public static partial class Constants
     public static Guid D3D11_DECODER_BITSTREAM_ENCRYPTION_TYPE_CENC => new(0xb0405235, 0xc13d, 0x44f2, 0x9a, 0xe5, 0xdd, 0x48, 0xe0, 0x8e, 0x5b, 0x67);
     
     public static Guid D3D11_DECODER_ENCRYPTION_HW_CENC => new(0x89d6ac4f, 0x09f2, 0x4229, 0xb2, 0xcd, 0x37, 0x74, 0x0a, 0x6d, 0xfd, 0x81);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_400_10 => new(0x37148862, 0x6bd6, 0x4618, 0x82, 0x93, 0x77, 0x7b, 0x68, 0x6b, 0x08, 0x24);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_422_10 => new(0x226a709d, 0xae12, 0x44c5, 0xba, 0x21, 0x16, 0x4f, 0xee, 0xb7, 0xf9, 0xb6);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_422_12 => new(0xf6f152ad, 0x94e5, 0x4bfa, 0x92, 0x27, 0x67, 0x6c, 0xdd, 0xef, 0xf4, 0x2b);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_444_10 => new(0x6a4a8d7d, 0x7610, 0x469f, 0x85, 0x5f, 0x39, 0xf1, 0x30, 0x51, 0xc0, 0x13);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_444_12 => new(0xf1039a1c, 0xe208, 0x45c1, 0x95, 0x2c, 0x04, 0x08, 0x41, 0xb6, 0x76, 0x67);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_4444_10 => new(0xc83799b9, 0x9655, 0x4b95, 0x80, 0x08, 0x56, 0xa3, 0x22, 0xce, 0x5d, 0x81);
+    
+    public static Guid D3D11_DECODER_PROFILE_APV_VLD_4444_12 => new(0x6a763ee3, 0x4d05, 0x47fe, 0xa4, 0x29, 0x72, 0x34, 0x74, 0xb6, 0x9d, 0x7c);
     
     public static Guid D3D11_DECODER_PROFILE_AV1_VLD_12BIT_PROFILE2 => new(0x17127009, 0xa00f, 0x4ce1, 0x99, 0x4e, 0xbf, 0x40, 0x81, 0xf6, 0xf3, 0xf0);
     
@@ -5399,6 +5425,8 @@ public static partial class Constants
     
     public const uint D3D12_DS_OUTPUT_REGISTER_COUNT = 32;
     
+    public const uint D3D12_DUMP_FILE_DRIVER_OPTIONS_DEFAULT = 1;
+    
     public const uint D3D12_FILTER_REDUCTION_TYPE_MASK = 3;
     
     public const uint D3D12_FILTER_REDUCTION_TYPE_SHIFT = 7;
@@ -5475,11 +5503,15 @@ public static partial class Constants
     
     public const uint D3D12_GS_OUTPUT_REGISTER_COUNT = 32;
     
+    public static Guid D3D12_GUID_TEXTURE_LAYOUT_NULL => new(0x00000000, 0x0000, 0x0000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+    
     public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_HEIGHT_ALIGNMENT = 4;
     
     public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_PITCH_ALIGNMENT = 256;
     
     public const uint D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_PLANE_ALIGNMENT = 4096;
+    
+    public static Guid D3D12_GUID_TEXTURE_LAYOUT_ROW_MAJOR_WITH_RENDER_AND_VPBLT_CAPABILITY => new(0x451b3cc7, 0x91ce, 0x49fa, 0xba, 0x67, 0x0d, 0xca, 0x71, 0x9c, 0xcb, 0xb8);
     
     public const uint D3D12_HS_CONTROL_POINT_PHASE_INPUT_REGISTER_COUNT = 32;
     
@@ -5657,7 +5689,7 @@ public static partial class Constants
     
     public const uint D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT = 16;
     
-    public const uint D3D12_PREVIEW_SDK_VERSION = 719;
+    public const uint D3D12_PREVIEW_SDK_VERSION = 722;
     
     public static Guid D3D12_PROTECTED_RESOURCES_SESSION_HARDWARE_PROTECTED => new(0x62b0084e, 0xc70e, 0x4daa, 0xa1, 0x09, 0x30, 0xff, 0x8d, 0x5a, 0x04, 0x82);
     
@@ -5731,6 +5763,8 @@ public static partial class Constants
     
     public const uint D3D12_RAYTRACING_OPACITY_MICROMAP_ARRAY_BYTE_ALIGNMENT = 128;
     
+    public const uint D3D12_RAYTRACING_OPACITY_MICROMAP_DESCS_BYTE_ALIGNMENT = 4;
+    
     public const uint D3D12_RAYTRACING_OPACITY_MICROMAP_OC1_MAX_SUBDIVISION_LEVEL = 12;
     
     public const uint D3D12_RAYTRACING_SHADER_RECORD_BYTE_ALIGNMENT = 32;
@@ -5795,9 +5829,11 @@ public static partial class Constants
     
     public const uint D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES = uint.MaxValue;
     
+    public const uint D3D12_RETAIN_DUMP_FILE_DEFAULT = 0;
+    
     public const uint D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT = 2;
     
-    public const uint D3D12_SDK_VERSION = 619;
+    public const uint D3D12_SDK_VERSION = 620;
     
     public const uint D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES = 4096;
     
@@ -5913,6 +5949,10 @@ public static partial class Constants
     
     public const uint D3D12_TEXTURE_DATA_PLACEMENT_ALIGNMENT = 512;
     
+    public const uint D3D12_TIGHT_ALIGNMENT_MAX_COMMITTED_BUFFER_ALIGNMENT = 4096;
+    
+    public const uint D3D12_TIGHT_ALIGNMENT_MAX_PLACED_BUFFER_ALIGNMENT = 256;
+    
     public const uint D3D12_TIGHT_ALIGNMENT_MIN_COMMITTED_RESOURCE_ALIGNMENT = 4096;
     
     public const uint D3D12_TIGHT_ALIGNMENT_MIN_PLACED_RESOURCE_ALIGNMENT = 8;
@@ -5926,6 +5966,14 @@ public static partial class Constants
     public const uint D3D12_UAV_SLOT_COUNT = 64;
     
     public const uint D3D12_UNBOUND_MEMORY_ACCESS_RESULT = 0;
+    
+    public const uint D3D12_VERSION_PART_BUILD = 1;
+    
+    public const uint D3D12_VERSION_PART_MAJOR = 3;
+    
+    public const uint D3D12_VERSION_PART_MINOR = 2;
+    
+    public const uint D3D12_VERSION_PART_REVISION = 0;
     
     public const uint D3D12_VIDEO_DECODE_MAX_ARGUMENTS = 10;
     
@@ -15129,6 +15177,10 @@ public static partial class Constants
     
     public const uint DXVA_ALPHA_BLEND_DATA_LOAD_FUNCTION = 2;
     
+    public const uint DXVA_APV_MAX_COMPONENTS = 4;
+    
+    public const uint DXVA_APV_QM_DIMENSION = 8;
+    
     public const uint DXVA_AYUV_BUFFER = 8;
     
     public const uint DXVA_BIDIRECTIONAL_AVERAGING_H263_TRUNC = 1;
@@ -15252,6 +15304,20 @@ public static partial class Constants
     public const uint DXVA_INVERSE_QUANTIZATION_MATRIX_BUFFER = 5;
     
     public const uint DXVA_MACROBLOCK_CONTROL_BUFFER = 2;
+    
+    public static Guid DXVA_ModeAPV_VLD_400_10 => new(0x37148862, 0x6bd6, 0x4618, 0x82, 0x93, 0x77, 0x7b, 0x68, 0x6b, 0x08, 0x24);
+    
+    public static Guid DXVA_ModeAPV_VLD_422_10 => new(0x226a709d, 0xae12, 0x44c5, 0xba, 0x21, 0x16, 0x4f, 0xee, 0xb7, 0xf9, 0xb6);
+    
+    public static Guid DXVA_ModeAPV_VLD_422_12 => new(0xf6f152ad, 0x94e5, 0x4bfa, 0x92, 0x27, 0x67, 0x6c, 0xdd, 0xef, 0xf4, 0x2b);
+    
+    public static Guid DXVA_ModeAPV_VLD_444_10 => new(0x6a4a8d7d, 0x7610, 0x469f, 0x85, 0x5f, 0x39, 0xf1, 0x30, 0x51, 0xc0, 0x13);
+    
+    public static Guid DXVA_ModeAPV_VLD_444_12 => new(0xf1039a1c, 0xe208, 0x45c1, 0x95, 0x2c, 0x04, 0x08, 0x41, 0xb6, 0x76, 0x67);
+    
+    public static Guid DXVA_ModeAPV_VLD_4444_10 => new(0xc83799b9, 0x9655, 0x4b95, 0x80, 0x08, 0x56, 0xa3, 0x22, 0xce, 0x5d, 0x81);
+    
+    public static Guid DXVA_ModeAPV_VLD_4444_12 => new(0x6a763ee3, 0x4d05, 0x47fe, 0xa4, 0x29, 0x72, 0x34, 0x74, 0xb6, 0x9d, 0x7c);
     
     public static Guid DXVA_ModeAV1_VLD_12bit_Profile2 => new(0x17127009, 0xa00f, 0x4ce1, 0x99, 0x4e, 0xbf, 0x40, 0x81, 0xf6, 0xf3, 0xf0);
     
@@ -16579,6 +16645,8 @@ public static partial class Constants
     
     public const uint EVENT_DATA_DESCRIPTOR_TYPE_PROVIDER_METADATA = 2;
     
+    public const uint EVENT_DATA_DESCRIPTOR_TYPE_RESERVED1 = 4;
+    
     public const uint EVENT_DATA_DESCRIPTOR_TYPE_TIMESTAMP_OVERRIDE = 3;
     
     public const int EVENT_DAV_REDIR_DELAYED_WRITE_FAILED = -2147468848;
@@ -17148,6 +17216,8 @@ public static partial class Constants
     public const uint EVENT_HEADER_FLAG_PRIVATE_SESSION = 2;
     
     public const uint EVENT_HEADER_FLAG_PROCESSOR_INDEX = 512;
+    
+    public const uint EVENT_HEADER_FLAG_RESERVED1 = 1024;
     
     public const uint EVENT_HEADER_FLAG_STRING_ONLY = 4;
     
@@ -18332,6 +18402,10 @@ public static partial class Constants
     public const int EVENT_WINSOCK_CLOSESOCKET_STUCK = -2147467646;
     
     public const int EVENT_WINSOCK_TDI_FILTER_DETECTED = -2147467647;
+    
+    public const int EVENT_WINSOCK_TDI_PROVIDER_BLOCKED = -2147467644;
+    
+    public const int EVENT_WINSOCK_TDI_PROVIDER_DETECTED = -2147467645;
     
     public static Guid EVENT_WMDM_CONTENT_TRANSFER => new(0x339c9bf4, 0xbcfe, 0x4ed8, 0x94, 0xdf, 0xea, 0xf8, 0xc2, 0x6a, 0xb6, 0x1b);
     
@@ -24383,6 +24457,8 @@ public static partial class Constants
     
     public const ushort HID_USAGE_HAPTICS_SIMPLE_CONTROLLER = 1;
     
+    public const ushort HID_USAGE_HAPTICS_WAVEFORM_ALIGN = 4115;
+    
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_BRUSH_CONTINUOUS = 4111;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_BUZZ = 4100;
@@ -24391,11 +24467,15 @@ public static partial class Constants
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_CLICK = 4099;
     
+    public const ushort HID_USAGE_HAPTICS_WAVEFORM_COLLIDE = 4114;
+    
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_CUTOFF_TIME = 40;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_ERASER_CONTINUOUS = 4112;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_ERROR = 4106;
+    
+    public const ushort HID_USAGE_HAPTICS_WAVEFORM_GROW = 4117;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_HOVER = 4104;
     
@@ -24416,6 +24496,8 @@ public static partial class Constants
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_RUMBLE = 4101;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_SPARKLE_CONTINUOUS = 4113;
+    
+    public const ushort HID_USAGE_HAPTICS_WAVEFORM_STEP = 4116;
     
     public const ushort HID_USAGE_HAPTICS_WAVEFORM_STOP = 4098;
     
@@ -34697,6 +34779,8 @@ public static partial class Constants
     
     public static Guid MF_READWRITE_MMCSS_PRIORITY_AUDIO => new(0x273db885, 0x2de2, 0x4db2, 0xa6, 0xa7, 0xfd, 0xb6, 0x6f, 0xb4, 0x0b, 0x61);
     
+    public static Guid MF_READWRITE_USE_ONLY_HARDWARE_TRANSFORMS => new(0xf9074427, 0xbf8b, 0x4f69, 0xbb, 0xaf, 0x52, 0x49, 0x69, 0x05, 0x6f, 0xb6);
+    
     public static Guid MF_REMOTE_PROXY => new(0x2f00c90e, 0xd2cf, 0x4278, 0x8b, 0x6a, 0xd0, 0x77, 0xfa, 0xc3, 0xa2, 0x5f);
     
     public static Guid MF_SA_AUDIO_ENDPOINT_AWARE => new(0xc0381701, 0x805c, 0x42b2, 0xac, 0x8d, 0xe2, 0xb4, 0xbf, 0x21, 0xf4, 0xf8);
@@ -35632,6 +35716,8 @@ public static partial class Constants
     public static Guid MFSampleExtension_VideoDSPMode => new(0xc12d55cb, 0xd7d9, 0x476d, 0x81, 0xf3, 0x69, 0x11, 0x7f, 0x16, 0x3e, 0xa0);
     
     public static Guid MFSampleExtension_VideoEncodeBitsUsedMap => new(0x6894263d, 0xe6e2, 0x4bcc, 0x84, 0x9d, 0x85, 0x70, 0x36, 0x5f, 0x51, 0x14);
+    
+    public static Guid MFSampleExtension_VideoEncodeD3D12ReconstructedPicture => new(0x3e8a1b7f, 0x5c92, 0x4d6e, 0xb8, 0x34, 0xf0, 0xa7, 0x29, 0xe6, 0x5c, 0x48);
     
     public static Guid MFSampleExtension_VideoEncodeInputAbsoluteQPMap => new(0x432a6e9a, 0xf1ed, 0x456e, 0x8d, 0xc3, 0x6f, 0x89, 0x85, 0x64, 0x9e, 0xb9);
     
@@ -43991,7 +44077,7 @@ public static partial class Constants
     
     public const uint XAPO_MAX_CHANNELS = 64;
     
-    public const uint XAPO_MAX_FRAMERATE = 200000;
+    public const uint XAPO_MAX_FRAMERATE = 384000;
     
     public const uint XAPO_MIN_CHANNELS = 1;
     
@@ -44073,7 +44159,7 @@ public static partial class Constants
     
     public const uint XAUDIO2_MAX_RATIO_TIMES_RATE_XMA_MULTICHANNEL = 300000;
     
-    public const uint XAUDIO2_MAX_SAMPLE_RATE = 200000;
+    public const uint XAUDIO2_MAX_SAMPLE_RATE = 384000;
     
     public const float XAUDIO2_MAX_VOLUME_LEVEL = 16777216f;
     

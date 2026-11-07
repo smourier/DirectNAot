@@ -9,10 +9,10 @@ public partial interface IMFRemoteProxy
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfremoteproxy-getremoteobject
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRemoteObject(in Guid riid, out nint ppv);
+    HRESULT GetRemoteObject(in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfremoteproxy-getremotehost
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetRemoteHost(in Guid riid, out nint ppv);
+    HRESULT GetRemoteHost(in Guid riid, out nint /* void */ ppv);
 }

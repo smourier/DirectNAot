@@ -18,7 +18,7 @@ public partial interface ISpObjectToken : ISpDataKey
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateInstance(nint pUnkOuter, uint dwClsContext, in Guid riid, out nint ppvObject);
+    HRESULT CreateInstance(nint pUnkOuter, uint dwClsContext, in Guid riid, out nint /* void */ ppvObject);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

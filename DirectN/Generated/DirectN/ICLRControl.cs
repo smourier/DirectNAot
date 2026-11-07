@@ -6,7 +6,7 @@ public partial interface ICLRControl
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetCLRManager(in Guid riid, out nint ppObject);
+    HRESULT GetCLRManager(in Guid riid, out nint /* void */ ppObject);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

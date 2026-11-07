@@ -39,5 +39,5 @@ public partial interface IDirect3DDeviceManager9
     // https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-idirect3ddevicemanager9-getvideoservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoService(HANDLE hDevice, in Guid riid, out nint ppService);
+    HRESULT GetVideoService(HANDLE hDevice, in Guid riid, out nint /* void */ ppService);
 }

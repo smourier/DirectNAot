@@ -26,5 +26,5 @@ public partial interface IDxcContainerReflection
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetPartReflection(uint idx, in Guid iid, out nint ppvObject);
+    HRESULT GetPartReflection(uint idx, in Guid iid, out nint /* void */ ppvObject);
 }

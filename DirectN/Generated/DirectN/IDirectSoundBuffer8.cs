@@ -14,5 +14,5 @@ public partial interface IDirectSoundBuffer8 : IDirectSoundBuffer
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetObjectInPath(in Guid rguidObject, uint dwIndex, in Guid rguidInterface, out nint ppObject);
+    HRESULT GetObjectInPath(in Guid rguidObject, uint dwIndex, in Guid rguidInterface, out nint /* void */ ppObject);
 }

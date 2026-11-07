@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum D3D12_FENCE_BARRIERS_SUPPORT_FLAGS
+{
+    D3D12_FENCE_BARRIERS_SUPPORT_FLAG_NONE = 0,
+    D3D12_FENCE_BARRIERS_SUPPORT_FLAG_SHARED_FENCES = 1,
+}

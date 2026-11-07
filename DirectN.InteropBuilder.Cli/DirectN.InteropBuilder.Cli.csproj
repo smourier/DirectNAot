@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Windows.SDK.Win32Metadata" Version="71.0.30-preview" GeneratePathProperty="true" />
+		<PackageReference Include="Microsoft.Windows.SDK.Win32Metadata" Version="71.0.45-preview" GeneratePathProperty="true" />
 	</ItemGroup>
 
 	<Target Name="CreateWin32MetadataFile" BeforeTargets="CoreCompile">
@@ -49,6 +49,9 @@ namespace $(RootNamespace)
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="DirectN.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Microsoft.Direct3D.D3D12.winmd">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>

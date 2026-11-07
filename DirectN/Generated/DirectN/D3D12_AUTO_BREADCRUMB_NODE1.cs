@@ -3,9 +3,9 @@ namespace DirectN;
 
 public partial struct D3D12_AUTO_BREADCRUMB_NODE1
 {
-    public nint pCommandListDebugNameA;
+    public PSTR pCommandListDebugNameA;
     public PWSTR pCommandListDebugNameW;
-    public nint pCommandQueueDebugNameA;
+    public PSTR pCommandQueueDebugNameA;
     public PWSTR pCommandQueueDebugNameW;
     public nint pCommandList;
     public nint pCommandQueue;

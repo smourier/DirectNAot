@@ -9,7 +9,7 @@ public partial interface IMFDXGIBuffer
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgibuffer-getresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetResource(in Guid riid, out nint ppvObject);
+    HRESULT GetResource(in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgibuffer-getsubresourceindex
     [PreserveSig]
@@ -19,7 +19,7 @@ public partial interface IMFDXGIBuffer
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgibuffer-getunknown
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetUnknown(in Guid guid, in Guid riid, out nint ppvObject);
+    HRESULT GetUnknown(in Guid guid, in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgibuffer-setunknown
     [PreserveSig]

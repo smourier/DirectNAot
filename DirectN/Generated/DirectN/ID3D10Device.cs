@@ -403,7 +403,7 @@ public partial interface ID3D10Device
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-opensharedresource
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, nint /* optional void** */ ppResource);
+    HRESULT OpenSharedResource(HANDLE hResource, in Guid ReturnedInterface, out nint /* void */ ppResource);
     
     // https://learn.microsoft.com/windows/win32/api/d3d10/nf-d3d10-id3d10device-settextfiltersize
     [PreserveSig]

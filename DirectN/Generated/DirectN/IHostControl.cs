@@ -6,7 +6,7 @@ public partial interface IHostControl
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetHostManager(in Guid riid, out nint ppObject);
+    HRESULT GetHostManager(in Guid riid, out nint /* void */ ppObject);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

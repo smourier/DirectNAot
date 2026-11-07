@@ -1,0 +1,8 @@
+﻿#nullable enable
+namespace DirectN;
+
+public enum D3D12_GUID_TEXTURE_LAYOUT_TIER
+{
+    D3D12_GUID_TEXTURE_LAYOUT_TIER_NOT_SUPPORTED = 0,
+    D3D12_GUID_TEXTURE_LAYOUT_TIER_1 = 1,
+}

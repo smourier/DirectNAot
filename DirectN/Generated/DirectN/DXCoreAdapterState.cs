@@ -15,4 +15,5 @@ public enum DXCoreAdapterState : uint
     AdapterInUseProcessSet = 8,
     AdapterEngineFrequencyHertz = 9,
     AdapterMemoryFrequencyHertz = 10,
+    SingleAdapterHybridMode = 11,
 }

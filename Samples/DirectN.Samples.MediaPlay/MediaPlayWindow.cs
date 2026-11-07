@@ -1,6 +1,4 @@
-﻿using Windows.Storage;
-
-namespace DirectN.Samples.MediaPlay;
+﻿namespace DirectN.Samples.MediaPlay;
 
 public class MediaPlayWindow : Window
 {

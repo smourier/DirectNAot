@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum D3D12_MLIR_PROGRAM_BINDING_FLAGS
+{
+    D3D12_MLIR_PROGRAM_BINDING_FLAG_NONE = 0,
+    D3D12_MLIR_PROGRAM_BINDING_FLAG_VOLATILE_DESCRIPTOR = 1,
+}

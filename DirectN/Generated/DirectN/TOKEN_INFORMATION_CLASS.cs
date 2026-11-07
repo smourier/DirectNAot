@@ -54,5 +54,7 @@ public enum TOKEN_INFORMATION_CLASS
     TokenIsAppSilo = 48,
     TokenLoggingInformation = 49,
     TokenLearningMode = 50,
-    MaxTokenInfoClass = 51,
+    TokenIsSystemManagedAdmin = 51,
+    TokenIsInstaller = 52,
+    MaxTokenInfoClass = 53,
 }

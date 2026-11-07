@@ -9,7 +9,7 @@ public partial interface IMFInputTrustAuthority
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfinputtrustauthority-getdecrypter
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDecrypter(in Guid riid, out nint ppv);
+    HRESULT GetDecrypter(in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfinputtrustauthority-requestaccess
     [PreserveSig]

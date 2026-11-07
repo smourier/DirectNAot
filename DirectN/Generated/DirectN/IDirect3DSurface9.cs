@@ -8,7 +8,7 @@ public partial interface IDirect3DSurface9 : IDirect3DResource9
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-getcontainer
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetContainer(in Guid riid, out nint ppContainer);
+    HRESULT GetContainer(in Guid riid, out nint /* void */ ppContainer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d9/nf-d3d9-idirect3dsurface9-getdesc
     [PreserveSig]

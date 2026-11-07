@@ -49,7 +49,7 @@ public partial interface IMFSourceReader
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-getserviceforstream
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetServiceForStream(uint dwStreamIndex, in Guid guidService, in Guid riid, out nint ppvObject);
+    HRESULT GetServiceForStream(uint dwStreamIndex, in Guid guidService, in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfreadwrite/nf-mfreadwrite-imfsourcereader-getpresentationattribute
     [PreserveSig]

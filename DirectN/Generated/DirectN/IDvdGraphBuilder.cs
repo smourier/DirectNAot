@@ -14,7 +14,7 @@ public partial interface IDvdGraphBuilder
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdgraphbuilder-getdvdinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetDvdInterface(in Guid riid, out nint ppvIF);
+    HRESULT GetDvdInterface(in Guid riid, out nint /* void */ ppvIF);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-idvdgraphbuilder-renderdvdvideovolume
     [PreserveSig]

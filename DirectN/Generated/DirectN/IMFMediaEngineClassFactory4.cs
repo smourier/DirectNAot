@@ -8,5 +8,5 @@ public partial interface IMFMediaEngineClassFactory4
     // https://learn.microsoft.com/windows/win32/api/mfmediaengine/nf-mfmediaengine-imfmediaengineclassfactory4-createcontentdecryptionmodulefactory
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateContentDecryptionModuleFactory(PWSTR keySystem, in Guid riid, out nint ppvObject);
+    HRESULT CreateContentDecryptionModuleFactory(PWSTR keySystem, in Guid riid, out nint /* void */ ppvObject);
 }

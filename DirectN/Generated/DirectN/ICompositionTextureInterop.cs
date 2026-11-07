@@ -6,5 +6,5 @@ public partial interface ICompositionTextureInterop
 {
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetAvailableFence(out ulong fenceValue, in Guid iid, out nint availableFence);
+    HRESULT GetAvailableFence(out ulong fenceValue, in Guid iid, out nint /* void */ availableFence);
 }

@@ -14,7 +14,7 @@ public partial interface IMFDXGIDeviceManager
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgidevicemanager-getvideoservice
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT GetVideoService(HANDLE hDevice, in Guid riid, out nint ppService);
+    HRESULT GetVideoService(HANDLE hDevice, in Guid riid, out nint /* void */ ppService);
     
     // https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-imfdxgidevicemanager-lockdevice
     [PreserveSig]

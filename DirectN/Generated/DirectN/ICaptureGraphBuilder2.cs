@@ -24,7 +24,7 @@ public partial interface ICaptureGraphBuilder2
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-findinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT FindInterface(nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pf, in Guid riid, out nint ppint);
+    HRESULT FindInterface(nint /* optional Guid* */ pCategory, nint /* optional Guid* */ pType, [MarshalUsing(typeof(UniqueComInterfaceMarshaller<IBaseFilter>))] IBaseFilter pf, in Guid riid, out nint /* void */ ppint);
     
     // https://learn.microsoft.com/windows/win32/api/strmif/nf-strmif-icapturegraphbuilder2-renderstream
     [PreserveSig]

@@ -14,5 +14,5 @@ public partial interface IMFObjectReferenceStream
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-imfobjectreferencestream-loadreference
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT LoadReference(in Guid riid, out nint ppv);
+    HRESULT LoadReference(in Guid riid, out nint /* void */ ppv);
 }

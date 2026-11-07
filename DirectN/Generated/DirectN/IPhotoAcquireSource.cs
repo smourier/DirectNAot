@@ -42,5 +42,5 @@ public partial interface IPhotoAcquireSource
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT BindToObject(in Guid riid, out nint ppv);
+    HRESULT BindToObject(in Guid riid, out nint /* void */ ppv);
 }

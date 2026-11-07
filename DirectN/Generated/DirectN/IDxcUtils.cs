@@ -46,7 +46,7 @@ public partial interface IDxcUtils
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateReflection(in DxcBuffer pData, in Guid iid, out nint ppvReflection);
+    HRESULT CreateReflection(in DxcBuffer pData, in Guid iid, out nint /* void */ ppvReflection);
     
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]

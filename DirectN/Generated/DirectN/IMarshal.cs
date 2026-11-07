@@ -24,7 +24,7 @@ public partial interface IMarshal
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-unmarshalinterface
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT UnmarshalInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm, in Guid riid, out nint ppv);
+    HRESULT UnmarshalInterface([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IStream>))] IStream pStm, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/objidlbase/nf-objidlbase-imarshal-releasemarshaldata
     [PreserveSig]

@@ -1940,12 +1940,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12createrootsignaturedeserializer
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12CreateRootSignatureDeserializer(nint pSrcData, nuint SrcDataSizeInBytes, in Guid pRootSignatureDeserializerInterface, out nint ppRootSignatureDeserializer);
+    public static partial HRESULT D3D12CreateRootSignatureDeserializer(nint pSrcData, nuint SrcDataSizeInBytes, in Guid pRootSignatureDeserializerInterface, out nint /* void */ ppRootSignatureDeserializer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12createversionedrootsignaturedeserializer
     [LibraryImport("d3d12")]
     [PreserveSig]
-    public static partial HRESULT D3D12CreateVersionedRootSignatureDeserializer(nint pSrcData, nuint SrcDataSizeInBytes, in Guid pRootSignatureDeserializerInterface, out nint ppRootSignatureDeserializer);
+    public static partial HRESULT D3D12CreateVersionedRootSignatureDeserializer(nint pSrcData, nuint SrcDataSizeInBytes, in Guid pRootSignatureDeserializerInterface, out nint /* void */ ppRootSignatureDeserializer);
     
     // https://learn.microsoft.com/windows/win32/api/d3d12/nf-d3d12-d3d12enableexperimentalfeatures
     [LibraryImport("d3d12")]
@@ -2117,12 +2117,12 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreflect
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DReflect(nint pSrcData, nuint SrcDataSize, in Guid pInterface, out nint ppReflector);
+    public static partial HRESULT D3DReflect(nint pSrcData, nuint SrcDataSize, in Guid pInterface, out nint /* void */ ppReflector);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreflectlibrary
     [LibraryImport("D3DCOMPILER_47")]
     [PreserveSig]
-    public static partial HRESULT D3DReflectLibrary(nint pSrcData, nuint SrcDataSize, in Guid riid, out nint ppReflector);
+    public static partial HRESULT D3DReflectLibrary(nint pSrcData, nuint SrcDataSize, in Guid riid, out nint /* void */ ppReflector);
     
     // https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dsetblobpart
     [LibraryImport("D3DCOMPILER_47")]
@@ -2997,7 +2997,7 @@ public static partial class Functions
     [LibraryImport("dxva2")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT DXVA2CreateVideoService([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] IDirect3DDevice9 pDD, in Guid riid, out nint ppService);
+    public static partial HRESULT DXVA2CreateVideoService([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IDirect3DDevice9>))] IDirect3DDevice9 pDD, in Guid riid, out nint /* void */ ppService);
     
     // https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-dxvahd_createdevice
     [LibraryImport("dxva2")]
@@ -8395,7 +8395,7 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/mfd3d12/nf-mfd3d12-mfcreated3d12synchronizationobject
     [LibraryImport("MFPlat")]
     [PreserveSig]
-    public static partial HRESULT MFCreateD3D12SynchronizationObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Device>))] ID3D12Device pDevice, in Guid riid, out nint ppvSyncObject);
+    public static partial HRESULT MFCreateD3D12SynchronizationObject([MarshalUsing(typeof(UniqueComInterfaceMarshaller<ID3D12Device>))] ID3D12Device pDevice, in Guid riid, out nint /* void */ ppvSyncObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatedevicesource
     [LibraryImport("MF")]
@@ -8491,7 +8491,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFCreateMediaExtensionActivate(PWSTR szActivatableClassId, nint pConfiguration, in Guid riid, out nint ppvObject);
+    public static partial HRESULT MFCreateMediaExtensionActivate(PWSTR szActivatableClassId, nint pConfiguration, in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemediasession
     [LibraryImport("MF")]
@@ -8587,7 +8587,7 @@ public static partial class Functions
     [LibraryImport("MF")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFCreateNetSchemePlugin(in Guid riid, out nint ppvHandler);
+    public static partial HRESULT MFCreateNetSchemePlugin(in Guid riid, out nint /* void */ ppvHandler);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepmpmediasession
     [LibraryImport("MF")]
@@ -8623,7 +8623,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFCreatePropertiesFromMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, in Guid riid, out nint ppv);
+    public static partial HRESULT MFCreatePropertiesFromMediaType([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFMediaType>))] IMFMediaType pMediaType, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateprotectedenvironmentaccess
     [LibraryImport("MF")]
@@ -8772,7 +8772,7 @@ public static partial class Functions
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFCreateStreamOnMFByteStreamEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pByteStream, in Guid riid, out nint ppv);
+    public static partial HRESULT MFCreateStreamOnMFByteStreamEx([MarshalUsing(typeof(UniqueComInterfaceMarshaller<IMFByteStream>))] IMFByteStream pByteStream, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesystemtimesource
     [LibraryImport("MFPlat")]
@@ -8867,22 +8867,22 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideomixer
     [LibraryImport("EVR")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoMixer(nint pOwner, in Guid riidDevice, in Guid riid, out nint ppv);
+    public static partial HRESULT MFCreateVideoMixer(nint pOwner, in Guid riidDevice, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideomixerandpresenter
     [LibraryImport("EVR")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoMixerAndPresenter(nint pMixerOwner, nint pPresenterOwner, in Guid riidMixer, out nint ppvVideoMixer, in Guid riidPresenter, out nint ppvVideoPresenter);
+    public static partial HRESULT MFCreateVideoMixerAndPresenter(nint pMixerOwner, nint pPresenterOwner, in Guid riidMixer, out nint /* void */ ppvVideoMixer, in Guid riidPresenter, out nint /* void */ ppvVideoPresenter);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideopresenter
     [LibraryImport("EVR")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoPresenter(nint pOwner, in Guid riidDevice, in Guid riid, out nint ppVideoPresenter);
+    public static partial HRESULT MFCreateVideoPresenter(nint pOwner, in Guid riidDevice, in Guid riid, out nint /* void */ ppVideoPresenter);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideorenderer
     [LibraryImport("MF")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoRenderer(in Guid riidRenderer, out nint ppVideoRenderer);
+    public static partial HRESULT MFCreateVideoRenderer(in Guid riidRenderer, out nint /* void */ ppVideoRenderer);
     
     // https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatevideorendereractivate
     [LibraryImport("MF")]
@@ -8893,13 +8893,13 @@ public static partial class Functions
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideosampleallocator
     [LibraryImport("EVR")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoSampleAllocator(in Guid riid, out nint ppSampleAllocator);
+    public static partial HRESULT MFCreateVideoSampleAllocator(in Guid riid, out nint /* void */ ppSampleAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideosampleallocatorex
     [LibraryImport("MFPlat")]
     [SupportedOSPlatform("windows8.0")]
     [PreserveSig]
-    public static partial HRESULT MFCreateVideoSampleAllocatorEx(in Guid riid, out nint ppSampleAllocator);
+    public static partial HRESULT MFCreateVideoSampleAllocatorEx(in Guid riid, out nint /* void */ ppSampleAllocator);
     
     // https://learn.microsoft.com/windows/win32/api/evr/nc-evr-mfcreatevideosamplefromsurface
     [LibraryImport("EVR")]
@@ -9033,7 +9033,7 @@ public static partial class Functions
     [LibraryImport("MF")]
     [SupportedOSPlatform("windows6.0.6000")]
     [PreserveSig]
-    public static partial HRESULT MFGetService(nint punkObject, in Guid guidService, in Guid riid, out nint ppvObject);
+    public static partial HRESULT MFGetService(nint punkObject, in Guid guidService, in Guid riid, out nint /* void */ ppvObject);
     
     // https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetstrideforbitmapinfoheader
     [LibraryImport("MFPlat")]
@@ -10085,7 +10085,7 @@ public static partial class Functions
     [LibraryImport("ole32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT OleCreateDefaultHandler(in Guid clsid, nint pUnkOuter, in Guid riid, out nint lplpObj);
+    public static partial HRESULT OleCreateDefaultHandler(in Guid clsid, nint pUnkOuter, in Guid riid, out nint /* void */ lplpObj);
     
     // https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepropertyframe
     [LibraryImport("OLEAUT32")]
@@ -10127,7 +10127,7 @@ public static partial class Functions
     [LibraryImport("OLEAUT32")]
     [SupportedOSPlatform("windows5.0")]
     [PreserveSig]
-    public static partial HRESULT OleLoadPicturePath(PWSTR szURLorPath, nint punkCaller, uint dwReserved, uint clrReserved, in Guid riid, out nint ppvRet);
+    public static partial HRESULT OleLoadPicturePath(PWSTR szURLorPath, nint punkCaller, uint dwReserved, uint clrReserved, in Guid riid, out nint /* void */ ppvRet);
     
     // https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumformatetc
     [LibraryImport("ole32")]
@@ -10506,25 +10506,25 @@ public static partial class Functions
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT PSEnumeratePropertyDescriptions(PROPDESC_ENUMFILTER filterOn, in Guid riid, out nint ppv);
+    public static partial HRESULT PSEnumeratePropertyDescriptions(PROPDESC_ENUMFILTER filterOn, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescription
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT PSGetPropertyDescription(in PROPERTYKEY propkey, in Guid riid, out nint ppv);
+    public static partial HRESULT PSGetPropertyDescription(in PROPERTYKEY propkey, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionbyname
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT PSGetPropertyDescriptionByName(PWSTR pszCanonicalName, in Guid riid, out nint ppv);
+    public static partial HRESULT PSGetPropertyDescriptionByName(PWSTR pszCanonicalName, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionlistfromstring
     [LibraryImport("PROPSYS")]
     [SupportedOSPlatform("windows5.1.2600")]
     [PreserveSig]
-    public static partial HRESULT PSGetPropertyDescriptionListFromString(PWSTR pszPropList, in Guid riid, out nint ppv);
+    public static partial HRESULT PSGetPropertyDescriptionListFromString(PWSTR pszPropList, in Guid riid, out nint /* void */ ppv);
     
     // https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertykeyfromstring
     [LibraryImport("PROPSYS")]

@@ -44,5 +44,5 @@ public partial interface IKsTopologyInfo
     // https://learn.microsoft.com/windows/win32/api/vidcap/nf-vidcap-ikstopologyinfo-createnodeinstance
     [PreserveSig]
     [return: MarshalAs(UnmanagedType.Error)]
-    HRESULT CreateNodeInstance(uint dwNodeId, in Guid iid, out nint ppvObject);
+    HRESULT CreateNodeInstance(uint dwNodeId, in Guid iid, out nint /* void */ ppvObject);
 }

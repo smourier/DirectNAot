@@ -1,0 +1,9 @@
+﻿#nullable enable
+namespace DirectN;
+
+[Flags]
+public enum D3D12_SHADER_CACHE_TRIM_FLAGS
+{
+    D3D12_SHADER_CACHE_TRIM_FLAG_NONE = 0,
+    D3D12_SHADER_CACHE_TRIM_FLAG_KEEP_MAXIMUM_SIZE = 1,
+}
